@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "batch": "v529",
+  "status": "partial",
+  "platform": "iOS",
+  "artifact_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "reference_index": "ios-remote-v517-controls-user-reference-index.json",
+  "reference_version": "unknown; user screenshots are visual references, not same-version proof",
+  "implemented": [
+    "Ordinary expanded composer meter source and capability gate",
+    "Source-relative independent window and recovered rail geometry",
+    "Model-specific ordered stops and valid selection projection",
+    "Ordinary nil-header branch with sourceLabel, dynamic font scaling and stable thumb style",
+    "Source-backed variable blur factory and nine-stop gradient; regular noninteractive Glass rail",
+    "Tap, internal nearest-stop drag, source long-press drag and accessibility actions",
+    "One-shot deferred selection with live provider identity check",
+    "Quick picker to Advanced and return through task-scoped fixture state",
+    "Selection sensory-feedback trigger"
+  ],
+  "independent_adapters": [
+    "SwiftUI/UIKit source registration and UIWindow bridge retain the original editing window",
+    "Synthetic model capabilities, model titles and task-local in-memory state; explicit --remote-model-slider-fixture",
+    "Gradient raster uses actual view bounds and scale1; original raster dimensions unresolved",
+    "Default theme branch only; native return/sheet state coordination",
+    "Default snapback animation; fallback native menu has not recovered every legacy branch"
+  ],
+  "remaining": [
+    "Keyboard substitution path DefaultElevatedPresentation fields0x60/0x88 -> keyboardSubstitutionController; keyboard upper-edge blur visibly differs",
+    "Opening/closing morph, blur animation, press/rubberband feedback and original timing; presentation currently immediate",
+    "Ordinary source-label measured-width producer and complete inherited theme/style environment",
+    "__showsThumbBackground lifecycle and complete visibility gate beyond stable expanded branch",
+    "OS gesture interruption, rotation/source-frame updates, reduced transparency and larger Dynamic Type UI acceptance",
+    "Authoritative service capabilities, rejection/receipt, restart persistence and provider lifecycle",
+    "Physical haptic acceptance, dictation state machine and Android independent implementation",
+    "Earlier title alignment/new-thread/menu gaps, full message components, Chat/Work and settings remain separately tracked"
+  ],
+  "validation": {
+    "model_log": "ios-remote-v529-model-r2.log",
+    "model": "passed",
+    "r1_ui": "Chinese quick model test passed",
+    "final_ui": "passed",
+    "visual": "Final Chinese/light and English/dark opened screenshots inspected. Content blur, legible title and stable thumb visible. Keyboard upper-edge blur still differs.",
+    "device_install": false,
+    "display": "built-in Color LCD only",
+    "retention_targets": [],
+    "ui_passed": 4,
+    "ui_failed": 0,
+    "runtime_warnings": [],
+    "ui_result": "ios-remote-v529-r2-ui.xcresult",
+    "bundle_version": 529,
+    "signature_verified": true,
+    "launch_receipt": "ios-remote-v529-launch.txt",
+    "preview": "ios-remote-v529-preview.png",
+    "preview_language": "system-following Chinese",
+    "preview_observed": "Device Hub visibly displays quick model picker with native software keyboard; left running",
+    "disk_available": "20 GiB"
+  },
+  "next_minimal_evidence": "Trace keyboard substitution fields and original expanded/collapsed animation owner before modifying keyboard blur or morph.",
+  "cross_platform": "Only iOS ordinary producer/presenter/gesture proved. Identity and replay vectors are sharing candidates; Android presentation/keyboard/haptics require independent evidence.",
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "31b47e13c94e98e66959994517838fb9f0e861241cd0cf4640df6bf739e9a0fd"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteModelSliderConfiguration.swift",
+      "sha256": "a9582845cb951676956e386e902e57694d6e3cee225f93263a101c4f2969f333"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "89e4a67df4b5b6de45143a01fd9a061c45e209e0d2ce12eb61fb087097d03ee5"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "de70f371d894efd9c914dea94e709152b8c078fceb793065278667037c1f6a1e"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "7044247724f9b2a8e02adba96b7ae6687286a1e669e38802e6e84a3789a99b64"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "ba9ca7ea620a82bca9b830566bd07ec9f8702979778581a7a1c776f87ce8d826"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "ios-remote-v529-slider-header-findings.json",
+      "sha256": "3a3b0dc21bce770feaa30193896eb865ec18c0515a7eb0ba30a94730a14b122b"
+    },
+    {
+      "path": "ios-remote-v529-slider-material-findings.json",
+      "sha256": "44b5609f18b17374ef806a83a21d16fcde17a56b0dd5c6b38795078de32dc5d4"
+    },
+    {
+      "path": "ios-remote-v529-slider-gesture-findings.json",
+      "sha256": "6fd395c9be5974404e3c1e36f72cbb0b4987d98404b907bf0f3da7ba296f0ae5"
+    },
+    {
+      "path": "ios-remote-v529-meter-style-findings.json",
+      "sha256": "351d18f9587ff488c99b311ed72e57cf0e8d547a875cbf059246e7cfc45bcb90"
+    },
+    {
+      "path": "ios-remote-v529-slider-thumb-findings.json",
+      "sha256": "30523a4464be88b08d3539d25723dacb4c46a163a2cbeb9e45ea3ab088e4ca75"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T07:32:44.664034+08:00",
+  "module": 3,
+  "scope": "Remote list and task management fourth pass; iOS frontend only",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_reports": [
+    "ios-remote-row-menu-fourth-20261113-findings.json",
+    "ios-remote-row-gestures-fourth-20261113-findings.json"
+  ],
+  "implemented": [
+    "Ordinary row context menu: pin/unpin, rename, copy thread ID, separate destructive archive",
+    "Visibility and enabled inputs separated; exact acted-on host/thread and captured metadata revision",
+    "Native trailing archive swipe with allowsFullSwipe=false; search results excluded",
+    "Lazy optional read-only actual transcript-component preview with source frame360x520; search results excluded",
+    "Preview bypasses ordinary task initialization, replay preparation, draft reconciliation and persistent reading cache",
+    "Independent movement-cancellable button admission fixes search horizontal drag entering task"
+  ],
+  "independent_adapters": [
+    "Positive offline capability provider, not original account/raw gates and not derived from connected",
+    "Synthetic host/thread metadata operations and atomic local persistence; no production backend",
+    "Read-only preview owner/lifecycle; original VM/subscription provider remains unresolved",
+    "PrimitiveButtonStyle gesture admission; not claimed as recovered original ButtonStyle"
+  ],
+  "not_implemented": [
+    {
+      "item": "Mark read/unread and Live Activity row actions",
+      "source": "Menu producer3a2e44 and actual labels identified",
+      "next_action": "Resolve original action consumer/admission and existing state/service owner before supplying capability"
+    },
+    {
+      "item": "Original raw capability predicates",
+      "source": "Discriminator+0x50, busy+0x68, activity case and isPendingArchive observations retained",
+      "next_action": "Bind field semantics and original provider assignments without interpreting connection status as rights"
+    },
+    {
+      "item": "Original preview VM creation and subscription cleanup",
+      "source": "Lazy closure43bc9c consumes optional provider+0x238/+0x240",
+      "next_action": "Resolve provider callback owner and lifecycle; current preview remains independent read-only"
+    },
+    {
+      "item": "Full original viewport/selection and optical behavior",
+      "source": "Prior list parent reports retained",
+      "next_action": "Specific original carrier and runtime evidence, not screenshots or unrelated desktop code"
+    }
+  ],
+  "haptics": {
+    "current_gate_audit": "ios-gesture-haptics-module3-fourth-20261113.json",
+    "new_trigger_added": false,
+    "row_scope": "No new explicit trigger proved; system implicit feedback is a separate unknown",
+    "physical_playback_verified": false
+  },
+  "verification": {
+    "ui": {
+      "path": "ios-remote-list-fourth-20261113-r3.xcresult",
+      "passed": 2,
+      "failed": 0,
+      "duration_seconds": 150.402,
+      "coverage": [
+        "row rename",
+        "actual paste of copied synthetic thread ID",
+        "pin/unpin",
+        "full swipe does not auto archive",
+        "explicit archive and restore",
+        "same thread ID across two hosts isolated",
+        "draft and process restart",
+        "search horizontal drag neither archives nor navigates"
+      ]
+    },
+    "failure_history": [
+      {
+        "path": "ios-remote-list-fourth-20261113-r1.xcresult",
+        "result": "failed2",
+        "findings": [
+          "Native alert field drops SwiftUI identifier; test locator corrected",
+          "Search horizontal drag navigated unexpectedly"
+        ]
+      },
+      {
+        "path": "ios-remote-list-fourth-20261113-r2.xcresult",
+        "result": "failed2",
+        "findings": [
+          "Native alert Save tapped before stable layout; test stability predicate added using existing rename test precedent",
+          "Search horizontal drag bug confirmed by before/after images; product tap admission fixed"
+        ]
+      }
+    ],
+    "foundation": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "exit_code": 0,
+      "log": "/tmp/rea-remote-list-fourth-20261113-foundation.log"
+    },
+    "haptic_contract": {
+      "command": "sh implementation/ios/test-haptics.sh",
+      "exit_code": 0
+    },
+    "device_build": {
+      "exit_code": 0,
+      "log": "/tmp/rea-remote-list-fourth-20261113-device-build.log",
+      "signature": "strict deep verification passed",
+      "app": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app"
+    }
+  },
+  "runtime": {
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "launch_output": "local.rea.chatgpt.ioshost: 55457",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture",
+      "--remote-command-message-fixture",
+      "--remote-search-message-fixture",
+      "--remote-search-action-fixture",
+      "--remote-file-message-fixture",
+      "--remote-review-message-fixture",
+      "--remote-rich-message-fixture",
+      "--remote-linked-file-fixture",
+      "--remote-file-citation-fixture",
+      "--browser-preview-fixture",
+      "--chat-browser-fixture",
+      "--remote-model-slider-fixture",
+      "--remote-permission-fixture",
+      "--remote-context-usage-fixture",
+      "--remote-thinking-group-fixture",
+      "--remote-history-group-fixture",
+      "--remote-latest-group-fixture",
+      "--remote-project-sort-menu-fixture",
+      "--remote-task-controls-fixture",
+      "--chat-state-profile=27D94D5F-C2B9-49C9-8C5E-4868E03622DF",
+      "--remote-draft-profile=27D94D5F-C2B9-49C9-8C5E-4868E03622DF",
+      "--auth-state-profile=27D94D5F-C2B9-49C9-8C5E-4868E03622DF",
+      "-AppleLanguages",
+      "(zh-Hans)",
+      "-AppleLocale",
+      "zh_CN",
+      "-rea.preview.appearance",
+      "light"
+    ],
+    "built_executable_sha256": "d46ced2c5efd2a6c36d85d9396b0f284cf659c5346efb02ab5c5aa8751f177e1",
+    "installed_executable_sha256": "d46ced2c5efd2a6c36d85d9396b0f284cf659c5346efb02ab5c5aa8751f177e1",
+    "installed_app": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/D8DC4C74-B1ED-426F-AEB0-4C3024618AA3/REAChatGPTHost.app",
+    "process_verified": "55457 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/D8DC4C74-B1ED-426F-AEB0-4C3024618AA3/REAChatGPTHost.app/REAChatGPTHost",
+    "observed_surface": "Ordinary launch -> sidebar -> Codex list; left running",
+    "screenshot": "ios-remote-list-fourth-20261113-live.png",
+    "external_display_placement": "not verified this pass"
+  },
+  "physical_device": {
+    "preflight": "/tmp/rea-remote-list-fourth-20261113-devices.json",
+    "name": "iPhone Air",
+    "state": "unavailable",
+    "installed_this_pass": false
+  },
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "e538275e1624b017415e4c3030000f7299f93280aa19a500b94cfd872cd48e2e"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift",
+      "sha256": "3fe4e4fa84064b105450e75ddbbc97be0317233452ff5ab8cb81fdceee08c606"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "sha256": "d3759fe8eeb5f3108efc2f9be259a6a696e38b1b02c7106f63729f442b82ed32"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "48d8242c7035cbbff8fe1285182805678a78b4b566e31a1ac0ef6f14d991692c"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "46316f9c5239d8ec525992e25bdc20c1e3ed929f28ef1bf3e2183f747ff8fadb"
+    }
+  ],
+  "next_major_module": 4,
+  "no_commit_push_release": true
+}

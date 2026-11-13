@@ -1,0 +1,87 @@
+{
+  "batch": 572,
+  "status": "partial",
+  "source_evidence": "ios-chat-v572-findings.json",
+  "validation": {
+    "state": "PASS; scoped attachment drafts, legacy decoding, bounded references, cold restore, retry equality and existing regressions",
+    "service": "PASS; explicit attachment dispatch through protocol, mode/scope isolation and legacy unsupported result",
+    "ui": {
+      "result": "ios-chat-v572-r3.xcresult",
+      "passed": 4,
+      "failed": 0,
+      "cases": [
+        "testChatAttachmentsChinese",
+        "testChatAttachmentsEnglishDark",
+        "testChatFilePickerCancelChinese",
+        "testChatWorkOfflineCoreChinese"
+      ],
+      "coverage": [
+        "add/remove and attachment-only send",
+        "draft and history persistence across A-B-A and process restart",
+        "failed synthetic reply and retry using same attachment references",
+        "QuickLook open/return from draft and sent file",
+        "ordinary system Files picker cancellation preserves text",
+        "existing Chat/Work send/stop/retry regression"
+      ]
+    },
+    "earlier_runs": "r1 and r2 each3/3 pass; subsequent cleanup/persistence changes revalidated in r3. State r1 test-input identity mistake retained and corrected.",
+    "visual": "r2 and final r3 screenshots inspected. File chips/card and controls visible in light/dark; current card geometry and blue draft tint remain independent. Large paragraph gaps and English page Chinese synthetic content remain open.",
+    "runtime": "ios-chat-v572-runtime.json",
+    "retention": "dry-run targets empty; fixed iOS build product; disk15GiB available"
+  },
+  "open_items": [
+    {
+      "page": "Chat/Work composer and user message",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing": "official file/image/video grid and composer attachment menu, thumbnail geometry",
+      "evidence_break": "MessageRowUserMessagePart body0x3ae6920 -> attachmentItems projection and MessageRowAttachmentGrid body witness0x3d9392c; style environment values unresolved",
+      "next": "trace grid and composer file/image branches, then replace provisional file controls",
+      "acceptance": "source-bound file/photo select/remove/send/preview with mixed content in Chinese/light and English/dark"
+    },
+    {
+      "page": "Chat/Work resource preview",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing": "image/PDF/unsupported formats and missing-resource recovery acceptance",
+      "evidence_break": "current QuickLook adapter tested with synthetic text only",
+      "next": "add bounded synthetic resource vectors and unavailable-resource replay",
+      "acceptance": "open/close/retry preserve scope, draft and reading anchor"
+    },
+    {
+      "page": "Chat/Work messages",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing": "role-aware outer padding and paragraph spacing",
+      "evidence_break": "MessageRowContainer surroundingContext producer ->0x38dda6c branches",
+      "next": "resolve context/role enum and actual parent overrides",
+      "acceptance": "alternating roles and mixed Markdown source-bound measurements in both appearances"
+    },
+    {
+      "page": "Chat/Work storage",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing": "bulk cleanup after conversation deletion and quota UX",
+      "evidence_break": "independent store has bounded64MB/99file index; direct removal cleans only unreferenced selected attachment",
+      "next": "add reference-aware account storage management through settings",
+      "acceptance": "deleted conversations reclaim unreferenced files while shared references remain usable"
+    },
+    {
+      "page": "all mobile pages",
+      "status": "待设备验证",
+      "priority": "P2",
+      "missing": "physical haptics, notification delivery and Android acceptance",
+      "evidence_break": "simulator frontend execution only",
+      "next": "follow current page plan and separate device/platform gates",
+      "acceptance": "independent platform/device evidence"
+    }
+  ],
+  "independent_decisions": [
+    "Files-first minimal slice; photos and thumbnails remain pending.",
+    "Local scoped reference schema, native document picker/QuickLook and file chip/card geometry are independent adapters.",
+    "Successful local history write precedes draft clearing and service dispatch.",
+    "Fixture simulates service events and retains metadata only; actual upload/backend remains a replaceable interface."
+  ],
+  "delivery": "v572 signed, installed, executable hash verified and PID23902 alive. Chinese system-following preview retained. Only Color LCD available.",
+  "shared_boundary": "Independent reference/state/action contracts can be reused; Android source parity and platform picker/preview behavior remain separately unverified."
+}

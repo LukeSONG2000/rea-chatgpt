@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x40db80",
+    "end_exclusive": "0x40dc60",
+    "sha256": "dda525c9593d674b1c8ba354605637865b3d04e10d5ca5a71616311a822632c0"
+  },
+  "linker_function_starts_in_window": [
+    "0x40db80",
+    "0x40db88",
+    "0x40dbbc",
+    "0x40dc34"
+  ],
+  "next_linker_function_start": "0x40dcec",
+  "direct_calls": [
+    {
+      "site": "0x40dbec",
+      "target": "0xfad6c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x40dbf4",
+      "target": "0x40dc34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x40dc14",
+      "target": "0x7c54658",
+      "imported_symbol": "_swift_getWitnessTable"
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

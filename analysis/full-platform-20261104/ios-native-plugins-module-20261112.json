@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "module": "9.3 Native Plugins directory",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "minimum_native_catalog_search_detail_loop_implemented_original_presentation_partial",
+  "scope": "Frontend and explicit deterministic fixture only. No business backend, external account, authorization, installation or tool execution.",
+  "sources": [
+    {
+      "path": "ios-sidebar-explore-20261112-findings.json",
+      "sha256": "fb0ddbb5336d94452fb108d837ce74d2133e2fa5442cd035ccb93878d8694418"
+    },
+    {
+      "path": "ios-native-plugins-20261112-findings.json",
+      "sha256": "11d174d14f6bd448bf8042ff9b0f32fc4a247d33b32716a32c2a26cacd8e75ec"
+    },
+    {
+      "path": "ios-native-plugins-text-20261112.json",
+      "sha256": "82a1c966dc28a772f81fb44edfed7a4d39018fa38028f42b6ed42d89d1e94ca0"
+    }
+  ],
+  "source_observations": [
+    "Native NavigationStack/toolbar/destination and plugin action presentation parent",
+    "Directory ScrollView/LazyVStack, optional Installed horizontal ScrollView/LazyHStack, source ForEach sections and empty/recoverable-error branches",
+    "Dedicated Search content uses FloatingSearchBar and browse content; native search action and title resource keys recovered",
+    "Native detail ScrollView/VStack with optional description/prompts/information components",
+    "Display id and actionPluginID are distinct original render-model fields; icon has lightUrl/darkUrl"
+  ],
+  "implemented": [
+    "Existing sidebar More/Explore control opens an explicit host available-page menu with only the registered Plugins page",
+    "Retained native root, installed rail, selected source and grouped catalog, paging, loading/empty/failure/retry and cached rows during refresh",
+    "Dedicated search auto-opens keyboard on iOS18+, positive result to detail/back with query retained, no-result and Close returning directory",
+    "Native detail loading/retry/description, fixture-projected service action controls and explicit unsupported/failure status; settings explanation/back",
+    "Account/workspace/query/request fences; distinct display/action targets; duplicate operation rejection; operation token survives page Back; old list revisions cannot undo newer receipts",
+    "Root source selection and browsing state retained when leaving/reopening through sidebar in the same process",
+    "Two exact293 native resource keys added through existing extraction tool; app language and appearance policy retained"
+  ],
+  "independent_adaptation": [
+    "Original seeMoreFeatures case construction to dispatcher not closed; host action sheet is not claimed as original menu/inline behavior",
+    "Catalog contents, source membership/order, grouping by source, Installed title, monograms, source chips and detail capability assignments are explicit synthetic provider inputs",
+    "Native searchable replaces original FloatingSearchBar implementation; native search presentation close is bridged separately from keyboard focus; iOS17 fallback requires tapping search field",
+    "Source/operation API shapes, revision counters, cache policy and cancellation are internal frontend contracts, not official service schema",
+    "Row dimensions, semantic font/padding, SwiftUI tint/controls and original icon download/fallback remain host adaptations"
+  ],
+  "not_implemented": [
+    "Original sidebar More case/presentation and complete runtime availableItems/gates",
+    "Original source and installed title producers, exact metrics/materials/animations and artwork loading/fallback",
+    "Full category/workspace/personal standalone branches, GPTs/Skills eligibility, custom plugin setup and every optional detail component",
+    "Actual list-click/primary-action coordinator closure, install/remove confirmation/authorization flow and host settings bridge",
+    "Real catalog/auth/install/uninstall/try-in-chat services; no connection or authorization was changed",
+    "Cross-process source/query/scroll persistence, precise original search debounce and full scroll-anchor guarantee",
+    "Plugin-specific haptic trigger not proven; no new generic feedback added; shared sidebar haptics still use General preference"
+  ],
+  "verification": {
+    "contracts": "passed; rebuilt .build/plugins-contract-check; /tmp/rea-plugins-contract-final-20261112.log",
+    "r1": "ios-native-plugins-20261112.xcresult build failed because searchFocused required availability guard; fixed without raising deployment target",
+    "r2": {
+      "artifact": "ios-native-plugins-20261112-r2.xcresult",
+      "result": "partial journey then failed",
+      "passed": [
+        "source load retry",
+        "installed rail retry",
+        "paging",
+        "detail retry",
+        "service failure retry then explicit unavailable",
+        "search keyboard and empty result"
+      ],
+      "failure": "Active native search hid navigation bar; test tried missing Back. Dedicated search cancel-to-root bridge added."
+    },
+    "r3": {
+      "artifact": "ios-native-plugins-20261112-r3.xcresult",
+      "test": "testNativePluginsSearchReturnChinese",
+      "result": "passed",
+      "seconds": 48.637,
+      "passed": [
+        "search keyboard",
+        "positive search to detail",
+        "detail Back retains query",
+        "no result",
+        "native Close returns directory",
+        "personal source selection",
+        "plugin settings explanation and two Back actions",
+        "sidebar/reopen retains source"
+      ],
+      "scope": "Targeted remaining Chinese/light journey; no repeated full failure/paging matrix or visual parity claim"
+    },
+    "visual": {
+      "screenshot": "ios-native-plugins-20261112-r3-attachments/6F2B73DA-4BCC-4ABE-BE24-F052290F54C6.png",
+      "inspected": true,
+      "limits": "Synthetic directory with semantic native controls; not pixel equivalence"
+    },
+    "simulator": {
+      "report": "ios-native-plugins-20261112-preview.json",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 33743",
+      "ordinary_screenshot": "ios-native-plugins-20261112-ordinary.png",
+      "running": true
+    },
+    "physical": {
+      "build": "succeeded",
+      "state_report": "ios-native-plugins-20261112-device-final-state.json",
+      "connection": "unavailable",
+      "install": "not_attempted_preflight_unavailable",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "2c68a608ccc2c8915b84a0860963243710ba59f35a8e92fdf0d497b15dece47b",
+      "last_installed": "Settings fixed-close candidate"
+    }
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendPlugins.swift",
+      "sha256": "3d11543a312555e200b1f4ce0744ee3f38f2f7a7659400ad3dcd81d477821d7f"
+    },
+    {
+      "path": "implementation/ios/Sources/NativePluginsPage.swift",
+      "sha256": "f88f66660cec9d61e52fa66625e750c5e6df5f14e373e0d39e55dae33aade8ad"
+    },
+    {
+      "path": "implementation/ios/Tests/Plugins/main.swift",
+      "sha256": "df73c58fba1ac8ffe1c5603154a7f4abd5cb092d84df366aa7951ec71549fb6e"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "4e67bcda2ee247d57f495477d9ee6dec29fe1b16db321ad86fa4ed3a6391f1c5"
+    }
+  ],
+  "review_route": "Sidebar > Explore/More > Plugins > load more / source / search > synthetic plugin > service entry / settings > Back > reopen",
+  "next_package": "ChatGPTProjects native home/core actions; keep distinct from Remote workspaces and Sites"
+}

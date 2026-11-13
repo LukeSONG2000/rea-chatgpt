@@ -1,0 +1,110 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "scope": "bounded five-minute static reuse of v596/v597/v598; sidebar callback and Settings gate audit",
+  "safe_to_connect": [
+    {
+      "trigger": "Remote model slider selection index changes",
+      "feedback": "selection feedback, once per actual index change",
+      "evidence": [
+        "ios-haptics-v596-findings.json",
+        "ios-haptics-v596-slider-binding.json"
+      ],
+      "sites": [
+        "0x609831c..0x6098368"
+      ]
+    },
+    {
+      "trigger": "Remote slider overscroll changes zero to nonzero",
+      "feedback": "soft impact intensity0.4, suppress repeats while remaining beyond boundary",
+      "sites": [
+        "0x60983a0..0x6098428",
+        "0x60fa360..0x60fa39c"
+      ],
+      "evidence": [
+        "ios-haptics-v596-boundary-trigger.json"
+      ]
+    },
+    {
+      "trigger": "Remote prepared file accepted and appended, action playsSuccessHaptic true",
+      "feedback": "impact style0(light in SDK), no specified intensity",
+      "sites": [
+        "0x187fb94",
+        "0x187fd90",
+        "0x187fdb4",
+        "0x187fdc4",
+        "0x6fe0ffc",
+        "0x6fe123c",
+        "0x6fe12b8"
+      ],
+      "evidence": [
+        "ios-haptics-v597-findings.json"
+      ],
+      "limit": "photos deliberately pass false; rejection bypasses feedback; do not add feedback to every attachment action"
+    }
+  ],
+  "settings": {
+    "owner": "ChatGPTSettings.SettingsViewModel descriptor0x958945c",
+    "fields": [
+      "hapticsEnabled backing0x9a0b164",
+      "deviceSupportsHaptics backing0x9a0b194",
+      "hapticsEnabledSetting backing0x9a0b734",
+      "hapticCapabilities0x9a0b794"
+    ],
+    "update_entry": "0x1154e68 updateHapticsEnabled(to:)",
+    "read_requested_bool": "0x1154e7c",
+    "settings_writer_path": [
+      "0x1154f2c loads storage slot0xb164c10",
+      "0x1154f38 loads writer function/context at resolved field+0x20",
+      "0x1154f3c stores requested Boolean",
+      "0x1154f48 calls setter with requested Boolean address"
+    ],
+    "capability": "DefaultHapticCapabilities descriptor0x9723108 separates canPerformHaptics/deviceSupportsHaptics/hapticsEnabled; concrete impact engine0x6fe123c consults capability before UIKit generator",
+    "provenance": "Original settings Boolean→setting writer plus engine capability gate are observed. Current host preference key rea.preview.hapticsEnabled/default true, hardware check and active-app gate remain independent adapter policy.",
+    "topology": "Settings > General location is user confirmed and existing host routing; this bounded audit does not re-prove293 exact General row builder."
+  },
+  "sidebar": {
+    "owner": "ModernSideMenuContainerViewController",
+    "gesture": "handlePanGesture native0x62b918",
+    "tracker_field": "dragHapticTracker storage0xad5cc88",
+    "observation": "Known field exists; bounded callback immediate calls do not close tracker update→HapticEngine/UIKit chain. No new gesture haptic is licensed by this metadata alone.",
+    "checked_scope": "Adjacent ADRP/LDR references to tracker slot absent in0x628000..0x62e000; this is an incomplete pattern, not proof of no usages.",
+    "unclosed": [
+      "tracker concrete type/accessor and consumers",
+      "pan progress callback→tracker update",
+      "endpoint/tap callbacks→haptic dispatch",
+      "per-gesture style/intensity/repeat gate"
+    ],
+    "correction": {
+      "superseded_claim": "ios-shell-gesture-20261112-findings.json labels62b770 constants as drag haptic tracker thresholds",
+      "correct_role": "62b770 is overlay alpha/color selection per ios-sidebar-content-icon-20261112-findings.json. Do not reuse0.2/0.55 as feedback thresholds."
+    }
+  },
+  "links": {
+    "owners": [
+      "0x37394dc handleSourcesCitationLinkTap",
+      "0x37605ec link action",
+      "0x3762ae8 widget action"
+    ],
+    "dispatch": "0x3760bf8 fireChatLinkHapticIfEnabled",
+    "feature_key": "chatgpt-ios-chat-link-haptics",
+    "evidence": "ios-haptics-v598-findings.json",
+    "status": "do not generalize to all message taps; active feature value and route predicates remain unresolved"
+  },
+  "unknown": [
+    "Sidebar tap/open/close feedback trigger not closed.",
+    "History list tap/longpress/swipe haptic path not closed.",
+    "Message longpress/selection/context-menu generic haptic path not closed.",
+    "Original preference key/default and full global gate inheritance not closed.",
+    "No device tactile playback in this evidence task."
+  ],
+  "recommended_boundary": "A single frontend haptic adapter may gate all intentionally implemented feedback by existing persistent settings preference; adding a generic gesture feedback trigger is an explicit independent design choice, not293 restoration, until a concrete source callback is bound.",
+  "no_changes": "No host edits/build/device/global setup or target execution.",
+  "sidebar_followup": {
+    "supersedes_prior_sidebar_unknown_trigger": "ios-sidebar-gesture-haptic-20261112-followup.json",
+    "conclusion": "Ended-only interior live progress with changed destination consumes tracker and dispatches selection feedback; cancellation does not. Other gestures remain unclosed.",
+    "integration": "ios-gesture-haptics-integration-20261112.json"
+  }
+}

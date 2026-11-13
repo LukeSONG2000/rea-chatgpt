@@ -1,0 +1,50 @@
+{
+  "batch": "v629",
+  "date": "2026-11-09",
+  "scope": "Android Remote core conversation and paired copy controls",
+  "platform": "Android",
+  "runtime": "wireless OnePlus ONEPLUS A6003 SDK35",
+  "implemented": [
+    "Normal task list entry and back",
+    "Scoped synthetic history, drafts and reading position",
+    "Send, streaming, completion, failure, stop and retry",
+    "Basic Markdown and fenced code",
+    "Original copy glyph at compact16dp",
+    "Full-width52dp code header, language leading and copy trailing",
+    "Whole-response copy only for nonempty completed turns",
+    "Process restart restores history and converts active turns to interrupted"
+  ],
+  "verification": [
+    {
+      "report": "android-v629-conversation-zh-r12.json",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "report": "android-v629-conversation-en-dark-r2.json",
+      "status": "passed",
+      "tests": 3
+    }
+  ],
+  "source": [
+    "android-remote-v629-thread-source.json",
+    "mobile-v629-copy-source.json"
+  ],
+  "remaining": [
+    "Android tool activity, approval and steer/queue counterparts",
+    "Android attachment/model/permission/context counterparts",
+    "Exact native bubble, title material and progressive blur",
+    "Original full Markdown styling and copy feedback timer",
+    "Business services"
+  ],
+  "limits": [
+    "Synthetic adapter and persistence schema are independent implementation",
+    "Compact copy glyph selection uses user feedback and available size branch; exact official Remote parent size remains unresolved",
+    "Final batch exercised normal list entry but did not repeat complete list and shell suites"
+  ],
+  "preview": "Chinese system-following preview restored and retained after device tests",
+  "apk": {
+    "path": "implementation/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "feff17da8d966cb5e3d1929ae4858b940a2e85a2e715247daed51e5880782a43"
+  }
+}

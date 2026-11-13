@@ -1,0 +1,203 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two bounded consumer groups: Codex Settings behavior Picker and its content/binding; exact grouping preference key/default/standard UserDefaults initializer. Real ActivityKit services are outside this frontend task.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_evidence": [
+    "ios-settings-v586-diff-types.json",
+    "ios-settings-v586-findings.json",
+    "ios-settings-integration-current-20261113.json",
+    "ios-remote-row-menu-fourth-20261113-findings.json"
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-settings-codex-liveactivity-sixth-20261113",
+  "answered": [
+    {
+      "id": "actual-settings-picker",
+      "type": "official_artifact_observation",
+      "conclusion": "The Codex Settings Behavior content constructs a real Live Activities Picker immediately after the code-diff wrapping Toggle, with a Binding<CodexRemoteLiveActivityGrouping>. This is an actual UI consumer, not a resource-only candidate.",
+      "source": [
+        "0x1814f00..0x1815340 behavior content",
+        "0x1815128 diff wrapping Toggle",
+        "0x181512c..0x1815164 key codex_remote_live_activity_grouping and Live Activities fallback",
+        "0x181518c metadata+0x4c field offset /0x1815194 ->0x184642c copies ViewSetting storage",
+        "0x18151b4 Binding.projectedValue",
+        "0x18151fc..0x1815200 content closure0x18153b8",
+        "0x1815230 SwiftUI.Picker.init(selection:content:)",
+        "0x181528c accessibilityIdentifier codex-remote-live-activity-grouping"
+      ],
+      "evidence": [
+        "behavior-rows.asm",
+        "behavior-rows.json",
+        "grouping-picker-value.asm",
+        "screen-field-vector-binding.json",
+        "grouping-property-type.json",
+        "0x7df9110-type.json"
+      ],
+      "limit": "SettingsScreen descriptor fieldOffsetVectorOffset is6 words=48 bytes; _liveActivityGrouping field index7 offset slot0x4c is independently bound. Existing screen metadata supplies name, not arbitrary declaration-order inference."
+    },
+    {
+      "id": "actual-four-choice-content",
+      "type": "official_artifact_observation",
+      "conclusion": "Picker content builds four ordered entries, each carrying an explicit local enum tag, with original localized labels.",
+      "choices": [
+        {
+          "case": "disabled",
+          "local_tag": 0,
+          "key": "codex_remote_live_activity_disabled",
+          "en": "Disabled",
+          "zh_Hans": "已禁用"
+        },
+        {
+          "case": "perRemote",
+          "local_tag": 1,
+          "key": "codex_remote_live_activity_per_remote",
+          "en": "One per remote",
+          "zh_Hans": "每台远程电脑一张卡片"
+        },
+        {
+          "case": "perTask",
+          "local_tag": 2,
+          "key": "codex_remote_live_activity_per_task",
+          "en": "One per task",
+          "zh_Hans": "每项任务一张卡片"
+        },
+        {
+          "case": "perTaskRecentFirst",
+          "local_tag": 3,
+          "key": "codex_remote_live_activity_per_task_recent_first",
+          "en": "One per task — recent first",
+          "zh_Hans": "每个任务一张卡片 — 最近更新优先"
+        }
+      ],
+      "source": [
+        "0x18153b8..0x181589c content",
+        "0x1815434..0x18154bc Disabled/tag0",
+        "0x18154fc..0x181559c One per remote/tag1",
+        "0x18155c0..0x1815640 One per task/tag2",
+        "0x181566c..0x18156f8 One per task — recent first/tag3",
+        "CodexRemoteLiveActivityGrouping descriptor0x95d5de0 enum cases disabled/perRemote/perTask/perTaskRecentFirst",
+        "accessor0x2606b4c ->metadata0xa577410"
+      ],
+      "evidence": [
+        "grouping-choices.asm",
+        "grouping-enum-metadata.json",
+        "grouping-enum-accessor.asm",
+        "selected-localization.json"
+      ],
+      "limit": "The iOS26 availability helper0x1bdeac affects the emitted tag/trait representation flags; the precise anonymous modifier is unclosed. All four labels and tag0..3 carriers are constructed in this content. Do not interpret representation flags as extra feature choices or a service permission. Tags are local binary values, not a recovered wire or storage encoding."
+    },
+    {
+      "id": "core-preference-key-default-store",
+      "type": "official_artifact_observation",
+      "conclusion": "A concrete Core initializer constructs the same enum setting with key codexRemoteLiveActivityGrouping, default local tag1/perRemote and NSUserDefaults.standard. It retains this Setting in its owner at+0x40.",
+      "source": [
+        "0x25de44c constructor",
+        "0x25de47c..0x25de48c literal0x88dfd00",
+        "0x25de490..0x25de494 default byte1",
+        "0x25de4a4 standardUserDefaults",
+        "0x25de4b4 ->0x25d6c1c RawRepresentable conformance",
+        "0x25de4bc..0x25de4c0 enum metadata0xa577410",
+        "0x25de4d8 ->0x73ef2fc generic setting initializer",
+        "0x25de4dc..0x25de4e8 retained setting at owner+0x40",
+        "0x73ef300..0x73ef354 setting fields/default codec closures and retained defaults owner"
+      ],
+      "evidence": [
+        "key-focused-adrp-add-refs.json",
+        "grouping-preference-factory.asm",
+        "grouping-preference-factory.json",
+        "setting-initializer.asm",
+        "preference-enum-conformance.json"
+      ],
+      "limit": "The exact UI ViewSetting dependency path to this particular Core Setting instance is not closed; equality of enum/key purpose alone is not a proven DI connection. RawRepresentable conformance is proven, but persisted RawValue representation and invalid stored-value fallback are not. Do not store local numeric tags into the original key and claim exact compatibility."
+    }
+  ],
+  "frontend_contract": {
+    "type": "source_backed_contract_with_independent_storage_adapter",
+    "label_key": "codex_remote_live_activity_grouping",
+    "choices": [
+      {
+        "case": "disabled",
+        "local_tag": 0,
+        "key": "codex_remote_live_activity_disabled",
+        "en": "Disabled",
+        "zh_Hans": "已禁用"
+      },
+      {
+        "case": "perRemote",
+        "local_tag": 1,
+        "key": "codex_remote_live_activity_per_remote",
+        "en": "One per remote",
+        "zh_Hans": "每台远程电脑一张卡片"
+      },
+      {
+        "case": "perTask",
+        "local_tag": 2,
+        "key": "codex_remote_live_activity_per_task",
+        "en": "One per task",
+        "zh_Hans": "每项任务一张卡片"
+      },
+      {
+        "case": "perTaskRecentFirst",
+        "local_tag": 3,
+        "key": "codex_remote_live_activity_per_task_recent_first",
+        "en": "One per task — recent first",
+        "zh_Hans": "每个任务一张卡片 — 最近更新优先"
+      }
+    ],
+    "declared_default": "perRemote",
+    "selection": "Current UI choice is a typed CodexRemoteLiveActivityGrouping binding. Preserve it across entering/leaving Settings and process restart using a namespaced host preference adapter.",
+    "action": "setLiveActivityGrouping(choice) updates only the explicit preference contract. It must not fabricate an ActivityKit card, subscription success, device permission, remote connection or backend receipt.",
+    "service_interface": "A future platform provider may consume the same typed grouping together with explicit system capability/authorization and scoped task/host data. Capability remains independent of choice.",
+    "can_implement_now": [
+      "Replace the explanation-only Live Activity settings entry with the four original choice labels and a working frontend binding.",
+      "Use source default perRemote and current process-persistent namespaced storage; record this persistence adapter as independent until original UI Setting dependency and serialization are closed.",
+      "Keep system ActivityKit effects unavailable and preserve the future provider interface."
+    ],
+    "must_not_claim": [
+      "Do not claim task grouping/recent-first card generation is implemented merely because the preference changes.",
+      "Do not reuse the per-task Subscribe action as this global grouping setting.",
+      "Do not infer ActivityKit authorization/enabled state from a non-disabled grouping choice."
+    ]
+  },
+  "unknowns": [
+    {
+      "id": "ui-setting-dependency",
+      "boundary": "CodexRemoteSettingsScreen._liveActivityGrouping is Settings.ViewSetting<enum> and Picker consumes projected Binding; exact dependency resolver that binds it to Core constructor25de44c setting+0x40 is not yet traced.",
+      "next_minimal_action": "Trace only screen initializer assignment to field index7 and the resolved Settings dependency, without scanning other settings pages."
+    },
+    {
+      "id": "actual-activity-consumer",
+      "boundary": "Actual ActivityKit projection/reconciliation consuming this setting and behavior for disabled/perRemote/perTask/recent-first remain unclosed. Existing task context-menu subscription has its own availability and subscribing gates; it does not close this grouping consumer.",
+      "next_minimal_action": "Identify the owner of constructor25de44c retained Setting+0x40 and its first grouping observer; stop before real service execution."
+    },
+    {
+      "id": "storage-codec",
+      "boundary": "Enum RawRepresentable protocol is proven via0x7e8d17c, but RawValue type/serialization and malformed-value behavior are not closed."
+    },
+    {
+      "id": "parent-availability",
+      "boundary": "Behavior content has an actual Picker, but the outer Settings section availability/capability predicate is inherited from earlier partial parent evidence, not fully recovered in this pass."
+    }
+  ],
+  "validation": {
+    "performed": [
+      "Selected instruction windows",
+      "One bounded2MiB exact-address ADRP/ADD query in0x2500000..0x2700000",
+      "Metadata and explicit tag/label producer binding",
+      "Two original compressed locale tables decoded in memory with hashes; only selected keys saved"
+    ],
+    "not_performed": [
+      "Product edits",
+      "Builds",
+      "Device or simulator UI",
+      "Official app/runtime/services",
+      "ActivityKit requests or subscriptions"
+    ]
+  }
+}

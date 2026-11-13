@@ -1,0 +1,232 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial-profile-edit-presentation-owner-closed",
+  "scope": "Second account pass; three bounded candidate rounds on profile editor presentation, builder and body; no host/build/device/network changes",
+  "previous_boundary": "ios-native-account-lifecycle-20261112-findings.json:SettingsProfileSection hasinjectededitProfile callback, destinationunknown. Thisfollowup closesactualSettingsconsumer toCalpicoUserProfileEditSheetView, ratherthan namingitbyanalogy.",
+  "presentation_consumer": {
+    "owner": "SettingsViewModel.Presentation dispatcher",
+    "entry": "0x10e6e70",
+    "enum_metadata": "SettingsViewModel.Presentation descriptor9589d0c;payloads subscriptionPurchase/pluginsDirectory;empty logOutConfirmation/generalAccountSettingsError/voiceSelectionSaveError/privacyCenter/editProfile",
+    "empty_dispatch": "10e7050 xor8000000000000000 thenror3;table7d8666b at10e705c..7070;tablebytes[0,158,100,138,73] mapsindex4→10e7198",
+    "edit_profile_branch": "0x10e7198..0x10e7200",
+    "concrete_native_type": "type_record0x7d8f648 resolves SwiftUI presentationCornerRadius wrapper<ChatGPTCalpico.CalpicoUserProfileEditSheetView>",
+    "type_factory_call": "0x10e71d0→faa78",
+    "view_builder_callback": "10e71f8..71fc passes1149d98;commoninitializer62a063c at10e72e4",
+    "classification": "officialstaticconsumer + emittedenumvalueprojection; nouserimageused",
+    "limit": "Root headerproducer to exactpresentationvalueenqueue stillpartiallytraced; original modal cornersize/height notdecoded. Do notpromise fullvisualsheetparity."
+  },
+  "builder": {
+    "entry": "0x1149d98",
+    "dependencies": "1149db0 getsSettingsViewModeltype;1149db4 helper11ae128;1149dbc→1085de8 obtainsprofiledependency (propertyname notasserted)",
+    "edit_view_model_construction": "1149dc8→2243be8",
+    "build": "1149dd0 storesconstructedVM;1149dd4→1149df8 genericwitness;1149de4→adb544;1149de8→7561570 (presentationCornerRadius wrapper consumer)",
+    "view_type": "CalpicoUserProfileEditSheetView descriptor95c85a4/accessor22cb2ac",
+    "body_witness": "2246734→22466cc",
+    "body_chain": "22466e8→231ec5c;22466f8→2183ea4;2246704→2324ed8→22c2ef0 obtainsmetadatadescriptor95c8290;224671c→231d6c0;2246724→231f340;2246728→SwiftUI.Bindable.init",
+    "limit": "Viewhas_viewModelonly; generic/DIbody continuation notdecodedintofieldconsumers. ThisisnotsufficienttosupplyTextFields orsave/cancelUI."
+  },
+  "editor_state_inventory": {
+    "owner": "CalpicoEditUserProfileViewModel",
+    "source": "analysis/ios293-native/swift-types-full.txt line7634",
+    "fields": [
+      "name",
+      "username",
+      "profileImageURL",
+      "isLoading",
+      "saveRequest",
+      "uploadRequest",
+      "generateBioRequest",
+      "settingsPresentation",
+      "editPresentation",
+      "photoPickerScreenBuilder",
+      "didUpdateProfile",
+      "originalProfile",
+      "isFetchingProfile"
+    ],
+    "presentation_inventory": [
+      "camera",
+      "imageEditor",
+      "attachFile",
+      "photoLibrary"
+    ],
+    "classification": "metadataonly;notvisibleform/schema/actionsproof",
+    "do_not_claim": [
+      "AllstatefieldsareexposedaseditableUI.",
+      "SourceSave/Cancel labelsandplacementrecovered.",
+      "Bioediting/generationbuttonvisible.",
+      "Avatarselectionrequestupdatesrealaccount."
+    ]
+  },
+  "header_entry": {
+    "reused_chain": "SettingsProfileSection desc958bb80/body108a5f8→CompactSettingsProfileHeader desc958d008/body108a924;callbackcopiedat108a8a8..8b0",
+    "new_scoped_event_window": "108b5bc..108b61c confirmsoptionalinjectedcallbacksanddifferentenumwrites;callbacksemanticidentityandfullsourceadmissionremainpartial",
+    "current_host_gap": "NativeVisualSettings pencilcurrentlyopensindependentselectedalerttitled编辑头像;sourcepresentationactuallyhasbroaderprofileeditowner. CurrentfixedPreviewaccountnameisfixturedata,notsourceaccountservice."
+  },
+  "minimum_frontend_decision": {
+    "classification": "independentadapterguidedbyconcretesourcepresentationowner",
+    "allowed": [
+      "Keepaccount-scopedprofileeditintentandreturnablepresentationboundary.",
+      "Ifonlyentryisimplemented,showsimpleindependentmissing-capabilityexplanation ratherthaninventfields.",
+      "Explicitlylabelanypreviewname/avatarasfixture;applynoserverchangewithoutmatchingoperationresult."
+    ],
+    "do_not_add": [
+      "Always-visibleaccountswitcher:legacyrootincludesAccountSwitcher=falseat1146cd8.",
+      "VisibleSave-loginoption:stillonlyanalytics/configliterals,noactualdisplayconditionproved.",
+      "Unprovensave/cancel/buttonshape/fieldlistfrommetadatainventory."
+    ],
+    "labels": "No exact editor-visible title or save/cancel consumer recovered in this pass; explanatory host wording is independent, not officialtextrestoration."
+  },
+  "save_login_status": {
+    "status": "unknown-no-new-display-proof",
+    "source": "Reusedsignoutreport:save_login_option_presented@8888640and save_login_info_behavior@8888e60. Theyareinsufficienttoshowanoption.",
+    "implementation_rule": "Do notaddasrecoveredcontrol."
+  },
+  "haptics": {
+    "status": "no exact profile-edit or login/exit callerproven in thisboundedpass",
+    "implementation_rule": "No newrecoveredhaptics recommendation."
+  },
+  "bounded_candidates": [
+    {
+      "round": 1,
+      "scope": "SettingsPresentationtagdispatch",
+      "result": "editProfile actualconsumer10e7198"
+    },
+    {
+      "round": 2,
+      "scope": "concretetyperecord/wrapperbuilder",
+      "result": "CalpicoUserProfileEditSheetView and1149d98→2243be8"
+    },
+    {
+      "round": 3,
+      "scope": "Viewbody/witnesscontinuation",
+      "result": "generic/DIboundaryretained;noactualformfield/save/cancelconsumers. Stopped."
+    }
+  ],
+  "precise_remaining_breakpoints": [
+    "SettingsrootprofileeditProfilecallbackowner→Presentation.editProfileenqueue.",
+    "22466cc genericobserver/buildercontinuation→actualCalpico profile edit content.",
+    "Visiblefieldlabels/save/cancelvalidationandrequestresultreducers.",
+    "1085de8 propertyidentity/featuregate andaccountcurrent/lifecycleconsumer."
+  ],
+  "failed_or_limited_probe": "rawtypeaddress8ef66fc decodedtoowneridentityonly; itdidnotrecovereditorbodytree and isnotusedaslayoutproof.",
+  "limits": [
+    "Staticfrozen293only.",
+    "Noofficialtargetrun/services/devices/builds/productchanges.",
+    "Nootherproductread.",
+    "Noaccountdataoruserreferencematerialcopiedintoartifactfacts."
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-content-thunk.asm",
+      "sha256": "491d760d8fccc524b815101a300990bfa4557f7035a1b118b4caaff7ea30d372"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-content-thunk.json",
+      "sha256": "692c2cc9d545bad2e52a343ccd176a292aa31ebaca29284241cdc7785b4fd648"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-sheet-body-type.json",
+      "sha256": "f0785782a918572f2a1fc7ef571023b6de98a50adc16b9e18231aeed5400f02c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-sheet-body.asm",
+      "sha256": "74639303905731924d91ff544c90be33826eb436181f2bd3be95c9c49c2f9ff7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-sheet-body.json",
+      "sha256": "8f1fa3920f24280a4ce8789c1fc75d803377114951ddc751e66d95d60742ef1b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-sheet-builder-thunk.asm",
+      "sha256": "d587eead1e7fa45bac27ba45f8f95228dbb367c4289a2ad297e0aad7aba392db"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-sheet-meta.json",
+      "sha256": "b8fcc93a03a805e8dee0b35e39b7f7f7f49aecc877c00deac79b9d8088e5bdbe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-wrapper-typehelper.asm",
+      "sha256": "64d02ced13796d54648e8edf8cba5799d4b4cb6b6d76b86e3e283c6aa0628f2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/edit-wrapper-typehelper.json",
+      "sha256": "6a46c5bb7976dac1d3c8f01f0c1cb593c1345f06ffdf775433f1d35907d85c55"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/editor-vm-init.asm",
+      "sha256": "36ba45556e7097d6f403047af4ce1b2e4d30093d65df5c3c58d456c2e9f11717"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/editor-vm-init.json",
+      "sha256": "62735a81ff69d9406afde3f48f5527523223cfce048aeea80864686644a69adc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/last-dispatch-target.asm",
+      "sha256": "c54bd46a09491fb382168199a6e7712746ce28ca351cf7e5c778cebafc17ee83"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/presentation-common-tail.asm",
+      "sha256": "134f0c2aec94fd3aac72ac414c937bef76b10ed7e979e0f558ad46563136055e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/presentation-dispatch.asm",
+      "sha256": "202ab525a105877e9ec62b4326af765f91f9bb962a5fe28015c1170cbab4cf33"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/presentation-dispatch.json",
+      "sha256": "f3d019eaf833ca92bfd8bd4da08545e5e38afb6aaf0845817c1cd775552d444a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/presentation-table.json",
+      "sha256": "00418dae2b02a1df70b00db838e7b044db8a8185f176df75eb71686e35450912"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/profile-callback.asm",
+      "sha256": "5228f0e24a98c761d42ede41ea843b6ed8c8563a80a8a5be48e291c1ae83c77d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/profile-consumer.asm",
+      "sha256": "11ef998b451f13e7ee915270857790e2ccbfc5d36deea58fd87c73c6c99bee3b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/profile-consumer.json",
+      "sha256": "6642c7556b7e2b2b2de3f52097a59892404d55aca0a70168c00ef800613210cf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/profile-getter.asm",
+      "sha256": "f1e42d119bb6a7f0c0694a57ba9e708b2bb25e762eb03facd0f0e014bcb9cc8d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/profile-getter.json",
+      "sha256": "9750d9de88e27571353539a923047b000ede11e556323a45dc5d8f63273ed464"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/profile-header-event.asm",
+      "sha256": "81addf68b78208f11f9705819db04ade706894f1a48304aaa26d027868d1219f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/profile-header-event.json",
+      "sha256": "2cc230959858128456e2a627b18ce42ed332946c23a484609a2a4d126cedfaaf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/profile-owner.asm",
+      "sha256": "bb7cf27aaca31afc94646234eab282cf325f727248297fa52ee4cd196e96f757"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/settings-profile-getter.asm",
+      "sha256": "6467c64586d172096cc62539da1d85a481010353b2d2c6f7008b34ef9fd4b10b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/settings-profile-getter.json",
+      "sha256": "3ad0b9a84823c052fa39e8d2fd3b7cb06478c89c030f59ff2878bbc393d9503e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-auth-account-parent-20261113/type-7d8f648.json",
+      "sha256": "b28ad6b9337cf85d3c7abcf4de01ca1342c1ec9b13f29e0acd0a88b17a34af29"
+    }
+  ]
+}

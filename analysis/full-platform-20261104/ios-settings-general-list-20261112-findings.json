@@ -1,0 +1,56 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "classification": "static instruction evidence; independent native adapter",
+  "confirmed_content_group": {
+    "content": "0x10e2e00..0x10e313c",
+    "rows": [
+      {
+        "label": "App language",
+        "row": "0x10e1d80",
+        "call": "0x10e2f10",
+        "label_instructions": "0x10e1d98..0x10e1dac"
+      },
+      {
+        "label": "Auto-correct spelling",
+        "key": "settings_auto_correct_spelling",
+        "literal": "0x8889910",
+        "key_load": "0x10e2f3c",
+        "construction": "0x10e2fd8"
+      },
+      {
+        "label": "Haptic feedback",
+        "row": "0x10e3174",
+        "call": "0x10e3004",
+        "gate": "0x10e2fec calls0x10e313c;0x10e2ff4 skips row",
+        "label_instructions": "0x10e31ac..0x10e31c8"
+      }
+    ]
+  },
+  "parent": {
+    "builder": "0x10e253c..0x10e2e00",
+    "content_call": "0x10e2868",
+    "general_navigation": "user-confirmed runtime; NavigationDestination settingsHomeGeneral case observed; exact case-to-builder dispatch not yet closed"
+  },
+  "additional_groups": {
+    "suggestions": "0x10e2950 smallstring;0x10e29a4 calls0x10e3698;Trending searches literal0x10e37b8",
+    "intelligence": "conditional branch0x10e287c..0x10e2914;row function0x10e3ae4;auto-switch description0x10e3c88"
+  },
+  "implementation": [
+    "App language and spelling returnable entries before existing haptic toggle",
+    "Original locale labels extracted",
+    "App language remains system-following; selection UI not implemented",
+    "Spelling toggle mutation not implemented; no invented account value"
+  ],
+  "limits": [
+    "The confirmed content group is not the entire General page",
+    "Suggestions/intelligence gates and other dynamic sections require further tracing",
+    "Simulator keeps haptic preference visible with unsupported-device explanation; original hardware gate not reproduced as hiding"
+  ],
+  "next_action": "Trace builder0x10e253c caller/navigation dispatch and conditional content0x10e3698/0x10e3ae4 before completing General list",
+  "verification": {
+    "result": "ios-settings-general-list-20261112.xcresult",
+    "status": "passed",
+    "scope": "Chinese first-group order, spelling entry/back, haptic persistence"
+  }
+}

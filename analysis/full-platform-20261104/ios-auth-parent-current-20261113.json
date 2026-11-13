@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "module": "10 Login/account frontend second pass",
+  "status": "frontend_parent_changes_implemented_precise_gaps_recorded",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: module9 catalog and Customize fixes archived; current runtime and shared haptic gate verified",
+  "source_reports": [
+    "ios-auth-welcome-parent-20261113-findings.json",
+    "ios-auth-native-parent-20261113-findings.json",
+    "ios-auth-account-parent-20261113-findings.json"
+  ],
+  "implemented": [
+    "Native auth: separate leading Back/trailing Close slots, hidden system Back and scroll indicators; preserve interactive keyboard dismissal.",
+    "Independent scoped edge-pop bridge retains step navigation when system Back is hidden.",
+    "Welcome explicit style inputs: height/corner/foreground/background/border independent, distinct custom Apple scaled font; RoundedRectangle replaces implicit Capsule.",
+    "Settings edit-profile action opens an independent returnable sheet at the source-proven destination, without invented fields."
+  ],
+  "independent_adaptations": [
+    "Selected native canGoBack derives from current path and canDismiss=true is supplied by offline owner; source capability producer unknown.",
+    "Visible Back/Close text is host use of source fallback labels, not proof of original internal glyph or metrics. Default fixture has no exit-confirmation payload.",
+    "Welcome height56/corner28, ordinary-medium provider assignments, neutral background, border and20 icon frame remain explicit fixture inputs. Full nine-slot original style metadata is not a recovered production assignment.",
+    "Custom Apple action remains offline. The real system Apple authorization control is not constructed.",
+    "Profile sheet contents, title, close action and system presentation are independent boundary UI. The original edit form is NOT implemented."
+  ],
+  "not_implemented": [
+    "Actual auth services, OAuth/Apple/Google authorization, credential storage or refresh.",
+    "Phone/country/domain-suggestion, recovery/resend, Passkey/MFA/Workspace and new-account profile frontend branches.",
+    "Original AuthInputFieldStyle metrics, Styleguide NavigationButton/DismissButton glyph/disabled gates, exit-confirmation payload/localized actions and underlying ChatGPTPresentation style.",
+    "Original welcome style producer, complete provider-case predicates, remembered-account and disclosure/hero alternatives.",
+    "Profile form fields, avatar import and save/cancel consumers; save-login option visibility; multi-account/workspace presentation and data roots.",
+    "Source-proven auth-specific haptics and actual physical playback."
+  ],
+  "haptics": {
+    "policy": "No auth gesture/button trigger proved by bounded original consumer tracing; no guessed new feedback. Existing sidebar/slider/status-pill/import consumers retain General persistent gate.",
+    "gate": "Settings > General > Haptic feedback",
+    "physical_verified": false
+  },
+  "verification": {
+    "contract": {
+      "result": "passed",
+      "log": "/tmp/rea-auth-parent-contract-20261113-r2.log",
+      "source_unchanged": true
+    },
+    "r1": {
+      "result": "test invocation rejected before build",
+      "reason": "Incorrect UI target name REAChatGPTHostUITests; actual scheme member is REAHostUITests",
+      "bundle": "ios-auth-parent-20261113-r1.xcresult"
+    },
+    "r2": {
+      "result": "two_passed_one_query_failed",
+      "bundle": "ios-auth-parent-20261113-r2.xcresult",
+      "log": "/tmp/rea-auth-parent-ui-20261113-r2.log",
+      "tests": [
+        {
+          "name": "testAuthenticationNativeUnavailableChinese",
+          "result": "passed",
+          "seconds": 24.332
+        },
+        {
+          "name": "testAuthenticationSessionRoundTripChinese",
+          "result": "passed",
+          "seconds": 50.012
+        },
+        {
+          "name": "testAccountProfileEntryReturnsChinese",
+          "result": "failed",
+          "reason": "ContentUnavailableView produces two StaticText labels with identifier; query erroneously expected Other. Exported hierarchy proves actual sheet and close action were present."
+        }
+      ]
+    },
+    "text": {
+      "selected_labels": 294,
+      "locale_tables": 65,
+      "report": "ios-auth-parent-text-20261113.json"
+    },
+    "r3": {
+      "result": "passed",
+      "test": "testAccountProfileEntryReturnsChinese",
+      "seconds": 26.981,
+      "bundle": "ios-auth-parent-20261113-r3.xcresult",
+      "log": "/tmp/rea-auth-parent-ui-20261113-r3.log",
+      "scope": "Ordinary Settings profile edit sheet, no invented form fields, close/reopen, return to settings/sidebar/chat"
+    },
+    "visual": [
+      "ios-auth-parent-20261113-r2-attachments/57C5C06E-C23C-4D68-959E-0B29ECD17FB8.png",
+      "ios-auth-parent-20261113-r3-attachments/2E70FC54-6286-4D09-B065-6D3E21A33204.png"
+    ],
+    "visual_viewed": true,
+    "limits": [
+      "No real authorization or physical gesture/haptic playback",
+      "Chinese/light only; existing system locale/theme behavior retained",
+      "Original exact glyphs/metrics/forms remain unimplemented; UI pass is not visual equivalence"
+    ],
+    "diff_check": "passed"
+  },
+  "runtime": {
+    "simulator_build": "succeeded",
+    "signed_device_build": "succeeded",
+    "device_build_log": "/tmp/rea-auth-parent-device-20261113.log",
+    "codesign_strict": "passed",
+    "preview_report": "ios-auth-parent-20261113-preview.json",
+    "preview": "authentication",
+    "install_hash_match": true,
+    "binary_sha256": "33ab96b00aa61aa6651a241896ee75026eb508ff804ead093a0e690c1d19dc03",
+    "launch": "local.rea.chatgpt.ioshost: 11780",
+    "screenshot": "ios-auth-parent-20261113-ordinary.png",
+    "screenshot_viewed": true,
+    "iphone_air": "unavailable",
+    "device_installed": false,
+    "device_state_report": "ios-auth-parent-20261113-device-state.json",
+    "preview_left_running": true
+  },
+  "publication": "No commit/push/release; no online auth, no other product changes",
+  "date": "2026-11-13T03:17:06.050865+08:00",
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/FrontendAuthentication.swift",
+      "sha256": "bb39dae34942981f3bd5979149233a09b8bd4b04dff7fb4f871b8a25e694af26"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeFrontendAuthentication.swift",
+      "sha256": "6cbe5fb07eed2416e0210abde53c55fef969c388307f82e603a98e804bfbae33"
+    },
+    {
+      "path": "implementation/ios/Sources/SignedOutWelcomePreview.swift",
+      "sha256": "b3a8c9557919795ce01ae3bba72dd0820994bcd9525abda94a34766c08245eec"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "707606269ac363123b8b8d5e73d12fbe0ff3af640355b6b5e84f8f576a8af4b8"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "4f4547a43d26e1414b60613cdf316e059b11b8b072443f5c6467e0b70e05dda2"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "efceadf5233e578f95360a3610e8f9934659adc05f6bc738adfd3a45d6c530a4"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "001e2812cbafcd0842718f304f1aec4dd7278aa2cd45f0ca48f41d72b4f5a00e"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "ba44cc2038605d869278cc870296b43a64ab1ddf219eb1c41f40c25640c6383e"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "7143c7faba44034f601f6f28c4c2cc388b2b907efac3d6b6688aa1b3e0ffe6cc"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "0c1e3465e8c0de74648904a6a4144bc5011e7185fbcdaf7e6acc0bab1a997f81"
+    }
+  ],
+  "next_major_module": "Shell/home/sidebar remaining parent and gesture integration, preserve recorded gaps; no broad re-regression"
+}

@@ -1,0 +1,172 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Bounded two-group follow-up: LoginControls template-to-style projection, and concrete RoundedRectangleButtonStyle label/frame/corner consumers. No broad reference scan or provider setup.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused": [
+    "ios-auth-welcome-third-20261113-findings.json",
+    "ios-auth-welcome-parent-20261113-findings.json",
+    "ios-auth-welcome-parent-20261113/style-field-map.json",
+    "ios-auth-welcome-parent-20261113/rounded-style-metadata.json"
+  ],
+  "findings": [
+    {
+      "id": "owner-style-projection",
+      "status": "verified",
+      "type": "official_artifact_observation",
+      "conclusion": "The button-style values are copied from the incoming LoginControls template payload, not numerically constructed by this projection. The examined raw0 branch reads three16-byte vectors from input+0x70,+0x80,+0x90 and overlapping final4bytes+0x9f, then writes51bytes into the result style slot.",
+      "source": [
+        "e08a94..e08aa8 incoming payload+0x70..0xa2 to stack",
+        "e08cc0..e08ccd4 LoginButtonListView metadata+0x44 style field ->76572c48byte copy and final4byte write at+0x2f",
+        "e0e434 ->3f820c0 is alternate template metadata accessor",
+        "type8ce5320 symbolic target9635c00=ChatGPTLoginUIInterface.LoginControlsViewTemplate.ViewParams"
+      ],
+      "limit": "Raw case0 mapping to a named enum case and original welcome producer of this payload are not fully decoded here. Do not call this source default height or global style factory."
+    },
+    {
+      "id": "nearby-constants-not-button-metrics",
+      "status": "verified",
+      "type": "official_artifact_observation",
+      "conclusion": "38/20/16 occur in the other observed projection branch and are passed through scaled-metric helpers before fields at metadata+0x38/+0x3c/+0x40; they are not direct assignments into LoginButtonListStyle height0/corner24.",
+      "source": [
+        "e088e4=double38 ->e0e348/e0e5a4",
+        "e0893c=double20 ->e0e348/e0e5a4",
+        "e08954=double16 ->e0e348/e0e740",
+        "style slot+0x44 occurs in the distinct e08a20 branch"
+      ],
+      "limit": "Those fields were not positively named in this follow-up. No new numeric recommendation."
+    },
+    {
+      "id": "rounded-label-font-contract",
+      "status": "verified",
+      "type": "official_artifact_observation",
+      "conclusion": "The ordinary RoundedRectangleButtonStyle applies fontWeight to ButtonStyleConfiguration.label. The examined makeBody does not establish a point font or custom scaled font for this label. Parent font inheritance must remain explicit unknown, rather than substituting a guessed17/18.",
+      "source": [
+        "6f47044 reads ButtonStyleConfiguration.label/isPressed ->6f470b0",
+        "6f471fc..6f47240 loads optional weight and imported View.fontWeight",
+        "full examined body6f47044..6f476c0 has no point-size Font constructor"
+      ],
+      "limit": "This is bounded-body negative evidence, not proof no ancestor sets a font. Custom Apple regular18 remains a distinct proved branch from prior report."
+    },
+    {
+      "id": "rounded-frame-and-shape",
+      "status": "verified",
+      "type": "official_artifact_observation",
+      "conclusion": "Ordinary style uses optional maxWidth/minHeight in FlexFrameLayout with center alignment, then explicit equal-width/equal-height corner radii in RoundedRectangle; height is a minimum, not recovered fixed frameheight.",
+      "source": [
+        "6f472e0 loads style+0x48/0x50 optional maxWidth;6f47300 style+0x38/0x40 optional minHeight",
+        "6f4739c..6f473d8 invokes imported FlexFrameLayout.init with width optional in x4/x5 and minHeight in x6/x7",
+        "6f47480 style+0x20 corner",
+        "6f47498 RoundedRectangle metadata and6f474b4 RoundedCornerStyle metadata;6f474a4 enumcase supplied by bound imported symbol;6f474d4 stp d8,d8"
+      ],
+      "limit": "Actual cornerStyle enum binding was not resolved, so do not assert circular vs continuous. Owner height/corner values remain unknown."
+    }
+  ],
+  "implementation_decision": {
+    "product_change_recommended": false,
+    "reason": "Current56/28 must remain labelled fixture. No selected welcome numeric producer recovered. This pass sharpens the payload boundary and confirms minimum-height/font-inheritance behavior; changing numbers or corner enum would invent source behavior.",
+    "safe_follow_up": "Trace the exact producer of raw0 template payload+0x70 style only if metrics block an observed issue; metadata accessor scans are not enough."
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "Welcome owner ->LoginControlsViewTemplate.ViewParams raw0 payload style+0x70",
+      "missing": "Which original welcome owner builds this enum value and exact buttonHeight/corner/style values."
+    },
+    {
+      "boundary": "RoundedRectangleButtonStyle label font environment",
+      "missing": "Actual parent font/semantic size selected for ordinary welcome branch."
+    },
+    {
+      "boundary": "RoundedCornerStyle importslot aad1f98",
+      "missing": "Exact enum case binding; no circular/continuous assertion."
+    },
+    {
+      "boundary": "Insets and pressed background",
+      "missing": "Detailed insets/default/pressed output was not closed; do not generalize from unrelated scaled metrics."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 2,
+    "static_only": true,
+    "product_modified": false,
+    "tests_executed": false,
+    "build_or_device": false,
+    "official_target_execution": false,
+    "network": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-auth-welcome-fourth-20261113",
+  "evidence_files": [
+    {
+      "path": "ios-auth-welcome-fourth-20261113/controls-owner.asm",
+      "bytes": 15283,
+      "sha256": "fc0795055a788ee28fa4242f8bbee8b8ffdc8ee2a55bf56d8ecb575398cf759d"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/controls-owner.json",
+      "bytes": 6123,
+      "sha256": "0f18d643eec47a67a6860ce0babdf224d16a637c7f33dab953baafff92e6ad64"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/rounded-background.asm",
+      "bytes": 8377,
+      "sha256": "ac0e56c4db6f3182ef8a194638ee305d4dff46bee42118af8e73d8e517c2eaba"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/rounded-background.json",
+      "bytes": 6374,
+      "sha256": "78fe4b9ead6d6ade636ac2eec329e2ec2d4a9ab405269526b5b949a943437da5"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/rounded-body.asm",
+      "bytes": 20408,
+      "sha256": "b8a24ee0fe844615bbbbb04033b8ea75cd357fa273a7b1786e6a6ce01bea6f29"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/rounded-body.json",
+      "bytes": 15044,
+      "sha256": "4a8cdd7a9066fdf75a06f5bf56bd1d736684db20fd24597746edae86581372b4"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/rounded-constructor.asm",
+      "bytes": 5423,
+      "sha256": "94fbfbe967f8d1b22f2e798b0c60f90621d04e1a7a6db224829e102f5ba7ab1a"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/rounded-constructor.json",
+      "bytes": 2424,
+      "sha256": "94658cfeb8a9db9b6d07affaec9d3549fd63f8b1bb7af5e93fb002325ea4f64f"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/style-copy.asm",
+      "bytes": 386,
+      "sha256": "bce4eb5ceb6d779f38ee9c00be12ace095e9d385700d1e7b0f935f0172d89d45"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/style-copy.json",
+      "bytes": 891,
+      "sha256": "2c0fb16e2439d8934109d7c83ac8682b9329668a5d5e8904856cf77a18275939"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/template-reproject.asm",
+      "bytes": 1081,
+      "sha256": "ff99d5f9ffcde2b3d90359b0e021dabcdf31e599db7fa92230e2de0bd2967bd8"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/template-reproject.json",
+      "bytes": 987,
+      "sha256": "408011c750416c928c02cb403dcea2d6b94dea006b16ab44b996e720d4a8ba7c"
+    },
+    {
+      "path": "ios-auth-welcome-fourth-20261113/type-8ce5320.json",
+      "bytes": 773,
+      "sha256": "176ac4317cad0d10bfed8ec0fa49b96cd4d700397c733fc666b2c177c61164f7"
+    }
+  ],
+  "stop_reason": "Bounded projection+consumer pass completed; exact numeric producer remains upstream. No global scan or third candidate."
+}

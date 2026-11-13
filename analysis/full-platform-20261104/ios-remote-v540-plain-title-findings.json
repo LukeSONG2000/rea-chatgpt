@@ -1,0 +1,34 @@
+{
+  "batch": "v540",
+  "status": "verified-static",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "conclusion": "HeaderV2 common title builder applies lineLimit1 and layoutPriority1 for all header kinds, including plain Pinned/Projects/Recents/date titles.",
+  "offsets": [
+    "0x3a223c unconditional call3a2768 before kind branching",
+    "0x3a2248..0x3a2268 kind branches after title construction",
+    "0x3a29bc..0x3a29cc lineLimit1 and priority Double1 stored into returned title type"
+  ],
+  "host_omission": "RecoveredRemotePlainSectionHeaderLabel omitted both modifiers while workspace label already includes them.",
+  "integration": "Add both modifiers to plain Text(title), preserving font, foreground, chevron and parent layout.",
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-header-text-content.asm",
+      "sha256": "ab28f214c8609efd9b9ef1974e1cd6359f18c67b04b45609b00050ce8698a2c0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-header-title-subtitle.asm",
+      "sha256": "aa5b5263b8d0eeb6e181bebe6a72c2f2c40d48949f0cdb70df08666bdd7dcdf7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-header-text-content-calls.json",
+      "sha256": "bbe906891e3cd0e7bf69c098f02fe09a5c8ac837396effbeb2fa247a87b3a763"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-header-final-types.json",
+      "sha256": "9ffb7ddf57c62a26a308bc127ce51061f0be6a5130cdd4425a270334c53530f5"
+    }
+  ]
+}

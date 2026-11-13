@@ -1,0 +1,330 @@
+{
+  "schema_version": 1,
+  "module": "9 Other sidebar feature packages second pass",
+  "date": "2026-11-13T03:01:04.798184+08:00",
+  "platform": "iOS",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "current_catalog_navigation_and_customize_core_implemented_remaining_features_explicit",
+  "previous_goal_turn": "progress: module8 source-backed directory header/parent/assets and resource URL share, UI checks/build/runtime archived",
+  "source_reports": [
+    "ios-sidebar-feature-catalog-parent-20261113-findings.json",
+    "ios-sidebar-customize-parent-20261113-findings.json",
+    "ios-sidebar-feature-navigation-parent-20261113-findings.json",
+    "ios-sidebar-feature-assets-20261113-selected.json"
+  ],
+  "changes": [
+    {
+      "component": "More actual tap consumer",
+      "authority": "official artifact enum value witnesses + concrete selected branch",
+      "source": "Item13440ac/a4c2338, empty8 semantic16 ->12a9730 ->1295f88 ->1399958/1293e64/1297f38",
+      "implemented": "Remove independent Available features alert. Sidebar owns idempotent expand=true and updates same collection; no navigation to fictitious Explore screen."
+    },
+    {
+      "component": "ordered registered catalog",
+      "authority": "independent offline provider projection",
+      "implemented": "Retain primary supported routes; supply five additional registered feature identities/titles/icons. Hiding consumed More, actual row order, per-row asset/title mapping and UIKit insertion animation are explicit adapters; not original account catalog/flags."
+    },
+    {
+      "component": "collection reading ownership",
+      "authority": "independent host integration",
+      "implemented": "Expansion preserves replacement feature anchor through actual layout. User/accessibility scrolling and intervening reload retire the pending completion via interaction generation, instead of pulling the user back later."
+    },
+    {
+      "component": "Customize root icon slot",
+      "authority": "artifact-backed native reconstruction with independent row environment",
+      "source": "1f5c824 -> common row<OrbitProfileCustomizeIcon>;1f5e078 actual dispatch; explicit frame1f5d170",
+      "implemented": "Four source-bound multicolor assets, scaled24 square leading slot. Relative scaling curve/row gap/material remain adapter, not inferred from a font."
+    },
+    {
+      "component": "unsaved child presentation",
+      "authority": "artifact-backed presentation wrapper with existing independent state policy",
+      "implemented": "Restore confirmationDialog for unsaved edits. Keep existing discard/keep/save failure and scope-state logic; do not claim original edge-pop interception or successful-save auto-dismiss."
+    }
+  ],
+  "packages": [
+    {
+      "id": "scheduled",
+      "name": "定时任务",
+      "implemented": [
+        "列表/筛选/分页、编辑、暂停恢复/删除、合成创建与任务会话入口、草稿/失败返回"
+      ],
+      "not_implemented": [
+        "完整原编写器父级与配置、全部周期条件、真实调度和服务"
+      ],
+      "prior_report": null,
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed; entry/return only, not every operation re-run",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeScheduledTasks.swift",
+          "sha256": "e271e63bb073f20448a293b6afb7522fe5bb415fd9d3d171d748470c47827b4f",
+          "prior_report_hash_matches": null
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendScheduledTasks.swift",
+          "sha256": "a6de0c1c9b13389b305424b10e5d0100d3acfe582747f213d187f45fde7ea938",
+          "prior_report_hash_matches": null
+        }
+      ]
+    },
+    {
+      "id": "library",
+      "name": "资料空间",
+      "implemented": [
+        "legacy目录、搜索/分页、子目录/空错重试、文件预览与返回"
+      ],
+      "not_implemented": [
+        "原账号分支/网格/管理动作、原浏览控件/完整行资源与服务"
+      ],
+      "prior_report": "ios-native-library-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed; entry/return only, not every operation re-run",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeFileLibrary.swift",
+          "sha256": "10724489d2c9dd4a8548f5d44b28722ba3205acae5f1dd1969056a2e55941194",
+          "prior_report_hash_matches": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendFileLibrary.swift",
+          "sha256": "23fa820be27b03cb5dd9621f36070c6de9ee2f5d5b9714ff84da49677c29cc4f",
+          "prior_report_hash_matches": true
+        }
+      ]
+    },
+    {
+      "id": "customize",
+      "name": "自定义",
+      "implemented": [
+        "四项显式目录、原多彩图标、个性/颜色/指令编辑、保存/失败/放弃/重开"
+      ],
+      "not_implemented": [
+        "完整目录与traits、原权限赋值/缩放环境、原edge-pop策略、跨进程偏好及服务"
+      ],
+      "prior_report": "ios-native-customize-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed; entry/return only, not every operation re-run",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeCustomizePage.swift",
+          "sha256": "ce3f80be3504c172b20b419e4d30db00adc24d0a4709bfe488c177ac1d86bbf4",
+          "prior_report_hash_matches": false
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendAssistantCustomization.swift",
+          "sha256": "92500c43a04b98bd67301b349d2cf0c709dad75ab81d36e8e5fece88e6aebf0a",
+          "prior_report_hash_matches": true
+        }
+      ]
+    },
+    {
+      "id": "plugins",
+      "name": "插件",
+      "implemented": [
+        "目录/已安装横列、来源/搜索/分页、详情/操作入口与不可用返回"
+      ],
+      "not_implemented": [
+        "原详情/管理菜单/图标加载/完整搜索宿主、安装授权和设置owner服务"
+      ],
+      "prior_report": "ios-native-plugins-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed; entry/return only, not every operation re-run",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativePluginsPage.swift",
+          "sha256": "f88f66660cec9d61e52fa66625e750c5e6df5f14e373e0d39e55dae33aade8ad",
+          "prior_report_hash_matches": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendPlugins.swift",
+          "sha256": "3d11543a312555e200b1f4ce0744ee3f38f2f7a7659400ad3dcd81d477821d7f",
+          "prior_report_hash_matches": true
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "name": "项目",
+      "implemented": [
+        "列表/创建编辑/删除置顶、详情与项目Chat桥接、独立草稿及返回"
+      ],
+      "not_implemented": [
+        "原ProjectConversationScreen宿主/完整菜单、项目文件与成员权限UI、edge-pop及服务"
+      ],
+      "prior_report": "ios-native-projects-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed; entry/return only, not every operation re-run",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeProjectsPage.swift",
+          "sha256": "912bb24974d91f406a4f44476f898005757b524935b041f7189482217ff648f5",
+          "prior_report_hash_matches": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendProjects.swift",
+          "sha256": "573a0096ceb7318f1459b526d784c1c2595f32d897aea8c9bef9f4d2a050e3ec",
+          "prior_report_hash_matches": true
+        }
+      ]
+    },
+    {
+      "id": "sites",
+      "name": "站点",
+      "implemented": [
+        "列表/搜索/分页/筛选、离线网页预览/失败重试/返回、动作入口"
+      ],
+      "not_implemented": [
+        "编辑发布等完整前端表单、原菜单/路由/鉴权WK与服务、跨进程导航"
+      ],
+      "prior_report": "ios-native-sites-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed; entry/return only, not every operation re-run",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeSitesPage.swift",
+          "sha256": "0f6e639deeb4c9923a923ee0fb3f8405c89742ca9a04053b28df8ac6aae59c5b",
+          "prior_report_hash_matches": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendSites.swift",
+          "sha256": "4bb1142d1fd1190360e739fda1d78573d7a9dea044773c8e582123979c420dc0",
+          "prior_report_hash_matches": true
+        }
+      ]
+    },
+    {
+      "id": "images",
+      "name": "图片",
+      "implemented": [
+        "发现分组/提示词草稿、图库/分页/空错、独立缩放预览/复制及动作入口"
+      ],
+      "not_implemented": [
+        "原Lightbox/编辑画布/首页composer、完整媒体/管理分支、生成与存储服务"
+      ],
+      "prior_report": "ios-native-images-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed; entry/return only, not every operation re-run",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeImagesPage.swift",
+          "sha256": "c88a1ed2c8a3a452852bd8894647e6cbc1ce24255fd486faf1a6853065c4146a",
+          "prior_report_hash_matches": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendImages.swift",
+          "sha256": "ea35050b8155884f317e43a8d05b9a20a7d94ff91896e6be648c99742f778717",
+          "prior_report_hash_matches": true
+        }
+      ]
+    },
+    {
+      "id": "personal-assistant",
+      "name": "助手",
+      "implemented": [
+        "原生介绍/连接/创建前端、错误/重试/容量不足及返回"
+      ],
+      "not_implemented": [
+        "已存在助手的Tibro/Calpico消息与输入宿主、模板DI/原动画/账号目录与服务"
+      ],
+      "prior_report": "ios-native-personal-assistant-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed; entry/return only, not every operation re-run",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativePersonalAssistantPage.swift",
+          "sha256": "8aba8731c8e8ffc38aea2f09d87e0662e7afab28bc5316d54ffab3fc25658712",
+          "prior_report_hash_matches": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendPersonalAssistant.swift",
+          "sha256": "96867826e3deb7db8744614349081728401f814a6d590acd922e2bd0c7777882",
+          "prior_report_hash_matches": true
+        }
+      ]
+    }
+  ],
+  "not_newly_changed": [
+    "Other seven native feature implementations and existing service/state contracts retained; no repeated reconstruction or backend work",
+    "Eight roots already use original sidebar-menu resource; actual shared SideMenuToolbarItem proved only for Library/created-Assistant parent. Unknown per-page inset/material/split/badge configuration was not force-applied globally."
+  ],
+  "remaining_shared_boundaries": [
+    "Original full ordered featureCatalog projector, account/experiment availability and exact per-feature sidebar labels/icons",
+    "More removal/collapse/reset semantics and exact animation; unidentified original false setter is not called automatic close reset",
+    "Original shared navigation carrier page-specific placement/inset/material/menus/badges and accessibility owners",
+    "Original-specific gesture/haptic effects where callers remain unproved",
+    "Backend/API execution remains outside frontend scope; existing assistant room and named frontend forms stay precisely unimplemented rather than fake success"
+  ],
+  "verification": {
+    "ui": [
+      {
+        "test": "testSidebarFeatureCatalogRoutesChinese",
+        "result": "passed",
+        "seconds": 79.16,
+        "bundle": "ios-sidebar-features-parent-20261113-r2.xcresult",
+        "scope": "Expand in existing sidebar, no action sheet, all eight feature roots/open-menu return, no invented collapse, restore original chat draft"
+      },
+      {
+        "test": "testNativeCustomizeCoreChinese",
+        "result": "passed",
+        "seconds": 48.046,
+        "bundle": "ios-sidebar-features-parent-20261113-r3.xcresult",
+        "scope": "load/retry, supplied colors/personality/instructions, save failure/retry, saved reopen, confirmationDialog discard/reopen, unavailable child/back and repeat entry"
+      }
+    ],
+    "r1": "UI test migration left two references to removed more variable; build failed in test target, no runtime test. References/old menu entry paths corrected; current tests use stable inline feature identities.",
+    "routine_matrix": "Chinese/light; synthetic text input ASCII to bound keyboard automation; no theme/language matrices repeated",
+    "pure_models": "No new pure state behavior changed; prior per-package contracts retained and not claimed re-run",
+    "visual": [
+      "ios-sidebar-features-parent-20261113-r2-attachments/35CB1C99-8522-4A57-ABDC-323A5B587C44.png",
+      "ios-sidebar-features-parent-20261113-r2-attachments/974FC484-F97A-435F-9538-41753BCB8A8C.png"
+    ],
+    "assets": "Selected resource names matched original Assets.car; new Customize consumers use multicolor images rather than template tint",
+    "diff_check": "passed"
+  },
+  "haptics": {
+    "source_audit": "three bounded parent reports found no new explicit More/Customize/page-navigation dispatch; no guessed new vibration",
+    "gate": "existing active dispatchers remain Settings > General > Haptic feedback",
+    "physical_verified": false,
+    "system_implicit_feedback": "outside application-toggle claim",
+    "current_recheck": {
+      "date": "2026-11-13T03:06:38.012135+08:00",
+      "same_settings_storage_key": "rea.preview.hapticsEnabled",
+      "contract_test": "passed",
+      "log": "/tmp/rea-gesture-haptics-20261113-final.log",
+      "implementation_added_in_this_refresh": false,
+      "reason": "Existing consumers and persistent Settings > General wiring rechecked; no newly proved gesture trigger."
+    }
+  },
+  "runtime": {
+    "simulator_build": "succeeded",
+    "signed_device_build": "succeeded",
+    "device_build_log": "/tmp/rea-sidebar-features-parent-device-20261113.log",
+    "codesign_strict": "passed",
+    "preview_report": "ios-sidebar-features-parent-20261113-preview.json",
+    "simulator_install_hash_match": true,
+    "simulator_executable_sha256": "0276bcf772535a21dfea54f1c7088412036d4c43e7a2097b0823a1b9a84b0262",
+    "launch": "local.rea.chatgpt.ioshost: 8454",
+    "process_observed_running": true,
+    "ordinary_screenshot": "ios-sidebar-features-parent-20261113-ordinary.png",
+    "screenshot_viewed": true,
+    "iphone_air_state": "unavailable",
+    "device_installed": false,
+    "device_state_report": "ios-sidebar-features-parent-20261113-device-state.json",
+    "physical_haptics_verified": false,
+    "preview_left_running": true
+  },
+  "changed_source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "1141a9623db60e1f8dff0efa1723a3c9e2ba6cc5af0279f0579f6ee5f67813ac"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeCustomizePage.swift",
+      "sha256": "ce3f80be3504c172b20b419e4d30db00adc24d0a4709bfe488c177ac1d86bbf4"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "a5bf933e65da7090e25c91b94609f7a345e53532a4e4cf583c57c9f2e0bdeb5c"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "ea0e326b28434732f12cb71c8024c4a2d6f47215f7395bb2c76132d124def10d"
+    }
+  ],
+  "user_review_path": "Sidebar > Explore/More > inline registered features > open any feature > sidebar return; Customize > Personality > change > Back > discard/keep. Existing feature actions remain available under each native page.",
+  "next_module": "10 Login/account frontend second pass",
+  "publication": "No commit/push/release; Android expansion paused, no other product source accessed or changed"
+}

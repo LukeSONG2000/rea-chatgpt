@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T06:59:52.112467+08:00",
+  "module": 2,
+  "status": "core_topology_retained_no_clear_gap_requiring_new_product_change",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_reports": [
+    "ios-settings-topology-entry-current-20261112.json",
+    "ios-settings-fixed-close-20261112-findings.json",
+    "ios-settings-plugins-entry-20261112-findings.json",
+    "ios-settings-signout-detail-20261112-findings.json",
+    "ios-auth-account-parent-20261113-findings.json",
+    "ios-auth-account-third-20261113-findings.json"
+  ],
+  "current_source_review": [
+    {
+      "area": "selected root",
+      "finding": "Explicit legacy profile/upsell, Customize, Account, one shared Theme group, appSettings, help, common SignOut; no ConsumerIdentity branch merge."
+    },
+    {
+      "area": "close/back",
+      "finding": "close-settings remains topBarTrailing in outer NavigationStack, outside settingsContent ScrollView; destinations use typed navigation with returnable unsupported pages."
+    },
+    {
+      "area": "customization",
+      "finding": "orderedEntries with independent memory/showConnectors capabilities and complete Apps/Plugins label/icon choice; not a direct jump to unrelated directory."
+    },
+    {
+      "area": "conditional/account",
+      "finding": "Password/ads use explicit positive capabilities; account phone/age details remain separate supplied inputs; no always-visible multi-account switcher added."
+    },
+    {
+      "area": "theme/haptics",
+      "finding": "Appearance and accent share settings-theme-group. General owns persistent haptic toggle; root has General destination rather than root-level switch."
+    },
+    {
+      "area": "profile",
+      "finding": "Module10 now supplies source-proved Name/Username and Save/Cancel with independent session-scoped frontend service; not a root topology expansion."
+    }
+  ],
+  "retained_limits": [
+    "Actual account/experiment assignment and alternate ConsumerIdentity root",
+    "Exact original material/geometry/typography and close placement policy",
+    "Connectors management root and deferred business handlers",
+    "Unknown child forms and service capabilities remain explicit unavailable routes"
+  ],
+  "verification": {
+    "current_source_inspected": true,
+    "new_ui_run": false,
+    "recent_ui": "ios-shell-fourth-20261113-r2.xcresult/testPrimaryVisualSurfaces,59.148s; ordinary Settings/profile close and original Chat draft return only",
+    "fuller_topology": "Historical checks retained; not claimed rerun",
+    "product_changed": false
+  },
+  "source_section_sha256": "8b31c9b41a414fe23db7e2e7890ee3d3d6c51ea3657d47f553f284338aa7580e",
+  "source_file_sha256": "178a90946c8d317d09968d72ecdf74c1f573eb872b805f31b8bdb566b6bce51d",
+  "next_major_module": "3 Remote list: current whole-module focus"
+}

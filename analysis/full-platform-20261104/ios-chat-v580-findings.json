@@ -1,0 +1,90 @@
+{
+  "batch": 580,
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "delivery": "Bounded source-layout investigation and reproducible static verifier. Runnable candidate remains v579.",
+  "observations": [
+    {
+      "evidence": "ios-chat-v580-label-body.asm; ios-chat-v580-body-types.json",
+      "offset": "0x3d95b84..0x3d95dc0",
+      "conclusion": "MessageRowInlineActionLabelModifier reads refreshedActionMenuDesignEnabled. Refreshed branch supplies ScaledMetric minimum width and height; ideal/max constraints are nil. Both branches apply all-edge padding then Rectangle content shape. Padding is6 legacy,8 refreshed."
+    },
+    {
+      "evidence": "ios-chat-v580-label.asm",
+      "offset": "0x3d95dc4..0x3d95eb8",
+      "conclusion": "Separate modifier application helper initializes its refreshed metric with base20. This helper is separate from the ViewModifier body witness at0x3d95dc0."
+    },
+    {
+      "evidence": "ios-chat-v578-actions-part.asm; ios-chat-v580-layout-verification.json",
+      "offset": "0x38cb5bc..0x38cb65c",
+      "conclusion": "Metadata-bound MessageRowInlineActionsPart slots0x44/0x48/0x4c initialize legacy icon14, refreshed icon16 and refreshed width20. Values are ScaledMetric bases."
+    },
+    {
+      "evidence": "ios-chat-v580-layout-builder.json; ios-chat-v580-layout-helpers.json",
+      "offset": "0x389fb90..0x389fbd8;0x38a14e8..0x38a1530",
+      "conclusion": "Selected builder branch uses same style byte to select12 or16 and multiplies by-0.5 before View.padding. Its compensating padding is-6 or-8. Full branch predicate and ordinary caller overrides remain partial."
+    },
+    {
+      "evidence": "ios-chat-v580-footer-body.asm; ios-chat-v580-footer-type.json",
+      "offset": "0x38e7ce4..0x38e7ec0; type0x8024b98",
+      "conclusion": "InlineActionsFooterContent constructs a type referencing11 footer components. Type references establish structural candidates. Their per-message activation, ownership and exact layout require further tracing."
+    }
+  ],
+  "footer_candidates": [
+    "ChatGPTMessageRow.MessageRow.ChatToWorkHandoffOfferFooterPart",
+    "ChatGPTMessageRow.MessageRow.VoicePostCallFeedbackPart",
+    "ChatGPTMessageRow.MessageRow.UserSignalRatingPart",
+    "ChatGPTMessageRow.MessageRow.SummaryHandoffProgressPart",
+    "ChatGPTMessageRow.MessageRow.BeaconInlineFooterPart",
+    "ChatGPTMessageRow.MessageRow.InlineTextFooterPart",
+    "ChatGPTMessageRow.MessageRow.ConnectorSuggestionPart",
+    "ChatGPTMessageRow.MessageRow.ContextScopeSuggestionPart",
+    "ChatGPTMessageRow.MessageRow.BazaarFooterPart",
+    "ChatGPTMessageRow.MessageRow.BranchingContextFooterPart",
+    "ChatGPTMessageRow.MessageRow.ChatToWorkHandoffFooterPart"
+  ],
+  "host_gap": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbols": [
+      "row measurement",
+      "NativeHostedRow"
+    ],
+    "finding": "Host still measures36pt and renders a44x36 trailing ellipsis Menu. Label minimum sizes and compensating container padding have not been integrated. The full footer height cannot be derived from the leaf minimum alone."
+  },
+  "validation": {
+    "static_instruction_guards": 21,
+    "metadata_bindings": 5,
+    "import_bindings": 3,
+    "repeat_identical": true,
+    "report": "ios-chat-v580-layout-verification.json",
+    "runtime": "ios-chat-v580-preview-check.json",
+    "ui": "No new UI run; v579 acceptance retained separately."
+  },
+  "limitations": [
+    "No original target execution.",
+    "ScaledMetric resolved Dynamic Type values require runtime verification.",
+    "Footer type parser reports one unsupported enclosing context kind in modifier type. Leaf nominal name and imported modifiers are retained; no complete Swift generic reconstruction claimed.",
+    "Initial inspection windows span adjacent functions. Witness branch forwarding was subsequently resolved before body conclusions."
+  ],
+  "next_actions": [
+    {
+      "priority": "P1",
+      "page": "Chat/Work conversation",
+      "gap": "Action collection, role eligibility and selected layout branch",
+      "evidence_break": "0x389f538 collection comparison0x38a0084 and view-model witnesses consumed by0x38a0978/0x38a0a30",
+      "action": "Bind protocol getter names and concrete row view model, then restore actual actions and measure their final composed view.",
+      "acceptance": "Chinese/light and English/dark user/assistant active/terminal rows; copy/edit, Dynamic Type, A-B-A reading anchor."
+    },
+    {
+      "priority": "P1",
+      "page": "Chat/Work conversation",
+      "gap": "Parent footer and row spacing",
+      "evidence_break": "InlineActionsFooterContent0x38e7ce4, concrete MessageRowContent constructor scope+0x58/state+0x59 and ordinary style override",
+      "action": "Resolve effective parent configuration before replacing the36pt reservation.",
+      "acceptance": "Same-content row bounds agree between measurement and presentation, with no added blank row after completion."
+    }
+  ]
+}

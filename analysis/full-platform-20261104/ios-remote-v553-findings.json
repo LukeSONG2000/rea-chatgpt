@@ -1,0 +1,65 @@
+{
+  "batch": "v553",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Connect the Remote transient thinking status to scoped dynamic replay, keeping full reasoning history and message error rendering separately open.",
+  "evidence": [
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v553-thinking-metadata.json",
+      "conclusion": "CodexRemoteThinkingStatus has summary/font. CodexRemoteThinkingStatusText has text. TurnError carries additionalDetails/codexErrorInfo/message/misalignment; metadata establishes no error-card appearance."
+    },
+    {
+      "type": "official_artifact_static",
+      "files": [
+        "ios-remote-v553-thinking-witness.json",
+        "ios-remote-v553-thinking-text-witness.json",
+        "ios-remote-v553-thinking-summary.asm"
+      ],
+      "conclusion": "View witness1a1bb70 branches to body1a1ba60; summary optional discriminant at1a1ba98..1a1baac selects supplied string or Thinking factory75d9480. Empty string stays distinct from nil."
+    },
+    {
+      "type": "official_artifact_static",
+      "files": [
+        "ios-remote-v553-thinking-consumer.asm",
+        "ios-remote-v553-thinking-parent.asm",
+        "ios-remote-v553-thinking-refs.json"
+      ],
+      "conclusion": "Consumers1a393bc and1a32308 construct ThinkingStatus. They call74e2728 for font;74e2714 loads bound Font.TextStyle.body at aad38d8. Exact parent case selection is partial."
+    },
+    {
+      "type": "official_artifact_static",
+      "files": [
+        "ios-remote-v553-type-7e1dad0.json",
+        "ios-remote-v553-type-7db3df0.json",
+        "ios-remote-v553-thinking-body.asm"
+      ],
+      "conclusion": "Body font/truncation wrappers and ShimmeringTextView<Text> are present. Helper1d83b80 reads bound Text.TruncationMode.tail from aad3b28. Text body calls5814e4c ->5814ed0 ->74ee310, whose resource string8a51bc0 is ChatGPT/text/secondary."
+    },
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v553-selected-text.json",
+      "conclusion": "Thinking label added using consumer-checked compressed translations. Existing v327-v330 shine implementation reused."
+    },
+    {
+      "type": "independent_host_adaptation",
+      "conclusion": "Optional event thinking preserves prior state. idle explicitly clears it. Every terminal outcome clears transient status after the shared host/destination/turn/sequence gate. Placement after dynamic contents and deterministic scheduling are independent integration choices."
+    }
+  ],
+  "limits": [
+    "Full reasoning history, disclosure, producer and automatic summary selection remain unclosed.",
+    "Exact official parent visibility, line-count limit and animation interruption policy remain partial.",
+    "TurnError metadata and TurnState.errorMessage at metadata offset0x28 do not establish the error-card consumer. Next action is trace this field through turn-render failure branch and confirm text/link/style payload before integration.",
+    "No message error-card style has been inferred from dictation errors or screenshot colors.",
+    "Single offline account; host/destination/turn scope is supported. Multiple accounts and restart recovery remain open.",
+    "Simulator dispatch and screenshots do not establish physical-device, Android or official runtime equivalence."
+  ],
+  "failed_probes": [
+    "REA open_binary provider native-macos rejected as unknown provider. Available deep providers ghidra/hopper/ida/kuna are unconfigured or unavailable. Continued using existing offline metadata scripts and Xcode llvm-objdump.",
+    "Capstone is absent; used existing Xcode llvm-objdump.",
+    "Witness associated-type addresses8e3b361/8e564cb are not independent relative type records. Record parser rejected invalid length; raw parse rejected non-file-backed target. No fallback interpretation. Valid returned-body records7e1dad0/7db3df0 used instead."
+  ]
+}

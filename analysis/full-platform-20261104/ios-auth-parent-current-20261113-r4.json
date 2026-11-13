@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-13T15:19:02.980607+08:00",
+  "module": 10,
+  "scope": "Whole welcome/native login/profile/signout frontend gap pass; no actual auth/account/credential/avatar service",
+  "previous": "ios-auth-parent-current-20261113-r3.json",
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Accepted-only local profile journal and cold reload across same preview account route; exact profile/account/version/revision checks and corrupt preservation",
+    "Owner must accept exact session/base and durable write before editor publishes saved; failure retains draft and synthetic proposal remains retryable",
+    "Independent profile-read error/retry surface does not retire auth/chat root, untrusted base disables profile editing",
+    "Source-backed isSaving gate on profile form and separate bottom Save/Cancel group; no inferred sheet-swipe ban",
+    "Source typed fieldCheck border projection: focus priority, original semantic colors, width2/1 and insethalfwidth",
+    "Password minHeight ScaledMetric56 relativeTo.title only, not font/default for other inputs",
+    "Existing welcome/providers/native steps/back/clear secrets/logout/return-to-chat-draft preserved"
+  ],
+  "official_source_reports": [
+    "ios-auth-profile-sixth-20261113-findings.json",
+    "ios-auth-input-sixth-20261113-findings.json"
+  ],
+  "independent_adaptations": [
+    "Public profile metadata journal, atomic commit/reconciliation, account-session owner acceptance are host contracts, not original account cache/API",
+    "Nonempty/256-byte/hasChanges input admission remains local; source exact validators unclosed",
+    "Host invalidInput maps to typed fieldCheck.error; original validation producers/info rows not recovered",
+    "Successful save keeps editor open; original final dismiss chain remains unknown"
+  ],
+  "not_implemented": [
+    "Phone/country/domain suggestions, resend/recovery, Passkey/MFA/Workspace/multi-account frontend roots",
+    "Avatar camera/photo/file/image editor/upload flow and original metadata/cache service",
+    "Complete profile validation/disabled producer beyond proved busy gates, exact field/button/scroll/dismiss geometry",
+    "Remaining Username/OTP/Welcome defaults/conditions and full FieldInfoRow/validation assignment",
+    "Actual auth/OAuth/credentials/refresh/account backend are outside current frontend-only scope"
+  ],
+  "verification": {
+    "foundation": "ios-auth-sixth-20261113-contract-r2.log passed; profile acceptance/storage/identity/corruption and existing auth plus field visual projection",
+    "ui": {
+      "bundle": "ios-auth-sixth-20261113-r1.xcresult",
+      "aggregate": "passed2/2",
+      "tests": [
+        {
+          "name": "testAccountProfileJournalChinese",
+          "result": "passed",
+          "seconds": 83.248,
+          "scope": [
+            "local-save failure retains draft/no false success",
+            "saving form and Cancel disabled",
+            "retry accepts, cold reload Name/Username",
+            "Cancel discards only unsaved changes",
+            "preview profile A-B-A isolation"
+          ]
+        },
+        {
+          "name": "testAuthenticationSessionRoundTripChinese",
+          "result": "passed",
+          "seconds": 65.266,
+          "scope": [
+            "logout/cancel/restart",
+            "email/password/show-hide/OTP",
+            "back clears secret",
+            "matched login restores original chat draft",
+            "new source border/password min-height consumers"
+          ]
+        }
+      ]
+    },
+    "screenshot_viewed": "ios-auth-sixth-20261113-r1-attachments/0E5DCC8C-DA3A-4BDB-92ED-02059680A3CA.png",
+    "build": "ios-auth-sixth-20261113-device-build.log passed;simulator test includes current source build",
+    "not_claimed": [
+      "Corrupt-profile error/retry UI journey, only persistence rejection/preservation tested",
+      "Original visual equivalence, physical haptic/gesture/visual acceptance",
+      "Real login/profile service behavior"
+    ]
+  },
+  "runtime": {
+    "simulator": "ios-auth-sixth-20261113-simulator.json",
+    "physical": "ios-auth-sixth-20261113-device-review.json"
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/FrontendProfileEditing.swift": "6b6e08e18cd1307f0dc08e7bfb2eab1836476772d2107f374c09124cc840e053",
+    "implementation/ios/Sources/NativeProfileEditor.swift": "ee3bffe4557caff388a6db4af01521e82c62fdfe0135c383bcbef0881d42162d",
+    "implementation/ios/Sources/NativeFrontendAuthentication.swift": "9206a27c6597f35d3927c5cfaa204757972d89ab3abe842567e76902159b5881",
+    "implementation/ios/Sources/FrontendAuthentication.swift": "0a6aa78285f06d4e9ae6f174302ae325ba547d611ec8236f5f5e0b098edf1260",
+    "implementation/ios/Sources/NativeConversationHost.swift": "f7886781b828d619a1aaab7218832fc4a16db6f012190def4be2e4c8a5a72c21",
+    "implementation/ios/Tests/ProfileEditing/main.swift": "fdddaf7c315f91de0d85a74554452ecd38d0c6170586d67a4eba39cc70f1284c",
+    "implementation/ios/Tests/Authentication/main.swift": "962c5469ca72f34018610e4a4f00d0a5329545d01e847b5af58f32a07c35e36c",
+    "implementation/ios/UITests/HostInteractionTests.swift": "95a6ac9fc90dd5bd362f45a769e4ac795ac1befe0bc61c0ae259e54326fd849c",
+    "implementation/ios/test-account.sh": "2d52de88bfdb575a1efef05e9f937252c17742d223cb18f234f006577b8cb175"
+  },
+  "next_major_module": "9 Plugins only, bounded core gap pass; preserve other sidebar packages/Android",
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  }
+}

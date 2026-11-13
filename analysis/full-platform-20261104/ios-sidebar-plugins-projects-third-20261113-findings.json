@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "module": "9 Sidebar feature packages third pass: plugins/project detail",
+  "date": "2026-11-13",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Read-only; two bounded candidate groups; no product/test/build/device/network actions",
+  "current_sources_sha256": {
+    "implementation/ios/Sources/NativePluginsPage.swift": "52a3d2c2297c27d9ad215717fd706dfa6f89abbb022c1e1c886a796eed47b64b",
+    "implementation/ios/Sources/FrontendPlugins.swift": "cd2dae5fc51daf46005efe2f14b5ac9be45485d5eaa159d8a9e277783ac0af9a",
+    "implementation/ios/Sources/NativeProjectsPage.swift": "912bb24974d91f406a4f44476f898005757b524935b041f7189482217ff648f5"
+  },
+  "reused_reports": [
+    "ios-native-plugins-20261112-findings.json",
+    "ios-native-projects-detail-20261112-findings.json",
+    "ios-sidebar-features-parent-current-20261113.json"
+  ],
+  "candidate_groups": [
+    {
+      "id": "plugins-cached-refresh-failure",
+      "status": "source-backed restoration admitted",
+      "original_parent": {
+        "symbol": "ChatGPTPluginsDirectorySourceContent",
+        "descriptor": "0x9583f44",
+        "body_witness": "0xe85bbc",
+        "body": "0xe83b54 ->0xe83b90",
+        "full_generic_record": "0x7d7ae20",
+        "tree": "ios-native-plugins-20261112-source-tree.tree.txt",
+        "shape": "VStack/ForEach source sections + optional PluginDirectoryRecoverableErrorView + conditional empty/section content"
+      },
+      "actual_consumer": {
+        "state_read": "0xe83c1c sections,0xe83c20 loadState;0xe83c38 calls hasItems0xe843d8",
+        "has_items_predicate": "0xe843d8..0xe84400 iterates section elements at step0x50 and tests their item array count; returns true at first nonempty",
+        "gate": "0xe83dcc..0xe83de8: loadState==4 AND hasItems==true; absent optional content otherwise",
+        "raw_state_mapping": {
+          "descriptor": "0x9583514",
+          "field_descriptor": "0x9a0467c",
+          "cases": [
+            "initial",
+            "loading",
+            "loaded",
+            "refreshing",
+            "failure"
+          ],
+          "proof": "All five cases have no payload. metadata0xa49b378 VWT0xa49b2f8 size/stride1; getEnumTag0x48548→0x162a20 is byte identity; inject0x1459a8→0x1412b8 stores tag byte. Thus consumer tag4 is failure, not an inferred payload/raw integer field.",
+          "raw_evidence": "state-and-resource-literals.json"
+        }
+      },
+      "resources": {
+        "title": {
+          "key": "gpt_plugins_directory_cached_refresh_failure_title",
+          "key_literal": "0x887e3f0",
+          "consumer": "0xe83dec..0xe83e38",
+          "fallback": "Couldn’t refresh plugins",
+          "fallback_literal": "0x887e430"
+        },
+        "message": {
+          "key": "gpt_plugins_directory_cached_refresh_failure_message",
+          "key_literal": "0x887e450",
+          "consumer": "0xe83e54..0xe83e90",
+          "fallback": "Showing the most recently loaded results.",
+          "fallback_literal": "0x887e490"
+        }
+      },
+      "host_gap": {
+        "file": "implementation/ios/Sources/NativePluginsPage.swift",
+        "symbol": "PluginListing.body",
+        "current": "All failed listings display generic Could not load plugins, even if old rows remain.",
+        "retained_data_owner": "FrontendPluginState.beginList preserves ids; failList preserves ids and marks failed. Existing failure/state owner supports this presentation without replacing rows.",
+        "minimal_fix": "For failed listing with nonempty displayed items, show original cached-refresh title and message; keep existing retry callback. Initial load failure with no rows remains separate explicit adapter until its original native carrier is closed.",
+        "qualification": "Host local phase/cached-items check is an explicit mapping to proven source semantic branch, not recovered wire schema. Retry placement/style not fully recovered."
+      },
+      "raw": [
+        "plugins-source-recoverable-consumer.asm",
+        "plugins-source-has-items.asm",
+        "plugins-loadstate-accessor.asm",
+        "plugins-loadstate-gettag-thunk.asm",
+        "plugins-loadstate-gettag.asm",
+        "plugins-loadstate-inject-thunk.asm",
+        "plugins-loadstate-inject.asm",
+        "state-and-resource-literals.json"
+      ]
+    },
+    {
+      "id": "projects-optional-conversation-menu",
+      "status": "original gap confirmed; service-owner closure not admitted for unconditional action",
+      "original_parent": {
+        "symbol": "ProjectConversationsPart",
+        "descriptor": "0x9669978",
+        "view_witness": "0x4a662e8",
+        "actual_body": "0x4a614ec",
+        "full_generic_record": "0x810bc60",
+        "tree": "ios-native-projects-detail-20261112-conversations-tree.tree.txt",
+        "shape": "Divided/ForEach stable conversation identity -> Button row with native contextMenu and PlainButtonStyle"
+      },
+      "actual_consumer": {
+        "menu_builder": "0x4a65fc4",
+        "remove_admission": "0x4a66178 loads callback at aggregate+0xa0;0x4a6617c skips when nil;0x4a66180 loads context+0xa8",
+        "label_factory": "0x4a66184 ->0x75d24fc; literal0x8a59060 Remove from project",
+        "icon_factory": "0x4a6618c ->0x74f931c ->literal0x8a56230 OpenAI/Symbols/notebook-badge-xmark",
+        "action_closure": "0x4a661fc..0x4a66204 supplies0x4b3e4c4; constructed capture0x4a661dc retains exact callback/context,0x4a661e0..e8 copies current conversation value",
+        "action_body": "0x4b3e4c4→0x4b3e4c8 loads callback/context at capture+0x10 and calls indirect helper0x458e14 with retained value",
+        "metadata_support": "ProjectConversationsPart field removeConversationFromProject at0x9b23ab4 typeref0x920591e; this field name alone is not used as invocation proof."
+      },
+      "host_gap": {
+        "file": "implementation/ios/Sources/NativeProjectsPage.swift",
+        "symbol": "NativeProjectDetail conversation ForEach",
+        "current": "No per-conversation contextMenu or supplied remove callback. Project-level menu is a separate owner.",
+        "safe_boundary": "Expose an optional project-scoped conversation action capability/callback only when separately supplied by the frontend contract. Preserve account/project/conversation identity; do not reuse project deletion or pretend removal succeeded.",
+        "not_admitted": "Do not add a visible Remove item solely from model field or inferred aggregate offset. Original callback final VM/service method and confirmation policy are not closed; independent complete synthetic action would need explicit contract/state tests outside this read-only task."
+      },
+      "raw": [
+        "projects-optional-row-menu.asm",
+        "projects-remove-action.asm",
+        "projects-remove-icon.asm"
+      ]
+    }
+  ],
+  "not_changed_or_not_claimed": [
+    "Plugin directory/root/details/search navigation, existing request/account/actionPluginID identity owner retained. No source-backed reason to replace working contracts.",
+    "No plugin artwork URL renderer, entire detail body/menu/authorization chain, or original project conversation screen builder claimed restored.",
+    "Original plugins exact source ordering and live membership remain owner-supplied/unknown."
+  ],
+  "haptics": {
+    "proven_new_direct_caller": false,
+    "scope": "Inspected SourceContent recoverable consumer and ProjectConversationsPart optional menu/action windows contain no demonstrated explicit haptic dispatch. Indirect/shared system feedback remains unknown; do not add guessed vibration."
+  },
+  "raw_directory": "analysis/full-platform-20261104/ios-sidebar-plugins-projects-third-20261113",
+  "stop_reason": "Two groups exhausted; concrete plugin cached-error branch safely recoverable. Project final callback/confirmation held at exact boundary; no wider investigation."
+}

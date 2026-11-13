@@ -1,0 +1,164 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "official shipped artifact; static metadata, protocol witnesses, complete generic tree and bounded ARM64; no execution",
+  "scope": "NativeAuthScreenStyle shared parent and toolbar; no changes to product, tests, devices, builds or tools",
+  "prior_evidence": [
+    "ios-native-auth-welcome-20261112-findings.json",
+    "ios-login-v1-native-evidence.json"
+  ],
+  "source_owner": {
+    "name": "NativeAuthScreenStyle",
+    "descriptor": "0x957c5f0",
+    "accessor": "0xdaa294",
+    "conformance": "0x7d5e08c",
+    "body_witness": "0xd6621c",
+    "actual_body": "0xd6471c",
+    "body_end_exclusive": "0xd64db0",
+    "metadata": "ios-auth-native-parent-20261113/screen-style-metadata.json"
+  },
+  "findings": [
+    {
+      "id": "shared-native-auth-parent",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "NativeSignupView owns NavigationStack<Array<NativeSignupViewModel.Step>> and installs NativeAuthScreenStyle around its typed destinations. Username/password are independently proved consumers of the same modifier; OTP belongs to the root typed destination set, but its leaf input style was not retraced this round. This does not prove every step is active for one flow.",
+      "source": [
+        "ios-native-auth-welcome-20261112/native-signup-root.tree.txt",
+        "ios-native-auth-welcome-20261112/username-root.tree.txt",
+        "ios-native-auth-welcome-20261112/password-root.tree.txt"
+      ],
+      "offsets": [
+        "NativeSignupView body 0xd831d4→0xd7b9e8",
+        "root record0x7d5f9d8",
+        "username record0x7d64618",
+        "password record0x7d64770"
+      ]
+    },
+    {
+      "id": "geometry-scroll-carrier",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Full generic record0x7d60518 proves a GeometryReader with conditional Group/ScrollView carriers around _ViewModifier_Content<NativeAuthScreenStyle>, nested flex-frame and padding modifiers, a background nominal0x957c7ac, hidden-indicator and onScrollGeometryChange wrappers, interactive keyboard dismissal, and an optional keyboard-safe-area-ignoring wrapper. An opaque descriptor0x9757514 remains unresolved; its existence is not permission to reconstruct its inner style.",
+      "source": [
+        "ios-auth-native-parent-20261113/style-content-tree.tree.txt",
+        "ios-auth-native-parent-20261113/style-scroll-tree.tree.txt",
+        "ios-auth-native-parent-20261113/style-body.asm"
+      ],
+      "calls": {
+        "scrollIndicators": "0xd64fac",
+        "scrollDismissesKeyboard": "0xd64ffc",
+        "keyboardSafeAreaRegion": "0xd65030",
+        "onScrollGeometryChange": "0xd66114"
+      },
+      "limits": [
+        "No exact content padding/maximum width/title metrics recovered in this scope.",
+        "Current host padding24, inputfill secondarySystemFill, cornerRadius12 and title largeTitle remain independent adaptations.",
+        "Do not map a semantic font point size to an explicit fixed frame."
+      ]
+    },
+    {
+      "id": "custom-toolbar-parent",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Actual shared body hides the system Back button, then installs its own toolbar outside the scrollable content. Source toolbar has independent leading Back and trailing Dismiss slots, each controlled by the corresponding capability, not a single leading cancellationAction.",
+      "offsets": {
+        "hide_system_back": "0xd64988 sets true→0xd64994 navigationBarBackButtonHidden",
+        "toolbar_install": "0xd649ec..0xd64a18, closure0xdb72e8→0xd650c0",
+        "canGoBack_test": "0xd65164 loads first stored Bool, cmp1; true→0xd65174 topBarLeading→0xd651a4 ToolbarItem",
+        "leading_view": "closure0xdb7648→0xd652b8",
+        "canDismiss_test": "0xd651c8 loads Bool+1, cmp1; true→0xd651d8 topBarTrailing→0xd65208 ToolbarItem",
+        "dismiss_view": "closure0xdb74d4→0xd65648",
+        "navigation_bar_visibility": "0xd64a28..0xd64ab4 explicitly combines both capability inputs"
+      },
+      "limits": [
+        "Exact native-flow capability producers/defaults were not closed. Supply them explicitly from the host flow contract.",
+        "The original system-pop/custom-edge gesture arbitration is unknown; preserving a host edge-pop bridge is an independent adapter, not restored official gesture math."
+      ]
+    },
+    {
+      "id": "toolbar-labels",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "The actual leading consumer uses SwiftUIStyleguide.NavigationButton and the trailing consumer SwiftUIStyleguide.DismissButton. Their localized labels are auth.native.back and auth.native.dismiss with Back/Close fallback factories. The observed source establishes labels, not the final internal glyph selection or fixed dimensions.",
+      "offsets": {
+        "leading_construct": "0xd652b8; record0x7d60568 resolves NavigationButton; passed callbacks0xd655c4 and0xd655dc at0xd654c0..0xd654cc",
+        "back_key": "0xd655c4..0xd655d8 reads0x8875d90 auth.native.back",
+        "back_fallback": "0xd655dc→0x75d6978 constructs packed ASCII Back",
+        "dismiss_construct": "0xd65648; record0x7d60578 resolves DismissButton",
+        "dismiss_key": "0xd65914..0xd6592c reads0x8875db0 auth.native.dismiss",
+        "dismiss_fallback": "0xd65930→0x75d6998 constructs packed ASCII Close"
+      },
+      "source": [
+        "ios-auth-native-parent-20261113/button-type-7d60568.json",
+        "ios-auth-native-parent-20261113/button-type-7d60578.json",
+        "ios-auth-native-parent-20261113/toolbar-localization-keys.json",
+        "ios-auth-native-parent-20261113/toolbar-label-fallbacks.asm"
+      ],
+      "limits": [
+        "Do not substitute a chevron or X and label it an original glyph from this report alone.",
+        "Button disabled modifiers are present in the bounded code, but their byte offsets+0x48/+0x49 have not been bound to the metadata field vector; retain explicit host disabled policy."
+      ]
+    },
+    {
+      "id": "exit-confirmation",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "The source modifier carries optional exitConfirmationAlertContent and __showConfirm state and installs SwiftUI alert(isPresented:presenting:actions:message:). Dismiss action0xd65970 branches on supplied optional data: one path sets confirmation state, the other invokes supplied flow callback. The alert actions include a destructive Button, not a new navigation destination.",
+      "offsets": {
+        "dismiss_action": "0xd65970..0xd659c4",
+        "alert_install": "0xd64d54..0xd64d88",
+        "alert_actions_callback": "0xdb74cc",
+        "alert_message_callback": "0xd65d20",
+        "destructive_role": "0xd65c7c",
+        "buttons": "0xd65c54 and0xd65cac"
+      },
+      "limits": [
+        "Exact alert title/message/action localization producers and field payload layout are not recovered here.",
+        "Only show an independently labelled confirmation adapter when an explicit exit-confirmation payload is supplied; do not claim all native auth flows require confirmation."
+      ]
+    },
+    {
+      "id": "input-field-leaves",
+      "evidence_type": "prior-official-evidence",
+      "conclusion": "Existing username and password trees already prove AuthInputFieldStyle and focus/onSubmit/submitScope/autocapitalization/autocorrection wiring. The present custom rounded input container is not demonstrated as the source AuthInputFieldStyle implementation. Do not expand this round into every authentication business branch.",
+      "source": [
+        "ios-native-auth-welcome-20261112/username-root.tree.txt",
+        "ios-native-auth-welcome-20261112/password-root.tree.txt"
+      ],
+      "limits": [
+        "AuthInputFieldStyle actual body, secure reveal glyph, OTP-specific shape and shared exact metrics remain unclosed."
+      ]
+    }
+  ],
+  "implementation_decisions": [
+    {
+      "decision": "Move flow exit to explicit topBarTrailing, add explicit topBarLeading Back for child flow states, hide implicit system Back. Preserve host edge-back integration separately.",
+      "official_basis": "custom-toolbar-parent",
+      "adapter_boundary": "Capability values and edge-gesture admission are independent host inputs."
+    },
+    {
+      "decision": "Keep original geometry/scroll/keyboard parent structure in scope; retain current input geometry as explicitly independent until AuthInputFieldStyle actual consumer is recovered.",
+      "official_basis": "geometry-scroll-carrier",
+      "adapter_boundary": "No guessed pixel/font/frame values."
+    }
+  ],
+  "haptics_and_gestures": {
+    "status": "unknown",
+    "conclusion": "No explicit haptic consumer recovered in the bounded shared-parent/toolbar windows. This is not proof of global absence. Gesture arbitration and interactive transition implementation remain unknown."
+  },
+  "stop_condition": "Three bounded candidate groups completed: shared parent tree, actual toolbar owner/consumer, labels/exit action. Stop before Styleguide internal glyphs and all username business branches.",
+  "next_minimum_evidence": [
+    "Resolve NavigationButton/DismissButton actual Styleguide bodies only if a glyph/style change is required.",
+    "Resolve AuthInputFieldStyle actual body and flow capability producer before claiming original input visual metrics.",
+    "Trace exitConfirmationAlertContent producer to exact localized title/message/actions if the selected frontend fixture needs source-equivalent exit confirmation."
+  ],
+  "validation": {
+    "product_changes": false,
+    "builds": false,
+    "device_actions": false,
+    "target_execution": false,
+    "network": false,
+    "static_evidence_only": true
+  }
+}

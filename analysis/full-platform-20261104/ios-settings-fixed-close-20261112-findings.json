@@ -1,0 +1,61 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "toolbar-outside-scroll-content-proven; exact dismiss item callback partial",
+  "evidence_type": "official artifact static type tree and native instructions",
+  "root_shell": {
+    "type_record": "0x7d8f838",
+    "producer": "SettingsView_contentA0x10d66dc; record0x7d8f838 loaded via metadata cache0xaf0a2a0 and0xada2ea0 neighboring wrappers; actual root content helper0x10d7e00",
+    "shape": "AdaptiveNavigationStack<NavigationPath, toolbarVisibility(toolbar(navigationDestination(toolbarBackground(root-content),...), SettingsNavigationToolbar),...), NavigationStack alternative>",
+    "tree": "ios-settings-fixed-close-20261112/root-shell.tree.txt",
+    "containment": "SettingsHomeFormContent/SettingsHomeFormLayout and ScrollViewReader are in toolbar Content argument. SettingsNavigationToolbar is a separate ToolbarContent argument applied outside that content. It is not one of the Form rows."
+  },
+  "toolbar": {
+    "name": "ChatGPTSettings.SettingsNavigationToolbar",
+    "descriptor": "0x9589d28",
+    "accessor": "0x112bbbc",
+    "fields": [
+      "dismissPlacement",
+      "sideMenu",
+      "showsInfo",
+      "infoMenu",
+      "_isHidden"
+    ],
+    "conformance": "0x7d8b0d0",
+    "protocol": "SwiftUI.ToolbarContent",
+    "body_witness": "0x108f8cc",
+    "actual_body": "0x108f62c",
+    "topBarTrailing_item": {
+      "placement_getter": "0x108f808",
+      "ToolbarItem_init": "0x108f830",
+      "limit": "this item closure0x1142bac may be infoMenu; do not label this specific trailing item the close button without tracing."
+    }
+  },
+  "navigation": {
+    "destination_modifier_site": "0x10d7fe4",
+    "toolbarVisibility_modifier_site": "0x10d8160",
+    "model_destination_type": "ChatGPTSettings.SettingsViewModel.NavigationDestination0x958a4fc",
+    "limit": "child back uses navigation destination host; exact back button builder/callback not traced in bounded scope."
+  },
+  "implementation_implication": "Move close control out of scrolling row content into host navigation toolbar or an independent fixed parent overlay. Toolbar visibility is governed by _hidesNavigationToolbarItems/_isHidden and placement input. Do not freeze all Form rows or make close a first-row decoration.",
+  "unknowns": [
+    {
+      "boundary": "which SettingsNavigationToolbar generic child carries dismissPlacement and its action callback",
+      "next_minimal_action": "decode exact toolbar body generic return type0x8d1c461 using scoped synthetic record or inspect direct child calls of0x108f62c, including helper0x6f23d94; bind to SettingsView._dismiss before claiming exact original close implementation"
+    },
+    {
+      "boundary": "active hidesNavigationToolbarItems / toolbarVerticalEdge / split side menu values",
+      "next_minimal_action": "trace same SettingsView caller configuration; current metadata alone does not prove active values"
+    },
+    {
+      "boundary": "close pixel offsets and runtime scrolling behavior",
+      "reason": "not measured; screenshot is reference only"
+    }
+  ],
+  "limits": [
+    "No host edits/build/device operations.",
+    "No target app execution.",
+    "Finding proves structural scroll separation, not an always-visible control under all configurations."
+  ]
+}

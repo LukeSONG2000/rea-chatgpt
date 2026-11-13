@@ -1,0 +1,312 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Ordinary Chat/Work haptic caller and feature-gate audit; three bounded candidate groups: link gate constructor/evaluation, link/widget/source consumer branches, current host copy/import/mode admissions. Evidence only.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "new_official_observations": [
+    {
+      "id": "gate-default-false",
+      "type": "official_artifact_observation",
+      "conclusion": "The declared defaultValue of chatgpt-ios-chat-link-haptics is false. The historical constructor argument raw2 is scope, not a boolean default.",
+      "source": [
+        "0x397fcd0 constructor",
+        "0x397fce0 key literal0x8934aa0",
+        "0x397fcf4 ->0x6e6864",
+        "0x6e6868 w2=2",
+        "0x6e6874 ->0x706fc88",
+        "0x706fcb0 captures x2 into x24",
+        "0x706fd2c stores scope byte+0x10",
+        "0x706fd38 strb wzr,[record+0x30]",
+        "StatsigFeatureFlag descriptor0x97279a4",
+        "accessor0x707786c ->metadata0xa99cfc8",
+        "field-offset vectorword2 defaultValue0x30",
+        "defaultValue typeref0x8bfd810=Sb"
+      ],
+      "evidence": [
+        "gate-constructor.asm",
+        "gate-record-constructor.asm",
+        "gate-record-tail.asm",
+        "gate-metadata.json",
+        "gate-metadata-accessor.asm",
+        "gate-field-offsets.json",
+        "../ios-haptics-v598-feature-key.asm"
+      ],
+      "limit": "This closes the declaration fallback, not the effective value of the actual account/device/workspace configuration. Scope raw2 has not been assigned a case name by value witnesses here. No online flag evaluation was performed."
+    },
+    {
+      "id": "runtime-manager",
+      "type": "official_artifact_observation",
+      "conclusion": "Both link feedback functions evaluate the feature record via an owner-supplied dynamic witness and branch on the result before impact dispatch.",
+      "source": [
+        "0x3760c1c ->0x3899ee4 flagrecord",
+        "0x3760c60 ->0x2071d8 ->0x7073de8",
+        "0x7073de8 loads[x7+0x30] thenindirectbranch",
+        "0xd03e04 saves query result into x21",
+        "0x3760c6c tbz w21 ->return",
+        "0x373bb80/0x373bbcc/0x373bbd8 corresponding source route"
+      ],
+      "evidence": [
+        "gate-evaluation.asm",
+        "gate-evaluation-owner.asm",
+        "gate-query.asm",
+        "../ios-haptics-v597-chat-link.asm",
+        "../ios-haptics-v597-source-link.asm"
+      ],
+      "limit": "Do not replace the feature query with the local General haptic preference. Default=false does not mean always disabled, and existing General enabled=true does not enable this feature."
+    },
+    {
+      "id": "route-sensitive-calls",
+      "type": "official_artifact_observation",
+      "conclusion": "Real Chat-link and widget owners call fireChatLinkHapticIfEnabled at distinct classified branches. Sources-citation routing separately has feedback and no-feedback paths.",
+      "source": [
+        "0x3760104 owner",
+        "0x3760570/0x376058c/0x37605a8 branch predicates",
+        "0x37605e0 ->0x3760af0 route action",
+        "0x37605ec ->0x3760bf8 feedback",
+        "0x3762ac8..0x3762ae4 widget action",
+        "0x3762ae8 ->0x3760bf8 feedback",
+        "0x37394dc/0x3739658/0x37396dc source-citation route observations"
+      ],
+      "evidence": [
+        "link-call-site.asm",
+        "widget-call-site.asm",
+        "../ios-haptics-v598-link-owner.asm",
+        "../ios-haptics-v598-source-owner.asm",
+        "../ios-haptics-v598-findings.json"
+      ],
+      "limit": "Near branches are real control flow, but their complete URL/widget/citation classification is unclosed. They do not justify feedback for every OpenURLAction, file preview or attachment tap."
+    }
+  ],
+  "current_host_review": [
+    {
+      "id": "general-gate",
+      "type": "host_source_observation",
+      "source": [
+        "implementation/ios/Sources/FrontendHaptics.swift:5..17",
+        "implementation/ios/Sources/FrontendHaptics.swift:58..92",
+        "implementation/ios/Sources/FrontendHaptics.swift:98..125"
+      ],
+      "conclusion": "Persisted independent preference rea.preview.hapticsEnabled defaults true; integrated events require enabled && supportedHardware && activeApp. Its UI is Settings→General→Haptic feedback. Current haptic API exposes sidebar drag selection, composer status-pill selection and Remote accepted-file import; there is no Chat-link feature provider."
+    },
+    {
+      "id": "chat-links",
+      "type": "host_source_observation",
+      "source": [
+        "implementation/ios/Sources/NativeConversationHost.swift:1645..1658"
+      ],
+      "conclusion": "Ordinary Chat/Work showLink admits only current mounted foreground controller without another presentation, saves draft/anchor, then presents the browser. It does not classify the original Chat source/widget routes or evaluate the recovered feature flag, so absence of unconditional feedback is not an established recovery bug."
+    },
+    {
+      "id": "chat-import",
+      "type": "host_source_observation",
+      "source": [
+        "implementation/ios/Sources/NativeConversationHost.swift:900..919",
+        "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift:186..194"
+      ],
+      "conclusion": "Ordinary Chat file import has scope/generation/attachment-request admission and storage commit, but no haptic call. The separately evidenced Remote picker sends success only after accepted prepared files and false for Photos; its existing host consumer is connected once per accepted file.",
+      "limit": "Remote attachment caller must not be promoted to ordinary Chat/Work merely because both import a file. No ordinary Chat accepted-file feedback caller closed in this pass."
+    },
+    {
+      "id": "copy-and-mode",
+      "type": "host_source_observation",
+      "source": [
+        "implementation/ios/Sources/NativeConversationHost.swift:670..685",
+        "implementation/ios/Sources/NativeConversationHost.swift:1501..1523",
+        "implementation/ios/Sources/NativeConversationHost.swift:1778..1809"
+      ],
+      "conclusion": "Current mode selection saves draft/anchor and selects the scoped catalog mode; current ordinary message copy fences completed/current row and writes UIPasteboard plus AX announcement. Neither emits a host haptic.",
+      "limit": "No original ordinary Chat/Work copy or mode tap/gesture haptic caller was proved in this bounded pass. A recovered copy icon/control or common app haptic engine is not sufficient evidence."
+    }
+  ],
+  "implementation_decision": {
+    "safe_now": "No new unconditional haptic integration recommended. Preserve current General gate and actual mounted/token-admitted Remote file and shared sidebar/status-pill consumers.",
+    "recoverable_contract": "If a future source-backed Chat link route and explicit effective feature capability are supplied, call the existing light-impact engine path once at that owner action, admitted by General enabled/hardware/activity gates. Default missing capability to the source-proven feature default false. This capability projection would be an independent host provider, not a claim of official flag-service implementation.",
+    "do_not_do": [
+      "Do not map constructor raw2 to enabled=true.",
+      "Do not add haptics to every link, copy button, attachment or Chat/Work switch.",
+      "Do not use Remote file feedback as proof of ordinary Chat attachment behavior.",
+      "Do not equate simulation tests with tactile physical-device output."
+    ]
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "0x3760570/0x376058c/0x37605a8 andwidget0x3762ac8",
+      "missing": "Concrete URL/widget type classifications and current Chat/Work component mapping."
+    },
+    {
+      "boundary": "0x7073de8 dynamic witness[x7+0x30]",
+      "missing": "Actual feature-service receiver, effective configured flag, and its account/device/workspace selection. Declaration fallback false is now known."
+    },
+    {
+      "boundary": "ordinary Chat attachment/copy/mode owners",
+      "missing": "Actual feedback caller and any feature/visibility/gesture gate; no justified new trigger yet."
+    },
+    {
+      "boundary": "haptic playback",
+      "missing": "Real hardware tactile behavior; no device operated."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 3,
+    "static_only": true,
+    "tests_executed": false,
+    "target_executed": false,
+    "network_access": false,
+    "product_modified": false,
+    "build_or_device": false
+  },
+  "evidence_directory": "ios-chat-haptics-third-20261113",
+  "evidence_files": [
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-arguments-helper.asm",
+      "bytes": 310,
+      "sha256": "50747d9afe1f196c74f8e656580c81741377d9292f8c31c04965b36e7149d2e4"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-arguments-helper.json",
+      "bytes": 895,
+      "sha256": "7fd2e2ae964e96ebe0dfbac81395629c34ed4cfa61526c667894eca08cb1b8b0"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-constructor.asm",
+      "bytes": 5255,
+      "sha256": "e79715802518a2021c2ed920da90402d1027a38eb0f0a9a063fcffd34acc2a6b"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-constructor.json",
+      "bytes": 1243,
+      "sha256": "34ec765b23302cea36c9531fca7df02faa5fa114c848942c6a7b3bdb312dc173"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-default-argument.asm",
+      "bytes": 658,
+      "sha256": "f30a15b77731ed42bc5a6b8582a4e979c7ee1424c382d29de5ea1804d1d6687c"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-default-argument.json",
+      "bytes": 939,
+      "sha256": "918a06056e5369d1cbb800c1079e5b7c1cb1e8474e7f08c74dc6a2bd8de6f86b"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-evaluation-owner.asm",
+      "bytes": 2534,
+      "sha256": "2e0dbda84b1f4817a47a1f7039c4d0816e81007a68942f8326f8f15db148a8ef"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-evaluation-owner.json",
+      "bytes": 1739,
+      "sha256": "f3df25624507f177173f9fc359b5d3b2bcea860ee01da9dbbb1838b352853a86"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-evaluation.asm",
+      "bytes": 4569,
+      "sha256": "e88581faf0b53f0c1663be0f2c3cd66c57ff93d188e108f649850e736ea28114"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-evaluation.json",
+      "bytes": 1419,
+      "sha256": "08e64597731b53fde14d029f6f72544e8b18afb0a4ad7d37b165252166d28441"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-field-offsets.json",
+      "bytes": 655,
+      "sha256": "d1de54cb0eb88c4796b5b976a96152abc6f41b0d0e04b90eacf8027708d2f032"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-metadata-accessor.asm",
+      "bytes": 713,
+      "sha256": "ddbd939051ceebc7d1821ebfd95cfae27921ee397aa0f15b52358c65dd9a88ee"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-metadata-accessor.json",
+      "bytes": 946,
+      "sha256": "3dff8f814aa4d5e71e3d69d41c3fb2dbba8d2e16c1d4ba64ca93635d712b620f"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-metadata.json",
+      "bytes": 1528,
+      "sha256": "d9c7a133154441b03db1d1677cd32eb93ef2a16c7a4950695d6477c880ed606e"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-query.asm",
+      "bytes": 3525,
+      "sha256": "25c33fec7b9065aa787971ea965404e78e671c5f8e7739ee28510e10293cf497"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-query.json",
+      "bytes": 1307,
+      "sha256": "9037e69319259d0a758002c6d2bd8f58334d7ea709624921629daa0eebb03f48"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-record-call-arguments.asm",
+      "bytes": 658,
+      "sha256": "2d28e4f721d19cd335d7db8e8dfca9f3392fd83641306d4821ce2c808ede9e91"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-record-call-arguments.json",
+      "bytes": 939,
+      "sha256": "61753a2a12013ad1e44f4e810e32a58f592927a7827f53f657d8f3004c7c5680"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-record-constructor.asm",
+      "bytes": 2292,
+      "sha256": "06a25c9c298d6a08fff140f7583ba8d59f08610cb2a36646de2a52e4d007c4ec"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-record-constructor.json",
+      "bytes": 1899,
+      "sha256": "f198e7f65244c6e0b201cfa26fc0a0c7019df3b7218ff4a21f72e6b4caedf068"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-record-tail.asm",
+      "bytes": 1040,
+      "sha256": "90f6d92a040ba13eaf6ce141cbbac1f5508288dfa386d5518154e60f98bb3c98"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-record-tail.json",
+      "bytes": 1093,
+      "sha256": "828d2443c7e9bc692fcf52112a8b82343fb3ec6c27544ce65fefcee0f8f0974a"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-type-resolver.asm",
+      "bytes": 672,
+      "sha256": "bc2880149bba7bbe3e7ea52b8824871958edbb3a78fdbf03e3e0fbd520302f21"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/gate-type-resolver.json",
+      "bytes": 963,
+      "sha256": "36cdc37a03bd5dc122ae9552c1faab87e19b66c8373bcafbb440c1df02f9abde"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/host-source-snapshot.json",
+      "bytes": 11664,
+      "sha256": "35f70e2dba6c30ddf0631c65d71e628d417640ac568f47378ac86001dd2ecda1"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/link-call-site.asm",
+      "bytes": 3911,
+      "sha256": "76a1fd1ff58a1ae615ad144f7b12bb20fcbcbb4c3c26cc233e32ceb5ecb53e50"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/link-call-site.json",
+      "bytes": 4024,
+      "sha256": "dbbb8fc7ecf63995e3f348138606ee9d17a13fadc73127cfd964cd76060ed4a2"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/widget-call-site.asm",
+      "bytes": 2989,
+      "sha256": "e3ef016f34911554d94bb9a201bfb265f14dd5b5baba687f6d3848b917f10048"
+    },
+    {
+      "path": "ios-chat-haptics-third-20261113/widget-call-site.json",
+      "bytes": 3546,
+      "sha256": "d4865432d4cc3229cf02f967f97c38b9e52b0df7e24a92647a8b3dccb9b53b5e"
+    }
+  ]
+}

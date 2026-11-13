@@ -1,0 +1,78 @@
+{
+  "module": "Chat/Work list and conversation",
+  "baseline": "iOS 1.2026.293 packaged search and markdown modules; independent native host",
+  "scope": "Frontend only, Chinese/light",
+  "existing_reused": [
+    "catalog new/select/rename/delete",
+    "conversation mode persistence and per-conversation drafts",
+    "synthetic send, incremental output, failure/retry, stop",
+    "code, basic Markdown, tables and completion-gated copy",
+    "process restart history and reading position storage"
+  ],
+  "changes": [
+    "index catalog titles as conversation-level results, including empty conversations",
+    "title-only search results preserve reading state instead of forcing a message anchor",
+    "localized search host labels and sidebar search accessibility identity"
+  ],
+  "source_evidence": {
+    "origin": "iOS 293 packaged modules; independent network replacement",
+    "sources": [
+      {
+        "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchModels.js",
+        "sha256": "f6186b89a42ecdcabf1c057eadb4428389785f296bd4dac83eae0b473e575072"
+      },
+      {
+        "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchApi.js",
+        "sha256": "c5ffc0ca1018c6d22b9f48b1ea3214e526959836009c17c40bac97f2716d2ddd"
+      },
+      {
+        "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchRepository.js",
+        "sha256": "11ed95dde36d7308c79c85d82c23b02f0cb94c1bf5e5edda5428a6732e694de8"
+      }
+    ]
+  },
+  "independent_adaptations": [
+    "local title/message index, local 30-result cap and query matching",
+    "UIKit search screen and native message hosting",
+    "synthetic Chat/Work service and stored mode contract"
+  ],
+  "not_implemented": [
+    "cloud service, cloud history/pagination and synchronization",
+    "full revision/reconnect projection beyond current ordered revision0 transport",
+    "full Work capability/configuration semantics",
+    "full reasoning/DIL and original native renderer binding",
+    "full menu variants and exact page/material fidelity"
+  ],
+  "verification": {
+    "packaged_search_test": "passed, including title result without message_id",
+    "ui": {
+      "passed": [
+        "testChatWorkActionVisibilityChinese",
+        "testChatWorkModeRestoration",
+        "testChatWorkOfflineCoreChinese",
+        "testChatWorkCatalogSearchChinese"
+      ],
+      "results": [
+        "ios-chat-work-module-20261112-r1.xcresult (3 passed, catalog failed)",
+        "ios-chat-work-module-20261112-r4.xcresult (catalog passed)"
+      ],
+      "catalog_diagnosis": "r1/r2/r3 Save tap targeted y506 while keyboard relocation moved action to y359. Probe found action hittable and enabled, no callback. r4 waits for visible software keyboard and action above keyboard; rename/search/filters/return/restart passed without production rename change.",
+      "visual": "r4 return screenshot inspected: Work selected, preserved draft visible, no residual alert/search."
+    }
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "d98ce7c22c45fb13c79c4667b038bb54ffd2da9eb93b286ab0e8d70c338c84b3",
+    "implementation/ios/Tools/test-search.cjs": "205b733e18e39adb50fc2d905ed705648e41f14b19b6e4fd09afe666a2c4d45d",
+    "implementation/ios/UITests/HostInteractionTests.swift": "2948e37a934c5427664e17139f1adc752d45e6e76f66f8d9f94186d2fc9e75a2"
+  },
+  "status": "core frontend loops implemented; explicit feature and fidelity gaps retained",
+  "delivery": {
+    "iphone": "signed build, installed and launched successfully on iPhone Air; physical interaction not tested in this batch",
+    "simulator": "core preview restored and kept running; installed executable hash matches current simulator build",
+    "reports": [
+      "ios-chatwork-20261112-device-install.json",
+      "ios-chatwork-20261112-device-launch.json",
+      "ios-chatwork-20261112-preview.json"
+    ]
+  }
+}

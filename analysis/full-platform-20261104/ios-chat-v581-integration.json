@@ -1,0 +1,49 @@
+{
+  "batch": 581,
+  "status": "部分实现",
+  "implementation": "Default fixture response and connection text follow system language preference order, Chinese/English. Explicit chunks remain authoritative, including an empty array. Fixture language is selected at service creation.",
+  "authority": "Independent frontend test data; official action architecture observed separately in293 artifact.",
+  "validation": {
+    "artifact": "21 layout plus9 collection instruction guards,5 layout fields,5 model ivars,3 witness targets and3 imports; repeat identical",
+    "runtime": "v581 signed and installed; executable SHA-256 matches; live Chinese/light preview verified in Device Hub",
+    "state": "22 existing state groups passed",
+    "service": "7 service groups passed, including added locale ordering/fallback and explicit-payload checks",
+    "ui": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "report": "ios-chat-v581-r1.summary.json"
+    },
+    "visual": "Reviewed Chinese/light and English/dark copied-reply captures. English synthetic table/prose are localized. Existing large block gaps, trailing menu and composer geometry remain visible differences. The simulator retained its selected Chinese input method during English UI tests."
+  },
+  "runtime": "ios-chat-v581-runtime.json",
+  "preview": "Chinese/light, existing preview profile and photo draft restored, process49694 left running",
+  "display": "Built-in Color LCD only; external display acceptance pending",
+  "open_items": [
+    {
+      "priority": "P1",
+      "page": "Chat/Work conversation",
+      "gap": "Full action projection and footer layout",
+      "evidence_break": "0x395bf3c arrangement inputs;0x395c950..0x395dedc projection;0x38bbaf4 availability",
+      "action": "Bind producer input fields and ordinary role branch, then integrate primary/overflow rendering and measure final composed content in the same change.",
+      "acceptance": "User/assistant active/terminal actions, copy/edit and A-B-A anchors in Chinese/light and English/dark."
+    },
+    {
+      "priority": "P1",
+      "page": "Chat/Work conversation",
+      "gap": "Large block gaps, trailing action Menu and fixed36pt slot",
+      "action": "Keep the existing usable copy/edit path while binding ordinary style and composed footer; validate measurement and presentation together.",
+      "acceptance": "Same-content geometry and reader-anchor recovery in both languages/themes."
+    },
+    {
+      "priority": "P2",
+      "page": "Chat/Work conversation",
+      "gap": "VoiceOver traversal of invisible action nodes",
+      "action": "Verify actual accessibility traversal independently from XCTest presence queries",
+      "acceptance": "Active hidden actions skipped; completed actions reachable"
+    }
+  ],
+  "service": "待接服务",
+  "device": "待设备验证",
+  "plan_update": "Refreshed stale page-ledger rows for Chat, Work and file preview with v570–579 evidence. Full page visual acceptance remains partial."
+}

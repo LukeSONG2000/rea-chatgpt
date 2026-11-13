@@ -1,0 +1,134 @@
+{
+  "status": "verified_static_rank_and_owner_partial_upstream_pipeline",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static",
+  "scope": "Ordinary byWorkspaces section ordering after upstream section production; no service or app execution",
+  "owner": {
+    "menu": "CodexRemoteThreadListFilterMenuContent._showsChatsFirst direct Binding, Toggle at0x310814..0x310858, available only grouping1. See title-menu-findings.",
+    "state": "CodexViewModel._remoteThreadListShowsChatsFirst",
+    "getter": "0x302670, keypath0x7cfadf8, field-offset global0xb0c8df0",
+    "setter": "0x3026d4",
+    "change_handler": "0x32e740",
+    "name_evidence": "0x32e80c loads string0x8853980 = _remoteThreadListShowsChatsFirst; handler reads same getter at32e764/32e7ac/32e7f8",
+    "published_getter": "0x35eacc reads publisher cell+0xc0 using same keypath0x7cfadf8 via45c7b0",
+    "pipeline": "0x31ffb0 obtains grouping publisher35ea84 and showsChatsFirst publisher35eacc, combines inputs, installs closure3ea584 ->35eb58 ->32ff44. Full generic Combine tuple lowering not reconstructed in this bounded report.",
+    "producer_flag": "35eb58 argument w5 savedlocal+0x54, forwarded via stackbyte1 at35eedc to32ff44.32ffa0..32ffa4 saves stackbyte1 inlocal+0x1c.332e00..332e10 forwards bit0 to sort wrapper3b93cc."
+  },
+  "confirmed_sort": {
+    "gate": "groupingRaw==1 at332de4..332dec",
+    "entry": "332df4 enumerated projection3c5434,332e10 sort3b93cc",
+    "comparator": "3e65d8",
+    "rank_function": "337d1c",
+    "rank_jump_table": {
+      "address": "0x7ceb614",
+      "bytes": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        1,
+        29
+      ]
+    },
+    "ranks": [
+      {
+        "ids": "title matching shared localized Pinned title",
+        "rank": 0,
+        "evidence": "337d68..337dc8,337e4c..337e54; key0x88527e0=codex_task_list_section_title_pinned"
+      },
+      {
+        "ids": "remoteCustomSection(raw5)",
+        "rank": 1,
+        "evidence": "entryw8=1, raw5 jump337d5c"
+      },
+      {
+        "ids": "remoteProjectlessThreads / Recents(raw6 payload2)",
+        "rank_if_flag_true": 2,
+        "rank_if_flag_false": 4,
+        "evidence": "337dcc..337e48 rejects Projects and searchResults sentinel IDs before evaluating flag"
+      },
+      {
+        "ids": "other titles, noWorkspace, remoteHost, remoteWorkspace, remoteProject, projectsTitle, searchResults",
+        "rank": 3,
+        "evidence": "337d58, switchtable and exact raw6 payload checks"
+      }
+    ],
+    "comparison": "ascending(rank(section), originalEnumerationIndex). Rank comparison unsigned and enumeration index signed, matching valid nonnegative indices.",
+    "tie_evidence": "3e65f8/3e65fc read index,3e6604/3e6610 read rank,3e6614..3e6624 compare rank then index",
+    "postprocessing": "Projects header is inserted after rank sort at33330c, before first workspace/project. See v500 insertion. Do not independently swap an existing Projects title and Recents while leaving its associated peer ordering stale."
+  },
+  "minimal_implementation": [
+    "Start from existing pre-Projects-insertion ordered sections.",
+    "Compute rank using typed section IDs and the actual pinned ID/title rule.",
+    "Stable sort by rank, keeping same-rank previous order.",
+    "Perform recovered Projects insertion including catalog-only case.",
+    "Apply Projects collapse projection and current query bypass after ordering.",
+    "Keep saved per-section collapse, host identity, current selection and row identities across toggle."
+  ],
+  "independent_vectors": [
+    {
+      "input": [
+        "remoteWorkspace(A)",
+        "Recents",
+        "Pinned",
+        "remoteCustomSection(S)",
+        "noWorkspace(B)",
+        "remoteProject(C)"
+      ],
+      "flag": true,
+      "after_rank": [
+        "Pinned",
+        "remoteCustomSection(S)",
+        "Recents",
+        "remoteWorkspace(A)",
+        "noWorkspace(B)",
+        "remoteProject(C)"
+      ]
+    },
+    {
+      "input": [
+        "remoteWorkspace(A)",
+        "Recents",
+        "Pinned",
+        "remoteCustomSection(S)",
+        "noWorkspace(B)",
+        "remoteProject(C)"
+      ],
+      "flag": false,
+      "after_rank": [
+        "Pinned",
+        "remoteCustomSection(S)",
+        "remoteWorkspace(A)",
+        "noWorkspace(B)",
+        "remoteProject(C)",
+        "Recents"
+      ]
+    }
+  ],
+  "limits": [
+    "The full upstream section sorter and source ordering before this rank pass remain outside this report.",
+    "The generic CombineLatest tuple-to-positional lowering is partially traced; getter identity, flag transport and complete rank function are each directly observed.",
+    "Pinned is tested via shared localized title string equality in this rank function, not an invented dedicated raw enum case.",
+    "Unknown invalid enum values are unsupported.",
+    "No device/runtime or behavior replay acceptance is claimed."
+  ],
+  "evidence_files": [
+    "ios-remote-v506-chatsfirst-rank.asm",
+    "ios-remote-v506-chatsfirst-comparator-thunk.asm",
+    "ios-remote-v506-chatsfirst-sort-entry.asm",
+    "ios-remote-v506-chatsfirst-owner-observer.asm",
+    "ios-remote-v506-chatsfirst-state-access.asm",
+    "ios-remote-v506-grouping-published-getters.asm",
+    "ios-remote-v506-grouping-publisher.asm",
+    "ios-remote-v506-grouping-publisher-calls.json",
+    "ios-remote-v506-grouping-main-caller.asm",
+    "ios-remote-v506-grouping-main-xrefs.json",
+    "ios-remote-v506-grouping-closure-xrefs.json",
+    "ios-remote-v500-projects-producer.asm"
+  ]
+}

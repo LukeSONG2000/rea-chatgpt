@@ -1,0 +1,194 @@
+{
+  "batch": "v499",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "no progress: status report only; this continuation adds source-backed Recents presentation and host-only draft integration",
+  "evidence_type": [
+    "official-artifact-static-observation",
+    "independent-native-host-integration",
+    "independent-Swift-replay"
+  ],
+  "findings": [
+    {
+      "source": "ios-remote-v499-path-findings.json",
+      "conclusion": "Special generated directory predicate closed; 32 independent Swift vectors pass. Missing directory alone is not a Recents classification."
+    },
+    {
+      "source": "ios-remote-v499-disclosure-findings.json",
+      "conclusion": "Recents kind2 chevron uses expanded && fades condition; initially expanded is invisible; expansion shows then holds2.2s and fades0.2s; collapsed returns opacity1 over0.2s. Pinned kind0 remains visible."
+    },
+    {
+      "source": "ios-remote-v498-findings.json",
+      "conclusion": "Recents descriptor copies a host identity and constructs new-thread target with nil directory/project; full upstream multi-host arbitration unresolved."
+    }
+  ],
+  "integration": [
+    "Explicit synthetic recent membership and per-query targets, reusing compact task rows without project indentation or final-row12",
+    "Shared source-backed kind0/kind2 title/disclosure layout with distinct fade configuration",
+    "Independent recent fold state survives source changes and detail/draft navigation",
+    "Optional directory in new-thread draft identity; nil, empty, project and existing-thread scopes remain distinct",
+    "Official Recents translations extracted across65 locale tables"
+  ],
+  "independent_adaptations": [
+    "Fixture membership/order and selected-query target map; no official host arbitration claim",
+    "SwiftUI navigation/state owner and presentation-to-fixture bridge",
+    "Reduce Motion immediate opacity/rotation behavior",
+    "Existing fixture parent insets and font bridge remain partial"
+  ],
+  "remaining": [
+    "No-workspace/cloud groups and projects super-heading",
+    "Upstream host candidate merge/default new target selection",
+    "Source-filter position before or after title disambiguation",
+    "List search/mode and fixed composer",
+    "Official full-page geometry, physical interaction and Android independent path"
+  ],
+  "validation": {
+    "models": "passed; first direct shell invocation failed because script is non-executable; sh invocation passed",
+    "path_replay": "32/32 independent vectors; no official binary execution",
+    "ui": {
+      "initial": {
+        "passed": 4,
+        "failed": 0,
+        "scope": [
+          "recent fold/filter/host-only drafts",
+          "pinned scope and return",
+          "project drafts and return",
+          "fixed approval while transcript scrolls"
+        ]
+      },
+      "final_r2": {
+        "passed": 3,
+        "failed": 0,
+        "scope": [
+          "recent fold/filter/host-only and project draft isolation",
+          "large text horizontal filter",
+          "project fold/source/return restoration"
+        ]
+      },
+      "limits": "Six distinct targeted cases across seven executions; full historical suite and official runtime equivalence unaccepted"
+    },
+    "device": {
+      "build": "499 signed build passed; codesign --verify --deep --strict exit0",
+      "install": "not attempted while inventory reports paired iPhone unavailable",
+      "latest_successful_install": 496
+    },
+    "preview": {
+      "simulator_build": 499,
+      "pid_observed": 91519,
+      "page": "Remote list scrolled to show both recent tasks, system Chinese",
+      "screenshot": "ios-remote-v499-list-preview.png",
+      "observed": [
+        "Pinned and project headers preserved",
+        "Recents is localized and initially has hidden chevron",
+        "Manual collapse shows right-pointing chevron",
+        "Expansion and scroll reveal both recent rows; title remains clear with soft content edge"
+      ],
+      "limits": [
+        "No frame-timed chevron fade measurement",
+        "Full official visual fidelity and physical feel unaccepted"
+      ],
+      "display": "Only built-in Color LCD online; external display unavailable"
+    },
+    "retention": {
+      "stale_package_candidates": 0,
+      "available_disk": "36 GiB at check"
+    },
+    "sdk": "Installed SwiftUICore swiftinterface declares LinearKeyframe default timingCurve .linear"
+  },
+  "source_files": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "e739376c7f58fda8c4e6db903a79baf9f6331445ace19ef323e52be542243c76",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "9f553f619608484c1df635a6aca43b345a582a584eeee045021afb6643dcc15c",
+    "implementation/ios/Sources/OfficialText.swift": "e739010f3b3be3def6891e81a8c1ce344025e4ea4babcefbaed5bf21100ce54d",
+    "implementation/ios/Resources/OfficialTranslations.json": "fd2b304d605af606b195506a09d2adc0e82a8418665a9421661d07074ebdd515",
+    "implementation/ios/UITests/HostInteractionTests.swift": "70218f6aa3797efe515e965f4160444060d4fb7bcfa801e37d784902d54fba0d",
+    "implementation/ios/TextTests/main.swift": "20df359100d6d985b298097d2f675d55378f09edd879e9804f0a93b6e4426e31"
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-body.asm",
+      "sha256": "05cccc9b1523b5eeb4aa8ff926b24a73a1208cb8413464da5dfdc6adeb119495"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-calls.json",
+      "sha256": "91f06026899749725286590de466efe40106675da92c8a696dda4d6592a034c7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-constants.json",
+      "sha256": "cb01c9a4faf99b6bc91a3cfe16d4ed453419145fbed1353ed9dc999bdeaf2152"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-findings.json",
+      "sha256": "42d6bed0117d8c119dcb71cac43816f92ffcfa1d8d941d0be5ad12304b14ff75"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-helpers.asm",
+      "sha256": "27d18efa5e290d62a9a088584f4885fec24604aa61a86ee637efc46622e9971f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-metadata.json",
+      "sha256": "62fea3860ae3dad5a15e1fda436c10aaec2544ecfa9142d295414e584cb12541"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-types.json",
+      "sha256": "df4fffeda15fe1e0ec04796ad08696953366db4ca2902b9d6c7afe8f48a6fb02"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-witnesses.json",
+      "sha256": "d9f73b4b32f2521c48660c085a1a7ee5d454b595baba20227a1855c7c3a85f63"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure.asm",
+      "sha256": "ad0123f8f5d827b36592b0edc0e4be048abb53a2d687f00fe44fefb3474b346a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-host-candidate-projection.asm",
+      "sha256": "d3fc4a854c2a2c66696755a50ff25ca4e2f6d5aaf9d700ecc2cc160cd7cacb09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-list-preview.png",
+      "sha256": "599165ef4e006f97a5ae8f3932a48686cbc9f82ea2a28b68c3896d6279154051"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-findings.json",
+      "sha256": "b5ece331a976012859b078e781b1a3eb7aa72be4b7b67f6ffe295523d228b995"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-helpers.asm",
+      "sha256": "269cb093d81ec1baac5eb7853fb16a3dfa8bfe48feb0bd4224c3b47863b8dfa3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-imports.json",
+      "sha256": "5fef01d787b6cc73192dfd001bcf3f11343d8a70e0ba037ddde8252f0ed9073e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-predicate.asm",
+      "sha256": "12dde6e75b0cf5e342442d125ad9fdc64fe72eb5ef93663c1664d7b7a1ced1ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-replay.json",
+      "sha256": "a3e52a28e8597d98163c25dc604567c5686ef6bcbe7f582963e663021e203302"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-producer-inputs.asm",
+      "sha256": "024a3247541e639a9e70e3068f4e62ed6535eeb8c21afd88e89fbdfe255a8c6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-r2-ui.summary.json",
+      "sha256": "ef46aee7e701ff5ace102cffec50720102bf6091736f2616d112b851ca3442aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-recent-hosts.asm",
+      "sha256": "1407e9642cc34c3094ba162934a51582744738dcbdf80446e98639cac5b5cc2a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-text-extraction.json",
+      "sha256": "a8b868c72d3738a3d3ca56ac34c4760961dcf9e483c537eb72e5185aaa6b1eb7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-ui.summary.json",
+      "sha256": "0ad3019d78896ea40b253c46cec95e2956d68f3d78070dfa835278572c2705da"
+    }
+  ]
+}

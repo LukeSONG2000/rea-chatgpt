@@ -1,0 +1,109 @@
+{
+  "version": "v620",
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "artifact_digest_source": "Existing v618 inventory; not rehashed in this slice",
+  "scope": "bounded static sidebar item identities and navigation dispatch",
+  "observations": [
+    {
+      "type": "official_artifact_static",
+      "source": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lku0.java",
+      "lines": [
+        118,
+        157
+      ],
+      "conclusion": "Sidebar action identities map ndu0=Library, ieu0=Customize, pdu0=Codex, dfu0=Settings, beu0=Tasks, zdu0=Projects, geu0=Sites, wdu0=ImageHome, mdu0=Plugins. This analytics identity mapping does not establish global ordering or availability."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lku0.java",
+      "lines": [
+        535,
+        616
+      ],
+      "conclusion": "Actual dispatch follows identity. Customize updates F1 owner, Sites updates D1 owner, Tasks navigates niv, Library navigates x5v, search k8v. Codex creates m1v(false), dispatches b1s0.a and conditionally n19.z. Settings navigates new wjv(cju0.a)."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "recovered/android-1.2026.293/jadx-src/sources/defpackage/uy81.java",
+      "lines": [
+        637,
+        652
+      ],
+      "conclusion": "Sidebar callback invokes close callback for qualifying urr.p actions under outer condition, then Codex gets asynchronous g10 branch while other actions call n19.F. Do not universally clear all feature state on navigation."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sen.java",
+      "lines": [
+        47,
+        83
+      ],
+      "conclusion": "SidebarFeatureItemImpl uses Compose node and a 24dp icon host, 28dp under vbu0.b alternate. Icon content is supplied finVar callback, so actual asset must be traced at caller."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "recovered/android-1.2026.293/jadx-src/sources/defpackage/urr.java",
+      "lines": [
+        1615,
+        1859
+      ],
+      "conclusion": "Separate SidebarFloatingChatButtons, SidebarFloatingNewChatButton, SidebarFloatingTemporaryChatButton and SidebarFooter compose entry points exist. Account/new-chat footer is separate from scroll content."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "recovered/android-1.2026.293/jadx-src/sources/defpackage/urr.java",
+      "lines": [
+        2346,
+        2346
+      ],
+      "conclusion": "Close-action classification includes the verified sidebar feature action types, settings, conversations and projects."
+    }
+  ],
+  "unknowns": [
+    "Global sidebar ordering and per-account capability producer",
+    "Specific icon accessor mapping for sidebar feature rows; resource presence alone does not prove usage",
+    "Chat/Work home toggle owner and initial selection",
+    "Exact drawer implementation, animation and radius",
+    "Full setting-root groups and individual setting owners",
+    "Source-level KMP shared module boundary beyond native Compose consumers"
+  ],
+  "safe_integration": [
+    "Use confirmed navigation identities with explicitly independent synthetic availability",
+    "Model destination and back restoration centrally; preserve feature-specific state",
+    "Keep exact order and icon assignment marked independent until producer/caller evidence closes",
+    "Use native Compose host; do not claim ModalNavigationDrawer is original implementation"
+  ],
+  "files": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lku0.java",
+      "sha256": "51844de9b105d9d3a31836b4025dc3f583c97b9c6a805a70b86c33c7ca819130"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/uy81.java",
+      "sha256": "db7609198bc1e24497986739a69f82463a8deb7f19b83482fc8ad10349e11bb7"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/urr.java",
+      "sha256": "c0dbe86736f39b6e8d89eff0f47391309d67aaf44ac436e2d01d1987075f3c1c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sen.java",
+      "sha256": "8eaeb19ec448f1495475ba8cb8d58672726a09c1108c8233521f61ababe80f7b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ahu0.java",
+      "sha256": "b0f5b3c97eb143ed3b8ec0c191c2a398203ae0b51e3260510d6c18c9d8d23f5a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pdu0.java",
+      "sha256": "ce813772350d3096b1743a146385e0ebccdc478c8e65f216ef829983da2042f2"
+    }
+  ],
+  "validation": {
+    "target_executed": false,
+    "services_accessed": false,
+    "static_only": true
+  }
+}

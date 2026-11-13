@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "task": "v528 slider interaction VM commit lifecycle",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static_observation",
+  "validation": {
+    "binary_executed": false,
+    "online_services_accessed": false,
+    "production_code_edited": false,
+    "controlled_replay": false
+  },
+  "fields": {
+    "initialSelectedPresetID": {
+      "offset": "0x80",
+      "getter": "0x6099134",
+      "setter": "0x60a0580"
+    },
+    "selectedPresetID": {
+      "offset": "0xa0",
+      "getter": "0x609e7b4",
+      "setter": "0x60a0610"
+    },
+    "dragMode": {
+      "offset": "0x100",
+      "descriptor": "0x96cc1bc",
+      "case_order": [
+        "inactive",
+        "pending",
+        "capturing",
+        "direct"
+      ]
+    },
+    "actionHandler": {
+      "function": "0x108",
+      "context": "0x110"
+    },
+    "selectedPresetIDProvider": {
+      "function": "0x118",
+      "context": "0x120"
+    },
+    "shouldCommitSelectionAfterDismissal": "0x128",
+    "pendingPresets": "0x130",
+    "pendingDismissalAction": {
+      "payload": "0x138..0x157",
+      "tag": "0x158",
+      "nil_tag": 255
+    }
+  },
+  "actions": {
+    "descriptor": "0x96cbcc4",
+    "tags": {
+      "0": "commitSelection",
+      "1": "footerActionTapped",
+      "2": "modelTitleTapped"
+    }
+  },
+  "findings": [
+    {
+      "id": "selection-is-preview",
+      "status": "verified",
+      "offsets": [
+        "0x60a0610..0x60a069c",
+        "0x60fb718..0x60fb7a0",
+        "0x60fe470..0x60fe63c"
+      ],
+      "conclusion": "selectedPresetID setter mutates observable local selection. This setter does not call actionHandler. Gesture closure 60fb77c and adjustment closure 60fe620 call this setter. Selected changes alone do not submit the model configuration.",
+      "limits": "Input event enum labels and complete accessibility mapping remain unproven."
+    },
+    {
+      "id": "finish-flag-is-not-general-cancel",
+      "status": "verified",
+      "offsets": [
+        "0x609e320..0x609e4d4",
+        "0x609e8ec..0x609e920",
+        "0x609e644..0x609e68c",
+        "0x60a14c4..0x60a1738"
+      ],
+      "conclusion": "finish helper passes its Boolean to 609e8ec. If current selected preset exists and isLocked at +0x72 is true, Boolean false restores initialSelectedPresetID via 60a0610. Boolean true skips this restoration. For unlocked presets false preserves selected ID. Therefore false must not be modeled as universal cancellation or rollback.",
+      "field_binding": "ios-remote-v528-preset-offsets.json binds isLocked=0x72; 609e644 reads returned preset +0x72 (stack+0x7a from stack+8).",
+      "limits": "Public semantic name of finish Boolean and a comprehensive system gesture cancellation path are unknown."
+    },
+    {
+      "id": "finish-commit-policy",
+      "status": "verified",
+      "offsets": [
+        "0x609e33c..0x609e398",
+        "0x609e3cc..0x609e3e8",
+        "0x609e48c..0x609e4d0"
+      ],
+      "conclusion": "Finish checks parent view state ==1 and already-finishing flag false, then marks already-finishing true. It runs optional locked-preset restoration first. If 609e920 returns true or pendingDismissalAction is nonnil, it arms shouldCommitSelectionAfterDismissal=true before initiating dismissal work. Otherwise it calls 609ed64 directly after dismissal state mutation.",
+      "limits": "609e920 checks presentation style, another predicate, and selected isLocked. Full semantic predicate name and animation completion timing remain unknown."
+    },
+    {
+      "id": "commit-double-guard",
+      "status": "verified",
+      "offsets": [
+        "0x609ed64..0x609eed8"
+      ],
+      "conclusion": "Commit returns false if selectedPresetID equals initialSelectedPresetID. If optional selectedPresetIDProvider exists, commit additionally requires provider() equals initialSelectedPresetID, otherwise returns false. Only then actionHandler receives tag0 commitSelection(selectedPresetID), and function returns true. Nil comparisons are included. It does not update initialSelectedPresetID here.",
+      "limits": "This is a local/provider identity guard. It is not a server acknowledgement or general request-id idempotence guarantee. Optional nil selected ID can be passed by the low-level VM; consumer validity rules remain separate."
+    },
+    {
+      "id": "one-shot-dismissal-order",
+      "status": "verified",
+      "offsets": [
+        "0x60a1738..0x60a1834",
+        "0x60b67e0..0x60b6824"
+      ],
+      "conclusion": "Dismissal drain first snapshots pendingDismissalAction and clears stored action to nil. For modelTitleTapped (tag2 with zero payload) actionHandler is called first. Then deferred commit helper runs. For footerActionTapped (tag1), actionHandler is called after deferred commit. Helper 60a181c requires shouldCommitSelectionAfterDismissal==true, clears flag before calling 609ed64, and otherwise returns false. Drain returns whether commit dispatched. Repeating drain without rearming causes no action and no commit.",
+      "ordered_actions": [
+        "takeAndClearPendingAction",
+        "dispatchModelTitleTappedIfPending",
+        "takeAndClearDeferredCommitFlag",
+        "ifArmedAttemptGuardedCommit",
+        "dispatchFooterActionIfPending"
+      ],
+      "limits": "One-shot result is conditional on no reentrant rearming by external handlers."
+    },
+    {
+      "id": "model-title-enqueues-before-finish",
+      "status": "verified",
+      "offsets": [
+        "0x609eed8..0x609eefc",
+        "0x60fe11c..0x60fe12c",
+        "0x60fdebc..0x60fdec0",
+        "0x6112dc4..0x6112dd0"
+      ],
+      "conclusion": "609eed8 stores modelTitleTapped in pendingDismissalAction. Header callback 60fe0cc calls it, then invokes finish with Boolean false. Alternate header closure queues the same action then reaches a thunk that invokes finish false. Because pending is nonnil, finish arms deferred commit. Final drain dispatches modelTitleTapped before guarded commit."
+    },
+    {
+      "id": "advanced-round-trip",
+      "status": "partial",
+      "offsets": [
+        "0x1ce5910",
+        "0x1ce599c",
+        "0x609ed64",
+        "0x60a1738"
+      ],
+      "conclusion": "Existing v527 evidence proves Advanced header sets presentsSliderAfterConfigurationDismissal and sheet onDismiss consumes/clears that flag before reopening a picker. Current evidence proves old picker drains one-shot and checks provider against initial before commit. If Advanced/other owner changes current configuration before old picker commit, provider mismatch suppresses stale writeback.",
+      "limits": "Actual event-loop timing between modelTitleTapped presentation and deferred commit is not runtime-verified. Do not independently submit again solely because Advanced closed; reopening is separate from committing."
+    },
+    {
+      "id": "drag-mode-observations",
+      "status": "partial",
+      "offsets": [
+        "0x60a0410..0x60a0418",
+        "0x60fa150..0x60fa164",
+        "0x609f444..0x609f44c",
+        "0x60fa3c8..0x60fa3ec",
+        "0x60a0f84..0x60a0fb0"
+      ],
+      "conclusion": "Constructor zero-initializes through dragMode (+0x100). Gesture processing transitions inactive0 to pending1 at60fa164. Capture helper stores capturing2 at609f44c. Movement distinguishes pending/capturing from direct3. External preset refresh checks nonzero dragMode before deferring or applying.",
+      "limits": "Exact direct3 assignment, complete end/cancel reset path, and input gesture event enum labels remain unresolved. Do not infer them from case names."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "conclusion": "No direct named UIKit feedback call was identified in the retained VM commit/drain windows. Gesture path toggles view state at60fa37c..39c and60fe5bc..5d4, but these state changes alone do not establish haptic type or trigger. No broader haptic scan was performed."
+  },
+  "implementation_guidance": {
+    "evidence_level": "independent_design_advice_derived_from_static_order",
+    "items": [
+      "Keep preview selection separate from committed owner configuration.",
+      "Represent pending model-title and footer actions distinctly; preserve their opposite ordering around deferred commit.",
+      "Consume deferred flags before invoking external callbacks.",
+      "Compare live owner selection with picker initial selection before applying a delayed result.",
+      "Expose finish Boolean neutrally until input-event semantics are proven; never implement false as unconditional rollback.",
+      "Test unchanged selection, live-provider drift, nil optional identities, repeated finalize, model-title ordering and footer ordering."
+    ]
+  },
+  "unresolved_next_minimal_actions": [
+    {
+      "question": "Identify actual cancellation/end semantic input labels",
+      "entry": "0x60fa010 and xrefs to0x60fe63c/0x60fe644/0x6111fe4",
+      "reason": "Finish Boolean is proven, user-facing labels are not."
+    },
+    {
+      "question": "Complete dragMode reset and direct case",
+      "entry": "VM+0x100 writes around609fxxx gesture state helpers",
+      "reason": "Bounded transition observations do not prove full gesture state machine."
+    },
+    {
+      "question": "Name609e920 predicate",
+      "entry": "presentationStyle getter609a914 and609b920",
+      "reason": "Deferred/immediate selection exact visual mode is partial."
+    }
+  ],
+  "evidence_files": [
+    "ios-remote-v528-slider-action-metadata.json",
+    "ios-remote-v528-slider-dismiss-cleanup.asm",
+    "ios-remote-v528-slider-dismiss-cleanup.json",
+    "ios-remote-v528-slider-drag-state.asm",
+    "ios-remote-v528-slider-elevated-types.json",
+    "ios-remote-v528-slider-end-helpers.asm",
+    "ios-remote-v528-slider-exact-metadata.json",
+    "ios-remote-v528-slider-finish-xrefs.json",
+    "ios-remote-v528-slider-gesture.asm",
+    "ios-remote-v528-slider-interaction-callers.asm",
+    "ios-remote-v528-slider-interaction-xrefs.json",
+    "ios-remote-v528-slider-modifier-types.json",
+    "ios-remote-v528-slider-picker-body-witness.asm",
+    "ios-remote-v528-slider-picker-body-witness.json",
+    "ios-remote-v528-slider-picker-view-witness.json",
+    "ios-remote-v528-slider-presentation-body.asm",
+    "ios-remote-v528-slider-presentation-body.json",
+    "ios-remote-v528-slider-presentation-metadata.json",
+    "ios-remote-v528-slider-presentation-wrapper-tail.asm",
+    "ios-remote-v528-slider-presentation-wrapper-tail.json",
+    "ios-remote-v528-slider-presentation-wrapper.asm",
+    "ios-remote-v528-slider-presentation-wrapper.json",
+    "ios-remote-v528-slider-presented-builders.asm",
+    "ios-remote-v528-slider-presented-builders.json",
+    "ios-remote-v528-slider-selection-commit-calls.json",
+    "ios-remote-v528-slider-selection-commit.asm",
+    "ios-remote-v528-slider-source-callback.asm",
+    "ios-remote-v528-slider-source-callback.json",
+    "ios-remote-v528-slider-source-default-config.asm",
+    "ios-remote-v528-slider-source-default-config.json",
+    "ios-remote-v528-slider-source-geometry-body.asm",
+    "ios-remote-v528-slider-source-geometry-body.json",
+    "ios-remote-v528-slider-source-geometry-metadata.json",
+    "ios-remote-v528-slider-source-geometry-witness.json",
+    "ios-remote-v528-slider-source-registration.asm",
+    "ios-remote-v528-slider-source-registration.json",
+    "ios-remote-v528-slider-source-update.asm",
+    "ios-remote-v528-slider-source-update.json",
+    "ios-remote-v528-slider-style-current-frame.asm",
+    "ios-remote-v528-slider-style-current-frame.json",
+    "ios-remote-v528-slider-style-expanded-frame.asm",
+    "ios-remote-v528-slider-style-expanded-frame.json",
+    "ios-remote-v528-slider-style-expanded-height.asm",
+    "ios-remote-v528-slider-style-expanded-height.json",
+    "ios-remote-v528-slider-style-fill-color.asm",
+    "ios-remote-v528-slider-style-fill-color.json",
+    "ios-remote-v528-slider-style-fill-width.asm",
+    "ios-remote-v528-slider-style-fill-width.json",
+    "ios-remote-v528-slider-style-header-binding.asm",
+    "ios-remote-v528-slider-style-header-binding.json",
+    "ios-remote-v528-slider-style-header-body.asm",
+    "ios-remote-v528-slider-style-header-body.json",
+    "ios-remote-v528-slider-style-header-content.asm",
+    "ios-remote-v528-slider-style-header-content.json",
+    "ios-remote-v528-slider-style-header-witness.asm",
+    "ios-remote-v528-slider-style-header-witness.json",
+    "ios-remote-v528-slider-style-metadata.json",
+    "ios-remote-v528-slider-style-rail-content.asm",
+    "ios-remote-v528-slider-style-rail-content.json",
+    "ios-remote-v528-slider-style-rail-height.asm",
+    "ios-remote-v528-slider-style-rail-height.json",
+    "ios-remote-v528-slider-style-rail-inner.asm",
+    "ios-remote-v528-slider-style-rail-inner.json",
+    "ios-remote-v528-slider-style-thumb-width.asm",
+    "ios-remote-v528-slider-style-thumb-width.json",
+    "ios-remote-v528-slider-style-thumb.asm",
+    "ios-remote-v528-slider-style-thumb.json",
+    "ios-remote-v528-slider-style-ticks.asm",
+    "ios-remote-v528-slider-style-ticks.json",
+    "ios-remote-v528-slider-style-types.json",
+    "ios-remote-v528-slider-style-view-body.asm",
+    "ios-remote-v528-slider-style-view-body.json",
+    "ios-remote-v528-slider-style-view-content.asm",
+    "ios-remote-v528-slider-style-view-content.json",
+    "ios-remote-v528-slider-style-view-witness.asm",
+    "ios-remote-v528-slider-style-view-witness.json",
+    "ios-remote-v528-slider-style-witnesses.json",
+    "ios-remote-v528-slider-vm-calls.json",
+    "ios-remote-v528-slider-vm.asm",
+    "ios-remote-v528-preset-offsets.json",
+    "ios-remote-v526-model-options-findings.json",
+    "ios-remote-v527-slider-lifecycle-supplement.json"
+  ]
+}

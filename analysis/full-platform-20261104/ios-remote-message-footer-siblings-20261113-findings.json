@@ -1,0 +1,523 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "date": "2026-11-13",
+  "scope": "Remote HistoryFragment completed reply footer sibling admission, timestamp, and labels; three bounded candidate groups; static only",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "official_artifact_observations": [
+    {
+      "id": "FOOTSIB-01",
+      "conclusion": "The actual footer sibling order is optional CopyButton, positive-feedback AsyncButton, negative-feedback Button, fork-thread AsyncButton, HookStatsButton, ResponseTimestamp. This comes from the native HistoryFragment tail, not desktop or reference screenshots.",
+      "source": [
+        "existing fully decoded native tail record0x7e11da8",
+        "HistoryFragment descriptor0x95acb58; fieldrecords0x9a37818 positiveFeedback,0x9a37824 negativeFeedback,0x9a37830 forkThread; metadata offsets0x9c/0xa0/0xa4",
+        "0x1a342e4..0x1a344a8 positive callback optional gate",
+        "0x1a34594..0x1a34628 negative callback optional gate",
+        "0x1a34634..0x1a34790 fork callback optional gate"
+      ],
+      "limits": [
+        "Each action requires its own supplied callback. A completed turn does not prove these optional capabilities are present.",
+        "Positive/fork async dispatch, pending/error/result navigation are not fully closed here. No service feedback/fork behavior claimed."
+      ]
+    },
+    {
+      "id": "FOOTSIB-02",
+      "conclusion": "The completed-turn outer admission is turnState rawtag2. showsFooterActions gates interactive actions and hook stats; timestamp is independently admitted by responseCompletedAt being present after those action branches merge.",
+      "source": [
+        "0x1a341e8..0x1a341fc turnState raw2 check; nonmatching returns",
+        "0x1a3420c..0x1a34224 showsFooterActions read",
+        "false path0x1a342bc→0x1a344a8→0x1a344b8→0x1a344bc→0x1a34790",
+        "0x1a3479c cbz showsFooterActions→0x1a347f4 skips HookStats",
+        "0x1a34804 reads metadata+0xf4 responseCompletedAt;0x1a34818 Optional tag check;0x1a3482c copies date into optional Timestamp",
+        "metadata record0x9a37920 responseCompletedAt(index57),0x9a3792c hookStats(index58)"
+      ],
+      "limits": [
+        "ABI raw2 is not a wire status name or serialized service ordinal.",
+        "responseCompletedAt must be supplied by the completion owner; creating Date() during View.body would invent completion time.",
+        "No requirement that responseCopyText exist for timestamp; no requirement showsFooterActions=true."
+      ]
+    },
+    {
+      "id": "FOOTSIB-03",
+      "conclusion": "The footer HStack uses vertical center alignment and explicit spacing12. Its outer wrapper is leading aligned; full outer padding amount remains unresolved.",
+      "source": [
+        "actual layout closure0x1a34aa0",
+        "0x1a34ae4 SwiftUI.VerticalAlignment.center",
+        "0x1a34ae8 mov doublebits0x4028000000000000=12.0",
+        "0x1a34aec→0x4ddac8 stores alignment/spacing and zero optional discriminator",
+        "0x1a34b20 SwiftUI.Alignment.leading; native tail tree contains HStack<SubviewsCollection> + PaddingLayout + FlexFrameLayout"
+      ],
+      "limits": [
+        "No arbitrary gap or fixed overall footer height added.",
+        "The padding edge getter/argument registers pass shared helpers; exact edge amount not claimed from adjacent constants."
+      ]
+    },
+    {
+      "id": "FOOTSIB-04",
+      "conclusion": "The original timestamp uses an every-minute TimelineView with stable completedAt, and a separate text view taking completedAt, now, calendar, locale and timeZone.",
+      "source": [
+        "CodexRemoteResponseTimestamp descriptor0x95adc60 conformance0x7e1a628 body0x1a08dd0→0x1a08b44",
+        "0x1a08b84 EveryMinuteTimelineSchedule metadata /0x1a08be8 init /0x1a08ce4 TimelineView.init",
+        "Timeline contentclosure0x1ced918→0x1a832fc generic view construction",
+        "actual CodexRemoteResponseTimestampText descriptor0x95afbcc conformance0x7e21a48 body0x1a09498→0x1a08dd4",
+        "text fields completedAt/now/_calendar/_locale/_timeZone"
+      ],
+      "limits": [
+        "0x1a832fc is a generic construction helper; it must not be mislabeled as the TimestampText body.",
+        "Timeline wall clock refresh does not replace or mutate the completion event timestamp."
+      ]
+    },
+    {
+      "id": "FOOTSIB-05",
+      "conclusion": "Timestamp text uses the original caption semantic font and ChatGPT/text/secondary. It carries a more complete localized accessibility label.",
+      "source": [
+        "0x1a0932c→0x74e27b8→0x74e27a4→0x74e27e8;importslot0xaad3900=SwiftUI.Font.TextStyle.caption",
+        "0x1a09358→0x74ee310→literal0x8a51bc0 ChatGPT/text/secondary",
+        "0x1a09118 day(defaultDigits),0x1a09150 month(wide),0x1a09184 year(defaultDigits),0x1a091b8/1c8 hour(defaultDigits,amPM.abbreviated),0x1a0920c minute(defaultDigits),0x1a09260 Date.formatted for full accessibility date",
+        "0x1a0938c literal0x88bdd90 codex_remote_response_completed_at;0x88bddc0 default Response completed at ;0x1a09464 accessibilityLabel"
+      ],
+      "limits": [
+        "Shared semantic font resolver is used; no fixed pixel size or forced font weight inferred.",
+        "Locale controls output order, digits and AM/PM; do not hard-code HH:mm or an English date string."
+      ]
+    },
+    {
+      "id": "FOOTSIB-06",
+      "conclusion": "Visible timestamp formatting is a dedicated CodexRemoteMessageTimestampFormatStyle with calendar-relative branches, rather than a constant time format.",
+      "source": [
+        "formatstyle descriptor0x95b13ac conformance0x7e24ee4",
+        "format witness0x1a0a470→0x1a0949c",
+        "0x1a09858..0x1a098b4 builds hour(defaultDigits,amPM.abbreviated)+minute(defaultDigits)",
+        "0x1a098d0 importslot0xaac95e0=Calendar.Component.day;0x1a09914 isDate(equalTo:toGranularity:)",
+        "same-day true branch0x1a0992c..0x1a09944 uses current base time format",
+        "otherwise0x1a09950 abbreviatedMonth/0x1a0997c defaultDigitsDay added",
+        "0x1a099ac importslot0xaac95f8=Calendar.Component.year;0x1a099d8 compares year",
+        "different-year0x1a09ae4..0x1a09afc adds year(defaultDigits)",
+        "same-year0x1a09a3c/4c startOfDay,0x1a09a5c dateComponents,0x1a09a84 day;0x1a09aa0..aac checks nonnil day distance1..6; weekday branch0x1a09b48..0x1a09b60"
+      ],
+      "limits": [
+        "Exact weekday symbol chosen by helper0x11a7620 and final replacement/reset of date components has not been fully proven. Preserve this exact breakpoint; do not present a partial formatter as fully equivalent.",
+        "No new branch was inferred from user screenshots."
+      ]
+    },
+    {
+      "id": "FOOTSIB-07",
+      "conclusion": "Positive/negative feedback and fork original glyph/label consumers are present, with selected-positive glyph switching.",
+      "source": [
+        "positive label0x1c209f0→0x75d7bb8: Good response",
+        "0x1c20a10 reads metadata+0xa8=isPositiveFeedbackSelected; helper0x2c60c0 compares bool1; true→0x74fbff8→literal0x8a57610 OpenAI/Symbols/thumb-up-fill;false→0x74fc094→0x8a57660 OpenAI/Symbols/thumb-up",
+        "negative0x1a345b0→0x75d7bd8: Bad response;0x1a345b8→0x74fbf58→0x8a575c0 OpenAI/Symbols/thumb-down",
+        "fork label0x1a34a68→0x74f3ef4→0x8a539b0 OpenAI/Symbols/arrow-branch",
+        "positive async identityprefix0x88b3140 positive-feedback- plus supplied identifier;fork async identity inline fork-thread- plus supplied identifier",
+        "positive submitting binding metadata+0xac at0x1a34360..70;fork binding metadata+0xb0 at0x1a34684..94"
+      ],
+      "limits": [
+        "Fork title helper0x2417fec needs its own enum representation proven; do not infer title from neighboring speed strings in helper.",
+        "Good response/Bad response are source-owned localizable default strings; full localized resource-key lookup not closed here.",
+        "No callback identity/payload service schema reconstructed; callbacks remain optional front-end contracts."
+      ]
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "observation": "No explicit sensoryFeedback/haptic invocation proved in actual footer/timestamp/feedback-label/fork-label selected callsites. Generic callbacks and system control behavior remain separate. Do not add claimed-official copy/feedback/fork haptics by name.",
+    "general_gate": "This scope does not establish the app General haptic preference consumer; parent owns that separate evidence."
+  },
+  "can_restore_now": [
+    "Compose the already recovered footer copy control and optional timestamp in source center/spacing12 HStack; keep original per-action optionals.",
+    "Supply responseCompletedAt from deterministic completion events and persist with turn identity, independently of copy text and showsFooterActions.",
+    "Use caption semantic font, original secondary text resource, every-minute refresh and full localized completion-date accessibility label.",
+    "Keep positive/negative/fork interfaces optional; default unavailable until their providers and async outcome handling are implemented."
+  ],
+  "precise_unknowns": [
+    "Visible timestamp final weekday formatting/reset behavior at0x1a09b48→0x11a7620 and its format-style mutation; do not claim full formatter parity.",
+    "Footer outer padding amount/edge and upstream showsFooterActions projection.",
+    "Positive/fork asynchronous result/error semantics and fork navigation destination.",
+    "Full feedback localization resource-key lookup; original default strings/glyph consumers established.",
+    "Explicit action haptic consumer and General preference gate not proven by this bounded pass."
+  ],
+  "validation": {
+    "official_app_run": false,
+    "product_changes": false,
+    "build_or_device": false,
+    "network": false,
+    "candidate_groups": 3,
+    "stop_reason": "Completed bounded parent/admission, timestamp, sibling labels/actions candidates; no further expansion."
+  },
+  "reused_evidence": [
+    "analysis/full-platform-20261104/ios-remote-message-footer-20261113-findings.json",
+    "analysis/full-platform-20261104/ios-remote-message-footer-20261113-tail.json",
+    "analysis/full-platform-20261104/ios-remote-message-footer-20261113-bindings.json"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/feedback-label-registerhelpers.asm",
+      "sha256": "a1b17dac0ff00a886644ed0de45bcca231dedec34e6ce4414fab04ce9e860655"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/feedback-label-registerhelpers.json",
+      "sha256": "521574c481f098b39b74ad7b76bbe8a9b1b93fc0f47f83991fa5341d6e68078c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/feedback-labels.asm",
+      "sha256": "b23580d9066c6fc3b73475d0ec4450809723a876009dba33dd0be4407786a70b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/feedback-labels.json",
+      "sha256": "72ee8e842ecd48705c56481fe85d9185e368d09f4f2e2c02a7afee44333d3f8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/feedback-localization-core.asm",
+      "sha256": "191be12da209daef0cf8ae09b5525fbfd9d7a1fd4c5c61309da3ad5862bedd74"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/feedback-localization-core.json",
+      "sha256": "08d1a5629edcd0a5f0d236ea033afaabe125fc9d7b31059f4a7b4674dad0c1d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/feedback-localization.asm",
+      "sha256": "d07cea700fbfe844e35bfa250464960ff3215d0b7f444cf9f120c9b2b5791b98"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/feedback-localization.json",
+      "sha256": "805d93ed1d533f880416ab3618d959299963e11d0d4e40567a5c4bdb6621363c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-constructor.asm",
+      "sha256": "7ced9da420b59bd0f4b15e10ca6927cd03b2ec0dd1c9481f616e7e92a6c2afd1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-constructor.json",
+      "sha256": "7df0b7a9fb240a343ca919dab19accfba1106bc185f86acbcd773f8f605ec62b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-hstack-helper.asm",
+      "sha256": "2ca532de5a6dc892ea39bc3a0beff5b196df0b27bcbf0d270f7ec54a81ff2ab5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-hstack-helper.json",
+      "sha256": "70d692f5be1c8437f3fe12c88bdc20200cab46e301cc67cab1a4c43b1ca5945b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-hstack-layout.asm",
+      "sha256": "a0aa8905e25585881455b1813caa8b491110b3d9cf1794eae21d0497dc25a722"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-hstack-layout.json",
+      "sha256": "11a502304d4c6ae5c82df04ec7917ce7f8f3b79dd6f8909ca992a750c0eb3ff5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-hstack-spacing-store.asm",
+      "sha256": "8ce7ea47da5c5d778e4812f4a40ed6790d79c69a7b889cb87dd52521a2ecebda"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-hstack-spacing-store.json",
+      "sha256": "3959a1adb5985617eea1cafc80b8854da1bbe419e40195ef30a0c88c45c7c3aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-label-callbacks.asm",
+      "sha256": "3865dde327a86c901cfd6183d35550be5ebd87380d685b6f5c4efbf6654b8def"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/footer-label-callbacks.json",
+      "sha256": "fe7c531cb1d2d439b8653ed5d03279897f64c7c53f1b40a23cea837072a6cbbf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-label.asm",
+      "sha256": "ea7f20dac8a6adecbe3bc1b38cd91cbf3f6772279ef8ce4a7fa9182f04e87ebe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-label.json",
+      "sha256": "dc8ca9b9fc7a14dc5dcc9306244dce608ec9bd3a389955536391f0f795b6bca2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-resource.asm",
+      "sha256": "9b0dd98c77f4de92a9bd93ac2a8ba5117d044764f85cbcc5843f1adefc5e83b7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-resource.json",
+      "sha256": "26c045982b8130d03a8625b96d6117f133ec7ee2c94bc4ed3fc702f6db003c03"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-title-selector.asm",
+      "sha256": "9391ee10b80e5b18d681be8ccc2d8ab8fd61b6f814da1ceae897b1479a9ed9f9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-title-selector.json",
+      "sha256": "67ae6849e1ebffadf34fa5564ae274dc8d688f24e95bc72f586ea8f16ea7e6b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-title.asm",
+      "sha256": "c8ac44eca4efb0c8161dfd77e470d2bbfb23ead959b1f610b0eb251ea91cee3a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-title.json",
+      "sha256": "5bd9af9739d7423a508f87a84a2e5e9135755fbc7bf2782586326786a101d8e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-title3.asm",
+      "sha256": "dc39a6e8717c0672dcf881cb463b5bb6be9e13311f6014a3d132e4080bd909f9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fork-title3.json",
+      "sha256": "3822cf5107dfeced1334b78554919987d1128e5b655197874fc316f24b94220d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/fragment-fields.json",
+      "sha256": "e9220a0d377616fe8b827166fd61a6a9db05f5a667ca231560087b1d4dbb946d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/negative-action-thunk.asm",
+      "sha256": "8b36ba3bb093d457c5e877174403d98211146f63319ee764d37dd60832abb090"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/negative-action-thunk.json",
+      "sha256": "e369a3edbf2d25981d4eac5bb8128d746a48b69b52cad58bd3738d9ca0a87230"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/negative-glyph.asm",
+      "sha256": "f10138c9aafc3cc14a87964171d159cc9ec865d9e46077a9a696b06ebd813972"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/negative-glyph.json",
+      "sha256": "192be462c20de25f09b830ce976290e0cad1289926db385f6485dc42ebf8c83a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/negative-invoke.asm",
+      "sha256": "ed3cf4399f6929061226fb69da0ca90e7b1fd94721a28fa92aa5222ebb009ffd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/negative-invoke.json",
+      "sha256": "736caddc1b5587715e61420dca0c42bb01e873d2329ab70318ff1b73023d652f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/negative-label.asm",
+      "sha256": "72418ce423f4eb000b3406c9a8bf6dd5c4b956109adf99573ffd8cffd09027a2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/negative-label.json",
+      "sha256": "e020fda1fde28c70beab41eadbb3c39f57808bad4c312377ac2fe30e5ae03925"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/positive-glyphs.asm",
+      "sha256": "47079c997c58eff96252c7c706bd9006a1a78a8a2758ecad128fff49e57d4d25"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/positive-glyphs.json",
+      "sha256": "f59337b29b384ddd757314e708ba8bf6e051ec27a57772283f511f26023441b2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/positive-label.asm",
+      "sha256": "3facb5c17a99ebae753f79aad5f6dbd6224141b4603ab4ea381502ca9c39c6e1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/positive-label.json",
+      "sha256": "ef91a891c71b1cc1a0fd4b5022163f8d3bf059a063b7193c0965bca5351e4a83"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/resources.json",
+      "sha256": "5a04673a63739650e10854a3e8e9c906bb9fbf29e2cc7f45ad92cb0a965432a2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/shared-label-wrapper.asm",
+      "sha256": "fae10c1640a11538eaeb5aab20044e67c8fd433ad03b8f04f259ea642521967a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/shared-label-wrapper.json",
+      "sha256": "4d7bb290c59183ebb6887926a0463028e6df45ee7e7bc9f43bc286b43796d7f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/tail-layout-parent.asm",
+      "sha256": "638b7e8c8c8ba7f55b227a617524934e54eef9313e492c90bd8826f65459f8d9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/tail-layout-parent.json",
+      "sha256": "8e75199dc9e0b5a4f98d38eb3fe5d5b40c29dc279bed211f90e77e4e4d044aed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-calendar-granularities.json",
+      "sha256": "8a6f0a08b2573418db25247303995f81be64ab71333251bfa4479f7fbb526b3b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-closures.asm",
+      "sha256": "0da5c119123d67f95bc058af544e278b4b7b98a6895679103c3c6ba386d425ab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-closures.json",
+      "sha256": "1d06c4d69c8ea6f225e7b02fee6e2f387419893256435031c0520e931bbccc4d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-color.asm",
+      "sha256": "b06a48bec8eee56876613724ac6d1655f71067f45b3f2e8fb54daf9c6af22306"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-color.json",
+      "sha256": "2142083ab73c1eea0be7ae51f7fe8b772051a8da1e536106ce731dcb756ec9a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-constructor-helper.asm",
+      "sha256": "abaae5559fe9dabee05d26e8c852463176be9f2adf734138c6063e14e41691c8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-constructor-helper.json",
+      "sha256": "e1a17b34f35c940918258038f3fe1f75d4f547fb9af9f0c572feb3e1f6e2a5d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-content-metadata.json",
+      "sha256": "4da0dc4cccf95091fa31c4b45ff2de8b7e7f3621d33a8947998332a26c1ae3de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-content.asm",
+      "sha256": "bf5a11f4fdfc58f554d819789de53aeaeb253bcd96b8ded744fe59327b4bcd0a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-content.json",
+      "sha256": "5c1132124459c36c0b4dbe60ea3233155a917723957a59607548d19cdab5e186"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-date-dynamic.asm",
+      "sha256": "95115c8250c35fcf4fa14207baa6f443e0d141e99b1c6eef676a6fa341643470"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-date-dynamic.json",
+      "sha256": "a97c627c1421efc3bf3b6c39bd3faf7e8253ce671685018b77704f88409a966f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-date-format-helper.asm",
+      "sha256": "ce1337de38cd93b8504c4c0cc0580072546bdb1c1ff48a26bbe8a97d39d6a7b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-date-format-helper.json",
+      "sha256": "94ebe5c16a4ca418a73ba3bc762487e9da204b501782da8b7ab13d8e72b3eaf3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-font-bindings.json",
+      "sha256": "a226382fa3e88db3659384b0cf7b0b3cce3c26c38f6aa21cc254895db7138ed4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-font-producer.asm",
+      "sha256": "d45dd6dcd7c773048d94b39374f46f5a830ce1642ec86908083f96d1391cd225"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-font-producer.json",
+      "sha256": "f11a4982c96e37894e9689e536cf55f75e9f2e3be6c2ee1705c4dc83f0b2a0e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-font-scale.asm",
+      "sha256": "9e05a63222580a77cf0d8205c38cb0f090d8b42689ebaa23409489d9f14ae697"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-font-scale.json",
+      "sha256": "2e372635093214fc00c769ea08e8ec64b35875c4e867473f69fd0d379d8956fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-font.asm",
+      "sha256": "efda7d5f04398c525ab4a12dbdf6c97ab430dce70228b85518cbabf79b8a50f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-font.json",
+      "sha256": "f28db2c185766cc7e0bc97f38d0a265be30494d587a2724ac3dc04a8c52bf392"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-format-dispatch.asm",
+      "sha256": "29d53a87716bd489cb6f129f37773a5720293a444e9308e57b025b00e0791bc2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-format-dispatch.json",
+      "sha256": "5eb4a0664c5572acca0c2ff33327cda9aab246ae81696c30be058123f40fffa1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-format-end.asm",
+      "sha256": "ab9368bca2943f03e02ef96abbbed9e7e5f6c8e7fc1cf0564173f340f2fc72dc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-format-end.json",
+      "sha256": "5c75baa39e2c1bc0b3a6b21cd277e665b0fe5b1db352ad5283dc2be4248c2f4e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-format-implementation.asm",
+      "sha256": "dcba651700abcc4a67b896255a9588c3ceb5cbe4d847c7701085104a0781aa4c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-format-implementation.json",
+      "sha256": "ab74d178bafc0c6270b1f62864c3e36c4a7e2a8ec8af155fa6394a78142d8e75"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-format-witness.json",
+      "sha256": "bb72a2be6f003b44c49c6905e5cfc39de38e16fb1aa8d269c48541c75e76ccc7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-implementation.asm",
+      "sha256": "9214a312a21fbb1d6bca45ba24410bba12298bf18ebcf73cbd5e5f051bd0b5ca"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-implementation.json",
+      "sha256": "e0f998f21221e0880926554f5984683563a85979d4e038be80212dcc03f3b0b9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-label.asm",
+      "sha256": "6bf456c149d63360f72d01283b47ed7f6927b13d151997521923b6c4ccdcb982"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-label.json",
+      "sha256": "7688130bd11825b79b186d18e3f3d687a1bcd2ea5c4ae1da745a6e15c425736d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-metadata.json",
+      "sha256": "ce4f32d43d8e3e630ca7a2b23e7f6c8a2b3e1231c2c6a06fe44c468ba5761898"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-symbol-helper.asm",
+      "sha256": "290c8baf49a07f0f1f29f9ecb6af6c71a301d85af87093b2fc743f9c2a24a659"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-symbol-helper.json",
+      "sha256": "2cddb243b79844da5a0b0cf031b558964bc1fa4d01d7e5a42ea974f9b2380128"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-text-body-type.json",
+      "sha256": "527f983ab2290033b12b27e29e89fa5e13c166fbad48ac74cfa8e3e8759c3d3c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-text-body.asm",
+      "sha256": "3646a209876c41e914c42a7d0ed370a85d7b842634922a57b957b6471cbd4924"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-text-body.json",
+      "sha256": "f0561fe694065142e825da7476a901f5ccca6b915b4260d6c42a563d24854809"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-text-implementation.asm",
+      "sha256": "8a1257a4da717c744514fa7db2043ab4d8a6cb3dc77b7358f503c978c4f58ffa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-text-implementation.json",
+      "sha256": "efce51ed5fc99980a7f8f95af63b27e95637b804b0b1d391a0567d3bcd46dbb6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-text-metadata.json",
+      "sha256": "b83624cc1b154fc89ccb1753c0b6ddd34fa2a24f7b122babb6b008e11bc6f53f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-text-witness.json",
+      "sha256": "4978872ccd8efae4a34b9571b2128804c8e661010bb366c65ea027fd6299d163"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-witness-thunk.asm",
+      "sha256": "dcd89197d86ed84928129cd06513e9b0f520b59c3063555bbc9747bb329c57e2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-witness-thunk.json",
+      "sha256": "1c52d503f3b72f0dafcb3ed71c74762558926e3d2d89d4d21d2f9497c43ada4b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-message-footer-siblings-20261113/timestamp-witness.json",
+      "sha256": "27c7de8c7b53d6ebd66f37bc427d41e705f7a881ccd3277de7c1e637521d190d"
+    }
+  ]
+}

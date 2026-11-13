@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "module": 9,
+  "date": "2026-11-13",
+  "platform": "iOS",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "delivery": "Core per-package frontend loops retained; current clear gaps restored and archived; no official full-parity claim",
+  "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json",
+  "source_reports": [
+    "ios-sidebar-feature-catalog-third-20261113-findings.json",
+    "ios-customize-third-20261113-findings.json",
+    "ios-sidebar-plugins-projects-third-20261113-findings.json",
+    "ios-sidebar-plugins-projects-third-20261113-refresh-followup.json",
+    "ios-sidebar-features-third-text-20261113.json"
+  ],
+  "changes": [
+    {
+      "component": "Plugin cached refresh error",
+      "authority": "Artifact SourceContent e843d8 actual section item test plus loadState raw4=failure proven by metadata/VWT, e83dcc..de8 RecoverableError",
+      "implemented": "Retain rows, original cached-refresh title/message and existing scoped retry; empty initial-load failure stays its explicit adapter",
+      "limits": "Exact recoverable-error style/retry placement and complete original refresh sender/pull carrier unknown"
+    },
+    {
+      "component": "Personality save completion",
+      "authority": "AssistantSettings VM actual layout/index3 _isSaving +58, index4 _didSave +59, getter/keypath plus observer4260f6c/4284e2c -> injected DismissActionReference ->753e438",
+      "implemented": "Accepted successful save returns to current owner; failure keeps the editor/draft for retry; repeated successful saves each return",
+      "independent_safeguards": "Accepted receipt/session validation, presentation token and preserving edits made during pending save are independent host policy, not conditions recovered from original observer"
+    },
+    {
+      "component": "Expanded More projection",
+      "authority": "controller1298614 -> packed bit40 ->12755f4 ->12753c4 x4 ->12754f4 skips More; catalograw18 mapped to proved HistoryItem.seeMoreFeatures",
+      "implemented": "Existing removal after expand now source-supported; corrected source attribution without changing working behavior",
+      "limits": "Current prefix, registered order, collapsed predicate, labels/icons, animation and reading anchor remain independent adapters"
+    },
+    {
+      "component": "Deterministic refresh scenario",
+      "authority": "Independent synthetic frontend service adapter",
+      "implemented": "Explicit --plugins-refresh-failure-fixture injects initial load then one same-query refresh failure and successful retry; no production polling/network or new user controls"
+    }
+  ],
+  "packages": [
+    {
+      "id": "scheduled",
+      "name": "定时任务",
+      "implemented": [
+        "列表/筛选/分页、编辑、暂停恢复/删除、合成创建与任务会话入口、草稿/失败返回"
+      ],
+      "not_implemented": [
+        "完整原编写器父级与配置、全部周期条件、真实调度和服务"
+      ],
+      "prior_report": null,
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed r1,62.886s; eight roots/return and original Chat draft only; no repeat of every per-package operation",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeScheduledTasks.swift",
+          "sha256": "e271e63bb073f20448a293b6afb7522fe5bb415fd9d3d171d748470c47827b4f",
+          "matches_previous": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendScheduledTasks.swift",
+          "sha256": "a6de0c1c9b13389b305424b10e5d0100d3acfe582747f213d187f45fde7ea938",
+          "matches_previous": true
+        }
+      ],
+      "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json"
+    },
+    {
+      "id": "library",
+      "name": "资料空间",
+      "implemented": [
+        "legacy目录、搜索/分页、子目录/空错重试、文件预览与返回"
+      ],
+      "not_implemented": [
+        "原账号分支/网格/管理动作、原浏览控件/完整行资源与服务"
+      ],
+      "prior_report": "ios-native-library-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed r1,62.886s; eight roots/return and original Chat draft only; no repeat of every per-package operation",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeFileLibrary.swift",
+          "sha256": "10724489d2c9dd4a8548f5d44b28722ba3205acae5f1dd1969056a2e55941194",
+          "matches_previous": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendFileLibrary.swift",
+          "sha256": "23fa820be27b03cb5dd9621f36070c6de9ee2f5d5b9714ff84da49677c29cc4f",
+          "matches_previous": true
+        }
+      ],
+      "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json"
+    },
+    {
+      "id": "customize",
+      "name": "自定义",
+      "implemented": [
+        "四项显式目录、原多彩图标、个性/颜色/指令编辑、保存/失败/放弃/重开",
+        "Successful accepted save returns to current presentation owner; failure stays; newer edits are preserved by independent guard"
+      ],
+      "not_implemented": [
+        "完整目录与traits、原权限赋值/缩放环境、原edge-pop策略、跨进程偏好及服务"
+      ],
+      "prior_report": "ios-native-customize-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed r1,62.886s; eight roots/return and original Chat draft only; no repeat of every per-package operation",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeCustomizePage.swift",
+          "sha256": "4ff604b163a8fc3e977f11d6bc873d1f3aca87176a0c294a9f269c6aa1d6b144",
+          "matches_previous": false
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendAssistantCustomization.swift",
+          "sha256": "92500c43a04b98bd67301b349d2cf0c709dad75ab81d36e8e5fece88e6aebf0a",
+          "matches_previous": true
+        }
+      ],
+      "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json",
+      "current_changed_behavior_test": "testNativeCustomizeCoreChinese passed r2,68.655s; failed-save retry, repeated successful return, discard/reopen and unavailable child/back"
+    },
+    {
+      "id": "plugins",
+      "name": "插件",
+      "implemented": [
+        "目录/已安装横列、来源/搜索/分页、详情/操作入口与不可用返回",
+        "Cached-list refresh failure retains rows and uses the original title/message; deterministic first-refresh failure fixture"
+      ],
+      "not_implemented": [
+        "原详情/管理菜单/图标加载/完整搜索宿主、安装授权和设置owner服务",
+        "Original refresh gesture/refreshable/bounce carrier; current ScrollView modifier alone did not produce a verified pull refresh"
+      ],
+      "prior_report": "ios-native-plugins-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed r1,62.886s; eight roots/return and original Chat draft only; no repeat of every per-package operation",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativePluginsPage.swift",
+          "sha256": "1bd04c28feff9bd21f6414d921871828e39669f4102259ff64d58171f404201f",
+          "matches_previous": false
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendPlugins.swift",
+          "sha256": "cd2dae5fc51daf46005efe2f14b5ac9be45485d5eaa159d8a9e277783ac0af9a",
+          "matches_previous": false
+        }
+      ],
+      "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json",
+      "current_changed_behavior_test": "testNativePluginsCachedRefreshChinese passed r2,22.906s; explicit service-event fixture, cached rows/title/message/retry/detail/back"
+    },
+    {
+      "id": "projects",
+      "name": "项目",
+      "implemented": [
+        "列表/创建编辑/删除置顶、详情与项目Chat桥接、独立草稿及返回"
+      ],
+      "not_implemented": [
+        "原ProjectConversationScreen宿主/完整菜单、项目文件与成员权限UI、edge-pop及服务",
+        "Original optional per-conversation Remove context action: consumer/icon proved, final callback/confirmation owner still missing; no unconditional synthetic action added"
+      ],
+      "prior_report": "ios-native-projects-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed r1,62.886s; eight roots/return and original Chat draft only; no repeat of every per-package operation",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeProjectsPage.swift",
+          "sha256": "912bb24974d91f406a4f44476f898005757b524935b041f7189482217ff648f5",
+          "matches_previous": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendProjects.swift",
+          "sha256": "573a0096ceb7318f1459b526d784c1c2595f32d897aea8c9bef9f4d2a050e3ec",
+          "matches_previous": true
+        }
+      ],
+      "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json"
+    },
+    {
+      "id": "sites",
+      "name": "站点",
+      "implemented": [
+        "列表/搜索/分页/筛选、离线网页预览/失败重试/返回、动作入口"
+      ],
+      "not_implemented": [
+        "编辑发布等完整前端表单、原菜单/路由/鉴权WK与服务、跨进程导航"
+      ],
+      "prior_report": "ios-native-sites-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed r1,62.886s; eight roots/return and original Chat draft only; no repeat of every per-package operation",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeSitesPage.swift",
+          "sha256": "0f6e639deeb4c9923a923ee0fb3f8405c89742ca9a04053b28df8ac6aae59c5b",
+          "matches_previous": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendSites.swift",
+          "sha256": "4bb1142d1fd1190360e739fda1d78573d7a9dea044773c8e582123979c420dc0",
+          "matches_previous": true
+        }
+      ],
+      "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json"
+    },
+    {
+      "id": "images",
+      "name": "图片",
+      "implemented": [
+        "发现分组/提示词草稿、图库/分页/空错、独立缩放预览/复制及动作入口"
+      ],
+      "not_implemented": [
+        "原Lightbox/编辑画布/首页composer、完整媒体/管理分支、生成与存储服务"
+      ],
+      "prior_report": "ios-native-images-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed r1,62.886s; eight roots/return and original Chat draft only; no repeat of every per-package operation",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativeImagesPage.swift",
+          "sha256": "c88a1ed2c8a3a452852bd8894647e6cbc1ce24255fd486faf1a6853065c4146a",
+          "matches_previous": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendImages.swift",
+          "sha256": "ea35050b8155884f317e43a8d05b9a20a7d94ff91896e6be648c99742f778717",
+          "matches_previous": true
+        }
+      ],
+      "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json"
+    },
+    {
+      "id": "personal-assistant",
+      "name": "助手",
+      "implemented": [
+        "原生介绍/连接/创建前端、错误/重试/容量不足及返回"
+      ],
+      "not_implemented": [
+        "已存在助手的Tibro/Calpico消息与输入宿主、模板DI/原动画/账号目录与服务"
+      ],
+      "prior_report": "ios-native-personal-assistant-module-20261112.json",
+      "current_navigation_test": "testSidebarFeatureCatalogRoutesChinese passed r1,62.886s; eight roots/return and original Chat draft only; no repeat of every per-package operation",
+      "sources": [
+        {
+          "path": "implementation/ios/Sources/NativePersonalAssistantPage.swift",
+          "sha256": "8aba8731c8e8ffc38aea2f09d87e0662e7afab28bc5316d54ffab3fc25658712",
+          "matches_previous": true
+        },
+        {
+          "path": "implementation/ios/Sources/FrontendPersonalAssistant.swift",
+          "sha256": "96867826e3deb7db8744614349081728401f814a6d590acd922e2bd0c7777882",
+          "matches_previous": true
+        }
+      ],
+      "previous_snapshot": "ios-sidebar-features-parent-current-20261113.json"
+    }
+  ],
+  "remaining_shared_boundaries": [
+    "Original full ordered feature catalog/account capabilities, page-specific shared navigation/material/menus and exact visible rows",
+    "Existing assistant Tibro/Calpico room and input host not replaced with ordinary Chat",
+    "Original project conversation host/menu callback, image Lightbox/editor/composer, Sites complete editing/publication forms, Library grid/management and full customization traits",
+    "Original Customize edge-pop/dirty-edit gesture arbitration and insets; original per-page haptic callers",
+    "Actual services remain outside frontend scope; frontend capability entries stay honest about unavailable service"
+  ],
+  "verification": {
+    "pure": [
+      {
+        "command": "sh implementation/ios/test-official-text.sh",
+        "result": "passed",
+        "log": "/tmp/rea-sidebar-features-third-text-20261113-r2.log"
+      },
+      {
+        "command": "swiftc FrontendPlugins.swift Tests/Plugins/main.swift; run binary",
+        "result": "passed",
+        "scope": "Account/workspace/query isolation, cached rows, pages/details/action identities and stale receipts"
+      },
+      {
+        "command": "swiftc FrontendAssistantCustomization.swift Tests/AssistantCustomization/main.swift; run binary",
+        "result": "passed",
+        "scope": "Saved baseline, edits during pending, failure/retry, discard-session fencing"
+      },
+      {
+        "result": "passed",
+        "scope": "Temporary actual synthetic-service initial/refresh-failure/retry diagnostic",
+        "log": "/tmp/rea-plugins-refresh-probe-20261113-r2.log"
+      }
+    ],
+    "ui": [
+      {
+        "test": "testSidebarFeatureCatalogRoutesChinese",
+        "result": "passed",
+        "run": "r1",
+        "seconds": 62.886,
+        "scope": "Eight native feature roots/return; inline expansion and original Chat draft restored"
+      },
+      {
+        "test": "testNativeCustomizeCoreChinese",
+        "result": "passed",
+        "run": "r2",
+        "seconds": 68.655,
+        "scope": "Load/save failure retry; exact full edited text, repeated success returns, discard/reopen, unavailable child/back"
+      },
+      {
+        "test": "testNativePluginsCachedRefreshChinese",
+        "result": "passed",
+        "run": "r2",
+        "seconds": 22.906,
+        "scope": "Injected service refresh, retained old rows, original title/message, retry clears warning, detail/back/sidebar"
+      }
+    ],
+    "first_run_failures": {
+      "customize": "Test assumed reopened UITextView caret at end; actual inserted prefix. Both successful-save returns occurred. Corrected full-text replacement, no product caret change.",
+      "plugins": "SwipeDown on current ScrollView did not invoke .refreshable; AX retained loaded rows and service probe passed. Original gesture owner unclosed, explicit deterministic service-event injection used; no invented button/bounce/gesture recovery claimed.",
+      "temporary_probe": "Initial diagnostic placed await in precondition autoclosure, compile rejected; corrected await outside assertion, no product behavior change."
+    },
+    "bundles": [
+      "ios-sidebar-features-third-20261113-r1.xcresult",
+      "ios-sidebar-features-third-20261113-r2.xcresult"
+    ],
+    "images_viewed": [
+      "ios-sidebar-features-third-20261113-r2-attachments/02D84214-1127-4604-9A4C-130C9EDCB4BE.png",
+      "ios-sidebar-features-third-20261113-r2-attachments/36BA54D7-9E19-4969-BB2B-FF66A40F8375.png",
+      "ios-sidebar-features-third-20261113-ready.png"
+    ],
+    "not_rerun": "Unchanged operations across other six packages, English/dark/large type/wide screen and physical haptics; previous evidence remains historical only",
+    "browser_documentation": "https://developer.apple.com/documentation/swiftui/view/refreshable(action:).md explains environment RefreshAction; does not establish original artifact carrier"
+  },
+  "haptics": {
+    "current_report": "ios-gesture-haptics-settings-current-20261113-r2.json",
+    "all_consumer_hashes_match": true,
+    "new_direct_caller_proven": false,
+    "new_feedback_added": false,
+    "settings_route": "Settings > General > Haptic feedback",
+    "physical_feedback_verified": false,
+    "unknown": "Original feature-specific longpress/swipe/refresh/save feedback and OS implicit feedback"
+  },
+  "runtime": {
+    "preview": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "profile": "C26D062B-6886-4D6E-A746-0E0C67EBACA6",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--plugins-refresh-failure-fixture",
+        "--chat-state-profile=C26D062B-6886-4D6E-A746-0E0C67EBACA6",
+        "--remote-draft-profile=C26D062B-6886-4D6E-A746-0E0C67EBACA6",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light"
+      ],
+      "manifest_sha256": "3a3532497d53d7b46d0cda950185e6bad0cec07c36b202e952b671482420ef36",
+      "executable_sha256": "efc7458df0151386295698ef0f0f0f36fe45af097469f665e6f4f649ae1f7505",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 39702",
+      "pid": 39702,
+      "left_running": true,
+      "ui_launch_observed": true,
+      "fixture": "Core plus explicit query-scoped one-refresh failure injection; no production polling or network",
+      "left_surface": "Ordinary Chat > sidebar > expand More, all eight feature-package entries visible",
+      "screenshot": "ios-sidebar-features-third-20261113-ready.png"
+    },
+    "simulator_install_hash_match": true,
+    "signed_device_build": "succeeded",
+    "device_build_log": "/tmp/rea-sidebar-features-third-20261113-device-build.log",
+    "codesign_strict": "passed",
+    "signed_executable_sha256": "7907494746467b6840633b60b9e5e82498d66ce11942a47e1ab24146d11f9aec",
+    "physical_device": {
+      "name": "iPhone Air",
+      "paired": true,
+      "tunnel": "unavailable",
+      "ddi_services_available": false,
+      "installed_this_batch": false
+    },
+    "preview_left_running": true
+  },
+  "cross_platform": "Android remains paused. Independent Foundation contracts/test vectors may be reused as proposed frontend boundaries; native iOS page evidence does not prove Android layout, gestures or component equivalence.",
+  "changed_source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeCustomizePage.swift",
+      "sha256": "4ff604b163a8fc3e977f11d6bc873d1f3aca87176a0c294a9f269c6aa1d6b144"
+    },
+    {
+      "path": "implementation/ios/Sources/NativePluginsPage.swift",
+      "sha256": "1bd04c28feff9bd21f6414d921871828e39669f4102259ff64d58171f404201f"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendPlugins.swift",
+      "sha256": "cd2dae5fc51daf46005efe2f14b5ac9be45485d5eaa159d8a9e277783ac0af9a"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "4b51f60c1fdec6ba57c08ca1edf51f23cfba798c06c0230ad4ae85021ca01e7e"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "0fc5843e8d0bdd2ed73fb600171ce485435d6040261756e96b79434ed63ed2ca"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "9a434d01799742554cb6a6f04f19cacc00a66b4aab32d4b56b7ec780cdac8dc4"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "dd8b0f9609f34d02969758bbf6eb787ec9f047357e901b0d734b16b3a4dcb3da"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "7026864d305cadeb579ee22864b80a4b69d408bbb836a70f030c8a1540e5661d"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "f2386409c468ece89ac7fecce755e29c1ab4c5fa2fd3a8357d6678a1e8e154ff"
+    }
+  ],
+  "user_review_path": "Running expanded sidebar > any feature > sidebar return. Customize > Personality > edit/save auto-return. Plugins auto-injects one refresh failure in this explicit preview > Retry > detail/back.",
+  "next_module": 10,
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  }
+}

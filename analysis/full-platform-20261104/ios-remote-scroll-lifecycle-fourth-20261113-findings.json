@@ -1,0 +1,248 @@
+{
+  "schema": "rea-scoped-native-findings-v1",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Initial bottom protection / layout restoration lifecycle and actual Remote injection; not an algorithm inferred from state names.",
+  "candidate_groups": [
+    {
+      "group": 1,
+      "decision": "Recover actual ObjC/generic controller viewWillAppear and viewDidLayoutSubviews consumers and named state gates.",
+      "stop": "Stop at direct implementation boundaries; only follow helpers used by these two callbacks."
+    },
+    {
+      "group": 2,
+      "decision": "If lifecycle callbacks expose restoration action, resolve initializer and one explicit clear/release path for enforce/animation flags.",
+      "stop": "Stop after naming action/guards/release or precise dynamic unknown; no whole scroll framework tracing."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "actual-lifecycle-owner",
+      "status": "verified",
+      "chain": [
+        "3f886a4 calls objc_msgSendSuper2 with selector viewWillAppear: ataca7bc0 (3f886c8..d8). ObjC-to-Swift thunk3f887d0→3f886a4.",
+        "3f892cc calls super viewDidLayoutSubviews usingaca7bb0 then calls3f892f8. ObjC thunk3f894d8→3f892cc."
+      ],
+      "evidence": [
+        "lifecycle-selector-refs.json",
+        "controller-lifecycle-window.asm"
+      ]
+    },
+    {
+      "id": "first-appearance-admission",
+      "status": "partial",
+      "chain": [
+        "3f886dc..f4 reads metadata+60=hasAdjustedScrollPositionOnViewWillAppear and skips all adjustment if already true.",
+        "3f88704..1c reads anchor metadata+f0 and admits raw1 only; another anchor still proceeds to set once flag.",
+        "3f88720..48 reads enableReconfigurePinnedDistanceRestoration metadata+90. true calls3f8915c(1,completion3f94370,context); false calls3f85428 with completion3f9364c and rawfalse/rawfalse plus duration constant7ce2040.",
+        "3f887b0..b4 sets hasAdjustedScrollPositionOnViewWillAppear=true after dispatch, independent of callback completion.",
+        "Completion3f94370→3f9364c→3f93650 weak-loads controller and sets metadata+148=hasScrolledToBottomOnAppearanceIfNecessary true if controller still exists (3f9367c..84)."
+      ],
+      "limits": [
+        "No default Remote first-appearance bottom behavior follows without its actual anchor/policy input.",
+        "The meaning of raw anchor1 is corroborated by bottom restore calls, not inferred from enum declaration order alone.",
+        "Full old-path3f85428 motion/completion scheduling and every cancellation path not expanded."
+      ],
+      "evidence": [
+        "controller-lifecycle-window.asm",
+        "appearance-completion.asm",
+        "will-appear-restore-closures.asm",
+        "appearance-restorer.asm"
+      ]
+    },
+    {
+      "id": "reconfigure-first-appearance-action",
+      "status": "verified-call-sequence-partial-policy",
+      "chain": [
+        "3f8915c with enabled1 calls3f8922c, then3f896ac(1,nil,nil), then3f8922c again, finally tailcalls3f896ac(1,originalCompletion,originalContext).",
+        "3f8922c resolves collection, calls performBatchUpdates:completion: then layoutIfNeeded (import selector targets7c6db40/7c69e40).",
+        "3f896ac admits actual offset write only if enabled, hasUserInteractedSincePinnedBottomRestoreBegan(metadata+1d0)==false, and3f88a9c controller/scroll interaction predicate false. It calls3f88564 with bottom-edge function760d8fc andd0=0 via3f94e58; optional completion runs regardless of whether offset was written."
+      ],
+      "limits": [
+        "3f88a9c uses app state, view/window and collection interaction queries; exact all admission variants remain partial.",
+        "A completion flag therefore means the appearance pass finished, not unconditional proof the viewport moved."
+      ],
+      "evidence": [
+        "appearance-restorer.asm",
+        "restore-bottom-action.asm",
+        "layout-end-helpers.asm",
+        "shape-boundary.asm",
+        "lifecycle-imports.json"
+      ]
+    },
+    {
+      "id": "layout-restore-guards",
+      "status": "partial",
+      "chain": [
+        "3f892f8 starts by rejecting isScrollingToBottom(metadata+1a8).",
+        "Both restoration alternatives require enableReconfigurePinnedDistanceRestoration(+90)==1 and anchor(+f0)==1. Helper36968ac is exactly byte==1 comparison.",
+        "First alternative also computes available viewport height from bounds/adjustedInset, requires positive available height, contentSize.height<=availableHeight+1, interaction predicate3f88a9c==false, isAnimatingPinnedBottomRestore(+1b8)==false, hasUserInteractedSincePinnedBottomRestoreBegan(+1d0)==false, and distance helper3f8853c<-1 before bottom-edge write.",
+        "Fallback requires distance helper3f88480>threshold via26b880, same interaction/isAnimating/userInteracted guards; animateEnforcedPinnedBottomRestoration(+110) plus applicationStateObserver branch chooses3f89500 asynchronous restore versus3f896ac direct restore."
+      ],
+      "limits": [
+        "This callback does not simply read enforcePinnedBottomDuringLayout and force bottom each layout.",
+        "Exact application-state raw branch, distance-threshold helper and async animation generation completion are not all closed; this is not a fully portable original algorithm."
+      ],
+      "evidence": [
+        "controller-lifecycle-window.asm",
+        "layout-fixed-comparison-helper.asm",
+        "layout-routing-helpers.asm",
+        "layout-end-helpers.asm",
+        "shape-boundary.asm"
+      ]
+    },
+    {
+      "id": "pin-protection-release",
+      "status": "verified-local-transition",
+      "chain": [
+        "3f8c7ec setter reads and writes metadata+108=enforcePinnedBottomDuringLayout. It calls3f88cc0 only on true→false.",
+        "3f8c858 setter mirrors the same behavior for metadata+110=animateEnforcedPinnedBottomRestoration.",
+        "3f88cc0 returns unchanged only when not currently animating and pendingAnimatedPinnedBottomRestoreGeneration is nil. Otherwise it increments pinnedBottomRestoreGeneration(+1c0), calls3f88d3c to invalidate active scrollToBottom generation if needed, sets pendingAnimatedPinnedBottomRestoreGeneration(+1c8)=nil, clears isAnimatingPinnedBottomRestore(+1b8).",
+        "3f8c8c4 tests enforcePinnedBottomDuringLayout==1 and delegates to3f88d74 with current bottom distance; this predicate separately checks +90, interaction admission and userInteracted."
+      ],
+      "limits": [
+        "These setters invalidate restoration; they do not themselves perform bottom scrolling.",
+        "Upstream true/false owner transitions of these flags and async completion/generation compare remain unclosed; no release timeout or drag reset algorithm is invented."
+      ],
+      "evidence": [
+        "initial-and-pin-setters.asm",
+        "controller-appearance.asm",
+        "selected-field-types.json"
+      ]
+    },
+    {
+      "id": "initializer-not-remote-policy",
+      "status": "verified-initial-values-partial-position-case",
+      "chain": [
+        "3f87570 initializes anchor metadata+f0 raw1.",
+        "3f87584..9c initializes initialLayoutPosition(+100) through actual generic InitialLayoutPosition metadata3f90840; exact enum payload initialization not named here.",
+        "3f875a4/a8 initializes enforcePinnedBottomDuringLayout false.3f875b0/b4 initializes animateEnforcedPinnedBottomRestoration false.3f875f0/f4 initializes hasScrolledToBottomOnAppearanceIfNecessary false."
+      ],
+      "limits": [
+        "Generic initializer defaults do not override explicit Remote update/configuration.",
+        "InitialLayoutPosition contains item/bottom cases in metadata, but no case tag mapping is inferred merely from names."
+      ],
+      "evidence": [
+        "initializer.asm",
+        "selected-field-types.json",
+        "initial-layout-position-type.asm"
+      ]
+    },
+    {
+      "id": "remote-anchor-is-computed",
+      "status": "partial-actual-consumer-proved",
+      "chain": [
+        "Actual Remote collection builder is1a4c198 (1a4c164 separately computes top inset), reused original thread-collection-builder.asm.",
+        "1a4c35c..380: if metadata+30 double>0 and getter1a48334 true, stores anchor raw0 into temporary+24.",
+        "Otherwise1a4c384..3b0: getter1a47fc8 OR1a48018 true selects raw1; else getter1a4c97c chooses lowbit.",
+        "1a4c558 loads this raw value asw2;1a4c56c calls3f84474; constructor3f844e0 writesw2 to ChatCollectionView anchor+30.",
+        "1a4c438 calls1a4c97c a second time;1a4c53c passes!result asw6 to3f84474, which writes animateBottomPinnedUpdates+8a. Remote always passesw5=1 to enableReconfigurePinnedDistanceRestoration+89 (1a4c564).",
+        "1a4c97c computes mismatch/existence between VM witness+120 return and a State stored at metadata+8c; that state identity and getter semantics not named here."
+      ],
+      "limits": [
+        "The three state getter meanings and initialLayoutPosition actual Remote update producer remain unclosed. No justified blanket bottom default for unrecorded tasks.",
+        "Do not map arbitrary frontend fixture running/connected state to these unclosed source predicates.",
+        "ChatCollectionView explicit anchor is proven; complete propagation through updateUIViewController and source Remote initialLayoutPosition/enforce policy is not fully resolved."
+      ],
+      "evidence": [
+        "remote-anchor-flags.asm",
+        "remote-anchor-other-flags.asm",
+        "remote-pinned-config.asm",
+        "collection-view-metadata.json",
+        "representable-update.asm"
+      ],
+      "reused": [
+        "ios-remote-transcript-parent-20261113/thread-collection-builder.asm",
+        "ios-remote-scroll-bottom-20261112-collection-init.asm",
+        "ios-remote-v605-blur-collection-make.asm"
+      ]
+    }
+  ],
+  "current_host": {
+    "classification": "independent-implementation-observation",
+    "file": "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift",
+    "observations": [
+      "RecoveredRemoteTranscriptController.viewDidLayoutSubviews calls its own restoreReadingPosition; it stores/restores identity-scoped reading offsets.",
+      "This is an independent adapter, not a reuse of original private controller or proof of its initialization policy."
+    ],
+    "safe_decision": "Keep recorded task reading-position restoration and do not introduce unconditional initial bottom scrolling based on generic initializer or flag names."
+  },
+  "can_restore_now": [
+    "Separate one-time appearance admission from completion; preserve clear account/task ownership and never mark viewport movement merely because completion ran.",
+    "If introducing explicit independent pinned-restoration controls, true→false must invalidate pending generation/animation state rather than issue another bottom scroll. Label this independent unless corresponding Remote owner input is provided."
+  ],
+  "not_safe_to_integrate_as_original": [
+    "Unconditional bottom on every new task/viewWillAppear/layout.",
+    "A fixed timer releasing first-bottom protection.",
+    "Mapping raw Remote state getters or generic enum names to guessed task states.",
+    "Copying partial viewDidLayout math while omitting interaction, generation, app-state and animation guards."
+  ],
+  "unknowns": [
+    {
+      "id": "remote-state-owners",
+      "breakpoint": "1a48334 metadata+a0;1a47fc8 metadata+78;1a48018 metadata+7c;1a4c97c metadata+8c State and VM witness+120 under actual Transcript content owner.",
+      "next_minimum": "Resolve concrete caller metadata/field vector and state producers before selecting a Remote default anchor."
+    },
+    {
+      "id": "initial-layout-position-remote-owner",
+      "breakpoint": "Generic setter3f8c768→3f8c648 and InitialLayoutPosition9635f70; actual Remote representable update injection not closed.",
+      "next_minimum": "Bind one Remote-specific caller to original setter/case producer."
+    },
+    {
+      "id": "full-release-policy",
+      "breakpoint": "3f89500 asyncrestore→3f94190 completion and upstream calls to3f8c7ec/3f8c858.",
+      "next_minimum": "One explicit owner-to-release transition plus stale generation completion guard; do not infer from field names."
+    }
+  ],
+  "haptics": {
+    "new_explicit_caller_proved": false,
+    "conclusion": "No explicit haptic caller in the bounded lifecycle/restore/setter windows; no new feedback claimed."
+  },
+  "stop_condition": "Two adaptive candidate groups reached. Complete Remote policy and async animation guards not closed; stopped without expanding the full scrolling subsystem.",
+  "validation": {
+    "static_only": true,
+    "product_edits": false,
+    "old_evidence_edits": false,
+    "builds": false,
+    "devices": false,
+    "network": false,
+    "official_app_execution": false
+  },
+  "raw_directory": "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw",
+  "evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/restore-bottom-action.asm": "7d7ffb6da8b22eef7fc041ee9424a0023f5a4d759cd49db7edbb8340c8e8de42",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/collection-view-metadata.json": "4a32138bb323ff532cf68cd219e56370804465f8d5f61093c3015a6f55ec954a",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/controller-lifecycle-window.asm": "d9d8da73ac342b14c31f6485ea26923dfa6d86341242e520bd4de94913e0fab7",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/remote-anchor-other-flags.asm": "3c48c2a5f8bc3ce3b1c6745d917b278f06ad393fda432b7244149d9143af6851",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/selected-field-types.json": "3173520ab0ea394cc0e3a2cb91838277e4d0c34d61cf38f2cfac2edda2f7bb09",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/layout-end-helpers.asm": "387cb606e97df729f7a4b0144b558a8ad99de0460c6930fc33f5ab771fe917de",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/scope.json": "1a994dc064455c9ca141c1bddf57de5ff58f33e234eb3b9e032ae69bedc9f6c8",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/initial-and-pin-setters.asm": "2554c038a13cb9fc2881c4cccdf28474334a7f185e17b7d8cfb259ed8089db0d",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/appearance-completion.asm": "5af840a5fc0d2b8100639a0ac9842d30caa20da39fe3933a25f3784db6e429c8",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/controller-small-helpers.asm": "5c3eaf5cadb96f4f98cf40fd28c6d671f31a4294d6678500e15f16ef9f8e6e17",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/appearance-restorer.asm": "a97e827c291d31e538308b561e4a20fb3c5af6b126689ef052333823dc231cd2",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/initial-layout-position-type.asm": "278c365e946de3773b3fec4d6b7afc6043750400712c7ef2f178a54a555a695d",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/layout-routing-helpers.asm": "2176388924acc67bbb46d9d08a09a9637b6e857db6849acf51a19801feb6c35c",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/remote-builder-prologue.asm": "737c7ae4f279f2ea24da6fb51593180a59994951b23e31d1958814c80f693764",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/will-appear-restore-closures.asm": "9354ab4c20839d6bc4e105e9162745956f9261c5f482d7d81af87008f9a480dc",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/initializer.asm": "6d8fec72d65ca596f3b6b8f0609b1c5ecdf4369d6edc8709dcb4cae34a5f4a15",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/controller-source-helpers.asm": "e30118631ba3a882630fc46755108ae8261d6b923a5a24ae7e4026636584e4a1",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/controller-appearance.asm": "7acde686ae7a654c715a42e3972d88bba18612c7013b7024537c0971b879c3bd",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/lifecycle-imports.json": "1ff96efa3bca0761f61fd3ab1a3b3c529cf02245c4dbb473f7501ece10d2851d",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/remote-state-helpers.asm": "89f7360ae169bfa18212c76079f717e87747e50599fac375e9093419c20af00c",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/remote-anchor-flags.asm": "41ea7d5796c1c045d979046483ae684885a816e34aa1bd8ebce039b9a52c8edf",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/shape-boundary.asm": "ef50986692a5f1e58551b405449c84df0b345623c83056e3608055dfe274f470",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/layout-fixed-comparison-helper.asm": "7e63b00b86beeaebbe7825d38e352e94c135b62fdd5f3779f27a9349539bc692",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/controller-post-layout-window.asm": "f44cd07fa795da314a714758fd83bf7bd4c5b1d6fae924539db9e7f1adbb18df",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/remote-builder-metadata-helper.asm": "becc3445ef5fa4fccf940b654e12477a6bf88e36f1c054747d457eecd4b0efb3",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/representable-update.asm": "f7570ab2e44c80683514ee8145641ef2878bb055dff16de85027007dcb08762c",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/remote-view-metadata.json": "052d8637f1951cf7c880d87f817abaf0e91350875b6c3d1f36dc70bffe1c0531",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/remote-pinned-config.asm": "cb65507e86258c9321e9315325fbce3b2e6ce459f5ff5fb0deff3b59d802e09d",
+    "analysis/full-platform-20261104/ios-remote-scroll-lifecycle-fourth-20261113-raw/lifecycle-selector-refs.json": "c49d987b044db9a15c36243a4cf640d4cde6e310871ea6c5751660aa24148efe"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "batch": "v503",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "scope": "Cloud items in ordinary nonpriority byWorkspaces list; no network or original application execution",
+  "confirmed": [
+    {
+      "offsets": [
+        "0x955f1d8",
+        "0x955f200",
+        "0x95d1538"
+      ],
+      "conclusion": "TaskSection.Item.thread carries CodexThread. CodexThread has the single payload case remote(CodexRemoteTaskListItem). Cloud is the payload-free third case of CodexRemoteHostIdentity, alongside slingshot and ssh. There is no separate cloud case at CodexThread layer."
+    },
+    {
+      "offsets": [
+        "0x955ef74",
+        "0x955eecc",
+        "0x95d1798"
+      ],
+      "conclusion": "Item.ID.thread carries CodexThread.ID.remote, which carries CodexRemoteTaskListItem.ID. The latter stores hostIdentity and threadRepositoryID. Keep both source scope and thread repository identity in reconstruction. Equality/hash implementation was not separately inspected here."
+    },
+    {
+      "offsets": [
+        "0x337494",
+        "0x3374c8..0x3374e8",
+        "0x337744..0x33775c"
+      ],
+      "conclusion": "Within byWorkspaces fallback descriptor projection, .thread with canonical cloud host representation (tag2 plus zero payload) branches to constructor337210 before workingDirectoryPath access3374ec. Nil or arbitrary directory therefore cannot route cloud through NoWorkspace/workspace within this fallback."
+    },
+    {
+      "offsets": [
+        "0x337210..0x3372d8"
+      ],
+      "conclusion": "That constructor produces remoteProjectlessThreads global Recents ID, localized Recents title, nil subtitle/icon, headerkind2 and new-thread target scoped to supplied host with nil directory/project. Existing v498/v499 descriptor bindings apply. Cloud host enters this same constructor."
+    },
+    {
+      "offsets": [
+        "0x33250c..0x332548"
+      ],
+      "conclusion": "Large producer32ff44 calls3372f4 only after earlier optional-result/grouper processing. This is a fallback membership conclusion, not proof every cloud task is always in Recents."
+    },
+    {
+      "offsets": [
+        "0x955fd50",
+        "0x9560160",
+        "0x3a3ca8..0x3a3ddc"
+      ],
+      "conclusion": "CodexTaskRowV2 stores the unified CodexThread. Its content has a priority/nonpriority layout split; nonpriority invokes compact content3a51c0. No additional cloud-vs-device case exists in CodexThread itself. Entire outer dispatcher reachability for cloud was not newly replayed."
+    }
+  ],
+  "minimal_integration": {
+    "evidence_reconstruction": "Synthetic ordinary unpinned, unassigned cloud item may use HostIdentity.cloud and the existing unified thread row plus fallback Recents projection. Keep new-thread target .cloud, nil project/directory. Retain existing Recents kind2 styling and square-and-pencil optional callback. Do not synthesize a Cloud parent folder/header from the filter-chip label.",
+    "suggested_tests": [
+      "cloud + nil directory -> fallback Recents, not NoWorkspace",
+      "cloud + arbitrary nonempty directory -> fallback Recents",
+      "cloud and SSH with same threadRepositoryID retain distinct source identity",
+      "cloud-only filter uses same row content; no device label injected",
+      "new button preserves cloud target and returns to list"
+    ],
+    "test_authority": "Independent proposed fixture cases. Not executed or integrated by this evidence task."
+  },
+  "unresolved_gates": [
+    {
+      "boundary": "0x32ff44 producer, prior to0x332548; optional-result branch0x33250c..0x332518 and host arbitration0x3327f8/0x332978",
+      "unknown": "Exact precedence of pinned/project/custom-section and merging mixed-host Recents target. Existing parent producer evidence should be reused; do not generalize fallback to those paths."
+    },
+    {
+      "boundary": "CodexViewModel _isCloudEnabled / _cloudThreadPreferences and CodexTaskListContent.isCloudEnabled/tasksRequestState",
+      "unknown": "Upstream fetched cloud-item collection, account capability gating and empty/error-vs-disabled transitions remain unclosed in this bounded batch."
+    },
+    {
+      "boundary": "new-thread owner0x339ab4 ->0x32b3ac and cloudEnvironmentPickerViewModel",
+      "unknown": "Cloud environment selection prerequisites and destination availability. Host-scoped target construction alone does not prove an environment is available or model creation succeeds."
+    },
+    {
+      "boundary": "0x39e8e4 unified row constructor / callback0x439a1c",
+      "unknown": "Full cloud row interaction owner/capability differences not independently traversed here."
+    }
+  ],
+  "reuse": [
+    "ios-remote-v498-findings.json",
+    "ios-remote-v498-thread-fields.json",
+    "ios-remote-v498-grouping-metadata.json",
+    "ios-remote-v492-row-metadata.json",
+    "ios-remote-v492-integration.json",
+    "ios-remote-v494-findings.json",
+    "ios-remote-v310-empty-rendering.json"
+  ],
+  "validation": {
+    "static": "Metadata and focused instruction ranges checked",
+    "runtime": "not run",
+    "visual": "not accepted",
+    "production_changes": false
+  },
+  "new_evidence": {
+    "ios-remote-v503-cloud-metadata.json": "2928653be4b8acaa46fe46c822a179254f39df546c6e3ad60bbe00468ac9fd12",
+    "ios-remote-v503-cloud-row-constructor-xrefs.json": "a29621472bc80b416d6e8e937321758de42fcacaf3f5290529c841e03c710ebf",
+    "ios-remote-v503-cloud-paths.asm": "edd97a3019f663e9f66916388222927a852c583d56435e4ed97fd30b81c2cb73",
+    "ios-remote-v503-cloud-row-xrefs.json": "43e58d7c98a2ef7a00bc0351a92d300e0a0302a1bf92a9b15d76611019afc948"
+  }
+}

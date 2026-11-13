@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "slice": "v528-slider-style",
+  "status": "partial",
+  "scope": "Official iOS293 shared picker visual assembly only. Static evidence checkpoint. No production or test edits; no official application execution.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "findings": [
+    {
+      "id": "assembly",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "MessageInputSliderThinkingEffortPickerView body witness 60a0324 calls 6097cdc. Its centered content builder 6099d14 assembles VariableBlur, the centered-leading rail ZStack built by 609bdd0, and the header path through 609cdb4. The content is framed to presentationSize and ignores safe area. This is a shared picker implementation whose modelSlider presentation branch is used by the previously traced Remote control.",
+      "sites": [
+        "0x60a0324",
+        "0x6097cdc",
+        "0x6098024",
+        "0x6099d14",
+        "0x6099fa4",
+        "0x609a1d8"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-view-witness.asm",
+        "ios-remote-v528-slider-style-view-body.asm",
+        "ios-remote-v528-slider-style-view-content.asm",
+        "ios-remote-v528-slider-style-types.json"
+      ]
+    },
+    {
+      "id": "expanded-frame",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Expanded rect W=min(max(presentationSize.width-56,0),340), H=72, X=(presentationSize.width-W)/2, Y=max(min(currentSourceRect.midY-36,presentationSize.height-deviceSafeAreaInsets.bottom-72),0). W cap is binary double at 7d19408. Helper 610fd64 writes d3=72. The y safe-area value is the third EdgeInsets return value d2.",
+      "sites": [
+        "0x6099020",
+        "0x6099064",
+        "0x6099084",
+        "0x60990a4",
+        "0x60990d8",
+        "0x60990e4",
+        "0x6099114",
+        "0x610fd64"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-expanded-frame.asm",
+        "ios-remote-v528-slider-style-expanded-height.asm",
+        "ios-remote-v528-slider-style-geometry-helpers.asm"
+      ]
+    },
+    {
+      "id": "source-and-position",
+      "status": "partial",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Current/source rect getter 6099660 prefers optional dismissalSourceFrameInWindow and otherwise resolves VM source layout. Outer content switches between expanded rect and this getter for width, height and midX/midY position. Source width/height must remain dynamic. The exact nil source-layout fallback and coordinate conversion upstream remain bounded unknowns.",
+      "sites": [
+        "0x6099660",
+        "0x6099fc8",
+        "0x6099fd4",
+        "0x609a004",
+        "0x609a20c",
+        "0x609a218",
+        "0x609a21c"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-current-frame.asm",
+        "ios-remote-v528-slider-style-view-content.asm"
+      ]
+    },
+    {
+      "id": "inner-rail",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Expanded inner rail is width max(outerWidth-24,0), height48. Its leading ZStack is clipped by Capsule then padded 12 on all sides. Collapsed padding is zero, height is currentSourceRect.height. Outer rail background opacity consumes showsSliderChrome. The rail background applies additional styleguide wrappers and a color token before this opacity, whose exact glass/material identity has not been resolved.",
+      "sites": [
+        "0x60997b0",
+        "0x60996d4",
+        "0x609c098",
+        "0x609c104",
+        "0x609c15c",
+        "0x609c174",
+        "0x609c1ac"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-thumb-width.asm",
+        "ios-remote-v528-slider-style-rail-height.asm",
+        "ios-remote-v528-slider-style-rail-content.asm"
+      ]
+    },
+    {
+      "id": "thumb-diameter",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Thumb composite receives equal width and height from 6099b90 at609c7a8..609c804. Expanded diameter40. Collapsed diameter=max(min(currentSourceRect.width,currentSourceRect.height),0). Optional inner thinking-effort meter receives 28x28 when expanded, the same dynamic source minimum when collapsed. Thumb background, meter, slider chrome and presentation chrome have separate state fields, so they cannot be replaced by one global visibility flag.",
+      "sites": [
+        "0x6099b90",
+        "0x6099bf0",
+        "0x6113bc4",
+        "0x609c558",
+        "0x609c7a8",
+        "0x609c804"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-thumb-diameter.asm",
+        "ios-remote-v528-slider-style-meter-diameter.asm",
+        "ios-remote-v528-slider-style-min-helper.asm",
+        "ios-remote-v528-slider-style-thumb.asm"
+      ]
+    },
+    {
+      "id": "tick-geometry",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "ForEach content closure60fe678 reaches609dcc8 then609ddc8. Ordinary Circle tick is12x12 expanded and sourceRect.height*0.25 collapsed, from6099c48. A separate preset flag branch uses an Image, with outer20x20 and scaled lockIconSize bounded to40 for its inner dimensions. This is conditional tick content, not six unconditional dots. Ordinary tick y is innerRailHeight/2.",
+      "sites": [
+        "0x609d97c",
+        "0x60fe678",
+        "0x609dcc8",
+        "0x609dd44",
+        "0x609de2c",
+        "0x609df2c",
+        "0x609dfb4",
+        "0x6099c48",
+        "0x609dd88"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-ticks.asm",
+        "ios-remote-v528-slider-style-tick-closure.asm",
+        "ios-remote-v528-slider-style-tick-content.asm",
+        "ios-remote-v528-slider-style-tick-shape.asm",
+        "ios-remote-v528-slider-style-tick-diameter.asm",
+        "ios-remote-v528-slider-style-expanded-state-helper.asm",
+        "ios-remote-v528-slider-style-expanded-state-second-helper.asm"
+      ]
+    },
+    {
+      "id": "tick-position",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "6099abc uses preset index/(count-1) when expanded and count>=2. Tick x = thumbDiameter/2 + inset + index/(count-1)*max(innerWidth-2*(thumbDiameter/2+inset),0). Expanded inset is4. Collapsed or count<2 returns innerWidth/2. Thumb x getter6099824 selects activeDragXInWindow-relative location while dragging, otherwise selected index tick position. Full drag clamp/rubber-band semantics remain owned by lifecycle work.",
+      "sites": [
+        "0x6099abc",
+        "0x6099b14",
+        "0x6099b24",
+        "0x6099b38",
+        "0x6099b64",
+        "0x6099cac",
+        "0x6099824"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-tick-position.asm",
+        "ios-remote-v528-slider-style-tick-inset.asm",
+        "ios-remote-v528-slider-style-inner-width-helper.asm",
+        "ios-remote-v528-slider-style-half-helper.asm",
+        "ios-remote-v528-slider-style-thumb-position.asm"
+      ]
+    },
+    {
+      "id": "fill",
+      "status": "partial",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Leading capsule filled extent is6099738. Expanded extent clamps computed thumb position plus half thumb diameter plus tick inset to at least innerRailHeight and at most innerRailWidth. Collapsed uses innerRailWidth. Fill color609d6d0 checks MessageInputStyle nested modelSliderStyle railColor, then VM tintColor(+70), then an environment style fallback. Exact fallback token and all material environment writers remain unresolved. Fill visibility also depends on showsSliderChrome and609d018.",
+      "sites": [
+        "0x609d85c",
+        "0x609d87c",
+        "0x6099738",
+        "0x609d6d0",
+        "0x609d8b8",
+        "0x609d8d8",
+        "0x6110a98"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-fill-width.asm",
+        "ios-remote-v528-slider-style-fill-color.asm",
+        "ios-remote-v528-slider-style-rail-inner.asm",
+        "ios-remote-v528-slider-style-fill-edge-helper.asm"
+      ]
+    },
+    {
+      "id": "variable-blur",
+      "status": "partial",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Content builder creates actual SwiftUIStyleguide.VariableBlur, radius10, frame width=presentationSize.width and height520, positioned at width/2 and current/expanded source midY. Gradient stop locations are0,.18,.30,.42,.50,.58,.70,.82,1. The state-based opacity is independent of rail opacity, and hit testing is false. Intermediate alpha literals include .12 and .55. Complete gradient colors/direction helper mapping remains unresolved and should not be substituted with a uniform blur claim.",
+      "sites": [
+        "0x6099dc0",
+        "0x6099e8c",
+        "0x6099eac",
+        "0x6099ee4",
+        "0x6099f38",
+        "0x6099f58",
+        "0x6099f74"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-view-content.asm",
+        "ios-remote-v528-slider-style-types.json"
+      ]
+    },
+    {
+      "id": "header",
+      "status": "partial",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Header path609cdb4→609d120 constructs MessageInputModelSliderHeader through the decoded generic tree. Its fields are label,labelLayout,speed,showsReset,fillColor,labelTintColor,actionHandler. Header body6094850 is a centered ZStack with PlainButtonStyle. Parent609d120 reads label/state, forwards fillColor via609d6d0 and another tint via609bad4, and builds the action closure60fdda8. Exact label mapping, inline/effortAboveModel branch, header position/font, reset conditions and callback action remain unresolved here. Do not render a hardcoded screenshot model title.",
+      "sites": [
+        "0x609cdb4",
+        "0x609cf38",
+        "0x609d120",
+        "0x609d3d0",
+        "0x609d3d8",
+        "0x609d434",
+        "0x6094850",
+        "0x6094944"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-header-binding.asm",
+        "ios-remote-v528-slider-style-header-content-builder.asm",
+        "ios-remote-v528-slider-style-header-body.asm",
+        "ios-remote-v528-slider-style-header-content.asm",
+        "ios-remote-v528-slider-style-metadata.json",
+        "ios-remote-v528-slider-style-types.json"
+      ]
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "material",
+      "next_entry": "0x609bdd0..0x609c098; type contexts 0x9756310/0x97562a4; color getter0x74ecd44",
+      "question": "Resolve exact outer rail styleguide wrappers/material and trait-dependent fill. Geometry proof does not establish a glass implementation."
+    },
+    {
+      "id": "header",
+      "next_entry": "0x609a2f8 label producer;0x609d640 header label conversion;0x609bad4 tint;0x6094b10/0x6095340 header text and trailing content",
+      "question": "Map model/effort/speed/reset/title font and offset without screenshot constants."
+    },
+    {
+      "id": "blur-gradient",
+      "next_entry": "0x6112c7c,0x6112c70,0x6112c64,0x6112c4c,0x6112c40,0x6112c34,0x6112c28,0x6112c1c",
+      "question": "Resolve complete gradient colors and UnitPoint helper inputs."
+    },
+    {
+      "id": "thumb-finish",
+      "next_entry": "0x609c2bc..0x609cdb4",
+      "question": "Resolve thumb state branches, circle fill, shadow, meter scale and overlays. Outer diameters are proven independently."
+    },
+    {
+      "id": "tick-lock",
+      "next_entry": "0x609de2c preset+0x72 flag;0x74f850c glyph;0x6113090 tint",
+      "question": "Name locked-tick flag and glyph/color, preserving conditional branch."
+    },
+    {
+      "id": "source-coordinates",
+      "next_entry": "0x6099660→0x6112958/0x6112f88/0x6110abc/0x61139a4",
+      "question": "Finish source-layout conversion and nil fallback in window/presentation space."
+    }
+  ],
+  "implementation_gate": "Geometry is independently usable; full faithful shortcut slider surface remains partial pending header/material/thumb-finish assembly and parent lifecycle gates. No screenshot-derived geometry.",
+  "validation": {
+    "static": "bounded instruction and symbolic-type inspection",
+    "runtime": "not-performed",
+    "visual": "not-accepted",
+    "full_behavior_equivalence": "unknown"
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-current-frame.asm",
+      "sha256": "6a9b5fd3c0aa73ac0b501a289d990f3c07050f7da059cf1ada384c1d3f6e6512"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-current-frame.json",
+      "sha256": "f0474cc48254004eeadf342d8bcb4eb79bc58909204fe548c42dd13f249696f5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-expanded-frame.asm",
+      "sha256": "b6c9fa830d8dc71280f8edce06873dcf4feb76bb0f9530b2ee37fcd8178d147d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-expanded-frame.json",
+      "sha256": "ffbad02777594714f3aa4de3221949b4a51282d25b418697c97df27f4db2b79a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-expanded-height.asm",
+      "sha256": "28c7ffe0e00348bda471f176cd0492d19f8c09dec17382dbbb8c18f2fbe237c7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-expanded-height.json",
+      "sha256": "87a4ab3471dea2a50fce716a94d8daacda06cb1f6ed4f28b6241e80328bacde4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-expanded-state-helper.asm",
+      "sha256": "00f8853e3460d1fb815fbfa1f07a0a3f21a963b855c34bec2555090c9167a11d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-expanded-state-helper.json",
+      "sha256": "8c3856e1995d9059db372843c1c2ea4769ee9ceae737357d54f05a5fa432d7d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-expanded-state-second-helper.asm",
+      "sha256": "c3419adb820da1d4eeebe11cb9c2fa3240a9060ff14cc85ad3531ab9fe6eb2fc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-expanded-state-second-helper.json",
+      "sha256": "6ab6188af42595c9b3620cb71ee0be5d1e5a48e1173f7c5157b9b46390ca51b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-fill-color.asm",
+      "sha256": "f60a60ce41ea76fe3921fe0c9fe3054bcf938821a942457c910ea44ecfa6f7bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-fill-color.json",
+      "sha256": "96bdf2de41ab20899a5c1877d9a8b65777a21a1c09fa1bc42511039f44eb7d1b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-fill-edge-helper.asm",
+      "sha256": "f666aa97e52172218487a18f74743e0fa286bf43900a10dac9b0c67674d5337e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-fill-edge-helper.json",
+      "sha256": "540aaca95a9b640661f9511bfb979769a9e98a29e63fd9edebf47248f4726e1d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-fill-width.asm",
+      "sha256": "d6192eca6ee5e4c001bb7ae71a947bab98cf42a370d7bee3be1937d11db509b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-fill-width.json",
+      "sha256": "ecf0b25881fe734aa0d1b333e2a3b0c86b9a042a4734247e910c76f3a6a180d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-geometry-helpers.asm",
+      "sha256": "a16b63ffe55b8fbf821469b416b01d13a8c7900c1a4b34356cb0f871b318da6c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-geometry-helpers.json",
+      "sha256": "a4258efdf60bcb8cc0004a8463a2a9964618ed0e5e7429af8bdb13c6059b4c3c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-half-helper.asm",
+      "sha256": "de143adbebd8270a71ccad73a4cd93de39bf45dd82ebf7395182b237c0ae3a03"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-half-helper.json",
+      "sha256": "b7026c9fdc049fe28397640bf849407f82fd703f73445dd35722c64edf30a619"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-binding.asm",
+      "sha256": "05b08c7eaf0035ec5f651b99c3ec84caf25dacbb6da26d783afa1e6cb51a7a4c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-binding.json",
+      "sha256": "61262c8381157bbf6217f2ea74bd11a7362dd714a92764408cb56df47e18ac38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-body.asm",
+      "sha256": "060767d3c0f7da8758e951ba01beafe4e7e39e2c82d93ae6f1bc0d4ffa4a790f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-body.json",
+      "sha256": "fc0ac9a11f1c906d38dd50361b7288a18a5a160e93247af596af6ec52ffcf907"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-content-builder.asm",
+      "sha256": "04952c21a7571c7262b2cc7c0320ddbb23d16ec247b1898b891af2272a22a396"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-content-builder.json",
+      "sha256": "e6e6b74149222fb7d67e5b79138784836332dcb98d9e33dcebce3d1bd2dbb169"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-content.asm",
+      "sha256": "d342d8c4234f04200d94785c2918cdbb9beaa519f4a240b1609aa8b88a7dad38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-content.json",
+      "sha256": "d9769ea91d4ec0e345521089493304e2f4e2ed9681cf24c9da71dd1f55697f9d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-witness.asm",
+      "sha256": "5a2e7f099a8524ba15d997c1a1d4517dee6f67bcba90ecb4292efe9140409104"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-witness.json",
+      "sha256": "461a45b3767a1c1a91f466da1fe63bc60cf2a9aba109293aab558a2b71485104"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-inner-width-helper.asm",
+      "sha256": "177bff257421678ad7151cc5b7c90bb7a1e96a7ebe44da734690f96855341689"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-inner-width-helper.json",
+      "sha256": "fb8b15e52a181f9d7770895c12dab3b4500ae5b63f768cd1b20544f0a5cd550a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-metadata.json",
+      "sha256": "2d256bdc3748386ec03702a3f0531f83de44219f080e3f975470b810fa92de6b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-meter-diameter.asm",
+      "sha256": "4a7346f6379808f0d0bc6e4b25ee5c630f0db65a27b4da0b3569bff7aa8ac173"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-meter-diameter.json",
+      "sha256": "b4291b6975f63508dd4cfca3e291cdb9815f312f321327ddf010ef6717a7c1a6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-min-helper.asm",
+      "sha256": "3ca2e18d794b3a2cca833339e46354517f462a88a3bd6790a0bf71a7de020fb3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-min-helper.json",
+      "sha256": "21d5bc08a3f6a748be292f999057bb67740c81a7f1fccf854baecf20cf8a841e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-model-style-test.asm",
+      "sha256": "9871346283df6f0892d8b6b55c79dd622d66e778efddc06773ca631bc87c52ca"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-model-style-test.json",
+      "sha256": "f5ed0470a12677d860ed3ae75ffbf4faef1dd2704ca353af0bc33e56f0362800"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-rail-content.asm",
+      "sha256": "24d5c95ec058d96f57d215dbe4941ab5408acfec7c2f6a62ad4005d3d441a943"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-rail-content.json",
+      "sha256": "be7528cce78405d4fc6332f70cd4ad069889b4525164be14173e3913b1da5346"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-rail-height.asm",
+      "sha256": "7908fbb000f2bdb8d9b6bf383677929da8f86760d5170710cfd5012affe81a77"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-rail-height.json",
+      "sha256": "05d51a802ff24cb2e6fc461d17fdb53614e765ddfccf176cb457fc4f006910a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-rail-inner.asm",
+      "sha256": "80f6bc651a49278efec51d64e6befa02c88ae4da37169d7a322d3894b6daf8ce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-rail-inner.json",
+      "sha256": "9e7883ed5514accd8733db29a6ac7c581d2c0f4224d7cbbda76c0135a7500fab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-thumb-diameter.asm",
+      "sha256": "011c5eb486188d653c952fa26facd426f3ab6246e63efe4f749f22b71e461e27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-thumb-diameter.json",
+      "sha256": "1ca8ef33772baa2426e7ec00baef01c7f064cce95a265e2907b6f31ec7750589"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-thumb-position.asm",
+      "sha256": "66d1309a7ac0f7744209480798d022d447a453c9f79cc6f4ba5e239be3fcb80d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-thumb-position.json",
+      "sha256": "a13d712aa82161f3026427b8a9c621122f4e1edca9d3aa2eb4ab32940d05ed81"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-thumb-width.asm",
+      "sha256": "d54b96b1d98dcdd36f6c073735eee8472a328cae7ba1439f6e7f6aa9c05a2e13"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-thumb-width.json",
+      "sha256": "13049495daced05ad802240baab72122f097cf8708f1300e4e887da87d930bde"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-thumb.asm",
+      "sha256": "c3d819aeee4381996555648c6ef7ee12b7f106223409a5926b9aa32a042e59ed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-thumb.json",
+      "sha256": "a4503643da97ff79fb4c31c8878fce2b43d7867acd559e9adfd576d63fb46249"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-closure.asm",
+      "sha256": "9df220c593df790842a22bee60fdf1eb0ee7b310a0ca119820dbc8c04a82b04c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-closure.json",
+      "sha256": "3938b0273b93b8d01f1de44961ea42f766b14d6910cb353b94373b0622fa78b7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-content.asm",
+      "sha256": "363648b52bc3a7783769900352d6ee8892ccc3195b8c2310450d5251af611e26"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-content.json",
+      "sha256": "015a38b1b92527f0f54535a8343fd1d78e8fcf6960a4109ee632837da64cd14e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-diameter.asm",
+      "sha256": "c0457fa92e1e665093ea0cfe8c9f5fc4fb77bca88ae9caadfd97c3b92662d5e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-diameter.json",
+      "sha256": "3c6be55167cf854fa71fe7aa0728412b774c555858a4d18b34db4422a88d64b2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-inset.asm",
+      "sha256": "49c5ed1a98d379714ee2520391d2054a9fc9db9104db3e112ee3a32649be00a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-inset.json",
+      "sha256": "7ab261be9d6bbe1a4580a2a394995a5fbf59905852828e3c76ff949f371f09ec"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-position.asm",
+      "sha256": "f093bdee898f64debcb4c035942f12bef79cec9f4bc7f54d55051a44aee52e47"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-position.json",
+      "sha256": "b940805b2e64aa19f89b743f16ea4a7d45b8aaeda80fd6d155890cc3e2e64211"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-shape.asm",
+      "sha256": "a87f5d3a17e8f58063c3797c1f8d499bd8d053a4c84427b82308477b9a2ec061"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-tick-shape.json",
+      "sha256": "ec8fa992071f02ced04244449fd7368bdd1f6b8603466dcd5857ceb214c44ba6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-ticks.asm",
+      "sha256": "0577272b343d858854388be70ee9c087d80151b2d101d3ee1c6c7a5cf235b625"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-ticks.json",
+      "sha256": "dbc4b613901f737d1067826fb7b43c990a0c849722765dd04378efa1319668ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-types.json",
+      "sha256": "35ec6da4b8d6a9dd2ad99f5ac358313d828329a68135dd9ec99682af27494639"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-body.asm",
+      "sha256": "30c90f0b0ab19bea9dc0845ac40021c0cc9303e9ba0cd336b5c0c76ab14b1025"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-body.json",
+      "sha256": "de9c955b3e41ad2a19ddbd8d127af2347c48643d64ae7c94f76582883a1502ab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-content.asm",
+      "sha256": "45c37033aa271fd927899032f8cd5d5f80ec70742c74b7339ac08138d82a0b12"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-content.json",
+      "sha256": "68f1f93a59d22e39a68d5b9ebdfdb1054d135fc06b6b433ad951905de7cc9d0a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-witness.asm",
+      "sha256": "6122160a063f8b7185636d40f4336226a97744c748059b99f09021a13228edb9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-witness.json",
+      "sha256": "74fc958b6e5b5fa3fbb993d3b2bb0dfedb762306cbf5566fd66947a2c58d8ef0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-witnesses.json",
+      "sha256": "7b013168c522e3600ee9546d7f66f4218f3f89ee7c3f26737c40624c521fab5a"
+    }
+  ]
+}

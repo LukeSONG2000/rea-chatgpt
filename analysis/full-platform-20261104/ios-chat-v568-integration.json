@@ -1,0 +1,57 @@
+{
+  "batch": 568,
+  "status": "partial",
+  "page": "Chat and Work presentation / offline interaction contract",
+  "evidence": "ios-chat-v568-findings.json",
+  "runtime": "ios-chat-v568-runtime.json",
+  "sourceFiles": [
+    "implementation/ios/Sources/LocalHarness.swift",
+    "implementation/ios/Sources/NativeConversationHost.swift",
+    "implementation/ios/Sources/AppDelegate.swift"
+  ],
+  "validation": {
+    "service": "ios-chat-v568-service-tests.log",
+    "state": "ios-chat-v568-state-tests.log",
+    "ui": [
+      "ios-chat-v568-r1-summary.json",
+      "ios-chat-v568-r2-summary.json"
+    ],
+    "passedDistinctCases": 3,
+    "failedUICases": 0,
+    "scenarios": "Both mode selectors, ordinary Chinese/English input, partial failure, fresh retry, draft preservation, A-B-A, cancel and process restart; original title/sidebar regression",
+    "commandCorrection": "Initial standalone ServiceTests compilation omitted -parse-as-library; corrected invocation passed",
+    "visual": "Core actions usable; provisional message/status layout and English strings remain unaccepted"
+  },
+  "remaining": [
+    {
+      "page": "Chat/Work",
+      "priority": 1,
+      "gap": "Mode selection changes placeholder only; per-conversation mode and service configuration are absent",
+      "next": "Trace official mode owner and connect a separately labeled frontend configuration contract",
+      "acceptance": "A-B-A, new/retry requests and process restart preserve their own selected mode"
+    },
+    {
+      "page": "Chat/Work messages",
+      "priority": 1,
+      "gap": "Provisional user rows, raw status text, excess spacing, incomplete localized presentation and exact official error/actions",
+      "next": "Recover applicable MessageRow branches and display-state consumers",
+      "acceptance": "Core visual/interaction matrix in Chinese/English light/dark"
+    },
+    {
+      "page": "Chat/Work attachments",
+      "priority": 1,
+      "gap": "Complete selection-send-preview-return flow still partial",
+      "next": "Connect resource identity and scoped payload to the existing message/preview contract",
+      "acceptance": "Attachment draft survives cancel/return and appears on accepted synthetic send"
+    },
+    {
+      "page": "Shared platform",
+      "priority": 2,
+      "gap": "Haptic action mapping, notification integration, real device delivery and Android independent page adaptation remain partial",
+      "next": "Inspect concrete call sites alongside the page and validate on the corresponding platform",
+      "acceptance": "Separate dispatch, actual-device and independent Android evidence"
+    }
+  ],
+  "retention": "Fixed .build reused; desktop retention preflight has no stale targets",
+  "nextBatch": "Per-conversation Chat/Work mode and source-backed message presentation"
+}

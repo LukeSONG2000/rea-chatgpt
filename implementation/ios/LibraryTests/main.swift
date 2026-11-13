@@ -13,6 +13,12 @@ try fm.removeItem(at: source)
 let restored = try LocalLibraryStore(base: base.appendingPathComponent("store"), account: "a")
 assert(restored.files == [first, second]); let restoredBytes = try Data(contentsOf: restored.previewURL(id: first.id)); assert(restoredBytes == content)
 let checkedURL = try restored.previewURL(id: first.id)
+try fm.removeItem(at: checkedURL)
+rejected { _ = try restored.previewURL(id: first.id) }
+assert(restored.files == [first, second])
+try content.write(to: checkedURL)
+let recoveredURL = try restored.previewURL(id: first.id)
+assert(recoveredURL == checkedURL)
 try (content + Data([0])).write(to: checkedURL)
 rejected { _ = try restored.previewURL(id: first.id) }
 try fm.removeItem(at: checkedURL)
@@ -55,3 +61,4 @@ print("PASS copied bytes survive source removal/reopen; duplicate names have ind
 print("PASS deletion survives reopen, foreign ID rejected, index-write failure preserves file and in-memory identity")
 
 print("PASS preview metadata rejects changed size and symlink replacement without reading whole content")
+print("PASS missing resource preserves reference and can resolve again after byte restoration")

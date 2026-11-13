@@ -1,0 +1,108 @@
+{
+  "batch": "v550",
+  "time": "2026-11-08T00:15:25.382029+08:00",
+  "status": "partial",
+  "scope": "Remote scoped reading position through task navigation and keyboard changes",
+  "source_findings": "ios-remote-v550-findings.json",
+  "implementation": "Independent native stable-row and row-relative-point recovery. Official restoration algorithm and activation predicates remain unresolved.",
+  "test_rounds": [
+    {
+      "round": "r1",
+      "passed": 1,
+      "failed": 2,
+      "summary": "ios-remote-v550-r1-reading.summary.json"
+    },
+    {
+      "round": "r2",
+      "passed": 4,
+      "failed": 0,
+      "summary": "ios-remote-v550-r2-reading.summary.json"
+    }
+  ],
+  "latest_distinct_ui_cases_passed": 5,
+  "passing_cases": [
+    "ReadingAnchorReturnChinese",
+    "ReadingAnchorReturnEnglishDark",
+    "AttachmentSendReplayChinese",
+    "AttachmentSendReplayEnglishDark",
+    "PendingReplayChinese"
+  ],
+  "foundation": {
+    "status": "passed",
+    "log": "ios-remote-v550-foundation.log"
+  },
+  "typecheck": {
+    "status": "passed_with_existing_warnings",
+    "log": "ios-remote-v550-typecheck.log"
+  },
+  "r1_diagnosis": {
+    "observation": "Two reading tests reached the restored task but required a top banner that the collection had virtualized offscreen. AX captured the correct host/title and rows8 through14.",
+    "correction": "Navigation helper now checks fixed task location and host identity plus collection existence; reading tests independently assert stable row Y within5pt. No product change between r1 and r2.",
+    "evidence": [
+      "ios-remote-v550-r1-captures/6FA48E36-8C64-41F3-8483-33E382745DB4.txt",
+      "ios-remote-v550-r1-captures/671093F9-5A8E-4F05-897A-DF138CD00E6F.txt"
+    ]
+  },
+  "visual_review": [
+    "ios-remote-v550-r2-captures/74A5A8A3-9349-48A4-BE17-D507CB8D8305.png",
+    "ios-remote-v550-r2-captures/E7F93A22-4B54-4318-AE5B-E96A2132D11F.png"
+  ],
+  "runtime": {
+    "version": "550",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "product": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app",
+    "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/81DC022B-DB23-40DE-BFB9-524F5C90FF20/REAChatGPTHost.app",
+    "launch": "local.rea.chatgpt.ioshost: 48619",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture"
+    ],
+    "product_executable_sha256": "acac34402f92bfb9e162955b3716e3c78b682172c9074bad4a66376fde21edfc",
+    "installed_executable_sha256": "acac34402f92bfb9e162955b3716e3c78b682172c9074bad4a66376fde21edfc",
+    "sign_verify": "passed",
+    "language": "system",
+    "appearance": "system"
+  },
+  "preview": {
+    "left_running": true,
+    "surface": "Chinese Remote synthetic task list",
+    "system_language_and_appearance": true,
+    "screenshot": "ios-remote-v550-preview.png",
+    "display": "Device Hub window verified; external-display placement not accepted"
+  },
+  "retention": {
+    "schema": "rea-build-cleanup-v1",
+    "time": "2026-11-08T00:10:16.434854+08:00",
+    "apply": false,
+    "keep": [
+      "v172-r2-macos",
+      "v172-windows",
+      "v173-windows",
+      "v174-r4-macos"
+    ],
+    "targets": [],
+    "skipped": [],
+    "completed": []
+  },
+  "disk_available_gib": 16,
+  "source_sha256": {
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "b981e30508022ede6e4a179cbe671226c8c816fe75ebfc93ca89cc6a6bc46292",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "0d32e16513b80de89d67d4f85e0495920985a59c004b438be30695189eb1ba2e",
+    "implementation/ios/Sources/NativeConversationHost.swift": "ee7d53210e5e4b24dbfdbad38a349fc6551ca5bb23a6c1bff556da560b2ed187",
+    "implementation/ios/TextTests/main.swift": "0f5ec52624491d22cfa9e602969be9a72581d8a716800fcabc9e780752599e54",
+    "implementation/ios/UITests/HostInteractionTests.swift": "5fa89002db43fbf75d98d30a3e4ce8652decc50b8a41d213cf595c3b887b499b"
+  },
+  "open": [
+    "Exact character anchor through same-row revision/reflow",
+    "Process restart persistence",
+    "Dynamic insertion above visible content and history expansion runtime coverage",
+    "Official restoration predicates and animated-update algorithm",
+    "Full dynamic message component projection",
+    "Remote title alignment and whole-page visual acceptance",
+    "Device haptics and notification delivery"
+  ],
+  "next": "Complete dynamic Remote content projection and validate reading preservation during message updates."
+}

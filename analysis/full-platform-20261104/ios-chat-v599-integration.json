@@ -1,0 +1,26 @@
+{
+  "batch": 599,
+  "implemented": [
+    "Long-message local browser fixture",
+    "Native link-leaf UI queries",
+    "Reading position, draft and continued typing preserved by existing host"
+  ],
+  "verification": {
+    "report": "ios-chat-v599-r4-summary.json",
+    "passed_tests": 2,
+    "mode_journeys": 4,
+    "failed_tests": 0,
+    "earlier_failures": [
+      "r1 fixed-direction scrolling missed target",
+      "r2 nonfinite offscreen container geometry",
+      "r3 tap on wide AX parent missed native link glyph"
+    ]
+  },
+  "source": "ios-chat-v599-findings.json",
+  "independent": "UIKit browser host and controlled fixtures",
+  "not_implemented": [
+    "Explicit cross-page selection-range restoration",
+    "Complete official browser presentation and visual parity"
+  ],
+  "runtime": "ios-chat-v599-runtime.json"
+}

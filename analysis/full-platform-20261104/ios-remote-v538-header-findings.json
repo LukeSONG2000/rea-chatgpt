@@ -1,0 +1,139 @@
+{
+  "batch": "v538",
+  "status": "partial",
+  "evidence_type": "official-artifact-static",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "Ordinary workspace native Section HeaderV2 final layout, width modifier and pinned overlap evidence. Catalog status section is handled by parent separately.",
+  "confirmed": [
+    {
+      "id": "final-header-insets",
+      "offsets": [
+        "0x3a18e8..0x3a1900",
+        "0x4533f8..0x453404"
+      ],
+      "conclusion": "Final body type is 0x7cf32f0 and contains ListRowInsetsTraitKey. Helper4533f8 writes four zero doubles and Optional tag0, yielding explicit listRowInsets(.zero). Earlier 7cf3280/32d8/32e0 captures are intermediate types."
+    },
+    {
+      "id": "header-content-padding",
+      "offsets": [
+        "0x39d0d8..0x39d0dc",
+        "0x3a1838..0x3a1870"
+      ],
+      "conclusion": "Workspace constructor horizontalPadding20 goes into CodexTaskListRowMetrics on complete base header after shared label/button selection. It is content padding, in addition to final zero list row insets."
+    },
+    {
+      "id": "new-thread-overlay",
+      "offsets": [
+        "0x3a1874",
+        "0x3a189c",
+        "0x3a1e1c..0x3a1e20",
+        "0x3a1f24..0x3a1f48"
+      ],
+      "conclusion": "Optional startNewThread control is overlay(alignment:.trailing), gated by callback nonnil, with trailing padding equal to header.horizontalPadding. Header topSpacing is applied afterwards at3a18bc..dc."
+    },
+    {
+      "id": "reserved-label-space",
+      "offsets": [
+        "0x3a1c58..0x3a1c90",
+        "0x39d190..0x39d1a8"
+      ],
+      "conclusion": "Label HStack receives trailing padding0 without new-thread callback. With callback it reserves scaled newThreadIconColumnWidth30 plus unscaled8. This precedes RowMetrics padding/height, separate from overlay hit frame44."
+    },
+    {
+      "id": "title-line-limit-priority",
+      "offsets": [
+        "0x3a2804",
+        "0x3a29bc..0x3a29cc",
+        "0x45071c..0x450724"
+      ],
+      "conclusion": "Title Text receives EnvironmentValues.lineLimit some(1) and LayoutPriorityTraitKey Double1. Keypath7cfb340 resolves chained bindingaad1c30 to lineLimit getter."
+    },
+    {
+      "id": "subtitle-truncation",
+      "offsets": [
+        "0x3a28c0",
+        "0x3a2914..0x3a292c",
+        "0x460e88..0x460e94",
+        "0x45f004..0x45f014"
+      ],
+      "conclusion": "Optional subtitle receives lineLimit some(1) and truncationMode middle. Keypath7cfb370 resolves aad1a18 to truncationMode getter. enum bindingaad3b30 names SwiftUI.Text.TruncationMode.middle."
+    },
+    {
+      "id": "home-width",
+      "offsets": [
+        "conformance0x7cf4748",
+        "witness0x386ef4",
+        "body0x386ccc..0x386ef4",
+        "types0x7cf4b80/4b88/4b90"
+      ],
+      "conclusion": "CodexHomeContentWidth body constructs two FlexFrameLayout wrappers. No background/material/pinning modifier appears in its full returned symbolic types. Conditional width reads messageInputStyle and global byte gate returned by7712430. Width-specific global gate identity remains unresolved."
+    }
+  ],
+  "minimal_reconstruction_pseudocode": [
+    "labelContents.padding(.trailing, startNewThread == nil ? 0 : scaledNewThreadIconColumnWidth + 8)",
+    "wrap label in collapse Button(.plain) only when collapse callback exists, preserving its AX state",
+    "apply existing shared font, foreground, loading overlay and textCase(nil)",
+    "apply CodexTaskListRowMetrics(horizontalPadding:20), including scaled minHeight44 and vertical2",
+    ".overlay(alignment:.trailing) { optionalNewThreadButton.padding(.trailing,20) }",
+    ".padding(.top, topSpacing)",
+    ".listRowInsets(EdgeInsets())",
+    "parent CodexHomeContentWidth then onChange(pageIDs), inside native Section header slot",
+    "title.lineLimit(1).layoutPriority(1), subtitle.lineLimit(1).truncationMode(.middle)"
+  ],
+  "host_differences_observed": [
+    "RecoveredRemoteWorkspaceHeaderLabel title/subtitle lack recovered line limits and title priority/subtitle middle truncation.",
+    "Host separates newThread as HStack sibling and substitutes header listRowInsets20 for internal padding20 + final listRowInsets0.",
+    "Host lacks recovered reserved label space scaled30+8 and does not apply CodexHomeContentWidth."
+  ],
+  "negative_findings": [
+    "No explicit header BackgroundModifier or headerProminence call identified through HeaderV2 final type, HomeContentWidth or inspected container body.",
+    "Section row background MainSurfacePrimary is proven by v537, but does not establish opaque painting of native pinned headers.",
+    "Native header slot retained. Catalog EmptyView header special branch cannot justify moving ordinary workspace heading into content."
+  ],
+  "limits": [
+    "Static recovery does not prove which listed differences cause current XXXL pinned-header transparency/overlap. Parent should validate source-aligned layout separately from claiming the pin defect is fixed.",
+    "Official application was not executed. Official native pinned header runtime environment and exact OS behavior remain unclosed.",
+    "Width global gate and messageInputStyle selected runtime value remain unresolved, so no unconditional hardcoded width suggested.",
+    "Overlay visual column is scaled30 while hit frame is scaled44. Preserve source reservation30+8 and verify long subtitle/truncation plus independent new-thread and collapse taps.",
+    "Only evidence files written by this subagent. App/tests/docs and shared REA target untouched."
+  ],
+  "evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-v538-header-body-calls.json": "8facc4d6aa8278c6008f36da5958be49168ecccb0d0f92a555794b494c054154",
+    "analysis/full-platform-20261104/ios-remote-v538-header-final-types.json": "9ffb7ddf57c62a26a308bc127ce51061f0be6a5130cdd4425a270334c53530f5",
+    "analysis/full-platform-20261104/ios-remote-v538-header-insets-writer.asm": "d72a805dff2834a58fdc7c5f185cd2facdd2b4f5749e06a556191f90d060d1c7",
+    "analysis/full-platform-20261104/ios-remote-v538-header-label.asm": "d7aa1a0578cec50c7fad20141195bbc962debcae89c277261450cabfb3931718",
+    "analysis/full-platform-20261104/ios-remote-v538-header-new-thread-label.asm": "b104c6d1218de9d2d948fec40264d1b86b288a93e6524b93c8cfff08cd84d9f8",
+    "analysis/full-platform-20261104/ios-remote-v538-header-new-thread-overlay.asm": "5009ac59d7c7ba91f8c3c82d24895fd69c56aebade0153f8437a27c61d879383",
+    "analysis/full-platform-20261104/ios-remote-v538-header-overlay-calls.json": "7011f634168089cb221ef2b2e64f39c28f8008d4e3a01cc61e648dd26393b5ff",
+    "analysis/full-platform-20261104/ios-remote-v538-header-subtitle-keypath.asm": "b38e7ded697b24eeed08f759a77f626b0ea13a4b2d5a6217b8d0b684f22a5576",
+    "analysis/full-platform-20261104/ios-remote-v538-header-text-content-calls.json": "bbe906891e3cd0e7bf69c098f02fe09a5c8ac837396effbeb2fa247a87b3a763",
+    "analysis/full-platform-20261104/ios-remote-v538-header-text-content.asm": "ab28f214c8609efd9b9ef1974e1cd6359f18c67b04b45609b00050ce8698a2c0",
+    "analysis/full-platform-20261104/ios-remote-v538-header-text-keypaths.json": "0906b8df3411650ef6993d65f7cff47216c0c25863ea4c89b947dfbbffa0edc2",
+    "analysis/full-platform-20261104/ios-remote-v538-header-title-keypath.asm": "f0b5422c5bf069054c7a8e898e123ec7d04fa40603938f6b13293f0c5d35f445",
+    "analysis/full-platform-20261104/ios-remote-v538-header-title-subtitle.asm": "aa5b5263b8d0eeb6e181bebe6a72c2f2c40d48949f0cdb70df08666bdd7dcdf7",
+    "analysis/full-platform-20261104/ios-remote-v538-header-truncation-binding.json": "eff67569c3167deae138023b1ee83fb7f8c5d2c5826b7a3d0db52103622ea7f5",
+    "analysis/full-platform-20261104/ios-remote-v538-header-truncation-value.asm": "7e8ad680fe5e99f4b8f13514934e73506e3f6b61fa9d5ff6e9f958a793aeff59",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width-body-actual.asm": "91883c23a1fcd0e49fdc895e3ea06ce1d3fd466d1c95ced69b271fb2d612faff",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width-body-calls.json": "38d8f157522a39fd456d3b25173f4c8aa8b6e4090613a11caba39325a95cfc1c",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width-body.asm": "fee919a642346bb62f632f2e620b4b8846cf08c1e8f6c6308f89919b72b9243e",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width-gate-result.asm": "9490239eb07f1245ae83e3c3673889154444f2f3af269c4bce2d6b444cc416b4",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width-gate.asm": "786b73172d2783396506363fe205f1cbb29a09ef7b6b3470236e46cfa4a79aef",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width-types.json": "90af549759b81fb5d10040d41257c20612c4ad4ea8abc8cbc3f3ea7eadfa450f",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width-witness.json": "4c1c7678bcfd96220e1a93cb16ad3e40dabb72e7873bcd57a357898613f93d53",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width.asm": "86a6a07562405d345ea3e9b323effd44f268051cb00376b5dad5bd7ac47d8709",
+    "analysis/full-platform-20261104/ios-remote-v537-section-wrapper.asm": "7fe80701b449fdc54de4c3dddb0428cc5c13aa04702891232bf3341413b282f4",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-neighbor-types.json": "c29688113454f57041957bd3a9bbeecc3d08ae62caf33c54acdf7dd43f28340b",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-findings.json": "4dfe9b80c296f0a41164b7641aeb1d98dc00022cfda5e0645528160558c50410",
+    "analysis/full-platform-20261104/ios-remote-v493-owner-metadata.json": "e801add7f5da3c87f98808a492f6d28d8cb619bdf7caaaa97f654006f8b76a31",
+    "analysis/full-platform-20261104/ios-remote-v491-header-body.asm": "348e0164df45bf8fd197de317311d164f9ed14f48907d4638f0e6b059fe75cbe",
+    "analysis/full-platform-20261104/ios-remote-v503-header-minimum-findings.json": "4939993c7ceb25cc8873ecf01b240069874934f0d8a5ff72c12777647bb3cd97",
+    "analysis/full-platform-20261104/ios-remote-v503-header-minimum-types.json": "07b4c1ab1d4cdf891846f8a4376b02ee350047856f8adf18a6edef6b8670aff9",
+    "analysis/full-platform-20261104/ios-remote-v383-container.asm": "4e14138b35b97f69ce20b42cdccde46561ef1bb3eeb3d3adedeb4e50fb39efc1",
+    "analysis/full-platform-20261104/ios-remote-v383-container-calls.json": "448ad5ef15de8b28498c242a17fb94a75b068bc70bb4df481a35eba485a4675d",
+    "analysis/full-platform-20261104/ios-remote-v384-edge-findings.json": "304d445b555c9cc5d19b7f04807ca5884b28b99a48abfb4ed37ff97f1d43d8de",
+    "analysis/full-platform-20261104/ios-remote-v382-list-types.json": "db74ef454a10ba566b10cbd1562b4866661e08a68c6b3259283d8d626dc21821",
+    "analysis/full-platform-20261104/ios-remote-v508-home-metadata.json": "0150a214dd4ed8f3c8bc7d258f96c0d580fc56ede2d7732309ec0a808f636099"
+  }
+}

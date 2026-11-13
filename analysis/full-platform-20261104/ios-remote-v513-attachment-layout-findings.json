@@ -1,0 +1,368 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS 1.2026.293 Remote first-level attachment menu row style and immediate presentation owner",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": "Read-only ARM64 disassembly, Swift metadata, chained import bindings. No target execution.",
+  "findings": [
+    {
+      "id": "action-style-layout",
+      "status": "verified-static",
+      "type": "official_artifact_observation",
+      "source": [
+        "0x971b870",
+        "0x6ec9d78",
+        "0x607f810"
+      ],
+      "conclusion": "First-level rows use ActionIconStyle override at 607f810. Metadata fieldOffsetVectorOffset is 2 words, so field i is offset slot 0x10+i*4. Named fixed fields map iconSize24, iconFontSize18, iconPadding10, iconAndLabelSpacing16, titleAndSubtitleSpacing2. Row padding top11 leading4 bottom11 trailing4. titleFont is OpenAIFont based on Font.TextStyle.title3 with regular weight. maxWidth inherits optional infinity.",
+      "values": {
+        "iconSize": 24,
+        "iconFontSize": 18,
+        "iconPadding": 10,
+        "iconAndLabelSpacing": 16,
+        "titleAndSubtitleSpacing": 2,
+        "padding": {
+          "top": 11,
+          "leading": 4,
+          "bottom": 11,
+          "trailing": 4
+        },
+        "titleFont": {
+          "textStyle": "title3",
+          "weight": "regular"
+        }
+      },
+      "limits": [
+        "Values are base style metrics. IconSize and iconFontSize are consumed through ScaledEnvironmentMetric in SVGOrImagePart. Do not force a fixed total row height.",
+        "Optional subtitle, badge, trailing accessory and accessibility-size layouts remain separate conditions."
+      ]
+    },
+    {
+      "id": "row-style-consumers",
+      "status": "verified-static",
+      "type": "official_artifact_observation",
+      "source": [
+        "0x6ec7d74",
+        "0x6ec7f0c",
+        "0x6ec7f3c",
+        "0x6ec7f54",
+        "0x6ec7f90",
+        "0x6ec828c",
+        "0x6ec82cc",
+        "0x6ec8304",
+        "0x6ec9ba0",
+        "0x6ec9c48",
+        "0x6ec9ce0"
+      ],
+      "conclusion": "ActionIconButton applies style.padding to the Button before buttonStyle. The icon child reads iconForegroundStyle and then applies style.iconPadding with SwiftUI padding(CGFloat). SVGOrImagePart consumes _iconSize for its centered frame and _iconFontSize for regular font via 7560ae4 scaled metric.",
+      "limits": [
+        "Background existential stored at style field16 by607f8f8..924 has not been semantically resolved.",
+        "The exact press alpha consumer is not fully closed."
+      ]
+    },
+    {
+      "id": "row-colors-and-press",
+      "status": "partial",
+      "type": "official_artifact_observation",
+      "source": [
+        "0x607f880",
+        "0x607f974",
+        "0x607f988",
+        "0x607f99c",
+        "0x6112f14",
+        "0x607f958",
+        "0x971b898",
+        "0x9c0a77c",
+        "0x941aa4a",
+        "0x6ec88a0"
+      ],
+      "conclusion": "Ordinary style raw1=0 selects ChatGPT/icon/primary, used for both iconForegroundStyle and titleForegroundStyle, multiplied by opacity1 when enabled and0.6 otherwise. Camera call1960ed4->14c300 sets raw1=0 and enabled=1. Special raw1=1 selects theme-aware74e50bc with fallback ChatGPT/upsell/foreground. pressedStyle is opacity(animation:nil,disabledOpacity:0.6), not scale.",
+      "limits": [
+        "Do not substitute disabledOpacity0.6 for pressed opacity. Shared buttonStyle builder6ec88a0 has additional literals1.0/0.4 at837f680, but their named consumer fields are not yet closed.",
+        "Special-style runtime theme override and exact row assignment of every special condition remain partial."
+      ]
+    },
+    {
+      "id": "menu-container",
+      "status": "verified-static",
+      "type": "official_artifact_observation",
+      "source": [
+        "0x1960b84",
+        "0x1960bc0",
+        "0x1d6d218",
+        "0x7c48910",
+        "0x1960bc4",
+        "0x4ddac8",
+        "0x1960bec",
+        "0x7170e0",
+        "0x1960c04",
+        "0x1960c0c",
+        "0x1960aec",
+        "0x267d50",
+        "0x1960b18",
+        "0x1d4b7ac",
+        "0x1be48c",
+        "0x7c48058"
+      ],
+      "conclusion": "Menu uses leading VStack spacing2, horizontal padding24 and vertical padding13 in vertical ScrollView with indicators never. Scroll container first applies frame(minWidth:nil,idealWidth:320,maxWidth:320,minHeight:nil,idealHeight:nil,maxHeight:nil,alignment:center), then frame(all widths:nil,minHeight:nil,idealHeight:nil,maxHeight:420,alignment:top).",
+      "values": {
+        "alignment": "leading",
+        "spacing": 2,
+        "paddingHorizontal": 24,
+        "paddingVertical": 13,
+        "idealWidth": 320,
+        "maxWidth": 320,
+        "maxHeight": 420
+      },
+      "limits": [
+        "This is the first-level menu content geometry. The enclosing presentation may affect available size.",
+        "No row-height constant is inferred from these values."
+      ]
+    },
+    {
+      "id": "presentation-owner",
+      "status": "partial",
+      "type": "official_artifact_observation",
+      "source": [
+        "0x1984534",
+        "0x1984d54",
+        "0x1984d58",
+        "0x1984dd0",
+        "0x1984e18",
+        "0x62a9a08",
+        "0x62a9a7c",
+        "0x62a9aa8",
+        "0x62b9f88",
+        "0x96dc5fc",
+        "0x62a9d70",
+        "0x75506d4",
+        "0x1c27798",
+        "0x1986b48"
+      ],
+      "conclusion": "Immediate owner is composer body1984534. It obtains attachment PresentationQueue binding via1980d70 at1984d54, passes attachmentMenu raw0, and supplies inline builder closure1c27798 to shared presentation adapter62a9a08 at1984e18. Closure invokes1986b48 to build CodexRemoteInlineAttachmentMenu. Shared adapter resolves PresentationQueue metadata75845d8 and PresentationActivityReportingModifier metadata96dc5fc, then delegates to75506d4 at62a9d70. Dismiss and target transitions remain the v512 queue-owned routes.",
+      "limits": [
+        "Exact source rectangle/anchor, positioning/alignment, backdrop, corner radius, outside-tap and keyboard dismissal policy are not yet closed.",
+        "A SwiftUI Menu/popover/sheet replacement is not proven equivalent by this chain.",
+        "Next bounded action is decode75506d4 arguments and modifier metadata, plus composer attachment-morph registration1984d1c..1984d44."
+      ]
+    }
+  ],
+  "reused_evidence": [
+    "ios-remote-v512-attachment-menu-findings.json",
+    "ios-remote-v511-menu-content.asm",
+    "ios-remote-v512-inline-layout.asm"
+  ],
+  "integration_boundary": {
+    "safe_now": [
+      "First-level item order/predicates/actions fromv512",
+      "Source-backed ActionIcon row values and menu content geometry",
+      "Local rendering of disconnected action destinations using existing owner contract"
+    ],
+    "still_unverified": [
+      "Exact shared presentation anchor and material",
+      "Pressed opacity value and animation consumer",
+      "Camera/photo/file execution paths and services"
+    ]
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-action-icon-calls.json",
+      "sha256": "b505fac0dcf8ed76017a7e666a0b850133694ceff9f6718666ef056a781270fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-action-icon.asm",
+      "sha256": "71635001ca930d3ef6f3744ff81fab48674875c21982e5ee88e513b440a429d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-action-row-calls.json",
+      "sha256": "6f2e9798b67a439eb8f63974f36c8610e028b0fa56c0946c4b7555d209d33596"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-action-row.asm",
+      "sha256": "8f97226c9ac9be39e98db0e1bad8d3875ca6ee68f8fa1e9bb51df2ea8a93a661"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-action-style-accessor.asm",
+      "sha256": "da9ad3721e659629286e4f98fc2edabd929ce626ad4a0d51069aefe5ba73e778"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-action-style-default.asm",
+      "sha256": "2d07d62b00a387c0f36cbf732d45f0c30080fe570396efd6d2fa0effc3077066"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-action-style-override.asm",
+      "sha256": "3b42f64e68f8e37ef0e8ea51b3896c102547f64d14d158cc90b5db6b044ff839"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-attachment-style-metadata.json",
+      "sha256": "edb8b631a6db6c57f87d2453739bcb66fe03c2e4a905a3796bee69a7acfc6b5a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-elevated-modifier.asm",
+      "sha256": "0f0bbe119f2aadd25f669ab14aa1f2b2b48ac4a744b885dc0b3a61133911860b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-extra-imports.json",
+      "sha256": "89ef8cc518418a3aaac8aa8b03a281b920d799a3bf1c3c5990602fbe9eccb274"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-14c300.asm",
+      "sha256": "d8ae7410f956d2b17fe0e64879774bc840fe14baaf7d5b0ef8d2618193ee45a2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-14d260.asm",
+      "sha256": "cd56bc095154255261b582701a99d5bf40b1ec49d85135c5980c85783057fa7f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-15c870.asm",
+      "sha256": "b4e474c81cc85165d17554d51ff4ca3d4cbcb2ed8d3ba76d0b866c32d05ddf8c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-1960abc.asm",
+      "sha256": "0feea6cf10ce7a59f14acdd156a7724b6e4062cda3e8bab5d9de516849b16b76"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-1be48c.asm",
+      "sha256": "7dbfab36bdf3ab8d5acb62f2341bca07d6986fadfd050865ed0c02dd6c7e56d9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-1d4b7ac.asm",
+      "sha256": "4773cb80494fba32286a661beab9d8e0612f0c9576b0783b18e36e5264cdd62f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-1d6d218.asm",
+      "sha256": "2b6a3dadf02696ac0a95a95fde4a081897f6cc702df75e67e6e2b8b6319893fa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-1d7de80.asm",
+      "sha256": "76b0068ddb01c41cdd863ed2872904ec744549e04d488a32a6df34c82fa93b5e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-267d50.asm",
+      "sha256": "b12e98237eeca5e3d257693f52f8879a34a8ce83b1291dc329575427d47f2a49"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-6112f14.asm",
+      "sha256": "e518af03a05104ba9887b6573a6ae74dbec346052cbd06d5eaa1a102bdf9590e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-62b9f88.asm",
+      "sha256": "853e2b8ab4baa758314e6dd3191dbeed7f6ae183319dc7bdeea674aef81a843e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-62e4e1c.asm",
+      "sha256": "97b2cde96081386600a7fbbb024e9be7801d5673c625a06b02ae3e0914b8df94"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-6fd9178.asm",
+      "sha256": "4cb00c86a52088418d0ef9092b819ce8ac32c59ede544c273b88cbd2e8e1618e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-7011d0.asm",
+      "sha256": "593782b309bc5b5f5ab1d2aefa95fae577d30f5f62e86cec691f2add008164cb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-717134.asm",
+      "sha256": "dd996b1e913d84b629f8f7d754c9dbd4f2360fff37d14baf42a040687312e848"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-74e2940.asm",
+      "sha256": "f9ef0a8e74513e55f688d9a8fe93ea02160e23b56a3707b2290cb79ff12ab35f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-74e50bc.asm",
+      "sha256": "aa16ef416906cf19a05f9960df7166ca8afc68dd890efd7a4958e66375568644"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-74eef20.asm",
+      "sha256": "94ca236660f13f960e10cb699c5c2e3d10b23d62e990e289cfe6af7b533502a0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-helper-afd618.asm",
+      "sha256": "2caeb559fde8f3ad82e309bf9779b8ff63e557a85d8b5a4dce49df822ae19341"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-inline-owner-refs.json",
+      "sha256": "c3b57322b4a91728cdc613fedf2853fe7043882c580dd3e170db169e154affd8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-inline-parent-refs.json",
+      "sha256": "11836088a5bb604c45dc04c04fe56f9208993b948230a8021932989df0e123e2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-menu-frame-helpers.asm",
+      "sha256": "05084f70bb560202c8b307fc907affe8e2e56a41935c1d2fdafec4575a2d2712"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-presentation-parent-calls.json",
+      "sha256": "3a2f696d3c9e646d1bbf26bcbded197778ca3c494bdeb1ec421a9a1fbc49b20a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-presentation-parent.asm",
+      "sha256": "d5552c871b3c54831dfc87afaa4dee89fbdf760e1d82aad420c3b414c985897e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-presentation-types.json",
+      "sha256": "54f8b550e30d2c2578e6c76a343767444020788a178d74e34b50a2083e9b1dc1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-pressedstyle-cases.json",
+      "sha256": "bec57da769c25c3dfb8d41e8ae4d6c3ac17b86dcebe4a2f25fed607e0abe931e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-pressedstyle-metadata.json",
+      "sha256": "242cd2e1cb2d542e50714b8e5a55c2879ac5b4ae6c641dfbf1ee0c583c6ed184"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-pressedstyle-payload.json",
+      "sha256": "7523da200134db210d254c12c6d16145080036de317a43df0a987cc90435652b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-row-buttonstyle-calls.json",
+      "sha256": "c872657553b15ee6f39d557a3a08bce4293ca8e0558ca365eece3e84625a6173"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-row-buttonstyle.asm",
+      "sha256": "2bc182751e23861d07a8a9855eb1c301dd80bf3f51a2423d394982ed50140132"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-row-font-factories.asm",
+      "sha256": "0abf448d7d129c08742d896f7653267811908555812192e3aa39157601682af5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-row-horizontal-padding.asm",
+      "sha256": "27ae2b7d2b68eba62bee670e6ebd8d25b9e448a3cf178280cc324d4b19c42cea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-row-witness-6ec9864.asm",
+      "sha256": "a718cc385ee660925418224a5350c615aae58e2c50522c24b0902e3f55a7a815"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-row-witness-6ec9d30.asm",
+      "sha256": "8bbe7cadcc6704a10e95413945c21438e0c94c9dd75083b2431275adfbc1b9ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-shared-presentation-calls.json",
+      "sha256": "abb9be96b7a504cb51b9054a07d89bc91b3fae651dc8f14f17cdb35e4cc5df89"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-shared-presentation.asm",
+      "sha256": "7d0d84cf12a47da5caa7bb4f3bf5e77be2d9c84532725ac411d0f48ddf6f8cd8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-style-field-types.json",
+      "sha256": "4274d5939117a34b96c16c1d0634823c2687d1cad9c7d6f0db315a16cae1b839"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-style-values.json",
+      "sha256": "e464a11b0b6811d913d31bf96a4930b2df94a4c79e378777479f2c7411b7454c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-vstack-geometry.asm",
+      "sha256": "b7ea432f790dbcaba969725eaac748845d0f850abf82db237776fbb3267760c7"
+    }
+  ]
+}

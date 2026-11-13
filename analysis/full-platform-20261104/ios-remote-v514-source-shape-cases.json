@@ -1,0 +1,75 @@
+{
+  "0x96dd7f4": [
+    {
+      "name": "roundedRectangle",
+      "type": {
+        "artifact": {
+          "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+          "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+        },
+        "type_record": null,
+        "mangled_address": "0x93bf1dc",
+        "length": 21,
+        "mangled_hex": "02fba671013132636f726e65725261646975735f74",
+        "references": [
+          {
+            "offset": 0,
+            "kind": 2,
+            "target": "0xaad98d8",
+            "resolved_context": null,
+            "label": "_$s12CoreGraphics7CGFloatVMn"
+          }
+        ],
+        "unresolved_contexts": [],
+        "limits": [
+          "Symbolic context references only, not a reconstructed generic type tree",
+          "Type presence does not prove runtime branch selection or component creation"
+        ]
+      }
+    },
+    {
+      "name": "capsule",
+      "type": null
+    }
+  ],
+  "0x96dd82c": [
+    {
+      "name": "custom",
+      "type": {
+        "artifact": {
+          "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+          "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+        },
+        "type_record": null,
+        "mangled_address": "0x93bef70",
+        "length": 23,
+        "mangled_hex": "02174d71015f705f0197e83100386964656e7469747974",
+        "references": [
+          {
+            "offset": 0,
+            "kind": 2,
+            "target": "0xaad3c88",
+            "resolved_context": null,
+            "label": "_$s7SwiftUI4ViewMp"
+          },
+          {
+            "offset": 8,
+            "kind": 1,
+            "target": "0x96dd810",
+            "resolved_context": "0x96dd810",
+            "label": "ChatGPTPresentationCore.ElevatedPresentationSourceVisualIdentity"
+          }
+        ],
+        "unresolved_contexts": [],
+        "limits": [
+          "Symbolic context references only, not a reconstructed generic type tree",
+          "Type presence does not prove runtime branch selection or component creation"
+        ]
+      }
+    },
+    {
+      "name": "glass",
+      "type": null
+    }
+  ]
+}

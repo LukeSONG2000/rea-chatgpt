@@ -1,0 +1,116 @@
+{
+  "module": "2-settings-topology-and-entries-second-pass",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "topology_and_entry_core_implemented_business_and_exact_fidelity_partial",
+  "source_reports": [
+    "ios-settings-plugins-entry-20261112-findings.json",
+    "ios-settings-fixed-close-20261112-findings.json",
+    "ios-settings-signout-detail-20261112-findings.json",
+    "ios-settings-customize-labels-20261112.json"
+  ],
+  "reviewed_current_root": [
+    "Explicit legacy branch: profile/upsell, Customize, Account, Theme, App settings, Help and common SignOut; ConsumerIdentity alternative not merged.",
+    "Appearance and accent share one Theme group; password and ads remain positive-capability-gated.",
+    "General owns Haptic feedback; close is a navigation-toolbar item outside ScrollView; unavailable entries have a nested return route.",
+    "Existing notification/Codex/theme/haptic/auth sign-out integration retained; unrelated child business behavior not expanded."
+  ],
+  "implemented_this_pass": [
+    "Replaced hardcoded Customize rows with explicit independent presentation inputs: Personalization always within this group; Memory and Connectors each require a positive capability.",
+    "Plugins versus Apps branding now selects its complete original title/icon branch. Default reference branch no longer mixes Chinese Plugins with English Apps.",
+    "Original compressed293 strings supply Personalization, Memory, Apps and connectors_plugins_title across65 locale tables; system language behavior retained.",
+    "Display icon identity is separated from the stable Settings Connectors entry identity, so the Apps icon branch retains the same navigation/automation target.",
+    "Added isolated source-branch fixtures and Foundation checks for independent gates, unknown-input policy, ordering and both original icon identities."
+  ],
+  "independent_adaptations": [
+    "LegacySettingsCustomizePresentation fields are frontend presentation inputs, not an official service schema or claimed mapping of unresolved compiled-cache offsets.",
+    "referencePreview explicitly selects memory=true/showConnectors=true/plugins branding; this does not establish original account/experiment assignment.",
+    "The actual Settings Connectors root is separate from NativePluginsPage directory. Both source callbacks showPluginSettings/showPluginsDirectory exist; exact render coordinator remains unclosed. Current returnable unavailable destination is intentionally retained.",
+    "Native settings row metrics, materials and exact close placement remain host adapters; this module closes at topology and entries, per user scope."
+  ],
+  "not_implemented": [
+    "Live account/capability provider and original active experiment assignment.",
+    "ConsumerIdentity alternate root rendering; original legacy section/row full capability producer.",
+    "Concrete Settings Connectors root/coordinator and its settings-vs-directory children.",
+    "Business handlers behind currently returnable unavailable entries; these belong to corresponding future feature modules.",
+    "Exact native parent typography/materials/spacing/toolbar placement configuration and original gesture-specific feedback not proved by the current source trace.",
+    "Physical-device installation/playback if Air stays unavailable."
+  ],
+  "verification": {
+    "foundation": "passed current source: Settings topology branches, root account/sign-out identities and Customize independent gates",
+    "selected_resource_and_contracts": "passed /tmp/rea-settings-customize-text-20261112.log",
+    "ui": [
+      {
+        "test": "testSettingsCustomizeSourceBranchesChinese",
+        "result": "passed",
+        "seconds": 32.547,
+        "artifact": "ios-settings-entry-20261112-current-r1.xcresult",
+        "scope": "Apps source branch, original order, returnable unavailable entry, native edge Back, minimum-capability hiding and close"
+      },
+      {
+        "test": "testSettingsFixedCloseChinese",
+        "result": "passed",
+        "seconds": 26.057,
+        "artifact": "ios-settings-entry-20261112-current-r1.xcresult",
+        "scope": "ordinary sidebar entry, root close remains fixed at bottom, General navigation and close return"
+      }
+    ],
+    "assets": "assetutil confirmed OpenAI/Symbols/plugin and circle-grid-2x2 in current bundled Assets.car; Image and Vector Glyph renditions",
+    "physical": {
+      "build": "succeeded",
+      "log": "/tmp/rea-settings-entry-device-20261112-current.log",
+      "executable_sha256": "3915856bcae4cf02cc8110ef8fe23bbc073dc704de11d234a80f6e4964b7bd37",
+      "availability": "unavailable",
+      "preflight": "ios-settings-entry-20261112-current-device-state.json",
+      "installed_this_candidate": false
+    },
+    "screenshots_reviewed": [
+      "ios-settings-entry-20261112-current-r1-attachments/C7B8B69A-6B52-427B-B1D6-5281E32DC498.png",
+      "ios-settings-entry-20261112-current-r1-attachments/893F5B73-2EEE-4AE9-8BDA-43560B06C6AC.png"
+    ],
+    "simulator": {
+      "hash_match": true,
+      "report": "ios-settings-entry-20261112-current-preview.json",
+      "launch": "local.rea.chatgpt.ioshost: 77238",
+      "executable_sha256": "39da2e41bf2dc862b490b977c56e10c679d8aa9540443ae7b442da8074938d1a",
+      "screenshot": "ios-settings-entry-20261112-current-ordinary.png",
+      "left_running": true
+    }
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "f4de5aeb9d5da2ec49d291b0cf2e42efb5fdc81b1af21ff6ad90f3ebf5ff1edc"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendSettingsTopology.swift",
+      "sha256": "3f27d6f78c58ad703865f0a7844cab1cbee8bc4059a9f6e4efcf848922dbaea8"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "b5a496fb8cb490d27f1360b88e6ca2aa6287642bc3f558c9330ea193d36b201d"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "4ad819bd2a726d5ba8a016f5e9472037f9e8b140843230856e1a1c764c132c97"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "55e295a206d33948f2b17c838ddf525d5dbde721dcd11b97d8b7544623de8191"
+    },
+    {
+      "path": "implementation/ios/Tests/SettingsTopology/main.swift",
+      "sha256": "80580d17ec9818dc05c078d088921970c975607adb2ab221351363e44c7a6c4e"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "33a4bc1a231c7bd6600091be94df9c28467324968bf2008e140ef89d81a97599"
+    }
+  ],
+  "review_path": [
+    "Sidebar -> Settings: default Plugins branch and Memory in original source order.",
+    "Scroll to bottom: fixed close; re-enter General and return.",
+    "Isolated apps-branding fixture: Apps label/icon -> unavailable destination -> native edge Back; minimum fixture hides Memory/Connectors independently."
+  ],
+  "next_major_module": "3 Remote list: use ios-remote-list-parent-20261112-findings.json for source-proven state indicator and16/12 filter caller; no host edit included in this module."
+}

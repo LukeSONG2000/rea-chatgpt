@@ -1,0 +1,182 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Chat/Work third bounded source-to-host audit: dedicated mode header, selection effects, composer layout predicate",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "decision": "No new product modification justified by this pass. Keep current explicit UIKit adapter until actual presentation producer and original label/layout configuration are closed.",
+  "candidate_budget": {
+    "limit": 3,
+    "inspected": [
+      "AssistantModeSegmentedControl complete tagged Body, Picker overlay and selection Binding callback",
+      "MessageInput assistant mode layout predicate4d0e9e8 and its immediate producer helpers",
+      "Existing MessageInput parent/slots versus current UIKit composer supply (reuse only)"
+    ],
+    "stopped": true
+  },
+  "official_observations": [
+    {
+      "conclusion": "Corrected associated-type Body witness resolves the full actual AssistantModeSegmentedControl tree, not only previously decoded overlay child types. The control body owns a hidden measurement HStack with two padded opaque labels, then fixedSize/hidden/accessibility/frame modifiers, a Picker overlay with a ControlSize environment, and a separate noninteractive decoration overlay.",
+      "source": [
+        "type descriptor9604c9c/conformance7fc0528",
+        "Body associatedtype entry7fc0544 raw8fcac53 -> normalized8fcac52",
+        "bodywitness2f95768->2f93ad0",
+        "2f93c80 calls2f94130",
+        "2f943b4 imports Picker.init",
+        "2f943c4 imports SegmentedPickerStyle initializer"
+      ],
+      "evidence": [
+        "mode-witness-fixed.json",
+        "mode-full-body.tree.txt",
+        "mode-full-body-compact.txt",
+        "mode-picker.asm",
+        "mode-picker-tail.asm"
+      ],
+      "correction": "Previous report records7fbf6c0 and7fbf710 describe subtrees, not the complete root Body. Full tree closes Picker overlay containment in this selected control body.",
+      "limit": "Two label opaque implementations and SwiftUIStyleguide decoration remain unresolved. Root mode-header presentation chooses whether this dedicated control is instantiated. The28 frame near2f93c20 is not a license to set whole UIKit carrier height28 or assert official144 width."
+    },
+    {
+      "conclusion": "Mode Picker setter performs a changed-value comparison before its side-effect and then writes the Binding. The observed side-effect is a Combine PassthroughSubject send carrying tpp-surface-mode-toggle, not an established haptic call.",
+      "source": [
+        "Binding constructor2f94314/1c supplies get306cb94/set306cc98",
+        "306ccec Binding.wrappedValue.get",
+        "306ccf4 compare new versus current;306ccf8 equal skips effect",
+        "306cd14/18 string8861300 tpp-surface-mode-toggle",
+        "306cd28->6f30b28->6f30b44->6f30b60 Combine.PassthroughSubject.send",
+        "306cd40 Binding.wrappedValue.setter"
+      ],
+      "evidence": [
+        "mode-binding-set.asm",
+        "mode-selection-effect.asm",
+        "mode-selection-effect-calls.json"
+      ],
+      "limit": "Subject subscriber behavior and resolved tooltip dependency are not traced. Do not label it telemetry or haptic without subscriber evidence."
+    },
+    {
+      "conclusion": "The assistant-mode double-line predicate remains an owner/configuration boundary, not Work=true.4d0e9e8 first checks optional composerAssistantModeSelectionController, later combines a raw value masked0xfc with compare4; immediate value getter4c63908 dispatches indirect witness+0x38 from a dependency and returns sentinel2 if absent. This is insufficient to semantically name the branch.",
+      "source": [
+        "4d0e9fc->4ce0098",
+        "4d0ea14->4f65edc->4c63908",
+        "4c63934 loads witness+0x38;4c63940 indirectcall",
+        "4c63950 movw0=2 when missing",
+        "4d0ea18->4f65140 andw8,w0,#0xfc;cmpw8,#4"
+      ],
+      "evidence": [
+        "mode-layout-predicate.asm",
+        "snapshot-helper.asm",
+        "controller-helper.asm",
+        "controller-predicate-value.asm"
+      ],
+      "reuse": "ios-composer-decision-field-map-v253.json",
+      "limit": "Neither protocol slot semantics nor raw case mapping is closed. Do not turn the observed mask into Work-specific forcesDoubleLineComposer defaults."
+    },
+    {
+      "conclusion": "Current Chat/Work composer remains independent UIKit presentation. It has no source-backed AssistantModeComposerPresentation input supply and no source primary-button render-state/style producer, so mode-only changes cannot restore Work-specific controls by adding icons.",
+      "source": [
+        "MessageInputView4cb7790->4cb79bc MessageInputViewContent",
+        "MessageInputViewContent4cb8cb0->4cb8cf0,innerrecord812f858",
+        "AssistantModeComposerPresentation descriptor96ced6c",
+        "AssistantModeRenderState descriptor96ced88"
+      ],
+      "reuse": [
+        "ios-chat-work-composer-parent-20261113-findings.json",
+        "ios-composer-view-chain-v245.json",
+        "ios-composer-inner-content-metadata-v245.json",
+        "ios-chat-v569-assistant-mode-fields.json"
+      ],
+      "limit": "Typed slot inventory is not proof that all slots are present or required simultaneously."
+    }
+  ],
+  "current_host": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256": "566536f83a8497a5926ec90996516085c496489d1a60febc8a5355d8279d1ac8",
+    "checks": [
+      {
+        "symbol": "modeControl setup",
+        "observed": "UISegmentedControl fixed144x44 and valueChanged callback. This is an explicit independent carrier, not recovered hidden-label measurement+Picker+decoration."
+      },
+      {
+        "symbol": "resizeEditor",
+        "observed": "Expansion uses focused OR nonempty text OR attachments; width36compact/12expanded and maxheight186 remain adapter values. Original active predicates/config producer not closed."
+      },
+      {
+        "symbol": "restoreAssistantMode/changeVisualMode",
+        "observed": "Conversation-scoped mode is restored and persisted, changes placeholder/selection; does not consume original RenderState composer/header presentation."
+      },
+      {
+        "symbol": "updateComposerAction",
+        "observed": "Send/Stop/Voice state and semantic contrast pair are independently implemented; source primary button producer remains unclosed."
+      }
+    ]
+  },
+  "haptics": {
+    "status": "unknown",
+    "new_direct_trigger_proved": false,
+    "excluded_false_positive": "306cd28→6f30b28 is subject.send, not haptic",
+    "instruction": "Keep General haptics preference for already proved consumers. Do not add mode/send/stop feedback based on hapticEngine field presence or this subject call."
+  },
+  "can_restore_now": [
+    "Correct topology documentation to full mode-control Body and preserve explicit adapter status",
+    "Maintain distinct selectedMode, header presentation, composer presentation and capability inputs in the future frontend adapter contract",
+    "Keep recovered compact contour and independent Chat message footer carrier; no Remote22/24/Flow font14 transplantation"
+  ],
+  "product_changes_recommended": [],
+  "unknowns": [
+    {
+      "gap": "Actual live mode RenderState producer and presentation gates",
+      "next": "DefaultAssistantModeSelectionController projected snapshot getter/mutation path, bound to actual protocol witness, not enum field order."
+    },
+    {
+      "gap": "Mode control original labels/width/control size/material branch",
+      "next": "Close hidden label constructors2f93d4c and Picker environment arguments plus opaque971ee80; retain fixed144x44 adapter meanwhile."
+    },
+    {
+      "gap": "Composer active Work/Chat controls and expansion",
+      "next": "Bind AssistantModeComposerPresentation flags to MessageInput Content slot producers and resolve indirect witness+0x38 before selecting defaults."
+    },
+    {
+      "gap": "Primary button state/color/style supply and explicit haptic",
+      "next": "Actual MessageInputPrimaryButtonPartStyle Chat consumer; shared Remote style is not evidence."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "shared_tools_modified": false,
+    "build_or_tests": false,
+    "device_or_official_runtime": false,
+    "target_code_executed": false
+  },
+  "raw_evidence": {
+    "ios-chat-composer-third-20261113/controller-helper-calls.json": "0dc7d5534492004cbfab7721eeeefa856c4fc9e3b3cc8907fce14c25bd43175a",
+    "ios-chat-composer-third-20261113/controller-helper.asm": "47260408708238132b02070a803427b6400a07579f6266e84d8caa953d94b088",
+    "ios-chat-composer-third-20261113/controller-predicate-value-calls.json": "9cdcc6a366da7921587388b92cbd2e5b64edfa1f1b97ac316e08f1b8f45d4ce6",
+    "ios-chat-composer-third-20261113/controller-predicate-value.asm": "f6f4539cd439943f334b0bab84b9296494065c36ac812dd5f6a0f5ae26935098",
+    "ios-chat-composer-third-20261113/mode-binding-set-calls.json": "0bea7f29d64747b05d1731bab7b58f775ddccf3fb66591120390b9703c0601bd",
+    "ios-chat-composer-third-20261113/mode-binding-set.asm": "866c46c046ec1614785710dc4c7891d5e299da21f7613de257f70939293a7b1a",
+    "ios-chat-composer-third-20261113/mode-full-body-compact.txt": "c16f16a8dcfab51685b0a8640adcf03ed2de1efe51be3ad6c222469e562cd934",
+    "ios-chat-composer-third-20261113/mode-full-body.json": "5f7732eb752d114459243949059bda5a4b085e210f7740370488005610e40d99",
+    "ios-chat-composer-third-20261113/mode-full-body.raw": "9925d50e9ed61dac98b8e77df7cfa216f8f9aabae69278e9f7574157c49875ed",
+    "ios-chat-composer-third-20261113/mode-full-body.refs.tsv": "108e58d513849d4fb8ece3d2e5f17dd00a8cad9011045284cadb9d13978999d4",
+    "ios-chat-composer-third-20261113/mode-full-body.tree.txt": "3192b7af5bf59d1ca8c43a5c31a27669ffc01a39aecb546d2e84e991508fab83",
+    "ios-chat-composer-third-20261113/mode-layout-predicate-calls.json": "b79a304dd392c5595c5f69b1e34900fc23dcdd70828df916a69bfb7327d0fa14",
+    "ios-chat-composer-third-20261113/mode-layout-predicate.asm": "1eb9c04ec2781d72a489d77f25bf5af76e2780a26bdcdf8f96255aff233ea32a",
+    "ios-chat-composer-third-20261113/mode-picker-calls.json": "b81959655be4b20b1264b3af4799898e0b6b4ed1e7e8a94ed6e37c5f8f08a622",
+    "ios-chat-composer-third-20261113/mode-picker-tail-calls.json": "712143959ba24b03d8fb5ebebecec3bbe80dc49e4304c577965659d6078675c2",
+    "ios-chat-composer-third-20261113/mode-picker-tail.asm": "4bd62ff7071eefe318406abc10b06ca7030376f04bb90aa0dc6501e9cfe86043",
+    "ios-chat-composer-third-20261113/mode-picker.asm": "052587fa0f0afb6251b14daa72bb7465113a1c297155c83f23397220ab849eb0",
+    "ios-chat-composer-third-20261113/mode-selection-dependency-calls.json": "1fdd6c1dee5fcc0f9e9a053ea565341ec97e1c87b2487dd673c7714bfeea4aab",
+    "ios-chat-composer-third-20261113/mode-selection-dependency.asm": "55fcd28f8c71cd91ff1052516d44b1ce71abad9f5b6255503b16f70d14bd0268",
+    "ios-chat-composer-third-20261113/mode-selection-effect-calls.json": "d881618fd88105ffa7d18592cdd0e582c96229cd37645af345d57da6c66daaba",
+    "ios-chat-composer-third-20261113/mode-selection-effect.asm": "3ce3eb0ec5ed7baef31f5f5823ad97105b48f840d15f4dccfd168ca127782990",
+    "ios-chat-composer-third-20261113/mode-witness-fixed.json": "f7c2e023266b2fc19ad79c93b44770f5d23d21eed06df3128b381e56238b85f4",
+    "ios-chat-composer-third-20261113/prepare_raw.py": "7a84c91fed35bbbb2db0b0a09f239990dbbf1bed6deba4da7d533660f2125bbc",
+    "ios-chat-composer-third-20261113/snapshot-helper-calls.json": "ea64c6b6193a32ea06f44f71577a5907bbdcc222f91b3d1f70c179d23ed8725a",
+    "ios-chat-composer-third-20261113/snapshot-helper.asm": "ab1cd4d8e4a1e71dfafbda1cff7a3ab97ae725173a955cb61bf226b1c1f3500e"
+  }
+}

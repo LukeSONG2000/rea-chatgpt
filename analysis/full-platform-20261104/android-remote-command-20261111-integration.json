@@ -1,0 +1,54 @@
+{
+  "feature": "Android Remote command output",
+  "implemented": [
+    "Typed per-turn command snapshots with optional preserve semantics",
+    "Synthetic reply command output; no execution",
+    "Expand/collapse, output scroll/selection/copy",
+    "Backwards-compatible history persistence",
+    "Retry clears command snapshots; terminal and request identity guards reject stale events",
+    "Android293 output suffix retention 20000 UTF-16 units and sticky marker"
+  ],
+  "source": [
+    "desktop-mobile-correspondence-20261111.json",
+    "Android293 kw81.java:785-849 binds command activity identity and status; exact host appearance not restored"
+  ],
+  "independent_adaptation": [
+    "Native output panel dimensions and disclosure affordance",
+    "Synthetic snapshots and event timings"
+  ],
+  "missing": [
+    "Activity aggregation and command-specific statuses",
+    "ANSI styling and official native detail container fidelity",
+    "New panel visual/gesture acceptance",
+    "iOS full reasoning body/consumer remains unchanged"
+  ],
+  "build": "passed",
+  "model_tests": "OnePlus ONEPLUS_A6003: 3 passed",
+  "ui_regression": "OnePlus Chinese light: existing RemoteConversationTest.listJourney passed. New output disclosure interaction not yet separately tested.",
+  "backend_execution": false,
+  "sha256": {
+    "implementation/android/app/build/outputs/apk/debug/app-debug.apk": "e5d0b4f9780a68129942a594067c6883ef7e7132cc9ca482fe0616a03cfc3fd0",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteCommandOutput.kt": "cd3c5300b4993c648a42ee40406ba94da18a566f892b7ac5c105e6219f81c0d3",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteConversationModel.kt": "3b19d76d50ee65ed39eb62b66994684da33c9e6e5fdfda7aa700adb7cf4c4ecd"
+  },
+  "command_panel_ui": {
+    "device": "OnePlus ONEPLUS_A6003, wireless ADB",
+    "locale": "zh-CN",
+    "appearance": "light",
+    "passed": [
+      "Expand/collapse",
+      "Full clipboard equals 80-line synthetic output",
+      "Panel above composer",
+      "Other host/task has no fixture command",
+      "Return to original task and reopen"
+    ],
+    "visual_observation": "Vertical scrolling verified in r1; r4 screenshot confirms horizontal displacement with direct bounded swipe.",
+    "not_verified": [
+      "Selection gesture",
+      "Dark and English panel-specific run"
+    ],
+    "second_run": "r2/r3 stopped at initial package guard. Explicit app launch before r4 passed. Cause not proven to be user interaction.",
+    "artifacts": "analysis/full-platform-20261104/android-command-journey-20261111-r1",
+    "horizontal_evidence": "analysis/full-platform-20261104/android-command-journey-20261111-r4"
+  }
+}

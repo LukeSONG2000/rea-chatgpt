@@ -1,0 +1,230 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial; native legacy list containment proven, exact toolbar strings/row metric owners not closed within bound",
+  "branch": {
+    "explicit_fixture": {
+      "implementation": "LegacyBrowseContent + contentLayout.list + interaction.browse",
+      "provenance": "independent host explicitly chooses a native artifact branch; no claim about original runtime assignment"
+    },
+    "source": [
+      "RootView873bc8",
+      "BrowseContent8760e8",
+      "selector876954",
+      "LegacyBrowseContent879bd8",
+      "DirectoryList86c218"
+    ]
+  },
+  "parent_structure": {
+    "root": "RootView supplies NavigationStack<DirectoryRoute,...>, presentation host and BottomControlsPresentation; root lifecycle remains separate from list rows",
+    "browse": "BrowseContent applies navigationTitle/inline style/toolbarBackground and separate SideMenuToolbarItem/DismissToolbarItem wrappers (reused browse-native.tree.txt)",
+    "directory": "DirectoryList contains search/storage/empty state, scrolling listing, pending upload rows, pages and optional selection bar",
+    "collection": {
+      "descriptor": "0x9570cdc",
+      "body_witness": "0x7cd968",
+      "body": "0x7cd7f0",
+      "contentLayout_read": "0x7cd808 reads byte+0x12;0x7cd80c compares1",
+      "list_branch": "0x7cd814..0x7cd8a4 constructs NodeList state; alternate constructs NodeGrid state",
+      "limit": "declaration grid/list supports mapping but generic branch evidence retained; no runtime account branch claimed"
+    },
+    "list": {
+      "descriptor": "0x9571404",
+      "body_witness": "0x7d0b4c",
+      "actual_body": "0x7cf0e8",
+      "record": "0x7d38e28",
+      "structure": "ModifiedContent of LazyVStack<TupleView<(ForEach<Array<ListItem>,ListItem.ID,modified NodeListRow>, LoadMoreFooter)>> with horizontal/bottom/top padding",
+      "proof": [
+        "node-list-shape.tree.txt",
+        "0x7cf104 PinnedScrollableViews metadata",
+        "0x7cf158 HorizontalAlignment.center",
+        "0x7cf1c4 LazyVStack alignment/spacing/pinned/content init",
+        "0x7cf1c8 Edge.Set.horizontal",
+        "0x7cf1f0 Edge.Set.bottom",
+        "0x7cf208 Edge.Set.top"
+      ],
+      "important": "Source is custom LazyVStack rows, not stock SwiftUI List/UIKit list defaults."
+    }
+  },
+  "single_row": {
+    "outer": {
+      "type": "NodeListRow",
+      "descriptor": "0x9571a2c",
+      "witness": "0x7e8d94",
+      "body": "0x7e7a28",
+      "inputs": [
+        "item",
+        "highlightedTitle",
+        "savedEntityThumbnailImage",
+        "selectionIndicatorState",
+        "reservesSelectionIndicatorSpace",
+        "showsVirtualTryOnProducts",
+        "accessibilityActions",
+        "onTap"
+      ],
+      "environment": [
+        "isEnabled",
+        "isAccessibilityFocused"
+      ]
+    },
+    "content": {
+      "type": "NodeListRowContent",
+      "descriptor": "0x95721d0",
+      "witness": "0x7ebc74",
+      "body": "0x7e8d98",
+      "inputs": [
+        "content",
+        "providerIcon",
+        "badgeProvider",
+        "isMountedLibraryFile",
+        "sharingKind",
+        "savedEntityPresentation",
+        "savedEntityThumbnailImage",
+        "highlightedTitle",
+        "product",
+        "subtitle",
+        "allowsPurchase",
+        "selectionIndicatorState",
+        "reservesSelectionIndicatorSpace",
+        "uploadProgress",
+        "contentOpacity",
+        "onTap"
+      ],
+      "environment": [
+        "dynamicTypeSize",
+        "inheritedTruncationMode"
+      ],
+      "local": [
+        "imagePreviewFailure"
+      ],
+      "scaled_metrics": [
+        "selectionIndicatorSize",
+        "subtitleIconSize"
+      ]
+    },
+    "preview_icon_branch": {
+      "record": "0x7d3a9a0",
+      "shape": "VideoThumbnail / ItemPreviewIcon / RemoteImagePart clipped to Rectangle / ItemPreviewIcon alternate",
+      "source": "row-content-shape.tree.txt",
+      "limit": "This record covers preview child branch, not full row. Do not make one folder SF symbol stand in for all file/provider/thumbnail variants."
+    },
+    "title_subtitle": "ListItem projected title/content + highlightedTitle and optional subtitle/provider/badges enter row. Root/data adapters own displayed filename/folder label; no personal screenshot strings copied.",
+    "geometry": {
+      "known_structure": "LazyVStack center, horizontal/top/bottom padding; row content uses ScaledMetric and dynamic type",
+      "not_safe_to_bind": [
+        "Row content literal40 at0x7e8e7c and corner10 at0x7e8ed4 belong preview child, not proven universal row height/radius.",
+        "Outer row literal12 at0x7e7f24 belongs a shape substructure; not proven universal vertical padding.",
+        "Exact full-row minHeight/insets/font and icon asset mapping unresolved."
+      ],
+      "decision": "Do not infer universal row geometry from isolated constants. Initial independent fixture may implement structural geometry explicitly marked host adaptation, not official pixel restoration."
+    }
+  },
+  "contracts": {
+    "root_actions": {
+      "descriptor": "0x956f0e8",
+      "minimal": [
+        "directoryTapped",
+        "fileTapped",
+        "localFileTapped",
+        "contentLayoutSelected",
+        "categoryFilterSelected",
+        "fileMenu",
+        "directoryMenu"
+      ],
+      "limit": "Original case names observed in metadata, numeric discriminants/payload/dispatch chain not recovered by metadata alone."
+    },
+    "directory_actions": [
+      "pagination",
+      "node(tapped/becameVisible)",
+      "initialLoadRetryTapped",
+      "addFilesTapped",
+      "fileMenu",
+      "directoryMenu",
+      "scrollInteraction"
+    ],
+    "identity": "ForEach<ListItem.ID> keyed file/directory/contributed/search identities; preserve stable identity and scoped directory path when navigating back.",
+    "state_owner": "DirectoryListViewModel location/title/requestsByCategory/requestOwnerID; RootViewModel navigationPath/presentationQueue/filePreviewFactory/fileOpener/directoryNavigation."
+  },
+  "toolbar": {
+    "known_controls": [
+      "SideMenuToolbarItem",
+      "DismissToolbarItem",
+      "BrowseControlsMenu",
+      "DirectoryList.BrowseComponents.OverflowMenu"
+    ],
+    "browse_controls_fields": [
+      "contentLayout",
+      "filter",
+      "availableMountedProviders",
+      "mountedAccounts",
+      "selectedMountedProviders",
+      "hiddenAccountIdentifiers",
+      "showsSelect",
+      "showsRecentlyDeleted"
+    ],
+    "actions": [
+      "contentLayoutSelected",
+      "mountedAccountVisibilityChanged",
+      "mountedProviderVisibilityChanged",
+      "filter",
+      "favoriteKindSelectionChanged",
+      "menuAppeared",
+      "enterManagementSelectionTapped",
+      "recentlyDeletedTapped",
+      "exitManagementSelectionTapped"
+    ],
+    "scope_choice": "For basic list fixture, layout=list; source/type filters and select appear only by explicit capability inputs. Batch operations and refreshed IA excluded.",
+    "unknown": "Exact toolbar visible order, original text localization and predicates not closed. BrowseControlsMenu witness7e30f4 forwards to body7e1e90; tracing labels from that body is next minimal evidence."
+  },
+  "title": {
+    "owner": "BrowseContent navigationTitle modifier + DirectoryListViewModel.title and RootViewModel current directory",
+    "known": "Native parent owns title; Valdi ChatGPTLibraryScreen title is not authority for this page.",
+    "unknown": "Exact root localization key and capability choosing Library versus another localized label remain unclosed.",
+    "host_contract": "Provide rootDisplayTitle from a declared capability/configuration in explicit standalone fixture; directory title uses directory identity data. This is adapter design until source producer closes."
+  },
+  "minimum_frontend_scope": {
+    "possible_now": [
+      "Explicit standalone native legacy-list fixture with deterministic file and folder rows, stable identifiers, loading/empty/error/retry states.",
+      "Folder selection appends scoped DirectoryRoute; back restores prior list position and scope.",
+      "File selection dispatches a resource-preview adapter and close returns to same directory/list state.",
+      "Show route close/sidebar controls outside scroll content; wire layout/filter controls only where fixture capabilities declare them."
+    ],
+    "provenance": "Structural/owner/action names source backed. Exact action-to-original engine behavior and adapter implementation are independent.",
+    "do_not_claim": [
+      "History sidebar reaches this original builder end to end",
+      "Complete official row geometry/icon family",
+      "Exact original toolbar order/labels",
+      "Original account experiment branch",
+      "Complete source implementation copied into native host"
+    ]
+  },
+  "remaining": [
+    {
+      "priority": "next",
+      "boundary": "Row title/icon/full geometry",
+      "next": "Trace NodeListRow7e7a28 constructor of NodeListRowContent and its final HStack/Text branch; bind ScaledMetric fields before constants."
+    },
+    {
+      "priority": "next",
+      "boundary": "Toolbar labels/order",
+      "next": "BrowseControlsMenu7e1e90 child builders and DirectoryList OverflowMenu exact ordinary-browse branch only."
+    },
+    {
+      "priority": "next",
+      "boundary": "Root title",
+      "next": "BrowseContent navigationTitle input producer and DirectoryListViewModel.title for root source; no universal JS label."
+    },
+    {
+      "priority": "retained",
+      "boundary": "HistorySelection.fileLibrary→builder invocation",
+      "next": "Type-erased FileLibraryScreenBuilderProviding consumer; independent fixture may proceed without claiming this source reachability."
+    }
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-library-legacy-list-20261112",
+  "limits": [
+    "Static bounded analysis only; no target execution.",
+    "No host edits/build/device/global setup.",
+    "No refreshed IA or bulk-operation expansion.",
+    "Ended at eight-minute bound with exact unknowns."
+  ]
+}

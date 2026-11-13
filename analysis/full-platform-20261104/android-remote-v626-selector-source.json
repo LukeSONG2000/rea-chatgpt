@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "report_id": "android-remote-v626-selector-source",
+  "platform": "android",
+  "version": "1.2026.293",
+  "scope": "Remote horizontal host selector visual and interaction reconstruction",
+  "evidence_type": "official_artifact_static",
+  "validation_status": "partial",
+  "artifact": {
+    "recorded_base_apk_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+    "sha_source": "analysis/takeover-20261103/baseline.json",
+    "version_source": "recovered/android-1.2026.293/apktool-src/apktool.yml:11",
+    "identity_limit": "Original APK digest reused from inventory; not rehashed or reacquired in this task. Source files below hashed in this task."
+  },
+  "sources": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dol.java",
+      "sha256": "e062d3b37ef132fb2919ce75a5987bba1b540cef8ff31ccf19ac91a1dd6af4b5"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bbv0.java",
+      "sha256": "caaa97ac1b162ceea4d4b31d59cb67c1d2885b1d35723963f32cbe1a24be8096"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bg1.java",
+      "sha256": "4c3144621c77423be950c378b4d04470e84e8ef1b4d27fd5d0bf4b31eaf1ebeb"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qnl.java",
+      "sha256": "165b43d9447b00c30afcb4e45a31b9d0183fe729f3717df04ebdf9f51338d8a5"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/wnl.java",
+      "sha256": "4c95cc6a7057d0fab1f846facdfdaa95f8ca954c539b64f046600a9e1469c68c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/znl.java",
+      "sha256": "ebc4e58bc5797ecac52a8e2be801b990bb6f25e6d8999c6719f73c9e3945055d"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/xnl.java",
+      "sha256": "e07ff88425bc69dc189d2dc97324075a5325305217c1f47fe9e14f258fa06291"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/hw81.java",
+      "sha256": "293b4a095beb912054e6607016cfadc664fb54d6e271f0ad8e40bd934a2f83ba"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ewx0.java",
+      "sha256": "ff09e2bc5673ef09e0e60c7bb5b3b4b7ba8190e6b259fe1cd1b31137fae948ac"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java",
+      "sha256": "99bee934ff0a85ece1691654e536d128719f8b6b206754a83411ea1e31cea2c6"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/q5n.java",
+      "sha256": "45bda92e54b449be777e2b33d9c83c2c38c83e4a2cadb1d4abff92cd3b88dc95"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/z3n.java",
+      "sha256": "07c1779fbaf88ce3bbe46fc933718a883bbe67acd3617a3b8bf7f06377aa512e"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/p5n.java",
+      "sha256": "1c6dcb9dc0801ea2abf0677b9a41992b0e1968f1c9fc989e90ddaba06b1dc9f8"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/on01.java",
+      "sha256": "3cc34fb222864abe5fbbc702caa0e3f60ef9b6043d5e15262da861dc4ee60d04"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java",
+      "sha256": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/p8k.java",
+      "sha256": "0188251de58b5274b1aa8977b7de684562888dd674dda8ee2ee8556e9beded9b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pml.java",
+      "sha256": "c10db6d18c2fabd70a2ab99fd433cab9044e6cbb6b8caaf7b43ffbb508beec59"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/l8k.java",
+      "sha256": "964a8ac84aab6ab0dcdecc52268d7fb719d133b8de67a1e919a0934c5ca0f5b9"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zx81.java",
+      "sha256": "a477f151f0e88e1a43de1e6b801b1cf1e1e03be94f8b122c1841b6a0de959642"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/jm01.java",
+      "sha256": "66200afaed531252f0fe775e128a4828261274b72e3bb577e5b30c37062709de"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/y7c.java",
+      "sha256": "9f394c4a9f50cb6dc25897764fbb7a809f4a3b2921f42ec2028367cd8bcb7863"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/yra.java",
+      "sha256": "723e556f0e41840bcc909a2557df4ad640297d83a0e2ec33f7b5491183f864cb"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/tnl.java",
+      "sha256": "2447f4df97a580b5ba3a6bf40f37a09d5b2c4c53938a8f09db86cab6014c948d"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/r0n.java",
+      "sha256": "1717d312f801770bb8f823ec7aa9b740f25d9e200c3eac629321c86a42726c34"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/androidx/compose/foundation/c.java",
+      "sha256": "d167fc3c3eb7efcc5ed8a4b0e09e5e97e7cec745f458981cfb937ff39aee4770"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/androidx/compose/foundation/CombinedClickableElement.java",
+      "sha256": "b5923904c9b0c3e5b5a5c094d59c796886dded0fe9b5d6294784a9a55a5a824d"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/androidx/compose/foundation/layout/b.java",
+      "sha256": "2ba9449c070ae03d4266c45bf99bd274ce8a550699882068fa27582655229112"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/dol.smali",
+      "sha256": "63126eac669ad3180e9ac53258923d41ae80204bd0365ed1b5555d4f28833152"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/bg1.smali",
+      "sha256": "942bd29f832131ef66988cf4431bb02b77dbec8b90da4e535b79d1971f363d56"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/xw71.java",
+      "sha256": "ec14bcedf898b6a4365fda848074b98f610df26eeac0dccabd62561d53415dce"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nw.java",
+      "sha256": "07a20cb2f2d247435465dea1d8d69a7e927cdce444912fdc857829071f8a1bf3"
+    }
+  ],
+  "findings": [
+    {
+      "id": "chip_container",
+      "status": "verified_static",
+      "source": [
+        "dol.java:443-509",
+        "bbv0.java:26",
+        "bg1.java:191-199",
+        "androidx/compose/foundation/layout/b.java:106-117",
+        "dol.smali:3149-3500",
+        "bg1.smali:3722-3749"
+      ],
+      "conclusion": "Host uses custom Surface ewx0.a around rounded clipping and CombinedClickable. Minimum height34dp, radius17dp, internal padding horizontal12dp vertical4dp. Explicit elevations0 and default-mask112 produce null border. This is not Material FilterChip. Dynamic text can grow height beyond minimum."
+    },
+    {
+      "id": "selection_colors",
+      "status": "verified_static",
+      "source": [
+        "dol.java:479-496",
+        "q5n.java:8-20",
+        "z3n.java:14-21",
+        "p5n.java:12-17",
+        "lim.java:1125-1140",
+        "lim.java:1180",
+        "dol.smali:3125-3258",
+        "r0n.java:26"
+      ],
+      "normal_light": {
+        "selected_background": "#FFE8E8E8",
+        "unselected_background": "#00000000",
+        "selected_foreground": "#FF0D0D0D",
+        "unselected_foreground": "#FF5D5D5D"
+      },
+      "normal_dark": {
+        "selected_background": "#FF414141",
+        "unselected_background": "#00000000",
+        "selected_foreground": "#FFFFFFFF",
+        "unselected_foreground": "#FFCDCDCD"
+      },
+      "tokens": {
+        "selected_background": "q5n.c.e",
+        "selected_foreground": "q5n.n.c",
+        "unselected_foreground": "q5n.n.d"
+      },
+      "limit": "Alternative theme enum branches2/3 are dynamic providers and not reduced here."
+    },
+    {
+      "id": "host_identity",
+      "status": "verified_static",
+      "source": [
+        "dol.java:533-659",
+        "on01.java:9",
+        "sk10.java:46-47"
+      ],
+      "conclusion": "Identity Row vertically centered, gap8dp. Host glyph ux81.i(l9k.e) is16dp. Label is pml.b, on01.d.b, font12sp weight500 lineHeight16sp letterSpacing0.2sp, family preference Roboto/OpenAI Sans/sans-serif, maximum1 line. Glyph resource varies with host metadata; do not force laptop for every non-cloud kind."
+    },
+    {
+      "id": "connection_indicator",
+      "status": "verified_static",
+      "source": [
+        "dol.java:568-650",
+        "pml.java:80-82",
+        "l8k.java:21-26",
+        "p8k.java:22-44",
+        "zx81.java:555-572"
+      ],
+      "conclusion": "Cloud hosts skip connection indicator. Non-cloud hosts reserve6dp square before glyph. Connecting/Reconnecting/Determining render12dp spinner with stroke1dp using inherited content color, wrapped unconstrained around6dp slot. Other states render circle filling6dp slot. Connected uses q5n.m.c.c (normal light/dark #FF48A04C). Unavailable and DisconnectedByNotification use q5n.m.a.c (normal light/dark #FFFF002A). Remaining states use zx81.P(l9k), selecting green token m.c.c for host-availability ordinals0/1 or i.d for ordinals2/3/4. Exact labels of host-availability enum remain untraced."
+    },
+    {
+      "id": "selector_row",
+      "status": "verified_static_with_branch_limit",
+      "source": [
+        "dol.java:261-320",
+        "qnl.java:43-88",
+        "hw81.java:124-181",
+        "wnl.java:40-58"
+      ],
+      "conclusion": "Horizontal lazy row uses spacing8dp and contentPadding left16/top4/right16/bottom4. all-hosts and connect-computer are dedicated optional rows, not fake device records. All-hosts selected when selected host id is null and connect-computer branch is false. Host selected by matching host id plus connect-computer false. All/connect controls share34dp minHeight, selected colors, rounded50percent shape and no border/elevation. Presence is gated by incoming booleans. JADX dol.b control flow is suspect, so precise global feature-gate meaning is left unknown."
+    },
+    {
+      "id": "press_and_motion",
+      "status": "verified_static_with_runtime_limit",
+      "source": [
+        "dol.java:501-509",
+        "androidx/compose/foundation/c.java:103-107",
+        "androidx/compose/foundation/CombinedClickableElement.java:19-43",
+        "jm01.java:1304-1306"
+      ],
+      "conclusion": "Host chip sets selected semantics and clips to17dp before CombinedClickable. CombinedClickable useLocalIndication=true, enabled=true via mask231, onClick passed separately from long-click callback/label; local interaction source default null. hapticFeedbackEnabled=true in element. No per-chip animated fill, moving selector pill, blur, glow, or elevation animation appears in dol.d. Actual ripple color/timing comes from composition-local indication ancestor and has not been traced."
+    },
+    {
+      "id": "scroll_owner",
+      "status": "partial",
+      "source": [
+        "dol.java:27-65",
+        "dol.java:261-320",
+        "y7c.java:117-133",
+        "yra.java:54-68",
+        "tnl.java:93-118"
+      ],
+      "conclusion": "dol.a observes lazy-row visible-item state through y7c/yra and invokes callback through tnl when pagination conditions pass. dol.b calls kdd.f with default-mask456 and supplied lazy state; row has no directly attached bespoke edge-fade/blur modifier. Decompiled yra/tnl/kdd have damaged branches, so edge effect behavior, paging exact condition, and ancestor compositor effects remain unproven."
+    },
+    {
+      "id": "all_chip_distinct_content",
+      "status": "verified_static",
+      "source": [
+        "qnl.java:66-81",
+        "xw71.java:30",
+        "nw.java:74-108"
+      ],
+      "conclusion": "All uses q1r0.a 50-percent rounded shape and xw71.d -> nw case9 centered Box with horizontal16dp padding and zero vertical padding. It retains minHeight34 and on01.d.b typography. Host chips separately retain radius17 and12x4 padding."
+    }
+  ],
+  "implementation_guidance": [
+    "Replace Material FilterChip with explicit clipped Surface content and selected semantics using recovered geometry/color tokens.",
+    "Keep device connection status independent from selection and thread running status. Cloud must not acquire a green connected dot from synthetic default.",
+    "Preserve optional All and Connect-computer state, host identity click route, and current scope isolation.",
+    "Adopt inherited platform press indication initially; do not claim exact official ripple/overscroll parity before tracing parent LocalIndication/overscroll provider."
+  ],
+  "unknowns": [
+    "Exact LocalIndication provider/ripple timing and ancestor overscroll or edge compositing.",
+    "Feature flag conditions producing All/Connect-computer and compact selector branch.",
+    "Host glyph mapping ux81.i and fallback-availability enum labels.",
+    "Live visual comparison has not been performed by this read-only evidence worker."
+  ],
+  "verification": {
+    "smali_cross_checks": [
+      "dol.d selected/unselected q5n.c.e / r0n.k and q5n.n.c/n.d branches confirmed",
+      "dol.d bbv0.u radius/2 and min-height adapter confirmed",
+      "dol.d Surface mask0x70 confirms elevation0 border null",
+      "bg1 case11 padding12x4 and dol.e callback confirmed"
+    ],
+    "runtime_executed": false
+  }
+}

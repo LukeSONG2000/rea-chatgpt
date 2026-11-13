@@ -1,0 +1,62 @@
+{
+  "batch": 572,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "public_source": "Existing inspected upstream-codex-20261105/reuse-map.json pinned c90354172c5c49535b122443e9a8ed52c2233b80. Inspected public scope does not establish native Chat composer layout.",
+  "observations": [
+    {
+      "evidence_type": "official-artifact-metadata",
+      "source": "ios-chat-v570-user-metadata.json; MessageRowUserMessagePart descriptor0x9624de8",
+      "conclusion": "contents and attachmentItems are separate fields; audioAttachments, pendingVideoThumbnails, selectVideo and onExpand are also separately represented. Metadata alone does not prove active branches."
+    },
+    {
+      "evidence_type": "official-artifact-symbolic-type",
+      "source": "ios-chat-v572-attachment-type.json;0x90b2dd0",
+      "conclusion": "attachmentItems references ChatGPTMessageRowUI.MessageRowAttachmentGrid.Item, descriptor0x962f4d0."
+    },
+    {
+      "evidence_type": "official-artifact-metadata",
+      "source": "ios-chat-v572-grid-metadata.json;0x962f480",
+      "conclusion": "Grid fields include sourceItems, userRole, contentAlignment, cornerRadius, attachmentStyle, attachmentAccessory and attachmentSize. Their concrete values and call-site overrides remain unknown."
+    },
+    {
+      "evidence_type": "static-instructions",
+      "source": "ios-chat-v572-user-witness.json; ios-chat-v572-user-body.asm/json",
+      "conclusion": "User part body witness0x3ae7884 branches to0x3ae6920. The retained code window contains several functions. Full content/attachment construction and parent layout are unresolved."
+    }
+  ],
+  "host_gap": "Chat composer plus invoked NativeLibraryHost only. DraftStore, StoredTurn and ChatMessageService had no attachment references, so selecting a library item could not submit or project it in a user message.",
+  "independent_integration": [
+    "Add bounded ChatAttachment references to scoped drafts and persisted turns, preserving old snapshots with missing fields. Retry must preserve attachment identity.",
+    "Use existing LocalLibraryStore for bounded account-scoped copies. Selection callbacks require scope and generation, partial imports roll back. Removal preserves bytes referenced by another draft or history.",
+    "Add explicit service capability and attachment request overload. Fixture records references without reading contents or executing models. Legacy adapter rejects nonempty attachments.",
+    "Connect system Files picker, pending file controls, attachment-only send, retry, native QuickLook preview and return. A test-only flag injects synthetic picker results through the same import boundary.",
+    "File chips, file-only message cards, dimensions, colors, local file budgets and native preview integration are independent host decisions. Photos, video and official grid/menu geometry remain open.",
+    "Commit local turn history before clearing the draft. Failed history write keeps the draft and prevents submission."
+  ],
+  "failed_probes": [
+    {
+      "address": "0x9078f05",
+      "operation": "inspect_raw_type",
+      "reason": "unsupported symbolic kind7 at0"
+    },
+    {
+      "address": "0x90b24e3",
+      "operation": "inspect_raw_type",
+      "reason": "unsupported symbolic kind7 at0"
+    },
+    {
+      "test": "state-r1",
+      "reason": "new test used chat-a instead of the catalog backend identity; corrected test input. Retained ios-chat-v572-state-r1-invalid-test-identity.log."
+    }
+  ],
+  "limitations": [
+    "Official composer picker/menu/thumbnail geometry and transfer lifecycle remain unresolved. No claim of source-equivalent attachment rendering.",
+    "System Files selection success is exercised through a deterministic result fixture; actual system cancellation is a separate UI test.",
+    "Photo picker, image thumbnails, PDF/image/unsupported preview cases, upload progress and missing-resource recovery are pending.",
+    "Large message gaps and exact action/footer style remain open. Physical device, haptics, notifications and Android are independently unaccepted."
+  ],
+  "shared_boundary": "ChatAttachment, scoped persistence and service action tests are independent shareable frontend contracts. System picker, QuickLook, IME and geometry remain iOS adapters; no Android equivalence established."
+}

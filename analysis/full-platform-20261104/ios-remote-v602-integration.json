@@ -1,0 +1,43 @@
+{
+  "batch": 602,
+  "implemented": [
+    "Archive action commits desired state before dismissing the selected task. Home list excludes archived metadata; drafts/history/pin and stable identities preserved.",
+    "Separate NavigationStack/plain List, shared device filter/header, search, collapse, pull-to-refresh, empty/load-failure/retry and per-row Unarchive pending/failure/retry.",
+    "Unarchive checks captured host/thread revision after bounded synthetic acknowledgement; view disappearance cancels before commit. Concurrent reload results use request identity.",
+    "Legacy v1 metadata without optional archive field remains supported. Archive/restore state is persisted atomically under existing account/profile scope."
+  ],
+  "official_evidence": "ios-remote-v602-archive-findings.json",
+  "independent_adaptations": [
+    "Local metadata storage and synthetic acknowledgements, reload errors, cancellation and retry semantics.",
+    "Single-section projection, host subtitle, native default spacing and error layout; official grouping/ScaledMetric initializers remain unresolved.",
+    "Task destination dismissal after accepted local archive; official dismissal owner not fully traced."
+  ],
+  "tests": {
+    "foundation": "ios-remote-v602-foundation-r2.log",
+    "ui_summary": "ios-remote-v602-r4-summary.json",
+    "passed": 2,
+    "failed": 0,
+    "earlier_results": "r1 identifiers and r2/r3 native search labels retained with diagnosis",
+    "visual": [
+      "Chinese light archive filtered to host A",
+      "English dark archive filtered to host A"
+    ]
+  },
+  "runtime": {
+    "report": "ios-remote-v602-runtime.json",
+    "version": "602",
+    "process": "local.rea.chatgpt.ioshost: 39648",
+    "hash_match": true,
+    "handoff": "Chinese Remote list, system dark appearance, stable preview profiles",
+    "display": "Only built-in display detected"
+  },
+  "retention": "ios-remote-v602-retention-final.json",
+  "not_implemented": [
+    "Official archived-section grouping/sorting and exact row metrics",
+    "Remote service archive/list/unarchive integration",
+    "Android archive presentation",
+    "Complete official archive navigation/row styling and grouping",
+    "Remaining Remote list modes and special message branches"
+  ],
+  "next_action": "Continue Remote minimum-usable gaps, preserving current archive and metadata workflows."
+}

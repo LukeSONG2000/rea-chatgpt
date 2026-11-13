@@ -1,0 +1,66 @@
+{
+  "batch": "v562",
+  "status": "partial",
+  "question": "Remote draft recovery after process restart",
+  "artifact": {
+    "version": "iOS 1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    {
+      "type": "official_public_source_inventory",
+      "file": "analysis/upstream-codex-20261105/reuse-map.json",
+      "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+      "limitation": "Inspected public inventory supplies no verified mobile draft persistence implementation."
+    },
+    {
+      "type": "official_artifact_observation",
+      "file": "analysis/full-platform-20261104/ios-remote-v509-home-state-findings.json",
+      "offsets": [
+        "0x2da614",
+        "0x2da700",
+        "0x3e2ce0",
+        "0x3e2d14"
+      ],
+      "conclusion": "Home owns one draft; asynchronous target changes validate draft and host identities."
+    },
+    {
+      "type": "official_artifact_observation",
+      "file": "analysis/full-platform-20261104/ios-remote-v511-vm-fields.json",
+      "field": "messageDraftStore",
+      "limitation": "Protocol reference 0x95d2654 unresolved. Storage format, lifetime and disk write path are unproved."
+    },
+    {
+      "type": "independent_host_source",
+      "files": [
+        "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+        "implementation/ios/Sources/RemoteComposerInteraction.swift"
+      ],
+      "conclusion": "Draft dictionary is process-local. Imported attachments use temporary directories with deinit removal. No restart restoration path."
+    }
+  ],
+  "decision": "Implement an explicitly independent account/profile-scoped local snapshot adapter, retaining typed home/thread/new-thread scopes, attachment bytes and accepted-send clearing. Preserve corrupt snapshots and surface failure. Synthetic tests default ephemeral; explicit recovery profile exercises disk.",
+  "unknowns": [
+    "Official disk persistence algorithm and lifetime",
+    "Reading-position process recovery requires stable restored history and durable row identities; dynamic replay turns currently process-local",
+    "Physical-device lifecycle acceptance",
+    "Android persistence implementation"
+  ],
+  "failed_probes": [
+    {
+      "run": "r1",
+      "tests": 2,
+      "failures": 2,
+      "reason": "Test expected ordinary composer on fixture-b/shared-thread. This task is disconnected and owns pending userInput.",
+      "correction": "Initial expanded-composer diagnosis was incomplete."
+    },
+    {
+      "run": "r2",
+      "tests": 4,
+      "passed": 2,
+      "failed": 2,
+      "reason": "Ordinary editor still absent on pending-userInput fixture. Existing combined journeys passed.",
+      "next_probe": "Use fixture-a/pinned-thread and fixture-b/pinned-thread, retaining identical thread ID with distinct hosts and editable composers."
+    }
+  ]
+}

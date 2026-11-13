@@ -1,0 +1,65 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "icons": [
+    {
+      "role": "menu Toggle when current kind raw0 (target steer)",
+      "consumer": "0x1a007a0/0x1a007b4",
+      "factory": "0x74f3f40",
+      "literal": "0x8a539d0",
+      "resource": "OpenAI/Symbols/arrow-curved-right-large-typographic",
+      "key": "codex_remote_pending_prompt_menu_steer_instead"
+    },
+    {
+      "role": "menu Toggle when current kind nonzero (target queue)",
+      "consumer": "0x1a007a0/0x1a007a4",
+      "factory": "0x74f7754",
+      "literal": "0x8a55510",
+      "resource": "OpenAI/Symbols/follow-up",
+      "key": "codex_remote_pending_prompt_menu_queue_instead"
+    },
+    {
+      "role": "menu Start",
+      "consumer": "0x1a00894",
+      "factory": "0x74fa2d0",
+      "literal": "0x8a56950",
+      "resource": "OpenAI/Symbols/play-fill",
+      "key": "codex_remote_pending_prompt_menu_start_message"
+    },
+    {
+      "role": "menu Cancel",
+      "consumer": "0x1a00940",
+      "factory": "0x74fc178",
+      "literal": "0x8a576c0",
+      "resource": "OpenAI/Symbols/trash",
+      "key": "codex_remote_pending_prompt_menu_cancel_message"
+    },
+    {
+      "role": "trigger trailing icon",
+      "consumer": "0x1a00d00",
+      "factory": "0x74f6dc8",
+      "literal": "0x8a55080",
+      "resource": "OpenAI/Symbols/ellipsis-horizontal"
+    }
+  ],
+  "status": [
+    {
+      "condition": "current kind raw0",
+      "consumer": "0x1a00efc..0x1a00f20",
+      "key_literal": "0x88bece0",
+      "key": "codex_remote_pending_prompt_queued_status",
+      "fallback": "Queued",
+      "leading_icon": "OpenAI/Symbols/follow-up",
+      "icon_consumer": "0x1a00ea0 ->0x74f7754"
+    },
+    {
+      "condition": "current kind nonzero",
+      "consumer": "0x1a00ecc..0x1a00ef8",
+      "key_literal": "0x88bed10",
+      "key": "codex_remote_pending_prompt_steering_status",
+      "fallback_literal": "0x88bed40",
+      "fallback": "Steering conversation",
+      "leading_icon": "OpenAI/Symbols/arrow-curved-right-large-typographic",
+      "icon_consumer": "0x1a00e98 ->0x74f3f40"
+    }
+  ]
+}

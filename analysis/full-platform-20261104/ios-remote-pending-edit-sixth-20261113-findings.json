@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "date": "2026-11-13",
+  "scope": "Remote pending edit submit tail → first edit-aware consumers; two bounded candidate groups; no product changes/target execution/build/devices/services",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused": [
+    "ios-remote-pending-edit-fifth-20261113-findings.json",
+    "ios-remote-pending-edit-fifth-20261113/fixed-field-offsets.json",
+    "ios-remote-pending-edit-fifth-20261113/edit-draft-state-metadata.json"
+  ],
+  "candidate_groups": [
+    {
+      "id": 1,
+      "decision": "Follow remainder of submitPrompt handler0x18f8884 after0x18f8b38 until direct edit-aware callsite",
+      "stop": "Two concrete discriminant-dependent edit submission consumers found; no broad UI search."
+    },
+    {
+      "id": 2,
+      "decision": "Inspect direct edit-aware consumers0x1915168 and0x1914994 plus target matcher already directly called by same submit branch; bind target type from retained field metadata",
+      "stop": "Exact target revalidation and local state clearing proven. Queue mutation/async completion and cancel UI still unclosed; stop before next callback followup."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "current-edit-aware-submission",
+      "conclusion": "SubmitPrompt does not ignore MessageEditState. After complete structured draft validation it reads current state, branches on target discriminant, and carries exact target identity into submission.",
+      "sources": [
+        "0x18f8b70 draft-validity consumer0x1903a9c",
+        "0x18f8ba4→0x18e6010 current edit getter",
+        "0x18f8d24→0x1d9f120 repeated current edit state read",
+        "0x18f8d30 optional state gate",
+        "0x18f8d34..0x18f8d4c target words and discriminant read"
+      ],
+      "evidence": [
+        "submit-tail.asm"
+      ]
+    },
+    {
+      "id": "target-type-not-wire-schema",
+      "conclusion": "MessageEditState.target is the native nested Target enum with sentPrompt and appServerQueuedPrompt payload cases. Raw storage1 is not assigned a named case without its actual construction/witness proof.",
+      "descriptor": "0x95aed64",
+      "target_field_record": "0x9a356f8",
+      "target_typeref": "0x8e151a6",
+      "accessor": "0x1ce0bdc",
+      "cases": [
+        {
+          "name": "sentPrompt",
+          "record": "0x9a3a9e8",
+          "payload_type_reference": "0x8e1399e"
+        },
+        {
+          "name": "appServerQueuedPrompt",
+          "record": "0x9a3a9f4",
+          "payload_type_reference": "0x8e304a0"
+        }
+      ],
+      "evidence": [
+        "edit-target-type.json",
+        "edit-target-enum-metadata.json"
+      ],
+      "limits": [
+        "Symbolic reader retained anonymous parent as unknown; direct nominal descriptor and nested name independently established.",
+        "Field declaration order alone is not a raw-case mapping. No service wire tags inferred."
+      ]
+    },
+    {
+      "id": "target-storage1-consumer",
+      "conclusion": "When target discriminant storage is1, submit invokes0x1915168 with the complete current draft. That consumer rereads current edit state and revalidates a target identifier before building operation context.",
+      "sources": [
+        "0x18f8d40..0x18f8d84",
+        "0x19151b4..0x19151fc reread/unwrap current edit state",
+        "0x1915214→0x188dfc4 target interpretation boundary",
+        "0x1915230 nil target abort",
+        "0x1915238..0x191525c two-word target identity equality or String comparison",
+        "0x1915274..0x1915294 independent additional status gate",
+        "0x19152d4 exact target ID captured with full 48-byte draft0x19152d8..0x19152e4",
+        "0x1915334..0x1915344 asynchronous operation/capture factory boundary"
+      ],
+      "evidence": [
+        "queued-edit-consumer.asm"
+      ],
+      "limits": [
+        "Raw filename is historical candidate naming; do not interpret queued-edit-consumer.asm as proof raw storage1=appServerQueuedPrompt.",
+        "Exact status raw4 meaning and original async callback remain unknown.",
+        "No list replacement, server receipt or failure rendering established here."
+      ]
+    },
+    {
+      "id": "other-target-path-is-edit-aware",
+      "conclusion": "Other nonnil target path preserves target ID and passes it to the same submit consumer used by ordinary paths, with an explicit edit flag. It is not permissible to silently turn it into an ordinary append when identity mismatches.",
+      "sources": [
+        "0x18f8e24..0x18f8e54→0x1900380 target-related lookup",
+        "0x18f8fd0..0x18f9020 call0x1914994",
+        "0x18f9010 x5=original target word0;0x18f9014..18 x6=target word1;0x18f901c w7=1",
+        "0x19149b4 preserves w7 edit flag",
+        "0x19149b8..0x19149bc preserves submitted target identity",
+        "0x1914ab0..0x1914b30 rereads current edit state and calls0x188e040",
+        "0x1914b50 nil interpreted target rejects",
+        "0x1914b54..0x1914b7c compares two identity words, then fallback String equality; mismatch jumps rejection0x1914b90",
+        "0x1914ba8 returns false on rejection;0x1915160 returns true after local operation setup"
+      ],
+      "evidence": [
+        "submit-tail.asm",
+        "edit-target-matcher.asm",
+        "submit-edit-queue-consumer.asm"
+      ],
+      "limits": [
+        "0x1900380 is retained as target-related lookup, not asserted pure predicate or remote service mutation.",
+        "Successful Bool return denotes passing local consumer/setup, not service acceptance."
+      ]
+    },
+    {
+      "id": "edit-state-clear-local-phase",
+      "conclusion": "In0x1914994 the explicit edit flag controls local MessageEditState clearing after the operation-handle consumer. Clearing happens within the synchronous submit function before its true return. It cannot be treated as server acknowledgement.",
+      "sources": [
+        "0x1914e54→0x18dc3cc operation-handle consumer",
+        "0x1914e58..0x1914e5c tests stored edit flag",
+        "0x1914e60→0x1da49e4 nil-state constructor boundary",
+        "0x1914e6c..0x1914e70→same edit state consumer0x18dc0d8",
+        "0x1914e74→0x191fa3c followup boundary",
+        "0x1915160 true return"
+      ],
+      "evidence": [
+        "submit-edit-queue-consumer.asm"
+      ],
+      "limits": [
+        "Exact async success/failure continuation and whether/how original draft is restored on failure remain unknown.",
+        "No evidence supports equating task creation or local true to enqueued/accepted/completed service state."
+      ]
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "precise-queue-vs-sent-mapping",
+      "boundary": "Target descriptor0x95aed64 names both cases; actual construction/witness mapping to storage0/1 not closed. Next minimum is the existing PendingPrompt edit target constructor or concrete0x188dfc4/0x188e040 discriminant consumer with associated payload metadata; do not use case order."
+    },
+    {
+      "id": "actual-replace-or-append",
+      "boundary": "0x1915168 captures target+draft into operation via0x1915334/0x1915344;0x1914994 builds operation context and passes handle to0x18dc3cc. Actual target-aware mutation callback/async continuation is next consumer, not examined. No original preservation of pendingID/order or revision increment proved."
+    },
+    {
+      "id": "service-success-failure-ui",
+      "boundary": "Current sync rejection false and local clear are closed, but Task continuation success/failure/receipt and presentation callbacks remain unclosed. No original rollback strategy asserted."
+    },
+    {
+      "id": "cancel-ui-producer",
+      "boundary": "Previous report closes ViewAction.cancelMessageEdit tag59→0x18f6188 rollback; visible toolbar Cancel producer/callback and exact label/layout still not traced. No new cancel UI candidate added in this two-group pass."
+    },
+    {
+      "id": "haptics",
+      "boundary": "No direct haptic caller proven in selected submission paths; none added or inferred."
+    }
+  ],
+  "implementation_decision": {
+    "can_fully_integrate_official_submit": false,
+    "source_backed_frontend_principles": [
+      "Task-scoped edit transaction with full structured draft snapshot and exact target identity.",
+      "Revalidate current edit target at commit; mismatch must reject instead of appending a different prompt.",
+      "Preserve independent edit admission and structured-input round-trip gates.",
+      "Use previous original-draft cancel restoration chain; visible Cancel host control remains independently adapted until original producer closes."
+    ],
+    "independent_offline_adapter_assessment": {
+      "queue_only_replace": "No contradictory observation found; acceptable explicit independent offline contract. It is not a recovered original queue mutation.",
+      "preserve_pending_id_order_and_revision_plus1": "Reasonable independent policy only; original ID/order/revision behavior not established.",
+      "failure_policy": "Retain edit draft and transaction on adapter failure; clear only after explicit independent adapter success if desired. This differs from the proved synchronous original local-clear boundary and must be labeled independent.",
+      "default_service_unavailable": "Keep unsupported real-service commit disabled and expose capability explicitly.",
+      "must_preserve_scope": [
+        "account",
+        "host",
+        "thread",
+        "pending target ID",
+        "current transaction/draft identity",
+        "independent revision if used"
+      ]
+    }
+  },
+  "raw_directory": "analysis/full-platform-20261104/ios-remote-pending-edit-sixth-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "edit-target-enum-metadata.json",
+      "sha256": "e94c5f57e22250f6c518f09d65462ab9a5324ceabfdc0b445f38cf78bc931d50",
+      "bytes": 400
+    },
+    {
+      "file": "edit-target-matcher.asm",
+      "sha256": "8f6f74c839377800961fc94217cb22d3b4ba97e8ac4fecbd7a6156b71f1b56f8",
+      "bytes": 3735
+    },
+    {
+      "file": "edit-target-type.json",
+      "sha256": "87148154af32a4d8fcfb2a27968a25726dc9b346f885d946a3f7aaa5fc3f313d",
+      "bytes": 934
+    },
+    {
+      "file": "message-edit-target-enum.asm",
+      "sha256": "045513a2538428973624d415b6301f94f85fb1651bdb3a3505c90b52d15e858e",
+      "bytes": 2766
+    },
+    {
+      "file": "queued-edit-consumer.asm",
+      "sha256": "bd27edaa513b85fb2aee85063d90e2ae0a71a67f0ce12df31f116128665c7e07",
+      "bytes": 10569
+    },
+    {
+      "file": "submit-consumer-code.json",
+      "sha256": "3fc9b3686396b75c5ebc3c2343d9bc4727c36a8939da87e274602f1f21a492d8",
+      "bytes": 17562
+    },
+    {
+      "file": "submit-edit-queue-consumer.asm",
+      "sha256": "4ed26a2b61d28eb6d823c6a5c1631d589f34c3b77970bb1489497b8b99947b7e",
+      "bytes": 20644
+    },
+    {
+      "file": "submit-tail.asm",
+      "sha256": "68ff700e05be1a12149d05c9a6fc108da61aa09403b9ed755678e934ca6f9891",
+      "bytes": 14725
+    }
+  ]
+}

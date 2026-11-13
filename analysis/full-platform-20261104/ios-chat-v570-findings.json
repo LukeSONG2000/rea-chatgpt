@@ -1,0 +1,47 @@
+{
+  "batch": 570,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "public_source_scope": {
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "report": "analysis/upstream-codex-20261105/reuse-map.json",
+    "limit": "Inspected public core/protocol/app-server/TUI do not supply this native mobile UI."
+  },
+  "observations": [
+    {
+      "source": "MessageRowUserMessageTextPart descriptor0x96256c0, witness0x3ae9f58 ->0x3ae7d7c",
+      "finding": "Chat has an independent user text component. Body reads MessageRowStyle through0x2820040 and passes style plus temporary flags to bubble modifier."
+    },
+    {
+      "source": "MessageRowUserMessageTextLayoutModifier descriptor0x9625680; body0x3ae9f5c; types0x80370c0/c8/d0/d8",
+      "finding": "ProportionalLayout consumes supplied fraction and alignment, trailing flex frame, then supplied EdgeInsets. Parent-selected outer padding remains unresolved."
+    },
+    {
+      "source": "MessageRowUserMessageTextBubbleStyleModifier descriptor0x96256a4; body0x3aea070",
+      "finding": "Style fields background+0x10, insets+0x20/30, radius+0x40 are consumed. Ordinary non-temporary branch retains supplied background and omits temporary border."
+    },
+    {
+      "source": "MessageRowStyle constructor0x3d96ce0; retained ios-remote-v565-style-accessor.asm and style-defaults.asm",
+      "finding": "Shared style defaults include trailing alignment,0.78 fraction,9/15/9/15 inner padding,20 radius and OneOff/UserMessageBackground resource."
+    },
+    {
+      "source": "TextPart body0x3ae8238 -> helper0x3ae8f00; helper0x3ae8f10..24",
+      "finding": "Final text layout helper reads fraction at style+0x60 and alignment at+0, forwards supplied insets as four doubles to the layout modifier. Confirms shared style fields are consumed in the Chat path."
+    },
+    {
+      "source": "types0x80370e0/e8/f0/f8 and body0x3aea070",
+      "finding": "Returned bubble graph contains content padding, RoundedRectangle insettable background, optional stroke overlay and opacity. Temporary branch remains separately scoped."
+    }
+  ],
+  "host_gap": "Ordinary user rows were plain full-width text with a Chinese role prefix. Retry control was rendered without adding its height to the collection measurement.",
+  "integration": "Bind a dedicated selectable UIKit user surface to the measured default style. Preserve independent outer row padding and explicit original text/identity. Add retry height to measurement.",
+  "limitations": [
+    "Default style is an explicit preview selection. Actual Chat parent environment overrides, theme resolver wiring and outer row padding remain unclosed.",
+    "Temporary chat, user rich Markdown, transitions and official user action ownership remain partial. UIKit measurement/selection and menu are independent adapters.",
+    "Assistant local status rows and rich block presentation are unchanged in this batch and remain unfinished.",
+    "Earlier candidate type addresses0x8036368/70/c0/c8/d0/d8 were rejected as invalid records. Correct layout records are0x80370c0/c8/d0/d8. Probe0x8037368/70 refers to a different timeline component and is excluded from conclusions.",
+    "Android behavior and device tactile acceptance remain unverified."
+  ]
+}

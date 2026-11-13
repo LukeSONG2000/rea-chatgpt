@@ -1,0 +1,175 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x609b800",
+    "end_exclusive": "0x609b920",
+    "sha256": "e8603d48a0ed8690ca0a6930d59cb4583d45b98c418d2725be241489d9873d38"
+  },
+  "linker_function_starts_in_window": [
+    "0x609b800"
+  ],
+  "next_linker_function_start": "0x609b920",
+  "direct_calls": [
+    {
+      "site": "0x609b804",
+      "target": "0x1daf8e0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b81c",
+      "target": "0x1be03c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b820",
+      "target": "0x14b2d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b830",
+      "target": "0x148124",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b83c",
+      "target": "0x609a914",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b854",
+      "target": "0x457b60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b870",
+      "target": "0x60b66a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b874",
+      "target": "0x74e2668",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b878",
+      "target": "0x1bfd0c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b87c",
+      "target": "0x154394",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b880",
+      "target": "0xfac40",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b88c",
+      "target": "0x611309c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b898",
+      "target": "0x74e307c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b89c",
+      "target": "0x2188f6c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8a0",
+      "target": "0x153194",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8a4",
+      "target": "0xfab14",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8ac",
+      "target": "0x7c6e0c0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacaf990",
+        "register": "x1",
+        "selector": "pointSize"
+      }
+    },
+    {
+      "site": "0x609b8b4",
+      "target": "0x7c53a58",
+      "imported_symbol": "_objc_release_x20"
+    },
+    {
+      "site": "0x609b8b8",
+      "target": "0x74e26f8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8bc",
+      "target": "0x154394",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8c0",
+      "target": "0xfac40",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8c4",
+      "target": "0x611309c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8d0",
+      "target": "0x74e307c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8d8",
+      "target": "0x7c53a70",
+      "imported_symbol": "_objc_release_x22"
+    },
+    {
+      "site": "0x609b8dc",
+      "target": "0x153194",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8e0",
+      "target": "0xfab14",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x609b8e8",
+      "target": "0x7c6e0c0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacaf990",
+        "register": "x1",
+        "selector": "pointSize"
+      }
+    },
+    {
+      "site": "0x609b8f0",
+      "target": "0x7c53a58",
+      "imported_symbol": "_objc_release_x20"
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

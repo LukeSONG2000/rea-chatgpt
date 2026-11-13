@@ -1,0 +1,183 @@
+{
+  "version": "v619",
+  "status": "partial",
+  "scope": "iOS Remote project sorting entry and action owner; correction of item/project translation",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "digest_source": "retained version-bound evidence; original digest not recomputed in this slice"
+  },
+  "correction": {
+    "incorrect_chinese": "完整项目筛选接线未实现",
+    "original": "Raw official ThreadItem decoder and complete item visibility filtering integration.",
+    "correct_chinese": "原始 ThreadItem 解码与完整消息项可见性筛选接线未实现",
+    "evidence": [
+      "ios-remote-v616-integration.json:15",
+      "ios-remote-v616-reasoning-summary-findings.json:88"
+    ],
+    "impact": "Does not establish a missing project-filter UI. Existing source uses item for rendered message entries."
+  },
+  "observations": [
+    {
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Project sorting is a menu-style Picker only under byWorkspaces raw1 and isProjectSortingAvailable. Cases are lastUpdated raw0 and manual raw1.",
+      "offsets": [
+        "0x3105a4..0x3105c0",
+        "0x31063c..0x310748",
+        "0x311c8c..0x311e68"
+      ],
+      "source": "ios-remote-v506-title-menu-findings.json"
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Picker getter reads supplied projectSortOrder. Setter builds remoteProjectSortOrderSelected and dispatches taskListActionHandler.",
+      "offsets": [
+        "0x43c6cc",
+        "0x43c704 ->0x311c28",
+        "0x311c64..0x311c78"
+      ],
+      "source": "ios-remote-v506-title-menu-findings.json"
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "conclusion": "The mapped action branch checks a gate, compares new byte with current getter, skips identical values, otherwise calls the state setter before subsequent wrapper write.",
+      "offsets": [
+        "0x3027fc..0x302808 gate",
+        "0x30280c..0x30281c current-value equality",
+        "0x302828 ->0x31e2dc",
+        "0x30282c..0x302898 wrapper"
+      ],
+      "limits": "The gate meaning and wrapper storage identity are not decoded in this slice."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Current getter302780 uses global field-offset slot b0c8d60. Setter31e2dc calls a change-checked mutation wrapper with closure3ea6ac. That closure loads the same offset slot and tails458924, which stores a byte at owner+offset.",
+      "offsets": [
+        "0x302780..0x302790",
+        "0x31e2f0..0x31e314",
+        "0x3ea6ac..0x3ea6bc",
+        "0x458924 strb w9,[x8,x10]"
+      ],
+      "limits": "Field naming follows the action/menu correspondence. Dynamic instance offset value was not evaluated."
+    },
+    {
+      "evidence_type": "official_artifact_metadata",
+      "conclusion": "CodexViewModel metadata has _remoteProjectSortOrder at field index36 and _storedRemoteProjectSortOrder at index86.",
+      "offsets": [
+        "descriptor0x955df7c",
+        "fieldrecord0x99d59ec",
+        "fieldrecord0x99d5c44"
+      ],
+      "limits": "Storage key/account scope/backend mechanism are not established by names."
+    },
+    {
+      "evidence_type": "independent_host_source",
+      "conclusion": "Pre-change host already provides device filters, grouped workspace sections and distinct new-task workspace destination selection. Project sorting remains exposed only by --remote-project-sort-menu-fixture; its callback records a requested choice and shows unavailable alert.",
+      "source": "implementation/ios/Sources/NativeConversationHost.swift",
+      "lines": [
+        3851,
+        3891,
+        5023,
+        5027
+      ],
+      "source_snapshot": "Before v619 integration; line references describe that inspected snapshot"
+    }
+  ],
+  "minimum_integration": [
+    "Retain original byWorkspaces/capability gate, two choices and official localized labels.",
+    "Represent requested sorting as an action to an owner. Return selected value through state, and skip unchanged requests.",
+    "Keep project sorting separate from host filtering, message-item visibility and new-task destination selection.",
+    "A synthetic provider may supply explicit order for each mode, but label its ordering policy and persistence as independent until original comparator/storage are traced."
+  ],
+  "unknowns": [
+    "Exact lastUpdated comparator, timestamp field and tie-breaking",
+    "Manual ordering producer and drag/reorder capability",
+    "Sort-change effect on pinned/recents/workspaces/cloud projects",
+    "Complete storage wrapper, account scope and capability gate",
+    "Original navigation return/scroll behavior when project order changes"
+  ],
+  "next_evidence": [
+    "Find all references to field-offset slot0xb0c8d60 to locate sorting consumers",
+    "Resolve keypath/wrapper0x7cfad08 and0x7cf9d00 used after action state write",
+    "Trace action branch gate0xb07aae8 only if scope needs runtime availability"
+  ],
+  "validation": {
+    "target_executed": false,
+    "new_native_session": false,
+    "production_source_modified": false,
+    "bounded_static_disassembly": true
+  },
+  "sources": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v506-title-menu-findings.json",
+      "sha256": "a7832b8178c063200e19c184d86c736bff5ad2a2e2211817eb618dc797048c9f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v506-menu-metadata.json",
+      "sha256": "1880901d4824dd60d8663ba492033a62d5f26eab5b3b5e809786e261029b6de0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v506-chatsfirst-state-access.asm",
+      "sha256": "159feaf96803fdd586473d21c219682ad9064cee419be131f0ea8ef6cb87faf3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-enum.json",
+      "sha256": "378bbe382e66030419db918d3591e85371d87de636e326b3dad767b85a79196a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-task-action.asm",
+      "sha256": "6ca1efba62ed74fdacdd191a23ad638f61cb5a5088897a893b749a517845038c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v488-viewmodel-fields.json",
+      "sha256": "50bfab3c76f884fde3629b2657c1fdb5a003e763b4ad82cde72710341a3f107f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v616-integration.json",
+      "sha256": "f597c6eb831a90b3ae6221da26e506b9d3d214ed6a4e10273e0e300b0eafb99a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v616-reasoning-summary-findings.json",
+      "sha256": "190f08a4a044f479c0cae753bb6264a883abdfc8bc2c14f59a38f460cc1b36e9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v619-project-sort-setter.asm",
+      "sha256": "b602c894876e27f117db0c53831b1a7441d9ff60c41265553054350a462194bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v619-project-sort-setter.json",
+      "sha256": "f44856a802a3c8779ad4b8a2b5ff710fd8ae3561389965605d8d079cc1266436"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v619-project-sort-write-closure.asm",
+      "sha256": "2ea1ccd4f2847d6ee653764f2ea6e0f3cb49ffaedb088bd7549a89243587a397"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v619-project-sort-byte-store.asm",
+      "sha256": "e1f6dd59c59240b6b6ab1b2e11ab45479f3f85a72787e981d5211ca540ba7f31"
+    }
+  ],
+  "selected_host_adaptation": {
+    "classification": "independent_frontend_design_based_on_confirmed_menu_action",
+    "requested_integration": "Provider supplies two explicit stable identity order arrays. Host owner receives selection action and publishes selected order only after successful profile-scoped local JSON save.",
+    "source_backed": [
+      "Two menu cases and original visibility gate",
+      "Menu dispatches taskListActionHandler rather than mutating a view-only sort field",
+      "Action branch compares current/new values and no-ops when equal",
+      "Action branch mutates owner state and then invokes a storage-shaped wrapper"
+    ],
+    "independent": [
+      "Explicit fixture order arrays",
+      "Profile-scoped JSON persistence representation",
+      "Commit-before-UI-update failure policy",
+      "Reordering existing synthetic workspace projections"
+    ],
+    "limits": [
+      "The official state-before-wrapper ordering does not prove the independent commit-before-UI rule.",
+      "No claim that synthetic arrays reproduce official timestamp comparator, manual order, cloud/workspace participation or tie-breaking.",
+      "No backend operation is implemented or required for this frontend slice."
+    ]
+  }
+}

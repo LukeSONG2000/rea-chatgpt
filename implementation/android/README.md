@@ -1,5 +1,73 @@
 # Android independent native host
 
+## v629 Remote conversation core
+
+The normal Remote list now opens a task-scoped transcript with synthetic history, selectable text, basic Markdown, copy, streaming replay, stop, failure and retry. Drafts, turns and reading positions are stored per profile/host/thread. Accepted sends atomically save the user turn and clear its draft. Retry replaces the request identity. The reducer rejects foreign-host, old-request, duplicate and terminal-late events. Persisted active turns become interrupted after process recreation and expose retry.
+
+`RemoteConversationProvider` is the replaceable frontend input boundary. The current provider emits deterministic local events without a service call. The fixture **Inspect error states / 检查错误提示** fails its first attempt and completes after retry. Android293 establishes stable transcript keys, shared standard-content rendering, the Remote→Home lower composer chain and task-scoped send/stop ownership. This host supplies its own event schema, persistence, Markdown integration, bubble presentation and retry behavior. Exact official transcript geometry, toolbar effects and full composer capability predicates remain unresolved.
+
+Command-output disclosure is implemented. Command approval projection and scoped actions are wired into a transcript footer with synthetic acknowledgement and persisted receipt. Exact styling and advanced approval branches remain incomplete. Unimplemented in the normal task destination are mixed tool/activity rows, diffs, reasoning-specific components, attachments/previews, non-command/network-policy approval, queue/steer, Goal/agents, permission/model/context controls and task action menus. The plus and microphone retain returnable capability notices. The list composer and project/task creation are also still missing.
+
+```sh
+python3 implementation/android/build.py --tests
+python3 implementation/android/test-remote-list.py --conversation --serial 172.16.197.16:5555 --report /absolute/new-conversation-report.json
+```
+
+
+The copy control reuses the original square-on-square resource at the compact16dp size selected for this preview. Whole-response copy is available after completion. Code blocks now have a full-width header with a language label and trailing copy action, based on `sqi.a`. Surface/body styling and the effective official Remote size override remain partial.
+
+## v628 Remote search
+
+The Remote list search restores Android293 capsule geometry, 44dp minimum height, 16/8dp padding and body typography. Entering search requests focus and opens the current IME. Search submission clears focus, Back dismisses the IME while retaining the query, and toolbar close restores browsing. Source evidence is in `android-remote-v628-search-source.json`; OnePlus checks are indexed in `android-v628-integration.json`. Filtering uses the existing synthetic adapter. Global sidebar chat search and service search remain unimplemented.
+
+## v627 Remote navigation and title menu
+
+RemoteListPage now runs inside AppShell's existing drawer. The compatibility Activity and legacy remote intent forward to that owner. The browsing left action opens the sidebar. Android293 source constants now drive the title popup geometry, icon slots, normal light/dark surfaces and anchor/entry spring. The shell container and platform shadow remain independent adapters. Source traces and OnePlus results are indexed in `analysis/full-platform-20261104/android-v627-integration.json`.
+
+
+## Visual recovery v621
+
+The shared shell/Remote Material theme now restores the 36 ordinary color roles from Android293 `m2o0 → gm → s5n`, with normal light/dark values from `lim` and the elevation tint formula from `hmb0.t`. v620 supplied only five colors and inherited the remaining Material defaults. The source record is `analysis/full-platform-20261104/android-theme-v621-findings.json`.
+
+Sidebar row typography/geometry, footer branch, settings grouped rendering/icons, the home segmented control/composer parents, and AppLocaleDialog remain unimplemented original presentation paths. Their concrete consumers and unresolved producers are recorded in the v621 shell/settings style findings. Component accent ownership, high-contrast mode and the complete typography environment also remain unresolved.
+
+## Application shell v620
+
+The launcher opens AppShellActivity. The native home supports Chat/Work mode switching and separate durable drafts. The drawer exposes scheduled tasks, library, customization, Codex, sites, projects, plugins and images. Codex opens the existing synthetic Remote list. Other feature entries show a returnable capability page.
+
+Settings → General controls app language (system/Chinese/English) and appearance (system/light/dark). Both persist per preview profile and feed the shell and Remote activity. The default reads device preferences. Notifications, Voice, Codex, Cloud browser, Storage, Tasks and Data controls currently provide capability entries. Their feature settings are unimplemented.
+
+The sidebar item identities, original vector assets, settings hierarchy and appearance choices use Android293 evidence. The Compose navigation container, offline capability selection, home layout, palette, persistence keys and Chinese host labels are independent adapters. Full official order, visibility, styles and Chat/Work home ownership remain incomplete. Chat/Work message history, sending and attachment flows are unimplemented in this launcher. Existing MainActivity remains the explicit legacy message-lab entry.
+
+```sh
+python3 implementation/android/build.py --tests
+python3 implementation/android/test-shell.py --serial 172.16.197.16:5555 --report /absolute/new-shell-report.json
+adb -s 172.16.197.16:5555 shell am start -n local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity
+```
+
+The shell test uses isolated profiles, launches through the registered launcher, checks Chinese/light and English/dark routes and verifies preference/draft recovery in a new process. It preserves the stable preview profile and device settings, then leaves the ordinary preview running. Input checks use accessibility text assignment, with real IME candidate/composition behavior tracked separately.
+
+## Remote list v618
+
+Open the app sidebar and tap **Codex**, or launch the independent Remote preview with the command below. The default preview follows device language and appearance. Synthetic data covers two desktop hosts and cloud, scoped project names, grouped tasks, status glyphs, search, collapse, retry, durable drafts and list position. The v618 task destination contained status and a draft editor. v629 adds the synthetic conversation core described above. Approvals, project creation and the list composer remain unimplemented.
+
+```sh
+python3 implementation/android/build.py --tests
+python3 implementation/android/test-remote-list.py --serial 172.16.197.16:5555 --report /absolute/new-report.json
+python3 implementation/android/test-remote-list.py --serial 172.16.197.16:5555 --language en --appearance dark --report /absolute/new-dark-report.json
+adb -s 172.16.197.16:5555 shell am start -n local.rea.chatgpt.androidhost/local.rea.chatgpt.MainActivity --ez remote true
+```
+
+Recheck the transport before each run. The runner verifies OnePlus identity, installs both APKs without clearing data, isolates test preferences, verifies fresh processes, exports screenshots and restores the preview. It leaves device locale/theme/IME preferences intact. Source provenance is recorded in `analysis/full-platform-20261104/android-remote-list-v618-source.json`. Material theme and top controls remain independent host presentation pending their original Android wiring.
+
+## Current device workflow (2026-11-09)
+
+Android validation now targets the user-selected OnePlus over wireless ADB. Do not start an Android emulator on this Mac. Recheck device identity and online transport for each run, then use an explicit `adb -s` target. Only the independent `local.rea.chatgpt.androidhost` and scoped test APK are in scope. Preserve app data and system preferences; leave the preview running after tests.
+
+Android catch-up now has priority. Each new iOS feature includes its Android counterpart in the same batch, with independent Android artifact evidence. Schedule heavy builds and UI runs sequentially. See [current plan](../../docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md).
+
+Historical emulator-only runners below require physical-device adaptation before use on OnePlus. Their old commands and results remain historical evidence. In particular, the composition runner changes the default IME and needs a bounded restoration path before physical-device use. Ordinary page checks use the current device keyboard.
+
 This is a Compose host built for the six-surface recovery project. It now reuses
 pinned public OpenAI Compose RichText source, but does not establish the exact
 293 component version or official visual fidelity.

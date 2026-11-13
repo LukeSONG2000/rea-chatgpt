@@ -1,0 +1,53 @@
+{
+  "batch": 614,
+  "baseline": "iOS 1.2026.293",
+  "artifactSHA256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Recover missing web activity action-specific summaries through the existing transcript label.",
+  "observations": [
+    {
+      "evidence": "ios-remote-v614-search-action-cases.json",
+      "conclusion": "WebSearchAction metadata has search, open-page, find-in-page, other and unknown cases. Summary jump-table tag0 reaches1a3ad44, tag1 reaches1a3ae50, tag2 reaches1a3ae1c."
+    },
+    {
+      "evidence": "ios-remote-v612-search-summary.asm",
+      "offsets": [
+        "0x1a3ae50..0x1a3ae74",
+        "0x1a3ae1c..0x1a3af0c",
+        "0x1a3af2c..0x1a3af48"
+      ],
+      "conclusion": "Open-page uses nonempty URL detail. Find-in-page filters empty pattern and URL independently, formats a quoted pattern, adds literal in plus URL when both exist, or uses URL alone. Missing/empty detail falls back to item.query. Common detail enters localized for_detail template."
+    },
+    {
+      "evidence": "ios-remote-v612-websearch-query-extractor.asm",
+      "conclusion": "Disclosure queries apply to search action; open/find actions produce no query list."
+    }
+  ],
+  "hostGap": "RemoteReplaySearch stores only projected query list and therefore cannot represent open-page/find-in-page action detail.",
+  "implementationDecision": "Add an optional independently named action detail to existing replay search snapshots, retain legacy query-list behavior, bind action details to existing scoped turn/revision persistence and shared label. No links or source-card schema inferred from opaque results.",
+  "independentAdaptations": [
+    "Codable replay action enum and optional fallback query are independent frontend input fields.",
+    "Fixture actions and terminal state timing are independent.",
+    "Existing native row styling and resource route remain separate."
+  ],
+  "notImplemented": [
+    "Public/raw official WebSearchAction decoder",
+    "Web source-result cards and Remote citation producer",
+    "Exact parent styling",
+    "Android consumers"
+  ],
+  "upstream": "reuse-map.json pins c90354172c5c49535b122443e9a8ed52c2233b80; no frozen mobile UI established",
+  "implementation": [
+    "Added optional ActionDetail.openPage and findInPage in the independent replay contract.",
+    "Nonempty URL/pattern and fallbackQuery feed the existing localized common summary.",
+    "Action-specific items suppress query disclosure and retain scope/revision/cancellation/persistence through the existing turn state.",
+    "Core preview has synthetic action examples; existing query snapshots remain compatible."
+  ],
+  "validation": {
+    "foundation": "passed initial and r2 cancellation projection",
+    "r1": "Chinese action summaries, cancellation and existing single-query UI passed. English failed selecting an Image node with inherited summary identifier. Retained video shows correct visible summary.",
+    "r2": "All 3 UI tests passed: Chinese page actions, English dark failure page actions, Chinese combined journey. StaticText selectors fixed the r1 test-only node ambiguity."
+  },
+  "probeLimitations": [
+    "ffmpeg seek near the last packet produced no frame; sequential decode with timestamp filter retained the failure image."
+  ]
+}

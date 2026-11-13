@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "report_id": "android-settings-v620-source",
+  "platform": "Android",
+  "version": "1.2026.293",
+  "artifact": {
+    "base_apk_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+    "identity_source": "retained analysis/takeover-20261103/baseline.json; package not rehashed in this bounded slice"
+  },
+  "evidence_type": "official_artifact_static_observation",
+  "observations": [
+    {
+      "id": "root-builder",
+      "source": "nm50.java:130-275 case21",
+      "conclusion": "Root section producer reads igt0 capability/layout state. my_chatgpt_section has conditional personality, memories, apps/plugins. Appearance section exists when !layout.f and can include theme j1 plus accent palette. misc_section starts General unconditionally, then conditional usage limits, Notifications r, Voice e, safety/security, Remote w, CloudBrowser t, Passwords u, Storage x, Tasks q, privacy, then unconditional Data controls and conditional About. Account, profile and logout group positions depend on layout state.",
+      "limits": "No single unconditional full menu order should be asserted. Some safety booleans have JADX lowering ambiguity."
+    },
+    {
+      "id": "root-routes",
+      "source": "nw61.java:680-786",
+      "conclusion": "Projection preserves group IDs and maps row action identities. General o9t0->s7v; Remote x9t0->f2v; Notifications q9t0->efv; CloudBrowser e9t0->e1v; Storage fat0->h.",
+      "limits": "These route constructors establish destination identity, not complete navigation runtime or service implementation."
+    },
+    {
+      "id": "general-order",
+      "source": "g881.java:350-378; j881.java:689,955",
+      "conclusion": "General presentation contains optional start-screen group, optional appearance group, unconditional language group/settings_general_app_language, optional haptics group. App-language row delegates vpy case3->vx10 case0->mv81.b.",
+      "limits": "Complete language-selection provider and locale lifecycle were not traced."
+    },
+    {
+      "id": "theme-values",
+      "source": "o8f0.java:16-25; knn.java:114-143; fr81.java:23-24",
+      "conclusion": "Theme cases System ordinal0 value system, Light ordinal1 value light, Dark ordinal2 value dark. UI labels map resource1755/1752/1751 respectively. fr81 pairs appearance title kon24 with knn4 value renderer."
+    },
+    {
+      "id": "theme-owner",
+      "source": "lv81.java:92-128; s66.java:38-39; v8f0.java:10-41; u8f0.java:8-12",
+      "conclusion": "Appearance picker consumes observed r8f0 from v8f0 owner; selected choice dispatches r7t0. v8f0 ignores updates while state.f busy, marks state busy and launches async z9t case17. u8f0 is underlying preference wrapper with key night_mode.",
+      "limits": "Async write body, failure restoration, account scope and app-wide theme consumer not closed."
+    },
+    {
+      "id": "icons",
+      "source": "nm50.java:200-244; y940.java:9; h440.java:9; v740.java:7",
+      "conclusion": "Root General uses y940/chx.u 24dp; Notifications h440/ahx.Z 24dp; Remote v740 with bhx.e0 24dp and bhx.f0 28dp variants.",
+      "limits": "Final resource filenames from lazy resource factory not traced in bounded pass. Do not claim arbitrary replacement icon exactness."
+    }
+  ],
+  "unknowns": [
+    "complete root layout capability combination",
+    "app language provider and system-following implementation",
+    "theme write acknowledgement and error handling",
+    "original navigation/back-stack and restore owners",
+    "final asset factories and precise root layout/spacing"
+  ],
+  "host_guidance": [
+    "Preserve source-backed root grouping and capability predicates, use an explicit synthetic capability profile.",
+    "General contains app language and can host appearance per source state.",
+    "Working system/light/dark values map recovered enum; host persistence/recomposition remains independent implementation until consumer chain closes.",
+    "Other confirmed destinations may provide a returnable unavailable-capability page with no fake service toggles."
+  ],
+  "validation": {
+    "official_app_run": false,
+    "network_used": false,
+    "implementation_modified": false
+  },
+  "sources": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nm50.java",
+      "sha256": "0644e6e8112a66043f41f372cb5462149150029e782202444780aee410086296"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/igt0.java",
+      "sha256": "1c08f5adc9a952f02f059912eb1c1ce83d7676e62725e766a64869936fa53cc2"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nw61.java",
+      "sha256": "9be9cd6508959b9aacba54803973d49ea1874673ae91f1afe590248230e9ff1f"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/g881.java",
+      "sha256": "116e8f0b6d8109368788d311b85bcfd52dcbbaa81f13f1aa1f569f764f833663"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/j881.java",
+      "sha256": "207415e6072952d75367a6281b4e62f4b7ec8832cfaf74a15e992742028a6282"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vpy.java",
+      "sha256": "0084628f72132afb2e34f747c44d3cdd4d19a27caec55d96755281fd72975da5"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vx10.java",
+      "sha256": "1a7ead8b69be95c7dcc48d639faab25641adf36abd0e729c050c8f6868eed955"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mv81.java",
+      "sha256": "02298e7df42843e8de58fbf7be07d781d13b269b753e304aa23a1690943e0e80"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/o8f0.java",
+      "sha256": "ff7ca09d888fa831b7b2f9c7cef7f679d1e549a6870a034eb9da8634c74a202f"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/knn.java",
+      "sha256": "e601f59e5703d5b042bdd4624f52095107dbb71b447ec043850079e2392b4851"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/kon.java",
+      "sha256": "7f846bb979d2f969217ffbf694e8aab2ff060f6d33a801bf81133e431dfeb188"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/fr81.java",
+      "sha256": "0c355ef794c5664bd9ab65fd1cd35196802b8b531e9c2bf3bca847a3a161f6c1"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lv81.java",
+      "sha256": "48da86aaf00c9c931054148b145eb8260ff307fe0f7912b4ff2be88684c95df7"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/s66.java",
+      "sha256": "b43e5cbac35f11963076b55afbc5545c9516e913ca28b88f3d996b1351a5ffab"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/v8f0.java",
+      "sha256": "4de9e13ee35750715b0834c7a92d0e2f1e385f6def56999169d2884d747209bd"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/u8f0.java",
+      "sha256": "4fe28c2ff6bbe3b5ccfe0bd350f6651945147cade4686ee3e4efc5771f98e6d8"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/y940.java",
+      "sha256": "2a006f4582a7cc7a443c2b3883e56f1b682d1a257150b81c742e2644a759a330"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/v740.java",
+      "sha256": "b9ed983cb72961f41cf704233e30b281aed7e3e82ccd69cc266673fc62e61d95"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/h440.java",
+      "sha256": "a65e3dd2b8d33fb893f8bee66f0990298c8f6984aa3d6aaf2353486287925189"
+    }
+  ],
+  "english_labels": {
+    "_158c_res_0x7f1316e7": "About",
+    "_15b2_res_0x7f13170d": "App language",
+    "_15c4_res_0x7f13171f": "Browser",
+    "_15f5_res_0x7f131750": "Appearance",
+    "_15f6_res_0x7f131751": "Dark",
+    "_15f7_res_0x7f131752": "Light",
+    "_15fa_res_0x7f131755": "System",
+    "_1616_res_0x7f131771": "Notifications",
+    "_163d_res_0x7f13179f": "General",
+    "_1645_res_0x7f1317a7": "History and data",
+    "_16b6_res_0x7f131819": "Codex"
+  }
+}

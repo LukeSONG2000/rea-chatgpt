@@ -1,0 +1,168 @@
+{
+  "batch": "v523",
+  "status": "partial",
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-usage-findings.json",
+      "sha256": "e49df5b7126bb9e63890748b4335b6ea380278653d975001ee1392fadeb1aaf7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-producer-findings.json",
+      "sha256": "484aa673b3fa10ec61797e3d888c8879cdb96de1c4a55d056f1266a0c397fc3a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-preference-findings.json",
+      "sha256": "fa53c5a699050bc2f492d3a54f163ac9ae1eeb8ca6258320159ae115a4cd274c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-settings-parent-findings.json",
+      "sha256": "2a97e31d861f73f85f9a2dcf1c02c371e3857994741e347577535b4b1948894b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-style-format-findings.json",
+      "sha256": "e48f596d4d8080aecd3339164cad2be232e066a749bbc99c67bb1ccdc6d5c0a5"
+    }
+  ],
+  "source_chain": [
+    {
+      "node": "preference",
+      "evidence_type": "official_artifact_static",
+      "proof": "6f8338 defaultfalse;1970d24 and19a23a8 standard UserDefaults key codexRemoteContextWindowUsageEnabled;73ed020 read and73ecdec setObject"
+    },
+    {
+      "node": "producer",
+      "evidence_type": "official_artifact_static",
+      "proof": "ThreadState.contextUsage descriptor95d5c4c field11 ->18fc520..52c ->18d97dc ->VM430/438/440 ->18e4d98 ->BottomBars/Controls",
+      "limit": "transport decoding and accounting origin unresolved"
+    },
+    {
+      "node": "visibility",
+      "evidence_type": "official_artifact_static",
+      "proof": "MessageInput1986048 expanded configurationControls slot;Controls.section=model; setting true and optional ContextUsage present"
+    },
+    {
+      "node": "render",
+      "evidence_type": "official_artifact_static",
+      "proof": "244800c round tiesaway then clamp;19715e0 label;1971364->757d918 48x48; ring scaled24,stroke2,inset1,track opacity0.14,easeOut0.22"
+    },
+    {
+      "node": "interaction",
+      "evidence_type": "official_artifact_static",
+      "proof": "Button PlainButtonStyle typerefs7e1e638/640/648/650;boundsanchor197113c;Popover1971898,leading spacing4,h12/v10,caption;19729fc autoupdating locale compactName and zero-fraction percent"
+    },
+    {
+      "node": "settings parent",
+      "evidence_type": "official_artifact_static",
+      "proof": "18117fc composer title;181315c->6f1e6bc SettingsSection with textCase(nil);1815bbc Toggle binding",
+      "limit": "full settings outercontainer/styles and Home route callback remain partial"
+    }
+  ],
+  "implementation": [
+    "Native context indicator and native compact-adapted popover in ordinary thread expanded composer",
+    "Shared persisted preference and real Settings navigation with explicit partial settings page",
+    "Source percentage and system-locale compact token formatting with official localized strings",
+    "Thread-scoped deterministic usage snapshots behind explicit launch fixture flag"
+  ],
+  "independent_adaptations": [
+    "Native SwiftUI ring reconstruction from source stroke geometry; full OAIProgressView runtime is not linked",
+    "Malformed nonfinite/out-of-Int conversion returns nil; original traps",
+    "Settings uses host native List container; original complete container, tint and style remain unresolved",
+    "Synthetic snapshots for selected fixture threads; actual service/transport unconnected",
+    "Host .id(scope) resets popover state on fixture scope changes",
+    "Modern native popover arrow bottom chosen for supported simulator; original older-OS fallback exact arrow behavior unresolved"
+  ],
+  "verification": {
+    "build_version": 523,
+    "codesign": "passed",
+    "diff_check": "passed",
+    "model_tests": "ios-remote-v523-model-final.log",
+    "ui_summary": "ios-remote-v523-r3-ui.summary.json",
+    "passed": 5,
+    "failed": 0,
+    "runtime_warnings": [],
+    "coverage": [
+      "Chinese light and English dark",
+      "preference off and missing usage hide ring",
+      "compact slot absence",
+      "popover with keyboard retained",
+      "dismiss and draft retention",
+      "A-B-A snapshots and draft restoration",
+      "preference survives process restart",
+      "Home settings return and capability boundaries",
+      "approval outside history scroll",
+      "thread scene geometry"
+    ],
+    "evidence_hashes": {
+      "references_verified": 114,
+      "unique_files": 100
+    },
+    "screenshots": [
+      {
+        "path": "analysis/full-platform-20261104/ios-remote-v523-context-usage-chinese-popover-keyboard.png",
+        "sha256": "9d600ee459fbb261af616480f4026235666a620382bf7f0dd9eb41d0c1f52894",
+        "visually_inspected": true
+      },
+      {
+        "path": "analysis/full-platform-20261104/ios-remote-v523-context-usage-english-dark-popover-keyboard.png",
+        "sha256": "d58c4ad8d872d781d36fe4130284efeacfc399fc6238c50d9f16cad6e6b6e05d",
+        "visually_inspected": true
+      }
+    ]
+  },
+  "retained_failures": [
+    {
+      "run": "r1",
+      "passed": 3,
+      "failed": 2,
+      "cause": "XCTest Switch AX label spans full row; center tap hit label. CUA confirmed actual trailing knob changes state. Test targets knob, preserving value assertions."
+    },
+    {
+      "run": "r2",
+      "passed": 3,
+      "failed": 2,
+      "cause": "Native bounds-anchored popover covers editor center; dismissal test tapped bubble. Screenshot confirmed overlap. Test uses exposed leading editor edge; production popover behavior retained."
+    }
+  ],
+  "limits": [
+    "simulator only; device offline",
+    "complete settings hierarchy and native container style pending",
+    "permission panel, quick intelligence/model control, advanced settings and dictation not integrated in this batch",
+    "header alignment and remaining visual parity feedback remain open",
+    "full service lifecycle, live token updates, iPad, Dynamic Type extreme sizes and alternate embeddings not accepted"
+  ],
+  "cross_platform": {
+    "observed": "iOS native SwiftUI Button/Popover/Toggle with Foundation localized formatting and local UserDefaults preference",
+    "proposed_share": "service usage snapshot contract and numeric test vectors",
+    "android": "independent source mapping and native rendering acceptance pending"
+  },
+  "preview": {
+    "pid": 15873,
+    "language": "system-following Chinese",
+    "screen": "ordinary completed synthetic thread with context popover and keyboard",
+    "setting_choice": "context usage enabled via Settings UI for demonstration",
+    "counts": "independent synthetic 230000/260000",
+    "left_running": true,
+    "display": "built-in only",
+    "screenshot": {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-preview.png",
+      "sha256": "634e6eec6401c54881c8a1ae6ebc9ed2bea2d92eb4d11f946b3ddc1f4ba7f69a"
+    }
+  },
+  "next_minimum_actions": [
+    "Trace permissions control parent, selectable options, owner writeback and dismissal",
+    "Follow quick intelligence control and advanced panel transition and capabilities",
+    "Trace dictation states and cancellation/draft recovery",
+    "Close Settings outer container and all applicable rows"
+  ],
+  "storage": {
+    "fixed_derived_data": "implementation/ios/.build",
+    "retention_dry_run_targets": [],
+    "available_gib": 20
+  },
+  "git_actions": "none"
+}

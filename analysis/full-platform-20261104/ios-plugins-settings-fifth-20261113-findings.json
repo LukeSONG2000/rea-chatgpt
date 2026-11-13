@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "Two bounded candidates: actual Settings connectors(.root) navigation consumer and constructor, then ConnectorsView content/Form and optional directory action. No product, builds, devices, services or global reference scanning.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused": [
+    "ios-settings-plugins-entry-20261112-findings.json",
+    "ios-settings-plugins-entry-20261112-root-route.asm",
+    "ios-settings-plugins-entry-20261112-root-connectors-callbacks.asm",
+    "ios-sidebar-apps-sites-images-20261112-types.json",
+    "ios-sidebar-apps-sites-images-20261112-bodies.json"
+  ],
+  "findings": [
+    {
+      "id": "actual-root-navigation-consumer",
+      "status": "verified",
+      "evidence_kind": "official_artifact_observation",
+      "conclusion": "Settings Apps/Plugins connectors(.root) does construct the native ConnectorsView, independently from the Plugins directory root. This is now actual branch/caller evidence, not same-name inference.",
+      "source": [
+        "10d7fe4 imported View.navigationDestination(for:destination:), closure114e108",
+        "114e108 supplies descriptor accessor1052200 and body10d873c through42d2f8",
+        "10d8be8 enum switch; table7d86606 outertag3 target10d9358",
+        "10d9360 nestedtag at+0x10;table7d8665c innertag4 target10da2c0",
+        "10da2c8 ->10dbca4 constructs view object",
+        "10dbe48..10dbe80 fills ConnectorsView89bytes with viewModel +0, showConnector +8/+0x10, showApp +0x18/+0x20, dismissRootSheet +0x28/+0x30, showPluginSettings +0x38/+0x40, optional showPluginsDirectory +0x48/+0x50, refreshableAndInteractiveDismissDisabled +0x58=true"
+      ],
+      "limit": "The underlying connection/service data and lifecycle are not recovered by navigation construction. Constructor alone does not establish a ready-to-port screen."
+    },
+    {
+      "id": "directory-entry-conditional-owner",
+      "status": "partial",
+      "evidence_kind": "official_artifact_observation",
+      "conclusion": "Root constructor supplies the optional showPluginsDirectory callback only when the same raw presentation gate108ba40 is true. Otherwise the callback pair is nil. When present it uses114e688.",
+      "source": [
+        "10dbdf8 ->108ba40;10dbe08 testsw24;false branch retains x8/x20 zero",
+        "10dbe38..3c callback114e688",
+        "10dbe74..78 writes optionalcallback+0x48/+0x50",
+        "114e688 zero-initializes payload and stores rawtag5 at+0x38;114e6c0 ->10e625c",
+        "10e625c creates captured async/presentation work, continuation114e820 not followed in this boundedpass"
+      ],
+      "limit": "Rawtag5 has not been independently rebound to named Presentation.pluginsDirectory in this pass, nor the async presentation consumer closed. Do not claim concrete sheet/full-screen style or directly launch NativePluginsPage."
+    },
+    {
+      "id": "native-connectors-body",
+      "status": "verified",
+      "evidence_kind": "official_artifact_observation",
+      "conclusion": "ConnectorsView body514202c ->51405b0 builds ConnectorsViewContent, adds navigationDestination/headerProminence and applies refreshableAndInteractiveDismissDisabled via actual interactiveDismissDisabled modifier. Root Settings supplies thatflag=true.",
+      "source": [
+        "ConnectorsView descriptor9683f58/View witness814c7d4 ->514202c",
+        "514202c copies89byte view value and calls51405b0",
+        "5140c9c imported navigationDestination",
+        "5140eac imported headerProminence",
+        "5140ec8 readsown+0x58;5140f04 imported interactiveDismissDisabled"
+      ],
+      "limit": "Exact refresh action/body ownership and headerProminence case remain unknown. Do not interpret flag as a proved absence of all refresh UI."
+    },
+    {
+      "id": "content-root-and-state-inputs",
+      "status": "partial",
+      "evidence_kind": "official_artifact_observation",
+      "conclusion": "ConnectorsViewContent has a native grouped Form success-content branch plus request-state-conditioned alternatives. It is a settings management list, not the directory marketplace. The proved Form type includes SettingsSection, AppsPrivacyControlPickerRow, ConnectorApp/ConnectorPlugin collections, ConnectorLogoView/SettingsLabelStyle rows, NavigationLinkStyledDisclosureRow and OAIProgressView.",
+      "source": [
+        "descriptor9685f5c/View body514544c ->514206c",
+        "metadataa7bacf8 fieldoffsetvectorbase16 mapped incontent-field-offsets.json",
+        "5142088 reads nativePluginSettingsEnabled+0x7d then installedPluginsRequestState+0x28;alternate51420d4 uses usesInstalledApps+0x7a and installedAppsRequestState+0x18;else refreshState+0",
+        "content path5142174 ->5142448;5142630 constructsForm;5142654 GroupedFormStyle metadata;51427d4 imported formStyle",
+        "Form closure521878c ->5142860",
+        "type records8153548/8153550/8153568/8153570 identify nativeForm and contained carriers"
+      ],
+      "limit": "Symbolic reference inventory is not a reconstructed generic tree or section order. Request-state raw tags, exact visible section labels/order, row visibility, empty/error/retry labels and directory button label/action consumer are not closed. Do not map every inventory type to an always-visible row."
+    }
+  ],
+  "corrections": [
+    {
+      "historical_raw": "ios-settings-plugins-entry-20261112-root-connectors-callbacks.asm",
+      "correction": "114ace4 is generic metadata/cache construction, not an executable user callback owner; filename was provisional. Actual navigation closure and Connectors root callback construction are identified above."
+    }
+  ],
+  "implementation_decision": {
+    "product_change_recommended": false,
+    "safe_current_boundary": "Keep a distinct returnable Settings connectors root unavailable entry. Do not replace it with directory root. The explicit navigation route contract can be named source-backed connectors(.root), while actual list rendering stays blocked.",
+    "reason": "Actual route/constructor and grouped Form are closed, but the concrete visible list/button consumer required for faithful minimum implementation remains unresolved. Do not invent installed-list sections from VM field names or populate settings from directory data."
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "Form closure521878c ->5142860",
+      "missing": "Actualorderedsectionsandbranchpredicates;label/actionconsumerforoptionalshowPluginsDirectory field+0xd8."
+    },
+    {
+      "boundary": "114e688 ->10e625c ->asynccontinuation114e820",
+      "missing": "Named Presentation.pluginsDirectory rawtag mapping and actual destination presentation consumer."
+    },
+    {
+      "boundary": "ConnectorsViewContent refresh/request-state enum projection514206c",
+      "missing": "Named rawstate variants and exact loading/error/empty/retry UI. Do not infer completed from rawinteger."
+    },
+    {
+      "boundary": "SettingsConnectorsViewModel10dfcbc and callback targets10dfe20/10dff38",
+      "missing": "Account/service ownership and details/app/settings routing payload semantics; no real service work authorized."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 2,
+    "static_only": true,
+    "product_modified": false,
+    "build_or_device": false,
+    "official_app_launch": false,
+    "network": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-plugins-settings-fifth-20261113",
+  "evidence_files": [
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-body.asm",
+      "bytes": 1076,
+      "sha256": "bcb4b1f5f29539cd724d8d6c4e351d77d10f99d82362071682590c2dcf4932ab"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-body.json",
+      "bytes": 1117,
+      "sha256": "33f3eaff932c52c54c57436ac5a9d8b1ddc307ab819ad6211c1474a956a66a5b"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-builder.asm",
+      "bytes": 22394,
+      "sha256": "d9ed54d39146bde78373fa214746ac78b4d69f7a738b3598b620bfaa57f6861f"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-builder.json",
+      "bytes": 18122,
+      "sha256": "81c03eb92559a118922cf424443ad24cc1d6f5ef83afa7fc6fdee9fd9b11ba09"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-content-builder.asm",
+      "bytes": 35111,
+      "sha256": "1a84b696282dcbc0a92bf6370d92b974acaf3a0980d2c4b31a519abfb86ae9c2"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-content-builder.json",
+      "bytes": 25727,
+      "sha256": "3a56f211fb8e2f5f06b9279ed212d8a1e8605846d1e708bad3e0be49d116b016"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-content.asm",
+      "bytes": 18794,
+      "sha256": "3ecbe7a1888ce010aa2335d366bc711f57d125365369ae42b0ce5e505b701548"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-content.json",
+      "bytes": 17152,
+      "sha256": "4c0b7ec8e6942bd21565cbac68341475b0574716f434a94ca8ff683976d6ff1f"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-destination-branch.asm",
+      "bytes": 3949,
+      "sha256": "35b82d69d64e12664aa81475a0fdc94fca10046f74fb0ff0e15c1667f1a2f629"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-destination-branch.json",
+      "bytes": 4450,
+      "sha256": "f86f1f299bd2ab34ad41f6a44dfd7c1bcd40549bcc9b42816c2a9d93f7fcf07d"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-destination-table.json",
+      "bytes": 467,
+      "sha256": "27a4cf74949bc2159d6e4c3d5cf412b85059e2438d9969686b50da5e7b475521"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-finalbody.asm",
+      "bytes": 9851,
+      "sha256": "806c4d86f7b8ce51d3187acd232306d9775399f74113c3d2ca1ac2eca8c09aae"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-finalbody.json",
+      "bytes": 8781,
+      "sha256": "5657b67643061695b38ec4801645c6b2afba29d170a7e776bb26a49630073cb0"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-root-consumer.asm",
+      "bytes": 998,
+      "sha256": "bd1eb5042035d12b41f4d2a2a223c6f7261b9bf950526f0b1b3e40d4a9c060d3"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/connectors-root-consumer.json",
+      "bytes": 2020,
+      "sha256": "49c7f6fa998ecc08fb72c7f76db14b322d061e138c53137f4a4161eed9daed25"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/content-field-offsets.json",
+      "bytes": 2043,
+      "sha256": "fbc157eb9a8bbc99b5bcc99c3373312a69cedf15a9ea6af925ac53167b22be62"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/content-metadata.asm",
+      "bytes": 1240,
+      "sha256": "046b9537b62b957ff659558525df367d28d9ba1e10cd75a9c7fb2bba9d46c7f7"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/content-metadata.json",
+      "bytes": 1065,
+      "sha256": "6a4c60af790912c13858c5facadb3ec3d6aeddd6e0f440283925c0dd7f93a9fd"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/destination-bind-helper.asm",
+      "bytes": 1316,
+      "sha256": "db5711c25f8f4ef6e07241a4b59d6eab43e2877e2640052f7f55cef4f1e758aa"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/destination-bind-helper.json",
+      "bytes": 1200,
+      "sha256": "0a89abb28422745cba7bedbc28fad4857713cb678d1f473604aa9185bf6ed07c"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/destination-dispatch.asm",
+      "bytes": 35429,
+      "sha256": "fcc3aae4acf4f2c6f8a02dfe3be64bbbfd78d86627e8d67842d9119f905ec787"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/destination-dispatch.json",
+      "bytes": 34287,
+      "sha256": "9cecca1f7d874141cbf27d727389020c6f2140b723f6d7dbce206a593922e862"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/destination-thunk.asm",
+      "bytes": 950,
+      "sha256": "60a888421bb7dcf43bc759ee3d6e359f344192661fce15fbc883717273d5baca"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/destination-thunk.json",
+      "bytes": 1227,
+      "sha256": "56d29baf8c7f336c5b4c174b4c41ec5456fdaeee2c394d1cecd942343f018eb3"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/directory-link-candidates.asm",
+      "bytes": 20768,
+      "sha256": "dc3e7719453a0e6013775e0b1a80c55d2c42fabed94e65faeb3943fd5ca7fbf9"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/directory-link-candidates.json",
+      "bytes": 12923,
+      "sha256": "4883f60f28b917336c054bc30e1ffb7a09ceddf1f84071122f1a6e550de12374"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/form-content-thunk.asm",
+      "bytes": 735,
+      "sha256": "93277d80e9070c76b20129c71f82b0bdd8f1637062955473da1425b44a156ab4"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/form-content-thunk.json",
+      "bytes": 1012,
+      "sha256": "ae15beddc2d49430f5e46ef57fd4f0bc0aba31feb1fd6ede4cba99875e272653"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-connectors-callbacks.asm",
+      "bytes": 2783,
+      "sha256": "233db4840fb573be482226e7725660ac30624bb8eca2b6442abfa253aeee8a35"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-connectors-callbacks.json",
+      "bytes": 2494,
+      "sha256": "33348beb90192408cf3715f8239f18a04c7ecb1d28f7fa7b86b5895da78acf79"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-connectors-root-builder.asm",
+      "bytes": 6206,
+      "sha256": "995154379eb79e0d60baf7816bbffdeefad304a3198f0543991b19aa39470b9f"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-connectors-root-builder.json",
+      "bytes": 4553,
+      "sha256": "0e078b1cf0941fb6cb55389fa521ba8ad4a32e8d72bed0515ca31d27c7db05ad"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-connectors-vm.asm",
+      "bytes": 1794,
+      "sha256": "553397c27f4ec27b0c54f69774453dc9923bbe8d319fea767b699a1035cb02a3"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-connectors-vm.json",
+      "bytes": 1094,
+      "sha256": "1fba78942ca15676013ceb52eb874918ab53316c49d8f2e7ecf08256422f23ce"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-destination-table.json",
+      "bytes": 465,
+      "sha256": "252b313e1355fc06a8b8c2353aa47103bb0a4ca99e65d469279d5df6b9d91279"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-destination.asm",
+      "bytes": 30550,
+      "sha256": "15a349b2bcb509311bc5e66949b0ae59967a6135d7c8e153ed0c0c51464e31d9"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-destination.json",
+      "bytes": 28175,
+      "sha256": "b272b6e39ccda4419ba6b11f9ebec09849c28f1938f02062c48672aa63dddb99"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-nav-carrier.asm",
+      "bytes": 6865,
+      "sha256": "98d58b54bfc919aef0ccf8dd9e967ec55a96ce1b4874a8776e2e1e244eb7d7f5"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-nav-carrier.json",
+      "bytes": 6566,
+      "sha256": "0c62f5138f5927cecc7b2713f5445af157d3c5f062df4892afb45dab28bec8ba"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-postroot.asm",
+      "bytes": 8895,
+      "sha256": "705726a894375cdbba6640c73c6a04275aac2044ed1bd9dacac0d8438b775046"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-postroot.json",
+      "bytes": 6950,
+      "sha256": "e7a8d092a32a3a83d1239f833f8fe88c411868e246ea653bde1188f1f7e69073"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-present-directory.asm",
+      "bytes": 2505,
+      "sha256": "1d464bd4dabcd20d325891e3f7b97ffab953e00ab37e99d7d532cc2fa3028622"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-present-directory.json",
+      "bytes": 2205,
+      "sha256": "6581720d88e9222005d1707c095782a09fd3a9cf2a101fbd33b6111d49852179"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-root-callwrapper.asm",
+      "bytes": 1382,
+      "sha256": "44cd92786f2cdf249eca3b01bb275701930709f807a48a3b4fe5755938ce6302"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/settings-root-callwrapper.json",
+      "bytes": 1051,
+      "sha256": "65b79bd456937cd23b09b29ae469c7626aae01f2ad0163f35985c3585fa84d67"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/type-record-8153548.json",
+      "bytes": 8238,
+      "sha256": "d554e7d1f9ec2a28ffd9535c562330b70c4c062329c8de4511b440ed0c54949a"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/type-record-8153550.json",
+      "bytes": 7884,
+      "sha256": "59aee893cd10d96d082a6503f661f9a878b6dc636dacd560fc6a76c9ea3999cf"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/type-record-8153568.json",
+      "bytes": 8617,
+      "sha256": "3c35e1c57e39b47a62188b3cd0e43bdeb772022aec2fe1f0fb307d724ad901e0"
+    },
+    {
+      "path": "ios-plugins-settings-fifth-20261113/type-record-8153570.json",
+      "bytes": 7719,
+      "sha256": "9b2b649f2d876512efeaf4564306ab8ec0bf5cf6e7036da2ad190aeb763b0237"
+    }
+  ],
+  "stop_reason": "Two targeted route/content groups completed. No source-backed visible list/button integration safe enough; precise boundaries preserved instead of expanding or fabricating UI."
+}

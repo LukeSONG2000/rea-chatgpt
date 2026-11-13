@@ -1,0 +1,496 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "binary": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": {
+    "read_only_product": true,
+    "target_execution": false,
+    "builds_devices_network": false,
+    "candidate_groups": 2,
+    "stop": "Clear native DescriptionSection omission proven. No additional detail/menu candidates pursued."
+  },
+  "reused": [
+    "ios-native-plugins-20261112-findings.json",
+    "ios-native-plugins-20261112-detail-main-tree.json",
+    "ios-native-plugins-20261112-detail-loaded.asm"
+  ],
+  "product_observation": {
+    "file": "implementation/ios/Sources/NativePluginsPage.swift",
+    "component": "NativePluginDetail",
+    "observed": "Loaded detail renders plain Text(item.detail), followed by independently supplied bordered action buttons. This does not restore original description collapse/read-more interaction.",
+    "not_authority_for_official_behavior": true
+  },
+  "official_observations": [
+    {
+      "finding": "Actual native loaded detail contains DescriptionSection as a child, independently from default prompts/information/action/header groups.",
+      "owner": "GPTPluginDetailLoadedContent",
+      "witness": "0xeb1434",
+      "body": "0xeb069c",
+      "full_type_record": "0x7d79a88",
+      "existing_evidence": "ios-native-plugins-20261112-detail-main-tree.json"
+    },
+    {
+      "finding": "Description full native parent is bottomTrailing ZStack of styled Text and optional HStack gradient + plain Text Button.",
+      "owner": "GPTPluginDetailDescriptionSection",
+      "descriptor": "0x95842f0",
+      "conformance": "0x7d7a438",
+      "body_witness": "0xeb4ec8",
+      "body": "0xeb4420",
+      "builder": "0xeb445c",
+      "full_type_record": "0x7d7b2a0",
+      "evidence": [
+        "description-witness.json",
+        "description-body.asm",
+        "description-tree.json"
+      ],
+      "parent_alignment_site": "0xeb4430 SwiftUI.Alignment.bottomTrailing",
+      "type_structure": [
+        "ZStack/TupleView",
+        "Text + font environment + foregroundColor + optional Int environment (lineLimit)",
+        "fixedSize + flexFrame",
+        "Optional<HStack<TupleView<LinearGradient.frame, Button<Text>.buttonStyle(PlainButtonStyle).contentShape(MinimumTapTargetShape).background(Color).accessibility>>>"
+      ]
+    },
+    {
+      "finding": "Named field mapping is backed by struct field metadata plus accessor-indexed field offsets; no hardcoded runtime state offsets.",
+      "descriptor": "0x95842f0",
+      "fields": [
+        "text",
+        "_isAccessibilitySize",
+        "_layoutDirection",
+        "__fitsCollapsedLineLimit",
+        "__isExpanded"
+      ],
+      "field_offset_vector": "metadata + 0x10, five entries (descriptor fieldOffsetVectorOffset=2 metadata words)",
+      "state_field_offset_slots": {
+        "fitsCollapsedLineLimit": "metadata+0x1c",
+        "isExpanded": "metadata+0x20"
+      },
+      "evidence": [
+        "selected-sections.json",
+        "description-body.asm",
+        "description-closures.asm"
+      ]
+    },
+    {
+      "finding": "Collapsed description limit and read-more visibility use separate state/environment conditions.",
+      "line_limit": {
+        "value": 3,
+        "condition": "!isExpanded && !isAccessibilitySize",
+        "otherwise": null,
+        "sites": [
+          "0xeb46c4..0xeb46e8",
+          "0xeb4714..0xeb4718"
+        ]
+      },
+      "more_visibility": {
+        "condition": "!isExpanded && !isAccessibilitySize && !fitsCollapsedLineLimit",
+        "sites": [
+          "0xeb4774..0xeb47ac",
+          "0xeb47d8"
+        ]
+      },
+      "limits": [
+        "Initial LazyState values not independently closed here; do not call arbitrary initial values recovered."
+      ]
+    },
+    {
+      "finding": "Read-more button expands once by setting state true. No same-consumer collapse toggle established.",
+      "button_construct": "0xeb4b90..0xeb4bac, action 0xf36f3c, label 0xeb4dc8",
+      "helper": "0xf51e74..0xf51e7c tail SwiftUI.Button.init",
+      "action": "0xf36f3c..0xf36f78 writes Bool true to __isExpanded via LazyState.wrappedValue setter",
+      "import_binding": {
+        "stub": "0x7c4bb38",
+        "verified_slot": "0xaad58a8",
+        "symbol": "_$s7SwiftUI9LazyStateV12wrappedValuexvs"
+      },
+      "evidence": [
+        "description-body.asm",
+        "description-closures.asm",
+        "button-construct-helper.asm",
+        "named-imports-and-colors.json"
+      ]
+    },
+    {
+      "finding": "Exact read-more and accessibility localization consumers.",
+      "label": {
+        "key": "gpt_plugins_directory_detail_description_more_action",
+        "address": "0x887f2f0",
+        "consumer": "0xeb4dfc..0xeb4e20",
+        "fallback": "More"
+      },
+      "accessibility": {
+        "key": "gpt_plugins_directory_detail_description_more_accessibility_label",
+        "address": "0x887f280",
+        "consumer": "0xeb4c60..0xeb4c94",
+        "fallback": "Show full plugin description"
+      },
+      "evidence": [
+        "more-resource.json",
+        "section-literals.json",
+        "description-body.asm"
+      ]
+    },
+    {
+      "finding": "Actual parent consumes semantic foreground resources; these factories are colors, not fonts.",
+      "description": {
+        "caller": "0xeb45b4",
+        "factory": "0x74ee310",
+        "literal": "0x8a51bc0",
+        "resource": "ChatGPT/text/secondary"
+      },
+      "more": {
+        "caller": "0xeb4e74",
+        "factory": "0x74ee1d0",
+        "literal": "0x8a51b40",
+        "resource": "ChatGPT/text/accent"
+      },
+      "evidence": [
+        "semantic-font-body.asm",
+        "font-body.asm",
+        "named-imports-and-colors.json"
+      ],
+      "note": "Raw filenames predate final symbol classification; do not infer Font from filenames."
+    },
+    {
+      "finding": "Read-more gradient dimensions and button content leading padding are directly supplied.",
+      "gradient_frame": {
+        "width": 22,
+        "height": 24,
+        "call": "0xeb4b08..0xeb4b14"
+      },
+      "button_padding": {
+        "edge": "leading",
+        "value": 4,
+        "edge_site": "0xeb4e90",
+        "value_helper": "0x4640f8",
+        "call_site": "0xeb4e98",
+        "helper_tail": "EdgeInsets.init(_all:)"
+      },
+      "gesture_shape": "MinimumTapTargetShape generic parent; exact hitshape geometry not closed.",
+      "direction": "Actual LayoutDirection equality at 0xeb4a58..0xeb4ad0 swaps leading/trailing UnitPoints; exact layoutDirection enum raw mapping is not named here. Preserve RTL relationship in host adapter.",
+      "evidence": [
+        "description-body.asm",
+        "button-padding.asm",
+        "padding-bind.asm",
+        "description-tree.json"
+      ],
+      "gradient_colors": "0xeb4a10..0xeb4a28 consumes constant color array plus Color.clear and factory 0x74f0f48; exact backdrop color factory not decoded. Do not claim original host-surface color restored."
+    },
+    {
+      "finding": "Measured line-fit callback is present; layout fit must not be approximated using text character count.",
+      "wrapper": "0xeb4660 lineLimit=3 → 0x756fc18",
+      "callback": "0xf36e30..0xf36e68 writes supplied Bool through __fitsCollapsedLineLimit LazyState",
+      "evidence": [
+        "description-body.asm",
+        "description-closures.asm",
+        "measurement-wrapper.asm"
+      ],
+      "limit": "Complete original measurement internals/rounding not recovered."
+    },
+    {
+      "finding": "Other actual child structures confirmed, without claiming new actions or active rows.",
+      "default_prompts": {
+        "descriptor": "0x9584318",
+        "body_witness": "0xeb1bb4",
+        "body": "0xeb1974",
+        "full_type_record": "0x7d7b310",
+        "structure": "ScrollView + VStack/ForEach<Array<GPTPluginDetailDefaultPromptContent>,Int,opaque native row>, frame/padding/background; axis value not independently named here."
+      },
+      "information": {
+        "descriptor": "0x958428c",
+        "body_witness": "0xeb8cdc",
+        "body": "0xeb892c",
+        "type_record": "0x7d7b1c0",
+        "structure": "VStack/ForEach<Array<GPTPluginDetailInformationRow>,InformationRow.ID,VStack<Tuple<opaque row,Optional<Divider>>>>"
+      },
+      "limits": [
+        "Information 7d7b1c0 is the concrete content constructed by body forwarding its actual fields, not a claim that all detail menu actions are restored.",
+        "Opaque native row internals and final callback gate remain unknown."
+      ]
+    }
+  ],
+  "safe_product_decision": {
+    "can_restore_now": [
+      "Extract description into a dedicated state-owning native frontend component with lineLimit3/expanded/accessibility conditions.",
+      "Use original More/accessibility keys and semantic secondary/accent resources.",
+      "Preserve bottomTrailing overlay, plain button, minimum target and leading padding4; gradient22x24 with layout-direction adaptation.",
+      "Button sets expanded true; do not introduce a collapse action as recovered."
+    ],
+    "independent_adapter_required": [
+      "Reliable text-fit measurement can be implemented in isolated host adapter, explicitly distinguish from original 756fc18 algorithm.",
+      "Initial collapsed state can be explicit fixture policy until original LazyState initialization closes.",
+      "Existing font configuration remains an explicit host adapter until real producer is closed.",
+      "Gradient backdrop surface/opacity stops remain explicit host-surface adapter; relative RTL direction is source backed."
+    ],
+    "do_not_change": [
+      "Do not claim unconditionally visible connect/disconnect/menu buttons are official policy.",
+      "Do not fill unknown information/default-prompts rows from model field inventory alone.",
+      "Do not add animation/haptic merely because an expand button exists."
+    ]
+  },
+  "unknowns": [
+    {
+      "area": "Font",
+      "boundary": "Actual Font environment exists in full tree; exact font constructor/weight/size/line-height not closed by two-group limit."
+    },
+    {
+      "area": "Expansion animation",
+      "boundary": "No withAnimation / animation modifier proven in selected button action or parent tree. No claim of original animation curve/duration."
+    },
+    {
+      "area": "Haptics",
+      "boundary": "No direct haptic caller in selected section/button consumers; no new feedback inferred."
+    },
+    {
+      "area": "All plugin toolbar/action menu members",
+      "boundary": "DetailScreen toolbar eafa3c and model resolved actions remain preexisting source boundary; this pass deliberately closes description instead of inferring gates."
+    },
+    {
+      "area": "Text-fit algorithm/initial state",
+      "boundary": "756fc18 callback semantics and state field named; full measurement implementation and initial LazyState construction not closed."
+    },
+    {
+      "area": "Gradient backdrop surface",
+      "boundary": "0x74f0f48 supplied background color and array constant0x7cd94a0 not fully resolved; exact gradient color stops, opacities/backdrop resource remain unknown. Use explicit host surface adapter if integrating now."
+    }
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-plugins-detail-fifth-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "accessibility-env-read.asm",
+      "sha256": "f39854002d069d30d5f487acf7f9b7ec9c2da5469ce91f489b86fc9182f06f85",
+      "bytes": 2442
+    },
+    {
+      "file": "animation-init-window.asm",
+      "sha256": "9f95ea32aaefb14ffbc8e858e38093eec5590d45e18f187ab8bc07d42182db90",
+      "bytes": 2547
+    },
+    {
+      "file": "body-font.asm",
+      "sha256": "c1c1bdb1e773ff44788ff75d81669e6387f011a4f007bae46cd05330e7fa36c0",
+      "bytes": 925
+    },
+    {
+      "file": "bounded-scope.json",
+      "sha256": "7e5ae790c2a3f8e7cffd66f6fac02145b5453e77210e0d842a5cf68b1d41489f",
+      "bytes": 696
+    },
+    {
+      "file": "button-construct-helper.asm",
+      "sha256": "87ccf70ab85ac43b436743a30d8a16d11f15b529bb19903f3404c92b574dfd81",
+      "bytes": 430
+    },
+    {
+      "file": "button-padding.asm",
+      "sha256": "bb954fb3a5848465f51332233b1a34a8b558d1a9aa3c8610eb537785edbd5836",
+      "bytes": 729
+    },
+    {
+      "file": "description-body.asm",
+      "sha256": "99b01eb6355506f76a8123dae29b1103ab58cb0a013ff290c20b28f8caf312f1",
+      "bytes": 29068
+    },
+    {
+      "file": "description-callback.asm",
+      "sha256": "43092dcad742385ed92db86fee91e53b642bb07df7dc970a5102dceebf6f2d3a",
+      "bytes": 6054
+    },
+    {
+      "file": "description-closures.asm",
+      "sha256": "b55834c5ff5b64ab15399a188ccdf61fc7c5b3527cfb13d3c580817101431ecf",
+      "bytes": 8110
+    },
+    {
+      "file": "description-code.json",
+      "sha256": "918fc1c473cb5dcca719fdf84f72c60371b12ba93aa9fa73b4d14431daae8589",
+      "bytes": 31601
+    },
+    {
+      "file": "description-field-layout-helper.asm",
+      "sha256": "f7a16eafa71f04649e6590816eab479a87ba38f143638f79372bd758866195cf",
+      "bytes": 993
+    },
+    {
+      "file": "description-helpers.asm",
+      "sha256": "16dccb92fe4fe4aa2d35683cf1908472360f5b8a038681942be8ba0e5cd7e7ed",
+      "bytes": 2247
+    },
+    {
+      "file": "description-tree.json",
+      "sha256": "d76d3c2699837f6a9cc0516c2a508bbf777968be71c820b921a233939c3fab98",
+      "bytes": 205109
+    },
+    {
+      "file": "description-tree.raw",
+      "sha256": "db5a44df718d1fe7593eb9fc4f2d2553e3944e08c43211981ada2ba3c12ffd6a",
+      "bytes": 204
+    },
+    {
+      "file": "description-tree.refs.tsv",
+      "sha256": "c11ac9c936aeba63f4a8d0d14442658275cf9834596170cd578fe7edcd95e5bf",
+      "bytes": 999
+    },
+    {
+      "file": "description-tree.tree.txt",
+      "sha256": "7108d79163b356a0272aeba433f825416be22565f8d3df60060f07e92e5990d5",
+      "bytes": 24741
+    },
+    {
+      "file": "description-witness.json",
+      "sha256": "62ec664db52ec8d3e20276ff2715ebf99a3fdcd07480163e4e0791378cd64bc4",
+      "bytes": 4612
+    },
+    {
+      "file": "description.asm",
+      "sha256": "e0dcb4bb4739921fee5a51e5a746df0cbb86e1ef9021b180da8b3f65cb1b07fc",
+      "bytes": 13838
+    },
+    {
+      "file": "expanded-setter-bind.asm",
+      "sha256": "93d6a66911ede6db44db8a65e9181ec035dcafd49cddb2d90ceacc61a3e234dd",
+      "bytes": 296
+    },
+    {
+      "file": "fixed-size-args.asm",
+      "sha256": "9e5608a59728c9e960116fb177de432023c31154bec6e27fda41a4b20578c47c",
+      "bytes": 356
+    },
+    {
+      "file": "font-body.asm",
+      "sha256": "5852da0539a4a6997d9e4aaaa67efff13cafa206c9bc113602d49a2bff4926e4",
+      "bytes": 4281
+    },
+    {
+      "file": "font-resource-helper.asm",
+      "sha256": "ab9211c6b6ca3d1aace4d2e2989a3e8bdda201de27733c3caf3774c3ecb11f78",
+      "bytes": 712
+    },
+    {
+      "file": "information-tree.json",
+      "sha256": "40b8a5a687d08bb401e5917f3559483a2af9a37c25d09c90a46481460b264acd",
+      "bytes": 18433
+    },
+    {
+      "file": "information-tree.raw",
+      "sha256": "b7235faea03e6979f650c7418f34c1db56db8296b232249d78e95fb06405f5f6",
+      "bytes": 53
+    },
+    {
+      "file": "information-tree.refs.tsv",
+      "sha256": "d999c6118a90d83ce6cbea2baef4f421581d6437c97538d5e5e5f7d3093fa677",
+      "bytes": 297
+    },
+    {
+      "file": "information-tree.tree.txt",
+      "sha256": "e142d1268f504d5fa3e4a0b31e664ab2270dd54e6e5b9410e9835dfb95181bb7",
+      "bytes": 2516
+    },
+    {
+      "file": "information-witness.json",
+      "sha256": "8a6aa5b0bd7b3a09241e42a888ede0356f2b1af1625a2bb23380e6b2aa19f0bd",
+      "bytes": 4612
+    },
+    {
+      "file": "information.asm",
+      "sha256": "2c11d6b66526137b40d943f61330aa1a11751e6abd4120083ea823a482dfd904",
+      "bytes": 17085
+    },
+    {
+      "file": "line-layout-helpers.asm",
+      "sha256": "abd587063a65503fb35d5a88d79a6af5781f6573b56771ffaff59df335504ae7",
+      "bytes": 365
+    },
+    {
+      "file": "measurement-wrapper.asm",
+      "sha256": "8a884f2b2a5b586f55dba73329b1f1568c7e069a27e02b08d2e932e4b83615f2",
+      "bytes": 4535
+    },
+    {
+      "file": "more-resource.json",
+      "sha256": "df1bcd39e416474349a4c2ff3adfc1b06e3b8069eca1fc2bcfbeb8579a66ea79",
+      "bytes": 152
+    },
+    {
+      "file": "named-imports-and-colors.json",
+      "sha256": "5428aa346e28eca5c31878b3b8282f10321ab033233f6698068714f7f2be02f0",
+      "bytes": 785
+    },
+    {
+      "file": "padding-bind.asm",
+      "sha256": "43d7c9f4c9e5493dfb5d3877ac853a4b4834cceee908d43854ad9c0b9ef2bec4",
+      "bytes": 296
+    },
+    {
+      "file": "prompts-body.asm",
+      "sha256": "fe476a0906955b4e6ea74d7114763e1349d98259b6ac748362f0d1794d017621",
+      "bytes": 6501
+    },
+    {
+      "file": "prompts-tree.json",
+      "sha256": "32c9bd8c10a0af6fc86c9903e601c62449e48075246d1515818e624b3f300b89",
+      "bytes": 32273
+    },
+    {
+      "file": "prompts-tree.raw",
+      "sha256": "5470dcf7ad35fb8603b512be57df316843a8e1f15e5a7d16d1f15cb737831a42",
+      "bytes": 79
+    },
+    {
+      "file": "prompts-tree.refs.tsv",
+      "sha256": "7ccf94f5e54a3c3943d637105dc4fe07526a7898417ab841e96cf51c84433cf2",
+      "bytes": 368
+    },
+    {
+      "file": "prompts-tree.tree.txt",
+      "sha256": "0bac61f41b73014a2d603e56332134ca3eb681845b3f6be165a6a566c5636d70",
+      "bytes": 4333
+    },
+    {
+      "file": "prompts-witness.json",
+      "sha256": "e08b3b89c9b7cc9c47238be73a078047233fcdfbfd0842f6d2062a36f89dbb64",
+      "bytes": 4612
+    },
+    {
+      "file": "prompts.asm",
+      "sha256": "256c0889f01218b8b5a3694f7a78cef822d0e73f50f69468c8829154a1adcef1",
+      "bytes": 9736
+    },
+    {
+      "file": "section-geometry-helpers.asm",
+      "sha256": "83c7b0c75d6ffd3f22c25e0fa9d800df5e1f29e644f3c439126fbdb4f88de650",
+      "bytes": 620
+    },
+    {
+      "file": "section-literals.json",
+      "sha256": "78baf463582fa8314a265aeebed669f25c789a031edb02b5d52b5f4fcf564b7d",
+      "bytes": 398
+    },
+    {
+      "file": "selected-sections.json",
+      "sha256": "858e0083029b3828c4a56d6637f359dd778a6576dd0b9666fbf0cf69bd2b959d",
+      "bytes": 2732
+    },
+    {
+      "file": "semantic-font-body.asm",
+      "sha256": "aa3da66274a1a07e8d474aa308c7ea6742deb360e8301de2891a45c0a1566859",
+      "bytes": 1060
+    },
+    {
+      "file": "state-read.asm",
+      "sha256": "4e0c87ebf10c42b9dd08af99ca68e0f8ca64035a3c18c2374352140c1609833a",
+      "bytes": 836
+    },
+    {
+      "file": "text-constructor-helpers.asm",
+      "sha256": "0cece2ba34ed01bf50c5b3a251a42cb5c4b3ca65510c2f0abe2efe726a630950",
+      "bytes": 521
+    }
+  ]
+}

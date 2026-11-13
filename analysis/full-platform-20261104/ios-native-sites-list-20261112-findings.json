@@ -1,0 +1,161 @@
+{
+  "status": "partial",
+  "scope": "iOS 1.2026.293 ChatGPTSites root/list/picker and actual list action consumers; preview/settings delegated separately",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "original native metadata/conformances, bounded ARM64 and strict symbolic generic trees, no target execution",
+  "protocol_validation": {
+    "observation": "Selected SitesScreen,RootContent,Content,Picker,Row,Empty,Error,Loading,Pagination conformances all resolve SwiftUI.View. The scoped helpers did not conflate these with a measurable protocol.",
+    "evidence": "analysis/full-platform-20261104/ios-native-sites-list-20261112/metadata.json"
+  },
+  "root": {
+    "descriptor": "0x959a230",
+    "body_witness": "0x14a26bc",
+    "actual_body": "0x149d304",
+    "type_record": "0x7dcc548",
+    "tree": "analysis/full-platform-20261104/ios-native-sites-list-20261112/root-tree.json",
+    "structure": [
+      "NavigationStack<NavigationPath>",
+      "navigationDestination<SitesNavigationDestination> with original SiteTrafficAnalyticsScreen/SitesMissingProjectView/SitesProjectPreviewScreen/SiteSettingsScreen typed branches",
+      "Overlay FixedBarStack<SitesLinkCopiedBannerContent> with FixedBarStackBackground,opacity/environment and inset modifiers"
+    ],
+    "limit": "Original outer wrapper0x971e694 retained opaque. Listing tree is native; preview native/WebKit boundary is separate."
+  },
+  "root_content": {
+    "descriptor": "0x959aad0",
+    "body_witness": "0x14a36f8",
+    "actual_body": "0x14a2ed8",
+    "type_record": "0x7dcd480",
+    "tree": "analysis/full-platform-20261104/ios-native-sites-list-20261112/root-content-tree.json",
+    "structure": [
+      "SitesScreenContent with navigationTitle and navigationBarTitleDisplayMode",
+      "conditional toolbarBackground wrapper",
+      "refreshable actual call0x14a332c",
+      "topBarTrailing ToolbarItem constructed0x14a341c/0x14a345c",
+      "refreshError conditional supplies SitesRefreshErrorBanner at0x14a3350"
+    ],
+    "create_consumer": {
+      "button_constructor": "0x14a3494",
+      "guard": "0x14a34e0 loads byte+0x22; low bit false branches0x14a35f4",
+      "guard_name_limit": "matches root content canCreateSite shape but raw byte is not portable offset",
+      "button_init": "0x14a3540",
+      "label_consumer": "0x14a3544 ->literal0x889ff70",
+      "key": "sites_create_site",
+      "callback_thunk": "0x152f970",
+      "label_and_icon_limit": "Button<Image> is actual type (record0x7dcd4c0), exact icon resource factory not resolved in bounded task"
+    }
+  },
+  "list": {
+    "descriptor": "0x959b098",
+    "body_witness": "0x14a4d80",
+    "actual_body": "0x14a3a58",
+    "type_record": "0x7dce4b0",
+    "tree": "analysis/full-platform-20261104/ios-native-sites-list-20261112/content-tree.json",
+    "parent": "Plain SwiftUI.List<Never,TupleView<...>>",
+    "actual_order": [
+      "Optional header VStack<AnyView> with row insets/background/separator traits",
+      "Optional SitesProjectsListPicker with row insets/background/separator traits",
+      "phase conditional: SitesLoadingView / SitesLoadErrorView / SitesEmptyView / tuple(ForEach rows,SitesPaginationFooter)"
+    ],
+    "constructors": [
+      "List.init0x14a3c24",
+      "PlainListStyle.init0x14a3c2c",
+      "listStyle0x14a3c70",
+      "ListSectionSpacing.custom0x14a3cec"
+    ],
+    "rows": {
+      "data": "Array<SitesProjectRowValue>",
+      "identity": "Tagged<SitesProjectIDTag,...>",
+      "wrapper": "Button<SitesProjectRow>.buttonStyle(PlainButtonStyle), padding/insets/background/separator modifiers",
+      "row_descriptor": "0x959b5a4",
+      "body_witness": "0x14a68ec",
+      "action": "0x14a4bd8",
+      "action_detail": [
+        "0x14a4c28..0x14a4c3c sets search-focused Binding false",
+        "0x14a4c40..0x14a4c48 copies row ID payload",
+        "0x14a4c50/54 constructs SitesScreenAction with raw enum tag11",
+        "0x14a4c60 invokes supplied actionHandler"
+      ],
+      "semantic_limit": "The raw tag is observed but semantic case name was not independently mapped; do not derive selectProject by enum declaration index."
+    },
+    "menu_limit": "List generic tree contains Button and no contextMenu modifier. Existing project-action enum is inventory; do not invent an always-visible row context menu without parent/row action consumer proof."
+  },
+  "picker": {
+    "descriptor": "0x959b640",
+    "body_witness": "0x14a51c4",
+    "actual_body": "0x14a4dac",
+    "type_record": "0x7dcf2e0",
+    "tree": "analysis/full-platform-20261104/ios-native-sites-list-20261112/picker-tree.json",
+    "actual_parent": "SwiftUIStyleguide.OAISegmentedTabBar<ChatGPTSites.SitesProjectsList>, not Menu",
+    "binding_setter_thunk": "0x1539c9c ->0x14a515c",
+    "setter_action": "0x14a519c reads selected list byte,0x14a51a0 stores payload; raw action tag10 constructed0x14a51ac; invokes supplied action handler via0x1547c88",
+    "limits": [
+      "Owned/shared enum inventory is not evidence of per-account visibility or visible ordering",
+      "Exact original labels not recovered in this bounded consumer window"
+    ]
+  },
+  "empty_error_pagination": {
+    "empty": "SitesEmptyView witness14b5394 forwards14b5000; ContentUnavailableView(label,description,actions) actual init14b50c0; create button key sites_create_site consumer14b5148, button init14b5204; create conditional gates retained in content",
+    "error": "SitesLoadErrorView witness14b56b4; retry Button<Text> constructor14b5574 with literal factory75d28e0 at14b5538. Exact error title/message and retry translation key unclosed.",
+    "pagination": "SitesPaginationFooter descriptor959b580, body witness14a604c; actual footer coexists after rows, state/actionHandler injected. Exact loading/retry/end-state callback mapping unclosed."
+  },
+  "resources": [
+    {
+      "key": "sites_display_name",
+      "consumer": "0x14a30bc",
+      "literal": "0x88984a0",
+      "role": "root fallback/default title",
+      "en": "Sites",
+      "zh": "站点",
+      "limit": "rootTitle input also exists; do not force over supplied title"
+    },
+    {
+      "key": "sites_create_site",
+      "consumer": "0x14a3544",
+      "literal": "0x889ff70",
+      "role": "toolbar create accessibility/label consumer"
+    },
+    {
+      "key": "sites_create_site",
+      "consumer": "0x14b5148",
+      "literal": "0x889ff70",
+      "role": "empty create button"
+    }
+  ],
+  "owner_boundary": {
+    "source": "SitesScreenViewModel with _searchText,_selectedProjectsList,_displayedProjectRows,_projectsRequest,_sharedProjectsRequest,_accessConfiguration,sharedProjectsLoadGeneration,presentationQueue,navigationPath",
+    "actual_frontend_dataflow": "Root supplies phase/rows/search/create-capability/selected-list/picker-visible/pagination-state/actionHandler; row/picker actions pass through that handler. Root/list independent state is not a server owner.",
+    "capability_limit": "canCreateSite and showsProjectsListPicker passed into views; concrete access/provider/ownership calculations are not closed here. Context-menu action inventory must not be used as always-enabled UI.",
+    "search_limit": "Root/content have isSearching and FocusState binding; specific native search-field parent, query/debounce callback and text resource remain unclosed. No searchable in inspected root/content trees.",
+    "haptics": "No source-proven trigger found in these scoped native view constructors; no haptic behavior should be inferred from other app modules."
+  },
+  "minimum_usable_frontend": [
+    "Native List using original header/picker/phase/row/footer shape, stable project identities and injected capability data",
+    "Separate synthetic owned/shared request states and query state; preserve selection/query/scroll on preview return",
+    "Create button only when capability true, routes through independent service intent; retry and pagination similarly scoped",
+    "Row selection closes search focus and passes exact project identity to preview adapter; no credential or service success synthesized"
+  ],
+  "unknowns": [
+    "Exact owned/shared/search/empty/error localized label consumers and keys",
+    "Native search presentation parent/route and root side-menu/close wrapper behavior",
+    "Concrete project ownership-to-action availability and menu presentation",
+    "Full pagination state mapping and original load/retry callbacks",
+    "Source row dimensions/fonts/materials/icons; no screenshot-derived geometry substituted",
+    "Actual account eligibility and History sidebar builder wiring"
+  ],
+  "next_minimum_evidence": [
+    "Resolve SitesProjectsList label protocol consumer used by OAISegmentedTabBar (raw value/witness table), not its array declaration",
+    "Map row/picker action raw tags11/10 with original enum tag projection or confirmed case constructors and follow SitesScreenViewModel handler only",
+    "Resolve opaque root toolbar/search wrapper0x971e694/0x971e6f4 and trailing create Image label closure0x14a368c",
+    "Trace Pagination body witness0x14a604c and Empty label/description closures passed into ContentUnavailableView0x14b50c0"
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-native-sites-list-20261112",
+  "host_changes": "none",
+  "limits": [
+    "Stopped at task bound without expanding preview/settings ownership.",
+    "All runtime branch values, backend effects and visual equivalence remain unproven.",
+    "No host changes, builds, device actions, full artifact execution, network or tool installation."
+  ]
+}

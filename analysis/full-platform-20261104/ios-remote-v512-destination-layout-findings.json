@@ -1,0 +1,357 @@
+{
+  "status": "partial",
+  "evidence_type": "official_artifact_static_analysis",
+  "scope": "iOS293 home composing destination controls and retained task-list content",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "confirmed": [
+    {
+      "id": "home_content_layers",
+      "offsets": [
+        "0x19f2600",
+        "0x19f2cf0",
+        "0x19f2d6c",
+        "0x1c3e594",
+        "0x1c3e5c8",
+        "0x1c3e5ec",
+        "0x1c3e618",
+        "0x19f2df4",
+        "0x19f2e5c",
+        "0x1d9f140",
+        "0x19f2ea0",
+        "0x1c3e634"
+      ],
+      "conclusion": "NewThreadScreen retains browsingContent as the first child of bottomLeading ZStack. It applies opacity(isComposing ? 0 : 1) inside scoped animation, allowsHitTesting(!isComposing), and accessibilityHidden(isComposing). A separate leading VStack above it builds composing destination content. This supports retaining task-list identity while hiding and disabling it, not replacing the list with a new instance or inserting destination controls into the editor toolbar."
+    },
+    {
+      "id": "destination_gate",
+      "offsets": [
+        "0x19f3684",
+        "0x19f36b4",
+        "0x19f36cc",
+        "0x19f370c",
+        "0x19f372c",
+        "0x19f377c"
+      ],
+      "conclusion": "The upper content requires isComposing; nonnil optional worktreeProgress selects progress content. With nil progress, showsDestinationControls controls a vertical ScrollView with defaultScrollAnchor(.bottom). Reuses v509 gate evidence."
+    },
+    {
+      "id": "destination_vstack",
+      "offsets": [
+        "0x19f3ae8",
+        "0x19f3b10",
+        "0x19f3b14",
+        "0x19f3b30",
+        "0x19f3b38",
+        "0x19f3b40"
+      ],
+      "conclusion": "Destination inner VStack is leading aligned, spacing nil, framed maxWidth infinity alignment leading. No horizontal padding is added within this inner builder."
+    },
+    {
+      "id": "label_layout",
+      "offsets": [
+        "0x19fe4ac",
+        "0x19fe4b0",
+        "0x19fe4b4",
+        "0x19fe78c",
+        "0x19fe790",
+        "0x19fe794",
+        "0x19fe530",
+        "0x19fe54c",
+        "0x19fe550",
+        "0x19fe574",
+        "0x19fe578"
+      ],
+      "conclusion": "Shared destination label outer HStack center spacing12, inner title/chevron HStack center spacing4, frame minHeight48 alignment leading, horizontal padding12, Rectangle contentShape. 48 is a minimum, not fixed height. No local capsule background in this label type tree."
+    },
+    {
+      "id": "label_metrics",
+      "offsets": [
+        "0x19f6790",
+        "0x19f67cc",
+        "0x19fe698",
+        "0x19fe6dc",
+        "0x19feac4",
+        "0x19feae4"
+      ],
+      "conclusion": "Icon and chevron dimensions are ScaledMetric, base24 and18. Icon is in centered square frame. Title local chain uses lineLimit1, truncationMode supplied by field4; host/workspace constructors initialize tail via imported Text.TruncationMode.tail. No title-local font or foreground override was identified; the font modifier in the chevron branch must not be attributed to title. The effective parent font is now closed in parent_font_color."
+    },
+    {
+      "id": "label_colors_icons",
+      "offsets": [
+        "0x19fe6f4",
+        "0x74ed87c",
+        "0x8a51590",
+        "0x19fea8c",
+        "0x74f5f94",
+        "0x8a549e0",
+        "0x19feb18",
+        "0x74ee310",
+        "0x8a51bc0",
+        "0x19feb20",
+        "0x19feb38"
+      ],
+      "conclusion": "Icon color is ChatGPT/icon/tertiary. Chevron is OpenAI/Symbols/chevron-up-chevron-down-sm, ChatGPT/text/secondary with color opacity0.3 normally and0 while loading. Both are accessibilityHidden. Loading uses OneOff/LoadingBackground and OneOff/LoadingForeground via redaction/loading modifier. Exact animated loading behavior is not reconstructed."
+    },
+    {
+      "id": "host_label",
+      "offsets": [
+        "0x19f6658",
+        "0x19f6674",
+        "0x74f81c4",
+        "0x8a559e0",
+        "0x19f6690",
+        "0x19f66a0",
+        "0x19f66b8",
+        "0x19f25b0"
+      ],
+      "conclusion": "Nil selected option uses OpenAI/Symbols/laptop. Selected option uses stored HostListItem icon through241a584. Title is obtained from ViewModel witness0xd0 via19f2594; if absent, distinct loading/select-host/no-hosts branches from v509 apply. Supplied selected title is authoritative; do not hardcode device names."
+    },
+    {
+      "id": "workspace_label",
+      "offsets": [
+        "0x19f8454",
+        "0x19f6f48",
+        "0x19f6f9c",
+        "0x19f6fa8",
+        "0x19f6fb8",
+        "0x74f7708",
+        "0x8a554f0",
+        "0x19f8460",
+        "0x19f7b58",
+        "0x19f7c14",
+        "0x19f7f18",
+        "0x19f7f28",
+        "0x19f7f50",
+        "0x88b6e20",
+        "0x88b6e50"
+      ],
+      "conclusion": "Selected projectID or workspaceDirectory yields OpenAI/Symbols/folder; both absent yields chat-bubble-on-chat-bubble. Title prefers projectName, otherwise selected workspace directory resolves through matching HostWorkspaceSection displayNamesByDirectory, with shared path-display fallback2ace184. With no usable selected project/directory, key codex_remote_workspace_choose_project / Choose a project. Workspace label always sets showsChevron true; loading comes from witness0x80."
+    },
+    {
+      "id": "menu_style",
+      "offsets": [
+        "0x1967ea4",
+        "0x1968004",
+        "0x1968058",
+        "0x1968070",
+        "0x19680d0",
+        "0x1968104",
+        "0x196816c",
+        "0x19681b8",
+        "0x1968318",
+        "0x196836c",
+        "0x1968384",
+        "0x19683e4",
+        "0x1968418",
+        "0x1968480"
+      ],
+      "conclusion": "Host and workspace wrappers apply menuOrder fixed, ButtonMenuStyle, PlainButtonStyle. Host contains the inline Picker already bound in v511; workspace contains projectless Toggle, Divider, workspace Toggles, Add new folder. Selection callbacks remain scoped to draft destination, independent of source filter."
+    },
+    {
+      "id": "host_menu_disabled",
+      "offsets": [
+        "0x19f41bc",
+        "0x19f41cc",
+        "0x19f41d8",
+        "0x19f41dc",
+        "0x19f41f8",
+        "0x19f420c",
+        "0x44ab38",
+        "0x1225d0"
+      ],
+      "conclusion": "Host menu disabled flag is witness0x40 Boolean OR !showsChevronHelper19f6b50(). Captured flag combines with inherited environment enabled via oldEnabled && !flag at1225d8. Do not equate witness0x40 with loading without field binding. Host row selection-enabled trait is additionally scoped eligibility from v511."
+    },
+    {
+      "id": "parent_font_color",
+      "offsets": [
+        "0x19f0a84",
+        "0x74e2728",
+        "0x74e2714",
+        "0xaad38d8",
+        "0x19f0aa8",
+        "0x1da3014",
+        "0x6ec6b0c",
+        "0x6ec6b44",
+        "0x19f0ac4",
+        "0x74ee310",
+        "0x19f0aec"
+      ],
+      "conclusion": "NewThreadScreen base applies OpenAIFont body converted to SwiftUI.Font, then ChatGPT/text/secondary foregroundStyle. Destination title has no local font/foreground override, so inherits this body and secondary text style. Icon and chevron retain their explicit local colors. This supersedes earlier parent-font unknown."
+    },
+    {
+      "id": "destination_outer_padding_width",
+      "offsets": [
+        "0x19f3004",
+        "0x19f3010",
+        "0x1da5e14",
+        "0x19f3020",
+        "0x19f3030",
+        "0x19f3038",
+        "0x19f303c",
+        "0x19f3068",
+        "0x19f3070",
+        "0x1daa2c0",
+        "0x19f3080",
+        "0x19f30a8"
+      ],
+      "conclusion": "Destination leading VStack applies horizontal padding12 before frame(maxWidth: composerMaximumWidth, alignment:center), reading screen field2 _composerMaximumWidth via metadata offset entry0x38 and Environment<CGFloat> getter1a25a4. It then receives an outer full-width frame. Use existing shared composerMaximumWidth environment rather than invent a numeric width. Row-local horizontal12 remains additive inside page padding."
+    },
+    {
+      "id": "browsing_animation_nominal_duration",
+      "offsets": [
+        "0x19f0a08",
+        "0x19f0a10",
+        "0x19f0a1c",
+        "0x1c3db70",
+        "0x19f2634",
+        "0x19f2d04",
+        "0x19f2d08",
+        "0x19f2d10",
+        "0x19f2d1c"
+      ],
+      "conclusion": "Base closure captures Double0.2; content-stack reads it into v8 and builds easeInOut(duration:0.2) for browsing opacity. A gate through7710c7c/26c444 can nil the animation. Gate semantic name remains unresolved; do not claim every mode always animates."
+    }
+  ],
+  "unknowns": [
+    {
+      "boundary": "19f6b50 fallback19f6c68..19f6d48",
+      "detail": "First arm checks eligible host identity differing from selected identity. Fallback compares two Optional<HostWorkspaceOption> values. Sources of both optional operands and complete predicate not yet bound; do not replace with host count>1."
+    },
+    {
+      "boundary": "VM witness0x40->18c763c->1892a4c->1888ee8",
+      "detail": "Disable Boolean reads through runtime field-offset global b07db80. Its semantic property name remains unbound."
+    },
+    {
+      "boundary": "18b3410 /18b3960 destination selection coordinator",
+      "detail": "Selection callback ownership is proved in v511. All automatic host/workspace fallback policy remains incomplete."
+    },
+    {
+      "boundary": "composerMaximumWidth environment provider and7710c7c animation gate",
+      "detail": "Consumer uses shared environment width, outer horizontal12, and nominal easeInOut0.2. Final environment default/provider override and animation gate semantic property remain unbound. Keyboard viewport/interactive-dismiss geometry remains separate."
+    }
+  ],
+  "integration": [
+    "Retain List in ZStack and apply opacity/hitTesting/accessibility changes from composing state. Keep list scroll/collapse/source state alive.",
+    "Render composing destination content as the upper leading page layer, with vertical bottom-anchored ScrollView; preserve existing SafeAreaBar composer.",
+    "Use shared row label geometry and icons for host/workspace controls, PlainButtonStyle ButtonMenuStyle fixed menu ordering.",
+    "Keep query/source/draft destination ownership separate and use synthetic eligible data explicitly for unsupported service state."
+  ],
+  "verification": "Static source tracing only. No original application execution, runtime parity claim, service calls, or production edits.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-destination-types.json",
+      "sha256": "9d2b1e9243585a8bf3818c18e374161820e392b2cbe70a996e6ca8b068b5ddc8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-destination-layout.asm",
+      "sha256": "97e6588ebf3a74a0c0bc412f302b0ddd5591e206d38f9652e63fc76ff2c540eb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-destination-layout-calls.json",
+      "sha256": "a7dd63d74b91c72c847b4fe565a2c9ab63a0669c8d17baf868f9e4c6ff7f8159"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-label-helpers.asm",
+      "sha256": "01513eb40b94170c92426caedcd95c758cf88dda5a917cbc91a803a7fbcbee01"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-label-helpers-calls.json",
+      "sha256": "69ee81edc52131e77b9b001f711a783c70f66f0b07d5043c6e44d8f6420297aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-label-body-types.json",
+      "sha256": "760966060e525d63c05757c672865d78ae4cb221787abfea65e12f217c61d466"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-owning-content-helpers.asm",
+      "sha256": "b15a7bf2dcd476837ed4f42225a2f29ae9a4c300a0d87c8a47f3afe7e2e51f73"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-owning-content-calls.json",
+      "sha256": "db420ef3d3b2fbad90e07760bcf2ea7d7021d427bd81fc8b9c3436789e32abe4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-additional-types.json",
+      "sha256": "b809d6c4f13c0b13d4c67da20abdad3bb318c89a3d720139efd411928d5de231"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-label-strings.json",
+      "sha256": "5e996cb2f928e5f2d6c5686bb939f944f1480b969d7b105a97300d5bd55139bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-selector-state.asm",
+      "sha256": "3dd23b855c74db2a61eddb0ea4a17e64733193d9a3981f443ee0670e502acfc8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-selector-state-calls.json",
+      "sha256": "48ff2d918727b58c9df79986c16e7c66cf8427e53ac6ed76edb75debf4f7a010"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-selector-tokens.json",
+      "sha256": "bd89f27971053d7fffc492788307bd4049d27ff0c397711195c02c7533ea17fe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-chevron-comparison-type.json",
+      "sha256": "c6f18ec46f8464e15e140d682d912668573598cfee69e5f0f0b6e32a41db4303"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-wrapper.asm",
+      "sha256": "ed95130d16bf75341468668a47a97501d14e5b080077a75b34faf0070e212da3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-wrapper-calls.json",
+      "sha256": "6db0b0096784dd7dab6e5f56cab944318494fb9549f2014802388aaf1d56ac04"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v495-new-content-stack.asm",
+      "sha256": "a26db545903ce11e8ddcf48dbe2ce80115d61fedcbbdf6c1d3184cfb3909217c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v495-new-content-stack.json",
+      "sha256": "f037b9c627dbc8fb60f35b5608f942ccab9a5e090ab42b1348ef03552a7530e3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-label.asm",
+      "sha256": "35f8fa4df109ca502502df66295f303d1413d7faac616369376be60f919bb5ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-destination-menu.asm",
+      "sha256": "3ac011a9cbdd60ff68fd89bc6586611555ec29c560ada9157122b1996a155fb1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-parent-style-helpers.asm",
+      "sha256": "582a65c71e4b2cbebeff7c26c97c6e1d9682ab6dd7fcbf605b1f4a0b118dd5ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-parent-style-calls.json",
+      "sha256": "c462369f57dbe94ebdbc9e958aaf016239fb496b6e4890052de538c741e2a412"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-parent-theme.asm",
+      "sha256": "50ec69f79059b5c2039793117dffff3411d5525c8f517025af48c08adef7cc9b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-parent-theme-calls.json",
+      "sha256": "847c1d381ea8c8b827d90f66165a830b5e2ba01c0ba5070d9ffa04394fc2d2a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-body-font-factory.asm",
+      "sha256": "be8044c598ed41955126ad9b691088dfe592d4835111437b1c1e2129f4004be3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-body-font-binding.json",
+      "sha256": "a12b78e438bf6d8323101cc201bfe6bf26ef61070ddf4be4150b271872e7150f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v495-new-draft-base.asm",
+      "sha256": "6f79017f77e2dbadc023c6fade664c27e5d8d4c0b86e8e707a4da125e34924b4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-newthread-metadata.json",
+      "sha256": "015197d50ce7e3d3e374ed95f906f02debf7049ab682015e9ac0c99bef65a756"
+    }
+  ]
+}

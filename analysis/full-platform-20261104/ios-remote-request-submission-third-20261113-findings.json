@@ -1,0 +1,261 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Approval feedback and user-input final submission failure/retry; three bounded candidate groups: current host/tests, original local callback/progression, concrete ViewAction owner dispatch. No product changes.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "current_host_defects": [
+    {
+      "id": "input-retry",
+      "type": "host_source_observation",
+      "severity": "core-retry-gap",
+      "source": [
+        "implementation/ios/Sources/RemoteUserInputInteraction.swift:187",
+        "implementation/ios/Sources/NativeConversationHost.swift:7307",
+        "implementation/ios/Sources/NativeConversationHost.swift:8220"
+      ],
+      "conclusion": "Final record removes current custom draft and clears text, retains answers privately and emits the complete submit event. Owner failure only sets inputFailure/inputUnavailable. The form has no pending-submission retry action. After error, the field is blank and its button is Skip; tapping that emits dismiss rather than retrying the saved complete answer payload.",
+      "limit": "Answers are not destroyed by record; they remain in the live draft. User can reconstruct a final answer or choose an option again. The exact complete submission event is not retained for one-step retry, and form destruction retires private answers."
+    },
+    {
+      "id": "approval-feedback-retry",
+      "type": "host_source_observation",
+      "severity": "core-retry-gap",
+      "source": [
+        "implementation/ios/Sources/RemoteApprovalInteraction.swift:155",
+        "implementation/ios/Sources/NativeConversationHost.swift:7022",
+        "implementation/ios/Sources/NativeConversationHost.swift:8268"
+      ],
+      "conclusion": "Feedback submit clears local text before onAction. A disconnected or local-write failure keeps the request but discards the field copy; its empty button becomes Deny. No failed feedback event is retained in the view for retry.",
+      "limit": "Source lower-level clearing order matches observed293 local callback; missing host owner acknowledgement/rollback is the integration gap."
+    },
+    {
+      "id": "approve-admission",
+      "type": "host_source_observation",
+      "severity": "defensive-entry-gap",
+      "source": [
+        "implementation/ios/Sources/RemoteThreadReplay.swift:1036",
+        "implementation/ios/Sources/RemoteThreadReplay.swift:1019",
+        "implementation/ios/Sources/NativeConversationHost.swift:8268"
+      ],
+      "conclusion": "approve() lacks the isEnabled guard that answer() has. The current sole UI caller invokes it only inside if replay.isEnabled, so ordinary UI admission is already guarded. The store entry itself is not protected from another direct caller.",
+      "limit": "Do not report the ordinary UI as currently bypassing the replay switch. Consistent store-level admission is recommended to preserve the invariant for future consumers."
+    },
+    {
+      "id": "tests-gap",
+      "type": "host_test_source_observation",
+      "source": [
+        "implementation/ios/TextTests/main.swift:1039..1051",
+        "implementation/ios/TextTests/main.swift:1085..1103",
+        "implementation/ios/UITests/HostInteractionTests.swift:9347..9369"
+      ],
+      "conclusion": "Existing tests assert clear-before-callback and validate disconnected/stale events. UI test checks approval request/control retention after failure. None of these snippets verifies original text/full final answer can be retried without re-entry; keeping a request visible is weaker than preserving its submission draft.",
+      "limit": "Tests were reviewed, not executed by this evidence-only task. Historical reports of passing tests are not new runtime proof."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "local-approval",
+      "type": "official_artifact_observation",
+      "source": [
+        "0x1a1fa98 trim helper",
+        "0x1cf3418 ->0x1a1f680",
+        "0x1d8f220 /0x7c4bb38 clears LazyState before banner+0x278 callback",
+        "0x1c349d4 ->0x1c349e8 ->0x1a2b084",
+        "0x1a2b0dc local tag37"
+      ],
+      "conclusion": "Original feedback trims whitespacesAndNewlines, clears local state before forwarding nonempty Redacted<String>. Empty keyboard submit is no-op; the separate button can deny. A local clear is not evidence of final service success.",
+      "evidence": [
+        "ios-remote-v414-integration.json",
+        "ios-remote-v414-feedback-clear-action.asm",
+        "ios-remote-v410-integration.json"
+      ]
+    },
+    {
+      "id": "local-input",
+      "type": "official_artifact_observation",
+      "source": [
+        "0x1a564a8 custom submit",
+        "0x1a56654 progression",
+        "0x1cf51f0 option selection",
+        "0x1cf4494 request-key reset"
+      ],
+      "conclusion": "Original custom answer writes one-element answer array by questionID after removing current custom draft/clearing text; progression chooses unanswered questions and invokes supplied submit closure when all answer keys are present. Answers and unsubmitted custom drafts are separate state. Request-key change clears the maps/index/text.",
+      "evidence": [
+        "ios-remote-v415-integration.json",
+        "ios-remote-v415-input-callbacks.asm",
+        "ios-remote-user-input-parent-20261113-findings.json"
+      ],
+      "limit": "No submit-failure retry/acknowledgement contract follows from these local callbacks."
+    },
+    {
+      "id": "owner-dispatch",
+      "type": "official_artifact_observation",
+      "source": [
+        "ViewAction descriptor0x95aa444",
+        "submitToolUserInput record0x9a32b68 localtag6",
+        "approveApprovalRequestTapped record0x9a32cc4 localtag35",
+        "denyApprovalRequestTapped record0x9a32cd0 localtag36",
+        "approvalRequestFeedbackSubmitted record0x9a32cdc localtag37",
+        "dispatcher0x18b8ff4 table0x18bad50 relativebase0x18b911c",
+        "tag6 ->0x18b9b4c ->0x18e73e0",
+        "tag35 ->0x18b9334 ->0x18ba100",
+        "tag36 ->0x18b9384 ->0x18ba1a0",
+        "tag37 ->0x18b917c ->0x18ba06c"
+      ],
+      "conclusion": "The concrete model has separate owner action paths for complete user-input answers, approval decisions, denial and redacted feedback. The original view callback is an owner handoff, not an immediate service receipt.",
+      "evidence": [
+        "ios-remote-v410-owner-actions.json",
+        "ios-remote-v410-integration.json",
+        "action-table.json",
+        "action-6.asm",
+        "action-35.asm",
+        "action-36.asm",
+        "action-37.asm",
+        "approval-dispatch-tail.asm"
+      ],
+      "limit": "Tags are local binary enum tags, not protocol opcodes. Generic owner witness binding limitations from ios-remote-pending-owner-20261113-findings.json still apply; concrete handler action matching is corroboration."
+    },
+    {
+      "id": "submission-owner-gate",
+      "type": "official_artifact_observation",
+      "source": [
+        "0x18e7474..0x18e7480 reads ivar offset storage0xb1e7e00 and branches if nonnil",
+        "class CodexRemoteThreadViewModel ivar0xab33c00 _cancelsPreviousStorage_userInputSubmissionTask",
+        "0x18e749c ->0x18e7368",
+        "0x18e74a4 compare",
+        "0x18e7578 ->0x24f0958"
+      ],
+      "conclusion": "Original input submission owner checks a stored userInputSubmissionTask before the continuation. This is a separate task-lifecycle admission boundary, beyond per-question text clearing.",
+      "evidence": [
+        "ios-remote-v531-dictation-owner-classes.json",
+        "input-submission-owner.asm"
+      ],
+      "limit": "Only bounded prefix0x18e73e0..0x18e75a0 was inspected. Full task construction, result/catch handling, pending request removal, receipt and failure UI remain unresolved. Field naming does not by itself prove retry or cancellation policy."
+    }
+  ],
+  "frontend_adapter_recommendation": {
+    "authority": "Independent frontend transaction design; original asynchronous failure semantics not recovered.",
+    "current_sync_owner": "Preserve source-modeled low-level clear-before-forward by copying draft into next. Run submit/select against next. If no final event, commit next so intermediate question navigation works. If an event exists, invoke synchronous owner admission; commit next only when accepted. On rejection keep before unchanged. Do not display success or dismiss a request for a rejected admission.",
+    "effect_on_feedback": "A rejected feedback send leaves original untrimmed field text, so button remains Send and retry regenerates the same trimmed scoped event. Empty keyboard remains no-op; empty deny uses its own admission result.",
+    "effect_on_input": "A rejected final text/choice preserves the state immediately before that final action, including previous answers and final draft/selection. Retrying regenerates complete answer dictionary. Intermediate successful selections still advance. Do not persist secret answers merely to implement retry.",
+    "future_async": "Use separate scoped pending attempt (request identity+question/catalog revision+attemptID) with redacted in-memory full payload. Block duplicate dispatch or share one in-flight attempt. Distinguish dispatch from authoritative acceptance. An old result must not erase newer edits or a replacement request; restore only if current owner/attempt/revision still matches. Rejected retry may preserve current user edits rather than overwrite them.",
+    "receipt_boundary": "Current replay answer/approve copies state, resolves request, begins visible turn and commits it before returning nil. Failure returns without publishing the copied state. A draft admission wrapper can use that nil/non-nil result as the current synthetic acceptance boundary; it is not an official server contract.",
+    "approve_guard": "Add isEnabled guard at the store method entry for consistency; current outer UI guard remains. This is independent defensive wiring, not a recovered293 condition."
+  },
+  "proposed_regressions": [
+    "Final ordinary/secret answer with disconnected owner retains text and complete prior answers; second submit reproduces identical scoped payload.",
+    "Final option rejected keeps prior selection/drafts and retry can reconstruct full dictionary.",
+    "Intermediate answer event=nil still commits index change and per-question state.",
+    "Approval feedback disconnected/localStorage/stale rejection retains untrimmed text; retry uses same trimmed payload; deny is never triggered by data loss.",
+    "Successful admission clears exactly once and removes pending controls through current owner receipt.",
+    "Request/host/connection replacement retires pending attempt; old completion cannot clear current draft.",
+    "Direct approve() on disabled replay cannot mutate/commit/schedule.",
+    "No secrets in ordinary debug output or persistence."
+  ],
+  "unknowns": [
+    {
+      "boundary": "0x18e73e0 continuation after0x18e75a0",
+      "missing": "Full original user-input submit task success/error/cancel state transitions and retry UI."
+    },
+    {
+      "boundary": "0x18ba06c/0x18ba100/0x18ba1a0 continuation",
+      "missing": "Original approval/feedback async owner RPC result processing and whether/how original feedback is restored."
+    },
+    {
+      "boundary": "293 input maps local state vs owner state",
+      "missing": "Any original replayable failed payload cache. Do not infer absence just because view clears text."
+    },
+    {
+      "boundary": "haptics",
+      "missing": "No new direct feedback caller proved; no additions recommended."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 3,
+    "static_source_review": true,
+    "tests_executed": false,
+    "replay_executed": false,
+    "product_modified": false,
+    "build_or_device": false,
+    "network": false
+  },
+  "evidence_directory": "ios-remote-request-submission-third-20261113",
+  "evidence_files": [
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-35.asm",
+      "bytes": 4269,
+      "sha256": "127d2c0fd3c0241e2bc559a085fda1dc0fd4a844602e657b681076bcc117e8ce"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-35.json",
+      "bytes": 4156,
+      "sha256": "b5004af03b7411773aa954ddcdbc304f9582a88b0cbf7c6e6cd0208f549d868f"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-36.asm",
+      "bytes": 4193,
+      "sha256": "fdc0131ae9354d8f4bd76b1865c2dc729afb109c8319da83a95188fe66a555ae"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-36.json",
+      "bytes": 3757,
+      "sha256": "d77082714bbc2913f0b3e84f78b8a544082ff0ddd2d5df2a695e475109809563"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-37.asm",
+      "bytes": 4276,
+      "sha256": "1b284e340525ef15fc3b9c787a780c7e55f240f97c50838145b31ebafc9f51fc"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-37.json",
+      "bytes": 4676,
+      "sha256": "028d73384b3a4a13b0a614b5a901c8901533427e0d14b223a2fbb36913623c1b"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-6.asm",
+      "bytes": 4259,
+      "sha256": "76561be35e191c3d28f941bdd39ac2c450ba3784bd49054d74bff8ef25eea34d"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-6.json",
+      "bytes": 5261,
+      "sha256": "f3e3ec943f445b21035995ad5181888d9e680f05a3c3ca8c8ffa31d541f9e482"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/action-table.json",
+      "bytes": 393,
+      "sha256": "d80bab5c27d1e608280f22ef048c93d6cffde0e54660fc6da3533641a803b597"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/approval-dispatch-tail.asm",
+      "bytes": 7125,
+      "sha256": "04da214452f3169ac23e650f98237617dc04db011cbc117a35158f5cfff9ca76"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/approval-dispatch-tail.json",
+      "bytes": 6492,
+      "sha256": "d10d1b32fca95114fb7829ec118791491fb24fe75f7bdc337b5ad6a11faa3a07"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/host-source-review-snapshot.json",
+      "bytes": 20071,
+      "sha256": "4b45aa60c674d5e073cea8b68ecd03a1aa571826f8fbc0065602f8d302ade76a"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/input-submission-owner.asm",
+      "bytes": 5730,
+      "sha256": "5f3377dd8c611e0bbac69fe17adf70f313a7552056614ff06b8c69c2b1f3d945"
+    },
+    {
+      "path": "ios-remote-request-submission-third-20261113/input-submission-owner.json",
+      "bytes": 4267,
+      "sha256": "2099ad3ace4c39efb8a70d51d395f1304a2fbd34a02db4aeaeaaef1a3fea12e1"
+    }
+  ]
+}

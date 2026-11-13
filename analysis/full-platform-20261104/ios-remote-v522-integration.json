@@ -1,0 +1,70 @@
+{
+  "batch": "v522",
+  "status": "partial",
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    "ios-remote-v522-thread-style-findings.json",
+    "ios-remote-v522-trailing-producer-findings.json",
+    "ios-remote-v522-thread-composer-capabilities-findings.json"
+  ],
+  "implementation": [
+    "ordinary Thread/NewThread style and Glass ownership",
+    "Thread parent SceneMetrics versus NewThread local reader",
+    "Thread attachment menu/import and draft restoration",
+    "explicit fixture toolbar capabilities and disconnected voice feedback"
+  ],
+  "verification": {
+    "build_version": 522,
+    "codesign": "passed",
+    "model_tests": "ios-remote-v522-model-final.log",
+    "ui_summary": "ios-remote-v522-r3-ui.summary.json",
+    "passed": 7,
+    "failed": 0,
+    "runtime_warnings": [],
+    "screenshots": [
+      {
+        "path": "analysis/full-platform-20261104/ios-remote-v522-thread-compact.png",
+        "sha256": "5da497e23e1795adbf991b76b533c5b071807578255410561e0027f3cf3be5ea",
+        "visually_inspected": true
+      },
+      {
+        "path": "analysis/full-platform-20261104/ios-remote-v522-thread-attachment-keyboard.png",
+        "sha256": "61e3122958da20d47beaf3b66777499f36d6553d6d90af14c106b3f189896b5a",
+        "visually_inspected": true
+      },
+      {
+        "path": "analysis/full-platform-20261104/ios-remote-v522-thread-dark-attachment-keyboard.png",
+        "sha256": "46bb99fe9ed5bcb087efb552419ff5613396b16d52b6be65711322217cafc7be",
+        "visually_inspected": true
+      },
+      {
+        "path": "analysis/full-platform-20261104/ios-remote-v522-new-thread-keyboard.png",
+        "sha256": "9378d6ff67a747734248a1fe3b7a96884f07dc71f188f8152de8c0a3c96a9531",
+        "visually_inspected": true
+      }
+    ]
+  },
+  "retained_failures": [
+    "r1 row beneath composer caused test misclick; visibility-aware test corrected",
+    "r2 Home idle waits prolonged test; sample retained; r3 test passed around22s"
+  ],
+  "limits": [
+    "simulator only",
+    "fixture capabilities; actual VM capability producer unresolved",
+    "permission/model/usage/voice interactions incomplete",
+    "NewThread toolbar incomplete",
+    "thread header alignment remains open",
+    "iPad/alternate embeddings not accepted"
+  ],
+  "preview": {
+    "pid": 9848,
+    "language": "system-following Chinese",
+    "screen": "ordinary synthetic thread",
+    "left_running": true,
+    "display": "built-in only"
+  }
+}

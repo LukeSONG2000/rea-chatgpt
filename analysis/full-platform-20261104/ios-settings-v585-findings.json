@@ -1,0 +1,67 @@
+{
+  "batch": 585,
+  "status": "partial",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "type": "official_artifact_static_observation",
+      "chain": "1814be4 → 1814ccc → 74fa540",
+      "conclusion": "Add connection label HStack vertical center with spacing10 (double4024000000000000 at1814c3c), leading outer alignment. Label content includes Image plus-md and Text localized by8856920."
+    },
+    {
+      "type": "official_artifact_static_observation",
+      "chain": "74fa56c/570 → 8a56a80; 7502d20 → 7c44a58; 7503584 shared with v518",
+      "conclusion": "Official image resource name is OpenAI/Symbols/plus-md. Shared resource construction follows existing v518 native ImageResource evidence."
+    },
+    {
+      "type": "official_artifact_static_observation",
+      "chain": "1814d60/74,1814d7c,1814dec; type7d9a760/770",
+      "conclusion": "ScaledMetric supplies both dimensions of centered Image frame, then accessibilityHidden(true), followed by Text. Settings icon size initialized24 in retained v584 chain."
+    },
+    {
+      "type": "independent_host_observation",
+      "chain": "NativeConversationHost.swift outer Codex and NativeVisualSettings tint(primary) → RecoveredRemoteContextUsageSettings",
+      "conclusion": "Monochrome ancestor tint reaches native switches. v584 dark screenshot has white track/thumb and weak contrast."
+    }
+  ],
+  "corrections": [
+    {
+      "files": [
+        "ios-settings-v585-add-label.json",
+        "ios-settings-v585-add-button.json",
+        "ios-settings-v585-add-style.json",
+        "ios-settings-v585-label-witness.json"
+      ],
+      "conclusion": "Initial filenames reflect hypotheses.1816004 is timestamp/loading machinery,1814198/6f3f538 wraps rows with OneOff/LoadingBackground and LoadingForeground. They do not establish add-label or tint implementation. Actual label found by key8856920 reference1814df4."
+    }
+  ],
+  "implementation": [
+    "Restore source-backed plus-md ImageResource and HStack spacing10 with scaled24 frame.",
+    "Scoped tint(nil) is independent native-container isolation, pending official app-wide tint ownership."
+  ],
+  "limits": [
+    "Full official parent tint and theme ownership unresolved. Native platform tint behavior must be visually verified in light/dark.",
+    "Source windows are static observations. No full official target execution.",
+    "Row fonts/insets, edit toolbar and behavior settings remain partial."
+  ],
+  "evidence_files": {
+    "ios-settings-v585-actual-add-label.json": "95491536b37d46cccf21eb12f1ce01d7b03fa317d665edde3556f6367c541f2e",
+    "ios-settings-v585-add-button.json": "d09e91f50ff95817e8469dc4d94277c3f738a8bc10cc63cfd4cba9fac8ee8fb8",
+    "ios-settings-v585-add-label.json": "f8a5f8d98c7d9e97da4636cc2b565945c1ac3919e6d5651887a539d7451a0016",
+    "ios-settings-v585-add-refs.json": "0a7410bf3fa87b6ad8ba9ba85b62a2b083f3cdf2797bbc95fed884407f8d3db8",
+    "ios-settings-v585-add-style.json": "7fe6a561a772246d5e4789c344ef9a357e6b0134e94659fbcb7dfe65cabfa140",
+    "ios-settings-v585-add-type.json": "735b4d289a3e73af04d63c645660e44eb9e86ddfd09afbfd0a9ec0cc52d5644d",
+    "ios-settings-v585-final-parent.json": "13bbab785e197b75019e5cdea4542ed72b82ced285f99abc28d4cdc6de3e51ba",
+    "ios-settings-v585-image-construction.json": "621a23b8fb2db2403adb08f53ad2f6d4996737c989b39dfbbb0167111811f33c",
+    "ios-settings-v585-label-parent.json": "528fdf8f66c0977d6e002e190432b080e670d406316e6f22d4f34b0cc5dd76a6",
+    "ios-settings-v585-label-witness.json": "58d1687b2a852836c812944f2269793c81e6f4935321ef8fa96766845f8dd8f0",
+    "ios-settings-v585-plus-image.json": "acd97541f2945b2d0ded3570e7a6d8c752ab5a8b36714d796fd0a5d6f2685c8c",
+    "ios-settings-v585-semantic-colors.json": "fc40af6f45c74d77d4e60541a6f0c508ab1494d76b481f09bd64a30440bc6fb8",
+    "ios-settings-v585-settings-content.json": "8580291feecf1f60932278dbe0e272dd58864800890a09067c92a63420e2bb37",
+    "ios-settings-v585-settings-outer.json": "88ba0a026873fc155e0b9ef884418a660e8c1f402ad7ba1f8d19f5b5e8945d6f",
+    "ios-settings-v585-type-7d03220.json": "338e5bf13db2ec5e3661844e732ba8d7816d70ca6454df5f33b3104df2a9e672",
+    "ios-settings-v585-type-7d9a760.json": "50f6c82ddcaaf6e048f115b02f56188439b17c78332678dd996ece2f87921b51",
+    "ios-settings-v585-type-7d9a770.json": "ae0b9f7025974f728e6d56d55dff37fcde2edee2ce903979f68ad1c4e020517d"
+  }
+}

@@ -1,0 +1,427 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static-construction-and-complete-generic-tree",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Fourth Remote-list pass: context-menu carrier/lazy preview and swipe eligibility only. Menu membership/action labels are a separate worker scope.",
+  "bounded_candidates": [
+    {
+      "id": 1,
+      "scope": "39ecc4 contextMenu preview callback43ba1c→39eefc→43bc9c and exact generic tree7cf79f8",
+      "result": "Lazy, optional, thread-specific preview and concrete frame recovered; upstream view-model provider implementation/lifecycle unresolved."
+    },
+    {
+      "id": 2,
+      "scope": "43b670 swipe builder and14e00c/45640c tag helper plus capture source39aa88",
+      "result": "Second gate resolved to Item.searchResult exclusion; first Bool is caller supplied and remains semantically unnamed."
+    }
+  ],
+  "findings": [
+    {
+      "id": "actual-context-preview-tree",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "The outer task-row label installs contextMenu(menuItems:preview:). Preview generic type is Optional<_ConditionalContent<LazyView<Optional<ModifiedContent<CodexRemoteThreadView,_FrameLayout>>>,EmptyView>>. This corrects the earlier flat-reference shorthand LazyView<CodexRemoteThreadView>.",
+      "offsets": [
+        "39ec94..39ecc4: separate menu callback43b9cc and preview callback43ba1c",
+        "43ba1c..43ba24: loads captured Bool and owner/context, tails39eefc",
+        "typerecord7cf79f8, full tree retained in context-parent.json/tree.txt"
+      ],
+      "limits": [
+        "Menu labels/actions not examined in this task.",
+        "The preview is not an always-present duplicate of ordinary tap navigation.",
+        "A complete generic tree establishes this parent shape, not runtime callback count or network behavior."
+      ]
+    },
+    {
+      "id": "preview-branch-and-provider",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Preview factory retains a lazy closure only in the ordinary thread path. Captured Bool=true emits outer nil; otherwise Item enum tag1 selects EmptyView; other item path captures owner and thread for closure43bc9c. The closure calls an owner-supplied optional view-model provider at owner-relative offsets238/240; nil gives absent thread content, nonnil forms the framed thread View.",
+      "offsets": [
+        "39ef14 saves Bool inx26;39ef5c..39ef6c true emits closure0/context0/tagff",
+        "39ef70→45640c→3e23d0 Item metadata;39ef74→152b28→swift_getEnumCaseMultiPayload;39ef78 tag1 comparison",
+        "39ef80..39ef8c emits closure0/context0/tag1 EmptyView alternative",
+        "39efa8..39eff0 allocates captured closure context and copies captured values;39eff8..39f004 stores callback43bc9c/context/tag0",
+        "43bc9c..43bcf0 loads original owner+238/+240 and invokes provider",
+        "43bcf4 nil branches43bd28, nonnil43bcf8..43bd20 creates ThreadView payload+frame",
+        "CodexTaskListContent descriptor9560294 field40 remoteThreadPreviewViewModel typeref8be78de: (CodexThread)->CodexRemoteThreadViewModel?"
+      ],
+      "limits": [
+        "Field40 name and function type corroborate the provider role, but exact variable-layout offset238→field40 has not been separately proven; report keeps this binding partial.",
+        "Caller Bool semantic is unknown. Do not call it capability/availability/placeholder without tracing its producer.",
+        "No proof provider is cached, invoked once, cancels on menu dismissal or avoids subscriptions. No original lifecycle policy recovered.",
+        "Do not use an invented static preview as a purported recovered real ThreadView. An independent service-free model provider is an explicit host boundary."
+      ]
+    },
+    {
+      "id": "preview-exact-frame",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "The nonnil preview branch supplies width360, height520 and center alignment to SwiftUI._FrameLayout, attached inside the lazy optional thread View. It is not a general row or fullscreen transcript dimension.",
+      "offsets": [
+        "43bd04 writes frame output at preview payload+80",
+        "43bd08/0c assembles0x4076800000000000=360;43bd10 width optional tag0",
+        "43bd14/18 assembles0x4080400000000000=520",
+        "43bcfc→464648→7c4b994 Alignment.center",
+        "43bd1c→1bedb4 sets height optional tagw3=0 then tails7c47104 _FrameLayout.init(width:height:alignment:)",
+        "43bd20→458760..45879c assembles the thread/payload/frame value; generic tree confirms ModifiedContent<CodexRemoteThreadView,_FrameLayout>"
+      ],
+      "immediate_values": {
+        "0x4076800000000000": 360.0,
+        "0x4080400000000000": 520.0
+      },
+      "limits": [
+        "These constants belong to context-menu preview only. Do not apply to destination navigation or list row.",
+        "Underlying ThreadView init property semantics, service loading and preview-dedicated behaviors are not fully recovered."
+      ]
+    },
+    {
+      "id": "swipe-excludes-search-result",
+      "evidence_type": "official-artifact-observation-with-Swift-enum-ABI",
+      "conclusion": "The prior unknown14e00c is an outlined swift_getEnumCaseMultiPayload call, not a business permission predicate. Its metadata is TaskSection.Item. This is a two-payload-case enum(thread, searchResult); payload case tag1 is searchResult. Swipe archive content therefore requires first captured Bool=false AND Item is the thread alternative. Search-result rows receive empty swipe content.",
+      "offsets": [
+        "43b688 captured Bool+10 true→empty43b6a4",
+        "43b690 loads Itemaddress and ownercontext",
+        "43b694→45640c→3e23d0 resolves955f1d8 Item metadata",
+        "43b698→14e00c movesItem address andmetadata→7c544e4 swift_getEnumCaseMultiPayload",
+        "43b69c cmpw0,1;43b6a0 b.ne archive;equal falls toempty43b6a4",
+        "Item descriptor955f1d8; fielddescriptor99d7b5c kind2 stride12 count2; both cases carry payload types, thread at99d7b6c/searchResult99d7b78",
+        "39aaac saves callerw2 tostack104;39ae68..39ae78 masksbit0 and savesstacke8;39b428/42c captures sameBool forswipe",
+        "39b430/434 capturesowner/context from original cell stack120/128",
+        "39b480→45c8a4 returns edge raw1,allowsFullSwipe=false;39b494 installs swipeActions"
+      ],
+      "limits": [
+        "ABI mapping uses two payload cases and actual getEnumCaseMultiPayload call, not inference from arbitrary declaration-field order. Payload values themselves not executed.",
+        "First captured Bool remains named only callerSuppliedSuppression. Therefore no original global canArchive default is established.",
+        "Archive action owner, confirmation/error contract and exact content are separate menu/action investigation.",
+        "Raw edge1 is corroborated as trailing under SwiftUI HorizontalEdge convention; source raw remains recorded."
+      ]
+    },
+    {
+      "id": "haptic-scope",
+      "evidence_type": "bounded-negative-observation",
+      "conclusion": "No explicit haptic engine dispatch or General-preference read was bound to the inspected context-menu construction, lazy preview closure or swipe visibility builder. No new feedback trigger or settings-gate claim is justified.",
+      "limits": [
+        "SwiftUI/UIKit may supply system gesture feedback; construction-window absence does not establish that all interactions are silent.",
+        "Archive action callback and menu action handlers were outside this scope. Existing global Settings>General>Haptics wiring should be reused only for independently evidenced app-owned triggers."
+      ]
+    }
+  ],
+  "implementation_decision": {
+    "source_backed": [
+      "Keep tap navigation separate from context-menu preview.",
+      "Use RoundedRectangle12 contextMenuPreview shape from prior direct call evidence.",
+      "Keep swipe allowsFullSwipe=false.",
+      "Suppress swipe on searchResult and preserve explicit owner suppression input rather than default every task to archiveable.",
+      "If preview is implemented, preserve LazyView/optional provider behavior and original360×520 preview frame."
+    ],
+    "independent_adapter_boundary": [
+      "Original provider/backend/cache/subscription lifecycle is not implemented by this evidence task. Any service-free provider and task-scoped snapshot must be declared independent.",
+      "Missing source suppression producer must remain explicit capability input; do not imply original all-task availability."
+    ],
+    "do_not_change": [
+      "No global style, list geometry, parent blur, theme or haptics changes justified here."
+    ]
+  },
+  "unknowns": [
+    {
+      "id": "caller-suppression",
+      "breakpoint": "39aa88 incomingw2, copied39ae68/78 and39b42c. Need original caller argument producer before naming this Bool."
+    },
+    {
+      "id": "preview-provider-owner",
+      "breakpoint": "43bce0/+238 closure and+240 context from selected CodexTaskListContent captured value; exact variable field-offset binding/provider implementation and lifecycle not recovered."
+    },
+    {
+      "id": "preview-thread-initialization",
+      "breakpoint": "43bcf8..43bd20/458760 assembles actual generic ThreadView value; raw environment, state-wrapper semantics and configuration bytes require selected ThreadView init consumer, not arbitrary default ThreadView reuse."
+    },
+    {
+      "id": "archive-action",
+      "breakpoint": "CodexTaskArchiveButton underlying callback fromowner+200/+208/+210; separate action/menu worker scope."
+    }
+  ],
+  "reused_sources": [
+    "ios-remote-row-parent-20261113-findings.json",
+    "ios-remote-row-parent-20261113/cell-context-hover-reused.asm",
+    "ios-remote-row-parent-20261113/cell-owner-reused.asm",
+    "ios-remote-row-parent-20261113/cell-swipe-builder.asm",
+    "ios-remote-v382-list-metadata.json",
+    "ios-remote-v493-owner-metadata.json",
+    "ios-remote-v503-cloud-findings.json"
+  ],
+  "validation": {
+    "static_only": true,
+    "product_mutations": false,
+    "builds": false,
+    "device_or_UI": false,
+    "target_execution": false,
+    "network": false,
+    "new_haptic_trigger_claim": false
+  },
+  "stop_condition": "Two bounded candidate groups completed. Parent requested immediate closeout; upstream complete ThreadView lifecycle and unnamed Bool producer deliberately remain exact breakpoints.",
+  "raw_inventory": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/context-parent.json",
+      "bytes": 757452,
+      "sha256": "6e3d528c3b722b32aa322b29ff4255d3f8ff205f9689278b3fa458865da4b102"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/context-parent.raw",
+      "bytes": 360,
+      "sha256": "32e4e2407c170592661ff15c5b9ee22f699b654d87f37ca0ea019b7e7046cfed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/context-parent.refs.tsv",
+      "bytes": 1653,
+      "sha256": "dd8d070916f2e8c4a410f4c706528a79d1f44e0827dd42ceac95c6ccd03fed90"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/context-parent.tree.txt",
+      "bytes": 87796,
+      "sha256": "2ec905295141cc017d25a37e3470fa1dd9c5a8c9531a093dad9a617d07cc2eb1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/destination-build.asm",
+      "bytes": 1630,
+      "sha256": "e835a16100656c3bb574230037d8ec3129720fe5841d77fb8d7a846d73230ec9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/destination-build.json",
+      "bytes": 1019,
+      "sha256": "5fcdd04749824f44e5d3180e86d0ffa39b737e8a3116f50cc74d018d57ddd8f6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/enum-tag-dispatch.asm",
+      "bytes": 1636,
+      "sha256": "9070bbd7707564a47db66a0312cd2644c1bba2bc811e07058bda8e380ced47da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/enum-tag-dispatch.json",
+      "bytes": 1354,
+      "sha256": "59d6551eb266b2519992d821cd68d6c7583618354ba0c25c0778e9ec0f003cdf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/enum-tag-helper.asm",
+      "bytes": 487,
+      "sha256": "a9eca7376befdb887bbccee4c1f581762b9c865d8adec7763c3078eee8bc313e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/enum-tag-helper.json",
+      "bytes": 907,
+      "sha256": "9ca8aae4c2e455f2c9cbfbd77185b19cb65339494f8bc9c1bc4e92e40e8770bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/gate-descriptors.json",
+      "bytes": 899,
+      "sha256": "2058343275a73b006b4bcee571015dc297fb49708ff3b560b24972c73495a154"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/gate-type-accessors.asm",
+      "bytes": 1009,
+      "sha256": "9a46109a7bfcc93903c8f95335151109e42f2ebf1783ad98cdd81937edad5599"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/gate-type-accessors.json",
+      "bytes": 939,
+      "sha256": "49e92649c0e5930edccc8abe76caef591c3ecd8695d96034ce37ba72f5eb0698"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-builder-metrics.asm",
+      "bytes": 550,
+      "sha256": "33e6fc2388b3a81b4aa6508e96a9d5ef8f6fb2fa1d5b2ba74545c9f28fbb179a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-builder-metrics.json",
+      "bytes": 939,
+      "sha256": "0180f9f76b525a757de54e8d9fafb4ebf209f5bb8741b8ef64c30ad78cba002d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-environment-helpers.asm",
+      "bytes": 570,
+      "sha256": "e6aef7a03e97ee87e138f8a3be031318570de53dae91dc69e8418a0d1c0a308a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-environment-helpers.json",
+      "bytes": 907,
+      "sha256": "e03d7e871a0f93770e3338be6c2979a35114e1cb7d0a0a9691a845003919de92"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-factory-setup.asm",
+      "bytes": 496,
+      "sha256": "8ad063c6385ff45b05c037d844ed1e2144608f5594cfa9a86861f939607c2031"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-factory-setup.json",
+      "bytes": 923,
+      "sha256": "9c16c9af08c1e9cd18afa8137b32ae8d659bd40addaaea8ae1baace0949723f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-pointer-helpers.asm",
+      "bytes": 601,
+      "sha256": "de2c2ec1fd83aa87c33fb8eb9aedea5355774662316c0105ce79433b56cd7b70"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-pointer-helpers.json",
+      "bytes": 955,
+      "sha256": "6c93e590e78394d3a5200e821e07cb39cfa9c58eaaf99350893b6aff6988d756"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-thread-init.asm",
+      "bytes": 770,
+      "sha256": "6115dc0d1a2832d35f2b0496020f0a66339dcd5d9b2246bb47c230463db15f17"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/lazy-thread-init.json",
+      "bytes": 891,
+      "sha256": "c8e8758d8ed4721ca836590aff0d690093ba138fd19c3e008f011c618f4e3547"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/owner-layout-completion.asm",
+      "bytes": 3462,
+      "sha256": "b9d9a08cd6a8cd4eadfb9428ea4466fa9714cc9e4e29649ec0c9433961881a91"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/owner-layout-completion.json",
+      "bytes": 1475,
+      "sha256": "6780a7f15d3c32621226a6cfa650dc41e41f3e59ca8b89c874f7ccd97c59301d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/owner-metadata-accessor.asm",
+      "bytes": 718,
+      "sha256": "20c77ca15ed066a0adcfa4f1e19a2e10239f37443e8b6b5dbca528ecb82ff8e2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/owner-metadata-accessor.json",
+      "bytes": 923,
+      "sha256": "803a17cf449e2343ffd9d224192073411fd2d2941ac8252867d6133a7dd2fb15"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-builder.asm",
+      "bytes": 12668,
+      "sha256": "d17a2c6a18e51237b53ba46eef6d9ead5e2cbc69508d84ee5b5fc9e644f1db45"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-builder.json",
+      "bytes": 12298,
+      "sha256": "052e6301148e95965b451a2f71d4df4827f2a0301d9da0146a34ec8cbf57cca4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-closure-helpers.asm",
+      "bytes": 1584,
+      "sha256": "f15c01095afe695a571732bf66491b41a3e41a2728f15ae696fb2ebb32a47af7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-closure-helpers.json",
+      "bytes": 1019,
+      "sha256": "9aa310f89252fcd34accc95ebf2d295156cce2efebcc47422045820ef82a3ed2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-concrete-destination.asm",
+      "bytes": 2374,
+      "sha256": "63a7947375dfa6d2ec82029ff1fa6bdbdcdfc184cdcd0e2604a89444def0270d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-concrete-destination.json",
+      "bytes": 2154,
+      "sha256": "a5083273025ae8b3e824d138a861ed0061c2607cbfbbbdb6ea86e6bc3967072a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-constructor.asm",
+      "bytes": 9017,
+      "sha256": "0126fe22bae9b80dcf31daddcb789ace2b994fc7440352e211f2710fd4cc2a4d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-constructor.json",
+      "bytes": 1627,
+      "sha256": "794c4e6a3b14585112e2cc42a78c20315053ca6e1a9268e4da7178abc03245c3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-copy-helpers.asm",
+      "bytes": 385,
+      "sha256": "4e7151b4ba1da3fd4676824679c06e42a9503cc1f4264b839cc24d3378771a72"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-copy-helpers.json",
+      "bytes": 907,
+      "sha256": "cb203c577f70edca9807a76d6d592fb9c6302746806c2a107676cd82164ea158"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-init-continuation.asm",
+      "bytes": 1159,
+      "sha256": "305eb1f41e808dcd4d82e34636f7fd013edcf6806a1681fb68c590eefb40334b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-init-continuation.json",
+      "bytes": 907,
+      "sha256": "cf62367e4a8fd3a13872945eec58936f5a530507ba9f3253e6cf7822967cdbc2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-init-vm-helper.asm",
+      "bytes": 547,
+      "sha256": "23c3fe5cc26ae387aaba60843c47cb9e20bb685eeac24d0adf120b0aa1357d2e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-init-vm-helper.json",
+      "bytes": 891,
+      "sha256": "8ce623ed4380dc7fdb23877da6a849271bbfaa75dd5e2b6e5081ea8d7959968b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-lazy-factory.asm",
+      "bytes": 15807,
+      "sha256": "e1e718f25d5277a7b72f099248302321f08fbee083ce9dbe67ac5bbb14782ff4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-lazy-factory.json",
+      "bytes": 10393,
+      "sha256": "e39caefec20bfe3041d944ef80e17dab66f04716e42f64e464635587a1218888"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-provider-type.json",
+      "bytes": 933,
+      "sha256": "90d5abf15617523db798d422eafcf3f105a7d691523a69aa379605a9cbc76c0d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-setup-helpers.asm",
+      "bytes": 639,
+      "sha256": "dae714cd930465364f17b1c8a59900d61004a556f747d2e1c6a0fc95c5204c29"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/preview-setup-helpers.json",
+      "bytes": 923,
+      "sha256": "b22dbe33f289f334202db1dff47d5c66e4d84106373795fa4a44b67665dcb7ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/resolved-tail-imports.json",
+      "bytes": 1011,
+      "sha256": "c3a4dece32213f2579a90ffc9c0dfd40e611f66aac234c36fd6cc10c136760c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/swipe-capture-parent.asm",
+      "bytes": 6415,
+      "sha256": "104c5dac23f80b74ebc4e9aa0f42e04395b00126cde75aab850d14e91a43e8a6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/swipe-capture-parent.json",
+      "bytes": 7377,
+      "sha256": "ecfe45fa789d3fbc27da2cc0650145c8309b4654054c4b4e4c03c1165b135999"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/swipe-gate.asm",
+      "bytes": 3366,
+      "sha256": "b938259bff8e246ec1765314ed35cddb69aa7c5871a5a033d5fb88dcef8716a6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/swipe-gate.json",
+      "bytes": 1407,
+      "sha256": "00eb641e71b335431a8ab1fa6391f099118bd142add8c50b90a112870cc7167c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-gestures-fourth-20261113/tail-import.json",
+      "bytes": 286,
+      "sha256": "a5ddabd9d89ff5f007a0ed3e0c329844edd7abac7746d3de662fa470eb54c80e"
+    }
+  ]
+}

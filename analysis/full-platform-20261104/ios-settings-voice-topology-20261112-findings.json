@@ -1,0 +1,89 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "classification": "official artifact static instruction observation; independent SwiftUI list projection",
+  "parent": "VoiceSettingsScreen body1104108 content110475c",
+  "groups": [
+    {
+      "content": "11050d4",
+      "parent_call": "1104ac4",
+      "rows": [
+        {
+          "key": "settings_home_voice_language_row_title",
+          "row": "110569c",
+          "label": "11056b4",
+          "call": "110534c",
+          "gate": "110533c..1105344 mode comparison"
+        }
+      ],
+      "missing": [
+        "voice choice row:11051fc/11052a0/11052ac; exact label and account-dependent display not closed"
+      ]
+    },
+    {
+      "content": "1105720",
+      "parent_call": "1104c54",
+      "parent_gate": "1104c28..1104c34 mode comparison",
+      "rows": [
+        {
+          "key": "settings_home_voice_language_row_title",
+          "row": "110569c",
+          "call": "11057fc"
+        },
+        {
+          "key": "custom_dictionary_title",
+          "row": "11064f4",
+          "call": "1105810",
+          "label": "1106528",
+          "gate": "1105804 calls10f6db8;1105808 skips dictionary"
+        },
+        {
+          "key": "dictation_history_title",
+          "label": "1105860",
+          "constructor": "1105908 NavigationLink",
+          "gate": "110585c skips history if controller nil"
+        }
+      ]
+    },
+    {
+      "content": "1105a0c",
+      "parent_call": "1104cb0",
+      "rows": [
+        {
+          "key": "settings_home_voice_start_with_voice_row_title",
+          "label": "1105b10"
+        },
+        {
+          "key": "Background conversations",
+          "row": "1105ec4",
+          "call": "1105da4",
+          "label": "1105f24",
+          "gate": "1105d94 calls11ad7f8;1105d98 skips background row"
+        }
+      ]
+    }
+  ],
+  "implemented": [
+    "Settings root Voice entry opens two source-ordered modern-branch groups with five confirmed rows",
+    "Each row opens explicit service unavailable destination and supports native back",
+    "All labels extracted from original locale resources"
+  ],
+  "limits": [
+    "Not the complete Voice page",
+    "Native group visibility depends on mode/capability predicates; offline projection explicitly exposes confirmed groups",
+    "Voice choice and additional later branches not restored",
+    "Original form geometry and animation not established by these references",
+    "No voice service or preferences mutated",
+    "First and second language placements belong to alternate mode branches (1105344 vs1104c34); render language once in the modern dictation group."
+  ],
+  "verification": {
+    "status": "passed",
+    "result": "ios-settings-voice-topology-20261112-r2.xcresult",
+    "scope": "Chinese light, five ordered rows, history unavailable entry/back, root return and repeat entry"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/FrontendSettingsTopology.swift": "4471bb831703b68f1143b0a430e95c3f7aa59f724d8bbcd002d209f9d196732a",
+    "implementation/ios/Sources/NativeConversationHost.swift": "8a1769067fea150870136de913b870cc10d966380973a1746f00a7f64cb9ff1f",
+    "implementation/ios/Sources/OfficialText.swift": "d34ae7519b22a094715f8321c4cbdfabec06a8871087dd6ba81386a47b4b7f26"
+  }
+}

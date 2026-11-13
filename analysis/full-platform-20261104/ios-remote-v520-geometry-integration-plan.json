@@ -1,0 +1,25 @@
+{
+  "batch": "v520",
+  "previous_turn": "progress: v519 source-backed attachment error integration, main-bundle localization repair and three UI regressions",
+  "status": "partial-delivered",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "Remote home composer dynamic scene geometry",
+  "source": [
+    "ios-remote-v519-composer-dynamic-insets-findings.json",
+    "ios-remote-v519-home-scene-geometry-findings.json",
+    "ios-remote-v520-scene-measurement-findings.json",
+    "ios-remote-v520-home-surface-order-findings.json"
+  ],
+  "decision": "Restore styleInsets once, maxWidth728 after padded surface, additional dynamic correction, infinity frame and native scene reader. Select293 confirmed default nonmutating flag=false. Read actual key-window corner radii and private display-radius cap.",
+  "independent_boundaries": [
+    "SwiftUI measurement delivery is asynchronously coalesced to avoid state mutation during layout.",
+    "Only the iPhone home caller is connected. iPad external metrics, thread callers, legacy OS/non-default flag paths remain pending.",
+    "Home now restores background -> clip -> whole-content Glass effect inside style padding, with GlassEffectContainer outside. Thread/new-thread background-only wrappers remain partial."
+  ],
+  "validation_planned": [
+    "Pure finite formula cases including negative bottom correction",
+    "Chinese/light and English/dark real window geometry, keyboard, image attachment and search-return",
+    "Existing fixed composer/list scrolling and draft test"
+  ],
+  "runtime_status": "r8 six tests passed, foreground and keyboard screenshots inspected; see ios-remote-v520-integration.json"
+}

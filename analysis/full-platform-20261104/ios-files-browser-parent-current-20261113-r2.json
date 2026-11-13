@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "module": 8,
+  "date": "2026-11-13",
+  "platform": "iOS",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "previous_snapshot": "ios-files-browser-parent-current-20261113.json",
+  "source_reports": [
+    "ios-files-directory-third-20261113-findings.json",
+    "ios-files-preview-third-20261113-findings.json",
+    "ios-browser-third-20261113-findings.json",
+    "ios-files-third-text-20261113.json"
+  ],
+  "implemented_this_pass": [
+    "Original successful-empty folder title/description and folder asset; source-backed row body font, text/primary, bg/primary, 0/16/0/16 insets and nonloading-directory-only caption/text-tertiary chevron",
+    "Original two-level Options > Display inline picker, Raw tag0 / Markdown tag1, exact resource labels/icons and independent optional-URL Share action",
+    "Provider-admitted whole-file Markdown preview with optional citation line, retained resource bytes/temporary URL, real raw and rendered bodies; source highlighter not claimed",
+    "Actual bundled OfficialMarkdown parser and existing native blocks reused for basic headings/code/tables/links; local browser roundtrip retains current file and mode",
+    "Both readers retained through mode switches so their independent local scroll/selection state is not discarded; no original VM persistence claimed",
+    "Synthetic README.md explicit capability fixture reachable from ordinary Remote Files; nil capability preserves previous source/QuickLook behavior"
+  ],
+  "retained_core": [
+    "Remote scoped directory loads/cancel/retry/empty/unsupported and parent paths",
+    "QuickLook images/PDF/text/code/RTF adapter",
+    "Source citation UTF16 line positioning, full text scroll/selection, URL sharing",
+    "Independent offline WK title/address/progress/error/retry/back/forward/reload/close",
+    "Task-scoped draft/read-anchor and restart contracts"
+  ],
+  "independent_boundaries": [
+    "Explicit provider capability and initial mode are independent frontend metadata; filename extension alone never authorizes Markdown and fixture initial Markdown is not an official default",
+    "Current source UITextView and basic parsed native Markdown body are adapters, not complete CodexRemoteMarkdownFilePreview/highlighter/comments recovery",
+    "Optional share URL and temporary resource lifetime are independent resource-owner adapters, kept separate from display identity/path/body String",
+    "Official ManagedSafari policy/custom builder/URL admission exists, but its effective Remote owner is unresolved; offline WK remains explicitly independent and browser unavailable policy is not replaced with a generic retry"
+  ],
+  "not_implemented": [
+    "Original complete file-format classifier, SourceCodeFilePreview VM+0x20 presence semantics, displayMode concrete getter/setter and original initial mode",
+    "Original full Markdown/source renderer, highlighter/gutter/comments and original mode-specific reading restoration",
+    "Complete labelStyle, precise directory loading/error layout and original named path producer",
+    "Effective Remote-to-ManagedSafari policy/presenter, denied reason and load lifecycle",
+    "Wide-screen selection and long-directory restoration guarantee; Office/HEIC/large-resource acceptance",
+    "Real resource fetching/auth/download services (outside frontend implementation scope)",
+    "Unproved file/list/share/browser explicit haptic triggers and physical feedback playback"
+  ],
+  "haptics": {
+    "report": "ios-gesture-haptics-settings-current-20261113-r2.json",
+    "new_file_gesture_feedback_added": false,
+    "settings_route": "Settings > General > Haptic feedback",
+    "source_proven_consumers": "sidebar drag endpoint, model slider selection/boundary, accepted flagged import, shared Goal/Subagent status pill",
+    "unknown": "longpress/row swipe/file/share/browser and OS implicit feedback remain separately unknown"
+  },
+  "verification": {
+    "pure": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "result": "passed",
+      "log": "/tmp/rea-files-third-text-20261113-r2.log",
+      "scope": "New explicit provider/mode/whole-file cases plus existing text, source citation, cancellation, identity and frontend contracts"
+    },
+    "haptics": {
+      "command": "sh implementation/ios/test-haptics.sh",
+      "result": "passed",
+      "log": "/tmp/rea-gesture-haptics-refresh-20261113.log",
+      "scope": "Ended/change/interior vectors, cancelled/reset/reversal/superseded/duplicate events and preference/hardware/activity admission"
+    },
+    "ui": [
+      {
+        "test": "testRemoteFileCitationChinese",
+        "run": "r1",
+        "result": "passed",
+        "seconds": 102.142,
+        "bundle": "ios-files-third-20261113-r1.xcresult",
+        "scope": "Cancel/load/line60/full source scroll/share/native dismissal/missing resource/local browser/draft isolation/restart"
+      },
+      {
+        "test": "testRemoteMarkdownFileModesChinese",
+        "run": "r1",
+        "result": "passed",
+        "seconds": 51.595,
+        "bundle": "ios-files-third-20261113-r1.xcresult",
+        "scope": "Ordinary entry, both modes, optional URL sharing, close and exact empty-folder content"
+      },
+      {
+        "test": "testRemoteMarkdownFileModesChinese",
+        "run": "r2",
+        "result": "passed",
+        "seconds": 74.239,
+        "bundle": "ios-files-third-20261113-r2.xcresult",
+        "scope": "Actual parsed heading assertion, raw code, rendered link/local browser/details/back/close/same file-mode, sharing, empty folder and return to original approval"
+      }
+    ],
+    "screens_reviewed": [
+      "ios-files-third-20261113-r1-attachments/9BF308C3-234D-4F52-98DF-7F795DE93561.png",
+      "ios-files-third-20261113-r1-attachments/709845D1-AA10-4BC1-9D5A-DE9FE6BB12AE.png",
+      "ios-files-third-20261113-ready.png"
+    ],
+    "historical_not_rerun": "Unchanged browser navigation/full format QuickLook/theme/English/dark/wide matrices remain older evidence; no broad repeat",
+    "network_or_share_destination_used": false
+  },
+  "runtime": {
+    "preview": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "profile": "1F56CBFC-EEE3-42C2-B881-F577DECE3D0B",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--chat-state-profile=1F56CBFC-EEE3-42C2-B881-F577DECE3D0B",
+        "--remote-draft-profile=1F56CBFC-EEE3-42C2-B881-F577DECE3D0B",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light"
+      ],
+      "preview": "core manifest plus isolated valid UUID and Chinese/light process overrides",
+      "manifest_sha256": "3a3532497d53d7b46d0cda950185e6bad0cec07c36b202e952b671482420ef36",
+      "executable_sha256": "53566a1280a5f7cbdb78891f4cf626b9b22aaeab114ac4dcc21c04c4d3a330d5",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 34796",
+      "left_running": true,
+      "ui_launch_observed": true,
+      "pid": 34796,
+      "left_surface": "Remote ordinary task > Files > README.md rendered Markdown",
+      "screenshot": "ios-files-third-20261113-ready.png",
+      "observation": "CUA observed parsed heading, code, table, local web link and toolbar after normal list/task/menu entry; no approval accepted"
+    },
+    "signed_device_build": "succeeded",
+    "signed_app_strict_verification": "passed",
+    "signed_executable_sha256": "c9ddbba78bebd254a02d735abf9d5a5d6a1999a8c3632592bec2b856f5d4e238",
+    "device": {
+      "name": "iPhone Air",
+      "pairing_state": "paired",
+      "tunnel_state": "unavailable",
+      "ddi_services_available": false,
+      "installed_this_batch": false,
+      "reason": "One fresh devicectl inventory; unavailable device. Signed candidate retained; no repeated install attempt."
+    }
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendFilePreview.swift",
+      "sha256": "482fe601705b98f6b7c0373c340ef154bcd5a653aaf73f614cfdaf39048f5aa5"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendBrowserPreview.swift",
+      "sha256": "6ae8fac51b6603fbcda460fecd675b2ec417b84f92caa2d99c9210155dffc5cd"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteWorkspacePresentation.swift",
+      "sha256": "1f57c5d1be291cd5532326290c3384f571b678530b0c7db86583dc97871e4b9a"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteComposerInteraction.swift",
+      "sha256": "2427aa8aa7d581e77d15189c5fcad86d6fc64f75acbe0511eaf3a722edb99d28"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "35562675c55d75b417601d4fc77bd641a2dfb175ff557402f9eb11b3fce1028a"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "cf1a7ac74af35ad39679dec28d2405c0b486bc1efb5ddacc04bab3d7470c704e"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "4c3d5f693d8510989d68ec57ee831fa1086a115b855481323c59a2cf64ee6194"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "ac850d4a489017678702b63654c96b8a7a62b79ec7d5a10e0c98444d1b42f870"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "34f7b51b01db5d3e0b7bd8385a544b4e27328b8e419ff45934db76594807a713"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "078d4f0625a43936c9dc193d2709552b628ac33a923deda53fdc7a7ddd742d2b"
+    }
+  ],
+  "user_review_path": "Running README.md; Done > Empty or Sources > parent; Done > original task/approval. Markdown ellipsis > Display or Share. Link opens only local browser fixture.",
+  "next_module": 9,
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  }
+}

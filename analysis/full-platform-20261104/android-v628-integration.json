@@ -1,0 +1,61 @@
+{
+  "build": 628,
+  "platform": "Android",
+  "baseline_version": "1.2026.293",
+  "scope": "Remote list search capsule and focus/keyboard lifecycle",
+  "evidence": [
+    "android-remote-v628-search-source.json"
+  ],
+  "implemented": [
+    "Capsule,44dp minimum height,16/8dp padding,16sp body style and normal light/dark fill",
+    "Entering search requests focus and shows current IME",
+    "Search IME action clears focus and hides keyboard while retaining query",
+    "System Back dismisses IME first; toolbar close clears focus and restores browsing",
+    "Existing scoped synthetic filtering and IME-aware viewport"
+  ],
+  "independent_adaptations": [
+    "Compose BasicTextField/FocusRequester/keyboard controller and list IME inset integration"
+  ],
+  "unimplemented": [
+    "Sidebar global chat search page",
+    "Service search and complete official matching contract",
+    "High contrast palette verification and pixel-identical platform IME animation"
+  ],
+  "tests": [
+    "android-v628-oneplus-zh-r2.json",
+    "android-v628-oneplus-en-dark-r2.json",
+    "android-v628-shell.json"
+  ],
+  "passed_checks": 10,
+  "build_logs": [
+    "android-v628-build.log",
+    "android-v628-build-r2.log"
+  ],
+  "retained_failures": [
+    {
+      "report": "android-v628-oneplus-en-dark.json",
+      "reason": "Search checks passed; immediate draft semantics assertion observed old empty text. Added bounded exact-value wait, followed by passing English/dark and Chinese runs."
+    }
+  ],
+  "source_files": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RecoveredRemoteListChrome.kt",
+      "sha256": "5ee4e893cff41eca5ece3c267b419aedf25304e40135408740fc70051b51958a"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListActivity.kt",
+      "sha256": "76e0b51ea48241ceb9eddb6979fd30844378aca5b475fe908e5623fc86562077"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/RemoteListTest.kt",
+      "sha256": "02afc19108aa391b5487a0ce31ccb8af6c4ffaccfbfba22824ecff453529aafc"
+    }
+  ],
+  "apk_sha256": "cdd1d9a81dbb64be2eee876b44d2a65fb01a3958560605157e68707f9c3fa22f",
+  "before": "android-v628-search-before.png",
+  "after": [
+    "android-v628-oneplus-zh-r2/search-auto-keyboard.png",
+    "android-v628-oneplus-en-dark-r2/search-auto-keyboard.png"
+  ],
+  "runtime": "android-v628-final-runtime.json"
+}

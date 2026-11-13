@@ -1,0 +1,202 @@
+{
+  "batch": "v506",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static",
+  "question": "Recover CodexHomeMenuLabel geometry rather than approximate center title from screenshot",
+  "confirmed": [
+    {
+      "topic": "Home-label primary structure",
+      "evidence": [
+        "0x30c43c..0x30c47c",
+        "0x30c6e4..0x30c700",
+        "typerefs0x7cf7250/0x7cf7280"
+      ],
+      "conclusion": "usesHomeLayout true builds VStack with center horizontal alignment and spacing1. First child is HStack with center vertical alignment and spacing4. The first HStack item is Image wrapped in _HiddenModifier, second is title Text with font environment, third is Image with foreground-color modifier. Both image factories are0x74f5dc0, OpenAI/Symbols/chevron-down-sm. Left hidden image retains layout footprint to center the title against the visible right chevron."
+    },
+    {
+      "topic": "Fonts and colors",
+      "evidence": [
+        "0x30c704→0x74e27b8→0x74e27a4",
+        "binding0xaad3900",
+        "0x30c950..0x30c968",
+        "0x30c480→0x74ee2c0",
+        "0x30c990→0x74ee310"
+      ],
+      "conclusion": "HStack receives caption font, title Text overrides with body semibold. Whole VStack foreground is ChatGPT/text/primary, trailing chevron overrides ChatGPT/text/secondary. These are semantic font/color identities, not a claim that the independent native font bridge exactly reproduces private Font conversion."
+    },
+    {
+      "topic": "Outer geometry and hit shape",
+      "evidence": [
+        "0x30c4a4..0x30c4ac",
+        "0x459438..0x459440",
+        "0x30c4c4..0x30c4dc",
+        "0x44cec4..0x44ced8",
+        "0x44b618..0x44b630",
+        "0x453084..0x453094",
+        "binding0xaad1828",
+        "typeref0x7cf7238"
+      ],
+      "conclusion": "Horizontal padding12, then FlexFrameLayout minHeight44 with all width/other-height constraints nil and center alignment. A Rectangle contentShape follows. MinHeight44 is a direct constant at this site, not ScaledMetric. Do not add manual fixed width or global visual offset."
+    },
+    {
+      "topic": "Accessibility keys",
+      "evidence": [
+        "0x30c50c..0x30c534",
+        "0x30c550..0x30c578",
+        "0x75d6bc0..0x75d6bd0",
+        "0x75e1c14..0x75e1c1c"
+      ],
+      "conclusion": "Home label gets localized Options as accessibilityHint and codex-home-menu as accessibilityIdentifier. Icon-only alternative uses the same localized Options as Label title. Existing Options translation key is reusable."
+    },
+    {
+      "topic": "Manage settings localization",
+      "evidence": [
+        "0x75d6a68..0x75d6a78",
+        "0x75e1c2c..0x75e1c34"
+      ],
+      "conclusion": "Manage Settings factory builds short String Settings and passes key/default through common0x75db078. Exact key is Settings."
+    },
+    {
+      "topic": "Optional host subtitle",
+      "evidence": [
+        "0x30c794..0x30c800",
+        "descriptor0x9560790",
+        "conformance0x7cf8478",
+        "bodywitness0x30d10c→0x30cb00",
+        "0x30ca7c..0x30caec",
+        "0x30cb90..0x30cc24",
+        "0x30ccf4→0x74e2788",
+        "0x30cd50→0x74ee448"
+      ],
+      "conclusion": "When supplied optional host has nonempty display string, the second VStack child is CodexRemoteHostNavigationSubtitle. Fields host,_statusIndicatorSize,_hostIconSize. Constructor sets scaled status size6 and host icon size14 relative to footnote. Body outerHStack spacing8 contains status indicator and innerHStack spacing5 for icon/text. Whole subtitle font footnote and foreground ChatGPT/text/tertiary. Host icon is resizable and frame dimensions both read scaled hostIconSize. Actual state-to-dot/icon branches and AX combined string are separate consumers, so a plain subtitle Text would omit visible semantics."
+    }
+  ],
+  "minimum_integration": {
+    "ordinary_multi_host_no_subtitle": "VStack(center,1){HStack(center,4){chevron.hidden();Text(title).font(body.semibold);chevron.foreground(text.secondary)}.font(caption)}.foreground(text.primary).padding(horizontal,12).frame(minHeight:44).contentShape(Rectangle()).accessibilityHint(Options).accessibilityIdentifier(codex-home-menu)",
+    "single_host": "Supply recovered host subtitle component only after its status/icon projection is connected. Keep optional subtitle omission explicitly driven by input."
+  },
+  "limits": [
+    "Static source-backed reconstruction only; no original target execution or pixel/runtime acceptance.",
+    "Private Font conversion remains distinct from semantic text style identified here.",
+    "Subtitle host-to-status/icon mapping and synthesized accessibility string are not fully traced in this narrow batch.",
+    "Title-menu outer toolbar width and mode transitions belong to separately recorded search-width owner."
+  ],
+  "evidence_files": [
+    "ios-remote-v506-home-label.asm",
+    "ios-remote-v506-label-layout-types.json",
+    "ios-remote-v506-label-layout-bindings.json",
+    "ios-remote-v506-label-horizontal-padding.asm",
+    "ios-remote-v506-label-minheight-helpers.asm",
+    "ios-remote-v506-label-minheight-inputs.asm",
+    "ios-remote-v506-label-hint-key.asm",
+    "ios-remote-v506-label-short-string-keys.asm",
+    "ios-remote-v506-subtitle-metadata.json",
+    "ios-remote-v506-subtitle-witnesses.json",
+    "ios-remote-v506-subtitle-body.asm",
+    "ios-remote-v506-subtitle-font.asm",
+    "ios-remote-v506-subtitle-color.asm",
+    "ios-remote-v506-menu-parent.asm",
+    "ios-remote-v506-menu-parent-calls.json",
+    "ios-remote-v506-principal-toolbar.asm",
+    "ios-remote-v506-principal-toolbar-calls.json",
+    "ios-remote-v506-menu-parent-anchor.asm",
+    "ios-remote-v506-menu-parent-modifier.asm",
+    "ios-remote-v506-menu-parent-type.asm"
+  ],
+  "evidence_sha256": {
+    "ios-remote-v506-home-label.asm": "87b4e9c120468c01c2247d9511910ca03d7d88f0f03c5ecf71bb1057705fcf4d",
+    "ios-remote-v506-label-layout-types.json": "919984ed5b16e7ab5a51520f18d17f5da9758b0d86f5a6e97af5bf62de3c7958",
+    "ios-remote-v506-label-layout-bindings.json": "78e6f7fcc262ab3394002f63cd1822c52d242ff4216df6c8a8d7641849406498",
+    "ios-remote-v506-label-horizontal-padding.asm": "cf7fd733af4b2059777b974cf95064830cedfb08912546313988340c38a29cb3",
+    "ios-remote-v506-label-minheight-helpers.asm": "03dc6cbc6ca31b4be9285bcd444df030658cdfbdcb47bc60a48156703f04296b",
+    "ios-remote-v506-label-minheight-inputs.asm": "bd2c6bf9cbc3fd868a1c6af1e6f6749e5cb4b55a7d1334493d5ce4a46461e788",
+    "ios-remote-v506-label-hint-key.asm": "44fb9d84cb5398f8ab909ff704af8906592f49036bfc017200c6bfc3dfa662e2",
+    "ios-remote-v506-label-short-string-keys.asm": "d5b56be67cc16a56e59e1bb29438ee50c28244283d0cafd1be282930bb4c3a63",
+    "ios-remote-v506-subtitle-metadata.json": "287c149afa7f8f5ff2559b4e19ca96b454789e680108955ff1318f3540a3a761",
+    "ios-remote-v506-subtitle-witnesses.json": "4f76d7cfd879d8b575c997885e79213c72bc57b9a179eb19463288a6ef74f597",
+    "ios-remote-v506-subtitle-body.asm": "a48662aec3377ca392e37457be0ff632c5bdfe54030b09877944fbf7f230d1d7",
+    "ios-remote-v506-subtitle-font.asm": "69b6907e32b6cade96a9ff94a382e16d23a8788c93704ed5c23fb9be80a9f119",
+    "ios-remote-v506-subtitle-color.asm": "ddcff1ff793e3d98ce4dfdea8e2b9377fb9a676f905aaa336ab8f02beba5723b",
+    "ios-remote-v506-menu-parent.asm": "322627bbd8acdf89b9644c3b8ac24fe24417a07c79d71ee6d5c8969b8ac52235",
+    "ios-remote-v506-menu-parent-calls.json": "1d904f365c0e55e4ceed4fb5f2836a4f21a672758238fee87eb2284b066f8b29",
+    "ios-remote-v506-principal-toolbar.asm": "74a388762e642995860c32edac578428c76103ef469d2db572b1114f8ba73640",
+    "ios-remote-v506-principal-toolbar-calls.json": "fdd7824bab27f701b2aead80831ae3f42d72fe306129988cda5b8a3be11be310",
+    "ios-remote-v506-menu-parent-anchor.asm": "04736219255b65ee4bf416b9dc350c0d0c0603cd6f41733ec5175091fa1828a4",
+    "ios-remote-v506-menu-parent-modifier.asm": "0769395c09753d698677fe024e6e37fedc4127b973636136aa542ceb3796077a",
+    "ios-remote-v506-menu-parent-type.asm": "e517676da0ba107cb1a6ec81dbab662a803d3133454812a80aebe1631ec6115d"
+  },
+  "followup_parent_constraint_audit": {
+    "question": "Independent host XCTest Menu AX frame measured36 despite label minHeight44",
+    "observed_by_parent": "XCTest app.buttons[codex-home-menu].frame.height=36 at normal size; this is independent host AX geometry, not official runtime geometry",
+    "confirmed": [
+      {
+        "topic": "44 parameter remains minHeight",
+        "evidence": [
+          "0x30c4cc Alignment.center",
+          "0x44cec4 stack setup",
+          "0x44b618..0x44b630",
+          "0x453084..0x453094",
+          "binding0xaad1828"
+        ],
+        "abi": {
+          "x0_w1": "minWidth nil",
+          "x2_w3": "idealWidth nil",
+          "x4_w5": "maxWidth nil",
+          "x6_w7": "minHeight some(44), bits0x4046000000000000",
+          "stack0_8": "idealHeight nil",
+          "stack16_24": "maxHeight nil",
+          "stack32_40": "center Alignment"
+        },
+        "conclusion": "The label uses .frame(minHeight:44), not minWidth or fixed height. Its AX button boundary after native Menu/Toolbar hosting need not equal this label request."
+      },
+      {
+        "topic": "Menu direct parent style",
+        "evidence": [
+          "0x30862c Menu.init(content:label:)",
+          "0x3089c0 PlainButtonStyle.init",
+          "0x308a38 View.buttonStyle"
+        ],
+        "conclusion": "The official Menu receives .buttonStyle(.plain) after its presentation modifiers. If missing in independent host this is a supported parent-style restoration. It does not by itself prove that native AX height will equal44."
+      },
+      {
+        "topic": "Menu presentation attachments",
+        "evidence": [
+          "0x30864c/0x308820 Anchor.bounds",
+          "binding0xaad2c50 PopoverAttachmentAnchor.rect",
+          "0x308764→0x62a9a08",
+          "0x308910→0x463c4c→0x62aa318",
+          "typeaccessor0x75845b8→PresentationStyle"
+        ],
+        "conclusion": "The intervening parent operations include anchored presentation attachment helpers. Their complete internals are outside this bounded audit. Do not interpret these as an explicit36-height override."
+      },
+      {
+        "topic": "Principal toolbar and replacement container",
+        "evidence": [
+          "0x306690 ToolbarItemPlacement.principal",
+          "0x3066e4 ToolbarItem.init",
+          "0x4296c0→0x3099f8",
+          "0x309c30 ZStack",
+          "0x309cc4 frame(width:height:alignment:)",
+          "0x269564 setsheightnil"
+        ],
+        "conclusion": "Direct ToolbarItem construction feeds the title/search ZStack. Parent frame changes width under the already recovered layout gates; height is explicitly nil. In inspected30668c..306750 toolbar-item construction there is no sharedBackgroundVisibility/toolbarStyle operation. This bounded negative result does not cover all outer navigation ancestors or system layout."
+      }
+    ],
+    "next_validation": [
+      "Restore Menu .buttonStyle(.plain) where absent, then remeasure label geometry separately from Menu AX frame",
+      "Retain frame(minHeight44) and avoid inventing44→36 compensation",
+      "If AX remains36, inspect native toolbar view/frame or add an explicit test-only label geometry observation before asserting content clipping"
+    ],
+    "limits": [
+      "No official runtime observed",
+      "Full internals of anchored presentation helpers and outer navigation/system toolbar remain outside this audit",
+      "No support for manually adding hidden sharedBackground or overriding menu height from current source evidence"
+    ]
+  }
+}

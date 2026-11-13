@@ -1,0 +1,363 @@
+{
+  "schema": "rea-mobile-page-integration-v1",
+  "build": 543,
+  "recorded_at": "2026-11-07T15:46:19.565193+08:00",
+  "status": "partial",
+  "page_status": "部分实现",
+  "page": "iOS Remote task list and conversation",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    {
+      "type": "official_artifact_observation",
+      "records": [
+        "ios-remote-v450-menu-entry.json",
+        "ios-remote-v450-menu-items.json",
+        "ios-remote-v452-integration.json"
+      ],
+      "conclusion": "Existing follow-up menu entries, labels and actions retained. Style consumer 0x198f938 to 0x45c8a4 and nil overrides 0x198f944 to 0x606bdbc remain evidence references.",
+      "limitation": "Native Menu callback failure root cause remains unresolved. No new official behavior recovered by replay."
+    },
+    {
+      "type": "independent_implementation",
+      "files": [
+        "implementation/ios/Sources/RemoteThreadReplay.swift",
+        "implementation/ios/Sources/RemoteComposerInteraction.swift",
+        "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+        "implementation/ios/Sources/NativeConversationHost.swift",
+        "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift",
+        "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+        "implementation/ios/UITests/HostInteractionTests.swift",
+        "implementation/ios/TextTests/main.swift"
+      ],
+      "conclusion": "Synthetic page adapter shares existing submit/stop/approval validation and host/thread scoped state. Sequence and terminal checks reject duplicate/stale events.",
+      "limitation": "In-memory state. Account/subscription scope, queue/steer, attachment submission and complete official content projection pending."
+    },
+    {
+      "type": "controlled_replay",
+      "conclusion": "Four final UI replay checks passed, plus two existing regression cases passed in r3. One distinct follow-up-menu regression remains failed.",
+      "limitation": "Synthetic frontend only. Device feel, delivery, real services and whole-page parity remain unaccepted."
+    }
+  ],
+  "implementation": {
+    "event_contract": [
+      "scope",
+      "turnID",
+      "sequence",
+      "phase",
+      "text"
+    ],
+    "phases": [
+      "accepted",
+      "streaming",
+      "completed",
+      "cancelled",
+      "failed"
+    ],
+    "covered": [
+      "ordinary text submit",
+      "three-step deterministic reply",
+      "terminal failure and continued editing",
+      "approval accept to replay",
+      "approval deny projection",
+      "stop and late-completion rejection",
+      "list activity projection",
+      "return/reopen in-memory reply and draft retention",
+      "self-sizing transcript tail follow"
+    ],
+    "projection": "Basic text for new replay rows. Existing tool, command and attachment rows retain static fixture content.",
+    "source_sha256": {
+      "implementation/ios/Sources/RemoteThreadReplay.swift": "49ef2ff666692856b2a8072be1d42dacb5d5e34897ad544ebcfa30488c94a9a6",
+      "implementation/ios/Sources/RemoteComposerInteraction.swift": "638cc8289018c85ba717124f9f308569ff6e3e248b3f1adc5200e689672de1e1",
+      "implementation/ios/Sources/RemoteApprovalInteraction.swift": "24016ab93390c5a659934b65510b98b2a8b89d0c2b5642c6bd66fb253049e228",
+      "implementation/ios/Sources/NativeConversationHost.swift": "d8db97e0405019be5e897030029e14be0a46eee37067cc7420a941a2a82e4503",
+      "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "2b5d59aa721e72c519952495705f67d8369f2d7377b096118e512bb2cd3975a3",
+      "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "d65ba04119ea858282740ffcd6cf479b139f21543ce520d889b494f8cac94d81",
+      "implementation/ios/UITests/HostInteractionTests.swift": "6d8da18f54d8cd5771dda0ebf21945bf927522663783f64552f231062bb8bbe1",
+      "implementation/ios/TextTests/main.swift": "892c36e2d13ea685524a5611336e38253c261b26222a738d6a930c64d6af9caf"
+    }
+  },
+  "verification": {
+    "foundation": {
+      "status": "passed",
+      "log": "analysis/full-platform-20261104/ios-remote-v543-model-r3.log",
+      "initial_invocation": "Direct script execution failed with permission denied. Explicit sh invocation passed; initial log retained."
+    },
+    "ui_runs": [
+      {
+        "summary": "analysis/full-platform-20261104/ios-remote-v543-r1-ui.summary.json",
+        "result": "Failed",
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "failures": [
+          {
+            "failureText": "XCTAssertTrue failed - New response must be visible after submit",
+            "targetName": "REAHostUITests",
+            "testIdentifier": 2,
+            "testIdentifierString": "HostInteractionTests/testRemoteInteractiveReplayChinese()",
+            "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteInteractiveReplayChinese",
+            "testName": "testRemoteInteractiveReplayChinese()"
+          },
+          {
+            "failureText": "XCTAssertTrue failed - New response must be visible after submit",
+            "targetName": "REAHostUITests",
+            "testIdentifier": 3,
+            "testIdentifierString": "HostInteractionTests/testRemoteInteractiveReplayEnglishDark()",
+            "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteInteractiveReplayEnglishDark",
+            "testName": "testRemoteInteractiveReplayEnglishDark()"
+          }
+        ]
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-remote-v543-r2-ui.summary.json",
+        "result": "Passed",
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "failures": []
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-remote-v543-r3-regression.summary.json",
+        "result": "Failed",
+        "passed": 2,
+        "failed": 1,
+        "total": 3,
+        "failures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "REAHostUITests",
+            "testIdentifier": 2,
+            "testIdentifierString": "HostInteractionTests/testRemoteRunningStopAndReturn()",
+            "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteRunningStopAndReturn",
+            "testName": "testRemoteRunningStopAndReturn()"
+          }
+        ]
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-remote-v543-r4-stop.summary.json",
+        "result": "Failed",
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "failures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "REAHostUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HostInteractionTests/testRemoteRunningStopAndReturn()",
+            "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteRunningStopAndReturn",
+            "testName": "testRemoteRunningStopAndReturn()"
+          }
+        ]
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-remote-v543-r5-menu-probe.summary.json",
+        "result": "Failed",
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "failures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "REAHostUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HostInteractionTests/testRemoteRunningStopAndReturn()",
+            "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteRunningStopAndReturn",
+            "testName": "testRemoteRunningStopAndReturn()"
+          }
+        ]
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-remote-v543-r6-menu-style.summary.json",
+        "result": "Failed",
+        "passed": 0,
+        "failed": 1,
+        "total": 1,
+        "failures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "REAHostUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "HostInteractionTests/testRemoteRunningStopAndReturn()",
+            "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteRunningStopAndReturn",
+            "testName": "testRemoteRunningStopAndReturn()"
+          }
+        ]
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-remote-v543-r7-final.summary.json",
+        "result": "Passed",
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "failures": []
+      }
+    ],
+    "distinct_cases": {
+      "passed": 6,
+      "failed": 1,
+      "count": 7
+    },
+    "passed_cases": [
+      "testRemoteInteractiveReplayChinese",
+      "testRemoteInteractiveReplayEnglishDark",
+      "testRemoteInteractiveReplayApprovalAndStop",
+      "testRemoteInteractiveReplayFailure",
+      "testRemoteApprovalFeedbackAndScope",
+      "testRemoteSidebarPaneRetentionChinese"
+    ],
+    "open_failed_case": "testRemoteRunningStopAndReturn",
+    "failure_history": [
+      "r1 normal Chinese and EnglishDark replay responses were offscreen after cell self-sizing; persistent replay-tail following fixed this and r2/r7 passed.",
+      "r3/r4/r5/r6 follow-up-menu option did not dispatch. Manual simulator click reproduced it. Main queue action reached temporary logging, menu option did not.",
+      "Temporary dispatch logging and automatic child button-style experiment were removed. r7 ran final production code."
+    ],
+    "visual": "Chinese and EnglishDark screenshots retained. r2 includes software keyboard, r7 keyboard was hidden after hardware input. Full theme-transition and presentation matrix remains pending.",
+    "manual_preview": "Chinese Remote list visibly verified through Device Hub; app left running.",
+    "preview_screenshot": "analysis/full-platform-20261104/ios-remote-v543-preview.png"
+  },
+  "launch": {
+    "build": "543",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "launch": "local.rea.chatgpt.ioshost: 84596",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay"
+    ],
+    "language": "system",
+    "appearance": "system",
+    "sign_verify": "passed",
+    "install": "passed"
+  },
+  "acceptance_dimensions": {
+    "structure": "部分实现",
+    "components": "部分实现",
+    "interaction": "部分实现",
+    "appearance": "部分实现",
+    "verification": "部分实现"
+  },
+  "visual_dimensions": {
+    "geometry": "部分实现",
+    "effects_shadow_glass": "部分实现",
+    "animation_transition": "部分实现",
+    "typography": "部分实现",
+    "colors": "部分实现",
+    "dark_mode": "部分实现",
+    "haptics": "部分实现",
+    "notifications": "部分实现"
+  },
+  "open_items": [
+    {
+      "id": "remote-followup-menu",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "排队／引导菜单点击未到动作owner",
+      "evidence_boundary": "原生Menu条目动作到宿主回调之间未闭合；r3-r6及手动复现",
+      "next_action": "核对Menu动作桥接与父级呈现生命周期",
+      "acceptance": "菜单两项均触发正确scope动作，关闭返回保留草稿"
+    },
+    {
+      "id": "remote-queue-steer",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "排队、引导、队列取消缺少可操作回放",
+      "evidence_boundary": "普通文本回放仅接受normal intent",
+      "next_action": "扩展现有动作适配器与队列状态投影",
+      "acceptance": "运行中追加、改为引导、取消队列均按任务隔离"
+    },
+    {
+      "id": "remote-attachments-feedback",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "附件提交与审批补充输入未闭合",
+      "evidence_boundary": "现有验证返回unsupported/awaiting状态",
+      "next_action": "连接附件元数据与补充输入到统一合成适配器",
+      "acceptance": "含附件与补充输入的合成任务能完成、失败和恢复"
+    },
+    {
+      "id": "remote-message-projection",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "新回放正文仅基础文本，工具及附件保持静态",
+      "evidence_boundary": "官方消息模型到动态组件消费者仍有缺口",
+      "next_action": "按既有证据接内容块与工具活动投影",
+      "acceptance": "同一任务动态展示Markdown、代码、表格、工具输出、附件及块内操作"
+    },
+    {
+      "id": "remote-reading-restore",
+      "page": "Remote list and conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "阅读锚点与进程恢复未闭合",
+      "evidence_boundary": "当前仅内存回复／草稿和主动尾部跟随",
+      "next_action": "按页面身份存储阅读位置并验证重进与重启",
+      "acceptance": "A-B-A及重启恢复准确位置，用户阅读时增量不抢滚动"
+    },
+    {
+      "id": "remote-task-create",
+      "page": "Remote list",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "项目新建任务尚无完整本地页面闭环",
+      "evidence_boundary": "已有入口与草稿隔离，创建结果仍需适配",
+      "next_action": "连接合成创建事件与任务身份",
+      "acceptance": "项目入口新建、返回列表、重新打开同一合成任务"
+    },
+    {
+      "id": "remote-layout",
+      "page": "Remote list and conversation",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "详情标题靠左、极大字号分组重叠仍待验证",
+      "evidence_boundary": "既有v538-v541父链边界",
+      "next_action": "核心普通字号完成后定向恢复父布局",
+      "acceptance": "同状态源码与截图核对、核心操作可达"
+    },
+    {
+      "id": "theme-matrix",
+      "page": "All stage1 pages",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "完整system/light/dark切换与弹层状态恢复未验收",
+      "evidence_boundary": "本批只覆盖中文浅色／英文深色回放",
+      "next_action": "按页面验证系统跟随、显式设置、重启及透明度／动态效果设置",
+      "acceptance": "所有宿主和弹层主题一致且草稿选区锚点保留"
+    },
+    {
+      "id": "device-platform",
+      "page": "All stage1 pages",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "真机触感、实际通知送达与Android适配待验收",
+      "evidence_boundary": "当前仅iOS模拟器，只有内置显示器",
+      "next_action": "iOS核心合同稳定后独立推进Android；设备可用后验收触感",
+      "acceptance": "平台独立运行证据与设备触感／通知结果"
+    }
+  ],
+  "next_page_order": [
+    "Close Remote minimum usable loop",
+    "Chat/Work lists and conversations",
+    "Built-in file/browser preview",
+    "Settings linked to adapted functions",
+    "Stage2 sidebar feature packages"
+  ],
+  "delivery": {
+    "commit": "not performed",
+    "push": "not performed",
+    "release": "not performed",
+    "device": "simulator only",
+    "display": "Only built-in Color LCD detected. External display placement pending.",
+    "build_retention": "Fixed iOS build directory reused; existing retention dry-run found no removable complete packages."
+  }
+}

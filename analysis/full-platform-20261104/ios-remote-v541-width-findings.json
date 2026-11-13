@@ -1,0 +1,211 @@
+{
+  "batch": "v541",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-metadata-instructions-and-import-bindings",
+  "scope": "CodexHomeContentWidth gate, environment producer/consumer and width formula",
+  "confirmed": [
+    {
+      "id": "device_gate",
+      "offsets": [
+        "0x7712430",
+        "0x77123ec..0x7712430",
+        "0x1e3a6dc",
+        "0xaac60f0",
+        "0xb0a6b91"
+      ],
+      "conclusion": "7712430 uses once initialization and returns b0a6b91. Initializer resolves UIDevice.currentDevice, calls userInterfaceIdiom, compares with1, stores equality. Bound receiver is UIDevice. Current installed SDK enum names idiom1 iPad.",
+      "verification": "static-verified"
+    },
+    {
+      "id": "enabled_producer",
+      "offsets": [
+        "0x955f5ac",
+        "0x3fa374",
+        "0x39d1b8..0x39d1ec"
+      ],
+      "conclusion": "CodexHomeContentWidth fields are isEnabled and _messageInputStyle. Ordinary V2 workspace header supplies enabled=true at39d1c4..39d1c8, then initializes style environment keypath7cfb2b0. Other catalog/task row callers in v537 wrapper consume their owner V2 flag.",
+      "verification": "static-verified"
+    },
+    {
+      "id": "environment",
+      "offsets": [
+        "0x452364",
+        "0x7cfb2b0",
+        "0xaac1840",
+        "0x2e5fcc",
+        "0x60612ac",
+        "0x7c48508",
+        "0x2e2b30",
+        "0x7cf2ee0",
+        "0x60af77c"
+      ],
+      "conclusion": "Keypath getter2e5fcc calls60612ac, which invokes the imported SwiftUI.EnvironmentValues subscript getter. Environment content type is MessageInputStyle. Width body reads the environment through2e2b30.",
+      "verification": "static-verified"
+    },
+    {
+      "id": "width_formula",
+      "offsets": [
+        "0x386d30..0x386ddc"
+      ],
+      "predicate": "isEnabled && cachedIsIPad",
+      "formula": "maxWidth + 40 - (outerHorizontalPadding ?? outerInsets.iPad.leading) - (outerHorizontalPadding ?? outerInsets.iPad.trailing)",
+      "consumed_fields": [
+        {
+          "name": "maxWidth",
+          "instance_byte_offset": "0x20"
+        },
+        {
+          "name": "outerHorizontalPadding",
+          "metadata_field_vector_byte_offset": "0x110",
+          "optional_nil_tag_offset": "0x8"
+        },
+        {
+          "name": "outerInsets",
+          "metadata_field_vector_byte_offset": "0x118",
+          "second_tuple_leading_trailing_offsets": [
+            "0x28",
+            "0x38"
+          ]
+        }
+      ],
+      "conclusion": "False predicate yields Optional.none. True predicate selects iPad outerInsets, applies optional horizontal override to each side, then computes the width.",
+      "verification": "static-verified"
+    },
+    {
+      "id": "two_frames",
+      "offsets": [
+        "0x386de0..0x386ea0",
+        "0x44ba5c",
+        "0x1be48c",
+        "0x26d74c",
+        "0x7c48058",
+        "0x7c4b994"
+      ],
+      "conclusion": "Inner FlexFrameLayout maxWidth is computed optional width. Outer maxWidth is infinity when computed width exists, otherwise nil. Both align center. Other min/ideal width and height options are nil.",
+      "verification": "static-verified"
+    },
+    {
+      "id": "default_configuration",
+      "offsets": [
+        "0x60810f8..0x6081140",
+        "0x6081594..0x60815e0",
+        "0x2de24c..0x2de330",
+        "0x19a08fc..0x19a0a38"
+      ],
+      "values": {
+        "maxWidth": 728,
+        "outerHorizontalPadding": null,
+        "outerInsetsIPad": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "derivedEnabledIPadWidth": 744
+      },
+      "conclusion": "The default style producer writes these values. Existing v508 Home/Remote style trace preserves the geometry for its traced configuration.744 is a conditional static derivation.",
+      "verification": "static-derived",
+      "limit": "Actual live environment values and complete runtime override population remain unobserved."
+    },
+    {
+      "id": "phone_branch",
+      "offsets": [
+        "0x386d3c..0x386d44",
+        "0x386dd8..0x386ddc",
+        "0x386e78..0x386e84"
+      ],
+      "conclusion": "With idiomPhone, both maxWidth options are nil. This modifier supplies no numeric width clamp for that branch.",
+      "verification": "static-derived"
+    }
+  ],
+  "producer_consumer_chain": [
+    "39d1c4 true → isEnabled",
+    "452364 → keypath7cfb2b0 → slotaac1840 →60612ac → EnvironmentValues<MessageInputStyle>",
+    "386d30 enabled →7712430 cached UIDevice idiom predicate",
+    "386d5c style read → outerInsets/outerHorizontalPadding/maxWidth →386dc4..386dcc formula",
+    "386e44 inner width frame →386ea0 outer expansion frame"
+  ],
+  "minimal_implementation": {
+    "semantic_code": "var computedWidth: CGFloat?\nif isEnabled && cachedIsIPad {\n    let insets = messageInputStyle.outerInsets.iPad\n    let leading = messageInputStyle.outerHorizontalPadding ?? insets.leading\n    let trailing = messageInputStyle.outerHorizontalPadding ?? insets.trailing\n    computedWidth = messageInputStyle.maxWidth + 40 - leading - trailing\n}\ncontent\n    .frame(maxWidth: computedWidth, alignment: .center)\n    .frame(maxWidth: computedWidth == nil ? nil : .infinity, alignment: .center)",
+    "notes": [
+      "Use the existing style representation and preserve the environment calculation.",
+      "Keep proven modifier ordering and zero list-row insets.",
+      "The cached device predicate should use UIDevice.current.userInterfaceIdiom == .pad."
+    ]
+  },
+  "unknown": [
+    {
+      "boundary": "live environment at386d5c",
+      "detail": "No runtime sample. Complete style override population and active values unobserved."
+    },
+    {
+      "boundary": "enclosing NavigationStack/List viewport and native pinned-header backing",
+      "detail": "The inspected width modifier final type contains two horizontal frames. It adds no background, safe-area or pinned-header configuration. This trace leaves the reported phone backdrop unresolved."
+    },
+    {
+      "boundary": "iPad final bounds after frame composition",
+      "detail": "Parent proposals, reconstructed runtime and visual parity remain unverified."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "official_app_executed": false,
+    "app_tests_docs_modified": false,
+    "shared_rea_target_changed": false,
+    "runtime_visual_verified": false
+  },
+  "evidence_files": {
+    "ios-remote-v541-width-bindings.json": "8d0fbd15d72e41d1e941fac9920fcb77e4cf709d649fcf0eaca7ac2d065fc0ee",
+    "ios-remote-v541-width-device-receiver.asm": "e1c8b3a5c40e8aa89b363e87e8c906d07a0bb3428238ef85155238c011708b32",
+    "ios-remote-v541-width-device-receiver.json": "e9abe148dbf98cd59efbd7398ab9b0a23a4989ff05ef25a8017b0ed09db8b3f9",
+    "ios-remote-v541-width-environment-getter.asm": "45a52d34d7cfbf372649624b1d888b64f3e03ff597e33b07c10ce12141a20381",
+    "ios-remote-v541-width-environment-getter.json": "1cd6d60277df0f96d9e73d9da6784cc7cdefd80aecf3e2363d46380954c48410",
+    "ios-remote-v541-width-environment-keypath.asm": "4c20e59e36b2090e98e4a08a60a5fb4a1b30f82886e5c532d3733e135b33bdcf",
+    "ios-remote-v541-width-environment-keypath.json": "7b307173c8af206c3372f3caf4f75c43329711bd54d49c1d0aef32be0cbc2db6",
+    "ios-remote-v541-width-environment-type.asm": "d2a16d65cbb73f253b9d8a672c820d1c4311505573dc18b04aea11c38cd96c12",
+    "ios-remote-v541-width-environment-type.json": "f058c0481932c6ecd4f951dfccce4321763365c33bd1edffd44c20b90511cd63",
+    "ios-remote-v541-width-frame-arguments.asm": "728912398329127f3b9d8ad824c0552c3cad86b29b848d5655aff8abff7487f6",
+    "ios-remote-v541-width-frame-arguments.json": "20e4ea1b68383933696145f5b74ae22ac35370159ad0433224f00d6178bf21fa",
+    "ios-remote-v541-width-frame-helper.asm": "304a909d369b2e73f638ffffae556d1a5cb893fe67fc8a178c478caa2fbb1a56",
+    "ios-remote-v541-width-frame-helper.json": "d4abaf346aaacef77ba7f521d2320000dfc3f7375ad71d3d36b53890eccbe870",
+    "ios-remote-v541-width-gate-initializer.asm": "faffa41597edadf95a80aa5820872890aa87c5fd4258d3e143879a24fd2f2905",
+    "ios-remote-v541-width-gate-initializer.json": "f03506381f7503c8980a51b13847e843d423165dee4f32cb528a9d2029257580",
+    "ios-remote-v541-width-header-init.asm": "477a151ff4d4773f23982496f6416482586f2510b946b76e330d9a9d57b0820c",
+    "ios-remote-v541-width-header-init.json": "b75eced2867acff1ecc9ab0b44470dcbe2b0dbe5346f1c39b0fa253dffd9dde5",
+    "ios-remote-v541-width-keypath-thunks.asm": "492b0d47fb46c36c5868f2673cb73a1b83895367e287afe60e0b6b9ca5e3b8bc",
+    "ios-remote-v541-width-keypath-thunks.json": "849547cf7a412b2c3710fedc01b5d9e8739bcacb7f1c67301bac67909112c259",
+    "ios-remote-v541-width-outer-frame-stack.asm": "0f7e30e587a3f623b58aeb9e3fb766a7c7e6ace2bf5cf1659f0c1ae5777f9c59",
+    "ios-remote-v541-width-outer-frame-stack.json": "abe8c2a26169a98c23c1dedad5899d8db8a3574360687c018a6c440789ab030a",
+    "ios-remote-v541-width-outer-insets-default.asm": "8abecee5d33e475dcb2a4832a4c1b7b43504d184594d3c864d52077a605b18b0",
+    "ios-remote-v541-width-outer-insets-default.json": "a7bc01da6e8317a198460771aa48adcb6eb9f731c99a3125aa5eb048b40ac04e",
+    "ios-remote-v541-width-style-accessor-helper.asm": "5e225843796820f63f151f5480568040e7752319d74cbd7fe36db88e3efa7ac0",
+    "ios-remote-v541-width-style-accessor-helper.json": "f0ed1b7d697f38fd540a477e66179c8f6702fe0dc4a7182f6162468509f128ef",
+    "ios-remote-v541-width-style-accessor.asm": "fb2e610704f8a9fe26616fdc42f9f2f01188115d16095784db6c60e3406f8b70",
+    "ios-remote-v541-width-style-accessor.json": "56b79f5121fc72fd2d0934ed215fdbeb7bdd06685dcb23bc7300f474cec46741",
+    "ios-remote-v541-width-style-prefix-default.asm": "2efb9b9fedf88deb17d0da8d3de6b8b05710aa11a4e8e7aac84b4d9dee509a4f",
+    "ios-remote-v541-width-style-prefix-default.json": "68b07c6f13ddc18a10d74d1df908a58fc9aa89ab8203956231abde2a0541a39c",
+    "ios-remote-v541-width-style-read-tail.asm": "409959d65bf72d3501ddcc02863f97108c1162a69c6dd1c5fa99f43e4ae49dc2",
+    "ios-remote-v541-width-style-read-tail.json": "aa198f03e4f6fc0446ba2aedd570ae26035d58025a0c5488ce00906874bdb201",
+    "ios-remote-v541-width-style-read.asm": "05e6df0c2091f67521f39e0c90d86c9bd09e3e609141b45e2fc786f058c06ff2",
+    "ios-remote-v541-width-style-read.json": "fadfd70c699a3561a9e882fa381237ddca1d17af0dc122fee9da6caf7fb92afd",
+    "ios-remote-v541-width-supplement.json": "1e58739d9f1fdd6eba33a9125b1abeff9db1638480a56d2dccec7b8290602654",
+    "ios-remote-v541-width-width-metadata-helper.asm": "752bf6d0c44bf95e3251840dfa75959a362afe50145d58a60bc8db84386bde98",
+    "ios-remote-v541-width-width-metadata-helper.json": "653ea7bef76aecec7cf97e646b94966201835f81fa9def3297c132a716418ff3",
+    "ios-remote-v538-header-width-body-actual.asm": "91883c23a1fcd0e49fdc895e3ea06ce1d3fd466d1c95ced69b271fb2d612faff",
+    "ios-remote-v538-header-width-body-calls.json": "38d8f157522a39fd456d3b25173f4c8aa8b6e4090613a11caba39325a95cfc1c",
+    "ios-remote-v538-header-width-gate.asm": "786b73172d2783396506363fe205f1cbb29a09ef7b6b3470236e46cfa4a79aef",
+    "ios-remote-v538-header-width-types.json": "90af549759b81fb5d10040d41257c20612c4ad4ea8abc8cbc3f3ea7eadfa450f",
+    "ios-remote-v538-header-findings.json": "c3679fb0642a4baa7408095bfc8f0308c4fe0c26803561a488676976486fb9c9",
+    "ios-remote-v537-section-wrapper.asm": "7fe80701b449fdc54de4c3dddb0428cc5c13aa04702891232bf3341413b282f4",
+    "ios-remote-v508-home-metadata.json": "0150a214dd4ed8f3c8bc7d258f96c0d580fc56ede2d7732309ec0a808f636099",
+    "ios-remote-v519-composer-scene-style-metadata.json": "1bc5001157f6694f441a5714b45d21ed3a7556a4feaf49204d8c1a9884ba97c5",
+    "ios-remote-v508-home-style-findings.json": "7f353ec5882b87dd217b9cf2ee0d592a13e76dc7715dc1b96e894acf2564b9af",
+    "ios-remote-v508-style-base.asm": "99b84f0526fb75eeabc057c4ec250f21a7ddf1924ecacef709ac11e6887276f7",
+    "ios-remote-v508-style-default-helpers.asm": "c6e0dee0fb6476ee22e68fdb2166694bfe7606bf85d244670d25a97134cc3a96",
+    "ios-remote-v508-style-default-tail.asm": "922b4cd69d07b4cc68ff114a04eff8e88c53973d119d958066cb336347a8e8f1",
+    "ios-remote-v508-style-layout-bindings.json": "84cf1f1b5e9bb6910100184ccb28ced28cc2ece865ed53cce9086e851f31cd40"
+  }
+}

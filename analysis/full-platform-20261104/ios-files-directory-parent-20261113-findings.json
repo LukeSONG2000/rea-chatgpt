@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS 1.2026.293 ordinary Codex Remote Files directory parent/header/rows; read-only static evidence",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": [
+    "Existing v589 reports reused; no full extraction",
+    "SwiftUI.View conformance/witness checked independently of adjacent functions",
+    "Bounded llvm-objdump and strict symbolic tree resolver; anonymous nominal contexts kept opaque by original descriptor address"
+  ],
+  "official_artifact_observations": [
+    {
+      "id": "files.parent",
+      "evidence": [
+        "ios-files-v589-findings.json",
+        "ios-files-directory-parent-20261113/witnesses.json",
+        "ios-files-directory-parent-20261113/directory.asm",
+        "ios-files-directory-parent-20261113/directory-tree.tree.txt",
+        "ios-files-directory-parent-20261113/directory-final-tree.tree.txt"
+      ],
+      "facts": [
+        "Ordinary Files is FileBrowserSheet -> FileNavigationStack -> DirectoryContent. WorkspaceBrowserContent/DisclosureGroup is a separate route, not this directory parent.",
+        "DirectoryContent descriptor0x95af994 View conformance0x7e20d30 body witness0x19cb3f4 forwards to0x19cafc0. Inner concrete record0x7e231c0 is VStack<TupleView<(Header,Entries)>>. Record0x7e231c8 adds BackgroundStyleModifier<Color>.",
+        "Actual body separately calls navigationTitle at0x19cb2bc through0x457ab4; its title is supplied by getter0x189dac8, not Header.path. Subsequent native title display mode/background/lifecycle modifiers must not be collapsed into the inner tree."
+      ]
+    },
+    {
+      "id": "files.header",
+      "evidence": [
+        "ios-files-directory-parent-20261113/header.asm",
+        "ios-files-directory-parent-20261113/header-tree.tree.txt",
+        "ios-files-directory-parent-20261113/literal-resources.json",
+        "ios-files-directory-parent-20261113/resources-and-padding.asm",
+        "ios-files-directory-parent-20261113/padding16.asm",
+        "ios-files-directory-parent-20261113/padding12.asm"
+      ],
+      "facts": [
+        "Header descriptor0x95b1948 View conformance0x7e24520 body witness0x19cb970 ->0x19cb3f8; nested content0x19cb510.",
+        "Actual constructor has VStack spacing12 at0x19cb43c, leading maximum-width frame at0x19cb460, horizontal padding16 via0x19cb498 ->0x45abd0, vertical padding12 via0x19cb4bc ->0xafd4dc, and bottom overlay Divider at0x19cb4cc..4ec.",
+        "Header.path becomes selectable Text at0x19cb644/0x19cb6d8. Header.canNavigateToParent byte+0x10 gates the optional Button at0x19cb73c..740.",
+        "Parent button key codex_remote_workspace_directory_picker_parent_folder literal0x88b3a60, icon factory0x74f4550 consumed0x19cb784 -> literal0x8a53d70 OpenAI/Symbols/arrow-up-lg.",
+        "The Button captures this Header at0x19cb7c4..7d0 and uses action closure0x1d2d12c at0x19cb7f4..7fc. Closure reads captured actionHandler, constructs raw empty-case tag2, dispatches through0x1d9c80c. Handler generic is CodexRemoteFileDirectoryAction. Raw ordinal is not a wire field."
+      ]
+    },
+    {
+      "id": "files.path-supply",
+      "evidence": [
+        "ios-files-directory-parent-20261113/directory.asm",
+        "ios-files-directory-parent-20261113/header-path.asm",
+        "ios-files-directory-parent-20261113/path-display-transform.asm",
+        "ios-files-directory-parent-20261113/path-calls.json",
+        "ios-files-v589-directory-actions-evidence.json"
+      ],
+      "facts": [
+        "DirectoryContent obtains Header.path from0x189da7c at0x19cb06c, and obtains canNavigateToParent from0x189db2c at0x19cb078. It does not format hostID or directoryID into the visible Header in this constructor.",
+        "0x189da7c reads a String pair plus style byte from VM field offset global0xb1e8168, obtains second path through0x189d978 ->0x2ac4154, then calls0x2ac953c.",
+        "0x2ac953c explicitly selects slash or backslash from style, normalizes slashes on one branch, and combines strings, with an empty-input branch. It is a path-formatting producer rather than a directory identity formatter.",
+        "0x189db2c derives the parent-availability Bool from same0x189d978 path and a nonempty test at0x189db4c..50.",
+        "VM metadata declares distinct _currentDirectoryRelativePath and workspacePath; field presence alone does not prove which is displayed."
+      ]
+    },
+    {
+      "id": "files.entries",
+      "evidence": [
+        "ios-files-directory-parent-20261113/entries.asm",
+        "ios-files-directory-parent-20261113/entries-tree.tree.txt",
+        "ios-files-directory-parent-20261113/entries-state-tree.tree.txt",
+        "ios-files-v589-directory-parts-evidence.json"
+      ],
+      "facts": [
+        "Entries View body witness0x19cbed0 invokes0x19cb974; loadState, openingFileID, actionHandler are passed into state-driven content.",
+        "Record0x7e25980 is listStyle<PlainListStyle>(List<Never,ForEach<Array<CodexRemoteWorkspaceBrowserEntry>,CodexRemoteWorkspaceBrowserEntry,ModifiedContent<row,ListRowBackgroundTraitKey/ListRowInsetsTraitKey>>>>).",
+        "Record0x7e25970 independently proves a conditional ContentUnavailableView<Label<Text,Image>,Text,EmptyView> versus a list-style branch. This is not evidence that all loading/error/empty cases share one message.",
+        "No exact row-inset values or loading/error/empty resource keys were closed in this pass."
+      ]
+    },
+    {
+      "id": "files.row",
+      "evidence": [
+        "ios-files-directory-parent-20261113/row-tree.tree.txt",
+        "ios-files-v589-directory-row-helper-evidence.asm",
+        "ios-files-v589-directory-row-callbacks-evidence.asm",
+        "ios-files-directory-parent-20261113/literal-resources.json"
+      ],
+      "facts": [
+        "Row descriptor0x95b2940 View conformance0x7e26188 body witness0x19cc3b8 ->0x19cbef8. Actual inner label begins0x19cc0a8; adjacent row wrapper must not be attributed as its own content.",
+        "Record0x7e26880 is a Button whose HStack contains styled/flexframed Label<Text,Image> and optional conditional OAIProgressView/Image trailing content. The original row is not just an unstyled platform Label.",
+        "Row label title helper0x2ac41e8 is called0x19cc178. Discriminant zero calls0x74f7708 folder factory; nonzero calls0x74fbc28 ->0x8a57480 OpenAI/Symbols/text-document. These are native artifact resources, not SF folder/doc.",
+        "HStack spacing12 is constructed in wrapper0x19cc050; no fixed row height or arbitrary icon point size was inferred.",
+        "Action closure0x1d34454 copies selected entry payload and calls typed Handler dispatch0x2c6248. OpeningFileID participates in row conditional state."
+      ]
+    }
+  ],
+  "static_inferences": [
+    {
+      "conclusion": "The Header is a displayed filesystem path with a separately gated parent-navigation action; current synthetic scope/opaque directory ID text is a concrete missing source contract.",
+      "limits": "Exact association of offset global0xb1e8168 to named workspacePath and keypath0x7e134c8 to named _currentDirectoryRelativePath still needs metadata accessor initialization proof. Thus complete/full versus relative path output is not claimed as independently verified."
+    },
+    {
+      "conclusion": "Parent callback raw empty case2 is consistent with metadata parentDirectoryTapped after one payload entry and preceding empty cases; it must remain a native enum-layout observation, not a wire protocol ordinal.",
+      "limits": "Original handler branch naming/decoded switch consumer was not followed in this pass."
+    }
+  ],
+  "host_comparison": {
+    "file": "implementation/ios/Sources/FrontendFilePreview.swift",
+    "source_read_only": true,
+    "missing": [
+      "Header currently prints synthetic workspace plus hostID/opaque directory.id instead of explicit path data",
+      "No Header parent-navigation button",
+      "Header padding uses generic .padding() and separate Divider rather than original16horizontal/12vertical/bottom overlay",
+      "Directory rows use SF folder/doc instead of original resource factories",
+      "Original selectable path Text is not represented by current two-line scope heading"
+    ],
+    "already_present": [
+      "Separate navigation destination per directory",
+      "Plain List and opening-file progress",
+      "Loading/failure/empty frontend states, retry and cancellation",
+      "QuickLook handoff and close/return path"
+    ],
+    "not_claimed": [
+      "Existing synthetic states/resources exactly match original loading/error/empty consumers",
+      "QuickLook is the only original file destination",
+      "Current .confirmationAction Done is proven identical original close toolbar placement"
+    ]
+  },
+  "independent_minimum_adaptation": [
+    "Keep opaque entry ID and request/account/host/task scope unchanged for routing; add explicit displayPath/currentDirectoryRelativePath or other truthful path metadata as separate fields.",
+    "Expose canNavigateToParent and parent navigation action from adapter, not ID parsing. At root false; nested true only when adapter owns a valid parent route. Parent action must cancel/rekey old load and keep scope.",
+    "Render Header using original selectable Text + gated arrow-up-lg Label button,16horizontal/12vertical padding,12spacing,leading width,and bottom overlay Divider.",
+    "Reuse native OpenAI folder/text-document resources; preserve row plain-button behavior and source-backed progress. Exact font/icon sizing remains pending source mapping.",
+    "Use independent deterministic local synthetic paths for preview. Do not imply that any genuine remote directory or resource was fetched."
+  ],
+  "precise_unknowns": [
+    {
+      "id": "display-path-name-map",
+      "next": "Resolve VM metadata accessor field offset initialization for global0xb1e8168 and keypath0x7e134c8 to prove workspacePath/currentDirectoryRelativePath association, then annotate full/relative string semantics."
+    },
+    {
+      "id": "row-inset-values",
+      "next": "Trace row trait values supplied to ForEach closure in Entries0x19cb974; full tree proves trait presence, not numbers."
+    },
+    {
+      "id": "empty-loading-error",
+      "next": "Follow Entries closures0x1d2ca38/0x19cbdb8/0x1d2ca40 to actual RequestStateView state-specific text/icon/button construction."
+    },
+    {
+      "id": "row-style",
+      "next": "Map current Label style factory0x7565e40/font0x74e2728 and actual trailing discriminant branch before claiming exact point sizing/tint."
+    },
+    {
+      "id": "close-navigation-style",
+      "next": "FileBrowserSheet toolbar root and FileNavigationStack destination builder remain prior partial evidence; do not infer a Done placement from independent host."
+    },
+    {
+      "id": "haptics",
+      "next": "No explicit haptic call in inspected actual Header/row constructors/callback snippets; broader handler effects not investigated. Do not add inferred vibration."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "runtime_replay": false,
+    "device": false,
+    "product_files_modified": false,
+    "builds_or_tests_run": false,
+    "network_accessed": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-files-directory-parent-20261113/"
+}

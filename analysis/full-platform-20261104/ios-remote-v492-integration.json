@@ -1,0 +1,124 @@
+{
+  "batch": "v492",
+  "status": "partial",
+  "previous_goal_turn": "no progress: repeated v489-v491 policy and replay without new implementation; this turn traces and integrates compact project rows",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static with independent native integration",
+  "integration_decision": "Project task indentation must follow compact-row structure and presentation branch, rather than padding the priority row",
+  "findings": [
+    {
+      "location": "0x3a33ec;0x45b1c8;0x2c60c0;0x3a349c..0x3a34c0;0x1598f4;0x3a3574;0x3a3dac",
+      "conclusion": "Row body reads isPriorityModeActive via metadata field1c. False path writes absent-details marker1 at content+48, selecting compact builder3a51c0. Priority row uses3a4640 and inner vertical8."
+    },
+    {
+      "location": "0x3a3538..0x3a35a4;metadata955fd50 and9560160",
+      "conclusion": "isInProject is copied from CodexTaskRowV2 field-vector2c to CodexRemoteTaskRowContent field-vector28."
+    },
+    {
+      "location": "0x3a52b4..0x3a5378;helper207748;type7cf7dc0",
+      "conclusion": "When isInProject==true, compact content constructs CodexTaskListProjectIcon(isExpanded:false), scaled minimum24/font18, applies HiddenModifier and trailing padding from _projectIconSpacing."
+    },
+    {
+      "location": "0x3a3604..0x3a3634;0x3a5330..0x3a535c",
+      "conclusion": "_projectIconSpacing uses base12 scaled relative to body; icon and spacing derive from the same source metrics as project header."
+    },
+    {
+      "location": "0x3a3db8;0x466728;type7cf7c68;0x3a5388;0x3a5390;0x3a5428;0x460f08",
+      "conclusion": "Compact branch uses centered HStack spacing0, optional hidden icon, title text, Spacer minimum8, shared trailing indicators. Whole-row metrics horizontal20 and scaled minimum44; outer vertical2 from existing39fc88. No priority-detail inner vertical8."
+    },
+    {
+      "location": "0x3a4424..0x3a4440;0x74f0420;0x8a521d0",
+      "conclusion": "Connected title uses OneOff/AppForeground; disconnected title uses ChatGPT/text/tertiary."
+    }
+  ],
+  "independent_adaptations": [
+    "Preview defaults to compact mode; --remote-priority-list-fixture exercises existing detailed variant. Actual server capability/default not inferred.",
+    "Candidate universe/order and source filtering remain synthetic. Every current task belongs to an explicit workspace, so compact rows use project placeholder.",
+    "Native font adapter remains independently implemented."
+  ],
+  "remaining_boundaries": [
+    "Header topSpacing function39c3d8 depends on section adjacency; exact argument binding not closed.",
+    "Cell last-row bottom12 depends on section/owner gate39902c; not applied indiscriminately.",
+    "Priority detail presence and service assignment beyond false-mode branch",
+    "Header new-thread owner; pinned/recent/cloud groups; search/mode menu/list composer",
+    "Device visual/touch acceptance and independently proven Android implementation"
+  ],
+  "validation": {
+    "source_typecheck": "passed; existing UIKit deprecation warnings",
+    "model_and_text_tests": "passed",
+    "first_ui_run": {
+      "passed": 2,
+      "failed": 1,
+      "result": "ios-remote-v492-ui.xcresult",
+      "reason": "New assertion incorrectly treated scaled minimum row height as a maximum50. Actual approval row52.33 remains valid content-driven height. Corrected minimum assertion; failure retained."
+    },
+    "final_ui_run": {
+      "passed": 3,
+      "failed": 0,
+      "result": "ios-remote-v492-r2-ui.xcresult",
+      "summary": "ios-remote-v492-r2-ui.summary.json",
+      "coverage": [
+        "compact project projection",
+        "project collapse and navigation restoration",
+        "cross-host source switching",
+        "XXXL horizontal source scroll",
+        "priority row and transcript interaction regression"
+      ]
+    },
+    "visual": {
+      "default": "ios-remote-v492-list-preview.png inspected",
+      "large_text": "r2 exported remote-horizontal-source-large; compact indentation inspected in initial run with same geometry",
+      "result": "Titles align with project labels; whole-page parity remains unaccepted"
+    },
+    "device": {
+      "build": "passed",
+      "installed": true,
+      "launched": true,
+      "device": "iPhone Air",
+      "install_report": "ios-device-v492-install.json",
+      "launch_report": "ios-device-v492-launch.json",
+      "touch_visual_acceptance": "pending user"
+    },
+    "preview": {
+      "pid": 71133,
+      "screen": "Remote compact project list",
+      "external_display": "Device Hub Window menu offers Move to Built-in Retina Display",
+      "left_running": true
+    },
+    "retention": {
+      "schema": "rea-build-cleanup-v1",
+      "time": "2026-11-06T18:48:00.664127+08:00",
+      "apply": false,
+      "keep": [
+        "v172-r2-macos",
+        "v172-windows",
+        "v173-windows",
+        "v174-r4-macos"
+      ],
+      "targets": [],
+      "skipped": [],
+      "completed": []
+    }
+  },
+  "evidence_files": {
+    "ios-remote-v492-row-constructor.asm": "89301bbc4a8e1828239cbfad12d8124c65963cf60fc529a038375e52418db11a",
+    "ios-remote-v492-branch-helpers.asm": "ce00548718bb41a17f999921b2866895869df0d7326620eebf6062ec2f3c6883",
+    "ios-remote-v492-row-body.asm": "b96eff0c8b8c7f773179545aaecb811aa48dc8ecf501e6c83aace8b19ac7f38b",
+    "ios-remote-v492-row-variants.asm": "a97c6763961bebafc242b20af3d26a068e0142869f65d5bf6de0cfb9290fe189",
+    "ios-remote-v492-compact-types.json": "89efa326c574eed3225710a3e0060d74e1a9a21bb40536b1edb70cbd6929292c",
+    "ios-remote-v492-row-layout.asm": "e8fe3081009c8289c18a08ad50d17dfd35550d144fda265edb3b54b86c28b423",
+    "ios-remote-v492-variant-helpers.asm": "6163669747872d4871bf2050d17aa99c247c2155158eb156306d2878db0d89ad",
+    "ios-remote-v492-compact-calls.json": "faa756979b2ac5ea19003ccc7a6a7d473e07ca22cf55e78b0d95b0d318df6fd5",
+    "ios-remote-v492-row-metadata.json": "145ae051a3d627caea7290a0b93c353f8ba9a0d19a37fd50fba6168d1a2668ea",
+    "ios-remote-v492-project-row-content.asm": "a7c07042736e24cc540b809aba566b7a6918b4cf80dc2086fc59a90a6d8514f1",
+    "ios-remote-v492-leading-layout.asm": "ccad7bb80576de9ff1bee7b69104295b8e0df65cf7094e0f7c17a38f8b0c3394",
+    "ios-remote-v492-top-spacing.asm": "1010afa2f61575963273425ec85d190cec156aa741abec0540153b5a4c8c518c",
+    "ios-remote-v492-row-fields.asm": "91448987a29cff5fcb2ec0b006ee1d3af19d878db66fa4391a1111ffab938781"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "758ee1850dbce95c5be4177ce5aada5d010f04272d8edf09e8221ed163d1d4fe",
+    "implementation/ios/UITests/HostInteractionTests.swift": "a99e18e220cdd3c773f9e99dea2589d8691b38cefb758a8aa4539b0c82f5e277"
+  }
+}

@@ -34,6 +34,8 @@ let plain = try NativeInline(ast: ["text":"plain", "link":false, "href":"https:/
 assert(plain.href == nil)
 print("PASS: inline text, style and link semantic projection")
 
+
+
 let richTable = try NativeTableModel(ast: ["headers": [["text":"**A**", "inlines":[["text":"A", "bold":true]]]], "rows": [[["text":"[link](https://example.invalid)", "inlines":[["text":"link", "link":true, "href":"https://example.invalid"]]]]], "alignments":[1]])
 assert(richTable.headerSpans[0][0].text == "A" && richTable.headerSpans[0][0].bold)
 assert(richTable.rowSpans[0][0][0].href == "https://example.invalid")
@@ -124,6 +126,25 @@ precondition(blockedCatalog.entries.count == 2)
 try Data("broken".utf8).write(to: catalogURL)
 do { _ = try ConversationCatalog(account: "account-a", url: catalogURL); preconditionFailure("corrupt catalog") } catch {}
 print("PASS: catalog UUID identities, cold restore, account isolation, history mapping, write-failure atomicity and corrupt-file rejection")
+
+// Pin is independent local frontend state. Rename/mode changes preserve it;
+// old snapshots omit it, and write failure must not change the live projection.
+let pinURL = temp.appendingPathComponent("pin-catalog.json")
+let pinCatalog = try ConversationCatalog(account: "account-a", url: pinURL)
+let pinEntry = try pinCatalog.create()
+try pinCatalog.setSidebarPinned(true, for: pinEntry.id)
+try pinCatalog.selectMode(.work, for: pinEntry.id)
+try pinCatalog.rename(pinEntry.id, title: "置顶示例")
+let pinCold = try ConversationCatalog(account: "account-a", url: pinURL)
+let pinnedEntry = pinCold.entries.first { $0.id == pinEntry.id }!
+precondition(pinnedEntry.sidebarPinned == true && pinnedEntry.effectiveAssistantMode == .work && pinnedEntry.title == "置顶示例")
+precondition(pinCold.entries.first { $0.id == "fixture-a" }!.sidebarPinned == nil)
+try FileManager.default.removeItem(at: pinURL)
+try FileManager.default.createDirectory(at: pinURL, withIntermediateDirectories: false)
+do { try pinCatalog.setSidebarPinned(false, for: pinEntry.id); preconditionFailure("failed pin write accepted") } catch {}
+precondition(pinCatalog.entries.first { $0.id == pinEntry.id }!.sidebarPinned == true)
+do { try pinCold.setSidebarPinned(true, for: "unknown"); preconditionFailure("unknown pin accepted") } catch {}
+print("PASS: sidebar pin cold restore, mode/title preservation, old metadata defaults and write-failure atomicity")
 
 let deletionURL = temp.appendingPathComponent("delete-catalog.json")
 let deletionCatalog = try ConversationCatalog(account: "account-a", url: deletionURL)
@@ -287,3 +308,143 @@ let restoredStartup = DraftStore(scope: DraftScope(accountID: "startup-account",
 try restoredStartup.load(from: startupDraftURL, restoreSelection: true)
 precondition(restoredStartup.scope.conversationID == startupEntry.id && restoredStartup.text == "保留首次草稿")
 print("PASS: first-run blank entry, interrupted startup reuse and saved draft restoration")
+
+// v569 independent mode persistence and legacy migration.
+let modeURL = temp.appendingPathComponent("mode-catalog.json")
+let modes = try ConversationCatalog(account: "mode-account", url: modeURL)
+let workEntry = try modes.create()
+let chatEntry = try modes.create()
+try modes.selectMode(.work, for: workEntry.id)
+try modes.rename(workEntry.id, title: "工作会话")
+let coldModes = try ConversationCatalog(account: "mode-account", url: modeURL)
+precondition(coldModes.entries.first { $0.id == workEntry.id }?.effectiveAssistantMode == .work)
+precondition(coldModes.entries.first { $0.id == chatEntry.id }?.effectiveAssistantMode == .chat)
+let legacyEntry = try JSONDecoder().decode(LocalConversation.self, from: Data(#"{"id":"fixture-a","title":"Legacy"}"#.utf8))
+precondition(legacyEntry.effectiveAssistantMode == .chat)
+do {
+    _ = try JSONDecoder().decode(LocalConversation.self, from: Data(#"{"id":"fixture-a","title":"Legacy","assistantMode":"unknown"}"#.utf8))
+    preconditionFailure("unknown mode silently accepted")
+} catch {}
+
+let legacyTurn = try JSONDecoder().decode(StoredTurn.self, from: Data(#"{"scope":{"account":"a","conversation":"c","request":"r"},"prompt":"old","text":"","phase":"completed"}"#.utf8))
+precondition(legacyTurn.effectiveAssistantMode == .chat)
+do { try blockedCatalog.selectMode(.work, for: "fixture-a"); preconditionFailure("failed mode write accepted") } catch {}
+precondition(blockedCatalog.entries.first?.effectiveAssistantMode == .chat)
+var modeFailed = StoredTurn(scope: MessageScope(account: "mode-account", conversation: workEntry.id, request: "mode-failed"), prompt: "测试")
+modeFailed.assistantMode = .work; modeFailed.phase = "failed: transport"
+var modeRetry = StoredTurn(scope: MessageScope(account: "mode-account", conversation: workEntry.id, request: "mode-retry"), prompt: modeFailed.prompt)
+modeRetry.retryOf = modeFailed.scope.request; modeRetry.assistantMode = .work
+let modeHistoryURL = temp.appendingPathComponent("mode-history.json")
+try MessageHistory.save([workEntry.id: [modeFailed, modeRetry]], to: modeHistoryURL, account: "mode-account")
+let modeHistory = try MessageHistory.load(from: modeHistoryURL, account: "mode-account")
+precondition(modeHistory[workEntry.id]?.last?.effectiveAssistantMode == .work)
+modeRetry.assistantMode = .chat
+do {
+    try MessageHistory.save([workEntry.id: [modeFailed, modeRetry]], to: modeHistoryURL, account: "mode-account")
+    preconditionFailure("retry mode drift accepted")
+} catch {}
+print("PASS: conversation mode cold restore, rename retention, legacy defaults, failed write rollback and retry mode identity")
+
+var presentationTurn = StoredTurn(scope: MessageScope(account: "status-account", conversation: "status-conversation", request: "status-request"), prompt: "synthetic")
+for phase in ["sending", "accepted", "streaming", "cancelled", "interrupted"] {
+    presentationTurn.phase = phase
+    precondition(ChatResponseStatus.make(turn: presentationTurn, pendingCancellation: nil)?.rawValue == phase)
+}
+presentationTurn.phase = "streaming"
+precondition(ChatResponseStatus.make(turn: presentationTurn, pendingCancellation: presentationTurn.scope) == .cancelling)
+precondition(ChatResponseStatus.make(turn: presentationTurn, pendingCancellation: MessageScope(account: "other", conversation: "status-conversation", request: "status-request")) == .streaming)
+presentationTurn.phase = "completed"
+precondition(ChatResponseStatus.make(turn: presentationTurn, pendingCancellation: nil) == .empty)
+presentationTurn.text = "synthetic response"
+precondition(ChatResponseStatus.make(turn: presentationTurn, pendingCancellation: presentationTurn.scope) == nil)
+presentationTurn.phase = "failed: transport"
+precondition(ChatResponseStatus.make(turn: presentationTurn, pendingCancellation: presentationTurn.scope) == .failed)
+presentationTurn.phase = "unknown"
+precondition(ChatResponseStatus.make(turn: presentationTurn, pendingCancellation: nil) == .unavailable)
+print("PASS: response footer projection, terminal cancellation precedence and exact scope")
+
+var actionRow = HostMessageRow(id: "actions", blocks: [], originalText: "synthetic")
+precondition(actionRow.hasMessageActions && actionRow.canShowMessageActions)
+for status in [ChatResponseStatus.sending, .accepted, .streaming, .cancelling] {
+    actionRow.responseStatus = status
+    precondition(actionRow.hasMessageActions && !actionRow.canShowMessageActions)
+}
+for status in [ChatResponseStatus.failed, .cancelled, .interrupted, .empty, .unavailable] {
+    actionRow.responseStatus = status
+    precondition(actionRow.hasMessageActions && actionRow.canShowMessageActions)
+}
+actionRow.originalText = nil
+precondition(!actionRow.hasMessageActions && !actionRow.canShowMessageActions)
+actionRow.responseStatus = nil
+precondition(!actionRow.canShowMessageActions)
+print("PASS: inline action presence, active visibility, terminal retained-text actions and unavailable state")
+
+// v572 attachment draft identity and old snapshot compatibility.
+let attachment = ChatAttachment(id: UUID().uuidString, name: "fixture.txt", bytes: 42)
+let attachmentStore = DraftStore(scope: a)
+let attachmentGeneration = attachmentStore.generation
+precondition(attachmentStore.saveAttachments([attachment], for: a, generation: attachmentGeneration))
+attachmentStore.switchTo(b)
+precondition(attachmentStore.attachments.isEmpty)
+precondition(!attachmentStore.saveAttachments([attachment], for: a, generation: attachmentGeneration))
+attachmentStore.switchTo(a)
+precondition(attachmentStore.attachments == [attachment])
+precondition(!attachmentStore.saveAttachments([attachment, attachment], for: a, generation: attachmentStore.generation))
+let attachmentURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".json")
+try attachmentStore.persist(to: attachmentURL)
+let coldAttachments = DraftStore(scope: b)
+try coldAttachments.load(from: attachmentURL, restoreSelection: true)
+precondition(coldAttachments.scope == a && coldAttachments.text.isEmpty && coldAttachments.attachments == [attachment])
+coldAttachments.reconcile(allowed: [b.conversationID], fallback: b.conversationID)
+precondition(coldAttachments.attachments.isEmpty)
+try FileManager.default.removeItem(at: attachmentURL)
+precondition(!ChatAttachment.valid([ChatAttachment(id: UUID().uuidString, name: "../bad", bytes: 0)]))
+precondition(!ChatAttachment.valid([ChatAttachment(id: UUID().uuidString, name: "large", bytes: 16 * 1024 * 1024 + 1)]))
+print("PASS: attachment-only cold draft, A-B-A isolation, stale picker generation, duplicate/budget rejection and catalog deletion")
+precondition(attachmentStore.attachmentIDs(account: a.accountID) == [attachment.id])
+precondition(attachmentStore.attachmentIDs(account: otherAccount.accountID).isEmpty)
+let attachmentHistoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".json")
+let attachmentHistoryScope = MessageScope(account: "attachments", conversation: ConversationCatalog.backendID("fixture-a")!, request: UUID().uuidString)
+var attachmentTurn = StoredTurn(scope: attachmentHistoryScope, prompt: "")
+attachmentTurn.attachments = [attachment]
+attachmentTurn.phase = "failed: transport"
+var attachmentRetry = StoredTurn(scope: MessageScope(account: "attachments", conversation: ConversationCatalog.backendID("fixture-a")!, request: UUID().uuidString), prompt: "")
+attachmentRetry.retryOf = attachmentTurn.scope.request
+attachmentRetry.attachments = [attachment]
+attachmentRetry.phase = "completed"
+try MessageHistory.save(["fixture-a": [attachmentTurn, attachmentRetry]], to: attachmentHistoryURL, account: "attachments")
+let restoredAttachmentHistory = try MessageHistory.load(from: attachmentHistoryURL, account: "attachments")
+precondition(restoredAttachmentHistory["fixture-a"]?.last?.effectiveAttachments == [attachment])
+attachmentRetry.attachments = []
+do {
+    try MessageHistory.save(["fixture-a": [attachmentTurn, attachmentRetry]], to: attachmentHistoryURL, account: "attachments")
+    preconditionFailure("retry must preserve attachments")
+} catch {}
+try FileManager.default.removeItem(at: attachmentHistoryURL)
+print("PASS: account-scoped attachment reachability, persisted attachment-only history and retry reference equality")
+
+let projectCatalogURL = temp.appendingPathComponent("project-membership.json")
+let projectCatalog = try ConversationCatalog(account: "account-a", url: projectCatalogURL)
+let projectConversationID = "offline-local-20000000-0000-4000-8000-000000000001"
+let projectAlias = try projectCatalog.ensureProjectConversation(id: projectConversationID, title: "Project chat", projectID: "project-a")
+precondition(projectAlias.projectID == "project-a")
+_ = try projectCatalog.ensureProjectConversation(id: projectConversationID, title: "Retry", projectID: "project-a")
+precondition(projectCatalog.entries.filter { $0.id == projectConversationID }.count == 1)
+do {
+    _ = try projectCatalog.ensureProjectConversation(id: projectConversationID, title: "Wrong project", projectID: "project-b")
+    preconditionFailure("Project membership must not be rebound")
+} catch {}
+do {
+    _ = try projectCatalog.ensureProjectConversation(id: "fixture-a", title: "Wrong alias", projectID: "project-a")
+    preconditionFailure("Diagnostic conversation must not become project membership")
+} catch {}
+try projectCatalog.rename(projectConversationID, title: "Renamed")
+try projectCatalog.selectMode(.work, for: projectConversationID)
+let restoredProjectCatalog = try ConversationCatalog(account: "account-a", url: projectCatalogURL)
+let restoredAlias = restoredProjectCatalog.entries.first { $0.id == projectConversationID }!
+precondition(restoredAlias.projectID == "project-a" && restoredAlias.title == "Renamed" && restoredAlias.effectiveAssistantMode == .work)
+let ordinaryBlank = try restoredProjectCatalog.initialBlankConversation()
+precondition(ordinaryBlank.projectID == nil && ordinaryBlank.id != projectConversationID)
+precondition(!restoredProjectCatalog.ordinaryEntries.contains { $0.id == projectConversationID })
+precondition(restoredProjectCatalog.ordinaryEntries.contains { $0.id == ordinaryBlank.id })
+print("PASS: project conversation membership, idempotent admission, conflict rejection, persistence and ordinary blank isolation")

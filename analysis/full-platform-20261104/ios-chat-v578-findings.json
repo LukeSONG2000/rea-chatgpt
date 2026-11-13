@@ -1,0 +1,112 @@
+{
+  "batch": 578,
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "kind": "artifact-metadata",
+      "evidence": [
+        "ios-chat-v578-inline-state-metadata.json",
+        "ios-chat-v578-inline-enabled-type.json",
+        "ios-chat-v575-viewmodel-fields.json"
+      ],
+      "conclusion": "InlineActionsState has disabled and enabled(canShow: Bool, alwaysVisible: Bool). MessageRowViewModel._inlineActionState uses the same typeref0x904ce9c."
+    },
+    {
+      "kind": "artifact-static-instructions",
+      "evidence": [
+        "ios-chat-v578-actions-calls.json",
+        "ios-chat-v578-content-actions.asm",
+        "ios-chat-v578-field-slots.json"
+      ],
+      "offset": "0x38d9b00..0x38d9e68",
+      "conclusion": "Consumer chooses sources-only when its scope byte is zero or state low byte equals2. Otherwise it composes inlineActions plus inlineSources. In the actions branch payload bit0 drives opacity0/1, animation(value:) and allowsHitTesting. easeInOut duration is0.2 seconds. A separate byte can suppress animation; semantic name unresolved."
+    },
+    {
+      "kind": "artifact-static-instructions",
+      "evidence": [
+        "ios-chat-v578-enabled-references.json",
+        "ios-chat-v578-enabled-callers.json",
+        "ios-chat-v578-state-producer.asm",
+        "ios-chat-v578-state-update.asm",
+        "ios-chat-v578-state-setter.asm"
+      ],
+      "offset": "0x3970e94 ->0x396e800 ->0x394181c",
+      "conclusion": "State producer consults inlineActionsEnabled through helper0x3abdfa4 and other unresolved policy inputs. It returns disabled2 or enabled with alwaysVisible set and canShow from a separate predicate. Update wrapper compares old/new and setter writes _inlineActionState at ivar slot0xb4f6a50."
+    },
+    {
+      "kind": "artifact-metadata-and-instructions",
+      "evidence": [
+        "ios-chat-v578-actions-part.asm",
+        "ios-chat-v575-viewmodel-class.json"
+      ],
+      "offset": "0x38cb368",
+      "conclusion": "InlineActionsPart additionally checks primary display items, overflow/favorite affordances and pending favorite availability after earlier suppression gates. Action-leaf contents require their own eligibility mapping."
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "Temporarily invisible enabled actions keep their view branch and disable hit testing. This does not prove a fixed footer height because the leaf can be empty.",
+      "limit": "Static SwiftUI composition; device geometry not measured."
+    },
+    {
+      "claim": "Current originalText != nil plus fixed36pt Menu is missing the official multi-layer action state.",
+      "limit": "Host code observation; replacement predicates are not yet proven."
+    }
+  ],
+  "verification": {
+    "report": "ios-chat-v578-action-replay.json",
+    "kind": "independent transcription with static byte/import guards",
+    "cases": 30,
+    "payload_invariance_checks": 512,
+    "invalid_input_rejections": 7,
+    "stable_repeat": true,
+    "new_ui_tests": 0
+  },
+  "production_change": null,
+  "unresolved": [
+    {
+      "priority": "P1",
+      "page": "Chat/Work conversation",
+      "break": "0x3970e94 upstream predicates, especially availability reads around0x65a21c0/0x65a32e8 and visibility result0x65a53e4",
+      "next": "Bind those returned flags to message model fields and active ordinary caller. Preserve leaf action eligibility separately.",
+      "acceptance": "Applicable user/assistant/streaming/terminal/error rows expose correct actions through retries and A-B-A without invisible hit targets."
+    },
+    {
+      "priority": "P1",
+      "page": "Chat/Work conversation",
+      "break": "MessageRowContent concrete constructor assignment for scope+0x58/state+0x59 and parent footer layout",
+      "next": "Connect consumer state to supplied context and shared sizing/rendering policy.",
+      "acceptance": "Measurement matches rendering while changing visibility and role, with copy/edit paths retained."
+    },
+    {
+      "priority": "P1",
+      "page": "Shared Markdown",
+      "break": "Ordinary caller outer paragraph/block spacing overrides",
+      "next": "Continue from v577 pending list after closing action ownership.",
+      "acceptance": "Short/long text, code and tables keep native selection and reading position in Chinese/light and English/dark."
+    }
+  ],
+  "probe_corrections": [
+    "Homebrew llvm-objdump path absent; used existing xcrun llvm-objdump.",
+    "Discarded ivar-order mapping; exact offset_storage_address matching required.",
+    "BSS offset storage cannot be read as file-backed runtime offset.",
+    "Opaque associated-type symbolic kind7 unsupported at0x904e1ff/0x905bf51; no generic body reconstruction claimed.",
+    "Code-window output key is direct_calls, not calls; corrected report inspection.",
+    "One objdump invocation omitted final ChatGPT path component; corrected path."
+  ],
+  "handoff": {
+    "candidate": "v577",
+    "preview_pid": 39677,
+    "new_build": false,
+    "limits": [
+      "Current footer visual gap remains.",
+      "Official target never executed.",
+      "Android, phone, haptics and notification delivery remain separately unaccepted."
+    ]
+  }
+}

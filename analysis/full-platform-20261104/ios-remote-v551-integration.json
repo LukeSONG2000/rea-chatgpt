@@ -1,0 +1,100 @@
+{
+  "batch": "v551",
+  "time": "2026-11-08T00:34:58.024413+08:00",
+  "status": "partial",
+  "scope": "Remote dynamic Markdown text/code/table projection and native interactions",
+  "source_findings": "ios-remote-v551-findings.json",
+  "implementation": "Packaged iOS293 JS parser plus existing independent native text/code/table views. Native OAIMarkdown equivalence remains unproven.",
+  "test_rounds": [
+    {
+      "round": "r1",
+      "passed": 2,
+      "failed": 2,
+      "summary": "ios-remote-v551-r1-rich.summary.json"
+    },
+    {
+      "round": "r2",
+      "passed": 2,
+      "failed": 0,
+      "summary": "ios-remote-v551-r2-rich.summary.json"
+    }
+  ],
+  "latest_distinct_ui_cases_passed": 4,
+  "passing_cases": [
+    "RemoteRichMessageChinese",
+    "RemoteRichMessageEnglishDark",
+    "RemoteReadingAnchorReturnChinese",
+    "RemoteAttachmentSendReplayChinese"
+  ],
+  "r1_diagnosis": "Rich tests used an incorrect table-cell identifier containing -cell-. Actual native identifier omits that segment. Corrected the selector and reran both languages successfully. Product code was unchanged between rounds.",
+  "foundation": {
+    "status": "passed",
+    "log": "ios-remote-v551-foundation.log"
+  },
+  "typecheck": {
+    "status": "passed_with_existing_warnings",
+    "log": "ios-remote-v551-typecheck.log"
+  },
+  "visual_review": [
+    "ios-remote-v551-r2-captures/CA5432A1-019D-4913-8A31-294C5E5F9C40.png",
+    "ios-remote-v551-r2-captures/3D33357F-5E40-4D92-845C-E28DDC574820.png"
+  ],
+  "runtime": {
+    "version": "551",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "product": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app",
+    "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/7AB4BC05-DBEA-4021-86D5-3C5E46CA11EB/REAChatGPTHost.app",
+    "launch": "local.rea.chatgpt.ioshost: 51348",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture",
+      "--remote-rich-message-fixture"
+    ],
+    "product_executable_sha256": "4f3eea23ffe0ba12a2a0f41249762bc33e556a7ed0449cf81ddd19063ccd10c9",
+    "installed_executable_sha256": "4f3eea23ffe0ba12a2a0f41249762bc33e556a7ed0449cf81ddd19063ccd10c9",
+    "sign_verify": "passed",
+    "language": "system",
+    "appearance": "system"
+  },
+  "preview": {
+    "left_running": true,
+    "surface": "Chinese completed Remote rich response with keyboard open",
+    "manual_input": "PreviewMarkdown confirmed through the native Pinyin keyboard, then submitted through ordinary send",
+    "screenshot": "ios-remote-v551-preview.png",
+    "external_display": "placement not accepted"
+  },
+  "retention": {
+    "schema": "rea-build-cleanup-v1",
+    "time": "2026-11-08T00:25:37.991483+08:00",
+    "apply": false,
+    "keep": [
+      "v172-r2-macos",
+      "v172-windows",
+      "v173-windows",
+      "v174-r4-macos"
+    ],
+    "targets": [],
+    "skipped": [],
+    "completed": []
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "7d88ea4fdbe3f55e8e46cceb250ddd67c4e16f34fa7faddfbcf9742480753616",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "6a94b82e38b92a9d6bd506b1199eaa28b4d8d9f82d9e3028d7c7b59a63059ba5",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "151dc97d517ae9a2bf84e838d6c7e3bb81f239d3f4362f8cf1e4898391f943f9",
+    "implementation/ios/UITests/HostInteractionTests.swift": "c28ea09dbe915ace05c74eb54df7ac0e651c9a9c11708643cb461768274dfb68",
+    "implementation/ios/Sources/OfficialMarkdown.swift": "028e9769885be5d0474fd6d0ba986bf90ed780e3a2bec6de723e7f6023e684ae"
+  },
+  "limits": [
+    "Native block spacing and 180pt table column widths are existing independent host geometry.",
+    "Block IDs use parser positions; arbitrary insertion before a block can change identity.",
+    "Only one offline account exists; multi-account isolation is unimplemented. Earlier v550 account-scope wording corrected.",
+    "Link action exposes URL and a returnable pending-browser status; browser integration remains pending.",
+    "Copyable text currently equals synthetic source; original copyableMarkdown transformations unresolved.",
+    "Dynamic reasoning, tool/file-diff events and full semantic content pipeline remain pending.",
+    "Exact character selection through arbitrary revision/reflow and process restart recovery remain pending."
+  ],
+  "next": "Close dynamic tool/reasoning/error message projection and same-page interactions, then test mixed-content updates with reading recovery."
+}

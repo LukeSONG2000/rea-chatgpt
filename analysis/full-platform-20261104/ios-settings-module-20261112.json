@@ -1,0 +1,292 @@
+{
+  "module": "settings/system",
+  "status": "standalone_topology_and_entries_scope_closed",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "sources": [
+    "ios-settings-v299-integration.json",
+    "ios-settings-v306-findings.json",
+    "ios-settings-v592-findings.json",
+    "ios-settings-v586-integration.json",
+    "ios-settings-children-20261112-findings.json",
+    "ios-settings-readable-topology-20261112.json",
+    "ios-settings-navigation-enum-20261112.json",
+    "ios-settings-general-list-20261112-findings.json",
+    "ios-settings-voice-topology-20261112-findings.json",
+    "ios-settings-next-actions-20261112.json",
+    "ios-settings-safety-topology-20261112-findings.json",
+    "ios-settings-account-buttons-type-20261112.json",
+    "ios-settings-account-owners-20261112.json",
+    "ios-settings-account-owners-witnesses-20261112.json",
+    "ios-settings-root-fidelity-20261112-findings.json",
+    "ios-settings-theme-passwords-fidelity-20261112.json",
+    "ios-settings-signout-20261112-findings.json",
+    "ios-settings-symbolic-tree-20261112/summary.json",
+    "ios-settings-account-detail-20261112-findings.json",
+    "ios-settings-app-gaps-20261112-findings.json",
+    "ios-settings-signout-detail-20261112-findings.json",
+    "ios-settings-signout-detail-20261112-foreground-correction.json",
+    "ios-settings-fixed-close-20261112-findings.json"
+  ],
+  "changes": [
+    "Typed root destinations prevent unsupported routes falling through to Codex.",
+    "Existing customization/account entries open returnable unavailable pages instead of generic alerts.",
+    "Moved haptics into General, based on user-confirmed official navigation; retained existing persistent toggle. Original 293 General owner not yet proved.",
+    "Restored one grouped App settings list with General, Notifications, Voice, Parental controls, Trusted contacts, Safety, Security and sign-in, Codex, Cloud browser, Storage, Data controls. Order is official user runtime reference; 293 leaf predicates are partially traced.",
+    "Added Get help group: Report app issue, Help Center, Privacy Center in proven 293 construction order. Offline reference profile exposes conditional entries; live account capability mapping remains absent.",
+    "All added unavailable destinations have explicit no-service explanation and native back navigation.",
+    "Personalization and Memory root entries now open source-ordered child lists; advanced disclosure and mutually exclusive memory branches preserved. Service controls remain unavailable destinations.",
+    "General first group restored in artifact construction order: App language, Auto-correct spelling, Haptic feedback. Language/spelling retain returnable service-unavailable destinations.",
+    "Voice root opens source-ordered child rows: Language, Dictionary, Dictation history, Start with Voice, Background conversations. Modern language placement avoids duplicate legacy branch. Actions remain returnable unavailable destinations.",
+    "Safety root opens four source-ordered capability-gated rows: reduce sensitive content, Trusted contact, Parental controls, Time management; actions remain returnable unavailable destinations.",
+    "Added source-confirmed Passwords entry before Storage; original icon remains unresolved",
+    "General Suggestions list adds source-confirmed conditional Autocomplete then Trending searches",
+    "2026-11-12 unattended pass: root close moved out of ScrollView into native toolbar; child navigation keeps native back. Exact original placement/action inputs remain partial."
+  ],
+  "classification": "independent SwiftUI host rebuilding the artifact-proven 293 legacy root; ConsumerIdentity alternative and live capability assignment remain separate",
+  "implemented_existing": [
+    "system/light/dark appearance and persistence",
+    "capability-fed accent picker",
+    "haptic preference and hardware gate",
+    "notification permission/read/request/manage/failure/retry",
+    "notification token registration interface and synthetic routing/unread state",
+    "Codex connection enable/reorder and composer follow-up/keyboard/context preferences",
+    "diff wrapping preference"
+  ],
+  "not_implemented": [
+    "ConsumerIdentity alternative root layout; live design experiment and full account capability assignment",
+    "Complete original SettingsSection geometry, material, transitions and all conditional layout branches",
+    "Real account data/edit/save, subscription purchase/restore, sign-out service and provider operations",
+    "Complete personalization trait catalog, memory capacity warnings, age warnings/editor and all remaining General/Voice branches",
+    "Parental, trusted-contact, safety, security, cloud-browser, Passwords, Ads, storage, data-control and help service behavior; only explicitly reported child lists are reconstructed",
+    "APNs push backend and actual delivery; physical haptic feel validation"
+  ],
+  "verification": {
+    "r1": {
+      "result": "ios-settings-module-20261112-r1.xcresult",
+      "passed": [
+        "haptic persistence (old root placement)",
+        "notification remote routing",
+        "Remote composer settings"
+      ],
+      "failed": [
+        "unavailable page entry: plain button spacer hit area"
+      ]
+    },
+    "r2": {
+      "result": "ios-settings-module-20261112-r2.xcresult",
+      "status": "finished",
+      "scope": [
+        "General haptic persistence",
+        "unavailable entry return and repeated entry"
+      ],
+      "passed": [
+        "Settings > General > haptics preference persists after restart",
+        "Unavailable page entered twice and returned to same root row"
+      ],
+      "failed": [
+        "Test expected home after closing Settings, but correct parent is sidebar; updated test to close sidebar explicitly."
+      ]
+    },
+    "r3": {
+      "result": "ios-settings-module-20261112-r3.xcresult",
+      "status": "passed",
+      "scope": "unavailable entry and full return path"
+    },
+    "root_topology": {
+      "result": "ios-settings-topology-root-20261112.xcresult",
+      "passed": [
+        "testSettingsRootTopologyChinese: all 14 root entries reachable; storage/help return preserves position",
+        "testHapticsPreferenceChinese: General route and restart persistence"
+      ],
+      "device": "simulator Chinese light",
+      "physical_device": "iPhone Air unavailable; not installed"
+    },
+    "readable_children": {
+      "result": "ios-settings-children-topology-20261112-r2.xcresult",
+      "passed": [
+        "personalization advanced expansion and nested return",
+        "memory summary exclusive branch and nested return",
+        "unimplemented plugin entry return/re-entry"
+      ],
+      "physical_device": "unavailable"
+    },
+    "general_list": {
+      "result": "ios-settings-general-list-20261112.xcresult",
+      "passed": [
+        "Chinese first-group order and spelling entry/back",
+        "Haptic preference restart persistence"
+      ],
+      "device": "simulator Chinese light"
+    },
+    "voice_topology": {
+      "result": "ios-settings-voice-topology-20261112-r2.xcresult",
+      "status": "passed",
+      "scope": "Chinese light five rows, order, return and repeated entry"
+    },
+    "safety_topology": {
+      "result": "ios-settings-safety-topology-20261112.xcresult",
+      "status": "passed",
+      "scope": "Chinese light four ordered entries, each child/back, root return/re-entry; pure independent gates"
+    },
+    "general_suggestions": {
+      "result": "ios-settings-general-suggestions-20261112.xcresult",
+      "status": "passed",
+      "scope": "Chinese light source row order, both unavailable entry/back, root return"
+    },
+    "root_passwords": {
+      "result": "ios-settings-root-passwords-20261112.xcresult",
+      "status": "passed",
+      "scope": "Chinese light reference entry reachability, Passwords and Storage return preserves scroll; no complete source topology claim"
+    },
+    "theme_passwords": {
+      "result": "ios-settings-theme-passwords-20261112.xcresult",
+      "status": "passed",
+      "tests": [
+        "testSettingsRootTopologyChinese",
+        "testSettingsThemeAndPasswordCapabilityChinese"
+      ],
+      "scope": "Chinese light labels/shared theme group, default password absence, positive password fixture entry and back; independent logic unknown/false/true"
+    },
+    "root_completion_r1": {
+      "result": "ios-settings-root-completion-20261112.xcresult",
+      "passed": [
+        "testSettingsAccountSourceConditionsChinese",
+        "testSettingsRootTopologyChinese",
+        "testSettingsThemeAndPasswordCapabilityChinese"
+      ],
+      "failed": [
+        "testSettingsSignOutChinese: transient progress query polled after short synthetic operation finished; failure AX already showed unavailable alert"
+      ],
+      "test_correction": "Assert immediate disabled/busy value, rather than delayed waitForExistence; product delay unchanged",
+      "visual_correction": "R1 sign-out black foreground was an incorrect truncated asset name; full instruction decode and exact asset catalog match corrected in r3"
+    },
+    "root_completion_r2": {
+      "result": "ios-settings-root-completion-20261112-r2.xcresult",
+      "status": "passed",
+      "passed": [
+        "testSettingsSignOutChinese",
+        "testSettingsUnavailableReturnChinese"
+      ],
+      "scope": "Chinese/light: confirmation cancel, busy repeat prevention, unavailable service, retry, account retained, sidebar return; shared group return"
+    },
+    "pure_state": {
+      "status": "passed",
+      "command": "swiftc Sources/FrontendSettingsTopology.swift Tests/SettingsTopology/main.swift -o /tmp/rea-settings-topology-root-tests && /tmp/rea-settings-topology-root-tests",
+      "scope": "Independent visibility/account conditions and sign-out account/request identity, duplicate/stale result rejection"
+    },
+    "root_completion_r3": {
+      "result": "ios-settings-root-completion-20261112-r3.xcresult",
+      "status": "passed",
+      "passed": [
+        "testSettingsSignOutChinese"
+      ],
+      "scope": "After exact color-resource fix: confirmation, cancel, immediate busy/disabled state, unavailable response, repeat operation and account/sidebar retained",
+      "screenshots": {
+        "normal": "ios-settings-root-completion-20261112-r3-attachments/9E420587-2814-4701-8CC8-BA401313935A.png",
+        "busy": "ios-settings-root-completion-20261112-r3-attachments/279785F6-195E-4649-B94C-49E358AEAF59.png"
+      },
+      "visual_observation": "Viewed final screenshots: original red label/icon visible; busy state has hidden label and centered progress indicator"
+    },
+    "fixed_close": {
+      "status": "passed",
+      "result": "ios-settings-fixed-close-20261112-r2.xcresult",
+      "scope": "Chinese/light; scroll to SignOut, fixed hittable close with stable y, dismiss/reopen, General entry/back, dismiss to sidebar",
+      "first_attempt": "Runner target name was incorrect; no product test ran; original result kept. Correct scheme target REAHostUITests used for r2.",
+      "physical_device": {
+        "build": "succeeded",
+        "install": "succeeded",
+        "launch": "succeeded",
+        "install_report": "ios-settings-fixed-close-20261112-device-install.json",
+        "launch_report": "ios-settings-fixed-close-20261112-device-launch.json",
+        "binary_sha256": "554ed1aafd2c2abd59571501026217a3dac38a64df242a535b46362406ab885c",
+        "limits": "Physical launch only; full manual interaction/haptic feel not observed"
+      }
+    }
+  },
+  "priority": "Frozen293 root branch/composition and source fidelity first; screenshots comparison only",
+  "delivery": {
+    "simulator": "current root-completion candidate installed and launched; left running",
+    "physical": "current root-completion candidate signed, installed and launched on iPhone Air; left running",
+    "preview_report": "ios-settings-root-completion-20261112-preview.json",
+    "physical_install": "ios-settings-root-completion-20261112-device-install.json",
+    "physical_launch": "ios-settings-root-completion-20261112-device-launch.json",
+    "physical_UI": "not automated in this batch; simulator UI regression is recorded separately"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "28bacd5414462ccbf0b30cfe7a610f07ff433d98c60216d9451ca23d007d7c9a",
+    "implementation/ios/Sources/FrontendHaptics.swift": "d41e4ec5ed35139d228a5703cb9ccba4d675f89e3aece0763d010efc434218cb",
+    "implementation/ios/Sources/FrontendSettingsTopology.swift": "5b5649f54bbcb0962b0905a9f6e86fe10a44624ce7696313d7f9d98a2f9cab6d",
+    "implementation/ios/UITests/HostInteractionTests.swift": "b52606f565c017747538392e302c01cbb7156cfb8e19d888ad9a1f04b8cd0b32",
+    "implementation/ios/Sources/OfficialText.swift": "697b1e92b66b9be33cfe359b0611674cfc25c3c5f1542816283fde03fba4bade"
+  },
+  "corrections_20261112_theme_passwords": {
+    "supersedes": "Earlier unconditional Passwords entry and reversed Appearance/Theme labels",
+    "theme": "293 labels: Theme heading, Appearance and Accent color rows; one SettingsHomeSection and one host surface",
+    "passwords": "293 showPasswordManager predicate exists; unknown/false hidden by explicit host admission policy, positive fixture reachable; original image unresolved",
+    "root_state": "visibleSurfaces belongs to upsell surfaces and does not prove full settings menu visibility",
+    "root_remaining": "Concrete SettingsHomeFormContent.rows constructor, legacy/refreshed root branch predicate, complete account row supply, original Passwords image",
+    "followup": "Root tree and legacy composition now closed; Passwords original key image resolved. Prior root_remaining is historical, see implemented_root_completion."
+  },
+  "historical_changes_note": "Earlier changes below are retained history. Current source-backed root composition and icon/color findings supersede earlier screenshot-based ordering, unresolved Passwords icon and absent SignOut statements.",
+  "implemented_root_completion": [
+    "293 legacy root: optional profile, optional upsell, Customize, Account, Theme, App settings, Get help, shared trailing SignOut; source generic tree and construction flow closed",
+    "Theme heading and Appearance/Accent color rows use original resources and one parent surface",
+    "Password manager entry is conditional; unknown/false hidden, positive fixture uses official key asset",
+    "App settings twelve ordered source slots and conditional Ads controls entry; unknown Ads capability hidden",
+    "Account rows preserve optional email/phone and independent age, age-verification, credits and organization-policy conditions; no fabricated real account values",
+    "SignOut uses official open-base-arrow-right asset, OneOff/Red500 resource, original localized confirmation, cancel and destructive confirm",
+    "Account-scoped sign-out operation guards duplicate and stale requests; busy overlay disables repeats; disconnected adapter returns unavailable and retains account data"
+  ],
+  "resource_validation": {
+    "original_instruction_report": "ios-settings-signout-detail-20261112-foreground-correction.json",
+    "color_name": "OneOff/Red500",
+    "asset_catalog": "implementation/ios/Resources/OfficialVisualAssets.bundle/Assets.car",
+    "light_srgb": [
+      0.8980392156862745,
+      0.047058823529411764,
+      0,
+      1
+    ],
+    "dark_srgb": [
+      0.8999999761581421,
+      0.05000000074505806,
+      0,
+      1
+    ],
+    "incorrect_previous_name": "OnOff/Red50",
+    "history_retained": true
+  },
+  "historical_attachment_correction": {
+    "path": "ios-settings-signout-busy-video-20261112.png",
+    "actual_content": "Confirmation alert at extracted video time20.5s, not busy state; filename overstates observed state",
+    "replacement_busy_evidence": "ios-settings-root-completion-20261112-r3-attachments/279785F6-195E-4649-B94C-49E358AEAF59.png"
+  },
+  "candidate": {
+    "iphonesimulator": {
+      "bundle": "local.rea.chatgpt.ioshost",
+      "build_version": "1",
+      "executable_sha256": "0d427e8304c07af41f21d172fb62bfc8b2d8858a8407adb670dcfd289d566537"
+    },
+    "iphoneos": {
+      "bundle": "local.rea.chatgpt.ioshost",
+      "build_version": "1",
+      "executable_sha256": "afca252c8edd5a671e9bdbbbbb08de3b7020ed8055c82999375de38858daf593"
+    }
+  },
+  "scope_update_20261112": {
+    "user_instruction": "设置只做拓扑和入口即可收尾；具体接入随对应功能恢复，例如Codex设置随Codex，主题外观随前端特效。",
+    "implemented_scope": "Source-proven selected293 legacy root and reported child topology, entries and return navigation; preserve existing preferences",
+    "deferred_ownership": {
+      "Codex": "Codex module owns connection, composer and task preference integration",
+      "theme_appearance": "Frontend visual/theme work owns appearance, accent, material and effects integration",
+      "other_settings": "Each corresponding sidebar/account/system feature owns child capability and service integration"
+    },
+    "limits": "Not a claim of every experiment branch, original account assignment or every child service implementation"
+  },
+  "gesture_haptics": {
+    "source": "ios-haptics-gesture-audit-20261112-findings.json",
+    "implemented": "Existing slider selection/boundary and accepted-file light feedback share Settings > General preference; no newly invented universal gesture feedback",
+    "unknown": "Sidebar dragHapticTracker to dispatch and list/message generic gesture callers remain unclosed"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "batch": "v548",
+  "status": "partial",
+  "scope": "Remote approval feedback frontend replay and native input verification",
+  "official_baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "reused_evidence": [
+    {
+      "file": "ios-remote-v414-feedback-calls.json",
+      "symbols": [
+        "0x1a1fa98",
+        "0x1a1f680",
+        "0x1cf342c",
+        "0x1cf3418"
+      ],
+      "observation": "Feedback is a distinct callback. Trim whitespace/newlines. Empty button dispatches deny; empty keyboard submission is a no-op. Nonempty submission clears local text before forwarding."
+    }
+  ],
+  "independent_adapter": [
+    "Existing request-scoped synthetic replay now handles feedback separately from approval/denial.",
+    "A valid feedback event resolves the synthetic pending request and starts a synthetic clarification response. No permission or command execution is granted.",
+    "Reject an empty feedback payload at the intent boundary. Preserve existing full-request comparison and duplicate resolution guard."
+  ],
+  "input_investigation": [
+    "v547 manual input/revision rejection remains unproven.",
+    "Follow-up UI captures the draft at view rendering; ordinary send snapshots at action time. This is a local implementation observation, not a proven cause.",
+    "v548 r1 failed before submission because the test expected lowercase n while native keyboard shift was active.",
+    "v548 r2 produced English prediction mishap for nihao. It failed before submission because the active native keyboard was English. Keyboard inventory contains Simplified Pinyin.",
+    "v548 r4 selected the installed Simplified Pinyin 9-key layout; its missing single-letter keys exposed another test-setup assumption before submission.",
+    "v548 r5 tapped the native 9-key groups and selected the Chinese candidate 你好. Ordinary send and running-turn queue both passed with exact submitted Chinese text and empty resulting draft.",
+    "The prior CUA/autocorrection rejection was not reproduced. No change was made to product input submission timing or stale-draft validation."
+  ],
+  "limitations": [
+    "Official service response to feedback is unknown.",
+    "Remote whole-page acceptance remains partial.",
+    "Physical device IME and haptics remain unverified."
+  ]
+}

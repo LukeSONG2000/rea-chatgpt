@@ -1,0 +1,38 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "copy",
+      "from",
+      "--device",
+      "00008150-001E34E93A12401C",
+      "--domain-type",
+      "appDataContainer",
+      "--domain-identifier",
+      "local.rea.chatgpt.ioshost",
+      "--source",
+      "Library/Application Support/REAOffline/host-launch-v1.json",
+      "--destination",
+      "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-startup-integration-device-selection-20261113.json",
+      "--timeout",
+      "15",
+      "--json-output",
+      "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-startup-integration-device-selection-copy-20261113.json"
+    ],
+    "commandType" : "devicectl.device.copy.from",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "destination" : "file:///Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-startup-integration-device-selection-20261113.json",
+    "deviceIdentifier" : "5998651F-A691-5FB2-A351-40FBCBA8081B",
+    "domain" : "appDataContainer",
+    "domainIdentifier" : "local.rea.chatgpt.ioshost",
+    "source" : "Library/Application Support/REAOffline/host-launch-v1.json"
+  }
+}

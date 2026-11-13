@@ -1,0 +1,188 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "ordinary Remote ComposerWhisper content pushToTalkMode producer, owner storage and mode projection",
+  "evidence_type": "official_artifact_static",
+  "runtime_verified": false,
+  "corrections": [
+    {
+      "previous": "v532 style report described pushToTalkMode as Bool and attributed object+8 to16de388",
+      "corrected": "16de388 supplies type addresses for copying hapticEngine. x25+8 at16f648c is ComposerWhisperWaveformData.pushToTalkMode, a three-case enum. Ordinary content false argument controls usesTextInputInsets only."
+    }
+  ],
+  "enums": [
+    {
+      "name": "ChatGPTWhisperInterface.WhisperPushToTalkMode",
+      "descriptor": "0x96b2464",
+      "type_reference": "0x8df3d54",
+      "accessor": "0x5c374ec",
+      "cases": [
+        "disabled",
+        "tapToSend",
+        "releaseToSend"
+      ]
+    },
+    {
+      "name": "ChatGPTMessageInputUI.MessageInputWhisperPushToTalkMode",
+      "descriptor": "0x96cacb4",
+      "type_reference": "0x8df32a4",
+      "accessor": "0x60c5734",
+      "cases": [
+        "disabled",
+        "releaseToSend",
+        "tapToSend"
+      ]
+    }
+  ],
+  "waveform_producer": {
+    "function": "0x16e5534",
+    "return_type": "ComposerWhisperWaveformData?",
+    "struct_descriptor": "0x95a5150",
+    "fields": {
+      "samples": 0,
+      "pushToTalkMode": 8,
+      "hapticEngine": 16,
+      "sessionID": "runtime metadata offset"
+    },
+    "live_session": {
+      "branch": "0x16e5570..0x16e55fc",
+      "owner_slot_helper": "0x179b020",
+      "owner_slot": "ComposerWhisperViewModel.session at offset storage0xb07da00",
+      "sample_getter": "0x16ed418",
+      "mode_getter": "0x16ed46c"
+    },
+    "no_session": {
+      "branch": "0x16e5600..0x16e56bc",
+      "state_getter": "0x16ec8fc reads _stateStorage via offsetstorage0xb1c5118",
+      "type_reference": "0x8df31de resolves DefaultComposerWhisperState descriptor0x95a6dd4",
+      "condition": "top-two-bit tag==1 requestingMicrophonePermission",
+      "mode": "state payload byte1, shift at16e5624..16e562c",
+      "samples": "startingWaveformSamples getter16ed3a8",
+      "other_states": "nil waveform data"
+    },
+    "mode_projection": {
+      "instructions": [
+        "0x16e558c..0x16e559c",
+        "0x16e5624..0x16e5634"
+      ],
+      "formula": "outputByte = UInt8(truncatingIfNeeded: UInt32(0x10200) >> (UInt32(inputMode) * 8))",
+      "mapping": [
+        {
+          "source_raw": 0,
+          "target_raw": 0,
+          "name": "disabled"
+        },
+        {
+          "source_raw": 1,
+          "target_raw": 2,
+          "name": "tapToSend"
+        },
+        {
+          "source_raw": 2,
+          "target_raw": 1,
+          "name": "releaseToSend"
+        }
+      ]
+    },
+    "consumer": "16f648c reads output+8;16f64ec passes asw1 to6073888 WhisperPart initializer; value retained atPart+28"
+  },
+  "owner": {
+    "name": "WhisperViewModel",
+    "class": "0xadd6ce0",
+    "descriptor": "0x95a667c",
+    "property": "_pushToTalkMode",
+    "offset_storage": "0x7dee258",
+    "object_offset": 48,
+    "read": {
+      "function": "0x16ed46c",
+      "load": "0x16ed4a4 ldrb [self,#0x30]",
+      "observation_access": "0x16ed484..0x16ed4a0"
+    },
+    "write": {
+      "function": "0x1758db8",
+      "equality_guard": "0x1758dcc..0x1758dd4",
+      "observation_mutation_closure": "0x1fbb18",
+      "store": "0x1fbb20 strb [owner,#0x30]"
+    },
+    "initialization": {
+      "constructor": "0x1770910",
+      "input": "entry stack+0x59 (callee fp+0x69)",
+      "capture": "0x1770a18..0x1770a20",
+      "write": "0x1770f5c..0x1770f64",
+      "allocator_forwarder": "0x1770678 receives stack+59 within halfwordfp+68; forwards stack+58 halfword at1770870 to1770910",
+      "composer_session_creator": "0x16eff34 inputw0 saved16eff64, reloaded16f0760 and writtenstack+59 at16f0764; calls1770678 at16f0824",
+      "conclusion": "session mode is supplied by activation, with no fixed disabled initializer on this constructor path"
+    },
+    "known_mutations": [
+      {
+        "pc": "0x16f1cd4..0x16f1cdc",
+        "value": "WhisperPushToTalkMode.tapToSend raw1",
+        "condition": "larger16f189c branch not semantically closed"
+      },
+      {
+        "pc": "0x175ff30..0x175ff40",
+        "value": "WhisperPushToTalkMode.tapToSend raw1",
+        "condition": "weak owner exists in175fa28 async branch; event condition remains unbound"
+      },
+      {
+        "pc": "0x175a27c..0x175a290",
+        "value": "external binding suppliedbyte",
+        "condition": "setter thunk"
+      }
+    ]
+  },
+  "activation_forwarding": {
+    "capture": "1785928 closure reads captured byte at178597c and forwardsw7 at17859a4",
+    "async": "16ef48c storesw7 atasynccontext+101 (16ef4a8)",
+    "permission_success": "16ef63c checks permissionresultbyte+158==1;16ef668 reloadsmode+101 into w0;16ef674 calls16eff34",
+    "unclosed": "allocation/capturedbyte writer for1785928 closure, and ordinary mic gesture event to that activation producer"
+  },
+  "actionable": {
+    "safe": "Use a three-case typed presentation mode with semantic mapping. For explicit disabled fixture mode, choose raw0. Requesting-permission waveform data can use staged mode before a session exists. Preserve live session mode thereafter.",
+    "ordinary_remote_default": "unknown; no hardcoded false/disabled claim supported yet",
+    "initialization_contract": "activation supplies mode, session retains it; presenter maps semantic enum to MessageInput enum",
+    "limit": "does not establish microphone/audio service execution, dynamic feature gates or gesture-to-mode defaults"
+  },
+  "unknowns": [
+    {
+      "question": "What mode is selected by ordinary Remote idle mic tap?",
+      "breakpoint": "1785928 closure captured mode atdynamicoffset+0x10; producer that allocates/writes capture not bound. Upstream mic event dispatcher16eaa54 receives ComposerWhisperStateEvent but its activation successor is not fully connected."
+    },
+    {
+      "question": "Which gesture/phase changes mode to tapToSend?",
+      "breakpoint": "16f189c branch containing16f1cdc, and175fa28 branch containing175ff40 have fixedraw1 writes but eventconditions remain unresolved."
+    }
+  ],
+  "evidence_files": [
+    "ios-remote-v533-dictation-activation-capture.asm",
+    "ios-remote-v533-dictation-activation.asm",
+    "ios-remote-v533-dictation-event-dispatch.asm",
+    "ios-remote-v533-dictation-mic-event-consumer.asm",
+    "ios-remote-v533-dictation-mode-getter.asm",
+    "ios-remote-v533-dictation-mode-setter-write.asm",
+    "ios-remote-v533-dictation-mode-setter.asm",
+    "ios-remote-v533-dictation-mode-transition.asm",
+    "ios-remote-v533-dictation-owner-alloc.asm",
+    "ios-remote-v533-dictation-owner-init.asm",
+    "ios-remote-v533-dictation-session-constructor.asm",
+    "ios-remote-v533-dictation-session-mode-forward.asm",
+    "ios-remote-v533-dictation-slot-helpers.asm",
+    "ios-remote-v533-dictation-storage-getter.asm",
+    "ios-remote-v533-dictation-waveform-producer.asm",
+    "ios-remote-v533-dictation-mode-metadata.json",
+    "ios-remote-v533-dictation-mode-refs.json",
+    "ios-remote-v533-dictation-mode-owner-refs.json",
+    "ios-remote-v533-dictation-mode-writers.json"
+  ],
+  "validation": {
+    "three_mode_projection": "all3 semanticcases manuallychecked from0x10200 shift",
+    "official_execution": false,
+    "production_modified": false,
+    "audio_or_network_used": false
+  }
+}

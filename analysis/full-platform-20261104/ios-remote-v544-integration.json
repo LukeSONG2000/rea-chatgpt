@@ -1,0 +1,277 @@
+{
+  "batch": "v544",
+  "date": "2026-11-07",
+  "status": "partial",
+  "scope": "iOS Remote frontend minimum-usable page",
+  "official_baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Restore a noninteractive Glass background with persistent foreground controls outside GlassEffectContainer, following the established v469-v475 independent-host fix.",
+    "Retain original custom primary button style; automatic-style probe failed and was reverted.",
+    "Add English/dark follow-up-menu regression and failure-only attachment-menu diagnostics.",
+    "Correct the workspace rule that required the complete official Glass parent graph in this host; retain the official graph as separate evidence."
+  ],
+  "source_boundary": {
+    "official_observation": "iOS293 field background -> clip -> Glass at 0x1983814 and outer GlassEffectContainer at 0x19827d0.",
+    "independent_host_adaptation": "Glass/background separation repairs Menu dispatch in this host. Official-runtime equivalence remains unverified.",
+    "pending_prompt": "Row/Menu/Content/Bubble metadata and body entries were located. Action kind gates and UI projection remain partial.",
+    "evidence": [
+      "ios-remote-v544-pending-prompt-findings.json",
+      "ios-remote-v544-anchor-findings.json"
+    ]
+  },
+  "acceptance_dimensions": {
+    "structure": "部分实现",
+    "components": "部分实现",
+    "interaction": "部分实现",
+    "appearance": "部分实现",
+    "verification": "部分实现"
+  },
+  "visual_dimensions": {
+    "geometry": "部分实现",
+    "effects_shadow_glass": "部分实现",
+    "animation_transition": "部分实现",
+    "typography": "部分实现",
+    "colors": "部分实现",
+    "dark_mode": "部分实现",
+    "haptics": "部分实现",
+    "notifications": "部分实现"
+  },
+  "open_items": [
+    {
+      "id": "remote-attachment-source-frame",
+      "page": "Remote Home composer",
+      "priority": "P1",
+      "status": "部分实现",
+      "missing_behavior": "键盘展开后附件菜单偏离按钮且文件项不可点击",
+      "evidence_boundary": "Source view y780 versus displayed button y486 in r5/r8. SafeAreaBar source-window coordinate ownership remains unresolved.",
+      "next_action": "核对官方geometry-in-window/displayOffset生产者与宿主SafeAreaBar坐标接线",
+      "acceptance": "紧凑输入→附件选择取消→键盘输入→菜单文件选择→返回草稿，浅深色原断言通过"
+    },
+    {
+      "id": "remote-queue-steer",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "排队、引导、队列取消缺少可操作回放",
+      "evidence_boundary": "普通文本回放仅接受normal intent",
+      "next_action": "扩展现有动作适配器与队列状态投影",
+      "acceptance": "运行中追加、改为引导、取消队列均按任务隔离"
+    },
+    {
+      "id": "remote-attachments-feedback",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "附件提交与审批补充输入未闭合",
+      "evidence_boundary": "现有验证返回unsupported/awaiting状态",
+      "next_action": "连接附件元数据与补充输入到统一合成适配器",
+      "acceptance": "含附件与补充输入的合成任务能完成、失败和恢复"
+    },
+    {
+      "id": "remote-message-projection",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "新回放正文仅基础文本，工具及附件保持静态",
+      "evidence_boundary": "官方消息模型到动态组件消费者仍有缺口",
+      "next_action": "按既有证据接内容块与工具活动投影",
+      "acceptance": "同一任务动态展示Markdown、代码、表格、工具输出、附件及块内操作"
+    },
+    {
+      "id": "remote-reading-restore",
+      "page": "Remote list and conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "阅读锚点与进程恢复未闭合",
+      "evidence_boundary": "当前仅内存回复／草稿和主动尾部跟随",
+      "next_action": "按页面身份存储阅读位置并验证重进与重启",
+      "acceptance": "A-B-A及重启恢复准确位置，用户阅读时增量不抢滚动"
+    },
+    {
+      "id": "remote-task-create",
+      "page": "Remote list",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "项目新建任务尚无完整本地页面闭环",
+      "evidence_boundary": "已有入口与草稿隔离，创建结果仍需适配",
+      "next_action": "连接合成创建事件与任务身份",
+      "acceptance": "项目入口新建、返回列表、重新打开同一合成任务"
+    },
+    {
+      "id": "remote-layout",
+      "page": "Remote list and conversation",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "详情标题靠左、极大字号分组重叠仍待验证",
+      "evidence_boundary": "既有v538-v541父链边界",
+      "next_action": "核心普通字号完成后定向恢复父布局",
+      "acceptance": "同状态源码与截图核对、核心操作可达"
+    },
+    {
+      "id": "theme-matrix",
+      "page": "All stage1 pages",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "完整system/light/dark切换与弹层状态恢复未验收",
+      "evidence_boundary": "本批只覆盖中文浅色／英文深色回放",
+      "next_action": "按页面验证系统跟随、显式设置、重启及透明度／动态效果设置",
+      "acceptance": "所有宿主和弹层主题一致且草稿选区锚点保留"
+    },
+    {
+      "id": "device-platform",
+      "page": "All stage1 pages",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "真机触感、实际通知送达与Android适配待验收",
+      "evidence_boundary": "当前仅iOS模拟器，只有内置显示器",
+      "next_action": "iOS核心合同稳定后独立推进Android；设备可用后验收触感",
+      "acceptance": "平台独立运行证据与设备触感／通知结果"
+    }
+  ],
+  "validation": {
+    "status": "partial",
+    "model_log": "ios-remote-v544-model.log",
+    "historical_attempts": [
+      {
+        "summary": "ios-remote-v544-r1-style.summary.json",
+        "result": "Failed",
+        "passed": 0,
+        "failed": 1
+      },
+      {
+        "summary": "ios-remote-v544-r10-final.summary.json",
+        "result": "Passed",
+        "passed": 8,
+        "failed": 0
+      },
+      {
+        "summary": "ios-remote-v544-r2-glass.summary.json",
+        "result": "Passed",
+        "passed": 1,
+        "failed": 0
+      },
+      {
+        "summary": "ios-remote-v544-r3-regression.summary.json",
+        "result": "Failed",
+        "passed": 4,
+        "failed": 4
+      },
+      {
+        "summary": "ios-remote-v544-r4-keyboard.summary.json",
+        "result": "Failed",
+        "passed": 4,
+        "failed": 2
+      },
+      {
+        "summary": "ios-remote-v544-r5-attachment-probe.summary.json",
+        "result": "Failed",
+        "passed": 0,
+        "failed": 1
+      },
+      {
+        "summary": "ios-remote-v544-r6-anchor-probe.summary.json",
+        "result": "unknown",
+        "passed": 0,
+        "failed": 0
+      },
+      {
+        "summary": "ios-remote-v544-r7-anchor-probe.summary.json",
+        "result": "Failed",
+        "passed": 0,
+        "failed": 1
+      },
+      {
+        "summary": "ios-remote-v544-r8-anchor-probe.summary.json",
+        "result": "Failed",
+        "passed": 0,
+        "failed": 1
+      },
+      {
+        "summary": "ios-remote-v544-r9-anchor-fix.summary.json",
+        "result": "Failed",
+        "passed": 0,
+        "failed": 2
+      }
+    ],
+    "visual": "Chinese/light and English/dark follow-up menus and focused composer inspected. Final Chinese Remote list visibly verified through Device Hub. Whole-page parity remains partial.",
+    "current_failure": "Home attachment menu after picker cancellation and keyboard focus has a source-frame mismatch. Both light/dark tests fail; r9 SwiftUI global geometry probe was reverted.",
+    "final_ui": {
+      "summary": "ios-remote-v544-r10-final.summary.json",
+      "result": "Passed",
+      "passed": 8,
+      "failed": 0
+    },
+    "distinct_cases": {
+      "count": 10,
+      "passed": 8,
+      "open_failed": 2
+    },
+    "model": "passed",
+    "failures_retained": [
+      "r1 outer automatic button style failed and was reverted.",
+      "r3 four keyboard-dependent cases failed with software keyboard offscreen. Device Hub hardware-keyboard simulation was disabled and actual software keyboard verified. r4/r10 geometry cases passed unchanged assertions.",
+      "r4/r5/r7/r8/r9 focused attachment menu hit testing failed. r6 diagnostic build failed because NSStringFromCGRect is unavailable; corrected logging compiled in r7. All temporary source logs and r9 geometry bridge were removed.",
+      "r10 final production code passed eight replay/menu/geometry cases. Focused Home attachment menu remains an open failure."
+    ]
+  },
+  "launch": {
+    "build": "544",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "pid": 89903,
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay"
+    ],
+    "language": "system",
+    "appearance": "system",
+    "sign_verify": "passed",
+    "install": "passed",
+    "visible": "Chinese Remote task list",
+    "left_running": true,
+    "screenshot": "ios-remote-v544-preview.png"
+  },
+  "next_page_order": [
+    "Close Remote minimum usable loop",
+    "Chat/Work lists and conversations",
+    "Built-in file/browser preview",
+    "Settings linked to adapted functions",
+    "Stage2 sidebar feature packages"
+  ],
+  "delivery": {
+    "commit": "not performed",
+    "push": "not performed",
+    "release": "not performed",
+    "device": "simulator only",
+    "preview": "Chinese Remote list left running",
+    "display": "Only built-in Color LCD detected; external display placement remains unaccepted.",
+    "build_retention": "Fixed iOS build path reused. Retention dry-run has no removable complete packages."
+  },
+  "source_snapshots": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "9a02706d26e65e20445c2c39bd80f8020564d64241937ec82d7cecc3a5e3f30a"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "d65ba04119ea858282740ffcd6cf479b139f21543ce520d889b494f8cac94d81"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteAttachmentMenu.swift",
+      "sha256": "90ae2c6727e4edeea4774d402a8b1f0d3503a8e2d2000e32911ef8768b87e4d4"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "f2c060214c7a4e1a5e0f5b80b96879a30577b1faeea5bea916c798554d013547"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "40047b4fca99d18e8cee64e2ccd56e5dccdabd5764ad7fff09801cf872b9f09e"
+    }
+  ]
+}

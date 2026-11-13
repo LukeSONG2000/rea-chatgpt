@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "scope": "ModelSliderControl local presentation callbacks",
+  "findings": [
+    {
+      "offsets": [
+        "0x1ce5bd8",
+        "0x199a60c"
+      ],
+      "conclusion": "Entry invokes picker creation with raw appearance 0. Existing nonnil presentedPicker prevents replacement and returns false.",
+      "validation": "static"
+    },
+    {
+      "offsets": [
+        "0x1ce58cc",
+        "0x1ce5910",
+        "0x460c28",
+        "0x199a450"
+      ],
+      "conclusion": "Sheet content callback sets presentsSliderAfterConfigurationDismissal true and transforms presentation state.",
+      "validation": "static",
+      "limitations": [
+        "0x7553884 transformation body not fully decoded."
+      ]
+    },
+    {
+      "offsets": [
+        "0x1ce599c",
+        "0xdf2df0",
+        "0x6f8f7c",
+        "0x6fd508",
+        "0x199a60c"
+      ],
+      "conclusion": "Callback passed as x3 to 0x62a9a08 checks and clears pending return flag, requests picker with raw appearance 1.",
+      "validation": "static",
+      "limitations": [
+        "Generic parameter semantic at 0x62a9a08 unresolved; onDismiss remains a hypothesis."
+      ]
+    },
+    {
+      "offsets": [
+        "0x199a71c",
+        "0x199a734",
+        "0x199a7cc"
+      ],
+      "conclusion": "Creation packs 0x4001 with appearance argument shifted by 8, calls constructor 0x60a03b0.",
+      "validation": "static",
+      "limitations": [
+        "sourceMorph/fade metadata exists, raw tag mapping unproved."
+      ]
+    }
+  ],
+  "unknowns": [
+    "Drag capture and cancellation",
+    "Transition blur and source geometry",
+    "Haptic triggers",
+    "Full advanced return lifecycle"
+  ],
+  "tool_limitations": [
+    "Field offset helper supports kind7, Swift class kind1 invocation failed; no offsets inferred."
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-callbacks.asm",
+      "sha256": "915576d8326a0778a6c48c0a8f89591cf65ae8f2012863fb21095837efc16dd5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-callbacks.json",
+      "sha256": "85657687983e8106aae9b9b552e87ccc22732dd577dd503611db88fc6c4f17b8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-configuration-dismiss.asm",
+      "sha256": "8e7b383b6d69dfaffc9b1a94df7f24679878bbfa8f17cb45fc0c53f8755542ed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-configuration-dismiss.json",
+      "sha256": "524fa4b9359b149de83c4ce8e30cb8fd16ae9f20fc1fc73420552b6dc5a8edff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-control-metadata.json",
+      "sha256": "e3b2aa0dda60b253a7dd5caadefda28b53bcd729ab103a0d97b550c481213064"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-control-witness.json",
+      "sha256": "d783c11b7c4210736ba473b9b83dc33550fb183ec24c597c8732810e47242a6b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-dismiss-helper.asm",
+      "sha256": "3c04a1dfe004388cff7002e1335c239aff7d1329a64727aa75938b2432d28072"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-dismiss-helper.json",
+      "sha256": "89c34b2db34475694852f0918e886c3dc8026149f72445832926e24b04d60391"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-lifecycle-helpers.asm",
+      "sha256": "ec9794aaa60cef3e1e47f68dd5cc4054d78f357f19a2e8f9cea2b5ce374d6dbd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-lifecycle-helpers.json",
+      "sha256": "9abfc334d4530dc9b5f85e1aff40526e23750723676a5a8ee09c8123ad4285b3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-modifier.asm",
+      "sha256": "98bfb6676e1dd8847b28e57f43f0bffb62b6dae70cda0dfb5e188417260d9e52"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-modifier.json",
+      "sha256": "717360eae28e7137db1030d14276e191dc2ae58ed5b700a8ede125e47fb8be58"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-presentation-types.json",
+      "sha256": "770e28b8ce893a964a9f2dc054c2d029a898ebb08a40b6f4e0016efd88eaabc4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-return-appearance.asm",
+      "sha256": "3cfcb37a53959d9a7cb4d55579abbdf6edd47f1498e599253baedaf89a148e2e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-return-appearance.json",
+      "sha256": "21153c47e1606c2eeed94a2a95772c8dc16d2d8e5aaacb9f5abcca192371e840"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-return-flag-one.asm",
+      "sha256": "c5a90181f9fcfabe8121dd88010614094a506b30120a11d9237c88b3749a9edf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-return-flag-one.json",
+      "sha256": "c5a56abae693857958dfe62fe6926b92c3e1e7eed0be8bde0d036540861614cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-return-flag-zero.asm",
+      "sha256": "9a40b1095475e94e48637b530febfd4c8618a208b0ee4ad4fcf720c4a67b73ec"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-return-flag-zero.json",
+      "sha256": "4b69ee61ae0fb45a8075a0b6e1e171ee354cad1250642aaf9d93601b572c972e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-state-accessors.asm",
+      "sha256": "fb525b0c0ed7fed154f617cbffca5b4a3c6feed4ee1cd660ab83409896e974ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-state-accessors.json",
+      "sha256": "8e54d60370443eab78f35466fdcb247fdf18591ec2a95eacaea5a5d906f2d007"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-state-init.asm",
+      "sha256": "f045b875516bbaf72cb173144676306d3dfebf0597f9d715dcfae0b17b3e639a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-state-init.json",
+      "sha256": "77ff53ad526ffc2f2dfa8133a04668d4d8878f18686b695c54dce99f898acba4"
+    }
+  ]
+}

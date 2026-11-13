@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "module": 8,
+  "module_name": "Files and browser, fourth pass",
+  "date": "2026-11-13T08:45:52.204848+08:00",
+  "platform": "iOS",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "Core frontend implemented; bounded current checks passed; incomplete original fidelity explicitly retained",
+  "previous_snapshot": "ios-files-browser-parent-current-20261113-r2.json",
+  "previous_goal_turn": "progress: module7 whole-page current loop passed and archived, advancing the authoritative plan to module8",
+  "source_reports": [
+    "ios-files-directory-fourth-20261113-findings.json",
+    "ios-files-preview-fourth-20261113-findings.json",
+    "ios-files-fourth-text-20261113-r2.json"
+  ],
+  "implemented_this_pass": [
+    "Directory failure now uses original title key, exact293 Chinese/English resources and original exclamation-mark-triangle asset; Retry reuses original resource. Removed unsupported local borderedProminent override, retaining inherited native ContentUnavailableView styling.",
+    "Separate provider-admitted Optional<String> markdownContents from initial reading mode. A mode choice or filename alone cannot admit the Display menu; present-empty content stays available.",
+    "Markdown renderer consumes admitted markdownContents; raw reader/share bytes stay separate. Provider classification and basic renderer remain explicit adapters.",
+    "New reading state defaults Markdown per293 constructor; a valid native1-based linked line opens Raw. Explicit provider selection remains separate; no disk/service preference invented.",
+    "Native linked-line validation uses independent NSString logical-line counting; invalid/empty resources remain safe and do not copy the original empty-array trap.",
+    "Corrected prior LabelStyle and RequestState closure-role misattributions and recorded evidence-backed rules without changing historical snapshots."
+  ],
+  "retained_core": [
+    "Remote scoped directory loads/cancel/retry/empty/unsupported and parent paths",
+    "QuickLook images/PDF/text/code/RTF adapter",
+    "Source citation UTF16 line positioning, full text scroll/selection, URL sharing",
+    "Independent offline WK title/address/progress/error/retry/back/forward/reload/close",
+    "Task-scoped draft/read-anchor and restart contracts"
+  ],
+  "source_corrections": [
+    {
+      "old": "ios-files-directory-third-20261113-findings.json: F3-row-style-and-disclosure.label.label_style",
+      "corrected": "7565e40 ->75861dc/40d148 ->7565f30 constructs Label<Text,Image>.init(title:icon:), not LabelStyle. No fixed metrics derived."
+    },
+    {
+      "old": "third report RequestState loading/loaded closure names",
+      "corrected": "1d2ca38 forwards successful list/empty content;19cbdb8 supplies failure;1d2ca40 dispatches typed retryTapped owner. Default loadingPart still unknown."
+    },
+    {
+      "old": "toolbar witness+0x20 predicate and keypath7e13558 owner unknown",
+      "corrected": "Concrete getter1a15b64 returns VM+38 Optional<String> markdownContents. Keypath root is separate ReadingState with default1/Markdown and valid-linked-line raw0 mutation."
+    }
+  ],
+  "independent_boundaries": [
+    "Frontend provider supplies Markdown body and optional configured initial selection; original complete CodeLanguage aliases/resource dispatch are not recovered.",
+    "NSString count/indexing including trailing-empty-line policy is the native reader adapter, not the original VM.lines producer. Original cache key/old-reading-state lifetime remains unknown.",
+    "Directory description remains a fixed host retry/return explanation; original failure closure renders a provider String. Current loadGeneration/cancellation/identity are independent contracts, not official request transport.",
+    "UIKit/QuickLook, basic native blocks/Markdown rendering and offline WebKit browser remain explicit independent hosts; page operation does not prove complete original visual equality."
+  ],
+  "not_implemented": [
+    "Original complete format/language classifier aliases and openFile dispatch",
+    "Original VM.lines production, reading-state cache identity/reuse/lifetime and original per-mode reading restoration",
+    "Full original Markdown/source renderer, syntax highlighting, gutters/comments and exact parent environment",
+    "Concrete RequestState default loading child/configuration and upstream error-to-provider-String mapping",
+    "Effective Remote-to-ManagedSafari policy, custom builder/fullscreen routing and native Safari load tracking; offline WK frontend remains separate",
+    "Wide-screen selection, long-directory restoration guarantee and Office/HEIC/large-file validation",
+    "Real resource acquisition/auth/download services, outside frontend implementation scope",
+    "Unproved file/list/share/browser explicit haptic triggers and physical tactile playback"
+  ],
+  "haptics": {
+    "source_result": "No direct emitter proved in the bounded original directory retry/Label or source-mode/ReadingState/linked-line paths; no new trigger added.",
+    "general_route": "Settings -> General -> Haptic feedback",
+    "existing_storage_key": "rea.preview.hapticsEnabled",
+    "existing_gates": "preference + hardware support + active application; cancellation/duplicate suppression retained",
+    "system_implicit_feedback": "separate, not controlled or claimed by the explicit app gate",
+    "physical_verified": false
+  },
+  "verification": {
+    "pure": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "result": "passed",
+      "log": "ios-files-fourth-20261113-text.log",
+      "scope": "Directory/file identities, cancellation/stale/retry, UTF-16/native lines, separate Markdown body/mode, present-empty/nil admission, default and valid/invalid linked-line selection, resource labels and existing frontend contracts"
+    },
+    "ui": [
+      {
+        "test": "testRemoteFilesChinese",
+        "result": "passed",
+        "seconds": 90.217,
+        "scope": "directory failure original title/Retry, retry, root/child/full QuickLook text, empty folder, parent navigation, close, original task reading/draft and host isolation"
+      },
+      {
+        "test": "testRemoteMarkdownFileModesChinese",
+        "result": "passed",
+        "seconds": 72.105,
+        "scope": "default parsed Markdown heading, raw/rendered switches, browser details/back/close into same file/mode, optional URL sharing, empty-folder source description, original task return"
+      }
+    ],
+    "ui_result": "ios-files-fourth-20261113-r1.xcresult",
+    "summary": "ios-files-fourth-20261113-r1-summary.json",
+    "screenshots_reviewed": [
+      "ios-files-fourth-20261113-r1-attachments/1F0E628C-2A74-4822-A917-AB84E8CD73DD.png",
+      "ios-files-fourth-20261113-r1-attachments/27DA2BE2-28E1-4EDA-B3FE-5C199E67A181.png"
+    ],
+    "not_repeated": "Unchanged image/PDF/RTF/unsupported formats, Chat/Work long-browser return, browser failure/retry and theme/English/dark matrices retain historical checks; not reclassified as current runs.",
+    "network_or_share_destination_used": false
+  },
+  "runtime": {
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture",
+      "--remote-command-message-fixture",
+      "--remote-search-message-fixture",
+      "--remote-search-action-fixture",
+      "--remote-file-message-fixture",
+      "--remote-review-message-fixture",
+      "--remote-rich-message-fixture",
+      "--remote-linked-file-fixture",
+      "--remote-file-citation-fixture",
+      "--browser-preview-fixture",
+      "--chat-browser-fixture",
+      "--remote-model-slider-fixture",
+      "--remote-permission-fixture",
+      "--remote-context-usage-fixture",
+      "--remote-thinking-group-fixture",
+      "--remote-history-group-fixture",
+      "--remote-latest-group-fixture",
+      "--remote-project-sort-menu-fixture",
+      "--remote-task-controls-fixture",
+      "--chat-state-profile=C455DFF0-A7B7-4011-8101-6D2EF39A8A1B",
+      "--remote-draft-profile=C455DFF0-A7B7-4011-8101-6D2EF39A8A1B",
+      "--auth-state-profile=C455DFF0-A7B7-4011-8101-6D2EF39A8A1B",
+      "-AppleLanguages",
+      "(zh-Hans)",
+      "-AppleLocale",
+      "zh_CN",
+      "-rea.preview.appearance",
+      "light"
+    ],
+    "profile": "C455DFF0-A7B7-4011-8101-6D2EF39A8A1B",
+    "pid": 69089,
+    "built_executable_sha256": "1792c304c8e6a547440a08d1696149cf53cc18411bc0c8824bfdb4dd324c4d97",
+    "installed_executable_sha256": "1792c304c8e6a547440a08d1696149cf53cc18411bc0c8824bfdb4dd324c4d97",
+    "installed_app": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/5C19C731-9BC2-46CD-A3F4-A612818997C6/REAChatGPTHost.app",
+    "process_verified": "69089 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/5C19C731-9BC2-46CD-A3F4-A612818997C6/REAChatGPTHost.app/REAChatGPTHost --offline-fixture --codex-home-fixture=tasks --remote-interactive-replay --remote-attachment-all-capabilities-fixture --remote-command-message-fixture --remote-search-message-fixture --remote-search-action-fixture --remote-file-message-fixture --remote-review-message-fixture --remote-rich-message-fixture --remote-linked-file-fixture --remote-file-citation-fixture --browser-preview-fixture --chat-browser-fixture --remote-model-slider-fixture --remote-permission-fixture --remote-context-usage-fixture --remote-thinking-group-fixture --remote-history-group-fixture --remote-latest-group-fixture --remote-project-sort-menu-fixture --remote-task-controls-fixture --chat-state-profile=C455DFF0-A7B7-4011-8101-6D2EF39A8A1B --remote-draft-profile=C455DFF0-A7B7-4011-8101-6D2EF39A8A1B --auth-state-profile=C455DFF0-A7B7-4011-8101-6D2EF39A8A1B -AppleLanguages (zh-Hans) -AppleLocale zh_CN -rea.preview.appearance light",
+    "ui_observed": true,
+    "left_running": true,
+    "observed_surface": "Ordinary home -> sidebar -> Codex -> fixture-a/shared-thread -> Files. Synthetic workspace directory is open, task approval untouched; left for user interaction.",
+    "screenshot": "ios-files-fourth-20261113-live.png",
+    "external_display_position": "not verified this pass"
+  },
+  "physical_device": {
+    "build_result": "passed",
+    "build_log": "/tmp/rea-files-fourth-20261113-device-build.log",
+    "retained_build_tail": "ios-files-fourth-20261113-build-tail.log",
+    "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+    "executable_sha256": "1a45127c9c55d286aece6532171e3d7a2576fc271d8ac36ad88b176f8f595370",
+    "bundle_version": "1",
+    "signature_result": "strict deep verification passed",
+    "signature_log": "ios-files-fourth-20261113-signature.log",
+    "preflight": "/tmp/rea-files-fourth-20261113-devices-final.json",
+    "device": "00008150-001E34E93A12401C",
+    "state": "unavailable",
+    "ddi_services_available": false,
+    "installed_this_pass": false
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "c0bc0e4c447f276c8a1c925117df26f184ae57d75dd483aaa4a1b9f0a51fc90c"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendFilePreview.swift",
+      "sha256": "f4dbc5d61fa8fd9a0aaab36f392889abfbe9c8dd06732925ba2419348a0d5dc6"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendBrowserPreview.swift",
+      "sha256": "6ae8fac51b6603fbcda460fecd675b2ec417b84f92caa2d99c9210155dffc5cd"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteComposerInteraction.swift",
+      "sha256": "43a8b2c2b3eb2377b9d0a95ae2c4c45f33ddac19377dd6de287b7444839fdedf"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "106ad604b7455b404a3b4a6043c2d6bf030f260e7908af1e5b19841d86c851c7"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "06a5aae48cca7ffd04297b3c0df93b55f7818f31cc1855f93ed595ab08029ddd"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "ad626750719432a064fc85df5ff1dabe3e83427b5f04ea783de59c095f15ddbc"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "725a1b9271d70b79e5ce0d586b81c2ab4c74c43bdcd7ba31422814728efc7e69"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "0acbe280b45240db925de64ebc7793d156be2cd2df9fc5fafd0e5daffc7e5f9f"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "8c064b10a9ed6ad8d87dc4540e4e7d35cd62e38349f62a911ef0a2251bbce3b9"
+    }
+  ],
+  "user_review_path": "Existing simulator: File directory is open. Choose README.md -> Options -> Display for Raw/Markdown, or Documents/Sources for previews; Done returns to unchanged task. No approval was submitted during handoff.",
+  "next_module": 9,
+  "next_module_name": "Other sidebar feature packages",
+  "publication": "No commit/push/release, Android expansion, backend implementation or message-attachment expansion"
+}

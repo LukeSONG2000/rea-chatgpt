@@ -1,0 +1,60 @@
+{
+  "batch": 596,
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "source": "ios-haptics-v596-capability-fields.json",
+      "type": "shipped-artifact-metadata",
+      "conclusion": "DefaultHapticCapabilities has canPerformHaptics, deviceSupportsHaptics, hapticsEnabled and dependencies; enabled/support/performance inputs are separate. Metadata alone does not establish full policy."
+    },
+    {
+      "source": "ios-remote-v529-slider-gesture-findings.json",
+      "offsets": [
+        "0x609831c..0x6098368",
+        "0x60983a0..0x6098428",
+        "0x60fa360..0x60fa39c"
+      ],
+      "type": "static-instruction-analysis",
+      "conclusion": "Slider binds selection and soft impact intensity0.4 to independent triggers; edge trigger toggles only zero-to-nonzero overscroll. v596 retained fresh binding/window instructions."
+    },
+    {
+      "source": "ios-settings-v306-owner-fields.json",
+      "type": "shipped-artifact-metadata",
+      "conclusion": "Settings owner exposes enabled setting and device capability."
+    }
+  ],
+  "implementation": [
+    "Preserve index-change guard and selection feedback",
+    "Connect boundary-entry impact for rail and source drags, reset on new presentation/end",
+    "Independent persistent preference gates implemented feedback alongside hardware support and active application state",
+    "Returnable bilingual settings entry with unsupported-device explanation"
+  ],
+  "independent_choices": [
+    "rea.preview.hapticsEnabled key and initial enabled=true pending original default recovery",
+    "Settings entry placement and copy pending original General section ownership",
+    "CoreHaptics hardware query and active-app gate are explicit native adapter policy",
+    "Existing native slider tick range supplies overscroll geometry",
+    "Keyboard completion observer remeasures mounted source geometry and is removed with the presentation. Original keyboard-owner implementation remains partial."
+  ],
+  "unknowns": [
+    "Direct SwiftUI slider modifier inheritance of official global haptic setting",
+    "Official preference key/default and exact settings ordering",
+    "Engine raw event3 semantic mapping and opening feedback",
+    "File-success engine dispatch, Chat/Work sending/streaming/menu callbacks",
+    "Physical tactile waveform, timing and system accessibility behavior",
+    "Android independent haptic wiring"
+  ],
+  "probes": [
+    "Class-field helper rejected kind1; read bounded field descriptors with explicit kind/stride/count checks, no runtime offsets inferred",
+    "Foundation r1 shell execution permission error; sh invocation r2 passed",
+    "UI r1 duplicate MainActor compile annotation corrected; final results recorded separately",
+    "r2 toggle centre taps hit label area; reused existing switch trailing-control hit target for r3, both settings journeys passed",
+    "r2 keyboard appears after slider open, source snapshot and rail remain at y780 under keyboard; source screenshot had no software keyboard. Added keyboardDidChangeFrame anchor refresh using existing attachment-host lifecycle pattern",
+    "r3 model selection and advanced roundtrip passed, subsequent keyboard visibility assertion sampled offscreen keyboard frame y891. r4 retains same visibility constraint with bounded predicate wait",
+    "r4 both model journeys passed after bounded visibility wait. r3 both settings preference/restart journeys passed. Final host code is identical in r3/r4."
+  ]
+}

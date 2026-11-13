@@ -1,0 +1,62 @@
+{
+  "batch": 598,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static",
+  "observations": [
+    {
+      "conclusion": "Sources citation handler has separate feedback branches",
+      "symbol": "handleSourcesCitationLinkTap(_:openURL:citation:sourceMessage:)",
+      "file": "ChatGPTMessages/MessagesViewModel+SourcesPresentation.swift",
+      "offsets": [
+        "0x37394dc",
+        "0x3739658",
+        "0x37396dc"
+      ],
+      "evidence": [
+        "ios-haptics-v598-source-owner.json",
+        "ios-haptics-v598-source-owner.asm"
+      ],
+      "limits": "Other branches return without invoking feedback; a link label alone does not identify the route."
+    },
+    {
+      "conclusion": "Chat link and message-widget action owners call fireChatLinkHapticIfEnabled",
+      "offsets": [
+        "0x37605ec",
+        "0x3762ae8"
+      ],
+      "callee": "0x3760bf8",
+      "evidence": [
+        "ios-haptics-v598-link-callers.json",
+        "ios-haptics-v598-link-owner.asm"
+      ],
+      "limits": "Full URL/widget classification and current screen wiring remain partial."
+    },
+    {
+      "conclusion": "Both link feedback paths consult the feature configuration identified by chatgpt-ios-chat-link-haptics",
+      "offsets": [
+        "0x3899ee4",
+        "0x397fcd0",
+        "0x397fce0",
+        "0x8934aa0",
+        "0xb083100"
+      ],
+      "evidence": [
+        "ios-haptics-v598-gate-read.asm",
+        "ios-haptics-v598-feature-key.asm"
+      ],
+      "limits": "The feature declaration does not establish its active value or a default boolean. Constructor argument 2 has not been semantically decoded."
+    }
+  ],
+  "implementation_decision": "Retain link haptics as an unresolved consumer until route and enablement evidence closes. Current batch implements browser admission/return within the independent Chat/Work host.",
+  "next_evidence": [
+    "Resolve the feature configuration value/default and its evaluation scope",
+    "Map the exact link and widget route predicates to the current host content projection"
+  ],
+  "validation": "Bounded disassembly/static call-site mapping only; no complete official application executed"
+}

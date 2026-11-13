@@ -1,0 +1,126 @@
+{
+  "status": "partial-two-candidate-groups-stopped",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "scope": "Calpico edit profile Name/Username validation, save disable/admission and accepted completion; read-only static evidence.",
+  "candidate_groups": [
+    {
+      "id": 1,
+      "decision": "Can the visible profile form/save button gate be restored rather than interpreting host canSave as official?",
+      "followups": [
+        "Content metadata fields and 2247bac/2249450 live consumers plus Bool environment keypath",
+        "onSave22c468c -> VM2223a20 admission"
+      ],
+      "stop": "Actual content gate and saveRequest async admission found. No new validation candidate outside this exact chain."
+    },
+    {
+      "id": 2,
+      "decision": "Does the actual save async continuation prove owner-accepted success/automatic dismissal?",
+      "followups": [
+        "Task record7e74fe8 ->22f91f8 ->2223d10 ->2223dec continuations through2224754",
+        "Existing parent sheet/cancel and completion callback boundary"
+      ],
+      "stop": "Per-field request continuations, injected dependency calls and request-state updates reached. Complete accepted completion/callback-to-dismiss not closed; do not widen."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "content-disabled-while-saving",
+      "evidence": [
+        "edit-content-metadata.json field isSaving index4 ->metadata+0x20",
+        "2246e00..2246e0c parent supplies bool extracted from saveRequest state",
+        "2247eb8..2247ef4 reads isSaving then creates environment transform",
+        "231d910 ->keypath7e75fa0; accessorsf84d4/f8500 call SwiftUI EnvironmentValues.isEnabled get/set",
+        "1225d0..1225e0 computes inheritedEnabled & ~capturedFlag &1",
+        "2249258 button-group builder:22492c8 builds22493ac primary+secondary;22492d4/d8 reads metadata+0x20 isSaving;22492dc..224931c applies same enabled keypath and44ab38->1225d0",
+        "content-parent-tree7e6f040 has distinct ScrollView-carrier and bottom VStack-carrier environment transforms"
+      ],
+      "conclusion": "The scroll form and separately composed bottom Save/Cancel button group each use enabled = inherited isEnabled && !isSaving. Primary Save additionally gates isUploadingImage. This is not a claim that a global sheet-dismiss gesture is disabled."
+    },
+    {
+      "id": "primary-disabled-during-image-upload",
+      "evidence": [
+        "content metadata isUploadingImage index2 ->metadata+0x18",
+        "2249640..2249684 reads that field and applies44ab38 ->1225d0 using same isEnabled keypath"
+      ],
+      "conclusion": "Primary button receives an additional isUploadingImage disable transform. Whole-form save disable still applies through inherited environment."
+    },
+    {
+      "id": "save-action-is-vm-owned",
+      "evidence": [
+        "2246ea8..eb8 constructs onSave22c468c",
+        "22c46f0 invokes2223a20",
+        "2223a8c checks captured dependency nonnil; nil path2223c04 logs and returns",
+        "2223a94 reads request state221f538;2223a9c branches on representation bit61 to2223c70 before scheduling",
+        "2223cc8..d00 creates captured async operation with record7e74fe8",
+        "7e74fe8 relative function22f91f8;22f9264 tail2223d10"
+      ],
+      "conclusion": "The effectful save action is not direct field assignment or immediate accepted success. RequestState representation admission precedes async work. Bit61 is retained as raw observed gate here, not exported as wire enum."
+    },
+    {
+      "id": "save-state-types-and-comparison",
+      "evidence": [
+        "VM descriptor95c8290 field records9a56e10..9a56ee8",
+        "_saveRequest type92782c0 references SwiftToolbelt.RequestState<Void, Error>",
+        "_uploadRequest references RequestState<CalpicoProfile, Error>",
+        "2223e4c reads name through221f120 and compares against existing captured profile string before first effect path",
+        "2223fb4 reads username221f3dc and compares before next effect path",
+        "continuations2224190/2224518 branch on x20 async error payload; error path2224754 updates request-state projection"
+      ],
+      "conclusion": "The inspected save chain compares current field values with existing profile values and has asynchronous error/result branches. This does not establish client regex/availability validation or accepted final profile/dismiss."
+    }
+  ],
+  "current_host_observations": {
+    "files": [
+      "implementation/ios/Sources/FrontendProfileEditing.swift",
+      "implementation/ios/Sources/NativeProfileEditor.swift"
+    ],
+    "canSave": "Independent host explicitly requires no pending request, hasChanges, accountID, nonblank name and UTF8 budgets <=256; the source comments already label it host admission. Those rules are not established official validation.",
+    "visible_gate": "NativeProfileEditor Save alone uses disabled(!state.canSave) at observed line141. Source now proves a separate content-level isSaving disable carrier; preserving independent operation identity/receipt checks remains appropriate."
+  },
+  "safe_product_decisions": [
+    "Apply the source-proven busy enabled environment to the complete profile content; retain per-save progress and additional upload gate only when actual upload capability/state exists.",
+    "Keep host input budgets/nonblank and hasChanges admission explicitly independent. Do not describe these as recovered original validation or add username regex from common expectations.",
+    "Do not display accepted success on async scheduling/transport completion. Parent planned exact owner acceptance and local journal are independent frontend semantics, not original cache/transaction recovery.",
+    "Do not claim official automatic dismissal. Keep cancellation and owner accepted close policy explicit in the host until full original completion-to-dismiss consumer is closed."
+  ],
+  "unknown": [
+    {
+      "question": "Exact Name/Username validation and canSave predicate",
+      "next_boundary": "Actual dependency/submit parameter validation beyond2223dec calls; no validation control in inspected Content fields or primary disable consumer. No absence-of-validation claim for whole app."
+    },
+    {
+      "question": "Final accepted profile callback and automatic dismissal",
+      "next_boundary": "VM didUpdateProfile optional callback field record9a56e88/type8ef6f44; complete save continuation ->callback ->EditView _dismiss consumer is unclosed. Name exists alone is not dispatch proof."
+    },
+    {
+      "question": "Full request result state machine, partial field update atomicity/cancel policy",
+      "next_boundary": "Injected per-field async request owners and error/result projections remain only partly classified; no network execution or cache inspection."
+    },
+    {
+      "question": "Sheet swipe/interactiveDismissDisabled while saving",
+      "next_boundary": "No sheet-level interactive dismissal consumer established. Content/button enabled is not swipe dismissal policy."
+    }
+  ],
+  "haptics": {
+    "status": "unproved",
+    "scope": "No direct haptic caller established in these bounded form/save windows; does not prove whole feature lacks feedback."
+  },
+  "raw_directory": "analysis/full-platform-20261104/ios-auth-profile-sixth-20261113-raw",
+  "reused_evidence": [
+    "ios-auth-account-third-20261113-findings.json",
+    "ios-auth-account-third-20261113/edit-content-metadata.json",
+    "ios-auth-account-third-20261113/edit-view-body.asm",
+    "ios-auth-account-third-20261113/edit-content-body.asm",
+    "ios-auth-account-third-20261113/edit-view-root-tree.tree.txt"
+  ],
+  "limits": [
+    "No product edits/build/device/official service/runtime.",
+    "Unsupported class parser negative retained, field inventory does not establish runtime offsets.",
+    "Two groups stop; no complete authentication/account backend recovery claim."
+  ]
+}

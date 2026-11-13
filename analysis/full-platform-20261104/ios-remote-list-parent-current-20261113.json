@@ -1,0 +1,119 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "date": "2026-11-13",
+  "module": "3 Remote list second pass",
+  "status": "core_frontend_implemented_precise_fidelity_and_service_gaps_remain",
+  "source_reports": [
+    "ios-remote-list-parent-20261112-findings.json",
+    "ios-remote-host-status-map-20261113.json"
+  ],
+  "implemented": [
+    "Independent semantic availability snapshot; explicit absent state and showsStatusIndicator gate; preference does not manufacture connectivity",
+    "Connected and validatingConnection green; disconnected, unavailable, unknown, offline error; checkingConnection and determining progress",
+    "Source resource colors OneOff/BrandGreen and ChatGPT/icon/status/error; body-scaled base6; progress label scale0.8 and internal0.75",
+    "Actual ordinary filter caller horizontal16 bottom12; archive caller remains separate",
+    "Failed preference read shows error but preserves supplied device catalog and independently scoped tasks/drafts",
+    "Existing device filter/search/task enter/back/scroll position core loops retained"
+  ],
+  "source_sites": {
+    "state_consumer": "0x2403234",
+    "filter_label": "0x38ac24 -> 0x38adc8",
+    "host_chip_producer": "0x389d10",
+    "indicator_constructor": "0x38afc4",
+    "ordinary_filter_caller": "0x39bad4 -> 0x399784, vector 0x7cfc8d0"
+  },
+  "independent_adaptations": [
+    "Semantic DTO and synthetic availability fixture; not official wire schema",
+    "Native ProgressView adapter; original OAIProgressView animation internals not recovered",
+    "All/cloud source chips use explicit no-indicator fixture policy; zero sentinel meaning is not inferred as Cloud",
+    "User-facing status accessibility labels and preference-read failure copy"
+  ],
+  "not_implemented": [
+    "Real discovery/binding/availability/pagination/ranking services",
+    "Full original priority/catalog producer",
+    "Original progress animation and private selection/material optics",
+    "Conditional extra top12 owner field meaning",
+    "Guaranteed cross-process list reading restoration across changed catalog",
+    "Unproved list-specific gesture feedback; shared source-proven gate retained"
+  ],
+  "verification": {
+    "pure_contract": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "result": "passed",
+      "log": "/tmp/rea-remote-list-parent-text-20261113.log"
+    },
+    "ui": {
+      "result": "passed",
+      "passed": 3,
+      "failed": 0,
+      "appearance": "Chinese/light",
+      "artifact": "ios-remote-list-parent-20261113-r1.xcresult",
+      "tests": [
+        {
+          "name": "testRemoteHomeSearchResultsAndReturnChinese",
+          "seconds": 30.542
+        },
+        {
+          "name": "testRemoteHostStatusAndListCoreChinese",
+          "seconds": 35.201
+        },
+        {
+          "name": "testRemoteListScrollReturnChinese",
+          "seconds": 29.839
+        }
+      ],
+      "post_test_change": "Equivalent direct optional/admission predicate consolidated to tested visibleIndicator helper; both final builds passed. UI suite not repeated for equivalent predicate."
+    },
+    "assets": "Bundled assetutil inventory confirms OneOff/BrandGreen and ChatGPT/icon/status/error names",
+    "screenshots_reviewed": [
+      "ios-remote-list-parent-20261113-r1-attachments/F321090B-4A9B-4562-ABEF-53435A6E1075.png",
+      "ios-remote-list-parent-20261113-r1-attachments/B44A9C6D-DD03-4460-BFB2-27417E0632C2.png",
+      "ios-remote-list-parent-20261113-ordinary.png"
+    ],
+    "haptics": "ios-gesture-haptics-current-20261113.json"
+  },
+  "runtime": {
+    "simulator": {
+      "report": "ios-remote-list-parent-20261113-preview.json",
+      "installed_hash_match": true,
+      "executable_sha256": "c4a7f265e2a3d05b99e3c5bf96e18f069bbb9d009a5a080a8b512a9f63cca614",
+      "launch": "local.rea.chatgpt.ioshost: 80822",
+      "left_running": true,
+      "observed": "Ordinary core Chinese/light conversation B and composer visible; no profile reset."
+    },
+    "device": {
+      "build": "succeeded",
+      "build_log": "/tmp/rea-remote-list-parent-device-20261113.log",
+      "app_path": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "executable_sha256": "7819a0e929fa39e12f16f5cb7f893fc3091e7f2570c72195a45a6f9ae7db8dce",
+      "state_report": "ios-remote-list-parent-20261113-device-state.json",
+      "connection": "unavailable",
+      "installed_this_candidate": false,
+      "physical_playback_verified": false
+    },
+    "simulator_build_log": "/tmp/rea-remote-list-parent-final-sim-20261113.log"
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RemoteWorkspacePresentation.swift",
+      "sha256": "ed43bbb27fc7a7565a533a2a137833ddb102138ba87e2e11a44f9b1254453e62"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "35a17d2de5fc0963beb23cd1afc5ff8acbe358b72255fff22025e54ab37accd6"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "43833ffa6511434b0f1531072b572f6e345ffcd8baa85a7ac2d7ab887a61344d"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "13bb9b7ca492e0cd3b82476bc29ac4186825495e2b79aee1035b6ce6cbe85005"
+    }
+  ],
+  "review_path": "Sidebar -> Codex -> device source -> pinned/project/recent task -> Back/search. General haptic preference applies to recovered gesture consumers.",
+  "next_major_module": "4 Remote messages",
+  "git_mutations": "none"
+}

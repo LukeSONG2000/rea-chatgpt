@@ -1,0 +1,16 @@
+{
+  "scope": "module6 source-first parent and request-lifecycle audit",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observed_host": {
+    "approval": "id(request.scope) with local feedback state",
+    "user_input": "id(full request) currently rebuilds for any question value change",
+    "ui_request_feed": "existing fixtures static; controlled replacement fixture needed to exercise updates"
+  },
+  "source_followup": "QuestionCards IDView ApprovalRequestKey and request-key onChange clears answer/custom/index; precise mapping in forthcoming user-input report",
+  "policy": "Do not promote assumed fullvalue clearing into official behavior; apply proven key lifetime and separate host scope fence",
+  "files": {
+    "implementation/ios/Sources/RemoteApprovalInteraction.swift": "151568ecadae731c3db2c25f4b698e05d99ff0f6b0a76ffe67bcd86b0f529c55",
+    "implementation/ios/Sources/RemoteUserInputInteraction.swift": "25a0b5e2109c467f44c3f66d2b1da5871b27e47f4040b8820298ed851effd4ef",
+    "implementation/ios/Sources/NativeConversationHost.swift": "72baa262677536d00a54822cf90f9d06ea85c19c72f0e2b9f9a4c51b9ca50a0a"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Completed dictation producer guards before Remote composer text merge at 0x188321c. Static instructions and metadata only.",
+  "proven_observer_path": {
+    "registration": {
+      "function": "0x16f418c",
+      "publisher_getter": "0x16f4278",
+      "capture_write": "0x16f420c stp x20,x23,[closure,#0x10]",
+      "capture_roles": [
+        "weak owner holder",
+        "session object supplied to registration in x0, retained in x23"
+      ],
+      "sink_call": "0x16f4234 Combine.Publisher.sink(receiveValue:)",
+      "cancellable_storage": "0x16f4248..0x16f4260 -> sessionBag offset storage 0xb1c5230",
+      "callback": "0x1785bf8 loads captured x1/x2 and tailcalls 0x16f4328"
+    },
+    "guard": {
+      "function": "0x16f4328",
+      "captured_session": "x2 -> x23 at 0x16f4340",
+      "weak_owner_load": "0x16f4388 -> 0x157a30 -> 0x7c54c7c, verified _swift_weakLoadStrong",
+      "owner_nil_return": "0x16f438c",
+      "current_session_offset": "0x179b020 loads 0xb07da00",
+      "current_session_load": "0x16f4398",
+      "nil_session_return": "0x16f439c",
+      "identity_comparison": "0x16f43a0 cmp x23,x8; 0x16f43a4 equal -> 0x16f43b8; mismatch releases and returns",
+      "validation_status": "verified-static",
+      "conclusion": "This observer handles an event only while the captured session object is still the current session of the live owner."
+    },
+    "completed_forward": {
+      "done_branch": "0x16f4454; enum tag0 from 0x1519bc at 0x16f4418",
+      "part_state_update": "0x16f4458..0x16f4468 emits done(raw4), completionAction(raw2)",
+      "result_forward": "0x16f4558 -> 0x16f3c88",
+      "result_constructor": "0x16f3d84 -> 0x5c30cd8",
+      "clear_session_before_delivery": "0x16f3d88 -> 0x179f0d0 sets x0=nil,self=x19 -> 0x16ed564",
+      "setter_effect": "0x16ed588 stores nil to session; 0x16ed59c..0x16ed5c4 replaces sessionBag when session is nil",
+      "completed_event_delivery": "0x16f3dcc..0x16f3dec loads handleEvent from offset storage 0xb1c51b0, copies result, stores eventtag0, invokes closure",
+      "post_delivery": "0x16f3df4..0x16f3e2c sends reset unless outer phase is inserting(topbits3)",
+      "validation_status": "verified-static",
+      "conclusion": "The shared forwarder clears the current session before synchronous completed event delivery. A subsequently delivered callback through the same observer fails the nil/current-session guard."
+    }
+  },
+  "activation_task_guard": {
+    "function": "0x16ef5cc",
+    "test": "0x16ef608 -> 0x7c4e040, verified Swift Task.isCancelled",
+    "branch": "0x16ef60c tests cancellation; cancelled path 0x16ef630 -> 0x16efa00 with captured activation identifier; uncancelled path continues toward 0x16eff34",
+    "existing_identifier_guard": "v533 0x16efa00 compares captured activationTaskIdentifier with current identifier before cleanup",
+    "conclusion": "Activation cancellation includes a body-level cancellation test. Its scope is activation continuation, so it does not independently establish all completed-transcript rejection behavior."
+  },
+  "alternate_result_route": {
+    "function": "0x16f39f8",
+    "callback_thunk": "0x17859fc",
+    "current_id_getter": "0x16ec588",
+    "observed_guards": [
+      "optional identity comparisons before 0x16f3bc4, mismatch returns",
+      "0x16f3bd8 reloads owner and requires nonnil",
+      "0x16f3be4..0x16f3bf4 requires current session nonnil",
+      "0x16f3bfc..0x16f3c14 reads hasFailedStreamingTranscription offset storage 0xb07da30"
+    ],
+    "shared_forward_call": "0x16f3c70 -> 0x16f3c88",
+    "validation_status": "partial",
+    "unresolved": "Capture registration and exact compared identifier semantics have not been closed in this bounded pass. Object-identity proof from 0x16f4328 must not be generalized to this route."
+  },
+  "attempt_cancellation_candidate": {
+    "class": "WhisperViewModel",
+    "class_address": "0xadd6ce0",
+    "cancelledAttemptIdentifiers_offset_storage": "0xb1c55a0",
+    "mutator": "0x175ca28, access 0x175cb9c",
+    "predicate": "0x175f374, field read 0x175f4c4",
+    "known_callers": [
+      "0x175d7d8, true branches to early return",
+      "0x175fc30"
+    ],
+    "validation_status": "partial",
+    "unresolved": "Predicate compares optional identities and cancelled-attempt collection. Exact argument roles and the full transition to done emission are not established here."
+  },
+  "relationship_to_remote_merge": {
+    "existing_remote_consumer": "v532 completed case 0x1883820 -> current prompt read -> 0x188321c text merge -> pending metadata 0x18839ec -> prompt setter 0x188eb24",
+    "new_boundary": "The session-identity guard above precedes the shared completed delivery into the previously traced Remote handler. Pending result revision checks remain a later, separate boundary."
+  },
+  "unresolved": [
+    {
+      "question": "Does cancelling the same current session reject an already queued completion before merge?",
+      "breakpoint": "v533 cancel 0x16f0ae8 -> 0x16f2274 asynchronous session cleanup; this pass has not proven when it clears session or how done and cancel are serialized. Predicate 0x175f374 is a concrete next consumer to bind."
+    },
+    {
+      "question": "Does changing thread/owner invalidate the old composer session?",
+      "breakpoint": "Current observer weak owner and current-session checks are proven, but navigation-to-owner teardown/cancellation wiring is not traced."
+    },
+    {
+      "question": "Are all completion producers guarded by the same identity?",
+      "breakpoint": "0x16f39f8 alternate caller needs capture registration and exact identifier mapping."
+    },
+    {
+      "question": "Is completed delivery globally exactly once?",
+      "breakpoint": "Nil-session rejection is proven for subsequent delivery through 0x16f4328. Concurrency/executor isolation and alternate producers are not fully established."
+    }
+  ],
+  "independent_fixture_guidance": [
+    {
+      "recommendation": "Bind each controlled provider callback to its owner and session identity, verify that identity before text merge, and clear active session before emitting completion.",
+      "basis": "Source-backed lifecycle shape from the proven observer/forwarder chain. Fixture implementation identity representation remains an independent choice."
+    },
+    {
+      "recommendation": "Explicitly invalidate the fixture attempt on cancellation or owner replacement, including any scheduled controlled completion.",
+      "basis": "Independent safety rule while official same-session cancel race and navigation teardown remain partial."
+    },
+    {
+      "recommendation": "Keep stopped/processing and completed/result insertion as distinct transitions.",
+      "basis": "v533 reducer and finish routing, completed forwarding above. Controlled provider delay is fixture timing."
+    }
+  ],
+  "evidence": [
+    "ios-remote-v534-activate-d8-a.asm",
+    "ios-remote-v534-activate-d8-b.asm",
+    "ios-remote-v534-activation-bridge-refs.json",
+    "ios-remote-v534-activation-bridge.asm",
+    "ios-remote-v534-activation-guard.asm",
+    "ios-remote-v534-activation-input.asm",
+    "ios-remote-v534-activation-preflight.asm",
+    "ios-remote-v534-activation-producer.asm",
+    "ios-remote-v534-activation-refs.json",
+    "ios-remote-v534-activation-resume-imports.json",
+    "ios-remote-v534-activation-witness.asm",
+    "ios-remote-v534-alternate-result-route.asm",
+    "ios-remote-v534-attempt-cancellation.asm",
+    "ios-remote-v534-attempt-guard-xrefs.json",
+    "ios-remote-v534-base-method-candidates.json",
+    "ios-remote-v534-base-start-helper-candidates.asm",
+    "ios-remote-v534-completion-emission.asm",
+    "ios-remote-v534-d8-helpers.asm",
+    "ios-remote-v534-d8-indirect-candidates.json",
+    "ios-remote-v534-event-entry.asm",
+    "ios-remote-v534-guard-caller-xrefs.json",
+    "ios-remote-v534-messageinput-action.asm",
+    "ios-remote-v534-messageinput-action2.asm",
+    "ios-remote-v534-mode-content-accessory-label-init.asm",
+    "ios-remote-v534-mode-content-accessory-label-init.json",
+    "ios-remote-v534-mode-content-fixed-frame.asm",
+    "ios-remote-v534-mode-content-fixed-frame.json",
+    "ios-remote-v534-mode-content-flexible-frame.asm",
+    "ios-remote-v534-mode-content-flexible-frame.json",
+    "ios-remote-v534-mode-content-font-create.asm",
+    "ios-remote-v534-mode-content-font-create.json",
+    "ios-remote-v534-mode-content-font-modifier.asm",
+    "ios-remote-v534-mode-content-font-modifier.json",
+    "ios-remote-v534-mode-content-font-shared.asm",
+    "ios-remote-v534-mode-content-font-shared.json",
+    "ios-remote-v534-mode-content-frame-args.asm",
+    "ios-remote-v534-mode-content-frame-args.json",
+    "ios-remote-v534-mode-content-height.asm",
+    "ios-remote-v534-mode-content-height.json",
+    "ios-remote-v534-mode-content-insets1.asm",
+    "ios-remote-v534-mode-content-insets1.json",
+    "ios-remote-v534-mode-content-insets2.asm",
+    "ios-remote-v534-mode-content-insets2.json",
+    "ios-remote-v534-mode-content-metric-keypaths.json",
+    "ios-remote-v534-mode-content-normal.asm",
+    "ios-remote-v534-mode-content-normal.json",
+    "ios-remote-v534-mode-content-status-align.asm",
+    "ios-remote-v534-mode-content-status-align.json",
+    "ios-remote-v534-mode-content-status-color.asm",
+    "ios-remote-v534-mode-content-status-color.json",
+    "ios-remote-v534-mode-content-status-error-key.asm",
+    "ios-remote-v534-mode-content-status-error-key.json",
+    "ios-remote-v534-mode-content-status-font-apply.asm",
+    "ios-remote-v534-mode-content-status-font-apply.json",
+    "ios-remote-v534-mode-content-status-font.asm",
+    "ios-remote-v534-mode-content-status-font.json",
+    "ios-remote-v534-mode-content-status-resources.json",
+    "ios-remote-v534-mode-content-status.asm",
+    "ios-remote-v534-mode-content-status.json",
+    "ios-remote-v534-mode-content-style-helper.asm",
+    "ios-remote-v534-mode-content-style-helper.json",
+    "ios-remote-v534-mode-content-trailing.asm",
+    "ios-remote-v534-mode-content-trailing.json",
+    "ios-remote-v534-mode-content-transcribing-key.asm",
+    "ios-remote-v534-mode-content-transcribing-key.json",
+    "ios-remote-v534-mode-content-type-823a3f0.json",
+    "ios-remote-v534-mode-content-type-823a3f8.json",
+    "ios-remote-v534-mode-content-type-823a400.json",
+    "ios-remote-v534-mode-content-type-823a408.json",
+    "ios-remote-v534-mode-content-type-823a418.json",
+    "ios-remote-v534-mode-producer-refs.json",
+    "ios-remote-v534-observer-imports.json",
+    "ios-remote-v534-observer-registration-xrefs.json",
+    "ios-remote-v534-observer-registration.asm",
+    "ios-remote-v534-reconcile.asm",
+    "ios-remote-v534-result-forward.asm",
+    "ios-remote-v534-result-producer-xrefs.json",
+    "ios-remote-v534-session-clear-xrefs.json",
+    "ios-remote-v534-session-observer-xrefs.json",
+    "ios-remote-v534-small-guard-helpers.asm",
+    "ios-remote-v534-start-consumer.asm",
+    "ios-remote-v534-start-consumer.json",
+    "ios-remote-v534-start-witness-candidates.json",
+    "ios-remote-v534-thread-activation-refs.json",
+    "ios-remote-v534-thread-protocol.asm",
+    "ios-remote-v534-thread-start-refs.json",
+    "ios-remote-v534-thread-start.asm",
+    "ios-remote-v534-thread-whisper-refs.json",
+    "ios-remote-v534-weak-owner-binding.json"
+  ],
+  "validation": {
+    "official_runtime_executed": false,
+    "recording_performed": false,
+    "production_edited": false,
+    "method": "Retained bounded llvm-objdump windows, metadata offset mappings, immediate-reference scans, verified chained import bindings",
+    "limits": "Reference scans cover only supported ARM64 instruction patterns. Static proof does not supply runtime ordering, OS microphone behavior, or service equivalence."
+  }
+}

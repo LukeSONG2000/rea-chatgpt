@@ -1,0 +1,67 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "classification": "official artifact static observation; independent native list projection",
+  "type": "SafetySettingsContentView",
+  "body": "108fd64",
+  "content": "1090208",
+  "configuration": {
+    "type": "SafetySettingsConfiguration",
+    "descriptor": "958bc78",
+    "fields_in_metadata_order": [
+      "showsReduceSensitiveContent",
+      "showsTimeManagement",
+      "showsTrustedContact",
+      "showsParentalControls"
+    ],
+    "limit": "Field-to-byte association inferred from four Bool fields; runtime layout not executed"
+  },
+  "ordered_rows": [
+    {
+      "key": "settings_reduce_sensitive_content_title",
+      "label": "1090908",
+      "construct": "10903b0 ->10908c0",
+      "gate": "1090368 load byte0,1090370 skips unless1"
+    },
+    {
+      "key": "Trusted contact",
+      "label": "1090468 ->11a4dc8 smallstring Trusted contact",
+      "construct": "1090400 footer;10904a4 control",
+      "gate": "10903dc load byte2;10903f8 skips unless1"
+    },
+    {
+      "key": "Parental controls",
+      "label": "10905ac ->75d6b50 ->literal8a5a3b0",
+      "construct": "109061c..1090628",
+      "gate": "1090530 load byte3;1090538 skips unless1"
+    },
+    {
+      "key": "teen_settings_time_management_title",
+      "label": "1090c1c",
+      "construct": "1090698 ->1090bcc",
+      "gate": "1090650 load byte1;1090654 skips unless bit0set"
+    }
+  ],
+  "implementation": [
+    "Root Safety entry opens four source-ordered rows",
+    "Each capability independently controls visibility in topology projection",
+    "Offline reference configuration explicitly enables all four",
+    "No service values or preference mutations invented; all actions use returnable unavailable destination"
+  ],
+  "limits": [
+    "Actual account configuration not connected",
+    "Original interactive reduce-sensitive-content toggle and lock/error handling not implemented",
+    "Exact form grouping/geometry and transitions not recovered",
+    "Trusted-contact, parental and time-management child lists not recovered"
+  ],
+  "verification": {
+    "pure_logic": "passed independent capability gating and source order",
+    "ui": "passed Chinese light; four ordered entries, each child/back, root/back and re-entry",
+    "result": "ios-settings-safety-topology-20261112.xcresult"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/FrontendSettingsTopology.swift": "07678f34149edc811dc5d6aa0a27c826761a274e63a0caa1c105657dd4885f62",
+    "implementation/ios/Sources/NativeConversationHost.swift": "3ef1b9ace874a4eee26f4ac63fd8939e822430ac3d117226f8fd053486426731",
+    "implementation/ios/Sources/OfficialText.swift": "74c225bcf2983b01c3f0d812c30aa64ba99935f9acaee532511076463c6e9888"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "batch": "v517",
+  "date": "2026-11-07",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Remote home PhotosPicker selection with max10, default selection behavior, images/videos filter and current encoding; fileImporter item/multiple selection.",
+    "Scoped draft attachment identity/revision, import token cancellation, retained editor and expanded mode while attachments exist.",
+    "Horizontal attachment projection, source-bound image tile metrics and original delete glyph; remove and local preview actions."
+  ],
+  "evidence": [
+    "ios-remote-v517-attachment-picker-findings.json",
+    "ios-remote-v517-attachment-preview-findings.json",
+    "ios-remote-v517-composer-mode.asm",
+    "ios-remote-v517-controls-user-reference-index.json"
+  ],
+  "independent_adaptations": [
+    "Temporary local copy ownership and scope/session tokens; no upstream upload identity or server connection.",
+    "QuickLook preview, image crop and UIFontMetrics body scaling bridge.",
+    "Generic file square/icon/text placeholder; original file chip remains unresolved.",
+    "File import error alert and atomic batch adapter; original conversion and error projection incomplete."
+  ],
+  "validation": {
+    "model": {
+      "result": "passed",
+      "log": "ios-remote-v517-model.log"
+    },
+    "ui": [
+      {
+        "summary": "ios-remote-v517-ui.summary.json",
+        "passedTests": 3,
+        "failedTests": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "summary": "ios-remote-v517-r2-ui.summary.json",
+        "passedTests": 4,
+        "failedTests": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "summary": "ios-remote-v517-r3-ui.summary.json",
+        "passedTests": 1,
+        "failedTests": 0,
+        "runtimeWarnings": []
+      }
+    ],
+    "manual_simulator": [
+      "Native Files selected two synthetic files (image and text), returned with both attachments.",
+      "Native Photos selected one generated REA fixture image, returned with third attachment.",
+      "Opened generated image in local QuickLook and closed it; three attachments remained."
+    ],
+    "physical_device": "not tested; user requested simulator only",
+    "visual": "partial; source-based tile metrics reviewed, complete official geometry unaccepted",
+    "ui_note": "Initial3, r2 final production4, r3 expanded retention1; overlapping tests, five distinct cases overall. R3 adds search and task round-trip retention."
+  },
+  "remaining": [
+    "Thread/new-thread attachment toolbar wiring.",
+    "Original file-chip rendering, image crop, delete color and exact scaling.",
+    "Dynamic outer insets/background and keyboard relationships.",
+    "Loading/error projection and video/camera workflows.",
+    "File-success versus photo-import haptic dispatch owner.",
+    "Persistent process-restart draft/media recovery and remote upload service.",
+    "Latest permission/context/model/reasoning/advanced/recording screenshots are references only, precise version unknown."
+  ],
+  "preview": {
+    "build": 517,
+    "pid": 89726,
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "language": "system default; observed Chinese",
+    "running": true,
+    "display": "only built-in display detected; external placement unaccepted",
+    "screenshot": "ios-remote-v517-default-language-preview.png"
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift": "d08b76365fb4d79499bce111c7f14f93e2805cbfd33a135edcb1da6842d7f57c",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "d39d19248145ac518c1354f1e49e5daf8033f3a91de7772c5336deb144c8b771",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "0682090c0413df323fd99f5694b4ab866274c092f3a1d282ad630e55ccefd08b",
+    "implementation/ios/Sources/NativeConversationHost.swift": "1435fa05f1ffe25b93ba94a7c4cc92639e27f907b5133badd1c148e6f67c51ae",
+    "implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app/REAChatGPTHost": "6d26e5428a66e9b1fef57ea1c07ab78eaaf8dba5ab7ce2db418bebe2f120d91c"
+  }
+}

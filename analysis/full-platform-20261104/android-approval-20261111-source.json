@@ -1,0 +1,185 @@
+{
+  "platform": "Android",
+  "version": "1.2026.293",
+  "evidence_type": "static artifact inspection",
+  "findings": [
+    "dp60.l pending-request dispatch selects ylj approval and forwards request/action callback to dp60.e",
+    "dp60.e owns surface and remembered feedback; ci0 case7 renders prompt and option-conditioned actions",
+    "JADX reverses Accept and persistent-option and Decline conditions; ci0 smali confirms positive capability gates",
+    "plj distinguishes null option compatibility default from explicit empty set",
+    "at19/jh6-6 submit request ID with decision; l50-16 emits distinct wfk rejection; d2i-2 sends Decline with feedback",
+    "dp60 thread screen builds igm only for non-null pending rsk, passes it as finVarT2 into pkm.l; igm forwards full-width/16dp horizontal card to dp60.l. Exact pkm slot placement still to verify.",
+    "pkm.l function23 aliases function27 and becomes codex-remote-transcript-footer after transcript status; pending request belongs to scrollable transcript footer, not an iOS-style fixed overlay."
+  ],
+  "implementation": "Android ordinary conversation footer now consumes scoped command approval; synthetic provider acknowledges without execution, receipt persists; pending/error handling remains frontend-only.",
+  "unknowns": [
+    "full official surface/button/feedback-row styling",
+    "network policy and non-command approvals",
+    "real service acknowledgement, expiry and reconnect capability input"
+  ],
+  "evidence": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dp60.java",
+      "sha256": "89732266f292d9c176ae0e002fdc4ae08ded0a7db34762a0683f978cb5490a8b",
+      "lines": [
+        676,
+        854
+      ],
+      "excerpt": "    public static final void d(ylj yljVar, nqd0 nqd0Var, bun bunVar, int i) {\n        int i2;\n        mv10 mv10Var = (mv10) bunVar;\n        mv10Var.p0(2104683623);\n        int i3 = i | (mv10Var.h(yljVar) ? 4 : 2);\n        if (mv10Var.c0(i3 & 1, (i3 & 19) != 18)) {\n            za6 za6Var = new za6(8.0f, true, new tl((byte) 3));\n            nqd0 nqd0VarV = mwq.V(nqd0Var, 0.0f, 0.0f, 0.0f, 16.0f, 7);\n            kqd0 kqd0Var = kqd0.a;\n            nqd0 nqd0VarA = d.a(kqd0Var, \"CodexRemoteApprovalPromptContent\").A(nqd0VarV);\n            p6n p6nVarA = n6n.a(za6Var, di1.n, mv10Var, 0);\n            int iHashCode = Long.hashCode(mv10Var.T);\n            nok0 nok0VarN = mv10Var.n();\n            nqd0 nqd0VarK = ixd0.K(mv10Var, nqd0VarA);\n            mtn.M.getClass();\n            if (mv10Var.a == null) {\n                nq60.v();\n                throw null;\n            }\n            mv10Var.r0();\n            if (mv10Var.S) {\n                mv10Var.m(LayoutNode.t1);\n            } else {\n                mv10Var.A0();\n            }\n            vpq0.l(mv10Var, p6nVarA, jxd0.f);\n            vpq0.l(mv10Var, nok0VarN, jxd0.e);\n            vpq0.l(mv10Var, Integer.valueOf(iHashCode), jxd0.g);\n            vpq0.k(mv10Var);\n            vpq0.l(mv10Var, nqd0VarK, jxd0.d);\n            String reason = yljVar.getReason();\n            String strT = reason != null ? t4a.T(reason) : null;\n            if (strT == null) {\n                mv10Var.n0(-1713609887);\n                if (yljVar instanceof rlj) {\n                    i2 = R.string._4e5_res_0x7f130502;\n                } else if (yljVar instanceof tlj) {\n                    i2 = R.string._4e9_res_0x7f130506;\n                } else {\n                    if (!(yljVar instanceof xlj)) {\n                        il.f();\n                        return;\n                    }\n                    i2 = R.string._4ef_res_0x7f13050c;\n                }\n                strT = ewp0.E(mv10Var, i2);\n                mv10Var.s(false);\n            } else {\n                mv10Var.n0(-1713611034);\n                mv10Var.s(false);\n            }\n            c8r0.c(strT, d.a(kqd0Var, \"CodexRemoteApprovalPromptContent\"), on01.h, 0, 0, false, 0, 0, m2o0.c(mv10Var).n.c, 0, null, 0, null, null, mv10Var, 0, 0, 16122);\n            mv10Var = mv10Var;\n            if (yljVar instanceof rlj) {\n                mv10Var.n0(-2126729282);\n                String strC = ((rlj) yljVar).c();\n                String strT2 = strC != null ? t4a.T(strC) : null;\n                if (strT2 == null) {\n                    mv10Var.n0(-2126695896);\n                    mv10Var.s(false);\n                } else {\n                    mv10Var.n0(-2126695895);\n                    i(384, 2, mv10Var, null, strT2, true);\n                    mv10Var.s(false);\n                }\n                if (yljVar instanceof slj) {\n                    mv10Var.n0(-2126423157);\n                    slj sljVar = (slj) yljVar;\n                    qlk qlkVar = sljVar.j;\n                    if (qlkVar == null) {\n                        mv10Var.n0(-2126377836);\n                        mv10Var.s(false);\n                    } else {\n                        mv10Var.n0(-2126377835);\n                        i(384, 2, mv10Var, null, evx0.t(qlkVar.b, \"://\", qlkVar.a), true);\n                        mv10Var.s(false);\n                    }\n                    jtk jtkVar = sljVar.k;\n                    if (jtkVar == null) {\n                        mv10Var.n0(-2126095023);\n                    } else {\n                        mv10Var.n0(-1731151696);\n                        objT = C(jtkVar, mv10Var);\n                    }\n                    mv10Var.s(false);\n                    if (objT == null) {\n                        objT = sgy.a;\n                    }\n                    Iterator it = ((Iterable) objT).iterator();\n                    while (it.hasNext()) {\n                        i(0, 6, mv10Var, null, (String) it.next(), false);\n                    }\n                    mv10Var.s(false);\n                } else {\n                    mv10Var.n0(-2125936891);\n                    mv10Var.s(false);\n                }\n                mv10Var.s(false);\n            } else if (yljVar instanceof tlj) {\n                mv10Var.n0(-2125856136);\n                tlj tljVar = (tlj) yljVar;\n                String strE = tljVar.e();\n                objT = strE != null ? t4a.T(strE) : null;\n                if (objT == null) {\n                    mv10Var.n0(-2125810319);\n                    mv10Var.s(false);\n                } else {\n                    mv10Var.n0(-2125810318);\n                    i(0, 6, mv10Var, null, ewp0.D(R.string._4e8_res_0x7f130505, new Object[]{objT}, mv10Var), false);\n                    mv10Var.s(false);\n                }\n                Iterator it2 = tljVar.f().iterator();\n                while (it2.hasNext()) {\n                    i(0, 6, mv10Var, null, ewp0.D(R.string._4f3_res_0x7f130510, new Object[]{(String) it2.next()}, mv10Var), false);\n                }\n                mv10Var.s(false);\n            } else {\n                if (!(yljVar instanceof xlj)) {\n                    throw evx0.w(-1731173522, mv10Var, false);\n                }\n                mv10Var.n0(-2125235299);\n                ListIterator listIterator = C(((xlj) yljVar).i, mv10Var).listIterator(0);\n                while (true) {\n                    au90 au90Var = (au90) listIterator;\n                    if (!au90Var.hasNext()) {\n                        break;\n                    } else {\n                        i(0, 6, mv10Var, null, (String) au90Var.next(), false);\n                    }\n                }\n                mv10Var.s(false);\n            }\n            mv10Var.s(true);\n        } else {\n            mv10Var.f0();\n        }\n        xro0 xro0VarY = mv10Var.y();\n        if (xro0VarY != null) {\n            xro0VarY.d = new zk6(yljVar, nqd0Var, i, (byte) 9);\n        }\n    }\n\n    public static final void e(ylj yljVar, Function1 function1, nqd0 nqd0Var, bun bunVar, int i) {\n        int i2;\n        nqd0 nqd0Var2;\n        mv10 mv10Var;\n        mv10 mv10Var2 = (mv10) bunVar;\n        mv10Var2.p0(-690713878);\n        if ((i & 6) == 0) {\n            i2 = ((i & 8) == 0 ? mv10Var2.h(yljVar) : mv10Var2.j(yljVar) ? 4 : 2) | i;\n        } else {\n            i2 = i;\n        }\n        if ((i & 48) == 0) {\n            i2 |= mv10Var2.j(function1) ? 32 : 16;\n        }\n        if ((i & 384) == 0) {\n            nqd0Var2 = nqd0Var;\n            i2 |= mv10Var2.h(nqd0Var2) ? 256 : 128;\n        } else {\n            nqd0Var2 = nqd0Var;\n        }\n        if (mv10Var2.c0(i2 & 1, (i2 & 147) != 146)) {\n            Object[] objArr = {yljVar.b()};\n            Object objX = mv10Var2.X();\n            if (objX == ly5.c) {\n                objX = new dog((byte) 20);\n                mv10Var2.x0(objX);\n            }\n            mv10Var = mv10Var2;\n            to60.c(d.a(kqd0.a, \"CodexRemoteApprovalRequestCard\").A(mwq.V(nqd0Var2, 0.0f, 0.0f, 0.0f, 8.0f, 7)), m2o0.c(mv10Var2).c.c, 0L, ((wkt0) mv10Var2.l(zkt0.a)).d, sit0.c, null, null, false, null, to60.S(-224831291, true, new ci0((Object) yljVar, (Object) function1, j8p0.p(objArr, (Function0) objX, mv10Var2, 48), (byte) 7), mv10Var2), mv10Var, 805306368, 484);\n        } else {\n            mv10Var = mv10Var2;\n            mv10Var.f0();\n        }\n        xro0 xro0VarY = mv10Var.y();\n        if (xro0VarY != null) {\n            xro0VarY.d = new caa((byte) 6, i, (Object) yljVar, (Object) nqd0Var, function1);\n        }"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dp60.java",
+      "sha256": "89732266f292d9c176ae0e002fdc4ae08ded0a7db34762a0683f978cb5490a8b",
+      "lines": [
+        1248,
+        1300
+      ],
+      "excerpt": "    public static final void l(rsk rskVar, yjk yjkVar, Function1 function1, nqd0 nqd0Var, Set set, bun bunVar, int i, int i2) {\n        Set set2;\n        int i3;\n        Set set3;\n        mv10 mv10Var = (mv10) bunVar;\n        mv10Var.p0(-559825683);\n        int i4 = i | (mv10Var.h(rskVar) ? 4 : 2) | (mv10Var.f(yjkVar == null ? -1 : yjkVar.ordinal()) ? 32 : 16) | (mv10Var.j(function1) ? 256 : 128) | (mv10Var.h(nqd0Var) ? 2048 : 1024);\n        int i5 = i2 & 16;\n        if (i5 != 0) {\n            i3 = i4 | 24576;\n            set2 = set;\n        } else {\n            set2 = set;\n            i3 = i4 | (mv10Var.h(set2) ? 16384 : 8192);\n        }\n        if (mv10Var.c0(i3 & 1, (i3 & 9363) != 9362)) {\n            Set set4 = i5 != 0 ? ghy.a : set2;\n            boolean z = rskVar instanceof ylj;\n            kqd0 kqd0Var = kqd0.a;\n            if (z) {\n                mv10Var.n0(-1121557002);\n                e((ylj) rskVar, function1, d.a(kqd0Var, \"CodexRemoteThreadPendingRequestCard\").A(b.g(nqd0Var, 1.0f)), mv10Var, ((i3 >> 3) & 112) | (i3 & 14));\n                mv10Var.s(false);\n            } else if (rskVar instanceof hkk) {\n                mv10Var.n0(-1121549288);\n                wy81.h((hkk) rskVar, yjkVar, function1, d.a(kqd0Var, \"CodexRemoteThreadPendingRequestCard\").A(b.g(nqd0Var, 1.0f)), set4, false, 0L, mv10Var, i3 & 58366, 992);\n                mv10Var.s(false);\n            } else {\n                int i6 = i3;\n                if (rskVar instanceof xom) {\n                    mv10Var.n0(-1121536933);\n                    q((xom) rskVar, function1, d.a(kqd0Var, \"CodexRemoteThreadPendingRequestCard\").A(b.g(nqd0Var, 1.0f)), mv10Var, ((i6 >> 3) & 112) | (i6 & 14));\n                    mv10Var.s(false);\n                } else {\n                    if (!(rskVar instanceof tvk)) {\n                        throw evx0.w(-1121558290, mv10Var, false);\n                    }\n                    mv10Var.n0(-1121529280);\n                    t091.d((tvk) rskVar, function1, d.a(kqd0Var, \"CodexRemoteThreadPendingRequestCard\").A(b.g(nqd0Var, 1.0f)), mv10Var, ((i6 >> 3) & 112) | (i6 & 14));\n                    mv10Var.s(false);\n                }\n            }\n            set3 = set4;\n        } else {\n            mv10Var.f0();\n            set3 = set2;\n        }\n        xro0 xro0VarY = mv10Var.y();\n        if (xro0VarY != null) {\n            xro0VarY.d = new lzk(rskVar, yjkVar, function1, nqd0Var, set3, i, i2, (byte) 1);\n        }\n    }\n"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/plj.java",
+      "sha256": "249e9a97a5586f0cf3cfd79baca3d89b6db47f207a79c099cdc0c05b71b3ad9a",
+      "lines": [
+        1,
+        37
+      ],
+      "excerpt": "package defpackage;\n\nimport java.util.List;\nimport java.util.Set;\n\n/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */\n/* JADX INFO: loaded from: classes4.dex */\npublic abstract class plj {\n    public static final Set a = ic6.o1(new olj[]{olj.a, olj.b, olj.c, olj.d, olj.e});\n\n    public static final boolean a(ylj yljVar, olj oljVar) {\n        slj sljVar = yljVar instanceof slj ? (slj) yljVar : null;\n        List list = sljVar != null ? sljVar.l : null;\n        if (list == null && a.contains(oljVar)) {\n            return true;\n        }\n        if (list == null) {\n            list = sgy.a;\n        }\n        return list.contains(oljVar);\n    }\n\n    public static final olj b(ylj yljVar) {\n        olj oljVar = olj.f;\n        if (a(yljVar, oljVar)) {\n            return oljVar;\n        }\n        olj oljVar2 = olj.e;\n        if (a(yljVar, oljVar2)) {\n            return oljVar2;\n        }\n        return null;\n    }\n}"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/olj.java",
+      "sha256": "c123c9953b1558ab5563dc567e78ccbf09787f176f63a5c931b182040634002f",
+      "lines": [
+        16,
+        39
+      ],
+      "excerpt": "    static {\n        olj oljVar = new olj(\"Accept\", 0);\n        a = oljVar;\n        olj oljVar2 = new olj(\"AcceptForSession\", 1);\n        b = oljVar2;\n        olj oljVar3 = new olj(\"AcceptWithExecpolicyAmendment\", 2);\n        c = oljVar3;\n        olj oljVar4 = new olj(\"ApplyNetworkPolicyAmendment\", 3);\n        d = oljVar4;\n        olj oljVar5 = new olj(\"Decline\", 4);\n        e = oljVar5;\n        olj oljVar6 = new olj(\"Cancel\", 5);\n        f = oljVar6;\n        g = new olj[]{oljVar, oljVar2, oljVar3, oljVar4, oljVar5, oljVar6};\n    }\n\n    public static olj valueOf(String str) {\n        return (olj) Enum.valueOf(olj.class, str);\n    }\n\n    public static olj[] values() {\n        return (olj[]) g.clone();\n    }\n}"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/at.java",
+      "sha256": "838647b98d593228f65c0894cabf0fb03eeb20d873a4eac4bb566ed4701e2a12",
+      "lines": [
+        135,
+        138
+      ],
+      "excerpt": "            case 19:\n                ((Function1) obj2).invoke(new cgk(((ylj) obj).b(), olj.a, null));\n                break;\n            case 20:"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/jh6.java",
+      "sha256": "5d24276ad9387008051cdb13bf945cf4c4ffa483f63f3c61910f2675d47bc443",
+      "lines": [
+        237,
+        240
+      ],
+      "excerpt": "            case 6:\n                ((Function1) obj3).invoke(new cgk(((ylj) obj2).b(), (olj) obj, null));\n                return a011Var;\n            case 7:"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/l50.java",
+      "sha256": "970d381fbb760e4ca1e093c1c55edea1cb08b9b81be87e3c760972f337b40d15",
+      "lines": [
+        103,
+        106
+      ],
+      "excerpt": "            case 16:\n                ((Function1) this.b).invoke(new wfk(((ylj) this.c).b()));\n                return a011.a;\n            case 17:"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/d2i.java",
+      "sha256": "27a55dd2e735c732f1c942b856118ec36b0c0259730a332b706d3a4e65abb063",
+      "lines": [
+        40,
+        45
+      ],
+      "excerpt": "                ((Function1) this.b).invoke(new dgk(((hkk) this.c).a, ((gnb0) this.d).b, null));\n                return a011.a;\n            case 2:\n                ((Function1) this.b).invoke(new cgk(((ylj) this.c).b(), olj.e, (String) ((a5e0) this.d).getValue()));\n                return a011.a;\n            case 3:"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/ci0.smali",
+      "sha256": "1988dd0d060f92c59e0451ba4d37bc5be41798f9586484deaa15865a2532bd5b",
+      "lines": [
+        1755,
+        1788
+      ],
+      "excerpt": "    .line 802\n    move-result-object v14\n\n    .line 803\n    sget-object v9, Lolj;->a:Lolj;\n\n    .line 804\n    .line 805\n    invoke-static {v0, v9}, Lplj;->a(Lylj;Lolj;)Z\n\n    .line 806\n    .line 807\n    .line 808\n    move-result v9\n\n    .line 809\n    if-eqz v9, :cond_f\n\n    .line 810\n    .line 811\n    const v9, -0x6d93760e\n\n    .line 812\n    .line 813\n    .line 814\n    invoke-virtual {v15, v9}, Lmv10;->n0(I)V\n\n    .line 815\n    .line 816\n    .line 817\n    const v9, 0x7f130501\n\n    .line 818\n    .line 819"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/ci0.smali",
+      "sha256": "1988dd0d060f92c59e0451ba4d37bc5be41798f9586484deaa15865a2532bd5b",
+      "lines": [
+        1959,
+        1972
+      ],
+      "excerpt": "    .line 903\n    move/from16 p0, v13\n\n    .line 904\n    .line 905\n    :goto_b\n    if-eqz v8, :cond_14\n\n    .line 906\n    .line 907\n    const v14, -0x6d897d85\n\n    .line 908\n    .line 909"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/ci0.smali",
+      "sha256": "1988dd0d060f92c59e0451ba4d37bc5be41798f9586484deaa15865a2532bd5b",
+      "lines": [
+        2620,
+        2646
+      ],
+      "excerpt": "\n    .line 1230\n    .line 1231\n    .line 1232\n    :goto_15\n    sget-object v2, Lolj;->e:Lolj;\n\n    .line 1233\n    .line 1234\n    invoke-static {v0, v2}, Lplj;->a(Lylj;Lolj;)Z\n\n    .line 1235\n    .line 1236\n    .line 1237\n    move-result v2\n\n    .line 1238\n    const/16 v7, 0x10\n\n    .line 1239\n    .line 1240\n    if-eqz v2, :cond_20\n\n    .line 1241\n    .line 1242\n    const v2, -0x6d6d8102\n"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/igm.java",
+      "sha256": "e1821536c9e5eb43745412bf9417949d51788ed4d00c39a4ca97dfc2d750ceff",
+      "lines": [
+        35,
+        65
+      ],
+      "excerpt": "            case 0:\n                bun bunVar = (bun) obj;\n                int iIntValue = ((Number) obj2).intValue();\n                mv10 mv10Var = (mv10) bunVar;\n                if (mv10Var.c0(iIntValue & 1, (iIntValue & 3) != 2)) {\n                    rsk rskVar = (rsk) obj4;\n                    mv10Var.n0(1201407147);\n                    nqd0 nqd0VarA = d.a(kqd0Var, \"CodexRemoteThreadScreenContent\").A(mwq.T(b.g(kqd0Var, 1.0f), 0.0f, 8.0f, 1));\n                    eob0 eob0VarC = i5a.c(di1.f, false);\n                    int iHashCode = Long.hashCode(mv10Var.T);\n                    nok0 nok0VarN = mv10Var.n();\n                    nqd0 nqd0VarK = ixd0.K(mv10Var, nqd0VarA);\n                    mtn.M.getClass();\n                    if (mv10Var.a == null) {\n                        nq60.v();\n                        throw null;\n                    }\n                    mv10Var.r0();\n                    if (mv10Var.S) {\n                        mv10Var.m(LayoutNode.t1);\n                    } else {\n                        mv10Var.A0();\n                    }\n                    vpq0.l(mv10Var, eob0VarC, jxd0.f);\n                    vpq0.l(mv10Var, nok0VarN, jxd0.e);\n                    vpq0.l(mv10Var, Integer.valueOf(iHashCode), jxd0.g);\n                    vpq0.k(mv10Var);\n                    vpq0.l(mv10Var, nqd0VarK, jxd0.d);\n                    dp60.l(rskVar, (yjk) obj5, (Function1) obj3, d.a(kqd0Var, \"CodexRemoteThreadScreenContent\").A(mwq.T(b.g(kqd0Var, 1.0f), 16.0f, 0.0f, 2)), null, mv10Var, 0, 16);\n                    mv10Var.s(true);\n                    mv10Var.s(false);"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dp60.java",
+      "sha256": "89732266f292d9c176ae0e002fdc4ae08ded0a7db34762a0683f978cb5490a8b",
+      "lines": [
+        2068,
+        2087
+      ],
+      "excerpt": "                        finVarT = null;\n                    }\n                    if (rskVar != null) {\n                        n9mVar2 = n9mVar;\n                        aq70Var2 = aq70Var4;\n                        finVarT2 = to60.t(-906601424, new igm(rskVar, yjkVar, function112, (byte) 0), z7);\n                    } else {\n                        n9mVar2 = n9mVar;\n                        aq70Var2 = aq70Var4;\n                        finVarT2 = null;\n                    }\n                    nqd0 nqd0VarA2 = d.a(kqd0Var, \"CodexRemoteThreadScreenContent\").A(ab2.Z(b.e(kqd0Var, 1.0f), k4s0VarB, null));\n                    hcr0 hcr0Var = icr0.Companion;\n                    icr0 icr0Var3 = icr0Var;\n                    Function1 function115 = function17;\n                    Function3 function34 = function32;\n                    mv10 mv10Var4 = mv10Var2;\n                    Function1 function116 = function16;\n                    pkm.l(bu90Var, aq70Var2, icr0Var3, function115, function112, function116, function113, list2, function3, set3, finVar, function34, gmc0Var2, nqd0VarA2, z4, o0kVar, function114, rvi0Var, f, function24, finVarT, finVarT2, mv10Var4, (i7 & 29360128) | 8, ((i11 >> 3) & 57344) | 6 | ((i8 >> 6) & 458752) | ((i11 << 18) & 29360128));\n                    rvi0Var2 = rvi0Var;"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c",
+      "lines": [
+        4219,
+        4219
+      ],
+      "excerpt": "    public static final void l(final bu90 bu90Var, final aq70 aq70Var, final icr0 icr0Var, final Function1 function1, final Function1 function12, final Function1 function13, final Function1 function14, final List list, final Function3 function3, final Set set, final fin finVar, final Function3 function32, final gmc0 gmc0Var, final nqd0 nqd0Var, final boolean z, final o0k o0kVar, final Function1 function15, final rvi0 rvi0Var, final float f2, final Function2 function2, final Function2 function22, final Function2 function23, bun bunVar, final int i, final int i2) {"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c",
+      "lines": [
+        4349,
+        4359
+      ],
+      "excerpt": "                        boolean zH10 = zH9 | mv10Var2.h(function114);\n                        final aq70 aq70Var4 = aq70Var3;\n                        boolean zH11 = zH10 | mv10Var2.h(aq70Var4);\n                        final o0k o0kVar2 = o0kVar;\n                        boolean zH12 = zH11 | mv10Var2.h(o0kVar2);\n                        final Function2 function26 = function22;\n                        boolean zH13 = zH12 | mv10Var2.h(function26);\n                        final Function2 function27 = function23;\n                        boolean zH14 = zH13 | mv10Var2.h(function27);\n                        Object objX = mv10Var2.X();\n                        if (zH14 || objX == ly5.c) {"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c",
+      "lines": [
+        4407,
+        4430
+      ],
+      "excerpt": "                                        i5 = 2;\n                                        function0 = null;\n                                    }\n                                    final Function2 function210 = function27;\n                                    if (function210 != null) {\n                                        dp70.t0(dp70Var, \"codex-remote-transcript-footer\", function0, new fin(422385476, new Function3() { // from class: pjm\n                                            @Override // kotlin.jvm.functions.Function3\n                                            public final Object invoke(Object obj4, Object obj5, Object obj6) {\n                                                bun bunVar3 = (bun) obj5;\n                                                int iIntValue2 = ((Integer) obj6).intValue();\n                                                mv10 mv10Var3 = (mv10) bunVar3;\n                                                if (mv10Var3.c0(iIntValue2 & 1, (iIntValue2 & 17) != 16)) {\n                                                    pkm.m(f4, 384, 2, to60.S(1409358296, true, new m9a(function210, (byte) 6), mv10Var3), mv10Var3, d.a(kqd0.a, \"<anonymous>\"));\n                                                } else {\n                                                    mv10Var3.f0();\n                                                }\n                                                return a011.a;\n                                            }\n                                        }, true), i5);\n                                    }\n                                    return a011.a;\n                                }\n                            };\n                            mv10Var2.x0(function115);"
+    }
+  ],
+  "validation": {
+    "build": "assembleDebug and assembleDebugAndroidTest passed; final test build 30s",
+    "device": "OnePlus A6003 Chinese/light, capabilityAndActionScopes + approvalJourney: OK (2 tests), 25.196s",
+    "verified": [
+      "capability projection and identity rejection",
+      "ordinary list to pending approval footer",
+      "single approval synthetic acknowledgement",
+      "persistent receipt readback",
+      "cross-task return isolation",
+      "activity recreation without repeated request"
+    ],
+    "not_verified": [
+      "process restart",
+      "feedback/reject UI",
+      "failure/retry UI",
+      "exact official surface/typography"
+    ],
+    "screenshot": "android-approval-20261111/approval-pending.png"
+  }
+}

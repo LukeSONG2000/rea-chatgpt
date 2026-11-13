@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "shipped-artifact-static-instructions-and-Swift-metadata",
+  "scope": "DismissToolbarItem placement and HomeNavigationRoot dismissal producer. Source-only evidence. No application, test, documentation, runtime or shared REA target modification.",
+  "answered": [
+    {
+      "id": "TITLE538-01",
+      "status": "verified-static",
+      "conclusion": "The optional destination DismissToolbarItem uses topBarLeading placement. The conditional toolbar closure loads HomeNavigationRoot.dismiss at +0x20 and only constructs the item when its function word is nonzero. This is the dismiss control placement.",
+      "chain": [
+        "0x303a0c parent toolbar builder closure0x42d8c4",
+        "0x42d8d4 ->0x45df5c captured HomeNavigationRoot",
+        "0x42d8d8..0x42d8dc reads/tests dismiss at +0x20",
+        "0x42d8ec ->0x464108 ->0x7c48d54",
+        "import slot0xaad25e8 ->SwiftUI.ToolbarItemPlacement.topBarLeading",
+        "0x42d8f0 ->0x45a6d8 ->0x6f507b0 DismissToolbarItem metadata",
+        "0x42d8f8 ->0x45cc10 and0x42d8fc stores customDismissAction"
+      ],
+      "limits": [
+        "No title-placement override is present in this helper. The optional dismissal control does not establish rendered title alignment."
+      ]
+    },
+    {
+      "id": "TITLE538-02",
+      "status": "verified-static",
+      "conclusion": "Closure40b5c4 constructs HomeNavigationRoot from CodexNavigationView for layout values other than taskList. Layout detail or a nonnil parent dismiss removes openMenu and forwards dismiss. Standard with nil dismiss forwards openMenu and writes a nil dismiss function. The didReturnToTaskList callback presence becomes hasPresentingTaskList.",
+      "offsets": [
+        "0x40b5f4..0x40b5f8 taskList raw1 alternate branch",
+        "0x40b67c..0x40b684 metadata+0x1c parent dismiss",
+        "0x40b688..0x40b690 layout2 and conditional compare",
+        "0x40b694 ->0x460dd0 zeros x26/x27 openMenu",
+        "0x40b69c..0x40b6ac loads parent openMenu from metadata+0x14 then clears dismiss function",
+        "0x40b6b4..0x40b6c8 onTranscript and didReturnToTaskList presence",
+        "0x40b6cc..0x40b6e0 concrete HomeNavigationRoot prefix field stores"
+      ],
+      "branch_truth_table": [
+        {
+          "layout": "standard (0)",
+          "parent_dismiss": "nil",
+          "root_openMenu": "forward parent",
+          "root_dismiss": "nil"
+        },
+        {
+          "layout": "standard (0)",
+          "parent_dismiss": "nonnil",
+          "root_openMenu": "nil",
+          "root_dismiss": "forward parent"
+        },
+        {
+          "layout": "detail (2)",
+          "parent_dismiss": "nil",
+          "root_openMenu": "nil",
+          "root_dismiss": "nil"
+        },
+        {
+          "layout": "detail (2)",
+          "parent_dismiss": "nonnil",
+          "root_openMenu": "nil",
+          "root_dismiss": "forward parent"
+        },
+        {
+          "layout": "taskList (1)",
+          "parent_dismiss": "either",
+          "root_openMenu": "not constructed by this branch",
+          "root_dismiss": "not constructed by this branch"
+        }
+      ],
+      "condition_audit": "CMP layout,#2 followed by CCMP dismiss,#0,#0,NE. If layout==2 the fallback NZCV is0, hence Z=0 and B.EQ is not taken. This corrects the interim message that wrongly stated detail forces dismiss nil."
+    },
+    {
+      "id": "TITLE538-03",
+      "status": "verified-static-with-producer-limit",
+      "conclusion": "CodexScreen forwards the caller dismiss into CodexNavigationView. CodexScreenContainer forwards ViewParams.dismiss into CodexScreen on its non-taskList branch. These owners preserve the supplied value.",
+      "chain": [
+        "Container body0x311e9c:0x311f5c loads instance+0x20/+0x28 dismiss",
+        "0x311fe0 writes dismiss into CodexScreen field offset from metadata+0x20",
+        "Screen body0x2fe7cc:0x2feab0..0x2feac4 reads dismiss from Screen metadata+0x20",
+        "0x2feb4c writes dismiss into CodexNavigationView field offset from metadata+0x1c",
+        "0x40b67c..0x40b6d8 applies HomeRoot branch above"
+      ],
+      "limits": [
+        "The actual ViewParams producer for ordinary mobile catalog push is not located. These forwarding bodies establish no fixed nil/nonnil value for that runtime route."
+      ]
+    }
+  ],
+  "development_decisions": [
+    "Preserve the optional custom-dismiss toolbar as topBarLeading when implementing the matching source-backed parent presentation branch.",
+    "Represent openMenu and dismiss according to the verified layout/closure truth table. Detail layout alone does not prove a dismissal callback exists.",
+    "Retain the prior title leaf iOS26+ principal / older topBarLeading availability branch. This investigation gives no source-backed reason to force the thread title leading."
+  ],
+  "unclosed": [
+    {
+      "boundary": "ordinary mobile ViewParams.dismiss input",
+      "known_endpoint": "ChatGPTCodexInterface.CodexScreenTemplate.ViewParams descriptor0x95ecfa8, accessor0x2aaff70; container consumes dismissal function/context at+0x20/+0x28",
+      "next_minimal_action": "Find the ordinary mobile CodexScreenTemplate ViewParams constructor/caller and bind layout plus dismiss function words to catalog presentation. Ignore value-witness copy/destroy callers."
+    },
+    {
+      "boundary": "title visually leading in newer user references",
+      "known_endpoint": "iOS293 title leaf availability branch0x1a3007c..0x1a30094 remains principal on iOS26+; optional parent dismiss is topBarLeading",
+      "next_minimal_action": "After exact ViewParams producer is bound, inspect only its outer presentation/navigation shell for title layout influence. A newer screenshot is insufficient to override the293 placement."
+    }
+  ],
+  "validation": {
+    "artifact_sha256_matched": true,
+    "runtime_executed": false,
+    "behavior_equivalence": "unverified",
+    "title_alignment_change_supported": false
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-codex-screen-entry.asm",
+      "sha256": "fe0a8d08ec994887c629b94c8c9ebe83b55e98bfa3e90269dea0f749308bb128"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-codex-screen-entry.json",
+      "sha256": "1b26d7be9dc0a7183e51d067ee80f1e516933822057be3a703831f0f9ea9d647"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-container-body.asm",
+      "sha256": "0da0d6526142d8a8730744fb72bda4aaf8c95e8fbb015bfb081e80f12db85179"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-container-body.json",
+      "sha256": "88f16003f8a5f4bf2426995fd787f95330e9afb25e4816499aa9d472f008dde7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-dismiss-placement.asm",
+      "sha256": "ecdcf8a2d057cb9a92159e4f6894b064059bb04bd5fa978fbf7050d0682eb557"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-dismiss-placement.json",
+      "sha256": "b11b165dcba5eec771cfd0c69be0a28d1f1bb99467adff5dae3143a0d573d80f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-home-root-producer.asm",
+      "sha256": "68a98f430a732729c2b959582571704f53e093e73d497d0a174f88083cda50af"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-home-root-producer.json",
+      "sha256": "fe2a233d14e427fabae679b6422916ee59ba041dab049543a1588bb0a56d864e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-metadata-bindings.json",
+      "sha256": "d5834e8f1be43254b824ec8737a079bc29649074048d5a1d73b94406476bb670"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-nil-openmenu-helper.asm",
+      "sha256": "5534f52df7bffdd27e704237a852e9ad14abfcd27d2d5d299d627fd65e85f94c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-nil-openmenu-helper.json",
+      "sha256": "79267ab99cf7c965d6446090740d3764800c090df2eb6a2664996ff8c05d5884"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-screen-navigation-producer.asm",
+      "sha256": "cccb8477e266de0309f459373e924a67f12b9b4c286a2e50ba3f429a1077cc57"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-title-screen-navigation-producer.json",
+      "sha256": "84e4f1614174f09176616d6661689ca2a6e1e7b3d629141c81021de95d2bf15d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-destination-extra-toolbar.asm",
+      "sha256": "5fb2aed344cec7efdefc95c62ce0cd94c0b78f07578a705775894a6e3c036e7a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-capture.asm",
+      "sha256": "cf0a940293cee234eca2b74f31ebf80f67db54162d531a779caf15a08fcf057d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-field-helper.asm",
+      "sha256": "0bf2e60707bf09942785fbfc38eda3efa8076ac100b55e87a97f8dcb37241236"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-helper.asm",
+      "sha256": "ef3eae499486e471afd647f10bdbd920eca6bce80f0bab4f4352e89f9d9196f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-metadata-accessor.asm",
+      "sha256": "b5fd6a9e2cd766bba03b2459917903da85b3313655f3f98fc5391a97f35fa06b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-metadata.json",
+      "sha256": "7395f926b2c461b2c15c0bc8ede70a5b9f9696c3d5c075c3caca49e3f198725b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-field-offset-evidence.json",
+      "sha256": "7faa93feb25e636dc51e7126270c9b1b3c709ae93e954faf29ba0e09c9f5ccd4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-navigation-outer-metadata.json",
+      "sha256": "542cc9251ef812d5afc3ea331ea0de27118e53cd13b3ca3511c055d42bc0f4b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-screen-metadata.json",
+      "sha256": "7ee66ca039da4cfa37af0b2356a8d3f6e9714482afaf33e694d48aa59d22377b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v309-entry-metadata.json",
+      "sha256": "362a4deac709f60b43ef088694bedf35e443e967ccbde66bfc4ad8eec32abde7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v309-container-witness.json",
+      "sha256": "f7957aeaa46043ce6de5a56f1a94f2e9c99470cc083c7f833534a1601412cef6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-thread-title-findings.json",
+      "sha256": "17f5e4849279d68b80e954749a351c4e124960d15f41f2344151503841e75804"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-navigation-title-findings.json",
+      "sha256": "de274fca11f0cd76cd7d808da3a583009cbfd391214136134a7e7d185acb5cfb"
+    }
+  ],
+  "tool_hashes": [
+    {
+      "path": "analysis/tools/inspect_ios_code_window.py",
+      "sha256": "02490ccf4c26b37c8854a6a1839a9e2931acd9077ff6a8acd94be5a15ba74ad6"
+    },
+    {
+      "path": "analysis/tools/trace_ios_objc_class.py",
+      "sha256": "280e92ee9db29abc93a5a658d923b861823e9c871a3964cba67c63b88f481c6c"
+    }
+  ]
+}

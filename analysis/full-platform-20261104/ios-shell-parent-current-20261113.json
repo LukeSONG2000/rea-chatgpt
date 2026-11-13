@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "module": "1 Shell/home/sidebar third pass",
+  "status": "current_core_changes_implemented_precise_source_boundaries_recorded",
+  "previous_goal_turn": "progress: module10 auth/account parent integration and UI/build/runtime archived",
+  "platform": "iOS",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_reports": [
+    "ios-shell-scroll-background-parent-20261113-findings.json",
+    "ios-shell-collection-parent-20261113-findings.json",
+    "ios-shell-bottom-actions-parent-20261113-findings.json",
+    "ios-shell-witness-tag-reader-20261113.json",
+    "ios-shell-top-fade-host-safearea-20261113-supplement.json"
+  ],
+  "implemented": [
+    {
+      "area": "Sidebar top background",
+      "authority": "official artifact observation + native reconstruction",
+      "change": "Replace uniform regularMaterial with original TopBarFadeBackground composition: shared VariableBlur radius2, clear0/black1 mask bottom-to-top, MainSurfacePrimary fade opacity.85@0/.75@.7/clear@1 top-to-bottom."
+    },
+    {
+      "area": "Shared variable-blur leaf",
+      "authority": "same original nominal and UIViewRepresentable witness proved for two callers",
+      "change": "Parameterize current native compatibility adapter by radius/stops/direction. Sidebar and model slider supply distinct source configurations. Keep slider radius10/nine-stop distribution unchanged. Preserve dynamic factory/systemMaterial fallback."
+    },
+    {
+      "area": "Bottom background",
+      "authority": "actual CurvedGradient Body shape observed",
+      "change": "Use Rectangle filled by Gradient, removing unproved explicit LinearGradient direction. Existing inclusive curve sampling remains an adapter."
+    },
+    {
+      "area": "Feature catalog collection",
+      "authority": "original enum representation, provider map and section constructors",
+      "change": "Feature section uses single-item fractionalWidth1 vertical group, estimated60 item/group. Self-sizing retained. History retains native list swipe carrier as explicit adapter."
+    },
+    {
+      "area": "Type witness reader",
+      "authority": "Swift ABI associated-type tag + frozen native examples",
+      "change": "Decode only identified View.Body/ViewModifier.Body data witness tags, retain signed/raw addresses and null/unclassified records. Scoped signed/unknown/function regressions and two original conformances pass."
+    },
+    {
+      "area": "Current ordinary journey tests",
+      "authority": "host integration maintenance",
+      "change": "Update old visual test from alert expectations to real Customize/profile destinations and actual header owner; retain draft identity through full return."
+    }
+  ],
+  "not_implemented": [
+    "Exact original top/bottom background bounds, external negative padding integration, ImageRenderer proposed size/scale and full optical equivalence.",
+    "Complete original CurvedGradient stop-count/interpolation producer and accessibility fallback configuration.",
+    "Original history pinned/recent/chatRequests/fetch section carriers; actual enum mapping known, local synthetic model still omits chatRequests/fetch.",
+    "Full featureCatalog ordering/visibility/account assignment, recent fitting and configured pinned truncation.",
+    "Actual avatar/settingsCog selection producer and bottom metrics values; no guessed avatar replacement or merged account-switcher boolean.",
+    "Original full gesture arbitration; current native edge/header/row admission remains explicit host policy. Physical haptic waveform/playback.",
+    "All real account/discovery/chat/task/file/auth services; frontend-only scope unchanged."
+  ],
+  "haptics": {
+    "added_unproved_triggers": false,
+    "policy": "Current sidebar ended/live-interior/changed-endpoint selection remains at owning carrier. Same General preference/hardware/activity gate; source background/cell windows prove no new explicit trigger.",
+    "route": [
+      "Settings",
+      "General",
+      "Haptic feedback"
+    ],
+    "physical_verified": false
+  },
+  "verification": {
+    "reader": {
+      "result": "passed",
+      "log": "/tmp/rea-shell-witness-tags-20261113-final.log"
+    },
+    "ui": {
+      "result": "passed",
+      "bundle": "ios-shell-parent-20261113-r1.xcresult",
+      "log": "/tmp/rea-shell-parent-ui-20261113-r1.log",
+      "tests": [
+        {
+          "name": "testPrimaryVisualSurfaces",
+          "seconds": 40.269,
+          "scope": "ordinary home/input/sidebar reopen, expanded source catalog/scroll fade, Customize/settings/profile boundary, original draft return"
+        },
+        {
+          "name": "testSidebarEdgeGestureChinese",
+          "seconds": 25.895,
+          "scope": "short/full edge drag, close cancel/complete, actual header close drag, keyboard draft and continued editing"
+        },
+        {
+          "name": "testSidebarGroupedCollectionChinese",
+          "seconds": 33.449,
+          "scope": "context-menu pin/unpin, collapse/reopen, process restart persistence and conversation identity"
+        }
+      ],
+      "limits": [
+        "No full theme/language matrix repeated",
+        "No additional model-slider interaction run; its source mask/radius retained",
+        "No optical equivalence or physical tactile claim"
+      ]
+    },
+    "haptic_contract": {
+      "result": "passed",
+      "log": "/tmp/rea-shell-haptics-current-20261113.log",
+      "current_gate": "Settings > General > Haptic feedback"
+    },
+    "optics_runtime": {
+      "report": "ios-shell-variable-blur-runtime-20261113.json",
+      "actual_backend": "variableBlur",
+      "factoryAvailable": true,
+      "imageGenerated": true,
+      "radius": 2,
+      "rendered_width": 310,
+      "rendered_height": 50,
+      "raster_scale": 1,
+      "limits": "Native factory path observed, not original parent bounds/optical equivalence. Header safe-area/outer padding still unresolved; no guessed ignoresSafeArea applied."
+    },
+    "screenshots_viewed": [
+      "ios-shell-parent-20261113-r1-attachments/FF889757-901A-4653-913F-8DBC46B878B4.png",
+      "ios-shell-parent-20261113-r1-attachments/C5026F55-5C43-4D2A-B325-B83A3051829A.png",
+      "ios-shell-parent-20261113-ordinary.png"
+    ],
+    "diff_check": "passed"
+  },
+  "runtime": {
+    "simulator_build": "succeeded",
+    "simulator_build_log": "/tmp/rea-shell-parent-final-simulator-20261113.log",
+    "signed_device_build": "succeeded",
+    "signed_device_build_log": "/tmp/rea-shell-parent-final-device-20261113.log",
+    "codesign_strict": "passed",
+    "preview_report": "ios-shell-parent-20261113-preview.json",
+    "hash_match": true,
+    "simulator_executable_sha256": "1bfd0fd02d70751b804dfbe0d6120fa4ab74e5307871160d8795fe7dffd8392c",
+    "launch": "local.rea.chatgpt.ioshost: 14130",
+    "process_observed_running": true,
+    "ordinary_screenshot": "ios-shell-parent-20261113-ordinary.png",
+    "device_state_report": "ios-shell-parent-20261113-device-state.json",
+    "iphone_air": "unavailable",
+    "device_installed": false,
+    "preview_left_running": true
+  },
+  "publication": "No commit/push/release; Android feature expansion remains paused",
+  "date": "2026-11-13T03:35:19.752120+08:00",
+  "source_files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "bfb0cc7152811d2f5f225709d878cf63fde8d378feecec891475e43b60aaa1b0"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "d10f137f879488549f634b63a6aebb999fbe186664327eeee9aa7752664c1c6c"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "a27bc3e817767a415402e21d0b0a397b3b0f785b348204871bfbe0cb6b3ebb31"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "9234767d76a2d2be392cc93cf011a2241cbb5048e582089868c856ae434da0d5"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "344c15c33bc352bf2aee9716cec0e49499c6692beeb29de1d4283e3d3c148fb1"
+    },
+    {
+      "path": "analysis/tools/inspect_swift_resilient_witnesses.py",
+      "sha256": "800f29f2575b533ec1ce136642a90511bd3235c465c62830388b1538c78bfd81"
+    },
+    {
+      "path": "analysis/tools/test_swift_resilient_witnesses.py",
+      "sha256": "65ae93aaf52fbb2a84db085f53a4d7a8a136a459bb7b5faf38c5de139f36a80a"
+    }
+  ],
+  "review_path": "Core preview > sidebar > scroll feature/history behind fixed title > expand catalog > open feature > sidebar/settings return; short/full edge drags and header close; pin/unpin and original chat draft.",
+  "next_major_module": "2 Settings topology/entries: bound audit only; no unrelated child backend or form expansion. If no core gap, advance to Remote list."
+}

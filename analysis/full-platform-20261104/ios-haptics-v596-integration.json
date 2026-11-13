@@ -1,0 +1,55 @@
+{
+  "batch": 596,
+  "status": "partial",
+  "scope": "Source-backed Remote model slider feedback, persistent frontend preference and late keyboard anchor repair",
+  "official_evidence": "ios-haptics-v596-findings.json",
+  "implemented": [
+    "Persistent enabled preference with returnable bilingual settings entry",
+    "Selection and zero-to-nonzero edge soft impact0.4 for Remote model slider",
+    "Enable/hardware/active-app gating and boundary repeat suppression",
+    "Late keyboard transition remeasures source anchor and cleans observer at dismissal"
+  ],
+  "validation": {
+    "foundation": "passed",
+    "foundation_log": "ios-haptics-v596-foundation-r2.log",
+    "settings_ui": {
+      "summary": "ios-haptics-v596-r3-summary.json",
+      "passed_cases": [
+        "testHapticsPreferenceChinese",
+        "testHapticsPreferenceEnglishDark"
+      ],
+      "other_cases": "Two model journeys failed immediate keyboard visibility assertion in r3; final r4 passed"
+    },
+    "model_ui": {
+      "summary": "ios-haptics-v596-r4-summary.json",
+      "passed": 2,
+      "failed": 0
+    },
+    "coverage": [
+      "Chinese/light and English/dark preference restart",
+      "Model selection, advanced roundtrip, keyboard late appearance",
+      "Long press drag, scope switching and draft restoration",
+      "Background cancellation of overlay"
+    ],
+    "visual": [
+      "Chinese light settings unsupported hardware explanation",
+      "Chinese light slider above keyboard",
+      "Chinese dark final Remote list"
+    ],
+    "physical_haptics": "unverified"
+  },
+  "provenance": {
+    "official": "Selection and soft impact0.4 bindings; overscroll zero-crossing; capability/settings metadata",
+    "independent": "Preference key/default enabled, temporary settings placement, hardware/activity gate, keyboard layout observer",
+    "unknown": "Exact official preference defaults/placement, global gating on direct SwiftUI feedback, engine tag3 and other callers"
+  },
+  "runtime": "ios-haptics-v596-runtime.json",
+  "open": [
+    "Remote attachment success and engine event mapping",
+    "Chat/Work send/stream/menu haptic call sites",
+    "Device tactile acceptance",
+    "Full settings grouping and Android implementation",
+    "Slider keyboard substitution when keyboard is initially absent, visual parity remains partial"
+  ],
+  "next": "Recover Remote attachment and Chat/Work haptic caller chains, then continue page-level minimum-usable ledger"
+}

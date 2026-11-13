@@ -1,0 +1,94 @@
+{
+  "batch": 589,
+  "status": "partial",
+  "scope": "Remote Files directory navigation and shared full-file preview",
+  "evidence": "ios-files-v589-findings.json",
+  "implemented": [
+    "Capability-gated Files menu enters scoped synthetic directory browser",
+    "Plain directory List and child navigation",
+    "Loading, failed/retry, empty and loaded states",
+    "Full file preview and close return using shared diff preview owner",
+    "Task draft retention and stale directory/file request rejection"
+  ],
+  "independent_adaptations": [
+    "Directory and file providers injected by the synthetic task host",
+    "Native NavigationStack, system folder/document icons and default metrics",
+    "Synthetic path and unavailable/empty/retry labels",
+    "Scoped request reducer, temporary file ownership and QuickLook"
+  ],
+  "validation": {
+    "foundation": {
+      "status": "passed",
+      "report": "ios-files-v589-text.log"
+    },
+    "ui": {
+      "r1": {
+        "report": "ios-files-v589-r1-summary.json",
+        "passed": 3,
+        "failed": 2,
+        "scope": "Existing shared diff-preview regressions passed. New Files tests attempted an editor while initial approval owns the composer."
+      },
+      "r2": {
+        "report": "ios-files-v589-r2-summary.json",
+        "passed": 0,
+        "failed": 2,
+        "cause": "Test scrolled toward later content from the tail and could not select a history anchor. Corrected to bounded earlier-content navigation."
+      },
+      "r3": {
+        "report": "ios-files-v589-r3-summary.json",
+        "passed": 0,
+        "failed": 2,
+        "cause": "List ancestor accessibility identifier propagated to the error overlay and obscured the retry identifier. Removed unused ancestor identifier."
+      },
+      "r4": {
+        "report": "ios-files-v589-r4-summary.json",
+        "passed": 2,
+        "failed": 0,
+        "scope": "Final directory provider injection and controls. Chinese light and English dark, failure/retry, child directory, full-file QuickLook, empty directory, return, draft/reading anchor, loading dismissal and cross-host capability isolation."
+      },
+      "distinct_passed": 5,
+      "limit": "The three shared controller regression cases ran in r1. Subsequent changes are directory provider injection, directory List accessibility and new directory test setup."
+    },
+    "visual": {
+      "status": "inspected",
+      "screenshots": "ios-files-v589-r4-attachments/manifest.json",
+      "scope": "Light/dark directory roots, dark empty state and full-file preview. Error presentation inspected in retained r3 failure frame. Exact official metrics remain partial."
+    },
+    "runtime": "ios-files-v589-runtime.json",
+    "retention": "ios-files-v589-retention-final.json"
+  },
+  "unfinished": [
+    {
+      "page": "Remote Files",
+      "priority": "P1",
+      "missing": "Exact official glyphs, title/path projection and row/header metrics",
+      "evidence_gap": "DirectoryEntryRow19cc3b8 and DirectoryHeader body payload values",
+      "next": "Trace row ImageResource and header/path projection when closing visual parity",
+      "acceptance": "Same-entry reference and source-bound label/icon/layout comparison"
+    },
+    {
+      "page": "Remote Files",
+      "priority": "P1",
+      "missing": "Real resource retrieval and authorization",
+      "evidence_gap": "FileDirectoryViewModel service/openFileHandler producer",
+      "next": "Keep replaceable provider contract for later service integration",
+      "acceptance": "Scoped asynchronous provider returns validated child entries and full resources; frontend permission/error states preserved"
+    },
+    {
+      "page": "Remote Files",
+      "priority": "P2",
+      "missing": "Wide-layout split navigation, long directory scroll and search/browser modes",
+      "evidence_gap": "NavigationSplitView predicate and distinct WorkspaceBrowser branch",
+      "next": "Validate independent entry and supported modes before adding them",
+      "acceptance": "Per-entry iPad/phone tests and scope-correct return behavior"
+    },
+    {
+      "page": "Mobile platform",
+      "priority": "P2",
+      "missing": "Physical device, Android, haptics and notification delivery acceptance",
+      "next": "Follow active simulator-only scope and record separate later gates",
+      "acceptance": "Independent target-device evidence"
+    }
+  ],
+  "next_minimum_action": "Connect directory resources to the existing image/PDF/document preview interface and validate unsupported/unavailable return states without expanding business services."
+}

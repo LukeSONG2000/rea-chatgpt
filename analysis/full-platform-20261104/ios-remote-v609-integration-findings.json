@@ -1,0 +1,79 @@
+{
+  "batch": "v609",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "official_observations": [
+    {
+      "symbol": "HistoryFragment summary dispatcher",
+      "offset": "0x1a393bc",
+      "detail": "SummaryStyle tag at group+0x40 selects thinking tag class1, latestItem class0, otherwise history. History branch0x1a394c0 calls group metadata accessor through0x1d883cc ->0x1adc5b0, loads offset-vector slot0x28 (field6 historyPresentation) and passes its address to0x1a39914 at0x1a394d0."
+    },
+    {
+      "symbol": "CodexRemoteToolActivityHistoryPresentation",
+      "offset": "0x95aec84",
+      "detail": "Struct fields icon and text. text raw mangling SS is Swift.String. Icon enum and original static asset factories are reused fromv318."
+    },
+    {
+      "symbol": "ToolActivityHistorySummaryView constructor",
+      "offset": "0x1a39914",
+      "detail": "Calls component metadata0x1daa52c at0x1a39aec. 20 at0x1a39af4 binds _iconSlotSize, relativeTo body via0x26c05c. Existingv322 ownership evidence corroborated."
+    }
+  ],
+  "implemented": [
+    "Optional history summary in independently defined group snapshot; older missing field keeps thinking label.",
+    "History summary renders explicit text and original static icon inside existing group disclosure; child order, expansion identity and content survive label changes.",
+    "Core synthetic preview supplies history summaries at completion/failure. Provider choice and aggregate wording are independent fixture values."
+  ],
+  "independent_adaptations": [
+    "historySummary optional envelope and strict icon decoding",
+    "No automatic aggregation: supplied text and icon are consumed directly",
+    "Native HStack spacing8, body/tertiary style reuse current host; final original parent styling remains incomplete",
+    "Core fixture switches at terminal; official upstream timing and count aggregation remain unresolved"
+  ],
+  "unimplemented": [
+    "latestItem summary and automatic grouping/aggregation",
+    "Payload-bearing computerUse/mcpToolCall summary icons",
+    "Full reasoning content",
+    "Exact history label typography/color/layout and remaining activity types",
+    "Android corresponding consumer"
+  ],
+  "preserved_probe_notes": [
+    "Attempt to read type-record address0x7e12330 as raw typeref rejected unsupported symbolic kind15; no type claim from it.",
+    "0x1c207e4 is a metadata cache builder, asv318 already records; stored as history-type-cache.asm, not used to infer style."
+  ],
+  "evidence_sha256": {
+    "ios-remote-v322-history-findings.json": "5869c5dbf18eb248bc47b9375e770970912b830cb5b62160d22cc796420cd8a0",
+    "ios-remote-v322-component-fields.json": "eb6e2e9cfbe02232a8d4e0892f92c2859746a2c6a5fac4c6f818d944a42380be",
+    "ios-remote-v553-thinking-consumer.asm": "5d25cbca067874ff0e5b2ae36985b2cbc3b778597ecce173440962d693d7b7da",
+    "ios-remote-v318-history-icon-assets.json": "b9a1147f6faa76317bd49f5100de02ab5f576443d5d10a60e2a2100ca29673e5",
+    "ios-remote-v609-history-metadata.json": "afca1c458468d94eb57ff9f4a54da931246a57a2c1720858d6b03f287ffa3172",
+    "ios-remote-v609-history-label.asm": "fdbc4e839e704f1b3f87284b10d13b86ed8140937109460af686a477c075d374",
+    "ios-remote-v609-history-field.asm": "82ed853459afef2b066853180e7e64c97717df07bc225b3e504751ca8c162d85",
+    "ios-remote-v609-history-icon.json": "9eedfb92c392572e67458b72237a4edda901fdc8cd4b016344e048376d1126a1",
+    "ios-remote-v609-text-type.json": "973c2bcd7a7080bce0e5516ad74c4566c091fb1e11227e933e8f1c240f787ce7",
+    "ios-remote-v607-reasoning-group-metadata.json": "56f7dacfb2a7c93fd6859104806c29d9c863f20817221596ba619607737e77bf"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "03f95f03596a1f717afede520e713ede4d339aba46d4cdc95b634b443a2efb48",
+    "implementation/ios/Sources/NativeConversationHost.swift": "0468177a24929ccec684f6802debd95b12932b3b6839cd4105d54b72672090ae",
+    "implementation/ios/TextTests/main.swift": "85a31a545710b80e90b1f96e76bfe1ddaac17113ec77b83b398f8f96e50281c0",
+    "implementation/ios/UITests/HostInteractionTests.swift": "9e3372b362ca836151a055ffa1aac11bae10f7730173450238a554dce625c427",
+    "implementation/ios/Tools/core-preview.json": "9d6ba407d7cc56d7c439187175eb7b5286132e247558dc9e35dc60ba9b4a5938"
+  },
+  "validation": {
+    "foundation": "passed",
+    "ui": {
+      "report": "ios-remote-v609-r1-summary.json",
+      "passed": 3,
+      "failed": 0
+    },
+    "visual": [
+      "Chinese light history summary and expanded command",
+      "English dark failed turn retains history summary"
+    ],
+    "runtime": "ios-remote-v609-runtime.json",
+    "manual_handoff": "Chinese dark core preview, completed-thread; submitted History summary and expanded command group; left running"
+  }
+}

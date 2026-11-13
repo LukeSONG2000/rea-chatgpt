@@ -1,0 +1,650 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "Settings General Starting page/Start screen; two bounded consumer groups; no product/build/device/official-runtime changes",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_groups": [
+    {
+      "group": 1,
+      "decision": "Resolve previously reported optional branch10e27b8..10e2838 and actual General owner",
+      "result": "It constructs SettingsAppearanceSection, not Start screen. Stop this candidate after nominal descriptor proof."
+    },
+    {
+      "group": 2,
+      "decision": "Use retained View body index to select exact StartScreenSettingsSection/Menu; follow options/current-selection/callback consumer and actual General tuple",
+      "result": "Actual row, count gate, option values/display factories, selection revalidation and setting-projection mutation closed. Original persistence key and app-launch consumer remain unknown; stop without whole-program reference scan."
+    }
+  ],
+  "reused": [
+    "ios-settings-general-fifth-20261113-findings.json",
+    "ios-settings-general-builder-20261112.asm",
+    "ios-settings-view-body-index-20261112.json",
+    "ios-settings-root-rows-fields-20261112.json",
+    "ios-settings-general-list-20261112-findings.json"
+  ],
+  "official_observations": [
+    {
+      "id": "corrected-old-optional-boundary",
+      "conclusion": "The old pre-content optional candidate is SettingsAppearanceSection, not Starting page.",
+      "sources": [
+        "10e27b8 tests11aad38→10da630",
+        "10e27cc/10e2838→11a603c→112fbc8",
+        "112fbc8 returns metadata for descriptor958a0a4 SettingsAppearanceSection"
+      ],
+      "evidence": [
+        "pre-content-start.asm",
+        "optional-type-helper.asm",
+        "optional-nominal.asm",
+        "appearance-section-metadata.json",
+        "optional-gate.asm"
+      ],
+      "limits": [
+        "10da630 account/identity-dependent predicate internals not re-proven in this pass. Do not rename it a Starting page visibility flag."
+      ]
+    },
+    {
+      "id": "actual-owner-and-general-order",
+      "conclusion": "General uses actual StartScreenSettingsSection as the FIRST tuple child, followed by optional Appearance and the known language/spelling/haptics group.",
+      "owner": "StartScreenSettingsSection",
+      "descriptor": "0x9589e90",
+      "View_conformance": "0x7d8adf0",
+      "witness": "0x1101d44→0x11015a4",
+      "General_builder": "0x10e253c",
+      "General_tuple_record": "0x7d8fec0",
+      "tuple_factory": "0x10e2ca4",
+      "tuple_order": [
+        {
+          "index": 0,
+          "type": "StartScreenSettingsSection"
+        },
+        {
+          "index": 1,
+          "type": "Optional<SettingsAppearanceSection>"
+        },
+        {
+          "index": 2,
+          "type": "SettingsSection containing App language, spelling, optional haptics"
+        },
+        {
+          "index": 3,
+          "type": "Optional<SettingsSection> (retained Intelligence group, complex children partially opaque)"
+        },
+        {
+          "index": 4,
+          "type": "SettingsSection (retained Suggestions group)"
+        },
+        {
+          "index": 5,
+          "type": "Optional<SettingsSection> (other dynamic rows not interpreted here)"
+        }
+      ],
+      "evidence": [
+        "start-screen-metadata.json",
+        "start-section-witness.json",
+        "actual-start-section.asm",
+        "general-parent-tuple-tree.json",
+        "general-tuple-order.json"
+      ],
+      "limits": [
+        "7d8fe80 is a customizations-tool child carrier, not the full General body. Its raw file general-screen-full-tree retains the rejected candidate and must not be called the whole page."
+      ]
+    },
+    {
+      "id": "section-visibility-and-parent",
+      "conclusion": "The section is emitted only when the actual available destinations array contains at least two elements.",
+      "sources": [
+        "0x11015bc gets current viewModel",
+        "0x11015c0→0x10f8644 available array",
+        "0x11015c8..0x11015cc count<2 skips content"
+      ],
+      "body_record": "0x7d8f010",
+      "body_shape": [
+        "SettingsSection",
+        "IDView/opaque wrapper",
+        "Button<LabeledContent<Label<Text,Image>,HStack<Text,Image> with overlay native StartScreenSettingsMenu>>",
+        "DefaultButtonStyle",
+        "Text footer"
+      ],
+      "evidence": [
+        "actual-start-section.asm",
+        "starting-section-full-tree.json"
+      ],
+      "limits": [
+        "Opaque wrapper internals and row numerical geometry not recovered."
+      ]
+    },
+    {
+      "id": "actual-option-type-and-representation",
+      "conclusion": "Options and selection are DefaultLandingDestination, not arbitrary strings or Chat/Work modes. Its named cases are chatGPT, remote, orbit.",
+      "type": "ChatGPTSettingsInterface.DefaultLandingDestination",
+      "descriptor": "0x96d71fc",
+      "options_type": "Array<DefaultLandingDestination>",
+      "selection_type": "DefaultLandingDestination",
+      "metadata": "0xa89d860",
+      "metadata_descriptor_pointer": "0xa89d868→0x96d71fc",
+      "value_witness_table": "0xa89d7e0",
+      "getEnumTag": "0x48548→0x162a20 (ldrb value byte, ret)",
+      "cases": [
+        "chatGPT",
+        "remote",
+        "orbit"
+      ],
+      "evidence": [
+        "start-menu-options.json",
+        "start-menu-selection.json",
+        "landing-enum-metadata.json",
+        "landing-enum-value-witness.json",
+        "landing-enum-gettag.asm"
+      ],
+      "limits": [
+        "This proves native one-byte enum discriminator representation. No service wire numeric values are derived. Display semantics below are from actual consumers, not solely declaration order."
+      ]
+    },
+    {
+      "id": "available-options-producer",
+      "conclusion": "Availability is computed separately from the saved selection. The producer may return no options; after account/feature gates it starts with value0 and conditionally appends1 and2 in that order.",
+      "producer": "0x10f8644..0x10f88dc",
+      "sources": [
+        "0x10f865c→0x107a854 first admission guard",
+        "0x10f866c→0x6d40c4c account condition",
+        "0x10f8674..0x10f879c account/context equality and repository-derived checks",
+        "0x10f87a8..0x10f8814 additional feature eligibility path",
+        "0x10f8834..0x10f8840 base array count1 with value0",
+        "0x10f8848→0x10870dc; iftrue0x10f8854..0x10f8870 appends value1",
+        "0x10f8878→0x10f178c; iftrue0x10f8880..0x10f88b8 appends value2"
+      ],
+      "consumer_display_mapping": [
+        {
+          "storage_value": 0,
+          "actual_label_factory": "0x75d696c",
+          "literal_fallback": "Chat"
+        },
+        {
+          "storage_value": 1,
+          "actual_label": "Codex (small string0x10f8a9c..0x10f8aa4)"
+        },
+        {
+          "storage_value": 2,
+          "actual_label": "viewModel orbitDisplayName from0x10f7da0; see0x10f8abc"
+        }
+      ],
+      "evidence": [
+        "start-options-producer.asm",
+        "codex-option-gate.asm",
+        "orbit-option-gate.asm",
+        "start-current-selection.asm",
+        "original-chatgpt-label.asm"
+      ],
+      "limits": [
+        "Exact upstream business/account meaning of every admission guard is not fully closed.",
+        "10870dc reads a Bool using SettingsViewModel metadata slot+0x678;10f178c uses slot+0x6d0. Do not map slot to stored field from declaration order.",
+        "The strict class-field reader rejected this class layout; no guessed field slots or availability defaults are supplied.",
+        "Do not add Work as a fourth option or use a user-customized assistant name as a fixed option."
+      ]
+    },
+    {
+      "id": "selection-current-and-fallback",
+      "conclusion": "Displayed effective selection validates the saved value against current availability; unavailable selection falls back to storage0 without proving the saved preference was overwritten.",
+      "sources": [
+        "0x10f8a18 calls available options0x10f8644",
+        "0x10f8a30 calls stored setting getter0x10f1538",
+        "0x10f8a38→0x7bfd5c membership",
+        "0x10f8a44..0x10f8a54 returns stored selection if included",
+        "0x10f8a58 returns0 otherwise"
+      ],
+      "stored_getter": "0x10f1538 reads settings VM property through actual owner; metadata field offset slot+0x6b8 used, no instance offset guessed",
+      "evidence": [
+        "start-selection-storage.asm",
+        "start-selection-getter.asm"
+      ],
+      "limits": [
+        "Setting persistence storage/key, account reset and migration policy unknown. Effective fallback does not imply mutation."
+      ]
+    },
+    {
+      "id": "native-menu-and-selection-callback",
+      "conclusion": "Actual selector is a UIViewRepresentable custom native menu hosted over the LabeledContent value, not an independently proven SwiftUI Picker. Selection forwards to SettingsViewModel mutation after availability revalidation.",
+      "menu_descriptor": "0x958b6dc",
+      "representable_conformance": "0x7d93100",
+      "makeUIView": "0x1102b48",
+      "updateUIView": "0x1102b4c",
+      "dismantleUIView": "0x1102b50",
+      "View_body": "0x1102bec traps because Body=Never, not an imperative page body",
+      "fields": [
+        "label",
+        "options",
+        "selection",
+        "orbitDisplayName",
+        "presentationRequest",
+        "selectionChanged",
+        "colorScheme",
+        "dynamicTypeSize"
+      ],
+      "callback_producer": "0x1101b78..0x1101b80 captures0x1146ae4",
+      "callback": "0x1146ae4..0x1146b14 forwards selected byte to0x108359c mode6",
+      "dispatcher": "0x1083770..0x1083794, table0x7d86538/base0x1083798/index6→0x1083f74",
+      "actual_consumer": [
+        "0x1083f78 computes current options again",
+        "0x1083f84→0xacfe84→0x7bfd5c checks chosen value membership",
+        "0x1083f8c rejects unavailable choice",
+        "0x1083f90..0x1083fb4 setting keypath/projection through0x6d42064",
+        "0x1083fd8..0x1083fe4 passes selected byte to actual projection setter closure"
+      ],
+      "evidence": [
+        "start-screen-metadata.json",
+        "start-menu-witness1.json",
+        "start-menu-witness2.json",
+        "start-section-action.asm",
+        "start-selection-callback.asm",
+        "start-setting-dispatch.json",
+        "start-setting-case6.asm",
+        "start-membership-helper.asm"
+      ],
+      "limits": [
+        "Original menu precise UIAction symbol/layout/checkmark implementation not fully decoded. A native UIMenu host remains explicit adapter unless its actual producer closes.",
+        "Mutation through projection is proven; no actual UserDefaults or remote preference key recovered."
+      ]
+    },
+    {
+      "id": "original-resources",
+      "conclusion": "Title and explanatory footer have original consumers.",
+      "title": {
+        "key": "settings_start_screen",
+        "factory": "0x75d68f4",
+        "literal": "0x8a5a320",
+        "fallback": "Start screen",
+        "consumer": "0x1101830"
+      },
+      "description": {
+        "literal": "Choose where you start when you open ChatGPT.",
+        "address": "0x88880f0",
+        "consumer": "0x11015e8..0x11015f4"
+      },
+      "accessibility_identifier": {
+        "value": "start-screen-picker",
+        "address": "0x8888120",
+        "consumer": "0x11018d0..0x11018f0"
+      },
+      "evidence": [
+        "start-title-factory.asm",
+        "starting-resources.json"
+      ]
+    }
+  ],
+  "safe_product_decision": {
+    "can_restore": [
+      "Place Starting page section first in General, ahead of conditional Appearance and known language/spelling/haptic group.",
+      "Supply explicit available destinations from an adapter and hide the row when fewer than2 are available.",
+      "Keep saved destination independent from currently effective available choice.",
+      "Reject unavailable menu selections; use current custom assistant displayName for Orbit.",
+      "Use original settings_start_screen/description and native menu presentation architecture where possible."
+    ],
+    "requires_independent_adapter": [
+      "Local persistence must use a clearly independent key until original preference storage key closes.",
+      "Applying saved choice at application launch through existing root routes is independent host behavior; the official launch consumer is not recovered here.",
+      "Explicitly supported offline Chat/Codex/assistant capability inputs may exercise the menu but do not stand in for original account eligibility."
+    ],
+    "must_not": [
+      "Do not claim unconditional availability of three choices.",
+      "Do not use raw enum values as protocol values.",
+      "Do not add Work option from screenshot expectations.",
+      "Do not overwrite saved preference merely because it is currently unavailable."
+    ]
+  },
+  "unknowns": [
+    {
+      "id": "launch-consumer",
+      "boundary": "Stored selection getter0x10f1538 and selection projection setter0x1083fe4 are closed; no App/Scene/ConversationRoot startup reader dispatch identified. Next minimum is concrete defaultLandingDestination provider→root initial selection; no global scan performed."
+    },
+    {
+      "id": "persistence-key",
+      "boundary": "Mutation via keypath7d9ff38/projected interface0x6d42064, and VM getter metadata+6b8 are observed; exact backing preference key/account scope/setter implementation remain unknown."
+    },
+    {
+      "id": "availability-full-policy",
+      "boundary": "107a854/6d40c4c and account/repository guards plus10870dc/10f178c are actual gates. Full account/feature flag producers not fully closed; preserve explicit adapter input."
+    },
+    {
+      "id": "haptics",
+      "boundary": "No direct haptic caller established in selected menu/setting callback. None inferred."
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "record": "0x7d8fe80",
+      "reason": "Resolved customizations-tool subcarrier, not General root; retain raw but do not claim full page."
+    },
+    {
+      "address": "0x10e27b8..0x10e2838",
+      "reason": "Resolved Optional<SettingsAppearanceSection>, not Starting page."
+    }
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-settings-general-sixth-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "actual-start-menu.asm",
+      "sha256": "707f637b49a45a0dd45075dfcbba953d816bbeee3896eafbbf78c6d9f7f6f1ef",
+      "bytes": 13676
+    },
+    {
+      "file": "actual-start-section.asm",
+      "sha256": "67602fec068b9871b6da28a0cb699ac3deb65bbbf0c4062568c3e0f5db48fb51",
+      "bytes": 20885
+    },
+    {
+      "file": "appearance-section-metadata.json",
+      "sha256": "6ea84d7bb36e2acd9b45ff262ab9776d38a95405aaaffd285f6bf577f572fbe1",
+      "bytes": 1411
+    },
+    {
+      "file": "codex-option-gate.asm",
+      "sha256": "7f54b2b861345ff9646d334b98954408841bdfc4e4f355a07d98170dab7b48d1",
+      "bytes": 1855
+    },
+    {
+      "file": "consumer-identity-gate.asm",
+      "sha256": "da66b5787a0e38a8ec96febd5f2a95667972518c7704860b24bd772024f8482b",
+      "bytes": 1311
+    },
+    {
+      "file": "current-options-store-accessor.asm",
+      "sha256": "fc615a0e00bb40143084d18281f14ffca047625752a662baec41e91673f0d8d0",
+      "bytes": 445
+    },
+    {
+      "file": "general-owner-type.json",
+      "sha256": "9bbddc2f0e05429783f55d5ebcbab1c512f4024059ee469f96905f44daa2ec66",
+      "bytes": 746
+    },
+    {
+      "file": "general-parent-start-tree.json",
+      "sha256": "6d34af9cc9fd55c2c7c887d2dc702d50fbaa19be02bf65998aecb0f04f1fb228",
+      "bytes": 23654
+    },
+    {
+      "file": "general-parent-start-tree.raw",
+      "sha256": "4c53eb239ba27795772a7fb3befa4c972f945128ec10544bc064a5f43fa7188e",
+      "bytes": 49
+    },
+    {
+      "file": "general-parent-start-tree.refs.tsv",
+      "sha256": "69dcc9a38d5554b7593902675fc9f290cce5b3c55e44af4ea9bd67ae7a7766f2",
+      "bytes": 238
+    },
+    {
+      "file": "general-parent-start-tree.tree.txt",
+      "sha256": "b3d09692ed0697817430e45b8f55f3a0fc8db16116a1dee7f11577f4bbf33c10",
+      "bytes": 3153
+    },
+    {
+      "file": "general-parent-tuple-tree.json",
+      "sha256": "beb096da2160f2eb65fc30071ff2d1ca4215708b5c0582c57649d73265594bb5",
+      "bytes": 499212
+    },
+    {
+      "file": "general-parent-tuple-tree.raw",
+      "sha256": "be296469f5c671351b0e88069ac7c2a287aa794dd6a4dfa1200febbfa9bb380f",
+      "bytes": 403
+    },
+    {
+      "file": "general-parent-tuple-tree.refs.tsv",
+      "sha256": "6fe5596086bf3fcb2962cfb3d6ca6698add4b8aed7a7f4c055399c74dad61a15",
+      "bytes": 1613
+    },
+    {
+      "file": "general-parent-tuple-tree.tree.txt",
+      "sha256": "bd7d9874f3abc09ed0244651e1ee5a4a17faa9f693f51f2260cbf4d0ac5d7f17",
+      "bytes": 61316
+    },
+    {
+      "file": "general-screen-full-tree.json",
+      "sha256": "662eb4e790b61905c47ca4c4150a88b6fb8c6df8b874930ad8b2f5d232f7b911",
+      "bytes": 77551
+    },
+    {
+      "file": "general-screen-full-tree.raw",
+      "sha256": "f431ce11ea776449311f9b2b2c97869510471cf6fa50cfc39df343ae5e04b789",
+      "bytes": 118
+    },
+    {
+      "file": "general-screen-full-tree.refs.tsv",
+      "sha256": "69b72b04a55ee9453cd2b0eb04e4fa2ea4974e641a67822de8c0610b4c7e17c6",
+      "bytes": 649
+    },
+    {
+      "file": "general-screen-full-tree.tree.txt",
+      "sha256": "141895e1eaba4fdf7d4e9f6741ce0fc5a4d399cca5807dc9b5aa1649d81229c9",
+      "bytes": 9839
+    },
+    {
+      "file": "general-tuple-order.json",
+      "sha256": "aa78debfc5435f7499fc8bdc645e995f4b10548553b7fbe254dedfc3b9367955",
+      "bytes": 2915
+    },
+    {
+      "file": "landing-enum-gettag.asm",
+      "sha256": "92aae9811a1834fc130e45e71d98d660287f085658c5d81e5668e411bb120e50",
+      "bytes": 261
+    },
+    {
+      "file": "landing-enum-label-and-witness.asm",
+      "sha256": "e2fc200059450c3b04d1f71ec508a816da5198eb65c8bf708cbe0ae365733354",
+      "bytes": 5860
+    },
+    {
+      "file": "landing-enum-metadata.json",
+      "sha256": "95bcd681caf8fbb652ad0480cf3f5d6ad2a3b4de2a64ac4b7758ba02dec2b0da",
+      "bytes": 461
+    },
+    {
+      "file": "landing-enum-value-witness.json",
+      "sha256": "0d000a2acecdc8bca04cc40d81256302d1cdd4ac7cb933a58fbcbe6212c7141b",
+      "bytes": 165
+    },
+    {
+      "file": "landing-selection-value-owner.asm",
+      "sha256": "bc368c8706f8589ce8cc3a966a9158f0bf8e95bf241f361dc38d9f86be1ec372",
+      "bytes": 723
+    },
+    {
+      "file": "landing-setting-key-consumer.asm",
+      "sha256": "ebb58223004b2e4586af371891a2d804e1383ffcd60462604890f2a2583633c1",
+      "bytes": 1326
+    },
+    {
+      "file": "optional-environment-helper.asm",
+      "sha256": "0953d66c8713a9e74696588715655fc10094eaa6511a19ca5f49173c7b778835",
+      "bytes": 483
+    },
+    {
+      "file": "optional-gate.asm",
+      "sha256": "841d483dcec48573847a0bb1d747dcd349d6e3072fb5d37cb2af362383e390de",
+      "bytes": 549
+    },
+    {
+      "file": "optional-label-helper.asm",
+      "sha256": "5980bedaf25d0f565ae93681ba5d788a254043538976b2af3943572d0a9a8e94",
+      "bytes": 478
+    },
+    {
+      "file": "optional-nominal.asm",
+      "sha256": "65b47105881a670aef0699eba0fdfda7ece723d5eec75ab0536d2ba29ffb091b",
+      "bytes": 712
+    },
+    {
+      "file": "optional-selection-nominal.asm",
+      "sha256": "fd6503debcf77a06564b9cf237cb8436a314bd5911fa7aa74f17bd7ac37b20ef",
+      "bytes": 780
+    },
+    {
+      "file": "optional-type-helper.asm",
+      "sha256": "13d17d0d92f8a79e52b043b6f0c2c258e9e859c4002e2b7941b6d15d297210ba",
+      "bytes": 482
+    },
+    {
+      "file": "optional-value-helper2.asm",
+      "sha256": "7416b6718e1a2f44e941d7f9a9ed7272f4ce997d0ad91a687a4e8ae40d399cf7",
+      "bytes": 638
+    },
+    {
+      "file": "optional-value-helpers.asm",
+      "sha256": "7fbb5af4848a33451d1b9726f66001725e3b3c7b10abf62dd14427d95d011a0e",
+      "bytes": 762
+    },
+    {
+      "file": "orbit-option-gate.asm",
+      "sha256": "dc3a193f5316a35edb687fa1b78421ff25cebded5e2f24aabd8583da350132d9",
+      "bytes": 795
+    },
+    {
+      "file": "original-chatgpt-label.asm",
+      "sha256": "8e13a4cee2a242a1e711a9278ce3f77653f1fcb509b73cde0089b0529e4d3b30",
+      "bytes": 1739
+    },
+    {
+      "file": "pre-content-start.asm",
+      "sha256": "e3c6b51554b39cc9ac2e63b11403e8b8e796db55e4921467ece551c04213f335",
+      "bytes": 4340
+    },
+    {
+      "file": "setting-projection-keypath.asm",
+      "sha256": "7b33e320ff4d6380cf0a90c777a2694a888bfc3962ae5fd1c22fb18eaaad603f",
+      "bytes": 717
+    },
+    {
+      "file": "start-current-selection.asm",
+      "sha256": "086e7820240ae6f2d0c4110536fc5fd41770012d43fceb47ead778190dfd30a0",
+      "bytes": 6091
+    },
+    {
+      "file": "start-membership-helper.asm",
+      "sha256": "f0ad67084e44b5b12ffa5d505631a9433bf35c5bd7a290c688099253dd8ed301",
+      "bytes": 414
+    },
+    {
+      "file": "start-menu-options.json",
+      "sha256": "ee2b476dc5cbbc883cb3ab3305d880b0acc45773630d1c146b13ceace9ffe979",
+      "bytes": 771
+    },
+    {
+      "file": "start-menu-selection.json",
+      "sha256": "46e7d12f893161bd88963c9c88bf2ccb662a76b529de6af6e19a85fbfb51c618",
+      "bytes": 763
+    },
+    {
+      "file": "start-menu-witness1.json",
+      "sha256": "0b163555b6f2b1a0c5b73703a83cdd13429be45e65d0fc3d002476632857b939",
+      "bytes": 9399
+    },
+    {
+      "file": "start-menu-witness2.json",
+      "sha256": "0ee97c2635a22b88392be2b5203ca459580705b5117e11845e1fa0d2c0463c68",
+      "bytes": 4617
+    },
+    {
+      "file": "start-native-menu-producer.asm",
+      "sha256": "a73741b272193437eeb8bf1deb83d798d8342855572541118de34641cc02b733",
+      "bytes": 11788
+    },
+    {
+      "file": "start-option-binding.asm",
+      "sha256": "ade1ce5934948cbbfbc014f54389ac7e0692847bfbf54bc65454157dbc2c35bd",
+      "bytes": 2034
+    },
+    {
+      "file": "start-options-producer.asm",
+      "sha256": "ed432bd32d4214e9c15ba957e2e4a4c07c3607bee58c5fa9b3de4b86d73d1728",
+      "bytes": 7415
+    },
+    {
+      "file": "start-row-label.asm",
+      "sha256": "e3f74fba25fa9762ffb2ebdd6c8e8580a15c8c180d1d66f9ae704ec4ea317d6f",
+      "bytes": 1466
+    },
+    {
+      "file": "start-screen-metadata.json",
+      "sha256": "31b8fc22475ced313515464fc4b5d6de576b0004e946a63274d0e57c6014515f",
+      "bytes": 2922
+    },
+    {
+      "file": "start-section-action.asm",
+      "sha256": "06533c28a50f0ade01c95a7e6e933b16c59d60f16d04c111fd94bff213ce9949",
+      "bytes": 8096
+    },
+    {
+      "file": "start-section-tree-helper.asm",
+      "sha256": "d6d84b4972656ef63e02d6e34c63c7f196ed7ad069455273f01d5bc4451c288b",
+      "bytes": 467
+    },
+    {
+      "file": "start-section-witness.json",
+      "sha256": "f612b23b372f41082efdd12ed20f58d54424a353cf5fee49f3afea89f16e11d2",
+      "bytes": 4613
+    },
+    {
+      "file": "start-selection-callback.asm",
+      "sha256": "0a8fe66f09877dfeebaeca583b24927f5cbd41d6ec9465bc72c6f4adabf51ee9",
+      "bytes": 719
+    },
+    {
+      "file": "start-selection-getter.asm",
+      "sha256": "0c60ef8ef12153c8bc1fcf554b860095099c403c965463a7a49676eaa75b8d52",
+      "bytes": 1839
+    },
+    {
+      "file": "start-selection-storage.asm",
+      "sha256": "3af54d3b3991c0841cbf23bc13696022b61ac94932c193914e3a110a524f47d2",
+      "bytes": 980
+    },
+    {
+      "file": "start-setting-case6.asm",
+      "sha256": "90c4c4b073f8fa70ff6bdb6856562468c42bb763271e54c6a8f95f931e386305",
+      "bytes": 3782
+    },
+    {
+      "file": "start-setting-dispatch.json",
+      "sha256": "b4015d405d299d5b53b1f6951ba533c4e84107b79ff49c103f7f523be7da60da",
+      "bytes": 205
+    },
+    {
+      "file": "start-setting-mutation.asm",
+      "sha256": "9b0a42de50e0c69473477ebdd1414dda5535f879f424ef47b512b48c266fc6e0",
+      "bytes": 12472
+    },
+    {
+      "file": "start-title-factory.asm",
+      "sha256": "c27142fa1b838dfa42df244c0f1c244dcc7f2daba039073477acf4a256573e90",
+      "bytes": 1524
+    },
+    {
+      "file": "starting-resources.json",
+      "sha256": "d3286cbf365a257fcfee9661677f0c2fe2d06b571df5f6cdd6b1647b1bbd62f9",
+      "bytes": 435
+    },
+    {
+      "file": "starting-section-full-tree.json",
+      "sha256": "cc3b8a091bfeac893338342589746e0875248fbedb24a17d1f2b9b3d2013bd14",
+      "bytes": 140255
+    },
+    {
+      "file": "starting-section-full-tree.raw",
+      "sha256": "f8232bbac91209f30562a57739246bb31ac111fc8f435f6c86f49baeec74715c",
+      "bytes": 169
+    },
+    {
+      "file": "starting-section-full-tree.refs.tsv",
+      "sha256": "91a64ff0186bf2aa9f44432f354b51780d986a22637b24208da587888ccb82b3",
+      "bytes": 861
+    },
+    {
+      "file": "starting-section-full-tree.tree.txt",
+      "sha256": "f7be89e3fddfd96887a7fd5593e32791836cde9a885c7a5849bcc24f4411e9a0",
+      "bytes": 17035
+    }
+  ]
+}

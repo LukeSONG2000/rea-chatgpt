@@ -1,0 +1,56 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "existing version-bound artifact analysis reviewed for dynamic consumer integration",
+  "official_observations": [
+    {
+      "symbol": "CodexRemoteFileChangeDisclosurePart",
+      "offset": "0x19c4510",
+      "conclusion": "ExpandableAssistantSummaryItem, pencil tool label and OAIMarkdown.MarkdownCodeBlock composition",
+      "evidence": "ios-remote-v339-integration.json"
+    },
+    {
+      "symbol": "CodexRemoteFileChangeDisclosurePart",
+      "offset": "0x19c454c..0x19c4584",
+      "conclusion": "canExpand uses the diff String length; whitespace content remains expandable",
+      "evidence": "ios-remote-v400-integration.json"
+    },
+    {
+      "symbol": "CodexRemoteFileChangeSummaryRowPart",
+      "offset": "0x19c4b68..0x19c4d9c",
+      "conclusion": "lastTextBaseline spacing6; optional counts use caption and fixed size",
+      "evidence": "ios-remote-v340-integration.json"
+    },
+    {
+      "symbol": "ExpandableAssistantSummaryItem",
+      "offset": "0x1a418a0..0x1a41a90",
+      "conclusion": "false canExpand renders plain summary; retained expansion binding belongs to caller",
+      "evidence": "ios-remote-v400-integration.json"
+    }
+  ],
+  "independent_implementation": [
+    "RemoteReplayFileChange complete snapshot with stable item identity inside scoped turn",
+    "Atomic validation rejects duplicate/empty IDs and negative counts before changing any turn field",
+    "nil retains prior file snapshot; [] clears; cancellation and failure retain last received preview",
+    "Expansion state keyed account/host/thread, turn and file item; current store has process-local lifetime",
+    "Existing native code text/copy adapter receives current diff revision and dedicated accessibility prefix",
+    "Normal synthetic send fixture supplies preview.txt, one insertion/deletion and three revisions"
+  ],
+  "limitations": [
+    "Official title formatter and optional-count producer remain partial",
+    "Monospaced selectable text remains an independent partial OAIMarkdown substitute",
+    "Official mixed activity ordering, syntax styling and resource/file navigation remain open",
+    "Turn completion is UI replay state; file execution and write confirmation require future service contract",
+    "Android source consumers and physical-device behavior require independent acceptance"
+  ],
+  "source_report_sha256": {
+    "ios-remote-v339-integration.json": "eb4f3845735db76dfa879d58f73294f171e04cc0ae0c5ed0f79a479a272ab69a",
+    "ios-remote-v340-integration.json": "2eec2703b1e3d2a098a9d3db14f43b106be9a83ba6dd90b6dd3a193d2a31bb49",
+    "ios-remote-v399-integration.json": "6ba19d4a6f429a9589c55ee611461f87ba4e2423a1b66a3448375fd8d2e0b765",
+    "ios-remote-v400-integration.json": "96d6a2c2f5f2d24096d1457b94cb6bd528adb308832ff3def966351ecb8c2e8a",
+    "ios-remote-v400-field-layout.json": "41006f4ad56ead61f3d5209a39c9e4f4ef7afcb8acce42285c0aac45aea50079"
+  }
+}

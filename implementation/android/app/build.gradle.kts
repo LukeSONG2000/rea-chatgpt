@@ -10,8 +10,8 @@ android {
         applicationId = "local.rea.chatgpt.androidhost"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1-independent"
+        versionCode = 629
+        versionName = "0.629-frontend"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures { compose = true }

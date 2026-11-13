@@ -1,0 +1,265 @@
+{
+  "schema": "rea-ios-remote-approval-parent-v1",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Read-only approval banner/card topology and action/feedback parent recovery; no target execution, host edit, build, device test, or full extraction.",
+  "source_owners": {
+    "card": {
+      "type": "CodexRemoteThreadApprovalCard",
+      "descriptor": "0x95ac5c8",
+      "metadata_accessor": "0x1abfa98",
+      "conformance": "0x7e0ff18",
+      "actual_body": "0x1a2ab4c"
+    },
+    "banner": {
+      "type": "CodexRemoteThreadApprovalBannerView",
+      "descriptor": "0x95ae77c",
+      "metadata_accessor": "0x1c34a1c",
+      "conformance": "0x7e198b8",
+      "view_witness": "0x1a20e54",
+      "actual_body": "0x1a1d1d4",
+      "root_content": "0x1a1d31c",
+      "associated_type_record": "0x7e1e6a0",
+      "record_consumer": "0x1a1d2e0"
+    },
+    "full_tree": "ios-remote-approval-parent-20261113/banner-root-tree.tree.txt",
+    "wrongly_named_auxiliary": {
+      "file": "ios-remote-approval-parent-20261113/approval-card-tree.tree.txt",
+      "actual_record": "0x7e0aaa8",
+      "actual_owner": "BottomBars parent including Plan/Question/Approval; not the ApprovalCard associated body type. Filename retained but must not be used as card-body proof."
+    }
+  },
+  "recoverable": [
+    {
+      "id": "topology",
+      "evidence_type": "official_artifact_static",
+      "source": [
+        "0x7e1e6a0",
+        "0x1a1d1d4",
+        "0x1a1d31c"
+      ],
+      "conclusion": "Outer VStack contains header/reason stack, then conditional OpenAIFormView.id(ApprovalRequestKey) OR tuple(optional command/permission preview, padded action VStack, feedback HStack). Ordinary actions VStack contains ForEachWithIndex<ApprovalAction,ApprovalDecision,Button<Text>.buttonStyle(CapsuleButtonStyle)> then Rectangle separator. The feedback HStack is a sibling of this action group, not a child of the ForEach."
+    },
+    {
+      "id": "outer_geometry",
+      "source": [
+        "0x1a1d218",
+        "0x1a1d23c..0x1a1d290",
+        "0x1a1d2b0..0x1a1d2bc",
+        "0x158a9c"
+      ],
+      "values": {
+        "outer_VStack_spacing": 16,
+        "inner_padding": {
+          "top": 12,
+          "horizontal": 20,
+          "bottom": 20
+        },
+        "banner_frame_maxWidth": "infinity",
+        "banner_frame_alignment": "leading",
+        "outer_card_padding": {
+          "horizontal": 20,
+          "top": 4,
+          "bottom": 8
+        }
+      },
+      "limits": "Outer card maxWidth/environment overrides remain unresolved; banner infinity does not prove unlimited width on iPad."
+    },
+    {
+      "id": "actions_parent",
+      "source": [
+        "0x1a1dafc..0x1a1db0c",
+        "0x1a1db1c",
+        "0x1a1db24..0x1a1db5c",
+        "0x1a1fb00"
+      ],
+      "values": {
+        "alignment": "leading",
+        "spacing": 8,
+        "padding_top": 8
+      },
+      "correction": "7c49b28 is Edge.Set.top, not vertical; both parent and separator paddings below are top-only."
+    },
+    {
+      "id": "separator",
+      "source": [
+        "0x1a1fb8c..0x1a1fc10",
+        "0x74ed0b0",
+        "0x8a510f0",
+        "0x7cdb418",
+        "0x1bedb4",
+        "0x1c02d0"
+      ],
+      "values": {
+        "shape": "Rectangle",
+        "color_asset": "ChatGPT/border/light",
+        "opacity": 0.8,
+        "height": 0.5,
+        "padding_top": 8
+      },
+      "limits": "Not SwiftUI Divider and not border/default; use actual Rectangle geometry."
+    },
+    {
+      "id": "feedback_parent",
+      "source": [
+        "0x1a1db90..0x1a1dba4",
+        "0x1a1dbc4",
+        "0x1a1dbe4..0x1a1dbe8",
+        "0x457e94",
+        "0xaad1828"
+      ],
+      "values": {
+        "alignment": "center",
+        "spacing": 10,
+        "minHeight": 32
+      },
+      "proof": "HStack VerticalAlignment.center + optional spacing payload10; x6=32/w7=0 reaches _FlexFrameLayout.init minHeight through457e94; nil widths supplied by44b618/45a7fc."
+    },
+    {
+      "id": "feedback_field",
+      "source": [
+        "0x1a1f364",
+        "0x1a1f380",
+        "0x1a1f3c4",
+        "0x1a1f3e8..0x1a1f3fc",
+        "0x1a1f450..0x1a1f48c"
+      ],
+      "values": {
+        "textFieldStyle": "plain",
+        "font": "callout",
+        "foreground_asset": "ChatGPT/text/primary",
+        "lineLimit": "1...3",
+        "onSubmit": "text trigger"
+      },
+      "limits": "Full original text trim/validation policy is not re-proved by this pass."
+    },
+    {
+      "id": "feedback_pill",
+      "source": [
+        "0x1a1f6e4",
+        "0x1a1f7cc..0x1a1f7e0",
+        "0x74e2788",
+        "0xaad3910",
+        "0x1a1f814",
+        "0x1a1f834..0x1a1f880",
+        "0xc1a300",
+        "0x1a1f928..0x1a1f938",
+        "0x1a1f9d4..0x1a1fa40",
+        "0x7cdb440",
+        "0x7ce2288",
+        "0x1a1f518"
+      ],
+      "values": {
+        "font": "footnote",
+        "weight": "medium",
+        "foreground_asset": "ChatGPT/text/primary",
+        "padding_horizontal": 14,
+        "minHeight": 32,
+        "background": {
+          "shape": "Capsule",
+          "color_asset": "ChatGPT/bg/primary",
+          "opacity": 0.01
+        },
+        "stroke": {
+          "shape": "Capsule",
+          "color_asset": "ChatGPT/border/default",
+          "opacity": 0.65,
+          "lineWidth": 1
+        },
+        "buttonStyle": "PlainButtonStyle"
+      },
+      "limits": "This label belongs specifically to feedback deny/send, not the approval decision CapsuleButtonStyle."
+    },
+    {
+      "id": "feedback_label_and_action",
+      "source": [
+        "0x1a1f778..0x1a1f798",
+        "0x75d29d4",
+        "0x75d2434",
+        "0x1c349d4",
+        "0x1c349e8",
+        "0x1a2b084"
+      ],
+      "conclusion": "Feedback-derived empty/nonempty branch selects Deny or Send. Factories directly encode localized base strings Deny and Send. Owner forwards feedback via tag37 with Redacted<String>; approval/denial are separate owner actions tag35/tag36."
+    },
+    {
+      "id": "decision_button_style",
+      "source": [
+        "ios-remote-v411-integration.json",
+        "0x1a1fd28",
+        "0x1cf39c4",
+        "0x1a20bac",
+        "0x6f44908",
+        "0x6f4438c"
+      ],
+      "conclusion": "Existing supported source CapsuleButtonStyle remains correct: compact20 horizontal/10 vertical semibold fullwidth; index0 primary, subsequent bordered; decision identity supplied by ApprovalAction.decision. Do not transfer feedback capsule style here."
+    }
+  ],
+  "host_comparison": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256_at_inspection": "cc4bec6c4899a68879829cb2eddd8285ccc8e1f2acffc0781b25ba6b988114cd",
+    "ranges_approx": "RecoveredRemoteApprovalActionButtons/Card ~6857..6978",
+    "confirmed_omissions": [
+      "ActionButtons flattened the source action group and sibling feedback HStack into default-spaced VStack.",
+      "Rectangle separator and two distinct top8 paddings are absent.",
+      "Feedback HStack lacks explicit spacing10/minHeight32.",
+      "Feedback button plain text lacks the source label Capsule background/stroke/h14/minHeight32."
+    ],
+    "already_supported": [
+      "Main approval decision CapsuleButtonStyle",
+      "Approval-specific surface and inner/outer padding"
+    ],
+    "source_vs_adapter": "Host unsupportedReason warning, feedback state invalidation, scope admission and future service adapter are independent integration responsibilities; source generic tree alone does not establish official policies."
+  },
+  "identity_and_availability": {
+    "source_identity": "Only OpenAIFormView has explicit IDView<ApprovalRequestKey> in decoded banner tree. Ordinary action/feedback branch has no IDView or onChange modifier in that tree.",
+    "unknown": [
+      "Outer coordinator/request replacement lifecycle and feedback reset mechanism.",
+      "Runtime predicate choosing OpenAIFormView vs ordinary action/feedback tuple.",
+      "Owner-supplied actions availability and async pending disabled policy; absence of disabled modifier in this type is not proof that actions always remain enabled."
+    ],
+    "host_recommendation": "A full-value request identity or onChange cleanup may be used as an explicitly independent host safeguard. It cannot be labelled as recovered original lifecycle."
+  },
+  "haptics": {
+    "status": "unknown",
+    "scope_checked": [
+      "banner body1a1d1d4",
+      "action builder1a1fd28",
+      "feedback1a1efc4/1a1f6e4",
+      "existing v410 owner-action evidence"
+    ],
+    "conclusion": "No direct proven haptic emission is established in these recovered consumers. This is not proof of global absence; do not add guessed approval/deny/feedback vibration or infer a trigger from a haptic field elsewhere."
+  },
+  "unknowns": [
+    "Effective wide-screen outer card maximum and private message-input environment override.",
+    "All title/reason/permission-preview formatting and OpenAIForm branch implementation.",
+    "Feedback empty normalization and exact stale-request state reset upstream.",
+    "Whole original viewport/keyboard/status-pill layout beyond separately proved bottom-bar evidence."
+  ],
+  "validation": {
+    "kind": "static_only",
+    "generic_tree": "full decoded with opaque symbolic references retained",
+    "constant_reads": {
+      "0x7cdb440": 0.01,
+      "0x7ce2288": 0.65,
+      "0x7cdb418": 0.8
+    },
+    "runtime": "not executed"
+  },
+  "evidence_files": [
+    "ios-remote-approval-parent-20261113/banner-root-tree.tree.txt",
+    "ios-remote-approval-parent-20261113/action-group-parent.asm",
+    "ios-remote-approval-parent-20261113/feedback-pill.asm",
+    "ios-remote-approval-parent-20261113/feedback-helpers.asm",
+    "ios-remote-approval-parent-20261113/feedback-field.asm",
+    "ios-remote-approval-parent-20261113/frame-helper.asm",
+    "ios-remote-approval-parent-20261113/padding-helper.asm",
+    "ios-remote-approval-parent-20261113/font-factory.asm"
+  ],
+  "next_minimal_action": "Integrate proven ordinary action-group+separator+feedback capsule carrier; retain unsupported OpenAIForm branch and wide-screen maxWidth as exact gaps. Independent scoped host state cleanup must remain separately labelled."
+}

@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS293 HistoryViewController Section representation and native compositional geometry; three bounded groups: enum witness, captured provider mapping, constructor/builder",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused": [
+    "ios-sidebar-parent-groups-20261112-followup.json",
+    "ios-sidebar-layout-20261112-objc.json",
+    "ios-sidebar-parent-haptics-20261112.json"
+  ],
+  "official_artifact_observations": [
+    {
+      "id": "enum-representation",
+      "sources": [
+        "ios-shell-collection-parent-20261113/section-enum-metadata.json",
+        "ios-shell-collection-parent-20261113/section-enum-witness-map.json",
+        "ios-shell-collection-parent-20261113/section-enum-accessor.asm",
+        "ios-shell-collection-parent-20261113/section-get-tag.asm",
+        "ios-shell-collection-parent-20261113/get-tag-tail.asm",
+        "ios-shell-collection-parent-20261113/get-tag-final.asm",
+        "ios-shell-collection-parent-20261113/section-inject-tag.asm",
+        "ios-shell-collection-parent-20261113/inject-tag-tail.asm"
+      ],
+      "facts": [
+        "Selected exact anonymous HistoryViewController.Section descriptor9592774 has no payload cases and five empty cases; metadata accessor1343e2c returnsa4c21a8, whose descriptor pointer matches9592774.",
+        "Value witnessa4c2128 has size1/stride1. getEnumTag1458b8 ->48548 ->162a20 performs ldrb w0,[x0]. inject1459a8 ->1412b8 performs strb w1,[x0]. Thus actual native case tag equals its encoded byte; names are correlated with selected metadata and witness, not guessed from a later switch.",
+        "Native case tags:0featureCatalog,1pinned,2chatRequests,3recentConversations,4fetch.5 is Optional.none in current sectionIdentifier callback. These ordinals are not a network contract."
+      ]
+    },
+    {
+      "id": "provider-capture-map",
+      "sources": [
+        "ios-shell-collection-parent-20261113/section-provider.asm",
+        "ios-shell-collection-parent-20261113/provider-calls.json",
+        "ios-shell-collection-parent-20261113/layout-constructor.asm",
+        "ios-shell-collection-parent-20261113/register-flow-helpers.asm",
+        "ios-shell-collection-parent-20261113/section-enum-witness-map.json"
+      ],
+      "facts": [
+        "1356798 callback obtains weak owner then actual diffableDataSource sectionIdentifier(for:) at13567e4, reads Optional<Section> byte at13567f0.",
+        "Table7da902b bytes[5,2,0,0,4,7] are unsigned byte offsets times4 from base1356810. Cases0 and1 cannot be mapped by declaration-order capture guesses.",
+        "Callback preloads capture+18 into x22,+20 into x23,+28 into x24,+30 into x25. Case0 jumps1356824 and keeps+18;case1 jumps1356818 choosing+20;case2/3 jump1356810 choosing+28;case4 jumps1356820 choosing+30;none5 jumps135682c returningnil.",
+        "Constructor129d360 creates sectionA at129d3cc and helper162d34 saves itx20;sectionB at129d404 and700b40 savesx21;sectionC at129d43c and1398100 savesx22;sectionD at129d484 savesx25. Closure129d4b0..4b8 stores B at+18,A at+20,C at+28,D at+30."
+      ]
+    },
+    {
+      "id": "native-builder",
+      "sources": [
+        "ios-shell-collection-parent-20261113/section-builder.asm",
+        "ios-shell-collection-parent-20261113/builder-calls.json",
+        "ios-shell-collection-parent-20261113/layout-constructor.asm",
+        "ios-shell-collection-parent-20261113/register-flow-helpers.asm",
+        "ios-shell-collection-parent-20261113/layout-init.asm",
+        "ios-shell-collection-parent-20261113/layout-init-calls.json"
+      ],
+      "facts": [
+        "12a05f0 receives two independent height dimensions: x0 itemHeight, x1 groupHeight (15425c saves x20/x19).",
+        "It builds an item size fractionalWidth1 with supplied itemHeight through12a0640/12a0668; a verticalGroup size fractionalWidth1 with supplied groupHeight through12a06b0/12a0714 and exactly one item; sectionWithGroup at12a073c.",
+        "A/B/C each receive estimated60 independently for both item and group.60 is an estimate for self-sizing, never a fixed height or a minHeight.",
+        "D receives item fractionalHeight1 from129d454 and group absolute64 from129d470;154190 puts themx0/x1 before12a05f0. Thus only fetch owns the64 group height.",
+        "Selected constructor and builder do not call section contentInsets/interGroupSpacing/boundarySupplementaryItems setters. Reproduce source by not adding list configuration or extra section margins; no recovered positive numeric section gap is established.",
+        "Compositional layout is instantiated with initWithSectionProvider: at12e5b18. There is no UICollectionLayoutListConfiguration/list section in this selected original constructor."
+      ]
+    }
+  ],
+  "closed_section_geometry": [
+    {
+      "role": "featureCatalog",
+      "native_tag": 0,
+      "capture_offset": "0x18",
+      "constructor": "0x129d404",
+      "item_width": {
+        "fractionalWidth": 1
+      },
+      "item_height": {
+        "estimated": 60
+      },
+      "group_width": {
+        "fractionalWidth": 1
+      },
+      "group_height": {
+        "estimated": 60
+      },
+      "group_kind": "vertical,one item"
+    },
+    {
+      "role": "pinned",
+      "native_tag": 1,
+      "capture_offset": "0x20",
+      "constructor": "0x129d3cc",
+      "item_width": {
+        "fractionalWidth": 1
+      },
+      "item_height": {
+        "estimated": 60
+      },
+      "group_width": {
+        "fractionalWidth": 1
+      },
+      "group_height": {
+        "estimated": 60
+      },
+      "group_kind": "vertical,one item"
+    },
+    {
+      "role": "chatRequests",
+      "native_tag": 2,
+      "capture_offset": "0x28",
+      "constructor": "0x129d43c",
+      "item_width": {
+        "fractionalWidth": 1
+      },
+      "item_height": {
+        "estimated": 60
+      },
+      "group_width": {
+        "fractionalWidth": 1
+      },
+      "group_height": {
+        "estimated": 60
+      },
+      "group_kind": "vertical,one item",
+      "shared_with": "recentConversations"
+    },
+    {
+      "role": "recentConversations",
+      "native_tag": 3,
+      "capture_offset": "0x28",
+      "constructor": "0x129d43c",
+      "item_width": {
+        "fractionalWidth": 1
+      },
+      "item_height": {
+        "estimated": 60
+      },
+      "group_width": {
+        "fractionalWidth": 1
+      },
+      "group_height": {
+        "estimated": 60
+      },
+      "group_kind": "vertical,one item"
+    },
+    {
+      "role": "fetch",
+      "native_tag": 4,
+      "capture_offset": "0x30",
+      "constructor": "0x129d484",
+      "item_width": {
+        "fractionalWidth": 1
+      },
+      "item_height": {
+        "fractionalHeight": 1
+      },
+      "group_width": {
+        "fractionalWidth": 1
+      },
+      "group_height": {
+        "absolute": 64
+      },
+      "group_kind": "vertical,one item"
+    }
+  ],
+  "insets_spacing_boundaries": {
+    "root_collection": "Previously source-proved zero outer container/collection insets remain independent of header+10. See ios-sidebar-parent-groups-20261112-followup.json.",
+    "section": "No assignments to section insets/group gap in inspected actual constructor/builder/provider. Keep initializer defaults; do not add fabricated16/10/estimated60 spacing.",
+    "children": "Source child padding/minHeight/selected background stay in recovered row content, not duplicated at section layer.",
+    "negative_proof_limit": "No setters in selected code is not proof every dynamic/alternate HistoryAllChats layout is zero or identical. This report binds only this exact HistoryViewController layout getter."
+  },
+  "swipe_and_gesture_boundary": {
+    "current_host": "NativeConversationList uses UICollectionViewListCell and NSCollectionLayoutSection.list; trailingSwipeActionsConfigurationProvider retains local pin/delete. This is an intentional existing adapter, not recovered original section construction.",
+    "original_observed": "HistoryViewController ObjC metadata has explicit contextMenu configuration/preview methods and drag/drop delegates; no trailingSwipeActionsConfigurationProvider or equivalent list configuration found in selected layout path.",
+    "unknown": "Original native row swipe/gesture arbitration owner and any SwiftUI/internal gesture carrier remain unclosed. Absence of ObjC swipe methods does not prove absence of all swipe interaction.",
+    "risk": "Replacing every current list section by verticalGroup can remove platform list swipe admission even if cells remain UICollectionViewListCell. Do not remove usable pin/delete merely to claim parity.",
+    "safe_decision": "Do not change all history section carriers in this batch. FeatureCatalog (no row swipe) can use the recovered estimated vertical geometry independently; keep pinned/recent list-section carrier as an explicit swipe adapter until original action/gesture owner is recovered, or retain list everywhere and explicitly keep native geometry untranscribed. Context menus remain available independently.",
+    "haptics": "No new gesture/haptic consumer was established in these layout functions; preserve existing proven shared gate/trigger only."
+  },
+  "precise_unknowns": [
+    {
+      "id": "swipe-owner",
+      "boundary": "Selected layout getter129d360 and builder12a05f0 do not configure list swipes; original row gesture consumer not traced.",
+      "next": "Only investigate original row action carrier if replacing pinned/recent list geometry is necessary; keep host adapter explicit meanwhile."
+    },
+    {
+      "id": "alternate-layout",
+      "boundary": "HistoryAllChatsSection/StandardID is a separate inventory and not part of this provider enum.",
+      "next": "Do not import all-chats dates/projects/priority section geometry into this legacy/refreshed controller."
+    },
+    {
+      "id": "positive-section-gap",
+      "boundary": "No contentInsets/interGroupSpacing assignment observed in exact construction.",
+      "next": "Retain constructor defaults and existing source child layout rather than infer extra gaps from screenshot."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "builds_or_tests": false,
+    "device_or_official_app": false,
+    "network": false,
+    "candidate_groups_used": 3
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-shell-collection-parent-20261113/"
+}

@@ -1,0 +1,120 @@
+{
+  "batch": "v540",
+  "status": "partial",
+  "authority": "official-artifact-static and independent-host-source comparison",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Does RecoveredRemoteListEdges omit proven official top/bottom/safe-area or availability configuration that explains workspace pinned-header backdrop differences?",
+  "conclusion": "No omitted configuration is established within the recovered list edge adapter. The existing host reproduces the traced style, edge and compatibility inputs. Native header visual parity remains unaccepted.",
+  "confirmed": [
+    {
+      "topic": "V2 input and style mapping",
+      "producer_consumer": [
+        "0x397af8 reads owner usesVersion2TaskListUI at+0x20;0x397afc stores container first byte",
+        "0x2403968 reads container Boolean",
+        "0x240396c Edge.Set.vertical ->x1 at0x2403970",
+        "0x2403980 Boolean ->x0;0x240399c calls0x2403b58",
+        "0x2403b58..0x2403b64 maps true tostyle1,false tostyle2 and tails0x757d144",
+        "0x757d154 and0x757d158 preserve style/edges as two bytes"
+      ],
+      "host_match": "usesVersion2TaskListUI ? .soft : nil, for:.vertical. Current fixture explicitly passes true. Production UI-selection/capability behavior beyond the fixture is separately partial."
+    },
+    {
+      "topic": "System modifier consumption",
+      "producer_consumer": [
+        "ViewModifier witness0x757d4e8 loads packed style/edge bytes and tailsbody0x757d2ec",
+        "0x757d3ac..0x757d3ec dispatch style1 toScrollEdgeEffectStyle.soft,style2 toOptional.none,other tohard",
+        "0x757d400 extracts upperbyte edges",
+        "0x757d43c passes edges inx1",
+        "0x757d448 invokes SwiftUI.View.scrollEdgeEffectStyle(_:for:)"
+      ],
+      "host_match": "Vertical edges include both vertical ends through the exact Edge.Set.vertical value, with no narrowing to a bottom-only edge in the traced wrapper.",
+      "boundary": "This is edge selection. No fixed effect height, blur radius, safe-area extension or Section-header compositing geometry is encoded by these arguments."
+    },
+    {
+      "topic": "Availability",
+      "producer_consumer": [
+        "0x757d30c calls0x1bdeac; false0x757d310 ->unmodified content branch0x757d320",
+        "0x1bdeac..0x1bdeb8 loads platform2/version26.0.0",
+        "0x1bdebc tails0x7c34368",
+        "0x7c343c0..0x7c343cc packs major/minor/patch with platform",
+        "0x7c343d8 calls imported __availability_version_check"
+      ],
+      "host_match": "#available(iOS26.0,*) check precedes compatibility lookup. No separate major-version ceiling or iOS27 override is found in this wrapper."
+    },
+    {
+      "topic": "Known-build bypass",
+      "producer_consumer": [
+        "0x757d314 calls0x77106b4;0x757d318..0x757d31c testsbit0, true usesunmodifiedcontent",
+        "v482 once initializer0x77105ac..0x7710684 reads kern.osversion and tests exact membership",
+        "table0xaa71bb0..0xaa71be0 contains23A5260n,23A5260u,23A5276f,23A5287g",
+        "v482 lookup failure producesfalse"
+      ],
+      "host_match": "RecoveredScrollEdgeCompatibility caches one system-build read; four exact String cases match; missing/failed lookup returnsfalse. UTF8/buffer handling is independent host code."
+    },
+    {
+      "topic": "Full returned type scope",
+      "producer_consumer": [
+        "type0x84bf7d0 isViewModifier.Content<ScrollEdgeEffectStyleIfAvailableModifier>",
+        "type0x84bf7e0 isscrollEdgeEffectStyle opaque wrapper around sameContent",
+        "type0x84bf7e8 isScrollEdgeEffectStyle",
+        "body0x757d4b4 erases style-applied branch toAnyView"
+      ],
+      "conclusion": "Inspected body constructs an unmodified branch or system-style-applied branch. No header background, safeAreaInset, contentMargins, custom blur mask, effect visibility toggle or fixed sizing modifier appears in these returned types or direct body calls.",
+      "boundary": "This bounded conclusion does not exclude modifiers in the parent navigation/container or SwiftUI internal implementation."
+    }
+  ],
+  "implementation_decision": {
+    "source_supported_adapter_change": null,
+    "reason": "Current adapter already matches the proven inputs and gates. No forced opaque fill or hardcoded top blur height is justified by this wrapper.",
+    "source_supported_scope": "Keep the list vertical mapping scoped to this list caller. Remote transcript has an independently proven top-only UIKit collection path in v482 and must be assessed under that owner."
+  },
+  "precise_remaining_boundaries": [
+    "Which navigation/safe-area scroll host establishes the runtime top edge occlusion and viewport in the original parent. Parent agent is tracing that chain.",
+    "SwiftUI native Section pinned-header backdrop under the original linked SDK, OS build and active environment.",
+    "Whether the current reconstructed navigation/container presents an equivalent scroll edge region. Passing the same style does not settle coverage.",
+    "Official reference at matching scroll offset, font size, locale and theme remains absent for this pinned-header state."
+  ],
+  "next_minimum_action": "Continue the parent navigation/scroll containment trace and compare owned list viewport/safe-area placement in the reconstructed runtime. Keep header-backdrop parity partial until matching reference or additional source proves the expected occlusion.",
+  "validation": {
+    "static": "Direct producer/consumer and imported-symbol verification; existing host source compared",
+    "official_app": "not executed",
+    "runtime_tests": "parent owned",
+    "app_tests_docs_edits": "none",
+    "shared_rea_target": "unchanged"
+  },
+  "evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-v540-edge-adapter-snapshot.json": "011f633d762d2bd8c7de0683e34a451772ce634e50261310b315b91bfe293aff",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-availability-helper.asm": "b126d6f23606fdd086897f0de0f9fd5ba36f1788c89b7656fcdbc8e635d92068",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-availability-helper.json": "a45ff7924885cc6dff9c96bac2f7cbe2e07ada74cc67b5bb45165673821c6508",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-availability.asm": "55f8480b6b06af3fc163d6edace8dd09ed3ff410d69b16189f38aa3bae0500d8",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-availability.json": "9dd732c98d89becf5fa8f406942e2aa35422c3c05fb3dc9c12e470bfc24c761a",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-body-types.json": "41b7e46c0d555585a6c8b1db285786aa4a6d470e5a28635c5025769f9fb2fed6",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-call-mapping.asm": "e26719ab43a799511e4e6cd39df774a86f326af2d9c848dffa730b60550c7274",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-call-mapping.json": "39814e83a447e142ee9e2c853c5a37b234de292fbddeba770e8fb3a99c7e4750",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-list-input.asm": "5cbe19aeacb499de80c1a0edf2bfabbdc3e7055ffa88cebe19c9faa22d683b9c",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-list-input.json": "0d79c083a97def21fbd6e62db64a8cc1036436d01d4aedfd4db4c2dc257de640",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-style-body.asm": "1428ee50cb3424e973635d8afea79ca8df42d14c290fd6e7dae1e5778d8643c3",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-style-body.json": "25306662e443e525c5d4314d9378531130899c43b406de2666950b036ef70f5a",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-style-constructor.asm": "095835336b79f93aacd17a9d0b390817980b01a1b9ee8921dad9b4a0d9bea44a",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-style-constructor.json": "946f5653cc9ac4f7340161a6e07af511b16dd9efd60074f126b50a98a997874c",
+    "analysis/full-platform-20261104/ios-remote-v384-edge.asm": "0790e2641143c9fe5563c2d0a7b02c2a0b27001f76834c1ab27cc1d675fcbc24",
+    "analysis/full-platform-20261104/ios-remote-v384-edge-calls.json": "111d2b373bce38e3bbdd19e4c3b31f15ecec34bf5c10de832ed8454ed4c90648",
+    "analysis/full-platform-20261104/ios-remote-v384-edge-findings.json": "304d445b555c9cc5d19b7f04807ca5884b28b99a48abfb4ed37ff97f1d43d8de",
+    "analysis/full-platform-20261104/ios-remote-v384-edge-metadata.json": "0b8e53c292322752b7a6a05a3bfde103937ab86ba89068422665a408fbd31895",
+    "analysis/full-platform-20261104/ios-remote-v384-edge-witness.json": "da4a7674ce8ffc22ce96741999e7ecd3dd2377c5c456e9b0f7689d643397e439",
+    "analysis/full-platform-20261104/ios-remote-v384-list-construction.asm": "1710d083fc7eceae1aa9677f2a54b26769ea85d813a2a724001e97d234d82172",
+    "analysis/full-platform-20261104/ios-remote-v383-container.asm": "4e14138b35b97f69ce20b42cdccde46561ef1bb3eeb3d3adedeb4e50fb39efc1",
+    "analysis/full-platform-20261104/ios-remote-v383-container-calls.json": "448ad5ef15de8b28498c242a17fb94a75b068bc70bb4df481a35eba485a4675d",
+    "analysis/full-platform-20261104/ios-remote-v482-integration.json": "b482cdc84f4afd55b49058ae824f95bd093ab4fbd682870f5ec82bb1b7777117",
+    "analysis/full-platform-20261104/ios-remote-v482-gate-initializer.asm": "73fbf03d13203cb12ab4ddf4f22c7711d44b1bfe3fd9645d4ff774f16038a61c",
+    "analysis/full-platform-20261104/ios-remote-v482-gate-once.asm": "31403d6e0dc1b82b9bcf237a7d115ce43d8bfe05767ade5aef26fa2f5511f4d2",
+    "analysis/full-platform-20261104/ios-remote-v482-system-build.asm": "621bb1f45a571fbdefa83c75671b95710fd55a8cc5c0c90df62774506ce2d20c",
+    "analysis/full-platform-20261104/ios-remote-v482-build-membership.asm": "5a4a145bd6934f44bdfeedfdbab831aa584a8e83ad0675e0baa7d23f87a41180",
+    "analysis/full-platform-20261104/ios-remote-v482-gate-table.json": "2e430611395a3414bd0e8e5bc3e36e775d8196ee794a3bc168e114a2c88243f8",
+    "analysis/full-platform-20261104/ios-remote-v482-sysctl-binding.json": "a3ba27e79588b3ecd3ce5b7b0c050070d562fd7dd0889555aebb558caf591a27",
+    "analysis/full-platform-20261104/ios-remote-v539-header-parent-findings.json": "83aa8856a55fa1cf81feac5e699feaa718adba58efcad1f749b758512720e7a8"
+  }
+}

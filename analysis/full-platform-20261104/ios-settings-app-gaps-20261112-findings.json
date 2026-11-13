@@ -1,0 +1,125 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "validation": "no runtime executed; no host source or UI changed",
+  "question": "Identify App settings tuple items 2/3/4/11 and their root order and gates",
+  "source_tree": "ios-settings-symbolic-tree-20261112/root-general.tree.txt",
+  "source_rows": "ios-settings-root-app-rows-20261112.asm",
+  "conclusion": "Tuple index 2 is Parental controls, index 3 Trusted contact, index 4 Safety or Safety & wellbeing, index 11 conditional Ads controls. Parent order Parental before Trusted is supported by original construction.",
+  "ordered_tuple_items": [
+    {
+      "index": 0,
+      "name": "General",
+      "certainty": "observed; already mapped by parent"
+    },
+    {
+      "index": 1,
+      "name": "Notifications/Voice conditional content",
+      "certainty": "owner already mapped by parent; not expanded here"
+    },
+    {
+      "index": 2,
+      "name": "Parental controls",
+      "root_call": "0x1088d08 -> 0x1089430",
+      "label": "0x108946c -> 0x75d6b50",
+      "icon_factory": "0x74f9b0c",
+      "destination_enum": 17,
+      "gate": {
+        "call": "0x1089464 -> 0x1089524",
+        "predicate": "0x108955c reads byte [x21 + 0x41]; returns byte == 0 at 0x1089564..0x1089568",
+        "false_path": "0x1089468 -> empty at 0x10894cc",
+        "limit": "Identity/meaning of the object byte is not semantically closed here; do not label predicate child/adult based only on offset."
+      }
+    },
+    {
+      "index": 3,
+      "name": "Trusted contact",
+      "root_gate": "0x1088d0c -> 0x10894e0; false skips at 0x1088d10",
+      "label": "0x1088d14 -> 0x11a4dc8",
+      "icon_factory": "0x74f7d44",
+      "destination_enum": 24,
+      "gate_limit": "0x10894e0 forwards through 0x10dda54 and an indirect protocol call; semantic availability property not closed here."
+    },
+    {
+      "index": 4,
+      "name": "Safety / Safety & wellbeing",
+      "gate": "0x1088d78 x0=0; 0x1088d80 -> 0x1086f98; mask0x1010101; all four packed flags false means omitted",
+      "label": "0x1088d94 -> 0x1088314",
+      "label_variants": [
+        {
+          "selector": "0x11a5d20 result bit8 false",
+          "key_address": "0x8888790",
+          "key": "settings_safety_title",
+          "fallback": "Safety"
+        },
+        {
+          "selector": "0x11a5d20 result bit8 true",
+          "key_address": "0x88887b0",
+          "key": "teen_settings_safety_and_wellbeing_title",
+          "fallback_address": "0x88887e0",
+          "fallback": "Safety & wellbeing"
+        }
+      ],
+      "icon_factory": "0x74f85a4",
+      "modifier": "0x1088dc8 literal0x8888770 safety-settings-entry; accessibility modifier applied0x1088df4",
+      "limit": "Not Privacy and safety; no inference from Never destination type."
+    },
+    {
+      "index": 5,
+      "name": "SettingsSecurityRow",
+      "evidence": "0x1088e28..0x1088e74; 0x1088e3c ->0x1147e3c; conformance0x7d94b38 -> type descriptor0x958b994 -> SettingsSecurityRow bodywitness0x108c02c",
+      "witness_file": "ios-settings-app-gaps-20261112-witness.json"
+    },
+    {
+      "index": 6,
+      "name": "Codex",
+      "gate_call": "0x1088e88 -> 0x10870dc",
+      "certainty": "parent mapping"
+    },
+    {
+      "index": 7,
+      "name": "Cloud browser",
+      "gate_call": "0x1088eec -> 0x108714c",
+      "certainty": "parent mapping"
+    },
+    {
+      "index": 8,
+      "name": "Passwords",
+      "gate_call": "0x1088f74 -> 0x10871d4",
+      "certainty": "parent mapping; not proof of always visible"
+    },
+    {
+      "index": 9,
+      "name": "Storage",
+      "gate_call": "0x108900c -> 0x1087288",
+      "certainty": "parent mapping"
+    },
+    {
+      "index": 10,
+      "name": "Data controls / PrivacyAndSafetyRow",
+      "label_call": "0x10890e8 -> 0x75d38a4",
+      "certainty": "parent mapping"
+    },
+    {
+      "index": 11,
+      "name": "Ads controls",
+      "root_gate": "0x1089104 -> 0x107a7cc; false skips at0x1089108 ->0x108915c",
+      "gate_key_address": "0x8888800",
+      "gate_key": "shouldShowAdDataSetting",
+      "label": "0x108910c ->0x119e394",
+      "label_encoding": "Swift small string x0=0x746e6f6320736441 x1=0xec000000736c6f72 -> Ads controls, then tail1644dc",
+      "icon_factory": "0x74f8814",
+      "destination_enum": 38,
+      "limit": "Boolean service/flag value requires runtime injection or owner resolution. Existence of root branch does not prove visible for all accounts."
+    }
+  ],
+  "unresolved": [
+    "Semantic identity of Parental byte +0x41 predicate owner.",
+    "Full flag/availability semantics for Trusted and Safety.",
+    "Actual account/config values of conditional branches are unavailable in static artifact."
+  ],
+  "changes": "Evidence files only; host, fixtures, resource exports, builds unchanged."
+}

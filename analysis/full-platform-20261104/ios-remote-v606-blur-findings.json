@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "batch": "v606",
+  "status": "partial",
+  "authority": "frozen-shipped-artifact-static-instructions",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Remote transcript explicit content/indicator insets, collection safe-area underlap, geometry observer placement; no production edits or runtime execution",
+  "findings": [
+    {
+      "id": "collection-bottom-underlap",
+      "status": "verified-static",
+      "conclusion": "The collection has an unconditional bottom SafeAreaRegionsIgnoringLayout using SafeAreaRegions.all, plus a second wrapper ignoring top on iOS26+ (empty edges on older OS).",
+      "evidence": [
+        "1a4c608 imports Edge.Set.bottom; 1a4c60c calls1daa574 (SafeAreaRegions.all).",
+        "1a4c62c stores region mask and1a4c630 stores bottom edge byte in first layout.",
+        "1a4c634..66c creates the second layout with iOS26+ top/legacy empty choice.",
+        "Type records7e13f88 and7e13f90 both resolve ChatCollectionView<CodexRemoteTranscriptItem>,_FlexFrameLayout,_SafeAreaRegionsIgnoringLayout."
+      ],
+      "integration": "Put ignoresSafeArea(.all,edges:.bottom) on collection inside SafeAreaBar, retaining conditional top wrapper. The collection frame can underlap the bar and keyboard safe area while explicit scrollInsets protect content.",
+      "limits": [
+        "Frame dimensions and keyboard values depend on actual SwiftUI ancestor geometry and need runtime probe."
+      ]
+    },
+    {
+      "id": "outer-safearea-observer",
+      "status": "verified-static",
+      "conclusion": "The safe-area geometry observer wraps the content after SafeAreaBarIfAvailable construction, plus later overlays/background/environment modifiers. It is outside the bar modifier.",
+      "evidence": [
+        "Root builder1a49bf8 calls helper757a2cc at1a4a06c and1a4a0fc with two edge/content variants; established helper uses native safeAreaBar at757c0b8 on supported branch and safeAreaInset at757bff4 on fallback.",
+        "Subsequent root overlay1a4a194 and background1a4a274 precede observer.",
+        "1a4a338 selects __safeAreaVerticalInsets field via Content metadata+ac.",
+        "1a4a364/368 passes transform1c2fdfc to geometry-binding helper7542db0 at1a4a390.",
+        "1c2fe10/18 calls GeometryProxy.safeAreaInsets;1c2fe1c stores returned top(d0) andbottom(d2).",
+        "A second geometry observer1a4a424 stores outer viewport height."
+      ],
+      "integration": "Measure safeAreaInsets on outer result after recovered bottom-bar modifier. Measure complete bottomBars content height inside the bar. Do not measure safeAreaInsets on the collection after it ignores safe area.",
+      "limits": [
+        "Binary instruction order and wrapper construction are established. A keyboard-height number is not statically proven. Probe outer safeAreaInsets.bottom with keyboard open/closed and compare against collection frame."
+      ]
+    },
+    {
+      "id": "explicit-inset-formula",
+      "status": "verified-static",
+      "conclusion": "The v605 formula and explicit .never collection adjustment remain applicable.",
+      "formula": {
+        "contentPadding": "NSDirectionalEdgeInsets.zero",
+        "top": "iOS26+ ? outerSafeArea.top : 0",
+        "left": 0,
+        "bottom": "(measuredBottomBarsHeight > 0 ? measuredBottomBarsHeight : initialBottomBarsHeight) + outerSafeArea.bottom + additionalTranscriptBottomInset + (iOS26+ ?48:10)",
+        "right": 0,
+        "additionalScrollIndicatorInsets": "UIEdgeInsets.zero"
+      },
+      "evidence": [
+        "1a4c3b4..410 constructs scrollInsets,1a483fc selects measured-height/fallback,1a4c164 selects top.",
+        "3f88154 sets raw2 and3f88158 dispatches setContentInsetAdjustmentBehavior:.",
+        "3f89760..70 sets contentInset;3f89780..98 adds additional indicator components and sets verticalScrollIndicatorInsets."
+      ],
+      "integration": "Explicit inset ownership must include bottom underlap and outer safe-area observation together. Extra keyboard compensation must be based on probe results to avoid double counting."
+    },
+    {
+      "id": "embedding-inset-defaults",
+      "status": "partial",
+      "conclusion": "Outer ThreadView forwards initialBottomBarsHeight and additionalTranscriptBottomInset unchanged. Ordinary entry defaults remain unproven.",
+      "evidence": [
+        "1a43f80 loads d10/d9 from ThreadView+28/+30;1a44054..58 stores d10 toContent initialBottomBarsHeight metadata+2c.",
+        "1a43f9c loads d8 fromThreadView+58;1a4409c..a0 stores it toContent additionalTranscriptBottomInset metadata+44.",
+        "Bounded1a43e78..1a44e40 establishes forwarding only. Direct B/BL scan for ThreadView metadata accessor1ab49bc yielded zero and does not establish constructor/default absence."
+      ],
+      "integration": "Keep both as explicit host inputs. Any zero defaults chosen by independent host are labeled host defaults until actual ordinary-route factory is traced.",
+      "next_minimal_action": "Locate caller constructing fixed-layout CodexRemoteThreadView (initial height+28,additional inset+58), bind route identity, inspect only its stores."
+    },
+    {
+      "id": "indicator-automatic-adjustment",
+      "status": "bounded-negative",
+      "conclusion": "Selected controller initialization and collection setup contain setContentInsetAdjustmentBehavior:. No setAutomaticallyAdjustsScrollIndicatorInsets: call was found in these windows.",
+      "evidence": [
+        "Initializer3f8745c..3f87840.",
+        "Collection setup3f8805c..3f881c8, including .never branch and accessibility setter.",
+        "Additional bounded context3f881a0..3f884c0."
+      ],
+      "integration": "Preserve observed explicit verticalScrollIndicatorInsets assignment and .never. No source support here for adding an automaticallyAdjustsScrollIndicatorInsets=false override.",
+      "limits": [
+        "This is a bounded selector/call inspection. Other methods, superclass behavior, and non-adjacent dynamic dispatch remain unproven."
+      ]
+    }
+  ],
+  "recommended_probe": [
+    "Log collection frame,contentInset,adjustedContentInset,verticalScrollIndicatorInsets plus outer safeAreaInsets and measured bottomBarsHeight on same frame.",
+    "Compare keyboard closed/open andcomposer compact/expanded. Confirm explicit bottom formula andvisible lastrow position with ignoresSafeArea(.all,bottom).",
+    "Preserve reading anchor across geometry changes; no double compensation from collection safeArea or manual keyboard observer."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-observer-order.asm",
+      "sha256": "351e9b9af2d0aa61c7de46e252fb40e44aa3329ec0484c8003916485372cd729"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-ignore-edges.asm",
+      "sha256": "076e61b0cd6ff78a1a227d9fd27445dfd6397f3af1053104f223ae000b6e3dff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-type-7e13f88.json",
+      "sha256": "89ec124de776e67878ec34196d90bb0e914c4e5d757f1440c00b1cf480b0a65d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-type-7e13f90.json",
+      "sha256": "5b18e3651b04118cca8c77fd2fb51df2a155bd34b521a37a122f91347d5c9172"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-thread-entry.asm",
+      "sha256": "a5f3a524a13d5253db2006522d596832b79ecb99b028428d45d734e8774ed945"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-thread-metadata-xrefs.json",
+      "sha256": "03fccf09fb94cf2e2808de33ca8e6fcaddec98163e6841ca7c125d6b59e00e88"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-thread-prelude.json",
+      "sha256": "3c5478510851dc1ab1a839e3387a6814945f585d232ba461a7574693f1e45ab7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-thread-prelude.asm",
+      "sha256": "e309987bd90923fa1dbd40b4501678275f6fdf24db7fbb2cb8704d7bbc93823e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-blur-controller-indicators.json",
+      "sha256": "4564973455c817dfb50289d56fc39defd14dd3c79f5acc51a2aa0923274f99ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v605-blur-findings.json",
+      "sha256": "202185d3f835ce6c3f270d73fb3790a038bda19ea65cd272e3b18048144c4aa5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v605-blur-safearea-transform.json",
+      "sha256": "193842443c111025f101e8ba00eef20b1d70e8ac660bf7a97b842ae2a7fa6aea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v605-blur-controller-adjustment.json",
+      "sha256": "4762d98c6b24e3e960205e4c759a4a36e6c9584a58247ecbd0f0404d50cc8276"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v605-blur-controller-initializer.json",
+      "sha256": "987e835701f55a6bc1b9c3abff9242c9de08b6eb2c141f7f8b42fb2b769fba00"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v605-blur-inset-application.asm",
+      "sha256": "d04b22bf383015adf88e3f4c5694b31369fd6b04a0542cd8476513112ac43dca"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-safearea-branches.json",
+      "sha256": "8bd20bb0c1fef16068e9f33c8ab080f26059ba11b49fa02f824db4ba9b26936f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-type-7e13e28.json",
+      "sha256": "1c3eb4f1258646411e6e21576e1fa83542c5045a7a479b354a3a3fc3d16a612f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-root.asm",
+      "sha256": "927e694dd331c5b461432553882c0c7e0cf00c5b6830d4c81048a03524c37c58"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v482-thread-edge-owner.json",
+      "sha256": "d4b09e62fa8ee411806b1e799c5d6e29b5e8d50b52c6924b50f08cee855393d5"
+    }
+  ],
+  "limits": [
+    "No runtime observation or device visual parity established.",
+    "No production source modification.",
+    "Original variable-blur private effect and native scroll-edge soft effect remain distinct."
+  ]
+}

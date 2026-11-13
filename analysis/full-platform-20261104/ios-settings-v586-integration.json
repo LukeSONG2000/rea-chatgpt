@@ -1,0 +1,120 @@
+{
+  "batch": 586,
+  "status": "partial",
+  "scope": "Remote Changes synthetic latest-turn diff detail and applicable Codex diff wrapping preference",
+  "official_evidence": "ios-settings-v586-findings.json",
+  "implemented": [
+    "Official localized diff-wrap setting and persisted default-true preference",
+    "Replay Changes entry opens selected task latest-turn file snapshot",
+    "File collapse/expand, copy, wrapping/horizontal layout, empty result and close return"
+  ],
+  "independent_adaptations": [
+    "Snapshot comes from deterministic synthetic turn events. Workspace diff query/refresh remains pending.",
+    "SwiftUI DisclosureGroup/default geometry and existing plain selectable code renderer. Official final ScrollView/LazyVStack ownership is restored."
+  ],
+  "validation": {
+    "status": "passed bounded simulator checks; page remains partial",
+    "prior_round": "r3 four cases passed on initial List adapter",
+    "foundation": "ios-settings-v586-text.log",
+    "initial_failures": [
+      {
+        "rounds": [
+          1,
+          2
+        ],
+        "reason": "Ancestor DisclosureGroup accessibility identifier replaced child identifiers. Removed ancestor ID and retained child control identity."
+      }
+    ],
+    "retention": "ios-settings-v586-retention-final.json",
+    "final_summary": "ios-settings-v586-r4.summary.json",
+    "final_ui_cases": 2,
+    "earlier_summary": "ios-settings-v586-r3.summary.json",
+    "earlier_ui_cases": 4,
+    "cases": [
+      "testRemoteDiffSettingsChinese",
+      "testRemoteDiffSettingsEnglishDark",
+      "testRemoteThreadMenuScopeAndFailure (r3)",
+      "testRemoteDynamicFileChinese (r3)"
+    ],
+    "coverage": [
+      "Chinese/light and English/dark",
+      "Empty turn and long diff",
+      "Copy, collapse and expand",
+      "Wrap toggle and horizontal layout",
+      "Host/task capability isolation",
+      "Draft preservation, close return and process restart"
+    ],
+    "visually_reviewed": [
+      "ios-settings-v586-r4-attachments/F7B6CECA-3DE9-4FEA-B62B-AAF8E911BDDE.png",
+      "ios-settings-v586-r4-attachments/8FB696D0-32E2-430A-99C8-419A09E6D83A.png",
+      "ios-settings-v586-preview.png"
+    ],
+    "visual_result": "Readable wrapped light and unwrapped dark diff; no official line colors/gutters recovered. Chinese settings preview visible with enabled wrap toggle.",
+    "runtime": "ios-settings-v586-runtime.json",
+    "build_size": "710 MiB fixed .build directory",
+    "display": "Color LCD only"
+  },
+  "unfinished": [
+    {
+      "page": "Remote Changes",
+      "priority": "P1",
+      "missing": "Workspace diff query/refresh and resource error lifecycle",
+      "evidence_gap": "WorkspaceDiffSheetContent snapshot owner and request binding",
+      "next": "Trace owner and define frontend adapter loading/failure fixtures",
+      "acceptance": "Scoped refresh/failure/return preserves task and draft"
+    },
+    {
+      "page": "Remote diff detail",
+      "priority": "P2",
+      "missing": "Official header geometry, line gutters/colors, selection/comments and precise scroll restoration",
+      "evidence_gap": "DiffFileSection/DocumentDiffView modifier values and action owners",
+      "next": "Recover source-backed minimum formatting and layout for this detail surface",
+      "acceptance": "Long and multi-file diffs remain readable and operate in light/dark"
+    },
+    {
+      "page": "Codex settings appearance",
+      "priority": "P1",
+      "missing": "Action tint differs between root and Remote entry; exact toolbar/row styling",
+      "evidence_gap": "Official global and destination tint/environment ownership",
+      "next": "Trace final environment payload and navigation entry propagation",
+      "acceptance": "Both entries preserve verified source colors and accessible native controls in light/dark"
+    },
+    {
+      "page": "Codex connection settings",
+      "priority": "service",
+      "missing": "Enrollment, availability transient state, receipt failure rollback and bulk predicate owner",
+      "evidence_gap": "Predicate17c0830 and host connection owner action implementation",
+      "next": "Specify service adapter receipt and independent frontend failure fixtures",
+      "acceptance": "Host-scoped responses preserve unrelated connections and drafts"
+    },
+    {
+      "page": "Remote thread",
+      "priority": "P2",
+      "missing": "Disabled-host approval/stop behavior and error-alert automatic focus restoration",
+      "evidence_gap": "Official action availability and error presentation owner",
+      "next": "Trace action owner guards and focus cleanup",
+      "acceptance": "Unavailable actions and scoped drafts behave predictably across failure and return"
+    },
+    {
+      "page": "Settings/system",
+      "priority": "device",
+      "missing": "Physical haptics, notification delivery and external-display placement",
+      "next": "Run independent acceptance when devices/display are available",
+      "acceptance": "Observed real device interaction and routing"
+    }
+  ],
+  "cross_platform": {
+    "ios": "Native frontend and Foundation preference; simulator acceptance only",
+    "android": "This batch provides no Android implementation or acceptance"
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteContextUsage.swift": "3b27ffcc99f3d1c8607b0931ad23978f933b3764063cf91d1760ec7ed609d569",
+    "implementation/ios/Sources/NativeConversationHost.swift": "e36bb3139a56d01562605c032315adbb6141326f4e2c824e09e20e987c0fb24a",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "92ee2421ca67047482541e6fba08dafe7223846b100bfaf34297add27e40c5e8",
+    "implementation/ios/Sources/OfficialText.swift": "51eff1115bd347912e99577ce67f4288783bf77973c659aed2b186c1c01768fd",
+    "implementation/ios/UITests/HostInteractionTests.swift": "46129acff9a406c10d4e71c8f2eab5ca70040f5da9d3086e5fe4595fc2d36071",
+    "implementation/ios/TextTests/main.swift": "6aa35b75ec30caf084b4a4df0731127c67e80f07136da08235be137cab90b690",
+    "implementation/ios/Tools/prepare-official-text.py": "e4eb202753835e7c710883f5c97d869e6cee668faa1b9933c4bcd7da0736143a",
+    "implementation/ios/Resources/OfficialTranslations.json": "21a946784f0d5b897ab5b6ab7095f9c6ccac10c5413cab4a336116b23b15627f"
+  }
+}

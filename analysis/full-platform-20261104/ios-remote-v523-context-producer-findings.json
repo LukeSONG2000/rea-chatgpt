@@ -1,0 +1,220 @@
+{
+  "status": "partial",
+  "scope": "Concrete iOS293 Remote context usage source, thread snapshot assignment and observed update callback; bounded static evidence only",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "closed_boundary": "CodexRemoteThreadSession.ThreadState.contextUsage → ThreadViewModel stored Optional<ContextUsage> → protocol witness → composer Controls → existing v523 Indicator/Popover",
+  "chain": [
+    {
+      "node": "generic owner and concrete witness",
+      "status": "verified-static",
+      "evidence": [
+        "BottomBars descriptor95ae740 generic requirement protocol at95ae778 resolves95aa558 CodexRemoteThreadContentViewModeling",
+        "Conformance7e0b6b8 type95aa8a4 CodexRemoteThreadViewModel, patterna504788",
+        "1cea224 reads witness+218; slota5049a0 resolves1942ae0;1942ae0 tailcalls18e4d98"
+      ],
+      "limit": "Method source spelling is not encoded in this protocol requirement record."
+    },
+    {
+      "node": "stored optional context usage",
+      "status": "verified-static",
+      "evidence": [
+        "VM field record9a33098 is _contextUsage, optional ContextUsage typeref8e11c54",
+        "18e4d98 getter returns two64-bit words fromself430/438 and optional tagself440",
+        "18d97dc setter compares old optional payload/tag, direct-stores unchanged branch, otherwise invokes mutation closure1c3cbec through1d3cecc",
+        "1c3cbec..1c3cbfc writes same430/440 storage",
+        "Consumer1cea230..264 forwards getter results into1970c78 Controls initializer"
+      ],
+      "conclusion": "Usage is attached to a concrete thread view-model instance; the consumer reads an optional supplied value."
+    },
+    {
+      "node": "ThreadState projection",
+      "status": "verified-static",
+      "evidence": [
+        "18fc368 takes incoming state pointerx0 and VMselfx20, retained asx28/x27",
+        "18fc508 calls25db008, metadata accessor for descriptor95d5c4c CodexRemoteThreadSession.ThreadState",
+        "ThreadState has13fields and field-offset vector word2. field11 contextUsage therefore metadata+3c",
+        "18fc520 reads metadata+3c,18fc524 adds to incomingstatex28,18fc528→ac980c loads pair/tag,18fc52c→18d97dc stores intoVM",
+        "ThreadState.contextUsage uses the same typeref8e11c54 asVM optional andControls"
+      ],
+      "conclusion": "This path copies the optional ContextUsage payload from the session ThreadState. No arithmetic token estimation or accumulation occurs between the state field and VM setter."
+    },
+    {
+      "node": "snapshot observation and throttled delivery",
+      "status": "verified-static-with-upstream-boundary",
+      "evidence": [
+        "1939db4 registration constructs PassthroughSubject<ThreadState,Never>",
+        "7e14ff0 binds Publishers.Throttle<PassthroughSubject<ThreadState,Never>,OS_dispatch_queue>",
+        "1939ea0 resolves DispatchQueue.main;1939efc setslatesttrue;1939f08 callsPublisher.throttle",
+        "190eba4 constructs shared interval;190ebd0 gives250 and190ebd4 callsDispatchQueue.SchedulerTimeType.Stride.milliseconds",
+        "1939f5c captures1c3b890;1939f6c sink receives throttled ThreadState",
+        "1c3b890→1c44030 resolves captured weak owner;1c44060 invokes18fc368 whenownerexists",
+        "1939fb0 invokes1d9a998 class virtual slot4f0; result used as AnyPublisher<ThreadState,Never> (7cfcfd0);193a034 sink captures1c3b8d8→193a0e8",
+        "Additional direct state applications exist at18fb344,193a55c,1941900 plus thunks190c8a8/190d348",
+        "Weak-owner proof:1540f4→1540f8 tailcall7c54c7c; stub pointeraad9890 resolves_swift_weakLoadStrong. Callback branches around invocation whennil."
+      ],
+      "limits": [
+        "This establishes one main-queue throttle path. It does not prove every update takes this path.",
+        "The upstream virtualslot4f0 implementation/owner type and the complete forwarding-vs-immediate branches inside193a0e8 are not fully bound.",
+        "250ms is this publisher throttle configuration, not a frame-time or device performance claim."
+      ]
+    }
+  ],
+  "identity": {
+    "proven": [
+      "The same captured VM instance receives state updates and supplies contextUsage to its composer.",
+      "ContextUsage fields usedTokens/modelContextWindow come directly from session ThreadState.contextUsage.",
+      "The usage pair has no recovered separate host/thread identifier; identity is provided by owner wiring."
+    ],
+    "unknown": [
+      "Exact upstream host/connection/thread scope binding of virtualslot4f0 publisher.",
+      "Subscription generation handling, stale callback rejection and cross-host rebinding for this specific context state path.",
+      "Where session ThreadState.contextUsage is populated from transport, including any RPC notification name or server token-accounting semantics."
+    ]
+  },
+  "integration_boundary": {
+    "official_fact": "Render optional server/session-provided context usage tied to current thread owner.",
+    "independent_design_recommendation": "Use explicit synthetic usage payloads for offline fixtures and preserve host/thread identity in reconstruction contracts; do not derive official-looking usage by counting local text.",
+    "no_claim": [
+      "Cumulative output token semantics",
+      "Local token estimator",
+      "All updates are throttled",
+      "Cross-host callback safety acceptance"
+    ]
+  },
+  "next_minimum_evidence": [
+    "Bind upstream virtualslot4f0 at1d9a998 from registration input to concrete CodexRemoteThreadSession publisher implementation.",
+    "Then follow only ThreadState.contextUsage setter to exact transport/session update field; preserve optional absence and identity."
+  ],
+  "validation": {
+    "runtime": "not executed",
+    "device": "not run",
+    "network": "not contacted",
+    "production_changes": "none"
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-action.asm",
+      "sha256": "6d8c1cbaebef32501d988e5afaca390883e185e55afdced33924104e3d80d5b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-calls.json",
+      "sha256": "bc28d160b65bb97c9b0452df667da6f4ce9050b94243e3fb15f1fa27aa6b2a1d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-concrete-getter.asm",
+      "sha256": "39b8222493a3d498466a86671ed85f7220f940497f4764aba8bb0fc3f8589559"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-concrete-witness.asm",
+      "sha256": "82244aea58062bf22274a86e150ea78d4512d5369ba8122380e779c1e321708b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-indicator.asm",
+      "sha256": "8a45e66a0394c6497d65915ab7cfb1b8057e717d7bfc8213e753ccb6c6755071"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-label-witness.json",
+      "sha256": "78a338e80694ab83e42eacaa939c5a6512f0be8e066f993b8cea9931795707ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-localizations.json",
+      "sha256": "71f31f2aea9a7474ef0287f3dafa4cdf5252e5ff89a18de572a0e4a09d99e39c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-observation-input-type.json",
+      "sha256": "c6854f00d695b124889b88e06ab8c495c67746a0507917a1a30253462f80c3ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-observation-refs.json",
+      "sha256": "8d1a4b4243d95b4c7b906389823c6b694b7a12d0be76b0a6410cd22ebbaeb63e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-observation-register-calls.json",
+      "sha256": "c73adcdaa60a03245826d56d68ac2964a99cba5f1d6e751dbf086df32c82975c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-observation-register.asm",
+      "sha256": "be957c02bd91456b3998e95af9457faa4d8ee7f00b647e2b4c2514340d8150f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-observed-type.json",
+      "sha256": "7576ab7317667000d5481413b86b71dc2d7be097c62e09f37021befb3bdf8c61"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-official-strings.json",
+      "sha256": "387d5ef853a6174fb0fb24da9c84d6d17843ef84e3cae0b47cc0c3500271576e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-owner-metadata.json",
+      "sha256": "9cf25159e4524c4374b87cccce6697fdb241caf6f6a3f37e7bf2c409a976122c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-popover-witness.json",
+      "sha256": "be7fa210d2f98001e99b3de00dc48d0c6abb5d45591543b1438463cb95ac30bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-preference-findings.json",
+      "sha256": "fa53c5a699050bc2f492d3a54f163ac9ae1eeb8ca6258320159ae115a4cd274c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-producer-binding.json",
+      "sha256": "7038eb9c9f4fb3fcab08e6fa238b7cc0316c441cdb44a68621f6ac912280af4b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-producer-refs.json",
+      "sha256": "abb0c536a17e994ee89107b5e26351bc2d32b8c3f9f07f9646762ee5be0a86c6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-refs.json",
+      "sha256": "e76fe602030f4a60c1b7562fac766fdbbfac1ace8dc2ea7990238ff347c4cdbb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-setter.asm",
+      "sha256": "ded8423c52540b6c17a4914c5d061f859a90afdd9c9c8bfc7797d69c6f0da8aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-state-callback.asm",
+      "sha256": "9b401f356dfb847e107d73ed0badb7f4c9842e9f5f9f42ca606fafb430ec66f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-state-callback2.asm",
+      "sha256": "20423ae2a0c1456aaa19bd9af5fe758bd80b3873f1b8bcfe867a12ba69543e30"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-status-fields.json",
+      "sha256": "67ca570be39ae39e1b4b0e398e2e3158cb079871c0b3b0d48ef8ad03d2045e2f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-status-update.asm",
+      "sha256": "0f64ce350dc8c86044abb805b20288166428da6e4866025232a52fac9ea52612"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-throttle-interval.json",
+      "sha256": "388a1e2ab81345f975e6b58368e46d3af7dc35c41fab93d5c1c57c928647c016"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-update-caller-refs.json",
+      "sha256": "e92679d9073fc348b51e41e33a114cb55d696ecbae98817542c53d1099a5800d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-usage-findings.json",
+      "sha256": "e49df5b7126bb9e63890748b4335b6ea380278653d975001ee1392fadeb1aaf7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-usage-metadata.json",
+      "sha256": "f574f92bc3f057266ee9437eb5174e4ab7918af9082ca62e028ca95d76b9d7b7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-values.asm",
+      "sha256": "4e486979262ce5af5fe3d65c023658269fc03f66e4b0281d340fc91f95ae5f21"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-witnesses.asm",
+      "sha256": "36d25a7b6255607a9e77353bf0a258e3eb6329d92194c876b118779a9638c852"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "module": "7 Chat/Work lists and conversations, third pass",
+  "date": "2026-11-13T05:21:38.433186+08:00",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "Existing core front-end usable; source boundaries refined; no new product behavior claimed",
+  "previous_goal_turn": "progress: module6 source-backed cap and independent admission failure fix plus runtime evidence archived",
+  "previous_snapshot": "ios-chat-work-parent-current-20261113.json",
+  "source_reports": [
+    "ios-chat-message-third-20261113-findings.json",
+    "ios-chat-composer-third-20261113-findings.json",
+    "ios-chat-haptics-third-20261113-findings.json"
+  ],
+  "product_changes_this_pass": [],
+  "why_no_product_change": "Bounded source comparison did not prove a new integration defect that could be repaired faithfully in this pass. Current core works; do not replace it with guessed fixed geometry, incomplete flow wrapping or indiscriminate haptics merely to create a code delta.",
+  "new_evidence": [
+    {
+      "component": "Message inline action carrier",
+      "conclusion": "FlowLayout is horizontalSpacing0/verticalSpacing0/verticalAlignment.center/row alignment.leading. Real sizeThatFits75473b4→7546044 and measurement7546074 use proposal, subview dimensions/priority and cache; placement75473c0→7546cd8 uses topLeading. Not a fixed14/26 row or a simple wrapping HStack.",
+      "source": [
+        "389fb24/389fb2c/389fb30",
+        "75473b4/7546044/7546074",
+        "75473c0/7546cd8"
+      ],
+      "decision": "Keep working UIKit copy hit/AX adapter until full proposal normalization75471c0, overflow recompression and leaf carrier are closed. Do not graft -6 padding onto fixed host frame."
+    },
+    {
+      "component": "Mode selector actual parent",
+      "conclusion": "Corrected full Body typeref8fcac52 is hidden measurement HStack→sizing/padding/fixedSize/hidden/AX/frame→segmented Picker overlay→noninteractive decoration overlay. Picker2f943b4→SegmentedPickerStyle2f943c4→pickerStyle2f94420→labelsHidden2f94468.",
+      "decision": "Existing144×44 UIKit segmented control remains an independent host adapter. Hidden label metrics, opaque decoration and effective header branch are not closed;28 is not justified as whole-control height."
+    },
+    {
+      "component": "Mode changed callback",
+      "conclusion": "setter306cc98 changed-only path→6f30b28 is Combine.PassthroughSubject.send for tpp-surface-mode-toggle, not a haptic caller.",
+      "decision": "No new mode-switch vibration."
+    },
+    {
+      "component": "Link haptic feature gate",
+      "conclusion": "StatsigFeatureFlag descriptor97279a4/metadataa99cfc8/vectorword2 places scope+10 and Bool defaultValue+30.397fcd0→6e6864 writes raw2 to scope;706fd38 writes zero default. chatgpt-ios-chat-link-haptics declaration defaults false.",
+      "decision": "Do not treat raw2 or global General toggle as feature admission. Actual URL/widget/citation route classification and live provider remain unclosed, so no new feedback dispatch."
+    }
+  ],
+  "implemented_current": [
+    "conversation catalog/new/select/rename/delete/title and message search",
+    "Chat/Work selection, per-conversation mode and independent drafts",
+    "synthetic accepted/delta/next-revision replacement/completed/failed/cancelled and explicit retry, terminal late-event rejection",
+    "current scoped reply body projection, basic Markdown/code/table/selection/links and completed-reply copy via native hit/AX adapter",
+    "reading anchors, draft/history restart recovery; active process-loss is explicitly interrupted, not continued online work",
+    "shared shell edge/close/cancel gestures and existing General-gated recovered feedback"
+  ],
+  "independent_adapters": [
+    "UIKit shell/mode controls and current footer hit/AX/frame geometry",
+    "existing event cursor/replace semantics, local JSON histories, deterministic provider and current action availability projection",
+    "interrupted on-process-restart is an independent local state; real resume/connection reconciliation is not implemented",
+    "packed Markdown parser reuse does not make native styles or full OAIMarkdown/reasoning/DIL restored"
+  ],
+  "not_implemented": [
+    {
+      "gap": "Full original FlowLayout measurement/proposal compression and hit/AX carrier plus action inventory",
+      "next": "Close75471c0 normalization and7546074 overflow/recompression with real action producer before replacing native carrier."
+    },
+    {
+      "gap": "Full original mode selector measurement/material and active Work presentation capability producer",
+      "next": "Follow actual measured label construction and indirect witness+0x38; do not infer from usesComposerMenuTextSurface/forcesDoubleLineComposer names."
+    },
+    {
+      "gap": "Complete original message projection/OAIMarkdown/reasoning/DIL and all original menu actions",
+      "next": "Trace exact supported content producer to consumer by baseline; existing basic projection remains explicit."
+    },
+    {
+      "gap": "Real service/cloud history/pagination/reconnect and cross-process active subscription restoration",
+      "next": "Future service adapter needs explicit owner/epoch/history merge; no business backend in scope. Existing LocalHarness remains subscription1/revision0."
+    },
+    {
+      "gap": "Chat link/widget/citation effective haptic feature state and route callbacks, other unproved feedback",
+      "next": "Bind source route classification plus effective feature provider before shared General/hardware/active gate; declaration default false is not a runtime assignment."
+    },
+    {
+      "gap": "Full official geometry/material/animation, physical tactile behavior and notification delivery",
+      "next": "Use page-specific source and available physical device; do not replace with screenshot guesses."
+    }
+  ],
+  "haptics": {
+    "new_dispatch": false,
+    "general_route": "Settings→General→Haptic feedback",
+    "global_key": "rea.preview.hapticsEnabled",
+    "existing_gates": "preference + hardware support + application active",
+    "report": "ios-chat-haptics-third-20261113-findings.json"
+  },
+  "verification": {
+    "service_contract": {
+      "result": "passed",
+      "log": "/tmp/rea-chat-work-third-service-20261113.log",
+      "covers": "scope/subscription, replace/sequence/revision, atomic invalid rejection, duplicate/late/cancel, Chat/Work and provider fixture language"
+    },
+    "state_contract": {
+      "result": "passed",
+      "log": "/tmp/rea-chat-work-third-state-20261113.log",
+      "covers": "draft/history/mode/identity, reading position, retry lineage and process-loss interruption"
+    },
+    "ui": {
+      "result": "passed",
+      "case": "testChatWorkOfflineCoreChinese",
+      "seconds": 111.861,
+      "xcresult": "ios-chat-work-third-20261113-r1.xcresult",
+      "summary": "ios-chat-work-third-20261113-r1-summary.json",
+      "covers": "ordinary sidebar new chat→Chat/Work each→failure/retry→draft retention→A/B/A→send/stop→actual process restart and terminal restoration"
+    },
+    "screenshots_reviewed": [
+      "ios-chat-work-third-20261113-r1-attachments/CA824913-82A6-412F-BD79-3AD9ED233CAB.png",
+      "ios-chat-work-third-20261113-r1-attachments/789732DD-4B70-4FF3-8477-ABA5FD0BC6C7.png",
+      "ios-chat-work-third-20261113-ordinary.png"
+    ],
+    "historical_only": "Previous separate Chat/Work copy/paste after body replacement tests preserved, not rerun for unchanged code. No claim of complete original footer fidelity.",
+    "routine_matrix": "Chinese/light only"
+  },
+  "runtime": {
+    "simulator": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "profile": "D86B1A01-206D-445E-BA73-2966CDFE6FEB",
+      "preview": "core manifest plus valid isolated UUID and Chinese/light process overrides",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--chat-state-profile=D86B1A01-206D-445E-BA73-2966CDFE6FEB",
+        "--remote-draft-profile=D86B1A01-206D-445E-BA73-2966CDFE6FEB",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light"
+      ],
+      "manifest_sha256": "3a3532497d53d7b46d0cda950185e6bad0cec07c36b202e952b671482420ef36",
+      "executable_sha256": "27d007ce8c9e8914bc29fee77b9f7326b8a56589d1636dc6c5a13a44c864cadc",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 31548",
+      "left_running": true,
+      "ui_launch_observed": true,
+      "signed_candidate": "unchanged source and executable verified against module6 signed report; strict signature verified; no redundant signed rebuild",
+      "left_surface": "ordinary blank Chat home, Chinese/light; both mode choices and composer visible",
+      "screenshot": "ios-chat-work-third-20261113-ordinary.png",
+      "external_display_placement": "not verified"
+    },
+    "physical": {
+      "build": "existing signed candidate reused; no product source change this pass",
+      "codesign": "strict deep verification passed",
+      "build_log": "/tmp/rea-remote-requests-third-20261113-device-build.log",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "executable_sha256": "4bd3c4ac20e50489b3abcdf5891b8712e1bf561f0fee6744e8335d12885eeb82",
+      "device": "00008150-001E34E93A12401C",
+      "pairing": "paired",
+      "tunnel": "unavailable",
+      "ddi_services_available": false,
+      "installed_current_candidate": false,
+      "source_verification": "all module6 source hashes and signed executable still match; strict signature verified this pass"
+    }
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "566536f83a8497a5926ec90996516085c496489d1a60febc8a5355d8279d1ac8"
+    },
+    {
+      "path": "implementation/ios/Sources/LocalHarness.swift",
+      "sha256": "13269f176a873f7fb90e3b8cf5ca7a13961c759af98b479d4ed20e1895f145a7"
+    },
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "4e5b2b90d2bb53e59a1799a731af0f96c5cea421b68ef2f00bf3b0b24c4be07e"
+    },
+    {
+      "path": "implementation/ios/Sources/AppDelegate.swift",
+      "sha256": "0ef9c55f6b2199deafe1d538e01f34e3075e6c69b10f2b9174ed1764b0a5fd81"
+    },
+    {
+      "path": "implementation/ios/ServiceTests/main.swift",
+      "sha256": "215786d40153e53c376ec5d4415e46d0d69c6c8c08211261f74abc084227534d"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "3c7ecc1505f7bca12fe7d3bf17b019e443d011a77bb28b64bd09490462f97d8e"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    }
+  ],
+  "next_major_module": "8 Files and browser previews",
+  "publication": "No commit/push/release; no backend implementation"
+}

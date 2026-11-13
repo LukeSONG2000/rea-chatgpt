@@ -1,0 +1,114 @@
+{
+  "version": "iOS 1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "officialObservations": [
+    {
+      "claim": "Thread action content dispatches pin and rename to owner witnesses at +a0 and +98.",
+      "evidence": "ios-remote-v481-action-callbacks.asm",
+      "sites": [
+        "0x1c2b930",
+        "0x1c2b950"
+      ]
+    },
+    {
+      "claim": "RenamePresentation is a ViewModifier whose body witness branches to38bdd0. Body uses SwiftUI alert with presenting and a second alert.",
+      "evidence": [
+        "ios-remote-v601-rename-witness.json",
+        "ios-remote-v601-rename-body.asm",
+        "ios-remote-v601-rename-content.json"
+      ],
+      "sites": [
+        "0x38cb7c",
+        "0x38c1f4",
+        "0x38c470"
+      ]
+    },
+    {
+      "claim": "Rename editor constructs TextField bound through Bindable, Save button and Cancel role button.",
+      "evidence": [
+        "ios-remote-v601-rename-editor.json",
+        "ios-remote-v601-rename-editor.asm"
+      ],
+      "sites": [
+        "0x38c650",
+        "0x38c67c",
+        "0x38c71c",
+        "0x38c7b0",
+        "0x38c838",
+        "0x38c8ac"
+      ]
+    },
+    {
+      "claim": "Pinned identity has hostIdentity and threadID; title has name; thread owner has renameDraftTitle, pinnedStatePublisher and setPinnedAction.",
+      "evidence": [
+        "ios-remote-v601-rename-metadata.json",
+        "ios-remote-v601-metadata-fields.json"
+      ]
+    }
+  ],
+  "publicSource": {
+    "reference": "analysis/upstream-codex-20261105/reuse-map.json",
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "scope": "Existing audit covers app-server contracts and does not supply mobile SwiftUI presentation."
+  },
+  "independentAdaptations": [
+    "Shared list/detail metadata projection with unchanged host/thread navigation identity.",
+    "Local synchronous explicit desired pin and rename actions, revision check, atomic profile persistence, unreadable snapshot preservation.",
+    "Blank-title rejection preserves exact nonblank spelling; original normalization and save-disabled predicate remain unresolved.",
+    "Native SwiftUI alert reuses extracted original labels; persistence, errors and accepted synthetic results are independent.",
+    "Pinned synthetic task fixtures explicitly retain Recent group membership across pin/unpin; nil workspace is not used to infer membership."
+  ],
+  "unknowns": [
+    "Official remote mutation transport and asynchronous failure/retry policy.",
+    "Full rename validation/normalization and initial draft producer.",
+    "Archive mutation and other list modes remain unimplemented.",
+    "Android pin/rename presentation requires separate evidence."
+  ],
+  "failedProbes": [
+    "class-field inspector rejected descriptor kind1; bounded metadata reader used without claiming object offsets.",
+    "local witness inspector only supports MessageInputVariantLayout; resilient inspector used for flags30000.",
+    "r1 build type inference failed after new-thread initializer argument order changed; declaration order corrected for r2.",
+    "r2/r3/r4 rename test tapped while XCTest typing hid and restored the software keyboard; screenshots show alert movement. Native manual Cancel succeeds. Test now waits for post-input stable button geometry.",
+    "r5 app-wide Select All was intercepted by XCTest default alert interruption handling. The test now positions the caret at the fixture title end and verifies the exact edited value.",
+    "r6 rename Save/Cancel succeed, but unpinned synthetic pinned-only tasks disappear because the fixture lacked ordinary group membership. Both fixture tasks now explicitly retain Recent membership, still hidden from Recent while pinned.",
+    "r7 metadata journeys used the combined accessibility task-row label (including activity) as the expected rename draft. The editor correctly held the raw title. The assertion now compares the explicit synthetic title.",
+    "r7 and diagnostic r8 creation journeys expose a nested submitted thread frozen at accepted. The saved history reaches completed. r8 transcript trace shows only the parent rows resolving during subsequent child events; the nested child rows resolve accepted twice, then stop.",
+    "r10 manual project creation and r11 automated nested creation reproduce accepted freeze. Owner identity is shared, objectWillChange reaches the child, and child body resolves completed. Its GeometryReader and collection representable stop updating after accepted while parent geometry continues. This corrects the earlier inference that child page observation itself stopped.",
+    "r12 removing only the new-thread identity wrapper still fails. Stable identity restored for r13.",
+    "r13 explicit parent state values still stop at the child GeometryReader boundary. The probe was reverted. Neither arbitrary identity removal nor a parent snapshot fixed the issue.",
+    "r15 combined journeys type into a compact unfocused editor after accepted send. v583 source-backed dismissKeyboardAfterSending defaults true. The continuous-composition test now explicitly selects false and queue in the process argument domain; product defaults remain true. r16 both combined journeys pass.",
+    "r15/r16 rename automation moved its caret before the alert input stabilized. Input geometry is now checked before editing, deletion and typing are separate and exact results checked. Empty UITextField accessibility value exposes its placeholder. r18 both metadata journeys pass.",
+    "r15/r16/r18 intermittent cross-host project creation failure persists after selecting host B. Horizontal source scrolling and selection assertion are retained; r17 diagnostic capture and r18 English pass, r18 Chinese fails waiting for the project action. Failure-only snapshot added for r19. Root cause remains open.",
+    "r20 Chinese creation iterations passed twice. English iteration1 failed project lookup. Retained screenshot and AX tree show search still active with the prior host-A query while hostB was selected. Video shows the incoming search toolbar sliding after back navigation while XCTest already queried its final accessibility frame and tapped close. Project absence is consistent with the still-active query; it does not establish broken source filtering.",
+    "r20 English iteration2 repeatedly waited60sec for app animations. A2sec process sample shows the main thread mostly idle with periodic TimelineView spinner updates, not a CPU-bound loop. Owned xcodebuild33455 was interrupted after repeated recorded delays; result preserved, dedicated simulator restarted. No unrelated simulator or product process was stopped.",
+    "r21 creation test waits for the incoming close-search control geometry to settle, taps once, and verifies search disappearance plus browsing toolbar restoration before host selection. Product search reducer/order remains source-consistent withv505."
+  ],
+  "implementation": {
+    "files": [
+      "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "implementation/ios/Sources/NativeConversationHost.swift",
+      "implementation/ios/Sources/OfficialText.swift",
+      "implementation/ios/Tools/prepare-official-text.py"
+    ],
+    "entry": "Remote thread options -> pin/unpin or rename -> shared metadata owner -> list/detail projection",
+    "scope": "Offline frontend only, same adapter for existing and newly created tasks",
+    "persisted": "thread-metadata-v1.json beside the existing account/profile scoped drafts; old drafts/history untouched",
+    "validation": "Foundationr5, r18 metadata/settings and r16 combined journeys passed. r21 creation/search3tests passed. r22 Chinese/English creation each repeated twice with process relaunch:4executions passed. r20 failure was search-close automation during navigation; animation wait separately retained.",
+    "translationCount": 166
+  },
+  "hostRepair": {
+    "evidence": [
+      "ios-remote-v601-r8-transcript-trace.txt",
+      "ios-remote-v601-r10-owner-trace.txt",
+      "ios-remote-v601-r11-owner-trace.txt",
+      "ios-remote-v601-r13-owner-trace.txt",
+      "ios-remote-v601-r14-owner-trace.txt"
+    ],
+    "officialBasis": "v564 preserves source-observed submitted-thread in-place presentation and parent navigation; the native observation boundary is an independent adapter.",
+    "change": "r14 removes the outer lazy GeometryReader from the dynamic transcript/bar subtree. Existing onGeometryChange records only viewport height for the question-card sizing input; observed page state directly constructs collection and bottom bar. Scope IDs and source-observed bar/collection ownership retained.",
+    "validation": "r14 Chinese, r15 Chinese, r17 English, r18 English creation journeys pass after GeometryReader repair. A separate intermittent project-action lookup remains under investigation in r19."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "batch": 574,
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "official_evidence": [
+    {
+      "source": "ios-chat-v573-grid-return-type.json",
+      "location": "0x8058c50",
+      "observation": "MessageRowAttachmentGrid returned type includes a distinct FileAttachmentTile branch."
+    },
+    {
+      "source": "ios-chat-v574-file-metadata.json",
+      "location": "FileAttachmentTile descriptor0x96ca678, accessor0x60612d8",
+      "observation": "Metadata declares style/providerIconSize/info/size/showReference/showsAudioFilename/tilePadding. It does not establish error UI or runtime values."
+    },
+    {
+      "source": "ios-remote-v518-attachment-loading-error-findings.json",
+      "location": "0x1985a70..0x1985c44",
+      "observation": "Remote composer inline error builder has text and no retry/dismiss action in the bounded branch. It is a separate surface from Chat resource preview."
+    }
+  ],
+  "search_boundary": "Exact Swift struct names FileAttachmentTile and FileAttachmentPreview in the293 framework. The latter was not returned by this bounded metadata query. No absence claim for the complete product.",
+  "implementation": {
+    "classification": "independent_frontend_adapter",
+    "resource_failure": "Scoped retry and close preserve attachment references, draft and saved reading anchor. Retry requires unchanged conversation/generation and current native navigation owner.",
+    "unsupported": "QuickLook capability rejection shows filename, byte count, explicit capability status and close. Reference remains sendable.",
+    "service": "No resource fetch/backend added. Retry re-resolves the existing local resource."
+  },
+  "validation": {
+    "library_store": "passed actual file removal, retained index/reference and successful resolution after bytes restored",
+    "ui": {
+      "r1": {
+        "passed": 3,
+        "failed": 0
+      },
+      "r2": {
+        "passed": 3,
+        "failed": 0,
+        "coverage": "normal Chinese/light and English/dark photo flows, Chinese PDF flow"
+      },
+      "r3_final": {
+        "passed": 3,
+        "failed": 0,
+        "coverage": "extended failure recovery through persisted message attachments in both languages/appearances; unsupported file send"
+      },
+      "unique_cases": 6
+    },
+    "synthetic_failure": "--offline-fixture plus --chat-preview-failure-fixture injects one missing-resource error per host lifetime before ordinary resolution",
+    "unsupported_fixture": "Unknown extension through actual QLPreviewController.canPreview gate",
+    "visual": "Chinese/light and English/dark error screenshots inspected. Native alert shows filename/byte count, explanatory text, Retry and Close; draft retained behind presentation.",
+    "manual_pdf": "Installed candidate574 renders the generated one-page PDF title in QuickLook; Back retains the same attachment row and reading position. Normal preview restored afterward."
+  },
+  "limits": [
+    "Official Chat resource acquisition, preview-error presentation and retry owner remain unknown",
+    "UI transient failure is injected; actual missing-file behavior separately checked in library tests",
+    "Multiple formats, device visuals and provider-network recovery pending",
+    "Native UIAlert presentation is an independent minimum-usable fallback; official Chat error layout remains partial."
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "status": "verified_static_for_scoped_event_arguments",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Remote FieldRow shared codexCollapsed nil-payload microphone active tap event arguments. Effective service completion remains outside scoped verification.",
+  "evidence_type": "official_artifact_static",
+  "runtime_verified": false,
+  "conclusion": "The ordinary nil-payload codexCollapsed mic with compactControlState10 and microphone raw4..7, including active5, dispatches finishRecording with autoSend:false. This follows literal event payload writes and dispatcher argument extraction.",
+  "chain": [
+    {
+      "offset": "0x16ea62c..0x16ea88c",
+      "fact": "ViewParams.codexCollapsed(nil) reads presentation microphoneState witness+88, omits onlyoptionalnil raw8; builds MessageInputWhisperButtonPart, stores compactControlState10. Existingv532 report closes selected nilbranch."
+    },
+    {
+      "offset": "0x16f8460..0x16f8480",
+      "fact": "Part body16f81f0 supplies Button action176856c; closure1768578..1768584 restores capturedPart and calls16f8b70."
+    },
+    {
+      "offset": "0x16f8b88..0x16f8b90",
+      "fact": "Metadataoffset+34 reads compactControlState through2c60c0; helper compares to1. Compact10 bypasses firstcancel branch."
+    },
+    {
+      "offset": "0x16f8ba8..0x16f8bbc",
+      "fact": "Metadataoffset+30 reads microphoneState; requirecompact==10 and(state&0xfc)==4. Values4,5,6,7 satisfy."
+    },
+    {
+      "offset": "0x16f8bc0..0x16f8bd8",
+      "fact": "Metadataoffset+48 reads handleEvent closure. Setbyteatsp+8=0(autoSend),qwordsp+10=1,halfwordsp+18=1,tagsp+58=1."
+    },
+    {
+      "offset": "0x16f8c20..0x16f8c24",
+      "fact": "Pass eventaddresssp+8 to savedhandleEvent closure. Eventrelative+50 is1finishRecording."
+    },
+    {
+      "offset": "0x16f4f5c ->0x16eaa54 ->0x16eab74..0x16eab80",
+      "fact": "Concrete ComposerWhisperModel dispatch: w0=payloadfirstword&1, x1=payloadsecondword, w2=halfwordpayload+10, then16f0ba4. For scopedtapw0=0,x1=1,w2=1."
+    }
+  ],
+  "event_payload": {
+    "type": "ComposerWhisperStateEvent.finishRecording",
+    "descriptor": "0x96b1c68",
+    "payload_typeref": "0x9373c76",
+    "payload_labels": [
+      "autoSend",
+      "finishTrigger"
+    ],
+    "autoSend": false,
+    "tag_at_relative_0x50": 1,
+    "finishTrigger_opaque_words": {
+      "word_at_0x8": 1,
+      "halfword_at_0x10": 1
+    },
+    "finishTrigger_type": "OAIProtobuf.AnalyticsEvents_V1_ChatgptDictationFinishTrigger?",
+    "finishTrigger_case": "unknown; preserve whole optional representation, not interpret halfword alone as complete enum"
+  },
+  "contrast_to_primary_event": {
+    "source": "ios-remote-v531-dictation-owner-findings.json",
+    "callback": "0x1ced21c capturedBoolfalse branch",
+    "autoSend": true,
+    "limit": "Primary capturedBooltrue is retryRecording. Eventrequest and effectivefinalsend remain separate."
+  },
+  "effective_finish_limit": {
+    "offset": "0x16f0c68..0x16f0c98",
+    "actual_control_flow": "If requestedtrue, w21=!16ed208(). If requestedfalse, helper179e9bc() and session16f17dc() can still route tosame !16ed208() calculation. Otherwise w21=0. Later branches usew21.",
+    "unknown": "Business names and exact runtime predicates of179e9bc/16f17dc/16ed208 remain unbound in this pass. Therefore finish(false) proves the button request, not an unconditional final no-send invariant."
+  },
+  "integration": {
+    "active_mic_request": "finish(autoSend:false) is source-backed for explicit codexCollapsed(nil),compact10,active5 fixture.",
+    "primary_request": "finish(autoSend:true) retains separately provedprimary branch.",
+    "remaining_gate": "Keep shared finish-policy/effective autoSend separate from button action mapping. Do not implement promotion by guess."
+  },
+  "validation": {
+    "source": "literal payload+dispatcher parameter dataflow",
+    "original_app": "not_run",
+    "audio": "not_used",
+    "implementation": "not_modified"
+  },
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-active-mic-callback.asm",
+      "sha256": "30a38ce7b9b4da108ec134e0f0d20bf08014caf3a97dffef34e50b4ba778bac3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-active-mic-collapsed-construction.asm",
+      "sha256": "eeace1635bedcc251024aa67c029c8ec438deb6f2cd3be867c64069ce0c7dfba"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-active-mic-finish.asm",
+      "sha256": "f593ce65be92ab4f1c984beac6f8093a4b630287462aa8acaaf751f5546fc646"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-active-mic-helpers.asm",
+      "sha256": "665f4a2f476bab2404bdf0dbdcf3c9d1e143e00c6ff8a174bff312bbb43b222d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-active-mic-tap.asm",
+      "sha256": "4f38f34e4d0265b491ac9cc432cec024bed31d0ef4ffedc0315a956043633a1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-active-mic-thunk.asm",
+      "sha256": "c821cd90c5f7b773d1eef17b8373d3ed99fc6596c72efc7bcb352b9286e6f41f"
+    }
+  ],
+  "retained_evidence": [
+    "ios-remote-v531-dictation-owner-type-bindings.json",
+    "ios-remote-v531-whisper-owner-metadata.json",
+    "ios-remote-v532-dictation-style-findings.json",
+    "ios-remote-v532-dictation-style-collapsed-tap.asm",
+    "ios-remote-v533-dictation-lifecycle-findings.json"
+  ]
+}

@@ -1,0 +1,686 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "size": 192662944,
+    "cpu_type": 16777228,
+    "cpu_subtype": 0,
+    "file_type": 6,
+    "uuid": "5a38f478506e31c1ab94a3901991fd1d",
+    "build": [
+      {
+        "load_command_offset": 5184,
+        "platform_id": 2,
+        "minimum_os": "18.0.0",
+        "sdk": "27.1.0"
+      }
+    ],
+    "encryption_commands": [
+      {
+        "load_command_offset": 5232,
+        "cryptoff": 163840,
+        "cryptsize": 171786240,
+        "cryptid": 0
+      }
+    ],
+    "sections": [
+      {
+        "segment": "__TEXT",
+        "name": "__text",
+        "address": "0x28000",
+        "file_offset": 163840,
+        "size": 130117996,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__stubs",
+        "address": "0x7c3f16c",
+        "file_offset": 130281836,
+        "size": 89400,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__objc_stubs",
+        "address": "0x7c54ec0",
+        "file_offset": 130371264,
+        "size": 190016,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__init_offsets",
+        "address": "0x7c83500",
+        "file_offset": 130561280,
+        "size": 28,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__objc_methlist",
+        "address": "0x7c83520",
+        "file_offset": 130561312,
+        "size": 206780,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__const",
+        "address": "0x7cb5d00",
+        "file_offset": 130768128,
+        "size": 12119600,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__cstring",
+        "address": "0x8844b30",
+        "file_offset": 142887728,
+        "size": 2486227,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__objc_methname",
+        "address": "0x8aa3b10",
+        "file_offset": 145373968,
+        "size": 957583,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_typeref",
+        "address": "0x8b8d7a0",
+        "file_offset": 146331552,
+        "size": 9322964,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_capture",
+        "address": "0x9471974",
+        "file_offset": 155654516,
+        "size": 884980,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__constg_swiftt",
+        "address": "0x9549a68",
+        "file_offset": 156539496,
+        "size": 2244532,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_reflstr",
+        "address": "0x976da20",
+        "file_offset": 158784032,
+        "size": 2037040,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_assocty",
+        "address": "0x995ef50",
+        "file_offset": 160821072,
+        "size": 420904,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_fieldmd",
+        "address": "0x99c5b78",
+        "file_offset": 161241976,
+        "size": 2743012,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__objc_classname",
+        "address": "0x9c63660",
+        "file_offset": 163984992,
+        "size": 319655,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__objc_methtype",
+        "address": "0x9cb1710",
+        "file_offset": 164304656,
+        "size": 78895,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_builtin",
+        "address": "0x9cc4b40",
+        "file_offset": 164383552,
+        "size": 31720,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_mpenum",
+        "address": "0x9ccc728",
+        "file_offset": 164415272,
+        "size": 24916,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_protos",
+        "address": "0x9cd287c",
+        "file_offset": 164440188,
+        "size": 16328,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_proto",
+        "address": "0x9cd6844",
+        "file_offset": 164456516,
+        "size": 382552,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_types",
+        "address": "0x9d33e9c",
+        "file_offset": 164839068,
+        "size": 165340,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift_as_entry",
+        "address": "0x9d5c478",
+        "file_offset": 165004408,
+        "size": 67460,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift_as_ret",
+        "address": "0x9d6cbfc",
+        "file_offset": 165071868,
+        "size": 81260,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift_as_cont",
+        "address": "0x9d80968",
+        "file_offset": 165153128,
+        "size": 161232,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__swift5_types2",
+        "address": "0x9da7f38",
+        "file_offset": 165314360,
+        "size": 84,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__gcc_except_tab",
+        "address": "0x9da7f8c",
+        "file_offset": 165314444,
+        "size": 118824,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__ustring",
+        "address": "0x9dc4fb4",
+        "file_offset": 165433268,
+        "size": 784,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__unwind_info",
+        "address": "0x9dc52c4",
+        "file_offset": 165434052,
+        "size": 2690720,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__eh_frame",
+        "address": "0xa056168",
+        "file_offset": 168124776,
+        "size": 3815632,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__TEXT",
+        "name": "__oslogstring",
+        "address": "0xa3fc000",
+        "file_offset": 171950080,
+        "size": 1153,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__const",
+        "address": "0xa400000",
+        "file_offset": 171966464,
+        "size": 6902296,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__cfstring",
+        "address": "0xaa95218",
+        "file_offset": 178868760,
+        "size": 73504,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_classlist",
+        "address": "0xaaa7138",
+        "file_offset": 178942264,
+        "size": 38320,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_nlclslist",
+        "address": "0xaab06e8",
+        "file_offset": 178980584,
+        "size": 40,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_catlist",
+        "address": "0xaab0710",
+        "file_offset": 178980624,
+        "size": 168,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_protolist",
+        "address": "0xaab07b8",
+        "file_offset": 178980792,
+        "size": 3520,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_imageinfo",
+        "address": "0xaab1578",
+        "file_offset": 178984312,
+        "size": 8,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_protorefs",
+        "address": "0xaab1580",
+        "file_offset": 178984320,
+        "size": 1992,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_superrefs",
+        "address": "0xaab1d48",
+        "file_offset": 178986312,
+        "size": 1448,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_intobj",
+        "address": "0xaab22f0",
+        "file_offset": 178987760,
+        "size": 1680,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_arraydata",
+        "address": "0xaab2980",
+        "file_offset": 178989440,
+        "size": 2752,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_arrayobj",
+        "address": "0xaab3440",
+        "file_offset": 178992192,
+        "size": 696,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_dictobj",
+        "address": "0xaab36f8",
+        "file_offset": 178992888,
+        "size": 280,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_doubleobj",
+        "address": "0xaab3810",
+        "file_offset": 178993168,
+        "size": 32,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__objc_floatobj",
+        "address": "0xaab3830",
+        "file_offset": 178993200,
+        "size": 16,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA_CONST",
+        "name": "__got",
+        "address": "0xaab3840",
+        "file_offset": 178993216,
+        "size": 161632,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__objc_const",
+        "address": "0xaadc000",
+        "file_offset": 179159040,
+        "size": 1882936,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__objc_selrefs",
+        "address": "0xaca7b38",
+        "file_offset": 181041976,
+        "size": 80256,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__objc_ivar",
+        "address": "0xacbb4b8",
+        "file_offset": 181122232,
+        "size": 4052,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__objc_data",
+        "address": "0xacbc490",
+        "file_offset": 181126288,
+        "size": 469368,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__data",
+        "address": "0xad2ee10",
+        "file_offset": 181595664,
+        "size": 3451937,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__objc_stublist",
+        "address": "0xb079a38",
+        "file_offset": 185047608,
+        "size": 48,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__s_async_hook",
+        "address": "0xb079a68",
+        "file_offset": 185047656,
+        "size": 416,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__swift56_hooks",
+        "address": "0xb079c08",
+        "file_offset": 185048072,
+        "size": 176,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__thread_vars",
+        "address": "0xb079cb8",
+        "file_offset": 185048248,
+        "size": 576,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__thread_bss",
+        "address": "0xb079ef8",
+        "file_offset": 0,
+        "size": 480,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__common",
+        "address": "0xb07a0e0",
+        "file_offset": 0,
+        "size": 185649,
+        "declared_encrypted_overlap_bytes": 0
+      },
+      {
+        "segment": "__DATA",
+        "name": "__bss",
+        "address": "0xb0a7640",
+        "file_offset": 0,
+        "size": 11738272,
+        "declared_encrypted_overlap_bytes": 0
+      }
+    ],
+    "focused_symbols": [
+      {
+        "name": "_OBJC_CLASS_$__TtC15ChatGPTMessages22MessagesViewController",
+        "address": "0xacd7078",
+        "n_type": 15,
+        "n_sect": 50,
+        "symbol_record_offset": 187407224,
+        "section": "__objc_data"
+      },
+      {
+        "name": "_OBJC_METACLASS_$__TtC15ChatGPTMessages22MessagesViewController",
+        "address": "0xaea5c78",
+        "n_type": 15,
+        "n_sect": 51,
+        "symbol_record_offset": 187419384,
+        "section": "__data"
+      },
+      {
+        "name": "_OBJC_CLASS_$_SCValdiRootView",
+        "address": "0x0",
+        "n_type": 1,
+        "n_sect": 0,
+        "symbol_record_offset": 187481288,
+        "section": null
+      },
+      {
+        "name": "_OBJC_CLASS_$_SCValdiRuntime",
+        "address": "0x0",
+        "n_type": 1,
+        "n_sect": 0,
+        "symbol_record_offset": 187481304,
+        "section": null
+      },
+      {
+        "name": "_OBJC_CLASS_$_SCValdiRuntimeManager",
+        "address": "0x0",
+        "n_type": 1,
+        "n_sect": 0,
+        "symbol_record_offset": 187481320,
+        "section": null
+      },
+      {
+        "name": "_OBJC_METACLASS_$_SCValdiRootView",
+        "address": "0x0",
+        "n_type": 1,
+        "n_sect": 0,
+        "symbol_record_offset": 187484616,
+        "section": null
+      }
+    ],
+    "limits": [
+      "cryptid is a shipped-header declaration, not cryptographic verification or a decrypted instruction check",
+      "symbol names and metadata do not prove runtime call paths",
+      "section ranges describe the file image, not a live process"
+    ]
+  },
+  "host_enum": {
+    "descriptor": "0x95d109c",
+    "name": "Host",
+    "fields": [
+      {
+        "name": "slingshot",
+        "type": {
+          "artifact": {
+            "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+            "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+          },
+          "type_record": null,
+          "mangled_address": "0x8bceb3e",
+          "length": 5,
+          "mangled_hex": "02f985ee01",
+          "references": [
+            {
+              "offset": 0,
+              "kind": 2,
+              "target": "0xaab7138",
+              "resolved_context": "0x95d1624",
+              "label": "CodexRemoteCore.CodexRemoteSlingshotEnvironment"
+            }
+          ],
+          "unresolved_contexts": [],
+          "limits": [
+            "Symbolic context references only, not a reconstructed generic type tree",
+            "Type presence does not prove runtime branch selection or component creation"
+          ]
+        }
+      },
+      {
+        "name": "custom",
+        "type": {
+          "artifact": {
+            "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+            "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+          },
+          "type_record": null,
+          "mangled_address": "0x8e04b38",
+          "length": 5,
+          "mangled_hex": "026728cb01",
+          "references": [
+            {
+              "offset": 0,
+              "kind": 2,
+              "target": "0xaab73a0",
+              "resolved_context": "0x95d1570",
+              "label": "CodexRemoteCore.CodexRemoteSavedHost"
+            }
+          ],
+          "unresolved_contexts": [],
+          "limits": [
+            "Symbolic context references only, not a reconstructed generic type tree",
+            "Type presence does not prove runtime branch selection or component creation"
+          ]
+        }
+      },
+      {
+        "name": "cloud",
+        "type": null
+      }
+    ]
+  },
+  "icon_enum": {
+    "descriptor": "0x95d1058",
+    "name": "CodexRemoteHostIcon",
+    "fields": [
+      {
+        "name": "ide",
+        "type": null
+      },
+      {
+        "name": "terminal",
+        "type": null
+      },
+      {
+        "name": "laptop",
+        "type": null
+      },
+      {
+        "name": "desktop",
+        "type": null
+      },
+      {
+        "name": "cloud",
+        "type": null
+      }
+    ]
+  },
+  "icon_dispatch_table": {
+    "address": "0x7e824e0",
+    "bytes": [
+      0,
+      4,
+      2,
+      3,
+      1
+    ]
+  },
+  "strings": [
+    {
+      "address": "0x8a54c80",
+      "value": "OpenAI/Symbols/cloud"
+    },
+    {
+      "address": "0x8854be0",
+      "value": "codex_remote_connection_mode_name_hosted_cloud"
+    }
+  ],
+  "binding_stubs": [
+    {
+      "stub": "0x7c4b604",
+      "slot": "0xaad52d0",
+      "target": {
+        "symbol": "_$s7SwiftUI7BindingV12wrappedValuexvg",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10542,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c4b610",
+      "slot": "0xaad52d8",
+      "target": {
+        "symbol": "_$s7SwiftUI7BindingV12wrappedValuexvs",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10543,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ]
+}

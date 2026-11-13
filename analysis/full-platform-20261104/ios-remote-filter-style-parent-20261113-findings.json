@@ -1,0 +1,201 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "official artifact metadata, actual constructors/protocol witnesses, complete generic trees, bounded ARM64; no target execution",
+  "scope": "Module3 Remote host-filter selected style. Exactly three candidate groups: label style, selected-label source, row-level destination/selected fill. Existing font/insets/status evidence reused, not re-derived.",
+  "prior_evidence": [
+    "ios-remote-v485-integration.json",
+    "ios-remote-v485-segment-config.json",
+    "ios-remote-list-parent-20261112-findings.json"
+  ],
+  "findings": [
+    {
+      "id": "explicit-local-style-owner",
+      "classification": "official-artifact-observation",
+      "conclusion": "The actual host-filter row and label construct the explicit OAISegmentedTabBarStyle.Custom default using6f06468. Their private modifiers carry a style value, not an environment field inferred from similarly named generic picker. The observed selected style is a source-created value; arbitrary inherited overrides are not proven for this branch.",
+      "source": [
+        "ios-remote-v484-host-filter-body.asm",
+        "ios-remote-v484-filter-button-body.asm",
+        "ios-remote-v485-segment-defaults.asm"
+      ],
+      "offsets": [
+        "row3886c8 and388710 invoke6f06468",
+        "label38aaa0 invokes6f06468",
+        "label38aadc invokes6f06638 LabelModifier construction",
+        "label38ab9c invokes6f066bc IndicatorSourceModifier construction",
+        "row3889cc invokes6f066f0 IndicatorModifier construction"
+      ],
+      "limits": [
+        "Full upstream capability/alternate style assignment remains unknown; explicit default branch is sufficient for current fixture.",
+        "No new style choice is inferred from OAISegmentedTabBar enum inventory or third-party screenshots."
+      ]
+    },
+    {
+      "id": "label-style-body",
+      "classification": "official-artifact-observation",
+      "owner": {
+        "name": "OAISegmentedTabLabelModifier",
+        "descriptor": "0x97210a4",
+        "conformance": "0x8389c98",
+        "body": "0x6f06a5c→0x6f06778"
+      },
+      "conclusion": "The real label carrier sets font, ContentTransition.opacity, foreground, minimumScaleFactor, min-height and style-supplied vertical/horizontal padding. Existing body-medium, minimum24 and vertical10 default values are retained fromv485; the actual filter also passes minimumScaleFactor0.85. These semantic controls are not a fixed font-derived frame.",
+      "source": [
+        "ios-remote-filter-style-parent-20261113/label.tree.json",
+        "ios-remote-filter-style-parent-20261113/style-consumers.asm",
+        "ios-remote-v484-filter-button-body.asm"
+      ],
+      "offsets": {
+        "minimumScaleFactor_input": "38aac4..38aad4 literal7cdb408=.85, passed to38aadc→6f06638; consumer storesd8 at6f0669c",
+        "contentTransition": "6f06854 ContentTransition.opacity",
+        "conditional_font": "6f067b0 reads isSelected; selected branch6f067c8..d0 uses selectedFont; otherwisefont",
+        "foreground": "6f06878..6f068b4 selected style color branches, unselected color otherwise"
+      },
+      "limits": [
+        "The full alternate styles and inherited runtime assignments are not closed.",
+        "Current .fixedSize host policy remains separate where it constrains shrink behavior."
+      ]
+    },
+    {
+      "id": "selected-label-source",
+      "classification": "official-artifact-observation",
+      "owner": {
+        "name": "OAISegmentedTabIndicatorSourceModifier",
+        "descriptor": "0x9721080",
+        "conformance": "0x8389c48",
+        "body": "0x6f06bb0→0x6f06a60"
+      },
+      "tree": "_ViewModifier_Content + background Optional<ModifiedContent<Color,_MatchedGeometryEffect<String>>>",
+      "conclusion": "Only the selected label contributes a transparent Color.clear matched-geometry frame source named indicator in the owner namespace. It does not paint the selected capsule itself.",
+      "source": [
+        "ios-remote-filter-style-parent-20261113/indicator-source.tree.json",
+        "ios-remote-v485-segment-source.asm"
+      ],
+      "offsets": [
+        "6f06a9c isSelected false skips source",
+        "6f06aa0 Color.clear",
+        "6f06aa8 MatchedGeometryProperties.frame;6f06ab0 UnitPoint.center",
+        "6f06ac4 source flagtrue and6f06ac8..adc packed string indicator",
+        "6f06ae4..b00 unselected optional payload absent"
+      ],
+      "limits": [
+        "No anchor-preference collection algorithm is required by this decoded source Body; previous private preference-pipeline wording was too broad."
+      ],
+      "parameters": {
+        "backgroundAlignment": "center (6f06a94 Alignment.center)",
+        "matchedGeometryProperties": "frame (6f06aa8)",
+        "anchor": "center (6f06ab0)",
+        "sourceIsSource": true,
+        "id": "indicator"
+      }
+    },
+    {
+      "id": "single-parent-destination",
+      "classification": "official-artifact-observation",
+      "owner": {
+        "name": "OAISegmentedTabIndicatorModifier",
+        "descriptor": "0x9721050",
+        "conformance": "0x8389bf8",
+        "body": "0x6f06cf0→0x6f06bbc"
+      },
+      "tree": "_ViewModifier_Content + background Optional<SelectionIndicator.matchedGeometryEffect<String>.allowsHitTesting(false)>",
+      "conclusion": "The entire HStack owns one matched-geometry selection surface behind its content. The surface matches the selected label frame with isSource=false, center anchor, and cannot intercept touches. It is installed before the filter horizontal content inset, so background geometry and scroll content share the same coordinate owner.",
+      "source": [
+        "ios-remote-filter-style-parent-20261113/indicator.tree.json",
+        "ios-remote-filter-style-parent-20261113/indicator-body.asm",
+        "ios-remote-v484-host-filter-body.asm"
+      ],
+      "offsets": [
+        "row3889cc installs modifier then3889e4..ec horizontalpadding",
+        "6f06c04..c0c isVisible gate (actual field offset via metadata)",
+        "6f06c28 frame properties;6f06c30 center;6f06c50..68 indicator id/namespace",
+        "6f06c78 isSource=false;6f06c84 writes false allowsHitTesting"
+      ],
+      "limits": [
+        "Exact upstream isVisible configuration semantics are not named by this pass; preserve explicit adapter visibility input and current selection admission.",
+        "Source/namespace identity must remain stable across host switching; fixture identity rules remain independent contracts."
+      ],
+      "parameters": {
+        "backgroundAlignment": "center (actual6f06bd8 Alignment.center)",
+        "matchedGeometryProperties": "frame (6f06c28)",
+        "anchor": "center (6f06c30)",
+        "destinationIsSource": false,
+        "hitTesting": false,
+        "HStackSpacing": {
+          "value": 8,
+          "proof": "row3886c8 constructs default Custom;3886cc loads metadatafield+38 tabSpacing;3886d0 reads thatfield. Default6f065c0..65c4 writesdouble8 there."
+        }
+      }
+    },
+    {
+      "id": "actual-default-filled-surface",
+      "classification": "official-artifact-observation",
+      "owner": {
+        "name": "OAISegmentedTabSelectionIndicator",
+        "descriptor": "0x9721d64",
+        "conformance": "0x838dc50",
+        "body": "0x6f06e10→0x6f06cf4"
+      },
+      "tree": "Conditional<_ShapeView<AnyShape,Color>, opaque0x9756114>",
+      "conclusion": "The actual default indicator is an ordinary filled Capsule using ChatGPT/bg/tertiary, not a proven glass effect. The alternate line path is separate and does not justify adding glass to the current default branch.",
+      "source": [
+        "ios-remote-filter-style-parent-20261113/selection-indicator.tree.json",
+        "ios-remote-filter-style-parent-20261113/selection-indicator-body-type.json",
+        "ios-remote-filter-style-parent-20261113/style-field-enums.json",
+        "ios-remote-filter-style-parent-20261113/custom-colors-type.json",
+        "ios-remote-filter-style-parent-20261113/indicator-body.asm",
+        "ios-remote-filter-style-parent-20261113/indicator-shape.asm",
+        "ios-remote-filter-style-parent-20261113/shape-bindings.json",
+        "ios-remote-v485-segment-defaults.asm"
+      ],
+      "offsets": {
+        "default_indicator_value": "6f06598..59c stores0 at Custom metadatafield+28 indicatorStyle",
+        "consumer_branch": "6f06d0c→45fe58 obtains indicatorStyle fieldoffset+28;2c60c0 compares raw byte1. Default0 takes6f06d40 fill path. Raw1 takes separate bottom3pt line carrier.",
+        "shape": "6f06d40→6f08bb8;6f08bd0..bd4 loads aad5368 bound SwiftUI.Capsule metadata;6f08c10 AnyShape.init",
+        "custom_color_payload": "typeref941b7c4 explicitly labels (foregroundColor:Color,backgroundColor:Color); default6f06580..588 stores primary/tertiary pair at selectedTabStyle offsetmeta+1c",
+        "fill_background": "6f06d48..d64 detects custom payload;6f06de0 loads secondword backgroundColor;6f06de8 emits shape/color payload",
+        "default_color_factory": "6f06538→74ecf70 ChatGPT/bg/tertiary, storedsecondword at6f06588"
+      },
+      "limits": [
+        "Do not use nearby6f06320 as this surface builder: its captured output stem selected-surface-builder.asm is adjacent alternative default Custom construction, not reached by the actual SelectionIndicator body. It is excluded from the selected-fill conclusion.",
+        "Opaque alternate line carrier0x9756114 is retained unknown; branch’s bottom3pt placement is observed, not a complete reconstruction.",
+        "Private shape optical/animation behavior is not expanded beyond actual Capsule identity and source/destination matching."
+      ]
+    }
+  ],
+  "recommended_integration": {
+    "classification": "source-backed topology with independent host capability inputs",
+    "replace": [
+      "Remove painting a separate selected capsule inside each choice label.",
+      "Selected label background should be Color.clear.matchedGeometryEffect(id:indicator,namespace,properties:frame,anchor:center,isSource:true); unselected labels contribute no source.",
+      "Apply one Capsule filled bg/tertiary behind HStack, matchedGeometryEffect with same id/namespace and isSource:false, .allowsHitTesting(false), before horizontalContentInset.",
+      "Preserve existing source choice, status indicator, Menu primaryAction, AX selected traits and caller insets; these are separate proven consumers.",
+      "Pass minimumScaleFactor.85 through the source-like label carrier if current host width policy admits shrinking."
+    ],
+    "adapter_inputs": [
+      "Current source capability choices, full isVisible producer and exact hostFilterAnimation capability gates remain explicit.",
+      "Do not add glass, custom side edge blur or source-free scrolling effects to this branch."
+    ]
+  },
+  "corrections_to_old_wording": [
+    "The decoded indicator pipeline is concrete clear-frame source plus one parent matched-geometry destination. Earlier generalized private preference-pipeline wording is superseded for this default branch.",
+    "Current host matchedGeometry was directionally useful but owned by the wrong layer; restore the source/destination roles together rather than tweak capsule pixels."
+  ],
+  "haptics_and_animation": {
+    "haptics": "No explicit haptic consumer in the selected style windows; not proof of global absence.",
+    "animation": "Sourcefilter has three _AnimationModifier values on SourceFilter/Bool/HostIdentity array per existing fullfiltertree7cf4af8. ReduceMotion getter388c30 reads environment via91244; full resolved spring/owner hostFilterAnimation producer policy is not closed here. Preserve explicit current owner animation input and reduceMotion off switch; no new hardcoded curve is justified by this pass."
+  },
+  "stop_condition": "Three candidate groups completed; no further global picker, glass, connection or service analysis.",
+  "validation": {
+    "product_changes": false,
+    "builds": false,
+    "devices": false,
+    "network": false,
+    "original_app_execution": false
+  }
+}

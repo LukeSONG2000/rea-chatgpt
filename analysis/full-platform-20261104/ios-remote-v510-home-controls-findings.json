@@ -1,0 +1,349 @@
+{
+  "batch": "v510",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "scope": "Close attachment enabled predicate and ordinary home toolbar geometry; resolve injected Whisper codexActivation request to shared leaf. No production edits, official app execution, audio execution or service calls.",
+  "attachment": {
+    "enabled": {
+      "status": "verified-static",
+      "entry": "0x19863cc",
+      "can_offer_menu": "0x198ea18",
+      "predicate": "inheritedIsEnabled && (attachmentAllowed || supportsPlanMode || availableGoalWithoutObjective || availablePluginAutocompleteItem)",
+      "attachmentAllowed": "hostSupportsRemoteAttachments && composerPresentation.allowsAttachments && !currentCommandIsGoal",
+      "availableGoalWithoutObjective": "!currentCommandIsGoal && !isPlanModeEnabled && commands contains goal(objective:nil)",
+      "availablePluginAutocompleteItem": "!currentCommandIsGoal && autocompleteItems contains kind.plugin",
+      "proof": [
+        {
+          "offsets": [
+            "0x1986680..0x19866b8",
+            "0x1d9ad40..0x1d9ad64",
+            "0x44ab38..0x44ab74",
+            "0x1225d0..0x1225f8",
+            "0x7e29328",
+            "0x7e2934c",
+            "0xaad1c20"
+          ],
+          "conclusion": "198ea18 is availability. Capture helper writes !availability and environment closure computes inheritedIsEnabled & !capturedDisabled. Keypath getter binds SwiftUI.EnvironmentValues.isEnabled."
+        },
+        {
+          "offsets": [
+            "0x198ea18..0x198ea88",
+            "0x45c07c",
+            "0xae47bc"
+          ],
+          "conclusion": "Short-circuit OR of19804f0, supportsPlanMode field70, nonnil198ecd8, nonempty198ee64."
+        },
+        {
+          "offsets": [
+            "0x19804f0..0x1980528",
+            "0x1990a48..0x1990b20",
+            "0x1981640..0x19816a4",
+            "0x1da26d4",
+            "0x95d0dcc"
+          ],
+          "conclusion": "Host supports remote attachments, presentation allowsAttachments and parsed command is not goal. Command enum raw1 is goal."
+        },
+        {
+          "offsets": [
+            "0x198ecd8..0x198ee64",
+            "0x95d0dcc"
+          ],
+          "conclusion": "Goal context or plan mode returns nil. Otherwise commands scan selects goal raw1 whose optional objective is nil."
+        },
+        {
+          "offsets": [
+            "0x198ee64..0x198ef2c",
+            "0x1990a14",
+            "0x95d0db0"
+          ],
+          "conclusion": "Goal context supplies empty autocomplete array. Remaining array is filtered by item.kind byte0x10 ==1. Metadata enum maps skill0/plugin1/thread2/app3."
+        }
+      ],
+      "integration": "Keep menu availability separate from attachment upload capability. A host without attachment support can still offer plan, goal or plugin options. Inherited disabled state is still respected."
+    },
+    "geometry": {
+      "status": "verified-static-configuration",
+      "resource": "OpenAI/Symbols/plus-lg",
+      "label_type": "MessageInputAccessoryButtonLabel",
+      "accessory_type": "attachmentMenu raw1",
+      "label_font": {
+        "weight": "regular",
+        "source": "ScaledStyleMetric attachmentsButtonFontSize",
+        "home_config_value": 18.808777429467085,
+        "default_style_value": 18.0
+      },
+      "label_frame": "width and height both equal resolved attachmentsButtonFontSize; center alignment",
+      "label_padding": {
+        "edges": "all",
+        "source": "accessoryButtonPadding environment keypath0x823bb40 ->getter0x6071108",
+        "formula": "(MessageInputStyle.minHeight - attachments.attachmentsButtonFontSize) * 0.5",
+        "compact_home_unscaled": 12.595611285266457,
+        "expanded_home_unscaled": 14.595611285266457,
+        "default_style_compact_unscaled": 13,
+        "note": "13 is the default font18/minHeight44 result. Remote/Home font override recomputes padding. The separate attachments padding field at part18 is not this computed accessor."
+      },
+      "content_shape": "Rectangle().inset(by: negativeContentInsetEnabled ? -4 : 0)",
+      "attachment_outer_padding": {
+        "source": "MessageInputAttachmentsPartStyle.attachPadding",
+        "inherited_default": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "compact_parent": {
+        "frame_width": null,
+        "frame_height": 32,
+        "alignment": "center",
+        "z_index": 2
+      },
+      "expanded_parent": {
+        "frame_width": 48,
+        "frame_height": null,
+        "alignment": "center",
+        "z_index": 2,
+        "message_input_style_overrides": {
+          "minHeight": 48,
+          "negativeContentInsetEnabled": false
+        }
+      },
+      "message_input_button_style_minHeight": null,
+      "proof": [
+        {
+          "offsets": [
+            "0x6070d80..0x6070d90",
+            "0x6070e88..0x6070ecc",
+            "0x6111f34",
+            "0x765d30",
+            "0x1589c0",
+            "0x1c0620",
+            "0x155034",
+            "0x757d918"
+          ],
+          "conclusion": "Label obtains scaled font metric, regular weight, copies fontSize into both width/height optional arguments of View.frame, with center alignment."
+        },
+        {
+          "offsets": [
+            "0x60709f0..0x60709f8",
+            "0x6111f48",
+            "0x823bb40",
+            "0x6071108..0x6071134",
+            "0x2aa5690..0x2aa569c",
+            "0x6070edc..0x6070f08",
+            "0x608139c",
+            "0x6081530..0x6081534"
+          ],
+          "conclusion": "Label _accessoryButtonPadding keypath reads MessageInputStyle and computes half of minHeight minus attachmentsButtonFontSize, then applies it to all edges. Default minHeight44 is inherited by compact; expanded overrides48. Home font18.808777 gives padding12.595611 or14.595611 respectively."
+        },
+        {
+          "offsets": [
+            "0x6070f0c..0x6070f48",
+            "0x939358a",
+            "0x4f70d20"
+          ],
+          "conclusion": "The final generic type is ContentShapeModifier<Rectangle._Inset>; enabled chooses -4 and false chooses0. This affects the content shape, not visual padding."
+        },
+        {
+          "offsets": [
+            "0x1986634..0x1986678",
+            "0x607fba8..0x607fbac"
+          ],
+          "conclusion": "Separate outer attachPadding is read from part60..78; default is four zero doubles."
+        },
+        {
+          "offsets": [
+            "0x1987e04..0x1987e6c",
+            "0x1bfd00",
+            "0x15c870",
+            "0x1bedb4",
+            "0x7c47104"
+          ],
+          "conclusion": "Compact attachment parent fixed height32, widthnil, center, zIndex2. SwiftUI fixed frame has no clip in this local chain."
+        },
+        {
+          "offsets": [
+            "0x1985f04..0x1985f70",
+            "0x1986a30",
+            "0x764e64",
+            "0x7c47104"
+          ],
+          "conclusion": "Expanded attachment parent fixed width48, heightnil. Its inherited MessageInputStyle gets minHeight48 and negativeContentInsetEnabledfalse."
+        },
+        {
+          "offsets": [
+            "0x198e918..0x198ea18",
+            "0x606c86c..0x606cb1c",
+            "0x607ff90..0x60807d4"
+          ],
+          "conclusion": "Attachment MessageInputButtonStyle constructor receives minHeight Optional.none. Style body propagates this to flexible minHeight. The expanded MessageInputStyle minHeight48 is a different type/field."
+        }
+      ],
+      "limits": [
+        "Configuration values do not establish current device glyph bounds or accessibility-frame size.",
+        "No forced min44 is present at this attachment ButtonStyle call; keep recovered font/padding/content-shape and outer frames distinct.",
+        "Full selected/pressed material and recent-photos overlay state are beyond ordinary idle geometry in this report.",
+        "The default part-relative padding13 must not be copied into Home; the actual label accessor recomputes padding from minHeight and font."
+      ],
+      "label_layout_size_before_outer_frame": {
+        "compact_home_unscaled": [
+          44,
+          44
+        ],
+        "expanded_home_unscaled": [
+          48,
+          48
+        ]
+      }
+    },
+    "action": {
+      "owner": "CodexRemoteMessageInputView.__attachmentPresentation",
+      "chain": [
+        "0x19863cc",
+        "Button action0x1c286d4",
+        "0x1980dc4 suppression getter",
+        "0x1d7eeac",
+        "0x1980e0c presentation setter"
+      ],
+      "prior_evidence": "ios-remote-v509-home-controls-findings.json",
+      "guards": "Consumes/clears suppressNextAttachmentAction or returns for the recentPhotosController guard; ordinary action updates presentation.",
+      "visibility": "Button construction is shared by ordinary compact/expanded layouts. Recent-photos predicate18c9b54 can set opacity0 independently from isEnabled.",
+      "remaining_unknown": "Recent-photos gesture availability/presentation enum payload and its complete animation remain outside this ordinary menu enablement closure."
+    }
+  },
+  "whisper": {
+    "status": "partial-with-consumer-chain-closed",
+    "request": {
+      "enum": "ComposerWhisperTemplate.ViewParams",
+      "descriptor": "0x96b1e08",
+      "tag": 4,
+      "case": "codexActivation",
+      "payload": "onStartRecording callback",
+      "producer": "0x198a7dc..0x198a888",
+      "callback": "0x1c28660"
+    },
+    "consumer": {
+      "type": "ComposerWhisperView",
+      "descriptor": "0x95a6e0c",
+      "body": "0x16ead8c ->0x16ea054",
+      "dispatch": {
+        "table": "0x7decccb",
+        "branch_base": "0x16ea10c",
+        "tag4_target": "0x16ea1c8"
+      },
+      "leaf": "MessageInputWhisperButtonPart, descriptor0x95a51c8, metadata accessor0x1767ab8",
+      "proof": [
+        "0x16ea090 stores leaf metadata into x23",
+        "0x16ea1c8..0x16ea204 reads presentation microphone state; optional raw8 coalesces to raw2",
+        "0x16ea324..0x16ea338 writes state at fieldvec30 and compactControlState raw10 at fieldvec34",
+        "0x16ea34c..0x16ea358 installs closure1225ac that forwards captured onStartRecording",
+        "0x16ea360 completes shared leaf into return conditional content"
+      ],
+      "state_encoding": "Metadata has hidden(allowsInteraction:Bool) as one payload case. Byte0/1 encode that Bool; idle2, disabled3, starting4, active5, stopped6, loading7, optional nil8. The nil->idle fallback is directly observed at16ea1ec..1f4; mapping uses this one-byte enum layout and field metadata.",
+      "injection_limit": "This closes the standard ComposerWhisperTemplate ViewParams consumer branch. A dynamic component resolver can substitute its concrete view; this report does not claim a live account injection observation."
+    },
+    "idle_visual": {
+      "symbol": "OpenAI/Symbols/microphone",
+      "chain": [
+        "0x16fa3e4 ->0x16f81f0 leaf body",
+        "0x16f8480 Button label1768590",
+        "0x1768590 ->0x16f8c34",
+        "0x16f8c34 ->0x16f8f28",
+        "0x16f8f28 ordinary idle ->0x16f979c",
+        "0x16f9938..0x16f9968 Label icon closure178d790",
+        "0x178d82c ->0x16f9d98",
+        "0x16f9e44 ->0x74f894c ->symbol8846780"
+      ],
+      "opacity": "16f9e50..0x16f9e78 hides the microphone for raw state4..7 and displays it for idle2. Shared non-idle visual content is retained separately.",
+      "style_values_from_v508": {
+        "whisper.elementSize": 44,
+        "whisper.padding.first": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "whisper.padding.second": [
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "limits": [
+        "State/style-derived leaf sizing contains further MessageInputWhisperButtonPart/MessageInputWhisperPartStyle interactions. Do not infer the exact microphone font or outer tap bounds from elementSize44.",
+        "Streaming/recording waveform variants and press-to-talk gesture changes remain outside ordinary idle integration."
+      ]
+    },
+    "action": {
+      "chain": [
+        "Button action176856c ->16f8b70",
+        "idle branch prepares handleEvent at leaf fieldvec48",
+        "16f8c24 invokes callback",
+        "codexActivation callback1225ac ignores event arguments and forwards its captured callback",
+        "198a7dc captured1c28660 ->19903f8 with Remote action raw26=startWhisper",
+        "CodexRemoteMessageInputView.handle owner fieldc4"
+      ],
+      "gates": "Caller preventsPromptSubmission=false and allowsSupplementaryWhisperButton=true. Leaf retains inherited enablement and state-specific handling. The ordinary action should be wired to the page owner/service boundary.",
+      "frontend_scope": "Display and emit the request callback. Audio capture/transcription implementation is not included."
+    }
+  },
+  "integration_checks": [
+    "Attachment disabled truth table must distinguish no capabilities, attachments only, plan only, goal command only, plugin only and inherited disabled.",
+    "Goal context disables attachment path and plugin list; supportsPlanMode can independently keep + available.",
+    "ordinary compact and expanded use the same action owner and selection state, with their respective parent frames.",
+    "Validate label geometry, Button AX geometry and hit test separately. Reuse computed padding=(minHeight-font)/2, retaining contentShape expansion and outer frame. The compact label44x44 can occupy a fixed-height32 parent without local clipping.",
+    "Whisper activation submits startWhisper through the existing page owner; cloud/service availability remains explicit.",
+    "Keyboard/focus, cancellation and navigation cleanup still require host runtime acceptance."
+  ],
+  "unknowns": [
+    "RecentPhotos gesture predicate1980080 and the final attachment popover presentation payload are not fully decoded.",
+    "Effective icon/label geometry under every style override and Dynamic Type setting requires host runtime measurement.",
+    "Whisper concrete live dependency injection and full non-idle gesture/recording state transitions remain unobserved.",
+    "No device visual/interaction acceptance is established by this static report."
+  ],
+  "validation": {
+    "static_only": true,
+    "production_modified": false,
+    "official_app_executed": false,
+    "audio_executed": false
+  },
+  "evidence_files": {
+    "ios-remote-v509-home-controls-findings.json": "47be4f271aaaaad514ddf7a8bb6e1485947e9a482bb32954cc6010f067addd36",
+    "ios-remote-v508-home-style-findings.json": "7f353ec5882b87dd217b9cf2ee0d592a13e76dc7715dc1b96e894acf2564b9af",
+    "ios-remote-v509-accessoryicon.asm": "4d86ae9856a8de2b892000d3f74316c47e9bec60d1d88461ecbd78f58038a0c1",
+    "ios-remote-v509-attachments.asm": "89bf614aad11b628721457d007b0088b25f19ca5546618e1d0488ca7bf418c6f",
+    "ios-remote-v509-symbol-bindings.asm": "34cc786dc1f112bbad7d3459f7bffdfc66b56c54a55d754bdfc22c7805de8bf5",
+    "ios-remote-v509-whisper-button.asm": "b9ee4db3ab78bfee01aa82c4539491e03f2c31e308106826d0bd1111d963c29e",
+    "ios-remote-v509-controls-enums.json": "3ef983a34e500cc1299d4ec1e21ac15802a57211aa47c12f88c8d8a3ec2686e8",
+    "ios-remote-v509-whisper-leaf-metadata.json": "4d03f96f02e656604010097752aa5ad0e6618a9ff817a1c7a3bcb04f148b7832",
+    "ios-remote-v510-attachment-gates.asm": "e8dd4e6dbd222bbe0b7bab120f55f5c9787c2621310fc3c9ae1b476f4624ac65",
+    "ios-remote-v510-attachment-model-gate.asm": "aebdaa3593bf01f3de6110ac4837812a498ffc604d058ba2066a7514b702328c",
+    "ios-remote-v510-disabled-transform.asm": "f53a86c6dc9a0592f567f9c359bd7d0aafca38b7e099be607c8e001878e0dec2",
+    "ios-remote-v510-gate-keypath.asm": "122c0825593333be92e8abc1ba0ca2cba6f72aea2196b6a8e4a2d2b068880102",
+    "ios-remote-v510-attachments-allow.asm": "b25c7bd5da8d14a60dfac15a31939428c63983a7f361f73a23e2eb0833fb19b7",
+    "ios-remote-v510-attachments-context.asm": "be27e7c59a571475e430e37d98d66b92c6e93168124d840f08ee6f0f0876546e",
+    "ios-remote-v510-attachments-options.asm": "626559b3b4885f7c1b68d1118dc2f4320bc09f9269eb357d16c4ffc2c48a0e5a",
+    "ios-remote-v510-enable-transform.asm": "1377194f9ff960b550b389d7963e50f64ceb51f87e596c2a07df1a1e9b5660b2",
+    "ios-remote-v510-capture-enable.asm": "ead9a516e948bc9e5ef47ce3bdbb28be52e155b353feb67c3228dab09810bf55",
+    "ios-remote-v510-button-style.asm": "b398caca1bb658103af8010c9949d027fc89bec6341d1aebffbce9186babcd83",
+    "ios-remote-v510-button-style-constructor.asm": "f6c60c91f88251e62c9ff1e8f306016ff1e650d92f53ef0fe029895f1fbfcda7",
+    "ios-remote-v510-buttonstyle-body.asm": "8dc46c0b67691fbbfa4bb7d8329d00a6eb8ad27db969d141c65318bb153b530f",
+    "ios-remote-v510-control-fields.json": "1d762e6153a717e03b7aa9a4efb3b8c7a22e3e37979d0648d52477b4beffa750",
+    "ios-remote-v510-control-resolved-values.json": "1e0cd8ca3a0a067b8e9c35ff6edf42327992f8f83c15a4cc845766a9b4341b5f",
+    "ios-remote-v510-control-final-helpers.asm": "10bd9f1916391895ca380e2f414349336cfea237ffea47a472a55719fc941dab",
+    "ios-remote-v510-accessory-constructor.asm": "4df1e0b1fcbc64746c74d878b846915650ef2a8e003e3e9e8be113f378004214",
+    "ios-remote-v510-whisper-consumer-metadata.json": "4bbde8dda261d08d58f36502ca63a34e434db1bc019450c9c47aa5783fee99f2",
+    "ios-remote-v510-whisper-consumer-witness.json": "73d07a367066e0dee50d77ed7778c12c9e1710942d7825d8a2bd2429528773b6",
+    "ios-remote-v510-whisper-request.asm": "c357081e8ef5207d8cfb97be57054c348ae77d23fad0d08228d7f3bfb1ef0e56",
+    "ios-remote-v510-whisper-consumer.asm": "42af52503ba5c37ab25d81d411f7f70e3d5b7bac243cceb9a4e4d7066241d658",
+    "ios-remote-v510-whisper-consumer-calls.json": "9431512830bceb25e8af3766cc28fa5b90b5330cf8390b0c2873407d1f331af7",
+    "ios-remote-v510-accessory-derived-padding.asm": "1b8dc36facd8e120847dbd5e01ee7712ffc26f132733eb8bae21fa07f95fc2d9"
+  }
+}

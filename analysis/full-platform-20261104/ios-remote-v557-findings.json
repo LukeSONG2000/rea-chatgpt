@@ -1,0 +1,141 @@
+{
+  "version": "557",
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Remote owner text replacement during marked composition",
+  "public_source": {
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "index": "analysis/upstream-codex-20261105/reuse-map.json",
+    "limit": "Existing audit does not establish this UIKit implementation in public source"
+  },
+  "observations": [
+    {
+      "kind": "shipped-artifact-static",
+      "symbol": "MessageInputUITextViewRepresentable.Coordinator",
+      "conclusion": "Generic slots resolve to MessageInputViewModel, which delegates composition to MessageInputAutocompleteViewModel. This is supplemental Chat evidence, not the Remote update owner.",
+      "evidence": [
+        "ios-remote-v557-composition-witnesses.json",
+        "ios-remote-v557-view-model-fields.json"
+      ]
+    },
+    {
+      "kind": "shipped-artifact-static",
+      "symbol": "CodexRemoteComposerTextView.updateUIView",
+      "offsets": [
+        "0x199418c",
+        "0x199483c",
+        "0x1994e30",
+        "0x199496c",
+        "0x1995a10",
+        "0x1d1bec8",
+        "0x1995298",
+        "0x19955d4",
+        "0x7536b14",
+        "0x7536b70"
+      ],
+      "conclusion": "The Remote bridge renders the bound prompt, compares the native attributed content and invokes a native attributed-text setter for the changed-content path. Its selection restoration is separate. The selected owner apply path has no markedTextRange early-return like the independent host.",
+      "evidence": [
+        "ios-remote-v557-native-update.json",
+        "ios-remote-v557-text-update.asm",
+        "ios-remote-v557-apply-text.asm",
+        "ios-remote-v557-attributed-setter.json",
+        "ios-remote-v557-native-transaction-full.asm"
+      ],
+      "limits": [
+        "Static chain, original target not executed",
+        "Does not establish all callback branches or on-screen Send acceptance policy"
+      ]
+    },
+    {
+      "kind": "shipped-artifact-static-metadata",
+      "symbol": "CodexRemoteComposerTextView.Coordinator",
+      "offsets": [
+        "0xacc82c8",
+        "0xadf4720",
+        "0xadf4728"
+      ],
+      "conclusion": "Remote owns renderedPromptText and renderedTextAttributes independently of its text binding. The prompt comparison at0x199507c..0x1995090 controls cached attributed text reuse.",
+      "evidence": [
+        "ios-remote-v557-coordinator-metadata.json",
+        "ios-remote-v557-text-update.asm"
+      ]
+    },
+    {
+      "kind": "shipped-artifact-static",
+      "symbol": "CodexRemoteComposerTextView.Coordinator.textViewDidChange",
+      "offsets": [
+        "0x1996e64",
+        "0x1996980",
+        "0x1996abc",
+        "0x1996af0",
+        "0x1996b38"
+      ],
+      "conclusion": "Native edits write the String binding before a separate marked-range guarded attributed-text normalization helper. The normalization guard is distinct from applying changed owner text.",
+      "evidence": [
+        "ios-remote-v557-native-change.json",
+        "ios-remote-v557-native-change.asm"
+      ]
+    },
+    {
+      "kind": "independent-host-runtime",
+      "conclusion": "New testRemoteUncommittedPinyinSend reproduces native ni\\u2006hao remaining after accepted send and owner clear. Candidate intentionally not selected.",
+      "evidence": [
+        "ios-remote-v557-r1-marked.xcresult",
+        "ios-remote-v557-r1-marked.log"
+      ]
+    },
+    {
+      "kind": "independent-host-source",
+      "file": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "symbol": "NativeRemoteComposerEditor.updateUIView",
+      "conclusion": "The blanket markedTextRange guard drops authoritative owner changes, including accepted-send clearing. Native input echoes already compare equal and do not need assignment."
+    }
+  ],
+  "integration_decision": {
+    "mechanism": "Preserve equal native input/selection; apply changed owner text including clear; retain pending plugin/dictation insertion composition guards.",
+    "independent_adaptation": "Plain UITextView text assignment and existing UTF-16 selection clamp implement the plain-text host subset. Official attributed-prompt/inline-reference transaction remains separately partial.",
+    "scope": "Remote plain-text editor owner synchronization; no new service/send policy"
+  },
+  "validation": {
+    "baseline_regression": "failed as expected: uncommitted ni\\u2006hao residual",
+    "after_change": {
+      "input_suite": {
+        "passed": 6,
+        "failed": 0,
+        "result": "ios-remote-v557-r2-input.xcresult"
+      },
+      "related_suite": {
+        "r3": {
+          "passed": 3,
+          "failed": 1,
+          "failure": "Plugin final real-key assertion assumed QWERTY z under retained Chinese nine-key layout"
+        },
+        "r4": {
+          "passed": 0,
+          "failed": 2,
+          "failure": "Nine-key number plane accessibility label is Number-Plane in this state"
+        },
+        "r5": {
+          "passed": 2,
+          "failed": 0,
+          "result": "ios-remote-v557-r5-plugin.xcresult"
+        },
+        "distinct_ui_cases_passed": 11
+      },
+      "foundation": "passed"
+    },
+    "visual_inspection": [
+      "Chinese light unselected Pinyin before Send",
+      "Chinese light accepted prompt and next edit without residual",
+      "English dark exact multiword submission and clear"
+    ]
+  },
+  "unknowns": [
+    "Full official onscreen-submit policy",
+    "Inline reference/autocomplete rich text transaction parity",
+    "Physical device IME and English autocorrection",
+    "Android editor implementation"
+  ]
+}

@@ -1,0 +1,702 @@
+{
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "scope": "7-minute bounded native static follow-up; no host edit/build/device/network/original app execution",
+  "native_parent": {
+    "descriptor": "0x959a5b0",
+    "accessor": "0x151cd10",
+    "body": "0x1478a60→0x1478028",
+    "type_records": [
+      "0x7dcc3b0",
+      "0x7dcc3b8"
+    ],
+    "shape": "Native SitesPreviewScreen + SitesProjectPreviewTopControls with original background and safe-area ignoring modifier. Parent takes separate topControls, bottomControls and content builders, plus measured top/bottom control heights and allowsContentBehindControls policy.",
+    "limits": [
+      "No generic browser toolbar replacement is source-equivalent.",
+      "Parent input fields establish interface; actual enabled controls remain gated by source state."
+    ]
+  },
+  "preview_content": {
+    "body": "0x147e89c→0x147de60→0x147dea0",
+    "tree_record": "0x7dcd7c8",
+    "shape": "ZStack tuple with conditional/optional preview regions, opacity, hit-testing, animation and ID<UUID> modifiers; unknown private nodes retained by descriptor.",
+    "interface": [
+      "title",
+      "screenshotURL",
+      "previewState",
+      "authenticatedSession",
+      "statusLabel",
+      "loadsLivePreview",
+      "additionalTopContentInset",
+      "additionalBottomContentInset",
+      "loadTrigger",
+      "loadAttemptIdentifier",
+      "webPreviewState",
+      "webPageBackgroundUIColor",
+      "reduceMotion"
+    ],
+    "limits": [
+      "Full generic shell is decoded but internal opaque identities not assigned guessed screen names.",
+      "Specific loading/error/retry labels and branch ordinal mapping remain unclosed."
+    ]
+  },
+  "leading_and_controls": {
+    "body": "0x147b260→0x147a064→0x147a0a4",
+    "tree_record": "0x7dc4fd0",
+    "shape": "Native HStack-like tuple, optional Button/Label regions, circle/rectangle hit shape and PlainButtonStyle.",
+    "verified_label_branch": {
+      "consumer": "0x147a8e4..0x147a914",
+      "metadata": "SitesProjectPreviewTopControls accessor0x146d9b0",
+      "control_field": "leadingControl",
+      "case1": [
+        "0x75d6998 fallback Close",
+        "0x74fc6d0 exact resource OpenAI/Symbols/xmark-lg via literal0x8a578e0"
+      ],
+      "otherwise": [
+        "0x75d6978 fallback Back",
+        "0x74f5e60 exact resource OpenAI/Symbols/chevron-left-md via literal0x8a54960"
+      ]
+    },
+    "capability_inputs_inventory": [
+      "liveURL",
+      "canShareLink",
+      "canShareSite",
+      "canViewAnalytics",
+      "canViewSettings",
+      "showsManagementMenu",
+      "loadingProgress",
+      "showsLoadingIndicator"
+    ],
+    "limits": [
+      "Leading-control label/icon actual branch is proven; capability booleans exist, but exact original predicate for each action group is not claimed from fields alone.",
+      "Global Back/Close factories use shared tails; no new project-specific resource key inferred."
+    ]
+  },
+  "web_bridge": {
+    "owner": "SitesProjectWebPreview descriptor0x959b1e8",
+    "correction": "View.body witness0x1482818 reaches the UIViewRepresentable default body failure path; it is not the render implementation.",
+    "UIViewRepresentable_conformance": "0x7dcdcf8",
+    "makeUIView": "0x1482790→0x1481fa8",
+    "updateUIView": "0x1482794→0x148255c",
+    "dismantleUIView": "0x1482798→0x1481bd0",
+    "makeCoordinator": "0x14827a0→0x1481cbc",
+    "coordinator_descriptor": "0x95980b4, nested Coordinator",
+    "actual_observations": [
+      {
+        "offset": "0x1481fc8..0x1481fd4",
+        "claim": "Configuration init and allowsInlineMediaPlayback=true."
+      },
+      {
+        "offset": "0x1481fe4..0x148202c",
+        "claim": "Conditional website data store: no authenticated session / shared-store policy branch uses nonPersistentDataStore; other branch uses a store supplied by authenticated session. It is not unconditionally the global/default store."
+      },
+      {
+        "offset": "0x1482030..0x1482040",
+        "claim": "WebView class allocation and initWithFrame:configuration:."
+      },
+      {
+        "offset": "0x14820a0..0x14821a8",
+        "claim": "Configures navigation gestures, link preview, opaque/clear backgrounds, user interaction and native scroll/keyboard behavior."
+      },
+      {
+        "offset": "0x14821f4",
+        "claim": "Sets navigation delegate."
+      },
+      {
+        "offset": "0x1482290,0x14823b8,0x148243c",
+        "claim": "Installs KVO observations; precise key paths not decoded here."
+      },
+      {
+        "offset": "0x148275c",
+        "claim": "updateUIView hands refreshed values through native helper0x147fa48."
+      }
+    ],
+    "policy_boundary": {
+      "fields_observed": [
+        "browserPolicy",
+        "loadTrigger",
+        "loadAttemptIdentifier",
+        "loadedOriginPolicy",
+        "pendingURL",
+        "mainFrameRequest",
+        "mainFrameNavigationGeneration",
+        "expectedProvisionalNavigation"
+      ],
+      "unknown": "Exact navigation decision delegate policy branches, auth bootstrap, cross-origin permissions and stale-generation rejection have not been closed. Field names do not prove enforcement.",
+      "next": "Trace Coordinator WKNavigationDelegate decidePolicyForNavigationAction/response methods and 0x147fa48 loader consumer; do not derive allow/deny rules from current field names."
+    }
+  },
+  "row_to_preview": {
+    "list_worker_evidence": "ios-native-sites-list-20261112/",
+    "actual_row_button": "0x14a4bd8",
+    "proved_by_parallel_source_worker": [
+      "Clears search focus at0x14a4c28..0x14a4c3c",
+      "Copies rowID into action payload",
+      "Stores multi-payload rawtag11 at0x14a4c50/54",
+      "Invokes supplied actionHandler at0x14a4c60"
+    ],
+    "root_route": "SitesScreen body0x149d304 has NavigationStack/navigationDestination<SitesNavigationDestination>; enum cases analytics(project), preview(value), settings(project).",
+    "not_closed": "Raw actiontag11 has not been mapped to selectProject by payload layout, and concrete root destination closure dispatch to SitesProjectPreviewScreen not traced in this bounded task. Do not label row→preview fully closed just from route enum/tree."
+  },
+  "settings_analytics_editor_publish_share": {
+    "classification": "original frontend action/data contract inventory; active dispatch incomplete",
+    "route_cases": [
+      "analytics",
+      "preview",
+      "settings"
+    ],
+    "project_action_cases": [
+      "copyLink",
+      "edit",
+      "manageSharing",
+      "openInBrowser",
+      "publish",
+      "viewAnalytics",
+      "viewSettings"
+    ],
+    "preview_actions": [
+      "dismissCopyLinkConfirmation",
+      "previewFallbackOpened",
+      "projectAction",
+      "close",
+      "linkShareOpened"
+    ],
+    "value_capabilities": [
+      "canEditSite",
+      "canManageSite",
+      "canShareLink",
+      "canShareSite",
+      "canViewAnalytics",
+      "canViewSettings",
+      "showsManagementMenu"
+    ],
+    "limits": [
+      "Only original entry contracts and type trees were established. Concrete action owner/route mutations and confirmation policy remain unclosed.",
+      "Do not present publish/share success or editor service behavior without backend."
+    ]
+  },
+  "haptics": {
+    "status": "no verified consumer found",
+    "claim": "No haptic trigger established in inspected preview/control/UIViewRepresentable windows."
+  },
+  "minimum_frontend_admission": {
+    "classification": "independent offline resource adaptation, not recovered online behavior",
+    "can_implement": [
+      "Dedicated native preview parent with source-backed top leading controls and content/control inset boundaries.",
+      "WKWebView representable using explicitly isolated local resource provider and synthetic loading/failed/retry state.",
+      "Back/Close route restores source list state; preserve project identity and preview-attempt identity.",
+      "Capability-projected edit/share/settings/analytics/publish entry controls emit scoped service intents with clear unsupported state."
+    ],
+    "must_not_claim": [
+      "Local WKWebView matches original authenticated session or URL policy.",
+      "Generic browser controls implement all Sites toolbar behavior.",
+      "List row callback or native fields prove online preview dispatch."
+    ]
+  },
+  "original_models_inventory_only": [
+    {
+      "name": "SitesProjectPreviewAuthentication",
+      "descriptor": "0x9599284",
+      "accessor": "0x15076e0",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "loadSession",
+          "type_reference": "0x8da8ae4"
+        },
+        {
+          "name": "isCurrentAccount",
+          "type_reference": "0x8c21480"
+        },
+        {
+          "name": "isCurrentAccountPublisher",
+          "type_reference": "0x8d87f90"
+        },
+        {
+          "name": "usesSharedWebsiteDataStore",
+          "type_reference": "0x8bfd810"
+        }
+      ]
+    },
+    {
+      "name": "SitesPreviewScreen",
+      "descriptor": "0x95992d8",
+      "accessor": "0x146dc7c",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "hasComposer",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "copyLinkConfirmationID",
+          "type_reference": "0x8c85b40"
+        },
+        {
+          "name": "actionHandler",
+          "type_reference": "0x8da8f5a"
+        },
+        {
+          "name": "topControls",
+          "type_reference": "0x8c747f0"
+        },
+        {
+          "name": "bottomControls",
+          "type_reference": "0x8d0ad40"
+        },
+        {
+          "name": "content",
+          "type_reference": "0x8da8f6e"
+        },
+        {
+          "name": "__topControlsHeight",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__bottomControlsHeight",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "allowsContentBehindControls",
+          "type_reference": "0x8bfd810"
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectPreviewTopControls",
+      "descriptor": "0x959932c",
+      "accessor": "0x146d9b0",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "liveURL",
+          "type_reference": "0x8c59150"
+        },
+        {
+          "name": "canShareLink",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canShareSite",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canViewAnalytics",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canViewSettings",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "showsManagementMenu",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "leadingControl",
+          "type_reference": "0x8da8f4e"
+        },
+        {
+          "name": "loadingProgress",
+          "type_reference": "0x90ac0f0"
+        },
+        {
+          "name": "showsLoadingIndicator",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "actionHandler",
+          "type_reference": "0x8da8f5a"
+        }
+      ]
+    },
+    {
+      "name": "SitesNavigationDestination",
+      "descriptor": "0x95998b4",
+      "accessor": "0x1515148",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "analytics",
+          "type_reference": "0x8c2ab42"
+        },
+        {
+          "name": "preview",
+          "type_reference": "0x8dab148"
+        },
+        {
+          "name": "settings",
+          "type_reference": "0x8c2ab42"
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectPreviewAction",
+      "descriptor": "0x9599c94",
+      "accessor": "0x1509600",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "dismissCopyLinkConfirmation",
+          "type_reference": "0x8e12c00"
+        },
+        {
+          "name": "previewFallbackOpened",
+          "type_reference": "0x8dab036"
+        },
+        {
+          "name": "projectAction",
+          "type_reference": "0x8da8e2c"
+        },
+        {
+          "name": "close",
+          "type_reference": null
+        },
+        {
+          "name": "linkShareOpened",
+          "type_reference": null
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectPreviewLeadingControl",
+      "descriptor": "0x9599cbc",
+      "accessor": "0x1519244",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "back",
+          "type_reference": null
+        },
+        {
+          "name": "close",
+          "type_reference": null
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectAction",
+      "descriptor": "0x9599d70",
+      "accessor": "0x151975c",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "copyLink",
+          "type_reference": null
+        },
+        {
+          "name": "edit",
+          "type_reference": null
+        },
+        {
+          "name": "manageSharing",
+          "type_reference": null
+        },
+        {
+          "name": "openInBrowser",
+          "type_reference": null
+        },
+        {
+          "name": "publish",
+          "type_reference": null
+        },
+        {
+          "name": "viewAnalytics",
+          "type_reference": null
+        },
+        {
+          "name": "viewSettings",
+          "type_reference": null
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectPreviewValue",
+      "descriptor": "0x959a448",
+      "accessor": "0x151d464",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "title",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "screenshotURL",
+          "type_reference": "0x8c59150"
+        },
+        {
+          "name": "liveURL",
+          "type_reference": "0x8c59150"
+        },
+        {
+          "name": "statusLabel",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "canEditSite",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canManageSite",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canShareLink",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canShareSite",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canViewAnalytics",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canViewSettings",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "showsManagementMenu",
+          "type_reference": "0x8bfd810"
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectPreviewScreen",
+      "descriptor": "0x959a5b0",
+      "accessor": "0x151cd10",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "value",
+          "type_reference": "0x8dad3ba"
+        },
+        {
+          "name": "loadingViewModel",
+          "type_reference": "0x8da81bc"
+        },
+        {
+          "name": "composerViewModel",
+          "type_reference": "0x8da861e"
+        },
+        {
+          "name": "usesEditComposer",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "copyLinkConfirmationID",
+          "type_reference": "0x8c85b40"
+        },
+        {
+          "name": "actionHandler",
+          "type_reference": "0x8da8f5a"
+        },
+        {
+          "name": "_browserPolicy",
+          "type_reference": "0x8f558a8"
+        },
+        {
+          "name": "__webPreviewState",
+          "type_reference": "0x8dad246"
+        },
+        {
+          "name": "__webPageBackgroundUIColor",
+          "type_reference": "0x8dabf18"
+        },
+        {
+          "name": "loadsLivePreview",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "analyticsContext",
+          "type_reference": "0x8da81d4"
+        },
+        {
+          "name": "leadingControl",
+          "type_reference": "0x8da8f4e"
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectPreviewBottomControls",
+      "descriptor": "0x959a994",
+      "accessor": "0x1526974",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "liveURL",
+          "type_reference": "0x8c59150"
+        },
+        {
+          "name": "canEditSite",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "composerViewModel",
+          "type_reference": "0x8da861e"
+        },
+        {
+          "name": "usesEditComposer",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "loadsLivePreview",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "loadingViewModel",
+          "type_reference": "0x8da81bc"
+        },
+        {
+          "name": "_webPreviewState",
+          "type_reference": "0x8da824e"
+        },
+        {
+          "name": "actionHandler",
+          "type_reference": "0x8da8f5a"
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectPreviewContent",
+      "descriptor": "0x959a9c4",
+      "accessor": "0x1526c3c",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "title",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "screenshotURL",
+          "type_reference": "0x8c59150"
+        },
+        {
+          "name": "previewState",
+          "type_reference": "0x8db0872"
+        },
+        {
+          "name": "authenticatedSession",
+          "type_reference": "0x8da81c6"
+        },
+        {
+          "name": "statusLabel",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "loadsLivePreview",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "additionalTopContentInset",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "additionalBottomContentInset",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "analyticsContext",
+          "type_reference": "0x8da81d4"
+        },
+        {
+          "name": "loadTrigger",
+          "type_reference": "0x8da81ce"
+        },
+        {
+          "name": "loadAttemptIdentifier",
+          "type_reference": "0x8e12c00"
+        },
+        {
+          "name": "_webPreviewState",
+          "type_reference": "0x8da824e"
+        },
+        {
+          "name": "_webPageBackgroundUIColor",
+          "type_reference": "0x920cf48"
+        },
+        {
+          "name": "_reduceMotion",
+          "type_reference": "0x8c20ac0"
+        }
+      ]
+    },
+    {
+      "name": "SitesProjectWebPreview",
+      "descriptor": "0x959b1e8",
+      "accessor": "0x1531a38",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "url",
+          "type_reference": "0x8c59150"
+        },
+        {
+          "name": "authenticatedSession",
+          "type_reference": "0x8da81c6"
+        },
+        {
+          "name": "additionalTopContentInset",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "additionalBottomContentInset",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "analyticsContext",
+          "type_reference": "0x8da81d4"
+        },
+        {
+          "name": "loadTrigger",
+          "type_reference": "0x8da81ce"
+        },
+        {
+          "name": "loadAttemptIdentifier",
+          "type_reference": "0x8e12c00"
+        },
+        {
+          "name": "_state",
+          "type_reference": "0x8da824e"
+        },
+        {
+          "name": "_pageBackgroundColor",
+          "type_reference": "0x920cf48"
+        },
+        {
+          "name": "_browserPolicy",
+          "type_reference": "0x8f558a8"
+        }
+      ]
+    }
+  ],
+  "precise_blockers": [
+    {
+      "boundary": "row→preview route",
+      "next": "Map SitesScreenAction rawtag11 via payload layout and follow root action consumer, then navigationDestination closure into accessor151cd10."
+    },
+    {
+      "boundary": "URL/navigation enforcement",
+      "next": "Coordinator95980b4 WKNavigationDelegate method code and147fa48 loader."
+    },
+    {
+      "boundary": "Settings/editor/publish/share active controls",
+      "next": "Trace top/bottom control capability booleans to actual Button/Menu closures and root action mutations; retain unknown eligibility until proved."
+    },
+    {
+      "boundary": "Loading/error UI",
+      "next": "SitesProjectPreviewLoadingIndicator/Fallback body subtrees and original label factories; do not reuse arbitrary generic error copy."
+    }
+  ],
+  "evidence_prefix": "analysis/full-platform-20261104/ios-native-sites-preview-20261112-",
+  "limits": [
+    "Bounded static task stopped with explicit missing consumers.",
+    "No native UI parity, live URL access, account authorization, device rendering or runtime acceptance claim."
+  ]
+}

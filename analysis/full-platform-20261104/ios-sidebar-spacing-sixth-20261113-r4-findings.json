@@ -1,0 +1,158 @@
+{
+  "id": "ios-sidebar-spacing-sixth-20261113-r4",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "scope": "One bounded feature-catalog to pinned-header spacing producer group; static only; no product/build/device operations.",
+  "observations": [
+    {
+      "type": "official_artifact_observation",
+      "locations": [
+        "0x95927d0 Item field descriptor",
+        "0x8d8b3aa Section?",
+        "0xa4c4a18",
+        "0xa4c4e50"
+      ],
+      "conclusion": "Item.spacing payload is optional Section, not a numeric spacing value. Pinned static prefix is spacing(.pinned) followed by a separate sectionHeader(.pinned).",
+      "limits": "Raw payload 1 is the pinned section identity, not a point size."
+    },
+    {
+      "type": "official_artifact_observation",
+      "locations": [
+        "0x1298ab4..0x1298b0c",
+        "0x138fdc8",
+        "0x1393dc4"
+      ],
+      "conclusion": "When pinned projected items are nonempty, append pinned section. If snapshot.numberOfItems is already nonzero, append spacing(.pinned); then append pinned header only if title producer 0x129f2b8 supplies a title. Continue with pinned items.",
+      "limits": "numberOfItems is the whole snapshot count, not a per-section count. Source establishes semantic ordering and visibility, not actual height."
+    }
+  ],
+  "integration": {
+    "implemented_by_worker": false,
+    "proposal": "Preserve a semantic spacing row in future projection only after binding its actual view/height consumer. Do not introduce a guessed numeric gap or infer height from the Section payload. Existing host omission is documented; this pass supplies no scalar fix.",
+    "known_order": [
+      "feature catalog",
+      "conditional spacing(.pinned)",
+      "conditional pinned section header",
+      "pinned items"
+    ]
+  },
+  "unknowns": [
+    {
+      "boundary": "0x12a0c64 -> 0x12a0d70 registration capture -> actual spacing view and sizing policy",
+      "reason": "Raw payload-tag 7 dispatch reaches 0x12a0c64. Actual captured registration identity and final view height producer are not closed. Equal stack offsets in separate functions do not establish capture identity.",
+      "next_minimum_action": "Bind provider outer capture layout to the registration loaded at 0x12a0d70 before reading a specific view sizing producer; not undertaken because bounded pass is finished."
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "file": "spacing-config-consumer.asm",
+      "candidate": "0x12a5a88",
+      "reason": "Preserved exploration only. It is not proven to be the spacing registration; frame-offset matching across separate functions is insufficient. Its margins must not be adopted for spacing."
+    }
+  ],
+  "validation": {
+    "mode": "static read-only",
+    "candidate_groups": 1,
+    "target_executed": false,
+    "product_modified": false,
+    "screenshot_used_for_constants": false
+  },
+  "raw_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-item-array-initializers.asm",
+      "sha256": "51e11bf70aa3b242a050a23eafa1c62a9ada6ca450cfbaf621e5fdeb1e053166"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-item-array-initializers.json",
+      "sha256": "a6f2874aefdce665ebe8500ba0097f8d31ebf409ab0032321ef968b79c2b2ff6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-item-array-initializers2.asm",
+      "sha256": "253452b9ab098e8d7a337912b13e42443b33d2f34d13cc46e3f355bb74d78c25"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-item-array-initializers2.json",
+      "sha256": "38c802438930891f3e61d8964882956884a6cca9c0ed8b2f4e81da6f57dfc5dc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-prefix-actual-storage.json",
+      "sha256": "28e7481c14f0ffed02ccbab2c685faa3ee1afe4ff3efc9c00ee6e0e9f91114e5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-prefix-boundary.asm",
+      "sha256": "c7c7366f2bd4d2e5b61f3131bf321fea0da4fd53744fff1184714ce11fe97706"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-prefix-boundary.json",
+      "sha256": "7f2a73fad62e31afe7f1559b83086850fbc135fa4ebf30f2972bbfcd678cb7b8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-spacing-insertion.asm",
+      "sha256": "ee9bd2d0a528e705bfaeb2ba378622a41c16a4f3399262cb8da0c9b1d7ca55f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/pinned-spacing-insertion.json",
+      "sha256": "b8d15dcbf02063602dc78d85bbdc131f32b8672c3bf78e3babfd35f99f230234"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-append-helper.asm",
+      "sha256": "373c6478eb6ce67efc5dd481923bd1d908108bac60804b0af8248df51505915b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-append-helper.json",
+      "sha256": "2959be9021b774e7d8b903eca73e09cfb74c76af9fcf0c7d28fdd1f1e136c984"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-append-helper2.asm",
+      "sha256": "f19c7a05158aaa4cb276e9748a5bd638d0b5631acb5125da6eda53b2f252472c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-append-helper2.json",
+      "sha256": "f61c916a4a2147a31229434141cad4b7b5e381e1e8bc64aef367cd15bb83d129"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-prefix-storage-raw.json",
+      "sha256": "69d6969510e68bca9afb532c7d812723b57b9d63dd985f420e5018c183724998"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-section-count-args.asm",
+      "sha256": "70127d07ed52d77a86ed797e88054940e11cfc3bffcfaa0572f8f5b540098e74"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-section-count-args.json",
+      "sha256": "86915d85cc6c15427601914285ba652d1fe5f9056eace1944cc4432c440d702e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-static-prefix-helper.asm",
+      "sha256": "26d43738e1b4dddc3e06db13ee36b88da348b785fdd0360864bf6324056d5ed0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/snapshot-static-prefix-helper.json",
+      "sha256": "276c09b307c12d0866350141fc7836c691ded48b128e4005f24a959df8cf456f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/spacing-config-consumer.asm",
+      "sha256": "414ea0e27b397c72d14558a51fc44a3a7263508d6313455ac83c9b8e244b83e3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/spacing-config-consumer.json",
+      "sha256": "86e20bac556a23c4a420d2035728ff5b70ac3126aa53f4f785a5965a06bf19ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/spacing-dequeue.asm",
+      "sha256": "5bd79485b46ce6579938de5e4f5869746e7fc5cc0eed6173ec90dde188f130b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/spacing-dequeue.json",
+      "sha256": "97c65d3cad0810f207172fae361212f4f8f254c6fe3f6662374a86fb1e41ad83"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r4/spacing-payload-type.json",
+      "sha256": "3a0501499c9216c9ec9203d6b7ececc9030b1ce88f280e8d8c7b08959bac839c"
+    }
+  ]
+}

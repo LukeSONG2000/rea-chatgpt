@@ -1,0 +1,160 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Native authentication third bounded input traits and actual shared AuthInputFieldStyle parent",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_budget": {
+    "maximum_groups": 2,
+    "groups": [
+      "Verification code actual field keyboard/submit consumer",
+      "AuthInputFieldStyle corrected complete modifier Body and current shared input container"
+    ],
+    "stopped": true
+  },
+  "official_observations": [
+    {
+      "conclusion": "The actual NativeSignupVerificationCodeView input explicitly requests UIKeyboardType.numberPad. Current host verification code TextField has oneTimeCode autofill but no keyboardType, so it does not supply this source trait.",
+      "source": [
+        "NativeSignupVerificationCodeView descriptor957d03c/conformance7d64138",
+        "bodywitnessd7b9e4→d79228",
+        "bodycallsd79354→d798b4;fieldchildd79b98→d79f54",
+        "d7a3e0 movw0=4;d7a3f4 SwiftUI.View.keyboardType(UIKeyboardType)",
+        "local UIKit SDK UITextInputTraits.h enum: NumberPad is raw4"
+      ],
+      "evidence": [
+        "otp-view-witness.asm",
+        "otp-field-owner-call.asm",
+        "otp-keyboard-traits.asm",
+        "otp-keyboard-traits-calls.json",
+        "uikit-keyboard-enum.json"
+      ],
+      "reuse": [
+        "ios-native-auth-welcome-20261112/entry-fields-metadata.json",
+        "ios-native-auth-welcome-20261112/entry-fields-witnesses.json",
+        "ios-native-auth-welcome-20261112/otp.asm"
+      ],
+      "limit": "Only this verification-code consumer. Do not apply numeric keyboard to username/password, infer exact code length or reject non-ASCII input merely from this keyboard trait. Actual inserted input validation belongs to its own owner."
+    },
+    {
+      "conclusion": "OTP source also has autocapitalization(raw0), submitLabel, submitScope and onSubmit consumers. This pass does not resolve the source automatic-submit/validation policy or all submitScope inputs. Current explicit Continue button remains necessary in the host; adding numeric keyboard must not make submission depend on Return.",
+      "source": [
+        "d7a3a4 supplies0→d7a3b0 View.autocapitalization",
+        "d7a440 submitLabel",
+        "d7a4ac submitScope",
+        "complete OTP type0x7d649a8 retained previous report"
+      ],
+      "reuse": [
+        "ios-native-auth-welcome-20261112/otp-calls.json",
+        "ios-native-auth-welcome-20261112/otp-root.tree.txt"
+      ],
+      "limit": "The exact injected OTP header, auto-submit threshold and error mapping remain unclosed. No backend or automatic credential flow is implemented by this trait."
+    },
+    {
+      "conclusion": "AuthInputFieldStyle is a real ViewModifier with its own VStack parent, HStack content+optional visibility Button, padding/flex-frame, noninteractive overlay, separate background placeholder Text, optional NativeAuthFieldInfoRowPart, and Bool animation. Current simple padded rounded background is not a recovered implementation of this full parent.",
+      "source": [
+        "descriptor957dbb0/conformance7d67694",
+        "bodywitnessd4e974→d4d9cc",
+        "associated Body typeref8cddea2 normalized by fixedreader",
+        "actual tuple helperd4dad4",
+        "d4da74/d4da78 reads isFocused metadata+1c;d4da88/8c reads hasInput metadata+20;animationvalue is focused OR hasInput",
+        "d4da50 spring constructor;additional animation-admission getter7710c7c unresolved"
+      ],
+      "evidence": [
+        "field-style-metadata.json",
+        "style-witness-0x7d67694.json",
+        "field-style-full.tree.txt",
+        "field-style-compact.txt",
+        "field-style-body-witness.asm",
+        "field-style-body.asm"
+      ],
+      "limit": "Do not substitute source font values for dimensions. _textFieldMinimumHeight ScaledMetric default, exact overlay/placeholder styles, stroke/color/error metrics, visibility glyph and parent assignments are not fully closed. Full type shape alone does not authorize a guessed visual rewrite."
+    }
+  ],
+  "current_host": {
+    "path": "implementation/ios/Sources/NativeFrontendAuthentication.swift",
+    "sha256": "6a381b48cae1aa0fa38b4a51e4d352e70306159a7e9701cdb3543e1c6c3d9b58",
+    "clear_missing_trait": "auth-code-field has textContentType(.oneTimeCode) but lacks keyboardType(.numberPad).",
+    "already_present": [
+      "username email keyboard and username autofill adapter",
+      "password SecureField/TextField toggle and password autofill adapter",
+      "never autocapitalization/autocorrectionDisabled,submitLabel continue,onSubmit,busy disabling",
+      "shared scroll/hidden indicators/interactive keyboard dismissal",
+      "source-backed independent leadingBack/trailingClose slots; original glyphs/capability assignment remain adapter",
+      "explicit independent UIKit edge-pop bridge preserved after hiding systemBack"
+    ],
+    "not_source_parity": [
+      "Shared padding16/rounded12/systemFill is independent, lacks actual AuthInputFieldStyle placeholder/validation parent",
+      "username/password/code exact native validators and code auto-submit producer not recovered",
+      "onAppear forcefocus and onDisappear secretclear are independent host choices"
+    ]
+  },
+  "can_restore_now": [
+    {
+      "change": "Apply .keyboardType(.numberPad) only to verification-code TextField.",
+      "basis": "Actual source raw4 consumer plus local SDK enum mapping.",
+      "preserve": "Keep explicit Continue action, current scoped request/failure/cancel guards and code privacy; do not introduce guessed digit count or authentication service."
+    }
+  ],
+  "not_recommended_this_pass": [
+    "Do not reconstruct entire AuthInputFieldStyle by borrowing nearby constants or default UIKit shape.",
+    "Do not add OTP automatic submission or code-length validation without real producer.",
+    "Do not change Back/Close glyph from localized label alone or extend independent pop bridge as an official algorithm."
+  ],
+  "haptics_and_gestures": {
+    "status": "unknown",
+    "result": "No explicit haptic emission established in this bounded style/OTP field consumer. Existing host edge-pop bridge remains independently implemented; no recovered input-specific gesture rule found."
+  },
+  "precise_unknowns": [
+    {
+      "gap": "Full AuthInputFieldStyle effective shape/placeholder/border/validation row",
+      "next": "Use actuald4dad4 subcomponent factories and style input producers; do not infer all values from generic tree."
+    },
+    {
+      "gap": "OTP shouldAutomaticallySubmitOneTimeCode and fieldCheckResult validator",
+      "next": "Actual NativeSignupVerificationCodeView model/callback consumer outside this limited trait change."
+    },
+    {
+      "gap": "Original Back/Close disabled/capability/glyph assignments",
+      "next": "Keep prior source parent proof; exact styleguide leaf and owner capability values require separate actual consumers."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "shared_tools_modified": false,
+    "built": false,
+    "tests_run": false,
+    "device_or_original_runtime": false,
+    "sdk_enum_read_only": true
+  },
+  "reused_reports": [
+    "ios-auth-native-parent-20261113-findings.json",
+    "ios-native-auth-welcome-20261112-findings.json"
+  ],
+  "raw_evidence": {
+    "ios-auth-native-third-20261113/field-style-body-calls.json": "457b1e7fbec8556fcf6757b5b8cd18290e7f20ad80979048e0ab558c40216593",
+    "ios-auth-native-third-20261113/field-style-body-witness.asm": "f5fcbdcd4726db0f78737fa81ba54c449d7ead3e228b3c054bac6f57bcb6210e",
+    "ios-auth-native-third-20261113/field-style-body.asm": "40e927011a71c523d6cd1865b510051ddf2517de592eed0a9376a7c9266014c4",
+    "ios-auth-native-third-20261113/field-style-compact.txt": "054ffdc85991700bc596e81b9681c963ad9bd583fa8a30e0c84ec0889584bc00",
+    "ios-auth-native-third-20261113/field-style-full.json": "772c4880990a4b6cde777df499752d975ae8ceb32dbd6b64203e90029bc3a8a6",
+    "ios-auth-native-third-20261113/field-style-full.raw": "87f7a1218688d556c812c0c99afe25bc10f3b39c35fc824734b676dc871fa643",
+    "ios-auth-native-third-20261113/field-style-full.refs.tsv": "2483ec2d040c12b5dda1928f8b8c6cfb6e63b9f3628d8ca8f0e9b6484e450bc2",
+    "ios-auth-native-third-20261113/field-style-full.tree.txt": "e80b1cd989a6ba39d76eb6379f2c7b8e500b0c6e8c78c8272c6afd5f24228003",
+    "ios-auth-native-third-20261113/field-style-metadata.json": "86ba7206feb2c9b22bf65d25b267c8195af131eb3bd452ff0358aaabaf055863",
+    "ios-auth-native-third-20261113/otp-field-owner-call-calls.json": "268c11448e56650fbddc87915565a825751c0f10379bc13acacf3f67b30f5ae1",
+    "ios-auth-native-third-20261113/otp-field-owner-call.asm": "7439c25f03417bfd20fde3b3a43154e8311f0d96518ca239c02910394f9fa572",
+    "ios-auth-native-third-20261113/otp-keyboard-traits-calls.json": "2d1b64d5b8d856aa182088ca9b7761c2f9523144e0889a2bf02be95487392385",
+    "ios-auth-native-third-20261113/otp-keyboard-traits.asm": "67a02535212e5c6f8adefad5d0df7c523c76e8ec5043242549bb41f13ed0dd4b",
+    "ios-auth-native-third-20261113/otp-view-witness-calls.json": "2697c3c7387de8ad975cc49cb0fa972ca75cf4c8611497276dc57d6994af64e5",
+    "ios-auth-native-third-20261113/otp-view-witness.asm": "d16bb336aa32c982cecd22326e2905640a4a2c40ce63d8a80eb5097394f198a0",
+    "ios-auth-native-third-20261113/prepare_raw.py": "7a84c91fed35bbbb2db0b0a09f239990dbbf1bed6deba4da7d533660f2125bbc",
+    "ios-auth-native-third-20261113/style-witness-0x7d67694.json": "9f73257228dacdef5919772a7a17fa51a7b9e944ff23f19ad5ce19b7ee35914c",
+    "ios-auth-native-third-20261113/uikit-keyboard-enum.json": "b91241d8b87fa94c0a802478ab1415c2f89bf308c1935448ceeccf91c78555df"
+  }
+}

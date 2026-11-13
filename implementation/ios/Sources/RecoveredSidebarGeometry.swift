@@ -48,3 +48,35 @@ struct RecoveredSidebarGeometry {
                       displacementSign: sign)
     }
 }
+
+//293 handlePanGesture62b918 / projection760d324. This is normalized animator
+// progress, not a "half screen" rule. The host supplies its resolved drag extent.
+enum RecoveredSidebarDragProgress {
+    static func fraction(begin: Double, translation: Double, velocity: Double = 0,
+                         projected: Bool = false, targetIsOpen: Bool,
+                         directionSign: Double, extent: Double, decelerationRate: Double = 0.998) -> Double? {
+        guard [begin, translation, velocity, directionSign, extent, decelerationRate].allSatisfy(\.isFinite),
+              extent > 0, abs(directionSign) == 1, decelerationRate > 0, decelerationRate < 1 else { return nil }
+        let distance = translation + (projected ? velocity / (1000 * (1 - decelerationRate)) : 0)
+        return begin + (targetIsOpen ? 1 : -1) * directionSign * distance / extent
+    }
+    static func continuesTarget(projectedFraction: Double) -> Bool { projectedFraction >= 0.5 }
+}
+
+//293 History129d908 ->76103b0. Window/trait/corner acquisition belongs to
+//the host. In particular, missing scene corner inputs are not zero radii.
+enum RecoveredSidebarFooterGeometry {
+    static func inset(windowPresent: Bool, safeBottom: Double, compactVertical: Bool,
+                      phone: Bool, bottomLeft: Double?, bottomRight: Double?) -> Double? {
+        if !windowPresent { return 38 }
+        guard safeBottom.isFinite, safeBottom >= 0 else { return nil }
+        if compactVertical { return max(safeBottom, 16) }
+        if !phone { return safeBottom == 0 ? 24 : 38 }
+        guard let bottomLeft, let bottomRight,
+              bottomLeft.isFinite, bottomRight.isFinite,
+              bottomLeft >= 0, bottomRight >= 0 else { return nil }
+        let radius = max(bottomLeft, bottomRight)
+        let padding = radius > 0 ? min(40, max(24, radius - 24)) : 24
+        return max(padding, safeBottom)
+    }
+}

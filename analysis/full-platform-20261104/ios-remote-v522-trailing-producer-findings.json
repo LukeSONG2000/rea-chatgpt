@@ -1,0 +1,103 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static-instructions-and-metadata",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "production_edits": false,
+  "runtime_verified": false,
+  "answer": "Ordinary CodexScreen thread route constructs ThreadView with nil composerTrailingOutsideContent and nil composerOverlayContent, then forwards nil unchanged through ThreadViewContent and BottomBars into MessageInputView. Other callers may supply AnyView; no concrete nonnil producer or visible content was established in this bounded slice.",
+  "field_identity": {
+    "thread": "CodexRemoteThreadView descriptor0x95aba80; accessor0x1ab49bc returns metadata0xa5061f8;14fields with field-offset vector word2",
+    "trailing": "field11 composerTrailingOutsideContent fixed value offset0x60",
+    "overlay": "field12 composerOverlayContent fixed value offset0x68",
+    "type": "SwiftUI.AnyView?",
+    "type_proof": "raw typeref0x8bcacc0 symbolic AnyView reference followed by Sg; ios-remote-v522-trailing-type.json"
+  },
+  "ordinary_source": {
+    "function": "0x303aec..0x3042c8",
+    "value_base": "fp-0x118 at303ff0 and304084",
+    "writes": [
+      {
+        "site": "0x304048",
+        "instruction": "stp xzr,xzr,[fp,#-0xc0]",
+        "meaning": "zero value+0x58 and value+0x60; trailingOutsideContent=nil"
+      },
+      {
+        "site": "0x30404c",
+        "instruction": "stp xzr,x26,[fp,#-0xb0]",
+        "meaning": "zero value+0x68 overlayContent; following callback is separate"
+      }
+    ],
+    "type_selection": "30407c/80 selects metadata0xa5061f8",
+    "wrapper": "3040ac calls1a0e63c with ThreadView value in x20;1a0e63c is a generic wrapper call, not proof of the original struct initializer",
+    "scope": "This ordinary selected-thread branch only; avoid universal nil claim across all integrations"
+  },
+  "forward_chain": [
+    {
+      "from": "ThreadView+0x60",
+      "to": "ThreadViewContent field10 metadata+0x48",
+      "read": "1a43fa0 loads x8 from self+0x60,1a43fa4 saves as fp-0xb8",
+      "write": "1a440a4..1a440ac reloads same x10 and stores via metadata+0x48"
+    },
+    {
+      "from": "ThreadViewContent metadata+0x48",
+      "to": "BottomBars constructor callerSP+0x78",
+      "read": "1a4b64c..658 loads optional word and saves fp-0x1d0",
+      "write": "1a4b724 calls45dd7c to reload fp-0x1d0;1a4b728 writes SP+0x78;constructor call1a4b7ec"
+    },
+    {
+      "from": "BottomBars constructor callerSP+0x78",
+      "to": "BottomBars field11 metadata+0x4c",
+      "mapping": "1a28c78 allocates0x140,fp=sp+0x130 -> callerSP=fp+0x10;1a28cf8 reads fp+0x88, saves localSP+0x70;1a28e2c..34 writes metadata+0x4c"
+    },
+    {
+      "from": "BottomBars field11 metadata+0x4c",
+      "to": "MessageInputView trailingOutsideContent metadata+0xa0",
+      "proof": "v521 thread-scene findings1a23978/94..1a23ad4 -> callerSP+0x110 ->197c7ec..7f4"
+    }
+  ],
+  "geometry": {
+    "nil_branch": "Existing v519/v520 proves styleInsets once inside inner content:198328c checks optional1983638/3650;nil calls1981448 and padding1983690. Outer197edc4..197edfc uses zero styleInsets.",
+    "nonnull_branch": "Shared component places styleInsets externally at197edc4..197edfc;inner wrapper skips same padding. Keep branch parameterized for integrations that supply AnyView.",
+    "integration": "Ordinary thread route can select nil trailing branch using source evidence. Continue supplying parent SceneMetrics as proved v521. This does not establish other style fields, material gates or pixel parity."
+  },
+  "new_thread_check": {
+    "status": "both-nil-proven-from-existing-evidence",
+    "factory": "CodexRemoteNewThreadScreen uses19f45b0 through19f11f0..1234->1c3ddb8, reused by Home browsing/draft shell perv495/v508",
+    "call": "19f5180->197bfe4",
+    "trailing": "19f5030 zeroes callerSP+0x110",
+    "scene": "19f5020 movw8,0x100;19f5024 strh+0x140;19f5028/2c zero+0x130/138. Outer optional nil tag1, hence nil SceneMetrics.",
+    "conclusion": "Shared NewThreadScreen input takes nil trailing and nil sceneMetrics at this factory; its local phone metrics reader owns fallback."
+  },
+  "remaining_breakpoint": {
+    "question": "Which non-ordinary integration sets ThreadView.composerTrailingOutsideContent to some(AnyView), and what content does it supply?",
+    "known_source": "Publicly visible stored property exists at ThreadView+0x60 and forwards unchanged",
+    "unclosed": "Direct metadata xrefs cover ordinary builder303aec and alternate2f3070. Alternate also zeros relevant words, but its full route semantics were not classified. Other generic/indirect value construction may be missing from adjacent-ADRP/B/BL search.",
+    "next_minimum_action": "Trace a confirmed nonnil write to fixed ThreadView+0x60 in a concrete integration, or caller supplying a nonnil AnyView to generic Content construction. Do not infer it is model/voice/attachment control from screenshots."
+  },
+  "evidence": [
+    "ios-remote-v522-thread-fields.json",
+    "ios-remote-v522-thread-field-offsets.json",
+    "ios-remote-v522-trailing-type.json",
+    "ios-remote-v522-thread-view-body.asm",
+    "ios-remote-v508-home-root.asm",
+    "ios-remote-v421-bars-view-builder.asm",
+    "ios-remote-v522-bottom-constructor.asm",
+    "ios-remote-v522-bottom-constructor-calls.json",
+    "ios-remote-v521-thread-scene-findings.json",
+    "ios-remote-v519-home-scene-geometry-findings.json",
+    "ios-remote-v495-draft-composer.asm",
+    "ios-remote-v495-findings.json",
+    "ios-remote-v508-findings.json",
+    "ios-remote-v522-thread-value-refs.json"
+  ],
+  "candidate_limits": [
+    "v522-content-constructor.asm is a candidate read path, not a proven constructor despite filename.",
+    "v522-content-init-candidate.asm writes Content fields from protocol witness slots, but upstream type/route was not closed. It is excluded from ordinary nil proof.",
+    "No nonnil visual content identified, no runtime/device acceptance."
+  ]
+}

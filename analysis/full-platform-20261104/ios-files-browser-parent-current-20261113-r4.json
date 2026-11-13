@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "module": 8,
+  "module_name": "Files and browser, fifth pass resumed and archived",
+  "date": "2026-11-13T11:39:01.392542+08:00",
+  "platform": "iOS",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "Core frontend loop implemented; source gaps remain explicit; advance to modules3-7",
+  "previous_snapshot": "ios-files-browser-parent-current-20261113-r3.json",
+  "previous_goal_turn": "Progress: assistant entry and collection-owned history reveal repaired, tested, signed and installed.",
+  "source_reports": [
+    "ios-files-preview-fifth-20261113-findings.json",
+    "ios-files-directory-fifth-20261113-findings.json",
+    "ios-files-preview-fourth-20261113-findings.json",
+    "ios-browser-third-20261113-findings.json"
+  ],
+  "implemented_this_pass": [
+    "Source293 scalar line producer: remove exactly one terminal CRLF/LF/CR, split only CR/LF with CRLF once, retain final empty segment, number from1. Preserve original text/share bytes and native UTF16 offsets.",
+    "Directory default loading uses centered full available frame with no invented visible label.",
+    "Directory Header+Entries root uses original bg/primary background with Edge.Set.all; distinct from per-row backgrounds.",
+    "Retained whole module: scoped directory parent/child/empty/failure/retry, source citation Raw admission, independent Markdown/Raw readers and optional sharing, system QuickLook preview, offline browser navigation and close returning to task."
+  ],
+  "retained_core": [
+    "Remote scoped directory loads/cancel/retry/empty/unsupported and parent paths",
+    "QuickLook images/PDF/text/code/RTF adapter",
+    "Source citation UTF16 line positioning, full text scroll/selection, URL sharing",
+    "Independent offline WK title/address/progress/error/retry/back/forward/reload/close",
+    "Task-scoped draft/read-anchor and restart contracts"
+  ],
+  "independent_boundaries": [
+    "Optional Markdown capability supplied by provider, independent of reading-mode state.",
+    "Native UTF16 target selection and QuickLook/resource lifetime are adapters; actual source line splitting now recovered.",
+    "Offline WK resource/navigation contract is separate from original native Safari.",
+    "Frontend service interfaces only; real acquisition/auth/download backend out of scope."
+  ],
+  "not_implemented": [
+    "Complete original file/language dispatch aliases and openFileHandler owner.",
+    "Original OAIMarkdown/source renderer, syntax highlighter, gutters/comments and their complete parent environment.",
+    "Original reading-state cache key, eviction, cross-resource/page/process lifetime; only explicit request-local preservation implemented.",
+    "Original provider failure-string mapping; host explanation remains separate.",
+    "Effective Remote link-to-ManagedSafari policy, custom builder, sheet/fullscreen routing and Safari load tracking; current offline WK frontend is an explicit adapter.",
+    "Wide-screen selection and large/Office/HEIC file scenario coverage.",
+    "Unproved explicit file/list/share/browser haptic triggers and physical tactile fidelity."
+  ],
+  "haptics": {
+    "source_result": "No direct emitter proved in the bounded original directory retry/Label or source-mode/ReadingState/linked-line paths; no new trigger added.",
+    "general_route": "Settings -> General -> Haptic feedback",
+    "existing_storage_key": "rea.preview.hapticsEnabled",
+    "existing_gates": "preference + hardware support + active application; cancellation/duplicate suppression retained",
+    "system_implicit_feedback": "separate, not controlled or claimed by the explicit app gate",
+    "physical_verified": false
+  },
+  "verification": {
+    "current_contract": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "result": "passed",
+      "log": "ios-files-fifth-20261113-current-contract.log"
+    },
+    "retained_ui": [
+      {
+        "bundle": "ios-files-fifth-20261113-r1.xcresult",
+        "test": "testRemoteFileCitationChinese",
+        "result": "passed",
+        "seconds": 105.4
+      },
+      {
+        "bundle": "ios-files-fifth-20261113-r3.xcresult",
+        "test": "testRemoteFilesChinese",
+        "result": "passed",
+        "seconds": 272.026,
+        "summary": "ios-files-fifth-20261113-r3-summary.json",
+        "scope": "Actual manual non-tail reading anchor, failure/retry/root/child/full-file/empty/parent, close/draft retention, cancel/host isolation"
+      }
+    ],
+    "not_repeated": "No file UI code changed after the interrupted fifth pass; reused its evidence rather than rerunning the4.5min journey. Unchanged Markdown/browser/format scenarios remain separately recorded historical runs.",
+    "test_correction": "Two earlier false fixed-screenY assertions were diagnosed under followsTail=1 with keyboard resizing; no product offset hack. Final journey asserts actual manual reading followsTail=0.",
+    "network_or_share_destination_used": false
+  },
+  "runtime": {
+    "same_current_binary": true,
+    "reason": "File fifth-pass changes already included in the latest sidebar delivery; binary hashes match both current fixed candidates. No redundant rebuild/reinstall or restart of physical review.",
+    "simulator_record": "ios-sidebar-assistant-simulator-20261113.json",
+    "simulator_process_confirmed": "39459 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/CDD34954-9DDA-4BCC-99CD-6157E0927E40/REAChatGPTHost.app/REAChatGPTHost --offline-fixture --codex-home-fixture=tasks --remote-interactive-replay --remote-attachment-all-capabilities-fixture --remote-command-message-fixture --remote-search-message-fixture --remote-search-action-fixture --remote-file-message-fixture --remote-review-message-fixture --remote-rich-message-fixture --remote-linked-file-fixture --remote-file-citation-fixture --browser-preview-fixture --chat-browser-fixture --remote-model-slider-fixture --remote-permission-fixture --remote-context-usage-fixture --remote-thinking-group-fixture --remote-history-group-fixture --remote-latest-group-fixture --remote-project-sort-menu-fixture --remote-task-controls-fixture --chat-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf --remote-draft-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf --auth-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf -AppleLanguages (zh-Hans) -AppleLocale zh_CN -rea.preview.appearance light",
+    "device_record": "ios-sidebar-assistant-device-review-20261113.json",
+    "device_install_and_launch": "Previous goal turn confirmed success/new-container pid18043; not reclassified as a fresh device interaction test.",
+    "left_running": true
+  },
+  "user_review_path": "Sidebar Codex -> task -> upper-right menu Files. Navigate Sources/Documents/README.md; close returns to task. Local browser link opens independent offline browser; no actual service.",
+  "next_module": "3-7",
+  "next_module_name": "Coordinated Remote and Chat/Work frontend gap pass",
+  "publication": "No commit/push/release, Android expansion, backend implementation or message-attachment expansion",
+  "interrupted_handoff": "ios-files-fifth-20261113-interrupted-handoff.json",
+  "current_source_files": {
+    "implementation/ios/Sources/FrontendFilePreview.swift": "09a263519264e789aaa6994bd1ece7a93285e2ac0c4c199319289e377fcb2912",
+    "implementation/ios/Sources/FrontendBrowserPreview.swift": "6ae8fac51b6603fbcda460fecd675b2ec417b84f92caa2d99c9210155dffc5cd",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "2de299e200f65a04604e054d5826b747c55d902dafc4c4866d15cc1d1e5143ba",
+    "implementation/ios/TextTests/main.swift": "0b1090606e8f13d459b4c7a77b59e9ae865556c83d2c11e3e972005dbe0db52f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "66797961d3778732d3f00935f4cf9df5f6ed376d91b6a431803f3ddb295c21c4"
+  }
+}

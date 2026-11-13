@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "scope": "Current user instruction: audit gesture feedback with the owning major module and wire General preference; fresh source check after parent migrations",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "current-host-source-audit-with-separate-official-evidence",
+  "official_evidence": [
+    "ios-sidebar-gesture-haptic-20261112-followup.json",
+    "ios-haptics-v596-findings.json",
+    "ios-haptics-v597-findings.json",
+    "ios-remote-goal-controls-20261113-findings.json"
+  ],
+  "settings": {
+    "route": [
+      "Settings",
+      "General",
+      "Haptic feedback"
+    ],
+    "writer": "FrontendGeneralSettings.@AppStorage",
+    "storage_key": "rea.preview.hapticsEnabled",
+    "persistent": true,
+    "default_enabled": true,
+    "policy_classification": "independent host admission and storage, not recovered original complete policy"
+  },
+  "implemented_consumers": [
+    {
+      "owner": "sidebar drag completion",
+      "dispatch": "FrontendHaptics.sidebarDragSelection",
+      "condition": "ended, finite live fraction strictly between0 and1, final endpoint differs from initial; one-shot consume"
+    },
+    {
+      "owner": "model slider changed selection",
+      "dispatch": "sensoryFeedback(selection)",
+      "condition": "presenter.selectionTrigger; same preference/hardware/activity admission"
+    },
+    {
+      "owner": "model slider first boundary crossing",
+      "dispatch": "sensoryFeedback(soft impact intensity0.4)",
+      "condition": "presenter.boundaryTrigger; same admission"
+    },
+    {
+      "owner": "accepted prepared file import",
+      "dispatch": "FrontendHaptics.attachmentImported",
+      "condition": "accepted token and explicit playsSuccessHaptic; Photos flagfalse remains silent"
+    },
+    {
+      "owner": "shared Goal/Subagent ComposerStatusPill",
+      "dispatch": "FrontendHaptics.composerStatusPillSelection",
+      "condition": "shared carrier dispatches once before owner action; independent absent-Goal entry does not inherit trigger"
+    }
+  ],
+  "gate_verification": "UIKit dispatch reads current UserDefaults; SwiftUI slider reads same AppStorage. Every explicit app-controlled feedback uses enabled && hardware-supported && application-active. No bypass call found in current Sources.",
+  "verification": {
+    "command": "sh implementation/ios/test-haptics.sh",
+    "result": "passed this turn",
+    "covers": "source-derived sidebar end/change/interior vectors, cancellation/reset/supersession/duplicates and common preference/hardware/activity gates",
+    "settings_ui": "existing toggle/restart result remains historical; no new UI sweep for unchanged settings",
+    "physical_tactile_playback": false
+  },
+  "not_implemented": [
+    "Unproved list long-press/swipe/tap-specific app feedback",
+    "Original complete physical waveform/timing and engine injection policy",
+    "Suppression of OS-native implicit feedback"
+  ],
+  "current_remote_list": "Source proves row context-menu/preview and swipe wrappers, but does not prove a new haptic caller. Filter selection geometry is being restored separately, without invented vibration.",
+  "rules": "Existing AGENTS Page gesture scope already requires this; no duplicate or speculative rule added.",
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "9234767d76a2d2be392cc93cf011a2241cbb5048e582089868c856ae434da0d5"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "a27bc3e817767a415402e21d0b0a397b3b0f785b348204871bfbe0cb6b3ebb31"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift",
+      "sha256": "3719e8b3e6bbd9f7715cd45bfc922de1d71737a681b2378df0c1ec3c0054b631"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteGoalPresentation.swift",
+      "sha256": "119b43029eec8b178bb7778f352c82722f63eba13e6b11801d6c4d5865b2cae8"
+    },
+    {
+      "path": "implementation/ios/Tests/Haptics/main.swift",
+      "sha256": "962c86756334898b27a5f4bb32d19a31644e5cb1344d20fc4391fcd8e6e73240"
+    }
+  ]
+}

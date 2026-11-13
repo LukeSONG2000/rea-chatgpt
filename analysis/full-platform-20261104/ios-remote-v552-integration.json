@@ -1,0 +1,72 @@
+{
+  "batch": "v552",
+  "status": "partial",
+  "page": "Codex Remote conversation",
+  "date": "2026-11-08",
+  "implementation": [
+    "Dynamic command snapshots after ordinary send reuse source-backed summary, timer, disclosure, shell and icon resolver.",
+    "Output and completed/failed exit status update through existing scope/turn/sequence checks. Cancellation retains output and closes active command state.",
+    "Expansion retained by host/destination/turn/command across A-B-A navigation.",
+    "Static and dynamic fixtures use one extracted command shell.",
+    "Intrinsic output measurement moved before viewport minimum to eliminate reproduced expanded-return layout loop."
+  ],
+  "validation": {
+    "foundation": "passed",
+    "typecheck": "passed with existing deprecation warnings",
+    "ui_rounds": [
+      {
+        "round": "r1",
+        "passed": 2,
+        "failed": 2,
+        "summary": "ios-remote-v552-r1-command.summary.json"
+      },
+      {
+        "round": "r2",
+        "passed": 5,
+        "failed": 0,
+        "summary": "ios-remote-v552-r2-command.summary.json"
+      },
+      {
+        "round": "r3",
+        "passed": 4,
+        "failed": 0,
+        "summary": "ios-remote-v552-r3-command.summary.json"
+      }
+    ],
+    "distinct_passing_cases": 7,
+    "final_round": "4 passed, 0 failed",
+    "visual": "Final Chinese/light and English/dark captures inspected; terminal glyph present and failure exit1 footer visible.",
+    "manual": "Normal send with synthetic text Preview tools; rich response completed; dynamic command expanded with three output lines and success. Chinese/system appearance preview left running.",
+    "runtime": "ios-remote-v552-runtime.json",
+    "preview": "ios-remote-v552-preview.png",
+    "retention": "dry run targets empty; fixed .build reused"
+  },
+  "failed_probes": [
+    "R1 Chinese expanded-return app layout hang sampled; owned test stopped after sampling. R1 English case was cancelled. Full summary and sample retained.",
+    "R2 screenshots exposed omitted terminal glyph due to wrong image loader. Reused officialVisualIcon and visually checked R3.",
+    "Manual CUA Chinese text insertion did not commit correct characters through simulator keyboard; cleared transient input and used synthetic ASCII text. No Chinese IME acceptance is inferred from this manual pass."
+  ],
+  "boundaries": {
+    "official": "iOS293 original command presentation evidence retained in v322/v403/v407; package hash verified in findings.",
+    "independent": "Typed replay envelope, cancelled wording, navigation retention and intrinsic measurement adapter.",
+    "service": "pending; synthetic output only",
+    "physical_device": "pending; simulator only",
+    "android": "independent verification pending",
+    "official_visual_parity": "partial"
+  },
+  "open_items": [
+    "Dynamic reasoning notification-to-view path",
+    "Official message error card and retry action",
+    "Dynamic file changes/search/automatic reviews",
+    "Exact nested output offset across return, process restoration and multiple accounts",
+    "Earlier title alignment, page-level style and transition feedback remains open"
+  ],
+  "next": "Trace reasoning notification consumers and error-card body; reuse recovered owners and add one bounded replay for each.",
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "82d120bcb30dc818aa62739a2b605e05c91cffa6db569b2d9016e95b36722376",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "e19b4f6e7729e7a32abf6ec697363457951569cca085cfad8d5ddfd4f4509fb2",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "73c964881c6f5a736dbddcdc5bdd06fb43a83f8e576cd3a9255ff85c9b004c3d",
+    "implementation/ios/TextTests/main.swift": "43db83f5f29faa77f14a98bcaa8e2c9eb4b3f6cfaa702dc8ad134739b8ec3062",
+    "implementation/ios/UITests/HostInteractionTests.swift": "73276ed35fcf3060aced4b559d24085a9da44c25bdd2f2057face76b5e52d2ad"
+  }
+}

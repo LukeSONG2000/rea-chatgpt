@@ -1,0 +1,155 @@
+{
+  "batch": "v506",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static",
+  "question": "CodexContentView title menu options, owners and ordinary taskList/standard title conditions",
+  "confirmed": [
+    {
+      "topic": "Title-menu owner and layout eligibility",
+      "evidence": [
+        "0x3065fc..0x306624",
+        "0x308600..0x30862c",
+        "0x4294a4 ->0x308a5c",
+        "0x4294b0"
+      ],
+      "conclusion": "Principal Menu is eligible for both standard(raw0) and taskList(raw1) when isCodexRemoteAvailable && !isComposing. detail(raw2) excludes this principal item. isSearching substitutes the search field using v505 owner. This menu content has Organize, Manage and optional Usage limits sections."
+    },
+    {
+      "topic": "Organize section",
+      "evidence": [
+        "0x308a98..0x308b24",
+        "0x311e6c ->0x30fe24",
+        "0x30fed4 ->0x310268",
+        "0x43c540..0x43c598",
+        "constant arrays0xa433a68/0xa433a90"
+      ],
+      "conclusion": "Present only when showsRemoteThreadListFilterMenu is true. Title key codex_remote_thread_list_organize_section, fallback Organize. Inline grouping Picker writes supplied _remoteThreadListGrouping Binding. Priority capability false yields [byWorkspaces(raw1), chronological(raw2)], true yields [priority(raw0), byWorkspaces(raw1), chronological(raw2)]. byRemoteHost(raw3) has a label factory but is absent from these menu arrays."
+    },
+    {
+      "topic": "Group option labels and icons",
+      "evidence": [
+        "0x3109ac ->0x310ad4",
+        "jumptables0x7ceb572/0x7ceb576"
+      ],
+      "values": [
+        {
+          "case": "priority",
+          "raw": 0,
+          "key": "codex_remote_thread_list_sort_priority",
+          "fallback": "Priority",
+          "icon": "OpenAI/Symbols/bell",
+          "icon_factory": "0x74f4e64"
+        },
+        {
+          "case": "byWorkspaces",
+          "raw": 1,
+          "key": "codex_remote_thread_list_sort_by_project",
+          "fallback": "By project",
+          "icon": "OpenAI/Symbols/folder",
+          "icon_factory": "0x74f7708"
+        },
+        {
+          "case": "chronological",
+          "raw": 2,
+          "key": "codex_remote_thread_list_sort_chronological",
+          "fallback": "Chronological list",
+          "icon": "OpenAI/Symbols/arrow-rotate-counterclockwise-clock",
+          "icon_factory": "0x74f43c0"
+        }
+      ]
+    },
+    {
+      "topic": "Project sorting and Recents first",
+      "evidence": [
+        "0x3105a4..0x3105c0",
+        "0x31063c..0x310660",
+        "0x310674..0x310748",
+        "0x3107d4..0x310858",
+        "0x311c8c..0x311e68"
+      ],
+      "conclusion": "Only grouping==byWorkspaces(raw1) includes Recents first Toggle bound to _showsChatsFirst. It precedes no separate grouping conversion. In this same grouping, isProjectSortingAvailable additionally includes a menu-style Sort projects by Picker. Sort choices fixed [0,1], Last updated(raw0), Manual order(raw1). Toggle key codex_remote_thread_list_recent_first and chat-bubble-on-chat-bubble icon. Sorting key codex_remote_project_sort_menu_title and arrow-up-arrow-down icon. Sorting option keys codex_remote_project_sort_last_updated and codex_remote_project_sort_manual."
+    },
+    {
+      "topic": "Sort callback owner",
+      "evidence": [
+        "0x43c6cc getter captured projectSortOrder byte",
+        "0x43c704 ->0x311c28",
+        "0x311c64..0x311c78",
+        "0x453b74",
+        "CodexTaskListAction descriptor0x955f46c"
+      ],
+      "conclusion": "Picker getter reads copied projectSortOrder; setter constructs remoteProjectSortOrderSelected(payload raw0/1) and invokes taskListActionHandler. It does not directly overwrite an arbitrary list-local sort field. Grouping/Recents first use their supplied Bindings."
+    },
+    {
+      "topic": "Manage section",
+      "evidence": [
+        "0x308bb0 ->0x309100",
+        "0x30951c",
+        "0x3091cc..0x309350",
+        "0x1459ac ->0x1225ac"
+      ],
+      "conclusion": "Manage key codex_remote_thread_list_manage_section. Three independently optional buttons in order, each visible when its callback is nonnil. Archived tasks key codex_archived_threads_title, archive icon, owner presentArchiveList(metadata slot0xb0). Add connection key codex_remote_add_connection, auto-pair icon, owner presentAddConnection(slot0x88). Settings label from0x75d6a68, gear icon, owner presentCodexRemoteScreen(slot0xac). Generic action thunk invokes captured callback. No Chat/Work switch is constructed in this recovered menu path."
+    },
+    {
+      "topic": "Usage section",
+      "evidence": [
+        "0x308c14..0x308c24",
+        "0x309798..0x3098a4",
+        "0x429634..0x42966c"
+      ],
+      "conclusion": "usageLimitsOverviewMenuSummary present gates Usage limits section (codex_usage_limits_menu_section_title). Summary-driven Button calls presentUsageLimitsOverview(metadata slot0x78). Real summary values and upstream capability availability are inputs, not fixed fixture percentages."
+    },
+    {
+      "topic": "Title string selection",
+      "evidence": [
+        "0x4294d8..0x429554",
+        "metadata completion0x41f30c..0x41f494",
+        "0x2ab65d0..0x2ab6674",
+        "TaskList descriptor0x95602f4; field type0x8bde31e"
+      ],
+      "conclusion": "Fixed instance byte0xf0 is presentedTaskList Optional<TaskList>, derived from metadata prefix layout. nil(raw1) supplies empty title. Present default(raw0) uses literal Codex when isCodexRemoteNameChangeEnabled is false. When name-change true, isCloudEnabled true still returns Codex. Name-change true and cloud disabled calls activation title logic: activationExperience raw1 uses codex_remote_activation_title/fallback Codex Remote; other values use codex_remote_title/fallback Remote. This constructor has no standard-vs-taskList string branch."
+    },
+    {
+      "topic": "Title label variant",
+      "evidence": [
+        "0x429528..0x429550",
+        "0x30c43c..0x30c444",
+        "0x30c640..0x30c9fc",
+        "0x30c598..0x30c5fc"
+      ],
+      "conclusion": "CodexHomeMenuLabel.usesHomeLayout receives isCodexRemoteAvailable, not the layout enum. True uses titled home label with chevron-down-sm, body semibold Text and optional singleRemoteHost subtitle. False produces icon-only ellipsis-horizontal with common menu accessibility label. Therefore ordinary eligible taskList/standard principal menus use the same home-label variant. Home label AX identifier codex-home-menu. Optional host subtitle is rendered only when supplied singleRemoteHost has a nonempty display string."
+    }
+  ],
+  "limits": [
+    "All claims are static artifact observations/inferences. No official runtime/UI acceptance or target execution occurred.",
+    "Menu children, title inputs and callback owners are resolved. Upstream setting persistence and backend capability calculation were not traced in this batch.",
+    "Manage Settings routes to presentCodexRemoteScreen, not necessarily the global account-settings page. Downstream destination implementation is outside this evidence batch.",
+    "Usage summary formatting/accessibility attachment details remain partial at0x308c14 and0x3098a8.",
+    "Home title layout includes helper-driven frames/padding and a second chevron image slot; exact hidden/accessibility/centering configuration needs a separate minimal trace before pixel-level replacement.",
+    "Filter grouping byRemoteHost label exists in switch but is not selectable via this menu-array path. Do not add it from enum presence alone."
+  ],
+  "minimum_integration": {
+    "classification": "independent_design_recommendation_based_on_confirmed_artifact",
+    "steps": [
+      "Represent menu visibility inputs and optional action owners explicitly.",
+      "Reuse already recovered grouping/sort/projection semantics before enabling their choices in the independent host. Unsupported grouping consumers remain explicit capability gaps.",
+      "Retain common root and search replacement. Do not add Chat/Work mode items to this title menu.",
+      "Use official keys/resources. Supply only synthetic usage data and callback fixtures until server endpoints are connected."
+    ],
+    "tests": [
+      "menu gated off while composing/search field replaces title",
+      "same title selection for ordinary standard and taskList",
+      "priority availability false excludes only Priority",
+      "switch byWorkspaces to chronological removes sorting and Recents-first controls while preserving supplied state",
+      "nil management callbacks omit respective items",
+      "sort dispatches exact enum payload, distinct from grouping Binding",
+      "nil presentedTaskList yields empty title; name-change/cloud flags choose documented title branch"
+    ]
+  }
+}

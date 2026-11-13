@@ -1,0 +1,82 @@
+{
+  "batch": "v507",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "no progress: status report with live checkout/runtime verification",
+  "current_goal_turn": "progress: integrated chronological production model and UI, verified final runtime, extended list composer evidence",
+  "integration": [
+    "Ordinary chronological grouping from raw sortDate descending, thread distantFuture fallback only for bucketDate, searchResult updatedAt bucket rule",
+    "Localized title bucket identity, first-encounter section order, per-title saved collapse; query bypasses effective collapse without replacing saved state",
+    "ID.title kind0 header: persistent chevron, shared body semibold/primary, horizontal20/scaled min44/vertical2, topSpacing0; compact rows without project indentation or final-row12",
+    "Grouping switches preserve source, pins, project/recent collapse and Recents-first preference; navigation uses existing scoped task identity",
+    "Two original date-label keys added,94 selected keys across65 locales; Foundation date labels now follow preferred app language in JSON-localized host"
+  ],
+  "independent_adaptations": [
+    "Explicit synthetic task dates and pin membership; current local title matching still projects thread records",
+    "Host en/Base bundle leaves Locale.current English under Chinese AppleLanguages. Host adapter passes preferred language to Foundation while retaining system calendar/time zone. Official default provider remains separately documented",
+    "Synthetic candidate/filter order, modal entry, Reduce Motion adapter and absent service destinations remain existing boundaries"
+  ],
+  "validation": {
+    "ui_final": {
+      "passed": 4,
+      "failed": 0,
+      "result": "ios-remote-v507-r3-ui.xcresult",
+      "cases": [
+        "chronological source/collapse/search/navigation/group switch",
+        "Chinese XXXL actual Chinese date labels and collapse",
+        "Recents-first and grouping restoration",
+        "approval remains outside scrolling history"
+      ]
+    },
+    "model": "production date boundaries, sentinel/sort separation, first-seen bucket order, searchResult bucket semantics and localization passed",
+    "independent_replay": "prior v507 Foundation transcription15/15; distinct from production tests and official binary execution",
+    "failures_preserved": [
+      "initial model expected Arabic10 but Foundation wide Chinese month is 十月; corrected assertion",
+      "initial UI3passed1failed because test guessed Chinese menu label; corrected to original 按时间倒序排列",
+      "r2 UI passed but screenshot exposed English Today/Yesterday under Chinese UI; added preferred-language host adapter and assertions; final r3 all4passed"
+    ],
+    "visual": "final English/default and Chinese/XXXL screenshots reviewed; manual Chinese All chronological mode shown and left running",
+    "device_build": "final r3 signed507 build and codesign validation passed",
+    "physical_device": "latest inventory in /tmp/rea-v507-final-devices.json; no new install while unavailable, latest successful496",
+    "preview": {
+      "version": 507,
+      "pid": 11618,
+      "state": "Chinese All chronological list, cloud synthetic source enabled",
+      "screenshot": "ios-remote-v507-list-preview.png",
+      "display": "only internal Color LCD online"
+    },
+    "retention": "fixed .build/.build-device reused; retention audit no stale targets;34GiB available"
+  },
+  "cross_platform": "Date identity/state semantics and synthetic vectors are reusable design inputs. Foundation locale/calendar behavior and SwiftUI header metrics are iOS evidence; Android producer/host must be independently proved.",
+  "limits": [
+    "Full page remains partial: inline composer, destination selection, service ownership and parent sidebar navigation",
+    "Priority grouping and management destination pages remain unconnected",
+    "Pinned/custom producer membership, upstream timestamp creation and equal-sort tie semantics remain unresolved",
+    "Full official visual parity, real IME, physical touches/haptics and device acceptance remain open",
+    "No commit or push"
+  ],
+  "next_minimum_actions": [
+    "Integrate home inline composer using v508 containment/style/search visibility evidence, preserving nil target until explicit selection",
+    "Then Remote transcript and interactions, Chat/Work, haptics and earlier feedback; Android independently evidenced"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "ef3cda7b178023467cb4a1d007b489c896ee842cdebed39cafc1adc5df8919fc",
+    "implementation/ios/Sources/RemoteWorkspacePresentation.swift": "472e54573ad625ccc1d0565d7f1413146dcb284d2825f2f0f8e1cc30b18c5528",
+    "implementation/ios/Sources/OfficialText.swift": "b2df8cc6598b8e7948918275c28c651ad2e8af00b6cf7e9b120beb6d9647c2c5",
+    "implementation/ios/Resources/OfficialTranslations.json": "aad428c23f74c1c84449f180c1a759034f43c05e3723f6b2f4f79401bed442e6",
+    "implementation/ios/TextTests/main.swift": "985330ef273b5ad489638edc1ed7b03d50f2ecd436d984994947160fd62bc35d",
+    "implementation/ios/UITests/HostInteractionTests.swift": "bdf878f3ce5260aa772004bc6d55e11334a3618936e77a20c3f4070ec31ba53f",
+    "implementation/ios/Tools/prepare-official-text.py": "26bf1c3d1a16716e98cc55f1086a9e880a1096521e7b1e59bce35ab968aba21e"
+  },
+  "evidence_hashes": {
+    "ios-remote-v507-chronological-findings.json": "4cb62edbc0d41043e582e19746b9831d65f455cce3a53b49e822e32a4b591507",
+    "ios-remote-v507-date-header-findings.json": "e832136cb1574574d4bf96f821ff929e133c57a84e7ef781ccfc774478bea807",
+    "ios-remote-v507-foundation-replay.json": "de608b8ebacf08be8f214adc0e25bc60f6a7e2b1d97124cad6ed3c163b4a519a",
+    "ios-remote-v507-text-extraction.json": "00bcb2d1196cc3978f51a41527f288942fafe1e0a38be1dd6782f2f55d00cff2",
+    "ios-remote-v507-r3-ui.summary.json": "8a27dcd6dcb6d91a0bdc3eb17c6e2f0cbdb320af52b96b2c63d78578539064b7",
+    "ios-remote-v508-findings.json": "c6e3815c015517557ae177a4b3662fcdaa5f15262e6f91aa774f5937afd19e34",
+    "ios-remote-v508-home-style-findings.json": "7f353ec5882b87dd217b9cf2ee0d592a13e76dc7715dc1b96e894acf2564b9af"
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "batch": "v518",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "scope": "Remote composer attachment strip loading and inline attachment error consumers. Static analysis only. Production, tests, docs, and running preview untouched.",
+  "confirmed": [
+    {
+      "offsets": [
+        "0x1985928..0x198597c",
+        "0x1980fd0"
+      ],
+      "conclusion": "The optional String returned by local error accessor1980fd0 takes precedence. When its second word is zero, read the supplied optional attachment error from metadata field-offset slot+0x64. The strip parent remains present when attachment content exists OR resolved error exists OR isLoadingAttachments(+0x68) is true. Field offsets are metadata-vector offsets, not byte offsets directly in the composer value."
+    },
+    {
+      "offsets": [
+        "0x198cc5c..0x198ccc4",
+        "0x2c60c0"
+      ],
+      "conclusion": "HStack content ends with optional progress. It is absent when isLoadingAttachments is false. While true, it is present when recentPhotosController(+0x78) is absent OR helper1892888 returns x1==0. It is absent when controller exists and helper returns x1!=0. Meaning of returned payload is not independently closed."
+    },
+    {
+      "offsets": [
+        "0x198cc94",
+        "0x7549160..0x7549188",
+        "0x75bd2f4",
+        "0x7c46f78",
+        "0x1d7f0b4",
+        "0x7da8310"
+      ],
+      "conclusion": "Loading item uses OAIProgressView<EmptyView>, whose constructor reaches native ProgressView<EmptyView,EmptyView>.init(). Symbolic type record confirms ModifiedContent<OAIProgressView<EmptyView>,_FrameLayout>."
+    },
+    {
+      "offsets": [
+        "0x198cc98..0x198ccb0",
+        "0x1bedb4",
+        "0x7c47104"
+      ],
+      "values": {
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "alignment": "center"
+      },
+      "conclusion": "Explicit32x32 centered _FrameLayout, with both width and height supplied. This frame size does not establish spinner glyph diameter. The item shares the attachment carousel HStack, already proven top/horizontal8 padding and default spacing6 in v517."
+    },
+    {
+      "offsets": [
+        "0x1985a70..0x1985c44",
+        "0x74e2924",
+        "0x74e27d4..0x74e2924",
+        "0xaad3908",
+        "0xaad3810",
+        "0x6ec6b0c"
+      ],
+      "values": {
+        "textStyle": "caption2",
+        "fontDesign": "default"
+      },
+      "conclusion": "Nonempty optional error creates Text from the resolved String after the horizontally scrolling attachment area. The font accessor constructs an OAI font descriptor based on native caption2/default design and passes it through the shared View.font adapter. Explicit weight is unspecified. No retry or dismiss action is constructed in this bounded error view builder."
+    },
+    {
+      "offsets": [
+        "0x1985ad8",
+        "0x74ee360..0x74ee3ac",
+        "0x8a51be0"
+      ],
+      "values": {
+        "colorResource": "ChatGPT/text/status/error"
+      },
+      "conclusion": "Error foreground uses the named ColorResource through the shared color accessor. Exact light/dark RGBA is not established by the accessor alone."
+    },
+    {
+      "offsets": [
+        "0x1985af8..0x1985b20",
+        "0xf514cc",
+        "0x1985b38..0x1985b9c",
+        "0x460490",
+        "0x1636e0",
+        "0x7c46a44"
+      ],
+      "values": {
+        "horizontalPadding": 10,
+        "bottomPadding": 2
+      },
+      "conclusion": "Error Text applies horizontal padding10 then bottom padding2. EdgeInsets all-value initializer binding and transfer helper confirm values, while the consumer supplies horizontal and bottom edge sets respectively."
+    }
+  ],
+  "integration_ready": [
+    "Keep resolved attachment error and loading state in the strip visibility predicate even when attachments are empty.",
+    "Represent loading as the trailing carousel OAI/native progress item with32x32 centered frame and preserve recentPhotosController payload suppression condition where that owner exists.",
+    "Render resolved error below the scroll area using shared caption2 font adapter, status/error color resource, horizontal10 and bottom2 padding.",
+    "Use local materialization errors only as explicitly independent adapter data. Keep composer attachment errors separate from transcript quota/error cards."
+  ],
+  "unknowns": [
+    {
+      "boundary": "recentPhotosController helper0x1892888",
+      "detail": "Exact returned payload identity and lifecycle remain unknown. The branch condition is proven but should not be renamed to an invented selected-photo property."
+    },
+    {
+      "boundary": "ancestor environment of0x198c464; OAIProgressView environment/style consumer",
+      "detail": "Effective ancestor progress tint, controlSize, and progress style were not closed for this composer. Prior history/other consumer small style values must not be imported."
+    },
+    {
+      "boundary": "ChatGPT/text/status/error ColorResource and shared font environment",
+      "detail": "Resource RGBA variants, effective custom-font environment, dynamic scaling and device visual parity remain unverified."
+    },
+    {
+      "boundary": "local error setter/clear owner and supplied attachmentError producer",
+      "detail": "This read path does not prove errors are cleared on retry, remove, successful import, or task switch. Do not infer new action semantics from the Text consumer."
+    }
+  ],
+  "validation": {
+    "static": "confirmed for bounded branches and values above",
+    "original_runtime": "not performed",
+    "reconstruction_runtime": "not performed",
+    "visual_parity": "not accepted"
+  },
+  "evidence_files": [
+    {
+      "path": "ios-remote-v518-bool-check.asm",
+      "sha256": "b1a1f502ed1b79879b8f348ddfcd8961ac76bab145cd787c83a00af02e936aef"
+    },
+    {
+      "path": "ios-remote-v518-error-area-types.asm",
+      "sha256": "5b328fba01b656e08406b5da625b502de69c137ee4d8997c9f0f8da80ba6438c"
+    },
+    {
+      "path": "ios-remote-v518-error-bottom-insets.asm",
+      "sha256": "ddce9a261f1adf098f9b9cea2c110d7c1c3226dec95f4989bac90040b3966200"
+    },
+    {
+      "path": "ios-remote-v518-error-bottom-padding.asm",
+      "sha256": "fcbc970a52cab735f60b9b3bb660e348d123e706ad30537783286dee45103d09"
+    },
+    {
+      "path": "ios-remote-v518-error-color-tail.asm",
+      "sha256": "8b0ca8b78a9deef90fd2241259438095b2447bf02a6f7ede0ca466bb36b9d66d"
+    },
+    {
+      "path": "ios-remote-v518-error-color.asm",
+      "sha256": "1b0572bc3bb67d7965123a1dbaad20078e1c94277db117273340da521a5dae69"
+    },
+    {
+      "path": "ios-remote-v518-error-font-init-full.asm",
+      "sha256": "d2a3b49562e0770c7e09757e3a77dcd0be39212aa95b7bc51e813d11a613682e"
+    },
+    {
+      "path": "ios-remote-v518-error-font-init-tail.asm",
+      "sha256": "804aa2b7b99d7a4486104a7b264f2adace358234cfb9be8c6043200fc236ef1c"
+    },
+    {
+      "path": "ios-remote-v518-error-font-init.asm",
+      "sha256": "9d266422d40eb9816adfe45d90e0a074cc972544970e49aa70539ad37d44ad87"
+    },
+    {
+      "path": "ios-remote-v518-error-font-modifier.asm",
+      "sha256": "bae83d6a181db2b15092315f548f6cf3cfb6cdc75103a54d1e720da9d3cc5ca7"
+    },
+    {
+      "path": "ios-remote-v518-error-font.asm",
+      "sha256": "128e5809fe06b1caba1a8eff82fb7b2d5c73a5369243d733013fb6e5bedfb93b"
+    },
+    {
+      "path": "ios-remote-v518-error-insets-transfer.asm",
+      "sha256": "3b0a96b04859ded0e8525e7e94a1ae4f60d282787575aa21fda211193a7a9e7f"
+    },
+    {
+      "path": "ios-remote-v518-error-padding.asm",
+      "sha256": "85498682eab3ffe73d73d5e832c03b9a59a8d109a2c41f61909b71c20f5a3d7f"
+    },
+    {
+      "path": "ios-remote-v518-error-style-copy.asm",
+      "sha256": "82f57c0ea7bf2207e6f2cc56a8f7236cdb4aad1c1ea886798f0927f8053d5015"
+    },
+    {
+      "path": "ios-remote-v518-error-style-helpers.asm",
+      "sha256": "34a09ed0da6b483a8d6c7889d0e5ad080c96fc6236ccaca5d928944631cbe198"
+    },
+    {
+      "path": "ios-remote-v518-loading-builder.asm",
+      "sha256": "20923a216c3be65fbed7569b780ee6133dda2e3cc76aa9e2c7486f6083073d5e"
+    },
+    {
+      "path": "ios-remote-v518-loading-frame-helper.asm",
+      "sha256": "80951fdce23f039c4b692935b5fb9a064ab136648fc2989750096a20585fceb2"
+    },
+    {
+      "path": "ios-remote-v518-loading-wrapper.asm",
+      "sha256": "3f629546773642f95eedd1e61d92389a1a9d3c05daada762017814e4fdc9538e"
+    },
+    {
+      "path": "ios-remote-v518-progress-init-args.asm",
+      "sha256": "89d703291470893fa0b6d56cb07551381efc8ec620780d2cf1d02c841d5f3583"
+    },
+    {
+      "path": "ios-remote-v518-progress-init.asm",
+      "sha256": "f8f52cf8a80f374a9e7be9b71f948dff032276e3944c7619409ddb4db3106318"
+    },
+    {
+      "path": "ios-remote-v518-progress-optional-empty.asm",
+      "sha256": "40c089763118a5714bd014d8dcf5494304bf0183e833aeb789cf2baf9d5707f6"
+    },
+    {
+      "path": "ios-remote-v518-progress-optional-present.asm",
+      "sha256": "71cf8946b3d714d0eca19042048c03297622e44f243781dde089872a8944f5b4"
+    },
+    {
+      "path": "ios-remote-v518-progress-type-init.asm",
+      "sha256": "10c1473e984f6fa56ff5e2519d80062cb74d19db1caae05a8c8f6dfc5ea1de8a"
+    },
+    {
+      "path": "ios-remote-v518-loading-type.json",
+      "sha256": "e5d94d2af519f7286ec8536f6f91e332c4fa6403b2495c37a382cbc6fd51d282"
+    },
+    {
+      "path": "ios-remote-v518-loading-error-bindings.json",
+      "sha256": "c84c2f01193ea2e43e79bf2b28a5268ae283063b41f3fb3d9593ad78df8c2297"
+    },
+    {
+      "path": "ios-remote-v517-attachment-preview-composer-consumer.asm",
+      "sha256": "f77bdb31d30862b2eb11ebc170417d7e1eff710530ab279709f34da48c90f4c7"
+    },
+    {
+      "path": "ios-remote-v517-attachment-preview-strip-items.asm",
+      "sha256": "a908fec785dece190178f2748b537f0e32fbf06a7355762ac1d487e200a25132"
+    },
+    {
+      "path": "ios-remote-v517-attachment-preview-findings.json",
+      "sha256": "18f11c1c4bb7a83e54102af9dbc23a1da9f426a762a75069a1165d83ebc5bdce"
+    }
+  ]
+}

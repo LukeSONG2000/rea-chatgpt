@@ -1,0 +1,164 @@
+{
+  "batch": "v521",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-instructions-and-metadata",
+  "production_edits": false,
+  "runtime_verified": false,
+  "question": "Does the ordinary Remote thread receive the same effective MessageInputStyle as Home, preserving defaults for inner material, GlassEffectContainer, styleInsets and maxWidth?",
+  "answer": "Effective thread style injection is not closed. Shared renderer operations and their style-field dependencies are established, but the resolved environment value at ThreadViewContent/BottomBars is unknown. Do not hardcode the Home style into the thread from this slice.",
+  "findings": [
+    {
+      "id": "thread-parent-containment",
+      "status": "verified-static-structure",
+      "sites": [
+        "0x1a49bf8",
+        "0x1a4a028..0x1a4a06c",
+        "0x1c2f96c ->0x1a4b45c",
+        "0x1a28efc ->0x1a20e58"
+      ],
+      "conclusion": "Retained v421 establishes ThreadViewContent bottom safe-area bar containing BottomBars. Its ordinary composer factory reaches 197bfe4 via 1a23d0c (constructor arguments handled separately in v521 scene investigation). This does not itself establish an inherited environment value."
+    },
+    {
+      "id": "composer-style-forwarding",
+      "status": "verified-static-read-and-writer",
+      "sites": [
+        "0x197fe90",
+        "0x197fe94..0x197fec8"
+      ],
+      "conclusion": "Composer helper 197fd28 reads metadata field+0x120, already bound to _messageInputStyle by v442 metadata, resolves/copies the environment and passes it to 6081e84 at197fec8 for child content. This forwards the consumed style; no Remote-base style construction is established here."
+    },
+    {
+      "id": "reference-search-scope",
+      "status": "partial",
+      "sites": [
+        "0x2de2a4",
+        "0x2de2bc",
+        "0x19a0a58",
+        "0x19a0880"
+      ],
+      "conclusion": "A full __text scan of immediate BL/B and adjacent ADRP/ADD patterns finds Remote accessor19a0a38 referenced only from Home builder2de24c, and globalb07db50 only from its initializer/accessor. No direct6081e84 writer is found inside bounded ThreadViewContent/BottomBars ranges. This is incomplete xref evidence and cannot prove no other injection exists."
+    },
+    {
+      "id": "unclosed-screen-writer",
+      "status": "verified-static-call-sequence-unresolved-route",
+      "sites": [
+        "0x2ffb10..0x3001c4",
+        "0x30002c",
+        "0x300040",
+        "0x30006c"
+      ],
+      "conclusion": "Screen closure calls Home-style builder2de24c, then applies60824f8, then writer6081e84. The final transform is substantive and this closure has not been mapped to the ordinary thread route. The call sequence is a precise candidate for the next parent-route check, not proof it is the thread style."
+    },
+    {
+      "id": "post-theme-modifier-writes",
+      "status": "verified-static-fields",
+      "sites": [
+        "0x60824f8..0x6082718"
+      ],
+      "conclusion": "60824f8 copies the incoming style then writes numerous fields. With MessageInputStyle vector start0x10, metadata+f0 index56=minHeight receives48 at60825b8; metadata+f8 index58=innerCornerRadius receives24 at6082618; metadata+104 index61=topAccessoryCornerRadius receives24 at608264c. It can also replace outerInsets (metadata+118,index66) at60826c4..26ec when focusedOuterInsets payload discriminator (metadata+10c,index63, payload+40) is not1. The ordinary-thread reachability and active branch remain unknown."
+    }
+  ],
+  "shared_renderer_field_proof": [
+    {
+      "field": "actual inner shape",
+      "sites": [
+        "0x1983814",
+        "0x1984c10",
+        "0x1984cc0",
+        "0x1986b10..0x1986b3c"
+      ],
+      "proof": "Selected ordinary renderer calls the same continuous RoundedRectangle24 factory for clip and inner Glass. This factory uses literal24, distinct from style.innerCornerRadius. Reuse is justified for that selected renderer path, not all cards or parent branches."
+    },
+    {
+      "field": "GlassEffectContainer",
+      "sites": [
+        "0x19827d0",
+        "0x1982840..0x198284c",
+        "0x1982b60",
+        "0x1982d98"
+      ],
+      "proof": "Selected ordinary renderer gates whole-content GlassEffectContainer on availability1bdeac and MessageInputStyle.glassContainerEnabled (metadata+d4,index49). The helper structure is known; effective thread flag is not."
+    },
+    {
+      "field": "glass and background",
+      "sites": [
+        "0x1984b78..0x1984b88",
+        "0x1984c68..0x1984ca4"
+      ],
+      "proof": "reduceTransparency chooses fallback6081edc and nil glass, otherwise reads innerBackgroundColor (metadata+f4,index57) and glass (metadata+d8,index50). Theme-dependent colors remain input values."
+    },
+    {
+      "field": "styleInsets",
+      "sites": [
+        "0x198328c",
+        "0x1983690",
+        "0x6081bd8..0x6081cb4"
+      ],
+      "proof": "Internal padding reads styleInsets if trailingOutsideContent=nil; otherwise zero. Default geometry known fromv508 does not prove thread effective geometry. Constructor/trailingOutsideContent evidence owned by separatev521 slice."
+    },
+    {
+      "field": "maxWidth",
+      "sites": [
+        "0x197e308",
+        "0x197efbc",
+        "0x197f024",
+        "0x197f090"
+      ],
+      "proof": "The ordinary outer algorithm consumes appliesPaddingAndMaxWidthToBackground and maxWidth. Default maxWidth728 and default true are proved inv513, but inherited thread values remain unresolved."
+    }
+  ],
+  "reused_default_facts_with_scope": {
+    "scope": "default60810f8 and Remote-base19a0860, Home2de24c; not resolved thread environment",
+    "maxWidth": 728,
+    "appliesPaddingAndMaxWidthToBackground": true,
+    "phone_outerInsets": [
+      8,
+      12,
+      12,
+      12
+    ],
+    "ipad_outerInsets": [
+      12,
+      12,
+      12,
+      12
+    ],
+    "focusedOuterInsets": null,
+    "outerHorizontalPadding": null,
+    "outerBottomPadding": null,
+    "innerCornerRadius": 22,
+    "theme": "Home raw0/raw11 bypass6081f4c, other themes transform theme/color fields. Separate60824f8 has additional geometry mutations.",
+    "glass": "Remote base invokes6082134 withadjustInsets=false,shadow=false,gradient=true,opacity0.05,percentage0.3; runtimeavailability/reduceTransparency gates remain required."
+  },
+  "integration_decision": {
+    "allowed": "Share the ordinary renderer implementation and parameterized style/material gates when the selected thread constructor path is independently proved. Retain explicit style input and branch-dependent geometry.",
+    "not_established": "Home-specific effective style values, focus outerInsets, maxWidth728 and glassContainerEnabled cannot yet be asserted for thread. No thread style production edits authorized by this finding.",
+    "parent_requested_action": "Keep current thread containment unchanged in this batch; collect precise unresolved route rather than chase unbounded ancestors."
+  },
+  "next_minimum_evidence_action": "Resolve symbolic/generic type and callers of screen closure2ffb10, establishing whether30006c wraps CodexRemoteThreadViewContent in the ordinary thread route or another presentation branch; then resolve the surviving modifier/environment chain atThreadViewContent entry. Also classify writer199a1c0 independently before treating it as a thread ancestor.",
+  "limitations": [
+    "No original app execution, optical equivalence, layout screenshot or runtime effective configuration established.",
+    "Direct references cannot recover indirect closure dispatch, generic environment propagation or non-adjacent address materialization.",
+    "Thread sceneMetrics/trailingOutsideContent is separate v521 work and is not inferred here.",
+    "The unrelated writer199a1c0 is retained as a candidate only; its parent identity is unresolved."
+  ],
+  "evidence_files": {
+    "ios-remote-v521-thread-style-refs.json": "45daa6442d08b1961c7b370a033c5a25624383d754a81cd91009ea54e95d965c",
+    "ios-remote-v521-thread-style-extra-refs.json": "0c7120b75987a2a1058e94021ea9a108a8b2f1e1036409e5d0821cbf96281572",
+    "ios-remote-v521-style-local-writer.asm": "eba7945bbcdd693e9687fa23c9c50fc9506169dc355cdad64a76223a834de8ed",
+    "ios-remote-v521-style-parent-writer.asm": "20146cd7b223afbc401a18c2e10158373d2b3527aada5227f57538691973aa92",
+    "ios-remote-v521-style-post-theme-modifier.asm": "2d62093f53a6506cd26c397a198f090a9bd42c19f9698b63271b7a391f18abdb"
+  },
+  "reused_evidence": [
+    "ios-remote-v508-home-style-findings.json",
+    "ios-remote-v508-style-metadata.json",
+    "ios-remote-v508-screen-body.asm",
+    "ios-remote-v513-width-target-focus-findings.json",
+    "ios-remote-v520-home-surface-order-findings.json",
+    "ios-remote-v421-integration.json",
+    "ios-remote-v442-composer-metadata.json"
+  ]
+}

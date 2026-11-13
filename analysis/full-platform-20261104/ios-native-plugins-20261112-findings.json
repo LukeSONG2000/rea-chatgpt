@@ -1,0 +1,1439 @@
+{
+  "schema_version": 1,
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "binary": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "authority": "shipped-artifact native SwiftUI trees and bounded instructions; no target execution",
+  "scope": {
+    "host_changed": false,
+    "build_or_device_actions": false,
+    "service_calls": false,
+    "native_not_valdi": true,
+    "bounded_minutes": 8
+  },
+  "root_chain": [
+    {
+      "symbol": "ChatGPTPluginsDirectoryRootScreen",
+      "descriptor": "0x9582ea8",
+      "body_witness": "0xe7d7a4",
+      "actual_body": "0xe7aea4",
+      "inner_builder": "0xe7b044",
+      "native_type_record": "0x7d77f60",
+      "type_factory_call": "0xe7aed8",
+      "structure": [
+        "ZStack",
+        "conditional direct setup screen",
+        "NavigationStack",
+        "ChatGPTPluginsDirectoryRootToolbar",
+        "navigationDestination(ChatGPTPluginsDirectoryRoute)",
+        "SearchScreen",
+        "DirectoryScreen",
+        "category/workspace/personal lists",
+        "ChatGPTPluginActionPresentationModifier"
+      ]
+    },
+    {
+      "symbol": "ChatGPTPluginsDirectoryScreen",
+      "body_witness": "0xe82b6c",
+      "actual_body": "0xe82270",
+      "appearance_task_literal_site": "0xe825a4",
+      "appearance_task_literal": "View.task @ ChatGPTPluginsDirectory/ChatGPTPluginsDirectoryScreen.swift:"
+    },
+    {
+      "symbol": "ChatGPTPluginsDirectoryContent",
+      "body_witness": "0xe8397c",
+      "actual_body": "0xe82b70",
+      "type_records": [
+        "0x7d79730",
+        "0x7d79738",
+        "0x7d79740"
+      ],
+      "type_factory_sites": [
+        "0xe82b9c",
+        "0xe82bd0",
+        "0xe82c04"
+      ],
+      "structure": [
+        "ScrollView",
+        "LazyVStack",
+        "InstalledPluginsRail",
+        "SourceContent",
+        "scrollPosition Binding<Tagged<Plugin>?>",
+        "SearchAffordance with typed DirectoryAction"
+      ]
+    }
+  ],
+  "parent_structure": [
+    {
+      "component": "ChatGPTPluginsDirectoryRootScreen",
+      "body": "0xe7aea4",
+      "tree_record": "0x7d77f60",
+      "shape": "ZStack<conditional direct-setup/AnyView/NavigationStack<Array<ChatGPTPluginsDirectoryRoute>>> plus RootToolbar, typed navigationDestination and ChatGPTPluginActionPresentationModifier",
+      "tree_identifiers": [
+        "AnyView",
+        "Array",
+        "ChatGPTPluginActionPresentationModifier",
+        "ChatGPTPluginsCategoryScreen",
+        "ChatGPTPluginsDirectoryRootToolbar",
+        "ChatGPTPluginsDirectoryRoute",
+        "ChatGPTPluginsDirectoryScreen",
+        "ChatGPTPluginsPersonalListScreen",
+        "ChatGPTPluginsSearchScreen",
+        "ChatGPTPluginsWorkspaceScreen",
+        "Color",
+        "GPTPluginDirectSetupScreen",
+        "Hashable",
+        "ModifiedContent",
+        "NavigationStack",
+        "ToolbarContent",
+        "ToolbarContentBuilder",
+        "View",
+        "ZStack",
+        "_AppearanceActionModifier",
+        "_ConditionalContent",
+        "buildBlock",
+        "destination",
+        "for",
+        "navigationDestination"
+      ],
+      "limits": [
+        "Conditional structure proves generated branches, not active eligibility. AnyView and retained opaque contexts remain unknown internals."
+      ]
+    },
+    {
+      "component": "ChatGPTPluginsDirectoryContent",
+      "body": "0xe82b70",
+      "tree_records": [
+        "0x7d79730",
+        "0x7d79738",
+        "0x7d79740"
+      ],
+      "shape": "ScrollView + LazyVStack<TupleView<optional installed rail, native source content>>; scrollTargetLayout, scrollPosition Binding<Tagged<Plugin>?> and search affordance background/overlay composition",
+      "tree_identifiers": [
+        "Binding",
+        "Bool",
+        "ChatGPTPluginsDirectoryAction",
+        "ChatGPTPluginsDirectorySearchAffordance",
+        "Hashable",
+        "LazyVStack",
+        "ModifiedContent",
+        "Optional",
+        "Plugin",
+        "PluginDirectoryInstalledPluginsRail",
+        "ScrollView",
+        "String",
+        "Tagged",
+        "TupleView",
+        "UnitPoint",
+        "View",
+        "_FlexFrameLayout",
+        "_PaddingLayout",
+        "anchor",
+        "id",
+        "isEnabled",
+        "scrollPosition",
+        "scrollTargetLayout"
+      ],
+      "source_content_reference": "0x9583f44 retained TypeSymbolicReference is independently descriptor-named ChatGPTPluginsDirectorySourceContent; unknown anonymous parent retained, not invented."
+    },
+    {
+      "component": "PluginDirectoryInstalledPluginsRail",
+      "body_witness": "0xee0da8",
+      "actual_builder": "0xee040c→0xee0448",
+      "tree_record": "0x7d7ae58",
+      "shape": "Section heading + horizontal ScrollView/LazyHStack/ForEach<Array<PluginDirectoryInstalledItemContent>,Tagged<Plugin>> with separate trailing loading placeholders; native item Button and PlainButtonStyle exist at0xee0f64..0xee0fb0",
+      "tree_identifiers": [
+        "Array",
+        "Axis",
+        "ForEach",
+        "GeometryReader",
+        "Int",
+        "LazyHStack",
+        "ModifiedContent",
+        "Optional",
+        "Plugin",
+        "PluginDirectoryInstalledItemContent",
+        "PluginDirectorySectionHeading",
+        "Range",
+        "ScrollIndicatorVisibility",
+        "ScrollView",
+        "Set",
+        "String",
+        "Tagged",
+        "Tree",
+        "TupleView",
+        "View",
+        "_FrameLayout",
+        "_VStackLayout",
+        "_VariadicView",
+        "axes",
+        "scrollIndicators"
+      ],
+      "limits": [
+        "Exact item-button action callback dispatch to openPlugin not closed. Button label factory0xf3ed48→0xee1064 is not itself the action callback."
+      ]
+    },
+    {
+      "component": "ChatGPTPluginsDirectorySourceContent",
+      "body_witness": "0xe85bbc",
+      "actual_body": "0xe83b54→0xe83b90",
+      "tree_record": "0x7d7ae20",
+      "shape": "VStack/ForEach<Array<PluginDirectorySectionIdentifier>,...> plus optional recoverable error and conditional PluginDirectoryEmptyStateView/ChatGPTPluginsDirectorySectionContent",
+      "tree_identifiers": [
+        "Array",
+        "ChatGPTPluginsDirectorySectionContent",
+        "ForEach",
+        "Optional",
+        "PluginDirectoryEmptyStateView",
+        "PluginDirectoryRecoverableErrorView",
+        "PluginDirectorySectionIdentifier",
+        "Tree",
+        "TupleView",
+        "_ConditionalContent",
+        "_VStackLayout",
+        "_VariadicView"
+      ]
+    },
+    {
+      "component": "ChatGPTPluginsSearchContent",
+      "body_witness": "0xe9706c",
+      "actual_body": "0xe96c2c",
+      "tree_record": "0x7d79708",
+      "shape": "PluginDirectoryBrowseContent with FloatingSearchBar; query/focus/scroll-position are inputs",
+      "tree_identifiers": [
+        "FloatingSearchBar",
+        "ModifiedContent",
+        "PluginDirectoryBrowseContent",
+        "_FlexFrameLayout"
+      ]
+    },
+    {
+      "component": "GPTPluginDetailScreen",
+      "body_witness": "0xeaffb8",
+      "actual_body": "0xeaefc0",
+      "shape": "Native request-state content + navigationBarTitleDisplayMode + detail toolbar and typed skill/tools presentation, not a single generic WebView.",
+      "evidence_sites": [
+        "0xeaf328 navigationBarTitleDisplayMode",
+        "0xeafa3c ToolbarContentBuilder.buildBlock"
+      ],
+      "limits": [
+        "0x7d780b8 is only Binding<Optional<GPTPluginSkillDetailsDestination>> helper, not the full detail parent body; do not claim this partial record is full page."
+      ]
+    },
+    {
+      "component": "GPTPluginDetailScreenContent",
+      "body_witness": "0xeb0698",
+      "actual_body": "0xeb03f4",
+      "tree_record": "0x7d78d10",
+      "shape": "ZStack conditional request-state branches. Source branches0xeb0460..0xeb0598 copy loaded state, refreshing/error flags or construct loading/failed alternatives; exact RequestState raw tags not named here.",
+      "limits": [
+        "Opaque contexts hide branch generic names; preserve without guessing integer-to-state mapping."
+      ]
+    },
+    {
+      "component": "GPTPluginDetailLoadedContent",
+      "body_witness": "0xeb1434",
+      "actual_body": "0xeb069c",
+      "tree_record": "0x7d79a88",
+      "shape": "ScrollView/VStack<TupleView<optional component groups>> including DefaultPromptsSection, DescriptionSection, InformationSection, optional header/apps/skills/screenshot component regions; pendingInstallPluginID environment and refreshError presentation exist.",
+      "tree_identifiers": [
+        "Bool",
+        "GPTPluginDetailDefaultPromptsSection",
+        "GPTPluginDetailDescriptionSection",
+        "GPTPluginDetailInformationSection",
+        "ModifiedContent",
+        "Optional",
+        "ScrollView",
+        "TupleView",
+        "VStack",
+        "_ConditionalContent",
+        "_EnvironmentKeyTransformModifier",
+        "_FlexFrameLayout",
+        "_OverlayModifier",
+        "_PaddingLayout"
+      ],
+      "limits": [
+        "Some component identities retained as opaque context descriptors; field inventory alone cannot fill their exact layout."
+      ]
+    }
+  ],
+  "resources": {
+    "verified_existing": {
+      "key": "gpt_plugins_directory_title",
+      "consumer": "0xe823d8",
+      "literal": "0x887df70",
+      "en": "Plugins",
+      "zh": "插件"
+    },
+    "additional_literal_consumers": [
+      {
+        "site": "0xe823d8",
+        "address": "0x887df70",
+        "string": "gpt_plugins_directory_title"
+      },
+      {
+        "site": "0xe825a4",
+        "address": "0x887e010",
+        "string": "View.task @ ChatGPTPluginsDirectory/ChatGPTPluginsDirectoryScreen.swift:"
+      },
+      {
+        "site": "0xe83834",
+        "address": "0x887e0b0",
+        "string": "gpt_plugins_directory_search_action"
+      },
+      {
+        "site": "0xe83dec",
+        "address": "0x887e3f0",
+        "string": "gpt_plugins_directory_cached_refresh_failure_title"
+      },
+      {
+        "site": "0xe83e10",
+        "address": "0x887e430",
+        "string": "Couldn’t refresh plugins"
+      },
+      {
+        "site": "0xe83e54",
+        "address": "0x887e450",
+        "string": "gpt_plugins_directory_cached_refresh_failure_message"
+      },
+      {
+        "site": "0xe83e70",
+        "address": "0x887e490",
+        "string": "Showing the most recently loaded results."
+      },
+      {
+        "site": "0xe840fc",
+        "address": "0x887dd00",
+        "string": "No OpenAI plugins are available right now."
+      },
+      {
+        "site": "0xe84108",
+        "address": "0x887dcd0",
+        "string": "gpt_plugins_directory_empty_openai"
+      },
+      {
+        "site": "0xe84114",
+        "address": "0x887dca0",
+        "string": "No workspace plugins are available right now."
+      },
+      {
+        "site": "0xe84120",
+        "address": "0x887dc70",
+        "string": "gpt_plugins_directory_empty_workspace"
+      },
+      {
+        "site": "0xe84130",
+        "address": "0x887dc40",
+        "string": "No personal plugins are available right now."
+      },
+      {
+        "site": "0xe8413c",
+        "address": "0x887dc10",
+        "string": "gpt_plugins_directory_empty_personal"
+      },
+      {
+        "site": "0xeb12e8",
+        "address": "0x887e7b0",
+        "string": "gpt_plugins_directory_detail_refresh_error_title"
+      },
+      {
+        "site": "0xeb1320",
+        "address": "0x887e7f0",
+        "string": "Couldn’t update this Plugin"
+      }
+    ],
+    "not_closed": [
+      "Installed rail title is an input; its precise localized producer not reached.",
+      "Source selector labels and exact ordering not closed; source-state exists and empty labels distinguish OpenAI/workspace/personal.",
+      "Search placeholder actual original key gpt_plugins_directory_search_action observed0xe83834; final Chinese rendering not re-decoded here."
+    ],
+    "icon_contract": {
+      "original_type": "PluginDirectoryIconSource",
+      "descriptor": "0x9582858",
+      "fields": [
+        "lightUrl",
+        "darkUrl"
+      ],
+      "row_content": [
+        "id",
+        "canonicalAppID",
+        "name",
+        "subtitle",
+        "icon",
+        "primaryAction",
+        "showsUninstallAction",
+        "actionPluginID"
+      ],
+      "limit": "These are original data fields. Do not replace supplied plugin artwork with one arbitrary local symbol; URL download/render/fallback implementation is not closed in this bounded task."
+    }
+  },
+  "actions_and_ownership": {
+    "classification": "metadata inventory plus proven native action-handler inputs; exact dispatcher semantics not fully recovered",
+    "actual_page_receivers": [
+      "ChatGPTPluginsDirectoryContent.actionHandler : ChatGPTPluginsDirectoryAction",
+      "ChatGPTPluginsDirectorySourceContent.actionHandler : component actions",
+      "ChatGPTPluginsSearchContent.actionHandler : search actions",
+      "GPTPluginDetailScreenContent/GPTPluginDetailLoadedContent.actionHandler : GPTPluginDetailScreenAction"
+    ],
+    "component_actions": [
+      "openPlugin(pluginID)",
+      "installPlugin(pluginID)",
+      "enableAndTryPlugin(pluginID)",
+      "tryPluginInChat(context)",
+      "managePlugin(pluginID)",
+      "uninstallPlugin(removalPayload)",
+      "openSection(section)",
+      "retry(scope)",
+      "openInstalledPlugins"
+    ],
+    "navigation_route_enum": [
+      "detail(pluginID)",
+      "category(category)",
+      "personal(list)",
+      "workspace"
+    ],
+    "service_owner": "ChatGPTPluginActionCoordinator, descriptor0x9580f08, accessor0xef0110",
+    "service_intents": [
+      "install",
+      "tryInChat",
+      "manage",
+      "showUpsell",
+      "includedAppAction",
+      "openSettings",
+      "openExternalLink",
+      "remove",
+      "setupAppeared",
+      "retrySetup"
+    ],
+    "service_dependencies_inventory": [
+      "repository",
+      "appsAdapter",
+      "installEnableCoordinator",
+      "connectorAuthorizationAdapter",
+      "tryInChatCoordinator",
+      "accountID",
+      "configuration",
+      "presentationContext"
+    ],
+    "guards_inventory": [
+      "isRetired",
+      "isDirectSetupActive",
+      "hasCompletedDirectSetup",
+      "pendingInstallPreparationPluginID",
+      "pendingConnectionRequestID",
+      "isRemovalPending",
+      "pluginsEnabledForWorkspace",
+      "isSetupOnly",
+      "canOpenGlobalEntrypoints",
+      "requestGeneration",
+      "installedStateGeneration"
+    ],
+    "limits": [
+      "Do not implement connect/disconnect as unconditionally visible toggles. Original frontend resolves primaryAction, setup/authorization/removal paths from supplied state. Exact policy predicates remain unknown.",
+      "Install/uninstall confirmation strategy and rollback semantics not closed by fields alone.",
+      "No haptic consumer established in the bounded native page windows."
+    ]
+  },
+  "original_models_inventory_only": [
+    {
+      "name": "ChatGPTPluginActionCoordinator",
+      "descriptor": "0x9580f08",
+      "accessor": "0xef0110",
+      "kind": 16,
+      "fields": [
+        {
+          "name": "hooks",
+          "type_reference": "0x8cf0850",
+          "record": "0x9a01730"
+        },
+        {
+          "name": "_directSetupRequest",
+          "type_reference": "0x92782c0",
+          "record": "0x9a0173c"
+        },
+        {
+          "name": "_setupPresentation",
+          "type_reference": "0x8cf0858",
+          "record": "0x9a01748"
+        },
+        {
+          "name": "_connectorAuthorizationPresentation",
+          "type_reference": "0x8cf0868",
+          "record": "0x9a01754"
+        },
+        {
+          "name": "_conversationPresentation",
+          "type_reference": "0x8cf0878",
+          "record": "0x9a01760"
+        },
+        {
+          "name": "_subscriptionPurchasePresentation",
+          "type_reference": "0x8cf0888",
+          "record": "0x9a0176c"
+        },
+        {
+          "name": "_alert",
+          "type_reference": "0x8cf0890",
+          "record": "0x9a01778"
+        },
+        {
+          "name": "_rootDismissalTrigger",
+          "type_reference": "0x8cf08a0",
+          "record": "0x9a01784"
+        },
+        {
+          "name": "_pendingInstallPreparationPluginID",
+          "type_reference": "0x93e2648",
+          "record": "0x9a01790"
+        },
+        {
+          "name": "$__lazy_storage_$_removalViewModel",
+          "type_reference": "0x8cf08ae",
+          "record": "0x9a0179c"
+        },
+        {
+          "name": "postConnectExperiencePresentation",
+          "type_reference": "0x8cf08b6",
+          "record": "0x9a017a8"
+        },
+        {
+          "name": "configuration",
+          "type_reference": "0x8cf08c8",
+          "record": "0x9a017b4"
+        },
+        {
+          "name": "dependencies",
+          "type_reference": "0x8cf08ce",
+          "record": "0x9a017c0"
+        },
+        {
+          "name": "presentationContext",
+          "type_reference": "0x8cf08fe",
+          "record": "0x9a017cc"
+        },
+        {
+          "name": "repository",
+          "type_reference": "0x8f29e10",
+          "record": "0x9a017d8"
+        },
+        {
+          "name": "appsAdapter",
+          "type_reference": "0x8cf0476",
+          "record": "0x9a017e4"
+        },
+        {
+          "name": "installEnableCoordinator",
+          "type_reference": "0x8cf04fc",
+          "record": "0x9a017f0"
+        },
+        {
+          "name": "connectorAuthorizationAdapter",
+          "type_reference": "0x8cf0486",
+          "record": "0x9a017fc"
+        },
+        {
+          "name": "tryInChatCoordinator",
+          "type_reference": "0x8cf0572",
+          "record": "0x9a01808"
+        },
+        {
+          "name": "marketplaceAnalytics",
+          "type_reference": "0x8cf090c",
+          "record": "0x9a01814"
+        },
+        {
+          "name": "accountID",
+          "type_reference": "0x8d09990",
+          "record": "0x9a01820"
+        },
+        {
+          "name": "conversationPresenter",
+          "type_reference": "0x8cf082c",
+          "record": "0x9a0182c"
+        },
+        {
+          "name": "isRetired",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a01838"
+        },
+        {
+          "name": "isDirectSetupActive",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a01844"
+        },
+        {
+          "name": "hasCompletedDirectSetup",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a01850"
+        },
+        {
+          "name": "setupPreparationTask",
+          "type_reference": "0x8c20e10",
+          "record": "0x9a0185c"
+        },
+        {
+          "name": "includedAppActionTask",
+          "type_reference": "0x8c20e10",
+          "record": "0x9a01868"
+        },
+        {
+          "name": "connectorAuthorizationPreparationTask",
+          "type_reference": "0x8c20e10",
+          "record": "0x9a01874"
+        },
+        {
+          "name": "directConnectorAuthorizationID",
+          "type_reference": "0x8c85b40",
+          "record": "0x9a01880"
+        },
+        {
+          "name": "connectorAuthorizationContext",
+          "type_reference": "0x8cf091e",
+          "record": "0x9a0188c"
+        },
+        {
+          "name": "activeConnectorAnalytics",
+          "type_reference": "0x8cf0926",
+          "record": "0x9a01898"
+        },
+        {
+          "name": "pendingConnectionRequestID",
+          "type_reference": "0x8cf092e",
+          "record": "0x9a018a4"
+        },
+        {
+          "name": "removalAnalyticsSurfaces",
+          "type_reference": "0x8cf0942",
+          "record": "0x9a018b0"
+        },
+        {
+          "name": "pluginStateRefreshTask",
+          "type_reference": "0x8c20e10",
+          "record": "0x9a018bc"
+        },
+        {
+          "name": "pendingInstallRefreshCompletionPluginID",
+          "type_reference": "0x93e2648",
+          "record": "0x9a018c8"
+        },
+        {
+          "name": "tryInChatTask",
+          "type_reference": "0x8c20e10",
+          "record": "0x9a018d4"
+        },
+        {
+          "name": "tryInChatHandoff",
+          "type_reference": "0x8cf095a",
+          "record": "0x9a018e0"
+        },
+        {
+          "name": "pendingTryInChatDismissal",
+          "type_reference": "0x8cf0962",
+          "record": "0x9a018ec"
+        },
+        {
+          "name": "preservesTryInChatTaskOnDeinit",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a018f8"
+        },
+        {
+          "name": "_$observationRegistrar",
+          "type_reference": "0x8da7dc0",
+          "record": "0x9a01904"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginDetailScreenViewModel",
+      "descriptor": "0x95817cc",
+      "accessor": "0xef1d20",
+      "kind": 16,
+      "fields": [
+        {
+          "name": "accountID",
+          "type_reference": "0x8d09990",
+          "record": "0x9a02778"
+        },
+        {
+          "name": "pluginID",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a02784"
+        },
+        {
+          "name": "_requestState",
+          "type_reference": "0x8cf110c",
+          "record": "0x9a02790"
+        },
+        {
+          "name": "_showsAllSkills",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a0279c"
+        },
+        {
+          "name": "_presentedSkillDestination",
+          "type_reference": "0x8cf1120",
+          "record": "0x9a027a8"
+        },
+        {
+          "name": "_presentedToolsDestination",
+          "type_reference": "0x8cf1128",
+          "record": "0x9a027b4"
+        },
+        {
+          "name": "currentRefreshTask",
+          "type_reference": "0x8c20e10",
+          "record": "0x9a027c0"
+        },
+        {
+          "name": "loadedData",
+          "type_reference": "0x8cf1130",
+          "record": "0x9a027cc"
+        },
+        {
+          "name": "localToolsPluginInstallationService",
+          "type_reference": "0x8cf1138",
+          "record": "0x9a027d8"
+        },
+        {
+          "name": "pluginsEnabledForWorkspace",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a027e4"
+        },
+        {
+          "name": "isSetupOnly",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a027f0"
+        },
+        {
+          "name": "canOpenGlobalEntrypoints",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a027fc"
+        },
+        {
+          "name": "outputHandler",
+          "type_reference": "0x8cf1140",
+          "record": "0x9a02808"
+        },
+        {
+          "name": "loadedDetailHandler",
+          "type_reference": "0x8dad4b0",
+          "record": "0x9a02814"
+        },
+        {
+          "name": "marketplaceAnalytics",
+          "type_reference": "0x8cf090c",
+          "record": "0x9a02820"
+        },
+        {
+          "name": "requestGeneration",
+          "type_reference": "0x8e133f0",
+          "record": "0x9a0282c"
+        },
+        {
+          "name": "installedStateOverride",
+          "type_reference": "0x8cf1158",
+          "record": "0x9a02838"
+        },
+        {
+          "name": "installedStateGeneration",
+          "type_reference": "0x8e133f0",
+          "record": "0x9a02844"
+        },
+        {
+          "name": "isRemovalPending",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a02850"
+        },
+        {
+          "name": "removalRollbackInstalledState",
+          "type_reference": "0x8cf1158",
+          "record": "0x9a0285c"
+        },
+        {
+          "name": "syncStatusesGeneration",
+          "type_reference": "0x8e133f0",
+          "record": "0x9a02868"
+        },
+        {
+          "name": "syncStatusesRefreshTask",
+          "type_reference": "0x8c20e10",
+          "record": "0x9a02874"
+        },
+        {
+          "name": "extensionUpdates",
+          "type_reference": "0x8d19c40",
+          "record": "0x9a02880"
+        },
+        {
+          "name": "_$observationRegistrar",
+          "type_reference": "0x8da7dc0",
+          "record": "0x9a0288c"
+        },
+        {
+          "name": "injectedDependencies",
+          "type_reference": "0x8cf1160",
+          "record": "0x9a02898"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginDetailRenderModel",
+      "descriptor": "0x9582808",
+      "accessor": "0xef8418",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "pluginID",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a03f90"
+        },
+        {
+          "name": "actionPluginID",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a03f9c"
+        },
+        {
+          "name": "canonicalAppID",
+          "type_reference": "0x8f2a5a0",
+          "record": "0x9a03fa8"
+        },
+        {
+          "name": "title",
+          "type_reference": "0x8d860d0",
+          "record": "0x9a03fb4"
+        },
+        {
+          "name": "subtitle",
+          "type_reference": "0x8bc9970",
+          "record": "0x9a03fc0"
+        },
+        {
+          "name": "icon",
+          "type_reference": "0x8cf1b80",
+          "record": "0x9a03fcc"
+        },
+        {
+          "name": "screenshots",
+          "type_reference": "0x8cf1c6c",
+          "record": "0x9a03fd8"
+        },
+        {
+          "name": "defaultPrompts",
+          "type_reference": "0x8cf1c76",
+          "record": "0x9a03fe4"
+        },
+        {
+          "name": "longDescription",
+          "type_reference": "0x8bc9970",
+          "record": "0x9a03ff0"
+        },
+        {
+          "name": "apps",
+          "type_reference": "0x8cf1c80",
+          "record": "0x9a03ffc"
+        },
+        {
+          "name": "skills",
+          "type_reference": "0x8cf1c8a",
+          "record": "0x9a04008"
+        },
+        {
+          "name": "informationRows",
+          "type_reference": "0x8cf1c94",
+          "record": "0x9a04014"
+        },
+        {
+          "name": "primaryAction",
+          "type_reference": "0x93e2540",
+          "record": "0x9a04020"
+        },
+        {
+          "name": "isPlanIneligible",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a0402c"
+        },
+        {
+          "name": "showsPlanUpgrade",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a04038"
+        },
+        {
+          "name": "trailingAction",
+          "type_reference": "0x8cf193a",
+          "record": "0x9a04044"
+        },
+        {
+          "name": "showsUninstallAction",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a04050"
+        },
+        {
+          "name": "showsCreatorAction",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a0405c"
+        },
+        {
+          "name": "isSetupOnly",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a04068"
+        },
+        {
+          "name": "globalEntrypoints",
+          "type_reference": "0x8cf1ca4",
+          "record": "0x9a04074"
+        }
+      ]
+    },
+    {
+      "name": "PluginDirectoryIconSource",
+      "descriptor": "0x9582858",
+      "accessor": "0xef7b3c",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "lightUrl",
+          "type_reference": "0x8c59150",
+          "record": "0x9a03f40"
+        },
+        {
+          "name": "darkUrl",
+          "type_reference": "0x8c59150",
+          "record": "0x9a03f4c"
+        }
+      ]
+    },
+    {
+      "name": "ChatGPTPluginsDirectorySourceState",
+      "descriptor": "0x9582a9c",
+      "accessor": "0xf06924",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "sections",
+          "type_reference": "0x8cf1b86",
+          "record": "0x9a03b8c"
+        },
+        {
+          "name": "loadState",
+          "type_reference": "0x8cf1b90",
+          "record": "0x9a03b98"
+        },
+        {
+          "name": "canLoadNextPage",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a03ba4"
+        },
+        {
+          "name": "paginationState",
+          "type_reference": "0x8cf1b4a",
+          "record": "0x9a03bb0"
+        }
+      ]
+    },
+    {
+      "name": "PluginDirectoryInstalledItemContent",
+      "descriptor": "0x9582ab8",
+      "accessor": "0xf069d4",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "id",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a03b58"
+        },
+        {
+          "name": "name",
+          "type_reference": "0x8d860d0",
+          "record": "0x9a03b64"
+        },
+        {
+          "name": "icon",
+          "type_reference": "0x8cf1b80",
+          "record": "0x9a03b70"
+        }
+      ]
+    },
+    {
+      "name": "ChatGPTPluginsDirectoryRoute",
+      "descriptor": "0x9582b74",
+      "accessor": "0xf07228",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "detail",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a03a2c"
+        },
+        {
+          "name": "category",
+          "type_reference": "0x8cf0b0c",
+          "record": "0x9a03a38"
+        },
+        {
+          "name": "personal",
+          "type_reference": "0x8cf0f90",
+          "record": "0x9a03a44"
+        },
+        {
+          "name": "workspace",
+          "type_reference": null,
+          "record": "0x9a03a50"
+        }
+      ]
+    },
+    {
+      "name": "PluginDirectoryComponentAction",
+      "descriptor": "0x9582fc0",
+      "accessor": "0xf1c920",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "openPlugin",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a04b6c"
+        },
+        {
+          "name": "installPlugin",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a04b78"
+        },
+        {
+          "name": "enableAndTryPlugin",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a04b84"
+        },
+        {
+          "name": "tryPluginInChat",
+          "type_reference": "0x8cf1c02",
+          "record": "0x9a04b90"
+        },
+        {
+          "name": "managePlugin",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a04b9c"
+        },
+        {
+          "name": "uninstallPlugin",
+          "type_reference": "0x8cf07b0",
+          "record": "0x9a04ba8"
+        },
+        {
+          "name": "openSection",
+          "type_reference": "0x8cf3800",
+          "record": "0x9a04bb4"
+        },
+        {
+          "name": "retry",
+          "type_reference": "0x8cf1b50",
+          "record": "0x9a04bc0"
+        },
+        {
+          "name": "openInstalledPlugins",
+          "type_reference": null,
+          "record": "0x9a04bcc"
+        }
+      ]
+    },
+    {
+      "name": "PluginDirectoryItemContent",
+      "descriptor": "0x9582ff8",
+      "accessor": "0xf103b0",
+      "kind": 17,
+      "fields": [
+        {
+          "name": "id",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a04ac8"
+        },
+        {
+          "name": "canonicalAppID",
+          "type_reference": "0x8f2a5a0",
+          "record": "0x9a04ad4"
+        },
+        {
+          "name": "name",
+          "type_reference": "0x8d860d0",
+          "record": "0x9a04ae0"
+        },
+        {
+          "name": "subtitle",
+          "type_reference": "0x8bc9970",
+          "record": "0x9a04aec"
+        },
+        {
+          "name": "icon",
+          "type_reference": "0x8cf1b80",
+          "record": "0x9a04af8"
+        },
+        {
+          "name": "primaryAction",
+          "type_reference": "0x93e2540",
+          "record": "0x9a04b04"
+        },
+        {
+          "name": "showsUninstallAction",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a04b10"
+        },
+        {
+          "name": "actionPluginID",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a04b1c"
+        }
+      ]
+    },
+    {
+      "name": "ChatGPTPluginAction",
+      "descriptor": "0x958306c",
+      "accessor": "0xf0e140",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "install",
+          "type_reference": "0x8cf3890",
+          "record": "0x9a04a0c"
+        },
+        {
+          "name": "tryInChat",
+          "type_reference": "0x8cf1c02",
+          "record": "0x9a04a18"
+        },
+        {
+          "name": "manage",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a04a24"
+        },
+        {
+          "name": "showUpsell",
+          "type_reference": "0x8fd04a0",
+          "record": "0x9a04a30"
+        },
+        {
+          "name": "includedAppAction",
+          "type_reference": "0x8cf38ea",
+          "record": "0x9a04a3c"
+        },
+        {
+          "name": "openSettings",
+          "type_reference": "0x8d8e478",
+          "record": "0x9a04a48"
+        },
+        {
+          "name": "openExternalLink",
+          "type_reference": "0x90195c0",
+          "record": "0x9a04a54"
+        },
+        {
+          "name": "remove",
+          "type_reference": "0x8cf07b0",
+          "record": "0x9a04a60"
+        },
+        {
+          "name": "setupAppeared",
+          "type_reference": null,
+          "record": "0x9a04a6c"
+        },
+        {
+          "name": "retrySetup",
+          "type_reference": null,
+          "record": "0x9a04a78"
+        }
+      ]
+    },
+    {
+      "name": "ChatGPTPluginsDirectoryAction",
+      "descriptor": "0x9583290",
+      "accessor": "0xf202f0",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "sourceSelected",
+          "type_reference": "0x8cf0f08",
+          "record": "0x9a04f94"
+        },
+        {
+          "name": "homeCardBecameVisible",
+          "type_reference": "0x8cf39f4",
+          "record": "0x9a04fa0"
+        },
+        {
+          "name": "component",
+          "type_reference": "0x8cf3934",
+          "record": "0x9a04fac"
+        },
+        {
+          "name": "viewAppeared",
+          "type_reference": null,
+          "record": "0x9a04fb8"
+        },
+        {
+          "name": "refreshRequested",
+          "type_reference": null,
+          "record": "0x9a04fc4"
+        },
+        {
+          "name": "loadNextPage",
+          "type_reference": null,
+          "record": "0x9a04fd0"
+        },
+        {
+          "name": "searchTapped",
+          "type_reference": null,
+          "record": "0x9a04fdc"
+        }
+      ]
+    },
+    {
+      "name": "ChatGPTPluginsSearchAction",
+      "descriptor": "0x95832c8",
+      "accessor": "0xf20934",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "queryChanged",
+          "type_reference": "0x8d860d0",
+          "record": "0x9a05038"
+        },
+        {
+          "name": "focusChanged",
+          "type_reference": "0x8bfd810",
+          "record": "0x9a05044"
+        },
+        {
+          "name": "browse",
+          "type_reference": "0x8cf392e",
+          "record": "0x9a05050"
+        },
+        {
+          "name": "cancelTapped",
+          "type_reference": null,
+          "record": "0x9a0505c"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginConnectorSetupAction",
+      "descriptor": "0x9583300",
+      "accessor": "0xf20cfc",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "connectButtonBecameVisible",
+          "type_reference": "0x8d8e488",
+          "record": "0x9a05094"
+        },
+        {
+          "name": "appTapped",
+          "type_reference": "0x8d8e488",
+          "record": "0x9a050a0"
+        },
+        {
+          "name": "reconnectTapped",
+          "type_reference": "0x8d8e488",
+          "record": "0x9a050ac"
+        },
+        {
+          "name": "disconnectTapped",
+          "type_reference": "0x8d8e488",
+          "record": "0x9a050b8"
+        },
+        {
+          "name": "viewAppeared",
+          "type_reference": null,
+          "record": "0x9a050c4"
+        },
+        {
+          "name": "viewDisappeared",
+          "type_reference": null,
+          "record": "0x9a050d0"
+        },
+        {
+          "name": "primaryActionTapped",
+          "type_reference": null,
+          "record": "0x9a050dc"
+        },
+        {
+          "name": "dismissTapped",
+          "type_reference": null,
+          "record": "0x9a050e8"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginDetailScreenAction",
+      "descriptor": "0x958331c",
+      "accessor": "0xf0c9b4",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "globalEntrypointTapped",
+          "type_reference": "0x8d8b3a4",
+          "record": "0x9a05104"
+        },
+        {
+          "name": "defaultPromptTapped",
+          "type_reference": "0x8cf3834",
+          "record": "0x9a05110"
+        },
+        {
+          "name": "connectButtonBecameVisible",
+          "type_reference": "0x8d8e488",
+          "record": "0x9a0511c"
+        },
+        {
+          "name": "includedAppActionTapped",
+          "type_reference": "0x8cf1cdc",
+          "record": "0x9a05128"
+        },
+        {
+          "name": "includedAppToolsTapped",
+          "type_reference": "0x8d8e488",
+          "record": "0x9a05134"
+        },
+        {
+          "name": "skillTapped",
+          "type_reference": "0x8cf162c",
+          "record": "0x9a05140"
+        },
+        {
+          "name": "externalLinkTapped",
+          "type_reference": "0x8cf3872",
+          "record": "0x9a0514c"
+        },
+        {
+          "name": "viewAppeared",
+          "type_reference": null,
+          "record": "0x9a05158"
+        },
+        {
+          "name": "viewDisappeared",
+          "type_reference": null,
+          "record": "0x9a05164"
+        },
+        {
+          "name": "retryTapped",
+          "type_reference": null,
+          "record": "0x9a05170"
+        },
+        {
+          "name": "showAllSkillsTapped",
+          "type_reference": null,
+          "record": "0x9a0517c"
+        },
+        {
+          "name": "primaryActionTapped",
+          "type_reference": null,
+          "record": "0x9a05188"
+        },
+        {
+          "name": "planUpgradeTapped",
+          "type_reference": null,
+          "record": "0x9a05194"
+        },
+        {
+          "name": "toolsDismissed",
+          "type_reference": null,
+          "record": "0x9a051a0"
+        },
+        {
+          "name": "skillDetailsDismissed",
+          "type_reference": null,
+          "record": "0x9a051ac"
+        },
+        {
+          "name": "settingsTapped",
+          "type_reference": null,
+          "record": "0x9a051b8"
+        },
+        {
+          "name": "uninstallTapped",
+          "type_reference": null,
+          "record": "0x9a051c4"
+        },
+        {
+          "name": "creatorActionTapped",
+          "type_reference": null,
+          "record": "0x9a051d0"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginRemovalAction",
+      "descriptor": "0x9583344",
+      "accessor": "0xf215c4",
+      "kind": 18,
+      "fields": [
+        {
+          "name": "removalRequested",
+          "type_reference": "0x8cf07b0",
+          "record": "0x9a051ec"
+        },
+        {
+          "name": "confirmationCancelled",
+          "type_reference": null,
+          "record": "0x9a051f8"
+        },
+        {
+          "name": "removalConfirmed",
+          "type_reference": null,
+          "record": "0x9a05204"
+        },
+        {
+          "name": "retryTapped",
+          "type_reference": null,
+          "record": "0x9a05210"
+        },
+        {
+          "name": "feedbackDismissed",
+          "type_reference": null,
+          "record": "0x9a0521c"
+        }
+      ]
+    }
+  ],
+  "minimum_frontend_admission": {
+    "classification": "independent adapter design advice, not recovered backend behavior",
+    "can_restore": [
+      "Native directory parent, installed rail and source-specific section/empty/error branches.",
+      "Search uses dedicated FloatingSearchBar plus same browse content contract; keep query/focus/source/scroll identity.",
+      "Plugin detail header/title/subtitle/icon and optional content groups drawn from version-bound render model, with back navigation restoring browse state.",
+      "Capability-projected primary action/settings/removal controls emit accountID/pluginID/actionPluginID/request-scoped service intents and return explicit unsupported/failure until backend is connected."
+    ],
+    "do_not_claim": [
+      "Every plugin has install/uninstall/connect/disconnect controls.",
+      "A same-name Valdi page implements this native directory.",
+      "Enum metadata proves active actions, or requestGeneration field proves stale-result rejection."
+    ],
+    "unknown_actions_must_remain_explicit": [
+      "Exact component openPlugin dispatch to root.detail route consumer",
+      "Exact primaryAction calculation and coordinator dispatch",
+      "Installed/source localized label factories",
+      "Artwork fallback/style and full row dimensions",
+      "Search debounce/cancel/stale request policy"
+    ]
+  },
+  "next_minimum_evidence": [
+    {
+      "boundary": "Row selection to detail",
+      "next": "Trace actual action closure supplied to item Button0xee0f64 (not label0xf3ed48) through component handler to directory/root model route append(detail pluginID). Native route enum alone not sufficient."
+    },
+    {
+      "boundary": "Detail service controls",
+      "next": "Follow GPTPluginDetailScreenAction primaryActionTapped/settingsTapped/uninstallTapped consumers to ChatGPTPluginActionCoordinator with capability projection; do not derive controls from enum presence."
+    },
+    {
+      "boundary": "Labels",
+      "next": "Find installed rail.title and source title inputs at DirectoryViewModel projection, then use existing compressed string decoder."
+    }
+  ],
+  "evidence_prefix": "analysis/full-platform-20261104/ios-native-plugins-20261112-",
+  "limitations": [
+    "8-minute bounded static follow-up; stopped without full extraction.",
+    "All findings are293-specific and do not assert current official runtime branch selection, services or pixel equality.",
+    "No host modification, no build and no device operation."
+  ]
+}

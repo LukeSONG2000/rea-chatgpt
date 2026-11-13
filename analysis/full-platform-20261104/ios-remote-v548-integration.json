@@ -1,0 +1,107 @@
+{
+  "batch": "v548",
+  "date": "2026-11-07",
+  "status": "partial",
+  "scope": "Remote approval feedback frontend and committed Chinese input validation",
+  "findings": "ios-remote-v548-findings.json",
+  "tests": {
+    "r1-pinyin": {
+      "passedTests": 0,
+      "failedTests": 2,
+      "skippedTests": 0
+    },
+    "r2-pinyin": {
+      "passedTests": 0,
+      "failedTests": 2,
+      "skippedTests": 0
+    },
+    "r3-feedback": {
+      "passedTests": 4,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "r4-pinyin": {
+      "passedTests": 0,
+      "failedTests": 2,
+      "skippedTests": 0
+    },
+    "r5-pinyin": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "r6-regression": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    }
+  },
+  "latest_distinct_cases": {
+    "passed": 8,
+    "failed": 0,
+    "limitations": [
+      "Earlier pre-submission keyboard setup failures retained.",
+      "Only selected Chinese/light and English/dark combinations covered.",
+      "v547 manual CUA/autocorrection/stale-draft issue remains unconfirmed."
+    ]
+  },
+  "foundation": "passed",
+  "runtime": {
+    "version": "548",
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "launch": "local.rea.chatgpt.ioshost: 28391",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture"
+    ],
+    "signed": true,
+    "installed_sha256": "eb89ace19012c331b20e5036e4df296bde39ee82c314706e642ba35413d752ef",
+    "matches_build": true,
+    "appearance": "system",
+    "language": "system",
+    "visual_check": "Chinese light approval page observed in Device Hub, retained for user"
+  },
+  "independent_choices": [
+    "Synthetic feedback resolution and follow-on response",
+    "Existing independent replay messages and layout"
+  ],
+  "open": [
+    "Attachment submission",
+    "Full dynamic message projection",
+    "Reading anchors and process recovery",
+    "Official title/layout parity",
+    "Physical device and Android acceptance"
+  ],
+  "retention": "no stale targets",
+  "disk_available": "17 GiB",
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+      "sha256": "4ef39c1fe4eb43dc5f0067dbfbf24d0c50d1904bb4ee8937aaef3566b3d40249"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "sha256": "2365fb1cb423a4cd6185ecab26ec49d6b7f24a978550b630bb066af7de35d179"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "4ac96342d41641d3cbbc22b59dbe5933f872b2cad1fe7c044647a6f6c80725fc"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "4fff5fc862cef235269ba38aa834e99698f51175414d5455e0df73d562c2247c"
+    }
+  ],
+  "goal_status": "usageLimited",
+  "reset_card": "Earlier CUA attempt was rejected. Final read shows ordinary usage allowed and 98% remaining; prior capacity blocker is no longer current.",
+  "usage_recheck": {
+    "ordinaryUsageAllowed": true,
+    "usedPercent": 2,
+    "remainingPercent": 98,
+    "availableResetCredits": 0,
+    "observation": "Usage recovered on final read. This agent did not successfully invoke a reset action; origin of the change is unverified."
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Bounded Chat/Work composer and mode-header parent audit; no Remote or Orbit component substitution; no product changes",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "official_observations": [
+    {
+      "conclusion": "Chat has its own native MessageInput chain and owner-supplied slots; ordinary Remote controls cannot establish Chat/Work layout or capabilities.",
+      "source": [
+        "MessageInputView conform0x812c968/bodywitness0x4cb8c7c ->0x4cb7790",
+        "content call0x4cb79bc",
+        "MessageInputViewContent desc0x9674bd0/witness0x4cbc6dc ->wrapper0x4cb8cb0 ->callback0x4cb8cf0",
+        "inner type0x812f858"
+      ],
+      "evidence": [
+        "ios-composer-view-chain-v245.json",
+        "ios-composer-inner-content-metadata-v245.json"
+      ],
+      "slots": [
+        "leading",
+        "topComposerComponent",
+        "attachmentsTray",
+        "mode",
+        "input",
+        "trailing",
+        "trailingOutside",
+        "fullscreen",
+        "placeholder",
+        "inputOverlay",
+        "topAccessory",
+        "voiceSession"
+      ],
+      "limit": "These are typed inputs and direct call-chain observations; active supply/visibility of every slot remains unclosed."
+    },
+    {
+      "conclusion": "AssistantMode composer presentation is a separate input from selectedMode. It declares usesComposerMenuTextSurface/forcesDoubleLineComposer/forcesFullSimplifiedList. RenderState also supplies headerPresentation and independent capability-hiding flags.",
+      "source": [
+        "AssistantModeComposerPresentation desc0x96ced6c/accessor0x615ab6c",
+        "AssistantModeRenderState desc0x96ced88/accessor0x615ab78"
+      ],
+      "evidence": [
+        "ios-chat-v569-assistant-mode-fields.json",
+        "ios-chat-v569-findings.json"
+      ],
+      "limit": "Inventory does not prove that Work always forces double-line or that any particular model controls should be visible. Controller producer and final consumers of these fields remain the precise gap."
+    },
+    {
+      "conclusion": "Original mode-header content consumes a typed presentation with alternatives, rather than unconditional direct UISegmentedControl alone.",
+      "source": [
+        "AssistantModeRootHeaderModeContent desc0x9567110/conform0x7d13240/witness0x501520 ->0x501400",
+        "0x501418..438 reads presentation representation and dispatches via table0x7d048a5"
+      ],
+      "evidence": [
+        "ios-chat-work-composer-parent-20261113-mode-metadata.json",
+        "ios-chat-work-composer-parent-20261113-mode-witnesses.json",
+        "ios-chat-work-composer-parent-20261113-header.asm"
+      ],
+      "limit": "Branches are not semantically named from their raw discriminants. Current independent header144x44 cannot be promoted to recovered original geometry from these facts."
+    },
+    {
+      "conclusion": "AssistantModeSegmentedControl is a dedicated native SwiftUI View, with a Binding<AssistantMode>, environment dependencies and showsWorkUpgrade input.",
+      "source": [
+        "desc0x9604c9c/conform0x7fc0528/bodywitness0x2f95768 ->0x2f93ad0",
+        "bound selected field0x9aa844c",
+        "fields colorScheme/conversationNavigationBarType/displayScale/layoutDirection/tooltipTargetActivation/showsWorkUpgrade"
+      ],
+      "evidence": [
+        "ios-chat-work-composer-parent-20261113-mode-metadata.json",
+        "ios-chat-work-composer-parent-20261113-mode-witnesses.json",
+        "ios-chat-v569-findings.json"
+      ],
+      "limit": "showsWorkUpgrade is not proven to be a universal Work capability. Parent assignment remains unknown."
+    },
+    {
+      "conclusion": "Dedicated mode control includes layered HStack/Color and a SwiftUIStyleguide opaque component, with allowsHitTesting/accessibilityHidden overlay composition. A separately called subconstructor contains SwiftUI Picker and SegmentedPickerStyle.",
+      "source": [
+        "body0x2f93ad0..0x2f93d4c",
+        "record0x7fbf6c0",
+        "record0x7fbf720",
+        "opaque0x971ee80 parentchain0x971ee60 ->0x971b66c ->module0x971b560 SwiftUIStyleguide",
+        "subconstructor0x2f94130 in bounded call inventory includes Picker/SegmentedPickerStyle"
+      ],
+      "evidence": [
+        "ios-chat-work-composer-parent-20261113-mode-tree.tree.txt",
+        "ios-chat-work-composer-parent-20261113-control-body.tree.txt",
+        "ios-chat-work-composer-parent-20261113-mode.asm",
+        "ios-chat-work-composer-parent-20261113-mode-calls.json"
+      ],
+      "limit": "Picker invocation belongs to its own subconstructor, not direct evidence the root always uses that style; no opaque style name invented. Exact selected runtime branch and sizes need full argument correlation before UI replacement."
+    },
+    {
+      "conclusion": "Already repaired compact Capsule behavior remains a separate source/host contour issue. Chat uses original height-conditional outer shape; exact selected Chat style and threshold producer remain unresolved.",
+      "source": [
+        "0x4cb9078 ->0x6081cb8",
+        "0x4cb90d4 ->0x60819dc",
+        "HeightConditionalShape desc0x96ca860/path0x606707c ->0x6066fd8"
+      ],
+      "evidence": [
+        "ios-chat-input-shape-20261112-findings.json",
+        "ios-chat-input-surface-20261112-witness.json",
+        "ios-chat-input-surface-20261112-body.asm"
+      ],
+      "limit": "Do not revisit the working compact capsule or use Remote inner radius24 as Chat proof. Default44 threshold is not effective selected-style proof."
+    }
+  ],
+  "current_host_findings": [
+    {
+      "owner": "NativeConversationHost.restoreAssistantMode/changeVisualMode",
+      "file": "implementation/ios/Sources/NativeConversationHost.swift:674",
+      "observation": "Selected mode is persisted and changes header selection/placeholder. No consumed AssistantModeComposerPresentation object or mode-specific toolbar slot producer is present here.",
+      "impact": "Work-specific surfaces/tools cannot be expected to appear simply because work is selected. Missing owner presentation supply is the gap, not merely a missing icon."
+    },
+    {
+      "owner": "NativeConversationHost.resizeEditor",
+      "file": "implementation/ios/Sources/NativeConversationHost.swift:631",
+      "observation": "Expansion currently derives solely from first responder/nonempty text/attachments; leading36 or12, max186 are documented independent policy. Mode presentation flags are not consumed.",
+      "impact": "Potential differences in Work input structure require producer+consumer proof before changing this policy. Do not equate forcesDoubleLineComposer name with Work=true."
+    },
+    {
+      "owner": "NativeConversationHost.updateComposerAction",
+      "file": "implementation/ios/Sources/NativeConversationHost.swift:660",
+      "observation": "Send/Stop/Voice uses last local turn active, text/attachments empty, photoImportID; colors use independent semantic pair and teal constant.",
+      "impact": "This implements a frontend action loop but does not restore original native primary-button render-state/style gates or source color supply. Confirm those owners before replacing values."
+    },
+    {
+      "owner": "NativeConversationHost.setup composer/header",
+      "file": "implementation/ios/Sources/NativeConversationHost.swift:250",
+      "observation": "Mode control144x44, field/button constraints, voice unavailable entry and memory label are independent UIKit composition. Source header has presentation alternatives and original dedicated SwiftUI control.",
+      "impact": "Current whole header/composer is not an executable recovered original component; visual refinements should target parent configuration rather than borrowing Remote toolbar/UI."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "evidence": [
+      "ios-composer-container-metadata-v242.json",
+      "ios-composer-decision-owners-v253.json",
+      "ios-chat-work-composer-parent-20261113-mode-calls.json"
+    ],
+    "observation": "MessageInputContainer and view-model inventory contain hapticEngine fields. No explicit trigger is proved for mode selection/send/stop in the bounded current header/control consumers.",
+    "limit": "Field existence is not invocation. Shared helper and enclosing owner effects remain unclosed; do not add claimed-official haptics from the field name."
+  },
+  "can_restore_now": [
+    "Retain separate frontend inputs for selectedMode versus source-backed presentation/configuration; keep unavailable owner capability explicit.",
+    "Keep the proven native Chat MessageInput parent and slot boundaries in evidence/adapter contract, without importing Remote control inventory.",
+    "Preserve current capsule fix and conversation-scoped mode/draft/request identity; those do not need another contour patch."
+  ],
+  "precise_unknowns": [
+    {
+      "gap": "Actual AssistantModeController producer and modeSelected handling",
+      "next": "Resolve controller/context registration from ConversationViewModel composerAssistantModeSelectionController to render state. Current unsupported context is not a reason to infer defaults."
+    },
+    {
+      "gap": "usesComposerMenuTextSurface/forcesDoubleLineComposer/forcesFullSimplifiedList active consumer",
+      "next": "Bind original mode presentation fields to MessageInputContainer/Content construction before making Work-only controls."
+    },
+    {
+      "gap": "Original primary-button state/style and effective Chat colors",
+      "next": "Recover MessageInputPrimaryButtonPartStyle and its Chat producer; no global replacement from Remote."
+    },
+    {
+      "gap": "Dedicated segmented control final live branch and dimensions",
+      "next": "Close body output full type and subconstructor arguments/environment gating; avoid using geometry constants from decorative overlays as control bounds."
+    },
+    {
+      "gap": "Explicit haptic callbacks",
+      "next": "Find concrete mode/send/stop action consumer; no trigger proved in this bounded pass."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "build_or_tests": false,
+    "device_or_official_runtime": false
+  }
+}

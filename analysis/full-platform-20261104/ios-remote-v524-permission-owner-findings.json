@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "topic": "iOS293 permission picker owner, selected configuration and update boundaries",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": "Bounded static arm64 disassembly, Swift metadata and chained-fixup witness resolution. No official app or network execution.",
+  "findings": [
+    {
+      "id": "owner",
+      "evidence_type": "official_artifact_observation",
+      "status": "verified",
+      "claim": "CodexRemoteComposerConfigurationControls owns __isApprovalPickerPresented and presents the picker through its projected Bool binding. Generic VM requirement is BaseCodexThreadViewModel, descriptor95a99a4.",
+      "evidence": [
+        "Controls descriptor95ac868 generic requirement95ac8a0→95a99a4",
+        "Controls metadata+34 is field5 __isApprovalPickerPresented",
+        "19658bc..19658d4 loads field and LazyState projected binding",
+        "196594c..196596c supplies1c21e5c content closure to629d070",
+        "accessibility id88b32d0=codex-remote-approval-picker"
+      ]
+    },
+    {
+      "id": "open",
+      "evidence_type": "official_artifact_observation",
+      "status": "verified",
+      "claim": "Permission button action sets the owner presentation Bool true.",
+      "evidence": [
+        "19657c0..19657d8 button action1c2158c",
+        "1c2158c passesControls accessor1aa5848 and setter1812498",
+        "1daa488 setsw1=1 then1c29b4c",
+        "1812498 usesmetadata+34 and LazyState wrappedValue setter"
+      ]
+    },
+    {
+      "id": "selection_dispatch",
+      "evidence_type": "official_artifact_observation",
+      "status": "verified",
+      "claim": "Selection first sets presentation false synchronously, then calls the VM. Raw4 uses the separate custom callback, all other row raw values pass through the policy callback.",
+      "evidence": [
+        "builder1c2256c..1c22578 stores select closure1c225a8",
+        "1c225dc..1c225e4 setter1812498(false)",
+        "1c225f0 compare raw4",
+        "1c225f8..1c22600 witness+250 forraw4",
+        "1c22608..1c22610 witness+248(selectedraw) otherwise"
+      ]
+    },
+    {
+      "id": "thread_conformance",
+      "evidence_type": "official_artifact_observation",
+      "status": "verified",
+      "claim": "Concrete ThreadVM selects policy through18fa5ec and custom through18fa888.",
+      "evidence": [
+        "conformance7e0b6f8 type95aa8a4 protocol95a99a4 patterna504ab8",
+        "pattern+248=a504d00→19432a8→18fa5ec",
+        "pattern+250=a504d08→19432ac→18fa888"
+      ],
+      "limits": [
+        "The inherited table slot a504790 is zero in the on-disk generic witness pattern. It is not treated as a null runtime conformance. Binding uses the Controls generic requirement and concrete conformance metadata."
+      ]
+    },
+    {
+      "id": "synchronous_configuration",
+      "evidence_type": "official_artifact_observation",
+      "status": "verified",
+      "claim": "On the mutation branch, the VM updates local thread configuration synchronously before starting queued-message update work. Picker closure does not wait for service success.",
+      "evidence": [
+        "18fa654..18fa660 selects mutationclosure1c412fc and invokes1938880",
+        "1c4130c..1c41324 reads selectedraw, replaces configuration+160, zeroes+188 and writes+1c0=1",
+        "custom18fa944..18fa954 selects1c411b8; closurecopies custom configuration into+160 andwrites+1c0=1",
+        "19388c4 executes mutation closure on configurationcopy",
+        "19388e8 configuration comparison24527cc",
+        "1938904→1d9a70c→18d8b3c before1938908→192ad4c",
+        "getter18e14c0 readsVM+28",
+        "setter18d8b80..18d8b88 writesVM+28 on equality path, alternateobservableclosure1c405bc writesVM+28 at1c405e0..1c405e8"
+      ],
+      "limits": [
+        "18fa618 and18fa8c0 have a Bool guard through244e158. Exact semantic name of that guard remains unresolved. A selected row may close the sheet then take a no-op branch.",
+        "Record offsets+160/+1c0 are established; their complete schema field names are not assigned here.",
+        "SwiftUI rerender timing and rollback behavior have no runtime validation."
+      ]
+    },
+    {
+      "id": "entry_gate",
+      "evidence_type": "official_artifact_observation",
+      "status": "partial",
+      "claim": "Entry enablement depends on VM witness+a8, concrete1942f04→18e3e20 readingVM+21.",
+      "evidence": [
+        "19655a0 witness+a8, 19655c4..cc inverted Boolean used to disable control",
+        "a504b60→1942f04",
+        "18e3e48 returnsVM+21",
+        "VM field metadata includes _hasLoadedThreadConfiguration atindex2"
+      ],
+      "limits": [
+        "Field name to physical offset+21 not independently proven here. Treat as the explicit VM gate, not presumed connectivity.",
+        "Icon label entry1965fa0 and row styling are owned by companion v524 style/rows analysis."
+      ]
+    },
+    {
+      "id": "queued_update",
+      "evidence_type": "official_artifact_observation",
+      "status": "partial",
+      "claim": "Local configuration changes trigger updateAppServerQueuedMessageSettingsIfNeeded(). The update is asynchronous and has explicit error handling.",
+      "evidence": [
+        "1938908→192ad4c",
+        "192ae28 taskdescriptor7e14e98→1c3b524→192ae9c",
+        "192ad4c gates on state/available context and creates task stored viaVM runtimeoffsetslotb1e7dc8",
+        "async continuation192aee4 conditionally obtainscontext1915d40 then invokes service through192b030→ac8914",
+        "192af84 chooseserrorcontinuation192b080,192b034 chooseserrorcontinuation192b118",
+        "192b0b8 and192b150 reference88b63c0 updateAppServerQueuedMessageSettingsIfNeeded()",
+        "192b1b0 references88b63f0 Failed to update queued message settings"
+      ],
+      "limits": [
+        "The service owner and argument schema atac8914 are unresolved.",
+        "Error branch calls4dc124 and shared reporting helpers. Exact error classification and user-visible presentation remain unknown.",
+        "Inspected error continuations contain no direct picker reopen or local-configuration rollback. This is not proof that every downstream observer lacks rollback.",
+        "This is queued-message settings update, not evidence of general persistence or effective execution permission acknowledgement."
+      ]
+    },
+    {
+      "id": "other_propagation",
+      "evidence_type": "official_artifact_observation",
+      "status": "partial",
+      "claim": "Both standard and custom selection also invoke18fa764, ending in a dynamic service callback atwitness+138.",
+      "evidence": [
+        "18fa748 and18faa4c→18fa764",
+        "18fa780..18fa78c loadsVM dependencyvia runtimeoffsetslotb1e8038",
+        "18fa860..18fa874 invokes dependency witness+138 with projected policy/configuration/context"
+      ],
+      "limits": [
+        "Dependency concrete type, method identity and service acceptance/denial result are unresolved. Do not claim picker changes execution authority."
+      ]
+    }
+  ],
+  "implementation_boundary": {
+    "supported_frontend_fixture": "Explicit synthetic owner may close picker, update its own selected configuration, and reflect selection on reopen. Keep fixture mode and no connected service identifiable.",
+    "authority": "Official UI selection expresses requested configuration. Effective tool execution permission belongs to the connected executor/service. This analysis does not prove that selecting Full Access grants remote or local OS permission.",
+    "failure": "Do not report remote settings applied until an adapter has a matching acknowledgement. Official picker dismissal alone supplies no such acknowledgement.",
+    "layout": "Existing v523 context-style-format findings locate permissionsControl in expanded toolbar. Ordinary compact branch does not consume configuration slots. No new compact special branch was proven here."
+  },
+  "unresolved_next_actions": [
+    "BindVM dependency from runtimeoffsetslotb1e8038 and witness+138 at18fa874 to its concrete service protocol.",
+    "Traceac8914 only if integrating queued-message settings transport and bind error reporting helpers to observable UI state.",
+    "Bind244e158 guard semantic name before claiming every selection always mutates.",
+    "Map loaded-configuration metadatafield toVM+21 if naming entrygate in recovered contract."
+  ],
+  "evidence_files": [
+    "ios-remote-v524-permission-owner-config-closures.asm",
+    "ios-remote-v524-permission-owner-config-closures.json",
+    "ios-remote-v524-permission-owner-config-setter.asm",
+    "ios-remote-v524-permission-owner-config-update.asm",
+    "ios-remote-v524-permission-owner-config-update.json",
+    "ios-remote-v524-permission-owner-entry-gate.asm",
+    "ios-remote-v524-permission-owner-local-helpers.asm",
+    "ios-remote-v524-permission-owner-local-store.asm",
+    "ios-remote-v524-permission-owner-persist-capture.asm",
+    "ios-remote-v524-permission-owner-persist-result.asm",
+    "ios-remote-v524-permission-owner-persist-tail.asm",
+    "ios-remote-v524-permission-owner-select.asm",
+    "ios-remote-v524-permission-owner-sheet-builder-tail.asm",
+    "ios-remote-v524-permission-owner-sheet-builder.asm",
+    "ios-remote-v524-permission-owner-sheet-final.asm",
+    "ios-remote-v524-permission-owner-strings.json",
+    "ios-remote-v524-permission-owner-vm-select.asm",
+    "ios-remote-v524-permission-owner-vm-witness.asm",
+    "ios-remote-v524-permission-owner-witnesses.json"
+  ],
+  "reused_evidence": [
+    "ios-remote-v523-controls-body.asm",
+    "ios-remote-v523-context-owner-metadata.json",
+    "ios-remote-v523-controls-producer.asm",
+    "ios-remote-v516-new-thread-vm-conformances.json",
+    "ios-remote-v523-context-style-format-findings.json"
+  ]
+}

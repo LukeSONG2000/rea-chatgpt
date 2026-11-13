@@ -1,0 +1,65 @@
+{
+  "device": "00008150-001E34E93A12401C",
+  "device_name": "Luke's iPhone Air",
+  "bundle": "local.rea.chatgpt.ioshost",
+  "version": "1",
+  "executable_sha256": "54a169f21a3224014ad648e200b0b79718fe928a68fcb28c17cca62dea19234b",
+  "build": "succeeded",
+  "install": "succeeded",
+  "launch": {
+    "deviceIdentifier": "5998651F-A691-5FB2-A351-40FBCBA8081B",
+    "launchOptions": {
+      "activatedWhenStarted": true,
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--chat-state-profile=preview",
+        "--remote-draft-profile=preview"
+      ],
+      "environmentVariables": {
+        "TERM": "dumb"
+      },
+      "platformSpecificOptions": {},
+      "startStopped": false,
+      "terminateExistingInstances": true,
+      "user": {
+        "active": true
+      }
+    },
+    "process": {
+      "auditToken": [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        99124,
+        0,
+        285092
+      ],
+      "executable": "file:///private/var/containers/Bundle/Application/807AAD8E-A0B7-4C93-9582-963E78E0D04E/REAChatGPTHost.app/REAChatGPTHost",
+      "processIdentifier": 99124
+    }
+  },
+  "scope": "current source, offline core preview; no new scroll-to-bottom implementation",
+  "left_running": true
+}

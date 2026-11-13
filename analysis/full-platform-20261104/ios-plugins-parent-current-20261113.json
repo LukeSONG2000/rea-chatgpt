@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T13:23:16.561207+08:00",
+  "module": 9,
+  "scope": "Plugins whole frontend package only; iOS primary, Android unchanged",
+  "status": "implemented_core_loop_with_explicit_original_gaps",
+  "baseline": {
+    "version": "iOS 1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "current_artifact_hash_verified": true
+  },
+  "previous_snapshot": "ios-sidebar-features-parent-current-20261113-r3.json",
+  "previous_goal_turn_classification": "no progress: verified existing sidebar work, no new implementation; resumed the next authorized major module here",
+  "implemented": [
+    "Retained sidebar -> directory/sources/installed/search/detail/action/loading/empty/failure/retry/refresh/return core loop.",
+    "Restored source-owned description3-line/accessibility-size/one-way expansion plus original label/AX/secondary/accent resources. Actual-fit measurement and body font/gradient paint are explicit host adapters.",
+    "Explicit local connect/disconnect receipt replay, default adapter still unavailable; exact scope/display ID/action ID/revision, duplicate suppression and stale receipt isolation.",
+    "Refresh installed membership after accepted operation; canonical disconnected entity cannot reappear through an older installed list.",
+    "Search uses actual native cancel event rather than inferring cancellation from focus/presentation. Source cancel clears query/focus/search anchor; directory anchor retained. Detail return preserves query; cancel/reopen clears it.",
+    "Original Settings destination proved separate ConnectorsView grouped Form; existing returnable unavailable entry retained instead of routing to unrelated directory."
+  ],
+  "source_reports": [
+    "ios-plugins-detail-fifth-20261113-findings.json",
+    "ios-plugins-settings-fifth-20261113-findings.json",
+    "ios-plugins-search-fifth-20261113-findings.json"
+  ],
+  "independent_adaptations": [
+    "UISearchBarDelegate/sizeThatFits/bottom-safe-area carrier and native artwork/material are platform adapters, not recovered FloatingSearchBar internals.",
+    "Final search pop remains a host route adapter; original root pop/inline-dismiss owner is unknown.",
+    "Full-vs-three-line SwiftUI text measurement, body font, gradient opacity stops/base paint and rectangle hit shape are adapters; original MinimumTapTargetShape geometry is unknown.",
+    "Fixture catalog, sources, permissions, local receipt mutations and revision/cache rules are independent frontend contract, not official service schema.",
+    "No new unproved haptics or animations added."
+  ],
+  "not_implemented": [
+    "Original Settings connections list sections/order/visibility and exact directory presentation consumer.",
+    "Complete detail prompts/information/skills/tools/screenshots and original management/setup/authorization branches.",
+    "Original directory projector, remote light/dark icon loading, full FloatingSearchBar and original refresh task/repository graph/opaque outer style.",
+    "Description original fonts/measurement/paint/hit geometry and plugin-specific haptic callers.",
+    "Actual plugin install/auth/settings/try-in-chat/tool execution, business backend and provider persistence; local replay resets on app process creation.",
+    "Physical gesture/keyboard/material fidelity, dark/English/a11y visual matrix; this batch intentionally uses Chinese/light.",
+    "Icon cold-start preserving launcher-selected profile/fixture configuration remains unproved; AppDelegate still branches on CLI flags."
+  ],
+  "verification": {
+    "contracts": {
+      "record": "ios-plugins-fifth-20261113-contract-final.log",
+      "result": "passed",
+      "command": "implementation/ios/test-plugins.sh"
+    },
+    "connection_description_journey": {
+      "result": "passed",
+      "record": "ios-plugins-fifth-20261113-r2.xcresult",
+      "seconds": 27.077,
+      "coverage": [
+        "description read-more and expansion",
+        "synthetic connect/detail/back/installed rail",
+        "disconnect removes installed item",
+        "sidebar/reentry retains current catalog state"
+      ],
+      "later_changes": "Only independent search carrier/cancel ownership changed afterward; description and connection functions unchanged. Final current contract suite passed."
+    },
+    "search_journey": {
+      "result": "passed",
+      "record": "ios-plugins-fifth-20261113-r5.xcresult",
+      "seconds": 48.229,
+      "coverage": [
+        "native first-responder/search input",
+        "positive result/detail/back preserves query",
+        "empty result",
+        "actual Cancel returns directory",
+        "source filter",
+        "plugin-specific settings unavailable/Back",
+        "sidebar/reentry retains source",
+        "cancel/reopen starts empty query"
+      ]
+    },
+    "failed_attempts": {
+      "r1": "connection passed32.347s; native searchable cancel missed return to directory",
+      "r2": "connection passed27.077s; isSearching observer also missed cancel",
+      "r3": "lifecycle reset incorrectly closed search on detail Back; reverted",
+      "r4": "native carrier returned/typed query, test incorrectly expected Cancel text取消 but actual system button AX label关闭; corrected test to observed native label"
+    },
+    "initial_contract_compile": "First contract compile failed on throwing expression inside precondition autoclosure; corrected, retained original log.",
+    "screenshots_viewed": [
+      "ios-plugins-fifth-20261113-r2-attachments/44C63417-0EF9-4D37-AACF-F9B56B279BA1.png",
+      "ios-plugins-fifth-20261113-r2-attachments/998D3A21-D426-4870-B84E-4E72F8FEFE28.png",
+      "ios-plugins-fifth-20261113-r5-attachments/C6AC6DA8-1837-4586-BE5F-FE64FEFA48CB.png",
+      "ios-plugins-fifth-20261113-r5-attachments/B4EA2D7B-C64B-4537-B2AB-CE56E8514F08.png"
+    ],
+    "keyboard_limit": "First responder, AX keyboard presence and text input exercised. Search screenshot does not display an onscreen keyboard, so rendered keyboard geometry/IME interaction are not claimed visually accepted."
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/FrontendPlugins.swift": "1021f9196402a7faa77ee5a47830c5c71ecf4ed1c2319b1a2d96171cb6e01474",
+    "implementation/ios/Sources/NativePluginsPage.swift": "8c59ea3af6e499ef87c8484612890a8f89da6d5e341d73a55fab1c413e611298",
+    "implementation/ios/Sources/OfficialText.swift": "72bfe83d3abf74754e7d67917d33e6ae7af5196306446e6e4e4ad3cfcd3a7500",
+    "implementation/ios/Resources/OfficialTranslations.json": "94364b724ab8e8191c52da249d638a6333e2bf9b21ca4260d83c4eff6f0aba49",
+    "implementation/ios/Tools/core-preview.json": "f89745646ff49007892648d254f8d5d476168dd41cdff08efcce43bbc782c95d",
+    "implementation/ios/UITests/HostInteractionTests.swift": "e154c75f5e0ed856ed52e37b1c2f34c484fe0829294d62a4a92e426b22e8d97c",
+    "implementation/ios/Tests/Plugins/main.swift": "6427a9e38288b466279a6000f1f16e3c73f162d1e411d94e891b8b713c303193",
+    "implementation/ios/test-plugins.sh": "a7715f5589762bbb7608189f2cdca8ba81d1a18f424a9e4917e31d721088fe63",
+    "implementation/ios/Tools/prepare-official-text.py": "8cf93718e5a20fb72e218154742517930d3d3af7ae37cdc2f1d8466a1a562440"
+  },
+  "runtime": {
+    "simulator": {
+      "record": "ios-plugins-fifth-simulator-20261113.json",
+      "pid": 63160,
+      "installed_hash_match": true,
+      "kept_running": true,
+      "executable_sha256": "101b193fcc9889806913b02c433cfaa64d0a41c748afe107332c619f9e59f919"
+    },
+    "device": {
+      "record": "ios-plugins-fifth-device-review-20261113.json",
+      "build": "succeeded",
+      "strict_codesign": "passed",
+      "install": "success",
+      "launch": "success",
+      "pid": 19759,
+      "process_container_matches_new_install": true,
+      "kept_running": true,
+      "device_ui_automated_after_launch": false,
+      "profile_preserved": "5E169943-333A-4273-A553-F4D1BD4BE46D"
+    }
+  },
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  },
+  "next_major_module": "Core host delivery integration: normal app-icon cold-start, profile/capability selection, process restart and root-page recovery. Existing AppDelegate CLI-only selection is a concrete gap; do not expand other sidebar packages."
+}

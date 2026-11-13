@@ -1,0 +1,289 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "classification": "static artifact observation plus bounded static inference; no target execution",
+  "component": {
+    "section_descriptor": "0x958a050",
+    "section_fields": [
+      "viewModel"
+    ],
+    "body_chain": [
+      "0x108c3ac",
+      "0x108c0e0"
+    ],
+    "content_descriptor": "0x958b95c",
+    "content_fields": [
+      "isLoggingOut",
+      "actionHandler"
+    ],
+    "content_chain": [
+      "0x108c7d0",
+      "0x108c3b4",
+      "0x108c40c"
+    ],
+    "action_type": "SwiftToolbelt.Handler<ChatGPTSettings.SettingsSignOutSectionAction>",
+    "action_enum_descriptor": "0x958d04c",
+    "action_enum_cases": [
+      "logOutTapped"
+    ]
+  },
+  "structure": {
+    "return_type_record": "0x7d96d40",
+    "parent": "SwiftUIStyleguide.SettingsSection",
+    "button_initializer_site": "0x108c534",
+    "button_role": {
+      "value": "destructive",
+      "getter_chain": [
+        "0x108c4c8",
+        "0xadb994",
+        "0x7c469d8"
+      ],
+      "binding_slot": "0xaacfde0",
+      "import": {
+        "symbol": "_$s7SwiftUI10ButtonRoleV11destructiveACvgZ",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 7831,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    "button_style": "PlainButtonStyle, return typeref7d96d40 and application108c578",
+    "label_initializer_site": "0x108c67c",
+    "label_content": "Label<Text,Image> with RTL flipping and common foreground style",
+    "title_chain": [
+      "0x11727e4",
+      "0x108c5ec",
+      "0x108c790",
+      "0x75daa94"
+    ],
+    "title_key": "Log out",
+    "image_chain": [
+      "0x108c79c",
+      "0x74f9404",
+      "0x74f9430",
+      "0x74f9440"
+    ],
+    "image_literal_address": "0x8a562a0",
+    "image_resource": "OpenAI/Symbols/open-base-arrow-right",
+    "image_initializer_import": "DeveloperToolsSupport.ImageResource(name:bundle:)",
+    "foreground_chain": "0x108c680 and0x108c7b4 call0x74f11e0;sharedtail7503644 completes13byte smallstring OneOff/Red500",
+    "alignment": "leading getter108c6a4; center getter108c71c for overlay",
+    "hit_shape": "Rectangle per typeref7d96d40",
+    "limits": [
+      "Precise SettingsSection material, insets and geometry not recovered here",
+      "Resource name proves icon identity; rendered asset mapping is separate"
+    ]
+  },
+  "busy_state": {
+    "input": "isLoggingOut",
+    "getter": "0x108c120 loads byte after observable access;0x108c0fc writes first content field",
+    "label_opacity": "108c704 tstbit0;108c708=1;108c710 selects0when nonzero;108c718 writesopacity",
+    "progress": "108c730 branches onbit0;true108c734 calls9592f28a target7549160;typeref overlay OAIProgressView vsEmptyView",
+    "enabled_transform": "108c5d8 callback44ab38→1225d0; reads capturedbusy andexistingisEnabled, computesexisting & ~busy",
+    "implication": "busy hides label content under progress and disables button; does not remove whole SettingsSignOutSection"
+  },
+  "interaction_chain": {
+    "tap_handler": "0x4c89b0 invokes Handler captured closure;root closure1147dd4→108c158",
+    "tap_analytics": {
+      "load": "0x108c188",
+      "literal": "Tapped log out button"
+    },
+    "queued_presentation": {
+      "type": "PresentationQueue<SettingsViewModel.Presentation> via factory119c920→7d8e4a8",
+      "enqueue_site": "0x108c2cc→0x7552974",
+      "packed_value_store": "0x108c250..254 writes0x8000000000000000 tosp+a8",
+      "enum_metadata": "0x9589d0c has2payloadcases+5emptycases; declaration includes logOutConfirmation asfirstempty",
+      "classification": "static inference backed by actual dispatch, not general ABI guessed case index"
+    },
+    "presentation_dispatch": {
+      "owner": "0x10e6e70",
+      "code": "10e6f54 shifts topbits62;empty branch10e7050 eor0x8000000000000000 then ror3; firsttablebyte7d8666b=0; packedvalue above dispatches10e7074",
+      "title_site": "0x10e70d4→75dac04",
+      "title_variants": "factory75dac20 checks optionalstringx1;nil→literal8a5b010;present→8a5b030 formattingas%@",
+      "confirm_button_title_site": "0x10e70e8→75daa94",
+      "confirmation_callback": "0x10e7140..144 passes1149d60;1149d84 calls10e7f04",
+      "alert_presentation": {
+        "initializer": "0x62a7d80",
+        "type_accessor": "0x62d007c→0x62ba5e4",
+        "descriptor": "0x96dc434",
+        "type": "ChatGPTPresentation.AlertPresentation",
+        "preferredStyle_write": "0x62a8040 w8=1;0x62a8044 stores[x22+0x50]",
+        "role": "caller10e715c setsw6=1;helper62a7e84 testsw6 then62a7e8c destructivegetter",
+        "cancel_title": "0x10e7124→0x11a64dc→0x75d21c4 (Cancel)",
+        "cancel_role": "helper0x62a7f58 importsSwiftUI.ButtonRole.cancel"
+      }
+    },
+    "confirmed_operation": {
+      "function": "0x10e7f04",
+      "duplicate_guard": "10e7fe8→108c120;10e7ff0 branchesend ifbusy",
+      "busy_transition": "10e8010w0=1;10e8018→10efab4",
+      "analytics_literal": "10e8034→8888e40:Confirmed log-out alert",
+      "save_login_behavior": "10e80e4→8888e60:save_login_info_behavior",
+      "async_boundary": "10e83e8..3f0 async task creation; serviceexecution intentionally out ofscope"
+    },
+    "save_login_note": "8888640 save_login_option_presented is a logged literal in tap path, not proof of a separate visible save-login choice panel. Full save-login UI/decision defaults remain unknown."
+  },
+  "labels": {
+    "source": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings",
+    "shared_keys_sha256": "02c051431cfc9f5c4b54d1459688bd95c5cd7c864fc8645c1db48652412182a8",
+    "zh_sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+    "values": {
+      "Log out": {
+        "index": 1620,
+        "zh": "退出登录"
+      },
+      "Log out of ChatGPT?": {
+        "index": 1622,
+        "zh": "要退出登录 ChatGPT 账号吗？"
+      },
+      "Log out of ChatGPT as %@?": {
+        "index": 1621,
+        "zh": "要退出登录 ChatGPT 账号（%@）吗？"
+      }
+    }
+  },
+  "password_icon_supplement": {
+    "label_source": "1088f7c→literal8888720 orbit_passwords_title; false gate1088f78 skips",
+    "label_resource_call": "0x1088fc4→0x74f8040",
+    "resource_literal_load": "0x74f806c..70→0x8a55930",
+    "resource": "OpenAI/Symbols/key",
+    "initializer": "0x74f807c importedDeveloperToolsSupport.ImageResource(name:bundle:)",
+    "recommendation": "reuse officialkey asset for positive capability branch; preserve showPasswordManager gate"
+  },
+  "root_boundary": "Main agent separately tracing10e07c0/7d901b0/7d90208 common trailing SignOutSection. This child does not infer root/account visibility from type membership alone.",
+  "minimum_implementation": {
+    "can_restore": [
+      "original Log out label/Chinese translation",
+      "original open-base-arrow-right icon",
+      "grouped SettingsSection entry once rootplacement proved",
+      "tap→confirmation title and Log out action",
+      "busy disables duplicate action and shows progress",
+      "native alert presentation with original confirmation title, destructive Log out and Cancel role"
+    ],
+    "service_boundary": "confirm submits an explicit frontend sign-out operation; disconnected adapter must report unavailable/failure and keep account data; do not fake service sign-out success",
+    "not_proven": [
+      "exact system/controller host material and animation",
+      "separate save-login choice UI and defaults",
+      "complete error/retry presenter",
+      "full account signed-out visibility policy"
+    ]
+  },
+  "evidence_files": [
+    "ios-settings-signout-detail-20261112-types.json",
+    "ios-settings-signout-detail-20261112-content-witnesses.json",
+    "ios-settings-signout-detail-20261112-type-7d96d40.json",
+    "ios-settings-signout-detail-20261112-window.json",
+    "ios-settings-signout-detail-20261112-icon-window.json",
+    "ios-settings-signout-detail-20261112-presentations.json",
+    "ios-settings-signout-detail-20261112-caller-refs.json",
+    "ios-settings-signout-detail-20261112-confirmation.asm",
+    "ios-settings-signout-detail-20261112-confirmation-window.json",
+    "ios-settings-signout-detail-20261112-save-login.asm",
+    "ios-settings-signout-detail-20261112-password-row.asm",
+    "ios-settings-signout-detail-20261112-password-icon-window.json",
+    "ios-settings-signout-detail-20261112-alert-type.json",
+    "ios-settings-signout-detail-20261112-alert-init-window.json",
+    "ios-settings-signout-detail-20261112-helper-windows.asm",
+    "ios-settings-signout-detail-20261112-foreground-correction.json"
+  ],
+  "failed_bounded_probes": [
+    "inspect_swift_class_fields cannot parse SettingsViewModel class fieldkind1; no parser change or inferred offsets",
+    "BSS fieldslots b164570/b164980 are notfilebacked; no runtime values claimed",
+    "rawtype8d4959e unsupported symbolic kind; actual associated body typeref8d495a6 parses normally"
+  ],
+  "corrections": [
+    {
+      "previous_incorrect": "OnOff/Red50",
+      "corrected": "OneOff/Red500",
+      "cause": "Earlier manual abbreviation decoded neither full first-register text nor shared tail MOVK; asset lookup miss is real and must not fall back as restored style",
+      "proof": {
+        "steps": [
+          {
+            "address": "0x74f11e0",
+            "instruction_le_hex": "e0c98dd2",
+            "register": "x0",
+            "operation": "movz",
+            "immediate": "0x6e4f",
+            "shift": 0,
+            "register_after": "0000000000006e4f"
+          },
+          {
+            "address": "0x74f11e4",
+            "instruction_le_hex": "a0eca9f2",
+            "register": "x0",
+            "operation": "movk",
+            "immediate": "0x4f65",
+            "shift": 16,
+            "register_after": "000000004f656e4f"
+          },
+          {
+            "address": "0x74f11e8",
+            "instruction_le_hex": "c0ccccf2",
+            "register": "x0",
+            "operation": "movk",
+            "immediate": "0x6666",
+            "shift": 32,
+            "register_after": "000066664f656e4f"
+          },
+          {
+            "address": "0x74f11ec",
+            "instruction_le_hex": "e045eaf2",
+            "register": "x0",
+            "operation": "movk",
+            "immediate": "0x522f",
+            "shift": 48,
+            "register_after": "522f66664f656e4f"
+          },
+          {
+            "address": "0x74f11f0",
+            "instruction_le_hex": "a18c8cd2",
+            "register": "x1",
+            "operation": "movz",
+            "immediate": "0x6465",
+            "shift": 0,
+            "register_after": "0000000000006465"
+          },
+          {
+            "address": "0x74f11f4",
+            "instruction_le_hex": "a106a6f2",
+            "register": "x1",
+            "operation": "movk",
+            "immediate": "0x3035",
+            "shift": 16,
+            "register_after": "0000000030356465"
+          },
+          {
+            "address": "0x7503644",
+            "instruction_le_hex": "0106c0f2",
+            "register": "x1",
+            "operation": "movk",
+            "immediate": "0x30",
+            "shift": 32,
+            "register_after": "0000003030356465"
+          },
+          {
+            "address": "0x7503648",
+            "instruction_le_hex": "01a0fdf2",
+            "register": "x1",
+            "operation": "movk",
+            "immediate": "0xed00",
+            "shift": 48,
+            "register_after": "ed00003030356465"
+          }
+        ],
+        "x0_bytes_le": "4f6e654f66662f52",
+        "x1_bytes_le": "65643530300000ed",
+        "small_string_count_nibble": 13,
+        "decoded_utf8": "OneOff/Red500",
+        "shared_tail_branch": "0x74f11f8 →0x7503644;0x750364c→0x74f1744"
+      },
+      "authority": "original293 instruction bytes; no asset-name inference",
+      "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "batch": "v522",
+  "status": "partial",
+  "authority": "official-artifact-static-instructions-and-Swift-metadata",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Bounded thread shared input capability mapping. Reuses v509/v510 consumer evidence. No production edit or live capability/service observation.",
+  "shared_consumer": {
+    "constructor_call": "0x1a23d0c ->0x197bfe4 CodexRemoteMessageInputView",
+    "layout_selector": "0x1985380..0x19853e8",
+    "compact": "0x1987900 ordinary branch0x1987ae8; attachment0x19863cc, trailing0x198a620",
+    "expanded": "0x1985c94/0x1985f04 attachment0x19863cc; trailing0x606e088 with whisper closure0x1c27f18 and primary0x1c27f6c",
+    "conclusion": "The thread creates the same parameterized input value consumed by the shared compact/expanded implementation. No separate thread-specific stripped toolbar is established by this call chain."
+  },
+  "constructor_fields": [
+    {
+      "name": "canStartRealtimeVoice",
+      "metadata_offset_entry": "0x54",
+      "store": "0x197c6d4..0x197c6e8",
+      "note": "Optional supplied flag coalesces raw2 to canSubmit; then masks bit0."
+    },
+    {
+      "name": "supportsPlanMode",
+      "metadata_offset_entry": "0x70",
+      "store": "0x197c738..0x197c744"
+    },
+    {
+      "name": "isPlanModeEnabled",
+      "metadata_offset_entry": "0x74",
+      "store": "0x197c748..0x197c750"
+    },
+    {
+      "name": "canTakePhotoAttachment",
+      "metadata_offset_entry": "0x80",
+      "store": "0x197c74c..0x197c758"
+    },
+    {
+      "name": "photoPickerScreenBuilder",
+      "metadata_offset_entry": "0x84",
+      "store": "0x197c75c..0x197c768"
+    },
+    {
+      "name": "whisperComponent",
+      "metadata_offset_entry": "0x8c",
+      "caller_stack": "SP+0xe8",
+      "store": "0x197c7ac..0x197c7b4"
+    },
+    {
+      "name": "preventsPromptSubmission",
+      "metadata_offset_entry": "0x90",
+      "caller_stack": "SP+0xf0",
+      "store": "0x197c7b8..0x197c7c0"
+    },
+    {
+      "name": "allowsSupplementaryWhisperButton",
+      "metadata_offset_entry": "0x94",
+      "caller_stack": "SP+0xf1",
+      "store": "0x197c7c4..0x197c7cc"
+    },
+    {
+      "name": "realtimeVoiceAction",
+      "metadata_offset_entry": "0x98",
+      "caller_stack": "SP+0xf8/+0x100",
+      "store": "0x197c7d0..0x197c7dc"
+    },
+    {
+      "name": "allowsCompactRunningTurnStopButton",
+      "metadata_offset_entry": "0x9c",
+      "caller_stack": "SP+0x108",
+      "store": "0x197c7e0..0x197c7e8"
+    }
+  ],
+  "stack_mapping": "Constructor prologue helper0x159298 subtracts0x60;197bff4 setsFP=SP+0x50. Thus calleeFP=callerSP-0x10; e.g. calleeFP+0x101 is callerSP+0xf1.",
+  "thread_parameterization": [
+    {
+      "name": "supplementary-and-compact-stop",
+      "status": "verified-static",
+      "formula": "allowsSupplementaryWhisperButton == allowsCompactRunningTurnStopButton == !BottomBars.usesRealtimeVoiceComposer",
+      "proof": [
+        "BottomBars descriptor95ae740 field9 usesRealtimeVoiceComposer => vector entry44",
+        "1a23694..98 loads field44 intow27",
+        "1a23750 eorw26,w27,#1;1a23754..58 savesFP-2dc",
+        "1a23bc4..bd0 forwards saved byte to callerSP108 andf1",
+        "197c080..84/197c098..9c copies args;197c7c4..cc and197c7e0..e8 assign named fields"
+      ]
+    },
+    {
+      "name": "realtimeVoiceAction",
+      "status": "verified-static-forwarding",
+      "proof": [
+        "1a23978 reads BottomBars field offset entry48",
+        "1a2397c..90 loads closure pair and savesFP-2f8/-300",
+        "1a23ad8..aec forwards callerSP100/f8",
+        "197c7d0..dc stores input field98"
+      ],
+      "limit": "Upstream action availability remains unproven in this bounded check."
+    },
+    {
+      "name": "preventsPromptSubmission",
+      "status": "partial-producer",
+      "proof": [
+        "1a23968..74 chooses zero orw26 based onx19>=3 and savesFP-220",
+        "1a23af0..f8 forwards callerSPf0",
+        "197c7b8..c0 stores input field90"
+      ],
+      "limit": "Predicate source enum/meaning intentionally unresolved. This caller does not hardcode unconditional true."
+    }
+  ],
+  "consumer_gates": {
+    "attachment": "inheritedIsEnabled && (hostSupportsRemoteAttachments && composerPresentation.allowsAttachments && !currentCommandIsGoal || supportsPlanMode || availableGoalWithoutObjective || availablePluginAutocompleteItem). See v510 offsets198ea18,19804f0,1990a48,1981640.",
+    "whisper": "!preventsPromptSubmission && allowsSupplementaryWhisperButton; injected whisperComponent receives codexActivation tag4 and callback handle.startWhisper raw26. Shared leaf retains state and inherited enabled gates.",
+    "primary_realtime": "realtimeVoiceAction exists && canStartRealtimeVoice && empty prompt && no attachment/context predicate19874b8 && !isLoadingAttachments && !isSending && !isRunningTurn && !isReconnecting. Otherwise send/stop selector197ff34; compact additionally gates compact-running-stop.",
+    "distinction": "Attachment menu support, actual attachment upload, Whisper dictation, realtime voice and send/stop are separately owned capabilities."
+  },
+  "integration_recommendation": {
+    "authority": "independent-fixture-design",
+    "decision": "An unconnected synthetic thread may explicitly supply ordinary composer state usesRealtimeVoiceComposer=false, attachment menu capability and idle Whisper state to exercise shared UI. Keep every supplied capability labelled synthetic and let unconnected actions return existing unavailable status.",
+    "limits": [
+      "Real host/VM capability producers and actual runtime injections remain unknown.",
+      "This does not establish voice recording/network behavior or live account availability.",
+      "Use thread ordinary style proven separately; shared consumer does not imply Home style values."
+    ]
+  },
+  "validation": {
+    "static": "verified against retained constructor and caller disassembly",
+    "official_runtime": "not run",
+    "device_visual": "not accepted",
+    "network": "not invoked"
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v479-approval-factory.asm",
+      "sha256": "0d1b23eb2c67dfa7d64ecb890fc79ce2780840e01db62f3741712f849c27596d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v519-composer-init.asm",
+      "sha256": "09977d059a1b01304bce8e86481782c02c493ece6aa9a97b46c97bb2d34564b8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-containers.json",
+      "sha256": "7a46bcea1069a2378eb5dae0fd3470410cac3f97c09a512ebb078c00258782cf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-composer-metadata.json",
+      "sha256": "f4b373cef5b32ca782d7f9c37f54ca6ddbc3bc1fe0c28e280bfaeb6dab0d0e6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-home-controls-findings.json",
+      "sha256": "47be4f271aaaaad514ddf7a8bb6e1485947e9a482bb32954cc6010f067addd36"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v510-home-controls-findings.json",
+      "sha256": "d03ba2d756feab97e51244e6661f1e818e9814f85cd8b69b28f4321083264fac"
+    }
+  ]
+}

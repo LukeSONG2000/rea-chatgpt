@@ -1,0 +1,209 @@
+{
+  "platform": "Android",
+  "version": "1.2026.293",
+  "status": "bounded-source-evidence",
+  "source_base": "recovered/android-1.2026.293/jadx-src/sources/defpackage",
+  "scope": "Settings root existing entries and General row implementation blockers",
+  "icons": [
+    {
+      "route": "general",
+      "descriptor": "y940.c",
+      "registry": "chx.u",
+      "source": "tuw.java:43-44",
+      "xml": "ds_gear_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    },
+    {
+      "route": "notifications",
+      "descriptor": "h440.c",
+      "registry": "ahx.Z",
+      "source": "ezu.java:42-43",
+      "xml": "ds_bell_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    },
+    {
+      "route": "voice",
+      "descriptor": "bi40.c",
+      "registry": "phx.l",
+      "source": "khx.java:26-27",
+      "xml": "ds_voice_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    },
+    {
+      "route": "codex",
+      "descriptor": "v740.c",
+      "registry": "bhx.e0",
+      "source": "ezu.java:52-53",
+      "xml": "ds_codex_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    },
+    {
+      "route": "browser",
+      "descriptor": "ca40.c",
+      "registry": "chx.z",
+      "source": "v5v.java:58-59",
+      "xml": "ds_globe_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    },
+    {
+      "route": "storage",
+      "descriptor": "ka40.c",
+      "registry": "chx.G",
+      "source": "oyw.java:42-43",
+      "xml": "ds_hard_drive_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    },
+    {
+      "route": "tasks",
+      "descriptor": "yg40.c",
+      "registry": "mhx.u0",
+      "source": "jhx.java:26-27",
+      "xml": "ds_tasks_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    },
+    {
+      "route": "data-layout-e-true",
+      "descriptor": "x240.c",
+      "registry": "ahx.n",
+      "source": "qhv.java:36-37",
+      "xml": "ds_archive_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    },
+    {
+      "route": "data-layout-e-false",
+      "descriptor": "og40.c",
+      "registry": "mhx.k0",
+      "source": "uxu.java:78-79",
+      "xml": "ds_storage_badge_gear_regular_24.xml",
+      "size_dp": 24,
+      "asset_exists": true
+    }
+  ],
+  "data_icon_condition": "nm50.java:243 z4=yct0.e selects archive when true, storage_badge_gear otherwise. Current host layout should explicitly select a justified branch.",
+  "findings": [
+    {
+      "id": "normal-row-chain",
+      "evidence": [
+        "iet0.java:3267",
+        "ri71.java:314-476"
+      ],
+      "claim": "SimpleSetting delegates to ri71.c common ListItem, retaining54dp minimum height from iet0.l and first/last section geometry from q081."
+    },
+    {
+      "id": "inner-metrics",
+      "evidence": [
+        "ri71.java:314",
+        "ri71.java:344",
+        "ri71.java:372",
+        "ri71.java:461",
+        "lim.java:118-133",
+        "ml51.java:3840-3842",
+        "pk40.java:26-35"
+      ],
+      "claim": "Row outer end padding12dp. Nonempty leading slot start16dp/end12dp. Root24dp icon gives52dp text start inside group. Empty leading slot collapses to20dp fallback width. Central text region vertical12dp. Trailing slot start4dp when nonempty, empty fallback4dp. The conditional padding helper pk40 avoids residual padding when both child dimensions are zero."
+    },
+    {
+      "id": "label-font",
+      "evidence": [
+        "ri71.java:424",
+        "qu90.java:7",
+        "on01.java:6",
+        "sk10.java:8-9"
+      ],
+      "claim": "Main label typography qu90.a→on01.a is16sp,24sp lineheight,0.1sp tracking,400 weight (alternate emphasized500), family preference Roboto/OpenAI Sans/sans-serif."
+    },
+    {
+      "id": "trailing",
+      "evidence": [
+        "q081.java:2318-2346",
+        "e640.java:9",
+        "b640.java:9",
+        "ygx.java:23-24",
+        "g8v.java:52-53",
+        "dr81.java:761-762",
+        "iet0.java:3229"
+      ],
+      "claim": "SettingsNavigationAccessory has4dp value/chevron gap. LTR ds_chevron_right_sm_regular_24; RTL ds_chevron_left_sm_regular_24, each24dp descriptor. Trailing slot tint uses i.e semantic token."
+    },
+    {
+      "id": "palette",
+      "evidence": [
+        "lim.java:1131",
+        "lim.java:1180",
+        "q5n.java:7-20",
+        "z3n.java:7-25",
+        "x0n.java:7-10",
+        "m2o0.java:57-64",
+        "opz0.java:180",
+        "bu.java:194"
+      ],
+      "claim": "Ordinary light/dark palette field mappings are closed. General uses Settings scaffold default c.g. Full settings-root outer navigation owner still not closed in this pass. High-contrast alternate palettes x0n.e/f exist and remain out of this scope."
+    },
+    {
+      "id": "border-divider",
+      "evidence": [
+        "q081.java:478-493",
+        "q081.java:513-515",
+        "q081.java:567-609",
+        "ldt0.java:127-149",
+        "q081.java:214-216"
+      ],
+      "claim": "Row background fallback c.a and stroke d.a1dp. z/z2 are first/last visible-row flags. q081.b fifth arg z3 controls outer outline. Standard q081 list calls ldt0.a with default bit128, making this outline true. Nonfirst row draws top separator across row width at q081:608 regardless of outline flag. This is not a selection-state rule. Unknown custom presentation override ybt0.a remains possible."
+    },
+    {
+      "id": "account-header-search",
+      "evidence": [
+        "igt0.java:165-221",
+        "nm50.java:140-170",
+        "yn7.java:169",
+        "a181.java:289-412"
+      ],
+      "claim": "Account section comes from account/provider data with capability/layout gates and variable position. Settings search owned by igt0.h1 tft0 and a181.c tagged SettingsSearchBar, composed from root yn7. Exact root account/header display geometry not recovered and not recommended for this patch."
+    }
+  ],
+  "normal_palette_tokens": {
+    "light": {
+      "c.a": "#FFFFFFFF",
+      "c.g": "#FFFCFCFC",
+      "d.a": "#1A000000",
+      "i.e": "#FF8F8F8F",
+      "n.c": "#FF0D0D0D",
+      "n.d": "#FF5D5D5D",
+      "n.e": "#FF8F8F8F"
+    },
+    "dark": {
+      "c.a": "#FF303030",
+      "c.g": "#FF000000",
+      "d.a": "#26FFFFFF",
+      "i.e": "#FFAFAFAF",
+      "n.c": "#FFFFFFFF",
+      "n.d": "#FFCDCDCD",
+      "n.e": "#FFAFAFAF"
+    }
+  },
+  "limitations": [
+    "No application implementation edits, builds or device actions.",
+    "JADX reports incorrectly decompiled portions of iet0/ri71/q081. Stable constants and explicit callsites were followed. Slot tint branch polarity for destructive/disabled variants requires smali verification.",
+    "Palette token values verified, exact root outer background owner not closed. General scaffold default background is confirmed.",
+    "Stock fonts cannot be claimed visually identical without platform font resolution checks.",
+    "No account/header/search feature expansion proposed."
+  ],
+  "source_sha256": {
+    "iet0.java": "5073372c9a1b146c2f882cd7e4adcc012463898060bf6328dd8ec52d20386ad8",
+    "ri71.java": "aed24f84b02b5a0f796e3bba4da279230069fa8f3069b98668cd8ad8dbef9049",
+    "q081.java": "83cc41ff271f54032f84ad2da85012daab388a57eb2a6cfd551489c60e9d962f",
+    "lim.java": "99bee934ff0a85ece1691654e536d128719f8b6b206754a83411ea1e31cea2c6",
+    "pk40.java": "1928876ff64d9514994bff49c56e603700fe8c99e22fcf5f11756e6bcafbd2f5",
+    "sk10.java": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed",
+    "nm50.java": "0644e6e8112a66043f41f372cb5462149150029e782202444780aee410086296",
+    "igt0.java": "1c08f5adc9a952f02f059912eb1c1ce83d7676e62725e766a64869936fa53cc2"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "version": 623,
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "scope": "Bounded static ordinary ConversationTopBar / Chat-Work header action recovery. No implementation, official app execution or device operations.",
+  "source_root": "recovered/android-1.2026.293",
+  "findings": [
+    {
+      "id": "temporary_action_identity",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/q1s.java:3256-3470",
+        "jadx-src/sources/defpackage/q1s.java:3476-3478",
+        "apktool-src/res/values/strings.xml:2655"
+      ],
+      "conclusion": "Right TempChatButton represents Temporary chat. It is not the settings route. q1s.m renders a 24dp icon selected by temporary state."
+    },
+    {
+      "id": "temporary_assets",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/k540.java:7",
+        "jadx-src/sources/defpackage/l540.java:6",
+        "jadx-src/sources/defpackage/ahx.java:86-88",
+        "jadx-src/sources/defpackage/tuw.java:31-32",
+        "jadx-src/sources/defpackage/g8v.java:42-43",
+        "jadx-src/sources/defpackage/ezu.java:46-47"
+      ],
+      "off": "composeResources/com.openai.kmp.platform.design.resources/drawable/ds_chat_bubble_dashed_regular_24.xml",
+      "on": "composeResources/com.openai.kmp.platform.design.resources/drawable/ds_chat_bubble_checkmark_dashed_regular_24.xml",
+      "conclusion": "Off has a 28dp resource alternative, but this header explicitly requests24dp."
+    },
+    {
+      "id": "visibility_jadx_correction",
+      "status": "verified_static_smali",
+      "evidence": [
+        "apktool-src/smali/e0s.smali:1695-1737",
+        "apktool-src/smali/e0s.smali:1745-1788",
+        "apktool-src/smali/v1s.smali:512-590",
+        "jadx-src/sources/defpackage/t2f.java:18-22",
+        "jadx-src/sources/defpackage/q1s.java:1298"
+      ],
+      "conclusion": "JADX q1s.a nested e0s inverted c(). Smali requires v1s.c()==true AND NOT(v17 OR previous-v14 OR v23 OR e0s.h) for the k0s TempChatButton branch. v1s.c() itself is b==null AND o!=y0b0.l AND !O AND (t!=t2f.c OR h) AND (!k OR h). t2f.b=Chat, t2f.c=Tpp. Therefore ordinary non-temporary Work/Tpp has no TempChatButton. Chat visibility remains conditional on other source state.",
+      "limitations": "Exact user-facing names/producer semantics of b,o,O,k and all captured suppression booleans are not fully closed. Keep those identities rather than replace with guessed universal rules."
+    },
+    {
+      "id": "temporary_click",
+      "status": "verified_static_smali",
+      "evidence": [
+        "apktool-src/smali/e1s.smali:73-162",
+        "jadx-src/sources/defpackage/q1s.java:1192",
+        "jadx-src/sources/defpackage/q1s.java:1309-1330",
+        "jadx-src/sources/defpackage/akr.java:29",
+        "jadx-src/sources/defpackage/c6s.java:302-306",
+        "jadx-src/sources/defpackage/iny0.java:156-176",
+        "jadx-src/sources/defpackage/ez81.java:289-302",
+        "jadx-src/sources/defpackage/bkr.java:28-30"
+      ],
+      "conclusion": "z3 guard (h && k) first opens TemporaryChatSingleIconDialog. Otherwise permitted flag i||(h&&k)||(h&&j) sends cqq(!h), then hmy0 to iny0 state owner. Unsupported uses tooltip. Confirmation action emits hnq(null,false,47). No settings navigation occurs in this chain.",
+      "limitations": "Persistent/history semantics of iny0 subbranches and exact dialog button text are outside this bounded closure. Independent host state must be labeled as frontend adaptation."
+    },
+    {
+      "id": "header_surface",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/opz0.java:560-561",
+        "jadx-src/sources/defpackage/opz0.java:642-647",
+        "jadx-src/sources/defpackage/opz0.java:715-716",
+        "jadx-src/sources/defpackage/lh7.java:62-68",
+        "jadx-src/sources/defpackage/to60.java:790-816",
+        "jadx-src/sources/defpackage/q1r0.java:6-10",
+        "jadx-src/sources/defpackage/lim.java:1131",
+        "jadx-src/sources/defpackage/lim.java:1180"
+      ],
+      "conclusion": "TopAppBar left and right slots wrap ElevatedContent to60.c with defaults495. Background q5n.c.a (normal Light#FFFFFFFF/Dark#FF303030), foreground q5n.n.c, rounded50% shape q1r0.a. Inner IconButton inherits f140 style from yva/lh7. Shadow is supplied sit0 style; default e.",
+      "limitations": "Exact sit0 shadow rendering/elevation remains unclosed. Do not invent a Material elevation value or equate inner transparency with absence of parent circle."
+    },
+    {
+      "id": "header_button_geometry",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/q1s.java:18",
+        "jadx-src/sources/defpackage/bbv0.java:22",
+        "jadx-src/sources/defpackage/q1s.java:869",
+        "jadx-src/sources/defpackage/q1s.java:2731",
+        "jadx-src/sources/defpackage/sk60.java:8",
+        "jadx-src/sources/defpackage/ohz.java:29-30",
+        "jadx-src/sources/defpackage/nbm0.java:948-970",
+        "jadx-src/sources/defpackage/nbm0.java:998-1013",
+        "jadx-src/sources/defpackage/hwa.java:1640-1644",
+        "jadx-src/sources/defpackage/lim.java:1131",
+        "jadx-src/sources/defpackage/lim.java:1180"
+      ],
+      "conclusion": "Ordinary custom left menu has explicit44dp clipped circle. Right TempChat wrapper q1s.d sizes to sk60.c, default48dp. nbm0 BasicIconButton medium inner min42dp is inside that48dp wrapper, not the outer diameter. Its f140/ota background q5n.e.d.a.d is transparent in normal light/dark, while parent ElevatedContent supplies visible circle."
+    },
+    {
+      "id": "menu_icon_and_destination",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/q1s.java:272-300",
+        "jadx-src/sources/defpackage/q1s.java:752-817",
+        "jadx-src/sources/defpackage/q1s.java:884-896",
+        "jadx-src/sources/defpackage/q1s.java:3141-3225",
+        "jadx-src/sources/defpackage/hf40.java:7",
+        "jadx-src/sources/defpackage/mhx.java:32",
+        "jadx-src/sources/defpackage/gcv.java:68-69",
+        "jadx-src/sources/defpackage/q1s.java:2970-2984"
+      ],
+      "conclusion": "Ordinary custom left path uses q1s.k SidebarMenuIcon drawing24dp, not generic hamburger: rounded2dp horizontal strokes x4..20 y8 and x4..14 y16, with RTL and250ms sidebarBadge animation. Simple q1s.i path uses ds_sidebar_menu_regular_24. Back-context flag selects i340/g340 arrow instead. Ordinary click calls supplied function03; back-context uses o1s(die0). Badge enabled by !back && callback!=null && v1s.n && supplied availability callback.",
+      "limitations": "Caller providing ordinary sidebar function03 should be preserved from shell. No evidence supports replacing it with settings. Badge trigger producer and full drawer transition remain separate."
+    },
+    {
+      "id": "center_mode_owner",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/q1s.java:1035",
+        "jadx-src/sources/defpackage/l3f.java:527-656"
+      ],
+      "conclusion": "q1s delegates center to l3f.h, which consumes o3f/m3f state; null selected t2f hides picker. Toggle selected only when passed z && title string==null, otherwise dropdown. Both branches use shared function13 mode state callback.",
+      "limitations": "Upstream feature flags selecting header variants and model availability are not inferred from screenshot. Header reconstruction should keep explicit synthetic capability selection."
+    }
+  ],
+  "implementation_guidance": [
+    "Replace incorrect home settings action with source-backed temporary-chat action in ordinary Chat state.",
+    "Hide temporary action for ordinary non-temporary Work/Tpp per smali.",
+    "Use original dashed/checkmark assets at24dp and source circle wrapper semantics.",
+    "Keep frontend temporary state isolated from server capability; preserve unsupported/confirmation states as capability-specific followups.",
+    "Preserve sidebar settings entry and custom left menu callback; include missing shadow/badge/runtime branch details in remaining-work list."
+  ],
+  "unknowns": [
+    "Full upstream feature/experiment producer selecting ordinary versus alternate headers",
+    "All captured e0s suppression state names",
+    "Actual sit0.e shadow rendering",
+    "Temporary dialog exact wording and backend/history semantics",
+    "Full drawer open/close animation and badge producer"
+  ]
+}

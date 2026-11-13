@@ -1,0 +1,39 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifactSHA256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "officialObservations": [
+    {
+      "symbol": "CodexRemoteFileCitationMarkdownPlugin",
+      "parser": "0x19c5f44..0x19c65c0",
+      "scheme": "codex-file-citation",
+      "schemeLiteral": "0x88ff270",
+      "schemeRecord": "0xa5c7660",
+      "schemeStorage": "0xb07dc60",
+      "query": "first path item value; first line item parsed as optional signed Int",
+      "pathComparison": "0x19c6154..0x19c6178",
+      "lineComparison": "0x19c6244..0x19c6264",
+      "constructorCall": "0x19c650c",
+      "evidence": "ios-remote-v613-file-citation-plugin.asm"
+    }
+  ],
+  "hostGap": {
+    "renderer": "NativeInlineRenderer admits only HTTP(S) and Remote file scheme",
+    "route": "RemoteMessageLinkDestination lacks codex-file-citation",
+    "preview": "Existing scoped loader and cancel/retry/return owner can be reused"
+  },
+  "implementationDecision": "Decode query fields with URLComponents, dispatch the original path as an opaque scoped resource identifier, carry optional lineNumber into the preview request and retry. Reject empty or NUL identifiers in the independent resource adapter. Preserve existing file URL policy.",
+  "independentAdaptations": [
+    "Original path is a resource identifier; full official path normalization remains unresolved",
+    "Native attributed link instead of official inline citation card",
+    "Resource provider, loading/errors and QuickLook host"
+  ],
+  "notImplemented": [
+    "Inline citation card styling",
+    "Line/range positioning in QuickLook",
+    "Full official path normalization",
+    "Web search source cards",
+    "Android citation consumer"
+  ],
+  "upstream": "analysis/upstream-codex-20261105/reuse-map.json; c90354172c5c49535b122443e9a8ed52c2233b80; mobile UI not established as public source"
+}

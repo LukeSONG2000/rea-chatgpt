@@ -1,0 +1,83 @@
+{
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "speed_enum": {
+    "descriptor": "0x95d184c",
+    "field_descriptor": "0x9a610f0",
+    "fields": [
+      {
+        "ordinal": 0,
+        "record": "0x9a61100",
+        "name": "standard"
+      },
+      {
+        "ordinal": 1,
+        "record": "0x9a6110c",
+        "name": "fast"
+      },
+      {
+        "ordinal": 2,
+        "record": "0x9a61118",
+        "name": "ultrafast"
+      }
+    ]
+  },
+  "resources": {
+    "0x8a52d30": "OpenAI/Feature/TabGroup/lightning-bolt",
+    "0x8a542c0": "OpenAI/Symbols/bolt-on-bolt"
+  },
+  "meter_body_type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x8234740",
+    "mangled_address": "0x93964ce",
+    "length": 35,
+    "mangled_hex": "0249ae730179022ba4730179536241417901505833000283a173014747025ca1730147",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad1318",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15ModifiedContentVMn"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad0900",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI13PhaseAnimatorVMn"
+      },
+      {
+        "offset": 17,
+        "kind": 1,
+        "target": "0x96cbd30",
+        "resolved_context": "0x96cbd30",
+        "label": "ChatGPTMessageInputUI.MessageInputThinkingEffortMeter"
+      },
+      {
+        "offset": 22,
+        "kind": 2,
+        "target": "0xaad0668",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI12_ScaleEffectVMn"
+      },
+      {
+        "offset": 29,
+        "kind": 2,
+        "target": "0xaad0648",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI12_FrameLayoutVMn"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  }
+}

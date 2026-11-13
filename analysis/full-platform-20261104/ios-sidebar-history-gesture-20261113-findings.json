@@ -1,0 +1,300 @@
+{
+  "status": "verified-static-owner-and-admission-partial-full-policy",
+  "scope": "One bounded iOS293 HistoryTimestampRevealRow / HistoryTimestampRevealGesture / actual HistoryViewController collection carrier question; no product/build/device changes",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "version": "1.2026.293"
+  },
+  "official_observations": [
+    {
+      "id": "row-is-layout-consumer",
+      "conclusion": "HistoryTimestampRevealRow is not a per-row SwiftUI drag/edit action. Its fields are timestamp, revealState, currentDate, content, calendar, locale and timeZone; its View body returns HistoryTimestampRevealLayout<Content>. The selected body does not install DragGesture or tap actions.",
+      "evidence": [
+        "row metadata9594160",
+        "View conformance7db4930 body12446c0 ->1243d78",
+        "Body type8d98b66 ->HistoryTimestampRevealLayout descriptor9594af0",
+        "HistoryCell parent1238c50 onward wraps padded HistoryCellContent inHistoryTimestampRevealRow"
+      ]
+    },
+    {
+      "id": "shared-controller-owner",
+      "conclusion": "The HistoryViewController owns one timestampRevealState and lazy HistoryTimestampRevealGesture, injected into its native collection view. It is not conditional on a local conversation ID or row editing ability in this actual factory.",
+      "evidence": [
+        "controlleracc47a8 ivar timestampRevealState storageadb95f8, timestampRevealGesture storageadb9600",
+        "getter129997c ->128903c constructor suppliescontroller timestampRevealState",
+        "collection getter1297c98 ->129997c;1297c9c..7cac reads its pan and1297cb0 addGestureRecognizer tocollection"
+      ]
+    },
+    {
+      "id": "native-recognizer",
+      "conclusion": "HistoryTimestampRevealGestureacc46d8 holds revealState andpanGestureRecognizer. It constructs UIPanGestureRecognizer, registers handlePanGesture:, assigns itself delegate and maximumNumberOfTouches1.",
+      "evidence": [
+        "1289068 importslot aac6218 UIPanGestureRecognizer",
+        "12890bc..90c4 addTarget action",
+        "12890d8 setDelegate",
+        "12890e8..90ec maxTouches1",
+        "objc class exact delegatesShouldBegin1289234 ->12891a0 and simultaneous12892f4 ->1289268"
+      ]
+    },
+    {
+      "id": "direction-dominance-admission",
+      "conclusion": "ShouldBegin rejects non-own recognizer or missing attached view, then requires abs(vx)>3*abs(vy) and positive logical-leading motion. LTR accepts vx>0; RTL accepts vx<0. This is timestamp reveal admission, not universal sidebar drag or delete admission.",
+      "evidence": [
+        "12891bc..91dc recognizer identity/view guards",
+        "12891e4 velocityInView:",
+        "12891f0 effectiveUserInterfaceLayoutDirection",
+        "12891f8..920c abs(vx)>3abs(vy)",
+        "1289210..9220 layoutDirection1 negatesvx then >0"
+      ]
+    },
+    {
+      "id": "simultaneous-boundary",
+      "conclusion": "Its simultaneous delegate returns true only for ownpan as firstrecognizer, attached view dynamically cast toUIScrollView, and otherrecognizer equal to that scrollview.panGestureRecognizer. It does not authorize simultaneous root-sidebar closing.",
+      "evidence": [
+        "1289278..9288 ownpan compare",
+        "128929c view;12892b0..92c0 UIScrollView dynamiccast",
+        "12892c8 fetch scrollviewpan;12892e0..92e4 identitycompare"
+      ]
+    },
+    {
+      "id": "state-and-end",
+      "conclusion": "Began records Date.now into the shared state; movement produces progress from horizontal translation and DynamicType-scaled base60; ended/cancelled/failed use shared reset-to-zero path. This is a transient timestamp reveal, not navigation.",
+      "evidence": [
+        "12893cc state;12893d0..d8 states3/4/5 ->128949c",
+        "1289404..9420 statebegan1 ->Date.now setter1243b18",
+        "1289450 literal60 scaledValueForValue compatibleWithTraitCollection",
+        "1289478 translationInView;1289484 layoutDirection;128948c progresshelper1289338;1289490 progresssetter1243ab0",
+        "128949c..94d0 ->reset1289100;128914c zeroes progress via1243ab0 orwithAnimation path135e7a8"
+      ]
+    }
+  ],
+  "actual_cell_carrier": {
+    "type": "HistoryViewController.HistoryCollectionViewCell",
+    "class": "acc4a98",
+    "super": "UICollectionViewCell from retained official metadata",
+    "methods": "traitCollection,preferredLayoutAttributesFittingAttributes,initWithFrame,initWithCoder,cxx_destruct",
+    "conclusion": "No ObjC custom tap/drag handler in this carrier. Gesture belongs to controller-level collection; fitting policy investigated separately by parent."
+  },
+  "selection_boundary": {
+    "verified": "UICollectionView shouldSelect selector12a6fbc forwards to12a6ec4. That selected core examines item/capability representation, then12a13c0, not timestamp progress or a local-ID prefix.",
+    "limit": "Exact UIKit failure/touch-cancellation relationship between nativecollection selection, root side-menu recognizer andtimestamp pan is not completely closed. No explicit setCancelsTouchesInView, tap displacement threshold or rootrequire(toFail:) was found in this actualpan constructor. Default UIKit cancellation must not be labeled a bespoke recovered policy.",
+    "source": "history-shouldselect.json;history-selection-core.asm"
+  },
+  "host_findings": {
+    "snapshot": "NativeConversationHost.swift trailingSwipeActionsConfigurationProvider uses swipeActions(at:), which guards offline-local IDs and projectID nil; this gates rename/delete rather than a recovered timestamp gesture.",
+    "decision": [
+      "Keep rename/delete availability independent; do not unlock edits forfixtureA/B merely to permit timestamp reveal.",
+      "Restore one collection-owned timestamp pan with shared progress consumed by all mapped history rows.",
+      "Use recovered direction/dominance and own-scrollpan simultaneous identity rule, preserving RTL.",
+      "Ensure a recognized row/list pan cannot also activate didSelect/openChat orroot-close; any additional tap displacement guard or failure requirement must be labeled independent host policy until originalroot relation is closed.",
+      "Use synthetic nonpersonal timestamps for fixtures; no real history reads."
+    ],
+    "not_proved": "The UI test created.swipeRight closingSidebar can be an admission/selection-host defect. Static evidence alone does not determine which actual local recognizer or tap fired; parent must record actual device/runtime route."
+  },
+  "unknown": [
+    "Exactroot side-menu versus timestamp-pan failure precedence.",
+    "Complete per-item eligibility for timestamp layout variants beyond mapped HistoryCell rows.",
+    "Exact rubber-band progress function and text layout displacement; selected helper1289338 calls764d718 but not fully reconstructed.",
+    "Original per-row menu/edit permissions and backend semantics outside this task."
+  ],
+  "validation": {
+    "static_only": true,
+    "product_edited": false,
+    "build": false,
+    "device": false,
+    "official_runtime": false
+  },
+  "evidence_manifest": [
+    {
+      "path": "actual-collection-pan-attachment.asm",
+      "sha256": "3538ebf98225a108b4407b15a972c66d7b436579da1d8837fd61b5fc6f47fe59",
+      "bytes": 1126
+    },
+    {
+      "path": "actual-collection-pan-attachment.json",
+      "sha256": "8c89ceb72a25b3b5fddb9974f243f65faad31ebbd7fd1a935263370fb4f79ff8",
+      "bytes": 2101
+    },
+    {
+      "path": "gesture-getter-callers.json",
+      "sha256": "46a8c8328cd1c4f1705f892a8ea1041842d7199fc7eec61d6158b6e891449a0f",
+      "bytes": 105
+    },
+    {
+      "path": "gesture-storage-targeted-xrefs.json",
+      "sha256": "c44e989d82963495e00cd60c4e1b408b0a3bfc7944fb4cfed9e52a10a5dee64d",
+      "bytes": 105
+    },
+    {
+      "path": "history-cell-exact.json",
+      "sha256": "4b43485408216f8f9e410c4099ea82345e538382c64ef76ab56868a7b3315e2d",
+      "bytes": 1831
+    },
+    {
+      "path": "history-controller-exact.json",
+      "sha256": "c30ba31aeb73dc9c2356dbfd78c330ea0ebcf22d87925ebae8adc901a483d29c",
+      "bytes": 22020
+    },
+    {
+      "path": "history-selection-core.asm",
+      "sha256": "20c0f09b1f7bcd1aede9655bbf21b937590462157be5ffe55d8dcb6b8534c305",
+      "bytes": 3198
+    },
+    {
+      "path": "history-selection-core.json",
+      "sha256": "e83295c6d201baf1e3fdb6de9cad5cd19cae1679bdb62b52546bcdd42d0d3987",
+      "bytes": 1899
+    },
+    {
+      "path": "history-shouldselect.asm",
+      "sha256": "223211f4f3694d378509b27af94b7c3135187263b589d9debe219aedffc85727",
+      "bytes": 3471
+    },
+    {
+      "path": "history-shouldselect.json",
+      "sha256": "23ddbca3c27ea59bb3ab24d0a8fc4d852c81faf33dff283924d3fba880d5de2b",
+      "bytes": 4285
+    },
+    {
+      "path": "history-viewdidload-core.json",
+      "sha256": "eecdda81bf6f718af0e9d1ffa47d6c954f4ad30d1fe87745122db55a7c6a2136",
+      "bytes": 96839
+    },
+    {
+      "path": "history-viewdidload.asm",
+      "sha256": "655afb400b9e14b2bc9dc4cad5ce3f4e01ac21ff81eb2e6ceb34dac6238335a4",
+      "bytes": 1605
+    },
+    {
+      "path": "history-viewdidload.json",
+      "sha256": "ac5af501a5ad3ffae62b927fa919ae3cd81c342609febe9d9059cb45b46e6e6e",
+      "bytes": 1997
+    },
+    {
+      "path": "retained-metadata-selected-classes-trimmed.json",
+      "sha256": "ba35370b294a61662cf384cbc7aa233c9a9666d401bab1cce6bf41b4ed0baaf1",
+      "bytes": 1156
+    },
+    {
+      "path": "retained-metadata-selected-classes.json",
+      "sha256": "44f7ba70cda5a515fdb5e7a2ef1ea6871fabd3990d81760f6a40fee902487674",
+      "bytes": 995446
+    },
+    {
+      "path": "revealstate-descriptor.json",
+      "sha256": "8c4c73685a9cf520ace9c0bad85e2e9b78ff258f6f44f8dbb294329dbb6b3e95",
+      "bytes": 401
+    },
+    {
+      "path": "revealstate-progress.asm",
+      "sha256": "f2d6620c1be8b538873f9ca5a5f41e08f84f279bd12756f1a80c52ca41b851a8",
+      "bytes": 8825
+    },
+    {
+      "path": "revealstate-progress.json",
+      "sha256": "62f728a21cc3caa906d96c0ed83d4927b3f6bf134836b3ab448065bf8dc9dfda",
+      "bytes": 5033
+    },
+    {
+      "path": "row-body-dispatch.asm",
+      "sha256": "93868f62788980fec176f95e1d949017edafbc68cb929e845f1000558bdeb7de",
+      "bytes": 935
+    },
+    {
+      "path": "row-body-dispatch.json",
+      "sha256": "c149ad20e1512a8089b196beadded50f4d559de2d3c5e026173371e040ea5e2f",
+      "bytes": 1676
+    },
+    {
+      "path": "row-body-type.json",
+      "sha256": "a3042eca2072c93b90c838f193a8df94c5a82e1f0d7812c2ed7092f8429bc657",
+      "bytes": 945
+    },
+    {
+      "path": "row-body.asm",
+      "sha256": "a1193fb2ccefbea116c858fe1c6db127ff6d29e18c8f5b117b61a69a3f22fa15",
+      "bytes": 29098
+    },
+    {
+      "path": "row-body.json",
+      "sha256": "bc8c19747bdc4e96eabc4ec5babe4720ed7aff6a82429063209c11ed2c8ac527",
+      "bytes": 31569
+    },
+    {
+      "path": "row-revealstate-type.json",
+      "sha256": "f82daf261d6ec3c362bcbfd4ef3cc91bd44a26bd37d3a4e1158aaecfffd944ec",
+      "bytes": 755
+    },
+    {
+      "path": "row-view-witness.json",
+      "sha256": "4e76117b1a3b43b99ce76a59910020331ad6b7556e711f930302954652b7f08b",
+      "bytes": 4613
+    },
+    {
+      "path": "selected-import-bindings.json",
+      "sha256": "959c1546d83217d4e59cd96e4ef2d4d0535bdaf4aff3727998888bb699e084d9",
+      "bytes": 668
+    },
+    {
+      "path": "selected-metadata.json",
+      "sha256": "fdd2162596de06a32ff03a5b8095b4db54e9419354828a52f9c4a272df958481",
+      "bytes": 4340
+    },
+    {
+      "path": "timestamp-gesture-attachment.asm",
+      "sha256": "b17df5f9886655dadd623d881464db202bff3eab63f979a27e1d5cfca2179a2e",
+      "bytes": 3006
+    },
+    {
+      "path": "timestamp-gesture-attachment.json",
+      "sha256": "3a59585444c534955ce861dbf242aa72c9e2e568fc690c28d81241473527b0a6",
+      "bytes": 3594
+    },
+    {
+      "path": "timestamp-gesture-class.asm",
+      "sha256": "529584aaad9a2a374eb0dbb763fb1d14988aa08872439b54affe30cb4c2181a4",
+      "bytes": 750
+    },
+    {
+      "path": "timestamp-gesture-class.json",
+      "sha256": "594b93ca704f684d9492078060b1e7c9b8d870fa3aa192af93d2215b5c61ad8a",
+      "bytes": 1025
+    },
+    {
+      "path": "timestamp-gesture-constructor.asm",
+      "sha256": "ef8744ada7d1fb0dfb5079e5102e6d2dcfc7711e1d7c7941748414cee3f805cd",
+      "bytes": 13596
+    },
+    {
+      "path": "timestamp-gesture-constructor.json",
+      "sha256": "58624f8780d207b904ab1aba4306c139630cc4b1ed3e69db0c7fc1d3c8e579ee",
+      "bytes": 13014
+    },
+    {
+      "path": "timestamp-gesture-getter.asm",
+      "sha256": "565971003eb8aef2e0dbf5d28c24251ebb48e78d47b1880846827ae3faabceeb",
+      "bytes": 6112
+    },
+    {
+      "path": "timestamp-gesture-getter.json",
+      "sha256": "78d95c8b590f681c0cb32978bdd8db9e95ca77ca5e3112695f7ea46d3e1c33ec",
+      "bytes": 4200
+    },
+    {
+      "path": "timestamp-gesture-objc-class.json",
+      "sha256": "ecae0ddb4e30f87c6932b42f95636feb7476d11e4c1bbe1d093f40999ba005a3",
+      "bytes": 1777
+    },
+    {
+      "path": "timestamp-gesture-tail.asm",
+      "sha256": "aa54c277be8cdf882f36e99f616f2eb56d1465d9a201dc61d998a4b659479b88",
+      "bytes": 3066
+    },
+    {
+      "path": "timestamp-gesture-tail.json",
+      "sha256": "7a0b92dbf64b1eb3a1e4e8d37f95e06a2ca9998e1c851544091908b54ffd46d6",
+      "bytes": 2557
+    }
+  ]
+}

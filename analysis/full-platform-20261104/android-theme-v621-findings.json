@@ -1,0 +1,89 @@
+{
+  "version": 621,
+  "platform": "Android",
+  "artifact_version": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "artifact_digest_source": "Existing frozen inventory, not recomputed in this increment",
+  "evidence_type": "artifact_static",
+  "source_files": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/gm.java",
+      "sha256": "5818662dcbe2d61eedd54377b840aab4a8bcbde9c553936ca2bc965d2b8aa02b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/s5n.java",
+      "sha256": "cdf3a66cf359a234b7130542521bc65b0a047d598f38a3f977a8e590c227adec"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java",
+      "sha256": "99bee934ff0a85ece1691654e536d128719f8b6b206754a83411ea1e31cea2c6"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/hmb0.java",
+      "sha256": "c9f58b7956b5090a1f2ab3b7df1e2486ed6efe5c6026ae18c58e7560e070f4be"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/m2o0.java",
+      "sha256": "060ffadb1e612f23f261bf1b2eb43768206e5c50bb4eb520216e36802aeb8e2d"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java",
+      "sha256": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/l3f.java",
+      "sha256": "07d6cae89f682d0381292f53f055cff55f12bafbcae0475aed4d9a76295fb42f"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/cr71.java",
+      "sha256": "13a1331d9454d2dda5cc7f2df698b89115d07cfe115b63a8ee594edeb6e1da51"
+    }
+  ],
+  "findings": [
+    {
+      "id": "material-theme-bridge",
+      "source": "m2o0.b -> gm.invoke default:92-130 -> s5n constructor/toString; lim.h/l normal palettes; hmb0.t:2479-2480",
+      "expected": "Full neutral semantic color mapping, derived tonal surfaces, original error/outline/scrim colors",
+      "host_gap": "FrontendTheme v620 sets only background/surface/primary/onPrimary/surfaceContainer. All remaining fields inherit Material defaults. This affects selected chips, drawer labels, field containers and supporting text.",
+      "implementation_action": "Restore the 36 ordinary ColorScheme roles from the normal light/dark 293 mapping, including the exact logarithmic elevation overlay formula.",
+      "limitation": "High-contrast modes and per-component accent owner remain unresolved. Typography is separately supplied by original parent. Material version in independent host differs from original."
+    },
+    {
+      "id": "chat-work-control",
+      "source": "l3f.f:327-437 -> cr71.g:1190-1216,1402-1441; sk10.e/f",
+      "expected": "Shared segmented pill with text measurement, bounded cell widths, 44dp track, 4dp inset and selection transition",
+      "host_gap": "Two independent Material FilterChip controls",
+      "implementation_action": "Track exact ordinary-home parent configuration before replacing controls; inspected k8p0.h is WorkTabUpsellToggle and cannot prove ordinary-home configuration.",
+      "limitation": "Ordinary home call-site choice, optional icon/label accent and feature gates unresolved"
+    },
+    {
+      "id": "composer-parent",
+      "source": "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt ShellHome",
+      "host_gap": "Independent rounded Surface and Material TextField with separate backgrounds and generic control spacing",
+      "implementation_action": "Trace official ordinary composer surface/field/toolbar owners before geometry changes",
+      "limitation": "Exact original ordinary-home parent unresolved"
+    }
+  ],
+  "runtime_before": "android-shell-v620-oneplus-r4 and android-shell-v620-remote-regression-r4 record functional passes and screenshots. They do not establish official fidelity.",
+  "status": "partial",
+  "production_change": "implemented in FrontendTheme.kt; normal 36-role Material bridge only",
+  "validation": [
+    {
+      "report": "android-shell-v621-oneplus-r1.json",
+      "result": "passed",
+      "tests": [
+        "source palette regression and preferences",
+        "launcher shell journey zh-light/en-dark including Remote appearance",
+        "process restart recovery"
+      ],
+      "screenshots_inspected": [
+        "home-zh-light.png",
+        "sidebar-en-dark.png"
+      ],
+      "limitations": [
+        "No official Android runtime was opened. No same-version visual comparison performed.",
+        "Only shell 3-test suite rerun for v621. The independent Remote 3-test list suite passed on v620, and v621 shell checks cover Remote entry and return in both appearances."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "Simulator Target Bundle": "local.rea.chatgpt.ioshost",
+  "aps": {
+    "alert": {
+      "title": "前端通知回放",
+      "body": "打开设备 B 的合成任务"
+    }
+  },
+  "rea_frontend_v1": {
+    "version": 1,
+    "id": "v593-remote-b",
+    "scope": {
+      "accountID": "offline-fixture-account",
+      "sessionID": "offline-fixture-session"
+    },
+    "target": {
+      "kind": "remote",
+      "conversationID": "pinned-thread",
+      "hostID": "fixture-b"
+    }
+  }
+}

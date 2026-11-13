@@ -1,0 +1,96 @@
+{
+  "batch": "v569",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Does the reconstructed Chat/Work control propagate mode beyond its placeholder into scoped frontend state and requests?",
+  "upstream": {
+    "record": "analysis/upstream-codex-20261105/reuse-map.json",
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "limit": "Inspected public core/protocol/app-server/TUI scope does not establish mobile UI availability."
+  },
+  "official_observations": [
+    {
+      "symbol": "ChatGPTModelSelectionInterface.AssistantMode",
+      "descriptor": "0x96ced50",
+      "fields": [
+        "chat",
+        "work"
+      ],
+      "type_reference": "0x8fd12c0",
+      "evidence_type": "artifact metadata"
+    },
+    {
+      "symbol": "AssistantModeSegmentedControl",
+      "descriptor": "0x9604c9c",
+      "selected_field": "0x9aa844c",
+      "type_reference": "0x8fd0364",
+      "resolved_type": "SwiftUI.Binding<ChatGPTModelSelectionInterface.AssistantMode>",
+      "evidence_type": "artifact symbolic type references"
+    },
+    {
+      "symbol": "AssistantModeControllerAction",
+      "descriptor": "0x96cedf8",
+      "modeSelected_record": "0x9b9c478",
+      "payload_type_reference": "0x8fd12c0",
+      "evidence_type": "artifact metadata"
+    },
+    {
+      "symbol": "AssistantModeRenderState",
+      "descriptor": "0x96ced88",
+      "fields": [
+        "isEnabled",
+        "isWorkModeEnabled",
+        "selectedMode",
+        "headerPresentation",
+        "composerPresentation"
+      ],
+      "evidence_type": "artifact metadata"
+    },
+    {
+      "symbol": "AssistantModeControllerContext",
+      "descriptor": "0x96a26fc",
+      "fields": [
+        "accountID",
+        "conversationCoordinator",
+        "modelContext",
+        "isNewThread",
+        "isTemporaryChat",
+        "conversationWorkModeEligibility",
+        "isModelSelectionEnabled",
+        "isHome"
+      ],
+      "evidence_type": "artifact metadata"
+    },
+    {
+      "symbol": "ConversationViewModel._composerAssistantModeSelectionController",
+      "source": "ios-remote-v557-view-model-fields.json",
+      "type_reference": "0x9230992",
+      "limit": "Symbolic target0x96cee14 has an unsupported context kind in the existing reader; its runtime implementation is unresolved."
+    }
+  ],
+  "host_gap": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbol": "changeVisualMode",
+    "observed": "Only placeholder/accessibility value changed; selection remained global to the host. Requests and stored turns omitted mode."
+  },
+  "independent_integration": [
+    "FrontendAssistantMode uses chat/work labels with explicit independent contract attribution.",
+    "Conversation catalog atomically persists mode per account/conversation; rename preserves it. Missing legacy values default to Chat. Invalid unknown values fail decoding.",
+    "Send snapshots mode in StoredTurn and passes it through ChatMessageService. Retry reuses the failed request mode, checked by history validation.",
+    "Offline adapter accepts both configurations through the same entry. Legacy adapters explicitly return unsupported_mode for Work instead of dropping it.",
+    "New local conversations start Chat; this default and local persistence policy are independent compatibility decisions."
+  ],
+  "limits": [
+    "Metadata establishes names, types and separation of concerns, not active gates or complete action-to-send calls.",
+    "ConversationMode0x96ace50 contains gizmoId and is not used as the Chat/Work enum. Earlier voice-mode raw values are also excluded.",
+    "Official service mode encoding, selection policy, per-model capabilities, Work presentation flags and precise persistence semantics remain unproved.",
+    "Fixture payload is deterministic frontend content for both modes; no Work backend or execution capability is implemented.",
+    "Android mode implementation and platform sharing require independent evidence."
+  ],
+  "next_evidence": "Resolve controller protocol implementation and modeSelected handling into composerState/model selection; trace forcesDoubleLineComposer consumer before changing Work layout."
+}

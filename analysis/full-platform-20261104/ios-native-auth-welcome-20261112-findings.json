@@ -1,0 +1,225 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "shipped-artifact static metadata/protocol/witness, bounded ARM64 and full generic trees",
+  "scope": "Welcome/native auth/browser lifecycle; no host edits/build/device/network/tool install",
+  "prior_evidence": [
+    "ios-login-v1-native-evidence.json",
+    "ios-welcome-20261110-integration.json"
+  ],
+  "findings": [
+    {
+      "id": "welcome-gates",
+      "conclusion": "Previous293 proof retained: LoginView desc957b500 bodyd21a88; new content requires gate0xd21008 plus showsBranding=true atd1d118..d1d180, else legacy content. Hero getterd21084/selectord0ead0 fallbacknone; pink beats blue; noAuthLaunchVariant defaultscontrol, original account assignment unknown. Do not merge variants."
+    },
+    {
+      "id": "native-presentation-parent",
+      "conclusion": "Full record7d5c0c8 proves native NavigationStack/NavigationPath, LoginViewContent/error alerts, typed LoginViewModel.Presentation containing NativeSignupView and post-auth PasskeyEnrollmentUpsell. Native authentication is a real parent branch, not type-presence inference.",
+      "evidence": [
+        "ios-native-auth-welcome-20261112/login-root.json"
+      ],
+      "limit": "Exact lower button→LoginViewModel.loginSelected→native/browser configured branch remains unclosed."
+    },
+    {
+      "id": "button-list",
+      "owner": "ChatGPTLoginUI.LoginButtonListView",
+      "descriptor": "0x957ee40",
+      "body": "0xe086d8→0xe0599c",
+      "conclusion": "Full record7d6b598 is ForEach<Array<LoginButtonType>,LoginButtonType,...> with nested CustomSignInWithAppleButton/system Apple/ordinary button branches, label style, rounded rectangle/frame/border. Group/order/style are owner supplied, not enum order.",
+      "parameters": [
+        "buttons",
+        "style",
+        "disableAppleLogin",
+        "promoteFirstButton",
+        "disableButtons",
+        "loginConnectionOverride",
+        "loginHintForButton",
+        "login",
+        "switchUsernameType"
+      ],
+      "evidence": [
+        "ios-native-auth-welcome-20261112/login-buttons-root.json",
+        "ios-native-auth-welcome-20261112/login-buttons.asm"
+      ],
+      "limit": "Current host commoncapsule56/icon20/bodysemibold/background remains independent estimate; original style values unresolved."
+    },
+    {
+      "id": "native-auth-root",
+      "owner": "NativeSignupView",
+      "descriptor": "0x957c688",
+      "body": "0xd831d4→0xd7b9e8",
+      "conclusion": "Full record7d5f9d8: NavigationStack<Array<NativeSignupViewModel.Step>> and typed destination switch inside NativeAuthScreenStyle/environment/loading parent. Actual alternatives include Username,Password,Passkey,password-reset,OTP,AboutYou,identity,push/MFA/recovery/workspace/passkey-upsell; does not prove all active for one account.",
+      "evidence": [
+        "ios-native-auth-welcome-20261112/native-signup-root.json",
+        "ios-native-auth-welcome-20261112/native-signup.asm"
+      ],
+      "limit": "Step response/backstack/navigationPath actions and flow-dismiss actual callbacks remain partial."
+    },
+    {
+      "id": "username-minimum",
+      "owner": "NativeSignupUsernameView",
+      "descriptor": "0x957d114",
+      "body": "0xd77e54→0xd7468c",
+      "conclusion": "Full record7d64618 proves VStack Header→NativeSignupUsernameFields containing conditional email TextField versus PhoneCountryPicker+TextField→Continue→divider/supplied social→Spacer. NativeAuthScreenStyle and EmailDomainSuggestionPicker inset; focus/onSubmit/submitLabel/submitScope/autocapitalization/autocorrection/keyboard/AuthInputFieldStyle.",
+      "labels": [
+        {
+          "text": "Log in or sign up",
+          "factory": "0x75daa48",
+          "literal": "0x896d870",
+          "consumer": "0xd74fc8"
+        },
+        {
+          "text": "You’ll get smarter responses and can upload files, images and more.",
+          "literal": "0x8878900",
+          "consumer": "0xd74fd0"
+        },
+        {
+          "text": "Email",
+          "factory": "0x75d66b8",
+          "consumer": "0xd75e24"
+        },
+        {
+          "text": "Continue",
+          "factory": "0x75d2324",
+          "consumer": "0xd755c0"
+        },
+        {
+          "text": "Search countries",
+          "literal": "0x88789a0",
+          "consumer": "0xd76868"
+        },
+        {
+          "text": "Cancel",
+          "factory": "0x75d21c4",
+          "consumer": "0xd768c4",
+          "scope": "country picker, not entire auth cancellation"
+        }
+      ],
+      "continue_identifier": "native-auth-signup-username-continue at0xd754dc literal0x8878950",
+      "state_inventory": [
+        "usernameKind",
+        "email/phoneNumber",
+        "emailFieldCheckResult/phoneNumberFieldCheckResult",
+        "isUsernameSubmissionInFlight",
+        "onEmailUpdated/onPhoneNumberUpdated/onContinue",
+        "canGoBack/backButtonAction/dismissFlow",
+        "autoFocus/domainSuggestions/phoneAutofill"
+      ],
+      "evidence": [
+        "ios-native-auth-welcome-20261112/username-root.json",
+        "ios-native-auth-welcome-20261112/username.asm",
+        "ios-native-auth-welcome-20261112/entry-fields-metadata.json"
+      ],
+      "limits": [
+        "Exact usernameKind switch/availability producer and phone placeholder remainunclosed.",
+        "Validation rules, error formatting and Continue-disable computed predicate not fully traced.",
+        "Back/dismiss actions currently fieldinventory only; native toolbar consumer must be traced. Host local email/required validation must be labelled independent."
+      ]
+    },
+    {
+      "id": "password-otp",
+      "conclusion": "Both are actual NativeSignupView.Step alternatives with shared NativeAuthHeaderPart/AuthInputFieldStyle/Continue/NativeAuthScreenStyle. Password has SecureField/TextField visibility alternatives and optional forgot/OTP/passkey/social. OTP has codeTextField, resend countdown, optional passkey/social, picture-in-picture host.",
+      "password": {
+        "descriptor": "0x957d0ec",
+        "body": "0xd69208→0xd66ba8",
+        "record": "0x7d64770",
+        "labels": [
+          "Enter your password literal0x8878b20 atd670f4",
+          "Create your account literal0x8878b40 atd6712c",
+          "Set your password for OpenAI to continue literal0x8878b60 atd67154",
+          "Forgot password? literal0x8878a20 atd671e0",
+          "Log in with a one-time code atd68b14",
+          "Sign up with a one-time code atd68b1c"
+        ],
+        "continue_identifier": "native-auth-signup-username-password-continue atd67f9c"
+      },
+      "otp": {
+        "descriptor": "0x957d03c",
+        "body": "0xd7b9e4→0xd79228",
+        "record": "0x7d649a8",
+        "labels": [
+          "Continue with password literal0x8878ee0 atd7aa20"
+        ],
+        "continue_identifier": "native-auth-signup-verification-continue atd7a80c"
+      },
+      "evidence": [
+        "ios-native-auth-welcome-20261112/password-root.json",
+        "ios-native-auth-welcome-20261112/otp-root.json"
+      ],
+      "limit": "Capability gates/callback-step transitions not fully closed; do not show all alternatives unconditionally or simulate auth success."
+    },
+    {
+      "id": "browser-lifecycle",
+      "owner": "ChatGPTOAuth.OAuthASWebAuthenticationSession",
+      "class": "0xad05230",
+      "conclusion": "Actual wrapper supports scheme and HTTPS callback branches:5282c4c kindtest, HTTPS callback factory5282cb0; setPresentationContextProvider5282d40; start5282d48 with failed-start branch5282d5c. Completion trampoline5284020→5283134.",
+      "cancel": "5282ddc..5282e4c calls cancel5282df0, compares incoming session vs owner.session and skips cleanup for stale nonmatching session; matching/empty path clears session,completeSession,presentationAnchor.",
+      "evidence": [
+        "ios-native-auth-welcome-20261112/oauth-session-objc.json",
+        "ios-native-auth-welcome-20261112/oauth-calls.json",
+        "ios-native-auth-welcome-20261112/oauth.asm"
+      ],
+      "limit": "Welcome-provider→wrapper actual invocation and browser-cancel error→LoginErrorContent/dismiss route remain unclosed. No URL/auth/session executed."
+    },
+    {
+      "id": "haptic-gesture",
+      "conclusion": "Inventory has HeroTypingLabel.hapticEngine,LoginViewContent.hapticEngine,KeyboardDismissTapInstaller. No specific auth-action haptic trigger or keyboard-dismiss installation consumer proved this round. Do not infer one from field presence or add haptics to every tap."
+    }
+  ],
+  "host_gap": {
+    "path": "implementation/ios/Sources/SignedOutWelcomePreview.swift",
+    "sha256": "9ae820c25df538e61371d33fd07f14f8d3058e9421a01f44ba819decb4fd3e5c",
+    "observed": "Current implementation explicitapple/google/loginOrSignUp fixture/commoncapsule and all-actions unavailable-service alert; no native username/password/OTP stack or browser handoff/cancel. This is host gap evidence, not official behavior."
+  },
+  "minimum_chain": [
+    "Document selected frozen welcome branch and owner-configured provider list/style.",
+    "Explicit owner route native/web/unsupported rather than universalalert/browser.",
+    "Native username email/phone branch, check/status/Continue slots and synthetic step events.",
+    "Password/OTP placeholders inherit proven native parent. Never fake authentication or signup success.",
+    "Host Back/cancel restores originating welcome/draft with attempt-scoped state; label independent until exact original dispatcher closes.",
+    "Browser frontend adapter returns pending/cancel/error with stale-result identity checks; real authorization remains unconnected."
+  ],
+  "precise_gaps": [
+    {
+      "id": "button-dispatch",
+      "next": "Trace supplied login closure→loginSelected→native/browser configured route."
+    },
+    {
+      "id": "mode-validation",
+      "next": "Close usernameKind producer,phoneavailability/placeholder,Continue disabled projection and service-vs-localfieldcheck."
+    },
+    {
+      "id": "native-back",
+      "next": "Trace NativeAuthScreenStyle toolbar/exit alert and canGoBack/backButtonAction/dismissFlow consumer. Country-picker Cancel is separate."
+    },
+    {
+      "id": "browser-return",
+      "next": "Trace5283134/completeSession result into LoginSession/LoginViewModel cancellation/error parent dismissal."
+    },
+    {
+      "id": "haptics",
+      "next": "Trace actual current branch HeroTypingLabel/KeyboardDismissTapInstaller owner."
+    }
+  ],
+  "validation": {
+    "performed": [
+      "static metadata/witness",
+      "full generic tree",
+      "bounded ARM64",
+      "existing host source gap read"
+    ],
+    "not_performed": [
+      "host edits",
+      "build",
+      "device",
+      "official app",
+      "online requests",
+      "authentication"
+    ]
+  }
+}

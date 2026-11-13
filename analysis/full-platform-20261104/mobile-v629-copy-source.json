@@ -1,0 +1,146 @@
+{
+  "scope": "v629 paired copy icon repair",
+  "android_artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "android_source": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "lines": "1785-1800",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c",
+      "observation": "Remote copy delegates to k081.a",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/k081.java",
+      "lines": "22",
+      "sha256": "2e7fd5f61cbbc38800c434055eca1e7d211f36b1ae0ccf7bf8af199853d6c2c0",
+      "observation": "k081.a captures bln case12",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bln.java",
+      "lines": "198-215",
+      "sha256": "1fb6409992d189a9b4ceb2fbfafa82cfc26d9f7400969a868e9c55c34ed80b68",
+      "observation": "Remote copy icon is eg40",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/eg40.java",
+      "lines": "8",
+      "sha256": "082674cbeadb2368eafff0429807274bb7c74ac5c6bb1bc6ef78d9defc6798a7",
+      "observation": "24dp glyph through mhx.a0",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mhx.java",
+      "lines": "58",
+      "sha256": "d714c72a69bb33a475feba83400892a2ff86816f3a624246d6ffd862a0d47fa5",
+      "observation": "mhx.a0 resolves qhv26",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qhv.java",
+      "lines": "72-73",
+      "sha256": "931b545d0a94f40e13626c19ad96efda4e60a877e95456150aee7d993fc783eb",
+      "observation": "original square-on-square resource",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sqi.java",
+      "lines": "922-930",
+      "sha256": "d843f75eab1907e360c5e89961a4a9b1fb1c7b5887ad06225c8da576408a5ada",
+      "observation": "CopyButtonImpl action and a38 case2",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/a38.java",
+      "lines": "104-109",
+      "sha256": "125098f3192e91b4507343f988b3b49ee6307c4c06a09644c3deb0bda80a992e",
+      "observation": "code copy eg40 switches to t540 on copied state",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/z31.java",
+      "lines": "51",
+      "sha256": "bd08bc015cb0d64ee2b0d022e30aeb0ff48ac51e8c8ab4a79208f15383dfc6f5",
+      "observation": "CodeBlockImpl calls sqi.c",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nbm0.java",
+      "lines": "112-126,1198",
+      "sha256": "914ecdedbed924b73c927d507263292312a93c390fe3ddde6b438342840ef606",
+      "observation": "Size enum1 maps16dp; enum2/3 map24dp and button propagates icon-size environment.",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/x040.java",
+      "lines": "6-11",
+      "sha256": "63069a0db9347b2b7fbd69cb9791bdc4a423bb62b955bcc2ffeacfc1beb6e01f",
+      "observation": "Default size enum2; resource viewport alone does not determine consumer size.",
+      "type": "artifact-observation"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/rgq0.java",
+      "lines": "1735",
+      "sha256": "e6e4406d620802667d27dd6c669cf32b031ded332ce0280d61f1d71ef606b3bf",
+      "observation": "Icon consumer reads v040 size environment.",
+      "type": "artifact-observation"
+    }
+  ],
+  "ios_source": {
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "existing_analysis": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+    "lines": "1514-1529",
+    "symbol": "SwiftUIStyleguide.CopyButton content0x6ee9c88/0x6ee9cf0",
+    "idle_glyph": "square-on-square",
+    "copied_glyph": "checkmark-lg",
+    "idle_resource_string": "0x8a570e0"
+  },
+  "integration_findings": [
+    "Android Remote used a text button and omitted the existing NativeCodeBlock extension from Markdown.",
+    "iOS RemoteReplayMarkdown and NativeMessageBlock used text-only controls while RemoteCodeBlockPreview already used the recovered icon."
+  ],
+  "host_adaptations": [
+    "Android uses original square-on-square resource rendered at16dp, with the existing IconButton interaction target and localized accessibility label. Compact size selection is an independent adaptation.",
+    "iOS reuses fittedOfficialVisualIcon with scaled14pt across repaired reply/code controls, including RemoteCodeBlockPreview. Exact code header size remains unresolved.",
+    "Current exact payload copying is independent native clipboard integration. The new Android control does not implement the source copied-checkmark reset behavior."
+  ],
+  "assets": [
+    {
+      "path": "implementation/android/app/src/main/res/drawable/ds_square_on_square_regular_24.xml",
+      "sha256": "9baeac7c343f01e60a4ce87073b58c6d8cb6df1c1880c549eaf3f48e9e6b5f32"
+    },
+    {
+      "path": "implementation/android/app/src/main/res/drawable/ds_stop_fill_regular_24.xml",
+      "sha256": "4adcf9d25f441793f65c56d784cdd755330650f1d2330dc5cf260367f127c184"
+    }
+  ],
+  "validation": "static source; runtime reports indexed separately",
+  "size_feedback": {
+    "request": "Copy glyph itself is too large on both platforms",
+    "android": "16dp compact size selected for this independent preview after feedback. Official nbm0.D supports16/24, confirmed against smali. Effective Remote parent override remains unresolved.",
+    "ios": "All repaired copy entries use the existing scaled14pt host metric. RemoteCodeBlockPreview previously rendered the raw original asset with no size constraint. Exact official code-header metric remains unresolved."
+  },
+  "size_smali": {
+    "path": "recovered/android-1.2026.293/apktool-src/smali/nbm0.smali",
+    "lines": "749-821",
+    "sha256": "828abdb89d4931107d406b9506b0d84e8ca19543f46e0c223dfa960dba535f1c",
+    "symbol": "D(I)F"
+  },
+  "code_header_feedback": {
+    "finding": "Android NativeCodeBlock placed the action as a separate leading child and left the public code block at intrinsic width. Official sqi.a uses a full-width container and trailing header actions.",
+    "android_source": {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sqi.java",
+      "lines": "245-257,634-751",
+      "layout": "52dp header; start16/end8; weighted language then action row; full-width code container",
+      "typography": "on01.d.b -> sk10.h,12sp/500/16sp/0.2sp"
+    },
+    "implementation": "Restore header row, language label and trailing copy, shared full-width surface; retain public renderer horizontal scrolling and exact code payload. Background token and default renderer body style remain host adaptations.",
+    "ios": "NativeMessageBlock already anchors code action at trailing16/top4; RemoteCodeBlockPreview uses language/Spacer/copy header. This feedback requires no new position override on iOS."
+  },
+  "response_copy_visibility": {
+    "finding": "Both independent Remote renderers displayed whole-response copy whenever text was nonempty, including streaming partial text.",
+    "implementation": "Expose whole-response copy only for nonempty completed turns. Retain per-code-block copy. A new request/turn derives its own visibility.",
+    "basis": "User correction and independent frontend phase contract. Android pkm.g checks hideInlineActions (ycc0.t1 serialized index120 in ucc0); mapping of official upstream generation state to this field is unresolved."
+  }
+}

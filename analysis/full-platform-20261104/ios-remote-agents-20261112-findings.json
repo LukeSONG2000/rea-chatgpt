@@ -1,0 +1,149 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "Swift descriptor fields and retained symbolic type references; not runtime observation",
+  "observations": [
+    {
+      "descriptor": "0x95d172c",
+      "name": "CodexRemoteCore.CodexRemoteSubagent",
+      "fields": [
+        "id",
+        "displayName",
+        "color",
+        "status",
+        "parentThreadID",
+        "recencyAt"
+      ],
+      "records": "0x9a60de8..0x9a60e24"
+    },
+    {
+      "descriptor": "0x95d1754",
+      "name": "CodexRemoteSubagent.Status",
+      "cases": [
+        "refreshing",
+        "running",
+        "waitingOnApproval",
+        "waitingOnUserInput",
+        "idle",
+        "completed",
+        "interrupted",
+        "failed",
+        "notLoaded",
+        "unknown"
+      ],
+      "records": "0x9a60e40..0x9a60eac"
+    },
+    {
+      "descriptor": "0x95d1b40",
+      "name": "AgentColor",
+      "cases": [
+        "red",
+        "blue",
+        "orange",
+        "green",
+        "purple"
+      ],
+      "records": "0x9a61778..0x9a617a8"
+    },
+    {
+      "descriptor": "0x95af3e8",
+      "name": "CodexRemoteSubagentSection",
+      "fields": [
+        "id",
+        "subagents"
+      ],
+      "records": "0x9a3b490..0x9a3b49c"
+    },
+    {
+      "descriptor": "0x95b1b98",
+      "name": "CodexRemoteSubagentSection.ID",
+      "cases": [
+        "active",
+        "completed"
+      ],
+      "records": "0x9a3d24c..0x9a3d258"
+    },
+    {
+      "descriptor": "0x95af774",
+      "name": "CodexRemoteSubagentDetails",
+      "fields": [
+        "sections",
+        "hapticEngine",
+        "action",
+        "__contentHeight"
+      ],
+      "action_typeref": "0x8e548ae references CodexRemoteSubagent",
+      "records": "0x9a3bc70..0x9a3bc94"
+    },
+    {
+      "descriptor": "0x95af614",
+      "name": "CodexRemoteSubagentStatusPill",
+      "fields": [
+        "count",
+        "isSelected",
+        "hapticEngine",
+        "action"
+      ],
+      "records": "0x9a3ba18..0x9a3ba3c"
+    },
+    {
+      "descriptor": "0x95af710",
+      "name": "CodexRemoteComposerStatusPillRow",
+      "fields": [
+        "horizontalInset",
+        "content"
+      ]
+    },
+    {
+      "descriptor": "0x95ac4f8",
+      "name": "CodexRemoteComposerStatusPillSelection",
+      "cases": [
+        "sideConversations",
+        "goal",
+        "agentPlan",
+        "subagents",
+        "backgroundTerminals"
+      ]
+    },
+    {
+      "source": "ios-remote-v442-bottom-types.json",
+      "site": "0x1a2216c / type record0x7e1d1a8",
+      "finding": "Bottom content type includes optional SubagentDetails and SubagentStatusPill inside status row together with Goal/Plan/terminal counterparts."
+    },
+    {
+      "source": "ios-remote-v410-owner-actions.json",
+      "record": "0x9a32ce8",
+      "field": "subagentTapped",
+      "type_reference": "0x8e13a06 -> CodexRemoteSubagent"
+    },
+    {
+      "source": "ios-remote-v523-context-status-fields.json",
+      "descriptor": "0x95d5c4c",
+      "finding": "ThreadState.subagents has array type referencing0x95d172c."
+    }
+  ],
+  "implementation": "implementation/ios/Sources/RemoteAgentsPresentation.swift",
+  "implemented": [
+    "Typed10-case status presentation",
+    "Adapter-supplied active/completed ordered sections",
+    "Summary/detail open-close with parent-owned selection",
+    "Scoped navigation intent and exact revision/session validation",
+    "Empty and malformed-identity state"
+  ],
+  "independent_adaptations": [
+    "Native SwiftUI card/pill metrics/materials",
+    "SF person.2 icon",
+    "Synthetic fixture names and group assignment",
+    "Own localized state wording",
+    "Scope/session/revision routing envelope"
+  ],
+  "unknown": [
+    "Actual status-to-section and recency sorting algorithm",
+    "Whether subagent.id maps directly to navigable thread ID",
+    "Navigation service owner and load/retry path",
+    "Exact count inclusion rules and pill visibility",
+    "Exact fonts/insets/material/animation/haptic triggers",
+    "Optional status row sibling order and mutually exclusive selection behavior beyond enum presence"
+  ],
+  "validation": "Source inspection only; parent integrates/builds/tests the file. No device install or backend work in this subtask."
+}

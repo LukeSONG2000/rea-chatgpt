@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "id": "ios-sidebar-assistant-placement-20261113",
+  "status": "partial",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Two bounded groups: catalog availability/leading projection; actual Item.orbit selection gate and destination enum. Static only. No assistant page expansion, backend, product/build/device changes.",
+  "official_artifact_observations": [
+    {
+      "id": "catalog-orbit-identity",
+      "sources": [
+        "0x1275624..0x127563c",
+        "0x129e298..0x129e2c0",
+        "0x7db6428",
+        "Item descriptor0x95927d0"
+      ],
+      "conclusion": "Catalog byte14 maps through the original converter to Item emptyOrdinal14 with outer enum byte8: Item.orbit. The catalog byte and Item emptyOrdinal happen to match here; the mapping table must still be used, not generalized."
+    },
+    {
+      "id": "visibility",
+      "sources": [
+        "0x12983d8..0x12983ec table0x12995d0",
+        "0x1298464..0x1298470",
+        "0x138f944",
+        "0x129f02c..0x129f05c"
+      ],
+      "conclusion": "Catalog candidate14 dispatches to 0x1298464, reads current HistoryViewModel via 0x138f944, and calls 0x129f02c. Only true admits orbit into availableSet. The getter returns the Bool at VM+0x924 after its original observation access helpers.",
+      "limits": "Upstream server/account/experiment assignment is not recovered. Field inventory includes _orbitAvailable; its offset-vector-to-0x924 identity is not separately proven here. The exact functional admission consumer is proven, so do not replace it with unconditional availability."
+    },
+    {
+      "id": "leading-position",
+      "sources": [
+        "0x1275624..0x127563c constructs single-element [14] at stack+0x70",
+        "0x12759b0..0x12759b4 stores that array first in the array-of-groups",
+        "0x1275a70..0x1275b64 filters flattened candidates by membership while preserving iteration",
+        "0x1275ba8..0x1275c30 maps admitted bytes through captured0x129e298",
+        "0x1275c90 stores mapped leading group atstack+0x48",
+        "0x1276570..0x1276588 supplies that group as x0 to final projector0x12753c4"
+      ],
+      "conclusion": "The source constructs orbit as the first catalog group before the ordinary feature groups; unavailable candidates are filtered out. The leading mapped group is retained as the first input to final expanded/collapsed projection. Orbit is not an extra item appended at the end of More.",
+      "limits": "This observation answers orbit placement only. It does not establish every other feature order, live catalog assignment, or a universal total visible row count."
+    },
+    {
+      "id": "selection-route",
+      "sources": [
+        "0x12a9ad0..0x12a9af8 validates empty Item ordinal14 and supplies availability getter129f02c plus tag28",
+        "0x12a95e8 calls12acacc",
+        "0x12acacc..0x12acb24 invokes getter again and proceeds only iftrue",
+        "0x12acb10 _swift_storeEnumTagMultiPayload",
+        "HistorySelection descriptor0x9592308 fieldordinal28 orbit",
+        "0x1391090 dynamic callback field b17d3b8",
+        "0x1397c20 loads closure function/context",
+        "0x138e2bc calls closure with selection and zero auxiliary args"
+      ],
+      "conclusion": "Tap emits HistorySelection.orbit only after rechecking the same actual availability supplier. This is the assistant root selection route, not Settings Personalization or Customize.",
+      "limits": "The injected callback implementation and concrete OrbitConversationScreenTemplate-to-page DI closure are dynamic; earlier root/template proof remains partial. No backend functionality is inferred."
+    }
+  ],
+  "host_integration_proposal": {
+    "source_backed": [
+      "Move the assistant registry identity orbit from additionalFeatureCatalog tail into the first visible catalog position when its provider reports it available.",
+      "Ensure it is absent from the More registry after moving, avoiding duplicates.",
+      "Tap uses the existing orbit selection route and current availability admission; retain shell return/openSidebar ownership.",
+      "Name, portrait/icon and unread indication come from assistant/profile state. Preserve absent/unknown defaults rather than copying personal R2-D2 screenshot content."
+    ],
+    "independent_adapter": [
+      "The frontend fixture can explicitly provide availability=true with synthetic identity; this is fixture data, not proof of official account eligibility.",
+      "Existing independent Orbit page may be the destination preview; source-equivalent concrete DI registration and service behavior remain unclosed."
+    ],
+    "not_proposed": [
+      "No assistant backend or new assistant subpages.",
+      "No change to other feature order, catalog threshold or feature expansion policy.",
+      "No fallback personal screenshot identity."
+    ]
+  },
+  "unknowns": [
+    {
+      "boundary": "VM+0x924 upstream assignment and field-offset identity",
+      "next_minimum_action": "Only if account eligibility needs reproduction, bind descriptor _orbitAvailable offset vector and actual assignment; not needed for explicit fixture availability."
+    },
+    {
+      "boundary": "HistorySelection.orbit callback injection -> concrete Orbit pane DI registration",
+      "next_minimum_action": "Reuse previously documented root optional OrbitConversationScreenTemplate boundary; do not claim full original service route."
+    },
+    {
+      "boundary": "Default assistant name/icon resource fallback",
+      "next_minimum_action": "Separate independent worker covers provider/title/icon. This placement pass does not infer a universal product identity."
+    }
+  ],
+  "validation": {
+    "candidate_groups": 2,
+    "static_only": true,
+    "product_modified": false,
+    "tests_builds_device": false,
+    "target_or_service_execution": false,
+    "stopping_reason": "Actual availability consumer, leading source position and selection enum consumer are closed. Remaining dynamic assignment/name/page DI are precise independent boundaries."
+  },
+  "reused_evidence": [
+    {
+      "path": "ios-native-personal-assistant-route-20261112-findings.json",
+      "sha256": "c079ac88356d30b13c4064255fc4401200f4881c271b68e005a78092f49717f6"
+    },
+    {
+      "path": "ios-native-personal-assistant-route-20261112/history-selection-enum.json",
+      "sha256": "9083c792756684214681439af039db8f259d44fe35df92fa5339d1aa8da166fd"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-ordered-map.asm",
+      "sha256": "c2f6bcf96f2154189a3d2552fbe7771163c41968a37d2bdfce2d0f1de42b21e4"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-ordered-map-tail.asm",
+      "sha256": "2a91e1747fad32a2692a6cafa810f6c3bd3e2fccaeb52cc6008730c1f373a8bc"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-final-expansion-projector.asm",
+      "sha256": "59988688fb851cf0a9ddaff2840f900294436eafc51f16b18118268e1ca4c050"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-input-closure.asm",
+      "sha256": "f6b23616a95b4a014ce817440618f58512439b54ae333b4c321b97eb89919517"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-parent-20261113/reproject.asm",
+      "sha256": "65f08454b1d03d253d6bfa37357d376e1f6c8312ba330d09d02d7796bd32ac1d"
+    },
+    {
+      "path": "ios-sidebar-explore-20261112/item-dispatch.asm",
+      "sha256": "13ae1cdd0672c5eadd692eeb8f1c3e0d73b2382e028366e5e867bc7b655156c6"
+    },
+    {
+      "path": "ios-sidebar-tasks-projects-20261112-entry-types.json",
+      "sha256": "f79e53a1e2180717e98251a83756735a56fa17c221efc846edb7eee97e1f0b61"
+    }
+  ],
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-candidate.asm",
+      "sha256": "15db092260766af6918e4b6ed572a3625a885c2b94f26e3dc56f8fbbca77931c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-candidate.json",
+      "sha256": "c27eff75c17f31b56aaa3d97ee514c444d1587a28bae056c36918f6fbd3f57c8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-field-address.asm",
+      "sha256": "53bff5049df76dd4aa792947d37942cad4cb03829c3d95d77b40c516a64face2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-field-address.json",
+      "sha256": "bd3898a0332f5f62e85bb84f9b872d259726e03d0c3616e7d25ddb86249b8e66"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-field-owner.asm",
+      "sha256": "a8e9d2d0fc0733a357430bb9732d0b9de8f74318f163a222c7948f0da4c6b725"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-field-owner.json",
+      "sha256": "bd30aa3322dd7a291d0ff366e34dce194e4fc39b21691016b3a1ea8825d92fe3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-getter.asm",
+      "sha256": "a98529261c661116ca6395d0c222bd8333f20200cc13142a34bc38e1e8b18b3d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-getter.json",
+      "sha256": "d9649b594648488cfffbae551ac45768b27566c19180e052b9feb6078f9a4bfa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-owner.asm",
+      "sha256": "8a288062bc8dda13e0cf95fec046fa3604f535e42d5c6d9d8a0dcd250087f91f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/availability-owner.json",
+      "sha256": "aa2305cddcbae8f7fd7ab4a7445c74e4dbbc4bdf58eb0ad2ebbda72ff5edee03"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/catalog-array-combine.asm",
+      "sha256": "2c872bd454f09bb3c0446d51435050d4493222c48ba88926cec5183d21fff7b4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/catalog-array-combine.json",
+      "sha256": "43d01c72af2c5c39e89faf411f443f719165e41dc32468d1cb641f4f449b0ef5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/orbit-enum-join.json",
+      "sha256": "ca384cef56796934e3615140cf2ed8426d419e8aa9b8354530c488e1fcdbe895"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/orbit-order-prefix.asm",
+      "sha256": "0ea4efaec47711ae6cb5b13e78213edcbd22174f2abea81a177fd4f0ba8bac28"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/orbit-order-prefix.json",
+      "sha256": "dc339a9cb38852b85520fced0527f253340aa480fea2273406505dbcb727546c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/orbit-selection-branch.asm",
+      "sha256": "336e84954b9221375af70997a3a6b2911f4aa6c916d8ca3df55f4d7eeacc7267"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/orbit-selection-branch.json",
+      "sha256": "80dc89a63f4b4ca8cea4adbfd3c43a5b1792f3657c8e83dc17423ed16d10c9cf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/prefix-actual-membership.asm",
+      "sha256": "b78297372a8097c3562d0103c15fc5897a29ea6d11a6b4ae8b6774f6aa17c3b2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/prefix-actual-membership.json",
+      "sha256": "b8c1529a0b3a01ebcdddada6d3a9cf6ef9086397e3eaa5bad270485dcf9b9f5e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-common-tail.asm",
+      "sha256": "d29eca5474d4362e6ab3cd98170b15bd9fb34e7203a1eade1e58912414a1f064"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-common-tail.json",
+      "sha256": "49d4fedbc9d09108f86957f5471148b3de51a0c6cbf34ce649a3af39e23fa36b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-gate.asm",
+      "sha256": "c82c089a41ba2d2beae47f598aaa0d2322580921d20a802f2adc6c4aa48a0d98"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-gate.json",
+      "sha256": "c6c560a2c34ae7893a5234051aec6aff47fd23551bffc9b424ea65449fa10c97"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-handler-field.asm",
+      "sha256": "da696f1e84afd99a4136422076e725ccf1bab6422ce734208ad7bd35a5a9da7f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-handler-field.json",
+      "sha256": "2ddcb31883676f9e18dcd676ad78b351aaa81085cd8d95ecb3565e0a8b2f9622"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-handler-tail.asm",
+      "sha256": "752f6294f55620d4e31170025f4012f4526d9a1fe41f83c6a8ff36754b70e3c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-handler-tail.json",
+      "sha256": "f041909480b26a7e3ce9f4687a2d7b34aca0e9fa5ae254b4d4aedeed2f7b1a1f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-owner.asm",
+      "sha256": "d34c44981fc8a25cbf7f12a69db4c5c426a5d7bb0dbe58c68beaaf233510a07f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-owner.json",
+      "sha256": "1357e29a242a6d73f8592092cff53926e570cd49b1d3dc555bc6dd5690848c5f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-postgate-helper.asm",
+      "sha256": "6bd2a1cb74a5618e46166724ea5eefbb8a22e2390baa36557dda50a7eb0ce852"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-postgate-helper.json",
+      "sha256": "aade94f0d3060ebaf72dc7ae6dd51e3b4e27b6344c6d3982abcd9bf626872c62"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-prepare.asm",
+      "sha256": "e0eb7cb713236633ffb99edccaa18db4990308caf82ce7563058c649cc3db50d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-assistant-placement-20261113/selection-prepare.json",
+      "sha256": "df416e26a2d6befb5da51ff47e74fd9bd4a400ad8f3fd9422356c26c71cba51a"
+    }
+  ]
+}

@@ -1,0 +1,816 @@
+{
+  "status": "partial-source-chain-with-native-parent-admission",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "ScheduledAutomations legacy/native branch, Routines branch separate; Projects inventory only",
+  "evidence_type": "official-artifact-static",
+  "runtime_executed": false,
+  "source_files": [
+    "ios-sidebar-tasks-projects-20261112-metadata.json",
+    "ios-sidebar-tasks-projects-20261112-entry-types.json",
+    "ios-sidebar-tasks-projects-20261112-entry-field-types.json",
+    "ios-sidebar-tasks-projects-20261112-witnesses.json",
+    "ios-sidebar-tasks-projects-20261112-refs.json",
+    "ios-sidebar-tasks-projects-20261112-scheduled-root.asm",
+    "ios-sidebar-tasks-projects-20261112-scheduled-content.asm",
+    "ios-sidebar-tasks-projects-20261112-scheduled-menu-actions.asm",
+    "ios-sidebar-tasks-projects-20261112-scheduled-tree.json",
+    "ios-sidebar-tasks-projects-20261112-editor-tree.json",
+    "ios-sidebar-tasks-projects-20261112-filter-tree.json",
+    "ios-sidebar-tasks-projects-20261112-resources.json",
+    "ios-sidebar-tasks-projects-20261112-editor-labels.json",
+    "ios-sidebar-tasks-projects-20261112-status-enums.json",
+    "ios-sidebar-tasks-projects-20261112-menu-icons.asm",
+    "ios-sidebar-tasks-projects-20261112-scheduled-parent-tree.json",
+    "ios-sidebar-tasks-projects-20261112-composer-bar.asm",
+    "ios-sidebar-tasks-projects-20261112-scheduled-constructor-root.asm",
+    "ios-sidebar-tasks-projects-20261112-repeat-captions.asm",
+    "ios-sidebar-tasks-projects-20261112-repeat-never-tail.asm",
+    "ios-sidebar-tasks-projects-20261112-never-caption.asm",
+    "ios-sidebar-tasks-projects-20261112-schedule-label-refs.json",
+    "ios-sidebar-tasks-projects-20261112-notification-preference.asm",
+    "ios-sidebar-tasks-projects-20261112-notify-row.asm",
+    "ios-sidebar-tasks-projects-20261112-notify-tree.json"
+  ],
+  "scheduled": {
+    "entry_chain": {
+      "HistorySelection": "descriptor9592308 case scheduledAutomations; dispatch caller not yet closed",
+      "HistoryViewModel": "95923ac _cachedScheduledAutomationsCellViewModel type HistoryNavigationCellViewModel",
+      "ConversationRootViewModel.PaneState": "9565830 scheduledAutomations associated ScheduledAutomationsScreenViewModel",
+      "root_body": "conformance8074d34 body400c840 ->400a368",
+      "content_body": "conformance80771d4 body4010d7c ->400c844",
+      "action_binding": "root400a5a4 Action accessor4029494; VM accessor402946c at400a5b0; content.actionHandler supplied and callbacks invoked; precise handler dispatch not yet closed"
+    },
+    "content_fields": [
+      "navigationTitle",
+      "suggestedAutomationsRequestState",
+      "selectedMode",
+      "scheduledRequestState",
+      "pausedRequestState",
+      "finishedRequestState",
+      "paginationFailureRequestState",
+      "taskStatusRequestState",
+      "deleteRequestState",
+      "isSharingEnabled",
+      "actionHandler"
+    ],
+    "actions": [
+      "modeSelected",
+      "loadMore",
+      "editTask",
+      "shareTask",
+      "taskTapped",
+      "suggestedAutomationAppeared",
+      "suggestedAutomationTapped",
+      "suggestedAutomationDismissTapped",
+      "setTaskEnabled",
+      "deleteTask",
+      "viewAppeared",
+      "retryButtonTapped",
+      "finishedLoadingRowAppeared",
+      "dismissPaginationFailureBanner",
+      "dismissTaskStatusFailureBanner",
+      "dismissDeleteFailureBanner",
+      "dismissDeleteSuccessBanner",
+      "suggestionUpgradeButtonTapped"
+    ],
+    "modes": [
+      "all",
+      "paused",
+      "completed"
+    ],
+    "presentations": [
+      "automationEdit",
+      "automationSharing"
+    ],
+    "parent_structure": {
+      "record": "80773e0",
+      "observations": "Contains ScrollView/LazyVStack, loading ForEach<AutomationTaskCardCategory>, AutomationTaskCard, normal ForEach<ScheduledAutomationsScreenRow,Row.ID>, row cases suggestion/item/loadMoreFooter/emptyState/sectionHeader, contextMenu and tap, padding/frame/redacted/accessibility/animation modifiers. Outer record80773f8 includes defaultScrollAnchor/scrollDismissesKeyboard/background; record8077408 includes navigationTitle/toolbarTitleDisplayMode.",
+      "tree_status": "Parsed compiler type tree in scheduled-tree.json; anonymous nominal references retain original descriptor address identity instead of invented anonymous mangling.",
+      "tree_file": "ios-sidebar-tasks-projects-20261112-scheduled-tree.json"
+    },
+    "menu": [
+      {
+        "label": "Edit",
+        "label_factory": "75d258c",
+        "source_call": "400fb8c",
+        "icon_factory": "74f9ac0",
+        "icon_resource": "8a565b0 OpenAI/Symbols/pencil",
+        "action": "editTask",
+        "callback": "403d430 constructs Action tag2 then4010024 forwards actionHandler"
+      },
+      {
+        "label": "Share",
+        "label_factory": "75d29e0",
+        "source_call": "400fc68",
+        "icon_factory": "74f45ec",
+        "gate": "root content sharing flag + item capability checked400fc54..fc64; exact metadata offset binding pending",
+        "action": "shareTask",
+        "callback": "403d4ac constructs tag3",
+        "icon_resource": "OpenAI/Symbols/arrow-up-open-base"
+      },
+      {
+        "label": "Resume / Pause",
+        "label_factories": [
+          "75d26dc",
+          "75d26cc"
+        ],
+        "source_calls": [
+          "400fd44",
+          "400fd54"
+        ],
+        "icon_factories": [
+          "74fa284",
+          "74f9828"
+        ],
+        "gate": "400fd18 status !=2 and capability byte==1; status==3 selects Resume; exact runtime metadata field binding pending",
+        "action": "setTaskEnabled",
+        "callback": "403d470 ->400ffa4; bool is status==3 at400fffc..4010004",
+        "icon_resources": [
+          "OpenAI/Symbols/play-circle",
+          "OpenAI/Symbols/pause-circle"
+        ]
+      },
+      {
+        "label": "Delete",
+        "label_factory": "75d2440",
+        "source_call": "400fe00",
+        "icon_factory": "74fc178",
+        "action": "deleteTask",
+        "callback": "403d468 constructs tag9",
+        "confirmation": "Not closed; destructive button role established at400fe14; do not invent confirmation from UI convention.",
+        "icon_resource": "OpenAI/Symbols/trash"
+      }
+    ],
+    "empty_labels": [
+      {
+        "key": "automation_scheduled_no_tasks",
+        "address": "894b970",
+        "source": "400e23c"
+      },
+      {
+        "key": "automation_scheduled_no_paused_tasks",
+        "address": "894b990",
+        "source": "400e178"
+      },
+      {
+        "key": "automation_scheduled_no_completed_tasks",
+        "address": "894b9c0",
+        "source": "400e2c0",
+        "fallback": "No completed tasks"
+      }
+    ],
+    "editor": {
+      "type": "AutomationEditScreen",
+      "descriptor": "96372d0",
+      "body": "witness3fae99c ->3fa9ba0 (verified direct B)",
+      "content_descriptor": "9637d88",
+      "content_fields": [
+        "style",
+        "isCreatingRoutine",
+        "showsCreationTabs",
+        "creationTab",
+        "canEdit",
+        "canSaveRoutine",
+        "_title",
+        "emoji",
+        "_prompt",
+        "showsNotificationPreference",
+        "notificationsEnabled",
+        "canEditNotificationPreference",
+        "notificationPreferenceLoadFailed",
+        "sourceLink",
+        "themeColorSetting",
+        "routineMenuConfiguration",
+        "origin",
+        "webhookTriggerPresentations",
+        "showsScheduleSections",
+        "scheduleSummary",
+        "selectedRepeatOption",
+        "repeatOptions",
+        "repeatDetailTitle",
+        "repeatDetailsAreEditable",
+        "_repeatDate",
+        "_repeatTime",
+        "_endRepeatDate",
+        "selectedEndRepeatOption",
+        "selectedFlexibleTimeOfDay",
+        "showsDateSection",
+        "showsTimeSection",
+        "showsEndRepeatSection",
+        "isSharedAutomationPreview",
+        "canScheduleSharedAutomation",
+        "isSchedulingSharedAutomation",
+        "isEditing",
+        "saveRequestState",
+        "taskStatusRequestState",
+        "deleteRequestState",
+        "webhookBatchRunRequestState",
+        "toast",
+        "showsRunNow",
+        "canRunNow",
+        "canShowNotificationSettings",
+        "canShare",
+        "canToggleStatus",
+        "toggleStatusTitle",
+        "toggleStatusIcon",
+        "_discardChangesConfirmationIsPresented",
+        "actionHandler",
+        "__isSaveButtonHidden",
+        "_dismiss",
+        "_reduceMotion",
+        "_focusedField"
+      ],
+      "actions": [
+        "creationTabSelected",
+        "notificationsEnabledChanged",
+        "setEnabled",
+        "dismissalCompleted",
+        "repeatOptionSelected",
+        "repeatDateSelected",
+        "repeatTimeSelected",
+        "endRepeatOptionSelected",
+        "endRepeatDateSelected",
+        "flexibleTimeOfDaySelected",
+        "emojiSelected",
+        "customRepeatFrequencySelected",
+        "customRepeatIntervalSelected",
+        "customRepeatWeekdayToggled",
+        "customRepeatMonthlyModeSelected",
+        "customRepeatMonthlyDaySelected",
+        "customRepeatMonthlyOrdinalSelected",
+        "customRepeatMonthlyWeekdaySelected",
+        "viewAppeared",
+        "dismissButtonTapped",
+        "doneButtonTapped",
+        "undoButtonTapped",
+        "reportButtonTapped",
+        "runNowButtonTapped",
+        "shareButtonTapped",
+        "sourceLinkTapped",
+        "viewAllTasksButtonTapped",
+        "notificationSettingsButtonTapped",
+        "pauseResumeButtonTapped",
+        "deleteButtonTapped",
+        "discardChangesConfirmed",
+        "discardChangesConfirmationDismissed",
+        "emojiButtonTapped",
+        "repeatDetailsTapped",
+        "customRepeatDoneButtonTapped",
+        "customRepeatDismissButtonTapped",
+        "dismissToast",
+        "dismissSaveFailureBanner",
+        "dismissTaskStatusFailureBanner",
+        "dismissDeleteFailureBanner",
+        "dismissWebhookBatchFailureBanner"
+      ],
+      "limit": "Fields/actions proven metadata only until exact native construction trace; not service wire schema.",
+      "parent_tree_record": "807b998",
+      "parent_tree_file": "ios-sidebar-tasks-projects-20261112-editor-tree.json",
+      "parent_structure": "ScrollView containing padded VStack<TupleView<optional OAISegmentedTabBar<AutomationCreationTab>, title HStack with optional emoji Button + focused TextField + rounded panel modifiers, webhook ForEach, focused multiline prompt TextField rounded panel, optional notification row, optional schedule tuple>>. No evidence for a generic Form parent. Anonymous/opaque identities retained as descriptors, not invented names.",
+      "minimal_fields": [
+        {
+          "field": "title",
+          "key": "automation_edit_title_placeholder",
+          "literal": "894db30",
+          "source_pc": "3fb68c4"
+        },
+        {
+          "field": "prompt",
+          "key": "automation_edit_prompt_placeholder",
+          "literal": "894d9f0",
+          "source_pc": "3fb09e4",
+          "accessibility_key": "automation_edit_prompt_accessibility_label",
+          "accessibility_literal": "894da20"
+        },
+        {
+          "field": "repeat",
+          "key": "automation_edit_repeat_row_title",
+          "literal": "894d9c0",
+          "source_pc": "3fb6b78"
+        },
+        {
+          "field": "date",
+          "key": "automation_edit_date_row_title",
+          "literal": "894d920",
+          "source_pc": "3fb8e8c"
+        },
+        {
+          "field": "time",
+          "key": "automation_edit_time_row_title",
+          "literal": "894d940",
+          "source_pc": "3fb7784"
+        },
+        {
+          "field": "endRepeat",
+          "key": "automation_edit_end_repeat_row_title",
+          "literal": "894d960",
+          "source_pc": "3fb85f8"
+        }
+      ],
+      "toolbar_observations": [
+        {
+          "source": "3fb2750..2774",
+          "accessibility_identifier": "automation-edit-save",
+          "label_builder": "405cb70 ->3fb46e0; nested label builder3fb41c4 uses75d29a8 Save unless isCreatingRoutine/creationTab variant continuesinchat",
+          "limit": "Action dispatch callback route still needs exact binding; enum doneButtonTapped proven metadata."
+        },
+        {
+          "source": "3fb4c08",
+          "accessibility_identifier": "automation-edit-done",
+          "label_builder": "3fb5c48..5cb4",
+          "label_rule": "first content byte(style)==1 ->75d29a8 Save; else75d2574 Done",
+          "style_enum": "AutomationEditScreenStyle legacy,modern in ChatGPTAutomationInterface (metadata ordinals not API)"
+        },
+        {
+          "source": "3fb1b8c",
+          "accessibility_identifier": "automation-edit-close",
+          "builder": "3fb1b14",
+          "limit": "Close control proven; do not claim a Cancel text button on this root without consumer evidence. 3fb6284->75d21d4 Cancel occurs in another child section."
+        }
+      ],
+      "action_and_return": "AutomationEditScreenAction contains dismissButtonTapped, doneButtonTapped, discardChangesConfirmed, discardChangesConfirmationDismissed; VM fields _isDiscardChangesConfirmationPresented/_dismissalRequest/_saveRequestState; exact prompt text and condition/body dispatch not fully closed. Keep unsaved-change behavior separate from task deletion confirmation.",
+      "repeat_caption_dispatch": {
+        "enum_descriptor": "96372b4",
+        "cases": [
+          "hourly",
+          "daily",
+          "weekdays",
+          "weekly",
+          "monthly",
+          "custom",
+          "never"
+        ],
+        "getter": "3fa3924",
+        "jump_table": "8073e6c",
+        "jump_table_bytes": [
+          0,
+          27,
+          13,
+          20,
+          7,
+          33,
+          48
+        ],
+        "case_entry_targets": [
+          "3fa3954",
+          "3fa39c0",
+          "3fa3988",
+          "3fa39a4",
+          "3fa3970",
+          "3fa39d8",
+          "3fa3a14"
+        ],
+        "never_source": "case6 ->3fa3a14->40799ac restores caller frame->40799b8 tail75d7cb8",
+        "never_caption": "Never",
+        "never_factory": "75d7cb8..7cc4 literal Swift small string Never, shared tail75e1c5c",
+        "limit": "Case ordinals bind this local no-payload enum only, not wire schema. DoesNotRepeat not observed in this consumer.",
+        "direct_menu_item": "3fb95fc calls75d7cb8 Never;3fb9624 item tag6"
+      },
+      "end_repeat_caption_dispatch": {
+        "enum_descriptor": "9637ecc",
+        "cases": [
+          "never",
+          "onDate"
+        ],
+        "getter": "3fa3a1c",
+        "never_source": "3fa3a20 compares1; non1 ->3fa3a88 tail75d7cb8 Never",
+        "onDate_source": "case1 ->3fa3a3c key894d990 automation_edit_end_repeat_on_date fallback On Date",
+        "row_consumer": "3fb8d78 calls3fa3a1c; direct picker item constructor3fb8bb4..3fb8be0 uses same onDate key and fallback",
+        "never_menu_item": "3fb8b4c calls75d7cb8 Never; item tag0"
+      },
+      "notification_row": {
+        "descriptor": "963827c",
+        "anonymous_parent_preserved": true,
+        "type": "AutomationNotificationPreferenceRow",
+        "accessor": "4060ca8",
+        "conformance": "807c7f8",
+        "body": "3fbca90 ->3fbc1c4",
+        "fields": [
+          {
+            "name": "isEnabled",
+            "type": "Bool?"
+          },
+          {
+            "name": "canEdit",
+            "type": "Bool"
+          },
+          {
+            "name": "loadFailed",
+            "type": "Bool"
+          },
+          {
+            "name": "actionHandler",
+            "type": "AutomationEditScreenAction handler"
+          }
+        ],
+        "parent": "editor807b998 tuple element4 Optional<descriptor963827c>, after instructions and before optional schedule tuple",
+        "supplied_content_fields": [
+          "showsNotificationPreference",
+          "notificationsEnabled",
+          "canEditNotificationPreference",
+          "notificationPreferenceLoadFailed"
+        ],
+        "label": {
+          "key": "automation_edit_notify_when_complete",
+          "literal": "894dea0",
+          "initializer": "3fbcadc",
+          "fallback_literal": "894ded0",
+          "fallback": "Notify when complete"
+        },
+        "tree_record": "807cd38",
+        "tree_file": "ios-sidebar-tasks-projects-20261112-notify-tree.json",
+        "tree": "HStack<Conditional<modifiedToggle<Text>,TupleView<Text,Spacer,Conditional<Button<Text>,modifiedOAIProgressView<EmptyView,EmptyView>>>>>",
+        "body_branch": "3fbc628 compares Optional<Bool> tag2; present branch3fbc6e4 builds binding/toggle; nil branch3fbc630 label plus progress/retry button with loadFailed packed bit test3fbc674.",
+        "limit": "UI only; no real permission/device notification success established. Exact parent assigner for showsNotificationPreference not closed. Keep nil/loading distinct from false."
+      }
+    },
+    "separate_routines": {
+      "screen": "RoutinesHomeView9636ee8 body3ff9890 ->3ff5ecc",
+      "viewModel": "96369b4",
+      "gates_from_fields": [
+        "isHubRedesignEnabled",
+        "isGoalsEnabled",
+        "showsNewUserLanding"
+      ],
+      "limit": "No proof yet which branch sidebar selects for current account; do not combine Routines redesign with legacy Scheduled page."
+    },
+    "can_implement_now": [
+      "Legacy native Scheduled list/state envelope, row identities and mode enum, local synthetic loading/empty/error/pagination state with original action names.",
+      "Row menu Edit/Share/Pause/Resume/Delete with explicit capability gates, and returnable editor skeleton based on original content fields."
+    ],
+    "blockers": [
+      "Sidebar selection dispatch into legacy/Routines parent not fully traced; exact account gate values unavailable.",
+      "Task card layout sizes/fonts/colors and full callback branch semantics remain partial.",
+      "Editor root skeleton and original field labels closed, but all field gates/actions/unsaved-change confirmation wording require further bounded traces.",
+      "Task deletion confirmation policy not found in current scoped consumers; source observed destructive button->deleteTask action only.",
+      "No current-account service capability or real backend contract inferred from metadata.",
+      "Scheduled root opaque modifier9757340 exact composer placement/safe area not named; positive cohosting is proven."
+    ],
+    "mode_projection": {
+      "source": "400df44 selectedMode byte+0x20; 400e0a8/400e0bc; a6f1938/a6f1910 tables",
+      "mapping": [
+        {
+          "mode": "all",
+          "ordinal_observation": 0,
+          "label": "Active",
+          "label_source": "400d560->6805f80 literal8a14e50 automation_scheduled_filter_active",
+          "supplies": [
+            "scheduledRequestState",
+            "pausedRequestState"
+          ],
+          "detail": "scheduled kind0 then paused kind1 appended; does not include finished"
+        },
+        {
+          "mode": "paused",
+          "ordinal_observation": 1,
+          "label": "Paused",
+          "label_source": "400d558->6805fdc literal8a14e80",
+          "supplies": [
+            "pausedRequestState"
+          ],
+          "detail": "a6f1938 count1 payloadbyte1"
+        },
+        {
+          "mode": "completed",
+          "ordinal_observation": 2,
+          "label": "Completed",
+          "label_source": "400d568->6806038 literal8a14eb0",
+          "supplies": [
+            "finishedRequestState"
+          ],
+          "detail": "a6f1910 count1 payloadbyte2"
+        }
+      ],
+      "loading_section_projection": "tablea6f6a48 pointer[0]a6f1a28 payload[0,1], [1]a6f1a00 payload[1], [2]a6f19d8 payload[2] used400de9c",
+      "limit": "Ordinals are internal observations only, not wire values."
+    },
+    "filter_parent": {
+      "source": "400d388 builder; Picker content closure403ba2c->3f9ef00; label closure403ba84->400f5dc",
+      "structure": "Menu wraps Picker; Picker implementation switches via platform availability3f9ef34..f48. Not tabs.",
+      "label_key": "automation_scheduled_filter",
+      "label_source": "400d4ac literal894b950",
+      "icon_resource": "OpenAI/Symbols/filter",
+      "icon_factory": "74f7314",
+      "selected_icon_branch": "400f64c mode0 vs nonzero selects stylebackground74ed6f4/74ed6a4"
+    },
+    "status_mapping": {
+      "metadata_descriptor": "9636790",
+      "cases": [
+        "active",
+        "expired",
+        "finished",
+        "paused"
+      ],
+      "records": [
+        "9ae8428",
+        "9ae8434",
+        "9ae8440",
+        "9ae844c"
+      ],
+      "payload_types": "allnil; empty cases declarationorder",
+      "item_metadata_accessor": "4029458; helper40757a8 forward here",
+      "field_metadata_offsets": "ScheduledAutomationItem field13 status metadata-offset44, field14canToggleStatus48, field15canShare4c (struct field-offset-vector base0x10)",
+      "source": "400fd18 status ordinal2 disables toggle; 400fd3c status ordinal3 Resume; 400ffa4 enabledbool status==3; therefore finished no toggle / paused Resume."
+    },
+    "minimal_frontend_admission": {
+      "original_branch": "ScheduledAutomationsScreen legacy native parent; does not prove active gate or reproduce Routines redesign",
+      "can_restore": [
+        "Native ScrollView/LazyVStack list parent, native toolbar Menu/Picker filter, status-specific original card model and context menu actions.",
+        "Mode projection exact: Active(all) supplies scheduled+paused; Paused onlypaused; Completed onlyfinished.",
+        "Editor original scrollVStack with title/prompt and conditional schedule controls, original labels, explicit save states and returnable close.",
+        "Same native root cohosts Optional<ScheduledAutomationsComposerBar>; original Schedule a task placeholder and optional VM supplied. Exact opaque placement still explicit.",
+        "Repeat never caption Never, EndRepeat Never/On Date, and optional notification row with Bool? load state, retry/progress alternatives."
+      ],
+      "do_not_mark_recovered": [
+        "All original card geometry/fonts/material values until body constructors checked",
+        "Every editor schedule/mode capability or native parent action forwarding",
+        "Current account gate/feature flag selection",
+        "Service success, backend contract, notification delivery"
+      ]
+    },
+    "composer_parent": {
+      "type": "ScheduledAutomationsComposerBar",
+      "descriptor": "9566520",
+      "accessor": "6c6468",
+      "conformance": "7d116ac",
+      "body": "62384c ->62353c",
+      "composer_source": "6235c0->623098 returns optional composer, nil branch62376c empty",
+      "root_constructor": "53600c..536544 constructs ScheduledAutomationsScreen;5362e0 passes closure67e2f4;53630c calls757a46c wrapper",
+      "closure": "67e2f4 supplies current ConversationRoot optional ScheduledAutomationsComposerViewModel to composer bar",
+      "compiler_type_record": "7d0cdb0",
+      "compiler_tree_file": "ios-sidebar-tasks-projects-20261112-scheduled-parent-tree.json",
+      "cohost_proof": "Opaque modifier descriptor9757340 original generic parameters are ScheduledAutomationsScreen + Optional<ScheduledAutomationsComposerBar>; outer appearance/toolbar/toolbarBackground/navigationDestination are preserved.",
+      "placeholder": {
+        "key": "scheduled_automations_composer_schedule_task_placeholder",
+        "literal": "8862ed0",
+        "source_pc": "6235d4",
+        "fallback": "Schedule a task"
+      },
+      "limit": "Positive same-parent cohosting proven. Exact opaque modifier placement/safe-area semantics and service submission not recovered. Do not omit composer simply because inner screen body is ScrollView."
+    }
+  },
+  "projects": {
+    "screen": {
+      "name": "ProjectsHomeScreen",
+      "kind": 17,
+      "descriptor": "0x966abcc",
+      "accessor": "0x4af51b4",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9b25478",
+          "type_reference": "0x92072a2"
+        },
+        {
+          "name": "params",
+          "record": "0x9b25484",
+          "type_reference": "0x9205886"
+        },
+        {
+          "name": "loadsProjectsOnFirstAppear",
+          "record": "0x9b25490",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "__isSearchFocused",
+          "record": "0x9b2549c",
+          "type_reference": "0x8cf6c70"
+        }
+      ],
+      "conformances": [
+        "0x810f258"
+      ]
+    },
+    "viewModel": {
+      "name": "ProjectsHomeViewModel",
+      "kind": 16,
+      "descriptor": "0x966a18c",
+      "accessor": "0x4af51a0",
+      "fields": [
+        {
+          "name": "_pendingProjectDeletions",
+          "record": "0x9b248e8",
+          "type_reference": "0x9029652"
+        },
+        {
+          "name": "_pinnedProjectIDs",
+          "record": "0x9b248f4",
+          "type_reference": "0x9029652"
+        },
+        {
+          "name": "_pinningError",
+          "record": "0x9b24900",
+          "type_reference": "0x90920c0"
+        },
+        {
+          "name": "_presentationQueue",
+          "record": "0x9b2490c",
+          "type_reference": "0x9206de6"
+        },
+        {
+          "name": "_filterState",
+          "record": "0x9b24918",
+          "type_reference": "0x9206df4"
+        },
+        {
+          "name": "_navigationPath",
+          "record": "0x9b24924",
+          "type_reference": "0x8e84ae4"
+        },
+        {
+          "name": "projectConversationScreenBuilder",
+          "record": "0x9b24930",
+          "type_reference": "0x9204734"
+        },
+        {
+          "name": "configureProjectDetail",
+          "record": "0x9b2493c",
+          "type_reference": "0x9206e00"
+        },
+        {
+          "name": "hapticEngine",
+          "record": "0x9b24948",
+          "type_reference": "0x8c20ab0"
+        },
+        {
+          "name": "pinnedItemRepository",
+          "record": "0x9b24954",
+          "type_reference": "0x91dbf80"
+        },
+        {
+          "name": "projectEditorScreenBuilder",
+          "record": "0x9b24960",
+          "type_reference": "0x9204750"
+        },
+        {
+          "name": "dependencies",
+          "record": "0x9b2496c",
+          "type_reference": "0x920485c"
+        },
+        {
+          "name": "gizmoRepository",
+          "record": "0x9b24978",
+          "type_reference": "0x901a1e0"
+        },
+        {
+          "name": "projectLatencyTracker",
+          "record": "0x9b24984",
+          "type_reference": "0x920400a"
+        },
+        {
+          "name": "latencyInstrumentation",
+          "record": "0x9b24990",
+          "type_reference": "0x9206daa"
+        },
+        {
+          "name": "lockedChatsAccess",
+          "record": "0x9b2499c",
+          "type_reference": "0x8c216a4"
+        },
+        {
+          "name": "_account",
+          "record": "0x9b249a8",
+          "type_reference": "0x8f4de68"
+        },
+        {
+          "name": "_projectSharingCapabilities",
+          "record": "0x9b249b4",
+          "type_reference": "0x8d89f54"
+        },
+        {
+          "name": "bag",
+          "record": "0x9b249c0",
+          "type_reference": "0x8d8a3a0"
+        },
+        {
+          "name": "refreshTask",
+          "record": "0x9b249cc",
+          "type_reference": "0x8c20e10"
+        },
+        {
+          "name": "projectsPageState",
+          "record": "0x9b249d8",
+          "type_reference": "0x902cf48"
+        },
+        {
+          "name": "_$observationRegistrar",
+          "record": "0x9b249e4",
+          "type_reference": "0x8da7dc0"
+        }
+      ],
+      "conformances": [
+        "0x810f0a0",
+        "0x810f0bc",
+        "0x810f0cc",
+        "0x810f0dc"
+      ]
+    },
+    "actions": [
+      "projectTapped",
+      "newProjectChatTapped",
+      "setProjectPinned",
+      "shareProjectTapped",
+      "editProjectTapped",
+      "deleteProjectTapped",
+      "deleteProjectConfirmed",
+      "viewAppeared",
+      "retryProjectsLoadTapped",
+      "createProjectTapped",
+      "lockNowTapped"
+    ],
+    "filter_fields": [
+      "projectsRequestState",
+      "searchText",
+      "selectedDirectoryFilter",
+      "accountNormalizedUserID",
+      "pinnedProjectIDs",
+      "filteredProjectsRequestState",
+      "hasActiveSearch",
+      "canLoadNextPage",
+      "isLoadingNextPage",
+      "hasNextPageError",
+      "nextPageLoadTrigger"
+    ],
+    "detail_content_fields": [
+      "detailHeader",
+      "project",
+      "conversationsRequest",
+      "conversationAvatars",
+      "conversationIDsWithInProgressChanges",
+      "accountNormalizedUserID",
+      "allowsConversationPinning",
+      "conversationPinState",
+      "updateConversationPinnedState",
+      "fileListViewModel",
+      "customTabs",
+      "reloadEverything",
+      "reloadFiles",
+      "loadMoreConversations",
+      "showConversation",
+      "removeConversationFromProject",
+      "canRenameConversation",
+      "renameConversation",
+      "unlockConversation",
+      "archiveConversation",
+      "deleteConversation",
+      "__tabSelectionState",
+      "_overlayContentBottomInset"
+    ],
+    "detail_screen": {
+      "name": "ProjectDetailScreen",
+      "kind": 17,
+      "descriptor": "0x9669a54",
+      "accessor": "0x4ae4004",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9b23bd8",
+          "type_reference": "0x92004e8"
+        },
+        {
+          "name": "_accessibilityReduceMotion",
+          "record": "0x9b23be4",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "__isTransitioningToConversation",
+          "record": "0x9b23bf0",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "alerts",
+          "record": "0x9b23bfc",
+          "type_reference": "0x9205be8"
+        }
+      ],
+      "conformances": [
+        "0x810c410",
+        "0x810c42c"
+      ]
+    },
+    "editor_fields": [
+      "context",
+      "_projectName",
+      "projectNameTextFieldFocused",
+      "_selectedMemoryScope",
+      "allowsProjectOnlyMemorySelection",
+      "isProjectMemoryScopeEditEnabled",
+      "_projectDisplay",
+      "suggestedProjects",
+      "showEmojiOptions",
+      "showMemoryOptions",
+      "canSaveChanges",
+      "canEditProjectAppearance",
+      "actionHandler",
+      "saveChanges",
+      "__isSaving",
+      "_disclosurePopoverPresentation",
+      "_projectEditorAppearance",
+      "_emojiSize"
+    ],
+    "limit": "Independent ChatGPTProjects module, not Remote project/workspace list. Source inventory only, do not admit full native recovery from type presence."
+  },
+  "host_changes": "none"
+}

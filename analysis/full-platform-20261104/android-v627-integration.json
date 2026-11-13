@@ -1,0 +1,186 @@
+{
+  "build": 627,
+  "platform": "Android",
+  "baseline_version": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "scope": "Codex Remote list title menu and sidebar navigation",
+  "evidence": [
+    "android-remote-v627-menu-source.json",
+    "android-remote-v627-navigation-source.json",
+    "android-v627-assets.json"
+  ],
+  "implemented": [
+    "Browsing left button invokes sidebar; direct and launcher routes share AppShell RemoteListPage",
+    "Preserve task list filter, collapse, scroll and scoped drafts across sidebar open/close and switching back to Codex",
+    "Title popup uses original bell/folder/clock/link/gear vectors and selected checkmark",
+    "22dp radius; intrinsic 200..300dp width; 48dp minimum row height; all five rows reserve trailing24dp; source padding, font, divider",
+    "Normal light white/dark303030 surface; dark0.5dp border",
+    "Center/top anchor with window-edge clamp, anchor-overlap transform origin, spring enter scale and opacity; outside/back dismissal"
+  ],
+  "independent_adaptations": [
+    "Existing AppShell owns the reconstructed drawer. Official Remote has its own px81 Scaffold state and reuses WorkspaceScope ConversationSidebar.",
+    "Native Android Popup and Compose Surface present source-backed geometry. Light shadow uses platform3dp elevation instead of the official custom90dp blur backend."
+  ],
+  "unimplemented": [
+    "Official custom shadow backend and pixel-identical shadow/animation behavior",
+    "Priority and chronological sorting data/comparators",
+    "Add connection and Codex settings full frontend flows",
+    "Host long-press menu and exact press/scroll-edge effects",
+    "Service connection execution"
+  ],
+  "source_files": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt",
+      "sha256": "37caad80ba4e558014a2f8b0573baddece72835e09dbb2fced40849cd7b41713"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListActivity.kt",
+      "sha256": "3066689b537b22a9b2afb41a23f236a38c689ef98eee52b7fd928c9212b7024f"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt",
+      "sha256": "431fbfd117da346578835c1a4e69b84865a6bb3342dd578aa08028c5ca4e04cd"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RecoveredRemoteListChrome.kt",
+      "sha256": "7df0fc0fedf9a7b259a2c1ea28fa2c69553827457644ec01cbace2a15362d041"
+    }
+  ],
+  "build_logs": [
+    "android-v627-build.log",
+    "android-v627-build-final.log",
+    "android-v627-build-r3.log",
+    "android-v627-build-r4.log",
+    "android-v627-build-r5.log"
+  ],
+  "retained_failures": [
+    {
+      "report": "android-v627-oneplus-zh-final.json",
+      "reason": "The new placement assertion compared expanded clickable accessibility bounds with the measured popup anchor. Added a separate nonclickable anchor identifier and asserted its measured bounds."
+    },
+    {
+      "report": "android-v627-oneplus-en-dark.json",
+      "reason": "Clearing search via accessibility reported previous text. Added bounded wait for the exact requested semantics value; rerun result recorded separately. English/dark r2 passed with this wait and unchanged production APK."
+    },
+    {
+      "report": "android-v627-shell.json",
+      "reason": "Launcher-to-Remote test asserted the All label before async synthetic list loading completed. Failure screenshot/XML already contained the expected Chinese label. The test now waits for the list and exact localized label. Shell r2 passed all four phases with unchanged production APK."
+    }
+  ],
+  "verification_status": "10 automated checks passed on wireless OnePlus; Chinese Remote preview retained",
+  "tests": [
+    {
+      "report": "android-v627-oneplus-zh-r3.json",
+      "status": "passed",
+      "steps": [
+        {
+          "apk": "app/build/outputs/apk/debug/app-debug.apk",
+          "sha256": "0071cbf81f67edd641dd0ca671043e9dfa8c3a374c868aad1d76afcceeff4a08"
+        },
+        {
+          "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+          "sha256": "6434ed3fe8f0fa285d9e4cd3c67228891f906ab030a3b783f98769a88b7727ba"
+        },
+        {
+          "test": "modelRules",
+          "passed": true
+        },
+        {
+          "test": "listJourney",
+          "passed": true
+        },
+        {
+          "test": "verifyRestart",
+          "passed": true
+        }
+      ],
+      "export_errors": []
+    },
+    {
+      "report": "android-v627-oneplus-en-dark-r2.json",
+      "status": "passed",
+      "steps": [
+        {
+          "apk": "app/build/outputs/apk/debug/app-debug.apk",
+          "sha256": "0071cbf81f67edd641dd0ca671043e9dfa8c3a374c868aad1d76afcceeff4a08"
+        },
+        {
+          "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+          "sha256": "706a5c62d1f8eb98a3adfd9e4eb34b395291d33819f712b7c4a8e69a93132d15"
+        },
+        {
+          "test": "modelRules",
+          "passed": true
+        },
+        {
+          "test": "listJourney",
+          "passed": true
+        },
+        {
+          "test": "verifyRestart",
+          "passed": true
+        }
+      ],
+      "export_errors": []
+    },
+    {
+      "report": "android-v627-shell-r2.json",
+      "status": "passed",
+      "steps": [
+        {
+          "apk": "app/build/outputs/apk/debug/app-debug.apk",
+          "sha256": "0071cbf81f67edd641dd0ca671043e9dfa8c3a374c868aad1d76afcceeff4a08"
+        },
+        {
+          "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+          "sha256": "5d1158887512f906c561010860ca8c7b6ca27e35d27fc7054082a8955d52f890"
+        },
+        {
+          "test": "preferences",
+          "passed": true
+        },
+        {
+          "test": "composer",
+          "passed": true
+        },
+        {
+          "test": "journey",
+          "passed": true
+        },
+        {
+          "test": "verifyRestart",
+          "passed": true
+        }
+      ],
+      "export_errors": []
+    }
+  ],
+  "visual_comparisons": {
+    "before": "android-v627-before-menu.png",
+    "after_light": "android-v627-oneplus-zh-r3/title-menu.png",
+    "after_dark": "android-v627-oneplus-en-dark-r2/title-menu.png",
+    "sidebar": "android-v627-oneplus-zh-r3/sidebar-from-remote.png",
+    "observed": "Leading icons, trailing alignment, larger corner radius, source surface colors and anchor placement rendered; left sidebar entry opens shared drawer. Original custom shadow backend still differs."
+  },
+  "apk_sha256": "0071cbf81f67edd641dd0ca671043e9dfa8c3a374c868aad1d76afcceeff4a08",
+  "test_apk_sha256": "5d1158887512f906c561010860ca8c7b6ca27e35d27fc7054082a8955d52f890",
+  "final_runtime": {
+    "serial": "172.16.197.16:5555",
+    "pid": "16419",
+    "version": [
+      "versionCode=627 minSdk=26 targetSdk=36",
+      "versionName=0.627-frontend"
+    ],
+    "entry": "AppShellActivity --ez remote true",
+    "chinese_remote_list_visible": true,
+    "menu_closed": true,
+    "left_sidebar_present": true,
+    "preview_retained": true
+  },
+  "final_preview": [
+    "android-v627-final-preview.png",
+    "android-v627-final-preview.xml",
+    "android-v627-final-menu.png",
+    "android-v627-final-menu.xml"
+  ]
+}

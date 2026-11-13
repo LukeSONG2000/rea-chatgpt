@@ -1,0 +1,158 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static-instructions-and-Swift-metadata",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Remote thread call 0x1a23d0c to CodexRemoteMessageInputView constructor 0x197bfe4; no implementation edits",
+  "parent_metadata": {
+    "name": "CodexRemoteThreadBottomBars",
+    "descriptor": "0x95ae740",
+    "accessor": "0x1c2e55c",
+    "field_count": 22,
+    "field_offset_vector_word": 4,
+    "field_offset_vector_byte_start": "0x20",
+    "source": "ios-remote-v421-containers.json",
+    "verified_descriptor_words": "descriptor+0x14=22, descriptor+0x18=4",
+    "fields": [
+      {
+        "index": 11,
+        "name": "composerTrailingOutsideContent",
+        "field_record": "0x9a3ad94",
+        "metadata_offset_entry": "0x4c"
+      },
+      {
+        "index": 20,
+        "name": "__composerSceneMetrics",
+        "field_record": "0x9a3ae00",
+        "metadata_offset_entry": "0x70",
+        "type": "SwiftUI.LazyState<CodexRemoteComposerSceneMetrics>",
+        "type_record": "0x7e0ef40",
+        "type_evidence": "ios-remote-v521-thread-scene-state-type.json"
+      }
+    ]
+  },
+  "trailing_outside_content": {
+    "status": "argument-forwarding-proven-upstream-producer-partial",
+    "instructions": [
+      {
+        "site": "0x1a23978",
+        "meaning": "ldpsw x8,x9,[x22,#0x48] loads realtimeVoiceAction and composerTrailingOutsideContent field offsets"
+      },
+      {
+        "site": "0x1a23994",
+        "meaning": "ldr x19,[x21,x9] loads composerTrailingOutsideContent from BottomBars"
+      },
+      {
+        "site": "0x1a23998..0x1a2399c",
+        "meaning": "save x19 at fp-0x308"
+      },
+      {
+        "site": "0x1a23acc..0x1a23ad4",
+        "meaning": "reload saved word and write callerSP+0x110"
+      },
+      {
+        "site": "0x197c7ec..0x197c7f4",
+        "meaning": "constructor stores into MessageInputView field offset vector+0xa0"
+      }
+    ],
+    "conclusion": "Parent optional value forwarded verbatim. This call site does not establish nil and does not construct trailing content.",
+    "missing": "Parent construction assignment and exact condition/content for composerTrailingOutsideContent remain untraced."
+  },
+  "scene_metrics": {
+    "status": "explicit-some-and-parent-state-owner-proven",
+    "getter": "0x1a25284",
+    "instructions": [
+      {
+        "site": "0x4613b4..0x4613bc",
+        "meaning": "x0=x22 parent metadata; x20=x21 parent value before getter"
+      },
+      {
+        "site": "0x1a25294",
+        "meaning": "load field offset at parent metadata+0x70"
+      },
+      {
+        "site": "0x1a25298",
+        "meaning": "0x1d59950 resolves LazyState<SceneMetrics> metadata via type record0x7e0ef40"
+      },
+      {
+        "site": "0x1a2529c",
+        "meaning": "0x269ad8 adds field offset to x20 and tailcalls0x7c4bb2c LazyState.wrappedValue getter"
+      },
+      {
+        "site": "0x1a252a0..0x1a252a8",
+        "meaning": "returns bottomCornerRadius in d0, optional bottomSafeAreaInset payload in x0 and tag in w1"
+      },
+      {
+        "site": "0x1a239e8..0x1a239f8",
+        "meaning": "save getter results in d8/local fp-0x320/x23"
+      },
+      {
+        "site": "0x1a23a80",
+        "meaning": "and w8,w23,#0xff clears outer Optional tag byte"
+      },
+      {
+        "site": "0x1a23aa0..0x1a23aac",
+        "meaning": "halfword tag at callerSP+0x140 has high byte0 (some SceneMetrics), payload at+0x138"
+      },
+      {
+        "site": "0x1a23bc0",
+        "meaning": "radius d8 stored callerSP+0x130"
+      },
+      {
+        "site": "0x197c824..0x197c840",
+        "meaning": "constructor stores supplied Optional SceneMetrics at field offset vector+0xb0"
+      }
+    ],
+    "binding_producer": {
+      "body_registration": "0x1a21e24..0x1a21e28 closure0x1ce9ae0, background call0x1a21e44",
+      "reader_type_record": "0x7e12ce8",
+      "reader_descriptor": "0x95ae3d0",
+      "reader_name": "CodexRemoteComposerSceneMetricsReader",
+      "reader_evidence": "ios-remote-v521-thread-scene-background-type.json",
+      "condition": "0x1ce9af4 ->0x1da3c08->0x77123b0 (v519 phone predicate);0x26c444 compares result byte to1; b.ne0x1ce9b74 skips reader",
+      "binding": "0x1ce9b04 parent metadata+0x70;0x1ce9b08 resolves same LazyState;0x1ce9b10->0x1d99a54 adds offset and tailcalls0x7c4bb44 LazyState.projectedValue",
+      "reader_binding_copy": "0x1ce9b14..0x1ce9b28 copies projected Binding beginning to output; remaining constructor helpers were not expanded",
+      "underlying_measurement": "Shared reader body0x1992fe0 and update0x1993544 already traced in v519. Parent supplies its Binding; local MessageInputView fallback ownership is bypassed by explicit sceneMetrics."
+    }
+  },
+  "integration_conclusion": {
+    "safe_to_share": [
+      "Pure SceneMetrics representation and dynamic inset calculation at0x19873c8",
+      "Shared SceneMetricsReader measurement logic, while retaining BottomBars ownership in Thread"
+    ],
+    "preserve_differences": [
+      "Home passes sceneMetrics=nil, Thread passes some(parent __composerSceneMetrics)",
+      "Home passes trailingOutsideContent=nil, Thread forwards optional parent content",
+      "Inner versus outer style-padding placement depends on trailingOutsideContent and must remain conditional"
+    ],
+    "acceptance": "Source-level wiring evidence only. No device radius, snapshot parity, keyboard layout or runtime branch acceptance in this evidence batch."
+  },
+  "attachment_scope": "No new attachment capability mapping claimed in this bounded trace. Constructor metadata has attachment/presentation inputs, but their exact producers need a separate bounded question.",
+  "evidence": [
+    "ios-remote-v479-approval-factory.asm",
+    "ios-remote-v421-bottom-secondary-factory.asm",
+    "ios-remote-v421-containers.json",
+    "ios-remote-v421-bottom-body.asm",
+    "ios-remote-v421-bottom-body.json",
+    "ios-remote-v519-home-scene-geometry-findings.json",
+    "ios-remote-v519-composer-dynamic-insets-findings.json",
+    "ios-remote-v519-error-bindings.json",
+    "ios-remote-v519-newthread-construction-calls.json",
+    "ios-remote-v521-thread-scene-getter.asm",
+    "ios-remote-v521-thread-scene-getter.json",
+    "ios-remote-v521-thread-scene-state-type.json",
+    "ios-remote-v521-thread-scene-background-complete.asm",
+    "ios-remote-v521-thread-scene-background-calls.json",
+    "ios-remote-v521-thread-scene-background-type.json"
+  ],
+  "limits": [
+    "No complete decompilation or original source claim",
+    "Exact upstream trailingOutsideContent producer and all its branches remain unresolved",
+    "Background reader construction tail helpers not fully expanded; established type and same-state projected Binding route",
+    "No implementation edits or runtime execution"
+  ]
+}

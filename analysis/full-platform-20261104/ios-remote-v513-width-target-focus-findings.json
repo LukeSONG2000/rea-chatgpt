@@ -1,0 +1,312 @@
+{
+  "status": "partial",
+  "evidence_type": "official_artifact_static_analysis",
+  "scope": "Home destination width/visibility and composing focus lifetime. Evidence-only; no production changes.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "confirmed": [
+    {
+      "id": "width_environment_keypath",
+      "offsets": [
+        "0x19eb4ac",
+        "0x19ebb20",
+        "0x1d9818c",
+        "0x7e29b40",
+        "0x7e29b64",
+        "0x2e5fcc",
+        "0x60612ac",
+        "0x2e5fec",
+        "0x6061300",
+        "0x7e29b74"
+      ],
+      "conclusion": "NewThreadScreen field2 _composerMaximumWidth is initialized with composite keypath EnvironmentValues.messageInputStyle.maxWidth. Computed EnvironmentValues component accesses messageInputStyle; final stored MessageInputStyle component offset0x20 is maxWidth. It is not a standalone EnvironmentKey with independent default."
+    },
+    {
+      "id": "width_home_default",
+      "offsets": [
+        "0x96cb3e0",
+        "0x60810f8",
+        "0x6081134",
+        "0x608113c",
+        "0x19a0860",
+        "0x19a0a38",
+        "0x2de24c"
+      ],
+      "conclusion": "MessageInputStyle field4 maxWidth CGFloat atoffset0x20 initializes to728.0 (bits4086c00000000000). Remote base starts default60810f8. Home copies Remote style, and its v508 proven overrides do not overwrite maxWidth. Legacyfalse and glassadjustInsetsfalse preserve this geometry. Environment __Key_messageInputStyle default witness6081e50 copies a global style via6081df4; global initializer6082794 not traced, but Home explicit style path proves its width without requiring that default."
+    },
+    {
+      "id": "destination_width_modifier_order",
+      "offsets": [
+        "0x19f2ea0",
+        "0x1c3e634",
+        "0x19f32b0",
+        "0x19f3004",
+        "0x19f3010",
+        "0x19f3020",
+        "0x19f3030",
+        "0x19f3038",
+        "0x19f303c",
+        "0x19f3040",
+        "0x19f3070",
+        "0x19f30ac"
+      ],
+      "conclusion": "Destination upper content receives horizontalpadding12, then maxWidth from _composerMaximumWidth withcenteralignment, then outer maxWidthinfinity centeralignment. Destination local selector padding12 is an additional inner layer. The first maxWidth consumer is source-proven728 on Home style."
+    },
+    {
+      "id": "workspace_menu_membership",
+      "offsets": [
+        "0x19f3cc8",
+        "0x19f3cd0",
+        "0x19f4224",
+        "0x19f3cd8",
+        "0x19f3ce0",
+        "0x19f3cf8",
+        "0x19f3cfc",
+        "0x19f3d00",
+        "0x19f3d14",
+        "0x19f44a8"
+      ],
+      "conclusion": "Host menu is always constructed. Optional eligible selectedHostItem nil omits workspace menu. Present host cases0 slingshot and1 custom reach workspace menu; case2 cloud is omitted. There is no nil-host disabled workspace placeholder at this consumer."
+    },
+    {
+      "id": "workspace_menu_disabled",
+      "offsets": [
+        "0x19f455c",
+        "0x19f4584",
+        "0x19f4588",
+        "0x44ab38",
+        "0x1225d0"
+      ],
+      "conclusion": "Workspace disabled value comes from viewmodel witness+0x40 and combines inheritedenabled && !disabled. Exact viewmodel property semantic remainsunknown; do not call it loading. This is separate from membership gating and host menu chevron gating."
+    },
+    {
+      "id": "add_folder_icon",
+      "offsets": [
+        "0x19f8bc8",
+        "0x19f8c24",
+        "0x74fa540",
+        "0x74fa56c",
+        "0x74fa574",
+        "0x8a56a80"
+      ],
+      "conclusion": "Add new folder localizedkeycodex_remote_add_workspace_menu_item uses iconfactory74fa540 -> assetOpenAI/Symbols/plus-md. Callback ownership remainsv5111c3eba0->witness198->18b5538."
+    },
+    {
+      "id": "focus_composing_transition",
+      "offsets": [
+        "0x19f0f20",
+        "0x19f0fcc",
+        "0x1c3dc80",
+        "0x1c3dcb0",
+        "0x1c3dcc4",
+        "0x1c3dccc",
+        "0x1c3dcdc",
+        "0x1c3dce8",
+        "0x1c3dcec",
+        "0x1dad88c",
+        "0x1c3dcf0",
+        "0x1c3dd0c"
+      ],
+      "conclusion": "externalChatFieldIsFocused onChange(initialtrue) receivesnewvalue. True resetsbothkeyboardflags and setsisComposingtrue. False returnswithoutchangingcomposing unless __isAwaitingInteractiveKeyboardDismissal(field11,metadata+0x5c)true. Inthatcaseitresetstheflags andsetsisComposingfalse. Thus generic blur/menu presentation is insufficient to endcomposing."
+    },
+    {
+      "id": "composing_false_focus_sync",
+      "offsets": [
+        "0x19f0fe0",
+        "0x19f1064",
+        "0x1c3dd18",
+        "0x1c3dd3c",
+        "0x1c3dd50",
+        "0x1c3dd54",
+        "0x1c3dd68"
+      ],
+      "conclusion": "isComposing onChange callback1c3dd18 returnswhennewtrue. Whennewfalse, resetskeyboardflags andwritesexternalChatFieldIsFocusedfalse(field12metadata+0x60)."
+    },
+    {
+      "id": "interactive_scroll_phase",
+      "offsets": [
+        "0x19f3998",
+        "0x19f39c0",
+        "0x1c3e910",
+        "0x1c3e940",
+        "0x1c3e944",
+        "0x1c3e95c",
+        "0x1c3e974",
+        "0x1c3e97c",
+        "0x1c3e9a0",
+        "0x1c3e9c0"
+      ],
+      "conclusion": "Composing destination ScrollView attaches onScrollPhaseChange(old,new) callback1c3e910. Newdecelerating(raw3) returns preserving __isKeyboardDismissalScrollActive. Newinteracting(raw2) setsactive to !focusesComposerOnAppear(field20metadata+0x80) && externalChatFieldIsFocused(field12+0x60). Other phases setactivefalse. Phase mapping uses localAppleSDK frozen ScrollPhase order, recordedseparately."
+    },
+    {
+      "id": "interactive_dismissal_mode",
+      "offsets": [
+        "0x19f37b8",
+        "0x19f37bc",
+        "0x19f38a8",
+        "0x19f38b0",
+        "0x19f38bc",
+        "0x19f38dc"
+      ],
+      "conclusion": "Destination ScrollView uses scrollDismissesKeyboard(focusesComposerOnAppear ? automatic : interactively). This uses samefield20 as interactive phase gate."
+    },
+    {
+      "id": "keyboard_notifications",
+      "offsets": [
+        "0x19f0d90",
+        "0xaac6820",
+        "0x19f0da4",
+        "0x19f0e30",
+        "0x1c3dbe8",
+        "0x1c3dc34",
+        "0x19f0e64",
+        "0xaac6828",
+        "0x19f0ed8",
+        "0x1c3dc40",
+        "0x19f1580"
+      ],
+      "conclusion": "UIKeyboardWillHideNotification publisher invokes1c3dbe8; onlyifscrollActivefield10true doesitsetawaitingInteractivefield11true via19efdb8. UIKeyboardWillShowNotification invokes1c3dc40, resettingbothflags via19f1580. The same reset callback is attached toonDisappear. Do not treat everykeyboardWillHide as composingexit."
+    },
+    {
+      "id": "bottom_composer_maxwidth_order",
+      "offsets": [
+        "0x197e308",
+        "0x197ee0c",
+        "0x197ee18",
+        "0x197ee1c",
+        "0x197ee74",
+        "0x197ee90",
+        "0x197eed8",
+        "0x197ef04",
+        "0x197ef3c",
+        "0x197ef50",
+        "0x197ef60",
+        "0x197ef64",
+        "0x197efbc",
+        "0x197efd4",
+        "0x197eff0",
+        "0x1da6fbc",
+        "0x1981560",
+        "0x197f024",
+        "0x197f03c",
+        "0x197f04c",
+        "0x197f090",
+        "0x197f0fc"
+      ],
+      "conclusion": "Remote input ordinary layout 197e308 reads its MessageInputStyle environment (field metadata+0x120) and named appliesPaddingAndMaxWidthToBackground boolean at style+0x18. Default6081130 stores true; Remote/Home geometry-preserving transforms retain it. With this value true, early outer padding/frame pair197ee64/197eed8 is zero/nil, and intermediate maxWidth frame197ef3c is nil. The content then applies frame(maxWidth:style.maxWidth=728,alignment:center) at197efbc, dynamic outer padding at197f024, and frame(maxWidth:infinity,alignment:center) at197f090. Only then is background closure1c2668c attached at197f0fc. Shared 728 therefore limits inner composer content before its outer padding; it must not cap the whole safeAreaBar or parent full-width wrapper. If boolean false, the first padding/maxWidth pair is active and later maxWidth/padding is nil/zero. Helper1981560 is dynamic and differs from blindly applying the default outerInsets tuple."
+    }
+  ],
+  "unknown": [
+    {
+      "id": "workspace_disabled_property",
+      "boundary": "VMwitness+0x40->18c763c->1892a4c->1888ee8 runtimeoffsetglobalb07db80. Semanticfieldnameunbound."
+    },
+    {
+      "id": "runtime_equivalence",
+      "boundary": "Staticofficialartifact+localSDKdeclaration. No originalapplicationexecution, servicecalls ordevicevisualacceptance."
+    },
+    {
+      "id": "bottom_dynamic_padding_and_background",
+      "boundary": "Content width and modifier order closed. Remaining dynamic outer padding1981560->19873c8 depends on focus, device and frame values; source reads must remain distinct from v508 default style tuple. Optional background1c2668c has separate focus/layout branches and was not fully recovered in this width slice. Do not assert complete visual equivalence of background/safeAreaBar from maxWidth recovery."
+    }
+  ],
+  "minimum_source_backed_integration": [
+    "Use shared Home MessageInputStyle.maxWidth728. Destination content applies horizontalpadding12 then maxWidth728 then full-width centered frame. Ordinary composer applies inner maxWidth728 before its dynamic outer padding, then full-width centered frame and optional background. Preserve these distinct modifier positions.",
+    "Omitworkspace menuwheneligibleselectedhostnil/cloud. Addfolder iconplus-md. Preservewitness-deriveddisabledboundary.",
+    "Keepcomposingthroughordinaryfocusloss. Scrollphaseinteracting gatedby !focusesComposerOnAppear && editorfocused setsactive; deceleratingpreserves; otherphasesclear. Keyboardwillhide whileactive setsawaiting. Subsequentfocusfalse exitscomposingonlyifawaiting. Keyboardwillshow/focusgain/composingfalse/onDisappear resetflags."
+  ],
+  "evidence_sha256": {
+    "ios-remote-v513-width-key.asm": "a287e19a98e386850d5a28f4b62a373dad6d8316857128bfdee0a336cd6cdfaa",
+    "ios-remote-v513-width-key-calls.json": "3bd76e797eeb3b9c33ed82092c8550964f15ba7e46f7300122eab94f98d95f2c",
+    "ios-remote-v513-width-witness.asm": "b85ca1b0417e471b091922f19fcd2ce0eb48d7a563acc68153d5d0655cf7bc7c",
+    "ios-remote-v513-width-witness-calls.json": "f8fa333863ef6a437f6218424e1c37349d127f0ca9c5008f4c9e41e3d20ccc82",
+    "ios-remote-v513-width-getset.asm": "0b2f9afaa93d56daaae9d31e91fb1e36dc8bfec3fcf98340be1df0dda6a1ad9a",
+    "ios-remote-v513-width-getset-calls.json": "6bcb8b119db3492cb6e00d1f85ae20de979e33efd42cc60a14c45abe161447d6",
+    "ios-remote-v513-width-refs.json": "c7c89a84bd963a7d7884afeef9b7e9969cd839efd7ae491c08795ed0cfeba24e",
+    "ios-remote-v513-width-default.asm": "5ee45cf828d87f4bb39776ed3efd82a199c28ddb799cae62df7fbef3366e2ddf",
+    "ios-remote-v513-width-default-calls.json": "8fa0d824fa2af3694e696cab05c92aa45604c08290760b22fe1f37aae7f56262",
+    "ios-remote-v513-width-value.asm": "a137d8877cdfbe61ff2b41ef1bac66723ac7724fdd4c48ea6d56d4307ef1f2fe",
+    "ios-remote-v513-width-value-calls.json": "b952ae662a1b7fb25c4a1a89f323955b9fdbef23859b95b88c3dccd95ab70110",
+    "ios-remote-v513-width-dependent.asm": "e844b881541c8b3a49c7ef394c09e7bbd5488f5878ebec2d10134c54a01b5d66",
+    "ios-remote-v513-width-dependent-calls.json": "f91458c8437f44c83221c9ceb2e326d253d2e266de40dd6b52cb5708ba2f0424",
+    "ios-remote-v513-workspace-add.asm": "5259055aa44542070c8a6c557efceed48a4f7f033a177ba5b92c64b893cfe222",
+    "ios-remote-v513-workspace-add-calls.json": "d5f50f62c075ed9eda2dec1bf046b1d7aa3d3d35192de0f39fecad645ed5a68c",
+    "ios-remote-v513-newthread-refs.json": "aa2cc591b9ff629c70c1920f6a24bcb042973e77a3e2d6aadca9802d5cfdd635",
+    "ios-remote-v513-screen-constructor.asm": "077b310aba01fe6baad7a0be0428e2dba1d0cd134af9c02b51e84c8db0f0372a",
+    "ios-remote-v513-screen-constructor-calls.json": "1135cc45b7af4efe0ead562d32c68f28ff41c7074f7ae4e239ab71a44e717afd",
+    "ios-remote-v513-add-icon.asm": "9750a77216da80bfbf69e86ec894dfbf2ffb192eb7a9f3bae727aafd89579977",
+    "ios-remote-v513-add-icon-calls.json": "8af34f90202b596a0017541122dbecb8fa41d5526ffe8630ee976edc173c7805",
+    "ios-remote-v513-width-style-default.asm": "34af3898012b27976327c207242dd0254fbbc80478a8fa8840c27d1625cae92d",
+    "ios-remote-v513-width-style-default-calls.json": "f28fb8ecdbe15d346e997f2df0846a8bc3dba3c6a41569ab7b54091214c63694",
+    "ios-remote-v513-width-keypath-getter.asm": "2f6d10571884a990cbc1058d7b6962b63ae32a73b69a0a103f1e91a036e1f6ad",
+    "ios-remote-v513-width-keypath-getter-calls.json": "6a25230b4a4a6cf2f8a5231058f3f27c57d30016eea1b1354ba843ea9812e93c",
+    "ios-remote-v513-width-key-default.asm": "1fcbf1e58ed21781640a5fbfcae150d52da4352fa77f05f1c1dc03cc478817af",
+    "ios-remote-v513-width-key-default-calls.json": "246966bee979b0c1ac0540a8a74c5563a5526381f7b1a3e82ad7adc4062e7e0d",
+    "ios-remote-v513-workspace-visibility.asm": "755c253b0c214035b59d2c211aae50e8a5d3c324c3d8b67f7200bb4c6cfdbf07",
+    "ios-remote-v513-workspace-visibility-calls.json": "b907fadc5134bed116710450538e403ba82c68a75d2880a67b0ae23f27c53113",
+    "ios-remote-v513-workspace-disabled.asm": "a755e06e68b5dfa478733347196e34ca68d9369ff1587f087567b3ee24d234e6",
+    "ios-remote-v513-workspace-disabled-calls.json": "24240aaca178033433854d5ff89abad3e3792429bdab8d24893c80e61f9c394f",
+    "ios-remote-v513-width-and-target-data.json": "ca0672f82d2d823cee4dd0ecbd112138fabfa66b8928ade3fd72824042afc8e9",
+    "ios-remote-v513-composer-container.asm": "06221768a666be3c00c22b1179ad089b1823dac218d65dfcebbd208249498218",
+    "ios-remote-v513-composer-container-calls.json": "5ab53a7fe91ab53802446d71ed8e1310ee689fa9f3e26068567e26acce81c766",
+    "ios-remote-v513-style-inset-refs.json": "03ae7d588ddd3d98ea6a223586c20c2e0312795db5a2ede8c9166fd6dbd102d2",
+    "ios-remote-v513-outer-inset-consumer.asm": "75bd0e97a59135df9b5ccf96a63a7137c166b8be8951f8472b9647fc9177fdf1",
+    "ios-remote-v513-outer-inset-consumer-calls.json": "6e219a4806a2ae941b561c4354f6919b58b76178d7fad7b84a1a0bc819d54e2c",
+    "ios-remote-v513-focus-composing-owner.asm": "c939b503179dc56455f9bbf02719ea4bf5e4eaf2753f40379574ca4039706a57",
+    "ios-remote-v513-focus-composing-owner-calls.json": "4dfa4cd7e645de9c52b5f0d0e4a168ce13d883577ef04f281edc47e8a4dea96a",
+    "ios-remote-v513-focus-guard.asm": "96187969847a4b6fd83e1cdad1c46b6efbb2cdf29ef8cd242589ec3d7c78f37a",
+    "ios-remote-v513-focus-guard-calls.json": "bb4a896a66b61f39116b3f12c145eea4c6ac20598e16404e8934ec5e62144339",
+    "ios-remote-v513-composer-outer.asm": "48bd648a6a426c93de1811fdc8ee7315f4cc7e16e8e1580ed4e9af11eb5c2a59",
+    "ios-remote-v513-composer-outer-calls.json": "eccbe36446fc791735689e31cf3d8c69166faf2402c957d837060f0acf071e12",
+    "ios-remote-v513-keyboard-awaiting-refs.json": "a240f7ad6e54c9a5c5996b9591fe57a2a17c0eee5d4fc816ae867768b0ba1e9c",
+    "ios-remote-v513-keyboard-active-refs.json": "0fb3937215700d2836982143cd49ccc4bd2fa68948652eb9d89a5db7c706ea27",
+    "ios-remote-v513-scroll-phase-refs.json": "f0f47f61b27970386d91c982d41e55149f73935e36fad2f87bcd1e6bd0ae0b82",
+    "ios-remote-v513-keyboard-owner.asm": "4719886e9a4b928f536659257025bb55045fd497f36d77e6a5809a71ccc323a6",
+    "ios-remote-v513-keyboard-owner-calls.json": "bace3d03fa5e5baf234eb32cb31eccc4977effec19c9982fc5f17e9fa36e6770",
+    "ios-remote-v513-scroll-phase-owner.asm": "48f9715a4ed83417ac7d2fb6b885756dfb3f8dcadf7e36a2e0e71b96a7244984",
+    "ios-remote-v513-scroll-phase-owner-calls.json": "fb69c0efc3c9adfe89035222e1510cfcd183917876dd42d68446cc3bced34021",
+    "ios-remote-v513-keyboard-notification-callbacks.asm": "639dca29d622570b2790d9ddf9391c181923f58f89f1464c6b9725ee1abd6ce4",
+    "ios-remote-v513-keyboard-notification-callbacks-calls.json": "59b36554a9c458a894938a662b46a037cf0214f2b0ba946a972e7ffc4d762d5c",
+    "ios-remote-v513-keyboard-state-setters.asm": "bb78a3ba5215c0cdec86749bd07fd0161f3bb700e09939d24960b20a417c090d",
+    "ios-remote-v513-keyboard-state-setters-calls.json": "88633bb0312d8a049f9774e0bebef03692ddb100a10c611e8b381678edf35510",
+    "ios-remote-v513-keyboard-reset.asm": "55e4146b2eba293a7fda14188a095f7d29a363f4526c3e703d5b79a2f1fb4af0",
+    "ios-remote-v513-keyboard-reset-calls.json": "aea4f208382df633ecab08732d99c4c62801f3ca07aa4880446164c633c07e32",
+    "ios-remote-v513-scroll-phase-callback.asm": "422477f939b7e752a4e5aed2cebf2f6f6a207eba9bed61b7b45d0364a50f31d1",
+    "ios-remote-v513-scroll-phase-callback-calls.json": "51bd2d4567cebc9b3182bab3749d04f571283f9c3e18f4a978312ce7ca427c2a",
+    "ios-remote-v513-scroll-phase-sdk.json": "56a013022cbf095446d81d2c885c8dbb6fb216863c746f74197a6cb9d97bd9bd",
+    "ios-remote-v513-composer-width-order.asm": "99724379b7d19a2c3c68282ba62dd7a4bfab92dcf6d0038dff2fe3427dfc8237",
+    "ios-remote-v513-composer-width-order-calls.json": "26573f2a256ab05a28f8ec640b3d2e858a2ed8e4d87596a76ae0aa99f7f55933",
+    "ios-remote-v513-composer-width-helpers.asm": "fcf01229f7165997ad5c3ba9033d4fc1c19ffdbb0ab01081ba52423de9f2bd07",
+    "ios-remote-v513-composer-width-helpers-calls.json": "1aa4e8bcdac8485f2205a40b3b89b75634e8df9ee7f866f1a79cb76b88426f54",
+    "ios-remote-v513-composer-padding-helper.asm": "6df2d676bbc2d682eab4575c16e109060b54425928de0079565a349fd1a68d39",
+    "ios-remote-v513-composer-padding-helper-calls.json": "7919eabe9c3c7a1ad0f12f99dfdfd8dfa4faf108e082cf84e39f6f3f6b1c7809",
+    "ios-remote-v513-composer-background-callback.asm": "c7749669d420b0ba86359cf01a0e734ea1c41856a0fdab6f8cf09ae02c2c3e29",
+    "ios-remote-v513-composer-background-callback-calls.json": "30f4ffe6a5acc5b0943ff0a7c0db5b72d464c8b18307dc21724a3edaaffb15ce",
+    "ios-remote-v513-composer-width-callhelpers.asm": "c1658f5aef9856dd7b613fafecfd73afcdf6335afb3c86218e43f3ae58a3e574",
+    "ios-remote-v513-composer-width-callhelpers-calls.json": "6835a72e5338abe54edf28e16ce09af66e86d7183d93adf3ec129ea8c5462408",
+    "ios-remote-v513-composer-width-callhelper2.asm": "1d2ad7ec9a55d76792f60707ddee696fdf5817ca6ab8a8616585f82098eeeb67",
+    "ios-remote-v513-composer-width-callhelper2-calls.json": "64df1edd20be42e0c990ce4a3d0d101d7c86548b38f88ea5ea8d47d99b375a84",
+    "ios-remote-v513-composer-width-callhelper3.asm": "41a5ebec29179ea9b314d3bb0f8cbf7d70d87308424b8456aba12fb7a99cc05b",
+    "ios-remote-v513-composer-width-callhelper3-calls.json": "8e609ca24602fafdfb74367331f013cf99598fdf469f3296757c3fd5842a0198",
+    "ios-remote-v513-composer-width-style-read.asm": "05b0c3fc8b1596c0d417a87f42cec6a4ecbf8f0007544a2d73a779ba32926c25",
+    "ios-remote-v513-composer-width-style-read-calls.json": "c03ded6cfc8b9374a0ca6625629ab645d5740ff53e897ae7f895ba21f2a44cd7",
+    "ios-remote-v513-composer-width-style-copy.asm": "7fa9a5505e90e82b8db1031b8997b2d87dcd0f68d0a539b0b3c3f2864539acd8",
+    "ios-remote-v513-composer-width-style-copy-calls.json": "986a49ab1d5017cbd5ab98559de22764d707dccf1ce640de88fac6a7714c1281",
+    "ios-remote-v513-composer-width-style-release.asm": "761cc9baefd23e9f55f2d03bfe0e886b739764d47dc44ceacd2c34baab560ee0",
+    "ios-remote-v513-composer-width-style-release-calls.json": "10653b9b5821f81f73be2c7664ea804e264f5a8c77c4e203938132854d111398",
+    "ios-remote-v513-composer-frame-nils.asm": "0cc18d9af31f0d41ae242229c066c0e31d0db71f07ffa905844a76aa14b621c6",
+    "ios-remote-v513-composer-frame-nils-calls.json": "2af9e8c378a7521ca7c2c9a7f1f801f40c4dc3460a4a35584c39a71f94a75346",
+    "ios-remote-v513-composer-frame-tail.asm": "5f5fcac48b4f81c62c79b721aca319581d4ae89543c5178f3e348424f485fc51",
+    "ios-remote-v513-composer-frame-tail-calls.json": "66a6f58d8ece8bc3a28292e710ee6af497bb1c50c4a12739c740f71fa0c26893",
+    "ios-remote-v513-composer-padding-result.asm": "899c35cba2e55c27ba33b15ebcf3523fac1c386b864e48bd3acef40faabac71e",
+    "ios-remote-v513-composer-padding-result-calls.json": "c270f823b58fd1734269fb7578b88c441f155745a5037afb8a5e4c92b17abf6a",
+    "ios-remote-v513-keyboard-notification-bindings.json": "f759a896edfcf4e4f88c0aec6dd792b3dddcdd957702770f3c0556813642c2c1",
+    "ios-remote-v443-composer-layout.json": "0a2ce24e9e5fceaa77a4ea707abc6dfe6f3ead07076de8633fb59df6ccba057e",
+    "ios-remote-v508-home-style-findings.json": "7f353ec5882b87dd217b9cf2ee0d592a13e76dc7715dc1b96e894acf2564b9af",
+    "ios-remote-v508-style-modifiers.asm": "e0ec7c2577f73583d67c4eb4d73bc93fe7ee89e128c6914bbe183c8c0310d221",
+    "ios-remote-v509-destination-host-types.json": "dea28bae830e4accd3ab0726e251920a0d844f58bc2abc738811fa84b2e50c52",
+    "ios-remote-v509-destination-host-calls.json": "d25a1f68d01c9cc46443d9e1355aef782c3e4f40b1ea96cb4353879a0ed0fcf2"
+  }
+}

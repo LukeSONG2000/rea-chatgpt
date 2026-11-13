@@ -6,6 +6,7 @@ async function search(query,rows){return await new Promise((resolve,reject)=>box
 (async()=>{
  const row={id:'r1',title:'Unique SearchMarker',snippet:'<b>safe</b> &amp; text',payload:{kind:'conversation',conversation_id:'fixture-b',message_id:'m1'}};
  const r=await search('  SEARCHmarker  ',[row]);assert.equal(r.results.length,1);assert.equal(r.results[0].destinationId,'fixture-b');assert.equal(r.results[0].messageId,'m1');assert.equal(r.results[0].snippet,'safe & text');
+ const titleHit=await search('empty title',[{id:'conversation-empty',title:'Empty title',snippet:'',payload:{kind:'conversation',conversation_id:'empty'}}]);assert.equal(titleHit.results[0].destinationId,'empty');assert.equal(titleHit.results[0].messageId,undefined);
  assert.equal((await search('not-present',[row])).results.length,0);
  assert.equal((await search('marker',[{...row,payload:{kind:'conversation'}}])).results.length,0);
  assert.equal((await search('marker',Array.from({length:40},(_,i)=>({...row,id:'r'+i})))).results.length,30);

@@ -1,0 +1,549 @@
+{
+  "schema_version": 1,
+  "report_id": "android-remote-v627-menu-source",
+  "platform": "android",
+  "version": "1.2026.293",
+  "scope": "Read-only artifact trace of Remote browsing Codex title popup. No implementation or device operations.",
+  "status": "partial",
+  "artifact": {
+    "sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+    "source": "analysis/takeover-20261103/baseline.json",
+    "limit": "Reused baseline digest. All inspected source hashes recorded separately."
+  },
+  "extends": "analysis/full-platform-20261104/android-remote-v626-header-source.json",
+  "sources": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java",
+      "sha256": "db199891c8272288addb93c1e017f895db566f3de002f59368f8c13834fa3cfb"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/rgq0.java",
+      "sha256": "e6e4406d620802667d27dd6c669cf32b031ded332ce0280d61f1d71ef606b3bf"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ihm0.java",
+      "sha256": "92957d5258760b303bdf79669bcefe29e23faba36cdef2d7a81a76a60437e70e"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ghm0.java",
+      "sha256": "63aab57f1fbda5d011b5b88adf24ba641fbb46e39984102bfaa5eedeb802559c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/hhm0.java",
+      "sha256": "342f8eb04c36167b960af428951b67e22852e040f2301bdb8e221d12cf64cb9a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bbv0.java",
+      "sha256": "caaa97ac1b162ceea4d4b31d59cb67c1d2885b1d35723963f32cbe1a24be8096"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dhm0.java",
+      "sha256": "639dd4d211c776b28cf4cbd3af0a7c8fda5b3f58e6a22412b7b1f674585ef32f"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qj81.java",
+      "sha256": "5c8b100388cef510135365e2bd2fbeaa9d6548c4d10857cbc8f61d66d5387480"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/jjm0.java",
+      "sha256": "24f722f00cdc15e6268393ce2bc8c07bc3ac44dcbf21980b0f86b643c89be5e6"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/tj81.java",
+      "sha256": "4b9128a65bd01f94072589e4500ee1da08f257e1e4ec29b44c0dfecd4f2280a1"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ay10.java",
+      "sha256": "75601bb93deb896dd60f474a6a999ab18f9481b82ef4ad1b2cd2f262f321c138"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/uim0.java",
+      "sha256": "dec1599bcaa0e0ef83679c954efce962e9f54b377b95a31ac2a567e86a4ccb38"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/fh1.java",
+      "sha256": "816abb7515688b279f694d36cedf81c8b94d67735d79a9bfc2cbfff7829de397"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nt71.java",
+      "sha256": "dfd42ef3be0e1a2a83cff809f2a031efc737035530e0708f163709842942eee3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/on01.java",
+      "sha256": "3cc34fb222864abe5fbbc702caa0e3f60ef9b6043d5e15262da861dc4ee60d04"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java",
+      "sha256": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java",
+      "sha256": "99bee934ff0a85ece1691654e536d128719f8b6b206754a83411ea1e31cea2c6"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pk40.java",
+      "sha256": "1928876ff64d9514994bff49c56e603700fe8c99e22fcf5f11756e6bcafbd2f5"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ml51.java",
+      "sha256": "cce43b0d43fe5528754e4b36eb0aff1f2d047fdfc2978bafda799d00b82ffb59"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mwq.java",
+      "sha256": "f2ccd76b16d78e6fba07361823d82515d8dd99a38eca9509106ca6311b8e3e50"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lq60.java",
+      "sha256": "8738b0112358d053a6310929ef47f7477578a4352ec8237f33cd8cf4d40aa9dd"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/to60.java",
+      "sha256": "3698b059067c5456cd9b86edb61aff0cf89fb3316fd3bc46d8c8e1ee35649f73"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sit0.java",
+      "sha256": "3f649d84308ec94d28c1395d7a40e1f11b83d368ab03577c2ee269298b5de1a4"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/rit0.java",
+      "sha256": "0dd7371521ecea8118faccd3350191e1dbf29379f7948226c4a14e747b0f91f3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ly5.java",
+      "sha256": "230ebd369f5762ef5c5d85ef0ae3baefaf812838923d99175a31fc32786e01c8"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/afp.java",
+      "sha256": "4f52bb98f83a4b5a72586a3a4cce344310fdb6ee6128d587e35b07bb7028cc68"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zep.java",
+      "sha256": "cec1dc038c77358ee0890da6ad9f19ec8490068655506cf6e77f6c4c0072ec42"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dit0.java",
+      "sha256": "37f2addd023e8e9e10646b8a3e441bce76e17b12d9ecb217f8129ddb4fb491e7"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/flx.java",
+      "sha256": "f228eb001c735a14265ec7ce20fb7e5151614d757bb4848d7322d69fb6fe8efe"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/xgm0.java",
+      "sha256": "8a59999f72cb69b3b9151295dbf4c9007a02a1638c3c039b0356d185ef5433a8"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ahm0.java",
+      "sha256": "f81f66ddf8e62ee2ed18d3f458db8ee9a4fb1857dc56c29f9dcaebe6427dce9b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bhm0.java",
+      "sha256": "cf319eba1b623045acd7e02ce5cd4f5492fad9f1e920f41d86f92ffdaa32d986"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/uin.java",
+      "sha256": "e9be27a9da9383ea2cdffe607fe73e87de7b9cecedb0ed8c5e590602ac643644"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/di1.java",
+      "sha256": "ddba369ad5110b471e5fedf4e97a782aceb414a5581dcd999ed8a6deeee2447b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dve.java",
+      "sha256": "0b9367295fa7f073623fce3d333efd2fb7a97546eab46d629a5b6b3f12ac2a65"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali/ihm0.smali",
+      "sha256": "9f4b14b4699baced5cff800254520270714cee0c683a6dc3086687aad4cae4ac"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali/ghm0.smali",
+      "sha256": "edae39be5c55da3a03082f6ef48ead07309783675e72cc39aa52184be3417a41"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali/uin.smali",
+      "sha256": "424723a9a8eb5058b51be9b9e5b199650857c0ccdf9266767b0d46f032bcf1c2"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes2/rgq0.smali",
+      "sha256": "b359d3d6ccf4b3824ab84a82326b5dac1df78418faae377bd4d4c834c54731db"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/jim0.smali",
+      "sha256": "fce4210a0ad9cd3b9d2f6360cd61b007f19c794f9535be0672485b5a5d593b46"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/phm0.smali",
+      "sha256": "150843e1b2a8d1edc76990e2f2c8a2b23810a4b3c5f2ccf9295460444d28275a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/ay10.smali",
+      "sha256": "7f5e1ddf7c65e3f25a9ea0a0f0b020138f3b81de876bf1256e4e273fc12e4a6b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/ejm0.smali",
+      "sha256": "f2a6edf94e3d570d0b6072d8abfcbbcd8da22841891b898d589c4ddf13c82af5"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/jjm0.smali",
+      "sha256": "0624fd60f82d1b3f34536e3c5087c76df6d0e13d8c4c6b1f49816d83456e5ce2"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/h440.java",
+      "sha256": "a65e3dd2b8d33fb893f8bee66f0990298c8f6984aa3d6aaf2353486287925189"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/m940.java",
+      "sha256": "19dc6c3f4499b9fc92c696b6b03764f5f4c4bd9b7922de9726da9208e41ae8e7"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/f740.java",
+      "sha256": "a3ed68534090ebb38aa3c148876f6f8a1236f683213d51241a143376ee4879dc"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/eb40.java",
+      "sha256": "97662ff69dcf253849b6bdf11ff3f6b47f68d87b79b6076750eeee61cde11ab8"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/y940.java",
+      "sha256": "2a006f4582a7cc7a443c2b3883e56f1b682d1a257150b81c742e2644a759a330"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/inl.java",
+      "sha256": "73e7d7e46e9db7dc14023ca85b3e817331a9ab8e8867a425c4f331a8f3c33ed3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/jln.java",
+      "sha256": "731f59fa58aa4b9ff5b331345ffb885c9063403f3f380a03a67f5ec1921fe7dc"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ykn.java",
+      "sha256": "b3aff4c9a53d21c92156b0669ea19007bba816338745b550536ed2b4d06abb35"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/kln.java",
+      "sha256": "0ded796361d06ed72b4f9a1ebeb2327e9b754d79e224101dc680ca2a084703b7"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/oln.java",
+      "sha256": "c86b56a3a0dba1818d0a4672dd2f3ba271c1fa23cda066918b9efd9cfc6da82d"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ahx.java",
+      "sha256": "9e3f651206e28680f87c84a9a3e428cf854403536a1e3163152ac2c1f7accd3b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bhx.java",
+      "sha256": "cb050c803eb6e0ebf811646547f1d5edea363ff7b08ff04e38d230dfef4ee540"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/chx.java",
+      "sha256": "c14a83b83aa730065a65c6d5d35856b8389d6b46d717c063ad424bad0796ffa0"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ezu.java",
+      "sha256": "2b17c155ac38220d8426052d7d1d1a4425298b4446cf4cbd7702aff37980820b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/v5v.java",
+      "sha256": "84bea7abad33814c9beb0fe6635bfed502d309a6351b5062efb86b64161d729a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/jzu.java",
+      "sha256": "8d6543630e45d74b954fcc8259813cb9f8a11571626c8e0cb9a420c4fb8e9de5"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/e3v.java",
+      "sha256": "8519751f2ce1449a6c4c859c0e43646a0641c74c0791925e90b158e9ad2ad953"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/tuw.java",
+      "sha256": "a5fe706f742a1ba1ae489924331c5deb3d2949bdb6ef61ba71d22170fc720990"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/z3n.java",
+      "sha256": "07c1779fbaf88ce3bbe46fc933718a883bbe67acd3617a3b8bf7f06377aa512e"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/x0n.java",
+      "sha256": "b10b956e9efcf38a92f4a2d1dc6fe33ed4b0bbed012cf5bb36fcd142bb9bb6ce"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/m2o0.java",
+      "sha256": "060ffadb1e612f23f261bf1b2eb43768206e5c50bb4eb520216e36802aeb8e2d"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/a4n.java",
+      "sha256": "d516b76ffc8374e82abbb12b5ac0793e860043bf2f9680b7c16cc11987ec25a2"
+    }
+  ],
+  "findings": [
+    {
+      "id": "menu-owner",
+      "evidence_type": "artifact-observation",
+      "source": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java:73-152",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/rgq0.java:1944-2227"
+      ],
+      "conclusion": "Browsing header anchors its title with rgq0.U(...null,6), then calls rgq0.k(...mask126). Width/height/style default to ihm0.e, ihm0.f, ghm0.a. No Material DropdownMenu owns these rows."
+    },
+    {
+      "id": "geometry",
+      "evidence_type": "artifact-observation",
+      "source": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ihm0.java:14-27",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ghm0.java:8-29",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/hhm0.java:6-28",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qj81.java:1182-1190",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/lq60.java:9-33"
+      ],
+      "values": {
+        "corner_radius_dp": 22,
+        "width_min_dp": 200,
+        "width_max_dp": 300,
+        "width_fraction": 1,
+        "width_measure": "intrinsic max constrained by sizeIn; not fixed width",
+        "height_max_dp": 600,
+        "height_max_fraction": 0.75,
+        "normal_item_min_touch_height_dp": 48,
+        "outer_edge_padding_dp": 12,
+        "first_last_item_extra_padding_dp": 8
+      },
+      "conclusion": "ghm0.b is bbv0.q(44)/2. Card uses sizeIn then intrinsic width; available viewport is padded by PopupMenuStack12dp. Menu items can grow with text."
+    },
+    {
+      "id": "row",
+      "evidence_type": "artifact-observation",
+      "source": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/tj81.java:1336-1470",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ihm0.java:16-18",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/pk40.java:26-35",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ay10.java:75-126",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/rgq0.java:1540-1559",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qj81.java:1413-1428"
+      ],
+      "values": {
+        "row_vertical_padding_dp": 8,
+        "leading_start_padding_dp": 24,
+        "leading_icon_dp": 24,
+        "leading_to_text_dp": 16,
+        "trailing_gap_dp": 16,
+        "trailing_icon_dp": 24,
+        "trailing_end_padding_dp": 20,
+        "text_style": "on01.h / sk10.o",
+        "font_size_sp": 16,
+        "font_weight": 500,
+        "line_height_sp": 24,
+        "letter_spacing_sp": 0.1,
+        "font_fallback": [
+          "Roboto",
+          "OpenAI Sans",
+          "sans-serif"
+        ],
+        "trailing_slot_scope": "All five items, because any selected uim0 in the entire menu enables trailing reservation for every item"
+      },
+      "conclusion": "Selected state is a trailing ds_checkmark_lg_regular_24. No selected-row background fill established. ghm0.e()==null, so circular leading icon backgrounds from other menu styles do not apply. lim.H is conditional padding that collapses if child measures 0x0; do not reserve empty leading icon columns globally. Codex five menu entries do provide leading icons. Whole-menu any(selected uim0.g) is passed to every tj81.g/ay10. Since one of three sort modes is selected, the two navigation actions also reserve24dp plus16dp before/20dp end."
+    },
+    {
+      "id": "content",
+      "evidence_type": "artifact-observation",
+      "source": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/fh1.java:111-123",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/nt71.java:25-32"
+      ],
+      "items": [
+        "优先级",
+        "按项目",
+        "按时间顺序排列",
+        "separator",
+        "添加连接",
+        "设置"
+      ],
+      "conclusion": "First three items are mutually selected o8m.b/c/d. Divider separates sorting choices from navigation actions. Exact Chinese resource IDs retained in preceding v626 report."
+    },
+    {
+      "id": "divider",
+      "evidence_type": "artifact-observation",
+      "source": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/tj81.java:673-678",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/tj81.java:874",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/mwq.java:694-735"
+      ],
+      "values": {
+        "horizontal_inset_dp": 24,
+        "vertical_inset_dp": 8,
+        "thickness_dp": 1,
+        "color_token": "m2o0.c(...).d.a"
+      }
+    },
+    {
+      "id": "surface",
+      "evidence_type": "artifact-observation",
+      "source": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qj81.java:1029",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/to60.java:1689-1740",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/to60.java:1554-1581",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/sit0.java:14-20",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/rit0.java:40-75",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ly5.java:37-41",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/dit0.java:34-75",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/flx.java:76-107",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java:1125-1131",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java:1179-1180",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/z3n.java:14-21",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/x0n.java:6-10"
+      ],
+      "values": {
+        "background_token": "m2o0.c(...).c.a",
+        "content_token": "m2o0.c(...).n.c",
+        "shadow_spec": "sit0.d",
+        "shadow_black_alpha": 0.2,
+        "custom_shadow_blur_radius_dp": 90,
+        "platform_shadow_elevation_dp": 3,
+        "dark_border_width_dp": 0.5,
+        "dark_border_token": "m2o0.c(...).d.a",
+        "normal_light_surface_argb": "#FFFFFFFF",
+        "normal_dark_surface_argb": "#FF303030",
+        "normal_light_page_background_argb": "#FFFCFCFC",
+        "normal_dark_page_background_argb": "#FF000000",
+        "normal_dark_border_argb": "#26FFFFFF",
+        "normal_light_divider_argb": "#1A000000"
+      },
+      "conclusion": "ElevatedContent uses semantic opaque surface, clipped to shape, and custom elevation renderer. Light uses shadow. Dark bypasses ordinary shadow and supplies semantic border. Shadow backend differs (dit0 custom CPU / flx RenderNode or DropShadowPainter). Mapping directly to Compose shadow(3.dp) is an independent approximation; 3 is not a y offset. No backdrop blur established in this menu path. Concrete colors apply to normal light/dark palettes x0n.c/d; high-contrast variants remain separate. c.a(surface) must not be replaced with c.g(page background)."
+    },
+    {
+      "id": "anchor",
+      "evidence_type": "artifact-observation",
+      "source": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java:73-79",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/rgq0.java:432-438",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/xgm0.java:5-7",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ahm0.java:5-10",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/bhm0.java:16-20",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/uin.java:181-192",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qj81.java:1496-1533"
+      ],
+      "conclusion": "Default title anchor is ahm0/bhm0, not zgm0 below-anchor dropdown. Horizontally anchor center in left/middle/right third picks left/center/right alignment. Vertically top/bottom half picks top/bottom. Center title at top of screen opens horizontally centered with menu top matching anchor top, then qj81.e clamps to window. The separate overflow branch explicitly uses zgm0(end), and must not determine Browsing title behavior."
+    },
+    {
+      "id": "motion",
+      "evidence_type": "artifact-observation",
+      "source": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/jjm0.java:19",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/jjm0.java:390-438",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/jjm0.java:459-499",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ihm0.java:25-27",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/dve.java:5252-5263"
+      ],
+      "values": {
+        "spring_damping_ratio": 1,
+        "spring_stiffness": 1500,
+        "enter_scale_from": 0.5,
+        "enter_scale_to": 1,
+        "enter_alpha_from": 0,
+        "enter_alpha_to": 1
+      },
+      "conclusion": "Popup stack animates scale from pre-enter .5 to visible1; alpha transitions from0 to1. Root placement computes transform origin from overlap of anchor and menu (qj81.c). Do not invent a fixed 150ms animation. Exact post-exit scale is1 in the branch, alpha0."
+    },
+    {
+      "id": "icons",
+      "evidence_type": "artifact-observation",
+      "items": [
+        {
+          "label": "优先级",
+          "resource": "ds_bell_regular_24",
+          "chain": "nt71.b → inl case28 → h440.c → ahx.Z → ezu case11",
+          "rendered_size_dp": 24
+        },
+        {
+          "label": "按项目",
+          "resource": "ds_folder_regular_24",
+          "chain": "nt71.c → jln case4 → m940.c → chx.o → v5v case22",
+          "rendered_size_dp": 24
+        },
+        {
+          "label": "按时间顺序排列",
+          "resource": "ds_clock_regular_24",
+          "chain": "nt71.d → ykn case6 → f740.c → bhx.P → jzu case14",
+          "rendered_size_dp": 24
+        },
+        {
+          "label": "添加连接",
+          "resource": "ds_link_regular_24",
+          "chain": "nt71.e → kln case3 → eb40.c → chx.c0 → e3v case19",
+          "rendered_size_dp": 24
+        },
+        {
+          "label": "设置",
+          "resource": "ds_gear_regular_24",
+          "chain": "nt71.g → oln case2 → y940.c → chx.u → tuw case11",
+          "rendered_size_dp": 24
+        }
+      ],
+      "conclusion": "Use the package design-resource vectors, keeping all leading glyphs24dp. Priority uses bell, not sparkles or sorting glyph."
+    }
+  ],
+  "smali_checks": [
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali/ihm0.smali",
+      "lines": "30-124",
+      "confirms": "24/10/8; width200..300 fraction1; height0..600 fraction.75; shadow sit0.d"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes2/rgq0.smali",
+      "lines": "15690-15743",
+      "confirms": "k default masks use ihm0.e/f ghm0.a and20"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/jim0.smali",
+      "lines": "596-888,1302,1550-1575",
+      "confirms": "optional circular-background branch only when hhm0.e nonnull; ordinary start24/gap16, trailing gap16/end20; on01.h"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/ay10.smali",
+      "lines": "595-798",
+      "confirms": "uim0.g selected → t540.c check; unselected reserved24 branch"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/phm0.smali",
+      "lines": "1127-1167,3234-3271",
+      "confirms": "sizeIn then intrinsic width; first/last edge8dp despite JADX malformed empty/nonempty branch"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali/uin.smali",
+      "lines": "155-303",
+      "confirms": "half-screen vertical choice and thirds horizontal choice ending center di1.o"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/ejm0.smali",
+      "lines": "42-106",
+      "confirms": "4dp conditional applies only shaped-highlight anchor; not unconditional offset"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/jjm0.smali",
+      "lines": "3014-3297,3812",
+      "confirms": "scale .5 initial state; spring factory used in stack motion"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/phm0.smali",
+      "lines": "1865-1935",
+      "confirms": "Iterate combined menu items, selected uim0.g sets true then jumps out. This whole-menu flag is passed to all item renders. JADX incorrectly suggests subsequent false assignment."
+    }
+  ],
+  "implementation_guidance": {
+    "classification": "independent-host-restoration",
+    "recommendation": "Native Popup + intrinsic constrained Column, explicit row slots and source tokens, source position provider. Reuse artifact SVG/vector icons. Preserve locale context in Popup. Honor outside/back dismissal and selected sort persistence.",
+    "do_not_infer": [
+      "Do not transplant iOS glass/circular icon backgrounds",
+      "Do not set fixed280dp width",
+      "Do not highlight selected row via default Material3 container color",
+      "Do not use dropdown below-title offset for the default centered Codex browsing anchor"
+    ]
+  },
+  "unknowns": [
+    "Exact live shadow rasterization cannot be certified from source constants alone; renderer/platform backend affects result.",
+    "Device pixel and transition parity require separate parent device run.",
+    "No official target runtime, backend calls, or implementation changes made by this evidence worker.",
+    "High-contrast palette values are not flattened into the normal palette constants."
+  ]
+}

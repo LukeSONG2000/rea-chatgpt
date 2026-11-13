@@ -1,0 +1,59 @@
+{
+  "batch": 613,
+  "implemented": [
+    "Route codex-file-citation links from Remote Markdown through the scoped file loader.",
+    "Parse first path and optional signed line query fields; preserve line in preview requests and retries.",
+    "Preserve existing file and HTTP(S) routes; add citation fixture to core preview."
+  ],
+  "official_evidence": "ios-remote-v613-citation-findings.json",
+  "independent_adaptations": [
+    "Raw path is an opaque resource identifier. Empty and NUL paths are rejected by the resource adapter.",
+    "Attributed link, resource provider and QuickLook presentation are independent native adapters."
+  ],
+  "unimplemented": [
+    "Official inline citation card styling.",
+    "Line/range positioning in file preview.",
+    "Complete official path normalization and relative/sandbox routing.",
+    "Web search source cards and Android counterpart."
+  ],
+  "validation": {
+    "foundation": "passed; ios-remote-v613-foundation.log",
+    "ui": {
+      "r1": {
+        "passedTests": 3,
+        "failedTests": 0,
+        "result": "Passed"
+      },
+      "r2": {
+        "passedTests": 1,
+        "failedTests": 0,
+        "result": "Passed"
+      }
+    },
+    "coverage": [
+      "Chinese light and English dark citation routes",
+      "Cancel, failure retry, missing resource, browser routing",
+      "Cross-host task isolation, draft and restart recovery",
+      "Legacy file URL regression",
+      "Combined approval, attachment and follow-up task journey"
+    ],
+    "visual": [
+      "Chinese light and English dark QuickLook screenshot inspection",
+      "Manual Chinese dark citation opened fixture-a/completed-thread resource, then closed back to the same task."
+    ],
+    "manual_input_limitation": "CUA Unicode insertion and English input/autocorrection did not preserve the intended full synthetic prompt; submitted text was Inspect. Exact manual prompt fidelity is not established.",
+    "runtime": "ios-remote-v613-runtime.json"
+  },
+  "handoff": {
+    "version": 613,
+    "language": "Chinese",
+    "appearance": "dark, existing system/preference",
+    "page": "Remote fixture-a completed-thread",
+    "left_running": true,
+    "process_observed": 74843,
+    "display": "built-in display; external placement unavailable"
+  },
+  "retention": "ios-remote-v613-retention.json",
+  "disk_available": "13 GiB",
+  "next_action": "Trace remaining source citation rendering/producer boundaries before adding consumers."
+}

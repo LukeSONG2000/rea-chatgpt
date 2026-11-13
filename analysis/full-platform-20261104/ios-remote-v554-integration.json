@@ -1,0 +1,91 @@
+{
+  "batch": "v554",
+  "page": "Remote conversation",
+  "page_status": "部分实现",
+  "implementation_status": "已实现待验收",
+  "slice_status": "core simulator checks passed",
+  "source_findings": "ios-remote-v554-findings.json",
+  "runtime": "ios-remote-v554-runtime.json",
+  "implemented": [
+    "Terminal failure text rendered separately while retaining received reply",
+    "Source-backed error visibility and retry-availability model",
+    "Warning semantic resource, callout medium, 12pt padding, 16pt corner and two source-backed stroke layers",
+    "Local link entry with explicit pending-browser state and close/return",
+    "Scoped terminal identity, duplicate and late-event rejection"
+  ],
+  "validation": {
+    "foundation": "ios-remote-v554-foundation-r2.log passed",
+    "typecheck": "ios-remote-v554-typecheck.log passed with existing warnings",
+    "ui": [
+      {
+        "result": "ios-remote-v554-r1-error.xcresult",
+        "passed": 2,
+        "failed": 2,
+        "detail": "Dynamic command English dark failure and thinking cancellation passed. Error tests used the wrong AX element class for native reply text."
+      },
+      {
+        "result": "ios-remote-v554-r2-error.xcresult",
+        "passed": 2,
+        "failed": 0,
+        "detail": "Corrected exact UITextView value query; error appearance, retained reply, task isolation/return and next-turn cancellation passed."
+      },
+      {
+        "result": "ios-remote-v554-r3-error.xcresult",
+        "passed": 2,
+        "failed": 0,
+        "detail": "Same cases plus error-link opening and returnable disconnected-preview closing passed."
+      }
+    ],
+    "distinct_passing_cases": [
+      "testRemoteDynamicCommandEnglishDarkFailure",
+      "testRemoteThinkingCancellation",
+      "testRemoteErrorCardChinese",
+      "testRemoteErrorCardEnglishDark"
+    ],
+    "visual": "Inspected r2 Chinese light and English dark screenshots; warning card text/link, border and fill visible. Manual signed554 Chinese preview shows retained reply, command summary and error card.",
+    "manual_preview": "Chinese system-language/system-appearance signed554 left running on completed-thread fixture-a failure. CUA Chinese typing/paste did not yield intended text in DeviceHub; English synthetic prompt used. This does not close IME/clipboard acceptance."
+  },
+  "independent_adaptation": [
+    "Synthetic error text and terminal event envelope",
+    "Reply-retention policy in fixture producer",
+    "NSDataDetector link detection and local disconnected-preview alert",
+    "Dynamic row placement and collection integration"
+  ],
+  "open_items": [
+    {
+      "page": "Remote conversation",
+      "behavior": "Retry and automatic recovery",
+      "priority": "P1",
+      "breakpoint": "1a33e68 retry-handler gate and ErrorRow3d8c6a0 are known; callback execution, retry-label factory75d28e0 and fallback keys unresolved.",
+      "next": "Resolve factory/callback and bind the smallest source-backed retry action to a scoped synthetic request.",
+      "acceptance": "Failed submission retry runs through explicit pending/success/failure, duplicate taps and cross-task isolation."
+    },
+    {
+      "page": "Remote conversation",
+      "behavior": "Full reasoning history and disclosure",
+      "priority": "P1",
+      "breakpoint": "ThinkingStatus only covers transient status; complete reasoning item-to-fragment projection unresolved.",
+      "next": "Trace reasoning ThreadItem to row/action owner.",
+      "acceptance": "Scoped updates, disclosure/copy and navigation recovery."
+    },
+    {
+      "page": "Remote conversation",
+      "behavior": "Header and whole-page geometry",
+      "priority": "P1",
+      "breakpoint": "Independent principal title is centered; official parent left alignment, exact ErrorRow outer spacing and retry/loading variants remain partial.",
+      "next": "Inspect outer navigation/title and row modifier payloads.",
+      "acceptance": "Source-backed ordinary-size Chinese/English and light/dark whole-page review."
+    }
+  ],
+  "other_open": [
+    "Dynamic search/file differences/review components",
+    "Body reflow anchors and process restoration",
+    "Multiple accounts",
+    "Full theme/accessibility/IME matrix",
+    "Physical haptics/notifications and external display",
+    "Android independent implementation"
+  ],
+  "retention": "ios-remote-v554-retention.json; targets empty; fixed build path reused",
+  "disk_available": "15 GiB observed",
+  "commit_push_release": "not performed"
+}

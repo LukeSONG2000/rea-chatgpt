@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "module": "4 Remote message area second pass",
+  "date": "2026-11-13",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core_frontend_implemented_original_fidelity_and_service_gaps_remain",
+  "previous_goal_turn": "progress: Remote list code, source evidence, build/runtime and gesture gate audit archived; no completion claim",
+  "source_reports": [
+    "ios-remote-transcript-parent-20261113-findings.json",
+    "ios-remote-message-footer-20261113-findings.json"
+  ],
+  "implemented_this_pass": [
+    {
+      "component": "collection parent",
+      "source": "Remote1a4c358 ->3f84474 ->3f8745c ->3f8822c ->3f939dc",
+      "change": "zero section padding, zero interGroupSpacing; self-sizing estimate200; retain separately recovered fragment margins"
+    },
+    {
+      "component": "reply footer",
+      "source": "HistoryFragment1a34230..284 ->CopyButton6eeae2c; footer modifier19a430c/style19a4558/label19a469c",
+      "change": "scaled15 regular icon-only, ChatGPT/icon/secondary; positive6 hit shape and negative6 layout compensation; no independent min44"
+    },
+    {
+      "component": "copy feedback",
+      "source": "CopyButton original glyph resources and animated=true consumer; body6ee9138..91bc",
+      "change": "idle square-on-square / copied checkmark-lg; footer replacement transition speed2; preserve code-header animated=false"
+    },
+    {
+      "component": "footer admission",
+      "source": "HistoryFragment1a341e8..1a3423c",
+      "change": "success + explicit showsFooterActions + optional responseCopyText; empty payload distinguished from absent; independent replay maps lifecycle and page supplies capability explicitly"
+    },
+    {
+      "component": "feedback lifetime",
+      "evidence_type": "independent_host_adapter",
+      "change": "scope/turn/text/disappearance cleanup and cancellable2-second confirmation; reduced-motion policy; original async lifecycle remains unknown"
+    }
+  ],
+  "retained_core": [
+    "ordinary task -> native collection -> history/current/replay content",
+    "basic Markdown, code, table, reasoning summary, tool groups, commands/search/diff/review and file links",
+    "expand/collapse, raw copy, native code selection, command scrolling, table horizontal position",
+    "top-only native soft scroll edge, user jump-to-bottom, scoped reading/disclosure return",
+    "synthetic completion/error/retry/cancel lifecycle; no execution backend"
+  ],
+  "feature_chain": {
+    "entry": "RemoteTaskFixturePage -> RemoteThreadFixturePage",
+    "identity": "RemoteComposerDraftScope host/destination under offline account profile; stable turn/content IDs",
+    "state": "RemoteThreadReplayState and RemoteTranscriptReadingStore; explicit synthetic lifecycle and per-task expansion/reading",
+    "data_source": "deterministic offline fixtures through existing frontend adapter; real service interface unconnected",
+    "projection": "RemoteTranscriptFragmentProjection, RemoteAssistantFooterPresentation and packaged-JS RemoteMarkdownProjection; full original native projection remains partial",
+    "render": "RecoveredRemoteTranscriptCollection and native hosted block/component views",
+    "side_effects": "clipboard writes, scoped disclosure/reading state and shared file/browser routing; no model/tool execution",
+    "cleanup_recovery": "copy task retirement on scope/turn/text/disappearance; stable task reading store and existing draft isolation"
+  },
+  "independent_adaptations": [
+    "Synthetic inner row horizontal16 retained explicitly, not relabelled original section padding",
+    "Original item registration has nine types including turn and turnFragment; full producer not recovered, synthetic aggregated turns retained",
+    "Current rich-text parser and native block views do not prove OAIMarkdown equivalence",
+    "Copy reset2s, host withAnimation transaction and reduced-motion policy, upstream fixture footer capability and replay lifecycle mapping",
+    "Existing scroll executor and initial-bottom behavior remain host implementations"
+  ],
+  "not_implemented": [
+    "Original inner horizontal owner and complete font/material/layout/stream fade configuration",
+    "Complete original heterogeneous item producer, native renderer, reasoning/DIL",
+    "Original initial-bottom protection and full scroll/update animation",
+    "Full footer sibling actions, upstream showsFooterActions/responseCopyText production and timestamp owner",
+    "Original copied-state async reset/cancellation continuation and explicit copy haptic",
+    "Real service, pagination and reconnect replay; message attachments deferred"
+  ],
+  "haptics": {
+    "current_gate_report": "ios-gesture-haptics-current-20261113.json",
+    "explicit_new_trigger_added": false,
+    "copy_source_result": "bounded footer/helper inventories did not prove an explicit invocation; nil caller onCopy is not proof of no system feedback",
+    "physical_playback_verified": false
+  },
+  "verification": {
+    "pure": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "result": "passed",
+      "log": "/tmp/rea-remote-message-parent-text-20261113.log",
+      "new_scope": "source-derived footer status/capability/presence vectors including empty payload"
+    },
+    "ui": {
+      "artifact": "ios-remote-message-parent-20261113-r1.xcresult",
+      "passed": 3,
+      "failed": 0,
+      "routine_matrix": "Chinese/light only",
+      "cases": [
+        {
+          "name": "testRemoteCopyOnlyAfterCompletion",
+          "seconds": 44.945,
+          "scope": "streaming omission; completed clipboard paste equals complete reply; feedback and task isolation"
+        },
+        {
+          "name": "testRemoteRichMessageChinese",
+          "seconds": 42.802,
+          "scope": "rich body, table horizontal viewport and task return, code copy exact paste"
+        },
+        {
+          "name": "testRemoteScrollToBottomChinese",
+          "seconds": 29.56,
+          "scope": "distance predicate, jump, second user drag/jump and task return"
+        }
+      ]
+    },
+    "screenshots_reviewed": [
+      "ios-remote-message-parent-20261113-r1-attachments/10A0822C-78EA-4067-B1EA-8621288A72AC.png",
+      "ios-remote-message-parent-20261113-r1-attachments/2D1F45AF-23AB-48D0-8B67-71729D703F95.png",
+      "ios-remote-message-parent-20261113-ordinary-ready.png"
+    ],
+    "limits": "Code native selection, full command lifecycle and unrelated pages not rerun this batch; earlier scoped evidence retained; no broad parity claim"
+  },
+  "runtime": {
+    "simulator": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "build": "succeeded",
+      "build_log": "/tmp/rea-remote-message-parent-final-sim-20261113.log",
+      "report": "ios-remote-message-parent-20261113-preview.json",
+      "installed_hash_match": true,
+      "executable_sha256": "4fb8d177c7c715aa64ab8a2e11c292c39934b4e77acc23a813fdbe35fddcded1",
+      "launch": "local.rea.chatgpt.ioshost: 84123",
+      "left_running": true,
+      "observed": "Ordinary core Chinese/light conversation B and composer visible. First early screenshot captured startup black frame; same live PID rechecked without restart and ready screenshot reviewed."
+    },
+    "physical": {
+      "device": "00008150-001E34E93A12401C",
+      "signed_build": "succeeded",
+      "build_log": "/tmp/rea-remote-message-parent-device-20261113.log",
+      "app_path": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "executable_sha256": "bc06da063f7f0a8f57a8ee48bcf0c46442752f7b2f4c6d0a718040b432bbabb4",
+      "state_report": "ios-remote-message-parent-20261113-device-state.json",
+      "connection": "unavailable",
+      "installed_this_candidate": false,
+      "physical_playback_verified": false
+    }
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "36dc3e1afbb9128e445f4836b02c5a5a1be0d872b80b80e5db12b0e34193d8ef"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift",
+      "sha256": "f7ca6442208057b6864c1ff57333ce3ccfd54ec6f005f161cf2a4d9b7d0f8aec"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteTranscriptLayout.swift",
+      "sha256": "6f45142f17858351d05f73351a42cfd9730b5a88df1e012b8b62b28952df7abd"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "sha256": "1c283f6692123e77427c28c99d33358b536f5e0cca61b717b85f7e5c2ca3fecb"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "181dc2683660412bb862f247ba7336c872ad294be2279a040c6dce41799c930e"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "e82eec570efcc17512a5af3af36a2dd4da5db6f2ea9317e82fe25794d7723cc6"
+    }
+  ],
+  "rules_added": "AGENTS.md: collection versus fragment geometry; heterogeneous registration; consumer-specific shared CopyButton configuration",
+  "review_path": "Codex -> synthetic task -> tools/code/table -> send synthetic input -> completed reply copy -> scroll/jump/back; General haptics switch shared with proven consumers",
+  "next_major_module": "5 Remote composer/task controls",
+  "git_mutations": "No commit, push or release"
+}

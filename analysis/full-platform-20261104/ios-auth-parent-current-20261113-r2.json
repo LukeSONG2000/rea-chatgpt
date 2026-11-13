@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "module": 10,
+  "status": "partial",
+  "delivery": "Third-pass authentication/account frontend core archived; remaining source/style/feature gaps explicit",
+  "reference_version": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_snapshot": "ios-auth-parent-current-20261113.json",
+  "source_reports": [
+    "ios-auth-native-third-20261113-findings.json",
+    "ios-auth-account-third-20261113-findings.json",
+    "ios-auth-welcome-third-20261113-findings.json",
+    "ios-auth-third-text-20261113.json"
+  ],
+  "implemented_this_pass": [
+    {
+      "area": "Verification code input",
+      "authority": "NativeSignupVerificationCodeView d7a3e0 raw4 -> d7a3f4 keyboardType, matched current UIKit enum",
+      "change": "Use numberPad only on OTP, preserve oneTimeCode content type and explicit Continue; no invented OTP length/automatic submission"
+    },
+    {
+      "area": "Profile editor actual content",
+      "authority": "Normalized Body7e6bea8->8eed91a; actual UserProfileEditView->ContentView2249b70/2247bac, fields224896c, actions22493ac/22ec4f0/22ec550",
+      "change": "Replace prior missing-form boundary with avatar capability entry, Name/Username fields, save error, original footnote and distinct Save profile/Cancel actions"
+    },
+    {
+      "area": "Profile content parent",
+      "authority": "2246f4c/58 supplies horizontal16/vertical20;2248220/24 center/spacing13",
+      "change": "Apply proved content parent values; preserve independent bottom actions, without treating body13 as their spacing"
+    },
+    {
+      "area": "Original localization",
+      "authority": "Actual localized factories/literals and compressed SharedKeys/en/zh indexed tables",
+      "change": "306 selected context-checked labels across65 locales; Name1725,calpico_username3845,Save profile2234,footnote3381; Cancel501 reused. Previous .strings-only negative search corrected, no invented Chinese translation"
+    },
+    {
+      "area": "Profile frontend owner",
+      "authority": "Independent host/service adapter guided by proved onSave/onCancel slots",
+      "change": "Scoped draft/request/session/account/base-revision validation; deterministic save failure/retry/accepted baseline; preserve edits during pending and child return; cancelled/duplicate/foreign receipts retired"
+    },
+    {
+      "area": "Account-session mapping",
+      "authority": "Independent in-memory frontend snapshot and modal ownership",
+      "change": "One immutable modal item carries initial snapshot, account-session and presentation ID; accepted preview profile updates Settings and survives closing/reopening Settings in same session; session transition clears it. No profile/credentials persisted."
+    }
+  ],
+  "retained_core": [
+    "Welcome resource branding and Apple/Google/native login entrances; external services remain unavailable with error/cancel state",
+    "Native typed username/password/OTP flow, busy/failure/retry/cancel and edge-pop host bridge; secrets transient",
+    "Generic source-backed logout confirmation/busy/failure and explicit synthetic success route; only signedOut checkpoint persisted",
+    "Legacy settings root still has no invented account switcher or save-login entry"
+  ],
+  "interfaces": {
+    "chain": "Settings account/session snapshot -> immutable editor presentation -> local draft/pending state -> onSave request -> service receipt -> scoped state -> active session profile cache -> Settings header; onCancel/owner disappear retires pending callbacks",
+    "profile_contract": "FrontendProfileEditing.swift is independent frontend schema, not original account API. Initial snapshot comes from owner; service implements save; avatar resource service remains unsupported.",
+    "profile_lifetime": "In-memory per-auth-session preview; no process-restart cloud profile persistence. New session clears local preview profile. Server-side authorization remains outside this implementation.",
+    "source_vs_host": "Fields/labels/action slots/content geometry are artifact-backed. Request IDs/revisions/budgets/service fixture/modal item/cache and callback guards are independent host design.",
+    "save_close": "Original successful-save close predicate remains unknown; current editor stays after acceptance and offers Cancel/close; no automatic-dismiss recovery claimed"
+  },
+  "not_implemented": [
+    "Actual authentication/OAuth/Apple/Google/ASWebAuthenticationSession, credential storage/refresh or profile backend; outside frontend-only implementation",
+    "Phone/country/domain suggestions, recovery/resend, Passkey/MFA/Workspace/new-account and multi-account/workspace frontend roots",
+    "Full AuthInputFieldStyle effective metrics/shape/validation, original NavigationButton/DismissButton glyph/disabled producer and ChatGPTPresentation underlying style",
+    "Welcome full style producer, actual height/corner/color mapping, remembered-account/hero/disclosure/provider predicates;56/28 remain explicit preview values",
+    "Full profile avatar camera/library/file/image editor/upload flow and error consumer, original input validation/disabled gates, exact LabeledTextInput/CapsuleButtonStyle/bottom metrics/scroll modes/save-dismiss",
+    "Personalized logout title field mapping/save-login visibility assignment, original auth-specific haptic callers and physical playback"
+  ],
+  "verification": {
+    "contracts": [
+      {
+        "command": "swiftc FrontendAuthentication.swift Tests/Authentication/main.swift; run",
+        "result": "passed",
+        "log": "/tmp/rea-auth-third-contract-20261113.log",
+        "scope": "Auth flow/session/generation, cancel/back/duplicates/foreign receipts, logout failure, A-B-A and no-credential route persistence"
+      },
+      {
+        "command": "swiftc FrontendProfileEditing.swift Tests/ProfileEditing/main.swift; run",
+        "result": "passed",
+        "log": "/tmp/rea-profile-edit-contract-20261113.log",
+        "scope": "Profile request/editor session/account/revision, failure/retry/duplicates, newer edits, child retirement/cancel and input budgets"
+      },
+      {
+        "command": "sh implementation/ios/test-official-text.sh",
+        "result": "passed",
+        "log": "/tmp/rea-auth-third-text-20261113.log"
+      }
+    ],
+    "ui": [
+      {
+        "name": "testAuthenticationNativeUnavailableChinese",
+        "run": "r1",
+        "result": "passed",
+        "seconds": 24.994,
+        "scope": "Ordinary unavailable service, Apple failure/retry, username/input retained, Continue and Close/reopen"
+      },
+      {
+        "name": "testAuthenticationSessionRoundTripChinese",
+        "run": "r1",
+        "result": "passed",
+        "seconds": 60.606,
+        "scope": "Generic logout/cancel/confirm, restart welcome, synthetic username/password/OTP, actual numeric keyboard/Continue reachable, edge Back/secret clear, same draft/root restart"
+      },
+      {
+        "name": "testAccountProfileEditChinese",
+        "run": "r3",
+        "result": "passed",
+        "seconds": 57.402,
+        "scope": "Ordinary Settings entry, both fields, avatar capability sheet/draft return, save failure/retry, acknowledged parent name, cancel discard, close/reopen Settings and return to Chat"
+      }
+    ],
+    "failed_runs": {
+      "r1_profile": "Bottom action identifiers were overwritten by root profile-edit-form marker; actual source labels Save/Cancel existed. Removed root marker, no visual-layout patch.",
+      "r2_profile": "Service accepted save, but returning Settings still showed old profile. Separate Boolean/payload presentation did not deliver the owner update correctly. Replaced with immutable item carrying snapshot/account-session/ID; r3 covers parent update and repeated Settings entry."
+    },
+    "bundles": [
+      "ios-auth-third-20261113-r1.xcresult",
+      "ios-auth-third-20261113-r2.xcresult",
+      "ios-auth-third-20261113-r3.xcresult"
+    ],
+    "screens_viewed": [
+      "ios-auth-third-20261113-r3-attachments/E758233A-EAE9-4B28-A38D-1CAC6B491C68.png",
+      "ios-auth-third-20261113-ready.png"
+    ],
+    "limits": "Chinese/light only. Auth journeys passed before independent profile-cache additions; original auth state/input/back logic unchanged and not redundantly rerun. No real services, physical gesture/haptic/notification or complete style parity tested."
+  },
+  "haptics": {
+    "current_report": "ios-gesture-haptics-settings-current-20261113-r2.json",
+    "consumer_hashes_match": true,
+    "new_direct_auth_profile_trigger_proven": false,
+    "new_explicit_feedback_added": false,
+    "settings_route": "Settings > General > Haptic feedback",
+    "physical_feedback_verified": false,
+    "system_implicit_feedback": "separate unknown"
+  },
+  "runtime": {
+    "preview": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "profile": "13994561-6FA8-4680-81F2-DAF15F2E1C5A",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--auth-journey-fixture",
+        "--auth-state-profile=13994561-6FA8-4680-81F2-DAF15F2E1C5A",
+        "--chat-state-profile=13994561-6FA8-4680-81F2-DAF15F2E1C5A",
+        "--remote-draft-profile=13994561-6FA8-4680-81F2-DAF15F2E1C5A",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light"
+      ],
+      "manifest_sha256": "3a3532497d53d7b46d0cda950185e6bad0cec07c36b202e952b671482420ef36",
+      "executable_sha256": "1eb39c7f5a824c4aa93c4a2fd91a5a15fb26b09dd9f1ab39a3b96934eb2d08d0",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 45428",
+      "pid": 45428,
+      "left_running": true,
+      "ui_launch_observed": true,
+      "fixture": "Core plus explicit synthetic auth journey; profile is in-memory frontend data, no real account service",
+      "left_surface": "Ordinary Chat > sidebar > Settings > avatar pencil > source-backed basic profile form",
+      "screenshot": "ios-auth-third-20261113-ready.png"
+    },
+    "simulator_install_hash_match": true,
+    "signed_device_build": "succeeded",
+    "device_build_log": "/tmp/rea-auth-third-20261113-device-build.log",
+    "codesign_strict": "passed",
+    "signed_executable_sha256": "1a24d682f8bae009f8b793ffdbe84cd40ce6cbdc6cdb262dbf396eb7fb923a3c",
+    "physical_device": {
+      "name": "iPhone Air",
+      "paired": true,
+      "tunnel": "unavailable",
+      "ddi_services_available": false,
+      "installed_this_batch": false
+    },
+    "left_running": true
+  },
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/FrontendAuthentication.swift",
+      "sha256": "bb39dae34942981f3bd5979149233a09b8bd4b04dff7fb4f871b8a25e694af26"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeFrontendAuthentication.swift",
+      "sha256": "58d40acdfaa426b47cb16844e052e547d04e5d164da2d3d97b6d1b56d7c6f988"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendProfileEditing.swift",
+      "sha256": "6f042942c0a6be9a032e2ee4f8508b724f0647d9aabe593a8aea89766b965298"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeProfileEditor.swift",
+      "sha256": "2e4305ef426e016a797fd87a1c2a1d6d2ecca9081500e96f54198f7b1d19726d"
+    },
+    {
+      "path": "implementation/ios/Sources/SignedOutWelcomePreview.swift",
+      "sha256": "b3a8c9557919795ce01ae3bba72dd0820994bcd9525abda94a34766c08245eec"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "1d20fdc360105baf9662e16567c5aaa1310654135654881b621f2bb739bd89b5"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "54541467e14503c2fca80f75a503ced9ccdb580f30f1fb7d0ff2f38e6069fadd"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "9c4d10d058f1eefa28bf2d425332519f8ddf3bca1e43299b529d35ae63e55a9b"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "b597d5f961015a90392873260e9c596744bb15980527f7dcc878f9546285da8b"
+    },
+    {
+      "path": "implementation/ios/Tests/Authentication/main.swift",
+      "sha256": "66e7c0f84f69b28d1df0ab3463a221ba9f2406c7d9902435b342c24f795cc2b6"
+    },
+    {
+      "path": "implementation/ios/Tests/ProfileEditing/main.swift",
+      "sha256": "9006ea0d36ecb0b0b76424d422b94514652aac9a91228dd83d2096e5ae3a5712"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "39ae926110a7b2817f19e782ed6364a5106c4755e602ecd7bda2f827a7148c98"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj",
+      "sha256": "8031568b9a8fa35a3c2f4c44a8ee43e85a3cb0211597a51fdf208b816062f664"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "7e8ba02a5883ca733f94f0dbcaf21ec2901325edfd71fa450c4c03c4e9f383af"
+    }
+  ],
+  "cross_platform": "Android expansion remains paused. Foundation state/service contracts are independent candidate shared boundaries; original native iOS fields/styles do not prove Android equivalents.",
+  "user_review_path": "Current profile form: edit Name/Username > Save profile > Cancel; Settings header/re-enter retains accepted in-memory values. Avatar entry is returnable unsupported. Settings logout uses explicit synthetic auth journey; Apple/Google remain unavailable.",
+  "next_major_module": "Next pass begins with whole shell/home/sidebar remaining parent/gesture/visual gaps; reuse proven flows without another full matrix. Known missing features remain in ledger.",
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "batch": "v534",
+  "status": "partial",
+  "updated_at": "2026-11-07T11:04:41.866306+08:00",
+  "platform": "iOS",
+  "artifact_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "reference_index": "ios-remote-v517-controls-user-reference-index.json",
+  "reference_version": "unknown",
+  "source_reports": [
+    "ios-remote-v534-activation-mode-findings.json",
+    "ios-remote-v534-active-mic-action-findings.json",
+    "ios-remote-v534-mode-content-findings.json",
+    "ios-remote-v534-primary-loading-findings.json",
+    "ios-remote-v534-result-guard-findings.json"
+  ],
+  "verified_raw_hash_records": 116,
+  "verified_static": [
+    "Thread successful activation1c46850 passes owner mode tapToSend raw1, presentation raw2.",
+    "Nonzero mode content6074a18 shares waveform6074400. Status6074594 uses localized Transcribing/body/tertiary.",
+    "Ordinary primary availability suppresses extra trailing placeholder. Cancel/mic circle font default30 has a separate glyph metric.",
+    "Active mic raw5 invokes finishRecording(autoSend:false); primary sends autoSend:true, with downstream effective flag still independently derived.",
+    "Observer16f4328 checks weak owner and captured session identity before completed result, then clears session before delivery.",
+    "Primary loading action1 retains send icon0 with progress governed separately by bit16; ordinary completionAction2 leaves that bit false."
+  ],
+  "implementation": [
+    "Explicit --remote-dictation-active-fixture mounts listening/transcribing row in persistent composer; source geometry uses quiet displayed samples.",
+    "Cancel, stop-to-transcribing-to-merge and send-with-disconnected-error preserve scoped draft; delayed stale result and task exit rejected.",
+    "Native focused UITextView remains mounted and interactive beneath hidden presentation to preserve keyboard.",
+    "Stop/Transcribing translations added through verified resource keys; application default follows system language."
+  ],
+  "independent_adaptations": [
+    "Synthetic preview lifecycle UUID/scope/session guards, 0.8s transcription delay and explicit fixture transcript; delayed test uses3s.",
+    "Static quiet sample buffer and Canvas projection. Real sample ingestion, timing and multi-sample prediction are not integrated.",
+    "UIImage fitting and persistent UIKit keyboard bridge are host adaptations.",
+    "Transcribing send button is explicitly disabled in fixture; original effective enablement/opacity remains unverified.",
+    "Send fixture surfaces disconnected state after preserving result. No service execution or microphone access."
+  ],
+  "validation": {
+    "foundation": {
+      "result": "passed",
+      "log": "ios-remote-v534-foundation-r3.log"
+    },
+    "independent_waveform_replays": {
+      "result": "passed",
+      "count": 14,
+      "log": "ios-remote-v534-replay.log"
+    },
+    "ui": {
+      "result": "passed",
+      "count": 4,
+      "log": "ios-remote-v534-r4-ui.log",
+      "result_bundle": "ios-remote-v534-r4-ui.xcresult",
+      "screenshots": "ios-remote-v534-r4-attachments/manifest.json",
+      "coverage": [
+        "Chinese light / English dark active listening and transcribing",
+        "cancel and draft preservation",
+        "stop/result/caret reuse",
+        "same-task cancelled-result isolation",
+        "send disconnected result preservation",
+        "A-B-A task recovery",
+        "existing result insertion regression",
+        "keyboard presence and active row above keyboard"
+      ]
+    },
+    "visual_review": {
+      "status": "partial",
+      "observed": [
+        "r3 Chinese active/transcribing and English dark active",
+        "r4 Chinese active and English dark transcribing",
+        "CUA Chinese preview task, active row and visible keyboard"
+      ],
+      "limits": [
+        "Chinese application screenshots use current English system keyboard; Chinese IME interaction not rerun",
+        "exact reference version and physical-device parity unverified"
+      ]
+    },
+    "failed_attempts_retained": [
+      "foundation r1 non-executable script; rerun with sh",
+      "UI r1 wrong test target; corrected to REAHostUITests",
+      "UI r2 keyboard dismissed because hidden editor ancestor lost hit testing; r3/r4 corrected and passed"
+    ],
+    "signing": "ad-hoc codesign strict verification passed; bundle version534",
+    "preview": {
+      "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "pid": 48724,
+      "version": 534,
+      "state": "Chinese active dictation row, keyboard visible, left running",
+      "language_override": false,
+      "physical_device": "offline, not tested",
+      "external_display": "not verified"
+    },
+    "retention": "ios-remote-v534-retention-final.json has no stale targets",
+    "disk_available": "17GiB"
+  },
+  "precise_remaining": [
+    "MessageInput action26 to Base start method middle dispatch and activation preflight Bool semantic remain unbound.",
+    "No-pending multi-sample waveform predictor763b2bc and actual sample/timing integration remain partial.",
+    "Original same-session cancellation/completion race and full teardown remain unclosed despite fixture guards.",
+    "Error/retry/releaseToSend branches, IME arrival and attachments during dictation not accepted.",
+    "Exact effective transcribing primary enablement/opacity and input final insets need further source/runtime evidence.",
+    "Title outer leading alignment, full new-thread toolbar/menu and previous feedback remain separately open.",
+    "Real transcription/network/auto-send and Android equivalence are unverified."
+  ],
+  "next_minimum_actions": [
+    "Trace primary enablement through disabled/style ancestry for transcribing",
+    "Bind mode content computed height to actual ordinary parent insets",
+    "Continue source-backed Remote page title/toolbar integration and feedback ledger"
+  ],
+  "hashes": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-mode-findings.json",
+      "sha256": "a6da1ad3b6a43da55a9061e20470a66103a8ec3283f6c9b8b0bc5f89061ce6a0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-active-mic-action-findings.json",
+      "sha256": "aaed773c8f913423816df25ca9920945c240426afb0404c5bd8251155135d2dd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-findings.json",
+      "sha256": "2ddc8e4f3a15e1b49d3683950e0b017198a7229d6e7af3a3e6e15285438b2708"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-primary-loading-findings.json",
+      "sha256": "a3d0f3e92ce5725821a537b9f307293a0301a9d781009c815d8bad84a013544e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-result-guard-findings.json",
+      "sha256": "42fe122b183c78f8deb649a40ae683b448e0e3077df668579ef31b1f20e4f152"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteComposerInteraction.swift",
+      "sha256": "3b30d8d24076a29fc9b1350ff220b6b961b19d552a77ad49cf4373ceb796d513"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "7461f9453b9258d3616b2f7a8b9baa2c26df453a9c4c9aa5f1e09e619409eeb6"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "12c2c94b58fe9bff8e4f8197c90fd470fb5b0ab53ef23985e23cb07bf5c1c155"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "6aa6de7cae9564be38a0cedfd7e006e6c28804d5a5d62c57eff49f02393e874b"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "d6a06e908cace0fe5e006856dfb0e73fd5a7bfeea19cf8caa08ad965438349b2"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "91a6d55ae93fe265c8f4079e07e65f89f75f98cfae73a7ae87ed5608828220be"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "53a419c5c472682a98df040e0251cb516181b5f286d18020a2d1458a867584bd"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "400bb950d28720112b23d37f20c46094dd62aafd00d69e190d3a8f495e9e2f06"
+    }
+  ]
+}

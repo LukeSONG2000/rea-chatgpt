@@ -1,0 +1,233 @@
+{
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "scope": "Remote expanded model control entry, source-label branch and geometry. No app execution or implementation edits.",
+  "findings": [
+    {
+      "id": "parent_dispatch",
+      "status": "verified-static-bounded",
+      "conclusion": "Model section selects the slider control only after VM+a8 gate, a nonnil slider configuration from1969430 and VM+110 gate. VM+118 is passed as usesMeterSource. Failure of any gate takes196657c fallback.",
+      "proof": [
+        "1965cb8..1965cc4 calls VM witness+a8 and branches on false",
+        "1965cc8..1965ce8 reads VM+b0 configuration, calls1969430, tests nil",
+        "1965d00..1965d0c calls VM+110 and branches on false",
+        "1965d10..1965d30 calls VM+118 and passes w2 into19696e4",
+        "196971c stores input usesMeterSource at control+30; field descriptor95ae2f0 names usesMeterSource"
+      ],
+      "limits": [
+        "Witness semantic names +110 isModelSliderEnabled and +118 isModelGaugeEnabled are supplied by concurrent options analysis. This report proves the consumption independently. Fallback presentation lifecycle is delegated to parent."
+      ]
+    },
+    {
+      "id": "message_input_slot",
+      "status": "verified-static-bounded",
+      "conclusion": "Selected ordinary expanded MessageInput consumes model configurationControls after Spacer and before trailing controls. Selected ordinary compact builder omits this slot.",
+      "proof": [
+        "v525 entry-findings parent_sections and expanded_slot_order prove raw1 model Controls and MessageInput field40 configurationControls metadata+c0",
+        "1986048..19860ac reads configurationControls, frameheight48 and layoutPriority1",
+        "1987d30..19880c8 selected ordinary compact assembly consumes no configurationControls field"
+      ],
+      "limits": [
+        "Do not generalize this negative result to alternate compact implementations or other platforms."
+      ]
+    },
+    {
+      "id": "label_data",
+      "status": "verified-static-bounded",
+      "conclusion": "Slider label receives presentation, current model title, current effort title, selected preset index/count, speed configuration, presentation state and usesMeterSource.",
+      "proof": [
+        "CodexRemoteModelSliderLabel descriptor95af50c gives field order",
+        "1999ce0..1999cf4 VM+160 -> label presentation pair at1999e2c",
+        "1999d0c calls244efb8 -> modelTitle at1999e34;1999d38 calls244e588 -> effortTitle at1999e3c",
+        "1999d4c..1999dc0 iterates selections stride90 and matches selectedPresetID;1999dbc supplies index0 if no match",
+        "1999e40 index/count atlabel+30/+38;1999e44 speed at+40 from1881bec;1999e48 state at+41 from199a1dc optional nonnil;1999e4c meter flag at+42",
+        "1999e50..1999e58 onSourceLayout closure1ce623c"
+      ],
+      "limits": [
+        "The unmatched-index fallback is label behavior, not a claim that the configuration producer clamps invalid effort. Producer may prevent such data from reaching this label."
+      ]
+    },
+    {
+      "id": "label_branch_and_spacing",
+      "status": "verified-static-bounded",
+      "conclusion": "Label uses centered HStack spacing0 for meter mode and spacing6 for text mode. Meter mode builds MessageInputThinkingEffortMeterSource. Text mode builds MessageInputModelSliderTextControl with model/effort strings and source-layout callback.",
+      "proof": [
+        "199a900..199a918 chooses HStack spacing based onusesMeterSource+42",
+        "199ada0..199adac branches on usesMeterSource;199ae04 calls60a3248 meter constructor",
+        "199ae50..199ae98 forwards modelTitle,effortTitle,presentation state,onSourceLayout to6095920 text constructor",
+        "Symbolic type record7e222c8 independently names both conditional branches"
+      ]
+    },
+    {
+      "id": "meter_geometry",
+      "status": "verified-static-bounded",
+      "conclusion": "Meter source uses ScaledMetric24 for its own square frame. Label adds width48 with height unspecified. Control adds minWidth48/minHeight48 only in meter mode. Preserve these distinct layers.",
+      "proof": [
+        "60a3278..60a3290 initializes _boundingSize ScaledMetric24;60a35e4..60a3614 reads metric for inner frame",
+        "199ae18 loads Double48;199ae1c calls764e64;764e64..764e70 sets width-present and height-nil then tailcalls_FrameLayout.init",
+        "1999ea0..1999ed8 selects48 and optional flags with usesMeterSource for_FlexFrameLayout"
+      ],
+      "limits": [
+        "Meter arc/path/stroke/needle geometry and effective tint resolution are not decoded in this entry slice."
+      ]
+    },
+    {
+      "id": "meter_constructor_inputs",
+      "status": "verified-static-bounded",
+      "conclusion": "Caller passes nil tintColor, isVisible=true, isPresentationSourceEnabled=true and current presentation state. Source initializes animationDelay0.1 and wraps MessageInputThinkingEffortMeter in PhaseAnimator/ScaleEffect/FrameLayout.",
+      "proof": [
+        "199adf4 calls45a7fc;45a7fc..45a804 sets x4=0,w5=1;199adf8 w6=1;199adfc x7=state",
+        "60a32f0..60a332c stores named fields using metadata+20..38",
+        "60a32dc..60a32ec stores Double0.1 at animationDelay fieldmetadata+3c",
+        "Symbolic record8234740 names MessageInputThinkingEffortMeter within PhaseAnimator andScaleEffect/FrameLayout",
+        "60a3598 names contentclosure60b7670;60b7670..60b77fc consumes levelIndex/count,tint andvisibility/source flags"
+      ],
+      "limits": [
+        "Full animation timing, reduction of motion and feedback behavior are not reconstructed here."
+      ]
+    },
+    {
+      "id": "speed_icon",
+      "status": "verified-static-bounded",
+      "conclusion": "standard speed has no icon. fast uses OpenAI/Feature/TabGroup/lightning-bolt. ultrafast uses OpenAI/Symbols/bolt-on-bolt. Icon has body-relative ScaledMetric24 square, foreground ChatGPT/icon/primary. Meter mode gives this icon an additional48-width slot. Icon becomes transparent while picker is presented.",
+      "proof": [
+        "Enum descriptor95d184c fieldrecords9a61100/10c/118 name standard/fast/ultrafast",
+        "199ab44..199ab70 branches speed0 none;raw1 chooses74f2994;othernonzero chooses74f5014",
+        "resource8a52d30 lightning-bolt;resource8a542c0 bolt-on-bolt",
+        "1999e68..1999e98 initializes label_configurationIconSize24 relativeTo body via26c05c",
+        "199abe8..199ac28 reads metric twice and initializes icon frame;199ac3c..199ac94 conditional width48",
+        "199acac calls74ed6f4 primary icon token;199acf0..199ad10 selects opacity0 whenisPresentationPresented true, otherwise1"
+      ],
+      "limits": [
+        "Do not create a speed glyph for standard. Resource paths are official assets, not SF Symbol guesses."
+      ]
+    },
+    {
+      "id": "lifecycle_handoff",
+      "status": "verified-static-bounded",
+      "conclusion": "The entry body exposes bounded presentation and layout callback addresses for a separate lifecycle analysis.",
+      "proof": [
+        "Control body1999b4c..199a1dc",
+        "1999f94..1999fb4 invokes60a18e4 with closure1ce5bd8",
+        "199a098..199a0dc invokes62a9a08 with closures1ce599c and1ce58cc",
+        "Label onSourceLayout closure1ce623c",
+        "Body end uses60a2650 and6081e84"
+      ],
+      "limits": [
+        "These addresses do not independently prove gesture, dismiss or advanced-sheet transition semantics. Parent owns that closure analysis."
+      ]
+    }
+  ],
+  "unknowns": [
+    "Fallback196657c complete presentation chain, owned by parent",
+    "Text control effective font/foreground/style-dependent padding and loading overlay predicate",
+    "Meter path/stroke/needle and resolved tint",
+    "Runtime feature flags, actual model capability catalog and screen parity"
+  ],
+  "excluded_captures": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-meter-label.asm",
+      "reason": "Later constructor window was captured during discovery. It does not support meter-source claims."
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-argument-helper.asm",
+      "sha256": "9d0ed859b25c41ef68f1790667bb9e9ca6c258d000f3c4a7afb34d4a9b6996b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-argument-helper.json",
+      "sha256": "4dd4995a580fc8b6e07d8a107619a3b73c90a099735036541cbab8eb14bd2cf7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-control-body.asm",
+      "sha256": "1bd7bee81a8ac6d528ab6e195d6aed62b1d49cfeb1420128a5defede14637a80"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-control-body.json",
+      "sha256": "a326d224f8fb609a0443d66752f08183336568559dbe06faf15abb79c6203f79"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-control-init.asm",
+      "sha256": "da178fadbc189f7a633e0d3e3e33b4eb490b1505535596d63f890a3951d4d06e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-control-init.json",
+      "sha256": "50a2b09ed0a72f0c56493faea4cf970cc88cef6ed29a6ae82902ee41d8a413d4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-frame-helper.asm",
+      "sha256": "6c7b244ff0170caf1b8a9f2cf0e929367dfade52b69ccd4b5ba272a0c5406a52"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-frame-helper.json",
+      "sha256": "5d32d52fb4349e27d76385e5aa501a84ff9d5e3289b28844a0d91614be324e52"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-label-body.asm",
+      "sha256": "4aa6e4f4d1e0f853efb61c2f8b7a81dca64f48cb1375d3ffae398830978b158c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-label-body.json",
+      "sha256": "99f77cd6e1f4fb173df8ab0b9eed1d214b0374ed613d5bea409cb72be2426ebf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-label-primitives.json",
+      "sha256": "b5f3af1fccdd6013e7be228c0edebc177dd326e717933db2b1fc0d649f331654"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-metadata.json",
+      "sha256": "0112e1dc027636a6b2864868f8fd4ac4cc20565fd1f97ecf44c6bcca216a8097"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-meter-init.asm",
+      "sha256": "2d36cd22eb8442a68603cd17f679c309b624bd0514f91ba0f997e1cf731f4800"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-meter-source-closure.asm",
+      "sha256": "1615a7e9fde8e493d61e9cc69568145b1fbc902649a0bd605a6c9e1d0f0f5f97"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-meter-source-closure.json",
+      "sha256": "3f877455fbb8fa0477e0b51eb4f883bf3174ea2bbf48650cb59f04ad045a6262"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-meter-types.asm",
+      "sha256": "d5a223a7c86328f0a6921daa02adbf587f979e79be3de1f99aa35c3541f8f7eb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-parent.asm",
+      "sha256": "8b6cf02ff2267987a656b7f1c29fe092bdd5f2f5c8d47556adf7087c1949f920"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-parent.json",
+      "sha256": "8a6e9a8d283cc23fb8ae61b2b5d3a4fd0d70559dac0e16a2545942a6f0f43c73"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-resources.json",
+      "sha256": "c1b626e8ebfa474117442a5f87803654a0ecdd202b1981e6c817b7df76d9f9d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-text-body.asm",
+      "sha256": "fc4bce30ecd61bb433729bb7ddb67c9a024e4cc72fce38fb76860568b73e95e9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-text-init.asm",
+      "sha256": "c1ade67e356838fe1a99be64e6802768f5deba9b8d652b4ae63d195f04c4b704"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-types.json",
+      "sha256": "1ace6128aa38ff787230ca26d4987ae280728a9975ec30ea234aa72076fe1b7a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-witnesses.json",
+      "sha256": "a0cc7c34feda1ba66f369d2226c953607573c9dc75381c94b10c4654619211e2"
+    }
+  ]
+}

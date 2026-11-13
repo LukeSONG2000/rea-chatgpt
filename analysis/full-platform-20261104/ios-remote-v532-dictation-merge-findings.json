@@ -1,0 +1,107 @@
+{
+  "schema": "rea.ios.remote.dictation-merge.v1",
+  "batch": "v532",
+  "status": "verified-static-algorithm",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "188321c ordinary Remote transcript/currentPrompt/Optional selection merge and directly used shared text helpers. No pending state/submission lifecycle expansion.",
+  "entry": {
+    "address": "0x188321c",
+    "arguments": {
+      "x0_x1": "transcript String",
+      "x2_x3": "current prompt String",
+      "x4_x5_w6": "Optional NSRange location,length,optional tag",
+      "x8": "output tuple address String + Optional NSRange"
+    },
+    "evidence_type": "official_artifact_static"
+  },
+  "algorithm": [
+    {
+      "step": 1,
+      "rule": "If transcript is empty, return original prompt and original optional selection unchanged, including nil or invalid selection.",
+      "source": "1883244 calls f54fa0 String storage count helper;1883248 ->1883280;output1883284/6f8ab8"
+    },
+    {
+      "step": 2,
+      "rule": "For nonempty transcript, use selection if nonnil, location>=0,location!=NSNotFound,length>=0,location<=prompt.utf16.count,length<=count-location. Convert using Range(NSRange,in:String).",
+      "source": "1883260 ->765569c;76556d8 ->76553f8;7655424 UTF16View.count;7655428..5454 bounds;7655460 Range initializer"
+    },
+    {
+      "step": 3,
+      "rule": "Require both converted bounds to be Character indices in the prompt or prompt.endIndex. A range inside an extended grapheme cluster is rejected even when the UTF16 range converts.",
+      "source": "7655478 and7655488 ->765589c. That function accepts endIndex directly and otherwise1a9fac8 ->17f47a4, iterating String.index(after:) until matching bound or end."
+    },
+    {
+      "step": 4,
+      "rule": "Any nil/invalid range uses zero-length range at prompt.endIndex, with UTF16 location prompt.utf16.count.",
+      "source": "7655498 sets optional failure;76556dc..56ec ->76555e0 builds endIndex..<endIndex, converts to NSRange at765567c"
+    },
+    {
+      "step": 5,
+      "rule": "Split prefix before effective range and suffix after it. Leading ASCII space is inserted iff prefix and transcript are nonempty and prefix.last/transcript.first are both non-whitespace Characters. Trailing ASCII space uses transcript.last/suffix.first under the same predicate.",
+      "source": "7655720 prefix substring;7655744 suffix;7655764 and765579c ->7655554;Character.isWhitespace imports765559c/76555bc;last helper18a2968;first helper71ee5c;literal U+0020 at7655774"
+    },
+    {
+      "step": 6,
+      "rule": "Replace effective range with leadingSpace+transcript+trailingSpace. No trim, punctuation exception or language-specific spacing branch is present in this function.",
+      "source": "76557b4..57e4 builds replacement;7655814 ->76554bc;7655510 Swift.String.replaceSubrange"
+    },
+    {
+      "step": 7,
+      "rule": "Return nonnil collapsed selection at effectiveRange.location + (leadingSpace+transcript).utf16.count. The caret precedes any automatically appended trailing space.",
+      "source": "765581c..5844 builds only leadingSpace+transcript and counts UTF16;7655858 adds effective location;7655868 writes length0;caller1883274 forces optional present"
+    }
+  ],
+  "swift_reconstruction": {
+    "authority": "independent source-derived implementation sketch",
+    "source": "import Foundation\nstruct DictationMergeResult {\n    let text: String\n    let selection: NSRange?\n}\nfunc mergeDictation(_ transcript: String, into prompt: String, selection: NSRange?) -> DictationMergeResult {\n    guard !transcript.isEmpty else {\n        return DictationMergeResult(text: prompt, selection: selection)\n    }\n    let count = prompt.utf16.count\n    var effectiveRange = NSRange(location: count, length: 0)\n    var stringRange = prompt.endIndex..<prompt.endIndex\n    if let candidate = selection,\n       candidate.location >= 0,\n       candidate.location != NSNotFound,\n       candidate.length >= 0,\n       candidate.location <= count,\n       candidate.length <= count - candidate.location,\n       let converted = Range(candidate, in: prompt),\n       (converted.lowerBound == prompt.endIndex || prompt.indices.contains(converted.lowerBound)),\n       (converted.upperBound == prompt.endIndex || prompt.indices.contains(converted.upperBound)) {\n        effectiveRange = candidate\n        stringRange = converted\n    }\n    let prefix = prompt[..<stringRange.lowerBound]\n    let suffix = prompt[stringRange.upperBound...]\n    func needsSpace(left: Character?, right: Character?) -> Bool {\n        guard let left, let right else { return false }\n        return !left.isWhitespace && !right.isWhitespace\n    }\n    let leadingSpace = needsSpace(left: prefix.last, right: transcript.first) ? \" \" : \"\"\n    let trailingSpace = needsSpace(left: transcript.last, right: suffix.first) ? \" \" : \"\"\n    let throughTranscript = leadingSpace + transcript\n    var result = prompt\n    result.replaceSubrange(stringRange, with: throughTranscript + trailingSpace)\n    let caret = effectiveRange.location + throughTranscript.utf16.count\n    return DictationMergeResult(text: result, selection: NSRange(location: caret, length: 0))\n}\n",
+    "intended_interface": "Pure function with Foundation NSRange?; keep pending/submit state outside this function."
+  },
+  "validation": {
+    "kind": "independent Swift reconstruction replay",
+    "command": "swift temporary/merge.swift",
+    "returncode": 0,
+    "stdout": "13 synthetic merge vectors passed\n",
+    "stderr": "",
+    "official_runtime_executed": false,
+    "network_or_audio_used": false,
+    "test_count": 13,
+    "limitation": "Synthetic expectations follow the statically recovered algorithm. This checks compilation/Foundation Unicode behavior on this Mac; it is not execution of the original function."
+  },
+  "precise_limits": [
+    "Original binary was statically inspected only. iOS original Swift runtime version was not replayed.",
+    "This merge helper does not prove microphone capture, cancellation rollback, pending result consuming/clearing or actual send behavior.",
+    "Function returns Swift String storage; downstream text selection bridge and IME sequencing are outside this scope.",
+    "Overflow in original caret addition traps; reconstruction preserves Swift checked arithmetic."
+  ],
+  "raw_evidence": [
+    "ios-remote-v532-dictation-boundary-check.asm",
+    "ios-remote-v532-dictation-first-character.asm",
+    "ios-remote-v532-dictation-indices-contains.asm",
+    "ios-remote-v532-dictation-last-character.asm",
+    "ios-remote-v532-dictation-merge-call-helper.asm",
+    "ios-remote-v532-dictation-merge-empty-helper.asm",
+    "ios-remote-v532-dictation-merge-input-helper.asm",
+    "ios-remote-v532-dictation-merge-output-helper.asm",
+    "ios-remote-v532-dictation-merge-range-helper.asm",
+    "ios-remote-v532-dictation-merge-shared-helpers.asm",
+    "ios-remote-v532-dictation-merge-shared.asm",
+    "ios-remote-v532-dictation-merge.asm",
+    "ios-remote-v532-dictation-register-helpers.asm",
+    "ios-remote-v532-dictation-string-indices.asm",
+    "ios-remote-v532-dictation-style-button-label.asm",
+    "ios-remote-v532-dictation-style-compact-default-init.asm",
+    "ios-remote-v532-dictation-style-compact-meter-type.asm",
+    "ios-remote-v532-dictation-style-leaf-body-builder.asm",
+    "ios-remote-v532-dictation-style-mic-state-glyph.asm",
+    "ios-remote-v532-dictation-style-row-capture-destroy.asm",
+    "ios-remote-v532-dictation-style-row-generic-type.asm",
+    "ios-remote-v532-dictation-style-state-active-helper.asm",
+    "ios-remote-v532-dictation-style-waveform-control-content.asm",
+    "ios-remote-v532-dictation-style-waveform-control.asm"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "schema": "rea-scoped-native-findings-v1",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Remote transcript layout section inset/spacing ownership, row granularity, and first-bottom boundary",
+  "analysis_scope": {
+    "execution": "none; static ARM64 instructions, Swift metadata and prior source-bound evidence",
+    "host_changes": false,
+    "shared_tool_changes": false,
+    "original_app_started": false,
+    "bounded_windows_only": true
+  },
+  "findings": [
+    {
+      "id": "remote-padding-producer",
+      "status": "verified",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Remote explicitly supplies NSDirectionalEdgeInsetsZero as ChatCollectionView.contentPadding. This is separate from contentInset used for bars/safe area.",
+      "chain": [
+        "1a4c358 ->1d86da4 loads d8..d11 from chained import aac5ed0 (_NSDirectionalEdgeInsetsZero).",
+        "1a4c554 ->1bee60 copies d8..d11 into d0..d3;1a4c56c ->3f84474.",
+        "3f844d8/dc stores constructor d0..d3 at ChatCollectionView+10/+20.",
+        "3f85998/9c reloads the four values;3f859d8->1bee60 then3f85a3c->3f8745c.",
+        "3f877c4 reads controller metadata+170 (field-offset vector base12 words; named contentPadding).3f877c8/cc/d0 writes the four saved doubles into that field."
+      ]
+    },
+    {
+      "id": "section-owner",
+      "status": "verified",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "The collection section consumes contentPadding directly, with interGroupSpacing=0. Thus Remote section contentInsets are zero; global host gap20 and section16 are independent reconstruction geometry.",
+      "chain": [
+        "3f8822c actual lazy layout owner.3f88270 reads metadata+170;3f88274 computes contentPadding address;3f88288 loads q0/q1;3f8828c captures them at context+10/+20.",
+        "3f88290/94 chooses section provider3f939dc;3f88298 calls3f8e0b4.",
+        "3f8e0b4 builds ObjC block with thunk12e5b44.Thunk loads function/context and calls with captured context as x20.3f8e114 invokes initWithSectionProvider:.",
+        "3f93a00/04 reloads d8..d11 from context+10/+20.",
+        "3f93b88 d0=0;3f93b8c calls setInterGroupSpacing:.",
+        "3f93b94 ->1bee60 copies d8..d11 to arguments;3f93b98 calls setContentInsets:."
+      ],
+      "other_layout_values": {
+        "item_width": "fractionalWidth1",
+        "item_height": "estimated200",
+        "group_width": "fractionalWidth1",
+        "group_height": "estimated200",
+        "group": "vertical, one item subitem"
+      },
+      "interpretation_limit": "Estimated height200 is a self-sizing estimate, not a fixed row height."
+    },
+    {
+      "id": "fragment-vertical-owner",
+      "status": "verified_with_existing_branch_limits",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Fragment content owns top and bottom padding independently of the section. Existing recovered metrics8/24 and branch-derived margins should not be added on top of global gap20.",
+      "sources": [
+        "1a31ce4 Edge.top;1a31cf0 ->1a3337c;1a31cf4 EdgeInsets._all",
+        "1a31d18 Edge.bottom;1a31d20 ->1a334d4;1a31d24 EdgeInsets._all",
+        "1a50928..1a50980 ScaledMetric bases renderedItem8/messageGroup24/previousToggle8"
+      ],
+      "limits": [
+        "Exact mapping of every content/predicate branch remains bounded by v427/v428 evidence.",
+        "This proves vertical margins only; it does not supply a horizontal16 value."
+      ]
+    },
+    {
+      "id": "item-granularity",
+      "status": "partial",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Remote collection items are CodexRemoteTranscriptItem with both turn and turnFragment cases, so the official collection is heterogeneous. One cannot infer that every cell is one fragment or every cell is one turn.",
+      "actual_construction": [
+        "1a4c2b4 resolves7e14088: ContiguousArrayStorage<AnyChatCellRegistration<CodexRemoteTranscriptItem>>.",
+        "1a4c2d4..334 calls nine concrete registration builders1a4cf34,1a4d020,1a4d0d4,1a4d18c,1a4d244,1a4d2fc,1a4d3b4,1a4d46c,1a4d584 and stores results into the registration array.",
+        "1a4c344..350 invokes model witness+f0 and retains returned items array.1a4c550 passes it as x1 into3f84474."
+      ],
+      "enum": {
+        "descriptor": "0x95acd20",
+        "field_descriptor": "0x9a37998",
+        "cases": [
+          "forkedFromConversation",
+          "turn(LocalTurnID)",
+          "turnFragment(CodexRemoteTurnTranscriptFragment.ID)",
+          "realtimeTranscript(CodexRemoteRealtimeTranscriptBlock.ID)",
+          "realtimeHandoffPrompt",
+          "contextCompaction",
+          "pendingPrompt",
+          "errorMessage",
+          "loadingState"
+        ]
+      },
+      "limits": [
+        "Case names/payloads are metadata, not a proof of tag mapping or visibility.",
+        "The model witness+f0 producer, enum-case extraction closures and exact cell-view builders were not fully resolved in this pass.",
+        "The current synthetic replay aggregate must remain separately labeled; do not claim unconditionally splitting its turns reproduces the official projection."
+      ]
+    },
+    {
+      "id": "horizontal-owner",
+      "status": "unknown",
+      "evidence_type": "bounded_negative_static_search",
+      "conclusion": "No source-backed common horizontal padding amount was established. Remote section zero does not mean visible text touches screen; an inner row/content owner remains unclosed.",
+      "searched": [
+        "History wrapper1a31c50..1a32114 proves top/bottom edge consumers but no direct horizontal Edge import.",
+        "Previously scoped fragment content1a32308..1a3337c, registration builders1a4cf34..1a4d640, first matcher/view continuation1a4d9c8..1a4db20.",
+        "Do not reuse v438 task-list horizontal20: it is a different component."
+      ],
+      "next_exact_breakpoint": [
+        "Follow1a4c344 model witness+f0 to items producer, then match selected registration type/payload extraction.",
+        "Resolve registration helper1d94a78/1d98bbc, cell view closures1c33bac/1c33a4c/1c31c18 etc and common hosting content/margins.",
+        "Generic ChatCollectionViewController cellProvider assigned at3f87798..a8 to3f9090c, target cell registration dispatch; layoutCustomConfiguration metadata+68 is a separate possible owner."
+      ]
+    },
+    {
+      "id": "first-bottom",
+      "status": "partial",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Distance/edge-trigger behavior has existing evidence, but initial-bottom protection release and appearance policy remain unclosed; do not declare the full first-bottom algorithm recovered.",
+      "known": [
+        "Controller initialLayoutPosition field slot+100, enforcePinnedBottomDuringLayout+108, animateEnforcedPinnedBottomRestoration+110, hasScrolledToBottomOnAppearanceIfNecessary+148.",
+        "Existing chain-r3: initial protection+input distance flags drive visibility via1c309d8; bottom distance threshold32 and protection input50 have direct consumers.",
+        "3f8df48..3f8e0b4 window performs conditional offset restoration; source state naming/initial-appearance admission was not proved."
+      ],
+      "next_exact_breakpoint": "Resolve controller viewWillAppear/viewDidLayoutSubviews consumers of metadata+148 and pending restoration state; not expanded in this pass."
+    }
+  ],
+  "integration_guidance": {
+    "source_backed": [
+      "Section interGroupSpacing=0",
+      "Remote section contentInsets zero after source contentPadding chain",
+      "Retain original per-fragment vertical margin computation, separately from section gap"
+    ],
+    "independent_adapter_allowed": [
+      "If shipping before horizontal owner is closed, keep explicit synthetic-row horizontal16 as a named host adapter; do not attribute it to original293.",
+      "Preserve synthetic replay aggregate identity until official items producer and registration extraction are closed.",
+      "Existing scrolling/reading-anchor behavior is host integration, not full original first-bottom equivalence."
+    ],
+    "avoid": [
+      "Moving old section16 into a row and calling it recovered",
+      "Removing section horizontal padding with no replacement then claiming edge-to-edge text is source fidelity",
+      "Applying generic20 gap to every fragment or item",
+      "Splitting every turn based only on Fragment type existence"
+    ]
+  },
+  "evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/first-cell-view-builder.asm": "43d1143bb5fee79adfbcef9f1d286dfcffd47b58bd02cbce421b8f27461900a4",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/section-thunk-closure.asm": "06004ec8d1b7db76e945a14fff7c609cb6de1c30cf5c2eac6ccba4ee4bcea19a",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/cell-custom-config.asm": "011aced8e6adc005476c8ee1a77db452dcd6c9e5c4a68ae1a62c3f94830765e1",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-lazy-getter.json": "2852ce16db3c9b2daacf348af95615c4c1fa4188ac3458f1cb07246d7a3cc6c4",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/history-fragment-wrapper.json": "1a0887ec7d9e18ce63ffa6ecb7aca4891ac6ccd386174ad78618ada37d7b3257",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-lazy-owner.asm": "596055a074f5fdf2d4671375d28112ffb9a2e0e368e976c5e225e64474765eaa",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-estimated-size-helper.json": "6275f80020292c04ccacf9ebe3bef15545a2fb6af940e1c810e98533a587597a",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/cell-custom-config.json": "6aada0b6222b8c08279c9f8684b2e385f236dbb2237021d07711472276aa0c39",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-owner.asm": "0adbe462299650779461f4b241c24b7194208a04df412e88091dbdfbaea92247",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/thread-collection-builder.asm": "40da3acf4d3a1273999483ea4101a3652df977177771142addcd7ec88f4161c4",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-estimated-size-helper.asm": "90f1d15f702e6e2ab8dbe1b0f0b96c5f6e60989502bc27771532c619a7355e20",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/first-cell-view-builder.json": "55fe5a3130479a9aed7a12ac2b0568d73455f9b90a0faab25710f5e238df3bde",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/registration-builders.json": "fa4ee41fbefd2b5e7d74adb10ba475360c82c6e97d0db86665f3d46267f07722",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/registration-array-type.json": "59b14d69b999f5170bf80411e507fdcd93d3c3730edf874a42ebaa41b6b762f2",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-getter-actual.asm": "2f4f90642ebe161063f327730a908102470d0e5c69c7cd21262957189555e93f",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/history-fragment-wrapper.asm": "7a39d3e5f70e290512358672e334c1df9efb00f10b8b33bf9f9f55ca4dedbfe0",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/section-builder.json": "4d46cb35c5607d9072d1abff9d9f097f0e2076635fb2ad35ba510ccbc25d7ebb",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/registration-builders.asm": "8050c18cfb3a7a185ac6ccd41a1d2ff04fd81243f01dd64da2a8a954084a2563",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/cell-registration-types.json": "f291cc9c4a410f7f6a722082f8bb231d354a4a0900b1a2d033dcd050d21b5a8b",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-closure-capture-helper.asm": "52354c1fe85a0add6469243286aebddfe1f821f20bfd8381ad01db5e4c1a3715",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-closure-capture-helper.json": "45ff714889df0b724e5a792b4a3ff168501b922ab1b9932d2a1514e157fdc9fb",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-section-thunk.json": "639e7d2139a2c19b04742904f16e9cbeba1d346d32e5f3bf9784fa5fd63cd73f",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-owner.json": "54e8574f8ff3c4dd3e27e29fc399ae823101e493765b80782ecab3f5b0aabdf5",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/section-builder.asm": "246c8c2786ff7f5bb139a966f6beeb60fdea4173779d5bcf238f888c891e9812",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-lazy-getter.asm": "12a680f35fd35b296c20b174b4d52762dd6f790a75b5b423115df45d8c59eb67",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/thread-collection-builder.json": "50aa130474cd84064187e68a3340b3b83a8d7e09b385412e8718e5f48fcc6d44",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/section-thunk-closure.json": "f285788365da01067ac711cb162fafa5831d9ce030b0329d3e0cc4ff79e0a87b",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/transcript-item-enum.json": "8d94a55c8be3cfe041cc324149fed417efcae240ecd178bc5d48bcaecaec6b35",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-getter-actual.json": "8eca2de13d28b71625fbd49dea4f612a3dc4fb05a782f2ca07dc7d4e835b581b",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-lazy-owner.json": "5aefd1a77e969ab6afe136ca80d60baaf602a7dea6596ce9e97cab05b3539c8c",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/layout-section-thunk.asm": "84c325045ab5ecfcf46dd58db9a394b15a62f4a2f2d7d7095cccd9a25900429e",
+    "analysis/full-platform-20261104/ios-remote-transcript-parent-20261113/transcript-item-fields.json": "aa0555e6c7f4472c8b4c216509781de9adaa8cd1b694dfb3d8f9b1413d77c7bf",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-findings.json": "202185d3f835ce6c3f270d73fb3790a038bda19ea65cd272e3b18048144c4aa5",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-padding-zero-helper.asm": "6509e0e484636bafc18c25cc44a75d86ee72e6cb8fe7b1990708f0efc336fd7b",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-padding-argument-helper.asm": "8ae958813fb46f666f967e880f8467f8304414c600a6b6b66024ce00d89a22dc",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-collection-constructor.asm": "28b673c53d05674164d254042bf463f2b0296416018add69ea5ebe3204816441",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-collection-make.asm": "c4efdfea204746c596be63d66d106ac69bd14b4ec928e6dc17cdeb61b0529694",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-controller-initializer.asm": "5f69fda8c1a53f7a0dd2f9b449a544d6e051eb46dfd7d9aa3f28f74588688f14",
+    "analysis/full-platform-20261104/ios-remote-scroll-bottom-20261112-controller-fields.json": "2f7ce76c9cd8170cf10b97b4326672e00e5a4268121dce9e1708efdabdd75210",
+    "analysis/full-platform-20261104/ios-remote-v427-integration.json": "64eee16814eb8c3a72579540602e9c9deb86444f4a5015f67fb0070dbd47b14c",
+    "analysis/full-platform-20261104/ios-remote-v427-fragment-margin-consumer.json": "19a4dbc115fdcb61d15e53fd8e7dc2a61daeee70ca37070561b4e622953e333c",
+    "analysis/full-platform-20261104/ios-remote-scroll-bottom-20261112-chain-r3.json": "84603d220caa9b642af3b990eed9fa25d7470168b9bb30c8774bf2574a1556f9"
+  },
+  "file_naming_corrections": {
+    "layout-lazy-getter.asm": "actual window3f8df48..3f8e0b4 is scroll-offset restoration, not layout lazy getter",
+    "layout-getter-actual.asm": "actual window3f8e134..3f8e284 is generic cell lookup, not layout lazy getter",
+    "layout-lazy-owner.asm": "actual proved layout lazy getter3f8822c..3f8842c",
+    "cell-custom-config.asm": "1c301a4 begins generic witness/cache helpers, not proved layout custom configuration"
+  }
+}

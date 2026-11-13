@@ -1,0 +1,116 @@
+{
+  "status": "partial",
+  "evidence_type": "official_artifact_static_analysis",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "chains": [
+    {
+      "id": "destination_container_gate",
+      "status": "confirmed_static",
+      "offsets": [
+        "0x19f32b0",
+        "0x19f3684",
+        "0x19f36a4",
+        "0x19f36b4",
+        "0x19f36cc",
+        "0x19f36e0",
+        "0x19f36f4",
+        "0x19f3700",
+        "0x19f370c"
+      ],
+      "conclusion": "CodexRemoteNewThreadScreen content first requires isComposing Binding true. It then reads the viewModel witness slot +0xe0 returning Optional<CodexRemoteDraftWorktreeProgress>. A nonnil value renders its progress branch. A nil value checks composerPresentation.showsDestinationControls before constructing the destination controls ScrollView.",
+      "binding_proof": "CodexRemoteNewThreadScreen descriptor 0x95ab510 field-offset vector starts at metadata word6 (byte0x30). Offset entry0x64 is field13 isComposing; entry0x34 is field1 _composerPresentation. Metadata helper 0x1d883ac invokes accessor0x1aa581c. Environment getter0x195ea70 returns presentation first Bool in w0, optional String in x1/x2, attachments Bool in w3. Struct descriptor0x95aad24 binds these fields in order."
+    },
+    {
+      "id": "destination_container_layout",
+      "status": "confirmed_static",
+      "offsets": [
+        "0x19f372c",
+        "0x19f3730",
+        "0x19f377c",
+        "0x19f3a58",
+        "0x19f3ae8",
+        "0x19f3b10",
+        "0x19f3cc8"
+      ],
+      "conclusion": "The nil-progress destination branch creates vertical ScrollView with defaultScrollAnchor(.bottom), containing a leading-aligned VStack. Closure1c3e904 ->19f3a58 ->1c3e9cc ->19f3b5c creates destination menu19f3f54 and further sibling content. These controls are screen content shown while composing; this chain does not place them inside the compact composer toolbar.",
+      "limits": [
+        "Exact parent padding, final extent and all sibling content remain partial.",
+        "The shared input component may have additional destination-related presentation paths; this result only identifies this consumer."
+      ]
+    },
+    {
+      "id": "destination_label_without_target",
+      "status": "confirmed_static_partial_presentation",
+      "offsets": [
+        "0x19f64c4",
+        "0x19f6658",
+        "0x19f66b8",
+        "0x19f69dc",
+        "0x19f6790",
+        "0x19f67cc"
+      ],
+      "conclusion": "Producer prefers an existing destination title. If absent, loading selects a separate loading factory. Otherwise a nonempty host-items array chooses codex_remote_new_thread_select_host / Select a host; an empty array chooses codex_remote_new_thread_no_hosts_available / No hosts available. Label receives isLoading and a separately computed showsChevron. iconSize ScaledMetric initializes24 and chevronSize18.",
+      "limits": [
+        "Loading localized key/factory and destination-null icon resource have not yet been named.",
+        "showsChevron helper19f6b50 has multi-branch destination/host comparison; no simple hosts-count predicate is asserted.",
+        "Full menu selection callbacks and nested workspace/project choices not yet closed."
+      ]
+    }
+  ],
+  "integration": [
+    "Retain one home draft according to home-state findings. Separate source chips from draft destination.",
+    "Use composing-state screen content to host recovered destination selection after its gate is represented. Do not infer a destination control in the compact trailing toolbar from this path.",
+    "Nil target is a real presentation state; never invent a default first host to avoid it."
+  ],
+  "unknowns": [
+    "Full destination menu action owner route through 19f5d4c ->19f60cc and nested host/workspace/project children.",
+    "Worktree progress original triggering/loading producers.",
+    "Complete parent safe-area/width layout for destination-content ScrollView."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-host.asm",
+      "sha256": "a6614d3e3c0bd0170ecd424a5afc757eb526282fbace22563f0bdbc8e6251184"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-host-calls.json",
+      "sha256": "d25a1f68d01c9cc46443d9e1355aef782c3e4f40b1ea96cb4353879a0ed0fcf2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-host-types.json",
+      "sha256": "dea28bae830e4accd3ab0726e251920a0d844f58bc2abc738811fa84b2e50c52"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-host-helpers.asm",
+      "sha256": "c8970511720f4c557792f3d96c429434674ae3d2cea4a0e86dd516e0bc0b402d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-presentation-env.asm",
+      "sha256": "24995f4af7f989f52fc829331f9818bd716162438c7d0be7ca6d6bf4f5fabdd5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-container.asm",
+      "sha256": "9c2853ea0ce3fdfe891c7ec34690b3cf50e64caeb282e1af81dd7f0acc9ecddf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-gate.asm",
+      "sha256": "017fe9a436e5a1ec8bf6500e9b0dc3f45a329e990413dd7a13065f3e521529fa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-label.asm",
+      "sha256": "35f8fa4df109ca502502df66295f303d1413d7faac616369376be60f919bb5ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-control.asm",
+      "sha256": "8fbbdf44c01bde6aebd8db6492061cf42728e2384b56b777a98c0921e283e09b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-chevron.asm",
+      "sha256": "b23c2e2f5e2596a3b10f3c1324a0df5ccfc0257f19ba6f381906feb3b1047f00"
+    }
+  ],
+  "verification": "Static only. No official target execution, services, or production modifications."
+}

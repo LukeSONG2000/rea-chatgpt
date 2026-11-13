@@ -1,0 +1,126 @@
+{
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Remote source-filter row, bounded static artifact analysis. No original app or cloud service execution.",
+  "status": "partial",
+  "evidence_type": "official_artifact_observation_and_static_inference",
+  "confirmed": [
+    {
+      "topic": "Cloud is a host item",
+      "evidence": [
+        "Host enum descriptor 0x95d109c",
+        "SourceFilter descriptor 0x95ed094",
+        "0x38905c..0x389090",
+        "0x40acb8 -> 0x389d10"
+      ],
+      "conclusion": "HostListItem.Host has slingshot/custom/cloud. SourceFilter has host/all/chat/codex. Cloud chip is produced by the hostItems ForEach and shared host-chip factory."
+    },
+    {
+      "topic": "Official localized label",
+      "evidence": [
+        "0x389db8 -> 0x2424368",
+        "0x24243c0 -> 0x26573bc",
+        "0x24243d4 -> 0x2652000",
+        "0x8854be0"
+      ],
+      "conclusion": "Cloud branch uses codex_remote_connection_mode_name_hosted_cloud with literal fallback Cloud."
+    },
+    {
+      "topic": "Official icon rendering",
+      "evidence": [
+        "0x389dc4..0x389dd4",
+        "0x241a584",
+        "dispatch table 0x7e824e0 [0,4,2,3,1]",
+        "enum descriptor 0x95d1058",
+        "0x241a5a4 -> 0x74f64bc",
+        "0x8a54c80"
+      ],
+      "conclusion": "When showsConversationSources is false, host-chip factory reads HostListItem.icon. The cloud enum case is raw 4 and selects OpenAI/Symbols/cloud. When showsConversationSources is true, this icon is omitted.",
+      "limit": "Upstream Host.cloud to stored icon.cloud assignment is not established."
+    },
+    {
+      "topic": "Stable selection identity",
+      "evidence": [
+        "0x24126b4",
+        "0x2412740..0x241275c",
+        "0x40af20..0x40af68",
+        "0x24242fc..0x2424358",
+        "0x40ad8c..0x40adf8"
+      ],
+      "conclusion": "Cloud HostIdentity serializes to cloud:account. The host button primaryAction extracts HostIdentity and enters shared selection handler 0x3896c0. Its closure 0x40ad8c writes row Binding at +0x58 using SwiftUI.Binding.wrappedValue setter at stub 0x7c4b610. Cloud selection belongs to SourceFilter.host, not a separate cloud case.",
+      "limit": "The stable string alone does not establish cross-account identity scope or backend routing."
+    },
+    {
+      "topic": "Single-cloud special case",
+      "evidence": [
+        "0x388cd4..0x388e6c",
+        "0x388fa0",
+        "0x389e7c..0x389eac"
+      ],
+      "conclusion": "The row tests showsConversationSources=false, exactly one host item, and that item cloud identity. True suppresses All; the sole Cloud chip can be selected while the binding is All.",
+      "limit": "Outer row visibility and isCloudEnabled producer eligibility remain unclosed. This proves the row accepts a sole Cloud item, not that a real account produces it."
+    },
+    {
+      "topic": "Local source ordering",
+      "evidence": [
+        "0x388e6c..0x389210",
+        "0x38905c..0x389090"
+      ],
+      "conclusion": "Local row emits optional All, optional Chat/Codex when showsConversationSources, then hostItems ForEach in supplied order. Cloud/device placement is inherited from the supplied collection."
+    }
+  ],
+  "unknown": [
+    {
+      "topic": "Cloud enablement and host-item insertion",
+      "boundary": "CodexTaskListContent descriptor0x9560294 isCloudEnabled and codexRemoteHostItems; CodexViewModel descriptor0x955df7c fields _isCloudEnabled(index38), _sidebarHostFilterItems(index44), _taskSourceFilter(index50), _remoteHostFilterItems(index51).",
+      "next_minimum_action": "Trace the relevant host-item producer/write only if production eligibility or official ordering becomes necessary."
+    },
+    {
+      "topic": "Cloud relative order against devices",
+      "boundary": "0x38905c reads already supplied hostItems; local ForEach has no reconstructed sorting."
+    },
+    {
+      "topic": "Upstream icon assignment",
+      "boundary": "Stored HostListItem.icon consumed at0x389dcc..0x389dd4; Host.cloud construction assignment not traced."
+    },
+    {
+      "topic": "Mixed-host Recents new-thread target arbitration",
+      "boundary": "v503 cloud projection proves Recents but mixed-host descriptor target arbitration remains unknown."
+    },
+    {
+      "topic": "Query and backend effects of source changes",
+      "boundary": "Binding setter owner established; query downstream/network effects not traced in this bounded question."
+    }
+  ],
+  "minimum_integration": {
+    "classification": "independent_design_recommendation_for_synthetic_frontend_fixture",
+    "items": [
+      "Use explicit opt-in synthetic All+Cloud+two-device hostItems ordering, mark ordering independent.",
+      "Use official label key/fallback and OpenAI/Symbols/cloud resource for explicit fixture icon.cloud.",
+      "Represent Cloud selection as host cloud:account in the shared source binding.",
+      "For a supplied sole Cloud host with showsConversationSources=false, suppress All and preserve sole-cloud selected treatment.",
+      "Cloud-only fixture new-thread target may explicitly be Cloud. Keep mixed All Recents target explicit fixture-a until target arbitration has evidence."
+    ],
+    "claims_excluded": [
+      "Official account entitlement",
+      "Official Cloud-versus-device ordering",
+      "Actual cloud connectivity",
+      "Cross-account identity guarantees",
+      "Mixed-host new-target arbitration"
+    ]
+  },
+  "files": [
+    "ios-remote-v504-cloud-filter.asm",
+    "ios-remote-v504-cloud-filter-metadata.json",
+    "ios-remote-v504-cloud-resources.json"
+  ],
+  "prior_evidence": [
+    "ios-remote-v485* filter row layout and fields",
+    "ios-remote-v503-cloud-findings.json",
+    "ios-remote-v348-host-resources.json"
+  ]
+}

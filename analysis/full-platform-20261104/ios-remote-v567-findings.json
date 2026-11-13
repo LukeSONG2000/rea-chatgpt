@@ -1,0 +1,51 @@
+{
+  "status": "partial",
+  "baseline": "iOS 1.2026.293",
+  "artifactSHA256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "publicSource": "analysis/upstream-codex-20261105/reuse-map.json",
+  "observations": [
+    {
+      "type": "artifact-observation",
+      "symbol": "SafariView.makeUIViewController",
+      "offsets": [
+        "0x7560940",
+        "0x75607e8",
+        "0x7560820",
+        "0x7560848",
+        "0x4123358"
+      ],
+      "conclusion": "UIViewControllerRepresentable witness branches to creation of SFSafariViewControllerConfiguration and SFSafariViewController; calls initWithURL:configuration:. setBarCollapsingEnabled: receives zero."
+    },
+    {
+      "type": "artifact-observation",
+      "symbol": "OpenURLHandlingViewModifier / ManagedSafariView / OpenURLBrowserContent",
+      "conclusion": "Metadata exposes inherited URL action, browser builder, policy, sheet/full-screen state, destination/initial URL and load tracker. Specific Remote link-to-owner route and policy branches remain unresolved."
+    },
+    {
+      "type": "host-observation",
+      "files": [
+        "implementation/ios/Sources/NativeConversationHost.swift"
+      ],
+      "conclusion": "Before this batch, showLink, RemoteReplayMarkdown and RemoteReplayErrorCard each stopped URL actions at a disconnected alert. All three now use the shared frontend browser presentation adapter."
+    }
+  ],
+  "implementationBoundary": {
+    "sharedLinkPresentation": "Independent native host integration, scoped presentation item per originating view. Dismissal preserves underlying task instance.",
+    "offlineWebKit": "Independent deterministic browser-preview adapter for local test HTML. Original Safari creation is evidence only. Offline WebKit controls/layout are not claimed as recovered Safari or official browser visuals.",
+    "service": "Unknown/external URLs show a returnable service-unavailable state. No network provider attached.",
+    "reasoning": "v558 ID.reasoning producer/content projection remains unresolved; optional +0x28/+0x30 is PresentedPlan, not reasoning."
+  },
+  "validation": {
+    "foundation": "passed; ios-remote-v567-contract-tests.log",
+    "ui": "Eight distinct UI cases passed across r4/r5. r5 rebuilt the final navigation-identity/address changes and passed four browser/error-card cases; combined and rich-message cases passed on the preceding r3 build in r4.",
+    "retainedFailures": "r1 two browser title failures corrected using navigationItem.title plus WK title observation; r2 two incorrect compact-composer test assumptions corrected by accepting the existing expanded editor.",
+    "visual": "r5 Chinese/light and English/dark retry-success screenshots inspected. Manual Chinese Remote Markdown link opened local preview and close returned to the same visible content.",
+    "status": "local preview core acceptance passed; official route and visual fidelity remain partial"
+  },
+  "independentHostChanges": [
+    "Shared per-view URL presentation used by Chat UIKit messages, Remote Markdown and Remote error cards.",
+    "Only explicit example.invalid preview fixtures resolve to in-memory HTML; normal URLs retain a returnable pending-resource state.",
+    "Ephemeral WebKit, scripts disabled, local custom-scheme navigation and CSP deny network resources.",
+    "Native back/forward/reload/close plus local failure/retry; source scope retained beneath the modal."
+  ]
+}

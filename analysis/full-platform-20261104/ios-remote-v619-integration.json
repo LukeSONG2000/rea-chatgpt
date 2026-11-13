@@ -1,0 +1,104 @@
+{
+  "version": "v619",
+  "scope": "iOS Remote project sorting frontend",
+  "implemented": [
+    "source-gated two-option menu and selected state",
+    "explicit provider identity order projection",
+    "profile-scoped persisted selection",
+    "visible read/write failure handling",
+    "core preview capability"
+  ],
+  "unimplemented": [
+    "official timestamp comparator and tie rules",
+    "manual drag/reorder producer",
+    "official storage scope and protocol",
+    "Android project-sort integration",
+    "complete message-item visibility integration and reasoning body"
+  ],
+  "independent_adaptations": [
+    "explicit synthetic identity orders",
+    "profile JSON scalar storage",
+    "commit-before-UI failure policy"
+  ],
+  "evidence": "ios-remote-v619-project-sort-source-findings.json",
+  "tests": {
+    "foundation": "passed; ios-remote-v619-foundation-r1.log",
+    "ui": {
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+            "deviceName": "REA ChatGPT Offline",
+            "modelName": "iPhone 17 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 3,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "environmentDescription": "REAChatGPTHost · Built with macOS 27.3",
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "finishTime": 1794190705.485,
+      "passedTests": 3,
+      "result": "Passed",
+      "runtimeWarnings": [],
+      "skippedTests": 0,
+      "startTime": 1794190534.526,
+      "statistics": [],
+      "testFailures": [],
+      "title": "Test - REAChatGPTHost",
+      "topInsights": [],
+      "totalTestCount": 3
+    },
+    "visual_inspection": "Chinese/light and English/dark manual-order screenshots reviewed",
+    "source_diff_whitespace": "passed"
+  },
+  "build": {
+    "log": "ios-remote-v619-build.log",
+    "launch_report": "ios-remote-v619-launch.json",
+    "version": "619",
+    "installed_hash_matches": true
+  },
+  "preview": {
+    "process_id": 25200,
+    "display": "BenQ RD280U detected",
+    "screenshot": "ios-remote-v619-preview.png",
+    "window_status": "Device Hub native window verified displaying the running independent REA ChatGPT Offline iOS 27.0 preview in Chinese/dark",
+    "window_app_path": "/Applications/Xcode.app/Contents/Applications/DeviceHub.app",
+    "window_display_placement": "not verified",
+    "correction": "Previous unavailable-window claim relied on legacy Simulator.app lookup and missed the running Device Hub window."
+  },
+  "source_snapshots": [
+    {
+      "path": "implementation/ios/Sources/RemoteWorkspacePresentation.swift",
+      "sha256": "4d986c83cf0a2cba4f354f58ae4079a4cf55a47cd98c84e1c531a176866cc903"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "9ba16b737ecc7210a0ae5243d1302724d5982854e27dbfad99816a567bedc397"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "adfcb5c6bb25571548592ad9d89c16bc42bd0469f7983cd9286f9cc1501182fc"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "8f84e1fdf8696ddfc7174b279883104997a4411587bfc3a217ccd64552713cdf"
+    },
+    {
+      "path": "implementation/ios/Tools/core-preview.json",
+      "sha256": "c63691575cf349284dc6d92ed9ac990da23abe356b91660e9a8346690405f5a6"
+    }
+  ],
+  "next_action": "Trace Remote rendered-item producer and restore the next source-confirmed missing message-visibility branch."
+}

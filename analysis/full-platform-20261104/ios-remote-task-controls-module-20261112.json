@@ -1,0 +1,112 @@
+{
+  "module": "Remote composer and task controls",
+  "scope": "iOS frontend only; Chinese/light",
+  "implemented": [
+    "existing ordinary editor/draft/send/stop and queue/steer loops",
+    "scoped configuration change acknowledgement",
+    "immutable model/permission snapshot per accepted intent in local history",
+    "Goal status/detail/edit/pause/resume/clear with scoped synthetic reducer",
+    "Agent count and supplied activity/completed groups; scoped detail intent",
+    "mutually exclusive Goal/agent details above shared summary row"
+  ],
+  "evidence": [
+    "ios-remote-v524-permission-owner-findings.json",
+    "ios-remote-goal-core-20261112.json",
+    "ios-remote-agents-20261112-findings.json"
+  ],
+  "independent_adaptations": [
+    "Goal/agent exact geometry, material, SF Symbols and synthetic wording",
+    "Agent detail is local information sheet; agent ID is not assumed to be thread ID",
+    "Configuration snapshot uses independent adapter fields, not official wire schema"
+  ],
+  "remaining": [
+    "real configuration transport and queue propagation",
+    "persisting selected configuration and Goal state between launches",
+    "exact Goal/agent layout and state-to-section mapping",
+    "real subagent transcript routing",
+    "pending-message edit branch",
+    "voice backend; attachments remain separate file scope",
+    "Goal creation and cross-task return need ordinary UI coverage; foundation reducer covers creation"
+  ],
+  "verification": {
+    "contracts": "existing text tests and independent Goal/Agent tests passed; latest snapshot tests included in text suite",
+    "ios_typecheck": "passed",
+    "ui": {
+      "combined_controls": "r2 passed testCorePreviewRemoteControlsChinese",
+      "queue_steer": "r2 passed testRemotePendingReplayChinese",
+      "configuration_failure": "r3 passed testRemoteConfigurationDisconnectedChinese",
+      "goal_agents": "r6 passed testRemoteGoalAndAgentsCoreChinese",
+      "locale_theme": "Chinese/light only",
+      "limits": "Goal creation via empty state, task-switch restoration of Goal and physical interactions not covered by this UI batch"
+    },
+    "device": {
+      "name": "iPhone Air",
+      "build": "succeeded",
+      "install": "succeeded",
+      "launch": "succeeded",
+      "install_report": "ios-task-controls-20261112-device-install.json",
+      "launch_report": "ios-task-controls-20261112-device-launch.json",
+      "sha256": "828cdf7d121cb39d52d644902498780fa0434b74b2db08218cdd8e217b5d971c",
+      "limits": "launch proven, manual physical interactions and haptics not checked"
+    },
+    "goal_reducer": "rerun passed scope, stale refresh, duplicate, failure, create/edit/pause/resume/clear, unknown status",
+    "simulator_preview": {
+      "report": "ios-task-controls-20261112-preview.json",
+      "running": true,
+      "screenshot_inspected": true
+    }
+  },
+  "integration_findings": [
+    {
+      "issue": "Goal parent accessibility identifier replaced child button identifiers",
+      "fix": "explicit contain accessibility boundary for Goal and agent detail containers",
+      "evidence": "r2 exported UI hierarchy; r3 Goal actions reachable"
+    },
+    {
+      "issue": "disconnected model test expected acknowledgement before slider dismissal",
+      "fix": "test official deferred commit at dismissal, then assert failure retention",
+      "evidence": "r3 testRemoteConfigurationDisconnectedChinese passed"
+    },
+    {
+      "issue": "clear confirmation shared label with underlying trigger",
+      "fix": "distinct confirmation identifier; do not bypass confirmation",
+      "evidence": "r3 test log target remote-goal-clear; r4 rerun"
+    },
+    {
+      "issue": "clear label assertion ran before confirmation dismissal animation completed",
+      "fix": "wait for visible status change; no product delay or logic change",
+      "evidence": "r5 video shows cleared goal; r6 passed"
+    }
+  ],
+  "unattended_review": {
+    "status": "core_available_archived_for_later_user_review",
+    "implemented": [
+      "One configuration owner above ordinary, project-created and nested-created task destinations; host/thread keyed",
+      "One Goal store retained through ordinary and creation routes",
+      "Creation reducer records immutable configuration snapshot under exact first intent; legacy snapshots remain readable"
+    ],
+    "evidence": "ios-remote-v524-permission-owner-findings.json (thread VM ownership); new cache/request snapshot remain independent adapters",
+    "contract_test": "test-official-text.sh passed /tmp/rea-task-configuration-20261112-contract.log; includes host isolation and creation snapshot disk round-trip",
+    "ui_test": "testRemoteCreatedTaskConfigurationReturnChinese passed 64.847s; ios-remote-created-config-20261112.xcresult",
+    "coverage": "project new task > synthetic completion > full access + high selection > list > search > reopen > selections retained",
+    "limits": [
+      "No original permission grant or backend mutation",
+      "Selected configuration and Goal still not durable across process restart",
+      "New-draft configuration capability UI remains separate; creation explicitly captures fixture defaults"
+    ],
+    "physical_delivery": {
+      "build": "succeeded",
+      "install": "failed_device_unavailable",
+      "error": "CoreDeviceError4016 no assertable device states",
+      "state_report": "ios-remote-created-config-20261112-device-state.json",
+      "last_installed": "Settings-fixed-close candidate installed and launched successfully earlier this turn",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "42299c160ce15a8466dbce927560a8a005b20e2fc1b9b903b237a675862980c1"
+    },
+    "simulator_delivery": {
+      "launch_report": "ios-remote-created-config-20261112-preview.json",
+      "ordinary_screenshot": "ios-remote-created-config-20261112-ordinary.png",
+      "installed_current_binary": true
+    }
+  }
+}

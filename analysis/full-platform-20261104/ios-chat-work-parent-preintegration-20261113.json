@@ -1,0 +1,11 @@
+{
+  "module": "7 Chat/Work second pass",
+  "current_host": "startTurn receive appends delta and assigns kind without its own event scope/subscription/sequence/revision validation; adapters currently guarantee ordered revision0 only",
+  "integration_decision": "Add independent frontend event cursor and explicit replacement semantics, preserving provider mapping boundary; no server implementation or official-protocol claim",
+  "native_followup": "source Chat inline actions full-edge negative padding; source closure report pending",
+  "files": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "10e70ff6c6a9428cde22ab2364f3ae07b6d1567f86d3f750044c76103b6cd561",
+    "implementation/ios/Sources/LocalHarness.swift": "7a07960f00251765ebc1e698bdd74909d962a0eb85b012f1232195bbde9ec234",
+    "implementation/ios/Sources/DraftStore.swift": "991feac42d19f8b8211e4b0bed391294313109c1b0e7a792fe95fc478237a8a1"
+  }
+}

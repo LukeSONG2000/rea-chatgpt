@@ -1,0 +1,178 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "module": "9 Sidebar Projects: Remove conversation from project fourth pass",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Read-only. Two bounded groups. No product edits, build, tests, devices, target execution, network or service mutation.",
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "Resolve the original remove callback to its actual parent owner and removal scope",
+      "result": "Closed one additional actual typed parent relay: ProjectDetailTabsContent supplies its removeConversationFromProject optional callback unchanged to ProjectConversationsPart. Final callback implementation still unresolved; no actual project membership mutation or conversation deletion inferred."
+    },
+    {
+      "id": 2,
+      "question": "Determine whether an actual confirmation/feedback consumer belongs to the same remove conversation callback",
+      "result": "One concrete Remove from project? consumer is file metadata/ProjectSave, not conversation-row removal. Other two literal references are not linked to the row owner. removeConversation(_:) diagnostic is cached-conversation error continuation. No confirmation or success/failure list update recovered for the conversation remove action."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "actual-row-menu",
+      "kind": "official-artifact-observation",
+      "conclusion": "The actual conversation-row context menu exposes Remove from project only when its supplied remove callback is nonnil; action capture retains the exact current GizmoConversation, not project ID alone.",
+      "source": [
+        "ProjectConversationsPart descriptor0x9669978, View witness0x4a662e8→body0x4a614ec, full tree0x810bc60",
+        "0x4a66178 callback at aggregate+0xa0;0x4a6617c nil skips item;context+0xa8",
+        "0x4a66184→0x75d24fc label Remove from project;0x4a6618c→0x74f931c asset OpenAI/Symbols/notebook-badge-xmark",
+        "0x4a661dc captures supplied callback/context;0x4a661e0..e8 copies current GizmoConversation;0x4a661fc supplies0x4b3e4c4",
+        "0x4b3e4c4→0x4b3e4c8 loads callback pair;0x4b3e4e4→0x458e14 adds captured value offset and indirect branches to supplied callback"
+      ],
+      "evidence": [
+        "ios-sidebar-plugins-projects-third-20261113/projects-optional-row-menu.asm",
+        "ios-sidebar-plugins-projects-third-20261113/projects-remove-action.asm",
+        "ios-sidebar-project-remove-fourth-20261113-raw/row-indirect-action-helper.asm"
+      ],
+      "limits": "The leaf itself contains no proved direct service mutation, confirmation state or UI removal. Indirection is a real owner boundary; do not claim it deletes the conversation."
+    },
+    {
+      "id": "typed-tabs-parent-relay",
+      "kind": "official-artifact-observation",
+      "conclusion": "The actual ProjectDetailTabsContent→ProjectConversationsPart constructor forwards the same optional removeConversationFromProject callback. This closes parent membership and its field identity, not the final owner implementation.",
+      "source": [
+        "ProjectDetailTabsContent descriptor0x966b238:23 fields, field-offset-vector offset4 words (32 bytes), removeConversationFromProject field index15 record0x9b25dd8, runtime metadata offset slot0x5c",
+        "Actual constructor caller0x4a757a4 obtains Tabs metadata0x4b2d3ec,0x4a757d4 passes it asx0 to0x4a74310",
+        "0x4a7432c→0x15fd14 captures input metadata asx21 and output asx19",
+        "0x4a74470 reads signed offsets at[x21,+0x5c] and[x21,+0x60];first is actual remove field;0x4a74474/78 loads its function/context pair from Tabs content",
+        "0x4a7447c..84 stages same pair;0x4a7470c..18 stores pair at outputProjectConversationsPart+0xa0/+0xa8 consumed by original row menu"
+      ],
+      "evidence": [
+        "ios-sidebar-project-remove-fourth-20261113-raw/part-field-vector-mapping.json",
+        "ios-sidebar-project-remove-fourth-20261113-raw/tabs-conversation-part-provider.asm",
+        "ios-sidebar-project-remove-fourth-20261113-raw/tabs-conversation-part-call.asm",
+        "ios-sidebar-project-remove-fourth-20261113-raw/constructor-register-helper.asm"
+      ],
+      "limits": "Tabs is generic metadata with four-word vector offset; using two-word defaults would misidentify the callback. Root construction/assignment of this optional remains unresolved. No source-backed account/capability gate beyond supplied callback presence is closed."
+    },
+    {
+      "id": "reject-file-confirmation",
+      "kind": "official-artifact-observation",
+      "conclusion": "The Remove from project? literal alone does not establish conversation removal confirmation. One exact consumer is demonstrably a file-metadata path and must be excluded from the conversation action.",
+      "source": [
+        "Literal0x8986d90 referenced at0x4aa6d50/0x4aa7ea8/0x4ade5e0",
+        "Bounded consumer0x4aa7d34 includes inline Remove file? alternative0x4aa7e7c..94, and Remove from project? alternative0x4aa7ea8",
+        "0x4aa7ddc..f4 copies Optional<ConversationsCore.GizmoFileResponse.Metadata>, cache record0x810fee0 resolves typeref0x902ceda nominal0x9703d8c",
+        "0x4aa7e9c→0x4b5f110 supplies record0x810fee8 resolving typeref0x93f0d5c→ConversationsCore.GizmoFileResponse.Metadata.ProjectSave nominal0x9703da8"
+      ],
+      "evidence": [
+        "ios-sidebar-project-remove-fourth-20261113-raw/selected-references.json",
+        "ios-sidebar-project-remove-fourth-20261113-raw/candidate-confirmation-a.asm",
+        "ios-sidebar-project-remove-fourth-20261113-raw/confirmation-model-helper.asm",
+        "ios-sidebar-project-remove-fourth-20261113-raw/confirmation-type-902ceda.json",
+        "ios-sidebar-project-remove-fourth-20261113-raw/confirmation-type-93f0d5c.json"
+      ],
+      "limits": "The other two literal consumers were not linked to original row callback either. Their existence is not affirmative or negative proof that conversation removal asks for confirmation."
+    },
+    {
+      "id": "reject-name-only-cached-removal",
+      "kind": "official-artifact-observation",
+      "conclusion": "removeConversation(_:) at0x8989610 appears in the bounded0x4a802b0 continuation alongside Error removing cached conversation; it does not on its own identify the project-membership operation invoked by the row.",
+      "source": [
+        "0x4a802e0..e4 loads Error removing cached conversation literal0x89895e0",
+        "0x4a80304..08 loads removeConversation(_:) literal0x8989610",
+        "0x4a80358..68 loads continuation from context+8 and branches via helper"
+      ],
+      "evidence": [
+        "ios-sidebar-project-remove-fourth-20261113-raw/remove-method.asm",
+        "ios-sidebar-project-remove-fourth-20261113-raw/selected-literals.json"
+      ],
+      "limits": "No source path connecting this continuation to the optional row callback, no mutation payload and no global delete-vs-membership semantics proven."
+    }
+  ],
+  "current_host": {
+    "files": {
+      "implementation/ios/Sources/FrontendProjects.swift": "573a0096ceb7318f1459b526d784c1c2595f32d897aea8c9bef9f4d2a050e3ec",
+      "implementation/ios/Sources/NativeProjectsPage.swift": "912bb24974d91f406a4f44476f898005757b524935b041f7189482217ff648f5"
+    },
+    "observation": "Current project frontend supports project creation/edit/delete/pinning and creating/opening scoped project conversations. Project conversation rows have no remove-from-project operation contract or supplied context menu callback. Existing project deletion and Chat catalog deletion must not be reused as this action."
+  },
+  "safe_product_decision": {
+    "source_backed_now": [
+      "Keep actual native per-conversation context menu producer and optional callback gate separate from project actions or Remote row menus.",
+      "Preserve the acted-on full conversation identity with its project/account scope when an explicit future callback is supplied.",
+      "Reuse exact Remove from project label and notebook-badge-xmark resource only for that supplied capability."
+    ],
+    "not_admitted_as_original_recovery": [
+      "Unconditionally enabling Remove from project for all current fixture conversations",
+      "Using delete project, archive conversation or delete conversation to satisfy remove-from-project",
+      "Reusing file Remove from project? confirmation from matching text",
+      "Removing a row or announcing success before a scoped operation receipt",
+      "Claiming original confirmation/error/reload/haptic behavior restored"
+    ],
+    "minimum_independent_option": "If the parent elects to implement now, it must be a clearly independent project-membership removal contract: optional capability, account/project/conversation/request/revision identity, separate success/failure receipt and no global Chat deletion. Its confirmation policy cannot be labeled original. This read-only report does not implement or test that contract.",
+    "recommendation": "Defer the visible action until final owner is closed or a complete explicitly independent adapter is authorized/implemented. Preserve the precise callback boundary instead of adding an inferred destructive operation."
+  },
+  "precise_unknowns": [
+    {
+      "gap": "Actual owner assignment of Tabs.removeConversationFromProject",
+      "breakpoint": "ProjectDetailTabsContent index15/runtime metadata+0x5c; actual relay0x4a74470..84→0x4a74718; trace upstream value construction supplying this optional function/context pair, then indirect target consumed0x4b3e4e4."
+    },
+    {
+      "gap": "Remove membership vs delete/archive implementation and operation payload",
+      "breakpoint": "Final indirect callback target after0x458e14 not resolved; original row captures GizmoConversation but consumer operation missing."
+    },
+    {
+      "gap": "Confirmation, disable/pending, error and list-update policy",
+      "breakpoint": "No row callback→Presentation.Alert case or async receipt/list state mutation closed. File metadata confirmation rejected; literal candidates0x4aa58bc/0x4ade3f0 remain unassigned."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "direct_caller_proven": false,
+    "result": "No explicit haptic dispatch proven in bounded row action/typed parent relay/confirmation candidate. Do not infer from ProjectDetailViewModel.hapticEngine inventory."
+  },
+  "investigation_limits": [
+    {
+      "attempt": "Selected broad literal regex",
+      "result": "Stopped own analysis process after unexpectedly slow bounded-pattern search; no findings used. Replaced with exact bytes.find probes, no extraction or target execution."
+    },
+    {
+      "attempt": "Metadata cache record interpreted as symbolic type start0x810fee8",
+      "result": "Strict reader rejected unsupported symbolic kind14. Corrected by resolving record signed relative target0x93f0d5c; raw rejection not interpreted as type."
+    }
+  ],
+  "reused_reports": [
+    "ios-sidebar-plugins-projects-third-20261113-findings.json",
+    "ios-native-projects-detail-20261112-findings.json",
+    "ios-native-projects-module-20261112.json"
+  ],
+  "validation": {
+    "static_only": true,
+    "product_changed": false,
+    "tests_or_build": false,
+    "devices_or_target_runtime": false
+  },
+  "raw_evidence": {
+    "ios-sidebar-project-remove-fourth-20261113-raw/candidate-confirmation-a.asm": "cca8b876b82d15a63b7eceb1e3859cdaff0baa1640decbe633d07a5895d31baa",
+    "ios-sidebar-project-remove-fourth-20261113-raw/candidate-confirmation-b.asm": "8cb005d20d2ff5ec5276261781ad51a4ab745f4f6dc7f895c8c3290beea92a20",
+    "ios-sidebar-project-remove-fourth-20261113-raw/confirmation-model-helper.asm": "bc43fe988c1032458ede841e432d228d191674854999a541c80744c5e500b63f",
+    "ios-sidebar-project-remove-fourth-20261113-raw/confirmation-type-902ceda.json": "fb7970412218a73572926c7ba626e6b5d8dc253e25e657e8f7f2c6fd72b1005c",
+    "ios-sidebar-project-remove-fourth-20261113-raw/confirmation-type-93f0d5c.json": "6d00d1ca9725ff47d6c12ee70bf272cd67468686b106d1e960bee595e4cb4b44",
+    "ios-sidebar-project-remove-fourth-20261113-raw/constructor-register-helper.asm": "9efd2ec6019dad6ea9ad9d0cb1d80dba2f5d8fc3b4a83a6ece471d68f5a9adee",
+    "ios-sidebar-project-remove-fourth-20261113-raw/part-field-vector-mapping.json": "9a1f82719345acdad1f2bf25d6b48b2815847523feca61ae0361bdfdb32e1179",
+    "ios-sidebar-project-remove-fourth-20261113-raw/remove-method.asm": "b0776257f30a6686a31249eab8403b4960b6dfbf64a2a1eb6497a9e6b5c706e9",
+    "ios-sidebar-project-remove-fourth-20261113-raw/row-indirect-action-helper.asm": "105d3271af4c528efabefb3490c2a0cfa2c2137dd87bda9dad6e575a4ecdb535",
+    "ios-sidebar-project-remove-fourth-20261113-raw/scope.json": "6b547739502deb1aa6b441059fb4f0a6cf6b52dfc4819fbbb68dcfc6b316aa45",
+    "ios-sidebar-project-remove-fourth-20261113-raw/selected-literals.json": "0270134df2b2708185f8f1fd5a60fb705bb3a98616c3ff074928f635a0cb1d72",
+    "ios-sidebar-project-remove-fourth-20261113-raw/selected-references.json": "e0c60d811100690265cbef1e32cce24c98bdcb0c2600ca3dea185f6d341af50d",
+    "ios-sidebar-project-remove-fourth-20261113-raw/tabs-conversation-part-call.asm": "b6fa30efb72f43d3b16429553b4e2a83cb89b1aa27ec373219b2b9a16b2fdaeb",
+    "ios-sidebar-project-remove-fourth-20261113-raw/tabs-conversation-part-provider.asm": "1f375a30d3299a6fb7248a8bae2a52c900d7b60afe3bbbd01f3abe17bd4f2f17"
+  },
+  "stop_reason": "Two candidate groups complete. New exact parent relay and rejected file-confirmation/cache-removal candidates sharpen the breakpoints; final operation owner remains unresolved. No extra service traversal."
+}

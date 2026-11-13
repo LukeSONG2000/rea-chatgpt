@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "id": "ios-settings-help-fifth-20261113",
+  "status": "partial",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Two bounded groups: GetHelp Report app issue actual action/presentation owner; About root topology and concrete child. Static only, no product/build/device/service operations.",
+  "correction_to_previous_reports": {
+    "reports": [
+      "ios-settings-children-20261112-findings.json",
+      "ios-settings-root-topology-agent-20261112-findings.json"
+    ],
+    "correction": "Those reports stopped ordered help inventory at Privacy Center and did not establish About. The same original closure continues after0x10898e4 to construct About with NavigationDestination.settingsHomeAbout tag40. Preserve those historical reports; their three-item-only inventory is incomplete."
+  },
+  "findings": [
+    {
+      "id": "gethelp-complete-local-topology",
+      "type": "official_artifact_observation",
+      "sources": [
+        "SettingsGetHelpSection descriptor0x958a06c/body1089580/content1089624",
+        "0x10897b4 Report row",
+        "0x1089868 Help Center row",
+        "0x10898dc conditional Privacy Center row",
+        "0x10898f4..0x1089960 About row",
+        "0x75d6208..0x75d6218 smallSwiftString About",
+        "NavigationDestination descriptor0x958a4fc fieldordinal40 settingsHomeAbout"
+      ],
+      "conclusion": "Within this original GetHelp section, construction order is conditional Report app issue -> Help Center -> conditional Privacy Center -> About. About is a real NavigationLinkStyledDisclosureRow to the settingsHomeAbout destination, not a version footer and not a new screenshot-derived root entry.",
+      "conditions": {
+        "report": "resolver10119f0 on supplied section context must return nonnil BugReportPresenter",
+        "privacy": "section showPrivacyCenter Bool at offset0",
+        "about": "No additional conditional branch surrounding About construction in this selected closure."
+      },
+      "limits": "Root/account branch selection remains as prior topology evidence. This selected section does not prove live account capabilities or translate newer screenshots into293 topology."
+    },
+    {
+      "id": "report-label-and-action",
+      "type": "official_artifact_observation",
+      "sources": [
+        "0x8a59240 button_report_app_issue",
+        "0x8a59260 Report app issue",
+        "0x1147df8 action",
+        "0x11ae358 context helper",
+        "0x6298914 presenter consumer",
+        "0x88886b0 Optional<BugReportPresenter> resolver diagnostic"
+      ],
+      "conclusion": "Report row uses the existing flag icon and localized report label. Its captured action creates a zero-initialized context value and calls the resolved BugReportPresenter. The resolver is dynamic/optional; availability must be distinct from merely showing a working-looking button.",
+      "limits": "No source-backed report form field names, screenshots/log attachments or submission schema were closed. Do not label an invented form original."
+    },
+    {
+      "id": "report-presentation-owner",
+      "type": "official_artifact_observation",
+      "sources": [
+        "0x62988a0 admission reads presenter flag10 and task getter62988d0",
+        "0x6298914..0x6298a98",
+        "0x8264128 relative async entry62b9d4c",
+        "0x62b9d4c ->0x6298ae4",
+        "0x6298b28..0x6298bac reads presenter+18 factory and invokes it asynchronously",
+        "0x62987ec stores optional presented object at presenter+30"
+      ],
+      "conclusion": "Presenter admits the operation only in its enabled state and with no existing in-flight task. It avoids creating another presentation when already holding a presented object, creates MainActor asynchronous work and weakly retains the presenter. Actual report UI comes from an injected asynchronous factory at presenter+0x18; returned presentation state is held by presenter+0x30.",
+      "limits": "The injected factory registration/concrete UI content and external submission owner remain unclosed. This source does not establish whether the final concrete presentation is a sheet, email composer or another carrier; do not claim a specific carrier from presenter naming."
+    },
+    {
+      "id": "about-concrete-child",
+      "type": "official_artifact_observation",
+      "sources": [
+        "SettingsHomeAboutView descriptor0x9589eb8",
+        "View conformance0x7d8ada0",
+        "body10d4cb8 ->10d4224",
+        "content10d45d4",
+        "10d4754/10d4780 SwiftUI.Link(destination:label:)",
+        "10d49f8 Terms of use label +key8888170",
+        "0x10d4b20 second link label/key0x8888140",
+        "0x10d4784..0x10d47dc platform text iOS/watchOS/visionOS",
+        "0x10d488c/0x10d48b8 EnabledTextSelectability",
+        "0x10d4c5c title toolbar About"
+      ],
+      "conclusion": "About has a real grouped Form child with title/toolbar, Terms of use and a second privacy link, followed by selectable metadata text using AboutMetadataRow. It composes platform information and metadata supplied by original dependency/bundle helpers. This is distinct from the root standalone preview footer.",
+      "limits": "Exact helper->every metadata row label/value and link URLs not fully mapped here. Flat symbolic type references are not claimed as a complete generic tree. No screenshot-derived extra rows or root footer click behavior is inferred."
+    },
+    {
+      "id": "official-package-metadata",
+      "type": "official_artifact_observation",
+      "source": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Info.plist",
+      "conclusion": "Frozen package CFBundleShortVersionString=1.2026.293 and CFBundleVersion=40039297472.",
+      "limits": "Those identify the research artifact, not the independently built host. Display current host bundle metadata separately; never impersonate the official binary version/build as the installed host."
+    }
+  ],
+  "current_host_gap": {
+    "source": "implementation/ios/Sources/NativeConversationHost.swift around9880",
+    "observations": [
+      "GetHelp supplies Report/HelpCenter/PrivacyCenter as unavailable routes.",
+      "About navigation row and concrete About child are omitted.",
+      "Independent offline preview footer is explicitly independent and cannot stand in for About or a verified original version footer."
+    ]
+  },
+  "implementation_admission": {
+    "directly_supported": [
+      "Add About after Privacy Center in the source-selected GetHelp section, using existing native Settings navigation and return behavior.",
+      "Restore an About child containing original-identified links and selectable metadata; keep URL opening/resource policy at platform adapter boundary.",
+      "Use actual host Bundle version/build for installed preview metadata and label293 artifact metadata separately if displayed.",
+      "Report action should have explicit presenter capability and one in-flight request/presentation ownership, cancellation/return handling and failure state."
+    ],
+    "independent_if_implemented": [
+      "A local feedback drafting/preview/export UI may be an explicit independent frontend adapter. Its fields and carrier cannot be represented as recovered original until the injected factory closes.",
+      "No real diagnostic upload, message sending, help service fetch or report submission is authorized by this analysis."
+    ],
+    "do_not_add": [
+      "Do not add a screenshot-derived extra About root placement or assume footer is tappable.",
+      "Do not replace the selected GetHelp order with newer official screenshots.",
+      "Do not claim that a report was submitted when the service adapter is unavailable."
+    ]
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "BugReportPresenter presenter+0x18 async factory actual registration -> concrete report UI",
+      "next_minimum_action": "Identify the DI factory supplied to this presenter before restoring exact form fields/carrier; do not follow unrelated feedback components."
+    },
+    {
+      "boundary": "About metadata helper chain10d4784..10d4904 and Terms/Privacy URL suppliers6d3844c/6d3822c",
+      "next_minimum_action": "Bind specific source labels/URLs and bundle helpers only if needed for exact child rows; existing row topology is already proved."
+    },
+    {
+      "boundary": "root version footer",
+      "next_minimum_action": "No original footer producer was closed; preserve existing preview notice as independent instead of calling it official version footer."
+    }
+  ],
+  "validation": {
+    "candidate_groups": 2,
+    "static_only": true,
+    "product_modified": false,
+    "target_or_service_execution": false,
+    "builds_devices": false,
+    "stopping_reason": "Exact missing About topology/action is closed. Report UI stops at the injected factory; no additional groups or invented carrier."
+  },
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-body-type.json",
+      "sha256": "53c455af435c1d318edd28e25ce69a192def174cff3c35ef3c746aa0624d297c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-body-witness.asm",
+      "sha256": "b1b3436db6e8193ca5ca6f07b3c2e0dfa5518281ed121808f3518bf8eb6489bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-body-witness.json",
+      "sha256": "80c6b2071608c5d298bb186493f8f404ec37be2b888e3580cbd4c32d63e56c6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-body.asm",
+      "sha256": "96aeac602a36f17f8675aaba736710a1337949a7f828a5bb469b57458a86543c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-body.json",
+      "sha256": "9e1f0811ab2bd5c9534b8b2a32ad11965474d673eb3f661446802ba8f4dbfacf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-content-tail.asm",
+      "sha256": "55c62432c564ce61ee0ebdea6d53b578bbcb41408e34cb5efc611469199e41be"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-content-tail.json",
+      "sha256": "2ccc2262e60ff4e2e80e9d8f7698aa3065869aaabc7db2cb5381a39927da661d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-content.asm",
+      "sha256": "acdff882734ec4909e4e823148275f5081ac38d89f3a50a57408d4f236a6561f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-content.json",
+      "sha256": "6c5b2968890695c89ed4752146899decf10f00853a126c9f78456c57d223fe17"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-root-label.asm",
+      "sha256": "4650e8ee511c505c20e003454f67e5eba4f106fd1da2c8478fce7079d5b4fdb7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-root-label.json",
+      "sha256": "e4de0cb482e8e8c8f2aa97da1f2c81d34eb022e54f7642dd2b385206b8819a3e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-title-helper.asm",
+      "sha256": "9310af8515101c98e21425a0f68de74086dc90950f04292acc52d02b80fd9882"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-title-helper.json",
+      "sha256": "1d4b70e7bfddf6616a56c23de491a412b0826571b775841d27d3ea2dd15dc516"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/about-witness.json",
+      "sha256": "e0bb2b5c18be1180fdd9dcb63f3b675aa4025e437bd5d3fedd0f53d59cd44dd2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/async-pointer-loader.asm",
+      "sha256": "7d035736e31edb528b29b0e7831504fcb3a47d4c0885e56739775224839a940e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/async-pointer-loader.json",
+      "sha256": "83588f93c0e7c6d5159e905402159994de00e57eb83477b63a55d0b235661fd9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/bug-captured-factory.asm",
+      "sha256": "9bea9edadd2a5584478eabc48f49e76e793c4c6fedeabfba6a2de29be61fd136"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/bug-captured-factory.json",
+      "sha256": "9d4af952010c5426bbbeabe30c90e40e61c28adcaf5a9c6635a60941372f8bdf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/bug-presenter-meta.asm",
+      "sha256": "d5da4050ca7dc8f3689cf3f53ecd64c4006fbd45da0704e106431c12b2e81970"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/bug-presenter-meta.json",
+      "sha256": "9b01c3a2a2921e99e79781e5bbbe31511155aaeeab8556d55449baaa7e30aab6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/help-about-row.asm",
+      "sha256": "75a73298c0af6e20693f880524cbc6f9db51aa293ea7e92796d3db6ec96f27fc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/help-about-row.json",
+      "sha256": "4ec219446efb28427a80818bdc6e660ac3ff22d8fdf35ef121df5b6b4e72fa3d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/help-body-type.json",
+      "sha256": "a56694bc1a9d788ebe4f8628eabdc691d1387e8e946966803643a19dec013067"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/help-witness.json",
+      "sha256": "56acb8443b0940f2496c7928ff0048b88308a6da9ca810cf335131c54e493890"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/navigation-destination-fields.json",
+      "sha256": "dbc5c5cce358e36dde4d09d98569844550024878784442d075791ecc7f6882db"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/official-bundle-metadata.json",
+      "sha256": "2cf2a00a867b20a393a1324e4de4708afdadb7993fa3c6f2e321d75a26136bf9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-admission.asm",
+      "sha256": "161932a191e40717404811047d5c7f29828573fe1a4603d2dde44ebf97923a35"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-admission.json",
+      "sha256": "05b520fa743e0112905fad070d2ee8b23c196732491a1f5f5f9e71053becf3cb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-input-context.asm",
+      "sha256": "6cf76a0651fd5c0b3368edd09c50945e7a6de762fb8ded5b65a9156f008273d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-input-context.json",
+      "sha256": "2abd18b477782fe409365955c58b01eafc7113128bda9adc4ef684ca01004713"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-present-owner.asm",
+      "sha256": "4bb65f1a182fd6c1a0e86c98f2762715e6a9b082c3d38d185550816c7555fdb7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-present-owner.json",
+      "sha256": "468ed205652c97d05e64f3f06a0960cb29bb5a230233d2a6adfa5433adc10cab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-presentation.asm",
+      "sha256": "fcbafac20702c591661b148cef6dd8b8342b45ffeada844d4ab10ffba7abc089"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-presentation.json",
+      "sha256": "453efa379df917a2cca2af760ff1ddc0ef0618af427a19feb253441722959f1e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-resolver-tail.asm",
+      "sha256": "15a6cf453c50163913b4acb05b565e00a1cb84f65cc8a8626190fb0f205bf37f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-resolver-tail.json",
+      "sha256": "a4729d83f268b16e07aad35407ed22d1775d2829feca613c0429a52508fe1733"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-resolver.asm",
+      "sha256": "980220ed6f0d1461b0c022b0600881361aa01da15f557d72a42cc0b58fbb95bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-resolver.json",
+      "sha256": "4dbdd0ab6cf43cd730da76d4361a031f0f9d3c928285bfe43fd1ecc635414086"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-sheet-factory.asm",
+      "sha256": "8d2d149a69bcd627fb27e949515940106507773c0ca915c08c0e0087567d4aed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-sheet-factory.json",
+      "sha256": "a5ab698948d1179d43b559de52e5445e1860abc7729b821dca0b8eaf099c4fd0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-task-entry.asm",
+      "sha256": "3fcdc0f7aef3fb16a9e2b4ad147e41cdb26027a7177183f2b42863e6f912faf5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-task-entry.json",
+      "sha256": "bc5217116a738c08161ea91be36ba848499667a4f83e7e3f3775a05ea229e304"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-task-factory.asm",
+      "sha256": "eccee3cbf98d2b93e274799f148cf66a9275a6356fa82595d61b7e3b46aeb9d8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-task-factory.json",
+      "sha256": "bfc3e1653436f1340c875baad8c606f44616c40361c01fa65b9fd606f0e59cf1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-task-work.asm",
+      "sha256": "4c33790f2ef753e62038c48f5292941489245166792d7d11943e3a3158c69c2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/report-task-work.json",
+      "sha256": "c7f0455ae5f8495dd23fa71be55be24e1d575586b50ab85e16bc4aff7f9d54f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/root-final-content.asm",
+      "sha256": "7b2086cb8a199745adcba89691ddfc68e037475d8532ca4bd64da002b6b230bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/root-final-content.json",
+      "sha256": "19cf2b5b24396037187130e0c60e80be6d60172cc6008297dc7ffcac33d5be20"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/root-trailing-content.asm",
+      "sha256": "04da84f1c9c7d69c023e313df533d1de26c53b85789bcb8a9406adbaad5ad48e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/root-trailing-content.json",
+      "sha256": "95bcf35bb6e8bceca5f55c2129e818b663811a05755651a0b9459c6b96b58179"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113/selected-label-resources.json",
+      "sha256": "ad42d4139ece5729149a6f8d1dde168a7144a7affc42f587e9d90f1276edee22"
+    }
+  ]
+}

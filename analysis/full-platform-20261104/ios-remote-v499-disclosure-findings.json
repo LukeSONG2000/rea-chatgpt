@@ -1,0 +1,195 @@
+{
+  "status": "static-component-behavior-recovered",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "version": "1.2026.293",
+    "platform": "iOS",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "component": {
+    "name": "SwiftUIStyleguide.CodexDisclosureChevron",
+    "descriptor": "0x971c4d0",
+    "conformance": "0x83820bc",
+    "body_witness": "0x6ee8570",
+    "render_function": "0x6ee7cf0",
+    "fields": [
+      "isExpanded: Bool at byte 0",
+      "fadesWhenExpanded: Bool at byte 1"
+    ]
+  },
+  "initial_and_trigger": {
+    "expression": "fade = isExpanded && fadesWhenExpanded; initialValue: Double = fade ? 0 : 1; trigger: Bool = fade",
+    "evidence": [
+      "0x6ee8570..0x6ee8588 packs the two self bytes",
+      "0x6ee7e24..0x6ee7e44 calculates boolean and stores initial Double at fp-0x60, trigger Bool at fp-0x61",
+      "0x6ee7ee4..0x6ee7f08 passes initialValue pointer x0, trigger pointer x1 to trigger-based keyframeAnimator"
+    ]
+  },
+  "animation": {
+    "overload": "SwiftUI.View.keyframeAnimator(initialValue:trigger:content:keyframes:)",
+    "repeating_parameter": false,
+    "expanded_and_fading": [
+      {
+        "type": "MoveKeyframe<Double>",
+        "value": 1
+      },
+      {
+        "type": "LinearKeyframe<Double>",
+        "value": 1,
+        "duration_seconds": 2.2,
+        "timing_curve": "linear"
+      },
+      {
+        "type": "LinearKeyframe<Double>",
+        "value": 0,
+        "duration_seconds": 0.2,
+        "timing_curve": "linear"
+      }
+    ],
+    "otherwise": [
+      {
+        "type": "LinearKeyframe<Double>",
+        "value": 1,
+        "duration_seconds": 0.2,
+        "timing_curve": "linear"
+      }
+    ],
+    "evidence": [
+      "0x6ee7fbc..0x6ee8020 captures both flags",
+      "0x6f4fc7c..0x6f4fc94 and 0x6fc6400..0x6fc6418 forward packed flags to keyframes builder",
+      "0x6ee8224..0x6ee8230 selects both-true branch",
+      "0x6ee8238..0x6ee8260 constructs MoveKeyframe(1)",
+      "0x6ee82a0..0x6ee82b8 constructs LinearKeyframe(1,2.2,linear)",
+      "0x6ee82f8..0x6ee8318 constructs LinearKeyframe(0,0.2,linear)",
+      "0x6ee8434..0x6ee845c constructs else LinearKeyframe(1,0.2,linear)"
+    ]
+  },
+  "opacity_application": {
+    "expression": "content.opacity(animatedDouble)",
+    "evidence": [
+      "0x6ee7f80 reads animated Double from x1",
+      "0x6fdc914 selects modified-content type record0x8380500",
+      "0x6fe0868 stores d8 into modifier field",
+      "0x8380500 resolves _OpacityEffect wrapping rotation-modified Image"
+    ]
+  },
+  "rotation": {
+    "expanded_radians": 1.5707963267948966,
+    "collapsed_radians": 0,
+    "animation": "easeInOut(duration:0.2)",
+    "evidence": [
+      "0x6f4fb74..0x6f4fb88 selects pi/2 vs 0 by expanded byte",
+      "0x83804f0 resolves _RotationEffect",
+      "0x6ee7ccc..0x6ee7ce4 initializes easeInOut0.2",
+      "0x6ee7da4..0x6ee7db8 can suppress the optional rotation animation based on an unclassified helper result"
+    ]
+  },
+  "interpretation": [
+    "An already-expanded initial instance starts at opacity0 when fadesWhenExpanded is true",
+    "On fade trigger becoming true, opacity moves to1, remains1 for2.2seconds, then fades linearly to0 over0.2seconds",
+    "When trigger becomes false, opacity returns to1 linearly over0.2seconds",
+    "Opacity modifies the chevron Image, not the entire section header. The structure retains the view rather than conditionally removing it"
+  ],
+  "unknown": [
+    "Meaning of helper0x7710c7c that can suppress the separate rotation animation",
+    "Runtime lifecycle, actual on-screen timing and interrupted animation behavior require device observation",
+    "Header-kind-to-fadesWhenExpanded mapping is delegated to existing v393/v394 evidence and has not been re-derived in this focused component task"
+  ],
+  "verification": {
+    "mode": "static binary and metadata inspection",
+    "original_target_executed": false,
+    "production_source_changed": false
+  },
+  "metadata_bindings": [
+    {
+      "address": "0xaad6d80",
+      "binding": {
+        "symbol": "_$sSdN",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11357,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "address": "0xaad6d00",
+      "binding": {
+        "symbol": "_$sSbN",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11343,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "address": "0xaad6d18",
+      "binding": {
+        "symbol": "_$sSbSQsWP",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 1174,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "address": "0xaad5ac8",
+      "binding": {
+        "symbol": "_$sSd7SwiftUI10AnimatableAAWP",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10796,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "address": "0xaad4258",
+      "binding": {
+        "symbol": "_$s7SwiftUI4ViewPAAE16keyframeAnimator12initialValue7trigger7content9keyframesQrqd___qd_0_qd_1_AA018PlaceholderContentC0VyxG_qd__tYbcqd_2_qd__ct0G0Qyd_2_Rsd__SQRd_0_AaBRd_1_AA9KeyframesRd_2_r2_lFQOMQ",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10015,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-body.asm",
+      "sha256": "05cccc9b1523b5eeb4aa8ff926b24a73a1208cb8413464da5dfdc6adeb119495"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-calls.json",
+      "sha256": "91f06026899749725286590de466efe40106675da92c8a696dda4d6592a034c7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-constants.json",
+      "sha256": "cb01c9a4faf99b6bc91a3cfe16d4ed453419145fbed1353ed9dc999bdeaf2152"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-helpers.asm",
+      "sha256": "27d18efa5e290d62a9a088584f4885fec24604aa61a86ee637efc46622e9971f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-metadata.json",
+      "sha256": "62fea3860ae3dad5a15e1fda436c10aaec2544ecfa9142d295414e584cb12541"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-types.json",
+      "sha256": "df4fffeda15fe1e0ec04796ad08696953366db4ca2902b9d6c7afe8f48a6fb02"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-disclosure-witnesses.json",
+      "sha256": "d9f73b4b32f2521c48660c085a1a7ee5d454b595baba20227a1855c7c3a85f63"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "batch": 574,
+  "status": "partial",
+  "scope": "Chat/Work resource preview recovery and PDF coverage",
+  "evidence": "ios-chat-v574-findings.json",
+  "runtime": "ios-chat-v574-runtime.json",
+  "retention": "ios-chat-v574-retention.json",
+  "tests": {
+    "library": "ios-chat-v574-library.log",
+    "state": "ios-chat-v574-state.log",
+    "ui_unique_cases": 6,
+    "r1": "ios-chat-v574-r1.xcresult",
+    "r2": "ios-chat-v574-r2.xcresult",
+    "r3_final": "ios-chat-v574-r3.xcresult",
+    "failed": 0,
+    "coverage": [
+      "Unavailable draft attachment retry/close, unchanged identity and text",
+      "A-B-A and cold restart",
+      "Persisted message attachment retry and return",
+      "Unsupported extension through actual QuickLook capability gate, still sendable",
+      "Normal photos in Chinese/light and English/dark",
+      "PDF draft, pure attachment send, failure retry, preview return and persistence"
+    ]
+  },
+  "visual": {
+    "error_dialogs": "Chinese/light and English/dark screenshots inspected",
+    "pdf": "Manual installed-candidate QuickLook content and return verified",
+    "preview": "Chinese system-following stable preview left running",
+    "display": "Built-in display only in this session"
+  },
+  "implementation_boundary": "Independent UIKit error UI and local resolver retry. Official FileAttachmentTile metadata is observed, Chat preview-error layout/owner is not closed. No business service implemented.",
+  "pending": [
+    "Official attachment grid/composer geometry and preview-error owner",
+    "Office formats, multi-page PDF zoom/selection, HEIC orientation",
+    "Chat/Work full message interactions and role-context spacing",
+    "Remote and Chat page-wide visual feedback ledger",
+    "Device haptics/notification delivery and Android independent adaptation"
+  ],
+  "next_action": "Return to page-level Chat/Work message interaction checklist and source-backed content spacing after basic resource preview recovery coverage"
+}

@@ -1,0 +1,337 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Module1 fourth bounded static pass: shared sidebar background hosting safeAreaRegions setter/receiver, complete top wrapper accessibility branch, and actual background-view getter/frame boundary. Two candidate groups only. No product edits or runtime actions.",
+  "authority": "official-artifact-observation-static",
+  "correction": {
+    "prior_report": "ios-shell-top-fade-host-safearea-20261113-supplement.json",
+    "superseded_fields": [
+      "decision.source_exact_safe_area_fix_available=false",
+      "decision.classification=independent-host-adaptation-recommendation",
+      "observations.hosting-known-setters limited unresolved safeArea setter"
+    ],
+    "new_fact": "The original shared hosting builder explicitly sets safeAreaRegions to raw0. The previous report correctly retained the helper as unresolved; this pass closes it. Preserve the old snapshot."
+  },
+  "findings": [
+    {
+      "id": "hosting-safe-area-setter",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "The original shared sidebar background UIHostingController sets safeAreaRegions=[] (raw0). This is an original setting for this builder, not a universal hosting policy.",
+      "receiver_chain": [
+        {
+          "site": "0x12a0304",
+          "operation": "UIHostingController(rootView:) initializes hosting object; imported target0x7c48a78"
+        },
+        {
+          "site": "0x12a0308",
+          "instructions": "mov x22,x0",
+          "meaning": "Retain newly initialized hosting in x22"
+        },
+        {
+          "site": "0x12a0354→0x26b830",
+          "instructions": [
+            "0x26b830 mov x0,x21",
+            "0x26b834 mov x20,x22",
+            "0x26b838 ret"
+          ],
+          "meaning": "x20 Swift self receiver is the same new hosting"
+        },
+        {
+          "site": "0x12a0358→0x7c48a3c",
+          "symbol": "_$s7SwiftUI19UIHostingControllerC13sizingOptionsAA0cd6SizingF0VvsTj",
+          "meaning": "sizingOptions setter on hosting receiver; exact raw sizing option not decoded here"
+        },
+        {
+          "site": "0x12a035c→0x1397220",
+          "instructions": [
+            "0x1397220 mov x0,#0",
+            "0x1397224 b0x7c48a48"
+          ],
+          "meaning": "Pass raw0 and tail-call safeAreaRegions setter; no intervening caller-side receiver reassignment"
+        },
+        {
+          "stub": "0x7c48a48",
+          "instruction_words": [
+            "0xd0017450",
+            "0xf9416a10",
+            "0xd61f0200"
+          ],
+          "binding_slot": "0xaad22d0",
+          "symbol": "_$s7SwiftUI19UIHostingControllerC15safeAreaRegionsAA04SafefG0Vvs",
+          "chain_membership_verified": true,
+          "import_ordinal": 9009,
+          "library_ordinal": 82
+        }
+      ],
+      "evidence": [
+        "ios-shell-top-host-fourth-20261113/shared-builder-precise.asm",
+        "ios-shell-top-host-fourth-20261113/shared-builder-precise.json",
+        "ios-shell-top-host-fourth-20261113/hosting-receiver-26b830.asm",
+        "ios-shell-top-host-fourth-20261113/hosting-helper-1397220.asm",
+        "ios-shell-top-host-fourth-20261113/hosting-helper-tail-bindings.json"
+      ],
+      "applicable_scope": "HistoryViewController top and bottom background hosts proven to call this shared builder in existing293 evidence; do not apply to unrelated hosting controllers."
+    },
+    {
+      "id": "view-and-layer-helper-not-additional-safearea",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "0x1397128 obtains the UIView (selector view), while0x1397144 obtains layer; they are not alternative safe-area setters.",
+      "offsets": [
+        "0x1397128 mov x19,x0; tail0x7c82960",
+        "0x7c82960 loads selref0xacb4bb8→view",
+        "0x1397144 mov x0,x20; tail0x7c69d20",
+        "0x7c69d20 loads selref0xacae8a8→layer"
+      ],
+      "evidence": [
+        "ios-shell-top-host-fourth-20261113/hosting-helper-1397128.asm",
+        "ios-shell-top-host-fourth-20261113/hosting-helper-tail-bindings.json"
+      ]
+    },
+    {
+      "id": "top-complete-body-accessibility",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-observation-reused-and-rechecked",
+      "conclusion": "The complete HistoryNavigationHeaderBackgroundView Body and TopBarFadeBackground Body contain no ConditionalContent surface-replacement branch. In the former, reduceTransparency changes only bottom padding -10→0; fixed top padding remains -24. Restore the wrapper around both optical layers rather than replacing them with opaque surface.",
+      "wrapper": {
+        "descriptor": "0x95927ac",
+        "conformance": "0x7dad2d4",
+        "witness": "0x127c094→0x127c004",
+        "tree": "ModifiedContent<ModifiedContent<ModifiedContent<TopBarFadeBackground,_PaddingLayout>,_PaddingLayout>,_AllowsHitTestingModifier>",
+        "modifier_order": [
+          "padding bottom: reduceTransparency ? 0 : -10",
+          "padding top: -24",
+          "allowsHitTesting false"
+        ],
+        "proof": [
+          "0x127c024 bottom-edge accessor",
+          "0x127c030 environment read helper0x91244",
+          "0x127c034 tst w0,#1",
+          "0x127c038 d0=-10;0x127c03c d1=0;0x127c040 fcsel d0,d1,d0,ne",
+          "0x127c04c top-edge accessor;0x127c064 d0=-24",
+          "0x127c078 stores zero allowsHitTesting"
+        ]
+      },
+      "inner": {
+        "descriptor": "0x971ef5c",
+        "conformance": "0x83843f8",
+        "witness": "0x6f34f38→0x6f34d20→0x6f34d58",
+        "tree": "ZStack<TupleView<(SwiftUIStyleguide.VariableBlur,SwiftUI.LinearGradient)>>",
+        "parameters": "Exact radius2, clear→black bottom→top mask, OneOff/MainSurfacePrimary fade .85@0/.75@.7/clear@1 are retained in ios-shell-scroll-background-parent-20261113-findings.json."
+      },
+      "limits": [
+        "No ConditionalContent in these two complete selected bodies is not proof that the native blur leaf/system renderer ignores accessibility settings.",
+        "The shared original variable-blur selector fallback and current optical adapter are separate from this parent-wrapper claim.",
+        "Negative padding is a layout input, not an absolute height or UIKit frame."
+      ],
+      "evidence": [
+        "ios-shell-top-host-fourth-20261113/sidebar-top-wrapper.asm",
+        "ios-shell-top-host-fourth-20261113/sidebar-top-wrapper.json",
+        "ios-shell-scroll-background-parent-20261113/sidebar-top.tree.json",
+        "ios-shell-scroll-background-parent-20261113/sidebar-top-raw.json",
+        "ios-shell-scroll-background-parent-20261113/top-fade.tree.txt",
+        "ios-shell-scroll-background-parent-20261113/top-fade-body.asm"
+      ]
+    },
+    {
+      "id": "actual-background-frame-boundary",
+      "status": "unresolved",
+      "evidence_type": "bounded-static-observation",
+      "conclusion": "The actual top background UIView getter is bound to storage0xadb95d0 and hosting getter0x129b9cc. Its actual top/bottom/frame anchors remain unresolved after the bounded second candidate group. Do not replace unknown bounds with guide constants.",
+      "known": [
+        "0x1394af0/4 computes storage0xadb95d0",
+        "0x1394af8/fc loads getter0x129b9cc;0x1394b08 tails to generic lazy UIView getter0x129b948",
+        "viewDidLoad0x1296648 obtains top controller;0x1296660 invokes actual UIView getter helper",
+        "0x1296664→0x139056c moves returned background to x2 and parent x21 to x0;0x1296668 calls addSubview:",
+        "Prior0x129708c..94 reads distinct navigationHeaderLayoutGuide storage0xadb9618. Its top=-6,height56 are not background-view frame evidence."
+      ],
+      "search_limits": [
+        "Field reference scanner covers adjacent ADRP/LDR64 only; layout scanner covers adjacent ADRP/ADD and immediate B/BL. Hits are incomplete, empty hit scopes are not proof of absence.",
+        "The located helper/getter and viewDidLoad attachment are not a proof of later layout/frame assignment.",
+        "No additional full controller or global layout round was opened after these two candidate groups."
+      ],
+      "breakpoint": "Actual navigationHeaderBackground UIView0xadb95d0 frame/constraint update after attachment or in layout callbacks, distinct from navigationHeaderLayoutGuide0xadb9618.",
+      "evidence": [
+        "ios-shell-top-host-fourth-20261113/background-slot-references.json",
+        "ios-shell-top-host-fourth-20261113/background-getter-references.json",
+        "ios-shell-top-host-fourth-20261113/background-view-getter-helper.asm",
+        "ios-shell-top-host-fourth-20261113/background-addsubview-helper.asm",
+        "ios-sidebar-layout-20261112-load.asm",
+        "ios-shell-top-fade-host-safearea-20261113-supplement.json"
+      ]
+    }
+  ],
+  "integration_decision": {
+    "can_restore": [
+      "safeAreaRegions=[] only on proven shared sidebar background UIHostingController consumers.",
+      "Complete top ZStack and its ordered negative-padding wrapper; reduceTransparency selects bottom inset only at this parent.",
+      "Keep top VariableBlur distinct from bottom CurvedGradient."
+    ],
+    "not_source_exact": [
+      "Current standalone UIKit background top/bottom anchors remain independent until original actual background bounds close.",
+      "Current optical mask raster size/scale compatibility remains adapter behavior."
+    ],
+    "do_not": [
+      "Do not use guide56 as blur/background height.",
+      "Do not globalize safeAreaRegions=[] across ordinary page hosts.",
+      "Do not introduce a guessed reduceTransparency surface branch and label it recovered."
+    ]
+  },
+  "haptics": "No new haptic consumer in these background-only selected paths; not a global absence claim.",
+  "validation": {
+    "product_changes": false,
+    "builds": false,
+    "device_actions": false,
+    "target_execution": false,
+    "network": false
+  },
+  "stop_condition": "Two scoped candidate groups reached useful safe-area/complete-wrapper proof and exact remaining frame breakpoint; do not expand further for this batch.",
+  "evidence_manifest": [
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-scroll-background-parent-20261113/sidebar-top.tree.json",
+      "sha256": "ec358ddee81156d365f430a9281bfe1945361c82492c31844891295b9a200abf",
+      "bytes": 6831
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-scroll-background-parent-20261113/top-fade-body.asm",
+      "sha256": "c19127a79576c5d8ff63c635444f29fd345f3611b5e2f20832369300dc1cdd5f",
+      "bytes": 7082
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-scroll-background-parent-20261113/top-fade.tree.txt",
+      "sha256": "8f0442a4da77bfac71ccd79f9d074108d886a90cda5e5e664d1a2654fa4eb622",
+      "bytes": 850
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-scroll-background-parent-20261113-findings.json",
+      "sha256": "9732ef21e2f24233453e3d457d8e817cf23281c86d9d2802027fd1c9b288ea6d",
+      "bytes": 11143
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-fade-host-safearea-20261113-supplement.json",
+      "sha256": "7f5fe939d14459c5e5a301053f085c58294679b15ce6d73236175b43bd50137f",
+      "bytes": 6226
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/background-addsubview-helper.asm",
+      "sha256": "d9e51e2d08dee8044d1cf76dfdb0e5dfda7a8f0a99fa21125ebfa1a653596c77",
+      "bytes": 284
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/background-addsubview-helper.json",
+      "sha256": "27357a8ff9f822aa80f58e5f12fa62e4fbfdd0fc661bca0be962ee7785989824",
+      "bytes": 896
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/background-getter-references.json",
+      "sha256": "89a83efe0d9e54981a206511ddcbe2aa99352041f3ac462a03cd05dfdf63a4fb",
+      "bytes": 1688
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/background-slot-references.json",
+      "sha256": "29982f9ed61afe5814bb7b8d2056c8408c09e8e6dc7dcbf22341eadb432eb796",
+      "bytes": 538
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/background-view-getter-helper.asm",
+      "sha256": "909857d556eea0b1bd8eaae770141ce383e55c7426261b1349cc4faf5b2aa38e",
+      "bytes": 559
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/background-view-getter-helper.json",
+      "sha256": "79960f5c3cba3ed7944e5c7a1acf90776f4388e73d836c7dd98ebafc202c4606",
+      "bytes": 896
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-helper-1397128.asm",
+      "sha256": "734ab9d6f2d9a96f940707ebac224151c077b326ee5c80f7b90bb59f35681efa",
+      "bytes": 845
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-helper-1397128.json",
+      "sha256": "691ac22fdeec1ed1eb57b91057e412d1720ea40a41a22d5d4f021a841b91856a",
+      "bytes": 963
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-helper-1397220.asm",
+      "sha256": "db0e9190ca89684d2c516dc88cde7a5b99715ab12c609ec5724cfaf2e73da6f8",
+      "bytes": 625
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-helper-1397220.json",
+      "sha256": "a59cce15ee858f2baf2f27accdfa45a8f73aa3490a2733dc59d12d7f530abb2f",
+      "bytes": 946
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-helper-tail-bindings.json",
+      "sha256": "bddff56b426c3b389e3f6d011f3c924776e1ba0a2f1e6b6d784c9c8d80c7fa9e",
+      "bytes": 843
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-receiver-13999e8.asm",
+      "sha256": "fb02e51dde13265f3a97e21251e288cc112535d6c620ab71e5d47e5bfd39f83a",
+      "bytes": 554
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-receiver-13999e8.json",
+      "sha256": "29e30b2ada953c807fbb85ffd31d5050abbc72a2262c2be6d142a94018392aa7",
+      "bytes": 946
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-receiver-26b830.asm",
+      "sha256": "8068f64b31d383bf8a51b365a1456e6aa853edb961a1199f2bb69972566beba5",
+      "bytes": 555
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/hosting-receiver-26b830.json",
+      "sha256": "e23a788eadbb2c090eca76e74cf5ece59276a4ddb29e24ac19194cda3b97fc27",
+      "bytes": 907
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/shared-builder-precise.asm",
+      "sha256": "d2c7174bbed611140a3fa82d8f1924269bada586d2dc571e69e8bafc0153fd5e",
+      "bytes": 4452
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/shared-builder-precise.json",
+      "sha256": "3894b9811345aed8a847a3a0b46809409b6342b4940e358013b80f79a328c3cb",
+      "bytes": 7317
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/sidebar-top-wrapper.asm",
+      "sha256": "880114c9c33f1e7a028c610c60e4da244fa0a7cf6100de9277ce88516ad73857",
+      "bytes": 2041
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/sidebar-top-wrapper.json",
+      "sha256": "ec930c6633e9996fea8b5c1183554678cd57a21dad91d9495b0b67160db1df8f",
+      "bytes": 3176
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/top-frame-slot-caller.asm",
+      "sha256": "b47d6a70a239211deb3dfeb605f3483aa15faa84452b9748ded8a355c49ff12d",
+      "bytes": 8683
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-top-host-fourth-20261113/top-frame-slot-caller.json",
+      "sha256": "92368739e59faba0a0365a5683caf2aff9169ae760da3a49294548d3443297a7",
+      "bytes": 7370
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-layout-20261112-load.asm",
+      "sha256": "594b837544a9c824ccca3eb02bedb42c1c517add43eb152ab319932112134080",
+      "bytes": 48199
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-scroll-edges-20261112/background-shared-builder.asm",
+      "sha256": "5a8298cf6e235af0ad67d57a8f6990b30339ec40bcd6d210cfbd72ff65971a0b",
+      "bytes": 9818
+    }
+  ]
+}

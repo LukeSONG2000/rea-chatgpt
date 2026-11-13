@@ -1,0 +1,793 @@
+{
+  "schema_version": 1,
+  "slice": "v529-slider-header",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Codex Remote modelSlider constructor and effective source-label path, distinguished from optional shared MessageInputModelSliderHeader. Static artifact only.",
+  "findings": [
+    {
+      "id": "scope-and-producer",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "609a2f8 builds the effective ordinary Remote source-label visual. The separate optional modelSliderHeader branch also consumes609b958/609d640 only when VM.modelSliderHeader is nonnil. Ordinary constructor199a60c passes nil, established in revision2.",
+      "sites": [
+        "0x609a2f8",
+        "0x609b958",
+        "0x609b974",
+        "0x609b9b4",
+        "0x609d398"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-label-producer.asm",
+        "ios-remote-v529-slider-header-header-presets.asm",
+        "ios-remote-v528-slider-style-header-content-builder.asm"
+      ],
+      "applicability": "branch distinction corrected revision2"
+    },
+    {
+      "id": "label-components",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "LabelComponents metadata is modelTitle,effortTitle,dimsEffortTitle.609d640 sets modelTitle from preset+40. It prefers optional effortTitle(+50/+58). If absent, it uses title(+20/+28) only when isLocked(+72) is false and title differs from modelTitle; otherwise effortTitle is nil. dimsEffortTitle=true. Header source metadata and presetID two-string fields establish these offsets.",
+      "sites": [
+        "0x609d658",
+        "0x609d660",
+        "0x609d670",
+        "0x609d678",
+        "0x609d684",
+        "0x609d6b0",
+        "0x609d6b8"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-types.json",
+        "ios-remote-v529-slider-header-label-conversion.asm"
+      ],
+      "applicability": "optional shared MessageInputModelSliderHeader; inactive in ordinary Remote constructor199a60c; ordinary source-label independently reuses609d640 and6095110 as traced below, but not Header container/font/layout"
+    },
+    {
+      "id": "text-layout",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Header body is centered ZStack. Its central title Button has horizontal padding48. Label uses center-aligned VStack spacing2. labelLayout raw1 (effortAboveModel) and optional effortTitle cause separate top effort line. Otherwise no top line. Bottom row is center-aligned HStack spacing4 and contains label text plus the official chevron-right-sm glyph.",
+      "sites": [
+        "0x6094850",
+        "0x6094a34",
+        "0x6094a3c",
+        "0x6094b58",
+        "0x6094b74",
+        "0x6094b78",
+        "0x6094d60",
+        "0x6094d64",
+        "0x6094fe8"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-header-body.asm",
+        "ios-remote-v528-slider-style-header-content.asm",
+        "ios-remote-v529-slider-header-header-text.asm",
+        "ios-remote-v529-slider-header-text-content.asm",
+        "ios-remote-v529-slider-header-inline-label.asm",
+        "ios-remote-v529-slider-header-literals.json"
+      ],
+      "applicability": "optional shared MessageInputModelSliderHeader; inactive in ordinary Remote constructor199a60c"
+    },
+    {
+      "id": "dynamic-font",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Inline bottom label uses styleguide font token74e2668 initialized from SwiftUI.Font.TextStyle.title2. modelTitle Text explicitly applies medium weight, optional effortTitle explicitly regular weight, joined with one space. In effortAboveModel, top effort uses title2 with semibold, and bottom model uses token74e26f8 initialized from subheadline. These are dynamic text styles, not fixed screenshot point sizes. Exact full styleguide Font modifier behavior beyond preserved text-style/weight remains a separate shared-font concern.",
+      "sites": [
+        "0x6094f60",
+        "0x6095134",
+        "0x6095200",
+        "0x6095220",
+        "0x6094cb4",
+        "0x6094cc4",
+        "0x6094ec0",
+        "0x74e2654",
+        "0x74e26e4"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-inline-label.asm",
+        "ios-remote-v529-slider-header-inline-styled-text.asm",
+        "ios-remote-v529-slider-header-text-content.asm",
+        "ios-remote-v529-slider-header-font-init.asm",
+        "ios-remote-v529-slider-header-secondary-font-init.asm",
+        "ios-remote-v529-slider-header-title-font-construction.asm",
+        "ios-remote-v529-slider-header-literals.json"
+      ],
+      "applicability": "optional shared MessageInputModelSliderHeader; inactive in ordinary Remote constructor199a60c; ordinary source-label independently reuses609d640 and6095110 as traced below, but not Header container/font/layout"
+    },
+    {
+      "id": "tint",
+      "status": "partial",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Inline text honors optional labelTintColor (Header+30). If nil, model uses ChatGPT/text/primary (74ee2c0), effort uses ChatGPT/text/tertiary (74ee448) when dimsEffortTitle=true, otherwise primary. Separate top effort uses Header.fillColor(+28). Lower model in effortAboveModel uses74ee310 color accessor, exact resource name remains unresolved. Parent header tint609bad4 prefers sourceLabelTintColor while collapsed, otherwise VM.tintColor(+70).",
+      "sites": [
+        "0x6094f3c",
+        "0x6095160",
+        "0x6095254",
+        "0x609525c",
+        "0x6095264",
+        "0x6094cfc",
+        "0x6094ef0",
+        "0x609bad4"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-inline-styled-text.asm",
+        "ios-remote-v529-slider-header-text-content.asm",
+        "ios-remote-v529-slider-header-inline-label.asm",
+        "ios-remote-v529-slider-header-header-tint.asm",
+        "ios-remote-v529-slider-header-primary-color.asm",
+        "ios-remote-v529-slider-header-secondary-color.asm",
+        "ios-remote-v529-slider-header-literals.json"
+      ],
+      "applicability": "optional shared MessageInputModelSliderHeader; inactive in ordinary Remote constructor199a60c; ordinary source-label independently reuses609d640 and6095110 as traced below, but not Header container/font/layout"
+    },
+    {
+      "id": "relative-to-rail",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Expanded rail attaches header overlay with Alignment.top (609a1a0). Header stack is Alignment.bottom and applies bottom padding20 when expanded and footerActions is empty. If footerActions exist, padding=footerActionsSize.height+8. Collapsed bottom padding0. Finally alignmentGuide(.top) returns dimensions[.bottom] at609d788, positioning the padded header above the rail. Header width tracks current/expanded rail rect width. Thus with no footerActions, the header visible lower edge is20 above the rail top.",
+      "sites": [
+        "0x609a1a0",
+        "0x609cf04",
+        "0x609cf48",
+        "0x609cf70",
+        "0x609cf90",
+        "0x609cfa0",
+        "0x609cfb8",
+        "0x609d788",
+        "0x609d4cc",
+        "0x609d4e8",
+        "0x609d534"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-view-content.asm",
+        "ios-remote-v528-slider-style-header-binding.asm",
+        "ios-remote-v528-slider-style-header-content-builder.asm",
+        "ios-remote-v529-slider-header-header-alignment.asm"
+      ],
+      "applicability": "shared parent609cdb4 applies to ordinary source-label and optional Header"
+    },
+    {
+      "id": "speed-reset",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Header accessory row contains optional speed button at leading edge, Spacer, optional reset at trailing edge. speed nil encodes raw3 and omits the button. standard0→OpenAI/Symbols/bolt, fast1→bolt-fill, ultrafast2→bolt-on-bolt. All speed states have44x44 frame. standard uses shared icon color74ed87c, fast/ultrafast use Header.fillColor. Reset depends on showsReset, uses arrow-rotate-counterclockwise with44x44 frame and shared icon color. Parent copies speed from preset+70, sets showsReset from inverse isDefault(+71).",
+      "sites": [
+        "0x6095434",
+        "0x6095438",
+        "0x610adc4",
+        "0x610add8",
+        "0x610ade0",
+        "0x610adf4",
+        "0x610ae10",
+        "0x60956bc",
+        "0x60958b4",
+        "0x60958cc",
+        "0x609d3c0",
+        "0x609d3c8",
+        "0x609d448",
+        "0x609d488",
+        "0x609d490"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-header-accessories.asm",
+        "ios-remote-v529-slider-header-speed-glyph.asm",
+        "ios-remote-v529-slider-header-reset-glyph.asm",
+        "ios-remote-v529-slider-header-speed-standard.asm",
+        "ios-remote-v529-slider-header-speed-fast.asm",
+        "ios-remote-v529-slider-header-speed-ultrafast.asm",
+        "ios-remote-v529-slider-header-reset-asset.asm",
+        "ios-remote-v529-slider-header-literals.json",
+        "ios-remote-v528-slider-style-header-content-builder.asm"
+      ],
+      "applicability": "optional shared MessageInputModelSliderHeader; inactive in ordinary Remote constructor199a60c"
+    },
+    {
+      "id": "actions",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Header is PlainButtonStyle. Central title invokes action raw0=modelTitleTapped, speed raw1=cycleSpeed, reset raw2=reset. Their callback thunks converge on610ad84. Existing callback owner should preserve these distinct actions. This slice establishes header action identity, not the entire model-selection lifecycle.",
+      "sites": [
+        "0x60948ec",
+        "0x610abf0",
+        "0x610ad7c",
+        "0x610ad40"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-header-body.json",
+        "ios-remote-v529-slider-header-title-action.asm",
+        "ios-remote-v529-slider-header-speed-action.asm",
+        "ios-remote-v529-slider-header-reset-action.asm"
+      ],
+      "applicability": "optional shared MessageInputModelSliderHeader; inactive in ordinary Remote constructor199a60c"
+    },
+    {
+      "id": "ordinary-header-is-nil",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "applicability": "ordinary Codex Remote constructor199a60c",
+      "conclusion": "199a71c creates presentation tag0x4001 (modelSlider).199a7ac zeroes callerSP+0..1f and199a7c4 passesx7=0. VMctor60a03b0 savesx7;6113718 reads callerSP+0/+8 (calleeFP+10/+18) into calleeSP+8/+10;60a04b0..4b4 copies these three zero words toVM+48/+50/+58=modelSliderHeader.609d0c4 reads those fields and609d35c..360 guards the action closure at+50, skipping optional Header whenzero. Therefore ordinary Remote has no shared-header reset/speed accessories or effortAboveModel layout. No post-initialization header writer is proven in this bounded slice.",
+      "sites": [
+        "0x199a71c",
+        "0x199a79c",
+        "0x199a7ac",
+        "0x199a7c4",
+        "0x60a03c4",
+        "0x60a03fc",
+        "0x6113718",
+        "0x60a04a8",
+        "0x60a04b0",
+        "0x609d0f0",
+        "0x609d35c",
+        "0x609d360"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-ordinary-create.asm",
+        "ios-remote-v529-slider-header-vm-constructor.asm",
+        "ios-remote-v529-slider-header-ctor-args-helper.asm",
+        "ios-remote-v529-slider-header-model-header-source.asm"
+      ]
+    },
+    {
+      "id": "ordinary-effective-title",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "applicability": "ordinary Codex Remote constructor199a60c",
+      "conclusion": "Parent609d120 always constructs609a2f8 source-label before optional Header. For ordinarytag0x4001,609a684 takes(mask&c000)==4000, creates Button with action60fe0cc and label60fe138→609a984. Label centersHStack, spacing4/scale and uses609aaf8 containing609ae14 text and officialchevron-right-sm(609ac20).609ae14 uses current presentationLabelComponents before an override displayedLabelIndex exists; when an index is supplied it calls609bb64. Its modelSlider tag1 invokes609d640 to derive model/effort then6112264 tail-jumps6095110. Hence the title remains modelTitle medium + optional effortTitle regular separatedbyspace, modelprimary/efforttertiary with dimsEffortTitle=true. Optional shared Header is not required for this text.",
+      "sites": [
+        "0x609d1f8",
+        "0x609a730",
+        "0x609a738",
+        "0x609a79c",
+        "0x609a7b8",
+        "0x60fe138",
+        "0x609a9d4",
+        "0x609aa08",
+        "0x609abc0",
+        "0x609ac20",
+        "0x609aec4",
+        "0x609af84",
+        "0x609bbd8",
+        "0x609bbf0",
+        "0x6112264"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-source-title-content.asm",
+        "ios-remote-v529-slider-header-source-title-thunk.asm",
+        "ios-remote-v529-slider-header-source-title-label.asm",
+        "ios-remote-v529-slider-header-actual-label-parts.asm",
+        "ios-remote-v529-slider-header-model-title-content.asm",
+        "ios-remote-v529-slider-header-ordinary-label-current.asm",
+        "ios-remote-v529-slider-header-ordinary-label-for-index.asm",
+        "ios-remote-v529-slider-header-ordinary-label-components.asm",
+        "ios-remote-v529-slider-header-inline-styled-text.asm"
+      ]
+    },
+    {
+      "id": "ordinary-title-scale-layout",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "applicability": "ordinary Codex Remote constructor199a60c",
+      "conclusion": "The actual ordinary source-label outerfont uses subheadline at609a408, because positive0x4001 fails the special negative-tag branch. Expanded scale609b800 is the dynamically resolved title2 font pointSize divided by subheadline font pointSize (falls back1 if denominator<=0), appliedby609a4dc/609a578. Source-label HStack spacing4/scale becomes4 afterscale. This produces title2-sized expanded text through scaling rather than constructing Header.title2. Shared parent still positions the expanded source-label above rail withbottom20 when nofooterActions. Ordinary constructor footer array is empty. SharedHeader horizontalpadding48 and its accessories are inapplicable. Exact chevron balancing offset depends on measuredChevronWidth and scale in609aaa0..609aad0.",
+      "sites": [
+        "0x609a3a4",
+        "0x609a400",
+        "0x609a408",
+        "0x609a4dc",
+        "0x609a578",
+        "0x609b874",
+        "0x609b898",
+        "0x609b8ac",
+        "0x609b8b8",
+        "0x609b8d0",
+        "0x609b8e8",
+        "0x609b900",
+        "0x609a9d4",
+        "0x609aaa0",
+        "0x609aac0"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-label-producer.asm",
+        "ios-remote-v529-slider-header-source-scale.asm",
+        "ios-remote-v529-slider-header-source-title-label.asm"
+      ]
+    },
+    {
+      "id": "ordinary-title-action",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "applicability": "ordinary Codex Remote constructor199a60c",
+      "conclusion": "Actual title uses PlainButtonStyle at609a7c0..804. Button enabled only while expanded and notdismissing(609a830..84c). Action60fe0cc checks expanded and notdismissing thencalls609eed8 and609e320 withraw0. Existing lifecycle owner must interpret these directcalls; shared Header raw0/1/2 action thunk610ad84 is not this ordinary action.",
+      "sites": [
+        "0x609a7c0",
+        "0x609a804",
+        "0x609a830",
+        "0x609a84c",
+        "0x60fe0fc",
+        "0x60fe114",
+        "0x60fe120",
+        "0x60fe124",
+        "0x60fe12c"
+      ],
+      "evidence_files": [
+        "ios-remote-v529-slider-header-source-title-content.asm",
+        "ios-remote-v529-slider-header-source-button-action.asm"
+      ]
+    },
+    {
+      "id": "ordinary-title-position-independent-of-optional-header",
+      "status": "verified-static",
+      "evidence_type": "official-artifact-static",
+      "applicability": "ordinary source-label in expanded modelSlider with empty footerActions",
+      "conclusion": "609cdb4 unconditionally creates ZStack(alignment:.bottom) at609cf04, whose content609d120 constructs source-label609a2f8 first at609d1f8. Only the second optional child is gated at609d35c..360. After creating content,609cf48..cfa4 unconditionally adds .bottom padding to the entire stack: expanded+emptyfooter20, expanded+footer measuredheight+8, collapsed0.609cfb8..d008 adds top alignmentGuide whose609d788 closure returns dimensions[.bottom].609a1a0 and609a1d8 attach this container as rail.overlay(alignment:.top) whenexpanded. Actual source-label scaleEffect uses UnitPoint.bottom whenexpanded (609a548), center whencollapsed. Thus ordinary expanded title lower edge remains20 above railtop even with scale. This20 is a common parent positioning property, independent of optional Header. Do not copy optional Header horizontal48 padding or frame-width branch609d4e8 into source-label. Source-label width is independently bounded in609d254..d2bc from measuredgeometry minus56 divided bysourceScale; precise geometry-producer identity remains separately unclosed.",
+      "sites": [
+        "0x609a1a0",
+        "0x609a1d8",
+        "0x609cf04",
+        "0x609cf38",
+        "0x609cf48",
+        "0x609cf70",
+        "0x609cfa0",
+        "0x609cfb8",
+        "0x609d000",
+        "0x609d1f8",
+        "0x609d35c",
+        "0x609d788",
+        "0x609a548"
+      ],
+      "evidence_files": [
+        "ios-remote-v528-slider-style-view-content.asm",
+        "ios-remote-v528-slider-style-header-binding.asm",
+        "ios-remote-v528-slider-style-header-binding.json",
+        "ios-remote-v528-slider-style-header-content-builder.asm",
+        "ios-remote-v529-slider-header-header-alignment.asm",
+        "ios-remote-v529-slider-header-label-producer.json"
+      ]
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "question": "Exact glyph intrinsic dimensions and symbol font beyond44x44 speed/reset frame",
+      "next_entry": "Shared asset Image modifiers at61102a8; glyph family constructors7502bec/7502c30/7503038"
+    },
+    {
+      "question": "Precise lower-model color in effortAboveModel and shared inactive accessory color",
+      "next_entry": "0x74ee310 and0x74ed87c"
+    },
+    {
+      "question": "Additional styleguide dynamic font constraints and size-category behavior",
+      "next_entry": "0x74e2568 /0x74e2940 consumers; title2/subheadline token binding already proven"
+    },
+    {
+      "question": "Source-label morph scale/blur branch does not by itself determine header lifecycle",
+      "next_entry": "Parent lifecycle analysis;609a2f8 alternate source label"
+    },
+    {
+      "question": "Exact captured original-label overlay and measured-chevron geometry, and whether any later ordinary VM header writer exists",
+      "next_entry": "609b0a8,609a984/609aaf8. Constructor and actual source-label proven; no runtime equivalence claim."
+    }
+  ],
+  "validation": {
+    "static": "bounded disassembly, imported symbol bindings, type fields and asset literals",
+    "runtime": "not-performed",
+    "visual": "not-accepted"
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-binding.asm",
+      "sha256": "05b08c7eaf0035ec5f651b99c3ec84caf25dacbb6da26d783afa1e6cb51a7a4c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-binding.json",
+      "sha256": "61262c8381157bbf6217f2ea74bd11a7362dd714a92764408cb56df47e18ac38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-body.asm",
+      "sha256": "060767d3c0f7da8758e951ba01beafe4e7e39e2c82d93ae6f1bc0d4ffa4a790f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-body.json",
+      "sha256": "fc0ac9a11f1c906d38dd50361b7288a18a5a160e93247af596af6ec52ffcf907"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-content-builder.asm",
+      "sha256": "04952c21a7571c7262b2cc7c0320ddbb23d16ec247b1898b891af2272a22a396"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-header-content.asm",
+      "sha256": "d342d8c4234f04200d94785c2918cdbb9beaa519f4a240b1609aa8b88a7dad38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-content.asm",
+      "sha256": "45c37033aa271fd927899032f8cd5d5f80ec70742c74b7339ac08138d82a0b12"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-actual-label-parts.asm",
+      "sha256": "5ed81e5209f730e85ac90e19b63fe4f38512d508dd268cdd2267d01e0536a547"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-actual-label-parts.json",
+      "sha256": "88143643515f8c5ee28748f1b8c01b91f46a3c731cddefd2ec5202137a4409c1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-chevron-glyph.asm",
+      "sha256": "bf3d5aca96daafb9d66c9ce9445c117b6901a4e6cc51e348d32dd5b6d149cdbb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-chevron-glyph.json",
+      "sha256": "0698fa54c93ba0a689ea535240ae499b158cd1dc440c4e36ec963efd549bd51a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ctor-args-helper.asm",
+      "sha256": "3643305d994ab08d2f7d34c62f7f80fbce272b3cff3b56e86b2978e855881911"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ctor-args-helper.json",
+      "sha256": "804d8dba0b3847c90beed120e5f9dd4952d99f610d5859a89d5466ba37c2810b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ctor-stack-load.asm",
+      "sha256": "46dd3cdc6fc4c21cded278eb05595b0f08ae7601bddad8eebace3872ac48b9dd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ctor-stack-load.json",
+      "sha256": "a4fa14d46e12a1fb2d301c22eff14e1fd60a3fe181fbb7ffe95f6bdf2feb4dd1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-font-init.asm",
+      "sha256": "d358e98962d8e49be196c5fff784c51b810e0687ea93ecce7399647eadfd0047"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-font-init.json",
+      "sha256": "5ae7c3d39178eb1c9f6c8ef86eca82c0ff86b26811ae30467090e93e34f7f2f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-font-token.asm",
+      "sha256": "b6ca30fd4a9ab9e69ea2f3063a338068631c204f9885c798659e4de741be3c98"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-font-token.json",
+      "sha256": "4231d855e93b07de6339db486a334157fb7248e4a9c07c67317d59f84faada81"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-accessories.asm",
+      "sha256": "067b3d909b931a80f6427e289c16b4a5a0f253c23a88316fbd2dee5637ec781f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-accessories.json",
+      "sha256": "49bc1d9eccbcd0e505ab34a023686605d287c9060ca7b1ceae9aaf6ca40cf628"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-alignment.asm",
+      "sha256": "5bdaf8d226803a051144ab10493e0f20eeb8d5ee3509e3272d1c0166215f1ae1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-alignment.json",
+      "sha256": "ff109e69ca48511ebcd9f62569b7434258af2fb2dff8f5233681ae03c159e781"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-presets.asm",
+      "sha256": "f268a9231b8c7cc6e0e787fefd104891204ad76563f872175f222796bc171c47"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-presets.json",
+      "sha256": "1e27fcddbd5ed3d1d0ba59a75dc27618fefa67288f3075e7eb895bd9fecc997d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-stack-helper.asm",
+      "sha256": "53f5ef04e31ffc2d6d442b0c4c258f42439b81ec8e83efa56f2297dee3b31f6f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-stack-helper.json",
+      "sha256": "78db35467f1bcf2b2e71850b214b40691f542b9cccc474b65f8f4c06c02c1ed7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-text.asm",
+      "sha256": "900667f6abe8e9501bc010c75ea210e253cebd7682520cc624a0a472c57b3ad4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-text.json",
+      "sha256": "cb44b4e915d3f730887f83e4eb8edbe7477a1e517b4d8e85333719b9d5954c4e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-tint.asm",
+      "sha256": "9f50afec07bc6885acfa9ac2f820e94654f7eae37d3cf4421b57ff7808d3cddb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-header-tint.json",
+      "sha256": "8535d2c585e360405788d5a1eda23e1cd2d3210785a3ae529a58ac75fb5c0d9b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-inline-label.asm",
+      "sha256": "fef3244a92f1f72c77428d422dd86d7891ce918b6fa71a00d9f430078d16b227"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-inline-label.json",
+      "sha256": "de105d97e57d6d211a83ba4ac887f1f26f002a9eabf37c64907d63481a9870ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-inline-styled-text.asm",
+      "sha256": "5874c5febc9801496d9ecc5cb14964c3536b2e816fb1a07d1b5fbbff46c05fa7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-inline-styled-text.json",
+      "sha256": "46728a93bd32c35d64834e6bef7bca362856718d67d05e7a070662dec44337bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-label-conversion.asm",
+      "sha256": "492653e32e94fb512099ca42ac13006891b5df814f1ed225bab7a524c2fb112b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-label-conversion.json",
+      "sha256": "5945ccd151722e333f3ff9d1988602d54a45100e099212fe769a0d9b51f0fcbe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-label-producer.asm",
+      "sha256": "78cfab41197e739a785ce457542476ebb4b0dc1fb86e9c8cd86f29983531bfea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-label-producer.json",
+      "sha256": "700728dfaa130a607fa3e9be859907a8ca7a196b95dc008b654d4b57c12e2004"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-literals.json",
+      "sha256": "e902ca293635d35f38fdb53e54c4d45ad6be7ca9d4e9ad399f0daf857c3e59d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-model-header-source.asm",
+      "sha256": "dd249fc857b47cc59111d2fa5ad5cb8ec11cf17d1d3aab241145c2a217cd1857"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-model-header-source.json",
+      "sha256": "52d57deeede311a0f21cb5e3e49aeaeebbcb60a006821134e0fee59dae2a9957"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-model-title-content.asm",
+      "sha256": "b90f09e5c18fabdfb5638e20ef7de31204d16a1b93f62778354611d0002af3b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-model-title-content.json",
+      "sha256": "2ceda3eb46ed4c42907c759641162cd450f49ef4c817a158c44372d0e1f739ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-create.asm",
+      "sha256": "ed47a1b24b61771edf485d260dc9d2a29cadcb23f0a18b30b55a382411cb4921"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-create.json",
+      "sha256": "b39c7a33ab46dcc3e185d3557e6c1d9f4dfde096ba12a3fd740d725b62524881"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-label-components.asm",
+      "sha256": "57c052eea4dba0a135bd2783517b3540b03d612f79c94b294aa6c54269b25825"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-label-components.json",
+      "sha256": "964be5552d09d9e65b512d343434f53edbaa32175e7cd839b18db66af8186646"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-label-current.asm",
+      "sha256": "51054083c24f9ffbc48b5f1d68efb46dae0f83d4aa42180a3cfc479e5dc8ca3c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-label-current.json",
+      "sha256": "1cb0c3333b2993129801b794c58b63ca0503a154a3042174171b85ee8bed705b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-label-for-index.asm",
+      "sha256": "631b27ff165861aefc81b809ff9b0852b505f2f4b62e6d6e132ffac02d510734"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-label-for-index.json",
+      "sha256": "43d06281b047c0ebda77229894a7d6243baad085aa259c4d3709886ed1557889"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-label-overlay.asm",
+      "sha256": "fb046de1403f4cba4b78dd6d9c12a1b155c7fd8a4c268d5b1e2cf70b7638e814"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-label-overlay.json",
+      "sha256": "0665ab6569b2509f773a1f70adc358185e5c15a218c5482e60ce228d1e0d832b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-styled-title.asm",
+      "sha256": "e931ae8de407bf374af3a8d350adffc5b3a46b94a7be29b318a04c1762c994d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-styled-title.json",
+      "sha256": "1c05d21c823d7f828bdf397abbbef09532d739dff625296dfa72bfce9630a55d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-primary-color.asm",
+      "sha256": "52b29a59c65e8c37d7fbb314a8ad87f218987d1faa2ad1fe499e3ff829c46e07"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-primary-color.json",
+      "sha256": "76f104f407f18ddbfa07c6e7554f6122b711cb7673a5a436783aecc8a9621bff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-reset-action.asm",
+      "sha256": "8d3f8405806640e5d9cde8f2fc95039e7a2ec8f2aa32732f87c2c36dfcad8577"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-reset-action.json",
+      "sha256": "a071409c97f6802f85f97753ef3379170037aa1bfe7757b8a4f6a28dc5ae83f5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-reset-asset.asm",
+      "sha256": "1ee90ddaf8893e8fb45aa1d57b366f988fdc64133d3b39063ec77708185547f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-reset-asset.json",
+      "sha256": "e52ba75efb14b3644fbac61612987376dcf45d332cd5388dee3037ea12c8db6e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-reset-glyph.asm",
+      "sha256": "4faaade2394a569ea74716a4b39ec694add3f58e55852043ae1b317023389a6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-reset-glyph.json",
+      "sha256": "e7acf22e46d5e14a61e0af234bd3ec467e5fbe49d4df1dab89519850f66501f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-reset-label-thunk.asm",
+      "sha256": "2df90bc937f70417a01bd5bcb74f7a67927673799ffdc905373436a8fb226de5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-reset-label-thunk.json",
+      "sha256": "1aebaf199b165dc4a54e66165724ee731ab673424371216574db03f74cab9a57"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-secondary-color.asm",
+      "sha256": "ddcff1ff793e3d98ce4dfdea8e2b9377fb9a676f905aaa336ab8f02beba5723b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-secondary-color.json",
+      "sha256": "4db9996d6f63149cf021a21a3927dc9173a1a8993d0c088d9e1cfa6ec433393d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-secondary-font-init.asm",
+      "sha256": "0cec31888e33d3c3f1bbfdb7885b1fcd35f7536a7259343e39bd81e4fa771cde"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-secondary-font-init.json",
+      "sha256": "0a30853128972be3dbb3da90a3187f485d110135bd11a520b0a28f2e4feede35"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-button-action.asm",
+      "sha256": "71a9c09c0d2325508a59e3a8024afe9b6e4a43318ff4824fefcb672b13ea3cf8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-button-action.json",
+      "sha256": "60969cd469b784c992c7fa97ff49dbd4f77cef81d396350d1a6c05229ce72963"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-scale.asm",
+      "sha256": "d7d0a2d282b1bb37bbfd3871cd656cb402e786c434a092c7e2de1014df9caabf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-scale.json",
+      "sha256": "10bc192f4c4a11b177da1634d98ea42f8cfe95fe1248dcaef4641571c5851072"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-title-content.asm",
+      "sha256": "0b0dfa4b1e2c6975a80e58a6f0bb1588d0665f3d9fec8e7e306e092a764e9272"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-title-content.json",
+      "sha256": "06ae7a219d6ebe6947848e682ad805863ab83415275f97d1938202ae90bddd87"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-title-label.asm",
+      "sha256": "3446b1e09692ad6cab098d1ee03239f550bd5b56493f540cab38b0c97655dac3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-title-label.json",
+      "sha256": "316cd3ba320ddc807b7a9bf3a3e33b471a2ce9eab1774d1aad6779890646aa6f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-title-thunk.asm",
+      "sha256": "e6f378cf1bf434316545f5caf21ce576e86f35a0b6ac716669702209e9a11e27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-source-title-thunk.json",
+      "sha256": "7241c5c8ff51e37d6ea49620142e9cc0aa44cd238560ff13d13c8106cd22e77d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-action.asm",
+      "sha256": "9e033124a2e9d7a38abe338b767f98f5d969cdb29b6857039b77722aa96c6770"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-action.json",
+      "sha256": "cd66087a32ffb6f6bed17c68832c09d722f9871f42bdb2ab6038582b43593e5f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-fast.asm",
+      "sha256": "11995b1ca8f0bf69f5747272df579c815b8787386820bf1872dc985d58847009"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-fast.json",
+      "sha256": "37a036f6b748ae98467b2137b03d3f8613d873e9dcc2822ef273d36541b47370"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-glyph.asm",
+      "sha256": "0ec546559eda2f35f78a373810d8e1c0b7562e494b660e9d0379232469bec027"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-glyph.json",
+      "sha256": "fc745d651bcd739750375041590bbf086367c0a40a2e4bbe31d4e588c60536b8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-label-thunk.asm",
+      "sha256": "0ec546559eda2f35f78a373810d8e1c0b7562e494b660e9d0379232469bec027"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-label-thunk.json",
+      "sha256": "fc745d651bcd739750375041590bbf086367c0a40a2e4bbe31d4e588c60536b8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-standard.asm",
+      "sha256": "6ebf3469b9f458135c458c7a90d5e72fae806cbc7f91c1ae1dbe1393b97dfe90"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-standard.json",
+      "sha256": "59e0ea9888e9255e8190408bba012c1e6b67dbd777ec7a486d3ee1b17fa9976c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-ultrafast.asm",
+      "sha256": "c5cd97d8f640e0091b7f01f03e607dbe82a77797aa9c73310bd2eb8148057c6a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-speed-ultrafast.json",
+      "sha256": "aab4a26c12c4ac54e1fea52f411d8419b440fc436ab2e2d5dcc78491c31fc9f5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-text-content.asm",
+      "sha256": "4cf65a01254793898973f60c2aeefc195a5e8bc03abcc59e827344b1000a8259"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-text-content.json",
+      "sha256": "9971ef53f3fd46a3a4731248ff0c5a2a89bc32e40543bc662db7d3fd41f2645f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-title-action.asm",
+      "sha256": "e4d79aff953fb3d01ec265366ac8a3efabc660003b61888db529348f8ae95653"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-title-action.json",
+      "sha256": "871402d959879b1e2c50af0839d35146487b99bc742a5088d4ab2c677519322f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-title-font-construction.asm",
+      "sha256": "6051677230eb57916f892e3059e333fa046cfdb65f6b50b6310b2ef2d324d358"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-title-font-construction.json",
+      "sha256": "6aefa320f126aba939acab5cfbdf7218f07336ba90a2c336af009235740cfe5d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-types.json",
+      "sha256": "5f546308c3629f03e7d3297a185c4925aa221ba411760375897391f68497046e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-vm-constructor.asm",
+      "sha256": "8dab29b06584d7c718a3d630d06fe72c5f79143afae88fbc7f0cec10d437326c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-vm-constructor.json",
+      "sha256": "d53249b7f53aa6e144d8b32c61f6542ebf41350d84435d99377dc4c6763f671a"
+    }
+  ],
+  "revision": 2,
+  "correction": {
+    "reason": "Initial revision did not establish ordinary Remote optional-header applicability. The actual ordinary constructor passes modelSliderHeader=nil. Shared-header speed/reset/padding/layout must not be propagated to ordinary Remote.",
+    "supersedes_claim": "The shared header showsReset=!preset.isDefault expression is not an ordinary Remote UI condition."
+  }
+}

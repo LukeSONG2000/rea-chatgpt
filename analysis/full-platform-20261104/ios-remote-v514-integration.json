@@ -1,0 +1,160 @@
+{
+  "batch": "v514",
+  "date": "2026-11-07",
+  "status": "partial",
+  "previous_goal_turn": "The language-only acknowledgement was no progress toward UI recovery. This continuation revalidated v513 preview/build state and integrates the source-backed Remote attachment menu.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Home plus presents first-level attachment rows in source order under explicit per-row capability gates. Camera eligibility uses platform availability.",
+    "Four original resource labels imported;106 selected keys across65 locales. Production preferred language remains system-following.",
+    "Native independent UIWindow at statusBar+1, clear root and accessibility modal ownership, custom presentation controller and source geometry in window coordinates.",
+    "Ordinary bottom-leading anchoredIntrinsic sizing with safe inset minimum10, trailing70 size reserve, width floor280 within available bounds, content cap320, height cap420; target radius46.",
+    "UIVisualEffectView with regular interactive UIGlassEffect on supported OS and raw10 systemMaterial fallback.",
+    "Source-backed row typography, glyph metrics/padding and explicit pressed/disabled opacity; custom vertical ScrollView.",
+    "Owner closes menu before delivering an explicitly unavailable downstream attachment action. Outside tap/pan dismissal is separate from menu-row hit testing.",
+    "Source registration is limited to the visible compact/expanded variant and occurs only after actual window attachment and nonempty layout. Make/update-time weak registration failed focused reentry; mounted registration passed the Chinese recovery test."
+  ],
+  "independent_adaptations": [
+    "Frontend capability fixtures and disconnected selection/service outcomes. Expanded all-capabilities fixture is explicit and does not describe an official account.",
+    "Camera, Photos, Files and Plugins use verified original translations. Chinese Plan mode and Pursue goal strings are independent translations until original keys are recovered.",
+    "Window/hosting-controller bridge, immutable action callbacks and dismissal completion sequencing are independent implementations of source-observed ownership.",
+    "Preview selects the available glass branch. Official cached feature-override name remains unknown.",
+    "Animation uses verified present spring0.475s/damping0.8 with independent whole-surface anchor transform and Reduce Motion handling. Original multi-layer morph, masks and alpha are incomplete.",
+    "Ordinary dismiss uses same spring branch; alternate official dismissalAnimationStyle and nested/interactive retargeting are not yet integrated."
+  ],
+  "remaining": [
+    "Camera/photos/file import target presentation, metadata/state ingestion and upload/service adapter.",
+    "Plugins command insertion, Plan action and Goal replacement range/focus owner integration. Row gates are modeled, all-capability fixture only exercises menu layout.",
+    "Full presentation queue and nested camera/photo embedded/fullscreen branch selection.",
+    "Conditional center anchor service fields0x60 and0x88, original keyboard lifecycle, exact transition snapshots/masks/alpha and dismissal-veto producer.",
+    "Thread-page attachment toolbar integration, other Remote list gaps, Remote transcript, Chat/Work, haptics and prior issue ledger remain active.",
+    "Android equivalence requires independent Android native consumer evidence. This iOS SwiftUI/UIKit mechanism is not a shared cross-platform layout proof."
+  ],
+  "validation": {
+    "model": {
+      "status": "passed",
+      "log": "/tmp/rea-v514-model-final.log"
+    },
+    "build": {
+      "status": "passed",
+      "log": "/tmp/rea-v514-build.log"
+    },
+    "ui": {
+      "status": "passed",
+      "result": "ios-remote-v514-attachment-final-ui.xcresult",
+      "summary": "ios-remote-v514-attachment-final-ui.summary.json",
+      "passed": 5,
+      "failed": 0,
+      "runtimeWarnings": [],
+      "scope": [
+        "Chinese compact/focused menu and actual keyboard geometry",
+        "English XXXL compact/focused menu",
+        "Chinese all-capabilities scroll/disabled Plan/outside pan",
+        "toolbar availability and action recovery",
+        "Chinese destination selection and draft recovery"
+      ]
+    },
+    "failures_retained": [
+      {
+        "result": "ios-remote-v514-attachment-ui.xcresult",
+        "reason": "2 tests assumed camera unavailable on simulator. This iOS27 simulator reported availability; toolbar regression passed."
+      },
+      {
+        "result": "ios-remote-v514-attachment-r2-ui.xcresult",
+        "reason": "Compact entry/selection/outside dismissal passed; focused reentry produced unavailable source. Correcting compact/expanded anchor registration and rerunning."
+      },
+      {
+        "result": "ios-remote-v514-attachment-r3-ui.xcresult",
+        "reason": "Visible-variant guard alone did not repair focused weak source. All-capabilities layout/pan test passed."
+      },
+      {
+        "result": "ios-remote-v514-attachment-probe-ui.xcresult",
+        "reason": "One Chinese focused failure with temporary bool-only source probe. Missing mounted source confirmed."
+      }
+    ],
+    "physical_device": "not-run-user-selected-simulator-only",
+    "official_app_executed": false,
+    "online_services_called": false,
+    "focused_probe": {
+      "source_probe": "ios-remote-v514-source-probe.log",
+      "observed": "overlay=0 source=0 sourceWindow=0 empty=0",
+      "fix": "registerMountedSource in didMoveToWindow/layoutSubviews plus visible variant eligibility",
+      "diagnostic_removed": true,
+      "first_pass": "ios-remote-v514-attachment-r4-ui.xcresult"
+    },
+    "storage": {
+      "report": "/tmp/rea-v514-retention.json",
+      "stale_targets": [],
+      "free_space_gib": 27
+    },
+    "source_and_visual_limits": "Host screenshots inspected for compact/keyboard/menu scrolling. No same-version official running-app comparison, full morph parity, physical-device or Android acceptance is claimed."
+  },
+  "evidence_reports": [
+    "ios-remote-v512-attachment-menu-findings.json",
+    "ios-remote-v513-attachment-layout-findings.json",
+    "ios-remote-v514-attachment-presentation-findings.json",
+    "ios-remote-v514-anchored-intrinsic-formula.json",
+    "ios-remote-v514-attachment-animation-findings.json",
+    "ios-remote-v514-outside-dismiss-pressed-findings.json",
+    "ios-remote-v514-attachment-action-order-findings.json",
+    "ios-remote-v514-text.json"
+  ],
+  "preview": {
+    "installed_build": "514",
+    "pid": 51002,
+    "locale_arguments": [],
+    "system_preferred_languages": [
+      "zh-Hans-CN",
+      "en-GB"
+    ],
+    "visible": "Chinese Remote home attachment menu",
+    "screenshot": "ios-remote-v514-default-language-preview.png",
+    "left_running": true,
+    "display": "Color LCD internal only; external display unavailable"
+  },
+  "source_snapshots": [
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteAttachmentMenu.swift",
+      "sha256": "aee685ec243d37b3d97805bc3a4e7fc3e44bff8e33362798bb1e317f5fc28d3e"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "e3facc35f96467c71804db2dd6d078f65e6287b27d00d8ea1a4c8ab434b68fa6"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "11e7fd020a418bccb359a06f25d14887ac9c72817f90a38afc04990b76959d6f"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteComposerInteraction.swift",
+      "sha256": "e8e1d51f3d094d80f6995fe46a3b90826e2222ebf3d2322646ed17eddccb0587"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "f165e84cef54b31cf836c476fd590e91ca0a6df9e185ed3954ffffcf9ca7e533"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "134d011581106e3051e15e43e49bd5003f395b00888f7923d8c9edd7a3787f4f"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "b69379e08eb475fe20a7a0a29ae0cd74e8b88de7ca7e96d0c1061237f7858449"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "cbd811c3c76dc80af634cd2d1a3f64ffc3a1790dd4f10ca2bcecbc3f4d6c6aa1"
+    }
+  ],
+  "screenshots": [
+    "ios-remote-v514-final-remote-attachment-chinese-all-capabilities-large.png",
+    "ios-remote-v514-final-remote-attachment-chinese-compact.png",
+    "ios-remote-v514-final-remote-attachment-chinese-keyboard.png",
+    "ios-remote-v514-final-remote-attachment-english-large-compact.png",
+    "ios-remote-v514-final-remote-attachment-english-large-keyboard.png"
+  ]
+}

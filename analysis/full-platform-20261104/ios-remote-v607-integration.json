@@ -1,0 +1,67 @@
+{
+  "batch": "v607",
+  "implementation": "implemented",
+  "scope": "Remote thinking-labelled ordered tool activity groups",
+  "official_evidence": [
+    "ios-remote-v607-reasoning-next-findings.json",
+    "ios-remote-v608-reasoning-content-findings.json"
+  ],
+  "implemented": [
+    "Typed ordered group snapshots validated atomically against the corresponding turn activities. Invalid/missing/duplicate child references reject the event without changing state.",
+    "Recovered thinking label and summary disclosure reuse existing command/search/file components, preserving legacy ungrouped snapshots.",
+    "Task/turn/group expansion cache with backward-compatible optional history/cache fields.",
+    "Explicit two-group synthetic fixture and core preview capability."
+  ],
+  "independent_adaptations": [
+    "Group envelope, child-reference validation and replay generation",
+    "Native grouping placement and persisted expansion",
+    "Disable shimmer for terminal synthetic turns; source upstream lifetime remains unresolved",
+    "Empty group renders noninteractive summary",
+    "12pt child activity spacing and grouping position in synthetic transcript"
+  ],
+  "unimplemented": [
+    "Full reasoning content/history",
+    "Automatic official grouping, latestItem/history summary variants and unsupported activity kinds",
+    "Exact original parent spacing/fading and Android consumer"
+  ],
+  "validation": {
+    "foundation": "ios-remote-v607-foundation-r2.log",
+    "distinct_passing_ui_cases": 6,
+    "runs": {
+      "r1": {
+        "passed": 4,
+        "failed": 0
+      },
+      "r2": {
+        "passed": 2,
+        "failed": 2
+      },
+      "r3": {
+        "passed": 2,
+        "failed": 0
+      }
+    },
+    "failure_history": "r2 second-host pinned-thread is a running fixture, exposing remote-composer-follow-up rather than remote-composer-send. r3 uses existing idle recent-thread on fixture-b, preserving identical group IDs and all isolation/restart assertions. Production source unchanged.",
+    "visual": "Inspected Chinese/light and English/dark screenshots. CUA manually entered completed-thread, submitted a synthetic prompt, observed completed group summary and expanded command child in the Chinese dark core preview."
+  },
+  "runtime": "ios-remote-v607-runtime.json",
+  "files": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "7e97c9ef56b1e0fd10911f72b72d1cf89aa6fa789708736576fbbf761d6c690e",
+    "implementation/ios/Sources/NativeConversationHost.swift": "fe438e747c9c7a65fa2c0a1f41d7abf9c2efb5e6199392d010becfdea2ef8373",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "0276182c8dec2def3f895e4574a2abf685e4b51d4446f043389c34cde608b948",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "19ab8b3c7085d04e2ee92190693ab38cc60bbb03d39da9952eac797a012129a5",
+    "implementation/ios/UITests/HostInteractionTests.swift": "64a322f7e421c3229bfcc821e26cfda36508c19ccb5da85789366ed0ca3a9935",
+    "implementation/ios/TextTests/main.swift": "b1030790292d5025a6b8eaa0b816224716ec56eaf0372d831165e1e75921b995",
+    "implementation/ios/Tools/core-preview.json": "2a09ca3712305418fdcbc9b5a999275c32a56ae707e81eaa3a876e297cf3a1ae"
+  },
+  "handoff": {
+    "version": "607",
+    "installed_hash_match": true,
+    "process": "local.rea.chatgpt.ioshost: 61952",
+    "page": "Chinese dark Remote fixture-a/completed-thread with new group expanded; preview left running",
+    "display": "Only online Color LCD, no external display available",
+    "retention": "ios-remote-v607-retention-final.json",
+    "free_disk": "12GiB"
+  },
+  "next": "Continue Remote remaining message branches from explicit source decisions. Full reasoning remains blocked at ThreadItem tag5 -> rendered ID.reasoning/kind/content producer; details in v608. Keep the full page backlog active."
+}

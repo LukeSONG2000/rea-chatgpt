@@ -1,0 +1,91 @@
+{
+  "version": 623,
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "implemented": [
+    "Ordinary Chat temporary toggle with original off/on vectors; ordinary Work hides it",
+    "Settings remains reachable via sidebar account button",
+    "Left44dp and right48dp circle visual containers; default light/dark surfaces",
+    "Input and placeholder16sp400/24sp/0.1sp from np11.Q/on01.a/sk10.a"
+  ],
+  "host_adaptation": [
+    "Temporary selection is rememberSaveable frontend state with synthetic empty-conversation capability",
+    "Existing native navigation, text editor and drawer remain independent adapters",
+    "Android accessibility expands the 44dp menu hit bounds to48dp; visual size and hit bounds are separate"
+  ],
+  "not_implemented": [
+    "Compact/expanded composer layout and seven-slot measurement state machine",
+    "Full temporary-history confirmation and server lifecycle",
+    "Exact shadow renderer, sidebar badge and full header capability producer"
+  ],
+  "evidence": [
+    "android-home-v623-header-source.json",
+    "android-home-v623-composer-state.json",
+    "android-home-v623-assets.json"
+  ],
+  "tests": {
+    "implementation": "Independent frontend with Android293 evidence and synthetic data",
+    "serial": "172.16.197.16:5555",
+    "manufacturer": "OnePlus",
+    "model": "ONEPLUS A6003",
+    "sdk": "35",
+    "run_id": "f0c71dbf7de942778de291c42df0721f",
+    "ui_matrix": [
+      "zh-CN/light",
+      "en/dark",
+      "system/system"
+    ],
+    "status": "passed",
+    "steps": [
+      {
+        "apk": "app/build/outputs/apk/debug/app-debug.apk",
+        "sha256": "f7e06cfc669d0da9334b5ebe1c30fc19c0d17348e7921cf65e1e24d9c8b009db"
+      },
+      {
+        "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+        "sha256": "0b22eb984216350d82858a1596c8cadf50ed6917c4458ac0e10929bd1c4343db"
+      },
+      {
+        "test": "preferences",
+        "passed": true
+      },
+      {
+        "test": "journey",
+        "passed": true
+      },
+      {
+        "test": "verifyRestart",
+        "passed": true
+      }
+    ],
+    "export_errors": [],
+    "preview_launch": {
+      "skipped": "Foreground belongs to another app or cannot be established"
+    }
+  },
+  "test_failures_preserved": {
+    "reports": [
+      "android-home-v623-oneplus.json",
+      "android-home-v623-oneplus-r2.json"
+    ],
+    "cause": "Test queried selected. Real Android hierarchy exports Compose button selected semantics as checked. Assertion now waits for checked true/false."
+  },
+  "final_preview": {
+    "versionCode": 623,
+    "profile": "preview",
+    "language": "system",
+    "appearance": "system",
+    "observed_language": "Chinese",
+    "activity": "AppShellActivity",
+    "pid": 27319,
+    "running": true,
+    "screenshot": "android-home-v623-final-preview.png",
+    "existing_draft_retained": true
+  },
+  "visual_checks": [
+    "Independent ADB final Chinese/light home inspected",
+    "English/dark home-before-restart inspected"
+  ],
+  "next": "Close optional toolbar slot p4 caller, yvz0 layout preference producer and extra expansion r writers before restoring same-editor compact/expanded geometry."
+}

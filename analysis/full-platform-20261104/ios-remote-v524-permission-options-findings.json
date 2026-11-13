@@ -1,0 +1,232 @@
+{
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT"
+  },
+  "evidence_type": "official_artifact_static",
+  "status": "partial",
+  "scope": "Approval picker options, not presentation style or wire protocol",
+  "metadata": {
+    "Row": "95adb64 fields selection,title,detail,icon,isSelected,isEnabled; stride56 from stores1c222c0..1c222e8",
+    "Selection": "95b0248 preset(ApprovalPreset),custom; actual bytes preset0..3,custom4 verified row stores/callback",
+    "ApprovalPreset": "95d18a0 askPermissions,guardianApprovals,readOnly,fullAccess; index mapping cross-checked title/icon/description jump tables",
+    "ApprovalSelection": "95d18d8 preset, presetWithConfiguredApprovalsReviewer, permissionProfile, custom; see options-metadata.json"
+  },
+  "rows_algorithm": {
+    "producer": "0x1c21e5c",
+    "input": "CodexRemoteComposerConfigurationControls generic viewModel witness +0xc0 returns original allowed presets; exact protocol requirement name unclosed",
+    "order": "Preserve source array order. If askPermissions raw0 exists, filter readOnly raw2, preserving relative order. Append fullAccess raw3 only if absent. No sort or dedup is visible. Append custom last when witness+0xc8 returns true.",
+    "filter_evidence": [
+      "1c21ea0..1c21eac contains0",
+      "1c21ec0..1c21f20 filter2",
+      "1c21f38..1c21fbc contains3 or append3"
+    ],
+    "enabled": "For every candidate preset, isEnabled = original allowed presets contains candidate, checked1c21ff8..1c22060. Therefore inserted fullAccess is visible disabled. custom isEnabled=true at1c22538..3c.",
+    "custom_gate": "viewModel witness+0xc8 at1c22374..388; false bypasses entire custom row. Semantic getter name still unknown.",
+    "disabled_detail": "Every disabled preset replaces its usual detail with codex_remote_thread_configuration_approval_disabled_by_requirements (88b33c0), fallback Disabled by requirements.toml (88b3410), branch1c2215c..1c221c0."
+  },
+  "options": [
+    {
+      "raw": 0,
+      "preset": "askPermissions",
+      "title_key": "codex_remote_thread_configuration_approval_default_permissions",
+      "title_key_va": "88de160",
+      "title_default": "Ask for approval",
+      "title_default_va": "88de1a0",
+      "detail_key": "codex_remote_thread_configuration_approval_default_permissions_description",
+      "detail_key_va": "88b35c0",
+      "detail_default": "Always ask to edit external files and use the internet",
+      "detail_default_va": "88b3610",
+      "icon": "OpenAI/Symbols/hand",
+      "icon_va": "8a55700",
+      "icon_factory": "74f7b44"
+    },
+    {
+      "raw": 1,
+      "preset": "guardianApprovals",
+      "title_key": "codex_remote_thread_configuration_approval_auto_review",
+      "title_key_va": "88de120",
+      "title_default": "Approve for me",
+      "detail_key": "codex_remote_thread_configuration_approval_auto_review_description",
+      "detail_key_va": "88b3530",
+      "detail_default": "Only ask for actions detected as potentially unsafe",
+      "detail_default_va": "88b3580",
+      "icon": "OpenAI/Symbols/terminal-shield",
+      "icon_va": "8a573c0",
+      "icon_factory": "74fba2c"
+    },
+    {
+      "raw": 2,
+      "preset": "readOnly",
+      "title_key": "codex_remote_thread_configuration_approval_read_only",
+      "title_key_va": "88de0e0",
+      "title_default": "Read only",
+      "detail_key": "codex_remote_thread_configuration_approval_read_only_description",
+      "detail_key_va": "88b34b0",
+      "detail_default": "Requires approval to edit files or run commands",
+      "detail_default_va": "88b3500",
+      "icon": "OpenAI/Symbols/lock",
+      "icon_va": "8a55bb0",
+      "icon_factory": "74f85f0"
+    },
+    {
+      "raw": 3,
+      "preset": "fullAccess",
+      "title_key": "codex_remote_thread_configuration_approval_full_access",
+      "title_key_va": "88de0a0",
+      "title_default": "Full access",
+      "detail_key": "codex_remote_thread_configuration_approval_full_access_description",
+      "detail_key_va": "88b3430",
+      "detail_default": "Full computer access (elevated risk)",
+      "detail_default_va": "88b3480",
+      "icon": "OpenAI/Symbols/exclamationmark-shield",
+      "icon_va": "8a55230",
+      "icon_factory": "74f710c"
+    },
+    {
+      "raw": 4,
+      "selection": "custom",
+      "title_key": "codex_remote_thread_configuration_approval_custom",
+      "title_key_va": "88b32f0",
+      "title_default": "Custom (config.toml)",
+      "title_default_va": "88b3330",
+      "detail_key": "codex_remote_thread_configuration_approval_custom_description",
+      "detail_key_va": "88b3350",
+      "detail_default": "Uses permissions defined in config.toml",
+      "detail_default_va": "88b3390",
+      "icon": "OpenAI/Symbols/gear",
+      "icon_va": "8a555c0",
+      "icon_factory": "74f78dc"
+    }
+  ],
+  "row_selection": {
+    "raw0": "isSelected = controls display mode helper196647c()==0. Helper reads configuration via witness+b0; if guard244e158 true synthesizes permissionProfile-like tag2 payload; else configuration.approvalSelection at+160. Classifier244cd90 returns4 for tags2/3, payload preset for tags0/1. Helper remaps readOnly2 to askPermissions0 when allowed contains0 (196650c..1966538,1966548..1966578).",
+    "raw1_to_3": "At1c22248..1c22278 configuration via witness+b0. If244e158(configuration) true, comparison preset forced1. Otherwise inspect approvalSelection +160 high-two-bit tag. Tag0/1 compares associated preset byte. Tag2/3 isSelected=false. Thus guard selects guardianApprovals1. Guard is model-dependent auto-review requirement, see auto_review_guard.",
+    "custom": "At1c22450..1c22524 same configuration guard. Guardtrue synthesizes tag2 payload then classifier244cd90=>4. Guardfalse classifies actual approvalSelection. custom selected iff classifier ==4. This may coexist with selectedguardian raw1 underguard; preserve source fact, do not invent exclusive UI selection normalization. Verified Thread owner prevents custom visibility when this guardtrue.",
+    "classifier": "244cd90..244cdac returns4 for permissionProfile/custom tag2/3; associated preset for preset/presetWithConfiguredApprovalsReviewer tag0/1."
+  },
+  "action": "Callback1c225a8 first calls1812498 withw0=0 (presentation flag path, exact name not recovered), then raw4 invokes viewModel witness+250, preset0..3 invokes+248 with preset. Backend schema encoding after these methods remains untraced.",
+  "jump_tables": {
+    "7e825ee": {
+      "base": "244c9e4",
+      "bytes": [
+        0,
+        41,
+        14,
+        27
+      ],
+      "purpose": "preset title branch"
+    },
+    "7dfde4c": {
+      "base": "196c344",
+      "bytes": [
+        0,
+        4,
+        2,
+        3,
+        1
+      ],
+      "purpose": "preset/custom icon"
+    },
+    "7e078b6": {
+      "base": "1c22188",
+      "bytes": [
+        23,
+        0,
+        15,
+        19
+      ],
+      "purpose": "enabled preset detail"
+    },
+    "7e078ba": {
+      "base": "1c22270",
+      "bytes": [
+        0,
+        57,
+        53,
+        53
+      ],
+      "purpose": "selection payload tag"
+    }
+  },
+  "unknowns": [
+    "Wire mapping from each preset to askForApproval/sandboxMode/approvalsReviewer is unclosed; do not infer from English label",
+    "Chinese exact localized values need existing resource extraction lookup; English fallbacks and keys verified",
+    "No runtime/device/visual validation in this analysis scope",
+    "Underlying allowed preset list origin/ordering and requirements.toml parse not traced beyond owner+e8 callback18e5900",
+    "Thread custom capability helper2acd760 and NewThread custom getter18b17a8 not closed"
+  ],
+  "evidence_files": [
+    "ios-remote-v524-options-metadata.json",
+    "ios-remote-v524-permission-owner-sheet-builder.asm",
+    "ios-remote-v524-permission-owner-sheet-builder-tail.asm",
+    "ios-remote-v524-permission-owner-sheet-final.asm",
+    "ios-remote-v524-options-labels.asm",
+    "ios-remote-v524-options-icons.asm",
+    "ios-remote-v524-options-configuration.asm",
+    "ios-remote-v524-options-rowselect.asm",
+    "ios-remote-v524-options-prefclassify.asm",
+    "ios-remote-v524-options-callback.asm",
+    "ios-remote-v524-options-owner-witnesses.json",
+    "ios-remote-v524-options-ownerallowed.asm",
+    "ios-remote-v524-options-ownercustom.asm",
+    "ios-remote-v524-options-ownerwitness.asm",
+    "ios-remote-v524-options-newwitness.asm",
+    "ios-remote-v524-options-guardlookup.asm",
+    "ios-remote-v524-options-guardmembership.asm",
+    "ios-remote-v524-options-configapply.asm"
+  ],
+  "revision": 2,
+  "owner": {
+    "protocol": "BaseCodexThreadViewModel descriptor95a99a4; Controls generic requirement95ac8a0 resolves it",
+    "concrete_thread": "conformance7e0b6f8 witnessa504ab8; +b0=1942f08(configuration getter18e14c0), +c0=1942f48(allowed presets), +c8=1942f6c(custom support), +248=19432a8(select preset18fa5ec), +250=19432ac(select custom18fa888)",
+    "concrete_new_thread": "conformance7e0b258 witnessa5044f8; +c0=18c7bd0 also calls18e5830, +c8=18c7bf4→18b17a8 (not analyzed)",
+    "method_names": "Protocol metadata gives requirement slots without source method spelling."
+  },
+  "auto_review_guard": {
+    "function": "244e158",
+    "meaning": "Current model requires auto review according to configuration.autoReviewRequiredOnModels. Field identity verified; exact model-string normalizer remains partial.",
+    "configuration_descriptor": "95d1830",
+    "configuration_metadata": "a573748; field vectora573758",
+    "field_offsets": {
+      "model": 0,
+      "reasoningEffort": 312,
+      "serviceTier": 336,
+      "approvalSelection": 352,
+      "autoReviewRequiredOnModels": 440,
+      "shouldOverridePermissions": 448
+    },
+    "field_types": {
+      "model": "Optional<Generated.Components.Schemas.Model>",
+      "autoReviewRequiredOnModels": "Array<Tagged<APICore.ModelSlugTag,String>>"
+    },
+    "flow": [
+      "244e16c→264ac3c copies312-byte model optional",
+      "244e178→1d9c344 excludes nil model",
+      "244e180..18c checks model string nonempty",
+      "244e190 reads autoReviewRequiredOnModels +1b8",
+      "244e19c calls244c1e4 model string parser, nil result false",
+      "244e1ac→1e1a08 exact string membership, whose 1e1a54 calls Swift string equality",
+      "empty model/nil parser/nonmember false"
+    ],
+    "normalizer_limit": "244c1e4 includes split on / and character validation. Exact normalization contract not reproduced; consume explicit upstream computed guard until separately closed."
+  },
+  "upstream_allowed_projection": {
+    "source": "Thread1942f48 and NewThread18c7bd0 both call18e5830 with their configuration/underlying allowed getters",
+    "guard_false": "Preserves underlying allowed list",
+    "guard_true": "18e5868..18e58e8 filters to raw1 guardianApprovals only, preserving duplicates/order; does not synthesizeguardian when absent",
+    "ui_followup": "Picker then appends fullAccess raw3 disabled when absent. This branch may therefore yield guardian(enabled)+fullAccess(disabled), or onlyfullAccess(disabled) if underlying list lackedguardian."
+  },
+  "upstream_custom_projection": {
+    "thread": "18efdf8 returnsfalse when1902f08 returnsnil or whenauto_review_guardtrue; otherwise returns !2acd760(owner result). Exact 2acd760 capability business contract is unresolved.",
+    "new_thread": "18b17a8 not traced; keep separate",
+    "effect": "In the verified Thread owner branch, guardtrue hides custom, so leaf guardian/custom simultaneously-selected projections are not both visible. Do not assert all hypothetical leaf inputs are reachable."
+  },
+  "mutation_guard": {
+    "preset": "18fa608..18fa618 checks same guard, true returns at18fa758 before changes",
+    "custom": "18fa8a8..18fa8c0 checks guard, true returns18faa5c before changes",
+    "wire_status": "Subsequent userdefaults/owner mutations partly traced. No JSON or RPC permission tuple equivalence claimed."
+  }
+}

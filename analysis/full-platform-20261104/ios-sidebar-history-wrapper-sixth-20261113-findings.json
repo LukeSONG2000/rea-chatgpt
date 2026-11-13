@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "verified-static-wrapper-insets",
+  "scope": "One bounded question: original HistoryCell wrapper between registered HistoryItem and HistoryCellContent; no new parent/group/other field scope",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "reused_evidence": [
+    "ios-sidebar-spacing-sixth-20261113/cell-configuration-final.asm",
+    "ios-sidebar-spacing-sixth-20261113/cell-content-config-build.asm",
+    "ios-sidebar-spacing-sixth-20261113/cell-content-config-margins.asm",
+    "ios-sidebar-row-metrics-20261112/history-content.asm",
+    "ios-sidebar-row-metrics-20261112-findings.json"
+  ],
+  "official_observations": [
+    {
+      "id": "actual-registration-to-wrapper",
+      "conclusion": "The HistoryItem configuration content builder really creates HistoryCell rather than directly HistoryCellContent.",
+      "source": [
+        "12a382c HistoryItem config (peer closed metadata959228c)",
+        "12a3a04..3a0c captures hosting EdgeInsets2,0,2,0 (peer independently closed)",
+        "1359aa8..1359afc unpacks captured insets and tail12a3ae8",
+        "12a3b98..3ba8 uses content closure1359b00",
+        "1359b00..b08 tail12a3c0c",
+        "12a3c80 ->12a3cd0 constructs HistoryCell",
+        "12a3da0 fallback ->1359c80; accessor binds descriptor95930f8"
+      ]
+    },
+    {
+      "id": "outer-insets-producer",
+      "conclusion": "This actual HistoryCell constructor explicitly supplies additionalContentInsets(top0,leading10,bottom0,trailing10). This is distinct from hosting margins2,0 and from feature/Gizmo margins.",
+      "value": [
+        0,
+        10,
+        0,
+        10
+      ],
+      "source": [
+        "HistoryCell descriptor95930f8 field7 additionalContentInsets; field offset vector2 pointerwords means slot2c",
+        "12a3eb4 reads metadata slot2c to locate field7",
+        "12a3ebc..12a3ec0 loads q0 from7da8ca0",
+        "literal7da8ca0 doubles(0.0,10.0)",
+        "12a3ec4 stp q0,q0 writes four doubles(0,10,0,10)"
+      ]
+    },
+    {
+      "id": "outer-insets-consumer",
+      "conclusion": "HistoryCell Body wraps its HistoryCellContent child in PaddingLayout using additionalContentInsets; HistoryTimestampRevealRow sits outside this padded content.",
+      "source": [
+        "HistoryCell View witness1238dc4; additional dispatch1238dc0 ->123869c",
+        "Body symbolic typeref8d93b16 contains HistoryTimestampRevealRow<ModifiedContent<HistoryCellContent,_PaddingLayout>>; only symbolicrefs/nesting, no original source claimed",
+        "123869c entry preserves self inx21",
+        "1238c0c loads own metadata field7 slot2c",
+        "1238c10..1238c18 loads all4 doubles fromself.additionalContentInsets",
+        "1238c1c importedEdge.Set.all",
+        "1238c40..1238c48 stores same four doubles inPaddingLayout after childHistoryCellContent construction",
+        "1238c50 onward builds outer timestamp reveal row"
+      ]
+    }
+  ],
+  "implementable_decision": {
+    "classification": "independent-host-transcription-with-source-values",
+    "action": "For mapped HistoryItem conversation rows, retain current child padding10,22,10,22 then wrap the complete child surface in additional horizontal10 (vertical0). Keep hosting margins2,0,2,0 and source48-Large admission as separate layers.",
+    "expected_geometry": "With refreshed child leading22 plus wrapper10, normal text origin is32 from row carrier; selection capsule belongs inside wrapper. This derives from source producers, not screenshot measurements.",
+    "do_not": "Do not shift whole collection, do not change child leading22 to32 while keeping background fullwidth, do not add feature hostingmargin10 toHistoryItem, and do not conflate footer/header margins."
+  },
+  "limits": [
+    "No device visual equality claimed; native timestamp reveal interaction remains outside this question.",
+    "Specific HistoryItem variant/config changes outside this actualconstructor not generalized.",
+    "Rejected diagnostic historycell-fields.json incorrectly read numfields asUInt16; corrected selected-metadata and correctedfieldrecord provide proper16fields."
+  ],
+  "validation": {
+    "static_only": true,
+    "product_changed": false,
+    "built": false,
+    "devices_operated": false,
+    "screenshot_values_used": false
+  },
+  "evidence_manifest": [
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-additional-insets-literal.json",
+      "bytes": 272,
+      "sha256": "c6da5c399f2f5bb5a7bc61d14a4964ea82b65331211788a086b3ef08a7042620"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-body-dispatch.asm",
+      "bytes": 1994,
+      "sha256": "bd43b86f478c05226b29f921481c73ed1a9f971343440c950107c2dfa3c2dbed"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-body-dispatch.json",
+      "bytes": 1834,
+      "sha256": "f2ba2a600f6d299237cb2a81b5f7dce722bf56b822a893c67c92225fae8b2bee"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-cell-body-candidate.asm",
+      "bytes": 6943,
+      "sha256": "d661fe3f534114275b805e833b34943e044621eda0209dda3215972721d37d2c"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-cell-body-candidate.json",
+      "bytes": 4853,
+      "sha256": "30ca2e07b2881b566846c840be35c91897adddab07844d19dccfc54236bcdc7d"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-content-wrapper-tail.asm",
+      "bytes": 7044,
+      "sha256": "a1d4aa7d672446df867147461bfa733c0ff771f5bcc6f0a397dcb5e7e85fba3a"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-content-wrapper-tail.json",
+      "bytes": 6264,
+      "sha256": "b2b10c2eeb1a057cf8590bba1b12c06ccc41d71e840aa93e3a4452922bad40b3"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-metatype-helpers.asm",
+      "bytes": 644,
+      "sha256": "38186255ae0f6e2efc62d1e50beaf52d5137b5ca4b5bb2ff640c59fefc31198d"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-metatype-helpers.json",
+      "bytes": 912,
+      "sha256": "39f7ba056d9a1d8dae325dfe64da056c1ad6ef48181a366ca510c51a2dbab98c"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-wrapper-construction.asm",
+      "bytes": 3470,
+      "sha256": "e62eed732c9441207ad360a15a892cf9cf42445b54d27993d24d8c7ab2d6ad10"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/history-wrapper-construction.json",
+      "bytes": 3190,
+      "sha256": "b26b6aa76174d1fd107ded6893ce766bba6c5ae7b448a3c490f4234ec75941c3"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-actual-body.asm",
+      "bytes": 22365,
+      "sha256": "156892823bca95c4721e14f786a8ef5c87de13c66935717fa80143514acd7ad2"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-actual-body.json",
+      "bytes": 15903,
+      "sha256": "83f54b828ebf4de49f8a13c77566078489a9de527fc223b7ed1531fa1aaf72b1"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-body-type.json",
+      "bytes": 1643,
+      "sha256": "1ee46f3b8ac693bbafabbf887dd9b77a691f7141a4bd18555ce3c66c4821c84c"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-fields-corrected.json",
+      "bytes": 1488,
+      "sha256": "cf253e4e1763dc7faab144d0b77c82b90743f970695bd05c4d1b1e02faac9581"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-fields.json",
+      "bytes": 164,
+      "sha256": "a6c9904726ee990e8c1ec762a07311b2db61d2a32db205a42b96867cda451d62"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-metatype-slot.asm",
+      "bytes": 699,
+      "sha256": "599d3788b53563861ee9d0ab9cf767c3084ab89d572d4cbb3b9e6460bf9bae41"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-metatype-slot.json",
+      "bytes": 912,
+      "sha256": "217b438f89240171d0d778a5cc52cbeca274ac506227191c7ec023e32a0b0ea0"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-selected-metadata.json",
+      "bytes": 3120,
+      "sha256": "ba77140746d5fbdb39f5572a8d019ae9cfdba51e44e14698f431485661bfb03d"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-type-accessor.asm",
+      "bytes": 828,
+      "sha256": "b02c1332cb4c2785f4c1c26676f760784a6fb6a800f4772b1c447d7f06f72055"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-type-accessor.json",
+      "bytes": 912,
+      "sha256": "cd403fc7b93d18b4a1502046d6cafd208ed870c6397afeec726e330892b8254d"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/historycell-view-witness.json",
+      "bytes": 4613,
+      "sha256": "d4adb779da866b387322f3727dcf5b9983ddec1afe05f04561907e5f3f13bf5c"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/registered-history-content.asm",
+      "bytes": 6533,
+      "sha256": "4b19ca63b7fbe0166b68cfbaf7c83ecf52009beea849344d808d1804661da5e2"
+    },
+    {
+      "path": "ios-sidebar-history-wrapper-sixth-20261113/registered-history-content.json",
+      "bytes": 5208,
+      "sha256": "1030619d8512918d584b969e43f5134acbb6b39258151073180344870501949f"
+    }
+  ]
+}

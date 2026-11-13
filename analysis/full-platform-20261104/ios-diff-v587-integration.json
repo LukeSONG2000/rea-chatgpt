@@ -1,0 +1,75 @@
+{
+  "batch": 587,
+  "status": "partial",
+  "scope": "Remote diff detail to complete local file preview and return",
+  "evidence": "ios-diff-v587-findings.json",
+  "implemented": [
+    "Independent complete-file resource on synthetic diff events",
+    "QuickLook open/close with owned temporary lifetime",
+    "Full file survives scoped turn persistence and process restart",
+    "Recovered DiffSummaryLabel reused for added/deleted counts"
+  ],
+  "independent_adaptations": [
+    "Explicit full-file text payload, button placement and local QuickLook presentation",
+    "Optional resource availability for legacy snapshots; server loading remains a future adapter"
+  ],
+  "validation": {
+    "foundation": "passed; ios-diff-v587-text.log",
+    "ui": {
+      "report": "ios-diff-v587-r1.summary.json",
+      "passed": 2,
+      "failed": 0,
+      "coverage": [
+        "Chinese light and English dark",
+        "full-file content distinct from patch",
+        "native preview close and return",
+        "collapse/copy/wrapping",
+        "task and draft isolation",
+        "process restart"
+      ]
+    },
+    "visual": {
+      "status": "inspected",
+      "screenshots": [
+        "ios-diff-v587-r1-attachments/D7AB19B4-3506-420D-8EB2-A911375C2507.png",
+        "ios-diff-v587-r1-attachments/6618BB53-784C-4942-8D03-F62DA786CD79.png",
+        "ios-diff-v587-r1-attachments/47680849-5990-4483-976C-6D2723459255.png"
+      ],
+      "finding": "Light/dark full text is readable, native close controls visible; dark diff wraps with readable summary and open action. Exact official visual parity remains partial."
+    },
+    "runtime": "ios-diff-v587-runtime.json",
+    "retention": "ios-diff-v587-retention.json"
+  },
+  "unfinished": [
+    {
+      "page": "Remote diff/file preview",
+      "priority": "P1",
+      "missing": "Original file-loading action owner, progress/failure receipts and resource-absent entry behavior",
+      "evidence_gap": "Async openFile field established; resource owner/navigation not closed",
+      "next": "Trace file browser state and add scoped frontend loading/error fixture when connecting that owner",
+      "acceptance": "Loading, absent resource, failure/retry and return preserve task, draft and selected file"
+    },
+    {
+      "page": "Remote diff detail",
+      "priority": "P2",
+      "missing": "Precise header placement, line gutters/colors/comments and file focus restoration",
+      "evidence_gap": "Body type references found; remaining modifier values/branches unresolved",
+      "next": "Recover applicable section header and line projection",
+      "acceptance": "Source-backed layout and core interactions in light/dark"
+    },
+    {
+      "page": "Platform acceptance",
+      "priority": "device",
+      "missing": "Real device, haptics, notification delivery and external-display placement",
+      "next": "Verify with available devices",
+      "acceptance": "Actual observed device behavior"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "90ad493f39b70443c60ee32d6372425f8d19773704fa2e76afa1748b608959ed",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "3aee6144b133bb6d072a1838a990ce6497718177c58b3f2ede275d48474ce366",
+    "implementation/ios/Sources/NativeConversationHost.swift": "874a1b3227bec5890560da10123593935a9254ae0f26eb9b9d543555bea7f392",
+    "implementation/ios/UITests/HostInteractionTests.swift": "f127b5bcd093f9dcc346713e03339f968a317eaf1c2f78a8e39c8cbfe01375b1",
+    "implementation/ios/TextTests/main.swift": "855a620067bbb8886496a20d653a123bac602991285b2b315c54496a4659b8a1"
+  }
+}

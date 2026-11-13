@@ -1,0 +1,35 @@
+{
+  "version": 622,
+  "platform": "Android",
+  "artifact_version": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "digest_source": "retained inventory",
+  "evidence_type": "artifact_static",
+  "source_sha256": {
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/q1s.java": "9c7df024d22e88604302eb0a4bfcfb787101e385e2eb96b1943dfff010a7bda5",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/l3f.java": "07d6cae89f682d0381292f53f055cff55f12bafbcae0475aed4d9a76295fb42f",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/cr71.java": "13a1331d9454d2dda5cc7f2df698b89115d07cfe115b63a8ee594edeb6e1da51",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/sdn.java": "1c68e408db6b06ba941809f72ce364d18da7b44870b142ebe72d41e6875fd7c6",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/on01.java": "3cc34fb222864abe5fbbc702caa0e3f60ef9b6043d5e15262da861dc4ee60d04",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java": "99bee934ff0a85ece1691654e536d128719f8b6b206754a83411ea1e31cea2c6"
+  },
+  "original_path": [
+    "q1s.java:704 computes ordinary chat/no-title selection for z38; :984 forwards to z40; :1035 calls l3f.h",
+    "l3f.h:606-642 selects toggle when z && str==null; Chat/Work enabled from m3f.b/c nonnull; invokes f with default-mask32, z3=false",
+    "l3f.f:419-437 -> cr71.g; no Work upsell icon/accent in ordinary branch",
+    "cr71.g:1190-1216 measures on01.c label; clamp(maxLabelWidth+8,82,140) per-cell; total2*cell+8;44dp track;1402-1441 selected animation and4dp inner inset; theme f.a.f track/f.a.e selection",
+    "on01.c -> sk10.e:14sp,400,0.1sp tracking,20sp lineheight; sdn.f/e uses token font and native sans fallback"
+  ],
+  "smali_crosscheck": "apktool-src/smali_classes5/l3f.smali:5340-5378 verifies toggle predicate; :5650-5690 confirms default-mask32 and f invocation",
+  "host_gap": "AppShellActivity uses independent FilterChip per mode, no common selection track",
+  "implementation": "Restore ordinary no-title/two-enabled-mode branch in independent host using measured equal cells, semantic track/selection, native tab semantics and animated selection position.",
+  "limitations": [
+    "Host mode persistence and capability inputs are independent adapters",
+    "Original drag-resize, constrained-width custom layout, exact motion spec and upsell branch are not restored",
+    "14sp source layout selected; system font scale remains active",
+    "Screenshot exact official version is unknown"
+  ],
+  "status": "implemented_with_adapter_boundaries",
+  "runtime_report": "android-shell-v622-oneplus-r3.json"
+}

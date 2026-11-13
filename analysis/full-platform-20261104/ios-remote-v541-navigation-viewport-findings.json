@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "batch": "v541",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "evidence_type": "official-artifact-static-instructions-and-Swift-metadata",
+  "scope": "CodexContentView navigation parent, task-list navigation bar visibility and bounded safe-area followup. No official runtime, app/tests/docs edits or shared REA mutations.",
+  "findings": [
+    {
+      "id": "VIEWPORT541-01",
+      "status": "verified-static",
+      "conclusion": "CodexTaskListNavigationBar is applied to NavigationStack root content, inside the stack, after navigationTitle and navigationBarTitleDisplayMode. Its input is CodexContentView.isCodexRemoteAvailable. It is not conditional on CodexScreenLayout at this call site.",
+      "producer_consumer": [
+        "0x305090..0x3050b8 supplies root closure0x4287e4 to NavigationStack.init(path:root:)",
+        "0x4287e4 loads0x305288 then0x4448e4 ->0x45f3bc branches to supplied function",
+        "0x305ca4 navigationTitle and0x305cec navigationBarTitleDisplayMode execute in root builder0x305288",
+        "CodexContentView descriptor0x955fbe8 has fieldoffsetvector word6; isCodexRemoteAvailable fieldindex24 corresponds metadata slot0x90",
+        "0x305eb8..0x305ed8 reads field via metadata+0x90 and invokes0x2ab7e68",
+        "0x2ab7e68..0x2ab7ef0 stores Bool at modifieroffset0 then applies modifier",
+        "modifier metadata descriptor0x95ed760 CodexTaskListNavigationBar accessor0x2ab9fdc fields isRemoteAvailable and __hostingController",
+        "conformance0x7ee2c50 ViewModifier.body witness0x2ab873c ->0x2ab7f0c"
+      ],
+      "limits": [
+        "Concrete ordinary phone layout remains inherited and unresolved from v539. This root call does not itself filter taskList versus standard.",
+        "Root modifier ownership does not establish selected-thread override/inheritance after a push."
+      ]
+    },
+    {
+      "id": "VIEWPORT541-02",
+      "status": "verified-static",
+      "conclusion": "On iOS26+, navigationBar toolbar background visibility is hidden when isRemoteAvailable is true, otherwise automatic. Earlier systems use visible.",
+      "producer_consumer": [
+        "0x2ab8018 initializes w22=1 (visible)",
+        "0x2ab8074 sets w19=2;0x2ab8078 calls availability0x1bdeac",
+        "0x1bdeac supplies platform2 version26.0.0",
+        "0x2ab807c skips selection on earlier systems",
+        "0x2ab8080..0x2ab8088 reads isRemoteAvailable and selects raw2 if true, raw0 if false",
+        "0x2ab80d0 constructs ToolbarPlacement.navigationBar",
+        "0x2ab80dc forwards selected visibility;0x2ab80f0 invokes toolbarBackgroundVisibility(_:for:)"
+      ],
+      "implementation": "For the verified reconstructed root, preserve an explicit remote-availability capability and apply .toolbarBackgroundVisibility(isRemoteAvailable ? .hidden : .automatic, for: .navigationBar) on iOS26+. Earlier-system branch requires the separately recovered legacy styling below.",
+      "limits": [
+        "This is a native toolbar-background restoration. It does not establish an opaque pinned section-header fill or prove the cause of the host overlap.",
+        "Availability is supplied by the page owner; injected fixture capability must remain explicitly synthetic."
+      ]
+    },
+    {
+      "id": "VIEWPORT541-03",
+      "status": "verified-static-with-bounded-legacy-detail",
+      "conclusion": "Legacy navigation-bar appearance handling is separately gated and does not run on iOS26+. The earlier-system style uses systemBackgroundColor and hides appearance shadow through a hosting-controller callback when Remote is available.",
+      "producer_consumer": [
+        "0x2ab8040..0x2ab8064 installs conditional transformation closure0x2ab829c",
+        "0x2ab829c tests same version availability; new-system branch returns erased original content",
+        "0x2ab8310..0x2ab839c earlier branch creates Color(UIColor.systemBackgroundColor) then toolbarBackground(for navigationBar)",
+        "0x2ab8194..0x2ab81b4 installs hosting callback0x2abce54",
+        "0x2abce54 stores hosting controller then invokes0x2ab83dc; onChange callback0x2abcf2c also invokes0x2ab83dc",
+        "0x2ab8400..0x2ab8414 returns when iOS26+, Remote unavailable, or controller nil",
+        "0x2ab841c/0x2ab8430 accesses hosting navigationController/navigationBar;0x2ab8450 navigationItem",
+        "0x2ab8544 fallback standardAppearance;0x2ab8568 creates copy via initWithBarAppearance;0x2ab8598 setShadowColor(clearColor)"
+      ],
+      "limits": [
+        "Four navigationItem appearance keypaths and writeback slots remain structurally present but their individual property names have not been bound. Do not claim all scroll-edge variants fully recovered.",
+        "No legacy-device execution performed."
+      ]
+    },
+    {
+      "id": "VIEWPORT541-04",
+      "status": "partial",
+      "conclusion": "The directly observed safeAreaInset belongs to CodexFadingScreenFooterModifier and affects the bottom edge in its older-system branch. It is not evidence for an extra top inset or a pinned-header backdrop.",
+      "producer_consumer": [
+        "0x30602c applies helper0x2ab73e8 with a CodexNewTaskFooterButton plus PaddingLayout type0x7cf5f18",
+        "helper0x2ab73e8 uses modifier accessor0x2ab9fd0 descriptor0x95ed7a8 CodexFadingScreenFooterModifier",
+        "ViewModifier.body witness0x2ab7bec ->0x2ab74e0",
+        "0x2ab7508..0x2ab7520 tests version; earlier-system branch enters0x2ab7648",
+        "0x2ab77b8 HorizontalAlignment.center;0x2ab77d0 negates dynamic spacing;0x2ab77e0 supplies verticalEdge raw1(bottom);0x2ab77f4 calls safeAreaInset",
+        "0x3061f0 top overlay closure0x42999c ->0x30d110 consumes currentBanner/dismissBanner fields;0x306288 background0x429770 ->0x3080d8 constructs hidden keyboard-shortcut Button type0x7cf6040"
+      ],
+      "limits": [
+        "Complete footer new-system renderer and height ownership are not reconstructed in this pass.",
+        "The top overlay is a banner path and its entire presentation is not re-proven here.",
+        "No source-supported custom header fill, top occlusion inset, or alteration of native pinning was found in this bounded chain. Generic environment and native OS behavior can still affect runtime viewport."
+      ]
+    }
+  ],
+  "actionable_change": {
+    "classification": "official-source-backed-root-modifier",
+    "scope": "NavigationStack root CodexContentView-equivalent content",
+    "change": "Restore capability-dependent navigationBar toolbarBackgroundVisibility with version gating.",
+    "host_app_review": "Parent reports current build540 has no toolbarBackground or UINavigationBarAppearance implementation. This report did not modify or execute the app.",
+    "acceptance": "Compare list top viewport and native navigation background across Chinese/English standard and XXXL, available/unavailable fixtures, and task push/pop. Treat pinned-header backdrop as unresolved until runtime reference establishes it."
+  },
+  "remaining_boundaries": [
+    "Native pinned section-header backdrop/occlusion behavior under exact official OS/SDK and appearance environment.",
+    "Actual page root safe-area viewport in official runtime; no new top inset or clipped scroll viewport is justified.",
+    "Four legacy navigationItem appearance keypath names and final writebacks.",
+    "Any selected-thread local toolbar-background override and actual ordinary phone CodexScreenLayout producer."
+  ],
+  "validation": {
+    "official_runtime": "not_run",
+    "host_runtime": "parent_owned",
+    "screen_constants_inferred": false,
+    "shared_rea_target": "untouched"
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-availability.asm",
+      "sha256": "506ddae892508a3ee251eb613e030cac951ce752959abd00c9a0857f40bdb1b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-availability.json",
+      "sha256": "67148f8715472d9743a6544cae9c97ee7c45e2d5e26704bca36b8dfaee6670f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-bottom-modifier-body.asm",
+      "sha256": "8f828388ceca02edb08fbe31ed71a3e684909149f7995f5d9fbb746703e75e3c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-bottom-modifier-body.json",
+      "sha256": "91425573f8946d4da2a7dfaf875caa7c1fe5eff11efc03b3b151740631201d6f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-content-overlays-body.asm",
+      "sha256": "ebf60609dc33f3894e8005e749bb98aceb6b6376bc221075425436ad74bbd8bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-content-overlays-body.json",
+      "sha256": "7c089929c935727517889e3fcbb2062621555fe0c67fda02041bbbf1367e6152"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-content-overlays.asm",
+      "sha256": "a7126fd8e857d7af6ec85cd271d7f3d780c4f7a9f23bac77a584bee8de9268a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-content-overlays.json",
+      "sha256": "2459c0baa53070c4e67183dc24c5469c81d58448c0a151e9cb6eec47c550e5b8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-content-tail.asm",
+      "sha256": "8c1967afc37b9c001b721e6f618d6e79a24b04dc19e549d3c9583236046020fe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-content-tail.json",
+      "sha256": "b3b7706d121fd2a83e1d2212b15db846ab0adecae65bc2ae106def65d50d6c13"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-footer-closure.asm",
+      "sha256": "82d52cf5432501fc9ed1ab1b40a867eb60449747e4270af5bb75faee4df9c981"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-footer-closure.json",
+      "sha256": "ee730dccab249982be6107d00726704446166869e2e105238f3562e62e0d744d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-modifier-accessors.asm",
+      "sha256": "fe0da3c4d849317bd0a1e9155ad290bbfd67bf964a92997bd71d03a0a0679159"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-modifier-accessors.json",
+      "sha256": "f68135fcf7eab1e01c10878b6898ff1239b3fdb786e22cabb2018a1a4e0f931e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-modifier-body-witness.asm",
+      "sha256": "0a2bd8cdca06723480c57823e94269524faa2a1916a942f955141055ad56b669"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-modifier-body-witness.json",
+      "sha256": "8c62ee682d1ac7885eecb6069e8e72c07d1afae6169bcfe65ba4148945c93400"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-modifier-metadata.json",
+      "sha256": "40ba345f26c02f9f51c283cd299660d919ee092bbab061960431de52c6889ec4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-modifier-type.asm",
+      "sha256": "87b8fe99511d53bde05210c841bb40f2a9604fb43fd2b657c2ed025dc238979d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-modifier-type.json",
+      "sha256": "35c31b1957284ace7d0026c47ce75509419ffbe37f1ad87a442b1ad7bdba3fb4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-modifier-witnesses.json",
+      "sha256": "2c0a4168e45f292c1d430d13e9e4edd5d95492630567537593d3f8c0512829d8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-nav-bar-callbacks.asm",
+      "sha256": "eb3106e7efb87df42b2563bb38fa36128203e794f1306d6d37f707ab9c4acaec"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-nav-bar-callbacks.json",
+      "sha256": "81121efdb0dd58fb9dd2bdae0f26074f1cba6439e8c5608db6842dc3a7555ee7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-nav-bar-witness.asm",
+      "sha256": "7ea4b043e7c35aa5bb7dbe2d67d214c2a35ff1860add3a80b1f0f73a17c9cd22"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-nav-bar-witness.json",
+      "sha256": "1332ee909679954fa8ba539ea95954de5f268641b8a7c03c204cb6c30307af6b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-nav-modifier.asm",
+      "sha256": "f259682e3ccb5c548870dd8513f5f742f05b6503a05cb4f7cb70e1c508ec1e60"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-nav-modifier.json",
+      "sha256": "8c6a917140733c26c309273cf4dfd710d2b3eafc8f21abcffc90328ef35298ec"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-root-closure-dispatch.asm",
+      "sha256": "c8c81f5ab8a59affd1eacdd572d3d2807871c234006b26b88c7054d5f59fcdc4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-root-closure-dispatch.json",
+      "sha256": "9c157dfe0f0a665179b47b1030b0f5998447bd3e37eade7d94ab24926f0aabf0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-root-closure-tail.asm",
+      "sha256": "59ba0f4d006f07c3e66c02f70f5cb6f4c9182d61c14f4a966b2fb909ec41b1f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-root-closure-tail.json",
+      "sha256": "e32d6f72e615cbb78c8a721d2f561481022c81dd588adb9d51a4e9eacbcb693f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-root-modifiers.asm",
+      "sha256": "24b42c6fa94ef9ccd03c426a5ae5cafb8c8c2181c861c7abbd8c9eeb3394829e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-root-modifiers.json",
+      "sha256": "4f115d297bdd55377fb91311f0fa0821d5832e45e459e89759204f0f011e5c7d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-stack-builder.asm",
+      "sha256": "a93201061472c60588b410ec709be01f19bb782d7532fa24ee326ee3cf063530"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-stack-builder.json",
+      "sha256": "3511d498550e7c5186c31473bed1b97a031c99933fbe293275940bc2d1a820bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-stack-closures.asm",
+      "sha256": "3c526a185989a8c0760cce7f254f54fe558f1d31ba9d9e7a5d5d908bdac32d1f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-stack-closures.json",
+      "sha256": "c06f985f8c07fd8a7ef6c72fc1d6ae4313196f7fa55e4646f715e6ba555c9edf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-top-overlay.asm",
+      "sha256": "06a9feffcb063c99c5c0be65def3850068981ae795367018571e8e67c51eaf09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-top-overlay.json",
+      "sha256": "1c3cbb1ddd5817b5051989323cf1562a276e3541275a546df1a6b733d3d14132"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v541-navigation-viewport-types.json",
+      "sha256": "ad6ccf60ea697546f3f92cbee6cffa26fe1af373c99b4cadda1bf3702a5b4ddd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v505-content-metadata.json",
+      "sha256": "0325ceb5aeef788fac9b63a576913cb32784aed64fdde65429e3a8161b0afe35"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v505-content-body-imports.json",
+      "sha256": "901faf965520411883417e7cab29124b01d8fa3e0614216dedfc4e4244c14922"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v539-header-parent-findings.json",
+      "sha256": "83aa8856a55fa1cf81feac5e699feaa718adba58efcad1f749b758512720e7a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-edge-findings.json",
+      "sha256": "ae97d49f2ef166243e75ab6e9e5e6fbeb24c3e9dda972c8db3e4339ed352acf2"
+    }
+  ]
+}

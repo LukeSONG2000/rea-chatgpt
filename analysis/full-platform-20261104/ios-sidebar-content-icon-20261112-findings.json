@@ -1,0 +1,445 @@
+{
+  "schema_version": 1,
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "scope": "Two bounded module1 questions: content dimming and FileLibrary sidebar icon",
+  "execution": {
+    "host_modified": false,
+    "builds": false,
+    "devices": false,
+    "official_target_executed": false
+  },
+  "content_dimming": {
+    "confirmed": true,
+    "mechanism": "Dedicated contentOverlayView with a color and animated alpha; no evidence to multiply the whole content.view.alpha by an arbitrary scalar.",
+    "receiver_proof": {
+      "ivar_table": "analysis/full-platform-20261104/ios-sidebar-v263-offset-binding.json",
+      "contentOverlayView_offset_storage": "0xad5cc38",
+      "resolver": "0x703710 loads this exact offset storage",
+      "alpha_function": "0x62c3ac",
+      "alpha_receiver": "62c3bc invokes703710;62c3c0 loads[x20,x8];62c3fc tailcallsobjc setAlpha:",
+      "background_receiver": "628130 basead5cbb0 +0x88 resolvesad5cc38;62813c loadsview;62816c sendssetBackgroundColor:"
+    },
+    "alpha_values": {
+      "input_false": 0,
+      "input_true_and_usesBlurringOverlayPresentation_true": 1,
+      "input_true_and_no_blurring": "alpha returned by62b770",
+      "flag_binding": "62c3cc->6feb6c readsad5cbb0 usesBlurringOverlayPresentation;62c3d0/3d8 checksit",
+      "limit": "Source Bool-to-menu-open relationship/callback state transition is not fullyclosed here. Inputfalse/true semantics are recorded as call parameters, not invented enum names."
+    },
+    "color_and_alpha_factory": {
+      "function": "0x62b770",
+      "trait_read": "6f8624->objc traitCollection;62b790 userInterfaceStyle",
+      "movement_read": "62b798..a4 readsad5cba8 movementStyle;2c60c0 comparesraw1",
+      "rows": [
+        {
+          "movementStyle_raw": "1",
+          "userInterfaceStyle": "light or not2",
+          "color": "UIColor.black",
+          "alpha": 0.2,
+          "constant": "0x7d193a0"
+        },
+        {
+          "movementStyle_raw": "1",
+          "userInterfaceStyle": "dark=2",
+          "color": "UIColor.black",
+          "alpha": 0.55,
+          "constant": "0x7d193a8"
+        },
+        {
+          "movementStyle_raw": "not1",
+          "userInterfaceStyle": "light or not2",
+          "color": "UIColor.white",
+          "alpha": 0.5,
+          "source": "62b818..62b82c"
+        },
+        {
+          "movementStyle_raw": "not1",
+          "userInterfaceStyle": "dark=2",
+          "color": "UIColor(white:0.14901960784313725,alpha:1)",
+          "alpha": 0.55,
+          "color_initializer": "62715c..627184;7d193d8;initWithWhite:alpha:",
+          "constant": "0x7ce2090"
+        }
+      ],
+      "limit": "Raw movement styles are intentionally not named from enum metadata order. Choose only the host branch explicitly aligned to its recovered layout; original experiment assignment remains independent."
+    },
+    "ruled_out_confusions": [
+      {
+        "site": "0x6283c8",
+        "receiver": "blurringOverlayGradientView (ad5cc50)",
+        "not": "wholecontentalpha"
+      },
+      {
+        "sites": [
+          "0x629c44",
+          "0x62c964"
+        ],
+        "receiver": "menuOverlayView.layer (6fca48→ad5cc30)",
+        "not": "contentlayer"
+      },
+      {
+        "site": "0x62dd2c",
+        "keypath": "0x7d16f88",
+        "getter": "537330→6f22b98→6f57ae4",
+        "conformance": "0x838a51c ->type0x9720a98 __Key_isSideMenuContentToolbarHidden",
+        "not": "all-pageSwiftUI.isEnabled"
+      },
+      {
+        "site": "0x688ad4/adc",
+        "semantics": "Transaction.animation / disablesAnimations",
+        "not": "disabledcontentenvironment"
+      }
+    ],
+    "host_difference": {
+      "file": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "observed": "Existing dismissSurface blocks content interaction, but no sourcecolor/alphaoverlaywasidentified incurrenthost atinspectiontime. Parent maymodifyconcurrently."
+    },
+    "minimum_recommendation": {
+      "classification": "independenthosttranscriptionwithsourcevalues",
+      "action": "Addaseparatecontentoverlayintegratedwithcontentclip/motionandexistingdismissbehavior; usechosenmovementstyleandtraitderivedsourcecolor/alpha. Keepcontentitselfalpha1.",
+      "blocked_details": [
+        "Exactmasklayerpath/overlayattachment/clippingrelationship",
+        "FullBoolproducerandtransitionprogressmapping",
+        "Ifusingblurringoverlaybranch,itsgradient/blurmustberecoveredseparately;alpha1aloneisnotopticalparity"
+      ]
+    }
+  },
+  "file_library_icon": {
+    "confirmed": true,
+    "vm": {
+      "name": "HistoryFileLibraryCellViewModel",
+      "descriptor": "0x9591a98",
+      "accessor": "0x13205d4",
+      "initializer": "0x123d5a0",
+      "fields": [
+        "title",
+        "image",
+        "animatedIconKind",
+        "_isSelected",
+        "_isEnabled",
+        "bag",
+        "_$observationRegistrar"
+      ]
+    },
+    "branches": [
+      {
+        "branding_raw": 0,
+        "semantic": "library",
+        "title_key": "file_library_title",
+        "title_literal": "0x89e7a70",
+        "title_fallback": "Library",
+        "zh": "资料库",
+        "icon": "OpenAI/Symbols/books",
+        "icon_factory": "0x74f5364",
+        "icon_literal": "0x8a54440",
+        "source_branch": "123d648 cbzw21→123d658",
+        "packed_name_length_tail": "7502d80..d94 sets0xd000000000000014,count20",
+        "animatedIconKind_raw": 0
+      },
+      {
+        "branding_raw": 1,
+        "semantic": "space",
+        "title_key": "space_browser_title",
+        "title_literal": "0x89e7a50",
+        "title_fallback": "Space",
+        "zh": "资料空间",
+        "icon": "OpenAI/Symbols/document-on-document-tilted",
+        "icon_factory": "0x74f6aa8",
+        "icon_literal": "0x8a54f10",
+        "source_branch": "123d648 fallthrough123d650",
+        "packed_name_length_tail": "7503128..313c sets0xd00000000000002a,count42",
+        "animatedIconKind_raw": 7
+      }
+    ],
+    "chain": [
+      "123d63c passesoriginalbrandingto5ff99f8,titlefactory explicitlycomparesraw1andchoosesSpacekey;fallbackotherLibrarykey",
+      "123d660 storesoriginalImagefactoryresultintoVM+0x20",
+      "HistoryFileLibraryCell body123d224 obtainsviewModel;123d3c8 loadsVM+0x20",
+      "NativebodybuildsHistoryNavigationCellContent<HistorySidebarIcon<Image>,Image,EmptyView> via13968a8→type7db4050",
+      "123d3b4..3e0 initializesHistorySidebarIcon configuration andstaticIcon; icon wrapperspreservereduceMotion/colorScheme"
+    ],
+    "body_witness_caveat": "123d564 dispatches genericwitness+0x20 via45d2ec→50d39ec;123d560 isdirecttailtoactualconstruct123d224. Fullresilientgenericwitnessslot-to123d224notdecodedinthispass;actualconstructionandVMimageflowareindependentlypreserved.",
+    "provider_boundary": {
+      "scope": "HistoryViewModel cachedfile-librarycellmodel",
+      "site": "0x12a169c..0x12a1868",
+      "construction": "12a1820 callsVMaccessor,12a1824 allocates,12a1834 invokes123d5a0",
+      "branding_input": "12a17d8..e0 calls genericconfigurationreader ae07c4;12a17ec loadsreturnbyte;12a182c putsitinx0",
+      "unknown": "Originalconfigurationprovider/accountassignmentvalueanddefaultnotresolved. Do notinferitfromneweruserimage."
+    },
+    "asset_exact_matches": {
+      "OpenAI/Symbols/document-on-document-tilted": 18,
+      "OpenAI/Symbols/books": 18
+    },
+    "source_of_titles": "See -resources.json, originalcompressedsharedtables withdigests",
+    "minimum_recommendation": "ForanexplicitSpace-brandedpreviewentry,useoriginaldocument-on-document-tilted;forLibraryusebooks. Current square-stack-fanned has no support in either 293 branch. Preservebrandingasproviderinputratherthan globallyreplacingallaccounts."
+  },
+  "stopped_boundaries": [
+    "No arbitrary whole-pageopacity/disabledpolicy recommended",
+    "No completeadaptiveHistorymenuconfigurationassignmentclaim",
+    "Noimage/opticalparityclaimfromstaticresources",
+    "No furtherunboundedreverseengineeringunderthissubtask"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-HistoryFileLibraryCell-witness.json",
+      "sha256": "cf7542cb7e1b6656a75b1be65f67fe98df3181b6955b66223c133464f77ad55b",
+      "bytes": 3609
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-HistoryNavigationCell-witness.json",
+      "sha256": "96b252c4da6e9b6f83f0f14e7e933a30f86d4629541ba921229a615dc4fffc3b",
+      "bytes": 3609
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-HistorySidebarIcon-witness.json",
+      "sha256": "1d63060534190314845d4c72b6f6e15a7d7d02ceee38b4e7ab398646f9691dcf",
+      "bytes": 3609
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-alpha-leads.json",
+      "sha256": "c136d1ccfd5404584f4f81346977576e03231708495bd9dc90e02fbea40393fb",
+      "bytes": 2828
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-body-return.json",
+      "sha256": "ec004a36b6abfbc4b0976f9e3cae45d43656747deb70ff02148b367fb34f0b4e",
+      "bytes": 1273
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-books-string-tail.asm",
+      "sha256": "e5eb80579ce5be63f20ea0a3025f2dac8735d9bfb9cb4039e13fb122ee2a1b73",
+      "bytes": 468
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-branding-title.asm",
+      "sha256": "fa20cb7b5256470607aa6904608c9771202873706cbc9791847f555d227b8d3d",
+      "bytes": 2758
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-branding-title.json",
+      "sha256": "7641b82209965ea7102ca20a2ea7029bb91cb4d6bc3f26f29f1d1d4910a01c2c",
+      "bytes": 1487
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-container-body-calls.json",
+      "sha256": "4186bcd7351b3b28ade77ca010ccc429756cae74da8b7bb3b1847586c1358be1",
+      "bytes": 12658
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-container-type.json",
+      "sha256": "949733038d7bca6c935b277ec4fe8aceff21e76cea87195c0cea2ee6c705587e",
+      "bytes": 2708
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-container-witness.json",
+      "sha256": "dde2fd8903a2e2bd5028ea1880ef7811cbd234d78b6de749c16480bf0501f35f",
+      "bytes": 3608
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-content-overlay.asm",
+      "sha256": "93c8123c7d9da101e1e0c9e5c124714ab65d8409602d7d5916730f61cd1b0eaf",
+      "bytes": 5478
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-content-overlay.json",
+      "sha256": "4b990cde6733f1e8c01c3b98282d7514f2633bee7099762b9c1fc767306737e1",
+      "bytes": 4736
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-env-key-conformance.asm",
+      "sha256": "4e4966e58e820fdabcac822a27b38308783cde994879800cdad06bef3472c9f3",
+      "bytes": 952
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-env-key.asm",
+      "sha256": "2ac71134e3251421abb74a31f9fdd59c4aa0f79cbff0f96f600ee3cf4fbf6acd",
+      "bytes": 708
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-file-cell-body.asm",
+      "sha256": "e2741f2b423bfc538deeea9035a23450c5d270157dd298dbc1bd9659ed090c48",
+      "bytes": 11151
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-file-cell-body.json",
+      "sha256": "275d8e51dd170bd9567efd6b848370af9f227441007958d5b36273bda09098f5",
+      "bytes": 8421
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-file-vm-init.asm",
+      "sha256": "030e4b66272b39c15daef790c2ca9de304a8331bf7e54cda89b9f8332c3641e1",
+      "bytes": 8180
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-file-vm-init.json",
+      "sha256": "dcf7cabc1dcdaa2287ebbd7faa67fa9f26a0d9791eaf4c52dc8f89c6ee3f5533",
+      "bytes": 5068
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-file-vm-provider.asm",
+      "sha256": "5ff7affad4e4ae95149986b7bf9f1291f2d3f83aecb42bde9058e1955acbede9",
+      "bytes": 5799
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-file-vm-provider.json",
+      "sha256": "7d791c6533f2b0ef618e4d1ee1e28af83d218bbddb8b1b7304b3a78336ebe747",
+      "bytes": 5064
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-file-vm-refs.json",
+      "sha256": "6b3c5048e8e3dbb47bc9c27c90554b8380109d26720adc1ae7f449281569315c",
+      "bytes": 1672
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-icon-library.asm",
+      "sha256": "eaf5209a5be23ff66b8e4c5872e8ce149cf2c51c1c36000a126bf67b18167af9",
+      "bytes": 1161
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-icon-library.json",
+      "sha256": "9b161901137f1aba6a28905d8663d617e1f9afd30328a15f1116c03c68197866",
+      "bytes": 1589
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-icon-space.asm",
+      "sha256": "f2efe9401edeadbc8b413a0c018b2d65f4fe1fb6993c0d3fa6b6eae0ee15244a",
+      "bytes": 1218
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-icon-space.json",
+      "sha256": "2f57c6713eb2429d65fd0e4b8428e142c0966c594b6c71f2f9c12dd8161028a6",
+      "bytes": 2115
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-menu-opacity-proof.asm",
+      "sha256": "93e53a70c69bdb821b005b0888ac4d66605de8bb7fa40307f655b1a32470eb08",
+      "bytes": 2463
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-opacity-background-leads.json",
+      "sha256": "76a021907da9ad670630751c2b3f01bccca4837578d6ba780b38a2e5b663ed8e",
+      "bytes": 3063
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-alpha.asm",
+      "sha256": "f27e823ca6f1765f22467d1e5e703df1bc036c7ee2159608bbfff5906d176a39",
+      "bytes": 1222
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-alpha.json",
+      "sha256": "3b22d39f2e55daa24e1afa2a62f9495eb5fe2e7bbfd691c0de18bb7ec12d96f8",
+      "bytes": 1294
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-background.asm",
+      "sha256": "3b5ae9ef363dd579313de077b7a596f965ce7ea0b4b8222f2a5c3e23a434b6ba",
+      "bytes": 2219
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-background.json",
+      "sha256": "88a75752bdbfea92ec7a3fecb4a38c52fd4187acd1b7da6eb2ac48ea7e2a0235",
+      "bytes": 2092
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-color-alpha-use.asm",
+      "sha256": "1d7717f11504b5f3c9c73d1eba071264344371e8b492ee2458eb9fcfc46c6735",
+      "bytes": 976
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-color-deps.asm",
+      "sha256": "b099f68c00272270fac515d21e5863e23741784c7b3fb610de28ab1c35a2bf78",
+      "bytes": 714
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-color.asm",
+      "sha256": "bf2b392b975d3746dab3b7489d17101cee295a96f5c67cf95b48a6e02b244dec",
+      "bytes": 2784
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-color.json",
+      "sha256": "ec7f8f102bae84948dfe9ef8d788402f87aa484f973acbd4995ac83b12ec8fe3",
+      "bytes": 2688
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-control-predicate.asm",
+      "sha256": "17ccca4c625f8cebfa65e590fb12943f7f36af123c6ce00cfa0fbff8404f4a9e",
+      "bytes": 332
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-flag.asm",
+      "sha256": "8558ae2935fb266cacfd7bc01d0fbbd0572e5bc0860d513d5654d80e8785ea2d",
+      "bytes": 353
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-pointer-fields.asm",
+      "sha256": "dff5bca80c44b707ea0cdb5855556cd918d607b06e9c4dc2fc71c62b2c12eaab",
+      "bytes": 353
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-pointer.asm",
+      "sha256": "edf0a6ce03b7e70adeff8d617c5b1f96b8a5d332465c62fea89a5e2f9f83ed48",
+      "bytes": 353
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-overlay-state-predicate.asm",
+      "sha256": "fcea948119a5cfff7eedee3049eeef4cfc1c258848d17e42c150341f3796f527",
+      "bytes": 418
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-resources.json",
+      "sha256": "ec96b4f863ed1fef52229929cc1ff5b8144d53b6c1f5f5feaf34c9ecd13abd1a",
+      "bytes": 26636
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-sidebar-icon-body.asm",
+      "sha256": "47e72a7e9b8862737554b3da7498333c989f9e181d3bc24b5929d1c1ce991a6b",
+      "bytes": 15658
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-sidebar-icon-body.json",
+      "sha256": "9739676c9e10cd1ae12020b9beb5222425a0867163289afa41a8fbdb58c6c4f8",
+      "bytes": 12863
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-space-string-tail.asm",
+      "sha256": "35bdc280dbaff01d7e809d33d97edadf35bf835b63b292af05d06f718eb6372e",
+      "bytes": 440
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-type-7cf79d0.json",
+      "sha256": "5b71b7652eddf6a847d50ae1f74b8e4114bb0e18a917f356a7b538d107bbc70f",
+      "bytes": 768
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-type-7d0b588.json",
+      "sha256": "66e52f1ed2f3b41901f32f33fe85f7c8a8094b875732667efa30c713d85f777a",
+      "bytes": 957
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-type-7d0de60.json",
+      "sha256": "4c62034b609ecc04835a0b4335a520a13456a9033371648f4979f633f94a6bbb",
+      "bytes": 929
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-type-7d0de68.json",
+      "sha256": "ebc282c78825d39f8c561000d36c82940ec1d9d1f0f043b68379e338635d0a24",
+      "bytes": 971
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-types.json",
+      "sha256": "464995e905a7a0ef2056bf169a77285d87e463d57b9f383c8271a031c862c813",
+      "bytes": 4147
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-content-icon-20261112-whole-content-disable-check.asm",
+      "sha256": "1ca1836f7dd3dde633b7630a985a6ad6bdbb19ecf6afbb32def37b307e472cbc",
+      "bytes": 1371
+    }
+  ]
+}

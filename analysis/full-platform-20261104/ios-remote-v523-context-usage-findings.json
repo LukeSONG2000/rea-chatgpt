@@ -1,0 +1,200 @@
+{
+  "status": "partial",
+  "scope": "iOS 1.2026.293 Remote composer context usage only",
+  "evidence_type": "official_artifact_static_analysis",
+  "runtime_validated": false,
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "closed_boundary": "Settings preference and Controls visibility → Indicator data → tap state → compact-adapted Popover. Concrete ThreadViewModel update producer remains a specific open boundary.",
+  "chain": [
+    {
+      "node": "data shape",
+      "status": "verified_static",
+      "proof": [
+        "ContextUsage descriptor0x95d16f4 fields usedTokens,modelContextWindow",
+        "Indicator0x95ae32c field0 and Popover0x95aff18 field0 bind same ContextUsage type0x8e39370",
+        "Controls0x95ac868 field2 type0x8e11c54 binds Optional<ContextUsage>"
+      ],
+      "limits": "Does not establish transport payload, cache accumulation or token accounting ownership."
+    },
+    {
+      "node": "settings preference injection",
+      "status": "verified_static",
+      "proof": [
+        "Controls initializer0x1970c78 writes metadata+0x3c(field7) at0x1970d14..54",
+        "literal0x88b2170 = codexRemoteContextWindowUsageEnabled",
+        "Settings initializer0x180f820 at0x180f940..60 writes metadata+0x44(field5) via0x19a2388, whose0x19a239c..c0 loads same preference key",
+        "Both use0x6f8334 preference constructor and0x73ef674 ViewSetting wrapper",
+        "Descriptor field offset vectors are measured in pointer words: Controls4*8=0x20 +7*4=0x3c; Settings6*8=0x30 +5*4=0x44"
+      ],
+      "limits": "Default value, account scoping and persistence migration not proved."
+    },
+    {
+      "node": "settings toggle",
+      "status": "verified_static",
+      "proof": [
+        "0x1815b14 loads localization key codex_remote_context_window_usage_title;0x88af910 English fallback Show context window usage",
+        "0x1815b84 reads Settings metadata+0x44 field5;0x1815b9c Binding.projectedValue;0x1815bbc SwiftUI.Toggle<Text>.init(_:isOn:)",
+        "Metadata accessor proof0x1844df0→0x182dfbc→Settings descriptor0x95a8910"
+      ],
+      "conclusion": "Toggle edits the same preference consumed by composer visibility."
+    },
+    {
+      "node": "visibility",
+      "status": "verified_static",
+      "proof": [
+        "0x1965ab0→0x1daf88c→Controls accessor0x1aa5848",
+        "0x1965ab4 reads metadata+0x3c field7;0x1965ad4 Binding.wrappedValue",
+        "0x1965adc..aec requires true and Optional contextUsage tag atControls+0x20 !=1",
+        "present branch0x1965afc..b20 copies 16-byte ContextUsage pair fromControls+0x10 intoIndicator; absent/disabled0x1965af0..af8 produces nil"
+      ],
+      "rule": "visible = contextWindowUsageEnabled && contextUsage != nil"
+    },
+    {
+      "node": "input assembly",
+      "status": "verified_static",
+      "proof": [
+        "Controls initializer0x1970d78 stores x21/x20 into+0x10 usage payload;0x1970d7c stores x19 into+0x20 optional tag",
+        "producer0x1cea1e0 at0x1cea224..22c dispatches witness+0x218, thenforwards result through0x1cea264→0x1970c78",
+        "producer closure reference0x1a23b9c in0x1a233d8..1a23dbc"
+      ],
+      "limits": "Protocol requirement at+0x218 and concrete ThreadViewModel getter still need binding. Do not assert the field is cumulative output tokens or local estimation."
+    },
+    {
+      "node": "ring",
+      "status": "verified_static_partial_style",
+      "proof": [
+        "Indicator labelbuilder0x1971284 gives ScaledMetric base24 at0x1971310..133c",
+        "labelbody0x19715e0 uses ContextUsage pair0x1971660..166c and helper0x244800c",
+        "progress max100 supplied0x197167c..1698; type0x7e22e98 binds OAIProgressView + OpenAICircularProgressStyle + frame + Rectangle contentShape",
+        "0x1971700 gives2 to style construction path,0x1971740..1748 uses Color.opacity(0.14)",
+        "0x1971834..184c easeOut(duration:0.22) keyed to percentage result"
+      ],
+      "limits": "2 parameter semantic label, exact foreground palette and complete ProgressStyle internals not decoded. Do not claim a reconstructed manual Circle/trim is official code."
+    },
+    {
+      "node": "tap and presentation",
+      "status": "verified_static",
+      "proof": [
+        "Indicator body0x1970de8 button action closure0x1cf2df8→0x1cedba8",
+        "0x1cedbc4 reads Indicator metadata+0x14 field1 __isPopoverPresented",
+        "0xc1aa84 writes true;0x288cdc tail-calls SwiftUI.LazyState.wrappedValue.setter at0x7c4bb38",
+        "0x19710b0..10c0 projects state binding",
+        "0x19711b8 popoverCore/isDetachable=false or0x1971200 popover selected by0xccab64",
+        "contentclosure0x1cf2f94 copies Indicator ContextUsage pair",
+        "Popoverbody0x1971898 at0x1971970 PresentationAdaptation.popover and0x1971984 presentationCompactAdaptation"
+      ],
+      "conclusion": "Tap sets presentation true. Keep popover adaptation on compact displays. Availability predicate and named anchor edge remain unproved."
+    },
+    {
+      "node": "popover text",
+      "status": "verified_static_partial_format",
+      "proof": [
+        "Popover bodywitness0x1971ce4 loads same ContextUsage pair and branches0x1971898",
+        "contentbuilder0x19719a4 uses key0x88be080 codex_remote_context_window_title and fallback Context window",
+        "0x1971b24 reuses status/accessibility formatter0x19713f0",
+        "formatter0x1971474 helper244800c;0x1971478..1488 computes max(100-usedPercent,0)",
+        "keys0x88bc070 codex_remote_context_window_accessibility_label and0x88bc0c0 codex_remote_status_context_usage",
+        "type0x7e22ed0 binds Text.monospacedDigit;0x1971bdc ContentTransition.numericText"
+      ],
+      "limits": "Chinese abbreviation 万, precision of used/total strings and localization placeholder schema still require formatter19729fc and string catalog inspection."
+    }
+  ],
+  "percentage_rule": {
+    "status": "verified_static_for_finite_convertible_result",
+    "function": "0x244800c..0x2448078",
+    "used_percentage": "clamp(Int(roundAwayFromZeroAtHalf(Double(usedTokens)/Double(modelContextWindow)*100)),0,100)",
+    "remaining_percentage": "max(100-used_percentage,0), formatter0x1971478..1488",
+    "instructions": [
+      "244800c/10 scvtf",
+      "2448014 fdiv",
+      "2448020 fmul100",
+      "2448024 frinta nearest with ties away",
+      "2448058 fcvtzs",
+      "244805c clears negative",
+      "2448060..68 clamp100"
+    ],
+    "invalid_input": "Nonfinite or out-of-Int-range rounded results trap through2448070/74/78. Upstream validity checks not recovered. Do not silently record zero denominator as zero usage.",
+    "guards": [
+      "c5c32c tests Double finite bits",
+      "c5e5d0 checks Int64 upper conversion bound"
+    ]
+  },
+  "safe_implementation_subset": [
+    "Read host/thread-supplied optional ContextUsage usedTokens/modelContextWindow",
+    "Use one shared preference key for Settings toggle and composer visibility",
+    "Present context-usage popover on tap with compact adaptation(.popover)",
+    "Use recovered valid-input percentage rule for progress and remaining percentage",
+    "Preserve nil as unavailable and distinguish invalid fixture data explicitly"
+  ],
+  "independent_design_boundary": "Any invalid-input fallback in reconstruction should be labeled independent defensive adaptation. No new local token counting implied.",
+  "remaining_minimum_actions": [
+    "Bind witness+0x218 at1cea224 to exact protocol getter, then concrete thread witness. Reference closure1a23b9c gives caller owner. Follow only resulting _contextUsage producer to status snapshot.",
+    "Inspect formatter19729fc and localized string keys for number abbreviations/locale formatting.",
+    "Recover shared OpenAICircularProgressStyle parameter mapping before overriding its width/colors.",
+    "Prove setting default and scope via6f8334 if needed by acceptance."
+  ],
+  "validation_not_run": [
+    "Target binary execution",
+    "controlled code replay",
+    "simulator UI",
+    "live backend"
+  ],
+  "changes": "Analysis files only; no implementation edits.",
+  "evidence_files": {
+    "ios-remote-v523-action-bool-calls.json": "f2b3ee19b7c98b705e1fe07ee23b8f6939448228f68c526660f68e81a6125e38",
+    "ios-remote-v523-action-bool.asm": "36732eeb6463553ad4bee59a0502185de4b6ffafc131b3d81f2b45d46d7fea7a",
+    "ios-remote-v523-action-lazy-calls.json": "fc05ba1a6537c413f4de345821bba9505d07db0761bf88ffada97846e0d4280f",
+    "ios-remote-v523-action-lazy.asm": "7257a6fcabe87bcb6c57fe6c7ac92dc77120671bff2abb447ff4454d23c89392",
+    "ios-remote-v523-action-write-calls.json": "8dffa6a8bbf68deded0bda213d271c5c57c623f67f713d155f97055b93002902",
+    "ios-remote-v523-action-write.asm": "8f07bfc187645401cd8c8ada159220bf638adb58a83374ef26422cb03f20e2de",
+    "ios-remote-v523-context-action.asm": "6d8c1cbaebef32501d988e5afaca390883e185e55afdced33924104e3d80d5b0",
+    "ios-remote-v523-context-calls.json": "bc28d160b65bb97c9b0452df667da6f4ce9050b94243e3fb15f1fa27aa6b2a1d",
+    "ios-remote-v523-context-indicator.asm": "8a45e66a0394c6497d65915ab7cfb1b8057e717d7bfc8213e753ccb6c6755071",
+    "ios-remote-v523-context-label-witness.json": "78a338e80694ab83e42eacaa939c5a6512f0be8e066f993b8cea9931795707ff",
+    "ios-remote-v523-context-owner-metadata.json": "9cf25159e4524c4374b87cccce6697fdb241caf6f6a3f37e7bf2c409a976122c",
+    "ios-remote-v523-context-popover-witness.json": "be7fa210d2f98001e99b3de00dc48d0c6abb5d45591543b1438463cb95ac30bc",
+    "ios-remote-v523-context-refs.json": "e76fe602030f4a60c1b7562fac766fdbbfac1ace8dc2ea7990238ff347c4cdbb",
+    "ios-remote-v523-context-usage-metadata.json": "f574f92bc3f057266ee9437eb5174e4ab7918af9082ca62e028ca95d76b9d7b7",
+    "ios-remote-v523-context-values.asm": "4e486979262ce5af5fe3d65c023658269fc03f66e4b0281d340fc91f95ae5f21",
+    "ios-remote-v523-context-witnesses.asm": "36d25a7b6255607a9e77353bf0a258e3eb6329d92194c876b118779a9638c852",
+    "ios-remote-v523-controls-body.asm": "b278e0f0221887c776e88d1a9f57a1e966daad7cf9fa8de75d8f7557cc7672c4",
+    "ios-remote-v523-controls-init-calls.json": "f49ef6cbf61aff4000308205a93b467392131f260e23be78c5c7ca1412ad4ee9",
+    "ios-remote-v523-controls-init-refs.json": "adf5edb2f792053a235df0ae58c8a70ba43aca4a064002d3b0e36c70c96101d8",
+    "ios-remote-v523-controls-init.asm": "33a1132017a5010b22e67e1fb987d3c65fd14e1f737b6714cafaad447d5418f2",
+    "ios-remote-v523-controls-producer-refs.json": "64218856ec55722254da7184e480e050391e4b0387f2c18cc0fc6e670dac41d5",
+    "ios-remote-v523-controls-producer.asm": "a06811483c81f359891c7ac11adc45f53ba1b9027672eec0df51a9a7190e696f",
+    "ios-remote-v523-controls-witness.json": "991bc703a599196c8018e31e49ad1305e9c268fce349472f8ed6c1f74c1929cd",
+    "ios-remote-v523-data-capture-producer.asm": "e0bdd208a404bb3a0a6cde205a69a01b0f90ad812b4853e2a11698690d8a4c58",
+    "ios-remote-v523-indicator-witness.json": "30a7139cb6aa97739cc09f1440da403030ab5bfa2339ffc89e764c9053955d50",
+    "ios-remote-v523-percentage-guard2.asm": "ca1074d16b37f3041c29f2cb58b843160156c2790514e1fe769c837acab7b045",
+    "ios-remote-v523-percentage-guards.asm": "fe7864ed365c0f6feacc53c759c4f978c5f9886823b24c2247fbbf4cbbc01950",
+    "ios-remote-v523-popover-capture-calls.json": "c5e49d6fbaf52659c75056f5b32fa94254bf506c68459039c485fcad38840787",
+    "ios-remote-v523-popover-capture.asm": "015ec11f3da2e83a50f9251c37f5634bcb49ed66191fcdfbaa81105c10128764",
+    "ios-remote-v523-setting-constructor-calls.json": "742b49b0d77a56d301111ef3dc16a1f8c48cc14175ebe3db4f6f378432d1189d",
+    "ios-remote-v523-setting-constructor-refs.json": "46896a5b32a9a7d58148676b34774a01821332e6c9398ca36ed070b5c85573b5",
+    "ios-remote-v523-setting-constructor.asm": "181540f2aced2ca5f6b911542c42ed2288cf1e6835f3148348b066b41cf1475d",
+    "ios-remote-v523-setting-key-refs.json": "936f97d80d6703dd46650a8e272d911bdb00fc954a5eeccff42d34fbcb601e08",
+    "ios-remote-v523-settings-body-calls.json": "b094f64d59f98dbaaa8a285f3b1a7bfb239354171f1e1020e1ac4d78abf8b941",
+    "ios-remote-v523-settings-body.asm": "1aa930cbef66609526701132abfb12b3eb99097e8f92077b202150465cc03c37",
+    "ios-remote-v523-settings-init.asm": "3ade363324488735912683b7edc06e05abc3c5b3b8909098cdd58c787bf57633",
+    "ios-remote-v523-settings-meta-helper-calls.json": "f7247cd57823c46e02075a0e2c75f870e48309fa5930f7eb2229e2b8a3048324",
+    "ios-remote-v523-settings-meta-helper.asm": "13733320ecc73f3335fc2d2fd2726faf00d7ff0649b0a7ee7aaf9884a26b1622",
+    "ios-remote-v523-settings-refs.json": "46b0f78cff12580b6c1b6b6682ce4d76744a43946216d32568794bbc0866a24b",
+    "ios-remote-v523-settings-row.asm": "c83bf45f8b2ee480448430ece9177e4e23653c873823ba271ab4a67ab8ba8e6e",
+    "ios-remote-v523-settings-toggle-calls.json": "2c3cbccb93ca31f87cb570cb07c7ec20952f610d06ac2feb6cde5b2d99427ad2",
+    "ios-remote-v523-settings-toggle.asm": "28995736430c8080645c8a42a2d3357411046bceba520f913ba15835cdd4d250",
+    "ios-remote-v523-settings-witness.json": "d92cd435f4c3ff64b967feca875d83736a839a33aaa7f8e10e09cebe8db1fe3f",
+    "ios-remote-v523-thread-controls-construction.asm": "03cf5a887a1ff7d60029e527e97fb0c209a49faede4ec6cbd24d70e2598a2f81",
+    "ios-remote-v523-type-7cdb9a0.json": "9952b51b75fa8fb167ddda497bbd9f3d702cd3d1816f39159d99db309ce12a4c",
+    "ios-remote-v523-type-7e22e98.json": "ff846e7b7b93185ca15fc85a0fa2440606e311348aec2773186edd01b2bcc0fc",
+    "ios-remote-v523-type-7e22ed0.json": "5eb9d38af2a43ff479f687dcd6c4872381404621894041a737dd62f918ebb84f",
+    "ios-remote-v523-type-8e11c54.json": "1eccbb1272b27e511be78fde71a27a04541990be5ad81be717d9f21f290f2d86",
+    "ios-remote-v523-type-8e39370.json": "a667efb9a5939b34f34e21e998585c9fe6327f333ab412cc3beaca1b7cb23252",
+    "ios-remote-v523-type-91dc3b0.json": "edca1e7cc576cc541122e42e32d7d8fe3474da3b0d981d030574b80bca16fc52",
+    "ios-remote-v523-visibility-calls.json": "fdc5477adfc9546cca4c506b27082772d24f0b63dc25dc7662b2e282b36b6e73",
+    "ios-remote-v523-visibility.asm": "d271bfa16b29362e877bb526e6a114b6ea607cf421d550055bd1331dbfec7fce"
+  }
+}

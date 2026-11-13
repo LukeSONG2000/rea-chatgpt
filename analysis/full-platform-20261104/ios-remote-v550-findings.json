@@ -1,0 +1,66 @@
+{
+  "batch": "v550",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "question": "Preserve scoped reading position through task navigation and native collection updates",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    {
+      "type": "artifact_observation",
+      "file": "ios-remote-v482-collection-metadata.json",
+      "symbol": "ChatCollectionView",
+      "descriptor": "0x9635ca0",
+      "fields": {
+        "anchor": "0x9ae7354",
+        "enableReconfigurePinnedDistanceRestoration": "0x9ae7384",
+        "animateBottomPinnedUpdates": "0x9ae7390",
+        "triggerScrollToEdge": "0x9ae73b4",
+        "updateScrollViewDistanceFromEdges": "0x9ae73c0"
+      },
+      "conclusion": "Distinct anchor, update restoration, animation and edge-request inputs exist.",
+      "limitation": "Presence does not prove active Remote values, algorithm or navigation persistence."
+    },
+    {
+      "type": "static_inference",
+      "file": "ios-remote-v482-integration.json",
+      "offsets": [
+        "0x3f86ca4",
+        "0x3f858fc",
+        "0x3f86ca8",
+        "0x3f85a9c",
+        "0x1a4ccc4"
+      ],
+      "conclusion": "Remote wraps its owned native collection through UIViewControllerRepresentable. Top soft edge belongs to that collection.",
+      "limitation": "Pinned-distance restoration implementation remains unresolved."
+    },
+    {
+      "type": "independent_source_review",
+      "file": "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift",
+      "conclusion": "Before v550 reading/following state was controller-local; navigation recreated the task-keyed controller without a saved anchor."
+    }
+  ],
+  "implementation": [
+    "Retain stable row identity, visible-top-relative offset, absolute fallback and tail intent above task navigation using the existing host/destination scope within the single offline account.",
+    "Capture user scroll and page exit; restore during collection layout and current snapshot completion. Skip active user scroll and stale snapshot completions.",
+    "Keep current-page submission as an explicit tail request. Clamp missing-row fallback and reject nonfinite geometry."
+  ],
+  "attribution": "Independent native integration using existing source-bound collection ownership. Official restoration algorithm and activation policy remain unknown.",
+  "validation": {
+    "status": "partial",
+    "integration": "ios-remote-v550-integration.json",
+    "latest_distinct_ui_cases_passed": 5,
+    "final_round_passed": 4,
+    "final_round_failed": 0
+  },
+  "open": [
+    "Row-relative points do not preserve exact characters during same-row revision or reflow.",
+    "Process restart persistence remains pending.",
+    "Official restoration predicates, animated updates and scroll-to-edge control remain open.",
+    "History expansion and row removal need more runtime vectors.",
+    "Android collection and keyboard behavior require independent validation."
+  ]
+}

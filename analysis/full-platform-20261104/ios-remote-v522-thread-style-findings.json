@@ -1,0 +1,192 @@
+{
+  "batch": "v522",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-instructions-and-Swift-symbolic-types",
+  "production_edits": false,
+  "runtime_verified": false,
+  "closed_boundary": "CodexScreen ordinary Remote thread and NewThreadScreen explicitly inject the same style builder2de24c already established for Home. The previously suspicious modifier60824f8 belongs to CodexRealtimeVoiceScreen. This closes the selected ordinary thread parent injection, not every possible embedding of ThreadView.",
+  "chain": [
+    {
+      "node": "CodexScreen routing",
+      "sites": [
+        "0x303aec..0x3042c8"
+      ],
+      "type_evidence": [
+        "0x7cf6578"
+      ],
+      "proof": "ConditionalContent storage records distinguish NewThreadScreen, multi-thread container and ThreadView routes."
+    },
+    {
+      "node": "ordinary thread construction and style injection",
+      "sites": [
+        "0x3040ac ->0x1a0e63c",
+        "0x3040c0..0x3040c4 ->0x2de24c",
+        "0x30410c ->0x6081e84"
+      ],
+      "type_evidence": [
+        "0x7cf6550",
+        "0x7cf6548"
+      ],
+      "proof": "Type records bind IDView<ModifiedContent<CodexRemoteThreadView<CodexRemoteThreadViewModel>, EnvironmentKeyWritingModifier<MessageInputStyle>>>. Builder result is injected after ThreadView construction. No60824f8 call appears in this branch."
+    },
+    {
+      "node": "NewThreadScreen parallel branch",
+      "sites": [
+        "0x303d08 ->0x19eb4ac",
+        "0x303d44 ->0x1a2fe2c",
+        "0x303d60 ->0x2de24c",
+        "0x303da4 ->0x6081e84"
+      ],
+      "type_evidence": [
+        "0x7cf6560",
+        "0x7cf6528"
+      ],
+      "proof": "Type records bind NewThreadScreen<NewThreadViewModel,EmptyView> plus MessageInputStyle environment writing. This sibling independently uses the same builder."
+    },
+    {
+      "node": "ThreadView body into ThreadViewContent",
+      "sites": [
+        "conformance0x7e0c040",
+        "bodywitness0x1a44da4 ->0x1a43e78",
+        "0x1a43ec4..0x1a43ecc",
+        "0x1a4403c..0x1a440c0"
+      ],
+      "type_evidence": [
+        "0x7e0aaf8"
+      ],
+      "proof": "ThreadView body inline constructs CodexRemoteThreadViewContent<ThreadViewModel>. Constructor populates configuration fields from ThreadView. Retained downstream v421 binds Content to BottomBars and ordinary input factory."
+    },
+    {
+      "node": "ordinary composer environment forwarding",
+      "sites": [
+        "0x197fe90..0x197fec8"
+      ],
+      "proof": "Retained v521 establishes read of _messageInputStyle(metadata+120) and child environment writer. This is consistent with the explicit ancestor injection. All alternate indirect modifiers have not been enumerated."
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "sites": [
+        "0x2feea8 ->0x2ffb10",
+        "0x30002c",
+        "0x300040 ->0x60824f8",
+        "0x30006c ->0x6081e84"
+      ],
+      "type_evidence": [
+        "0x7cf3208",
+        "0x7cf3128",
+        "0x7cf3130"
+      ],
+      "identity": "ChatGPTCodex.CodexRealtimeVoiceScreen",
+      "conclusion": "This is a realtime voice screen overlay. Its extra geometry transform is not evidence of ordinary thread style mutation."
+    },
+    {
+      "sites": [
+        "0x199a1c0",
+        "0x199a814 ->0x1999b4c"
+      ],
+      "type_evidence": [
+        "0x7e1cd18"
+      ],
+      "identity": "CodexRemoteModelSliderLabel with MessageInputSliderThinkingEffortPickerViewModifier",
+      "conclusion": "The bounded candidate builds model-slider label/picker content. No ancestry link to the ordinary editor is established; do not treat this local style writer as a thread-wide override."
+    }
+  ],
+  "effective_injected_style": {
+    "builder": "0x2de24c",
+    "base": "0x19a0a38 accessor /0x19a0860 initializer /default0x60810f8",
+    "geometry": {
+      "maxWidth": 728,
+      "appliesPaddingAndMaxWidthToBackground": true,
+      "phone_outerInsets": [
+        8,
+        12,
+        12,
+        12
+      ],
+      "ipad_outerInsets": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "focusedOuterInsets": null,
+      "outerHorizontalPadding": null,
+      "outerBottomPadding": null,
+      "scalesMetricsForDynamicType": false,
+      "innerCornerRadius": 22,
+      "topAccessoryCornerRadius": 22
+    },
+    "actual_ordinary_inner_shape": {
+      "kind": "continuous RoundedRectangle",
+      "radius": 24,
+      "sites": [
+        "0x1986b10..0x1986b3c"
+      ],
+      "note": "Actual field clip/Glass shape is independent of style.innerCornerRadius."
+    },
+    "material": {
+      "glassContainerEnabled": "default77107f8 OS availability/build gate, additionally consumer1bdeac; preserve gate",
+      "glass": "Remote base6082134(adjustInsets=false,shadow=false,gradient=true,opacity0.05,percentage0.3)",
+      "innerBackgroundColor": "theme-modified value, or6081edc fallback under reduceTransparency",
+      "reduceTransparency": "ordinary consumer uses nil innerGlass plus fallback background"
+    },
+    "theme_and_flags": {
+      "source": "2de24c captures caller x20, invokes theme getter31fe6c; thread branch supplies x23 at3040c0, NewThread supplies x25 at303d5c",
+      "raw0_or11": "copies base style",
+      "other_theme": "6081f4c(theme,false,false,flag32caf0)",
+      "primaryButtonUsesCapsule": "flag32cb28 written at2de324",
+      "limits": "Runtime theme selection and feature-flag producer values remain unknown; do not hardcode screenshot color/capsule setting."
+    },
+    "scope": "Explicit CodexScreen ordinary thread/NewThread branch. Reused field values come from retainedv508/v513/v520 validated defaults and builder transforms, not new runtime sampling."
+  },
+  "integration_guidance": [
+    "Use the same parameterized ordinary field renderer structure for these proven branches. Inner content background -> clip(shape24) -> inner GlassEffectContent remains inside styleInsets. Whole-content GlassEffectContainer wraps padded content only under style/availability gate.",
+    "Preserve actual sceneMetrics and trailingOutsideContent branching from the separatev522 scene investigation; an equal style does not establish equal effective viewport width or safe-area correction.",
+    "Use injected style maxWidth728/default outerInsets in the selected ordinary branch, with existing dynamic scene and focus algorithm. Keep runtime theme/reduceTransparency/availability configurable.",
+    "Keep VoiceScreen60824f8 branch separately modeled. It deliberately changes minHeight, corners and potentially outerInsets."
+  ],
+  "limitations": [
+    "No original runtime, device visual equivalence or behavior equivalence validated.",
+    "Swift opaque context identities remain unresolved where explicitly named in type reports, but concrete ThreadView/NewThreadScreen/VoiceScreen symbols and environment type are bound.",
+    "Indirect environment writers across all possible alternate host presentations have not been exhaustively excluded. This conclusion is limited to the selected CodexScreen branch and retained ordinary renderer call chain.",
+    "Scene measurements, trailingOutsideContent, outside-overlay visibility and actual visual width belong to the separatev522 scene report.",
+    "Attempted raw type parsing at8e132c5 rejected unsupported symbolic kind11. No field or generic interpretation was forced from this failed parse."
+  ],
+  "evidence_files": {
+    "ios-remote-v522-model-label-witness.json": "8f047a28f5172263d8f6f0569cf8ac269291f9c97a96fdf4ba9d4e31ad2404b6",
+    "ios-remote-v522-screen-thread-style-writer.asm": "d4a9f463ce82014a5bc25a7e901195ec4b5dc6492e4f4919ca707a693c3dc0d4",
+    "ios-remote-v522-style-owner-metadata.json": "1d728a58713e4e5e253629c0572c8ebdb9f27fe403667a2548416315007dc3ef",
+    "ios-remote-v522-style-record-7cf3128.json": "ef4364232c7db5ccc14427b3274f7a67248b0adc1d49cd8d33b13f3bfca0d242",
+    "ios-remote-v522-style-record-7cf3130.json": "e6b0eb1c0d0584adff5b1fea3cf2a141d765e30b652367180e437e64013b0380",
+    "ios-remote-v522-style-record-7cf3208.json": "d866ac5f46917c4fda88f610cbe867180889f63ffa95cf9c3b08328f1676968b",
+    "ios-remote-v522-style-record-7cf6528.json": "8d7bd6c70e8f183ae49048a2a02ac67246d393a5824f1fc8e75d0864827ab5aa",
+    "ios-remote-v522-style-record-7cf6540.json": "b9f1f30db192230b699bde49f9f719503d18be51cfca24f3a9fd3ea6dd467251",
+    "ios-remote-v522-style-record-7cf6548.json": "e736fc14fa9985bfd3587c1581ff42c9121471b1782a1fce0fd083445d607587",
+    "ios-remote-v522-style-record-7cf6550.json": "0af84843a78cba1e14a4136349eb72a03184ffe0789f97eec84f7fb1615e2435",
+    "ios-remote-v522-style-record-7cf6560.json": "25ea4f76c6405c003e667f36856d687546847c2109078ac9af652c8fdd430edd",
+    "ios-remote-v522-style-record-7cf6578.json": "e526f55689dff716e1f29fd4b1941abbfa00cc819904f64e2d8b3a6c0dc8244d",
+    "ios-remote-v522-style-record-7e0aaf0.json": "55194e65bc2c9951dc7a346ead58ff7b21ae09e235b2e202a7ecb27ab02e9e31",
+    "ios-remote-v522-style-record-7e0aaf8.json": "932ed2eea6b1cfc585d3001e27ca3d1085c875ae808ecfd2dc27a6197a0fe232",
+    "ios-remote-v522-style-record-7e1cd18.json": "d31bfb13deb9b2e98c45fecb29b368084cc184f6ab4ff0d231a2160c0f3f916c",
+    "ios-remote-v522-style-route-refs.json": "ebabcd5dae268949e0e61b2b9ee380d6b9461625de06ec76b1bcb0d7fb12cd01",
+    "ios-remote-v522-thread-body-calls.json": "91a79553932f8a0012f3fc77977f5f6bdd6fd3c49f4a15c268270ad88f752027",
+    "ios-remote-v522-thread-view-body-thunk.asm": "fe8fca7d64418b5e5177cc128f97ddcace60910fe30f9214abfa2fc017f65706",
+    "ios-remote-v522-thread-view-body.asm": "493836b63c5dffea6636bc79706cef8c07c6312c6b13c48b5de55de29fba8ddb",
+    "ios-remote-v522-thread-view-witness.json": "5a6dd061922dd8805b78d9dac82d33941f6cdaf6015a482e8cf355ee1e0e6bf4"
+  },
+  "reused_evidence": [
+    "ios-remote-v508-home-root.asm",
+    "ios-remote-v508-screen-body.asm",
+    "ios-remote-v508-draft-presentation.asm",
+    "ios-remote-v508-home-style-findings.json",
+    "ios-remote-v513-width-target-focus-findings.json",
+    "ios-remote-v520-home-surface-order-findings.json",
+    "ios-remote-v521-thread-style-findings.json",
+    "ios-remote-v521-style-parent-writer.asm",
+    "ios-remote-v421-integration.json"
+  ]
+}

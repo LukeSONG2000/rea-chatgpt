@@ -1,0 +1,82 @@
+{
+  "batch": 587,
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "official_observations": [
+    {
+      "source": "CodexRemoteDiffFileSection descriptor95b2850; field record9a3d894; typeref904c0a0",
+      "finding": "openFile field type demangles to @Swift.MainActor @Sendable () async -> (). This establishes an independent file-opening action in the diff component contract."
+    },
+    {
+      "source": "ios-settings-v586-body-typeref-8e71448.json; ios-diff-v587-section.json/asm",
+      "finding": "File-section body type references include DiffSummaryLabel, DocumentDiffView and Button. Bounded code contains PlainButtonStyle and contextMenu construction. Exact action/condition and layout values remain unresolved."
+    }
+  ],
+  "independent_host_observations": [
+    "v586 Changes surface only displayed patch text; there was no full-file resource or open-file action.",
+    "Existing Remote attachment owner and QuickLook modifier support local resource lifetime and native presentation."
+  ],
+  "implementation": [
+    "Add optional previewText as independent complete-file payload on RemoteReplayFileChange. Old Codable records decode with absent resource.",
+    "Provide explicit full-file fixture text independently from diff text. Persist it with the scoped turn snapshot.",
+    "Open file writes only a managed temporary resource, retains its owner during presentation and uses existing QuickLook capability checking/presentation. Failure is returnable.",
+    "Reuse the recovered diff-count summary component in the file header."
+  ],
+  "adaptations": [
+    "Open-file button placement, full-text resource payload, synchronous local materialization and QuickLook are independent host adapters. Original async resource/service owner and destination navigation remain pending."
+  ],
+  "unknowns": [
+    "Exact header hit target and conditional branch mapping",
+    "Workspace/remote file loading and error receipt contract",
+    "Diff line colors/gutters/comments and precise layout",
+    "Real device and Android behavior"
+  ],
+  "failed_probes": [
+    {
+      "input": "inspect_swift_symbolic_type record9a3d894",
+      "error": "invalid type record length",
+      "resolution": "Field metadata points to a raw terminated type reference. inspect_raw_type at904c0a0 succeeds; demangle verified separately."
+    }
+  ],
+  "upstream": {
+    "path": "opensource/codex",
+    "commit": "6905ecede7816e91373e9eabda3f6b0368fc747b",
+    "bounded_source": "codex-rs/tui/src/diff_render.rs",
+    "finding": "The inspected upstream diff renderer is terminal-specific. It does not supply the iOS file-preview action."
+  },
+  "validation": {
+    "foundation": "passed; ios-diff-v587-text.log",
+    "ui": {
+      "report": "ios-diff-v587-r1.summary.json",
+      "passed": 2,
+      "failed": 0,
+      "coverage": [
+        "Chinese light and English dark",
+        "full-file content distinct from patch",
+        "native preview close and return",
+        "collapse/copy/wrapping",
+        "task and draft isolation",
+        "process restart"
+      ]
+    },
+    "visual": {
+      "status": "inspected",
+      "screenshots": [
+        "ios-diff-v587-r1-attachments/D7AB19B4-3506-420D-8EB2-A911375C2507.png",
+        "ios-diff-v587-r1-attachments/6618BB53-784C-4942-8D03-F62DA786CD79.png",
+        "ios-diff-v587-r1-attachments/47680849-5990-4483-976C-6D2723459255.png"
+      ],
+      "finding": "Light/dark full text is readable, native close controls visible; dark diff wraps with readable summary and open action. Exact official visual parity remains partial."
+    },
+    "runtime": "ios-diff-v587-runtime.json",
+    "retention": "ios-diff-v587-retention.json"
+  },
+  "usage": {
+    "used_percent": 49,
+    "reset_credits_available": 0,
+    "threshold_reached": false
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "batch": 594,
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "metadata": "ios-notification-v594-types.json",
+  "observations": [
+    {
+      "type": "HistoryCell",
+      "descriptor": "0x95930f8",
+      "fields": [
+        {
+          "name": "unreadBadgeColor",
+          "record": "0x9a179a8"
+        },
+        {
+          "name": "unreadBadgeCellTrailingPadding",
+          "record": "0x9a179b4"
+        }
+      ]
+    },
+    {
+      "type": "ConversationUnreadIndicatorSnapshot",
+      "descriptor": "0x96044d0",
+      "fields": [
+        {
+          "name": "remoteConversationIDs",
+          "record": "0x9aa6e34"
+        },
+        {
+          "name": "boundUnseenConversationIDs",
+          "record": "0x9aa6e40"
+        },
+        {
+          "name": "localOnlyConversationCount",
+          "record": "0x9aa6e4c"
+        }
+      ]
+    },
+    {
+      "type": "NotificationResponseKey",
+      "descriptor": "0x96a4e58",
+      "fields": [
+        {
+          "name": "requestIdentifier",
+          "record": "0x9b66524"
+        },
+        {
+          "name": "actionIdentifier",
+          "record": "0x9b66530"
+        },
+        {
+          "name": "categoryIdentifier",
+          "record": "0x9b6653c"
+        }
+      ]
+    },
+    {
+      "type": "RegistrationIdentity",
+      "descriptor": "0x96a56b0",
+      "fields": [
+        {
+          "name": "userID",
+          "record": "0x9b66790"
+        },
+        {
+          "name": "authSessionLoggingID",
+          "record": "0x9b6679c"
+        }
+      ]
+    }
+  ],
+  "discovery_seed": {
+    "path": "analysis/ios293-native/swift-types-full.txt",
+    "line": 10198,
+    "type": "DefaultConversationUnreadIndicatorStore",
+    "observed_fields": [
+      "unreadRemoteConversationIDs",
+      "boundUnseenConversationIDs",
+      "acknowledgedHistoryUnreadDates",
+      "unreadRegisteredConversationIDs"
+    ]
+  },
+  "integration_gaps_before_batch": [
+    "Notification journal vanished after process restart",
+    "Chat sidebar did not consume notification unread targets",
+    "Persistence failures had no explicit page state"
+  ],
+  "independent_adaptation": [
+    "Versioned atomic local journal scoped by synthetic account/session and isolated test profile",
+    "Validate every stored event and prevent duplicate or invalid snapshot acceptance",
+    "Chat trailing dot uses independent 10pt/systemBlue geometry pending original Chat branch",
+    "Update visible sidebar cells in place, preserve existing list position",
+    "Settings exposes journal save/restore failure and retry"
+  ],
+  "limits": [
+    "Metadata establishes inputs, not official persistence, clearing or suppression algorithms",
+    "Only admitted foreground/click notification events contribute to this local unread view",
+    "Background/server reconciliation, unread events absent from local catalog, capacity recovery and official mapping remain open",
+    "System notification-center duplicate rows are outside the client response journal",
+    "Physical devices and Android runtime remain independent gates"
+  ],
+  "cross_platform": {
+    "reference": "ios-notification-v593-cross-platform.json",
+    "candidate_shared": [
+      "Versioned frontend target scope",
+      "Journal validation and restart test vectors"
+    ],
+    "native": [
+      "iOS notification delegate and UIKit/SwiftUI list consumer",
+      "Android Firebase service, receiver and registration worker"
+    ],
+    "android_acceptance": "pending"
+  }
+}

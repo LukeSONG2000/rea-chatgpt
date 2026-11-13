@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "Bounded attachment custom-presentation animation and window level",
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "findings": [
+    {
+      "id": "window-level",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62eaa04",
+        "0x62eaa24..0x62eaa44",
+        "0xaac69d0"
+      ],
+      "conclusion": "Window level equals UIWindowLevel.statusBar + 1. Constant double1 is passed to UIKit NumericRawRepresentable addition with imported UIWindowLevelStatusBar, then setWindowLevel.",
+      "import_binding": {
+        "symbol": "_UIWindowLevelStatusBar",
+        "library_ordinal": 5,
+        "weak": false,
+        "import_ordinal": 3137,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "id": "property-animator",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62d930c",
+        "0x62d86b8..0x62d86dc",
+        "0x8264570",
+        "0x62d6f84..0x62d6fd4",
+        "0x7cdb418",
+        "0x2076e84..0x2076f24"
+      ],
+      "conclusion": "Shared UIViewPropertyAnimator uses initWithDuration:dampingRatio:animations:. animationStyle raw1 selects duration0.3 and dampingRatio1. All other raw values select duration0.475 and dampingRatio0.8. Initial animations argument nil, animation blocks appended later.",
+      "values": {
+        "raw1": {
+          "duration": 0.3,
+          "dampingRatio": 1
+        },
+        "otherwise": {
+          "duration": 0.475,
+          "dampingRatio": 0.8
+        }
+      }
+    },
+    {
+      "id": "presentation-dismissal-owner",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62d9dec..0x62d9e0c",
+        "0x62d9ed0",
+        "0x62d9f50..0x62d9f70",
+        "0x62d9220..0x62d92c8",
+        "0x96ddd14"
+      ],
+      "conclusion": "Presentation target raw0 factory explicitly passes animationStyle raw0, hence 0.475s and damping0.8. Dismissal target raw1 copies coordinator.dismissalAnimationStyle before resetting stored style to0. Duration follows animationStyle, not presentation/dismissal target.",
+      "limits": [
+        "Do not label0.3s as universal dismissal duration. Which interactive/system path sets expeditious style1 remains outside this bounded pass."
+      ]
+    },
+    {
+      "id": "transform-and-alpha",
+      "status": "partial",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62d7600..0x62d768c",
+        "0x62d77e0..0x62d78c4",
+        "0x62f0c9c",
+        "0x62f0e34",
+        "0x62d9590"
+      ],
+      "conclusion": "Target raw1/dismissal initializes expanded frame and identity transform, and invokes a separate alpha callback with1. Presentation initializes source geometry and invokes that callback with0. SourceScale!=1 applies CGAffineTransformMakeScale(scale,scale) through two transform helpers. Main presentation closure62f0e34 updates frame and corner radius, fades one captured view to0, and invokes the callback with1. Main dismissal closure62f0c9c restores that captured view alpha to1 and conditionally invokes the callback with0.",
+      "limits": [
+        "Full frame-role/register mapping and callback alpha endpoint ownership remain partial. Do not replace native chrome/mask morph with a claimed equivalent one-layer scale+fade.",
+        "No exact whole-menu opacity curve is established.",
+        "Exact receiver roles of both transform helpers and callback62d9590 remain partial. Alpha changes belong to separate native chrome/content/source objects; no whole-menu alpha equivalence is claimed."
+      ]
+    }
+  ],
+  "remaining_boundaries": [
+    {
+      "question": "source/target frame and clipping interpolation",
+      "next_action": "Decode argument ownership through62d6f44, source frame helper62d93fc and closure62f0e34; chrome exposes presentationContentAlpha and chromeClipFrame separately.",
+      "status": "partial"
+    },
+    {
+      "question": "alpha scheduling and source snapshot handoff",
+      "next_action": "Follow appended secondary closures62f0de4 and62f0ef0 and62d9590.",
+      "status": "partial"
+    }
+  ],
+  "validation": {
+    "official_app_executed": false,
+    "production_files_edited": false,
+    "device_behavior_verified": false
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-alpha-owner.asm",
+      "sha256": "b0f36bb8ca6182c2682a2e1bfd0d2bada5e5e8af2c0c21c676ebc88f82ebb857"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-alpha-owner.calls.json",
+      "sha256": "c5911a96b3082e355f3892006e15f33e37f5f1fd3223cd015fab5c8f0171fe3d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-build-tail.asm",
+      "sha256": "2ed4ff83ba8b5eb1654d5afb0fc4d7e579366ae3816c8f005496b498c989f0e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-build-tail.calls.json",
+      "sha256": "4c26416728db140e9dff814d7db003959a15f2988fa34968bfb9ef863761a49f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-build.asm",
+      "sha256": "d082ea9ce807063a581c92a9ce61b34c25bfcc164eb053cff59d0cbc29d2a1fa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-build.calls.json",
+      "sha256": "3ed4fb31c45fcdfe61c6d39b25f0d669767ac1c5fa26b033858fa6b8500b5125"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-dismiss-closure.asm",
+      "sha256": "5b7014c1058c7961b0d24d5dd779f192a45f859f013a70f66146677d7d53218c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-dismiss-closure.calls.json",
+      "sha256": "c1f356f92e5f90e509b12c8993dd633783574f2fef0dab71d1326d2b93978a2a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-duration.asm",
+      "sha256": "f43390f492fc7150e947735e2abeb67c85b91b0212e4cab14c40d0ed3e04adfc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-duration.calls.json",
+      "sha256": "35a49746d9f8d5686be3b4189c5520d6929b9c1f0fd760f1d1774f8ed63b7f5a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-factories.asm",
+      "sha256": "d9d37842c753756f9da51e317c394fc4ddb2ae35df06e9e53e3fa602357c2002"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-factories.calls.json",
+      "sha256": "3f31badab88616b13f2c506d3e1c2c6d4d8df6bda2ba4ac16562c719190b03d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-present-closure.asm",
+      "sha256": "ed3709433c569623d10b9a49ff0d4d969e67aee1be3f7d1d479e27817cf8dca3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animation-present-closure.calls.json",
+      "sha256": "7ee3bcd8a69a5f945aad4b3f2b4a588762695cf7b2c81eb67f68cfcce60ca0bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animator-init.asm",
+      "sha256": "8664303f11ecf8198c3b9c846e09dfd2bf178c9c9467efd692bd927a67fc0361"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animator-init.calls.json",
+      "sha256": "d276555ea60ebdecadc49de6b0f27766ab53d6b806ded1e2c1a81fcec81d8fef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-animator-metadata.json",
+      "sha256": "77d7e099161fad1ea7f1bee51297296fc3c7d8244787f7702f61e58baedbba26"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-property-animator-initializer.asm",
+      "sha256": "929d396f79cd9a248feff5a0a393df073b84242d31ba2be260682f8998520526"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-property-animator-initializer.calls.json",
+      "sha256": "a471473c404d9e1fc45f3e392654c1f6e20035ab7fe3db238f17ae8e861b6a71"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-present.asm",
+      "sha256": "226daa6e00c5e65f172fb4415a13bedcb0ebc4fe307b4f44401656eb2752e26f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-present.calls.json",
+      "sha256": "e941a4718c4e714178e6b8d21862efe4e3496536241826e1faca59bc37eeacdb"
+    }
+  ]
+}

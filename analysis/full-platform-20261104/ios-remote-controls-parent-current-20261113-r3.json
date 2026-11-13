@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T07:54:25.248390+08:00",
+  "module": 5,
+  "scope": "Remote composer and task controls fourth pass",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: module4 produced bounded source findings and exact integration exclusions; retained core archived",
+  "source_reports": [
+    "ios-remote-goal-controls-20261113-findings.json",
+    "ios-remote-controls-config-owner-20261113-findings.json",
+    "ios-remote-composer-surface-parent-20261113-findings.json",
+    "ios-remote-pending-owner-20261113-findings.json"
+  ],
+  "implemented_this_pass": [
+    "Goal frontend snapshot/revision checkpoint by account/profile/host/thread, enabled only in explicit offline synthetic replay profile",
+    "Persist initialized nil cleared snapshots; do not reseed fixture after restart",
+    "Omit pending actions and failure prompts from persisted accepted snapshot; retain unknown status explicitly",
+    "Reject wrong account/duplicate/empty identities, invalid revisions or elapsed/corrupt data without replacing source bytes",
+    "Checkpoint before accepted state publication; failed writes clear pending action but retain previous goal/revision and editor text, return failure and keep editor open",
+    "Storage errors have explicit frontend text and unavailable corrupt-cache admission; clear failure retains details",
+    "Goal UI uses the same owning account identifier as its store/cache"
+  ],
+  "retained_core": [
+    "Input with independent drafts; synthetic send/stop/retry",
+    "Queue/steer, cancel, FIFO and immutable per-intent configuration snapshot",
+    "Model/effort/speed/permission current-choice persistence and context usage",
+    "Goal/Subagent shared surface, summary/detail, actions and one gated shared selection feedback"
+  ],
+  "feature_chain": {
+    "entry": "Ordinary sidebar -> Codex -> completed task -> Goal controls",
+    "identity": "Explicit offline account/profile + host/thread + operation UUID/revision",
+    "state": "GoalState/optional snapshot + transient pending; independent checkpoint",
+    "data": "goals-v1.json local frontend file in existing isolated RemoteDraft profile",
+    "projection": "Goal status/label/details and explicit storage failure",
+    "actions": "set objective/pause/resume/clear -> scoped reducer -> synthetic acknowledgement -> checkpoint -> publish",
+    "cleanup": "No restoration of in-flight actions; refresh invalidates old receipts; cleared initialized record survives process restart"
+  },
+  "independent_adaptations": [
+    "goals-v1.json format/version and atomic write policy are host implementations, not official storage/RPC recovery",
+    "Only explicit offline-fixture + synthetic replay + selected profile checkpoint to disk; no profile remains in memory",
+    "Provided elapsed value is cached unchanged; original live clock/duration owner remains unresolved",
+    "No service/backend/local model or tool executor introduced"
+  ],
+  "not_implemented": [
+    "Original full pending Edit admission, previous-draft cancel restoration and structured commit/resend; still canEdit=false",
+    "Original queued-settings receiver/schema and complete propagation",
+    "Original Goal live duration owner/formatter and service refresh policy",
+    "Real agent child-task navigation",
+    "Nonnil stroke conversion, complete MinimumTapTargetShape and full optical parity",
+    "Unproved per-action feedback and physical haptic playback"
+  ],
+  "haptics": "ios-remote-controls-fourth-20261113-haptics.json",
+  "verification": {
+    "foundation": {
+      "command": "sh implementation/ios/test-goal-state.sh",
+      "exit_code": 0,
+      "evidence": "ios-remote-controls-fourth-20261113-goal-contract.log",
+      "coverage": [
+        "scope/account/host isolation",
+        "revision and duplicate receipt",
+        "cleared nil survives restart",
+        "unknown status",
+        "pending omitted and old receipt rejected",
+        "stable encoding",
+        "corrupt/duplicate/invalid data preserved",
+        "write failure"
+      ]
+    },
+    "test_diagnostics": [
+      {
+        "log": "/tmp/rea-remote-controls-fourth-20261113-goal-state.log",
+        "result": "initial test compile failed: throwing expression in nonthrowing precondition autoclosure; corrected test evaluation, not an app runtime failure"
+      }
+    ],
+    "ui": {
+      "path": "ios-remote-controls-fourth-20261113-r1.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 116.129,
+      "scope": "Chinese/light only",
+      "coverage": [
+        "create/edit/pause/resume/clear",
+        "Goal/Subagent exclusive details and agent detail return",
+        "two-host task return",
+        "multiple process restarts",
+        "cleared goal does not reseed",
+        "injected checkpoint failure retains goal/status and unsaved editor text"
+      ],
+      "image_viewed": "ios-remote-controls-fourth-20261113-r1-attachments/7BFA3ACF-6E25-4205-9766-DD0FD5BEAFA4.png"
+    },
+    "other_existing_controls": "Retained source/contracts; not claimed re-exercised by this Goal-focused UI journey",
+    "device_build": {
+      "exit_code": 0,
+      "log": "/tmp/rea-remote-controls-fourth-20261113-device-build.log",
+      "strict_signature_verified": true,
+      "app": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app"
+    }
+  },
+  "runtime": {
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture",
+      "--remote-command-message-fixture",
+      "--remote-search-message-fixture",
+      "--remote-search-action-fixture",
+      "--remote-file-message-fixture",
+      "--remote-review-message-fixture",
+      "--remote-rich-message-fixture",
+      "--remote-linked-file-fixture",
+      "--remote-file-citation-fixture",
+      "--browser-preview-fixture",
+      "--chat-browser-fixture",
+      "--remote-model-slider-fixture",
+      "--remote-permission-fixture",
+      "--remote-context-usage-fixture",
+      "--remote-thinking-group-fixture",
+      "--remote-history-group-fixture",
+      "--remote-latest-group-fixture",
+      "--remote-project-sort-menu-fixture",
+      "--remote-task-controls-fixture",
+      "--chat-state-profile=4F0864C0-FEAE-445B-8B45-D8E206A5B4A0",
+      "--remote-draft-profile=4F0864C0-FEAE-445B-8B45-D8E206A5B4A0",
+      "--auth-state-profile=4F0864C0-FEAE-445B-8B45-D8E206A5B4A0",
+      "-AppleLanguages",
+      "(zh-Hans)",
+      "-AppleLocale",
+      "zh_CN",
+      "-rea.preview.appearance",
+      "light"
+    ],
+    "launch": "local.rea.chatgpt.ioshost: 59325",
+    "installed_app": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/54E6CAC6-9F5D-4792-A69D-18A4DE65BC71/REAChatGPTHost.app",
+    "built_executable_sha256": "4147cd8718ea8b59673276e39043a763d6c67c9f4ad22bdad7790113383568ce",
+    "installed_executable_sha256": "4147cd8718ea8b59673276e39043a763d6c67c9f4ad22bdad7790113383568ce",
+    "pid": 59325,
+    "process_verified": "59325 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/54E6CAC6-9F5D-4792-A69D-18A4DE65BC71/REAChatGPTHost.app/REAChatGPTHost",
+    "observed_gui": "Ordinary launch -> sidebar -> Codex -> completed task -> expanded Goal controls; left running without failure fixture",
+    "screenshot": "ios-remote-controls-fourth-20261113-live.png",
+    "external_display_position": "not verified this pass"
+  },
+  "physical_device": {
+    "preflight": "/tmp/rea-remote-controls-fourth-20261113-devices.json",
+    "name": "iPhone Air",
+    "state": "unavailable",
+    "installed_this_pass": false
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RemoteGoalPresentation.swift",
+      "sha256": "2da7a210cffc8157226fb75c6f3ef218d9db0a0f77cf952e58e7f13f83aceec8"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "7332333223aa121a84d20a9b14ed124416b5a4437d557ceecac8f359e80e6843"
+    },
+    {
+      "path": "implementation/ios/GoalTests/main.swift",
+      "sha256": "3a0fac6298f7cfaf6c6da8a9e6ecc2cbae3e8eeab583e9a33d9392b124d7edb1"
+    },
+    {
+      "path": "implementation/ios/test-goal-state.sh",
+      "sha256": "83dfd28b83f4a4df84bf7b612adc550429ef09999ca7c05dda3e2a4cd1e7b2b2"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "d35f1ca11ba5871e4e2e7ef08a84e21003d245689654fe3a8a79f25989f7fab9"
+    }
+  ],
+  "next_major_module": 6,
+  "next_name": "Remote approvals and user input",
+  "git_mutations": "no commit/push/release"
+}

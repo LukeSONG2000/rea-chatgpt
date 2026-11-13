@@ -1,0 +1,38 @@
+{
+  "batch": 600,
+  "scope": "Shared offline core preview and quick-model availability reporting",
+  "official_artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    "ios-remote-v529-slider-header-findings.json",
+    "ios-remote-v530-keyboard-findings.json",
+    "ios-remote-v524-permission-owner-findings.json",
+    "ios-haptics-v596-integration.json"
+  ],
+  "official_observations": [
+    "Ordinary Remote uses the source-label slider branch, with separate advanced presentation",
+    "Permission presentation and selection belong to the controls owner",
+    "Slider configuration availability requires model, selected effort membership and more than one supported effort"
+  ],
+  "host_finding": [
+    "Existing advanced-sheet onDismiss reopens the slider with a live composer session guard",
+    "v596 model tests already exercise both directions",
+    "v599 preview launch omits model, permission and context capability flags",
+    "The isolated advanced fixture fallback incorrectly described an unimplemented transition"
+  ],
+  "implementation": [
+    "Shared Tools/core-preview.json consumed by launcher and UI test resource",
+    "Explicit --preview core launch with stable preview profiles and optional --restart",
+    "Unavailable quick-model branch now describes missing configuration",
+    "Combined preview regressions exercise permission selection and model advanced roundtrip"
+  ],
+  "provenance": "Manifest, synthetic capabilities, scope/profile and lifecycle adapters are independent frontend implementation. Reusing prior static evidence does not establish full official presentation equivalence.",
+  "not_implemented": [
+    "Complete official visual and transition parity",
+    "Service-backed capability/configuration provider",
+    "All remaining message and approval branches"
+  ]
+}

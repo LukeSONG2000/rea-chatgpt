@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "module": "9 other sidebar feature packages",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "minimum_scheduled_library_customize_plugins_projects_chains_implemented_remaining_packages_partial",
+  "active_package": "ChatGPTProjects core loop archived; next ChatGPTSites",
+  "scope": "Frontend and deterministic synthetic adapter only; no actual scheduling/model/backend/APNs sender",
+  "sources": [
+    {
+      "path": "ios-sidebar-tasks-projects-20261112-findings.json",
+      "sha256": "981bfe66975ed7354cb14fb0ff46a42157b3a5e6ec6bef3c61385c14c08c44b4"
+    },
+    {
+      "path": "ios-sidebar-feature-routes-20261112-findings.json",
+      "sha256": "f86648d4f7c18cc52e2d1595fa3d3fc5bc6db8044494626d9139fe4533d73269"
+    },
+    {
+      "path": "ios-sidebar-apps-sites-images-20261112-findings.json",
+      "sha256": "c85df51559ab1d55c9a376d6b46b1fb15e1c4621ad8fbd6095df438591ab4fd5"
+    }
+  ],
+  "implemented": {
+    "scheduledAutomations": [
+      "normal sidebar entry and retained root owner",
+      "source ScrollView/LazyVStack + task cards and toolbar Menu/Picker",
+      "source mode projection: Active=scheduled+paused; Paused=paused; Completed=finished",
+      "item to exact provided conversation ID through existing chat host",
+      "context menu Edit, capability-controlled Pause/Resume and destructive Delete",
+      "source ScrollView/VStack editor with title, prompt, known notification preference and basic repeat/date/time/end-repeat draft",
+      "original Done/Close branch distinction and extracted labels/assets",
+      "optional parent composer represented by explicit safe-area host adaptation",
+      "synthetic create/loading/error/retry, draft retained on failure, clear only matching revision",
+      "scoped frontend operation request identity and duplicate/stale/foreign-account guards",
+      "pagination, empty state, per-operation failure and return/reentry"
+    ],
+    "fileLibrary": [
+      "native sidebar entry and retained legacy/list root",
+      "directory/search/pagination/loading/error/empty synthetic provider",
+      "text/source file preview and return; scope and request fencing"
+    ],
+    "customize": [
+      "independent native Customize root route and provider-supplied Form sections",
+      "source-proven native AssistantSettings child grouped Form order and draft fields",
+      "synthetic load/edit/save/retry/unsaved-confirm/discard/reopen loop",
+      "other supplied entries have returnable unavailable destinations"
+    ],
+    "apps": [
+      "Native registered sidebar entry, installed rail, source-grouped catalog/search/detail and retry/return state",
+      "Explicit service operation identities and unsupported status; no real authorization/install",
+      "Scoped canonical cache prevents stale pages undoing operation revisions; pending operations survive Back"
+    ],
+    "projects": [
+      "Native home/filter/search/pagination, create/edit, pin/delete through synthetic scoped adapter",
+      "Project detail/conversation list, project draft to shared Chat, separate drafts and Back",
+      "Distinct project/conversation identities and ordinary catalog/search isolation; files/share explanation entries"
+    ]
+  },
+  "not_implemented": {
+    "scheduledAutomations": [
+      "Routines redesign and actual account experiment assignment",
+      "suggested automations and upgrade flow",
+      "positive sharing-provider route and actual service links",
+      "complete recurrence computation, custom/yearly/minutely and backend scheduling",
+      "notification preference nil/loading/retry UI branches and actual notification delivery",
+      "all original task-card category palettes/geometry, full MessageInput controls, precise opaque parent layout/blur/materials, source-specific haptics",
+      "durable backend state; fixture mutations intentionally last only this service instance"
+    ],
+    "fileLibrary": [
+      "IA refresh variant and complete exact legacy row/toolbar appearance",
+      "grid/filters/selection and manage/upload/share/start-chat actions",
+      "real storage service and original History-to-builder dispatch; independent native sidebar adapter implemented"
+    ],
+    "customize": [
+      "actual complete visible catalog, root order/membership/icons and runtime capability assignments",
+      "trait slider range/placement and all remaining original child pages",
+      "real service save/persistence/appearance propagation and exact original geometry/gesture policy"
+    ],
+    "projects": [
+      "Original project conversation builder, full file/tabs/row actions and exact source appearance",
+      "Real service/sharing/memory/account gating and cross-process project fixture state",
+      "Original project-specific haptic trigger and interactive project-chat edge Back"
+    ],
+    "apps": [
+      "Original More presentation and full runtime catalog/gates",
+      "Exact visuals/artwork/FloatingSearchBar and full optional setup/detail branches",
+      "Primary action coordinator and actual service authorization/install; original settings-host wiring"
+    ],
+    "sites": [
+      "native project list with owned/shared filtering and pagination before Web preview"
+    ],
+    "images": [
+      "native ImageGen and ImageLibrary pages"
+    ],
+    "assistant": [
+      "product/default identity and actual destination; user custom R2 data not used"
+    ]
+  },
+  "verification": {
+    "pure_contract": "passed; /tmp/rea-scheduled-tasks-tests; detailed command recorded below",
+    "r1": {
+      "result": "ios-sidebar-scheduled-20261112-r1.xcresult",
+      "status": "build_failed",
+      "reason": "UI test used unsupported value keypath wait; product build/typecheck passed"
+    },
+    "r2": {
+      "result": "ios-sidebar-scheduled-20261112-r2.xcresult",
+      "status": "failed",
+      "reason": "SwiftUI parent AX identifiers inherited by children; separate return test did not establish fixture-a before typing draft",
+      "evidence": "ios-sidebar-scheduled-20261112-r2-attachments/4D45DD30-837D-481A-98E8-ADC683AF83A8.txt"
+    },
+    "r3": {
+      "result": "ios-sidebar-scheduled-20261112-r3.xcresult",
+      "status": "finished_with_one_failure",
+      "passed": [
+        "testScheduledTasksCoreChinese",
+        "testScheduledTasksFailureAndDeleteChinese",
+        "testScheduledTasksPaginationAndEmptyChinese"
+      ],
+      "failed": [
+        "testScheduledTasksComposerChinese: after focused Tasks editor opens sidebar, new-chat toolbar has hit point(-1,-1); keyboard remains over toolbar. Investigate parent keyboard snapshot/ownership under module1."
+      ],
+      "scope": "Chinese/light; no physical install for this package"
+    }
+  },
+  "pure_check_command": "swiftc Sources/FrontendScheduledTasks.swift Tests/ScheduledTasks/Runner.swift -o /tmp/rea-scheduled-tasks-tests && /tmp/rea-scheduled-tasks-tests",
+  "delivery": {
+    "simulator": "not yet promoted; active UI run",
+    "physical": "not yet built or installed for this package"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/FrontendScheduledTasks.swift": "a6de0c1c9b13389b305424b10e5d0100d3acfe582747f213d187f45fde7ea938",
+    "implementation/ios/Sources/NativeScheduledTasks.swift": "e271e63bb073f20448a293b6afb7522fe5bb415fd9d3d171d748470c47827b4f",
+    "implementation/ios/Sources/NativeConversationHost.swift": "eadc0fd1283db9927225498e15a6bb8956825155a68f1b97f773efa038d27d57",
+    "implementation/ios/Sources/OfficialText.swift": "933bfbf565c4ec1eb042cb6e09afa3b8b8d5c4671494c2cd1ea78d5a0ff8a92b",
+    "implementation/ios/Resources/OfficialTranslations.json": "a1ae9a0f058f89d11adaeed7b4708b04f73f3fa86e6bf96d8955e16f40f2f6ee",
+    "implementation/ios/UITests/HostInteractionTests.swift": "2afb4f53b5acdc4727a8d009321b84b9a8b5a29fc8f010133d88e4a592c793c8",
+    "implementation/ios/Tests/ScheduledTasks/Runner.swift": "e286e8762f06945d4ad01294c81171a9a338475ba9e8dfcd36fb8b169cbced7c"
+  },
+  "unattended_20261112": {
+    "status": "scheduledAutomations and FileLibrary core frontends implemented; remaining feature packages explicit",
+    "fileLibrary": "ios-native-library-module-20261112.json",
+    "next_package": "source check Explore/More expansion and actual sidebar feature catalog before adding unproven default entries",
+    "historical_scope": "Earlier status and test records retained as their original snapshots; not current manual hold",
+    "customize": "ios-native-customize-module-20261112.json"
+  },
+  "next_package": "ChatGPTSites"
+}

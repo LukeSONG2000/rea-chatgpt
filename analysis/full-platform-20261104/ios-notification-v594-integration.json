@@ -1,0 +1,119 @@
+{
+  "batch": 594,
+  "status": "partial",
+  "candidate_version": 594,
+  "scope": "Chat and Remote notification unread consumers with process-restart recovery",
+  "official_evidence": "ios-notification-v594-findings.json",
+  "chain": "Versioned synthetic notification -> account/session admission -> atomically saved local journal -> Chat cell or Remote task projection -> exact target selection -> durable read state -> restart validation",
+  "implemented": [
+    "Atomic versioned notification journal with deterministic encoding and bounded validated restore",
+    "Session replacement invalidates old targets; isolated Chat test profiles select separate journals",
+    "Durable unread/read and response deduplication",
+    "Chat sidebar unread accessory refreshes visible rows without reloading the list",
+    "Remote unread projection exercised through task entry and return",
+    "Notification settings shows save/restore failure and retry"
+  ],
+  "provenance": {
+    "official": "293 HistoryCell unread badge inputs, ConversationUnreadIndicatorSnapshot and notification identity metadata",
+    "independent": "Journal storage/clearing policy, profile directories, UI error state, Chat dot geometry/color, UIKit and SwiftUI consumer adapters",
+    "unknown": "Official persisted unread policy, server reconciliation, foreground suppression and exact Chat badge layout"
+  },
+  "validation": {
+    "foundation": "passed",
+    "foundation_log": "ios-notification-v594-foundation-r2.log",
+    "foundation_coverage": [
+      "Unread/read and responseHandled restart",
+      "Stable encoding and exact duplicate admission",
+      "Account/session replacement and A-B-A restoration",
+      "Corrupt snapshot preservation, duplicate/future snapshot rejection and write failure"
+    ],
+    "ui_results": [
+      {
+        "summary": "ios-notification-v594-r1-summary.json",
+        "passed": 2,
+        "failed": 2,
+        "passed_cases": [
+          "testNotificationRemoteRoutingChinese",
+          "testNotificationMissingTargetAndChat"
+        ]
+      },
+      {
+        "summary": "ios-notification-v594-r2-summary.json",
+        "passed": 2,
+        "failed": 0,
+        "passed_cases": [
+          "testNotificationUnreadRestartChinese",
+          "testNotificationUnreadRestartEnglishDark"
+        ]
+      }
+    ],
+    "distinct_ui_cases_passed": 4,
+    "ui_coverage": [
+      "Chinese/light and English/dark Chat unread before/after opening",
+      "Unread survives first restart; read survives later restart and duplicate fixture injection",
+      "Remote unread badge clears only after matching task entry; Chat read leaves Remote unread intact",
+      "Remote A-B-A route/draft regression and unavailable target/Chat regression"
+    ],
+    "visual": [
+      "Chat sidebar blue unread accessory inspected in Chinese/light",
+      "Remote unread and read captures inspected in English/dark",
+      "Chinese normal-profile Remote list inspected after install"
+    ],
+    "runtime": "ios-notification-v594-runtime.json",
+    "failure_ui": "Storage error/retry wired; fault-injected UI acceptance pending"
+  },
+  "failed_probes": [
+    {
+      "run": "foundation-r1",
+      "cause": "Script lacks execute permission; invoked through sh in r2, no permission change"
+    },
+    {
+      "run": "ui-r1",
+      "cause": "Two new tests assumed Remote home on launch; ordinary launch opens Chat. Changed tests to the real Chat sidebar entry. Existing routing tests passed."
+    }
+  ],
+  "page_status": {
+    "notification_unread_replay_and_restart": "核心验收通过",
+    "notification_storage_error_ui": "已实现待验收",
+    "notification_settings": "部分实现",
+    "device_token_registration_frontend": "未实现",
+    "service_preferences_and_mapping": "待接服务",
+    "real_push_delivery_and_haptics": "待设备验证"
+  },
+  "open_items": [
+    {
+      "page": "Settings/Notifications",
+      "priority": "P1",
+      "gap": "Token registration provider contract and pending/failure/cancel states",
+      "evidence_boundary": "293 request fields known; owner lifecycle requires targeted trace",
+      "next_action": "Trace registration identity and owner, implement replaceable frontend provider with synthetic results",
+      "acceptance": "Explicit pending/success/failure/retry and stale session rejection through settings consumers"
+    },
+    {
+      "page": "Chat/Remote notification state",
+      "priority": "P2",
+      "gap": "Background unread reconciliation, active-page clearing policy, unknown target materialization and capacity recovery",
+      "evidence_boundary": "This journal only covers admitted foreground/click events; service cursor and source policy unresolved",
+      "next_action": "Keep future service mapping explicit; inspect relevant official owner paths when needed",
+      "acceptance": "Scoped injected reconciliation and active/inactive state tests with no cross-target clearing"
+    },
+    {
+      "page": "Settings/Notifications",
+      "priority": "P2",
+      "gap": "Fault-injected storage error/retry UI, system settings destination and full categories",
+      "evidence_boundary": "Atomic persistence failure tested in Foundation; settings failure branch lacks UI fault injection",
+      "next_action": "Add targeted error-provider replay with source-bound category checks",
+      "acceptance": "Error remains returnable and recoverable while preserving corrupt evidence"
+    },
+    {
+      "page": "Visual/platform",
+      "priority": "P2",
+      "gap": "Exact Chat badge color/size/trailing padding, physical notification delivery/tactile feedback and Android runtime",
+      "evidence_boundary": "Metadata establishes inputs only; Chat geometry/color independently chosen",
+      "next_action": "Target source rendering branch and separate platform tests",
+      "acceptance": "Version-bound source and device/runtime evidence"
+    }
+  ],
+  "retention": "ios-notification-v594-retention.json",
+  "next_action": "Notification token-registration frontend boundary, then haptic settings/consumers; maintain remaining page and visual feedback gates"
+}

@@ -1,0 +1,64 @@
+{
+  "batch": "v539",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Apply proven shared HeaderV2 parent layout to plain title kinds, preserving distinct kind and new-thread availability",
+  "evidence_type": "official-artifact-static-reused",
+  "observations": [
+    {
+      "offset": "0x39c6d8..0x39c6f4",
+      "conclusion": "Projects kind2 has nil new-thread callback and uses shared HeaderV2."
+    },
+    {
+      "offset": "0x33729c..0x3372b8;0x39cf18..0x39cf38;0x39d4b0..0x39d520",
+      "conclusion": "Recents reaches common header kind2, with host-scoped new-thread target. Pinned uses kind0."
+    },
+    {
+      "offset": "0x39d0b4..0x39d0b8;0x39c3d8",
+      "conclusion": "Date title selects kind0, with topSpacing0; v507 traces its unchanged collapse callback."
+    },
+    {
+      "offset": "0x3a1838..0x3a1900;type0x7cf32f0",
+      "conclusion": "Shared body applies RowMetrics after base Button, then optional new-thread trailing overlay, topSpacing and zero list-row insets."
+    },
+    {
+      "offset": "0x3a1c58..0x3a1c90",
+      "conclusion": "Base label reserves scaled30+8 when new-thread callback is nonnil; zero otherwise."
+    }
+  ],
+  "host_omissions": [
+    "Plain labels still own RowMetrics(horizontalPadding0) inside Button, with listRowInsets20 on parent",
+    "Recents still arranges new-thread button as HStack sibling with no recovered visual reservation",
+    "Pinned/Recents/date ordinary Section wrappers omit source MainSurfacePrimary background already applied to workspace/noWorkspace"
+  ],
+  "integration_decision": "Restore proven shared sequence to all four plain-header callers; keep their distinct kind, collapse, topSpacing and target identity.",
+  "limits": [
+    "No assertion that these changes fix pinned-header translucency",
+    "No change to title-leading navigation or unknown width gate",
+    "Loading overlay and other constructor variants remain separately scoped"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v538-header-findings.json",
+      "sha256": "c3679fb0642a4baa7408095bfc8f0308c4fe0c26803561a488676976486fb9c9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v503-header-minimum-findings.json",
+      "sha256": "4939993c7ceb25cc8873ecf01b240069874934f0d8a5ff72c12777647bb3cd97"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-findings.json",
+      "sha256": "193e6b29f56cb189c7fa62108648927727e4a0c69f6f73e9cea52b69a34ef38f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v507-date-header-findings.json",
+      "sha256": "e832136cb1574574d4bf96f821ff929e133c57a84e7ef781ccfc774478bea807"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v500-projects-header.asm",
+      "sha256": "86ebad41c9b1af47112735c0c1f846ffb5e620533892ba0c37b3b2ebc764753c"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T12:06:43.593153+08:00",
+  "module": 3,
+  "scope": "Remote list and task management fourth pass; iOS frontend only",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_reports": [
+    "ios-remote-row-menu-fourth-20261113-findings.json",
+    "ios-remote-row-gestures-fourth-20261113-findings.json"
+  ],
+  "implemented": [
+    "Ordinary row context menu: pin/unpin, rename, copy thread ID, separate destructive archive",
+    "Visibility and enabled inputs separated; exact acted-on host/thread and captured metadata revision",
+    "Native trailing archive swipe with allowsFullSwipe=false; search results excluded",
+    "Lazy optional read-only actual transcript-component preview with source frame360x520; search results excluded",
+    "Preview bypasses ordinary task initialization, replay preparation, draft reconciliation and persistent reading cache",
+    "Independent movement-cancellable button admission fixes search horizontal drag entering task"
+  ],
+  "independent_adapters": [
+    "Positive offline capability provider, not original account/raw gates and not derived from connected",
+    "Synthetic host/thread metadata operations and atomic local persistence; no production backend",
+    "Read-only preview owner/lifecycle; original VM/subscription provider remains unresolved",
+    "PrimitiveButtonStyle gesture admission; not claimed as recovered original ButtonStyle"
+  ],
+  "not_implemented": [
+    {
+      "item": "Live Activity row action and original read-state service owner",
+      "source": "Menu producer3a2e44 and actual labels identified",
+      "next_action": "Read-status frontend operation is implemented in coordinated fifth pass; resolve actual upstream service/admission for official equivalence. Live Activity still requires provider."
+    },
+    {
+      "item": "Original raw capability predicates",
+      "source": "Discriminator+0x50, busy+0x68, activity case and isPendingArchive observations retained",
+      "next_action": "Bind field semantics and original provider assignments without interpreting connection status as rights"
+    },
+    {
+      "item": "Original preview VM creation and subscription cleanup",
+      "source": "Lazy closure43bc9c consumes optional provider+0x238/+0x240",
+      "next_action": "Resolve provider callback owner and lifecycle; current preview remains independent read-only"
+    },
+    {
+      "item": "Full original viewport/selection and optical behavior",
+      "source": "Prior list parent reports retained",
+      "next_action": "Specific original carrier and runtime evidence, not screenshots or unrelated desktop code"
+    }
+  ],
+  "haptics": {
+    "current_gate_audit": "ios-gesture-haptics-module3-fourth-20261113.json",
+    "new_trigger_added": false,
+    "row_scope": "No new explicit trigger proved; system implicit feedback is a separate unknown",
+    "physical_playback_verified": false
+  },
+  "verification": {
+    "ui": {
+      "path": "ios-remote-list-fourth-20261113-r3.xcresult",
+      "passed": 2,
+      "failed": 0,
+      "duration_seconds": 150.402,
+      "coverage": [
+        "row rename",
+        "actual paste of copied synthetic thread ID",
+        "pin/unpin",
+        "full swipe does not auto archive",
+        "explicit archive and restore",
+        "same thread ID across two hosts isolated",
+        "draft and process restart",
+        "search horizontal drag neither archives nor navigates"
+      ]
+    },
+    "failure_history": [
+      {
+        "path": "ios-remote-list-fourth-20261113-r1.xcresult",
+        "result": "failed2",
+        "findings": [
+          "Native alert field drops SwiftUI identifier; test locator corrected",
+          "Search horizontal drag navigated unexpectedly"
+        ]
+      },
+      {
+        "path": "ios-remote-list-fourth-20261113-r2.xcresult",
+        "result": "failed2",
+        "findings": [
+          "Native alert Save tapped before stable layout; test stability predicate added using existing rename test precedent",
+          "Search horizontal drag bug confirmed by before/after images; product tap admission fixed"
+        ]
+      }
+    ],
+    "foundation": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "exit_code": 0,
+      "log": "/tmp/rea-remote-list-fourth-20261113-foundation.log"
+    },
+    "haptic_contract": {
+      "command": "sh implementation/ios/test-haptics.sh",
+      "exit_code": 0
+    },
+    "device_build": {
+      "exit_code": 0,
+      "log": "/tmp/rea-remote-list-fourth-20261113-device-build.log",
+      "signature": "strict deep verification passed",
+      "app": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app"
+    }
+  },
+  "next_major_module": 4,
+  "no_commit_push_release": true,
+  "previous_snapshot": "ios-remote-list-parent-current-20261113-r3.json",
+  "coordinated_current": "ios-remote-coordinated-parent-current-20261113.json",
+  "latest_increment": {
+    "added": [
+      "Source labels/icons/order for read-status menu action with independent explicit frontend admission.",
+      "Optional account/profile/host/thread read metadata, revision fencing, idempotence and atomic local save.",
+      "Notification unread can independently make a read task unread again; a failed notification checkpoint retains visible unread and reports failure.",
+      "Actual task entry clears local read status; context preview never selects or marks read. This route policy is an independent frontend adaptation."
+    ],
+    "preserved": [
+      "Filters, grouped pinned/project/recent, search, same-name host disambiguation, pin/rename/copyID/archive, preview/swipe separation."
+    ],
+    "unknown": [
+      "Original raw capability/activity gates and downstream read service owner",
+      "Live Activity subscription owner"
+    ]
+  },
+  "historical_snapshot_note": "Older implemented/gap/runtime fields below describe r3; latest increment and coordinated current supersede overlapping facts. Old build/runtime are historical, not current.",
+  "next_module": 2
+}

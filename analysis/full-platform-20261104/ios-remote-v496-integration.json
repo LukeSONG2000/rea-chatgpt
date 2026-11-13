@@ -1,0 +1,95 @@
+{
+  "batch": "v496",
+  "status": "partial",
+  "previous_goal_turn": "no progress: status restatement; this batch adds source-bound project-new-draft entry and regression coverage",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static plus independent native host integration",
+  "findings": [
+    {
+      "offset": "0x19f4a1c;0x7e29980;0x19f53a0;0x19f53e0",
+      "conclusion": "First dynamic-member Binding calls inherited protocol witness getter+0x18/setter+0x20 and carries two String words. The concrete BaseCodexThreadViewModel pattern binds these to0x18c7990/0x18c7994, forwarding to0x1892470/0x1892498 and composer-owner accessors0x188ea14/0x188eb24. Exact stored-property binding remains unproven."
+    },
+    {
+      "offset": "0x19f4db8;0x7e299b8;0x19f5440;0x19f547c;0xa504318;0xa504320",
+      "conclusion": "Second Binding uses NewThreadViewModeling getter+0x28/setter+0x30, concrete thunks0x18c75ec/0x18c75f0 forward to0x18aee08/0x18a5b60, reading/writing model+0x18. Referenced type is DeepLinks.CodexDeepLink.RemoteStartAction. Do not treat byte storage as focus Bool."
+    },
+    {
+      "offset": "0x19f4a7c..0x19f4a9c;0x19eb6c0",
+      "conclusion": "Input focus comes from NewThreadScreen field12 _externalChatFieldIsFocused Binding.projectedValue. Constructor writes focusesComposerOnAppear=true. Selected host preview requests focus on entry. Caller overrides and full onAppear transaction remain unknown."
+    },
+    {
+      "offset": "0x3a1f84;0x39d0e8",
+      "conclusion": "Header new-thread is independent optional callback, original square-and-pencil/tertiary, scaled44 hit area/scaled30 icon column/plain20 icon height. Independent host retains parent horizontal20; trailing-padding branch unresolved."
+    },
+    {
+      "offset": "0x3a1ffc..0x3a2024;import0xaad4f00",
+      "conclusion": "Verified Image.Scale.medium import. Final host uses imageScale(.medium), inherits font, and keeps source frame height20. Removed initial unsupported font20 interpretation before final build."
+    }
+  ],
+  "implementation": [
+    "Sibling project collapse and new-thread controls, distinct navigation destination for draft.",
+    "Explicit synthetic target host/workspaceDirectory/projectID=nil. In-memory owner above navigation.",
+    "Draft Destination enum separates existing-thread and pre-thread identity, including host/directory/project.",
+    "Reuse recovered ordinary composer, native editor, surface and SafeAreaBarIfAvailable wrapper. No duplicate editor.",
+    "Explicit disconnected adapter retains drafts, leaves task list unchanged, presents failure. No service or local executor."
+  ],
+  "independent_adaptations": [
+    "Fixture candidate membership/order, project target availability and synthetic directories.",
+    "NavigationStack push/back, draft retention/session fencing, ordinary placeholder and outer insets.",
+    "Temporary scope toolbar label while actual new-thread destination picker/toolbar recovery remains incomplete.",
+    "Constructor true focus selected for fixture; no claim all official callers use it.",
+    "Bottom wrapper reused with its current availability/spacing policy; full new-screen caller configuration is partial.",
+    "No custom section mappings in this fixture; projectID nil. Full official target/menu capability gates remain unresolved."
+  ],
+  "remaining": [
+    "Actual new-thread destination picker/toolbar",
+    "Initial capability and creation gates",
+    "Pending start actions and autocomplete",
+    "Full effective input style and geometry",
+    "Successful service submission/thread transition",
+    "Pinned/recent/cloud/search/mode/list composer",
+    "Android independent proof"
+  ],
+  "validation": {
+    "typecheck": "passed with existing deprecation warnings",
+    "model_tests": "passed including new-draft identities",
+    "device": "Final signed build496 passed, codesign verified, iPhone Air installation and launch succeeded. Physical touch/visual acceptance pending.",
+    "ui_initial": "2 passed, 1 failed. Page-level accessibilityIdentifier propagated to editor/send descendants and overwrote their identifiers. Removed the parent identifier; preserved raw failing hierarchy.",
+    "ui_r2": "2 passed: new draft/return and large source filter. New draft covers auto focus, one native editor, disconnected retention, host/directory isolation and collapsed-section restoration.",
+    "ui_r3": "Section restoration passed. New-draft test failed before app entry because Simulator launch returned no process handle, NSPOSIXErrorDomain. No app assertion reached.",
+    "ui_final": "r4 new-draft/return passed on unchanged final build using test-without-building. Four distinct targeted regressions have successful runs; each result retains its actual source scope.",
+    "device_install": "ios-device-v496-install.json",
+    "device_launch": "ios-device-v496-launch.json",
+    "manual_preview": {
+      "pid": 84378,
+      "left_running": true,
+      "screen": "Remote project/task list",
+      "new_draft": "Opened actual header action, focused native editor; software keyboard toggled visible, composer remained above keyboard; returned to list and keyboard dismissed. IME marked-text and tactile validation remain pending.",
+      "external_display": "Unavailable now: system_profiler reports only online built-in Color LCD. Window left running on available display.",
+      "screenshots": [
+        "ios-remote-v496-new-draft-keyboard.png",
+        "ios-remote-v496-list-preview.png"
+      ]
+    },
+    "retention": "Builds reuse fixed .build and .build-device paths. retain-builds.py targets=[], skipped=[]."
+  },
+  "investigation_failures": [
+    "Initial scoped witness reader rejected imported deletedMethodError. Retried using validated import resolver and retained external import as external. No silent fallback."
+  ],
+  "evidence_sha256": {
+    "ios-remote-v496-composer-bindings.asm": "0946c8da97494e81071cae864166495a0e6203ffdddeb6c14d326f9297207d1a",
+    "ios-remote-v496-binding-and-frame-helpers.asm": "b6680b489c5bf2757f1acb4120394fa53a67a6e5f69ca8a5854d600493b29205",
+    "ios-remote-v496-witness-and-header.asm": "961ad6a696a1a9cdd9972cc0a590f09a39008979a7d613d19cdd1c5aa35218d5",
+    "ios-remote-v496-binding-providers.asm": "a45a9aa1c86720987a621adbd72c5bffc189cd67d2e5b6966e5fc17392fea1d4"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "54a31758a8f01a505598803b54095445c6b612aef21c00adbd7b03c77cf1bce2",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "cfa77cf69fc6639102986a51a35ef0aaafdb75070c23866b58a59f4148b9442d",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "729cda12ce78181821399e40cdf76cc438e7f9367de7323f6463298174d53fbd",
+    "implementation/ios/Sources/RemoteWorkspacePresentation.swift": "30e2bdf1110e2170a301e21013213b9915cdb74abb2e07f245baa258d36473c3",
+    "implementation/ios/UITests/HostInteractionTests.swift": "1f6cd4dc076fbea987ff799fe68717e93a31946fb54271bed1fb689ca89edb9f",
+    "implementation/ios/TextTests/main.swift": "314a59457695efb351fc83b5b73438182a228c9c991e376788fe63f479b00246"
+  }
+}

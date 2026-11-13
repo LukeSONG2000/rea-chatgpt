@@ -1,0 +1,277 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static-instructions-and-symbolic-types",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Remote list task/project row parents, inherited style, section wrapper and actions. Do not repeat previously integrated44/20/2 row metrics.",
+  "bounded_candidates": [
+    {
+      "id": 1,
+      "scope": "Cell Button label/parent, context/hover wrapper and outer modifier types",
+      "result": "Explicit contextMenu/preview/hover wrappers verified. Exact inherited ButtonStyle remains unknown."
+    },
+    {
+      "id": 2,
+      "scope": "Section/header parent wrapper and new-thread Button",
+      "result": "Existing evidence already proves plain collapse/new-thread Buttons, optional static header, native Section placement, per-section background and HomeContentWidth; no additional unimplemented numeric parameter independently closed."
+    },
+    {
+      "id": 3,
+      "scope": "Cell trailing swipe builder and explicit parameters",
+      "result": "Swipe-actions parent and allowsFullSwipe=false newly bound to original task-cell caller; archive child identified, gate names/actions remain partial."
+    }
+  ],
+  "findings": [
+    {
+      "id": "cell-is-more-than-button",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Original task-cell Button wraps a label with hover behavior and contextMenu(menuItems:preview:). Its context-menu preview is separate from ordinary tap navigation and selection background.",
+      "offsets": [
+        "0x39af1c→0x7c4b37c Button(action:label:)",
+        "0x39af00..0x39af04 label callback0x439a1c",
+        "0x439a1c→0x39e8e4 label wrapper",
+        "0x39eb90→0x7c4a2fc View.hoverEffect(_:isEnabled:)",
+        "0x39ebf0→0x7c4a89c hoverEffectDisabled",
+        "0x39ec10→0x7c480dc ContentShapeKinds.contextMenuPreview",
+        "0x39ecc4→0x7c4a2b4 contextMenu(menuItems:preview:)"
+      ],
+      "type_record": "0x7cf79f8",
+      "type_observations": [
+        "Button label includes CodexTaskRowV2 / CodexRemoteThreadSearchResultRow conditional content",
+        "Context menu generic payload includes CodexTaskRowMenu and optional CodexTaskLiveActivityButton",
+        "Preview generic payload includes SwiftUIToolbelt.LazyView<CodexRemoteThread.CodexRemoteThreadView>",
+        "RoundedRectangle content shape and AutomaticHoverEffect appear in wrapper"
+      ],
+      "geometry": {
+        "hover_and_preview_corner_values": "0x39eb20 stores double12 pair;0x39ec34..0x39ec3c copies same values to contextMenuPreview shape"
+      },
+      "limits": [
+        "These are concrete call/type bindings, not proof all menu entries are available for every task. Capability/host-state entry gates are not resolved here.",
+        "Exact hover enabled/disabled caller booleans remain unnamed. No automatic hover state or haptic trigger is inferred.",
+        "Current standalone host can use its own service-free lazy preview adapter but must not present it as official original runtime execution."
+      ],
+      "source": [
+        "ios-remote-row-parent-20261113/type-7cf79f8.json",
+        "ios-remote-row-parent-20261113/cell-context-hover-reused.asm",
+        "ios-remote-row-parent-20261113/cell-context-hover-reused.json",
+        "ios-remote-row-parent-20261113/cell-owner-reused.asm"
+      ]
+    },
+    {
+      "id": "trailing-swipe-contract",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Original task-cell caller attaches swipeActions(edge:allowsFullSwipe:content:) with edge raw1 and allowsFullSwipe=false. The builder can produce a CodexTaskArchiveButton with tint, or empty content according to its captured conditions.",
+      "offsets": [
+        "0x39b470..0x39b474 content callback0x43b670",
+        "0x39b480→0x45c8a4",
+        "0x45c8a4 mov w0,#1;0x45c8a8 mov w1,#0;0x45c8ac ret",
+        "0x39b494→0x7c4a464 View.swipeActions(edge:allowsFullSwipe:content:)",
+        "0x43b688 reads capturedbyte+0x10 and branches to empty construction ifbit0",
+        "0x43b690..0x43b6a0 otherwise invokes0x14e00c and compares result1; equality takes empty construction",
+        "0x43b6c0/0x43b6d0..0x43b6dc copies callback/context from captured owner+0x200/+0x208/+0x210",
+        "0x43b714..0x43b724 constructs type record0x7cf5148"
+      ],
+      "child_type": "ModifiedContent<CodexTaskArchiveButton,_EnvironmentKeyWritingModifier<AnyShapeStyle>>; outer cell record0x7cf7a20 additionally carries Color parameter",
+      "limits": [
+        "raw1 matches trailing in the corroborating SwiftUI enum convention; original toolchain enum identity is not proved solely by this integer. Keep rawvalue and named inference distinct.",
+        "First captured-byte semantic and0x14e00c result semantic are unclosed. Do not make archive swipe universally visible.",
+        "Exact archive label/icon, role, tint resource and callback action contract were not recovered in this narrow candidate.",
+        "false explicitly forbids full-swipe activation; showing a destructive operation without matching task/request identity is not justified."
+      ],
+      "source": [
+        "ios-remote-row-parent-20261113/cell-swipe-arguments.asm",
+        "ios-remote-row-parent-20261113/cell-swipe-builder.asm",
+        "ios-remote-row-parent-20261113/type-7cf5148.json",
+        "ios-remote-row-parent-20261113/type-7cf7a20.json",
+        "ios-remote-row-parent-20261113/cell-owner-reused.json"
+      ]
+    },
+    {
+      "id": "section-configuration-already-covered",
+      "evidence_type": "official-artifact-observation-reused",
+      "conclusion": "Ordinary task sections have an optional native Section header, conditional V2/legacy header; catalog status sections instead place a visual header as their first content row. Section outer ListRowBackground uses OneOff/MainSurfacePrimary. V2 header receives CodexHomeContentWidth and onChange of project-page identities. Do not flatten these into one always-interactive header.",
+      "offsets": [
+        "ordinary Section record0x7cf7820;catalog record0x7cf7868",
+        "0x39ceb8 V2 flag;0x39cdec..0x39d538 builder",
+        "0x39a230..0x39a254 section row background",
+        "0x3a19b8..0x3a1a4c optional toggleCollapsed→Button + PlainButtonStyle, nil→static label",
+        "0x3a1e1c optional startNewThread;0x3a1fd0/0x3a2028 source icon/plain style"
+      ],
+      "limits": [
+        "The existing host already integrates these parent distinctions and explicit plain header Buttons. No new independent section-header numeric patch is proposed.",
+        "CodexHomeContentWidth effective width and all inherited environment overrides remain separate unresolved boundaries."
+      ],
+      "source": [
+        "ios-remote-v537-list-section-findings.json",
+        "ios-remote-v388-section-findings.json",
+        "ios-remote-v494-findings.json"
+      ]
+    },
+    {
+      "id": "task-button-style-still-unclosed",
+      "evidence_type": "unknown",
+      "conclusion": "The concrete task-cell Button construction and wrappers do not establish which ButtonStyle is inherited from the original list parent. This pass found no verified source parameter that permits replacing the current independent plain task-row adapter.",
+      "source": [
+        "ios-remote-row-parent-20261113/cell-owner-reused.json",
+        "ios-remote-row-parent-20261113/type-7cf79f8.json"
+      ],
+      "limits": [
+        "Absence of a resolved explicit buttonStyle call in this bounded cell is not evidence of default styling or no upstream style. No custom pressed opacity/background is invented."
+      ]
+    }
+  ],
+  "host_comparison": {
+    "classification": "current-source-observation",
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "read_at": "2026-11-13",
+    "observations": [
+      "taskRow near5142 constructs selection Button, plain adapter, metrics, background, transition and last-row insets. It does not attach contextMenu(menuItems:preview:) or swipeActions.",
+      "Thread toolbar near7473 has its own action menu. Its existence does not close task-list context-menu membership or swipe archive gates.",
+      "Existing section/new-thread wrappers cover the previously proven plain Buttons and nativeSection background."
+    ],
+    "limits": [
+      "No product mutation made. Concurrent parent edits may move line numbers."
+    ]
+  },
+  "admission": {
+    "classification": "independent-host-adaptation-recommendation",
+    "safe_minimum": [
+      "Preserve separate tap navigation, long-press context-menu preview and trailing swipe contracts in the list-row interface.",
+      "Use explicit synthetic task-scoped capability input to exercise a preview/menu without claiming original default gates.",
+      "Any future archive swipe uses allowsFullSwipe=false, and reports unsupported until its matching service/fixture action contract settles."
+    ],
+    "not_safe_to_claim": [
+      "All original row menu items restored using transcript toolbar menu by same name.",
+      "All tasks always support swipe archive.",
+      "A verified original inherited ButtonStyle or new row metrics recovered in this pass."
+    ]
+  },
+  "unknowns": [
+    {
+      "id": "row-parent-button-style",
+      "breakpoint": "CodexTaskListContent/List parent environment above39aa88, or generic style-writing ancestor outside current cell type.",
+      "next_minimum_action": "Trace one concrete style-writing parent to selected cell before changing pressed appearance."
+    },
+    {
+      "id": "row-menu-membership",
+      "breakpoint": "CodexTaskRowMenu descriptor0x955fd20 caller payload and context-menu closure consumer around39ecc4; associated live-activity capability.",
+      "next_minimum_action": "Resolve the menu content builder and its capability inputs separately from thread toolbar menu."
+    },
+    {
+      "id": "archive-swipe-gate",
+      "breakpoint": "43b688 capturedbyte+0x10 and43b698→14e00c; archive child body/label/action.",
+      "next_minimum_action": "Name captured fields and resolve archive-button body before enabling original-equivalent gesture."
+    }
+  ],
+  "stop_condition": "Three scoped candidate groups reached. No broader body metrics, host/device/network or inherited-style speculation.",
+  "validation": {
+    "product_edits": false,
+    "builds": false,
+    "devices": false,
+    "network": false,
+    "official_app_execution": false,
+    "new_haptic_claims": false
+  },
+  "existing_sources": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-task-list-cell-owner.json",
+      "sha256": "fdf8fc564bb69eb1c7fbb2725eb7cb31654f4f29965e434b74d7836108774bd2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-cell.json",
+      "sha256": "363438ba0072c8ac78c5211b03acb37ad645d945955683beb551cc49bc6abe83"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-findings.json",
+      "sha256": "4dfe9b80c296f0a41164b7641aeb1d98dc00022cfda5e0645528160558c50410"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v388-section-findings.json",
+      "sha256": "4ce7914e6fa9418915b0e25007fe1ad0a636ed41cd3128907ab0944d16bbe3df"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v494-findings.json",
+      "sha256": "1eed0809960f1cad60e14af08fb346c129382c67d54263efd6798d3fedbba655"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-home-style-findings.json",
+      "sha256": "7f353ec5882b87dd217b9cf2ee0d592a13e76dc7715dc1b96e894acf2564b9af"
+    }
+  ],
+  "raw_inventory": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-context-hover-reused.asm",
+      "sha256": "663f4c174ce2cec827bc565d0f809ab595a98e98075c80d5d46c110e07b9e417",
+      "bytes": 12754
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-context-hover-reused.json",
+      "sha256": "9e106126d8de8378283fb1cca5e518e812c5bd9035e0fba089c7966f77352bcc",
+      "bytes": 9832
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-label-wrapper.asm",
+      "sha256": "9c35b590e7e3608b704af21258a7c355b35777473c03164044fc1b5df18e9248",
+      "bytes": 4464
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-label-wrapper.json",
+      "sha256": "23c6f3b76d385097162521033352f767da4f962c1943f1c36c3d54a44bb8f16f",
+      "bytes": 2498
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-owner-reused.asm",
+      "sha256": "f6008039e827ab28034507283fd8b0ed1ae810a6562f19e6e3749d7ea4222f39",
+      "bytes": 34596
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-owner-reused.json",
+      "sha256": "2945b5267095b7c5864407aa535788bdabf3ad427d164800dce73909c3520d9a",
+      "bytes": 22876
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-swipe-arguments.asm",
+      "sha256": "7677b1220f936f1b450b44e47c2e7c2233932bc66347aabc7590282fc86c7a34",
+      "bytes": 1096
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-swipe-arguments.json",
+      "sha256": "c8e2ec2775d3f5317966af39e019da1b7dedc5488d6477bebe8be7a91c8fa511",
+      "bytes": 988
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-swipe-builder.asm",
+      "sha256": "4389d122662d1b78df3301892dab77c3bead7db409c0814c01fb3945b7f18d64",
+      "bytes": 3040
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/cell-swipe-builder.json",
+      "sha256": "0e686a743b3cb2fa7ece60e29f3e1d2bf9cab5ffb99d90d63178c949ee7a5b00",
+      "bytes": 3327
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/type-7cf5148.json",
+      "sha256": "9bae8e31d9d4aeacc9847c936bd76d6e7a89acb3b4900fb39564d7d95479009f",
+      "bytes": 1476
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/type-7cf79f8.json",
+      "sha256": "e05fe34787b47c05b846ef6288423a05acf2bb0b1340cd69ace9735d7f1bf37e",
+      "bytes": 7715
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/type-7cf7a00.json",
+      "sha256": "675e1791bd8e93a9ad9bb55efb845040c06fc6de9928e6faa625b741d1c20ded",
+      "bytes": 1611
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-row-parent-20261113/type-7cf7a20.json",
+      "sha256": "5b84c78303ffa1f274220dff15ad8619e29f67a2370acfe3aa12032bbb2659c8",
+      "bytes": 1659
+    }
+  ]
+}

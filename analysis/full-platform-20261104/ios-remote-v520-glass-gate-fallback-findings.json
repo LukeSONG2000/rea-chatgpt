@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "platform": "ios",
+  "version": "1.2026.293",
+  "status": "verified-static",
+  "evidence_type": "official_artifact_observation_and_static_inference",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "v520 followup glass enablement and reduceTransparency fallback, no production edits or target execution",
+  "supersedes_unknowns_in": "ios-remote-v520-home-surface-order-findings.json",
+  "findings": [
+    {
+      "id": "default-glass-gate",
+      "conclusion": "MessageInputStyle.glassContainerEnabled defaults to 77107f8() & 1. This is iOS26 availability AND OS build exclusion. Remote and Home factories retain the field.",
+      "offsets": [
+        "0x60814e4",
+        "0x60814e8",
+        "0x60814f0",
+        "0x77107f8",
+        "0x7713534",
+        "0x77105ac"
+      ],
+      "formula": "isIOS26Available && !excludedBuilds.contains(kern_osversion)",
+      "excluded_builds": [
+        "23A5260n",
+        "23A5260u",
+        "23A5276f",
+        "23A5287g"
+      ],
+      "failure_behavior": "If sysctlbyname kern.osversion returns failure, optional string is nil and excludedBuilds membership cache is false. iOS availability still applies.",
+      "cache": "swift_once token0xbb79240, membership byte0xb0a6ab8; kern.osversion optionalString0xb0a6ad0",
+      "integration": "Use same predicate for default and preserve explicit fixture overrides. Container consumer also checks availability and style flag. Do not enable container merely because OS supports API."
+    },
+    {
+      "id": "fallback-color",
+      "conclusion": "When reduceTransparency is true, ordinary Remote field background uses ChatGPT/bg/elevated/secondary and the inner Glass value is nil.",
+      "offsets": [
+        "0x1984b78",
+        "0x1984b94",
+        "0x6081edc",
+        "0x610f3d8",
+        "0x6081ec0",
+        "0x74ecca4",
+        "0x1984c68"
+      ],
+      "normal_branch": "style.innerBackgroundColor at metadata+0xf4; style.glass when reduceTransparency false",
+      "limitations": "Semantic resource identity is closed. Exact RGBA appearance follows retained resource resolution and current environment, not a sampled screenshot color."
+    }
+  ],
+  "literals": [
+    {
+      "va": "0x8a5cb4a",
+      "text": "kern.osversion"
+    },
+    {
+      "va": "0x8a50f20",
+      "text": "ChatGPT/bg/elevated/secondary"
+    }
+  ],
+  "build_exclusion_table": [
+    {
+      "va": "0xaa71bb0",
+      "bytes_hex": "323341353236306e00000000000000e8",
+      "swift_small_string": "23A5260n"
+    },
+    {
+      "va": "0xaa71bc0",
+      "bytes_hex": "323341353236307500000000000000e8",
+      "swift_small_string": "23A5260u"
+    },
+    {
+      "va": "0xaa71bd0",
+      "bytes_hex": "323341353237366600000000000000e8",
+      "swift_small_string": "23A5276f"
+    },
+    {
+      "va": "0xaa71be0",
+      "bytes_hex": "323341353238376700000000000000e8",
+      "swift_small_string": "23A5287g"
+    }
+  ],
+  "bindings": [
+    {
+      "stub": "0x7c54cdc",
+      "slot": "0xaacb978",
+      "binding": {
+        "symbol": "_sysctlbyname",
+        "library_ordinal": 22,
+        "weak": false,
+        "import_ordinal": 5672,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c4d878",
+      "slot": "0xaad6860",
+      "binding": {
+        "symbol": "_$sSS7cStringSSSPys4Int8VG_tcfC",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11199,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c50f14",
+      "slot": "0xaad8718",
+      "binding": {
+        "symbol": "_$ss27_stringCompareWithSmolCheck__9expectingSbs11_StringGutsV_ADs01_G16ComparisonResultOtF",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 12148,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c52f84",
+      "slot": "0xaacb168",
+      "binding": {
+        "symbol": "__availability_version_check",
+        "library_ordinal": 22,
+        "weak": true,
+        "import_ordinal": 5414,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c532f0",
+      "slot": "0xaacb2f8",
+      "binding": {
+        "symbol": "_dispatch_once_f",
+        "library_ordinal": 22,
+        "weak": false,
+        "import_ordinal": 5464,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ],
+  "raw_windows": [
+    {
+      "start": "0x60814d8",
+      "end_exclusive": "0x6081500",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 60814d8: 945a3cc8     \tbl\t0x77107f8 <__text+0x76e87f8>\n 60814dc: 0a200308     \tbic\tw8, w24, w0\n 60814e0: 38346a68     \tstrb\tw8, [x19, x20]\n 60814e4: b980d6b4     \tldrsw\tx20, [x21, #0xd4]\n 60814e8: 945a3cc4     \tbl\t0x77107f8 <__text+0x76e87f8>\n 60814ec: 12000008     \tand\tw8, w0, #0x1\n 60814f0: 38346a68     \tstrb\tw8, [x19, x20]\n 60814f4: 945a3cc1     \tbl\t0x77107f8 <__text+0x76e87f8>\n 60814f8: 2a2003e8     \tmvn\tw8, w0\n 60814fc: 92400108     \tand\tx8, x8, #0x1\n"
+    },
+    {
+      "start": "0x77107f8",
+      "end_exclusive": "0x7710850",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 77107f8: a9bf7bfd     \tstp\tx29, x30, [sp, #-0x10]!\n 77107fc: 910003fd     \tmov\tx29, sp\n 7710800: 52800040     \tmov\tw0, #0x2                ; =2\n 7710804: 52800341     \tmov\tw1, #0x1a               ; =26\n 7710808: 52800002     \tmov\tw2, #0x0                ; =0\n 771080c: 52800003     \tmov\tw3, #0x0                ; =0\n 7710810: 94148ed6     \tbl\t0x7c34368 <_tryKVCSet+0xa0>\n 7710814: 34000140     \tcbz\tw0, 0x771083c <__text+0x76e883c>\n 7710818: b0022348     \tadrp\tx8, 0xbb79000 <_writev+0xbb79000>\n 771081c: f9412108     \tldr\tx8, [x8, #0x240]\n 7710820: b100051f     \tcmn\tx8, #0x1\n 7710824: 54000040     \tb.eq\t0x771082c <__text+0x76e882c>\n 7710828: 94000b43     \tbl\t0x7713534 <__text+0x76eb534>\n 771082c: d001cca8     \tadrp\tx8, 0xb0a6000 <_writev+0xb0a6000>\n 7710830: 396ae108     \tldrb\tw8, [x8, #0xab8]\n 7710834: 7100051f     \tcmp\tw8, #0x1\n 7710838: 54000061     \tb.ne\t0x7710844 <__text+0x76e8844>\n 771083c: 52800000     \tmov\tw0, #0x0                ; =0\n 7710840: 14000002     \tb\t0x7710848 <__text+0x76e8848>\n 7710844: 52800020     \tmov\tw0, #0x1                ; =1\n 7710848: a8c17bfd     \tldp\tx29, x30, [sp], #0x10\n 771084c: d65f03c0     \tret\n"
+    },
+    {
+      "start": "0x77105ac",
+      "end_exclusive": "0x7710688",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 77105ac: aa1e03e0     \tmov\tx0, x30\n 77105b0: 9629407c     \tbl\t0x1607a0 <__text+0x1387a0>\n 77105b4: aa0003fe     \tmov\tx30, x0\n 77105b8: a90a7bfd     \tstp\tx29, x30, [sp, #0xa0]\n 77105bc: 910283fd     \tadd\tx29, sp, #0xa0\n 77105c0: 94000c08     \tbl\t0x77135e0 <__text+0x76eb5e0>\n 77105c4: 54000040     \tb.eq\t0x77105cc <__text+0x76e85cc>\n 77105c8: 94000b52     \tbl\t0x7713310 <__text+0x76eb310>\n 77105cc: d001cca8     \tadrp\tx8, 0xb0a6000 <_writev+0xb0a6000>\n 77105d0: 912b4108     \tadd\tx8, x8, #0xad0\n 77105d4: f9400513     \tldr\tx19, [x8, #0x8]\n 77105d8: b40004f3     \tcbz\tx19, 0x7710674 <__text+0x76e8674>\n 77105dc: 94000b78     \tbl\t0x77133bc <__text+0x76eb3bc>\n 77105e0: 9752d17f     \tbl\t0x4bc4bdc <__text+0x4b9cbdc>\n 77105e4: aa0003f6     \tmov\tx22, x0\n 77105e8: 9100e019     \tadd\tx25, x0, #0x38\n 77105ec: 96290c61     \tbl\t0x153770 <__text+0x12b770>\n 77105f0: d280001a     \tmov\tx26, #0x0               ; =0\n 77105f4: b0019b1b     \tadrp\tx27, 0xaa71000 <_writev+0xaa71000>\n 77105f8: 912e437b     \tadd\tx27, x27, #0xb90\n 77105fc: 9280001c     \tmov\tx28, #-0x1              ; =-1\n 7710600: 94000b87     \tbl\t0x771341c <__text+0x76eb41c>\n 7710604: aa1703e0     \tmov\tx0, x23\n 7710608: 94150f48     \tbl\t0x7c54328 <_writev+0x7c54328>\n 771060c: 94000bea     \tbl\t0x77135b4 <__text+0x76eb5b4>\n 7710610: 96291b95     \tbl\t0x157464 <__text+0x12f464>\n 7710614: 394082c8     \tldrb\tw8, [x22, #0x20]\n 7710618: 9ac82388     \tlsl\tx8, x28, x8\n 771061c: aa2803f5     \tmvn\tx21, x8\n 7710620: 94000bfc     \tbl\t0x7713610 <__text+0x76eb610>\n 7710624: 36000188     \ttbz\tw8, #0x0, 0x7710654 <__text+0x76e8654>\n 7710628: 94000bf5     \tbl\t0x77135fc <__text+0x76eb5fc>\n 771062c: fa570020     \tccmp\tx1, x23, #0x0, eq\n 7710630: 540000e0     \tb.eq\t0x771064c <__text+0x76e864c>\n 7710634: aa1803e2     \tmov\tx2, x24\n 7710638: aa1703e3     \tmov\tx3, x23\n 771063c: 96290b04     \tbl\t0x15324c <__text+0x12b24c>\n 7710640: 37000060     \ttbnz\tw0, #0x0, 0x771064c <__text+0x76e864c>\n 7710644: 91000680     \tadd\tx0, x20, #0x1\n 7710648: 17fffff6     \tb\t0x7710620 <__text+0x76e8620>\n 771064c: 96290e91     \tbl\t0x154090 <__text+0x12c090>\n 7710650: 14000002     \tb\t0x7710658 <__text+0x76e8658>\n 7710654: 94000bc2     \tbl\t0x771355c <__text+0x76eb55c>\n 7710658: f100135f     \tcmp\tx26, #0x4\n 771065c: 54fffd21     \tb.ne\t0x7710600 <__text+0x76e8600>\n 7710660: 94000bd9     \tbl\t0x77135c4 <__text+0x76eb5c4>\n 7710664: 96290480     \tbl\t0x151864 <__text+0x129864>\n 7710668: 94151065     \tbl\t0x7c547fc <_writev+0x7c547fc>\n 771066c: 12000288     \tand\tw8, w20, #0x1\n 7710670: 14000002     \tb\t0x7710678 <__text+0x76e8678>\n 7710674: 52800008     \tmov\tw8, #0x0                ; =0\n 7710678: d001cca9     \tadrp\tx9, 0xb0a6000 <_writev+0xb0a6000>\n 771067c: 392ae128     \tstrb\tw8, [x9, #0xab8]\n 7710680: a94a7bfd     \tldp\tx29, x30, [sp, #0xa0]\n 7710684: 1628f572     \tb\t0x14dc4c <__text+0x125c4c>\n"
+    },
+    {
+      "start": "0x7710d78",
+      "end_exclusive": "0x7710e74",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 7710d78: d10103ff     \tsub\tsp, sp, #0x40\n 7710d7c: a90157f6     \tstp\tx22, x21, [sp, #0x10]\n 7710d80: a9024ff4     \tstp\tx20, x19, [sp, #0x20]\n 7710d84: a9037bfd     \tstp\tx29, x30, [sp, #0x30]\n 7710d88: 9100c3fd     \tadd\tx29, sp, #0x30\n 7710d8c: aa0003f3     \tmov\tx19, x0\n 7710d90: f0019dc8     \tadrp\tx8, 0xaacb000 <_writev+0xaacb000>\n 7710d94: f9409d08     \tldr\tx8, [x8, #0x138]\n 7710d98: f9400108     \tldr\tx8, [x8]\n 7710d9c: f90007e8     \tstr\tx8, [sp, #0x8]\n 7710da0: f90003ff     \tstr\txzr, [sp]\n 7710da4: 910003e2     \tmov\tx2, sp\n 7710da8: d2800001     \tmov\tx1, #0x0                ; =0\n 7710dac: 94000a0a     \tbl\t0x77135d4 <__text+0x76eb5d4>\n 7710db0: d2800015     \tmov\tx21, #0x0               ; =0\n 7710db4: d2800016     \tmov\tx22, #0x0               ; =0\n 7710db8: 35000340     \tcbnz\tw0, 0x7710e20 <__text+0x76e8e20>\n 7710dbc: f94003e1     \tldr\tx1, [sp]\n 7710dc0: 94000550     \tbl\t0x7712300 <__text+0x76ea300>\n 7710dc4: aa0003f4     \tmov\tx20, x0\n 7710dc8: 94150e51     \tbl\t0x7c5470c <_writev+0x7c5470c>\n 7710dcc: 370000e0     \ttbnz\tw0, #0x0, 0x7710de8 <__text+0x76e8de8>\n 7710dd0: f9400a81     \tldr\tx1, [x20, #0x10]\n 7710dd4: 52800000     \tmov\tw0, #0x0                ; =0\n 7710dd8: 52800002     \tmov\tw2, #0x0                ; =0\n 7710ddc: aa1403e3     \tmov\tx3, x20\n 7710de0: 94000621     \tbl\t0x7712664 <__text+0x76ea664>\n 7710de4: aa0003f4     \tmov\tx20, x0\n 7710de8: 91008281     \tadd\tx1, x20, #0x20\n 7710dec: 910003e2     \tmov\tx2, sp\n 7710df0: aa1303e0     \tmov\tx0, x19\n 7710df4: 940009f8     \tbl\t0x77135d4 <__text+0x76eb5d4>\n 7710df8: 340000a0     \tcbz\tw0, 0x7710e0c <__text+0x76e8e0c>\n 7710dfc: 962908e2     \tbl\t0x153184 <__text+0x12b184>\n 7710e00: d2800015     \tmov\tx21, #0x0               ; =0\n 7710e04: d2800016     \tmov\tx22, #0x0               ; =0\n 7710e08: 14000006     \tb\t0x7710e20 <__text+0x76e8e20>\n 7710e0c: 91008280     \tadd\tx0, x20, #0x20\n 7710e10: 9414f29a     \tbl\t0x7c4d878 <_writev+0x7c4d878>\n 7710e14: aa0003f5     \tmov\tx21, x0\n 7710e18: aa0103f6     \tmov\tx22, x1\n 7710e1c: 962908da     \tbl\t0x153184 <__text+0x12b184>\n 7710e20: f94007e8     \tldr\tx8, [sp, #0x8]\n 7710e24: f0019dc9     \tadrp\tx9, 0xaacb000 <_writev+0xaacb000>\n 7710e28: f9409d29     \tldr\tx9, [x9, #0x138]\n 7710e2c: f9400129     \tldr\tx9, [x9]\n 7710e30: eb08013f     \tcmp\tx9, x8\n 7710e34: 540000a1     \tb.ne\t0x7710e48 <__text+0x76e8e48>\n 7710e38: aa1503e0     \tmov\tx0, x21\n 7710e3c: aa1603e1     \tmov\tx1, x22\n 7710e40: a9437bfd     \tldp\tx29, x30, [sp, #0x30]\n 7710e44: 1628e2cb     \tb\t0x149970 <__text+0x121970>\n 7710e48: 94150840     \tbl\t0x7c52f48 <_writev+0x7c52f48>\n 7710e4c: a9bf7bfd     \tstp\tx29, x30, [sp, #-0x10]!\n 7710e50: 910003fd     \tmov\tx29, sp\n 7710e54: 90009a60     \tadrp\tx0, 0x8a5c000 <_writev+0x8a5c000>\n 7710e58: 912d2800     \tadd\tx0, x0, #0xb4a\n 7710e5c: 97ffffc7     \tbl\t0x7710d78 <__text+0x76e8d78>\n 7710e60: d001cca8     \tadrp\tx8, 0xb0a6000 <_writev+0xb0a6000>\n 7710e64: 912b4108     \tadd\tx8, x8, #0xad0\n 7710e68: a9000500     \tstp\tx0, x1, [x8]\n 7710e6c: a8c17bfd     \tldp\tx29, x30, [sp], #0x10\n 7710e70: d65f03c0     \tret\n"
+    },
+    {
+      "start": "0x7713310",
+      "end_exclusive": "0x7713330",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 7713310: f0022320     \tadrp\tx0, 0xbb7a000 <_writev+0xbb7a000>\n 7713314: 91224000     \tadd\tx0, x0, #0x890\n 7713318: b0ffffe1     \tadrp\tx1, 0x7710000 <__text+0x76e8000>\n 771331c: 91393021     \tadd\tx1, x1, #0xe4c\n 7713320: 1415050a     \tb\t0x7c54748 <_writev+0x7c54748>\n 7713324: f2ac8de0     \tmovk\tx0, #0x646f, lsl #16\n 7713328: f2cc6ea0     \tmovk\tx0, #0x6375, lsl #32\n 771332c: f2ed2e80     \tmovk\tx0, #0x6974, lsl #48\n"
+    },
+    {
+      "start": "0x771341c",
+      "end_exclusive": "0x771343c",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 771341c: 8b1a1368     \tadd\tx8, x27, x26, lsl #4\n 7713420: a9425d18     \tldp\tx24, x23, [x8, #0x20]\n 7713424: 9100075a     \tadd\tx26, x26, #0x1\n 7713428: f94016c0     \tldr\tx0, [x22, #0x28]\n 771342c: 910023e8     \tadd\tx8, sp, #0x8\n 7713430: 1414f82d     \tb\t0x7c514e4 <_writev+0x7c514e4>\n 7713434: aa0003f9     \tmov\tx25, x0\n 7713438: 90019e21     \tadrp\tx1, 0xaad7000 <_writev+0xaad7000>\n"
+    },
+    {
+      "start": "0x7713534",
+      "end_exclusive": "0x7713548",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 7713534: d0022320     \tadrp\tx0, 0xbb79000 <_writev+0xbb79000>\n 7713538: 91090000     \tadd\tx0, x0, #0x240\n 771353c: b0ffffe1     \tadrp\tx1, 0x7710000 <__text+0x76e8000>\n 7713540: 9116b021     \tadd\tx1, x1, #0x5ac\n 7713544: 14150481     \tb\t0x7c54748 <_writev+0x7c54748>\n"
+    },
+    {
+      "start": "0x77135c4",
+      "end_exclusive": "0x77135f0",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 77135c4: f94003e0     \tldr\tx0, [sp]\n 77135c8: aa1303e1     \tmov\tx1, x19\n 77135cc: aa1603e2     \tmov\tx2, x22\n 77135d0: 16245609     \tb\t0x28df4 <__text+0xdf4>\n 77135d4: d2800003     \tmov\tx3, #0x0                ; =0\n 77135d8: d2800004     \tmov\tx4, #0x0                ; =0\n 77135dc: 141505c0     \tb\t0x7c54cdc <_writev+0x7c54cdc>\n 77135e0: f0022328     \tadrp\tx8, 0xbb7a000 <_writev+0xbb7a000>\n 77135e4: f9444908     \tldr\tx8, [x8, #0x890]\n 77135e8: b100051f     \tcmn\tx8, #0x1\n 77135ec: d65f03c0     \tret\n"
+    },
+    {
+      "start": "0x28df4",
+      "end_exclusive": "0x28ed8",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n   28df4: d10283ff     \tsub\tsp, sp, #0xa0\n   28df8: a90567fa     \tstp\tx26, x25, [sp, #0x50]\n   28dfc: a9065ff8     \tstp\tx24, x23, [sp, #0x60]\n   28e00: a90757f6     \tstp\tx22, x21, [sp, #0x70]\n   28e04: a9084ff4     \tstp\tx20, x19, [sp, #0x80]\n   28e08: a9097bfd     \tstp\tx29, x30, [sp, #0x90]\n   28e0c: 910243fd     \tadd\tx29, sp, #0x90\n   28e10: f9400848     \tldr\tx8, [x2, #0x10]\n   28e14: b4000508     \tcbz\tx8, 0x28eb4 <__text+0xeb4>\n   28e18: aa0203f3     \tmov\tx19, x2\n   28e1c: aa0103f5     \tmov\tx21, x1\n   28e20: aa0003f6     \tmov\tx22, x0\n   28e24: f9401440     \tldr\tx0, [x2, #0x28]\n   28e28: 910023e8     \tadd\tx8, sp, #0x8\n   28e2c: 95f0a1ae     \tbl\t0x7c514e4 <_writev+0x7c514e4>\n   28e30: 910023e0     \tadd\tx0, sp, #0x8\n   28e34: aa1603e1     \tmov\tx1, x22\n   28e38: aa1503e2     \tmov\tx2, x21\n   28e3c: 95f09250     \tbl\t0x7c4d77c <_writev+0x7c4d77c>\n   28e40: 910023f4     \tadd\tx20, sp, #0x8\n   28e44: 95f0a1c0     \tbl\t0x7c51544 <_writev+0x7c51544>\n   28e48: 9100e277     \tadd\tx23, x19, #0x38\n   28e4c: 39408268     \tldrb\tw8, [x19, #0x20]\n   28e50: 92800009     \tmov\tx9, #-0x1               ; =-1\n   28e54: 9ac82128     \tlsl\tx8, x9, x8\n   28e58: aa2803f8     \tmvn\tx24, x8\n   28e5c: 52800039     \tmov\tw25, #0x1               ; =1\n   28e60: 8a18001a     \tand\tx26, x0, x24\n   28e64: d346ff48     \tlsr\tx8, x26, #6\n   28e68: f8687ae8     \tldr\tx8, [x23, x8, lsl #3]\n   28e6c: 9ada2329     \tlsl\tx9, x25, x26\n   28e70: ea080128     \tands\tx8, x9, x8\n   28e74: 1a9f07f4     \tcset\tw20, ne\n   28e78: b4000208     \tcbz\tx8, 0x28eb8 <__text+0xeb8>\n   28e7c: f9401a68     \tldr\tx8, [x19, #0x30]\n   28e80: 8b1a1108     \tadd\tx8, x8, x26, lsl #4\n   28e84: a9400500     \tldp\tx0, x1, [x8]\n   28e88: eb16001f     \tcmp\tx0, x22\n   28e8c: fa550020     \tccmp\tx1, x21, #0x0, eq\n   28e90: 54000140     \tb.eq\t0x28eb8 <__text+0xeb8>\n   28e94: aa1603e2     \tmov\tx2, x22\n   28e98: aa1503e3     \tmov\tx3, x21\n   28e9c: 52800004     \tmov\tw4, #0x0                ; =0\n   28ea0: 95f0a01d     \tbl\t0x7c50f14 <_writev+0x7c50f14>\n   28ea4: aa0003e8     \tmov\tx8, x0\n   28ea8: 91000740     \tadd\tx0, x26, #0x1\n   28eac: 37000068     \ttbnz\tw8, #0x0, 0x28eb8 <__text+0xeb8>\n   28eb0: 17ffffec     \tb\t0x28e60 <__text+0xe60>\n   28eb4: 52800014     \tmov\tw20, #0x0               ; =0\n   28eb8: aa1403e0     \tmov\tx0, x20\n   28ebc: a9497bfd     \tldp\tx29, x30, [sp, #0x90]\n   28ec0: a9484ff4     \tldp\tx20, x19, [sp, #0x80]\n   28ec4: a94757f6     \tldp\tx22, x21, [sp, #0x70]\n   28ec8: a9465ff8     \tldp\tx24, x23, [sp, #0x60]\n   28ecc: a94567fa     \tldp\tx26, x25, [sp, #0x50]\n   28ed0: 910283ff     \tadd\tsp, sp, #0xa0\n   28ed4: d65f03c0     \tret\n"
+    },
+    {
+      "start": "0x7c34368",
+      "end_exclusive": "0x7c344b8",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000007c342c8 <_tryKVCSet>:\n 7c34368: d10143ff     \tsub\tsp, sp, #0x50\n 7c3436c: a9015ff8     \tstp\tx24, x23, [sp, #0x10]\n 7c34370: a90257f6     \tstp\tx22, x21, [sp, #0x20]\n 7c34374: a9034ff4     \tstp\tx20, x19, [sp, #0x30]\n 7c34378: a9047bfd     \tstp\tx29, x30, [sp, #0x40]\n 7c3437c: aa0303f3     \tmov\tx19, x3\n 7c34380: aa0203f4     \tmov\tx20, x2\n 7c34384: aa0103f5     \tmov\tx21, x1\n 7c34388: aa0003f6     \tmov\tx22, x0\n 7c3438c: f00174a8     \tadrp\tx8, 0xaacb000 <_writev+0xaacb000>\n 7c34390: f9409d08     \tldr\tx8, [x8, #0x138]\n 7c34394: f9400108     \tldr\tx8, [x8]\n 7c34398: f90007e8     \tstr\tx8, [sp, #0x8]\n 7c3439c: b001fd37     \tadrp\tx23, 0xbbd9000 <_writev+0xbbd9000>\n 7c343a0: 910962f7     \tadd\tx23, x23, #0x258\n 7c343a4: 90000002     \tadrp\tx2, 0x7c34000 <_cmark_utf8proc_is_punctuation+0x8c8>\n 7c343a8: 9112e042     \tadd\tx2, x2, #0x4b8\n 7c343ac: aa1703e0     \tmov\tx0, x23\n 7c343b0: d2800001     \tmov\tx1, #0x0                ; =0\n 7c343b4: 94007bcf     \tbl\t0x7c532f0 <_writev+0x7c532f0>\n 7c343b8: f94006e8     \tldr\tx8, [x23, #0x8]\n 7c343bc: b40001e8     \tcbz\tx8, 0x7c343f8 <_tryKVCSet+0x130>\n 7c343c0: 53103ea8     \tlsl\tw8, w21, #16\n 7c343c4: 33181e88     \tbfi\tw8, w20, #8, #8\n 7c343c8: 33001e68     \tbfxil\tw8, w19, #0, #8\n 7c343cc: 290023f6     \tstp\tw22, w8, [sp]\n 7c343d0: 910003e1     \tmov\tx1, sp\n 7c343d4: 52800020     \tmov\tw0, #0x1                ; =1\n 7c343d8: 94007aeb     \tbl\t0x7c52f84 <_writev+0x7c52f84>\n 7c343dc: f94007e8     \tldr\tx8, [sp, #0x8]\n 7c343e0: f00174a9     \tadrp\tx9, 0xaacb000 <_writev+0xaacb000>\n 7c343e4: f9409d29     \tldr\tx9, [x9, #0x138]\n 7c343e8: f9400129     \tldr\tx9, [x9]\n 7c343ec: eb08013f     \tcmp\tx9, x8\n 7c343f0: 54000380     \tb.eq\t0x7c34460 <_tryKVCSet+0x198>\n 7c343f4: 14000030     \tb\t0x7c344b4 <_tryKVCSet+0x1ec>\n 7c343f8: b001fd36     \tadrp\tx22, 0xbbd9000 <_writev+0xbbd9000>\n 7c343fc: 910902d6     \tadd\tx22, x22, #0x240\n 7c34400: 90000002     \tadrp\tx2, 0x7c34000 <_cmark_utf8proc_is_punctuation+0x8c8>\n 7c34404: 910d8042     \tadd\tx2, x2, #0x360\n 7c34408: 910042c0     \tadd\tx0, x22, #0x10\n 7c3440c: d2800001     \tmov\tx1, #0x0                ; =0\n 7c34410: 94007bb8     \tbl\t0x7c532f0 <_writev+0x7c532f0>\n 7c34414: b94002c8     \tldr\tw8, [x22]\n 7c34418: 6b0802bf     \tcmp\tw21, w8\n 7c3441c: 5400012a     \tb.ge\t0x7c34440 <_tryKVCSet+0x178>\n 7c34420: 52800020     \tmov\tw0, #0x1                ; =1\n 7c34424: f94007e8     \tldr\tx8, [sp, #0x8]\n 7c34428: f00174a9     \tadrp\tx9, 0xaacb000 <_writev+0xaacb000>\n 7c3442c: f9409d29     \tldr\tx9, [x9, #0x138]\n 7c34430: f9400129     \tldr\tx9, [x9]\n 7c34434: eb08013f     \tcmp\tx9, x8\n 7c34438: 54000140     \tb.eq\t0x7c34460 <_tryKVCSet+0x198>\n 7c3443c: 1400001e     \tb\t0x7c344b4 <_tryKVCSet+0x1ec>\n 7c34440: 540001cd     \tb.le\t0x7c34478 <_tryKVCSet+0x1b0>\n 7c34444: 52800000     \tmov\tw0, #0x0                ; =0\n 7c34448: f94007e8     \tldr\tx8, [sp, #0x8]\n 7c3444c: f00174a9     \tadrp\tx9, 0xaacb000 <_writev+0xaacb000>\n 7c34450: f9409d29     \tldr\tx9, [x9, #0x138]\n 7c34454: f9400129     \tldr\tx9, [x9]\n 7c34458: eb08013f     \tcmp\tx9, x8\n 7c3445c: 540002c1     \tb.ne\t0x7c344b4 <_tryKVCSet+0x1ec>\n 7c34460: a9447bfd     \tldp\tx29, x30, [sp, #0x40]\n 7c34464: a9434ff4     \tldp\tx20, x19, [sp, #0x30]\n 7c34468: a94257f6     \tldp\tx22, x21, [sp, #0x20]\n 7c3446c: a9415ff8     \tldp\tx24, x23, [sp, #0x10]\n 7c34470: 910143ff     \tadd\tsp, sp, #0x50\n 7c34474: d65f03c0     \tret\n 7c34478: b001fd28     \tadrp\tx8, 0xbbd9000 <_writev+0xbbd9000>\n 7c3447c: b9424508     \tldr\tw8, [x8, #0x244]\n 7c34480: 6b08029f     \tcmp\tw20, w8\n 7c34484: 54fffceb     \tb.lt\t0x7c34420 <_tryKVCSet+0x158>\n 7c34488: 54fffdec     \tb.gt\t0x7c34444 <_tryKVCSet+0x17c>\n 7c3448c: b001fd28     \tadrp\tx8, 0xbbd9000 <_writev+0xbbd9000>\n 7c34490: b9424908     \tldr\tw8, [x8, #0x248]\n 7c34494: 6b08027f     \tcmp\tw19, w8\n 7c34498: 1a9fc7e0     \tcset\tw0, le\n 7c3449c: f94007e8     \tldr\tx8, [sp, #0x8]\n 7c344a0: f00174a9     \tadrp\tx9, 0xaacb000 <_writev+0xaacb000>\n 7c344a4: f9409d29     \tldr\tx9, [x9, #0x138]\n 7c344a8: f9400129     \tldr\tx9, [x9]\n 7c344ac: eb08013f     \tcmp\tx9, x8\n 7c344b0: 54fffd80     \tb.eq\t0x7c34460 <_tryKVCSet+0x198>\n 7c344b4: 94007aa5     \tbl\t0x7c52f48 <_writev+0x7c52f48>\n"
+    },
+    {
+      "start": "0x6081ec0",
+      "end_exclusive": "0x6081f18",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 6081ec0: a9bf7bfd     \tstp\tx29, x30, [sp, #-0x10]!\n 6081ec4: 910003fd     \tmov\tx29, sp\n 6081ec8: 9451ab77     \tbl\t0x74ecca4 <__text+0x74c4ca4>\n 6081ecc: b0028048     \tadrp\tx8, 0xb08a000 <_writev+0xb08a000>\n 6081ed0: f907ad00     \tstr\tx0, [x8, #0xf58]\n 6081ed4: a8c17bfd     \tldp\tx29, x30, [sp], #0x10\n 6081ed8: d65f03c0     \tret\n 6081edc: d002b788     \tadrp\tx8, 0xb773000 <_writev+0xb773000>\n 6081ee0: f943b108     \tldr\tx8, [x8, #0x760]\n 6081ee4: b100051f     \tcmn\tx8, #0x1\n 6081ee8: 540000a0     \tb.eq\t0x6081efc <__text+0x6059efc>\n 6081eec: a9bf7bfd     \tstp\tx29, x30, [sp, #-0x10]!\n 6081ef0: 910003fd     \tmov\tx29, sp\n 6081ef4: 94023539     \tbl\t0x610f3d8 <__text+0x60e73d8>\n 6081ef8: a8c17bfd     \tldp\tx29, x30, [sp], #0x10\n 6081efc: b0028040     \tadrp\tx0, 0xb08a000 <_writev+0xb08a000>\n 6081f00: 913d6000     \tadd\tx0, x0, #0xf58\n 6081f04: d65f03c0     \tret\n 6081f08: a9be4ff4     \tstp\tx20, x19, [sp, #-0x20]!\n 6081f0c: a9017bfd     \tstp\tx29, x30, [sp, #0x10]\n 6081f10: 910043fd     \tadd\tx29, sp, #0x10\n 6081f14: 9451ab8c     \tbl\t0x74ecd44 <__text+0x74c4d44>\n"
+    },
+    {
+      "start": "0x610f3d8",
+      "end_exclusive": "0x610f3f4",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 610f3d8: 9002b320     \tadrp\tx0, 0xb773000 <_writev+0xb773000>\n 610f3dc: 911d8000     \tadd\tx0, x0, #0x760\n 610f3e0: d0fffb81     \tadrp\tx1, 0x6081000 <__text+0x6059000>\n 610f3e4: 913b0021     \tadd\tx1, x1, #0xec0\n 610f3e8: 146d14d8     \tb\t0x7c54748 <_writev+0x7c54748>\n 610f3ec: 6d420680     \tldp\td0, d1, [x20, #0x20]\n 610f3f0: 6d430e82     \tldp\td2, d3, [x20, #0x30]\n"
+    },
+    {
+      "start": "0x74ecca4",
+      "end_exclusive": "0x74eccfc",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 74ecca4: a9be4ff4     \tstp\tx20, x19, [sp, #-0x20]!\n 74ecca8: a9017bfd     \tstp\tx29, x30, [sp, #0x10]\n 74eccac: 910043fd     \tadd\tx29, sp, #0x10\n 74eccb0: 94005a31     \tbl\t0x7503574 <__text+0x74db574>\n 74eccb4: 96317989     \tbl\t0x14b2d8 <__text+0x1232d8>\n 74eccb8: f001aef0     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 74eccbc: f9406e10     \tldr\tx16, [x16, #0xd8]\n 74eccc0: d63f0200     \tblr\tx16\n 74eccc4: 940057b5     \tbl\t0x7502b98 <__text+0x74dab98>\n 74eccc8: 54000040     \tb.eq\t0x74eccd0 <__text+0x74c4cd0>\n 74ecccc: 940057d4     \tbl\t0x7502c1c <__text+0x74dac1c>\n 74eccd0: 9000ab28     \tadrp\tx8, 0x8a50000 <_writev+0x8a50000>\n 74eccd4: 913c8108     \tadd\tx8, x8, #0xf20\n 74eccd8: 9400599e     \tbl\t0x7503350 <__text+0x74db350>\n 74eccdc: 94005865     \tbl\t0x7502e70 <__text+0x74dae70>\n 74ecce0: 941d5f55     \tbl\t0x7c44a34 <_writev+0x7c44a34>\n 74ecce4: 94005a2c     \tbl\t0x7503594 <__text+0x74db594>\n 74ecce8: d10043bf     \tsub\tsp, x29, #0x10\n 74eccec: a9417bfd     \tldp\tx29, x30, [sp, #0x10]\n 74eccf0: 16319967     \tb\t0x15328c <__text+0x12b28c>\n 74eccf4: a9be4ff4     \tstp\tx20, x19, [sp, #-0x20]!\n 74eccf8: a9017bfd     \tstp\tx29, x30, [sp, #0x10]\n"
+    },
+    {
+      "start": "0x1984b78",
+      "end_exclusive": "0x1984c90",
+      "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1984b78: b9812a88     \tldrsw\tx8, [x20, #0x128]\n 1984b7c: 8b080348     \tadd\tx8, x26, x8\n 1984b80: f9400115     \tldr\tx21, [x8]\n 1984b84: 3940211b     \tldrb\tw27, [x8, #0x8]\n 1984b88: 97b77f14     \tbl\t0x7647d8 <__text+0x73c7d8>\n 1984b8c: 360000a0     \ttbz\tw0, #0x0, 0x1984ba0 <__text+0x195cba0>\n 1984b90: aa1403f9     \tmov\tx25, x20\n 1984b94: 951bf4d2     \tbl\t0x6081edc <__text+0x6059edc>\n 1984b98: 941088eb     \tbl\t0x1da6f44 <__text+0x1d7ef44>\n 1984b9c: 1400000c     \tb\t0x1984bcc <__text+0x195cbcc>\n 1984ba0: aa1403f9     \tmov\tx25, x20\n 1984ba4: b9812288     \tldrsw\tx8, [x20, #0x120]\n 1984ba8: 8b080354     \tadd\tx20, x26, x8\n 1984bac: d10303a8     \tsub\tx8, x29, #0xc0\n 1984bb0: 97a3a2fb     \tbl\t0x26d79c <__text+0x24579c>\n 1984bb4: 97a577df     \tbl\t0x2e2b30 <__text+0x2bab30>\n 1984bb8: 97b5df22     \tbl\t0x6fc840 <__text+0x6d4840>\n 1984bbc: b980f508     \tldrsw\tx8, [x8, #0xf4]\n 1984bc0: f8686a7c     \tldr\tx28, [x19, x8]\n 1984bc4: 958b3f68     \tbl\t0x7c54964 <_writev+0x7c54964>\n 1984bc8: 940fea0d     \tbl\t0x1d7f3fc <__text+0x1d573fc>\n 1984bcc: 94108636     \tbl\t0x1da64a4 <__text+0x1d7e4a4>\n 1984bd0: 958b13d3     \tbl\t0x7c49b1c <_writev+0x7c49b1c>\n 1984bd4: 97ab53de     \tbl\t0x459b4c <__text+0x431b4c>\n 1984bd8: d10483a0     \tsub\tx0, x29, #0x120\n 1984bdc: d10523a8     \tsub\tx8, x29, #0x148\n 1984be0: 979f6cb6     \tbl\t0x15feb8 <__text+0x137eb8>\n 1984be4: d104c3a9     \tsub\tx9, x29, #0x130\n 1984be8: 97ab4f1c     \tbl\t0x458858 <__text+0x430858>\n 1984bec: d105a3a9     \tsub\tx9, x29, #0x168\n 1984bf0: f8500124     \tldur\tx4, [x9, #-0x100]\n 1984bf4: aa1603f4     \tmov\tx20, x22\n 1984bf8: 958b1570     \tbl\t0x7c4a1b8 <_writev+0x7c4a1b8>\n 1984bfc: 94106c0d     \tbl\t0x1d9fc30 <__text+0x1d77c30>\n 1984c00: 979f3751     \tbl\t0x152944 <__text+0x12a944>\n 1984c04: 958b3f10     \tbl\t0x7c54844 <_writev+0x7c54844>\n 1984c08: d102e3a8     \tsub\tx8, x29, #0xb8\n 1984c0c: 979f656a     \tbl\t0x15e1b4 <__text+0x1361b4>\n 1984c10: 940007c0     \tbl\t0x1986b10 <__text+0x195eb10>\n 1984c14: d10423a8     \tsub\tx8, x29, #0x108\n 1984c18: 97a3a2e1     \tbl\t0x26d79c <__text+0x24579c>\n 1984c1c: aa1c03e0     \tmov\tx0, x28\n 1984c20: 52802001     \tmov\tw1, #0x100              ; =256\n 1984c24: d104a3a9     \tsub\tx9, x29, #0x128\n 1984c28: f8500136     \tldur\tx22, [x9, #-0x100]\n 1984c2c: aa1603e2     \tmov\tx2, x22\n 1984c30: d10123a9     \tsub\tx9, x29, #0x48\n 1984c34: f8500123     \tldur\tx3, [x9, #-0x100]\n 1984c38: d10583a9     \tsub\tx9, x29, #0x160\n 1984c3c: f8500124     \tldur\tx4, [x9, #-0x100]\n 1984c40: d10223a9     \tsub\tx9, x29, #0x88\n 1984c44: f8500125     \tldur\tx5, [x9, #-0x100]\n 1984c48: aa1803f4     \tmov\tx20, x24\n 1984c4c: 958b1897     \tbl\t0x7c4aea8 <_writev+0x7c4aea8>\n 1984c50: 9410704d     \tbl\t0x1da0d84 <__text+0x1d78d84>\n 1984c54: 979f4642     \tbl\t0x15655c <__text+0x12e55c>\n 1984c58: 941075d4     \tbl\t0x1da23a8 <__text+0x1d7a3a8>\n 1984c5c: 979f3742     \tbl\t0x152964 <__text+0x12a964>\n 1984c60: 97b77ede     \tbl\t0x7647d8 <__text+0x73c7d8>\n 1984c64: 360000c0     \ttbz\tw0, #0x0, 0x1984c7c <__text+0x195cc7c>\n 1984c68: d2800015     \tmov\tx21, #0x0               ; =0\n 1984c6c: 52800016     \tmov\tw22, #0x0               ; =0\n 1984c70: 52800038     \tmov\tw24, #0x1               ; =1\n 1984c74: aa1903fb     \tmov\tx27, x25\n 1984c78: 14000011     \tb\t0x1984cbc <__text+0x195ccbc>\n 1984c7c: aa1903fb     \tmov\tx27, x25\n 1984c80: b9812328     \tldrsw\tx8, [x25, #0x120]\n 1984c84: 8b080354     \tadd\tx20, x26, x8\n 1984c88: d10303a8     \tsub\tx8, x29, #0xc0\n 1984c8c: 979f7b67     \tbl\t0x163a28 <__text+0x13ba28>\n"
+    }
+  ],
+  "validation": {
+    "assembly": "bounded llvm-objdump windows",
+    "import_binding": "chained fixup verified",
+    "target_runtime": "not_run",
+    "host_runtime": "parent_owned"
+  }
+}

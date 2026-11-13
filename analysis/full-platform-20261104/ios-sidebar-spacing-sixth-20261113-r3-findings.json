@@ -1,0 +1,255 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "One final bounded group: actual Section/HistoryHeaderCell registration, hosting margins and usesMinimumRowHeight. No other section/fetch/paging investigation.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reuses": [
+    "ios-sidebar-spacing-sixth-20261113-findings.json",
+    "ios-sidebar-spacing-sixth-20261113-r2-findings.json",
+    "ios-sidebar-layout-20261112-view-types.json",
+    "ios-sidebar-row-metrics-20261112-findings.json"
+  ],
+  "official_observations": [
+    {
+      "id": "actual-header-config-factory",
+      "conclusion": "Section header registration callback1358aa8 enters12a1b24, which constructs UIHostingConfiguration<HistoryHeaderCell?,EmptyView>. It applies hosting EdgeInsets(top2,leading10,bottom2,trailing10). It does not use generic feature helper138ba68 directly; separate header helpers supply the same values.",
+      "sources": [
+        "129c448..129c460 registerscallback1358aa8",
+        "1358aa8 passes actual item into12a1b24",
+        "12a1b44..12a1b58 metadata record7daee88",
+        "7daee88 resolves UIHostingConfiguration<HistoryHeaderCell optional,EmptyView>",
+        "12a1b80..12a1ba8 contentbuilder1358ab4",
+        "12a1bd4 ->1395fbc ->7c49b1c Edge.Set.all",
+        "12a1bd8 ->138d380 d0=2,d1=10,d2=2,d3=10",
+        "12a1bdc ->1393c0c ->7c490d8 UIHostingConfiguration.margins EdgeInsets"
+      ],
+      "evidence": [
+        "section-header-register.asm",
+        "header-host-init.asm",
+        "type-7daee88.json",
+        "header-host-margin-helper.asm",
+        "header-host-margin-apply.asm"
+      ],
+      "limit": "This is extra hosting margin outside recovered child padding, not collection sectionInsets or an extra10 invented from a screenshot. The optional HeaderCell remains absent when source title admission fails."
+    },
+    {
+      "id": "named-header-minimum44-enabled",
+      "conclusion": "When the header producer has a nonempty admitted title, it explicitly initializes its scaled minimumRowHeight with44 and sets usesMinimumRowHeight=true. The prior caller-value unknown is closed for this present-header branch.",
+      "sources": [
+        "1358ab4 readsactualsectionbyte fromcapture+18",
+        "1358af4 calls129f2b8 titleproducer",
+        "1358b04..1358b10 validates title optional/content; failed branch1358b18..30 returnsOptional.none",
+        "1358b58 IEEE0x4046000000000000=44",
+        "1358b5c ->139985c storeswrapped44;1358b60->13987fc suppliesmetricconstructionargs;1358b6c ScaledMetric.init",
+        "1358b74 metadata1358c2c ->HistoryHeaderCell descriptor95931ec",
+        "1358b7c writeslayout field1offset14",
+        "1358b84 writes title field2offset18",
+        "1358b90 field3offset1c->6f5480",
+        "6f5480..84 writesbyte1",
+        "reused view-types field3 usesMinimumRowHeight record9a177f8",
+        "123dc04..123dc20 actualBody reads field3, when1 readsminimumRowHeight wrappedValue for FlexFrameLayout"
+      ],
+      "evidence": [
+        "header-content-producer.asm",
+        "header-minimum-flag.asm",
+        "header-scaled-metric-args.asm",
+        "header-field-minimum-offset.asm",
+        "header-child-body.asm"
+      ],
+      "limit": "Minimum44 is not fixed row44 or48. Keep current child padding and scalable minimum; no extra constant group gap or fixed UIKit header height is inferred."
+    },
+    {
+      "id": "header-typed-carrier",
+      "conclusion": "The Section registration type is plain UICollectionViewCell plus Section (record7dae9b8); keep it separate from HistoryItem custom fixed-height cell and feature one-byte Style registrations.",
+      "source": "reused r2 registration-type-7dae9b8.json, mangled includesSo20UICollectionViewCellC; Section parent previously metadata-mapped",
+      "limit": "Do not use history Large48 fitting branch for section headers."
+    },
+    {
+      "id": "false-candidate-corrected",
+      "conclusion": "1358c40 is a distinct CalpicoHistoryRow optional configuration path, not HistoryHeaderCell. Its 2/0 hosting capture is irrelevant to this header.",
+      "sources": [
+        "type-7daee98.json",
+        "type-7daeeb0.json"
+      ],
+      "limit": "Retained rejected candidate evidence prevents replaying the same owner mix-up."
+    }
+  ],
+  "minimum_implementation": {
+    "pinned_header": "Apply UIHostingConfiguration margins top/bottom2 and leading/trailing10 to actual pinnedHeader configuration while retaining recovered inner refreshed leading22/trailing14, vertical10, semantic body/semibold and scaled minimum44. This naturally adds source-backed horizontal10 to the current22 child alignment.",
+    "carrier": "Use separately registered ordinary UICollectionViewCell for header if feasible. Keep current history ListCell swipe adapter distinct; do not apply its Large fixed48 policy to header.",
+    "do_not": "Do not change child minimum44 to a fixed header48, add group gap4, or copy section header margins to HistoryItem, whose hosting horizontal0 and separate inner wrapper were recovered independently.",
+    "runtime_next": "Same existing Chinese/light ordinary list check can include header title x32 and functional collapse/scroll restoration. No full matrix required."
+  },
+  "remaining_unknowns": [
+    "Exact live title producer visibility and every Section title key are not expanded in this pass.",
+    "Original header action/collapse controller beyond existing source-backed pinned state is not reimplemented here.",
+    "No new divider or inter-section spacing scalar proved."
+  ],
+  "validation": {
+    "candidate_groups_used": 1,
+    "static_only": true,
+    "product_modified": false,
+    "build_or_device_access": false,
+    "network": false,
+    "official_target_execution": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r3",
+  "evidence_files": [
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/empty-header-return.asm",
+      "bytes": 556,
+      "sha256": "b757eca12d2d3af8b1bd29ea91a8f975ce3ea034375059363a18589d8ffda79a"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/empty-header-return.json",
+      "bytes": 924,
+      "sha256": "c119035f2fa32f6642470c355b25a264860f24b92620571d163b8caea1e606f0"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-body-tail.asm",
+      "bytes": 3148,
+      "sha256": "b53702290ef526c68d750268fba58ab85c415414c09e6e46687926291220373c"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-body-tail.json",
+      "bytes": 4161,
+      "sha256": "0e90242061627a099342b020cb7b62849c1eed9242d65d38dc2746d79a0d4063"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-body-type.json",
+      "bytes": 2220,
+      "sha256": "806ad8de79d554744ba7236aa22d326dddfd08761dc6a0568e12c8b5496ff654"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-child-body.asm",
+      "bytes": 9511,
+      "sha256": "0d941f4bf128e4d439dc5b5c398a0a182c6bce6f7f4d2478db6dd898f005b489"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-child-body.json",
+      "bytes": 10089,
+      "sha256": "44cab5abfa40746e746afd3b3c76b79c8910cf10f75edb871f840f74f65ec1a3"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-content-producer.asm",
+      "bytes": 3140,
+      "sha256": "77e535ceb68d64161f26123a9126552860f579212979902a5b4ec92bad2779bb"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-content-producer.json",
+      "bytes": 3369,
+      "sha256": "95c22d084243f679576a214a964b90e2360002f296fce719d46bb3df6043329c"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-field-minimum-offset.asm",
+      "bytes": 518,
+      "sha256": "a787964f5b561a685772eaf9fe09e9739918c222e412d271f8c61cd7e9a553af"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-field-minimum-offset.json",
+      "bytes": 913,
+      "sha256": "306ad17aba8eb4ff4c171bee2847305311587f12a57a8aedd68dd369ab469acd"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-host-init.asm",
+      "bytes": 3006,
+      "sha256": "63be55101c8d7378eb431a1b704757b22552e8086b73688e673fcf2f2adbee20"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-host-init.json",
+      "bytes": 2667,
+      "sha256": "7cb49ae9fa4e3dd15756c728074bef38942cedfee1bae678f00a77f57731ca35"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-host-margin-apply.asm",
+      "bytes": 833,
+      "sha256": "86cd0af9dd5ed7ac6ef61cbfe55160c5a2e8f12152f813d1a2e208641b33698f"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-host-margin-apply.json",
+      "bytes": 947,
+      "sha256": "0101476f7c4ce4aa79cd65eb57fd4177691562b5f23a0d492e2593c20b8770ed"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-host-margin-helper.asm",
+      "bytes": 1268,
+      "sha256": "4a8dca974c1c19cfccd81d2d53706a1e17754fcbb93477ae4586550b1f69ea30"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-host-margin-helper.json",
+      "bytes": 947,
+      "sha256": "062afc4266f2639a10c6b67e657ee184aee71d14c6c83f59d647084b76cdeec7"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-minimum-flag.asm",
+      "bytes": 648,
+      "sha256": "5831ea13cb96a09297d2788dac02748947447b291a36a094e10e767b810f7198"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-minimum-flag.json",
+      "bytes": 940,
+      "sha256": "4a3bf308fae097ffc24c451a8b627f33e2658d2fb528feaabc77ff98a2703861"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-scaled-metric-args.asm",
+      "bytes": 610,
+      "sha256": "cfb04970a835210492fc20ab539e3ace4c878f562ca849bef3ca26fa4980e67b"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-scaled-metric-args.json",
+      "bytes": 930,
+      "sha256": "1eefd2be38bdb19aed2ba06efac08e2a30c76fd5f943bfbe7926364e1f01a2c4"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/header-witness-corrected.json",
+      "bytes": 4614,
+      "sha256": "438038876fb0c6a5728c570539c7ba0e53b448521b1d2c063c394d3939478df8"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/section-header-register.asm",
+      "bytes": 969,
+      "sha256": "b0fb4f34ac79d3f7e44cdd272d1325bc06bb2fd4c141a9085b3f63eaa0eefac5"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/section-header-register.json",
+      "bytes": 2048,
+      "sha256": "386becf69ac218204feb5900c891be90a5bf5f4965c78a7f27a97a2929bedfcb"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/type-7daee88.json",
+      "bytes": 1094,
+      "sha256": "2e7605adbc0e1e3bebce3ab405c614a11c503b68ac41b941524e2729ad1b911c"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/type-7daee90.json",
+      "bytes": 750,
+      "sha256": "d8485357567f21b7a8d6d6edce4b7c3dd38ad4b6e05f24b448ae353181bb319b"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/type-7daee98.json",
+      "bytes": 1094,
+      "sha256": "676db7f19519b57dce3def0e80a916f8105ce844413cfc7102b65144fc1570c0"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/type-7daeea0.json",
+      "bytes": 1265,
+      "sha256": "075dd3f57d07f76f3468cfdfc4e2fdba799dec62380cc7efc92cd5c986bd1971"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/type-7daeea8.json",
+      "bytes": 1469,
+      "sha256": "72ebf51d5d9d1306b1ab019cf10564d1e4c3b38086d6352c9fd99547be7322b0"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r3/type-7daeeb0.json",
+      "bytes": 750,
+      "sha256": "ddfba4e8a95498ea50aa143332de4c12c2255d6ae5e40d35cc5a7b745b6f5cf3"
+    }
+  ]
+}

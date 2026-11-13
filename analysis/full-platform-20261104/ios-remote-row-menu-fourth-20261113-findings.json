@@ -1,0 +1,268 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary task-row contextMenu; not transcript toolbar. Two bounded candidate groups: actual row/menu consumer; generated model plus label/icon/action children.",
+  "official_observations": [
+    {
+      "id": "actual-row-chain",
+      "addresses": [
+        "0x39ecc4 contextMenu(menuItems:preview:)",
+        "0x43b9cc captured-bit gate and0x39ecf0",
+        "0x39ecf0..0x39eefc row-menu producer",
+        "0x39f600→0x39f064 actual Body",
+        "0x39f0a0→0x3a2e44"
+      ],
+      "conclusion": "CodexTaskRowMenu is constructed from the captured task, isPinned, isLiveActivityEnabled, isSubscribingToLiveActivity and Handler<CodexTaskListAction>. Ordinary row producer sets moveToSectionMenu nil. Other branch constructs CodexTaskLiveActivityButton; menu availability is not universal.",
+      "evidence": [
+        "context-menu-composition.asm",
+        "row-menu-producer.asm",
+        "menu-metadata.json",
+        "CodexTaskRowMenu-witness.json",
+        "input-8bd916a.json"
+      ]
+    },
+    {
+      "id": "generated-order",
+      "addresses": [
+        "0x3a2e44..0x3a319c",
+        "0x3a3118..0x3a3120"
+      ],
+      "conclusion": "Ordered model groups are pin/unpin, rename then mark-read/unread, subscribe-to-live-activity, copy-thread-ID, archive; each may be empty. This order is actual array construction/concatenation, not declaration order. Archive is handled separately from non-destructive ForEach by body helper39f2ac.",
+      "evidence": [
+        "menu-model.asm",
+        "menu-body.asm",
+        "menu-tree.json",
+        "menu-section-tree.json"
+      ],
+      "limits": [
+        "Associated menu container includes optional AnyView/move-section and separate optional archive. Do not flatten as evidence of identical separator/presentation on all platform branches."
+      ]
+    },
+    {
+      "id": "task-identity",
+      "conclusion": "Item is CodexRemoteCore.CodexRemoteTaskListItem descriptor95d1770; fields include hostIdentity and threadRepositoryID. Original child callback captures complete original task rather than reading current selection. Handler input is CodexTaskListAction.",
+      "addresses": [
+        "0x39f828..0x39f8b8",
+        "0x39f87c action byte",
+        "0x39f88c..0x39f894 original task copy",
+        "0x39f8a0..0x39f8a8 captured handler invocation"
+      ],
+      "evidence": [
+        "input-8bcc3f2.json",
+        "input-8bd916a.json",
+        "task-metadata.json",
+        "menu-action.asm"
+      ]
+    },
+    {
+      "id": "disabled-and-role",
+      "addresses": [
+        "0x39f758 item.isEnabled",
+        "0x39f770..0x39f778 disabled projection",
+        "0x39f68c..0x39f6b8 role selection",
+        "0x7c469d8 imported ButtonRole.destructive"
+      ],
+      "conclusion": "Per-item enabled flag controls disabled state. Actionc1 (Archive) uses SwiftUI.ButtonRole.destructive, other recovered cases do not. Destructive role does not prove a confirmation dialog.",
+      "evidence": [
+        "menu-child-actions.asm",
+        "role-destructive-stub.asm"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "order": 0,
+      "name": "pin/unpin",
+      "action_encoding": "0x01 Pin;0x00 Unpin; bool payload is !isPinned",
+      "title_key": "Pin / Unpin",
+      "title_factory": [
+        "0x75d2b58",
+        "0x75d2b64"
+      ],
+      "icon": [
+        "OpenAI/Symbols/pin",
+        "OpenAI/Symbols/pin-slash"
+      ],
+      "icon_factory": [
+        "0x74ff5ec",
+        "0x74ff598"
+      ],
+      "visibility": "31d9b0(item) optional projection has nonzero finalword (model3a2e84/88); helper returns nil when itembyte+0x50 !=1. Exact projected ID semantic not closed.",
+      "enabled": "!itembyte+0x68; semantic identity of fixed byte not closed.",
+      "gate_input_advice": "Independent explicit canPin + enabled + isPinned; do not derive from connected."
+    },
+    {
+      "order": 1,
+      "name": "rename",
+      "action_encoding": "0x80",
+      "title_key": "Rename",
+      "title_factory": [
+        "0x75d2470"
+      ],
+      "icon": [
+        "OpenAI/Symbols/pencil"
+      ],
+      "icon_factory": [
+        "0x74ff34c"
+      ],
+      "visibility": "itembyte+0x50 ==1 (3a2ef4..3a2f14)",
+      "enabled": "!itembyte+0x68",
+      "gate_input_advice": "Independent explicit canRename + enabled; original raw branch semantic remains unknown."
+    },
+    {
+      "order": 2,
+      "name": "mark read/unread",
+      "action_encoding": "0x40 Mark as read;0x41 Mark as unread",
+      "title_key": [
+        "codex_remote_mark_thread_read",
+        "codex_remote_mark_thread_unread"
+      ],
+      "title_literal_address": [
+        "0x8852a60",
+        "0x8852a80"
+      ],
+      "icon": [
+        "OpenAI/Symbols/circle",
+        "OpenAI/Symbols/circle-fill"
+      ],
+      "icon_factory": [
+        "0x74fe1d4",
+        "0x74fe028"
+      ],
+      "visibility": "itembyte+0x50==1",
+      "enabled": "false when itembyte+0x68; otherwise case query through keypath7cfb100 against item.activityState must be absent (3a2f84..3a2fac).",
+      "choice": "activityState field metadata+0x38; case extraction via keypath7cfb130 then chained7cfbf70; queried payload absence chooses0x41 (3a2fb0..3a2fc0). Exact original case/read-state mapping not fully closed.",
+      "gate_input_advice": "Preserve optional explicit read-state/action capabilities. Do not infer isUnread from title, task running state, or enum declaration order."
+    },
+    {
+      "order": 3,
+      "name": "subscribe to Live Activity",
+      "action_encoding": "0x81",
+      "title_key": "codex_remote_subscribe_to_live_activity",
+      "title_default": "Subscribe to Live Activity",
+      "title_literal_address": "0x8852a10",
+      "icon": [
+        "OpenAI/Symbols/bell"
+      ],
+      "icon_factory": [
+        "0x74fd934"
+      ],
+      "visibility": "isLiveActivityEnabled &&338b94(item)",
+      "enabled": "!isSubscribingToLiveActivity",
+      "gate_input_advice": "May remain unsupported/nil capability; do not fake actual Live Activity subscription."
+    },
+    {
+      "order": 4,
+      "name": "copy thread ID",
+      "action_encoding": "0xc0",
+      "title_key": "codex_remote_copy_thread_id",
+      "title_default": "Copy thread ID",
+      "title_literal_address": "0x88529f0",
+      "icon": [
+        "OpenAI/Symbols/square-on-square"
+      ],
+      "icon_factory": [
+        "0x74ffb80"
+      ],
+      "visibility": "itembyte+0x50==1",
+      "enabled": "true (3a3070 literal0x01c0)",
+      "gate_input_advice": "Explicit canCopyThreadID + exact thread identity supplied by adapter; do not copy a list-row UUID as original thread repository ID."
+    },
+    {
+      "order": 5,
+      "name": "archive",
+      "action_encoding": "0xc1",
+      "title_key": "Archive",
+      "title_factory": [
+        "0x75d2a00"
+      ],
+      "icon": [
+        "OpenAI/Symbols/archive"
+      ],
+      "icon_factory": [
+        "0x74fd2e0"
+      ],
+      "visibility": "activityState case-query through keypath7cfb100 is absent AND isPendingArchive==false; metadata+0x48 resolves field14 using descriptor fieldOffsetVectorOffset2 (3a30e8..3a30f4). Exact queried activity case remains unresolved.",
+      "enabled": "!itembyte+0x68",
+      "role": "SwiftUI.ButtonRole.destructive",
+      "gate_input_advice": "Independent explicit canArchive + enabled, task-scoped operation. Confirmation policy unproved; do not add a supposedly recovered confirmation."
+    }
+  ],
+  "label_consumer": {
+    "addresses": [
+      "0x43cf2c→SwiftUI.Label(title:icon:)0x43cfa8",
+      "0x43cfb4→0x39f8bc title switch",
+      "0x43cfe4→0x39fa88 icon switch"
+    ],
+    "evidence": [
+      "menu-label-consumer.asm",
+      "menu-label-icons.asm",
+      "text-factories.asm",
+      "literal-strings.json",
+      "icon-*.asm",
+      "icon-shared-tails.asm"
+    ],
+    "limits": [
+      "These are actual menu Label consumers, not inferred matches from similarly named resources. Localization values should be loaded with existing original resource decoder; this pass closes keys/factories, not all translations.",
+      "No new icon sizes claimed."
+    ]
+  },
+  "admission": {
+    "classification": "independent-frontend-adapter-recommendation",
+    "can_implement": [
+      "Separate task-row contextMenu with original recovered labels/icons/order and explicit task-scoped optional capability inputs.",
+      "Pin/unpin, rename, copy thread ID and archive fixture actions are safe to implement as independent frontend operations when allowed/enabled are supplied positively.",
+      "Preserve complete hostIdentity/threadRepositoryID scope across callbacks, failure and return."
+    ],
+    "must_not_claim": [
+      "All tasks always support all six actions.",
+      "Task connected state is sufficient to infer original menu availability.",
+      "Transcript toolbar ActionButtonsContent is the row menu.",
+      "Original archive confirmation/service policy recovered.",
+      "Mark-read and Live Activity backend behavior recovered."
+    ]
+  },
+  "unknowns": [
+    {
+      "id": "unnamed-task-fixed-layout-flags",
+      "breakpoint": "itembyte+0x50 actual discriminator and itembyte+0x68 field must be tied to original value-witness/constructor before naming type/cached/readOnly semantics."
+    },
+    {
+      "id": "activity-case-mapping",
+      "breakpoint": "keypaths7cfb100/7cfb130 and extractors338c9c→244bc3c,39702c→244bc20 plus chained7cfbf70; no case ordinal inferred from declaration."
+    },
+    {
+      "id": "final-operation-reducer",
+      "breakpoint": "39f8a8 invokes captured Handler<CodexTaskListAction>; taskMenuAction enum member metadata exists but downstream reducer/service/rename presentation not closed in this pass."
+    },
+    {
+      "id": "outer-menu-availability",
+      "breakpoint": "43b9cc capturedbyte+10 gate and producer item-kind result from45640c remain unnamed."
+    }
+  ],
+  "haptics": {
+    "proven_new_caller": false,
+    "conclusion": "No explicit haptic caller established in the bounded menu/label/action consumers; do not add source-claimed haptics."
+  },
+  "stop_condition": "Two bounded candidate groups reached; no further metadata/service/control expansion.",
+  "validation": {
+    "static_only": true,
+    "product_edits": false,
+    "builds": false,
+    "devices": false,
+    "official_app_execution": false,
+    "network": false
+  },
+  "raw_directory": "analysis/full-platform-20261104/ios-remote-row-menu-fourth-20261113",
+  "corrections": [
+    {
+      "old_report": "ios-remote-row-parent-20261113-findings.json",
+      "correction": "CodexTaskRowMenu descriptor is955fd28, not955fd20. Menu membership is now partially closed by actual row consumer, not transcript toolbar."
+    }
+  ]
+}

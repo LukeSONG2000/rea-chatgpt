@@ -1,0 +1,63 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "00008150-001E34E93A12401C",
+      "--terminate-existing",
+      "--timeout",
+      "25",
+      "--json-output",
+      "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-startup-integration-device-seed-20261113.json",
+      "local.rea.chatgpt.ioshost",
+      "--",
+      "--host-preview=core",
+      "--host-profile=5E169943-333A-4273-A553-F4D1BD4BE46D"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "deviceIdentifier" : "5998651F-A691-5FB2-A351-40FBCBA8081B",
+    "launchOptions" : {
+      "activatedWhenStarted" : true,
+      "arguments" : [
+        "--host-preview=core",
+        "--host-profile=5E169943-333A-4273-A553-F4D1BD4BE46D"
+      ],
+      "environmentVariables" : {
+        "TERM" : "dumb"
+      },
+      "platformSpecificOptions" : {
+
+      },
+      "startStopped" : false,
+      "terminateExistingInstances" : true,
+      "user" : {
+        "active" : true
+      }
+    },
+    "process" : {
+      "auditToken" : [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        20198,
+        0,
+        345390
+      ],
+      "executable" : "file:///private/var/containers/Bundle/Application/CC053CBC-8A1C-4B05-8C8E-A48A4385A054/REAChatGPTHost.app/REAChatGPTHost",
+      "processIdentifier" : 20198
+    }
+  }
+}

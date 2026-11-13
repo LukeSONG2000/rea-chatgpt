@@ -1,0 +1,124 @@
+{
+  "batch": 612,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official shipped-artifact static control flow and type records",
+  "question": "Resolve the actual expanded webSearch consumer before treating its result payload as a clickable source list.",
+  "observations": [
+    {
+      "offsets": [
+        "0x1a35f28",
+        "0x1d3a44c",
+        "0x1bf0b54",
+        "0x1bfc7b0",
+        "0x1a3954c",
+        "0x1a39594",
+        "0x1c2057c",
+        "0x1c205b8",
+        "0x1a360e0"
+      ],
+      "conclusion": "Expanded activity ForEach reaches Activity renderer1a360e0. Exact thunk/capture disassembly retained in activity-row files."
+    },
+    {
+      "offsets": [
+        "0x1a3613c",
+        "0x1a36148",
+        "0x7dfdf46",
+        "0x1a361dc",
+        "0x1d530a4",
+        "0x7e0f238",
+        "0x1d95700"
+      ],
+      "conclusion": "Eight-case jump table maps webSearch tag2 to1a361dc. Tuple metadata resolves CodexRenderedItem + WebSearchThreadItem. Tuple second element becomes x26 through metadata offset0x30."
+    },
+    {
+      "offsets": [
+        "0x1a3656c",
+        "0x1a36598",
+        "0x1a4202c",
+        "0x1a42090",
+        "0x1da8b94",
+        "0x7e11f58",
+        "0xed9c6c",
+        "0x2a670"
+      ],
+      "conclusion": "Action tag0 extracts query strings. Keypath getter calls empty-string optional conversion2a670. Nonempty strings are appended in order; whitespace and duplicates remain. Empty resulting array falls back to the optional action query at offset8 if nonempty. Other action tags feed an empty query list in this disclosure path."
+    },
+    {
+      "offsets": [
+        "0x1a365a8",
+        "0x1a365ac",
+        "0x1a365b0",
+        "0x7e11ec8"
+      ],
+      "conclusion": "Query array count >1 controls ExpandableAssistantSummaryItem. Returned type contains WebSearchQueryList; zero/single query does not get query-list disclosure."
+    },
+    {
+      "offsets": [
+        "0x1a3ac48",
+        "0x1a3ac88",
+        "0x1a3ad44",
+        "0x1a3adf4",
+        "0x1a3af2c",
+        "0x1a3af48"
+      ],
+      "conclusion": "Summary has running/nonrunning branches. Nonrunning multi-query search uses searched_web_count. Search detail prefers nonempty action.query, then first nonempty queries entry plus space/ellipsis for a multi-entry raw array, then top-level item.query fallback. Detail uses for_detail localized template."
+    },
+    {
+      "offsets": [
+        "0x95faef8",
+        "0x8fa4fd4"
+      ],
+      "conclusion": "WebSearchThreadItem.results is optional opaque OpenAPIValueContainer array, previously observed in v604. Its presence does not establish source-link rendering. This activity consumer renders queries. MessageSourcesView and URLCitationLink belong to a separate chain that remains unconnected to Remote here."
+    }
+  ],
+  "host_changes": [
+    "Preserve raw independent query snapshots; filter empty strings for presentation.",
+    "Enable query disclosure only for multiple displayed queries; retain legacy details behavior for old histories.",
+    "Include query detail in shared label used by individual activity and latest-activity group summary.",
+    "Use source-backed localized completed search count and detail templates.",
+    "Add isolated single-query fixture and targeted Foundation/UI regressions."
+  ],
+  "independent_adaptations": [
+    "Replay queries is an already-projected snapshot, not a decoder for official WebSearchAction. Raw action.query priority and top-level query fallback are not added to the independent contract in this batch.",
+    "Phase.running/completed selection, failed/cancelled wording, count formatting with Swift String and single-line concatenated Text belong to the host. Official cached-preview and approval-state inputs remain separately unresolved.",
+    "Query-summary ellipsis derives from projected nonempty count. Original raw action array can contain empty entries and has a separately observed raw-count condition.",
+    "Legacy histories with absent queries retain existing details disclosure.",
+    "Text and disclosure parent styling remain partial."
+  ],
+  "unimplemented": [
+    "Search-result and citation source cards with resource routing.",
+    "Official WebSearchAction decoder, open-page/find-in-page/other action summary consumers.",
+    "Full query-provider chain and precise ToolActivitySummaryRow layout.",
+    "Android counterpart."
+  ],
+  "failed_or_rejected_hypotheses": [
+    "1a36188/1a3b004 was initially a query-producer candidate. The jump table proves it is the MCP branch; query-producer.asm filename is historical investigation labeling only.",
+    "Initial script used wrong inspect_window key calls; actual API is direct_calls. Rerun produced bounded import records.",
+    "Main-app Localizable.strings has no shared Remote keys; reused existing CompressedStrings extraction tool."
+  ],
+  "implementation_status": "implemented",
+  "validation": {
+    "foundation": "passed; ios-remote-v612-foundation.log",
+    "ui": "r1 five tests passed; r2 latest group and combined journey two tests passed",
+    "runtime": "v612 signed, installed and visually opened in Chinese dark core preview"
+  },
+  "source_files": [
+    "ios-remote-v612-activity-row-thunk.asm",
+    "ios-remote-v612-activity-row-bridge.asm",
+    "ios-remote-v612-activity-row-capture.asm",
+    "ios-remote-v612-activity-row-dispatch.asm",
+    "ios-remote-v612-activity-row-content-thunk.asm",
+    "ios-remote-v397-activity-container.asm",
+    "ios-remote-v612-activity-jump-table.json",
+    "ios-remote-v612-search-tuple-type.json",
+    "ios-remote-v612-search-disclosure-type.json",
+    "ios-remote-v612-websearch-query-extractor.asm",
+    "ios-remote-v612-query-keypath.json",
+    "ios-remote-v612-query-keypath-getter.asm",
+    "ios-remote-v612-empty-string-filter.asm",
+    "ios-remote-v612-search-summary.asm",
+    "ios-selected-text-v612.json"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "batch": "v547",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official_artifact_observation",
+  "confirmed": [
+    {
+      "site": "0x1d1bd50..0x1d1bd88",
+      "observation": "Cancel thunk calls 0x1d9f284 and 0x119ccf8, then loads function/context at returned object +0x50/+0x58 and invokes the function."
+    }
+  ],
+  "inherited_evidence": "ios-remote-v546-pending-menu-findings.json",
+  "translation_report": "ios-remote-v547-selected-text.json",
+  "independent_frontend_policy": [
+    "Pending submissions and actions carry host/thread, UI session, intent ID and revision.",
+    "Cancellation and mode changes invalidate earlier steering acknowledgements.",
+    "Completed synthetic turns drain queued items in FIFO order. Failure and cancellation retain queued text for explicit start or cancel.",
+    "Steering acknowledgements require their original turn to remain active. An unacknowledged steer can return to the queue after that turn terminates.",
+    "Acknowledged steering text remains visible. Cancelled items retain identity tombstones to reject duplicate intents."
+  ],
+  "limits": [
+    "Owner callback preparation, account/subscription service envelope and wire behavior remain unverified.",
+    "Start-now availability in this adapter requires an idle synthetic task. Official callback-availability policy remains unverified.",
+    "Pending row geometry, bubble expansion and exact native menu layout remain partial. This batch uses an explicitly independent native row.",
+    "Edit message action and server-backed delivery remain pending."
+  ],
+  "sources": [
+    "ios-remote-v547-cancel-thunk.asm",
+    "ios-remote-v546-pending-menu-content.asm"
+  ]
+}

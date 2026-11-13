@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core_usable_with_explicit_gaps",
+  "scope": "Remote list third bounded parent pass; selection surface restored; user gesture/haptic settings instruction checked with current consumers",
+  "evidence": [
+    "ios-remote-filter-style-parent-20261113-findings.json",
+    "ios-remote-list-lifecycle-parent-20261113-findings.json",
+    "ios-remote-row-parent-20261113-findings.json",
+    "ios-gesture-haptics-current-20261113-r2.json"
+  ],
+  "implemented": [
+    "Selected host label supplies transparent matched frame source with center anchor; whole HStack owns a single filled Capsule destination with isSource=false before horizontal inset",
+    "One parent background uses actual default bg/tertiary and disables hit testing; namespace stable; prior spacing8/font/default row metrics retained",
+    "Existing current haptic consumers share Settings > General > Haptic feedback persistent preference and hardware/activity admission; no speculative filter/list vibration added"
+  ],
+  "confirmed_not_new_product_changes": [
+    "Original list is List<Never,Content> rather than List(selection:); selected task is navigation/row state",
+    "Original appeared/disappeared callbacks and account-scoped grouping/collapse settings, host-domain VMs identified; pagination data snapshot is not a scroll snapshot",
+    "Original row contextMenu+lazy thread preview and trailing swipe parent proven; fullSwipe=false"
+  ],
+  "not_implemented": [
+    "Task-row long-press menu with lazy thread preview and gated archive swipe; exact member visibility/archive caller conditions remain unresolved, toolbar menu is not substituted",
+    "Complete original inherited row style, label shrink/content-transition integration and animation producer; current fixedSize/visibility policy remain explicit adapters",
+    "Original per-filter/per-host viewport persistence algorithm and changed-catalog cross-process restoration; existing native list return behavior retained",
+    "Real host discovery/binding/paging/ranking services; no new backend built",
+    "Unproved list/long-press/swipe feedback callers, physical touch waveform verification and control of OS implicit haptics"
+  ],
+  "independent_adaptations": [
+    "Destination surface visible only when fixture choices contain current selection; original full isVisible producer still unknown",
+    "Native Menu/plain adapter, fixture data and host availability contracts retained",
+    "Current hardware/activity gate, preference key/default, native gesture admission and UIKit feedback generator lifetime remain host policy"
+  ],
+  "verification": {
+    "ui": {
+      "result": "passed",
+      "test": "testRemoteHostStatusAndListCoreChinese",
+      "seconds": 62.34,
+      "result_bundle": "ios-remote-filter-parent-20261113-r1.xcresult",
+      "scope": "host status/progress, horizontal selection, task entry/return with same selection, unavailable/read-error cases; one Chinese light journey"
+    },
+    "haptic_contract": "sh implementation/ios/test-haptics.sh passed this turn; no physical playback claim",
+    "visual": "Viewed checking-host list attachment and ordinary final Chinese core screenshot; not official optical parity",
+    "simulator": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "launch": "local.rea.chatgpt.ioshost: 16518",
+      "hash_match": true,
+      "executable_sha256": "1d713443e886a333ebfdeb629cb850dff2035f53bc3675f506161b82d65219fa"
+    },
+    "preview_report": "ios-remote-filter-parent-20261113-preview.json",
+    "ordinary_screenshot": "ios-remote-filter-parent-20261113-ordinary.png",
+    "physical": {
+      "name": "iPhone Air",
+      "device": "00008150-001E34E93A12401C",
+      "pairing": "paired",
+      "tunnel": "unavailable",
+      "ddi_available": false,
+      "this_batch_installed": false,
+      "physical_playback_verified": false,
+      "signed_build": "succeeded",
+      "codesign_strict": "passed",
+      "executable_sha256": "6b53d525a426189caa5f16cae6f44c2754efecf63e922fbe4016be57ce7ce5a3"
+    }
+  },
+  "next_major_module": "Remote messages; row-specific unresolved items remain in ledger, no unknowns converted to completion",
+  "files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "a64f7cd846598c5b0938a9c80fa0c986cf424cb79434739e8e33a131310d4757"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteGoalPresentation.swift",
+      "sha256": "119b43029eec8b178bb7778f352c82722f63eba13e6b11801d6c4d5865b2cae8"
+    }
+  ]
+}

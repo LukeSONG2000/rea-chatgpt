@@ -1,0 +1,803 @@
+{
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "method": "8-minute bounded native static follow-up; full supported symbolic trees retain opaque context descriptors; no app/network/host/build/device changes",
+  "entry_and_parent": {
+    "screen_descriptor": "0x9669a54",
+    "accessor": "0x4ae4004",
+    "correction": "0x810c410 is MeasurableBodyView conformance, flags0x20000. Actual SwiftUI.View conformance0x810c42c flags0x30000.",
+    "view_body": "0x4a6e280→measurement wrapper0x50d39ec",
+    "measurable_body": "witness table0xaf2abd0 slot0xaf2abf0 points0x4a6e27c→0x4a68a24",
+    "full_generic_records": [
+      "0x810bd20",
+      "0x810be70"
+    ],
+    "structure": [
+      "ProjectDetailTabsContent outer content",
+      "FixedBarStack banner and error-banner overlays with original background/environment/inset modifiers",
+      "Bottom Button-wrapped MessageInputContainer and MessageInputStyle, with hit-testing/opacity/shape modifiers",
+      "ProjectNavigationTitle plus toolbar groups and title/trailing preference keys",
+      "Typed navigationDestination with BaseAnyViewModel<ProjectConversationScreen,AnyView>",
+      "Identity wrapper using Tagged<APICore.GizmoIDTag>"
+    ],
+    "limits": [
+      "Private anonymous/opaque containers are preserved by descriptor address. Outer full tree is decoded, but those internal layouts are not reconstructed.",
+      "Full generic shape proves construction alternatives, not active capability or runtime branch."
+    ]
+  },
+  "detail_tabs": {
+    "descriptor": "0x966b238",
+    "body_witness": "0x4a75980",
+    "actual_body": "0x4a719a0",
+    "metadata_inputs": [
+      "detailHeader",
+      "project",
+      "conversationsRequest",
+      "conversationAvatars",
+      "conversationIDsWithInProgressChanges",
+      "accountNormalizedUserID",
+      "allowsConversationPinning",
+      "conversationPinState",
+      "updateConversationPinnedState",
+      "fileListViewModel",
+      "customTabs",
+      "reloadEverything",
+      "reloadFiles",
+      "loadMoreConversations",
+      "showConversation",
+      "removeConversationFromProject",
+      "canRenameConversation",
+      "renameConversation",
+      "unlockConversation",
+      "archiveConversation",
+      "deleteConversation",
+      "__tabSelectionState",
+      "_overlayContentBottomInset"
+    ],
+    "proven_conversation_branch": {
+      "record": "0x810f898 /0x810f8a8",
+      "shape": "ProjectConversationsPart + padding/flex-frame modifiers",
+      "construction_sites": [
+        "0x4a72e0c",
+        "0x4a74240",
+        "0x4a757a4 use ProjectDetailTabsContent accessor0x4b2d3ec for local content/closures"
+      ]
+    },
+    "files_and_custom_tabs": "fileListViewModel, customTabs and tabSelectionState exist as original inputs. Source body includes project_add_sources action label0x4a73e3c, missing-file-identifier preview path0x4a74b00 and upload-limit error path0x4a755f0. Exact Chats/Files tab order/title and custom-tabs eligibility remain unclosed; do not invent two unconditional tabs from these fields.",
+    "limits": [
+      "Only the conversation branch generic tree is individually named in the bounded output; full tabs composite is still partial."
+    ]
+  },
+  "conversation_list": {
+    "descriptor": "0x9669978",
+    "body_witness": "0x4a662e8",
+    "actual_body": "0x4a614ec",
+    "record": "0x810bc60",
+    "shape": [
+      "LazyVStack + SwiftUIToolbelt.Divided",
+      "ForEach<Array<GizmoConversation>,Tagged<APICore.RemoteConversationIdTag>>",
+      "Button rows with native contextMenu, PlainButtonStyle and accessibility grouping",
+      "HStack with optional PlaceholderAvatar, VStack title/OptionalText and loading/redacted alternatives",
+      "Trailing OAIProgressView/EmptyView conditional for active changes",
+      "Appearance/animation modifiers and pagination callback input"
+    ],
+    "actual_selection_button": {
+      "constructor_site": "0x4a61e88 Button.init(action:label:)",
+      "action_closure": "0x4b3dfbc",
+      "label_closure": "0x4b3dff4",
+      "callback_observation": "Action closure loads indirect function/context pair from captured aggregate offset0x80 at0x4b3dfe4 then calls helper0x458e14. Typed input showConversation accepts GizmoConversation. Exact VM callback linkage is not proved here.",
+      "limit": "Do not label the generic indirect call as a fully recovered showConversation dispatch or fabricate a new direct builder."
+    },
+    "row_actions_inventory": [
+      "loadMoreConversations",
+      "showConversation",
+      "removeConversationFromProject",
+      "canRenameConversation",
+      "renameConversation",
+      "unlockConversation",
+      "archiveConversation",
+      "deleteConversation",
+      "__tabSelectionState",
+      "_overlayContentBottomInset"
+    ]
+  },
+  "identity_contract": {
+    "classification": "official type observations plus explicitly independent adaptation",
+    "official_observations": [
+      "Detail target type is ConversationsCore.ConversationGizmoTarget.",
+      "Root content identity includes Tagged<APICore.GizmoIDTag>.",
+      "Conversation row identity is separately Tagged<APICore.RemoteConversationIdTag>.",
+      "showConversationScreen is BaseAnyViewModel<ProjectConversationScreen,AnyView>.",
+      "Detail VM showConversation closure refers to ConversationsInterface.Conversation and ProjectHeaderMetadata.",
+      "startNewThread closure accepts ConversationContextNewThreadParameters.",
+      "Home supplied projectConversationScreenBuilder is AnyViewBuilder<ProjectConversationScreen>."
+    ],
+    "not_proved": [
+      "Exact mapping from every project target case to account/project scope.",
+      "Exact new-thread parameter values and root builder registration.",
+      "GizmoIDTag is not a Remote workspace/host ID; do not reuse that namespace."
+    ],
+    "independent_minimum_adapter": [
+      "Use accountID/projectID for project/detail/selection/draft scope, with a separate conversationID for the selected conversation.",
+      "Existing native Chat host may render a synthetic project conversation behind its own adapter, explicitly marked independent host adaptation.",
+      "Send a distinct project-context intent when starting a new thread; do not merely title an ordinary chat with project name."
+    ]
+  },
+  "menu_return": {
+    "part": "ProjectDetailsActionsMenuNavigationBarPart descriptor0x9669c54",
+    "body": "0x4a80c4c→0x4a808ac",
+    "original_inputs": [
+      "menuButtons AnyView",
+      "isDisabled",
+      "conversationNavigationBarType",
+      "navigationBarButtonMinSize"
+    ],
+    "conclusion": "Menu is supplied by a parent builder, not authored by this toolbar leaf. Root preserves native navigationDestination and title/toolbar preference system.",
+    "unknown": "Exact project action menuButtons producer/order/delete confirmation and dismiss/back callbacks not closed; keep source entry and explicit return in independent host, do not claim official menu parity."
+  },
+  "resources": {
+    "direct_consumers": [
+      {
+        "component": "root",
+        "site": "0x4a69b34",
+        "address": "0x8986990",
+        "string": "View.task @ ChatGPTProjects/ProjectDetailScreen.swift:"
+      },
+      {
+        "component": "root",
+        "site": "0x4a6a098",
+        "address": "0x8986960",
+        "string": "ChatGPTProjects/ProjectDetailScreen.swift"
+      },
+      {
+        "component": "tabs",
+        "site": "0x4a73e3c",
+        "address": "0x8987360",
+        "string": "project_add_sources"
+      },
+      {
+        "component": "tabs",
+        "site": "0x4a73f28",
+        "address": "0x8986960",
+        "string": "ChatGPTProjects/ProjectDetailScreen.swift"
+      },
+      {
+        "component": "tabs",
+        "site": "0x4a743d8",
+        "address": "0x8986a20",
+        "string": "Start chatting below"
+      },
+      {
+        "component": "tabs",
+        "site": "0x4a74b00",
+        "address": "0x8986a40",
+        "string": "Missing file identifier while previewing a project file"
+      },
+      {
+        "component": "tabs",
+        "site": "0x4a755f0",
+        "address": "0x8987380",
+        "string": "Failed to fetch project file upload limits"
+      },
+      {
+        "component": "conversations",
+        "site": "0x4a65aa8",
+        "address": "0x8989bb0",
+        "string": "chatgpt_projects_locked_chats_unlock_chat_action"
+      }
+    ],
+    "factory_observations": [
+      {
+        "factory": "0x75d7a70",
+        "site": "0x75d7ad8",
+        "address": "0x8a5a700",
+        "string": "Please try again"
+      },
+      {
+        "factory": "0x75d7b80",
+        "site": "0x75d7c14",
+        "address": "0x8a5a720",
+        "string": "Bad transcription"
+      },
+      {
+        "factory": "0x75d24fc",
+        "site": "0x75d251c",
+        "address": "0x8a59060",
+        "string": "Remove from project"
+      }
+    ],
+    "important_limit": "Resource scan includes a bounded factory window and may include the next neighboring factory. Only associate a key with a caller when its load lies in the named factory path; Remove from project at0x75d251c belongs to factory0x75d24fc and is a verified conversation-row menu consumer at0x4a66184. Nearby Please try again/Bad transcription are not attributed to project labels."
+  },
+  "haptics": {
+    "status": "unknown consumer",
+    "inventory": "ProjectDetailViewModel has lazy hapticEngine field; no exact haptic method call/trigger was closed. Do not claim a verified tap feedback from field presence."
+  },
+  "models_inventory_only": [
+    {
+      "name": "ProjectConversationsPart",
+      "kind": 17,
+      "descriptor": "0x9669978",
+      "accessor": "0x4a643e4",
+      "fields": [
+        {
+          "name": "isShared",
+          "record": "0x9b23a24",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "emptyMessage",
+          "record": "0x9b23a30",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "emptySubtitle",
+          "record": "0x9b23a3c",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "conversationsRequest",
+          "record": "0x9b23a48",
+          "type_reference": "0x920278e"
+        },
+        {
+          "name": "conversationAvatars",
+          "record": "0x9b23a54",
+          "type_reference": "0x92058c6"
+        },
+        {
+          "name": "conversationIDsWithInProgressChanges",
+          "record": "0x9b23a60",
+          "type_reference": "0x92027b0"
+        },
+        {
+          "name": "accountNormalizedUserID",
+          "record": "0x9b23a6c",
+          "type_reference": "0x8f338a0"
+        },
+        {
+          "name": "allowsPinning",
+          "record": "0x9b23a78",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "conversationPinState",
+          "record": "0x9b23a84",
+          "type_reference": "0x92058e0"
+        },
+        {
+          "name": "updateConversationPinnedState",
+          "record": "0x9b23a90",
+          "type_reference": "0x92058f4"
+        },
+        {
+          "name": "showConversation",
+          "record": "0x9b23a9c",
+          "type_reference": "0x9205908"
+        },
+        {
+          "name": "loadMoreConversations",
+          "record": "0x9b23aa8",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "removeConversationFromProject",
+          "record": "0x9b23ab4",
+          "type_reference": "0x920591e"
+        },
+        {
+          "name": "canRenameConversation",
+          "record": "0x9b23ac0",
+          "type_reference": "0x9205928"
+        },
+        {
+          "name": "renameConversation",
+          "record": "0x9b23acc",
+          "type_reference": "0x920593a"
+        },
+        {
+          "name": "unlockConversation",
+          "record": "0x9b23ad8",
+          "type_reference": "0x920591e"
+        },
+        {
+          "name": "archiveConversation",
+          "record": "0x9b23ae4",
+          "type_reference": "0x920591e"
+        },
+        {
+          "name": "deleteConversation",
+          "record": "0x9b23af0",
+          "type_reference": "0x920594a"
+        },
+        {
+          "name": "_background",
+          "record": "0x9b23afc",
+          "type_reference": "0x9453358"
+        },
+        {
+          "name": "_conversationAvatarSize",
+          "record": "0x9b23b08",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "__renamingConversation",
+          "record": "0x9b23b14",
+          "type_reference": "0x91ff498"
+        },
+        {
+          "name": "__renamedConversationTitle",
+          "record": "0x9b23b20",
+          "type_reference": "0x9279240"
+        },
+        {
+          "name": "_isRenamingFocused",
+          "record": "0x9b23b2c",
+          "type_reference": "0x92315c0"
+        }
+      ],
+      "conformances": [
+        "0x810c3c0"
+      ]
+    },
+    {
+      "name": "ProjectDetailViewModel",
+      "kind": 16,
+      "descriptor": "0x9669b64",
+      "accessor": "0x4ae3f2c",
+      "fields": [
+        {
+          "name": "target",
+          "record": "0x9b23cfc",
+          "type_reference": "0x8d8abd0"
+        },
+        {
+          "name": "showsMessageInput",
+          "record": "0x9b23d08",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_composerConfiguration",
+          "record": "0x9b23d14",
+          "type_reference": "0x8c29a5c"
+        },
+        {
+          "name": "showConversationScreen",
+          "record": "0x9b23d20",
+          "type_reference": "0x9206760"
+        },
+        {
+          "name": "conversationReadinessHandler",
+          "record": "0x9b23d2c",
+          "type_reference": "0x920330e"
+        },
+        {
+          "name": "_isDeleting",
+          "record": "0x9b23d38",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "$__lazy_storage_$_fileListViewModel",
+          "record": "0x9b23d44",
+          "type_reference": "0x920677c"
+        },
+        {
+          "name": "_presentationQueue",
+          "record": "0x9b23d50",
+          "type_reference": "0x92004fc"
+        },
+        {
+          "name": "_conversationIDsWithInProgressChanges",
+          "record": "0x9b23d5c",
+          "type_reference": "0x92027b0"
+        },
+        {
+          "name": "_account",
+          "record": "0x9b23d68",
+          "type_reference": "0x8f4de68"
+        },
+        {
+          "name": "_projectPinState",
+          "record": "0x9b23d74",
+          "type_reference": "0x909375c"
+        },
+        {
+          "name": "_project",
+          "record": "0x9b23d80",
+          "type_reference": "0x8d8a0e8"
+        },
+        {
+          "name": "_aboutRequest",
+          "record": "0x9b23d8c",
+          "type_reference": "0x92782c0"
+        },
+        {
+          "name": "showConversation",
+          "record": "0x9b23d98",
+          "type_reference": "0x9206784"
+        },
+        {
+          "name": "startNewThread",
+          "record": "0x9b23da4",
+          "type_reference": "0x920679c"
+        },
+        {
+          "name": "_conversationsRequest",
+          "record": "0x9b23db0",
+          "type_reference": "0x920278e"
+        },
+        {
+          "name": "_currentBanner",
+          "record": "0x9b23dbc",
+          "type_reference": "0x8fc2350"
+        },
+        {
+          "name": "_pinningError",
+          "record": "0x9b23dc8",
+          "type_reference": "0x90920c0"
+        },
+        {
+          "name": "_availableProjectDestinations",
+          "record": "0x9b23dd4",
+          "type_reference": "0x8d91fec"
+        },
+        {
+          "name": "_conversationAvatars",
+          "record": "0x9b23de0",
+          "type_reference": "0x92058c6"
+        },
+        {
+          "name": "_projectSharingCapabilities",
+          "record": "0x9b23dec",
+          "type_reference": "0x8d89f54"
+        },
+        {
+          "name": "$__lazy_storage_$_isMemoryAvailable",
+          "record": "0x9b23df8",
+          "type_reference": "0x8bc9000"
+        },
+        {
+          "name": "$__lazy_storage_$_hapticEngine",
+          "record": "0x9b23e04",
+          "type_reference": "0x9046528"
+        },
+        {
+          "name": "$__lazy_storage_$_customTabsViewModel",
+          "record": "0x9b23e10",
+          "type_reference": "0x92067b2"
+        },
+        {
+          "name": "_conversationPinStates",
+          "record": "0x9b23e1c",
+          "type_reference": "0x92067ba"
+        },
+        {
+          "name": "isConversationNavigationInProgress",
+          "record": "0x9b23e28",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isLoadingSavedMessages",
+          "record": "0x9b23e34",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "bag",
+          "record": "0x9b23e40",
+          "type_reference": "0x8d8a3a0"
+        },
+        {
+          "name": "conversationPinStateSubscriptions",
+          "record": "0x9b23e4c",
+          "type_reference": "0x92067dc"
+        },
+        {
+          "name": "reloadOnAppBecomesActive",
+          "record": "0x9b23e58",
+          "type_reference": "0x8c20e10"
+        },
+        {
+          "name": "reloadConversationOnNextAppear",
+          "record": "0x9b23e64",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "reloadConversationsAfterCurrentRequest",
+          "record": "0x9b23e70",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "$__lazy_storage_$_accountDataSource",
+          "record": "0x9b23e7c",
+          "type_reference": "0x8fcfe20"
+        },
+        {
+          "name": "$__lazy_storage_$_accountFeatureFlagManager",
+          "record": "0x9b23e88",
+          "type_reference": "0x8c210f8"
+        },
+        {
+          "name": "$__lazy_storage_$_gizmoRepository",
+          "record": "0x9b23e94",
+          "type_reference": "0x903acc0"
+        },
+        {
+          "name": "$__lazy_storage_$_conversationRepository",
+          "record": "0x9b23ea0",
+          "type_reference": "0x8c1e290"
+        },
+        {
+          "name": "$__lazy_storage_$_conversationCoordinatorProvider",
+          "record": "0x9b23eac",
+          "type_reference": "0x8c20ef0"
+        },
+        {
+          "name": "$__lazy_storage_$_lockedChatsAccess",
+          "record": "0x9b23eb8",
+          "type_reference": "0x92067fc"
+        },
+        {
+          "name": "$__lazy_storage_$_pinnedItemRepository",
+          "record": "0x9b23ec4",
+          "type_reference": "0x8d8a0c0"
+        },
+        {
+          "name": "$__lazy_storage_$_featuresConfiguration",
+          "record": "0x9b23ed0",
+          "type_reference": "0x903a73c"
+        },
+        {
+          "name": "$__lazy_storage_$_savedMessagesEnabled",
+          "record": "0x9b23edc",
+          "type_reference": "0x8bc9000"
+        },
+        {
+          "name": "$__lazy_storage_$_savedMessagesRepository",
+          "record": "0x9b23ee8",
+          "type_reference": "0x903a732"
+        },
+        {
+          "name": "dependencies",
+          "record": "0x9b23ef4",
+          "type_reference": "0x9206808"
+        },
+        {
+          "name": "initialProjectHeaderMetadata",
+          "record": "0x9b23f00",
+          "type_reference": "0x8c20b3a"
+        },
+        {
+          "name": "bannerManager",
+          "record": "0x9b23f0c",
+          "type_reference": "0x90503f0"
+        },
+        {
+          "name": "projectLatencyTracker",
+          "record": "0x9b23f18",
+          "type_reference": "0x920400a"
+        },
+        {
+          "name": "projectHomeNavigationLatencyInstrumentation",
+          "record": "0x9b23f24",
+          "type_reference": "0x92068cc"
+        },
+        {
+          "name": "_$observationRegistrar",
+          "record": "0x9b23f30",
+          "type_reference": "0x8da7dc0"
+        },
+        {
+          "name": "$__lazy_storage_$__publisher",
+          "record": "0x9b23f3c",
+          "type_reference": "0x92068d4"
+        }
+      ],
+      "conformances": [
+        "0x810c5ec",
+        "0x810c608",
+        "0x810c618",
+        "0x810c634"
+      ]
+    },
+    {
+      "name": "ProjectDetailsActionsMenuNavigationBarPart",
+      "kind": 17,
+      "descriptor": "0x9669c54",
+      "accessor": "0x4aee49c",
+      "fields": [
+        {
+          "name": "menuButtons",
+          "record": "0x9b2407c",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "isDisabled",
+          "record": "0x9b24088",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_conversationNavigationBarType",
+          "record": "0x9b24094",
+          "type_reference": "0x8c21670"
+        },
+        {
+          "name": "_navigationBarButtonMinSize",
+          "record": "0x9b240a0",
+          "type_reference": "0x8d1b570"
+        }
+      ],
+      "conformances": [
+        "0x810c67c"
+      ]
+    },
+    {
+      "name": "ProjectDetailTabsContent",
+      "kind": 17,
+      "descriptor": "0x966b238",
+      "accessor": "0x4b2d3ec",
+      "fields": [
+        {
+          "name": "detailHeader",
+          "record": "0x9b25d24",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "project",
+          "record": "0x9b25d30",
+          "type_reference": "0x8d8a0e8"
+        },
+        {
+          "name": "conversationsRequest",
+          "record": "0x9b25d3c",
+          "type_reference": "0x920278e"
+        },
+        {
+          "name": "conversationAvatars",
+          "record": "0x9b25d48",
+          "type_reference": "0x92058c6"
+        },
+        {
+          "name": "conversationIDsWithInProgressChanges",
+          "record": "0x9b25d54",
+          "type_reference": "0x92027b0"
+        },
+        {
+          "name": "accountNormalizedUserID",
+          "record": "0x9b25d60",
+          "type_reference": "0x8f338a0"
+        },
+        {
+          "name": "allowsConversationPinning",
+          "record": "0x9b25d6c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "conversationPinState",
+          "record": "0x9b25d78",
+          "type_reference": "0x92058e0"
+        },
+        {
+          "name": "updateConversationPinnedState",
+          "record": "0x9b25d84",
+          "type_reference": "0x92058f4"
+        },
+        {
+          "name": "fileListViewModel",
+          "record": "0x9b25d90",
+          "type_reference": "0x920677c"
+        },
+        {
+          "name": "customTabs",
+          "record": "0x9b25d9c",
+          "type_reference": "0x92075ae"
+        },
+        {
+          "name": "reloadEverything",
+          "record": "0x9b25da8",
+          "type_reference": "0x9453310"
+        },
+        {
+          "name": "reloadFiles",
+          "record": "0x9b25db4",
+          "type_reference": "0x9206c60"
+        },
+        {
+          "name": "loadMoreConversations",
+          "record": "0x9b25dc0",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "showConversation",
+          "record": "0x9b25dcc",
+          "type_reference": "0x9205908"
+        },
+        {
+          "name": "removeConversationFromProject",
+          "record": "0x9b25dd8",
+          "type_reference": "0x920591e"
+        },
+        {
+          "name": "canRenameConversation",
+          "record": "0x9b25de4",
+          "type_reference": "0x9205928"
+        },
+        {
+          "name": "renameConversation",
+          "record": "0x9b25df0",
+          "type_reference": "0x920593a"
+        },
+        {
+          "name": "unlockConversation",
+          "record": "0x9b25dfc",
+          "type_reference": "0x920591e"
+        },
+        {
+          "name": "archiveConversation",
+          "record": "0x9b25e08",
+          "type_reference": "0x920591e"
+        },
+        {
+          "name": "deleteConversation",
+          "record": "0x9b25e14",
+          "type_reference": "0x920594a"
+        },
+        {
+          "name": "__tabSelectionState",
+          "record": "0x9b25e20",
+          "type_reference": "0x92075ba"
+        },
+        {
+          "name": "_overlayContentBottomInset",
+          "record": "0x9b25e2c",
+          "type_reference": "0x8d1b570"
+        }
+      ],
+      "conformances": [
+        "0x810f830"
+      ]
+    }
+  ],
+  "admission": {
+    "classification": "independent frontend adaptation recommendation",
+    "can_build_now": [
+      "Project detail native shell with title/toolbar/content and separate source-backed composer host boundary.",
+      "Stable project-scoped conversation rows with source-based title/subtitle/loading/running/menu states and independent synthetic selection/return.",
+      "Explicit add-sources/file-list entry and service-unavailable state until the standalone file package supplies actual file tree/preview behavior.",
+      "Project-specific new-chat intent into a clearly labeled independent native Chat adapter, preserving project/conversation identities."
+    ],
+    "must_not_claim": [
+      "Official ProjectConversationScreen builder invocation has been restored.",
+      "Full tabs/files/custom-tabs topology or project menu order is recovered.",
+      "Type presence proves every action is eligible."
+    ]
+  },
+  "precise_blockers": [
+    {
+      "boundary": "Official conversation screen/new thread factory",
+      "next": "Follow ProjectDetailViewModel showConversation/startNewThread and Home projectConversationScreenBuilder consumed closure to concrete registration/call; preserve projectHeader metadata and new-thread params."
+    },
+    {
+      "boundary": "Tabs/files",
+      "next": "Follow ProjectDetailTabsContent parent input customTabs and fileListViewModel into branch-selection producer; recover exact Chats/Files labels and real FileList native subtree."
+    },
+    {
+      "boundary": "Row click",
+      "next": "Follow action0x4b3dfbc capture layout/indirect callback pair0x80→0x458e14 to actual showConversation consumer; label0x4b3dff4 is a separate function."
+    },
+    {
+      "boundary": "Core project menu",
+      "next": "Find parent menuButtons AnyView producer from ProjectDetailScreen toolbar; do not invent actions from toolbar type name."
+    }
+  ],
+  "evidence_prefix": "analysis/full-platform-20261104/ios-native-projects-detail-20261112-",
+  "limits": [
+    "No target code was executed; no services called.",
+    "Source-only; no host/build/device changes.",
+    "Full outer generic tree keeps unresolved private/opaque nodes explicitly.",
+    "Bounded task stopped with exact missing consumers rather than broad completeness claim."
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "batch": "v545",
+  "date": "2026-11-07",
+  "status": "partial",
+  "scope": "iOS Remote frontend minimum-usable page",
+  "official_baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Refresh the attachment presentation after its source moves during keyboard presentation and after the transition completes.",
+    "Avoid assigning presentation frames while the spring transform is active.",
+    "Give the popup presentation controller safe-area ownership and disable duplicate safe-area consumption inside its embedded content host.",
+    "Retain original attachment interaction assertions and add intrinsic-height checks plus ordinary English dark-mode coverage."
+  ],
+  "source_boundary": {
+    "official_observation": "iOS293 ElevatedPresentationSourceGeometryView uses global geometry action; 0x62ef638 supplies separate layout/presentation rectangles and source-container/safe-area fallbacks. v514 establishes bottom-leading anchoredIntrinsic and sizing fallback order.",
+    "independent_host_adaptation": "UIKit transition completion, keyboard-frame notification and UIHostingController.safeAreaRegions ownership implement the current independent presenter. Exact official callback and animation parity remain partial.",
+    "runtime_correction": "r8 records source/AX y780 before presentation with keyboard offscreen, then source y486 after presentation. Earlier comparison used different lifecycle instants. SafeAreaBar has not been established as the root cause.",
+    "evidence": [
+      "ios-remote-v545-geometry-findings.json",
+      "ios-remote-v545-r8-source-timing.log",
+      "ios-remote-v545-r8-screenshots/manifest.json"
+    ]
+  },
+  "acceptance_dimensions": {
+    "structure": "部分实现",
+    "components": "部分实现",
+    "interaction": "部分实现",
+    "appearance": "部分实现",
+    "verification": "部分实现"
+  },
+  "visual_dimensions": {
+    "geometry": "部分实现",
+    "effects_shadow_glass": "部分实现",
+    "animation_transition": "部分实现",
+    "typography": "部分实现",
+    "colors": "部分实现",
+    "dark_mode": "部分实现",
+    "haptics": "部分实现",
+    "notifications": "部分实现"
+  },
+  "open_items": [
+    {
+      "id": "remote-plugin-keyboard-retention",
+      "page": "Remote Home composer",
+      "priority": "P1",
+      "status": "部分实现",
+      "missing_behavior": "插件插入与Goal抑制回归到最后键盘检查时，软件键盘位于屏幕之外。文本、选区末尾输入和草稿断言已通过。",
+      "evidence_boundary": "v515编辑动作证据已存在，r10/r11键盘最终AX y918，测试输入与宿主焦点／键盘生命周期尚未隔离。",
+      "next_action": "分别用软件键盘手动输入和自动输入核对编辑器firstResponder、键盘通知及搜索返回恢复。",
+      "acceptance": "普通插件插入与Goal抑制原有断言均通过，并确认软件键盘持续可用。"
+    },
+    {
+      "id": "remote-queue-steer",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "排队、引导、队列取消缺少可操作回放",
+      "evidence_boundary": "普通文本回放仅接受normal intent",
+      "next_action": "扩展现有动作适配器与队列状态投影",
+      "acceptance": "运行中追加、改为引导、取消队列均按任务隔离"
+    },
+    {
+      "id": "remote-attachments-feedback",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "附件提交与审批补充输入未闭合",
+      "evidence_boundary": "现有验证返回unsupported/awaiting状态",
+      "next_action": "连接附件元数据与补充输入到统一合成适配器",
+      "acceptance": "含附件与补充输入的合成任务能完成、失败和恢复"
+    },
+    {
+      "id": "remote-message-projection",
+      "page": "Remote conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "新回放正文仅基础文本，工具及附件保持静态",
+      "evidence_boundary": "官方消息模型到动态组件消费者仍有缺口",
+      "next_action": "按既有证据接内容块与工具活动投影",
+      "acceptance": "同一任务动态展示Markdown、代码、表格、工具输出、附件及块内操作"
+    },
+    {
+      "id": "remote-reading-restore",
+      "page": "Remote list and conversation",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "阅读锚点与进程恢复未闭合",
+      "evidence_boundary": "当前仅内存回复／草稿和主动尾部跟随",
+      "next_action": "按页面身份存储阅读位置并验证重进与重启",
+      "acceptance": "A-B-A及重启恢复准确位置，用户阅读时增量不抢滚动"
+    },
+    {
+      "id": "remote-task-create",
+      "page": "Remote list",
+      "status": "部分实现",
+      "priority": "P1",
+      "missing_behavior": "项目新建任务尚无完整本地页面闭环",
+      "evidence_boundary": "已有入口与草稿隔离，创建结果仍需适配",
+      "next_action": "连接合成创建事件与任务身份",
+      "acceptance": "项目入口新建、返回列表、重新打开同一合成任务"
+    },
+    {
+      "id": "remote-layout",
+      "page": "Remote list and conversation",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "详情标题靠左、极大字号分组重叠仍待验证",
+      "evidence_boundary": "既有v538-v541父链边界",
+      "next_action": "核心普通字号完成后定向恢复父布局",
+      "acceptance": "同状态源码与截图核对、核心操作可达"
+    },
+    {
+      "id": "theme-matrix",
+      "page": "All stage1 pages",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "完整system/light/dark切换与弹层状态恢复未验收",
+      "evidence_boundary": "本批只覆盖中文浅色／英文深色回放",
+      "next_action": "按页面验证系统跟随、显式设置、重启及透明度／动态效果设置",
+      "acceptance": "所有宿主和弹层主题一致且草稿选区锚点保留"
+    },
+    {
+      "id": "device-platform",
+      "page": "All stage1 pages",
+      "status": "部分实现",
+      "priority": "P2",
+      "missing_behavior": "真机触感、实际通知送达与Android适配待验收",
+      "evidence_boundary": "当前仅iOS模拟器，只有内置显示器",
+      "next_action": "iOS核心合同稳定后独立推进Android；设备可用后验收触感",
+      "acceptance": "平台独立运行证据与设备触感／通知结果"
+    }
+  ],
+  "validation": {
+    "r9": "2 passed; screenshot exposed focused menu height expansion",
+    "r10": "5 passed, 2 failed at final plugin keyboard visibility",
+    "r11": "3 passed, 3 failed; Chinese light/dark intrinsic-height checks passed; English large file-picker cancellation entry failed once; plugin keyboard checks still failed",
+    "r12": "5 passed, 0 failed; unchanged English large picker test passed on repeat",
+    "foundation": "passed",
+    "latest_distinct_cases": {
+      "passed": 8,
+      "failed": 2,
+      "failed_cases": [
+        "testRemotePluginEditingChinese",
+        "testRemotePluginGoalSuppression"
+      ],
+      "qualification": "Latest result for each tested case across r11/r12; prior r11 English large cancellation-entry failure retained."
+    }
+  },
+  "closed_items": [
+    {
+      "id": "remote-attachment-source-frame",
+      "status": "核心验收通过",
+      "scope": "Remote Home ordinary Chinese light/dark compact and focused menu, r11",
+      "limits": "Other embeddings, keyboard motion parity and physical device remain separate gates."
+    }
+  ],
+  "delivery": {
+    "version": "545",
+    "app": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app",
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "command": [
+      "xcrun",
+      "simctl",
+      "launch",
+      "--terminate-running-process",
+      "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "local.rea.chatgpt.ioshost",
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay"
+    ],
+    "result": "local.rea.chatgpt.ioshost: 96163",
+    "binary_sha256": "f0ffe70280c530518e5ac1900ad019a7a2802bc55af7af5e6d5aa07fa8ad8386",
+    "signing": "ad-hoc verified",
+    "language": "system",
+    "appearance": "system",
+    "preview": "ios-remote-v545-preview.png",
+    "observed": "Chinese Remote task list visible through Device Hub; left running",
+    "display": "Built-in display only; external-display placement unaccepted"
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/RecoveredRemoteAttachmentMenu.swift": "bb7c178452a3a280b0c7a7bf449af6d67a03472100c83fb9a200537576686068",
+    "implementation/ios/UITests/HostInteractionTests.swift": "c12d1f33aa4186bc00ff0fc4de729608cddfbcac77f1cd0716c11c6ab3aac92c"
+  },
+  "retention": "No stale packages reported; fixed iOS build directory reused; 18 GiB available"
+}

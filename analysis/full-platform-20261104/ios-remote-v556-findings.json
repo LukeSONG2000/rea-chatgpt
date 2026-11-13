@@ -1,0 +1,87 @@
+{
+  "version": "556",
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Remote marked-text submission and native editor/draft synchronization",
+  "public_source": {
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "index": "analysis/upstream-codex-20261105/reuse-map.json",
+    "limit": "Existing upstream audit does not establish availability of this mobile UIKit implementation"
+  },
+  "observations": [
+    {
+      "kind": "shipped-artifact-static",
+      "symbol": "ChatGPTMessageInputUI.MessageInputUITextView",
+      "offsets": [
+        "0x60905bc",
+        "0x60906a8"
+      ],
+      "conclusion": "Native class exposes insertText and setMarkedText overrides. The selected setMarkedText path calls objc_msgSendSuper2 with setMarkedText:selectedRange: at0x6090698.",
+      "evidence": "ios-remote-v556-ime-methods.json"
+    },
+    {
+      "kind": "shipped-artifact-static",
+      "symbol": "MessageInputUITextView.returnPressed:",
+      "offsets": [
+        "0x6090ef0",
+        "0x6090e30",
+        "0x61118c0",
+        "0x7c6afe0"
+      ],
+      "conclusion": "Return action reads markedTextRange through a helper and has distinct marked/unmarked paths. A callback read from0x611248c is visited through the no-marked-text path.",
+      "limit": "Does not establish the on-screen Send action, callback identity or desired acceptance policy.",
+      "evidence": "ios-remote-v556-return-gate.asm"
+    },
+    {
+      "kind": "shipped-artifact-static",
+      "symbol": "MessageInputUITextViewRepresentable.Coordinator",
+      "offsets": [
+        "0x4d77ca0",
+        "0x4d77f54",
+        "0x4d77d18"
+      ],
+      "conclusion": "Selected native edit handlers read markedTextRange and invoke a Boolean owner-state setter through generic witness slots.",
+      "limit": "Generic witness getter/setter names and downstream submission owner remain unresolved.",
+      "evidence": "ios-remote-v556-composition-owner.asm"
+    },
+    {
+      "kind": "shipped-artifact-static-metadata",
+      "symbol": "MessageInputAutocompleteViewModel.InputEditingState",
+      "offsets": [
+        "0x9670f60",
+        "0x9b2f0c8"
+      ],
+      "conclusion": "InputEditingState includes isComposingMarkedText separately from input, snapshot, selection and isUserEdited.",
+      "limit": "Autocomplete metadata does not prove the Remote send predicate.",
+      "evidence": "ios-remote-v556-editing-state.json"
+    },
+    {
+      "kind": "independent-host-runtime",
+      "scope": "Dedicated offline simulator with Chinese nine-key Pinyin",
+      "conclusion": "CUA typeText Retry preview produced an underlined Retrypreview composition. Send accepted Retrypreview while native marked text remained and overlapped the cleared-draft placeholder.",
+      "evidence": "ios-remote-v556-marked-residual.png"
+    },
+    {
+      "kind": "independent-source-inspection",
+      "file": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "symbols": [
+        "Coordinator.textViewDidChange",
+        "sendControl",
+        "updateUIView"
+      ],
+      "conclusion": "DidChange publishes transient text to the draft. Send reads that draft and acceptance clears it. Update skips the owner text while markedTextRange is nonnil, leaving UIKit composition visible.",
+      "limit": "This explains the residual-text defect. It does not prove the earlier English retry preview to retry change has the same cause."
+    }
+  ],
+  "decision": "Retain the existing input behavior while the official on-screen submit/commit boundary is unresolved. Add bounded regression coverage and correct the inaccurate comment claiming transient composition cannot be sent.",
+  "unknowns": [
+    "Official on-screen Send and follow-up interaction with composition",
+    "Generic owner witness identity and final native clear/commit consumer",
+    "Earlier English phrase truncation root cause",
+    "Physical keyboard/device behavior",
+    "Android independent implementation"
+  ],
+  "next_action": "Resolve the MessageInput view-model protocol Boolean composition witness and the submit action owner, then test marked input → submit → editor clear, candidate commit and cross-task switch together."
+}

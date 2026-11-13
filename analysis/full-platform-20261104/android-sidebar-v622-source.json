@@ -1,0 +1,339 @@
+{
+  "version": 622,
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "scope": "Bounded static sidebar variant, row, footer and resource evidence. No official target execution.",
+  "findings": [
+    {
+      "id": "sidebar_branch_smali_correction",
+      "status": "verified_static",
+      "evidence": [
+        "apktool-src/smali/urr.smali:1126-1163",
+        "apktool-src/smali/urr.smali:1295",
+        "jadx-src/sources/defpackage/wiu0.java:15-22"
+      ],
+      "conclusion": "tgu0.c == wiu0.d (Dialog) falls through to uy81.d NovaSidebar. Non-Dialog jumps past Nova branch. JADX urr.java:142 inverted the condition. Use smali result.",
+      "impact": "Ordinary floating Chat/account sidebar must not inherit Nova/Large solely because Nova code is newer/named."
+    },
+    {
+      "id": "font_variant_input",
+      "status": "verified_static",
+      "evidence": [
+        "uy81.java:1209",
+        "urr.java:1010",
+        "i4r0.java:2379-2396",
+        "i4r0.java:2609",
+        "i4r0.java:2691",
+        "i4r0.java:2765",
+        "i4r0.java:2805",
+        "i4r0.java:3092"
+      ],
+      "conclusion": "i4r0.k z2 controls Small/Large through z18->z28->z30->z44. Nova caller explicitly true, ordinary urr caller false/default false. Ordinary branch selects Small."
+    },
+    {
+      "id": "font_consumers",
+      "status": "verified_static",
+      "evidence": [
+        "xva.java:55-81",
+        "on01.java:12-16",
+        "sk10.java:67-89",
+        "d0r0.java:127-155",
+        "d0r0.java:278-280",
+        "te71.java:850-852",
+        "rd10.java:5-8",
+        "h700.java:31-32",
+        "kkp.java:68-69"
+      ],
+      "conclusion": "Small uses on01.h environment16sp/24sp, weights500/600; Large custom label24sp/28sp,weight500,letterspacing-.43 except Arabic0. Large family resolves OpenAI Sans variable API>=26, medium otherwise. No local arbitrary scaling factor found in inspected label path.",
+      "limitations": "Physical screenshot pixels also depend on device density/fontScale; these were not inferred. Small font resolver full platform fallback remains separate."
+    },
+    {
+      "id": "ordinary_footer",
+      "status": "verified_static",
+      "evidence": [
+        "urr.java:851",
+        "urr.java:1075",
+        "urr.java:1815-1859",
+        "urr.java:1126-1170",
+        "wl2.java:70-73",
+        "q1r0.java:6-10",
+        "b8.java:108-150",
+        "d8.java:10-17"
+      ],
+      "conclusion": "Footer anchored outside scroll list, parentstart32/end24 top24 plus system inset. NewChat left and account right. Chat min48dp pill50%corner, start20/end24 vertical8 padding,24icon,gap8,on01.h label; Chat or Thread chosen by p1. Accent via e8/b8 with Default coerced Blue. Action invokes supplied function0 then odu0(2,lde0.e). Footer minheight is max48 and16+measured text height, supporting font scaling."
+    },
+    {
+      "id": "ordinary_account",
+      "status": "verified_static",
+      "evidence": [
+        "urr.java:1859",
+        "urr.java:1385-1435",
+        "y940.java:7",
+        "chx.java:26",
+        "tuw.java:43-44"
+      ],
+      "conclusion": "48dp circular account hit surface, profileavatar32dp. With missing profile/avatar it renders ds_gear_regular_24 centered24dp. Profile avatar otherwise comes from i4r0.o. Click delegates supplied account function0, multi-account content has separate long-click/menu owner. Synthetic profile can deliberately have no avatar and use verified gear fallback."
+    },
+    {
+      "id": "chat_icon",
+      "status": "verified_static",
+      "evidence": [
+        "urr.java:1165-1170",
+        "yf40.java:7",
+        "mhx.java:52",
+        "nrv.java:66-67"
+      ],
+      "conclusion": "Chat icon consumer resolves ds_square_and_pencil_regular_24."
+    },
+    {
+      "id": "library_icon",
+      "status": "verified_static",
+      "evidence": [
+        "m1r0.java:657-666",
+        "y440.java:5",
+        "l840.java:5",
+        "ahx.java:74-75",
+        "bhx.java:79-81",
+        "e3v.java:40-41",
+        "e3v.java:50-51",
+        "v5v.java:44-45",
+        "v5v.java:54-55"
+      ],
+      "conclusion": "rc6.a false uses Library label a64 and y440 books24/28. rc6.a true uses l840 document_on_document_tilted24/28/32 and different label _19b0. This conditional consumer matters for screenshot match.",
+      "limitations": "rc6.a producer not traced, do not globally replace books with tilted documents without branch selection."
+    },
+    {
+      "id": "nova_footer_difference",
+      "status": "verified_static",
+      "evidence": [
+        "uy81.java:1350-1372",
+        "zk6.java:377-401",
+        "mv0.java:177-211",
+        "lb70.java:63-133",
+        "as81.java:22-26"
+      ],
+      "conclusion": "Dialog Nova footer uses New label aec,20h/12v padding,gap10, and right temporary/search/settings52x48 controls. It differs from ordinary Chat/account footer."
+    },
+    {
+      "id": "view_more",
+      "status": "partial",
+      "evidence": [
+        "m1r0.java:1164-1230",
+        "kac.java:77",
+        "apktool-src/res/values/strings.xml:2697"
+      ],
+      "conclusion": "293 SidebarFeaturesList has collapsed secondary-feature reveal using label a65=Explore; expansion shows list2. Screenshot View more label does not close to this producer. Literal View more found at xy71.e belongs unrelated Link/Stripe code and cannot be reused as sidebar proof.",
+      "next": "Trace feature list2 and its expansion function0/state in m1r0.i, then determine screenshot version delta or other resource-backed label."
+    },
+    {
+      "id": "ordinary_chat_blue_palette",
+      "status": "verified_static",
+      "evidence": [
+        "urr.java:1120-1126",
+        "d8.java:10-17",
+        "a8.java:15-19",
+        "b8.java:108-114",
+        "b8.java:139-150",
+        "b8.java:438-443",
+        "lim.java:1131",
+        "lim.java:1180",
+        "d3n.java:17-27",
+        "c3n.java:9-11"
+      ],
+      "conclusion": "Default accent is coerced Blue at Chat button consumer. Blue background path q5n.b.a.a.a = 4281689840 (#FF3566F0) in normal Light and Dark. Blue foreground b8.d->q->q5n.b.a.h =4294967295 (#FFFFFFFF) in both.",
+      "limitations": "Normal palettes only; high-contrast x0n.e/f branches remain separately unverified."
+    },
+    {
+      "id": "ordinary_footer_measurement_and_padding",
+      "status": "verified_static",
+      "evidence": [
+        "urr.java:22-25",
+        "urr.java:851",
+        "urr.java:1075",
+        "urr.java:1815",
+        "urr.java:2330-2331",
+        "gy00.java:64-65",
+        "w0a0.java:3260-3261",
+        "t3z0.java:10-43",
+        "mwq.java:1063-1076"
+      ],
+      "conclusion": "Footer minHeight=max(48dp,16dp+measured single-line text height for on01.a). t3z0 measures current font resolver/density then converts to dp. Outer footer start32/end24/top24 plus upstream/system inset modifiers. Chat contentstart20/end24/vertical8. Account48dp,avatar32dp.",
+      "limitations": "Full bottom inset resolution still depends rox/system parent; no fixed bottom inset guessed."
+    },
+    {
+      "id": "account_outer_elevated_content",
+      "status": "verified_static",
+      "evidence": [
+        "urr.java:1852-1859",
+        "urr.java:1385-1425",
+        "to60.java:789-815",
+        "to60.java:1555-1577",
+        "q1r0.java:6-10",
+        "sit0.java:13-17",
+        "ly5.java:37-41",
+        "rit0.java:16-26",
+        "lim.java:1131",
+        "lim.java:1180",
+        "z3n.java:15-17"
+      ],
+      "conclusion": "Account inner48dp clipped circle/gear24 is wrapped by to60.c defaults511 ElevatedContent. Defaults are backgroundq5n.c.a, foregroundq5n.n.c, shape50percentcircle and sit0.e. Normal background Light#FFFFFFFF Dark#FF303030. Thus unfilled IconButton loses parent fill layer.",
+      "limitations": "sit0.e shadow/custom rendering remains unimplemented by parent intentionally; no Material elevation substituted."
+    }
+  ],
+  "unknowns": [
+    "Drawer width, scrim, clipping and animation full parent chain still unclosed; keep current host implementation identified independent.",
+    "Screenshot exact version/density/fontScale not established.",
+    "Active rc6.a producer and source sidebar View more wording not established."
+  ],
+  "source_files": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/urr.java",
+      "sha256": "c0dbe86736f39b6e8d89eff0f47391309d67aaf44ac436e2d01d1987075f3c1c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/uy81.java",
+      "sha256": "db7609198bc1e24497986739a69f82463a8deb7f19b83482fc8ad10349e11bb7"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/i4r0.java",
+      "sha256": "ad4f56dd477bded8ac533e5ed350d1a02a5841daa2acf357b41b3262de6e567e"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/wiu0.java",
+      "sha256": "c5c21ada6eb5be61c111f9fac39f3b1f66463ed88f1eaea8b8e1aa606e00c1e9"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/m1r0.java",
+      "sha256": "1d844fba6f3033a84675ebf6b5df1ff75f5a21a2d671f5c7a890864675ac078b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/d0r0.java",
+      "sha256": "e6c0d393dcb36582007de9b10ae529230d9737e9528b3a5d0a39e0c583a9af8c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/te71.java",
+      "sha256": "0c79eaf03040f9c57f135ff80a011107456f5652904081bcbd2b7afd8b6c6b89"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/rd10.java",
+      "sha256": "dc3431e6f4361316aa7b6d944cf634bfcbbde41ae50dbd375cd85d0e1022fa69"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/h700.java",
+      "sha256": "c1e87ff0b21fb4f3d51edf8b74915c86116057a8ffe42d914b0e3231083c0bdf"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/kkp.java",
+      "sha256": "c2d1eff438b9858b24e2f7d5df4a5154ed8e3cb3c899646abd8c5c12cf03a804"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zk6.java",
+      "sha256": "b5b0e476e921a7c4e8c754a0af1c1a17c2d97509a767737d5f87c4277f5de1e5"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lb70.java",
+      "sha256": "2ba8bd2c737d657bb33c4f3e5e177ca3e8487d591cbade085dd81de8ba4df410"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mv0.java",
+      "sha256": "1e5fc15275b19b6100395399d7f3639ed8a7bf1a73f88e34e98247b46227aff3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/y440.java",
+      "sha256": "770cd56176a43ba211a473d35699eb1132843ea0fb3df422bbc5056501659f8a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/l840.java",
+      "sha256": "d080e47b7ec6ea0aa8d1e268a3704d73287e5992077bcb5cbde96ebd69b1a94e"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/y940.java",
+      "sha256": "2a006f4582a7cc7a443c2b3883e56f1b682d1a257150b81c742e2644a759a330"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/yf40.java",
+      "sha256": "349396468c2802feb261a626f9791730df1b8ec8affb3d34dd1966941fcd84f9"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/e3v.java",
+      "sha256": "8519751f2ce1449a6c4c859c0e43646a0641c74c0791925e90b158e9ad2ad953"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/v5v.java",
+      "sha256": "84bea7abad33814c9beb0fe6635bfed502d309a6351b5062efb86b64161d729a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/tuw.java",
+      "sha256": "a5fe706f742a1ba1ae489924331c5deb3d2949bdb6ef61ba71d22170fc720990"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nrv.java",
+      "sha256": "0364332c066371751f483b9b61b0f79ec87a7b1fcc88a0e41c92ab9a5725358c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/b8.java",
+      "sha256": "1d97dca77343e01020e4f1c24219b6e9c2ce6c86c03e0b79e7c5d0e9778a3d9c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/d8.java",
+      "sha256": "1a875af2fd2b65fcb8b33bee91ca4db3c2178a7456629abc33038d08936da738"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/q1r0.java",
+      "sha256": "b40aa0efe8908f2da64976e2691794d08344d971eb57bcdba4c675d2d65642dc"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/wl2.java",
+      "sha256": "4248119e5c1d44d101e02f88bd75df177839c14dacd416f97a94909380089a3e"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/d3n.java",
+      "sha256": "b628781b0b68d1d9b98a39a5f496a9108c5bdc2154cf2cae71a4aa6f4212d876"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/c3n.java",
+      "sha256": "ce5d348ac858580fc70e913c62464cb0ada206c4d8950bdd414967279ac1b849"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/a8.java",
+      "sha256": "088a2bbf9c2ecda2b0af443a71f430ae7148a416577c894426988b21c6cc1d00"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/gy00.java",
+      "sha256": "e640a35d76f0e876ec3ea100718e1246fa572a7f0936ef8ff389480f81da518f"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/w0a0.java",
+      "sha256": "8c63356f8de8b5bab468b756672f38da8b4863ad3ec71f0fa533bc61b9b6465b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/t3z0.java",
+      "sha256": "51b2a59910834e04ed047efb3cf16f2573fedab819adcbe474a819e80ad140eb"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/to60.java",
+      "sha256": "3698b059067c5456cd9b86edb61aff0cf89fb3316fd3bc46d8c8e1ee35649f73"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sit0.java",
+      "sha256": "3f649d84308ec94d28c1395d7a40e1f11b83d368ab03577c2ee269298b5de1a4"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ly5.java",
+      "sha256": "230ebd369f5762ef5c5d85ef0ae3baefaf812838923d99175a31fc32786e01c8"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/rit0.java",
+      "sha256": "0dd7371521ecea8118faccd3350191e1dbf29379f7948226c4a14e747b0f91f3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java",
+      "sha256": "99bee934ff0a85ece1691654e536d128719f8b6b206754a83411ea1e31cea2c6"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/z3n.java",
+      "sha256": "07c1779fbaf88ce3bbe46fc933718a883bbe67acd3617a3b8bf7f06377aa512e"
+    }
+  ]
+}

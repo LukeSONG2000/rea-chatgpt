@@ -1,0 +1,196 @@
+{
+  "batch": "v615",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "recorded_at": "2026-11-08T22:22:06.646770+00:00",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Does the existing reasoning extraction feed full body content or the thinking-summary presentation, and what actual producer/consumer remains missing?",
+  "goal_turn_classification": "progress: new data references close the prior keypath-caller gap and bind the extracted field to summary; exact parent filtering and summary presentation chain now recorded",
+  "public_source_check": {
+    "record": "analysis/upstream-codex-20261105/reuse-map.json",
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "scope": "Previously inspected public app-server/protocol sources do not establish this frozen native UI branch. No new upstream fetch or version equivalence claim."
+  },
+  "observations": [
+    {
+      "type": "official_artifact_static",
+      "owner": "reasoning casepath/data record",
+      "locations": [
+        "0x7e83b48",
+        "0x7e83b70",
+        "0x2469500..0x2469514",
+        "0x246958c",
+        "0x2d2fab8",
+        "0x2d306d0"
+      ],
+      "conclusion": "Getter0x24694e4 passes keypath record0x7e83b48 to swift_getKeyPath. Relative32 slot0x7e83b70 resolves thunk0x246958c, which selects the previously verified reasoning casepath factory/extractor. This closes the v608 missing data-reference bridge.",
+      "evidence": [
+        "ios-remote-v615-reasoning-data-refs.json",
+        "ios-remote-v615-reasoning-keypath.asm",
+        "ios-remote-v608-reasoning-casepath-extract.asm"
+      ]
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "ReasoningThreadItem physical field mapping",
+      "locations": [
+        "descriptor0x95f7320",
+        "metadata0xa60e280",
+        "offset vector0xa60e290",
+        "getter0x2469524"
+      ],
+      "conclusion": "Verified metadata descriptor pointer and field-offset vector map content=0,id=8,summary=24,_type=32. The getter reads payload+24 into x19 and returns it in x0. Both content and summary have optional Array<String> typeref SaySSGSg. The discovered getter specifically selects summary.",
+      "evidence": [
+        "ios-remote-v615-reasoning-fields.json",
+        "ios-remote-v615-reasoning-field-type.json",
+        "ios-remote-v615-reasoning-field-offsets.json",
+        "ios-remote-v615-reasoning-type-accessor.asm",
+        "ios-remote-v615-reasoning-keypath.asm"
+      ]
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "array summary extraction0x1950720",
+      "locations": [
+        "0x19507b0..0x19507cc",
+        "0x195081c",
+        "0x19508a4",
+        "0x19508d8..0x19509b0"
+      ],
+      "conclusion": "Walks rendered items from the end and calls the summary getter. Joins summary strings, applies a string replacement, splits by newlines, and walks those lines in reverse with whitespace trimming and an additional parsing helper. Replacement pattern and parsing-helper semantics remain unresolved; no production-compatible normalization implementation claimed.",
+      "evidence": [
+        "ios-remote-v615-reasoning-caller-b.asm",
+        "ios-remote-v615-reasoning-caller-b.json"
+      ]
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "item filtering0x18d04ac",
+      "locations": [
+        "0x18d04c4",
+        "0x18d0518",
+        "0x18d0578..0x18d05b8",
+        "0x18d061c",
+        "0x18d0628..0x18d062c"
+      ],
+      "conclusion": "Computes summary text separately, then scans each extracted summary with String.Iterator.next and Character.isWhitespace. An item with at least one non-whitespace summary character bypasses append. Missing summaries, empty arrays and all-whitespace summaries reach the retained-item append path. The returned pair of summary words and retained array are distinct outputs. Helper0x1d87f94 resolves CodexRenderedItem metadata.",
+      "evidence": [
+        "ios-remote-v615-reasoning-caller-a.asm",
+        "ios-remote-v615-reasoning-caller-a.json",
+        "ios-remote-v615-reasoning-type-helpers.asm"
+      ]
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "presentation parents0x18d2284 and0x194eb30",
+      "locations": [
+        "0x18d2378",
+        "0x18d23c0",
+        "0x18d244c..0x18d2468",
+        "0x194ed38",
+        "0x194ed80",
+        "0x194ef60..0x194ef70"
+      ],
+      "conclusion": "Both parents pass the retained-item array to0x18d0658 and the separate summary string into presentation constructor0x18d24a4. That constructor stores summary arguments at+0x208/+0x220 and its already-recorded gated group branch passes them to0x1946df4 with summary tag0x40. The existing HistoryFragment consumer renders that tag using ThinkingStatus.",
+      "evidence": [
+        "ios-remote-v615-reasoning-filter-parent-a.asm",
+        "ios-remote-v615-reasoning-filter-parent-b.asm",
+        "ios-remote-v615-reasoning-summary-return.asm",
+        "ios-remote-v607-reasoning-fragment-group.asm",
+        "ios-remote-v607-reasoning-next-findings.json"
+      ]
+    }
+  ],
+  "integration_decision": {
+    "implemented_before_batch": "Existing independent thinking status and expandable tool activity group consume projected summary text.",
+    "new_boundary": "Raw reasoning summary extraction and filtering now have a concrete source path. A separate expandable full-content block is not established by this path.",
+    "next_target": "Trace the original ReasoningThreadItem.content field at+0 through the CodexRenderedItem constructor, preserving this summary-filter condition. First resolve the rendered-item producer feeding the current turn items. Inspect0x18fdd64 and its exact producer owner before adding a new body presentation.",
+    "not_implemented": [
+      "Raw reasoning summary-to-label normalization in the independent event adapter",
+      "Full reasoning content producer and display consumer",
+      "Reasoning-specific full-body disclosure or layout"
+    ]
+  },
+  "bounded_inconclusive_searches": [
+    {
+      "file": "ios-remote-v615-rendered-id-candidates.json",
+      "detail": "96 functions with direct CodexRenderedItem metadata references contain no MOVZ literal14. This is a narrow opcode pattern, not proof that reasoning constructors are absent."
+    },
+    {
+      "file": "ios-remote-v615-rendered-id-store-candidates.json",
+      "detail": "Text scan found1322 literal14 instructions and7 nearby same-register tag-offset stores. These are unvalidated instruction-pattern candidates; register liveness and enum identity were not proved. They are not selected as reasoning producers."
+    },
+    {
+      "files": [
+        "ios-remote-v615-reasoning-projection.asm",
+        "ios-remote-v615-reasoning-extract-helper.asm"
+      ],
+      "detail": "Probe names are investigation labels.0x253afa8 uses a generic extraction path; its semantic relation to full reasoning remains unproved."
+    }
+  ],
+  "validation": {
+    "kind": "static byte and address checks",
+    "passed": [
+      "keypath relative32 target",
+      "metadata descriptor chained pointer",
+      "field-offset vector",
+      "summary load instruction",
+      "live v614 simulator process78326"
+    ],
+    "production_changes": false,
+    "new_build": false,
+    "new_ui_tests": false,
+    "official_runtime_execution": false,
+    "network_requests_to_official_services": false
+  },
+  "cross_platform": {
+    "Android": "No Android source or behavior established by this iOS trace. Reasoning content/summary and projection visibility require independent Android proof."
+  },
+  "raw_evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-caller-a.json": "b9d33f9b93233ef0001beee8d6e1218964daba454f1349f97f93d3d69b54997e",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-caller-b.json": "6bd8297c73de3b6e43af58c00d9573ed591fe202ca3a5c1c8b930a25eeb565e6",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-data-refs.json": "6ef43d00df751b266a537f7761b54f785b9ab515696c77bba136315c1a9bcaab",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-extract-helper.json": "d0777411b5bb63956b9aad658df2d5e8021f4466b0dc0fc328a45b3d82e3cee2",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-field-offsets.json": "264d21083503f812df174e9179aea3558dc6f4dafbc5717074e3610ff5942c98",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-field-type.json": "e58acd635c472fc32a1d9d6813f8afdab6f2261f1212f89335b43d45a543e1be",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-fields.json": "a80f4b3afaad80bece2bef0d5aa2cdfa30036d80a39d6bd7218b0edbb1e363c4",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-filter-parent-a.json": "9f89d9886cd2389622859fa8b9973ea8e0c0bbde2001c06f58387324b8c36cfa",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-filter-parent-b.json": "4f1a0bd35ba36b8cd096dce59686598c47500c6351012a65f96dfa9fdddea9da",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-getter-refs.json": "9730d5bf50c16a7aeb3ef219ec7f4eaa964552dbb0603d11a028ca5cc50952d5",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-join.json": "0cde4e0d3d9fb622e7cb8dbb64aace02602adbe6243402b18176d2e03864ef7e",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-joined-helper.json": "260acb619242156baf4d011c2e34b3a6eefb39ce8d8d216a149c42aaebe7608f",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-keypath.json": "6cf9e3f05d887c43b2b6814557f45f5749860e77adaaea80a0885f2b67676430",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-original-check.json": "877760dd3c1e08df901a21e68ced98396983d31a305a245d1faf635507fe50ed",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-payload-load.json": "b676402a3918b84740957e0f22bc637e8676be016e0ddd3fd0df61dfb849bf0f",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-projection.json": "c214346a9deeec5010c8e702cde6f98e8bb3978c0bc7f6d4b3aeea2657fb28ef",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-query.json": "c31bec240ea3505dd9c42081910b8807cf5b61ebab5d564c869add8b0ae75975",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-record-code-refs.json": "fce8254eda85bf7dc6856a15071caea0342a0abe968ad0768d409478d3f98583",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-summary-return.json": "1ba6c60e5d4e4703af961a9e706f099d2aecb22e23ef79c445257b12f8a69ee0",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-summary.json": "4afca34566d3c43b1e888c18a9c0c519391a6b19908e19302def38a316c446e4",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-type-accessor.json": "1ac363ea958c5890b4ae03f0392a30241fca7e79b6643b38af56645f37debb89",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-type-helpers.json": "9d3390d062d3ed710e6e84fb14f2f0a802a051cf75f9343591e87ef65fbabfe2",
+    "analysis/full-platform-20261104/ios-remote-v615-rendered-id-candidates.json": "c668c9b1216980947cd643775033f4cff93f054cdf1fc2ea06bf35d9ebc744ca",
+    "analysis/full-platform-20261104/ios-remote-v615-rendered-id-store-candidates.json": "3bc568c2566327df1b738c7ef4f30b29c62fc3e9ce79b1deac6e55eeba6a3320",
+    "analysis/full-platform-20261104/ios-remote-v615-summary-consumer-refs.json": "e0290d1188a99b4d6db89df3a3f22894d6c351a1830de69bde9ff39f9426523c",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-caller-a.asm": "391678c9d3efdc37aaad047b7148186485cc99626722c6ab7a06d170d56331e3",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-caller-b.asm": "1e2a952d29b170ebfc2f609ff3a2c6f3685f73fc88525e6febabf0c957a87a47",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-extract-helper.asm": "aae05eb78051782afc3bdba490a0252baef1fd4f575dc463dbe2d903d75a818e",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-filter-parent-a.asm": "a9db55dd17071f62c433a7c93763fba04196ef062c4a72e6e6287ea296e9388f",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-filter-parent-b.asm": "33536b3174b881a2a531ea8f342bf017298e84dffb25e7da97402f1d30003cf4",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-join.asm": "85a052dcd8dbbf354559e71f406a61b172cd4e5e7f51f4d0a4730e7982f9c86b",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-joined-helper.asm": "1ae8f01923aefc42b766bc2f77bbbf8133f522ae2206fb887f047a6129aaa7bb",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-keypath.asm": "a6aef43fab0a8c54dbe25801e16e1e2dbd3ce7e2112f00d835c48ffd2f649562",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-original-check.asm": "6bdf637c0d3027cb3159e7e4f10b61c485c80cba52f858576e9911aa8e0946a5",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-payload-load.asm": "347fef054348f62574e9e61412aa3c0fe3689069a049cac0588134213bb383cd",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-projection.asm": "6b40da80df52b38935ba3715bcc518be5f0df09bf4a7fcb03cc1721ca93ef833",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-query.asm": "fa76c26b788221ce5bfd55e42c951d80cd54d1aea8b036ad6b10a8e74182d211",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-summary-return.asm": "5bfa3b2e70e185ebfef421d1358dd587c4cb6d4c0743653a5a07108a2a2e2473",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-summary.asm": "b7c44e4e444a073cdad43e1ed127d28d9a58e0e8a2141d4f2114cd285dcde64f",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-type-accessor.asm": "6f3581b972423b0b61253d2e14135a9320946c6c54958b48f46efa43d0250e83",
+    "analysis/full-platform-20261104/ios-remote-v615-reasoning-type-helpers.asm": "70f427d8c92e690de21763b8ada8d3a2ef1556d775c7ef0a126ec1f09380938e"
+  }
+}

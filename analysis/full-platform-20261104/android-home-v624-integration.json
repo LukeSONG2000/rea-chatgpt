@@ -1,0 +1,106 @@
+{
+  "version": 624,
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "implemented": [
+    "Ordinary Default composer with compact row and expanded editor plus toolbar using one mounted BasicTextField",
+    "Effective focus combines IME visibility/animation target and host hardware-keyboard detection; nonempty model-slot drafts stay expanded after keyboard dismissal",
+    "Chat/Work draft isolation and persistent draft restore retained through mode changes and process restart",
+    "Android293 original plus, voice and send resources; normal light/dark composer surface; 16sp400/24sp/.1sp typography",
+    "32dp action visual surface separated from 48dp touch target; 640dp maximum width",
+    "Explicit reserved model entry and returnable unavailable state"
+  ],
+  "host_adaptation": [
+    "Synthetic ordinary capability explicitly provides a model slot for both modes; full ldo/ki60 model configuration not connected",
+    "Native Compose Layout implements current four active children from the seven-slot design, ordinary no-attachment/non-recording subset",
+    "Independent spring interpolation; official transition timing and coroutine/measurement state remain unresolved",
+    "Safe drawing/IME insets consumed by root; ordinary dynamic zero-rounded-corner reservation selected. Gesture-navigation rounded-corner branch unconnected",
+    "Hardware keyboard uses Configuration; source lim.P uses InputDevice enumeration",
+    "Line height uses source24sp rather than full official text-measure callback chain; extreme font/viewport adaptation remains incomplete"
+  ],
+  "not_implemented": [
+    "Full model configuration, attachment selection/preview and recording layouts on this home page",
+    "Inline/Expanded preferences, absent-slot empty-delete IME hook and complete expansion latch flows",
+    "Complete seven-slot attachment/additional content measurement, 8dp direction-sensitive compact reserve and official viewport budget",
+    "Exact original animation, shadow renderer and gesture-navigation corner reservation",
+    "Chat/Work sending and message lifecycle; existing actions retain capability explanation",
+    "Large-font and hardware-keyboard device regression"
+  ],
+  "evidence": [
+    "android-home-v624-composer-predicate.json",
+    "android-home-v624-composer-geometry.json",
+    "android-home-v624-assets.json"
+  ],
+  "tests": {
+    "implementation": "Independent frontend with Android293 evidence and synthetic data",
+    "serial": "172.16.197.16:5555",
+    "manufacturer": "OnePlus",
+    "model": "ONEPLUS A6003",
+    "sdk": "35",
+    "run_id": "2a411b7d8bd84604b947de80745b2026",
+    "ui_matrix": [
+      "zh-CN/light",
+      "en/dark",
+      "system/system"
+    ],
+    "status": "passed",
+    "steps": [
+      {
+        "apk": "app/build/outputs/apk/debug/app-debug.apk",
+        "sha256": "2b2a1795d60de1642663c4edd30ba88ab4f0e962f8c319f2674a43220c028f29"
+      },
+      {
+        "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+        "sha256": "a2a86a016caf462f7896cae44a292aa16b615e071354b0496b3dfd34450fb98d"
+      },
+      {
+        "test": "preferences",
+        "passed": true
+      },
+      {
+        "test": "composer",
+        "passed": true
+      },
+      {
+        "test": "journey",
+        "passed": true
+      },
+      {
+        "test": "verifyRestart",
+        "passed": true
+      }
+    ],
+    "export_errors": [],
+    "preview_launch": {
+      "skipped": "Foreground belongs to another app or cannot be established"
+    }
+  },
+  "visual_checks": [
+    "Chinese compact row",
+    "Chinese keyboard-expanded composer with actual device IME",
+    "Nonempty draft after keyboard dismissal",
+    "English dark expanded composer",
+    "Independent ADB Chinese final preview"
+  ],
+  "first_candidate": {
+    "report": "android-home-v624-oneplus.json",
+    "actions_passed": true,
+    "visual_defect": "Material minimum touch target expanded the circle background to48dp. Corrected separate32dp surface and added actual bounds assertion."
+  },
+  "final_preview": {
+    "versionCode": 624,
+    "profile": "preview",
+    "language": "system",
+    "appearance": "system",
+    "observed_language": "Chinese",
+    "activity": "AppShellActivity",
+    "pid": 23854,
+    "running": true,
+    "existing_draft_retained": true,
+    "screenshot": "android-home-v624-final-preview.png",
+    "hierarchy": "android-home-v624-final-preview.xml",
+    "capture_note": "Initial hierarchy capture returned null root after launch; bounded fresh capture succeeded."
+  },
+  "next": "Sidebar search/history minimum frontend route, followed by Remote conversation components. Keep composer model/attachments/motion gaps separate."
+}

@@ -1,0 +1,85 @@
+{
+  "batch": 573,
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "kind": "official_artifact",
+      "symbol": "MessageRowAttachmentGrid",
+      "body": "0x3d8d000..0x3d8d33c",
+      "type_record": "0x8058c50",
+      "evidence": "ios-chat-v573-grid-return-type.json",
+      "conclusion": "Returned type includes image rendering, rounded clipping, aspect ratio, image actions and a separate FileAttachmentTile branch."
+    },
+    {
+      "kind": "official_artifact",
+      "symbol": "FileUploadCarousel",
+      "descriptor": "0x96cbdc4",
+      "evidence": "ios-chat-v573-carousel-metadata.json",
+      "conclusion": "Metadata declares item presentation, removal, retry, fallback thumbnails and size-class/style ownership; field declarations do not prove Chat runtime configuration."
+    }
+  ],
+  "missing_integration": "Chat host accepts files but has no photos selection or image thumbnail projection. Existing attachment references/storage and QuickLook can carry image files.",
+  "implementation_scope": "Independent PhotosUI adapter and bounded thumbnail projection through the existing Chat attachment contract. Keep existing row geometry until Chat-specific style/parent evidence closes.",
+  "limits": [
+    "Official image grid geometry, Chat carousel style producer, media transition and loading states remain partial.",
+    "Remote carousel dimensions are not transferred into Chat.",
+    "Photos/videos, camera, remote downloads and uploads need separate capability gates. This batch targets local still images.",
+    "Public Codex reuse remains bound to analysis/upstream-codex-20261105/reuse-map.json.",
+    "Thumbnail decode is bounded but runs during row configuration; device/performance profile, animated images and HEIC orientation acceptance remain open."
+  ],
+  "independent_adapter": {
+    "photos": "PHPicker images with remaining selection budget, ordered NSItemProvider file copies within callback lifetime, account-scoped LocalLibraryStore",
+    "identity": "Picker operation UUID plus conversation/generation. Switching conversation cancels and releases UI immediately; late provider callbacks clean temporary copies without appending.",
+    "loading": "Preparing feedback, disabled new send and add while copying; existing response Stop remains enabled.",
+    "thumbnails": "ImageIO bounded to132pixels, NSCache40 entries, existing file-row and composer-chip geometry",
+    "persistence": "Existing ChatAttachment reference schema and retry identity unchanged; no credentials or service implementation",
+    "tests": "r1 pre-provider-injection baseline then r2 covers actual NSItemProvider callback via synthetic image, provider error and delayed callback"
+  },
+  "host_contrast_defect": {
+    "evidence": "ios-chat-v573-r1-attachments/F058A5D4-B60F-43AC-A657-E3FBA510A029.png",
+    "location": "NativeConversationHost.updateComposerAction",
+    "cause": "Fixed white glyph combined with dynamic label background makes Send/Stop white-on-white in dark appearance.",
+    "change": "Independent host semantic foreground uses systemBackground for Send/Stop against label background. Voice keeps its existing white-on-teal pairing.",
+    "limit": "Official Chat primary-control color producer remains unverified.",
+    "r4_observation": "Semantic color pair alone still produced invisible dark glyph in the Glass contentView. Chinese ordinary preview also showed dim glyph. Filled action moved to sibling foreground layer with same constraints for r5 verification.",
+    "r5_verification": "Two photo journeys pass. Visually inspected English/dark draft B3EE1718-9A30-4A18-8D67-EB01AEE2F129.png shows black arrow on white action. Installed Chinese/light preview shows white arrow on black action. Exact material mechanism remains host-specific."
+  },
+  "r1_failure": {
+    "test": "testChatPhotosEnglishDark",
+    "observation": "After an immediate Back tap, QuickLook remained visible. Retained recording and accessibility snapshot show BackButton at38,84 and image preview.",
+    "test_refinement": "Wait for QuickLook Share and hittable Back before return. r2 seven cases pass. Official navigation parity and timing root cause remain unproven."
+  },
+  "r3_failure": {
+    "cause": "Existing shared preview/test catalog reached its128-entry capacity. New-chat alert prevented all3 test entries.",
+    "observed_count": 128,
+    "recovery": "Separate explicit offline Chat state profile for each test; stable preview profile for user handoff. Preserve existing profile and capacity."
+  },
+  "ordinary_photo_picker": {
+    "status": "passed",
+    "channel": "CUA simulator Chinese/light",
+    "asset": "One generated240x160 geometric PNG seeded using simctl addmedia. No personal photo selected.",
+    "journey": "Ordinary plus → Photos → select generated cyan/white image → confirm → filename and thumbnail draft → QuickLook image → Back → same draft retained",
+    "limits": [
+      "Single PNG only",
+      "No device, cloud-photo, multiple-selection or camera acceptance"
+    ]
+  },
+  "verification": {
+    "state": "passed",
+    "service": "passed",
+    "r4_ui": {
+      "passed": 7,
+      "failed": 0
+    },
+    "r5_final_photo_ui": {
+      "passed": 2,
+      "failed": 0
+    },
+    "page_status": "partial"
+  }
+}

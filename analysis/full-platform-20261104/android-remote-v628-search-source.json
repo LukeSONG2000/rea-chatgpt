@@ -1,0 +1,94 @@
+{
+  "platform": "Android",
+  "version": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "evidence_type": "artifact-observation",
+  "question": "Remote list search capsule and automatic keyboard",
+  "observations": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java",
+      "lines": "241-297",
+      "sha256": "db199891c8272288addb93c1e017f895db566f3de002f59368f8c13834fa3cfb",
+      "conclusion": "Searching mounts ob81.w with owner query/change callback, c.c background, null border, f570 Search IME options. f7k effect starts in the Searching branch."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/f7k.java",
+      "lines": "126-135",
+      "sha256": "56692137c06a9098b270a99fb00ae356d74bd27ec1678eb16dc11e455326d8be",
+      "conclusion": "case0 requests focus through hb10.a."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ob81.java",
+      "lines": "1918-2054",
+      "sha256": "79d4817a77807830a9d5724a1e12c82feeeb599a6e3897706debf77bafead1d4",
+      "conclusion": "SimpleSearchBar uses capsule shape q1r0.a, 16/8 padding, 44dp minimum editor height, on01.a text and clear-focus IME action."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/q1r0.java",
+      "lines": "5-11",
+      "sha256": "b40aa0efe8908f2da64976e2691794d08344d971eb57bcdba4c675d2d65642dc",
+      "conclusion": "q1r0.a is 50-percent rounded corners."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bbv0.java",
+      "lines": "22",
+      "sha256": "caaa97ac1b162ceea4d4b31d59cb67c1d2885b1d35723963f32cbe1a24be8096",
+      "conclusion": "q token44dp."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java",
+      "lines": "8-9",
+      "sha256": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed",
+      "conclusion": "Body regular16sp, weight400, line24sp, spacing.1sp."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ri50.java",
+      "lines": "10",
+      "sha256": "b5efdf5e3e8be708bd846f4a82a80734a9023aaed4ef3c06d4d60057089d1d82",
+      "conclusion": "IME value3 is Search."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java",
+      "lines": "1131,1180",
+      "sha256": "99bee934ff0a85ece1691654e536d128719f8b6b206754a83411ea1e31cea2c6",
+      "conclusion": "Normal c.c background resolves dark212121 / lightFFFFFF."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/androidx/compose/foundation/layout/b.java",
+      "lines": "106-117",
+      "sha256": "2ba9449c070ae03d4266c45bf99bd274ce8a550699882068fa27582655229112",
+      "conclusion": "b.k default bit2 leaves maximum height unspecified, minimum height supplied44."
+    }
+  ],
+  "smali_checks": [
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/b7k.smali",
+      "lines": "568-640",
+      "conclusion": "Caller default mask0x60ea confirms padding defaults and explicit null border."
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/ob81.smali",
+      "lines": "18778-18806,19042-19060",
+      "conclusion": "16/8 padding and q1r0.a shape confirmed."
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/f7k.smali",
+      "lines": "1953",
+      "conclusion": "hb10.a focus request confirmed."
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/hnu0.smali",
+      "lines": "315-358",
+      "conclusion": "44dp height and on01.a type confirmed."
+    }
+  ],
+  "host_adaptation": [
+    "Compose BasicTextField, FocusRequester and software keyboard controller implement the recovered entry/IME behavior.",
+    "Explicit focus clear and keyboard hide on toolbar close; IME insets bound the list viewport.",
+    "Synthetic query filtering and persistence retain existing host contracts."
+  ],
+  "limitations": [
+    "Pixel-identical keyboard animation remains platform/IME dependent.",
+    "High contrast palette and complete search matching/service contract are outside this increment."
+  ]
+}

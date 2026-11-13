@@ -1,0 +1,39 @@
+{
+  "version": "v544",
+  "status": "partial",
+  "platform": "iOS simulator 27.0",
+  "official_baseline": {
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "evidence": "ios-remote-v514-attachment-presentation-findings.json",
+    "symbols": [
+      "ElevatedPresentationSourceView",
+      "anchoredIntrinsic"
+    ],
+    "offsets": [
+      "0x62d6288",
+      "0x62e1e50"
+    ],
+    "conclusion": "Ordinary presentation derives the source geometry in its window and aligns the target bottom-leading corner with the source."
+  },
+  "observations": [
+    {
+      "evidence_type": "controlled_replay",
+      "source": "ios-remote-v544-r5-screenshots/E2AF5D3F-7885-45E0-A076-2A3F33C9A76E.txt",
+      "conclusion": "Focused attachment button AX frame is x12 y486 w48 h48. Keyboard starts at y546. Menu parent is y600 with height228 and is not hittable."
+    },
+    {
+      "evidence_type": "controlled_replay",
+      "source": "ios-remote-v544-r8-anchor-geometry.log",
+      "conclusion": "Source UIView and presentation layer both report x12 y780 w48 h48 after focus. Ancestors include ScrollPocketBarInteraction. Both model and presentation-layer coordinate conversions retain the pre-keyboard location."
+    }
+  ],
+  "independent_host_change": "No retained geometry change. The isolated SwiftUI global/window geometry bridge still failed both ordinary light/dark focused menu tests in r9 and was reverted.",
+  "validation": "r4/r5/r7/r8/r9 reproduce the focused source-position mismatch. r6 diagnostic build failed due to an unavailable CGRect formatting API; corrected for r7. Existing ordinary menu implementation is retained while the SafeAreaBar/presentation coordinate-owner boundary is investigated.",
+  "limits": [
+    "Official full geometry registration implementation remains partial.",
+    "Original morph snapshots/masks remain partial.",
+    "Physical devices and other window layouts require separate acceptance."
+  ],
+  "next_action": "Trace the recovered geometry-in-window/displayOffset producer and verify the SafeAreaBar displayed-source frame separately from the mounted representable. Re-run compact -> picker cancel -> keyboard -> attachment open/select -> draft restoration with the existing assertions."
+}

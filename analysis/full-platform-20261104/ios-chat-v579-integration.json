@@ -1,0 +1,44 @@
+{
+  "batch": 579,
+  "status": "部分实现",
+  "source_authority": "iOS 1.2026.293 artifact static observations",
+  "restored_mechanism": "Enabled inline actions use isComplete for canShow, opacity and hit testing with 0.2-second easeInOut animation.",
+  "host_adaptations": [
+    "Independent local status mapping hides actions during sending, accepted, streaming and cancelling.",
+    "Retained text remains copyable in terminal and unknown states to preserve existing host behavior.",
+    "Reduce Motion disables the added host fade; official suppression flag semantics remain unknown.",
+    "Menu contents and reserved 36pt slot are independent host geometry."
+  ],
+  "validation": {
+    "state": "passed",
+    "artifact_model": "30 cases, 512 invariance checks and 7 invalid inputs; stable repeat passed",
+    "ui": "5 passed, 0 failed, 0 skipped; ios-chat-v579-r3.summary.json",
+    "visual": "Reviewed Chinese/light Chat and English/dark Work streaming and completed copy/paste captures. Existing row whitespace and action glyph/placement differences remain."
+  },
+  "open_items": [
+    {
+      "page": "Chat/Work conversation",
+      "priority": "P1",
+      "gap": "Full official inline action set, role eligibility and footer geometry",
+      "next_action": "Trace ordinary MessageRowContent constructor and final InlineActionsPart layout together",
+      "acceptance": "Compare user/assistant, active/terminal rows and copy/edit at ordinary font size in both themes"
+    },
+    {
+      "page": "Chat/Work conversation",
+      "priority": "P2",
+      "gap": "VoiceOver traversal of transparent native menu",
+      "next_action": "Inspect actual accessibility traversal on supported acceptance surface",
+      "acceptance": "Hidden active action is skipped, terminal action remains reachable"
+    },
+    {
+      "page": "Chat/Work conversation",
+      "priority": "P1",
+      "gap": "Block and inter-row whitespace remains visibly different",
+      "next_action": "Bind row surroundings and effective parent style to shared measurement/rendering",
+      "acceptance": "Same-content row geometry, scroll anchor and core operations remain correct"
+    }
+  ],
+  "service": "待接服务",
+  "device": "待设备验证",
+  "preview": "v579 signed and installed, executable hash matches, Chinese system-following light preview restored with existing synthetic attachment draft"
+}

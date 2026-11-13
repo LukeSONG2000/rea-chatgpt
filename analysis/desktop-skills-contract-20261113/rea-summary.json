@@ -1,0 +1,49 @@
+{
+  "evidence_id": "ev_b22391fd54c8ca59aa48d46e93bd11f9e75ec40dd815522a2d2e93cb63b616c9",
+  "subject": {
+    "name": "asar-extracted",
+    "digest": {
+      "sha256": "d40546d99fe0186b7c2c02eb4c9f7af808a608109b1ebf6edc0c209a179837e2"
+    },
+    "local_path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/macos/asar-extracted",
+    "format": "directory",
+    "architecture": null
+  },
+  "operation": "inspect_analysis_view",
+  "parent_evidence_id": "ev_31099a109c5e676a1957c68b21f0f712b39edc75bfc5b8d5d50f741e0acc4f06",
+  "parameters": {
+    "parent_evidence_id": "ev_31099a109c5e676a1957c68b21f0f712b39edc75bfc5b8d5d50f741e0acc4f06",
+    "view": {
+      "kind": "summary"
+    }
+  },
+  "coverage": {
+    "status": "complete-within-view",
+    "examined": 15928,
+    "total": 15928,
+    "next_offset": null,
+    "exhausted": true
+  },
+  "limitations": [
+    "Alias selection expansion was conservatively bounded (maximum 512 additional selector states); selected paths remain unknown.",
+    "Boundary extraction covers unshadowed JSON/global coercions plus parse and validation method candidates.",
+    "Caller-selected source analysis leaves 16932 inventoried files outside analysis scope. Inventory identity covers the complete artifact; relationships through unselected sources remain unknown.",
+    "Child-process extraction covers asynchronous node:child_process creation, literal argv/env/stdio options, exit/error listeners, and kill signals.",
+    "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
+    "Configuration extraction covers process.env, process.argv, node:fs reads, and direct logical defaults.",
+    "Event extraction covers EventEmitter-style literal registrations, removals, and dispatch candidates; dynamic names remain unknown.",
+    "Function fingerprints are static candidates; equal digests can remain ambiguous and do not prove behavioral equivalence.",
+    "Graph coverage is incomplete; unavailable facts remain explicit and must not be read as absence.",
+    "JavaScript and HTML were parsed as inert text; bundle bootstrap code was never executed.",
+    "Local data flow does not claim control-flow-sensitive reaching definitions or arbitrary dynamic property resolution.",
+    "Promise ownership covers explicit unshadowed Promise construction, static factories, aggregation, chaining, and await syntax only.",
+    "Request extraction covers fetch, WebSocket, node:http/node:https construction, direct option fields, and exact local response consumers.",
+    "Resource extraction covers built-in filesystem/network acquisition and exact local close/destroy/end handles.",
+    "Semantic unknown retention reached max_semantic_unknowns is 100000 (default 100000; an integer from 1 to 1000000). Set max_semantic_unknowns on the next analyze_javascript_application call (CLI: --max-semantic-unknowns). The change applies to that next analysis and does not restart the worker or the REA server. Raising it does not raise max_semantic_nodes, max_heap_mb, transfer ceilings, or the parent result budget. Coverage reports the same effective values as semantic_graph_unknown_ceiling and semantic_graph_file_unknown_ceiling. Omission coverage counts examined emission occurrences by family and reason, including repeats; it does not count unexamined source frontiers or distinct discarded identities.",
+    "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
+    "Static paths and relationships may remain unresolved when expressions are dynamic or obfuscated.",
+    "The semantic graph contains static syntax observations and conservative relationship candidates; it does not claim runtime execution.",
+    "Timer extraction covers global or node:timers scheduling and exact local-handle cancellation.",
+    "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code."
+  ]
+}

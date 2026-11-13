@@ -1,0 +1,98 @@
+{
+  "batch": "v493",
+  "status": "partial",
+  "previous_goal_turn": "no progress: revalidated existing evidence in response to user; this batch integrates the next verified gap",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static plus independent host integration",
+  "metadata": {
+    "descriptor": "0x9560294",
+    "initial_metadata": "0xad49b38",
+    "descriptor_pointer_chain_verified": true,
+    "fields": [
+      {
+        "index": 4,
+        "name": "usesVersion2TaskListUI",
+        "initial_offset": "0x20"
+      },
+      {
+        "index": 30,
+        "name": "homeEmptyState",
+        "initial_offset": "0x1c9"
+      },
+      {
+        "index": 32,
+        "name": "isConnectingComputer",
+        "initial_offset": "0x1cb"
+      },
+      {
+        "index": 41,
+        "name": "startRemoteThread",
+        "initial_offset": "0x248"
+      }
+    ],
+    "limit": "Initial metadata slots are cross-checked against direct instruction accesses; uninitialized trailing slots are not interpreted."
+  },
+  "findings": [
+    {
+      "offset": "0x39b34c..0x39b3e4",
+      "conclusion": "usesVersion2TaskListUI at owner+0x20 must equal1; suppression0x39902c must be false; section project classification must succeed; row index must equal section.items.count-1. Only then bottom inset12, otherwise0. Top/leading/trailing always0."
+    },
+    {
+      "offset": "0x39ce98;0x39902c",
+      "conclusion": "Same suppression gates project header creation. Current fixture explicitly renders populated project headers and uses V2; does not implement all search/home-empty suppression branches."
+    },
+    {
+      "offset": "0x39d008..0x39d088;0x39c40c..0x39c41c",
+      "conclusion": "Caller passes optional previous section and current ID. Current project payload tags1/3/4 have high two bits below3 and return topSpacing0. Other section adjacency branches are not generalized."
+    },
+    {
+      "offset": "0x43c24c;owner+0x248",
+      "conclusion": "Initial field vector binds existing new-thread callback trace to startRemoteThread. Action UI/owner integration remains pending."
+    }
+  ],
+  "implementation": {
+    "source": "implementation/ios/Sources/NativeConversationHost.swift",
+    "change": "Filter section items once; derive last identity from same ordered collection consumed by ForEach; bottom12 applied through listRowInsets only to final project item. No gap inserted for collapsed sections. Project header top inset stays0."
+  },
+  "validation": {
+    "typecheck": "passed; existing warnings retained in ios-remote-v493-typecheck.txt",
+    "model_tests": "passed; ios-remote-v493-model-tests.txt",
+    "initial_ui": "2 passed, 1 failed; invalid accessibility-frame measurement. Full report ios-remote-v493-ui.xcresult retained.",
+    "ui_retest": "passed: r3 SectionScopeAndRestoration; r2 HorizontalSourceFilterLargeText and TaskScopeAndReturn. Source host unchanged between r2/r3; only geometry assertion corrected.",
+    "device_build": "passed",
+    "device_install": "ios-device-v493-install.json",
+    "device_launch": "ios-device-v493-launch.json",
+    "physical_touch_and_visual_acceptance": "pending",
+    "preview": {
+      "simulator_pid": 74427,
+      "screen": "Remote compact task/project list",
+      "external_display": "Window menu offers Move to Built-in Retina Display",
+      "left_running": true,
+      "screenshot": "ios-remote-v493-list-preview.png",
+      "visual_review": "Project icon/title alignment, duplicated workspace subtitles, unique workspace title and last-row separation inspected. Whole-page official parity remains unaccepted."
+    },
+    "second_ui": "2 passed, 1 failed; subtracting two cell heights produced7.6667 rather than12. Intermediate cell baseline cannot be assumed equal to last-row content height. Report ios-remote-v493-r2-ui.xcresult retained.",
+    "geometry": {
+      "default_last_project_row_height": 60,
+      "intermediate_row_height": 52.33333333333337,
+      "attachment": "ios-remote-v493-r3-ui.xcresult / remote-project-row-geometry",
+      "limit": "Observed simulator layout at default text size; raw row-height differences do not equal configured insets because cell baselines differ."
+    },
+    "retention": "retain-builds.py reports targets=[], skipped=[]"
+  },
+  "remaining": [
+    "Source-filter candidate scope for duplicate names",
+    "New-thread header action and service boundary",
+    "Pinned/recent/cloud sections",
+    "Top search/mode menu and bottom composer",
+    "Full visual/device interaction acceptance",
+    "Android independent artifact trace"
+  ],
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "f5a8ac97d8cd92114f1fa5d49096e7f973195af0a566d2685b002d63799fd1ad",
+    "implementation/ios/UITests/HostInteractionTests.swift": "44024e83a436db46738b5c8f13f166788cb1878c8710791e3bb377cef2d14897",
+    "analysis/full-platform-20261104/ios-remote-v493-last-row-insets.asm": "fc9efc91b30b985140150386a50d408a607cb1a0a1eb3a1d90e46d911d69dd87"
+  }
+}

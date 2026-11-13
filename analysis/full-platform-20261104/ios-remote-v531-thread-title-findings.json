@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "task": "v531 ordinary Remote thread title and parent toolbar",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official_artifact_static_observation",
+  "validation": {
+    "official_app_executed": false,
+    "production_code_edited": false,
+    "newer_screenshot_version_bound": false
+  },
+  "answer": "The inspected 293 ordinary toolbar explicitly selects principal on iOS26+. Existing title height/background/label alignment rules are already present in the current host. This bounded pass establishes the ordinary parent toolbar attachment and refines the new-thread gate producer, but does not establish a source-backed switch to leading or a titleView alignment override.",
+  "findings": [
+    {
+      "id": "title-placement-revalidated",
+      "status": "verified",
+      "offsets": [
+        "0x1a3007c..0x1a30094",
+        "0x1bdeac..0x1bdebc",
+        "0x1a300f4",
+        "0x1a30124..0x1a3012c"
+      ],
+      "conclusion": "Availability helper requests platform2 version26.0.0. True selects SwiftUI ToolbarItemPlacement.principal, false selects topBarLeading. The same label factory is used. iOS26 toolbar title receives sharedBackgroundVisibility(hidden).",
+      "evidence": [
+        "ios-remote-v480-toolbar.asm",
+        "ios-remote-v480-toolbar-calls.json",
+        "ios-remote-v516-title-layout-findings.json"
+      ]
+    },
+    {
+      "id": "label-constraints",
+      "status": "verified",
+      "offsets": [
+        "0x1a2d760..0x1a2d9f0",
+        "0x1ce909c..0x1ce9184"
+      ],
+      "conclusion": "Title/subtitle is a leading-aligned VStack with spacing3, a maximum dynamic type size xLarge and a final frame(width:nil,height:44,alignment:center). The bounded label/ToolbarItem path supplies no maximum-width leading frame or horizontal position override.",
+      "limits": "Leading within the label does not settle the enclosing principal item position."
+    },
+    {
+      "id": "ordinary-parent-toolbar-attachment",
+      "status": "verified",
+      "offsets": [
+        "0x304028..0x304050",
+        "0x304094..0x3040ac",
+        "0x1a0e63c..0x1a0e698",
+        "0x1daa5d8",
+        "0x7c4ae00",
+        "0xaad4ab8"
+      ],
+      "conclusion": "Ordinary branch inline populates ThreadView before calling1a0e63c. That function constructs CodexRemoteThreadToolbarModifier with viewModel and showsNewThreadButton, then calls SwiftUI View.modifier through1daa5d8. The title toolbar is attached to the ordinary ThreadView before MessageInputStyle injection at3040c4..30410c.",
+      "historical_refinement": "v522 called1a0e63c a ThreadView constructor. Its concrete operation is the toolbar modifier attachment. The enclosing ordinary ThreadView route and subsequent style injection remain evidenced."
+    },
+    {
+      "id": "new-thread-gate-producer",
+      "status": "partial",
+      "offsets": [
+        "0x303e20..0x303e2c",
+        "0x303fac..0x303fbc",
+        "0x304098..0x3040ac",
+        "0x1a0e660..0x1a0e664",
+        "0x1a2ffc0..0x1a2ffd0",
+        "0x1a30484",
+        "0x1a3052c"
+      ],
+      "conclusion": "At303e20 the parent captures a word from context+0x20. The ordinary branch computes showsNewThreadButton=(that word==0) at303fac..303fb8, saves the Bool, later passes it inw1 at30409c to1a0e63c. The modifier stores that Bool at+8 and forwards it into ToolbarContent. This is a parent context predicate, separate from whether an independent fixture happens to have a newThreadTarget.",
+      "limits": "Semantic name of parent context+0x20 is not proved in this pass. The context contains optional callbacks and its bound CodexScreen value has dynamic layout initialization. Do not label this word dismiss or infer permissions without a field binding."
+    },
+    {
+      "id": "new-thread-action-and-order",
+      "status": "verified",
+      "offsets": [
+        "0x1a30484",
+        "0x1a3052c",
+        "0x1a30848",
+        "0x1a30718",
+        "0x1ce9408",
+        "0x19433b4",
+        "0x1901af0"
+      ],
+      "conclusion": "Enabled new-thread entry is a separate trailing square-and-pencil button before the Options menu, using VM witness+0x80 and captured-parent callback. Menu action order and separate Changes/Files predicates are as recovered in v516.",
+      "limits": "The eventual parent new-thread destination remains scoped partial. Current synthetic newThreadTarget is an independent adapter."
+    },
+    {
+      "id": "enclosing-navigation-boundary",
+      "status": "partial",
+      "offsets": [
+        "0x301468..0x301ff4",
+        "0x303aec..0x3042c8"
+      ],
+      "conclusion": "CodexNavigationView assembles the shared content/navigation inputs and ordinary CodexScreen branch. The bounded direct call inventory contains no direct UIKit titleView setter or principal horizontal override. Indirect generic wrappers and the final native navigation host remain outside this proof.",
+      "limits": "Absence in bounded direct calls does not establish absence across the app. No new source-backed leading-title mutation is established."
+    }
+  ],
+  "current_host_comparison": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "present": [
+      "RecoveredRemoteThreadLocationLabel uses leading VStack spacing3",
+      "fixed frame height44",
+      "dynamicTypeSize capped at xLarge",
+      "titlePlacement principal on iOS26+, topBarLeading otherwise",
+      "title sharedBackgroundVisibility hidden on26+",
+      "separate new-thread trailing button preceding Options when synthetic target exists"
+    ],
+    "remaining_difference": "Newer screenshot title begins beside back. Exact screenshot binary/OS and enclosing native navigation item sizing are still unbound. Changing placement solely to match that reference would need an explicit reconstruction/adaptation label."
+  },
+  "safe_next_actions": [
+    "Keep current principal placement until an outer native owner or version-bound newer artifact establishes another rule.",
+    "Test long and short title/subtitle at identical trailing new/menu visibility and navigation container. Distinguish label internal leading from the principal container position.",
+    "For the new-thread control, keep an explicit fixture capability and scoped new-thread route. Do not claim fixture target presence reproduces the recovered parent Bool."
+  ],
+  "unresolved": [
+    {
+      "boundary": "CodexNavigationView/Screen -> shared native navigation host -> UINavigationItem titleView",
+      "minimum_next_action": "Identify the shared navigation wrapper concrete witness used by the ordinary branch, then inspect only its title sizing/position hooks."
+    },
+    {
+      "boundary": "parent context+0x20 -> semantic field",
+      "minimum_next_action": "Bind the capture/value layout at303aec caller to its field vector or constructor, then name the new-thread visibility predicate."
+    },
+    {
+      "boundary": "newer official screenshot vs iOS293 toolbar",
+      "minimum_next_action": "Obtain screenshot build identity or a matching artifact before interpreting visual drift as a293 source omission."
+    }
+  ],
+  "evidence_files": [
+    "ios-remote-v531-thread-title-xrefs.json",
+    "ios-remote-v531-thread-toolbar-parent.asm",
+    "ios-remote-v531-thread-toolbar-helpers.asm",
+    "ios-remote-v531-toolbar-modifier-binding.json",
+    "ios-remote-v531-screen-metadata.json",
+    "ios-remote-v531-screen-layout-initializer.asm",
+    "ios-remote-v531-navigation-body.json",
+    "ios-remote-v531-navigation-body-tail.asm",
+    "ios-remote-v516-title-layout-findings.json",
+    "ios-remote-v516-toolbar-menu-findings.json",
+    "ios-remote-v480-toolbar.asm",
+    "ios-remote-v522-thread-field-offsets.json",
+    "ios-remote-v522-screen-thread-style-writer.asm"
+  ]
+}

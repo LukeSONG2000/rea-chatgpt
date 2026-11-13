@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "Ordinary Chat/Work inline message action FlowLayout carrier, source config and measured sizing; bounded three candidates; no Remote transplant",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "official_observations": [
+    {
+      "id": "CHAT3-01",
+      "conclusion": "Actual inline action parent constructs FlowLayout with horizontalSpacing0,verticalSpacing0,verticalAlignment.center,horizontalRowAlignment.leading before wrapping actions with all-edge negative compensation.",
+      "source": [
+        "retained MessageRowInlineActionsPart descriptor0x96214a8/conformance0x802957c body0x38a2f20→0x389ece4;actual parent call0x389f208→0x389f538",
+        "0x389fb24 importsVerticalAlignment.center",
+        "0x389fb28→0x3abd6e8 savesverticalcenter into x20 and tails0x7c48910;chainedslot0xaad2178=HorizontalAlignment.leading",
+        "0x389fb2c stp xzr,xzr atlayout+0/+8;0x389fb30 stp x20,x0 atlayout+0x10/+0x18",
+        "FlowLayout descriptor0x97540f0 fields horizontalSpacing/verticalSpacing/alignment/horizontalRowAlignment",
+        "retained fulltree0x8024800=Variadic Tree<LayoutRoot<SwiftUIToolbelt.FlowLayout>,action content> + PaddingLayout",
+        "0x389fb90..0x389fbd8 retains source all-edge compensation from style(-6 legacy/-8refreshed)"
+      ],
+      "limits": [
+        "Legacy/refreshed account experiment assignment remains unresolved.",
+        "Zero layout spacing does not remove leaf hitpadding; font point size does not determine intrinsic Image geometry.",
+        "This is one actual source branch; no claim that every action arrangement uses this carrier."
+      ]
+    },
+    {
+      "id": "CHAT3-02",
+      "conclusion": "The native FlowLayout measures proposal-dependent child dimensions and layout priority rather than deriving a fixed footer height from icon font size.",
+      "source": [
+        "FlowLayout Layout conformance0x84b8008 (separate Animatable conformance0x84b8080 not mistaken for View)",
+        "sizeThatFits witness0x75473b4 loads horizontal/verticalspacing and alignment;tails0x7546044→0x7546074",
+        "0x75460f0/0x7546118 normalize both proposal components through0x75471c0",
+        "0x75461dc subview lookup;0x75461e4 LayoutSubview.priority",
+        "0x75466a8/0x7546788→0x75471fc selected subview remeasurement",
+        "0x7547290 dimensions(in:proposal);0x75472a8 width;0x75472b0 height;0x75472d4 verticalalignment dimension",
+        "0x75466e4..0x7546708 compares current row+child width to availablewidth and branches into overflow/shrink/nextrow handling",
+        "0x75467f4/0x7546830 and0x7546a8c/0x7546ac4 build/update CGRect union results"
+      ],
+      "limits": [
+        "Normalization helper0x75471c0 optional/nil/nonfinite policy and all priority compression branches not translated to high-level equivalence.",
+        "No exact14pt or26pt row height is proved.",
+        "This static code does not establish UIKit UIHostingConfiguration hit-testing equivalence for a reconstructed row."
+      ]
+    },
+    {
+      "id": "CHAT3-03",
+      "conclusion": "Placement reuses measured layout geometry, supports leading/center/trailing per-row alignment, and places subviews with topLeading anchor and a measured proposal. Cache invalidation is part of this carrier.",
+      "source": [
+        "placeSubviews witness0x75473c0 loads spacing/alignment/horizontalRowAlignment;tails0x7546cd8",
+        "0x7546f80 HorizontalAlignment.leading /0x7546f90 center /0x7546fa4 trailing comparisons",
+        "0x7547008 childlookup /0x7547018 UnitPoint.topLeading /0x754703c LayoutSubview.place(at:anchor:proposal:)",
+        "updateCache witness0x75473b0→0x7545fb4 resets/rematerializes cache storage",
+        "size algorithm0x7546bf8..0x7546c64 writes entry with stride104 and result geometry",
+        "FlowLayout.Cache fields=entries in frozen metadata inventory"
+      ],
+      "limits": [
+        "Complete cache key/eviction semantics and layout priority reflow algorithm remain partial.",
+        "Do not transplant cache byte offsets/104-byte layout into product model or call it a public API.",
+        "Original accessibility action wrapper and leaf hit carrier must be recovered together before applying negative outer padding in the independent UIKit embedding."
+      ]
+    }
+  ],
+  "current_host_comparison": {
+    "source": "NativeConversationHost.swift NativeChatMessageActions/NativeChatCopyControl",
+    "actual": "A deliberate independent HStack(spacing0) with single assistant copy UIButton; icon metric14 plus6insets; parentheight metric14+12; user trailing Menu. Adequate hit/AX carrier retained after prior negativepadding regression.",
+    "confirmed_gap": "No native FlowLayout child measurement/cache/priority proposal or complete primary/overflow displayitems exists in current host. Its fixed height is an adapter, not recovered source geometry.",
+    "not_a_new_defect": "The working copy hit carrier is not invalid merely because it differs from original carrier. No evidence justifies shrinking it to14 or reapplying negativepadding alone.",
+    "unchanged_eligibility": "Keep current scoped completion/copy admission; no original role-specific full action inventory recovered by this pass."
+  },
+  "can_change": [
+    {
+      "decision": "A future source-shaped FlowLayout component can use the proven0/0/center/leading configuration and perform real proposal-based LayoutSubview measurement; it must preserve adequate parent/leaf hit and accessibility ownership.",
+      "classification": "source-backed-config-with-independent-host-integration"
+    },
+    {
+      "decision": "If replacing current fixed height, use actual complete action carrier measurement at the resolved content width; report the UIKit bridge as independent. Validate no-clipping/hit/AX and wrapping before removing current carrier.",
+      "classification": "independent-integration-recommendation-not-source-equivalence"
+    }
+  ],
+  "should_not_change": [
+    "Do not apply -6/-8 to the current fixed-frame UIKit copy control as a standalone correction.",
+    "Do not infer an exact14x14 leaf frame or14pt row from font14.",
+    "Do not add thumbs/share/favorite/regenerate or move the user menu based on screenshots, Remote, desktop or enum inventory.",
+    "Do not label a simple greedy wrapping HStack as the complete native FlowLayout, which also considers proposal and priority remeasurement."
+  ],
+  "haptics": {
+    "status": "unknown",
+    "observation": "No explicit sensoryFeedback/haptic invocation established in selected actual FlowLayout constructor/measurement/place/cache consumers. They are layout paths, not proof of action success feedback. Existing unproved Chat action haptics stay unknown."
+  },
+  "precise_remaining_boundaries": [
+    "FlowLayout proposal optional/nonfinite normalization0x75471c0→0x75bdde8 and full priority overflow/shrink policy in0x7546074.",
+    "Actual layout cache key and geometry invalidation after dynamic content/font/available width changes.",
+    "Original action leaf intrinsic label and full accessiblity wrapper hit ownership in native hosting.",
+    "Ordinary source producer arrays/role-specific action availability and account refreshed-style assignment."
+  ],
+  "reused_evidence": [
+    "analysis/full-platform-20261104/ios-chat-message-parent-20261113-findings.json",
+    "analysis/full-platform-20261104/ios-chat-message-parent-20261113/inline-parent.asm",
+    "analysis/full-platform-20261104/ios-chat-message-parent-20261113/flow-parent-tree.json",
+    "analysis/full-platform-20261104/ios-chat-work-parent-current-20261113.json"
+  ],
+  "validation": {
+    "candidate_groups": 3,
+    "mode": "bounded static artifact+current host audit",
+    "product_changes": false,
+    "tests_run": false,
+    "build_or_device": false,
+    "original_runtime_or_network": false,
+    "stop_reason": "Source carrier config and measurement/placement owner closed; full algorithm/hit integration left precise, current working carrier preserved."
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/current-action-carrier.json",
+      "sha256": "383ac6968e5a8b5a8febd44c0d51738782161c1a8997e7f88a9cce667da10864"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-cache-reset.asm",
+      "sha256": "ffbca87263194ab10a66e0f9cf5bf9de621f53e70094e40dfc03fbae861e28d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-cache-reset.json",
+      "sha256": "61309612d247fcfe0b4422ed1eeffafba4136d7365371c756c9c0ff6b7909366"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-layout-accessor.asm",
+      "sha256": "1f7840f7f00dda6fe589d309471fa7a4449f82753c265a5f21003790e5c9cf08"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-layout-accessor.json",
+      "sha256": "43b386c82b321faa7b3739d2bd49c16bc01823d9029030b56b7eb68750d88e02"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-layout-witness-thunks.asm",
+      "sha256": "a5dea00e4da209514bc86e391508725e7b79b2d474592a1b7a35032b0c8cb6d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-layout-witness-thunks.json",
+      "sha256": "2e07d2526ef04c3671437eced3d5e272875ed37ae734303f6dc0d0787917c552"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-metadata.json",
+      "sha256": "186b211bfe3a6c58d682021a5cb5c1d32ff65382c3e565d9ddf7bb7cf85974e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-parent-alignment-binding.json",
+      "sha256": "086416dd888b9984468fb590de9534c1cfdbe705769fe61fa614916dd62377ad"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-parent-config-helper.asm",
+      "sha256": "d088ae6908d3ca1e6f9a3eb7dd7a8f54a2ff91cf12666a8a85c0d597cf456840"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-parent-config-helper.json",
+      "sha256": "139fcccf27624971475912f7645617f61ec06f0d741bb27bac42eba76cf06068"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-parent-constructor.asm",
+      "sha256": "6d1c08805f91f315b0d1e96de47ed9bc01450a696efe5a3d0e7ddbca40de2c9c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-parent-constructor.json",
+      "sha256": "7b2c650b3a31bbb3999a832a49b2a4fd9c890786961b02b99d1bca157afd9809"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-place-subviews.asm",
+      "sha256": "406b7fdf4729a44fb79cb43a2b86774a4eba98601eec9d29e05e98979f1b269d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-place-subviews.json",
+      "sha256": "f03bcd66c81a9c419d9f8aad6bf83d351305adc228a1c278d3efff8fdfbc95ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-proposal-normalizer.asm",
+      "sha256": "f1dff4adf18b663699ddd43289b1afd4a323c4438bc330d63d7eafee4fb76dd4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-proposal-normalizer.json",
+      "sha256": "689855bd79098ea4977e29a0356a90988d6da5ad6ca241a26cd078252a98061f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-size-that-fits.asm",
+      "sha256": "f81178956459f4774ce7f4ad027d958670a074b316aa081db0d793cb00cd0f2a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-size-that-fits.json",
+      "sha256": "130acab7cc356ee1d00382775cc8669bf1ba6ddf16f6c8743912444b567800e3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-subview-measure.asm",
+      "sha256": "7b03eccdf70d5044dda0868d474f52b87c9a095f2df1365a2c1912b42d3891b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-subview-measure.json",
+      "sha256": "a50e725100415e8a9e189dfc71733845674e72efc46f6ec9d88ddc81ba0fd580"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-witness-0x84b8008.json",
+      "sha256": "8800b68107f522c735affda5b7fc213fd1c7c169a59aa5a8294d20ac42ebf6b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113/flow-witness-0x84b8080.json",
+      "sha256": "aef4e1881214f92155e2180c2b12bf9b11d67d2bca4654b198f7f0a4e8cef4a2"
+    }
+  ]
+}

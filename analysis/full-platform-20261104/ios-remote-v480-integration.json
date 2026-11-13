@@ -1,0 +1,155 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v480",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Restore the Remote thread location toolbar as a page-owned label and identify its top-edge boundary.",
+  "observations": [
+    {
+      "type": "official_artifact_static",
+      "source": "CodexRemoteThreadToolbarModifier 0x95ac6b8 / body0x1a2ff1c; ToolbarContent0x1a2ffd4; location factory0x1ce909c",
+      "conclusion": "Toolbar owns the dedicated location label. It chooses principal on iOS26+, topBarLeading otherwise (availability0x1bdeac)."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "LocationLabel0x95af59c / body0x1a2d760; type0x7e22380; 0x1a2d890..8c4",
+      "conclusion": "Leading VStack, spacing3, title font subheadline and semibold; title lineLimit1, truncation tail, layoutPriority1."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "0x1a2df5c ->0x74e27b8; 0x1a2dfc4 ->0x74ee448",
+      "conclusion": "Subtitle uses caption and ChatGPT/text/tertiary. Public semantic fonts are the recovered default branch; effective custom font overrides remain unverified."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "0x1a2e198 / 0x1a2e25c / 0x7e157e8 / 0x1a2e52c",
+      "conclusion": "cloudEnvironmentName takes precedence over workspaceDisplayName; duplicate host is removed in initializer. When both remain, Divided uses literal bullet and HStack spacing4; single available context falls back to OptionalText."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "0x1ce9134..54 and 0xaad10b8; body0x1a2d9a4",
+      "conclusion": "Toolbar caller supplies DynamicTypeSize.xLarge maximum, applied to the title/subtitle container."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "ThreadContent0x95ac4bc vector word offset4; closure0x1c2f980; accessor0x1aba020; field load0x1c2f9b0 and compare0x2c60c0",
+      "conclusion": "The additional top safe-area-bar clear frame is selected only on iOS26+ when usesRealtimeVoiceComposer equals1. Its 0x34 field-vector entry maps to field5. It cannot justify adding this top spacer or a custom blur to ordinary Remote threads."
+    }
+  ],
+  "bindings": {
+    "0xaad38c8": {
+      "symbol": "_$s7SwiftUI4FontV9TextStyleO11subheadlineyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9710,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaad3900": {
+      "symbol": "_$s7SwiftUI4FontV9TextStyleO7captionyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9717,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaad3b28": {
+      "symbol": "_$s7SwiftUI4TextV14TruncationModeO4tailyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9786,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaad10b8": {
+      "symbol": "_$s7SwiftUI15DynamicTypeSizeO6xLargeyA2CmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 8433,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    }
+  },
+  "integration": {
+    "changes": [
+      "Replace default inline-only title presentation with dedicated location toolbar label.",
+      "Reuse scoped task context with explicit synthetic project/environment projection.",
+      "Keep navigation stack/back and fixed approval owner intact.",
+      "Add long-title/large-text, scroll stability and A-B-A title-context regression."
+    ],
+    "independent_adaptations": [
+      "Plain Text replaces the unclosed animated title-change consumer.",
+      "Accessibility summary joins title/context with commas; original localized prose remains unresolved.",
+      "Existing fixture project/environment maps to native label inputs; this is not the official transport schema.",
+      "Native SwiftUI reconstruction from static evidence; complete original Swift sources unavailable."
+    ]
+  },
+  "unknowns": [
+    "Full right toolbar actions, availability gates and effective grouping.",
+    "Ordinary Remote transcript scroll-view/top edge effect owner and its relationship to platform toolbar coverage; realtime-voice top clear bar is a distinct gated path.",
+    "Sidebar and Chat/Work progressive blur caller chains.",
+    "Full title replacement animation and effective custom font configuration.",
+    "Full Remote project grouping, status pills and message content consumers.",
+    "Independent Android consumers and physical-device acceptance."
+  ],
+  "validation": {
+    "status": "passed_targeted_simulator_tests",
+    "result": "ios-remote-v480-r2-ui.xcresult",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "tests": [
+      "testRemoteThreadLocationAndScroll",
+      "testRemoteApprovalStaysOutsideHistoryScroll"
+    ],
+    "initial_result": "ios-remote-v480-ui.xcresult",
+    "initial_limit": "First run preceded the newly traced xLarge cap; final run includes it.",
+    "visual_status": "partial",
+    "visual_observations": [
+      "Inspected default and large-text scrolling screenshots. Title and context remain readable above scroll content; long title truncates and back control remains separate.",
+      "System-provided background blur is visible behind the toolbar while transcript rows scroll underneath. No custom blur filter was added. This does not establish exact official progressive-blur configuration or sidebar equivalence.",
+      "Normal synthetic approval page visibly contains the new context title and existing fixed bottom card. The right toolbar action group remains absent."
+    ],
+    "preview": {
+      "pid": 34761,
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "left_running": true,
+      "page": "fixture-a/shared-thread with approval",
+      "display": "External display; Device Hub Window menu offered Move to Built-in Retina Display."
+    },
+    "physical_device": "Not updated; last installed v474, no new physical acceptance.",
+    "retention": {
+      "dry_run_targets": [],
+      "free_space": "28 GiB"
+    },
+    "limitations": [
+      "Two targeted UI tests only; no full-suite or Android acceptance.",
+      "Static visual inspection cannot prove animation/blur-curve fidelity or tactile feedback."
+    ]
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "9669c6f48400a79b774bf4669626369c707d6758f646894685fa65cbeba0a825",
+    "implementation/ios/UITests/HostInteractionTests.swift": "90190e47312b532b6406a7d56ea28f4e991ddcf85a84e6a431b5731138b7c54e"
+  },
+  "visual_attachments": [
+    {
+      "file": "FB47E6DB-B497-44F6-97AC-B02F04EFE84C.png",
+      "sha256": "e4767b2054186ecc827fd99bb8d29b95fc61f79d2484213d393432a6c8037394",
+      "container": "ios-remote-v480-r2-ui.xcresult"
+    },
+    {
+      "file": "DF4C6285-73B8-43F0-A058-9ABDD5BE5DBE.png",
+      "sha256": "cf13460afc8b6ce4af0c6b5d73299b38de435f9ae17bdd60f82d1089233ac198",
+      "container": "ios-remote-v480-r2-ui.xcresult"
+    }
+  ]
+}

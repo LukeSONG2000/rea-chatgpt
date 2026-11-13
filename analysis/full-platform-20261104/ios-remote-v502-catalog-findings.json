@@ -1,0 +1,148 @@
+{
+  "question": "Catalog request status rows under ordinary Codex Projects header",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "validation": "static native disassembly + relative typeref resolution + independent Swift enum-layout probe; original app never executed",
+  "entry_chain": [
+    "Projects descriptor projectCatalogRequests +0xf8, visible content while header expanded (v500/v501)",
+    "ForEach closure 0x438e1c -> consumer 0x39c854",
+    "CodexTaskListProjectRequestStatus descriptor0x955fa90/accessor0x40a9d8",
+    "View body witness0x3a0dac ->0x3a0178 ->0x3a01b8"
+  ],
+  "confirmed": [
+    {
+      "claim": "Consumer binds hostDisplayName and requestState from per-host request record +0x40/+0x48 and +0x50/+0x58. When state second word >>61 equals2, hostDisplayName passed into component is nil. Otherwise the original host name is retained.",
+      "offsets": [
+        "0x39c8bc..0x39c8dc",
+        "0x39c9cc..0x39c9d8"
+      ],
+      "evidence_type": "official_artifact_observation"
+    },
+    {
+      "claim": "The failure fallback is localized key codex_remote_project_catalog_loading_error, English prefix Couldn't load projects from followed by hostDisplayName interpolation.",
+      "offsets": [
+        "0x39c8e0..0x39c978",
+        "0x8857090",
+        "0x88570c0"
+      ],
+      "evidence_type": "official_artifact_observation"
+    },
+    {
+      "claim": "Exact body discriminator uses state second word s. If s & 0xa000000000000000 is nonzero, build progress/name row. Else if s >>62 is nonzero, build failure/retry row. Else render optional load-more button when loadMoreAction present, otherwise EmptyView.",
+      "offsets": [
+        "0x3a02f8..0x3a0308",
+        "0x3a03dc..0x3a0428",
+        "0x3a04f8..0x3a0620"
+      ],
+      "evidence_type": "official_artifact_observation"
+    },
+    {
+      "claim": "Progress row is HStack(center,spacing8), with OAIProgressView<EmptyView> configured with OpenAICircularProgressStyle size16 then Text(hostDisplayName ?? localized Loading…). Progress and label use ChatGPT/text/tertiary color.",
+      "offsets": [
+        "0x3a0308..0x3a032c",
+        "0x2123a8",
+        "0x3a0630..0x3a08ac",
+        "0x3a0738..0x3a073c",
+        "0x75d41d4",
+        "0x75e1f18",
+        "0x74ee448",
+        "0x8a51c40"
+      ],
+      "evidence_type": "official_artifact_observation"
+    },
+    {
+      "claim": "Failure row is HStack(center,spacing8) of Text(hostDisplayName ?? failureMessage), Spacer, and a text Retry Button. Consumer clears hostDisplayName in failure state, so this caller displays full failureMessage. Only failure text is explicitly given tertiary foreground style.",
+      "offsets": [
+        "0x3a0428..0x3a0454",
+        "0x3a0930..0x3a0a74",
+        "0x75d28e0..0x75d28ec"
+      ],
+      "evidence_type": "official_artifact_observation"
+    },
+    {
+      "claim": "Both progress and failure rows inherit the font token resolved through0x74e26f8 to SwiftUI.Font.TextStyle.subheadline import0xaad38c8. Both apply CodexTaskListRowMetrics(horizontalPadding20, _minHeight ScaledMetric<CGFloat> initialized44). Outer VStack has leading alignment and spacing0.",
+      "offsets": [
+        "0x3a0188..0x3a018c",
+        "0x466728",
+        "0x3a0330",
+        "0x3a0398..0x3a03ac",
+        "0x3a0458",
+        "0x3a04c8..0x3a04dc",
+        "0x4601ec",
+        "0x463318",
+        "0x74e26e4..0x74e2710"
+      ],
+      "evidence_type": "official_artifact_observation"
+    },
+    {
+      "claim": "Consumer applies CodexHomeContentWidth from owner.usesVersion2TaskListUI+0x20, sets listRowInsets all zero and calls listRowSeparator with raw Visibility2.",
+      "offsets": [
+        "0x39c9f4..0x39ca74",
+        "0x4533f8"
+      ],
+      "evidence_type": "official_artifact_observation",
+      "limit": "Raw Visibility2 label not inferred solely from declaration order; local platform hidden mapping can be separately checked."
+    },
+    {
+      "claim": "RetryAction is CodexTaskListAction.remoteProjectCatalogRetryTapped carrying full request HostIdentity. Constructor writes enum case5. LoadMoreAction is nil for this catalog caller. Callback handler is copied from CodexTaskList owner+0x200/+0x208/+0x210. Retry closure directly invokes handler(retryAction), preserving per-host scope.",
+      "offsets": [
+        "0x39c8a4..0x39c8b8",
+        "0x39c984..0x39c9f0",
+        "0x42c0ac..0x42c0dc"
+      ],
+      "evidence_type": "official_artifact_observation"
+    },
+    {
+      "claim": "RequestState declaration has idle(Idle) and loading(Loading). Idle has success(Reference<Success>), failure(Loading,error:Reference<Error>), initial. Loading has reloading(Reference<Success>) and first.",
+      "offsets": [
+        "descriptor0x975f1bc",
+        "descriptor0x975f1f8",
+        "descriptor0x975f270"
+      ],
+      "evidence_type": "official_artifact_observation"
+    }
+  ],
+  "static_inference_with_independent_replay": [
+    {
+      "claim": "Semantic mapping consistent with exact branches and recovered case shapes is idle.success -> empty catalog status row, idle.failure -> failure/retry, idle.initial and loading.first/reloading -> progress row. Independent local Swift enum declarations yield secondWord>>61 of 0,2,4,1 respectively. Both failure.first and failure.reloading yield2.",
+      "evidence": [
+        "ios-remote-v502-catalog-independent-layout.swift",
+        "ios-remote-v502-catalog-independent-layout.json"
+      ],
+      "limit": "The ABI probe executes independent declarations, not the shipped framework value witnesses. Encoded discriminator and branch outputs above remain independently direct artifact observations."
+    }
+  ],
+  "minimum_integration": {
+    "normal_catalog": [
+      "initial/loading: tertiary 16-point circular progress plus host name in subheadline, spacing8, common scaled44 minimum row and horizontal padding20",
+      "failure: localized full host-specific error + flexible spacer + Retry text action, same row metrics",
+      "success: no status content because catalog caller passes nil loadMoreAction",
+      "retry routes remoteProjectCatalogRetryTapped with exactHostIdentity through list owner action handler",
+      "Projects collapsed hides this request array through the parent content branch established in v500/v501"
+    ],
+    "fixture_boundary": "Any local retry completion or forced transitions are independent fixture/service-adapter behavior. Do not label them recovered remote execution."
+  },
+  "unknown_or_excluded": [
+    "Actual remote retry service dispatch after list-owner handler was not traced in this focused pass.",
+    "Provider generation/order/filtering of request records was not fully audited here.",
+    "Spinner exact animation timing and all style internals remain outside this branch recovery.",
+    "Actual device rendering, timing, accessibility narration and animation parity remain unaccepted.",
+    "Generic load-more branch exists but this catalog caller supplies nil; it is not part of ordinary catalog integration."
+  ],
+  "evidence_files": [
+    "ios-remote-v502-catalog-metadata.json",
+    "ios-remote-v502-catalog-witness.json",
+    "ios-remote-v502-catalog-body.asm",
+    "ios-remote-v502-catalog-body-types.json",
+    "ios-remote-v502-catalog-style-metadata.json",
+    "ios-remote-v502-catalog-enums-tokens.json",
+    "ios-remote-v502-catalog-helpers.asm",
+    "ios-remote-v502-catalog-independent-layout.swift",
+    "ios-remote-v502-catalog-independent-layout.json",
+    "ios-remote-v501-projects-request-row.asm",
+    "ios-remote-v501-projects-request-types-resolved.json"
+  ],
+  "explicitly_rejected_evidence": "ios-remote-v501-projects-request-types.json raw typeref interpretation of relative records; use corrected resolved file only."
+}

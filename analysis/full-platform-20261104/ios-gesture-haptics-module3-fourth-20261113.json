@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-13T07:26:16.320293+08:00",
+  "scope": "Gesture haptics and General settings gate, during Remote list fourth pass",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "new_product_haptic_change": false,
+  "implemented": [
+    "Sidebar changed endpoint after a normally ended interior-progress drag: one selection",
+    "Model selected-index change: selection; first overscroll entry: soft impact",
+    "Shared Goal/Subagent status-pill carrier: selection before owner action",
+    "Accepted file-import feedback: light impact only with explicit success flag"
+  ],
+  "settings": {
+    "route": [
+      "Settings",
+      "General",
+      "Haptic feedback"
+    ],
+    "storage_key": "rea.preview.hapticsEnabled",
+    "persistent": true,
+    "gates": [
+      "enabled preference",
+      "hardware support",
+      "foreground active"
+    ],
+    "current_source_verified": true
+  },
+  "source_findings": [
+    "ios-remote-row-menu-fourth-20261113-findings.json",
+    "ios-remote-row-gestures-fourth-20261113-findings.json"
+  ],
+  "row_gesture_haptics": "No new explicit engine call proved in bounded row menu/swipe/preview builders; no guessed feedback added. This is not proof that the original has no implicit system feedback.",
+  "verification": {
+    "command": "sh implementation/ios/test-haptics.sh",
+    "exit_code": 0,
+    "log": "/tmp/rea-gesture-haptics-current-20261113-refresh.log",
+    "physical_playback_verified": false
+  },
+  "unknown": [
+    "Original row longpress/swipe feedback admission and implicit system feedback",
+    "Physical tactile waveform and timing",
+    "Other per-page unclosed feedback consumers"
+  ],
+  "rules": "AGENTS.md Page gesture scope already includes owning-module audit, preference wiring and duplicate suppression; no redundant rule added.",
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "9234767d76a2d2be392cc93cf011a2241cbb5048e582089868c856ae434da0d5"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "a27bc3e817767a415402e21d0b0a397b3b0f785b348204871bfbe0cb6b3ebb31"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteGoalPresentation.swift",
+      "sha256": "feaf1ff03b61c0bdabb41f458a3408219b0d89e8cc87541ae9decc8739a12d56"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteAgentsPresentation.swift",
+      "sha256": "db233de8dec894b8d8aa0378326b77e49d585cc7561d141dd4ec311e7f36f527"
+    },
+    {
+      "path": "implementation/ios/Tests/Haptics/main.swift",
+      "sha256": "962c86756334898b27a5f4bb32d19a31644e5cb1344d20fc4391fcd8e6e73240"
+    }
+  ]
+}

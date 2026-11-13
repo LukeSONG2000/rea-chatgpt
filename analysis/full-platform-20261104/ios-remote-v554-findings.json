@@ -1,0 +1,95 @@
+{
+  "batch": "v554",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Recover the ordinary Remote terminal error card, retaining reply content and separating error display from retry availability.",
+  "official_observations": [
+    {
+      "chain": "HistoryFragment content tail -> 1a35304 -> 1a33c4c -> ErrorRow3d8b694 -> body3d8c55c -> ErrorCard6ef0010",
+      "evidence": [
+        "ios-remote-v554-fragment-body-calls.json",
+        "ios-remote-v554-fragment-tail.asm",
+        "ios-remote-v554-tail-body.asm",
+        "ios-remote-v554-error-constructor.asm",
+        "ios-remote-v554-error-row-body.asm",
+        "ios-remote-v554-card-body.asm"
+      ],
+      "validation": "static"
+    },
+    {
+      "conclusion": "Failure status3 requires showsError. FailedPromptSubmission6 requires !isContextCompactionOnlyTurn. Other states do not use this ErrorRow branch. Stopped5 has a separate text notice.",
+      "offsets": [
+        "0x7dfdf3b",
+        "0x1a33cd0",
+        "0x1a33d7c",
+        "0x1a33d8c"
+      ],
+      "validation": "static"
+    },
+    {
+      "conclusion": "TurnState.errorMessage optional string is read at metadata+0x28. Missing message selects status-specific fallback factories; fallback key mapping remains open.",
+      "offsets": [
+        "0x1a33d90",
+        "0x1a33dac"
+      ],
+      "validation": "static"
+    },
+    {
+      "conclusion": "Retry callback is supplied only when status6, showsFooterActions and handler are present. ErrorRow additionally gates recoverable + callback. Ordinary generation failure is not automatically retriable.",
+      "offsets": [
+        "0x1a33e68",
+        "0x1a33e7c",
+        "0x1a33ee8",
+        "0x3d8c6a0",
+        "0x3d8c6c0"
+      ],
+      "validation": "static"
+    },
+    {
+      "conclusion": "ErrorCard uses callout medium, supplied attributed text, warning semantic foreground, 12pt content padding, 16pt rounded rectangle, warning fill opacity0.05, warning stroke opacity0.16 and primary stroke opacity0.1, 1pt strokes.",
+      "offsets": [
+        "0x6ef0094",
+        "0x6ef00c0",
+        "0x6ef0100",
+        "0x6ef016c",
+        "0x6ef01ac",
+        "0x6ef0298",
+        "0x6ef0474",
+        "0x6ef047c",
+        "0x6ef0898",
+        "0x74e2744",
+        "0x74f1060"
+      ],
+      "evidence": [
+        "ios-remote-v554-card-calls.json",
+        "ios-remote-v554-card-final-type.json",
+        "ios-remote-v554-error-bindings.json",
+        "ios-remote-v554-card-helpers.asm"
+      ],
+      "validation": "static"
+    }
+  ],
+  "independent_host_adapters": [
+    "failureMessage is a separate terminal event field; reply text retained by synthetic producer",
+    "existing host/destination/turn/sequence gate applies before errors change state",
+    "NSDataDetector linkification and local returnable disconnected-preview alert",
+    "dynamic replay card placement in the independent collection row"
+  ],
+  "unknowns": [
+    "Transport to TurnState.errorMessage mapping",
+    "status-specific official fallback localization keys",
+    "Retry async lifecycle and service command binding",
+    "automatic recovery and retry/loading card variants",
+    "Exact whole-page visual parity and source text-link detector",
+    "Account partition remains single synthetic account",
+    "Android error-card implementation not independently verified"
+  ],
+  "probe_failures": [
+    "Initial symbolic-type invocation omitted ChatGPT.framework in binary path; failed before writing output, retried with correct original path.",
+    "r1 error cases used StaticText to find the native reply UITextView. Updated only test query to exact UITextView value; r2 and r3 both passed."
+  ],
+  "validation_status": "Foundation and typecheck passed. Four distinct focused UI cases passed across r1/r3. r3 error/link tests passed2, failed0."
+}

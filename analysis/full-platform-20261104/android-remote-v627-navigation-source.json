@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "task": "android-remote-v627-navigation-source",
+  "platform": "Android",
+  "version": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "artifact_digest_origin": "reused v626 baseline inventory, not recomputed in this task",
+  "status": "partial",
+  "scope": "Static source and targeted smali verification of Remote browsing sidebar owner. No implementation edits, original-app runtime or device operations.",
+  "confirmed_chain": [
+    "sz81.g RemoteNativeHome",
+    "r.u CodexRemoteHomeScaffold",
+    "ir11.i",
+    "px81.a tgu0 owner + ngu0.f CollapsibleSidebarLayout",
+    "w6k case0",
+    "nh6 case1",
+    "aqw0 case1",
+    "uw case13",
+    "tgu0.l nextState / tgu0.m transition"
+  ],
+  "header_chain": [
+    "nh6 header Function0",
+    "sz81.g hlp0 first argument function07",
+    "ab.E function05",
+    "qx81.b function05",
+    "u28 case1 nonnull callback branch",
+    "nbm0.i + nt71.a(xkn case5)"
+  ],
+  "sidebar_content_chain": [
+    "px81.a",
+    "v6k constructor(s7m,boolean,tgu0,boolean) case0",
+    "vrr.a ConversationSidebar",
+    "WorkspaceScope oq5",
+    "di1.c(l9z,j9z,sidebar state/config)"
+  ],
+  "findings": [
+    {
+      "id": "NAV-627-1",
+      "conclusion": "Browsing header sidebar action toggles remembered scaffold state. Mapping this action to Activity.finish is incorrect.",
+      "status": "confirmed_static"
+    },
+    {
+      "id": "NAV-627-2",
+      "conclusion": "Official Remote owns a scaffold sidebar state and reuses ConversationSidebar content and workspace dependencies. A single app-global drawer state has not been proven.",
+      "status": "confirmed_static"
+    },
+    {
+      "id": "NAV-627-3",
+      "conclusion": "Explicit external Function2 header slot can intentionally render a BackButton for another navigation entry. Preserve the distinction between main browsing entry and nested entry.",
+      "status": "confirmed_static"
+    }
+  ],
+  "host_recommendation": {
+    "evidence_type": "independent_host_adaptation",
+    "decision": "Embed normal Remote list route inside existing AppShell drawer ownership and reuse existing sidebar content, provided its state holder can retain remote filters, scroll, draft and task selection. Keep standalone/deep-link activity as an adapter to that route if required.",
+    "reason": "The independent host already has a main sidebar implementation. Reusing it matches the observed sidebar-content reuse and avoids duplicating sidebar items/settings/navigation. This is an engineering mapping, not a recovered claim of one global official owner.",
+    "navigation_rules": [
+      "Opening sidebar only changes drawer state; keep Remote route, task identity, filters, list position and draft mounted or saved.",
+      "Selecting a sidebar route closes drawer and dispatches actual route choice. Re-selecting Remote preserves its per-route state.",
+      "System Back first closes open drawer, then exits search/composing/detail in the supported route scope; do not bind toolbar menu to finish.",
+      "Nested Remote entries may retain explicit BackButton semantics; default browsing entry uses sidebar callback."
+    ],
+    "validation": [
+      "Launch from home sidebar into Remote; left control opens same sidebar.",
+      "Close via scrim or system Back; Remote list position/filter/draft remains.",
+      "Switch sidebar Chat to Remote and verify scoped drafts and list position.",
+      "Main toolbar menu never returns to launcher.",
+      "Search and composing branches maintain their independent cancel/back semantics."
+    ]
+  },
+  "unknowns": [
+    "Full official workspace sidebar navigation and every route retention policy not exhaustively traced.",
+    "Exact restore behavior across process death and account/workspace switch not established by this bounded chain.",
+    "Remote scaffold z/z2 gate truth table not fully decoded.",
+    "Visual drawer motion, dimensions and screenshot parity require parent validation."
+  ],
+  "evidence": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/u28.java",
+      "lines": [
+        105,
+        138
+      ],
+      "sha256": "3eca69f0ef511166cd81f14594a251fd07da7db286c13574a70a53b853a49f50",
+      "evidence_type": "official_artifact_static",
+      "observation": "Remote topbar case1 branches Searching=no left control, Composing=back callback, supplied Function2=explicit override, otherwise scaffold Function0=nt71.a button, otherwise navigation-up fallback."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java",
+      "lines": [
+        172,
+        241
+      ],
+      "sha256": "db199891c8272288addb93c1e017f895db566f3de002f59368f8c13834fa3cfb",
+      "evidence_type": "official_artifact_static",
+      "observation": "qx81.b forwards function04, function2 and function05 into u28 case1. function2 is composable override and function05 is scaffold sidebar action."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sz81.java",
+      "lines": [
+        1324,
+        1449
+      ],
+      "sha256": "17feecff81f47f92ce1478d0a4755c2207fa4d8c56ef1a30dba001f78b769df2",
+      "evidence_type": "official_artifact_static",
+      "observation": "RemoteNativeHome calls r.u(CodexRemoteHomeScaffold). Header lambda receives Function0 as first argument and forwards it as function05 through ab.E; outer Function2 remains independent."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/r.java",
+      "lines": [
+        1478,
+        1542
+      ],
+      "sha256": "6eb8648caed630f99a1cac04073480f91e36f2ef913bda1fc098ccbca128cbf7",
+      "evidence_type": "official_artifact_static",
+      "observation": "r.u selects CodexRemoteHomeScaffold and calls ir11.i with header/content slots."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ir11.java",
+      "lines": [
+        1223,
+        1258
+      ],
+      "sha256": "cf13f515a4b35092e6e9d976f94eee161299903277e27046d2f8700e3d77a527",
+      "evidence_type": "official_artifact_static",
+      "observation": "ir11.i dispatches to px81.a, forwarding header/content slots."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/px81.java",
+      "lines": [
+        44,
+        116
+      ],
+      "sha256": "0d55407d5dc1e44023a1e721d3cec632accbe5631ef698433d878a4b1c7388d8",
+      "evidence_type": "official_artifact_static",
+      "observation": "Scaffold creates remembered tgu0 with vrr.c, owns coroutine scope and saved state, and passes shared sidebar content and page content to ngu0.f. This is an actual Remote scaffold sidebar owner."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/w6k.java",
+      "lines": [
+        43,
+        60
+      ],
+      "sha256": "c7415858174c370c7cd81f4d72e26bf2b4639ea2954d4a70a89b849f0b525686",
+      "evidence_type": "official_artifact_static",
+      "observation": "Scaffold content wraps header in nh6 with same tgu0 owner and coroutine scope; body content remains in rz8.c."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nh6.java",
+      "lines": [
+        49,
+        68
+      ],
+      "sha256": "4a07daff07b8b9fd2ea7460f39039b36158b1ba7075cb6c8f0c887a7b7c32ef2",
+      "evidence_type": "official_artifact_static",
+      "observation": "Header slot receives aqw0 callback bound to scaffold state."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/aqw0.java",
+      "lines": [
+        61,
+        67
+      ],
+      "sha256": "c34b5c6af8253504a01c238b0fc8f20bc0289c9df2814a96994a0beee2679c7a",
+      "evidence_type": "official_artifact_static",
+      "observation": "Callback launches uw case13 against tgu0 when scaffold flag allows toggling."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/uw.java",
+      "lines": [
+        465,
+        478
+      ],
+      "sha256": "85f1157fc025d9b654ef1b4af03f9ff03321e4932127302519269acafac5213f",
+      "evidence_type": "official_artifact_static",
+      "observation": "uw case13 obtains tgu0.l next sidebar state and calls tgu0.m transition."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/tgu0.java",
+      "lines": [
+        208,
+        259
+      ],
+      "sha256": "7d239b5a743497ae330d9c2da765c86a0292eb921def36505e589f9b37614c3d",
+      "evidence_type": "official_artifact_static",
+      "observation": "l toggles Collapsed to Expanded and Expanded/Fullscreen to Collapsed. m is suspend transition, JADX drops one animate call, checked in smali."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/fju0.java",
+      "lines": [
+        13,
+        24
+      ],
+      "sha256": "c350f1e449f2ff2bbac4b97881f1eaa36530ab1616a3dc0fe27ed129ca7276b6",
+      "evidence_type": "official_artifact_static",
+      "observation": "Sidebar enum names are Collapsed, Expanded, Fullscreen."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/v6k.java",
+      "lines": [
+        37,
+        55
+      ],
+      "sha256": "76213e67dbaea28010451c9a6a9680365b534327194333fe54fb49859de3114f",
+      "evidence_type": "official_artifact_static",
+      "observation": "Remote scaffold sidebar content invokes vrr.a and wuq0.a. This branch is case0; constructor discriminator confirmed in smali because Java incorrectly renders a=1."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vrr.java",
+      "lines": [
+        87,
+        98
+      ],
+      "sha256": "a04ce06612cbb032809a4d3a3a4412759985a94db262826edc768d187533e267",
+      "evidence_type": "official_artifact_static",
+      "observation": "ConversationSidebar requires WorkspaceScope oq5 binding; sidebar content composed through shared di1 with l9z/j9z dependencies."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nt71.java",
+      "lines": [
+        24,
+        24
+      ],
+      "sha256": "dfd42ef3be0e1a2a83cff809f2a031efc737035530e0708f163709842942eee3",
+      "evidence_type": "official_artifact_static",
+      "observation": "Sidebar button content is xkn case5."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/xkn.java",
+      "lines": [
+        122,
+        136
+      ],
+      "sha256": "2a5034adf07433d681199b45a9b9d95382aa43d656db8fb2fa54599d05b0e61e",
+      "evidence_type": "official_artifact_static",
+      "observation": "Sidebar button content renders hf40.c icon and localized c3x0.b accessibility text."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/kin.java",
+      "lines": [
+        82,
+        101
+      ],
+      "sha256": "df462a35d32a14c9b6c821b18d6556bb9339b8e7e62d528a2ebdeb26e2766640",
+      "evidence_type": "official_artifact_static",
+      "observation": "Separate Codex entry can supply sqo.j when m1v.a=true; no override otherwise."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sqo.java",
+      "lines": [
+        72,
+        73
+      ],
+      "sha256": "7c10dc470395188b4622808ac31e3453e9cc1f318524de79aeaf5f893099e884",
+      "evidence_type": "official_artifact_static",
+      "observation": "sqo.j is pac case1."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pac.java",
+      "lines": [
+        45,
+        53
+      ],
+      "sha256": "cc56e40773ae8b5bad5130a410d1bcc0249e78958e3ee2cc21aff61ba4de0892",
+      "evidence_type": "official_artifact_static",
+      "observation": "Explicit supplied slot renders ms81.a BackButton. Therefore Function2 must not universally be called sidebar slot."
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/b091.java",
+      "lines": [
+        243,
+        300
+      ],
+      "sha256": "f9bdcfd41dc43967f118c10b5cec678a00b9bb48d5b379e126a2fe6c13ce5629",
+      "evidence_type": "official_artifact_static",
+      "observation": "Remote fnp0 ViewModel and state are acquired outside header; routes use state and own lifecycle hooks. Header sidebar transition does not construct a new task or navigate away."
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/v6k.smali",
+      "lines": [
+        45,
+        60
+      ],
+      "sha256": "812298cf7a8aecb09e8f9c8f19b19311d144d2ba74df75ea1a936e0141abab01",
+      "evidence_type": "official_artifact_static",
+      "observation": "s7m/tgu0 constructor sets discriminator0, correcting misleading JADX final field initializer."
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes6/aqw0.smali",
+      "lines": [
+        169,
+        205
+      ],
+      "sha256": "4d9d68037b56fb09157ad536b95239ccb0d9520a7789082efb3af81a435c6274",
+      "evidence_type": "official_artifact_static",
+      "observation": "case1 checks enabled flag then launches uw with discriminator13 and same tgu0."
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/uw.smali",
+      "lines": [
+        3708,
+        3720
+      ],
+      "sha256": "b30055d7e270fa793c8fc3691f1171530649a73110fcb5a0fb962a80f5f1a847",
+      "evidence_type": "official_artifact_static",
+      "observation": "Direct invokes tgu0.l and tgu0.m corroborate callback toggle."
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali/tgu0.smali",
+      "lines": [
+        1550,
+        1564
+      ],
+      "sha256": "157a17992c0523c84f6e1804ae9382463dccbd424bc32f676270fcdb7c618311",
+      "evidence_type": "official_artifact_static",
+      "observation": "Transition calls dve.n(y52,target,continuation); dropped from decompiled Java body."
+    }
+  ]
+}

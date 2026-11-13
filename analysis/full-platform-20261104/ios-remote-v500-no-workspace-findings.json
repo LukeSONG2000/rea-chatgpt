@@ -1,0 +1,126 @@
+{
+  "batch": "v500",
+  "question": "No workspace descriptor and its common-header/compact-row treatment",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "status": "partial",
+  "status_scope": "Core requested branch closed statically. Outer owner/search suppression and runtime interaction acceptance remain separate.",
+  "membership": {
+    "branch": "0x3372f4 raw grouping branch1 ->0x337494",
+    "guards": [
+      "Item enum guard0x33749c sends raw1 to0x3373cc before this path. Item enum case name is not re-proven in this batch.",
+      "Host tag2 plus empty payload helper0x456488 is routed to Recents0x337744 before workingDirectoryPath inspection."
+    ],
+    "field": "CodexRemoteTaskListItem.workingDirectoryPath metadata vector+0x50, read0x3374ec..0x3374f4",
+    "predicate": "path == nil || path.allSatisfy { $0.isWhitespace }",
+    "locations": [
+      "0x3374f8 nil branch",
+      "0x337504 ->0xf87cc",
+      "0xf8800 String.Iterator.next",
+      "0xf8810 Character.isWhitespace",
+      "0xf8824..0xf8834 return iterator exhausted"
+    ],
+    "accepted": [
+      "nil",
+      "empty string",
+      "all whitespace Characters"
+    ],
+    "nonempty_nonwhitespace": "Falls through0x337728 to existing generated-Recents classifier; otherwise workspace projection.",
+    "limits": [
+      "Character semantics follow Swift runtime. A Foundation trim or ASCII-only whitespace test is not the observed operation."
+    ]
+  },
+  "descriptor": {
+    "constructor": "0x33750c..0x3375c8",
+    "id": "TaskSection.ID.noWorkspace(hostIdentity)",
+    "id_evidence": "Full host payload copied0x337568..0x337590; high3bit raw tag1 at0x337594, embedded host tag low2 bits0x337598. Case name and payload type in v487-identity-cases.json.",
+    "title_key": "codex_remote_thread_list_no_workspace_section",
+    "title_key_address": "0x88528a0",
+    "title_fallback": "No workspace",
+    "title_evidence": "0x337528..0x337540 plus0x4598d0; localization0x337550",
+    "subtitle": null,
+    "subtitle_evidence": "x28=x26=0 at0x3375a4..0x3375a8 stored descriptor+0x60/+0x68",
+    "systemImageName": "folder",
+    "systemImageName_evidence": "0x466124..0x466134; final descriptor+0x70/+0x78",
+    "newThreadTarget": null,
+    "newThreadTarget_evidence": "0x3375b8..0x3375c4 zeroes payload and writes nil marker1;0x337ab4..0x337ad4 +0x33745c..0x337484 maps marker to descriptor+0xc8.0x39d644 reads optional+0x48 at0x39d69c and skips action construction for marker1."
+  },
+  "header": {
+    "kind": 1,
+    "kind_evidence": "0x39cf18..0x39cf3c mask0x1a covers ID tags1/3/4;0x39d0b8 stores kind",
+    "disclosure_chevron": false,
+    "chevron_evidence": "0x3a2240..0x3a225c excludes kind1",
+    "icon": "CodexTaskListProjectIcon(isExpanded: !isCollapsed)",
+    "icon_evidence": [
+      "Kind1 getter0x338d1c embeds tag1 at0x161340 and extracts with0x3a1580/0x4543b0",
+      "0x3a2558..0x3a2570 present-kind1 branch",
+      "0x3a2574..0x3a2584 reads header+0x29 and negates into icon byte0",
+      "v491-icon body0x3a2b74..0x3a2b9c selects folder-open when expanded, folder when collapsed"
+    ],
+    "icon_size": "shared scaled minimum24/font18 per0x3a2594..0x3a25e4",
+    "collapse_callback": "Installed without NoWorkspace-specific exclusion at0x39d0c4..0x39d0cc",
+    "collapse_chain": [
+      "0x44adf0",
+      "0x438e18",
+      "0x43be80",
+      "0x39c378",
+      "0x43910c"
+    ],
+    "collapse_operation": "0x439138 copies complete ID; getter owner+0x80 called0x439144; inverted Bool0x439154 passed to setter owner+0x90 at0x43915c.",
+    "collapse_limits": [
+      "0x39cf44 calls owner suppression0x39902c, and0x39cf50 calls0x464374; either can force displayed isCollapsed false. Full semantic ownership of these gates is outside this bounded question.",
+      "Presence of callback and normal kind1 presentation are static evidence. Touch/hit-testing and persistence acceptance need runtime verification."
+    ]
+  },
+  "compact_row": {
+    "isInProject": true,
+    "condition": "V2 owner+0x20 == 1 and NoWorkspace ID raw tag1",
+    "producer_chain": [
+      "0x39ad60..0x39ad6c",
+      "0x45daf8 loads ID>>61 and mask0x1a; raw1 keeps kind1",
+      "0x39ad80..0x39ada4 shared kind1 prism gives nonnil, stored row local+4",
+      "0x39ae80..0x39ae84 capture+0x21",
+      "0x439a1c..0x439a28 w3",
+      "0x39e8fc x3->x20",
+      "0x39ea04..0x39ea08 x20->x2 into0x39e26c",
+      "0x39e284 stores w2;0x39e784..0x39e790 writes metadata vector+0x2c named isInProject"
+    ],
+    "consequence": "Existing v492 compact branch uses hidden folder icon minimum24/font18 and scaled trailing12. This applies to NoWorkspace in the same V2 branch.",
+    "last_row_bottom": 12,
+    "last_row_conditions": "0x39b34c owner+0x20==1;0x39902c false;0x45daf8 mask0x1a includes raw1; kind1 projection present; row index equals items.count-1. Otherwise0.",
+    "last_row_evidence": "0x39b34c..0x39b3e4"
+  },
+  "implementation_guidance": [
+    "Group eligible missing/blank-directory tasks by full host identity using noWorkspace ID.",
+    "Use localized title, nil subtitle, no per-section new-thread target.",
+    "Reuse shared kind1 folder header, collapse callback, compact indentation and gated last-row spacing.",
+    "Do not create a new standalone visual style for this section."
+  ],
+  "validation": {
+    "static_offsets": "verified against frozen local binary",
+    "official_app_execution": "none",
+    "production_edits": "none",
+    "runtime_or_device": "not performed by this child"
+  },
+  "prior_evidence": [
+    "ios-remote-v487-identity-cases.json",
+    "ios-remote-v491-project-icon-findings.json",
+    "ios-remote-v491-project-kind.asm",
+    "ios-remote-v492-row-metadata.json",
+    "ios-remote-v492-integration.json"
+  ],
+  "new_evidence_sha256": {
+    "ios-remote-v500-no-workspace-collapse.asm": "1cda6997cc4a1811354ee23a342586b67ff9c9f87391c4a14047d2c216658293",
+    "ios-remote-v500-no-workspace-constants.json": "800f39cfb7e4329b50c279a52a3c8fdb232201842b8f59e069f8bba918f86c90",
+    "ios-remote-v500-no-workspace-header.asm": "d26b39d37aa365337a6fa3cd98aa0e9a6dc179b9e6f29dcda21b20bbe05929b3",
+    "ios-remote-v500-no-workspace-helpers.asm": "59724b665992187328e592479ac2f9964f3540d06bab65bf25f28fee189d1738",
+    "ios-remote-v500-no-workspace-icon.asm": "8db79ef2f676776d727fb7d8072cd85c54329dedcb396ad2c8c9c513dae08d42",
+    "ios-remote-v500-no-workspace-projection-calls.json": "55a044fbe090b3b206000d55736b590c3667070356d046cd4f6dd287e1a3df8f",
+    "ios-remote-v500-no-workspace-projection.asm": "8cb22c6544f8afc64571a957122ebd1172144564733eef716a6d1199d6b93b01",
+    "ios-remote-v500-no-workspace-row-producer.asm": "191aee6cb5cca5fa4e9fa03afb7ae205ba351a62cd0d50ae0f622da540609409",
+    "ios-remote-v500-no-workspace-store.asm": "f24747268358e1f5e0a8f07a8ef5307ef0bd72c68a1ef4a3adff619f512a7d2c"
+  }
+}

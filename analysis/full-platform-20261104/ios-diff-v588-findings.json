@@ -1,0 +1,85 @@
+{
+  "batch": 588,
+  "status": "partial",
+  "official_evidence": [
+    "ios-diff-v587-open-file-type.json",
+    "ios-diff-v588-browser-types.json",
+    "ios-settings-v586-body-typeref-8e569ca.json",
+    "ios-diff-v588-browser-state.json",
+    "ios-diff-v588-browser-action.json",
+    "ios-diff-v588-browser-state-actions.json"
+  ],
+  "upstream": {
+    "commit": "6905ecede7816e91373e9eabda3f6b0368fc747b",
+    "source": "opensource/codex/codex-rs/app-server-protocol/src/protocol/v2/fs.rs:7-23",
+    "observation": "fs/readFile uses absolute path and base64 file bytes. This does not establish mobile293 call wiring or authorization."
+  },
+  "host_gap": "Synchronous local file materialization has no loading/cancel/retry state. Missing full-file snapshots silently omit Open file.",
+  "decision": "Retain source-observed openFile action, add an explicitly independent scoped asynchronous resource adapter and loading/error/cancel UI. No filesystem RPC or backend implemented.",
+  "unknowns": [
+    "Official resource owner and navigation",
+    "Exact loading/error UI and absent-resource visibility",
+    "Diff gutters/comments/line colors and precise layout"
+  ],
+  "validation": {
+    "foundation": "passed; ios-diff-v588-text-r3.log",
+    "ui": {
+      "report": "ios-diff-v588-r3-summary.json",
+      "passed": 3,
+      "failed": 0,
+      "coverage": [
+        "Chinese light and English dark",
+        "failure then retry, cancel then reopen",
+        "complete file and native close return",
+        "unavailable resource",
+        "dismiss loading and switch host",
+        "draft, wrapping and restart"
+      ]
+    },
+    "visual": {
+      "status": "inspected",
+      "screenshots": "ios-diff-v588-r3-attachments/manifest.json",
+      "scope": "Chinese light and English dark failure UI, full file preview, unavailable resource; exact official parity remains partial"
+    },
+    "runtime": "ios-diff-v588-runtime.json",
+    "retention": "ios-diff-v588-retention-final.json"
+  },
+  "usage": {
+    "used_percent": 50,
+    "reset_credits_available": 0,
+    "threshold_reached": false
+  },
+  "official_observations": [
+    {
+      "source": "CodexRemoteFileBrowserSheetContent descriptor0x95b170c",
+      "finding": "browserState resolves to WorkspaceBrowserViewModel.RenderState; actionHandler resolves to Handler<WorkspaceBrowserViewAction>."
+    },
+    {
+      "source": "RenderState descriptor0x95b295c",
+      "finding": "Metadata contains openingFileID, rootDirectoryState, searchState, visibleEntries and isAllFilesAvailable. Values and presentation policy remain unknown."
+    },
+    {
+      "source": "WorkspaceBrowserViewAction descriptor0x95ae508",
+      "finding": "Cases include entryTapped, linkTurnDiffFileToChatTapped, viewAppeared/viewDisappeared and retryRootDirectoryTapped. Directory retry does not establish file-open retry presentation."
+    }
+  ],
+  "adapter_contract": {
+    "input": "Immutable full-file snapshot plus RemoteComposerDraftScope and fresh request UUID",
+    "result": "Complete UTF-8 contents or typed unavailable/loadFailed/unsupported outcome",
+    "identity": "Host/thread, file ID, unique attempt ID. Snapshot/view changes cancel active attempt. Account/profile lifetime remains owned by the existing page/history store.",
+    "cancellation": "Local dismissal and cancel invalidate before accepting another result. Provider CancellationError also exits loading only if its request is current.",
+    "resource_lifetime": "Existing RemoteLocalAttachment owns the temporary file through QuickLook; it is released when preview URL clears.",
+    "backend": "Only offline snapshot implementation is supplied. Actual resource lookup, authentication and transport remain future adapters."
+  },
+  "remaining_limits": [
+    "The state reducer directly verifies stale and duplicate callbacks. UI uses cancellation-aware synthetic delay; it does not prove a real transport stops remote work.",
+    "Official action owner/branch and exact loading/error layout are unverified.",
+    "Current complete-file adapter handles supplied UTF-8 text; other file types continue through existing attachment previews."
+  ],
+  "iteration_history": [
+    "r1 three UI cases passed with initial fixture injection",
+    "r2 three UI cases passed with injection moved to loader actor",
+    "r3 final provider cancellation handling and complete three-case regression"
+  ],
+  "cross_platform": "iOS293 evidence only. Resource request/state isolation is independent frontend logic; Android native file/browser owner and visual behavior require separate evidence and runtime acceptance."
+}

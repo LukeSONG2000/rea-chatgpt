@@ -1,0 +1,156 @@
+{
+  "batch": "v520",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-instructions-and-metadata",
+  "production_edits": false,
+  "runtime_verified": false,
+  "integration_decision": "Keep actual inner field effect inside Home styleInsets. Separate GlassEffectContainer outside padded content from actual inner glassEffect. A clear background after padding cannot justify moving the visible field material outside padding.",
+  "source_tree_inside_to_outside": [
+    {
+      "layer": "ordinary content in1983814",
+      "order": [
+        "1984b60 frame",
+        "1984bf8 background(shapeStyle, ignoresSafeAreaEdges:all)",
+        "1984c10/1984cc0 shape factory1986b10",
+        "1984c4c clipShape",
+        "1984cf8 GlassEffectContent helper756d3ec",
+        "subsequent modifiers and lifecycle omitted from this bounded tree"
+      ],
+      "limits": "This tree establishes material containment. It does not reconstruct every editor child or following modifier."
+    },
+    {
+      "layer": "198328c",
+      "order": [
+        "1983544 invokes1983814",
+        "19835b4 dynamicTypeSize",
+        "198361c leading frame",
+        "1983690 styleInsets if trailingOutsideContent nil, zero otherwise",
+        "1983734 clear HeightConditionalShape background via6081cb8(false)",
+        "19837bc optional HeightConditionalShape stroke overlay via60819dc",
+        "19837fc fixedSize"
+      ]
+    },
+    {
+      "layer": "19827d0",
+      "order": [
+        "availability1bdeac and style.glassContainerEnabled gate",
+        "true GlassEffectContainer.init1982b60 with closure1c26b54 ->198328c",
+        "id(colorScheme)1982bac then AnyView1982c10",
+        "false directly198328c at1982d98"
+      ]
+    },
+    {
+      "layer": "Home outer197edxx",
+      "order": [
+        "1981140 nil trailing branch ->1981fa4 VStack ->1c26b48 ->19821f4 ->19827d0",
+        "197edfc external styleInsets zero for nil trailingOutsideContent",
+        "maxWidth728 then dynamic correction1981560 then infinity outerframe for appliesPaddingAndMaxWidthToBackground true",
+        "197f0fc background is scene metrics reader perv519"
+      ],
+      "limits": "Outer conditional width/correction branch taken from retainedv519 findings; not reinterpreted as a material background."
+    }
+  ],
+  "precise_fields": [
+    {
+      "field": "MessageInputStyle.glassContainerEnabled",
+      "proof": "MessageInputStyle descriptor96cb3e0 has69 fields and fieldOffsetVectorOffset2 words (0x10). metadata+d4 corresponds index49=glassContainerEnabled.1982840 loads it and198284c compares1."
+    },
+    {
+      "field": "MessageInputStyle.glass",
+      "proof": "same vector start0x10, metadata+d8 index50.1984c98 reads it;1984ca0..ca4 copies payload+tag to756d3ec. reduceTransparency true branch1984c68..74 supplies nil enum instead."
+    },
+    {
+      "field": "CodexRemoteMessageInputView._reduceTransparency",
+      "proof": "generic metadata+128 follows_messageInputStyle+120,_attachmentsPadding+124 and precedes_colorScheme+12c; metadata v442.1984b78..88 reads bool with7647d8->91244. true chooses defaultstylefactory6081edc; false readsstyle.innerBackgroundColor atmetadata+f4(index57)."
+    },
+    {
+      "field": "actual field shape",
+      "proof": "1986b10 callsRoundedRectangle metadata via1d87c30->7c47f74, continuous discriminator via1bdd34 boundslot aad1f98, writes CGSize(24,24)1986b38..3c. Used for both clip andGlassEffectContent at1984c10/1984cc0. Distinct from MessageInputStyle.innerCornerRadius default22."
+    },
+    {
+      "field": "outer clear shape",
+      "proof": "6081cb8 produces_ShapeView<HeightConditionalShape<Capsule,UnevenRoundedRectangle>,Color>, verifiedsymbolicrecord8234570. Firstdoublefrommetadata+9c iscapsuleRectHeightThreshold(index35), not innerCornerRadius. w0=false yieldsColor.clear at6081dc0. DeviceDependent corner values copied fromstyle+80/+a0."
+    },
+    {
+      "field": "outer stroke",
+      "proof": "60819dc checks optionalstylevalue+d0 beforeconstructingstrokedHeightConditionalShape. record8234568 verifies_StrokedShape andAnyShapeStyle. Fullvalue+d0 fieldbindingandstrokevisibilityleftpartial."
+    }
+  ],
+  "host_comparison": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "confirmed_direction": "RecoveredRemoteOrdinaryFieldSurface before.styleInsets padding keepsvisibleeffect inside padding, consistentwith1983814 then198328c.",
+    "known_difference": "CurrentGlassEffectContainer livesonlywithinbackgroundshape; officialcontainerwrapsfull198328c content (includingstyleInsets,clearshape,stroke). Currentappearance.cornerRadius22 differsfromselectedofficialfieldfactory24.",
+    "guard": "Do not change allcardradii or allpages fromthisfield-specificevidence. Do notmoveeffect outsidepadding. Fullhostleafcoverage andstyleforksneedseparatechecks."
+  },
+  "unknown": [
+    "Exact default innerBackgroundColor value selectedthrough6081edc->610f3d8 and environment reduceTransparency true; retainedfactoryhasnotbeenresolvedtosemanticcolor.",
+    "FullGlassEffectContent body andnil-glassfallback semantics are only referencedthroughpreviousv505 evidence; thissliceproves itsowner/callorder, not opticalequivalence.",
+    "Full HeightConditionalShape threshold and UnevenRoundedRectangle cornerselection behavior are unclosed; shapegenericidentitydoesnotprovethecurrentruntimeheightbranch.",
+    "Optionalouterstroke style+d0 bindinganddefaultnil/non-nilconditionunclosed.",
+    "Everyinnerfieldchildspacing, focus/compactbranch-specificgeometryandpostglassmodifiersneedseparateverification."
+  ],
+  "evidence_files": {
+    "ios-remote-v520-surface-background-factory.asm": "22504a96d5ab9a3bb0650559ee0c050aeec1cfe82b1ff143b68b85a6071f9259",
+    "ios-remote-v520-display-corner-radius.asm": "a4f60cdbdea074b3f67db00c5b6da096c5dc5b999ae1dd398e86658fa10e5f36",
+    "ios-remote-v520-surface-style-witness.asm": "c25af1cd1c5e563dd263f8e3c6c5ec6c6bbddba409589207bdc01f3481814bd1",
+    "ios-remote-v520-glass-content-thunks.json": "b77bdfba6813f18a8357f0594bf56495f0a50585d753466664ae26cd2d5370ac",
+    "ios-remote-v520-style-environment-gates.asm": "b59a6056c5fa1d12f7404b79d6e63d2bcaa6d16762ab3c0e31ef7209f2b03064",
+    "ios-remote-v520-style-environment-gates.json": "f031d2d9a74a160a3bb1f15ca6d14adf8497bcfad4d0c57e953244f11f3a9505",
+    "ios-remote-v520-safearea-class.json": "2a2ca5e5d9ae266cc92c1614f88f14047e20e8818705a134cea5ea41e47e7267",
+    "ios-remote-v520-safearea-probe-calls.json": "836dc4f9c544e1984d15634eb183b9b586f22ec7f19453c6ad1eb5c8a662d21b",
+    "ios-remote-v520-record-8234570.json": "fdbfceb5ff0e56ad790318621d0ffddf5fb4bc9672022d72e6e4c171cf096cc4",
+    "ios-remote-v520-inner-effect-shape.asm": "af2d4a39cb035b69524308505623d8ac0000662f84c202e0bfe81a6ff6253ca8",
+    "ios-remote-v520-flag-initializer-full.asm": "6c2217f51620cb6e49b37a9d1c1fe145d418b95d5081f3e398a97bb74d78d7a0",
+    "ios-remote-v520-record-7e12a30.json": "936501161a132b0d304e703ae2695d4ca2a0dd799ffee7d5413da476f97ad971",
+    "ios-remote-v520-corner-config-global.asm": "f74f331f61ab76cd9db4bebc70b7e65dc0d96e0c8946ef96082abf99bd63d5d6",
+    "ios-remote-v520-scene-border-helpers.asm": "c234fba4edb2ea1a093991ebf9cdeeecb205ee6304fb78df8e70447ac494d09a",
+    "ios-remote-v520-surface-style-witness.json": "b058df615c5401174fbf5bfaeac2fd7b653056d75829fd8d3a6a424632e6dc59",
+    "ios-remote-v520-glass-container.asm": "6e701436605574170d5df9c3ea8a30ac2d1657641bdd2e9f3840ad21e9a2b81c",
+    "ios-remote-v520-flag-getter-thunk.asm": "2cb0f7d1aef9332f363a3a33bfd6e98983eb35e0db44ea97d17275280a073ce1",
+    "ios-remote-v520-surface-overlay-factory.asm": "b6d6b81239b641ef5a79ea485fac1573dcb89db4dc6d624554fef8348c3a294e",
+    "ios-remote-v520-osbuild-source.asm": "621bb1f45a571fbdefa83c75671b95710fd55a8cc5c0c90df62774506ce2d20c",
+    "ios-remote-v520-nonmutating-flag.asm": "d7e521d28f84a6da999d1eb94fe299e32309cd968a6aeb682fe82798a3347091",
+    "ios-remote-v520-flag-getter.asm": "c391cf43d8f8668f3ef3d190d5ce7536bc732e39eedbd3ad2d9afe76817a09ca",
+    "ios-remote-v520-glass-wrapper.json": "945b27e596755b5b64b2b702ea7723e36fd92b4b33b7341183b0122d67573038",
+    "ios-remote-v520-outer-width-surface.asm": "aed13af872c9887d22e73b6978bf1c45ea332f7848531a8798388a3dd7bb95aa",
+    "ios-remote-v520-nonmutating-flag-calls.json": "0d5ac11fade6e4a25255e9099a9cc01c3dcbe8683f16aa5d644abe853481544b",
+    "ios-remote-v520-scene-border-helpers-calls.json": "9c9653705ad28bbd79222b583f8dd2b55c55b81606a4e0f0ca4ea630d3bd90e5",
+    "ios-remote-v520-flag-default-helpers.asm": "796368b058ae87830ee685809407aef7bb993099d5da426a7d46b8a6a0b34326",
+    "ios-remote-v520-corner-flags-calls.json": "c8ef70361ccdf8453bc4a458db32082dc1cc1014fe6e838553f30ba7477015da",
+    "ios-remote-v520-surface-background-factory.json": "da12115796df4a21010bf12ae7e318cffb62554b283734f618f0be047ed87511",
+    "ios-remote-v520-display-corner-radius-calls.json": "86218de999d7b5320088ef5489af162382ed70cf7c8c08cadaab148f3be18cde",
+    "ios-remote-v520-scene-measurement-findings.json": "cb0ef611e2902208fc3a0135b2a08ea5f4d0463c3a610b20dff5083826fae5af",
+    "ios-remote-v520-glass-wrapper.asm": "4309cefd4dce5c0750a07b33d54d0ad3a141de470d5b2361843edd4034291650",
+    "ios-remote-v520-scene-border-calls.json": "123a0501f77b96b066e582c7a943476eae023b26b34aabcd098efb23ed142198",
+    "ios-remote-v520-scene-border.asm": "bd80d89c9fe8f4aa5f941ab422cf1e6619b182bf2dd0152b3ef16e41401e1ac1",
+    "ios-remote-v520-surface-overlay-factory.json": "4acad7d044395e24f29aedab6ea8d7ce7c185002095588f69d11008856553832",
+    "ios-remote-v520-outer-width-surface.json": "f3e66a69c7c8e065de88b7fe888ac6f901132059932eb825919d43c222c298ac",
+    "ios-remote-v520-glass-container.json": "c93bbf0f0780c3461701fd8226fd8234d34a6e5207f15e3edbdfbbbb0ebd19b4",
+    "ios-remote-v520-osbuild-source-calls.json": "5116614236116f89f8876eb4a8af30c5e34ebe60a5db2f631bdb0ca43380c863",
+    "ios-remote-v520-inner-effect-shape.json": "3b5d250cd2913f34dab2c35b6756a3a4de807bd045a9c482d22b038aa71649b5",
+    "ios-remote-v520-glass-content-thunks.asm": "5b4eb8f35227bdf5521728c7212e09974be2210ca3b0fae3c2bd9ba16fd04d91",
+    "ios-remote-v520-safearea-probe.asm": "ba45f6ee5c8f75474a4e2cdd675ab0e7b9458cb862234992d9880c590de4fedf",
+    "ios-remote-v520-corner-global-refs.json": "b941f7429246b80d9e8965ec6f11407dec9e1fee928668a6d842c5130efffc42",
+    "ios-remote-v520-osbuild-contains.asm": "6d4bc9837f91e9f8d4f9b99d33509bda56475ac242f1d7d09b02f383118bbaaf",
+    "ios-remote-v520-osbuild-contains-calls.json": "b4ee1570d48543fbaac3867cf91f3154391c10e3419c13f5f7df043254448184",
+    "ios-remote-v520-window-thunk.asm": "16f19ad45e5a9bb1d5c903218f39dd862579563baae38b888b02925b10961c9a",
+    "ios-remote-v520-record-7e12a28.json": "77890d59f735b5d88135e75f14ff4d25353ca1ff293c0d817383e44ac669b9c0",
+    "ios-remote-v520-corner-config-global-calls.json": "b74a9236c9be4e6965ec98859ae7252026534ce65076bf1905214c05ab959622",
+    "ios-remote-v520-corner-flags.asm": "cc70ac685bb0ec787db0b08db67359f51b31e8829a7de5fea24558f3ba4f802e",
+    "ios-remote-v520-record-8234568.json": "eb85ede462415de0648c578bc2f10f25bc244e285d787828f6f263ec41bdfcff",
+    "ios-remote-v520-surface-bindings.json": "4023a9c8bab933a70853c973b9b2da6bfc66f14b1e5dfedecc6605bf3974ac57",
+    "ios-remote-v520-shape-helper-thunks.asm": "15c711244d5b4bcc917c2d0eca99c9db09be98fbc0fac7b37717ddd7c9599633"
+  },
+  "reused_evidence": [
+    "ios-remote-v513-composer-outer.asm",
+    "ios-remote-v513-composer-container.asm",
+    "ios-remote-v513-composer-container-calls.json",
+    "ios-remote-v519-home-scene-geometry-findings.json",
+    "ios-remote-v508-style-metadata.json",
+    "ios-remote-v442-composer-metadata.json",
+    "ios-remote-v505-searchinput-findings.json"
+  ]
+}

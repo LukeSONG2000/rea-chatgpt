@@ -1,0 +1,34 @@
+{
+  "module": "3 Remote list",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core_available_archived_for_later_user_review",
+  "product_changes_this_pass": false,
+  "current_hosts": [
+    "NativeConversationHost.swift:RemoteTaskFixturePage",
+    "RemoteWorkspacePresentation.swift",
+    "NativeConversationHost.swift:RecoveredRemoteHostFilterRow / RecoveredRemoteHomeMenu"
+  ],
+  "existing_runtime_evidence": [
+    "ios-remote-list-20261112-audit.json",
+    "ios-remote-list-return-20261112-audit.json"
+  ],
+  "source_reports": [
+    "ios-remote-v505-search-results-findings.json",
+    "ios-remote-v540-host-navigation-audit.json"
+  ],
+  "verified_current_wiring": [
+    "navigation toolbar leading sidebar / principal mode menu / trailing search",
+    "List plain zero spacing, source edge modifier, scoped workspace/task identity",
+    "projected thread metadata/connection preferences/request receipts feed row state",
+    "task and new-project destination retain parent store ownership"
+  ],
+  "not_implemented": [
+    "real discovery/pairing/pagination/ranking",
+    "priority grouping producer",
+    "process-restart list scroll restoration guarantee",
+    "full original filter edge/material/geometry",
+    "additional haptic triggers without source-backed callers"
+  ],
+  "next": "4 Remote message-area whole-page core review; do not rerun unchanged list matrix"
+}

@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "report_version": 621,
+  "platform": "Android",
+  "version": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "scope": "Bounded original sidebar style consumers compared with AppShellActivity v620. No execution/build/test.",
+  "source_files": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ahu0.java",
+      "sha256": "b0f5b3c97eb143ed3b8ec0c191c2a398203ae0b51e3260510d6c18c9d8d23f5a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sen.java",
+      "sha256": "8eaeb19ec448f1495475ba8cb8d58672726a09c1108c8233521f61ababe80f7b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/xva.java",
+      "sha256": "46c1c952a8c83329e59112c571760a7144376a8f455d5fcda17ada0b5417e623"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/d0r0.java",
+      "sha256": "e6c0d393dcb36582007de9b10ae529230d9737e9528b3a5d0a39e0c583a9af8c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/m1r0.java",
+      "sha256": "1d844fba6f3033a84675ebf6b5df1ff75f5a21a2d671f5c7a890864675ac078b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/urr.java",
+      "sha256": "c0dbe86736f39b6e8d89eff0f47391309d67aaf44ac436e2d01d1987075f3c1c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/uy81.java",
+      "sha256": "db7609198bc1e24497986739a69f82463a8deb7f19b83482fc8ad10349e11bb7"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/i4r0.java",
+      "sha256": "ad4f56dd477bded8ac533e5ed350d1a02a5841daa2acf357b41b3262de6e567e"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java",
+      "sha256": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/on01.java",
+      "sha256": "3cc34fb222864abe5fbbc702caa0e3f60ef9b6043d5e15262da861dc4ee60d04"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vbu0.java",
+      "sha256": "b5a80e5c4b650d1cf566f505f56bfd8a285dc3130407c9fe959df2c36bc5a289"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/jzq0.java",
+      "sha256": "27668b9671ec753d331e94129aa48528e201219f51340beb41816628c2d7bbd2"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mwq.java",
+      "sha256": "f2ccd76b16d78e6fba07361823d82515d8dd99a38eca9509106ca6311b8e3e50"
+    }
+  ],
+  "findings": [
+    {
+      "id": "row_style_bypass",
+      "evidence_type": "official_artifact_static",
+      "official_evidence": [
+        "ahu0.java:175-180",
+        "ahu0.java:419-473",
+        "m1r0.java:881-894",
+        "sen.java:47-83"
+      ],
+      "host_evidence": [
+        "AppShellActivity.kt:126-145"
+      ],
+      "conclusion": "Host Material NavigationDrawerItem bypasses SidebarItemRow. Regular feature rows explicitly pass false to ahu0.a; the non-z row has min height48dp, vertical padding8dp, leading32dp spacer, icon24/28dp and icon-label gap12/16dp according to Small/Large. z&&Large is a distinct branch with min56dp and28dp horizontal/14dp vertical padding.",
+      "limitations": "Min height is not final row height. Parent chooses Small/Large. Do not apply Large to all rows.",
+      "validation": "static_only"
+    },
+    {
+      "id": "typography_environment_bypass",
+      "evidence_type": "official_artifact_static",
+      "official_evidence": [
+        "xva.java:55-81",
+        "d0r0.java:278-280",
+        "on01.java:12-16",
+        "sk10.java:67-89"
+      ],
+      "host_evidence": [
+        "AppShellActivity.kt:119",
+        "AppShellActivity.kt:126-134"
+      ],
+      "conclusion": "Small text environment on01.h resolves16sp/24sp line height, weights500/600. Large on01.k environment is24sp/32sp, weights500/700; SidebarFeatureItemTextImpl Large overrides text with24sp/28sp, weight500, letterspacing-0.43 except Arabic. Host labels inherit Material drawer typography.",
+      "limitations": "Large variant activation remains unresolved. d0r0 custom style must be applied at actual text consumer, not globally.",
+      "validation": "static_only"
+    },
+    {
+      "id": "footer_structure_missing",
+      "evidence_type": "official_artifact_static",
+      "official_evidence": [
+        "urr.java:1615-1650",
+        "urr.java:1702",
+        "urr.java:1817-1859",
+        "urr.java:1126-1170",
+        "uy81.java:1224-1225",
+        "uy81.java:1350-1372"
+      ],
+      "host_evidence": [
+        "AppShellActivity.kt:125-130",
+        "AppShellActivity.kt:143-147"
+      ],
+      "conclusion": "Official package has separate floating new-chat/temporary-chat/account footer and NovaSidebarActions. Host puts Chat among scrolling feature rows and Settings in a full-width ordinary row. Footer topology differs before fine styling. Old NewChatButton source has24dp icon,8dp gap,20/24dp horizontal and8dp vertical content padding.",
+      "limitations": "urr footer and NovaSidebarActions are separate variants. Select actual host branch before copying footer shape/colors.",
+      "validation": "static_only"
+    },
+    {
+      "id": "parent_context_missing",
+      "evidence_type": "official_artifact_static",
+      "official_evidence": [
+        "uy81.java:1202-1209",
+        "uy81.java:1224-1225",
+        "i4r0.java:2805",
+        "i4r0.java:3092"
+      ],
+      "host_evidence": [
+        "AppShellActivity.kt:113-118"
+      ],
+      "conclusion": "NovaSidebarContent supplies56dp top content inset plus system bottom inset and dedicated overlay actions. i4r0 supplies bhu0 Small/Large and contextual ripple environment. Host fixed320dp MaterialDrawerSheet plus20dp header does not restore these parent inputs.",
+      "limitations": "Runtime branch gate producing z44/z50 still needs smali or producer trace. ModalNavigationDrawer does not establish original drawer clipping/motion/width.",
+      "validation": "static_only"
+    },
+    {
+      "id": "icon_mapping_partial",
+      "evidence_type": "official_artifact_static",
+      "official_evidence": [
+        "m1r0.java:175-195",
+        "m1r0.java:650-681",
+        "m1r0.java:712-765",
+        "kac.java:77",
+        "yd40.java:5",
+        "ef40.java:5"
+      ],
+      "host_evidence": [
+        "AppShellActivity.kt:64-73"
+      ],
+      "conclusion": "Consumer source resolves image-home wdu0 to yd40.c -> dhx.E0/F0 with24/28 variants. SidebarFeaturesList final row chooses w740.c versus ag40.c depending Small/Large. Other entries route through separate feature providers. Current copied24dp assets are not yet fully bound to these accessor consumers.",
+      "limitations": "Exact vector names for the eight entry mapping remain unresolved. Do not mark copied asset names as source-confirmed consumer mappings.",
+      "validation": "static_only"
+    }
+  ],
+  "next_minimum_actions": [
+    "Restore shared row/text style consumer with explicit Small/Large input and accurate modifier order.",
+    "Trace i4r0 z44/z50 producer to actual feature flag/config and confirm selected sidebar variant.",
+    "Trace NovaSidebarActions two child lambdas and vector lazy accessor names before footer implementation.",
+    "Keep global order, drawer motion/shape and full entry icon mapping unknown until their producer chains close."
+  ],
+  "parent_handoff": {
+    "palette": "Parent independently closed gm.invoke92-130 q5n->s5n Material ColorScheme, lim palettes, hmb0.t tonal formula and is implementing that common layer in v621. Not independently reverified by this report.",
+    "home_toggle": "k8p0.h belongs to WorkTabUpsellToggle per parent trace. Ordinary home l3f parent configuration remains unknown. AppShellActivity161-165 FilterChip sizing/shape/layout is independent host behavior; this report provides no source proof that it matches ordinary home."
+  }
+}

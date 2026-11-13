@@ -1,0 +1,46 @@
+{
+  "batch": 595,
+  "status": "partial",
+  "scope": "Notification registration frontend adapter and scoped acknowledgements",
+  "official_evidence": "ios-notification-v595-findings.json",
+  "implemented": [
+    "Replaceable registration provider with account/session/request/revision identity",
+    "Permission and token gates, retry and cancellation, stale receipt rejection",
+    "In-memory platform token callback boundary",
+    "Child settings refreshes authorization on foreground return"
+  ],
+  "provenance": {
+    "official": "iOS293 registration task, identity and request metadata fields",
+    "independent": "Request/receipt contract, state machine, synthetic provider and settings layout",
+    "unknown": "Official wire encoding, retry policy and registration owner call chain"
+  },
+  "validation": {
+    "foundation": "passed",
+    "foundation_log": "ios-notification-v595-foundation-r1.log",
+    "final_ui_summary": "ios-notification-v595-r3-summary.json",
+    "passed": 4,
+    "failed": 0,
+    "coverage": [
+      "Chinese light success and foreground return",
+      "English dark failure retry and return",
+      "Cancel, leave, reenter and late result isolation",
+      "Existing Chinese notification permission regression"
+    ],
+    "earlier_probe": "r1 XCTest key-path compilation failed, corrected to explicit predicate; r2 passed before final foreground refresh change",
+    "visual": [
+      "Chinese light confirmed registration",
+      "English dark failure and retry control",
+      "Chinese dark Remote preview"
+    ]
+  },
+  "runtime": "ios-notification-v595-runtime.json",
+  "remaining": [
+    "Actual APNs token acquisition/failure/timeout and deregistration",
+    "Network registration and service preferences",
+    "Physical device delivery and touch feedback",
+    "Full official notification category layout",
+    "Android independent implementation"
+  ],
+  "default_behavior": "Provider absent, service pending; synthetic provider only under explicit offline fixture flags",
+  "next": "Source-backed haptic setting and consumers"
+}

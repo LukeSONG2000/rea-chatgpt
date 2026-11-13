@@ -1,0 +1,80 @@
+{
+  "batch": 598,
+  "status": "partial",
+  "scope": "Chat/Work message links to local browser and scoped return",
+  "evidence": [
+    "ios-haptics-v598-findings.json",
+    "ios-files-v590-findings.json"
+  ],
+  "host_gap": "Message links lacked the scope/generation checks already used by adjacent attachment/action callbacks. Browser presentation did not explicitly snapshot draft and reading state.",
+  "implemented": [
+    "Use captured conversation scope and generation for link callbacks",
+    "Require the current mounted top controller and an available presentation slot",
+    "Save draft and reading state before browser presentation",
+    "Add deterministic bilingual link chunks under an isolated test flag"
+  ],
+  "provenance": {
+    "official": "Version-bound URL/citation/widget link callers and gated haptic dispatch; existing SafariView constructor evidence",
+    "independent": "UIKit host callback admission, draft/anchor persistence, offline WebKit resource provider and synthetic test content",
+    "unknown": "Official active link-haptic feature value, precise route mapping and browser parent/presentation policy"
+  },
+  "validation": {
+    "foundation": "passed",
+    "foundation_log": "ios-chat-v598-foundation-r1.log",
+    "new_ui_summary": "ios-chat-v598-r2-summary.json",
+    "new_ui_passed": 2,
+    "coverage": [
+      "Chat and Work, Chinese light and English dark",
+      "Local link open, details, back, failure/retry, close",
+      "Explicit unconnected-resource status and close",
+      "Cross-conversation return and process-restart draft/history recovery"
+    ],
+    "r1_failure": "Both tests queried TextView/value. Retained AX hierarchy exposes Link/label. Test-only query corrected; r2 passes.",
+    "visual": "All four local browser retry-success captures inspected; native chrome and test HTML visible in both appearances",
+    "shared_regression": {
+      "summary": "ios-chat-v598-r3-summary.json",
+      "passed": 2,
+      "failed": 0,
+      "coverage": "Existing Remote browser Chinese light and English dark journeys"
+    },
+    "final_ui_total": 4,
+    "final_ui_failed": 0,
+    "retention": "ios-chat-v598-retention.json, targets empty"
+  },
+  "limits": [
+    "Browser chrome remains an independent minimal implementation; exact official fidelity unaccepted",
+    "Reading snapshot is saved; these short-page tests do not establish long-content anchor recovery",
+    "Stale-link rejection is code-guarded; direct replay of a retained UIKit link callback is not covered by these UI tests",
+    "Link haptic enablement and physical-device behavior remain unresolved"
+  ],
+  "open": [
+    {
+      "page": "Chat/Work conversation",
+      "missing": "Official link haptic feature evaluation and exact route predicates",
+      "priority": "P2",
+      "next": "Trace configuration resolution and URL/widget consumers",
+      "acceptance": "Version-bound enabled action-to-engine path before wiring"
+    },
+    {
+      "page": "Chat/Work browser return",
+      "missing": "Long-content reading anchor and selection/focus matrix",
+      "priority": "P1",
+      "next": "Replay a scrolled long conversation with draft/selection, open and dismiss browser, switch and restore",
+      "acceptance": "Current identity, draft, selection and reading position survive the relevant return paths"
+    },
+    {
+      "page": "Browser preview",
+      "missing": "Official parent policy and exact presentation appearance",
+      "priority": "P2",
+      "next": "Trace SafariView producers and owner modifiers for Chat/Work and Remote separately",
+      "acceptance": "Source-bound parent graph and comparison to matching runtime reference"
+    }
+  ],
+  "runtime": "ios-chat-v598-runtime.json",
+  "next": "Finish page-level browser return gaps before additional link haptic consumers",
+  "implementation_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "1102795ec93ee8a200edaa0fe6894260ff435b08476b5038e853c8cf14aa41af",
+    "implementation/ios/Sources/AppDelegate.swift": "76fade5251a74a1154bd087db470bbb848e8d7870892002cd688a0f672ae2b7d",
+    "implementation/ios/UITests/HostInteractionTests.swift": "96dc3198d9e4212925fb5eb2772f2b614c04d968bbc8d9060cd38b26a7719439"
+  }
+}

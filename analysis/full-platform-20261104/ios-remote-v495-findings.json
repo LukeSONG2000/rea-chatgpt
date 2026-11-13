@@ -1,0 +1,89 @@
+{
+  "batch": "v495",
+  "status": "partial",
+  "previous_goal_turn": "progress: v494 resolved actual new-thread screen/body dispatch and recorded remaining integration gap",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "question": "Determine actual composer containment and distinguish it from other bottom overlays on new-thread screen",
+  "findings": [
+    {
+      "location": "0x19ed6e4..0x19ed7f4; field vector slot0x84",
+      "observation": "Screen content branches on optional reference and presentsSubmittedThreadInPlace. Fallback builds0x19ed884; other branch emits IDView<CodexRemoteThreadView,Reference<CodexRemoteThreadViewModel>> from type0x7e0aa40. State property producing optional reference remains unbound."
+    },
+    {
+      "location": "0x19ee8e4 ->0x19efde0",
+      "observation": "New-draft content builds common page base before lifecycle, alerts and other presentation modifiers."
+    },
+    {
+      "location": "0x19f09e4..0x19f0a38 ->0x1c3db64 ->0x19f2600",
+      "observation": "Base installs bottomLeading ZStack. Its content includes separate browsing content and a leading VStack. The latter reaches0x19f32b0 through0x1c3e634, with conditional vertical ScrollView, bottom anchor, bounce and keyboard-dismiss modifiers."
+    },
+    {
+      "location": "0x19f11f0..0x19f1234 ->0x1c3ddb8 ->0x19f45b0 ->0x197bfe4",
+      "observation": "Actual message input builder is passed as content of shared0x757a2cc SafeAreaBarIfAvailable helper. Alignment is center. This is the same helper previously traced for thread bottom bars. Complete effective arguments and environment overrides remain separate."
+    },
+    {
+      "location": "0x19f51c8..0x19f52a4",
+      "observation": "Actual composer construction precedes showsComposer-dependent frame/opacity/hit-testing modifiers. Evidence favors retaining field identity across visibility changes; no conditional destruction inferred."
+    },
+    {
+      "location": "0x19f1244..0x19f12ac ->0x1c3ddc4 ->0x19f5a70; type0x7e158d8",
+      "observation": "The additional bottom overlay is optional CodexRemoteComposerAutocompleteFloatingPicker. It is not the composer mounting point."
+    },
+    {
+      "location": "0x7e10f7c ->0x1a2ff0c ->0x1a2fe84 ->0x1c2e1b4",
+      "observation": "CodexRemoteNewThreadToolbarModifier delegates to toolbar content with optional model. Child controls and exact availability still need binding."
+    }
+  ],
+  "integration_decision": "Reuse the established SafeAreaBarIfAvailable host mechanism for the new draft input, with caller-specific configuration; keep autocomplete overlay separate. Continue through scoped draft binding and parent navigation before exposing project new action. Do not add a detached overlay editor.",
+  "validation": {
+    "source": "Direct and tail branches, symbolic type references and field-vector reads cross-checked",
+    "runtime": "not run; no host UI changes",
+    "latest_installed_candidate": "v493",
+    "visual": "unaccepted",
+    "build_retention": "No new app bundles generated"
+  },
+  "next_actions": [
+    {
+      "entry": "0x19f45b0 /0x19f4a1c and0x19f4db8",
+      "purpose": "Resolve composer text/focus bindings and selected host/workspace draft identity."
+    },
+    {
+      "entry": "0x19f11f0..0x19f1234 and0x757a2cc",
+      "purpose": "Map caller edge/spacing/environment policy to existing host modifier before sharing it."
+    },
+    {
+      "entry": "0x2f3070 /0x303aec",
+      "purpose": "Resolve parent navigation case and restoration after leaving the new screen."
+    }
+  ],
+  "limits": [
+    "No full new-thread page or action delivered in this batch",
+    "New-draft destination selector, workspace permissions and service availability remain unimplemented",
+    "No Android equivalence inferred from iOS evidence",
+    "Type reference existence alone does not prove enabled runtime behavior"
+  ],
+  "evidence_files": {
+    "ios-remote-v495-bottom-overlay-type.json": "88f98acb401ec0a6ad132792516f9297541767cf6dea81edeb2b0a71337106ed",
+    "ios-remote-v495-bottom-overlay.asm": "69793d84f4bfa06073aac3759eaface699676059aba1e492cbf3b61116befb94",
+    "ios-remote-v495-bottom-overlay.json": "5d8bbbbde12dcaab08c243f5b0b70e5d6a848a728bd3307a1bf23c8e9b4414f8",
+    "ios-remote-v495-closure-bridges.asm": "47ac515ce3f2c59df965bd86a78a660f5e7ff34656f558f3c324ac1d2077b58e",
+    "ios-remote-v495-draft-builder-refs.json": "d8ee48731dd69678b0fc445588ab610772fdce47af9c7ca4a79bee2fc4809f2f",
+    "ios-remote-v495-draft-composer.asm": "064719961ec7410b0272adff3a391567007517ef9755a39319cc930b3ff102a1",
+    "ios-remote-v495-draft-composer.json": "781d34fb4d64e29bd8fe9094c6ffe90a2eb03337c08bc454f6c7f7165b499274",
+    "ios-remote-v495-new-content-stack.asm": "a26db545903ce11e8ddcf48dbe2ce80115d61fedcbbdf6c1d3184cfb3909217c",
+    "ios-remote-v495-new-content-stack.json": "f037b9c627dbc8fb60f35b5608f942ccab9a5e090ab42b1348ef03552a7530e3",
+    "ios-remote-v495-new-draft-base.asm": "6f79017f77e2dbadc023c6fade664c27e5d8d4c0b86e8e707a4da125e34924b4",
+    "ios-remote-v495-new-draft-base.json": "18043b7a58aa211db588f18435ec1c2541bf0e9b0e11579f1a8f9c5ff4d9518e",
+    "ios-remote-v495-new-draft-content.asm": "d7ad3e818e089aa6ff1673b3bd5a3eacf5fcd8ed898867d252fa1cbca9404ff1",
+    "ios-remote-v495-new-draft-content.json": "0c3db786a9fb71e8e5fe51812898d63702836385092d3723a1b6c8729ae91e71",
+    "ios-remote-v495-new-draft-layout.asm": "327e53e7d4800b9ad4c8898734c602f72a696dee9928106932bd749c8d9af6eb",
+    "ios-remote-v495-new-draft-layout.json": "d2c7563c1d067b72220ad87e9abf969a4ead88cc3862cffc61cce78d39633db0",
+    "ios-remote-v495-new-toolbar-body.asm": "10cafbb8b4b482e9033e636c1cf8f323d3f8f3dded80afefcf155853864310c1",
+    "ios-remote-v495-new-toolbar-body.json": "e86f93880b44ecc518fc12cd25cda36f3165f9eab69826299a299fc5e6ba5913",
+    "ios-remote-v495-new-toolbar-witness.json": "276f8a85e9366c0da8c68d5f160e2506cd468819fdb7bcac37e3a2aec14fd001",
+    "ios-remote-v495-screen-referenced-types.json": "13a03ff959e8c1e2c4b9834a745b2846c5079aa6b5f3bdc6a24d22082e51fe50"
+  }
+}

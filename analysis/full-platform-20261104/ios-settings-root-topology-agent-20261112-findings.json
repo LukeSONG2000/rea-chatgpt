@@ -1,0 +1,89 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "home_sections": {
+    "witness": "0x10856dc",
+    "body": "0x108559c",
+    "closures": [
+      "0x11494ac",
+      "0x114953c",
+      "0x1149570"
+    ],
+    "content_body": "0x10856e0",
+    "content_witness": "0x108583c",
+    "tuple_init_site": "0x1085810",
+    "tuple_init_import": "_$s7SwiftUI9TupleViewVyACyxGxcfC",
+    "ordered_fields": [
+      "accountSection",
+      "personalizationSection",
+      "generalAndSafetySection"
+    ],
+    "limit": "Generic component construction order only. Active root branch and account/personalization screenshot ordering not proved."
+  },
+  "general_safety_guards": [
+    {
+      "row": "usage and limits",
+      "test": "0x1087b0c byte0; cmp1; b.ne0x1087bac",
+      "key_site": "0x1087b20"
+    },
+    {
+      "row": "safety settings",
+      "test": "0x1087bd8..0x1087bf4 bytes1..4 OR; skip0x1087c8c",
+      "key_site": "0x1087c54"
+    },
+    {
+      "row": "remote control inferred from field layout",
+      "test": "0x1087cb0 byte5; b.ne0x1087cfc",
+      "limit": "Field-layout mapping inferred, not validated runtime"
+    },
+    {
+      "row": "cloud browser inferred from field layout",
+      "test": "0x1087d0c byte7; b.ne0x1087d74",
+      "limit": "Field-layout mapping inferred, not validated runtime"
+    },
+    {
+      "row": "passwords",
+      "test": "0x1087d84 byte8; b.ne0x1087e00",
+      "key_site": "0x1087d90"
+    },
+    {
+      "row": "storage",
+      "test": "0x1087e0c byte9; b.ne0x1087ec4",
+      "key_site": "0x1087e3c"
+    }
+  ],
+  "help": {
+    "witness": "0x1089d1c",
+    "body": "0x1089580",
+    "ordered_construction": [
+      {
+        "row": "Report app issue",
+        "site": "0x10897b4",
+        "label_callback": "0x75d31f8",
+        "key_address": "0x8a59240",
+        "text_address": "0x8a59260",
+        "guard": "0x108977c call0x10119f0;0x1089780 cbz skips row"
+      },
+      {
+        "row": "Help Center",
+        "site": "0x1089868",
+        "label_callback": "0x75d6bf0",
+        "text_evidence": "Immediate small Swift string at0x75d6bf0..0x75d6c04"
+      },
+      {
+        "row": "Privacy Center",
+        "site": "0x10898dc",
+        "label_callback": "0x1089c20",
+        "key_address": "0x8888660",
+        "guard": "0x1089894 byte0 showPrivacyCenter;0x1089898 tbz skips row"
+      }
+    ],
+    "limit": "No Terms/licenses/version row established in this section; no full root active branch proof."
+  },
+  "limits": [
+    "No production changes",
+    "No runtime execution",
+    "GeneralAndSafety complete tuple order unresolved",
+    "Do not infer always-visible rows from metadata or screenshot alone"
+  ]
+}

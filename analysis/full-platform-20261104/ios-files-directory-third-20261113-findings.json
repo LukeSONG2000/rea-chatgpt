@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "scope": "Ordinary Remote Files directory third pass; read-only, three bounded candidate groups; no host/test/device changes",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "reused_evidence": [
+    "ios-files-directory-parent-20261113-findings.json",
+    "ios-files-browser-parent-current-20261113.json",
+    "ios-files-directory-parent-20261113/entries-tree.tree.txt",
+    "ios-files-directory-parent-20261113/entries-state-tree.tree.txt",
+    "ios-files-directory-parent-20261113/row-tree.tree.txt",
+    "ios-files-v589-directory-row-helper-evidence.asm"
+  ],
+  "current_host_observation": {
+    "file": "implementation/ios/Sources/FrontendFilePreview.swift",
+    "symbols": [
+      "RemoteWorkspaceFilesPreview",
+      "RemoteWorkspaceDirectoryPage.directoryStatus",
+      "RemoteWorkspaceDirectoryPage.fileRow",
+      "RemoteWorkspaceDirectoryPage.body"
+    ],
+    "confirmed_gaps": [
+      "Ready empty ContentUnavailableView has handwritten bilingual title and SF folder, without original description.",
+      "Rows lack explicit original listRowInsets and listRowBackground.",
+      "Directory rows lack non-loading trailing disclosure image.",
+      "Label has no explicit original body font / text primary style."
+    ],
+    "already_present_do_not_redo": [
+      "Opaque entry ID and displayPath are separate.",
+      "NavigationStack per directory and parent-directory action already exist as explicit host adaptation.",
+      "Plain List with hidden scrollContentBackground matches recovered loaded List.",
+      "HStack spacing 12 and original folder/text-document leading resource mapping already present.",
+      "Per-file preview request spinner and bounded identity-aware loader exist."
+    ]
+  },
+  "official_observations": [
+    {
+      "id": "F3-list-row-traits",
+      "evidence_type": "official_artifact_static",
+      "consumer": "Entries loaded List ForEach closure 0x1d2cc54; passed at 0x19cbb80..0x19cbb8c",
+      "type_record": "0x7e25980",
+      "parent": "PlainListStyle List<Never, ForEach<Array<CodexRemoteWorkspaceBrowserEntry>, CodexRemoteWorkspaceBrowserEntry, ModifiedContent<ModifiedContent<opaque original row, ListRowBackgroundTraitKey>, ListRowInsetsTraitKey>>>",
+      "geometry": {
+        "edgeInsets": {
+          "top": 0,
+          "leading": 16,
+          "bottom": 0,
+          "trailing": 16
+        },
+        "literal": "0x7d81e00 stores doubles (0,16)",
+        "writes": [
+          "0x1d2ce54..0x1d2ce68: load q0 and write twice plus Optional present tag0"
+        ]
+      },
+      "background": {
+        "resource": "ChatGPT/bg/primary",
+        "chain": [
+          "0x1d2ce0c calls 0x74ecd44",
+          "0x74ecd70..0x74ecd78 materializes literal 0x8a50f60",
+          "0x1d2ce24 erases original color to AnyView used by ListRowBackgroundTraitKey"
+        ]
+      },
+      "limitations": [
+        "The opaque row nominal internal type is not claimed fully recovered.",
+        "No fixed row height or global list content margin is inferred from these per-row traits.",
+        "Independent host appended error/retry subviews are additional adaptation; applying traits to the full host row should preserve those semantics."
+      ],
+      "raw": [
+        "ios-files-directory-third-20261113/row-insets-closure.asm",
+        "ios-files-directory-third-20261113/row-background-factory.asm",
+        "ios-files-directory-third-20261113/literals.json"
+      ],
+      "validation": "Static consumer + full outer generic tree + literal values closed."
+    },
+    {
+      "id": "F3-success-empty",
+      "evidence_type": "official_artifact_static",
+      "parent": "Native ContentUnavailableView<Label<Text,Image>, Text, EmptyView> inside loaded Entries success branch",
+      "condition": "0x19cbb48 loads entries array; 0x19cbb4c reads count; 0x19cbb50 cbz to 0x19cbc80",
+      "constructors": [
+        "0x19cbc80..0x19cbcd4 supplies label closure 0x19cbcd8 and description closure 0x19cbd48"
+      ],
+      "title": {
+        "key": "codex_remote_file_directory_empty_title",
+        "key_literal": "0x88c02b0",
+        "consumer": "0x19cbcf0..0x19cbcf8",
+        "default": "Empty Folder",
+        "default_inline": "0x19cbd00..0x19cbd1c"
+      },
+      "description": {
+        "key": "codex_remote_file_directory_empty_message",
+        "key_literal": "0x88c0240",
+        "consumer": "0x19cbd60..0x19cbd68",
+        "default": "This folder doesn't currently contain any files.",
+        "default_literal": "0x88c0270"
+      },
+      "image": {
+        "factory": "0x74f7708",
+        "consumer": "0x19cbd34",
+        "resource": "OpenAI/Symbols/folder",
+        "literal": "0x8a554f0"
+      },
+      "actions": "EmptyView; do not add synthetic empty-state action claiming it is original.",
+      "limitations": [
+        "This is success-with-zero-entries, not the RequestStateView failure/loading branch."
+      ],
+      "raw": [
+        "ios-files-directory-third-20261113/empty-state-builders.asm",
+        "ios-files-directory-third-20261113/literals.json",
+        "ios-files-directory-third-20261113/empty-folder-image-factory.asm"
+      ],
+      "validation": "Branch, constructors, original keys/default text and image consumer closed."
+    },
+    {
+      "id": "F3-row-style-and-disclosure",
+      "evidence_type": "official_artifact_static",
+      "consumer": "Original row label builder 0x19cc0a8; row View witness 0x19cc3b8 -> 0x19cbef8",
+      "type_record": "0x7e26880",
+      "label": {
+        "font": "SwiftUI.Font.TextStyle.body",
+        "font_chain": [
+          "0x19cc1a4 ->0x74e2728 ->0x74e2714 ->import slot0xaad38d8"
+        ],
+        "foreground_resource": "ChatGPT/text/primary",
+        "foreground_chain": [
+          "0x19cc1e0 ->0x74ee2c0 ->literal0x8a51ba0"
+        ],
+        "label_style": {
+          "consumer": "0x19cc1a0 ->0x7565e40",
+          "status": "partial",
+          "boundary": "Generic labelStyle construction uses factory pointer0x75861dc and witness helper0x40d148; exact concrete style not closed. Do not choose icon size/width by guess."
+        }
+      },
+      "trailing": {
+        "condition": [
+          "0x19cc214..0x19cc218 reads row opening flag +0x31; true constructs OAIProgressView",
+          "0x19cc260 non-opening entry tag0 goes to disclosure factory; nonzero goes to no image",
+          "directory interpretation is tied to existing folder/tag0 consumer at0x19cc180..0x19cc18c, not enum declaration order"
+        ],
+        "image_resource": "OpenAI/Symbols/chevron-right-md",
+        "image_chain": [
+          "0x19cc26c ->0x74f5efc ->literal0x8a549a0"
+        ],
+        "font": "caption",
+        "font_consumer": "0x19cc278 ->0x74e27b8",
+        "foreground_resource": "ChatGPT/text/tertiary",
+        "foreground_chain": [
+          "0x19cc29c ->0x74ee448 ->literal0x8a51c40"
+        ]
+      },
+      "raw": [
+        "ios-files-v589-directory-row-helper-evidence.asm",
+        "ios-files-directory-third-20261113/row-label-style.asm",
+        "ios-files-directory-third-20261113/row-font-factory.asm",
+        "ios-files-directory-third-20261113/row-foreground.asm",
+        "ios-files-directory-third-20261113/row-directory-disclosure-factory.asm",
+        "ios-files-directory-third-20261113/row-directory-disclosure-color.asm",
+        "ios-files-directory-third-20261113/literals.json"
+      ],
+      "validation": "Direct row consumer and resource factories closed; complete concrete labelStyle remains partial."
+    }
+  ],
+  "safe_implementation_decisions": [
+    "Restore the successful-empty title/description using original localization resources and original folder image.",
+    "Apply original per-row EdgeInsets(top:0,leading:16,bottom:0,trailing:16) and semantic background; do not convert this into a fixed height.",
+    "Restore original non-loading directory trailing chevron-right-md, caption and text/tertiary; keep file rows without chevron and preserve loading indicator.",
+    "Make title label font body and text/primary explicit; preserve current platform native scaling."
+  ],
+  "not_to_change": [
+    "Do not conflate Files with WorkspaceBrowserContent/DisclosureGroup directory tree.",
+    "Do not redo ID/displayPath separation or infer paths from IDs.",
+    "Do not claim synthetic error description/retry is original.",
+    "Do not add haptics, exact icon frame, row height or new navigation toolbar geometry without consumer evidence."
+  ],
+  "unknown_boundaries": [
+    {
+      "area": "Loading/error presentation",
+      "boundary": "Entries root0x19cb974 calls RequestStateView factory0x755f518 with0x1d2ca38, failure closure0x19cbdb8 and loaded closure0x1d2ca40. Existing generic RequestStateView carrier proved; precise loading/error text/config not closed in this three-group pass."
+    },
+    {
+      "area": "Concrete labelStyle",
+      "boundary": "0x7565e40 supplies factory0x75861dc; unknown exact label intrinsic style/metrics."
+    },
+    {
+      "area": "Native row full callback transport",
+      "boundary": "Existing source callback evidence retained. New facts concern local presentation only; no original server/file transport claimed."
+    },
+    {
+      "area": "Haptics",
+      "boundary": "No explicit haptic caller was demonstrated in the inspected directory/list/row/empty-state consumers. This is not a claim that all indirect native wrappers lack haptics."
+    }
+  ],
+  "stop_reason": "Three bounded candidate groups completed and concrete restorable gaps identified; no expansion into services, full framework or device tests."
+}

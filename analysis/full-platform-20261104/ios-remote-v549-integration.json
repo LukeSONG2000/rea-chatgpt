@@ -1,0 +1,137 @@
+{
+  "batch": "v549",
+  "time": "2026-11-07T23:57:30.078167+08:00",
+  "status": "partial",
+  "scope": "Remote frontend attachment submission and native preview",
+  "source_findings": "ios-remote-v549-findings.json",
+  "implementation": "Independent deterministic adapter and read-only reuse of source-backed composer previews. Official transcript geometry and preview dispatcher remain unresolved.",
+  "test_rounds": [
+    {
+      "round": "r1-attachments",
+      "passed": 1,
+      "failed": 2,
+      "summary": "ios-remote-v549-r1-attachments.summary.json"
+    },
+    {
+      "round": "r2-attachments",
+      "passed": 1,
+      "failed": 3,
+      "summary": "ios-remote-v549-r2-attachments.summary.json"
+    },
+    {
+      "round": "r3-preview",
+      "passed": 1,
+      "failed": 1,
+      "summary": "ios-remote-v549-r3-preview.summary.json"
+    },
+    {
+      "round": "r4-preview",
+      "passed": 0,
+      "failed": 1,
+      "summary": "ios-remote-v549-r4-preview.summary.json"
+    },
+    {
+      "round": "r5-preview",
+      "passed": 1,
+      "failed": 1,
+      "summary": "ios-remote-v549-r5-preview.summary.json"
+    },
+    {
+      "round": "r6-preview",
+      "passed": 3,
+      "failed": 0,
+      "summary": "ios-remote-v549-r6-preview.summary.json"
+    },
+    {
+      "round": "r7-regression",
+      "passed": 4,
+      "failed": 2,
+      "summary": "ios-remote-v549-r7-regression.summary.json"
+    },
+    {
+      "round": "r8-keyboard",
+      "passed": 2,
+      "failed": 0,
+      "summary": "ios-remote-v549-r8-keyboard.summary.json"
+    }
+  ],
+  "latest_distinct_ui_cases_passed": 8,
+  "foundation": {
+    "status": "passed",
+    "log": "ios-remote-v549-foundation.log"
+  },
+  "r7_diagnosis": {
+    "evidence": [
+      "ios-remote-v549-r7-captures/47354E5D-31FF-45B1-81A0-DE26EB67CDCC",
+      "ios-remote-v549-r7-captures/DEF91CAB-87DA-4F90-9158-E436251E7A4A",
+      "ios-remote-v549-r7-captures/428A0227-EEF8-484D-9988-2C3F7DEF5A68.txt",
+      "ios-remote-v549-r7-captures/302AB1C7-45CD-481A-9CCB-799793E23DEA.txt"
+    ],
+    "observation": "Preview tap y559 preceded keyboard-adjusted attachment center y219. Remove tap y707.667 preceded adjusted center y367.667. Both differences 340pt.",
+    "correction": "Wait for the software keyboard after XCTest typing before resolving/tapping the moved attachment. Both cases pass r8 with no product geometry change.",
+    "limit": "This diagnoses the two recorded automation failures. General keyboard/manual input behavior has separate open checks."
+  },
+  "visual_review": [
+    "ios-remote-v549-r6-captures/BE04410A-53A7-42C6-B644-94B12FC6B02D.png",
+    "ios-remote-v549-r8-captures/42ACA33C-8EF8-4173-9C61-8231988661A8.png"
+  ],
+  "runtime": {
+    "version": "549",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "product": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app",
+    "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/F6FA01E2-9B61-4730-8F64-A69B429480B0/REAChatGPTHost.app",
+    "launch": "local.rea.chatgpt.ioshost: 46363",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture"
+    ],
+    "product_executable_sha256": "306aa390b67433bd95c40991117192e670bcb1f7d96a2332af2ba3e70c9637e2",
+    "installed_executable_sha256": "306aa390b67433bd95c40991117192e670bcb1f7d96a2332af2ba3e70c9637e2",
+    "language": "system",
+    "appearance": "system",
+    "sign_verify": "passed"
+  },
+  "preview": {
+    "left_running": true,
+    "surface": "Chinese Remote synthetic task list",
+    "system_language_and_appearance": true,
+    "external_display": "unavailable, built-in display only"
+  },
+  "retention": {
+    "schema": "rea-build-cleanup-v1",
+    "time": "2026-11-07T23:55:21.455111+08:00",
+    "apply": false,
+    "keep": [
+      "v172-r2-macos",
+      "v172-windows",
+      "v173-windows",
+      "v174-r4-macos"
+    ],
+    "targets": [],
+    "skipped": [],
+    "completed": []
+  },
+  "disk_available_gib": 16,
+  "source_sha256": {
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "026236598c54da02aea0a091bcab622375c0f77d6f6ab13a993d38a9e9c2c4be",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "1cffc2c3ab0ed02f540a6e628367dbf0b115c62e9919c384cba8c13761b669b0",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "579a39aae35218a39581e366a0d97143887849648e772fb8be011b197f172369",
+    "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift": "5967ca5f6d2f18efcec06336e0fa5282000a75764b50f8c598b67757d5071b23",
+    "implementation/ios/Sources/NativeConversationHost.swift": "fd1d96b1a7096d50f83031f20caa78d1937dfff363c9f94ca57f911b48ce8724",
+    "implementation/ios/UITests/HostInteractionTests.swift": "29803d55dd38ea16993b97d817cd74b3d19ff7dd65cd5a8d75e0401cd7efa5b8",
+    "implementation/ios/TextTests/main.swift": "2a94f2cdaf0f352eacf60e90098d58a950b89dd463dcfafc4a5bcd438b34fb0e"
+  },
+  "open": [
+    "Official transcript attachment card layout and preview transition/dispatcher",
+    "Dynamic message projection and reading-anchor restoration",
+    "Process restart resource recovery",
+    "Multiple attachments, PDF, unsupported/error cases",
+    "Manual composing/autocorrection and rapid submission combinations",
+    "Service resource resolution/upload/authentication adapter",
+    "Device touch/haptics and notifications delivery acceptance"
+  ],
+  "next": "Complete Remote dynamic content projection and reading-state preservation through the page-level synthetic event adapter."
+}

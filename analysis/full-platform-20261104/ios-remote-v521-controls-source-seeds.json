@@ -1,0 +1,131 @@
+{
+  "batch": "v521",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "reference_index": "ios-remote-v517-controls-user-reference-index.json",
+  "evidence_type": "artifact-derived-type-index",
+  "source": {
+    "path": "analysis/ios293-native/swift-types-full.txt",
+    "sha256": "eee0c79dabfb4936a5c472fdf05a3e8b909cd1b9cb312ec399a6cca5664c04f3"
+  },
+  "records": [
+    {
+      "reference_state": "permission-policy-sheet",
+      "status": "candidate-metadata-only",
+      "candidates": [
+        {
+          "line": 28192,
+          "declaration": "S (anonymous).CodexRemoteApprovalPickerHeader | fields=_openURL"
+        },
+        {
+          "line": 28193,
+          "declaration": "S (anonymous).CodexRemoteApprovalPickerRow | fields=row,_iconSize"
+        },
+        {
+          "line": 28194,
+          "declaration": "S CodexRemoteApprovalPickerSheet | fields=rows,select"
+        },
+        {
+          "line": 28195,
+          "declaration": "S CodexRemoteApprovalPickerView | fields=rows,select"
+        },
+        {
+          "line": 28714,
+          "declaration": "E CodexRemoteApprovalPickerView.Selection | fields=preset,custom"
+        }
+      ],
+      "next_action": "Trace the composer entry and parent presentation owner, then option/state inputs, action writeback and dismissal restoration before integration."
+    },
+    {
+      "reference_state": "context-window-popover",
+      "status": "candidate-metadata-only",
+      "candidates": [
+        {
+          "line": 28239,
+          "declaration": "S CodexRemoteComposerContextUsageIndicator | fields=contextUsage,__isPopoverPresented"
+        },
+        {
+          "line": 28240,
+          "declaration": "S (anonymous).CodexRemoteComposerContextUsageIndicatorLabel | fields=contextUsage,_indicatorSize"
+        },
+        {
+          "line": 28241,
+          "declaration": "S (anonymous).CodexRemoteComposerContextUsagePopover | fields=contextUsage"
+        }
+      ],
+      "next_action": "Trace the composer entry and parent presentation owner, then option/state inputs, action writeback and dismissal restoration before integration."
+    },
+    {
+      "reference_state": "model-reasoning-quick-control",
+      "status": "candidate-metadata-only",
+      "candidates": [
+        {
+          "line": 28345,
+          "declaration": "S CodexRemoteModelSliderConfiguration | fields=selections,selectedPresetID"
+        },
+        {
+          "line": 28346,
+          "declaration": "S CodexRemoteModelSliderControl | fields=viewModel,configuration,usesMeterSource,__presentedPicker,__presentsSliderAfterConfigurationDismissal,__presentation,_messageInputStyle"
+        },
+        {
+          "line": 28347,
+          "declaration": "S (anonymous).CodexRemoteModelSliderLabel | fields=presentation,modelTitle,effortTitle,effortLevelIndex,effortLevelCount,speedConfiguration,isPresentationPresented,usesMeterSource,onSourceLayout,_configurationIconSize"
+        },
+        {
+          "line": 28581,
+          "declaration": "S CodexRemoteModelSliderConfiguration.Selection | fields=reasoningEffort,preset"
+        }
+      ],
+      "next_action": "Trace the composer entry and parent presentation owner, then option/state inputs, action writeback and dismissal restoration before integration."
+    },
+    {
+      "reference_state": "model-reasoning-speed-advanced-sheet",
+      "status": "candidate-metadata-only",
+      "candidates": [
+        {
+          "line": 28341,
+          "declaration": "S CodexRemoteModelConfigurationSheet | fields=viewModel,advancedActionHandler"
+        },
+        {
+          "line": 28342,
+          "declaration": "S (anonymous).CodexRemoteModelEffortConfigurationSection | fields=viewModel"
+        }
+      ],
+      "next_action": "Trace the composer entry and parent presentation owner, then option/state inputs, action writeback and dismissal restoration before integration."
+    },
+    {
+      "reference_state": "dictation-composer",
+      "status": "candidate-metadata-only",
+      "candidates": [
+        {
+          "line": 26580,
+          "declaration": "E ComposerWhisperCompletionAction | fields=stop,send"
+        },
+        {
+          "line": 26598,
+          "declaration": "E ComposerWhisperTemplate.ViewParams | fields=microphone,content,controls,releaseOverlay,codexActivation,codexCollapsed,codexCompact"
+        },
+        {
+          "line": 28478,
+          "declaration": "S (anonymous).CodexRemoteWhisperComposerFieldRow | fields=whisperComponent,waveform,_hapticEngine,_horizontalSpacing"
+        },
+        {
+          "line": 28479,
+          "declaration": "S (anonymous).CodexRemoteWhisperMicrophoneButton | fields=whisperComponent"
+        },
+        {
+          "line": 28480,
+          "declaration": "S (anonymous).CodexRemoteWhisperPrimaryButton | fields=whisperComponent,_hapticEngine,_openURL"
+        }
+      ],
+      "next_action": "Trace the composer entry and parent presentation owner, then option/state inputs, action writeback and dismissal restoration before integration."
+    }
+  ],
+  "limits": [
+    "Names and fields provide source investigation seeds only. These candidates do not prove screenshot-to-component identity or complete caller wiring.",
+    "User screenshots have unknown exact version. Values and personal content remain reference-only.",
+    "No implementation, build or runtime acceptance added by this report."
+  ]
+}

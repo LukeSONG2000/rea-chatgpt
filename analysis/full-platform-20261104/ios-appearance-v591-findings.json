@@ -1,0 +1,70 @@
+{
+  "batch": 591,
+  "status": "partial",
+  "scope": "Settings consumers and runtime appearance retention",
+  "official_evidence": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "record": "ios-settings-v308-binding.json",
+    "symbols": [
+      "SettingsAppearanceSection picker 0x1084c7c",
+      "SettingsViewModel binding 0x1084ba8",
+      "ColorSchemeSetting setter 0x1085178"
+    ],
+    "observation": "SettingsViewModel binds the system/dark/light appearance selection.",
+    "limits": "Official storage scope, lifecycle timing and all presentation owners remain independently scoped."
+  },
+  "host_mechanism": [
+    "PreviewAppearance stores a local preference and applies UIWindow.overrideUserInterfaceStyle to scene windows.",
+    "Attachment-menu and model-slider windows inherit the source window override.",
+    "Browser host uses semantic UIKit colors; offline HTML declares light/dark color-scheme.",
+    "QuickLook remains the independent native preview adapter."
+  ],
+  "validation_status": "core_acceptance_passed_for_scoped_surfaces",
+  "source_hashes": {
+    "implementation/ios/Sources/AppDelegate.swift": "bfc103f9e3a23fdcd9e5acebac8f788e521f1932475ac3e466a98f5a54a1a6c3",
+    "implementation/ios/Sources/RecoveredRemoteAttachmentMenu.swift": "bb7c178452a3a280b0c7a7bf449af6d67a03472100c83fb9a200537576686068",
+    "implementation/ios/Sources/RecoveredRemoteModelSlider.swift": "cad3943192ec0d8a75b2dd2095c0e3ee30af5c3dd06db193d4e531dc4cbee7ed",
+    "implementation/ios/Sources/FrontendBrowserPreview.swift": "6ae8fac51b6603fbcda460fecd675b2ec417b84f92caa2d99c9210155dffc5cd",
+    "implementation/ios/UITests/HostInteractionTests.swift": "f4165fb98e4cd6eb1492d3cf30436c25141d6af7a482ee8ee73b7e4142dfbd44"
+  },
+  "independent_adaptation": "XCTest changes simulator appearance while existing surfaces remain open. This validates the reconstructed host; it does not establish official visual parity.",
+  "unknown": [
+    "Official Remote file/browser preview owner",
+    "All other floating surfaces during theme changes",
+    "Physical device appearance/keyboard and tactile behavior",
+    "Android platform-specific theme propagation"
+  ],
+  "environment_finding": {
+    "observed": "XCTest r2/r3 actions passed but dark-named screenshots stayed light. Device Hub and simctl reported dark while LLDB observed app preference system, window override 0, UIScreen and UIWindowScene style 1.",
+    "recovery": "Restarted only the owned simulator. Same unchanged app then rendered dark and changed live to light.",
+    "cause_limit": "Underlying simulator service failure was not isolated; recovery does not establish a host implementation defect.",
+    "evidence": [
+      "ios-appearance-v591-r2-attachments/manifest.json",
+      "ios-appearance-v591-r3-attachments/manifest.json",
+      "ios-appearance-v591-window-traits.log",
+      "ios-appearance-v591-system-traits.log",
+      "ios-appearance-v591-system-dark-before.png",
+      "ios-appearance-v591-system-dark-after.png",
+      "ios-appearance-v591-system-light-after.png",
+      "ios-appearance-v591-simulator-restart.log"
+    ]
+  },
+  "test_changes": [
+    "Isolated Chat/Remote profiles for new theme tests and touched browser/persistence tests",
+    "System light/dark while attachment menu, PDF, Chat/Work text preview and local browser remain presented",
+    "Draft/attachment/mode preservation and typing after return",
+    "Clear status-bar screenshot brightness assertion detects ineffective system theme transitions",
+    "Original simulator appearance restored after each test",
+    "Wait for loaded QuickLook document identity before PDF theme capture; do not apply solid host background threshold to native translucent PDF chrome"
+  ],
+  "prior_runs": {
+    "r1": "Compile failed on Objective-C API type name; corrected to Swift XCUIDevice.Appearance.",
+    "r2": "Four action tests passed; runtime dark visual acceptance invalidated by retained screenshots.",
+    "r3": "One browser action test passed; system appearance environmental discrepancy also applies.",
+    "r4": "Five tests passed and system/menu/browser/text-preview theme changes visibly verified. Chinese PDF dark capture occurred before document content was ready; added loaded-document gate.",
+    "r5": "Chinese passed; English PDF margin threshold failed at 0.4719. Screenshot shows dark white glyphs over gray translucent chrome backed by a white PDF page. Scoped the brightness assertion to clear host margins; native PDF remains separately inspected.",
+    "r6": "Both Chinese and English Remote appearance tests passed after loaded-PDF gating and correctly scoped host brightness checks; loaded PDF theme pairs visually inspected."
+  }
+}

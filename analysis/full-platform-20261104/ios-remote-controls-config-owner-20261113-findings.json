@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "date": "2026-11-13",
+  "scope": "Remote input/control configuration ownership: accepted submission snapshots, editable preference persistence, official iOS293 queued-message update boundary; three bounded candidates",
+  "official_artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "version": "1.2026.293",
+    "platform": "iOS"
+  },
+  "official_observations": [
+    {
+      "id": "CONFIGOWNER-01",
+      "type": "official-artifact-observation",
+      "conclusion": "Permission selection is owned by the concrete mobile thread VM. The native mutation path updates local configuration, compares it and then triggers a distinct queued-message settings update task.",
+      "evidence": [
+        "retained v524 Controls generic requirement BaseCodexThreadViewModel descriptor0x95a99a4",
+        "concreteThreadVM conformance0x7e0b6f8 pattern0xa504ab8:policy+0x248→0x19432a8→0x18fa5ec;custom+0x250→0x19432ac→0x18fa888",
+        "0x18fa654..0x18fa660→mutationclosure0x1c412fc→0x1938880",
+        "0x19388c4 executes mutation;0x19388e8 compares configuration through0x24527cc;0x1938904 updatesowner via0x1d9a70c→0x18d8b3c before0x1938908→0x192ad4c",
+        "0x192ae28 taskdescriptor0x7e14e98→0x1c3b524→0x192ae9c"
+      ],
+      "limits": [
+        "Exact admission guard0x244e158 semantic name unresolved; do not assume every selection always mutates.",
+        "UI picker closes before local mutation; current preview success/failed transaction is a declared independent service adapter, not proof of identical official rollback behavior."
+      ]
+    },
+    {
+      "id": "CONFIGOWNER-02",
+      "type": "official-artifact-observation",
+      "conclusion": "The native update specifically names updateAppServerQueuedMessageSettingsIfNeeded() and has explicit asynchronous error paths. It does not establish a general cross-process preference persistence mechanism or an effective permission grant.",
+      "evidence": [
+        "0x192ad4c task owner stores task throughruntime offsetslot0xb1e7dc8",
+        "0x192aee4 context0x1915d40;0x192b030→0xac8914 service boundary",
+        "0x192b0b8/0x192b150 reference literal0x88b63c0 updateAppServerQueuedMessageSettingsIfNeeded()",
+        "0x192b1b0 references0x88b63f0 Failed to update queued message settings"
+      ],
+      "limits": [
+        "Service owner at0xac8914 and exact argument schema unresolved.",
+        "This evidence does not prove model/effort/speed/permission all propagate identically or to every pending mode.",
+        "Pending steer vs queue, cancelled/consumed targets, atomicity/partial failure, reconnect replay, dedup and response rollback semantics remain unknown.",
+        "No use of desktop/public Codex protocol as a substitute for this mobile consumer."
+      ]
+    }
+  ],
+  "current_host_findings": [
+    {
+      "id": "HOSTCFG-01",
+      "classification": "current-host-implementation-correct-path",
+      "conclusion": "Accepted queue/steer configuration snapshot is already captured; absence of a configuration argument on enqueue/startNextQueued is not by itself data loss.",
+      "evidence": [
+        "NativeConversationHost.swift:8147 submitComposer assigns event.configuration from current modelConfiguration/permissionSelection",
+        "RemoteThreadReplay.swift:962 normal submit forwardsconfiguration;queue/steer:966 enqueue then970 recordConfiguration(event.configuration,intentID)",
+        "RemoteThreadReplay.swift:392 write-once configurationByIntent keyed intent UUID; state is Codable",
+        "RemoteThreadReplay.swift:631 explicitstart and656 FIFOstart preserve pending.id as appended turn.intentID;appendTurn:518 uses same UUID",
+        "RemoteThreadReplay.swift:689..725 account/version-bound history persistence encodes complete states incl optional configurationByIntent",
+        "RemoteThreadReplay.swift:992 steer acknowledgement matches scope/id/revision and leaves accepted configuration map intact"
+      ],
+      "limits": [
+        "Synthetic scheduleResponse only receives scope/turnID and does not execute a model or enforce permission; absence of execution config consumption is expected with frontend-only scope.",
+        "No dedicated existing queue-to-turn snapshot preservation test was found in selected TextTests source. Existing snapshot codec tests cover immutable map and legacy nil; new-thread creation tests cover configuration persistence. Tests were not run in this read-only task."
+      ]
+    },
+    {
+      "id": "HOSTCFG-02",
+      "classification": "current-host-gap",
+      "conclusion": "Editable current model/effort/speed/permission selection is only in memory, while historical accepted snapshots persist. Restart reconstructs RemoteThreadConfigurationStore with defaults, so reopened controls can disagree with previously selected current configuration.",
+      "evidence": [
+        "RemoteAdvancedConfiguration.swift:66..89 RemoteThreadConfigurationState has private dictionary keyed RemoteComposerDraftScope; snapshot fallback .init()",
+        "RemoteAdvancedConfiguration.swift:121..126 RemoteThreadConfigurationStore @Published state = RemoteThreadConfigurationState(), no load/save/account owner",
+        "NativeConversationHost.swift:4812 parent owns StateObject, surviving destination changes but not app restart",
+        "NativeConversationHost.swift:7790..7816 successful model/permission transactions call setModel/setPermission only",
+        "RemoteThreadReplay.swift:854..881 independently reloads history snapshots, no hydration of editable config store"
+      ],
+      "impact": "Frontend restart consistency gap; not an official backend or authentication defect.",
+      "safe_fix": "Introduce an explicit account-bound durable selection DTO/preferences owner preserving selected values and nil/unknown states; load through existing profile identity and keep capability catalog supplied by provider. Commit persistence before acknowledging preview selection or explicitly expose failure. Do not derive latest setting from the last accepted request, which may be older than an unsent settings change."
+    },
+    {
+      "id": "HOSTCFG-03",
+      "classification": "current-host-gap-not-wire-proof",
+      "conclusion": "Current editable configuration changes do not publish a separate queued-settings operation or update an effective queued-configuration projection. Accepted configurationByIntent intentionally remains immutable.",
+      "evidence": [
+        "NativeConversationHost.swift:7796..7816 transactions only update configurations store",
+        "RemoteComposerInteraction.swift:524 comment explicitly records queued propagation as unbound",
+        "RemoteThreadReplay.swift:389 comment says live queue propagation not inferred",
+        "recordConfiguration:393 ignores subsequent same-intent snapshots;no queue update state/revision/ack operation exists in selected files"
+      ],
+      "impact": "A future service adapter cannot distinguish immutable accepted metadata from a later queued-settings update using current map alone. Existing deterministic text producer does not use config, so it is not currently executing with a wrong model.",
+      "safe_fix": "Keep immutable accepted snapshots. Define a separate scope/session/revision-bound pending-configuration operation/provider interface only when implementing this frontend capability; pending success/failure must remain explicit. Exact target-selection/merge/reconnect behavior stays independently specified until mobile service owner is closed."
+    }
+  ],
+  "recommended_minimum_batch": [
+    {
+      "priority": 1,
+      "work": "Persist current editable selection with account+host+destination scope; preserve null selections, reject corrupt snapshot without overwriting source, and surface save failure.",
+      "classification": "independent-frontend-fix"
+    },
+    {
+      "priority": 2,
+      "work": "Add regression vectors for queue/steer accepted configuration retention through mode toggle, cancel, explicit start, FIFO start and fresh history owner; do not add fake backend execution.",
+      "classification": "independent-contract-validation"
+    },
+    {
+      "priority": 3,
+      "work": "Keep queued settings update as explicit capability/operation boundary. A deterministic test adapter may simulate acceptance/failure only with separate effective state and clear independent semantics. Do not overwrite configurationByIntent as a shortcut.",
+      "classification": "independent-design-suggestion"
+    }
+  ],
+  "validation_vectors": [
+    "Scope A and B with equal thread names remain isolated across new preference owner/account boundaries.",
+    "Unsent selection survives process-owner reconstruction, distinct from last accepted intent config.",
+    "Queue accepted under config A keeps audit A after current selection changes to B; explicit later queued update is a separate operation.",
+    "FIFO/explicit start preserve pending intent identity and snapshot; cancel/mode-toggle invalidate old acknowledgements without deleting audit.",
+    "Unreadable preference file does not reset-and-overwrite original; failed save does not masquerade as accepted setting.",
+    "Legacy history missing configurationByIntent remains decodable."
+  ],
+  "precise_unknowns": [
+    "Official mobile queued-settings service receiver/argument schema after0x192b030→0xac8914.",
+    "Official target admission by pending mode/status and late update ordering; no assumption that all existing pending records must be mutated.",
+    "Official current configuration storage/server hydration across restart; original queue updater is not evidence of disk persistence.",
+    "No explicit new haptic caller identified in these selected configuration/state consumers; do not infer haptics from request names."
+  ],
+  "reused_reports": [
+    "analysis/full-platform-20261104/ios-remote-v524-permission-owner-findings.json",
+    "analysis/full-platform-20261104/ios-remote-v526-model-advanced-findings.json",
+    "analysis/full-platform-20261104/ios-remote-controls-parent-current-20261113.json"
+  ],
+  "validation": {
+    "mode": "read-only static original artifact plus current host source audit",
+    "candidate_groups": 3,
+    "product_changes": false,
+    "tests_run": false,
+    "build_or_device": false,
+    "official_network": false,
+    "stop_reason": "Three scoped candidate groups closed; exact service boundary preserved."
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-controls-config-owner-20261113/current-host-source-excerpts.json",
+      "sha256": "55b5c173ac438a04945cbaa10e35fc890bac8a511fc747bda8c1f5d8a1ea8815"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-controls-config-owner-20261113/native-config-mutate-queue.asm",
+      "sha256": "a951cc10e969fd8694666f19f806eff677b1fec7e82510424efdf0fb85989a02"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-controls-config-owner-20261113/native-config-mutate-queue.json",
+      "sha256": "300316e611529f393d7c289793115853f960324bedbe47a73798f8129b0a669e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-controls-config-owner-20261113/native-queued-errors.asm",
+      "sha256": "2d21dc012d558f9333fffac11f9e38fb914c1c3919dd90d4ef9d2be6e5b728d9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-controls-config-owner-20261113/native-queued-errors.json",
+      "sha256": "a43eca06fb2173e135375ba5224e1c4c856e68147fbcb4a662fca10adf8c7e0e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-controls-config-owner-20261113/native-queued-update-owner.asm",
+      "sha256": "d17731baf7f7ed5b06f36be6279babbe5d33eef4d609823b2b11b460e88a7382"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-controls-config-owner-20261113/native-queued-update-owner.json",
+      "sha256": "dac099a6f0c62de771b566bd2b1a10416aa61cb08284ddc185e96d8d968ecd9a"
+    }
+  ]
+}

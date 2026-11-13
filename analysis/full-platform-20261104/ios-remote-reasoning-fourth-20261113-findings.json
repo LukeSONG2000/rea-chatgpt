@@ -1,0 +1,313 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Remote full-reasoning content producer and consumer; two bounded adaptive candidate groups, with decisions/stop conditions recorded before each group.",
+  "implementation_decision": {
+    "new_source_backed_product_change": false,
+    "reason": "No concrete original ReasoningThreadItem.content→CodexRenderedItem→HistoryFragment/RenderUnit consumer chain was recovered. Existing summary projection is already implemented. A full body/disclosure component must not be invented from payload presence or ID.reasoning.",
+    "preserve": [
+      "Separate content from summary.",
+      "Keep existing source-observed summary normalization and thinking-status/tool-activity disclosure.",
+      "Keep any generic synthetic HostMessage.reasoning sample explicitly independent; do not present it as Remote full reasoning restoration."
+    ]
+  },
+  "candidate_groups": [
+    {
+      "id": 1,
+      "decision": "Reuse the already closed summary getter, then inspect only originalItem access/concrete schema tag dispatch in the existing CodexRenderedItem projection domain; do not repeat the failed current-turn array filter or broad literal14 search.",
+      "stop_condition": "A concrete tag5 payload content+0 read is bound to its rendered item constructor, or the selected producer candidates only forward existing rendered items.",
+      "result": "Selected existing rendered-item-domain candidates2422f44 and2456800 do not expose a tag5 content read/constructor: first extracts/filter preexisting array items (and inspects automation metadata); second looks up and appends/replaces existing rendered values. No full reasoning producer admitted."
+    },
+    {
+      "id": 2,
+      "decision": "Inspect the known summary getter adjacent keypath family only, to establish whether a paired ReasoningThreadItem.content getter exists and whether it has an actual full-content consumer; retain source-kind/visibility uncertainty.",
+      "stop_condition": "A paired content+0 getter and concrete caller are bound, or the family is only summary/non-reasoning access. No broad reference/literal scan.",
+      "result": "The adjacent family contains verified summary keypath and distinct unrelated extraction-keypath factories; no paired reasoning.content getter or UI consumer established. Keypath typeref probe rejected malformed/indirect reference and was not treated as a type result."
+    }
+  ],
+  "confirmed_source_contract": [
+    {
+      "id": "reasoning-payload",
+      "classification": "official-artifact-observation-reused",
+      "source": [
+        "ios-remote-v608-threaditem-cases.json",
+        "ios-remote-v608-reasoning-casepath-extract.asm",
+        "ios-remote-v615-reasoning-fields.json",
+        "ios-remote-v615-reasoning-field-offsets.json"
+      ],
+      "offsets": [
+        "ThreadItem desc95f9490 reasoning tag5",
+        "casepath factory2d2fab8/extractor2d306d0 checks tag5",
+        "ReasoningThreadItem desc95f7320 metadataa60e280 offsetscontent0,id8,summary24,type32"
+      ],
+      "contract": {
+        "content": "optional Array<String>",
+        "summary": "optional Array<String>",
+        "id": "original identity field, not display content"
+      },
+      "limits": [
+        "Schema field presence does not establish display visibility or disclosure."
+      ]
+    },
+    {
+      "id": "summary-is-not-full-content",
+      "classification": "official-artifact-observation-reused-and-current-source-audit",
+      "source": [
+        "ios-remote-v615-reasoning-keypath.asm",
+        "ios-remote-v615-reasoning-caller-a.asm",
+        "ios-remote-v616-reasoning-summary-findings.json"
+      ],
+      "offsets": [
+        "24694e4→keypath7e83b48→relative-slot7e83b70→246958c→reasoning factory2d2fab8",
+        "2469524 reads summary payload+24, notcontent+0",
+        "1950720 reverse summaries/lines andMarkdown-character projection",
+        "18d04ac removes items with nonwhitespace summary from retained array",
+        "18d24a4 stores separate summary208/220;1946df4 summarytag40 consumedbyThinkingStatus"
+      ],
+      "contract": "Use the last nonempty trimmed line after comment removal and Markdown-character projection for thinking label; retained-item filtering and summary are separate outputs.",
+      "limits": [
+        "No inference that full reasoning is hidden everywhere.",
+        "No inference that summary-bearing tool-activity expansion exposes full reasoning text.",
+        "Complete item filtering is still provider/adapter supplied in independent host."
+      ]
+    },
+    {
+      "id": "candidate-a-is-not-reasoning-constructor",
+      "classification": "official-artifact-static-instructions",
+      "source": [
+        "ios-remote-reasoning-fourth-20261113-raw/rendered-item-candidate-a.asm",
+        "ios-remote-reasoning-fourth-20261113-raw/rendered-item-metadata.asm"
+      ],
+      "offsets": [
+        "2422f78→25d2e8c→CodexRenderedItem desc95d1ba0",
+        "2422f6c/70 reads input arraycount and loops existing elements backward",
+        "2422fb4..2422ffc extracts original payload into temporary",
+        "24230c4..24230fc builds automation_id/active lookup string fragments and calls2423434"
+      ],
+      "conclusion": "This selected candidate references the correct rendered-item metadata but scans already-existing rendered values. It does not close ReasoningThreadItem.content read or a rendered content constructor.",
+      "limits": [
+        "Not assigning a recovered function symbol from this probe label.",
+        "No claim whole native reasoning path absent."
+      ]
+    },
+    {
+      "id": "candidate-b-is-existing-value-cache-update",
+      "classification": "official-artifact-static-instructions",
+      "source": [
+        "ios-remote-reasoning-fourth-20261113-raw/rendered-item-candidate-b.asm"
+      ],
+      "offsets": [
+        "2456834→25d2e8c CodexRenderedItem metadata",
+        "2456900→25aed04 returns lookup result/alternative flags",
+        "2456928..2456940 obtains optional existing value through2927c0",
+        "24569ac..24569b4 copies selected value through25be724",
+        "2456a20..2456aa4 grows array and copies existing rendered element viafac40"
+      ],
+      "conclusion": "This selected candidate performs existing-value lookup/copy/append paths. Neither a concrete original reasoning tag5 branch nor content+0→rendered content writes is established.",
+      "limits": [
+        "Only this bounded candidate evaluated; no broad scan or all-callers analysis."
+      ]
+    },
+    {
+      "id": "adjacent-getter-not-a-content-proof",
+      "classification": "official-artifact-static-data-and-instructions",
+      "source": [
+        "ios-remote-reasoning-fourth-20261113-raw/summary-adjacent-family.asm",
+        "ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-selector.asm",
+        "ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-relative-records.json",
+        "ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-thunk.asm"
+      ],
+      "offsets": [
+        "246946c candidategetter→26570d4→keypath7eab1b8",
+        "relative32 slot7eab1e0→240c16c",
+        "240c16c/170/174 selects factory2d66688 then3a1504",
+        "adjacent2469258/24692bc use265fd30→7e83af0→thunk24692b0→factory2d30030",
+        "reasoning summary sole selected getter24694e4 usesfactory2d2fab8"
+      ],
+      "conclusion": "The nearest alternative getters are not established as reasoning.content. They select different casepath factories, so adjacency cannot justify substituting them for the known reasoning summary accessor.",
+      "limits": [
+        "The complete payload identity of those other factories was intentionally not expanded.",
+        "A tentative type parse from raw relative keypath record failed strict file-backed validation; no label derived from it was admitted."
+      ]
+    }
+  ],
+  "host_audit": {
+    "read_at": "2026-11-13",
+    "files": [
+      {
+        "path": "implementation/ios/Sources/NativeConversationHost.swift",
+        "sha256": "e538275e1624b017415e4c3030000f7299f93280aa19a500b94cfd872cd48e2e"
+      },
+      {
+        "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+        "sha256": "d3759fe8eeb5f3108efc2f9be259a6a696e38b1b02c7106f63729f442b82ed32"
+      }
+    ],
+    "implemented": [
+      "RemoteReasoningSummary.latest follows the already verified summary normalization.",
+      "RemoteReplayThinking is idle/thinking(summary), activity-group summaries use same projection.",
+      "RecoveredRemoteThinkingStatus renders summary/fallback thinking label; activity group disclosure exists."
+    ],
+    "not_implemented": [
+      "Raw official ReasoningThreadItem decoder/content projection.",
+      "Source-proved full Remote reasoning body history/disclosure component."
+    ],
+    "synthetic_other_consumer": "HostMessage.reasoning fixture near1440 and generic renderer near2714 are independent samples; their existence does not close Remote reasoning route."
+  },
+  "remaining_breakpoints": [
+    {
+      "id": "original-content-producer",
+      "missing": "ReasoningThreadItem.content atpayload+0 through original ThreadItemtag5 producer into CodexRenderedItem ID/kind/_content.",
+      "next_minimum_action": "Require a concrete original server-item switch or item constructor that consumes tag5; metadata accessor references and literal14 searches are exhausted weak candidates and should not be repeated."
+    },
+    {
+      "id": "full-content-consumer",
+      "missing": "Any resulting reasoning rendered item→RenderUnit/HistoryFragment branch with full text, visibility/disclosure and state lifetime.",
+      "next_minimum_action": "Once producer is bound, follow only its actual kind/content and retained-item filtering path; ordinaryMarkdownPart name alone is insufficient."
+    },
+    {
+      "id": "haptics",
+      "missing": "No directly bound full-reasoning action owner exists, hence no source-backed disclosure gesture/haptic trigger or preference read.",
+      "next_minimum_action": "Inspect an actual full-content control callback only after its consumer exists. Do not add haptics to synthetic disclosure."
+    }
+  ],
+  "diagnostics": [
+    {
+      "probe": "Tentative adjacent keypath typeref parse",
+      "error": "ValueError: not file-backed: -0x64256178",
+      "effect": "No inferred type/name accepted; keypath actualrelative thunk target independently decoded from slot+40. No reader changes or broad fallback."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "product_edits": false,
+    "builds": false,
+    "UI_or_device_operations": false,
+    "official_app_execution": false,
+    "network": false,
+    "new_haptic_claim": false
+  },
+  "stop_condition": "Both candidate groups reached their recorded stops. No justified new product modification; preserve precise content-producer and consumer gaps.",
+  "raw_inventory": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-helper.asm",
+      "bytes": 577,
+      "sha256": "8484a93ba39cebbcb1007333e46e7bd24cc4aa4f4900ae24fea086319f159a00"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-helper.json",
+      "bytes": 929,
+      "sha256": "38a9f571b0b731ef980a20dbde07ec8b76552bd00810275f31501b5d9d1bc2b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-relative-records.json",
+      "bytes": 9855,
+      "sha256": "7d421ffc7c216249cecd1d015bd51111ff5dc0daf36cd17e7ba97e223788fac6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-selector.asm",
+      "bytes": 549,
+      "sha256": "a4ca966c93dd42627538e093816a924b41f08ab3048706cb1bc60238f287ee6f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-selector.json",
+      "bytes": 912,
+      "sha256": "eae84934fc1eea4c2d887571fbc15c206868ac7b7163fd04dc717ebe89158a72"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-thunk.asm",
+      "bytes": 424,
+      "sha256": "e1d195d0acdea98a6334c6f8af287c4f364500f6ed3f108116f0ecd2791c88bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-keypath-thunk.json",
+      "bytes": 1012,
+      "sha256": "a596014e46817e9d8a007fdaa012208b7de97d820445f5941860c53d4890697e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-other-thunk.asm",
+      "bytes": 333,
+      "sha256": "242ad8fae18ed0699247fa8d6cc170f584fc0dc934262473b367b64446f15db0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-other-thunk.json",
+      "bytes": 895,
+      "sha256": "da9ca63940aad4fa148b40933aaed9559f8c249ab48e6f60aa0534087ffd7557"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-schema-extraction.asm",
+      "bytes": 1987,
+      "sha256": "e4a959a62970ad57b4ca091ff7e203890a2ae4b0cfbcdff197f480407abb4909"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/adjacent-schema-extraction.json",
+      "bytes": 1376,
+      "sha256": "7829801a1d32c50937992359297f9725b2d2c677d465836912318e7c9cbe6782"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/candidate-type-accessor-target.asm",
+      "bytes": 441,
+      "sha256": "e9b798a589e657af8c06c03c364f94d6aeb77c2a8a48916780c68546bf54f63a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/candidate-type-accessor-target.json",
+      "bytes": 895,
+      "sha256": "69ceb0de149b09e365b117bad352fe5352791534e1bef7cd57762d3a8a264bb7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/casepath-adjacent-factory.asm",
+      "bytes": 1510,
+      "sha256": "a78a172673bd7a2f4db5d3736637a6c3b2c6fa08632f7edb0344cff30162c5e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/casepath-adjacent-factory.json",
+      "bytes": 1405,
+      "sha256": "e9e5cd1debf43ccbff3e18941521fd2859bf5d558e0a84688c9d63980280a685"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/rendered-item-candidate-a.asm",
+      "bytes": 8170,
+      "sha256": "cec625d6895de96d0e342ecb5bd87ffdb1fd435cb8b74edc9cb5c8dc647f351c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/rendered-item-candidate-a.json",
+      "bytes": 3189,
+      "sha256": "284dada91690a252c243e384432e4beff89289f975ce2e0538fb4c2efc674545"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/rendered-item-candidate-b.asm",
+      "bytes": 11386,
+      "sha256": "5416b4147608e989ee7d5ef28acf4b43e279825ef6e446ab64319aaa55fddc97"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/rendered-item-candidate-b.json",
+      "bytes": 3723,
+      "sha256": "89d335d6648f4b36a9dbfb5ad1e6f5eae0f55ef512e6780eda1713d4fb4e1de6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/rendered-item-metadata.asm",
+      "bytes": 653,
+      "sha256": "b7ad2f4962574b199cab0d2829f4a0924c7e6e27706e72d1192521fa1a6fdd70"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/rendered-item-metadata.json",
+      "bytes": 912,
+      "sha256": "b2ad9f7d6d51385070a3993196ccd32c2e9c818928a8d79179e57c88adea744d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/summary-adjacent-family.asm",
+      "bytes": 19509,
+      "sha256": "d01f0887f0a4812fbe546110ba1bff1f5c07a3227c6f11b6581afd029edf13e4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-fourth-20261113-raw/summary-adjacent-family.json",
+      "bytes": 11708,
+      "sha256": "0bd300e1527af377adb5c9b3504d32b651b8f6c8796a6c99ad61a01ad7efdf1a"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Module1 footer shared inset formula and actual SceneCornerConfiguration parent owner; two bounded candidate groups only",
+  "status": "partial",
+  "authority": "official-artifact-observation-static; independent arithmetic replay separately labelled",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "corrected_prior_unknown": {
+    "reports": [
+      "ios-shell-footer-fourth-20261113-findings.json",
+      "ios-shell-parent-current-20261113-r2.json"
+    ],
+    "was": "Actual phone scene-corner footer formula unresolved; compact max(safeArea.bottom,16) used globally as host approximation",
+    "now": "Finite phone/noncompact formula and typed provider callback into History owner closed. Full platform provider/private flag/display-edge correction still partial. Preserve prior reports."
+  },
+  "candidate_groups": [
+    {
+      "group": 1,
+      "question": "Close129d908 actual scalar helper inputs and finite formula",
+      "result": "verified-static",
+      "input_provenance": [
+        "129d924->6f16ac obtains owner.view;129d938 window; window nil falls back129d94c contentContainer getter then window",
+        "129d96c traitCollection;129d97c verticalSizeClass;4f41cc moves raw result into x22; x22==1 compact branch",
+        "139a15c moves x19 window to x0, tails7c718e0 safeAreaInsets; d2 is bottom;1399dac copies d2->d8",
+        "129d9a4->77123b0->26c444 tests current device classification byte==1, matching existing phone predicate evidence",
+        "129d9b0/9b4 reads typed sceneCornerConfiguration storageadb9670; d8,d9,d10,d11 receive four CGFloat fields in order",
+        "129d9d8 d0=24;129d9d0/d4 d1=40;d2=window.safeAreaInsets.bottom;d3..d6=topLeft,topRight,bottomLeft,bottomRight; tail76103b0"
+      ],
+      "finite_formula": {
+        "compact": "max(window.safeAreaInsets.bottom,16)",
+        "phone_noncompact": "r=max(bottomLeftRadius,bottomRightRadius); p=(r>0 ? min(40,max(24,r-24)) : 24); return max(p,window.safeAreaInsets.bottom)",
+        "nonphone_noncompact": "window.safeAreaInsets.bottom==0 ?24:38",
+        "both_source_and_content_windows_nil": "38",
+        "owner_view_nil": "source traps; current host must not copy this trap"
+      },
+      "helper_proof": [
+        "76103b0..3b4 max(d5,d6)",
+        "76103b8..3c0 r>0 and lower<upper controls concentric branch",
+        "76103d8 subtract lower24;3dc/3e0 lower clamp;3e4/3e8 upper40 clamp",
+        "76103ec..3fc max with d2 safearea.bottom",
+        "76103c4..3c8 no-radius branch max(lower24,safearea.bottom)"
+      ],
+      "important_difference": "This sidebar helper takes max of the two bottom radii; Remote composer metrics in prior1993544 take min. Do not reuse Remote min-bottomRadius or min of all four corners for sidebar."
+    },
+    {
+      "group": 2,
+      "question": "Prove History scene configuration producer/callback and footer update lifecycle",
+      "result": "verified-static-parent; platform equivalence partial",
+      "typed_owner": [
+        "ObjC ivar sceneCornerConfiguration slotadb9670 is32B alignment8 (four CGFloats), not Optional",
+        "Prior strict metadata975db74 fields topLeftRadius,topRightRadius,bottomLeftRadius,bottomRightRadius; all CGFloat",
+        "History lazy provider getter12973bc uses class returned by7587908:0xad1c350 = SwiftUIToolbelt.SceneCornerConfigurationProvidingView",
+        "12973e8 allocates weak owner context;26ca18 writes weak self at context+10",
+        "1297404..7414 supplies callback135e9b4 and context to757c988; constructor writes supplied callback/context at storageb060c60",
+        "135e9cc->1bd5b4 preserves incoming d0,d1,d2,d3 as d11,d10,d9,d8;135e9e0..9f0 stores those exact four scalars into History sceneCornerConfiguration",
+        "135ea00..ea0c reloads weak owner and invokes1299ab4",
+        "1299ab4 reads newChat bottom/leading named constraint slotsadb9658/adb9660;1299af8 calls129d908 once; negative bottom +positive leading set only if changed"
+      ],
+      "provider_reuse": [
+        "Existing v519 native providing-view evidence757cb78: missing view.window/windowScene returns without new callback; does not send a synthesized zero",
+        "757cbc8 calls7610404 scene measurement; compare cached four scalars then invokes supplied callback only on change",
+        "Same actual class/constructor now bound to History, not inferred from similar feature names"
+      ],
+      "platform_measurement_limits": [
+        "Original7610404 consumes UIWindowScene and keyWindow, full screen-edge correction/display radius and internal iOS26 flag remain only partially recovered",
+        "Current fullWindowCornerRadius public same-window snapshot is independent adapter; it can supply bottom-left/right pair under existing explicit full-window admission, but must not claim original platform provider parity",
+        "Cold initial stored History radii/default assignment and every provider observation registration not inspected; no zero or nil policy invented",
+        "Missing-window native provider retains last value by not calling owner; do not overwrite scoped last valid config with guessed new radii."
+      ]
+    }
+  ],
+  "current_host": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbols": [
+      "NativeConversationList.viewDidLayoutSubviews",
+      "installSourceChrome"
+    ],
+    "difference": "Global max(view.safeAreaInsets.bottom,16) uses compact branch on ordinary noncompact phone; source has separate actual scene-corner calculation. Both bottom/leading shared relationship already restored.",
+    "other_path": "implementation/ios/Sources/NativeSidebarContainer.swift fullWindowCornerRadius currently measures all four but keeps only min, losing required bottom pair."
+  },
+  "safe_implementation_decision": [
+    "Introduce a pure source-transcribed footer-inset resolver with explicit window presence, compact vertical class, phone classification, safearea.bottom and bottomLeft/right scene inputs. Reject unsupported/nonfinite input in host rather than copy target traps.",
+    "Retain same resolved value for positive safe-area-leading and negative contentContainer-bottom, as previously source-proved.",
+    "For current admitted full-window iOS26 host, retain measured bottom-left/right from the same window.cornerConfiguration save/set(.containerConcentric)/effectiveRadius/restore mechanism already used for shell radius. Feed pair through an explicit native adapter instead of min of all four.",
+    "Do not use sidebar local width310 as screen measurement; source provider is windowScene/keyWindow based.",
+    "Retain existing host fallback boundary when scene provider unavailable, explicitly labelled, rather than pretend zero config was the recovered initial assignment.",
+    "No row spacing, footer44/48height or profile visibility changes authorized by this formula."
+  ],
+  "haptics": "No new haptic caller proven; no feedback added. Only margins and configuration owner in these selected windows.",
+  "validation": {
+    "static": true,
+    "independent_finite_arithmetic_cases": 252,
+    "official_target_execution": false,
+    "runtime": false,
+    "product_modified": false,
+    "builds": false,
+    "device_operations": false
+  },
+  "bounded_stop": {
+    "groups": 2,
+    "scope": "Getter/helpers and actual lazy provider/callback; no broad/full native sweep",
+    "reader_limits": "ADRP/LDR64 search restricted1296000..12a0500 and incomplete; no absence claim",
+    "tool_note": "First llvm-objdump --macho ignored selected range and ran too broadly; owned process terminated promptly before output was saved. Retried bounded -d range. No target process affected."
+  },
+  "raw_evidence": {
+    "ios-shell-footer-fifth-20261113/callback-float-capture.asm": "43428437084d4597324d206b17b7884d49cc29ce585f7b430d0b82d42a3011b0",
+    "ios-shell-footer-fifth-20261113/callback-float-capture.json": "08848dc8d38c112c8a6e2cc9f39a6fe84aef089de41934353883e18adc1f6e11",
+    "ios-shell-footer-fifth-20261113/concentric-inset.asm": "20e10c02f700bc13862f930cd237e56fe221e5d299562c81d951f8280a694cd4",
+    "ios-shell-footer-fifth-20261113/concentric-inset.json": "7febb045980c807c818eece909ba82e3ced112c8f5376d4ac1b788cf5f6ba1e2",
+    "ios-shell-footer-fifth-20261113/device-condition.asm": "85d1afecb6f8ede85657e48babc123ba23ccf7769bb9e18ffdce73217a04fd5f",
+    "ios-shell-footer-fifth-20261113/device-condition.json": "3279996c67855bb99905a162eb052272cc84851a15de2c12a0629ab2d07122c6",
+    "ios-shell-footer-fifth-20261113/finite-arithmetic-replay.json": "4bea15912f8ecba4666dd0d36e04db45be6f2e4bbbdadba9af3d4cc968d8e887",
+    "ios-shell-footer-fifth-20261113/footer-update.asm": "3e16c2392370baa62bc07cbf2c541ce974b87c4fcfda0a62d8294438b6e5db36",
+    "ios-shell-footer-fifth-20261113/footer-update.json": "569a591476b96d3ac49e5f8409d9c07fa8108184f27b7f80316fb018807481b8",
+    "ios-shell-footer-fifth-20261113/inset-getter.asm": "638bd9b74d2d792c9424749e79f345125ab206ba4fe014ae929ed163cbe34ba6",
+    "ios-shell-footer-fifth-20261113/inset-getter.json": "6d162f6ed41c21421230d5e430b213d567bcaffad9f6dd456aed89e0e00f6600",
+    "ios-shell-footer-fifth-20261113/inset-helpers.asm": "f8dd3dbb77102e072182a81cb23d8fc49aff710510adbed0dd1daecc29134a88",
+    "ios-shell-footer-fifth-20261113/inset-helpers.json": "53d29e7e49cb2f10b320f935bc3d330b0951ae88da4a23a422cf7825f2d818e7",
+    "ios-shell-footer-fifth-20261113/provider-capture-copy.asm": "7df370ad18f41824c4bbcba64b56cb15136b55221741f0234295c11e57782a61",
+    "ios-shell-footer-fifth-20261113/provider-capture-copy.json": "8932dd396ff09417801e6f46fdf8c0c85785f346ed3e48d18e22b6b3891fdbf6",
+    "ios-shell-footer-fifth-20261113/provider-capture.asm": "0c1878b81640d2d4283b600d994bca30da586ade3d7c5e2c7c0b5129d20bc0a6",
+    "ios-shell-footer-fifth-20261113/provider-capture.json": "857ee6e0662a53019f200d22a581a5326eeb30b55c22e9107d87dad1a89b6216",
+    "ios-shell-footer-fifth-20261113/provider-class-identity.json": "550340bbaeabc27974950d9ab181e7c17b0ee7a4d7840dffb7f5559575b0c511",
+    "ios-shell-footer-fifth-20261113/safearea-helper.asm": "10079cf9f4b2ca70828957052d2739dc381b618c9261f02f38abcfa153af5657",
+    "ios-shell-footer-fifth-20261113/safearea-helper.json": "c8bcce5f5d2aea47d6f2debfd8f8ecea9e2733732264cb91c0c2746ab0439ca3",
+    "ios-shell-footer-fifth-20261113/scene-configuration-selected-metadata.json": "be4b3c91b2b8245d3ae65750b19ca1de3d7431496ddcd1a63717d627038e190c",
+    "ios-shell-footer-fifth-20261113/scene-field-bounded-refs.json": "d17d32845269d9768d8d154a9b11f9e2dd4a8498c1144463f31ae085e54b25e3",
+    "ios-shell-footer-fifth-20261113/scene-provider-callback.asm": "9c218b1e3b5e94ddd211faecc82fd4f69a7869817f23bf8081c4aa4af636d310",
+    "ios-shell-footer-fifth-20261113/scene-provider-callback.json": "275815de5caacd58cf04e3a5d38ee6c6f5ce52982e54c7441b6fe33acfb5bd9d",
+    "ios-shell-footer-fifth-20261113/scene-provider-constructor.asm": "fbd14826096504498406d70e5fc069523a121ecf026c2cf3bd0093abf9cda925",
+    "ios-shell-footer-fifth-20261113/scene-provider-constructor.json": "cca5663a18309a85158875264ffcf5845f7f89a12f143b54167bb0f338787d98",
+    "ios-shell-footer-fifth-20261113/scene-provider-getter.asm": "286837eabc4bc8ddbba22f3ef56918bf43e73b5234262be93a0c3ac3efdfb062",
+    "ios-shell-footer-fifth-20261113/scene-provider-getter.json": "69e1c6fdb09db0b397175a137078233ec98606ab499b9c45d640bac9aba9c7ae",
+    "ios-shell-footer-fifth-20261113/scene-provider-type.asm": "8b4d5430132ff2fa3dac210aa94545ae911644404f8d947ea560c3f44a8e68db",
+    "ios-shell-footer-fifth-20261113/scene-provider-type.json": "01c39df4193bb1cdd506d6775569c96df81c9ebbb091583167ebbb866c1b7375",
+    "ios-shell-footer-fifth-20261113/scene-provider-usage.asm": "4061cf22c45232414bc13ef6852d821a2e40114ee7317749bd19c02e6ac4801e",
+    "ios-shell-footer-fifth-20261113/scene-provider-usage.json": "5197c45c0eaaab67c2606256219bceba453f9aa24521453b543cce17bb93b499",
+    "ios-shell-footer-fifth-20261113/trait-result-assignment.asm": "35a912ac07033ce9e30490c69a096dcc2d429e447819ece4cf256ea3a11c9a15",
+    "ios-shell-footer-fifth-20261113/trait-result-assignment.json": "9d4d5d9008ca1cf95d5f728dc8c0ad7a1cf71eeee35edc2eedd598f47cc327a1",
+    "ios-shell-footer-fifth-20261113/view-read-helper.asm": "2b65e5571fe4945bdf674d637aadfa5b90eee5ddabc9668fbb16e7403c59253e",
+    "ios-shell-footer-fifth-20261113/view-read-helper.json": "53ed3f34ee94207bbf8c8beffcace687864e427963dd970797a63a4ffbceaafc",
+    "ios-shell-footer-fifth-20261113/window-read-assignment.asm": "78c9da195a4e8158bcfacf19c85fe87dee41905c12530a9c56c28d777ecefb72",
+    "ios-shell-footer-fifth-20261113/window-read-assignment.json": "950d76844d10de64093b54f103461793ec795bf2e5eb6734cba6169d89dc0932"
+  }
+}

@@ -68,6 +68,11 @@ class MainActivity : ComponentActivity() {
     override fun onDestroy() { saveViewportOnPause = null; retireComposerOnPause = null; harness?.close(); super.onDestroy() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (intent.getBooleanExtra("remote", false)) {
+            startActivity(android.content.Intent(this, AppShellActivity::class.java).putExtras(intent))
+            finish()
+            return
+        }
         harness = runCatching { LocalHarness(java.io.File(filesDir, "harness-pairing.json")) }.getOrNull()
         val store = getSharedPreferences("offline-fixture-account-v1", MODE_PRIVATE)
         val catalogResult = runCatching { ConversationCatalog(filesDir) }
@@ -220,6 +225,10 @@ class MainActivity : ComponentActivity() {
                 Surface(Modifier.fillMaxSize().semantics { testTagsAsResourceId = true }) {
                     Column(Modifier.safeDrawingPadding().imePadding().padding(16.dp)) {
                         Text("REA · Native Android", style = MaterialTheme.typography.titleLarge)
+                        TextButton(onClick = {
+                            leaveComposer()
+                            startActivity(android.content.Intent(this@MainActivity, RemoteListActivity::class.java))
+                        }, modifier = Modifier.testTag("open-remote")) { Text("Codex") }
                         Text(harness?.let { "Paired local harness · ${it.mode}" } ?: "Offline · no harness", modifier = Modifier.testTag("harness-state"))
                         TextButton(onClick = { leaveComposer(); catalogOpen = true }, enabled = catalog != null,
                             modifier = Modifier.testTag("conversation-list-button").semantics { contentDescription = conversation }) {

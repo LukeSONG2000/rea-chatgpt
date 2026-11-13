@@ -1,0 +1,33 @@
+{
+  "implemented": [
+    "Independent per-command InProgress/Completed/Failed/Declined/Unknown",
+    "Optional exit code and duration in command panel",
+    "Snapshot persistence and old-schema defaults",
+    "Unknown status preserved as Unknown rather than success",
+    "Blank output body omitted",
+    "Wrapping metadata row"
+  ],
+  "source": "android-command-details-20261111-source.json",
+  "independent": [
+    "Synthetic lifecycle and timings",
+    "Chinese labels are host translations; English strings traced to artifact resources",
+    "Existing inline disclosure and 240dp output area remain host adaptations"
+  ],
+  "missing": [
+    "Official command-detail navigation/parent container",
+    "Exact renderer options/material and command normalization",
+    "ANSI styling",
+    "Selection gesture validation",
+    "iOS counterpart not changed this batch"
+  ],
+  "build": "passed",
+  "installation": "OnePlus ONEPLUS_A6003 app and tests installed",
+  "tests": "4 instrumentation model tests passed",
+  "hashes": {
+    "implementation/android/app/build/outputs/apk/debug/app-debug.apk": "f92cb958a7529a6ebd1ae7456aa881b13a946aa090e184e308c5517c87d03b7f",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteCommandOutput.kt": "7421b7682dd481f400197e219d41a3ce879df3e10a469bae8e56f2c311789127",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteConversationModel.kt": "b04e2d0bd0cf151a6b5d786ca028779bb8cd7c0b51bad2a25d966522a439771d"
+  },
+  "ui_test": "OnePlus Chinese light commandOutputJourney passed on status build; expand/scroll/copy/task isolation/return.",
+  "screenshot": "android-command-status-20261111-returned.png"
+}

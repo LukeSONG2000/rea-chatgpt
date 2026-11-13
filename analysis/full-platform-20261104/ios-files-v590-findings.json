@@ -1,0 +1,41 @@
+{
+  "batch": 590,
+  "status": "partial",
+  "evidence": [
+    "ios-files-v589-findings-evidence.json",
+    "ios-chat-v574-findings.json",
+    "ios-diff-v588-findings.json"
+  ],
+  "source_observation": "iOS293 directory VM owns openFileHandler. Chat attachments already have a verified native QuickLook adapter for image/PDF and unsupported states. Official Remote-to-preview owner remains unknown.",
+  "host_gap": "Remote preview interface returns UTF-8 String and directory metadata is projected into a diff record. This prevents binary resource previews.",
+  "decision": "Use a scope-bound full-file byte resource provider for both directory and diff entry points. Retain existing text snapshots and resource ownership, accept file ID directly, and exercise native image/PDF/document preview.",
+  "independent_adaptations": [
+    "Binary resource envelope and scoped synthetic provider",
+    "Generated PNG/PDF/RTF vectors and unsupported/missing file records",
+    "QuickLook capability check and failure metadata"
+  ],
+  "unknowns": [
+    "Official Remote preview controller and resource service wiring",
+    "Exact file row glyphs, layout and wide-screen navigation",
+    "Physical-device and Android presentation"
+  ],
+  "validation": {
+    "foundation": "passed; ios-files-v590-text.log",
+    "formats_ui": "r2 Chinese light and English dark passed",
+    "r1_failure": "QuickLook overlay controls became hidden after image content loaded. Test now waits for native image canvas and reveals controls through its existing tap interaction. Product code unchanged.",
+    "visual": "Inspected PNG before/after pinch, two-page PDF before/after scroll, RTF light/dark and unsupported/missing directory feedback.",
+    "shared_regression": "r3 five cases passed; Chinese/English directory and diff recovery, missing resource, dismissal, retry, cancel and restart"
+  },
+  "resource_contract": {
+    "request": "scope(hostID, threadID), fileID and request UUID",
+    "response": "id, filename, complete Data bytes",
+    "snapshot": "Changes menu captures latest-turn file snapshot at entry. Directory metadata contains no content payload.",
+    "ownership": "Unique temporary file released after preview dismissal; invalid filename and failed write retain no temporary directory.",
+    "boundary": "Synthetic provider is replaceable. Official Remote preview controller and server contract remain unresolved."
+  },
+  "implementation_sha256": {
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "c1a3dc3a7461fe07a8a7a1afaa77c5ba5864caec28d8097a6281a6b56f58e037",
+    "implementation/ios/Sources/RemoteWorkspacePresentation.swift": "85d8cfb9dbb5fe499e5cf244b8e54a543d2bcef2d7c1afbdeda2181b6cce1ffb",
+    "implementation/ios/Sources/NativeConversationHost.swift": "c721c6361ae8539eedb8d86a953ef2a618c8464b3213295151d580ec7a333f3c"
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two concrete consumer extensions only: actual Remote markdown-kind item fragment and inline subviews wrapper. No summary getter re-investigation, full scan, provider setup or product operation.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused": [
+    "ios-remote-coordinated-parent-current-20261113.json",
+    "ios-remote-message-parent-current-20261113-r3.json",
+    "ios-remote-reasoning-fourth-20261113-findings.json",
+    "ios-remote-v608-reasoning-content-findings.json",
+    "ios-remote-v476-findings.json",
+    "ios-remote-v477-findings.json",
+    "ios-remote-v476-inline-blocks.json",
+    "ios-remote-v558-kind-dispatch.json"
+  ],
+  "implementation_decision": {
+    "new_source_backed_product_change": false,
+    "immediately_implementable_complete_reasoning_or_DIL_branch": false,
+    "reason": "Neither exact reasoning.content producer into rendered presentation nor actual widget JSON -> InlineDILView renderer/action consumer closed. Known inline type presence must not be promoted to functional recovery. Preserve unsupported typed content instead of silent string flattening.",
+    "preserve": "Existing thinking summary and tool activity expansion remain independent from full reasoning; no new summary work or invented disclosure/haptics."
+  },
+  "candidate_groups": [
+    {
+      "id": 1,
+      "entry": "Actual Remote item markdown kind dispatch1a36e14",
+      "stop_condition": "A concrete typed reasoning.content source reaches this carrier, or the selected branch only supplies already-prepared inline/cache values.",
+      "result": "The selected branch reads pre-existing+0x88 array/count. Nonempty prepares inline conditional carrier; empty delegates1a37fb0. Its generic type includes cached markdown and inline DIL/writing, but no original ThreadItem.reasoning.content read occurs here."
+    },
+    {
+      "id": 2,
+      "entry": "Captured inline callback1a3c830 and its direct helper/type arguments",
+      "stop_condition": "Actual widget JSON/isStreaming -> InlineDILView constructor/action found, or only generic layout wrapper.",
+      "result": "This callback is a SubviewsCollection layout wrapper, applying leading maxWidth infinity and horizontal-padding carrier. No widget payload switch/renderer/bridge callback consumer established. Stop; do not treat it as full inline widget renderer."
+    }
+  ],
+  "findings": [
+    {
+      "id": "markdown-inline-conditional-boundary",
+      "status": "verified-scoped",
+      "classification": "official_artifact_static",
+      "conclusion": "The known markdown-kind branch checks array count at item/context+0x88. The nonempty branch prepares an inline content carrier; empty fallback reaches1a37fb0. This consumes existing prepared presentation state, not the raw reasoning schema.",
+      "source": [
+        "1a36e14 ldrx27,[x21,+0x88];1a36e18 reads arraycount+0x10;1a36e1c empty->1a3731c",
+        "1a36e54..64 writes preparedarray and callbacks;1d9bea0 supplies1a3c830",
+        "1a3732c ->1a37fb0",
+        "1d9e348 resolves exact generic type record7e120b8",
+        "7e120b8 includes ConditionalContentStorage,CachedMarkdownBlockStack,ForEach<AssistantInlineBlock>,InlineDILView,WritingBlockCard/Body,AsyncQuestionTranscript"
+      ],
+      "limit": "x21+0x88 field name/type producer not positively mapped. Generic symbolic inventory is not a full generic tree nor proof every included branch executes. Raw reasoning tag5/content+0 has no consumer bound here."
+    },
+    {
+      "id": "inline-callback-is-layout-not-payload-renderer",
+      "status": "verified-scoped",
+      "classification": "official_artifact_static",
+      "conclusion": "Captured callback1a3c830 builds an existing SubviewsCollection value inside a flexible frame and horizontal padding wrapper. It does not itself dispatch AssistantInlineBlock.widget JSON.",
+      "source": [
+        "1a3c848 ->6f4204 preservesinput/outputonly",
+        "1a3c874 importedAlignment.leading",
+        "1a3c880 ->158a9c supplies FlexFrameLayout maxWidth=+infinity with other register-supplied dimensionsnil",
+        "1a3c898 importedEdge.Set.horizontal;1a3c8bc ->1d6a8f4 writespaddingcarrier",
+        "typerecord7e11d58 resolvesModifiedContent<SubviewsCollection,FlexFrameLayout>"
+      ],
+      "limit": "Padding amount values in d8..d11 are not established by this bounded function; no numeric layout patch. No JSON parsing, widget rendering/event action or native bridge established."
+    },
+    {
+      "id": "inline-payload-types-reused-not-new-recovery",
+      "status": "verified-metadata-only",
+      "classification": "official_artifact_metadata_and_existing_evidence",
+      "conclusion": "AssistantInlineBlock has markdown(id:Int,content:String), widget(id:Int,value:JSONValue) and writing(id:Int,value:CodexRemoteWritingBlock). InlineDILView stores widget,isStreaming,colorScheme,valdiComponentCache,viewModelEntry. These declarations are payload boundaries, not runnable integration.",
+      "source": [
+        "descriptor95adf4c and95adf24 fields ininline-dil-fields.json",
+        "existingios-remote-v476-inline-blocks.json exact enumcase payloads",
+        "originalrendered_content typeref8f303c0 isIgnoredHashable<String>, distinctfrominlinewidgetJSON"
+      ],
+      "limit": "These types were already known in476/477; this report does not count them as newly restored UI. Original full reasoning source and DIL bridge/cache/action construction still unclosed."
+    }
+  ],
+  "remaining_breakpoints": [
+    {
+      "edge": "ReasoningThreadItem.content payload+0 ->CodexRenderedItem._content/kind/ParsedAssistantMarkdown",
+      "missing": "Concrete original ThreadItemtag5 constructor/switch or typed parser producer. Prior metadata/accessor and summary-adjacent probes are not sufficient.",
+      "next_minimum": "Require actual original-item conversion callsite. Do not repeat summary normalization or assert reasoning hidden."
+    },
+    {
+      "edge": "Preparedinline array/context+0x88 ->AssistantInlineBlock.widget ->CodexRemoteInlineDILView",
+      "missing": "Specific enum payload dispatch and InlineDILView constructor binding widget JSON,isStreaming,cache/viewModelEntry.",
+      "next_minimum": "Trace actual inline parser/renderer child supplied to the prepared carrier, not the Subviews wrapper."
+    },
+    {
+      "edge": "CodexRemoteInlineDILView ->Valdi component and user actions",
+      "missing": "Actual component definition/schema, lifecycle,action callback owner and capability boundary.",
+      "next_minimum": "Only after actual widget construction found; do not insert a generic JSON dump or pretend current Valdi cache field is a complete runtime."
+    }
+  ],
+  "diagnostics": [
+    {
+      "probe": "inline-content-type code-window attempt",
+      "error": "ValueError: code window outside __text at7e11d58",
+      "handling": "No executable semantics derived. Independent strict data-relative type reader subsequently decoded record7e11d58; preserved original empty/non-code raw for audit."
+    }
+  ],
+  "validation": {
+    "consumer_groups_used": 2,
+    "static_only": true,
+    "product_modified": false,
+    "build_or_device": false,
+    "official_app_execution": false,
+    "network": false,
+    "new_haptic_claim": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-remote-reasoning-sixth-20261113-raw",
+  "raw_inventory": [
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-block-consumer.asm",
+      "bytes": 10432,
+      "sha256": "6c312559157dea47c2fe4dcc9aa4e6fcef9e3e6215025e98ad3342409770a713"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-block-consumer.json",
+      "bytes": 8817,
+      "sha256": "fb281c3cfefd538716ed8f66510b1268637427c5da9db8164234751206bd2a20"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-builder-field.asm",
+      "bytes": 465,
+      "sha256": "0273ef75a53531770988c429789b1dff29fba3d22b3bbc03ce857d8268768102"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-builder-field.json",
+      "bytes": 929,
+      "sha256": "55693a439d7dd6b5604801de6e51dee940ac29ce9df3c1335130ad98485805a7"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-builder-setup.asm",
+      "bytes": 542,
+      "sha256": "2428da5d7182d45d5726135fdc7e979233c9d3056844242cd039c2a31aaeab7d"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-builder-setup.json",
+      "bytes": 923,
+      "sha256": "d4d64879662812d6088934d370b34e6858a1ef6d2ca6854b209d8b5a2e9212fc"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-content-type.asm",
+      "bytes": 109,
+      "sha256": "5ebee393975aa631c160a7aba768d937818fedf1a5996bf132217051f039fa99"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-dil-fields.json",
+      "bytes": 1146,
+      "sha256": "d6a465e2e5aa083fe179675f3e22bcfe760ca18c26fcd1c158415b98417d8fb8"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-inner-type.json",
+      "bytes": 1085,
+      "sha256": "4aceaff65faac6fa926467cbc80c6ac2a3d13d40e4262f5da59f34cdbcdda02f"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-size-helper.asm",
+      "bytes": 580,
+      "sha256": "10457e529add329a98a073c50d7c6d730568061cd2293542fac1c122ff3949b3"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/inline-size-helper.json",
+      "bytes": 912,
+      "sha256": "72be3d3ebcf5b852f068d2e3243f7a52d6a98a3180947660ccf9471f1f7e188a"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-content-capture.asm",
+      "bytes": 552,
+      "sha256": "70ad936a82f2de406712317a581c67dc62dcfd36432f4e535144c41fe5ec67f0"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-content-capture.json",
+      "bytes": 912,
+      "sha256": "b4b64447248a1ea5b8218f0b2e861f0b672370bb514a1026c93eddb17cb55c8c"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-content-carrier.asm",
+      "bytes": 815,
+      "sha256": "47c986e8cb9056d2540a2bdd199c272ee517f886778b4c2f8dbaa0c4da738e93"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-content-carrier.json",
+      "bytes": 912,
+      "sha256": "10b5cb009066a5826d34e15f42f0c8776a87f41592624530f26e77a2cbb2af09"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-empty-and-return.asm",
+      "bytes": 1431,
+      "sha256": "6ce367a9edeccb3f563f4cd871da006cefaf6213bfcd65e17a173355c49c6f44"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-empty-and-return.json",
+      "bytes": 1667,
+      "sha256": "d488ed1c406791e90290e6b144609625087b59e1caf589cb8af9b0431dccc175"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-fragment-consumer.asm",
+      "bytes": 15685,
+      "sha256": "6ea837e73ea3d13e2cd50d950e91aa2dab7efab70faa6746ea0b99e2e68eefc2"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-fragment-consumer.json",
+      "bytes": 9563,
+      "sha256": "4916fcbd584e444a231f723db59b50e72b45121161250a18772f1b35a67c9947"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/markdown-fragment-type.json",
+      "bytes": 3380,
+      "sha256": "e15bd4a8ecc107851858fcbfd775e419f633ada326ab8a1541682ea118bb17bc"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/type-8f303c0.json",
+      "bytes": 750,
+      "sha256": "7d0527439d2889bbaba0cc9a6cf49323fbf06c3fa4a7ed379d8d1f54fd30d4fa"
+    },
+    {
+      "path": "ios-remote-reasoning-sixth-20261113-raw/type-8f329da.json",
+      "bytes": 750,
+      "sha256": "ebbf7b61e2ee23ad3662eade08f0f4946870da5609ba9e6821afb641b0c8fe88"
+    }
+  ],
+  "stop_reason": "Both exact consumers reached stop boundaries. Return precise missing producer/child-renderer calls; no broader search or synthetic recovery."
+}

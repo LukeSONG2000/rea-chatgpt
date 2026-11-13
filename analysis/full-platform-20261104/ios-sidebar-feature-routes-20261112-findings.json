@@ -1,0 +1,214 @@
+{
+  "status": "partial",
+  "scope": "iOS 1.2026.293 sidebar feature route inventory, prioritized native fileLibrary browse branch",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "shipped-artifact static metadata + bounded ARM64 + strict generic-tree decoding; no target execution",
+  "decisions": [
+    {
+      "conclusion": "Do not route sidebar fileLibrary directly to chatgpt_library Valdi based on module presence. The frozen artifact has distinct native fileLibrary and imageLibrary routes and a native FileLibrary screen builder.",
+      "status": "observed route inventory; actual sidebar consumer dispatch partial",
+      "evidence": [
+        "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/scoped-native-metadata.json",
+        "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/builder-provider.asm",
+        "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/provider-builder-type.json"
+      ]
+    },
+    {
+      "conclusion": "BrowsePage is a PagedRequestResponse DTO (items,next,favoriteEvidenceByFileID), not a SwiftUI page. Native page owner is ChatGPTFileLibrary.RootView.",
+      "status": "observed",
+      "source": [
+        "descriptor 0x956c5cc",
+        "View descriptor 0x956e354",
+        "View conformance 0x7d30f10"
+      ]
+    },
+    {
+      "conclusion": "There are separate refreshed and legacy native browse branches. An offline host can explicitly choose a source-proven branch with fixture inputs. It cannot claim the original account experiment assignment.",
+      "status": "observed branches; live assignment unknown",
+      "source": [
+        "0x876954 selector",
+        "0x876a54 interaction low-byte comparison against1",
+        "0x876a64 RootViewModel byte +0x59",
+        "0x876a74 comparison against1",
+        "0x876a84 call 0x874238 refreshed viewmodel accessor",
+        "0x876c44 legacy payload branch"
+      ],
+      "evidence": [
+        "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/browse-native.json",
+        "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/browse-select.asm"
+      ]
+    }
+  ],
+  "native_factory": {
+    "provider_protocol": "0x96c7e00 FileLibraryScreenBuilderProviding",
+    "conformance": "0x7cd151c",
+    "type_descriptor": "0x9556fa0 UserWorkspaceContainer",
+    "witness_pattern": "0xa408810",
+    "slots": [
+      {
+        "slot": "0xa408818",
+        "getter": "0xa8580",
+        "callsite": "0xa8724",
+        "factory": "0x86b95c"
+      },
+      {
+        "slot": "0xa408820",
+        "getter": "0xa8738",
+        "tail_target": "0x5ffa43c",
+        "type_record": "0x822b7a0",
+        "builder_type": "SwiftUIToolbelt.AnyViewBuilder<ChatGPTFileLibraryCore.FileLibraryScreenTemplate>"
+      }
+    ],
+    "unknown": "Type-erased builder registry and HistorySelection.fileLibrary to its invocation not traced end-to-end."
+  },
+  "native_chain": [
+    {
+      "owner": "ChatGPTFileLibrary.RootView",
+      "descriptor": "0x956e354",
+      "body_witness": "0x87447c",
+      "body": "0x873bc8",
+      "type_record": "0x7d322a0",
+      "shape": "ZStack / NavigationStack<DirectoryRoute,...BrowseContent> / BottomControlsPresentation / PresentationHost / loader and lifecycle environment",
+      "inputs": [
+        "RootViewModel",
+        "FileLibraryScreenTemplate.ViewParams"
+      ],
+      "evidence": "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/root-native.json"
+    },
+    {
+      "owner": "BrowseContent",
+      "descriptor": "0x9570364",
+      "body_witness": "0x879bd4",
+      "body": "0x8760e8",
+      "type_record": "0x7d36760",
+      "shape": "Group<_ConditionalContent<toolbar-modified Group<_ConditionalContent<InformationArchitectureRefreshBrowseView, LegacyBrowseContent>>, DirectoryRestorationContent wrappers>>",
+      "inputs": [
+        "dismiss",
+        "RootViewModel",
+        "ViewParams"
+      ],
+      "toolbar": [
+        "SideMenuToolbarItem",
+        "DismissToolbarItem",
+        "navigationTitle",
+        "inline title display",
+        "toolbarBackground"
+      ],
+      "evidence": "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/browse-native.json"
+    },
+    {
+      "owner": "LegacyBrowseContent",
+      "descriptor": "0x9570b6c",
+      "body": "0x879bd8",
+      "body_witness": "0x879e08",
+      "shape": "BrowseComponents.DirectoryList",
+      "state_owner": "RootViewModel supplies DirectoryListViewModel and browse configuration; no separate Valdi class",
+      "evidence": "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/legacy-content.asm"
+    },
+    {
+      "owner": "BrowseComponents.DirectoryList",
+      "descriptor": "0x95712b8",
+      "body_witness": "0x870308",
+      "body": "0x86c218",
+      "type_record": "0x7d38c98",
+      "shape": "Search view / storage and empty states / scroll directory listing / upload rows / pages / selection bar / keyboard-dismiss and scroll-phase modifiers",
+      "evidence": "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/directory-native.json"
+    },
+    {
+      "owner": "InformationArchitectureRefreshBrowseView",
+      "descriptor": "0x9570b88",
+      "body": "0x7ecc98",
+      "body_witness": "0x7ee3f0",
+      "state_owner": "InformationArchitectureRefreshBrowseViewModel",
+      "known_tabs_declaration_order": [
+        "suggested",
+        "favorites",
+        "folders",
+        "images",
+        "sites",
+        "pages",
+        "all"
+      ],
+      "limit": "Enum declaration order is not proof of actual visible tab order/gates."
+    }
+  ],
+  "minimum_source_branch": {
+    "recommended_for_bounded_frontend": "LegacyBrowseContent with explicit browse fixture + contentLayout.list/grid. Keep refresh alternate separate.",
+    "title": "Root BrowseContent owns navigationTitle; literal/localization and folder-title projection not fully resolved. Do not invent a universal title from JS.",
+    "list": "DirectoryListContent.Listing / NodeCollection / NodeList or NodeGrid",
+    "search": "scopedSearch and InformationArchitectureRefreshSearchView exist in DirectoryList; exact presentation predicates and query owner still need closure",
+    "controls": "BrowseControls(contentLayout,filter,provider/account visibility,showsSelect,showsRecentlyDeleted)",
+    "filter": "BrowseControls.Filter(selection,showsSourceFilters,showsFileTypeFilters,availableFavoriteKinds,selectedFavoriteKinds)",
+    "selection": "DirectoryListContent.Selection(attach,manage,hidden) + SelectionAction(startChatButtonTapped,moveButtonTapped,deleteButtonTapped,deleteButtonShown)",
+    "state_owner": "DirectoryListViewModel: source/request/page/generation ownership; RootViewModel: navigation, presentation, preview, rename/delete/move and lifecycle. Do not let row components own remote state.",
+    "backend": "Server operations are future adapter hooks; metadata names alone do not prove complete reducer semantics."
+  },
+  "sidebar_inventory": {
+    "source": "HistoryFeatureCatalog.Item descriptor 0x959306c",
+    "items": [
+      "sites",
+      "projects",
+      "collegePlan",
+      "appDirectory",
+      "codex",
+      "imageLibrary",
+      "potion",
+      "finance",
+      "imageGen",
+      "scheduledAutomations",
+      "places",
+      "shoppingHome",
+      "cart",
+      "fileLibrary",
+      "orbit",
+      "customize",
+      "upgrade",
+      "noPaymentTrialCountdown",
+      "seeMoreFeatures"
+    ],
+    "availableItems_type": "Set<HistoryFeatureCatalog.Item>",
+    "warning": "Enum order and Set iteration are not visible sidebar order. Catalog projection ordering/gates not yet recovered.",
+    "known_gate_fields": [
+      "usesTboSidebarLayout",
+      "usesFreeSidebarLayout",
+      "promotesImages",
+      "promotesHealth",
+      "promotesCodex",
+      "isExpanded",
+      "HistoryViewModel.enableFileLibrary",
+      "HistoryViewModel.orbitAvailable",
+      "HistoryViewModel.customizeEnabled",
+      "HistoryViewModel.useRefreshedLayout",
+      "HistoryViewModel.useExploreButton",
+      "HistoryViewModel.codexOnlyEnabled"
+    ]
+  },
+  "assistant_customize": {
+    "assistant": "PersonalAssistantHistoryNavigationCell supports usesOwnIcon/accentIcon/layout/theme/avatar/badge. R2-D2 and user avatar are not product defaults.",
+    "customize": "CustomizePane descriptor0x9565a40 / Viewconformance0x7d0b400 wraps BaseAnyViewModel<OrbitCustomizeScreenTemplate,AnyView>, distinct from settings Personalization.",
+    "unknown": "Actual sidebar selection handler, capability predicates and destination invocation not fully closed."
+  },
+  "unknowns": [
+    "Actual HistorySelection.fileLibrary → ConversationRoot presentation → FileLibraryScreenBuilder invocation remains unclosed. Native module alone is not reachability proof.",
+    "RootViewModel +0x59 strongly matches usesLibraryInformationArchitectureRefresh by ordered fields but complete metadata field offset resolution not established; report raw predicate only.",
+    "Interaction value1 meaning not numerically mapped to browse/attachmentSelection; original enum declares both.",
+    "Runtime account/experiment assignments and default visible tabs unknown.",
+    "Exact native title/localization strings, icon assets, grid/list geometry values, menu labels/conditions and action-handler dispatch not yet fully traced.",
+    "Remaining sidebar visible order and gate values unknown; assistant/customize destination closure partial."
+  ],
+  "next_minimal_evidence_actions": [
+    "Resolve RootViewModel field offsets for +0x59 and interaction, or use explicit branch fixture without claiming original assignment.",
+    "Trace DirectoryList root0x86c218 and row body constructors for exact native geometry before integrating visual constants.",
+    "Trace selected root navigation handler into FileLibraryScreenBuilderProviding; do not replace with Valdi based solely on shared feature naming."
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-sidebar-native-library-20261112",
+  "limits": [
+    "No official target runtime executed.",
+    "No source Swift recovered; these are static type and instruction observations.",
+    "No build/device/host changes performed.",
+    "Repeated generic helpers and opaque/anonymous nodes retained as identities, not guessed source."
+  ]
+}

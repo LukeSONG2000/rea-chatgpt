@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-13T14:52:24.721862+08:00",
+  "module": 2,
+  "scope": "Whole selected Settings integration; core frontend implemented, precise original-service/presentation gaps retained",
+  "previous": "ios-settings-integration-current-20261113.json",
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "General first StartScreenSettingsSection, count>=2 gate, latest-input menu admission, effective unavailable fallback without deleting stored choice",
+    "Independent account/profile preference and explicit cold-start root routing; default absent legacy preference retains earlier checkpoint; notification routing has precedence",
+    "Codex Live Activity real four source options, declared perRemote default and independent namespaced typed persistence",
+    "Seven additional context-checked translation keys;325 total/65locales. Chat Chinese and absent assistant name remain explicit host translations",
+    "Preserved root close/theme/language/haptics/notification permission/Codex connection-composer-diff/About/sign-out integrations"
+  ],
+  "source_reports": [
+    "ios-settings-general-sixth-20261113-findings.json",
+    "ios-settings-report-sixth-20261113-findings.json",
+    "ios-settings-codex-liveactivity-sixth-20261113-findings.json"
+  ],
+  "corrections": [
+    "10e27b8 optional candidate is SettingsAppearanceSection, not Start screen. Actual General tuple7d8fec0 slot0->11015a4.",
+    "BugReportPresenter+0x30 is Swift.Task from Task.==629883c, not evidence of returned/presented form."
+  ],
+  "independent_boundaries": [
+    "Native menu configuration/precise geometry, missing assistant displayName fallback; account/feature assignments are host-provided",
+    "Start preference key, account/profile scope and cold-start dispatch are independent; original setting backing/bootstrap not recovered",
+    "Live Activity string encoding is host-owned, no writes to unproved original numeric key or real card/subscription side effect"
+  ],
+  "not_implemented": [
+    "Original injected report form/fields/validation/submit",
+    "Original notification categories and service sync",
+    "Actual Live Activity card/provider/authorization and original UI-to-Setting dependency",
+    "Special-message and all separate floating-window theme inheritance; original optics",
+    "Full actual account eligibility and start-screen storage/startup consumer"
+  ],
+  "verification": {
+    "launch_contract": "ios-settings-sixth-20261113-launch-contract.log passed",
+    "text_and_shared_contracts": "ios-settings-sixth-20261113-contract-r3.log passed",
+    "ui": {
+      "bundle": "ios-settings-sixth-20261113-r1.xcresult",
+      "test": "testSettingsStartScreenAndLiveActivityChinese",
+      "result": "passed",
+      "seconds": 82.717,
+      "scope": [
+        "General actual menu and order",
+        "Codex selection -> no-arg restart Remote root",
+        "Chat selection -> no-arg restart Chat root",
+        "Live Activity selection restart retention/default restore"
+      ]
+    },
+    "post_ui_changes": "Chat translation source classification corrected without visible text change; preference read moved outside rejected-root-checkpoint catch. Final simulator/device builds passed; combined corrupt-checkpoint UI not separately run.",
+    "builds": [
+      "ios-settings-sixth-20261113-final-simulator-build.log",
+      "ios-settings-sixth-20261113-device-build-r2.log"
+    ],
+    "screenshot_viewed": [
+      "ios-settings-sixth-20261113-r1-attachments/1463CC4D-BC65-43BB-8001-B42DFE9D31E5.png",
+      "ios-settings-sixth-20261113-r1-attachments/7BDA3DCD-100A-4DD1-927C-F06E01A6C582.png"
+    ],
+    "retained_failures": [
+      "Initial array-static inference build and UIKit conditional-compilation Mac contract errors corrected; original failed logs retained",
+      "Initial profile reseed returned before save; exact checkpoint awaited before final no-arg launch. Initial simulator record retained-r1."
+    ]
+  },
+  "runtime": {
+    "simulator": "ios-settings-sixth-20261113-simulator.json",
+    "physical": "ios-settings-sixth-20261113-device-review.json"
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/HostLaunchConfiguration.swift": "5771b741a62aa7e5b743e39af4ce887b69675a4478d253c124fa9ec4cdc3535f",
+    "implementation/ios/Sources/FrontendHaptics.swift": "7460c49c90bf4dcda7258c9542bb8eed7f056b2df1a2639172f727338764d764",
+    "implementation/ios/Sources/RemoteContextUsage.swift": "2ae1ca760218be50ad3db020d05981311c6909ef0ed84ab205d380fb6c162b59",
+    "implementation/ios/Sources/OfficialText.swift": "09ff2240e88ddbfefb3ee1313e00cc00882870ee45866790688ba027bdffd08b",
+    "implementation/ios/Sources/NativeConversationHost.swift": "8be32ae93c8e01cc8b59236dd8dbb3696eb145b5f0c803d22d9cc8d1a0867ad9",
+    "implementation/ios/Tools/prepare-official-text.py": "1a1528d40f0a9a21453931cac7c4ac26faaeff5419fc83e50989937ca6efb97d",
+    "implementation/ios/Resources/OfficialTranslations.json": "a912d39c4362a6d2728af3b60d0d1a29848fe50f95e84a32998389a4d43ba785",
+    "implementation/ios/Tests/Launch/main.swift": "5a3e7120fe5cc49f11be150b1752a63fe3056da48a8c6c03629ad17179722e36",
+    "implementation/ios/TextTests/main.swift": "ab0bbd33c22817b768420c349116a136c1421f326c638aafebb1185c66d9989e",
+    "implementation/ios/UITests/HostInteractionTests.swift": "8c12a523322c606665f0137aebf450a4e4f844368e3ab3a7eb7f96cc0e345113"
+  },
+  "next_major_module": "10 account/login frontend, no real auth; then9Plugins only",
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  }
+}

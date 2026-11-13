@@ -1,0 +1,144 @@
+{
+  "batch": "v485",
+  "status": "partial",
+  "platform": "iOS",
+  "target_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: v484 closed horizontal source-filter body/label owners and recorded missing generic-picker integration.",
+  "scope": "Remote task-list horizontal source filter integration",
+  "source_observations": [
+    {
+      "symbol": "CodexRemoteHostFilterRow",
+      "locations": [
+        "0x38a16c",
+        "0x388580",
+        "0x388600"
+      ],
+      "conclusion": "Horizontal ScrollView without indicators; caller horizontal inset and bottom padding; source binding and hostItems."
+    },
+    {
+      "symbol": "CodexRemoteHostFilterButton",
+      "locations": [
+        "0x38b2c4",
+        "0x38a1a0",
+        "0x38a3d8",
+        "0x38a7a0"
+      ],
+      "conclusion": "Menu primary action, plain style; editHost=nil produces empty menu content; selected AX trait."
+    },
+    {
+      "symbol": "OAISegmentedTabBarStyle.Custom",
+      "locations": [
+        "0x971d62c",
+        "0x6f06468",
+        "0x6f065a4",
+        "0x6f065c0",
+        "0x6f065f4"
+      ],
+      "conclusion": "Recovered default branch uses body-medium fonts, labelVerticalPadding10, tabSpacing8, minimumLabelHeight24; selected bg factory0x74ecf70 resolves ChatGPT/bg/tertiary."
+    },
+    {
+      "symbol": "Host filter label",
+      "locations": [
+        "0x38aaf8",
+        "0x45abd0",
+        "0x45fd74",
+        "0x38947c"
+      ],
+      "conclusion": "Horizontal padding16; body-relative icon18 and contentSpacing6; selected primary versus tertiary foreground."
+    },
+    {
+      "symbol": "All option",
+      "locations": [
+        "0x389330",
+        "0x8855430"
+      ],
+      "conclusion": "Context-bound codex_remote_host_filter_all_threads, extracted from65 bundled locale tables."
+    }
+  ],
+  "implementation": {
+    "status": "integrated",
+    "source_scope": "default-style horizontal row and local source selection",
+    "entry": "RecoveredCodexHome -> RemoteTaskFixturePage -> RecoveredRemoteHostFilterRow",
+    "identity": "Synthetic all/fixture-a/fixture-b selection; existing host/thread task identities and section collapse state retained",
+    "action": "Native Menu primaryAction writes parent selection; list filters existing synthetic tasks",
+    "service": "Offline deterministic fixture; no target online access"
+  },
+  "independent_adaptations": [
+    "SwiftUI Capsule/matchedGeometryEffect substitutes for the private indicator preference pipeline.",
+    "Explicit fixture row selects the recovered default style, caller inset20/bottom0 and nil management action. Actual full parent effective configuration remains partial.",
+    "Synthetic host icon assignment; no claim that fixture-b desktop filter icon establishes a real provider identity.",
+    "Selection currently changes without the original spring because availability/owner gates remain under recovery."
+  ],
+  "validation": {
+    "ui_r1": {
+      "passed": 1,
+      "failed": 1,
+      "result": "ios-remote-v485-ui.xcresult",
+      "failure": "TaskScope test still queried removed Picker button; new section/selection/return test passed."
+    },
+    "ui_r2": {
+      "status": "passed",
+      "passed": 3,
+      "failed": 0,
+      "result": "ios-remote-v485-r2-ui.xcresult"
+    },
+    "model": "Final-source test-official-text.sh passed; log /tmp/rea-v485-final-model.log",
+    "physical_device": {
+      "status": "installed_and_launched",
+      "batch": "v485-r3",
+      "build_log": "ios-device-v485-r3-build.log",
+      "install_receipt": "ios-device-v485-r3-install.json",
+      "launch_receipt": "ios-device-v485-r3-launch.json",
+      "visual_touch_acceptance": "pending"
+    },
+    "ui_r3": {
+      "status": "passed",
+      "passed": 3,
+      "failed": 0,
+      "result": "ios-remote-v485-r3-ui.xcresult",
+      "coverage": "Horizontal content displacement >10; XXXL English long-label fixture; source selection, task scope/return and section restoration"
+    },
+    "preview": {
+      "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "pid": 57266,
+      "screen": "Remote task list",
+      "external_display": "observed via Window menu offering Move to Built-in Retina Display",
+      "left_running": true
+    },
+    "screenshots": {
+      "large_text": "/tmp/rea-v485-r3-screens/BC9BC21F-FEC2-4261-9878-8CE4351537A8.png",
+      "inspection": "Horizontal long label extends offscreen as intended; synthetic host sections retained. Full official list layout remains partial."
+    },
+    "retention": {
+      "schema": "rea-build-cleanup-v1",
+      "time": "2026-11-06T17:43:18.889804+08:00",
+      "apply": false,
+      "keep": [
+        "v172-r2-macos",
+        "v172-windows",
+        "v173-windows",
+        "v174-r4-macos"
+      ],
+      "targets": [],
+      "skipped": [],
+      "completed": []
+    }
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "8c5f3c4009cc3279da5a6b1b6f128832d7ecc813893610d3d72eb5b0919c4aa2",
+    "implementation/ios/Sources/OfficialText.swift": "1c34fab0f1d61eba93d5eaefc708db98b7c2a5de158435417b42ae770091d04c",
+    "implementation/ios/Resources/OfficialTranslations.json": "74deac605964d385da7d9b0a0a756c9f00f9e0b1555955ce51ca2503222c55e2",
+    "implementation/ios/Tools/prepare-official-text.py": "ce04073a0e175456bb651abe48f5f820441faf16e85cc9f0c13e3f5246842164",
+    "implementation/ios/UITests/HostInteractionTests.swift": "4c57793679e8abe64f628b5fa9ea87d5d4f0e86b64639cdbd52a112a1489af51"
+  },
+  "remaining": [
+    "Project section/header/task projection and new-thread action",
+    "Cloud/Chat/Work source visibility/capability gates",
+    "Host connection-status indicators and management menus",
+    "Full filter animation/hover/transition and inherited config",
+    "Top mode/search controls and list bottom composer",
+    "Device visual/touch acceptance",
+    "Independent Android source path"
+  ]
+}

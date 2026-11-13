@@ -1,0 +1,103 @@
+{
+  "batch": 565,
+  "status": "ordinary_user_bubble_acceptance_passed_page_partial",
+  "page": "Remote task list and conversation",
+  "evidence": "ios-remote-v565-findings.json",
+  "implementation": [
+    "Ordinary user message trailing alignment and finite width proportion 0.78",
+    "Vertical child spacing 6; text padding vertical 9 horizontal 15; rounded radius 20",
+    "Official default OneOff/UserMessageBackground asset for light and dark",
+    "Static current request and dynamic replay turns use one container; attachments precede text"
+  ],
+  "independent_adaptations": [
+    "One-child SwiftUI Layout implementing the observed ordinary horizontal branch",
+    "Existing plain Text selection and semantic body font",
+    "Existing independent attachment preview list and synthetic event projection"
+  ],
+  "tests": {
+    "distinct_ui_cases": 4,
+    "passing_executions": 4,
+    "failed_executions": 2,
+    "r1": "Combined Chinese light and English dark passed; both creation tests failed by querying parent text after child navigation",
+    "r2": "Both corrected creation tests passed, including multiline geometry, short-message trailing alignment, list return, cross-host creation and restart recovery",
+    "foundation": "passed; ios-remote-v565-contract-tests.log",
+    "warning": "Existing AppEnum to-0.0 warning in passing combined journeys",
+    "visual": "Inspected final r2 Chinese multiline and English dark short-message screenshots; visible installed Chinese fixture verified"
+  },
+  "remaining": [
+    {
+      "priority": 1,
+      "area": "Remote title",
+      "gap": "Exact parent navigation placement differs from user reference; leading alignment unclosed",
+      "next": "Trace 293 outer navigation title placement and parent payload",
+      "acceptance": "Source-bound title geometry and accessible trailing controls at normal CN/EN sizes"
+    },
+    {
+      "priority": 1,
+      "area": "Remote message layout",
+      "gap": "Ordinary default user bubble integrated; accent-dependent background, original Markdown/annotations/menu owner, special goal/question/delegation branches and exact attachment grid remain partial",
+      "next": "Trace UserMessageBubble background resolver and rich content consumers",
+      "acceptance": "Source-backed ordinary accented and rich-message interaction in CN/EN light/dark"
+    },
+    {
+      "priority": 1,
+      "area": "New-thread composer",
+      "gap": "Project draft attachment/configuration slots and service capabilities remain partial",
+      "next": "Trace original NewThread configuration owner and reuse matching existing inputs",
+      "acceptance": "Attach/configure, submit synthetic task, return with scoped state"
+    },
+    {
+      "priority": 2,
+      "area": "Remote history",
+      "gap": "Full reasoning, search result links, horizontal table position across process restart and large history performance",
+      "next": "Close current page consumer paths incrementally",
+      "acceptance": "Independent reproducible core journeys"
+    },
+    {
+      "priority": 2,
+      "area": "Service",
+      "gap": "Official task creation, server title generation, idempotency and actual connection availability",
+      "next": "Future replaceable service adapter",
+      "acceptance": "Separate authorized integration"
+    },
+    {
+      "priority": 2,
+      "area": "Platform",
+      "gap": "Physical haptics/notifications, external display and Android independent acceptance",
+      "next": "Use available authorized platform later",
+      "acceptance": "Actual platform evidence"
+    }
+  ],
+  "runtime": {
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "product": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app",
+    "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/8FC21F3A-1A6D-4F0C-A1F0-30ECA9AE5963/REAChatGPTHost.app",
+    "version": "565",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture",
+      "--remote-command-message-fixture",
+      "--remote-search-message-fixture",
+      "--remote-file-message-fixture",
+      "--remote-review-message-fixture",
+      "--remote-draft-profile=preview"
+    ],
+    "launch": "local.rea.chatgpt.ioshost: 98434",
+    "executable_sha256": "0560d9b698c8bc3ba4278e9f9a224877dc87668554c0d728e805446e293023df",
+    "installed_hash_matches": true,
+    "signing": "ad hoc verified",
+    "language": "follows system",
+    "appearance": "follows system",
+    "status": "running; Chinese Remote conversation and user bubble visibly confirmed via Device Hub",
+    "display": "built-in Color LCD only; external display pending"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "fbb51f11b526457416fc3ad0a81b6c73e2355154fb2410064604f54e6c380091",
+    "implementation/ios/Sources/NativeConversationHost.swift": "fb3a62707cd95a107f1b792726c9befd0ce81baafd2bb36e35497b6e528d843b",
+    "implementation/ios/UITests/HostInteractionTests.swift": "c0c412b30a68585b2edcf12c56457e08f036f5bb1096c5dd7c628956da41ad30"
+  },
+  "retention": "ios-remote-v565-retention.json records retention dry run"
+}

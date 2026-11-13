@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T12:40:21.586174+08:00",
+  "module": 2,
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Named settings integration as one major batch. iOS frontend/platform interfaces only; Android paused; no service/backend/authentication implementation.",
+  "implemented_this_batch": [
+    "General App language opens this app system settings via OpenURLAction; effective Bundle localization displayed, foreground refresh and rejected-open error.",
+    "GetHelp About row after conditional Privacy Center, typed native destination, original localized Terms/Privacy labels and exact source URL inputs.",
+    "About uses original OpenAI brand asset, platform and source version format with the installed host Bundle; unknown original identifiers are not invented.",
+    "Terms/Privacy actions use existing offline resource/browser adapter; without provider no network request or false load success.",
+    "Chat user background consumes selected theme through its UIViewRepresentable update; base background preserved for disablesSharedTheme; unchanged text is not replaced.",
+    "Work shares the host row integration; original Work route into Chat VM remains unproved.",
+    "Confirmed language/About/Chat-theme restoration rules recorded in AGENTS; previous incomplete help inventory preserved as historical."
+  ],
+  "existing_integrations_audited": {
+    "theme": "Single Theme group; system/light/dark persisted and window override applied; accent already consumed by Remote and sidebar.",
+    "haptics": "General persistent gate consumed by proved sidebar selection, shared status pills, model control and accepted file import; real tactile strength not measured.",
+    "notifications": "Permission read/request/manage and foreground refresh; token registration interface, request cancellation/receipt fences, unread and target routes; no actual push sender.",
+    "codex": "Independent scoped connection catalog toggle/reorder/all enable-disable, explicit unavailable add; keyboard dismissal/context usage/follow-up/diff wrapping preferences and consumers.",
+    "sign_out": "Source confirmation/busy/duplicate suppression and exact account/request receipt; default disconnected service retains account, explicit fixture success route is separate.",
+    "root_close": "Toolbar-owned root close remains outside ScrollView."
+  },
+  "not_implemented": [
+    {
+      "item": "Starting page",
+      "boundary": "General10e27b8..10e2838 optional producer/consumer, options and startup assignment unclosed; no unsupported293 row fabricated."
+    },
+    {
+      "item": "Report issue concrete form",
+      "boundary": "BugReportPresenter+0x18 injected asynchronous factory to actual report UI/fields/submission; current entry is explicitly disconnected and returnable."
+    },
+    {
+      "item": "Original notification categories and sync",
+      "boundary": "PermissionStateSection loaded payload/preferences owner unclosed; no invented per-feature toggles, actual APNs sending/delivery or official notification schema."
+    },
+    {
+      "item": "Codex real services/Live Activity",
+      "boundary": "Frontend controls/capabilities are independent; real connections and unclosed behavior settings remain excluded."
+    },
+    {
+      "item": "Full theme inheritance",
+      "boundary": "Official Work route, special-message parents, actual account theme updates; ordinary Chat background alone is newly proved."
+    },
+    {
+      "item": "Full About geometry/unknown metadata",
+      "boundary": "Native Form/HStack sizes and Chinese for-platform wording are explicit adapters; unresolved identifier values omitted."
+    }
+  ],
+  "source_reports": [
+    "ios-settings-general-fifth-20261113-findings.json",
+    "ios-settings-help-fifth-20261113-findings.json",
+    "ios-settings-help-fifth-20261113-r2-findings.json",
+    "ios-settings-chat-theme-fifth-20261113-findings.json"
+  ],
+  "validation": {
+    "foundation": "ios-settings-fifth-20261113-contract.log passed",
+    "haptics_ui": "r1 testHapticsPreferenceChinese passed66.594sec",
+    "language_about_ui": "r2 testSettingsAboutAndLanguageChinese passed32.978sec",
+    "retained_diagnostics": [
+      "r1 About assertion expected wrong host notice; actual UI matched resource-service pending. Corrected assertion inr2 passed without changing browser product.",
+      "r2 Chat row not present because tail-follow/keyboard virtualized it; actual hierarchy contains completed reply. Restore/read user row before palette assertion.",
+      "r1/r2 Codex outer Switch alias taps did not change preference. r3/r4 target actual nested native UISwitch verified in AX hierarchy; result not yet assumed.",
+      "r3 intentionally interrupted after two60sec framework animation-notification waits on keyboard restoration; sampled host main thread idle in CFRunLoop, not app deadlock. r4 changes test to cold-restart preserved conversation without active keyboard; production animations unchanged."
+    ],
+    "source_backed_additions": [
+      "General App language Bundle value and OS route",
+      "GetHelp About root/destination/links/metadata",
+      "Chat shared-theme background actual VM/environment/consumer"
+    ],
+    "viewed_screenshots": [
+      "ios-settings-fifth-20261113-r1-native-switch.png",
+      "ios-settings-fifth-20261113-r2-attachments/5612766F-97E5-47DD-8B17-34E6E54EAD7A.png",
+      "ios-settings-fifth-20261113-r4-attachments/7C81FA27-2C52-4AA6-8CD2-976386E9EC7A.png",
+      "ios-settings-fifth-20261113-r4-attachments/97668F7B-5E38-4744-BCF2-4C07121B008C.png",
+      "ios-settings-fifth-ordinary-preview-20261113.png"
+    ],
+    "chat_theme_ui": "r4 testChatSettingsAccentChinese passed50.087sec: preserved turn after restart, default→green actual screenshot RGB difference and original body retained, return default.",
+    "codex_ui": {
+      "result": "core settings assertions completed; entire old long regression not passed",
+      "record": "ios-settings-fifth-20261113-r4.log and xcresult",
+      "completed": [
+        "root keyboard/context/follow-up setters via actual native UISwitch",
+        "queue keeps keyboard",
+        "steer dismisses keyboard",
+        "home/root entry shared state",
+        "process restart retains keyboard/context/follow-up settings"
+      ],
+      "stopped_at": "Disconnected-message final input path repeated the system animation-complete wait. Owned test was interrupted; retain aggregate failed/cancelled result, not a full green check."
+    },
+    "source_snapshot": "ios-settings-fifth-20261113-source.json"
+  },
+  "runtime": {
+    "simulator": {
+      "date": "2026-11-13T12:36:26.780887+08:00",
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "profile": "c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--chat-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "--remote-draft-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "--auth-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light"
+      ],
+      "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/1F393598-2E27-4EEC-A134-407502CB3878/REAChatGPTHost.app",
+      "executable_sha256": "712a822139ccf77845baa2f22cab8ac1801a523617cea615ea190083e06767b7",
+      "installed_hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 54580",
+      "pid": 54580,
+      "process": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/1F393598-2E27-4EEC-A134-407502CB3878/REAChatGPTHost.app/REAChatGPTHost --offline-fixture --codex-home-fixture=tasks --remote-interactive-replay --remote-attachment-all-capabilities-fixture --remote-command-message-fixture --remote-search-message-fixture --remote-search-action-fixture --remote-file-message-fixture --remote-review-message-fixture --remote-rich-message-fixture --remote-linked-file-fixture --remote-file-citation-fixture --browser-preview-fixture --chat-browser-fixture --remote-model-slider-fixture --remote-permission-fixture --remote-context-usage-fixture --remote-thinking-group-fixture --remote-history-group-fixture --remote-latest-group-fixture --remote-project-sort-menu-fixture --remote-task-controls-fixture --chat-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf --remote-draft-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf --auth-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf -AppleLanguages (zh-Hans) -AppleLocale zh_CN -rea.preview.appearance light",
+      "kept_running": true,
+      "source_snapshot": "ios-settings-fifth-20261113-source.json",
+      "scope": "Ordinary frontend preview after named settings batch; no permission/registration/prompt-expansion failure fixtures.",
+      "ordinary_preview_screenshot": "ios-settings-fifth-ordinary-preview-20261113.png"
+    },
+    "device": {
+      "date": "2026-11-13T12:38:47.369177+08:00",
+      "device": "00008150-001E34E93A12401C",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "candidate_executable_sha256": "d20f23f941bb25628618d809f8c8b081de04dde441438295c58768d2355be4d3",
+      "codesign_strict": "passed",
+      "build_log": "ios-settings-fifth-20261113-device-build.log",
+      "profile": "5E169943-333A-4273-A553-F4D1BD4BE46D",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--chat-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+        "--remote-draft-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+        "--auth-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D"
+      ],
+      "preferences": "Existing phone profile retained; no language/theme override or data clear",
+      "device_ui_automated_after_launch": false,
+      "install": {
+        "info": {
+          "arguments": [
+            "devicectl",
+            "device",
+            "install",
+            "app",
+            "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+            "--device",
+            "00008150-001E34E93A12401C",
+            "--timeout",
+            "45",
+            "--json-output",
+            "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-settings-fifth-device-install-20261113.json"
+          ],
+          "commandType": "devicectl.device.install.app",
+          "environment": {
+            "TERM": "dumb"
+          },
+          "jsonVersion": 5,
+          "outcome": "success",
+          "version": "651.32"
+        },
+        "result": {
+          "deviceIdentifier": "5998651F-A691-5FB2-A351-40FBCBA8081B",
+          "installedApplications": [
+            {
+              "bundleID": "local.rea.chatgpt.ioshost",
+              "databaseSequenceNumber": 3164,
+              "databaseUUID": "838351CC-76C5-4ED6-A84F-DC45E99601BE",
+              "installationURL": "file:///private/var/containers/Bundle/Application/89F3CC04-7E24-4DE4-88A7-72678CAECF4A/REAChatGPTHost.app/",
+              "launchServicesIdentifier": "unknown",
+              "options": {}
+            }
+          ]
+        }
+      },
+      "launch": {
+        "info": {
+          "arguments": [
+            "devicectl",
+            "device",
+            "process",
+            "launch",
+            "--device",
+            "00008150-001E34E93A12401C",
+            "--terminate-existing",
+            "--timeout",
+            "25",
+            "--json-output",
+            "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-settings-fifth-device-launch-20261113.json",
+            "local.rea.chatgpt.ioshost",
+            "--",
+            "--offline-fixture",
+            "--codex-home-fixture=tasks",
+            "--remote-interactive-replay",
+            "--remote-attachment-all-capabilities-fixture",
+            "--remote-command-message-fixture",
+            "--remote-search-message-fixture",
+            "--remote-search-action-fixture",
+            "--remote-file-message-fixture",
+            "--remote-review-message-fixture",
+            "--remote-rich-message-fixture",
+            "--remote-linked-file-fixture",
+            "--remote-file-citation-fixture",
+            "--browser-preview-fixture",
+            "--chat-browser-fixture",
+            "--remote-model-slider-fixture",
+            "--remote-permission-fixture",
+            "--remote-context-usage-fixture",
+            "--remote-thinking-group-fixture",
+            "--remote-history-group-fixture",
+            "--remote-latest-group-fixture",
+            "--remote-project-sort-menu-fixture",
+            "--remote-task-controls-fixture",
+            "--chat-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+            "--remote-draft-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+            "--auth-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D"
+          ],
+          "commandType": "devicectl.device.process.launch",
+          "environment": {
+            "TERM": "dumb"
+          },
+          "jsonVersion": 5,
+          "outcome": "success",
+          "version": "651.32"
+        },
+        "result": {
+          "deviceIdentifier": "5998651F-A691-5FB2-A351-40FBCBA8081B",
+          "launchOptions": {
+            "activatedWhenStarted": true,
+            "arguments": [
+              "--offline-fixture",
+              "--codex-home-fixture=tasks",
+              "--remote-interactive-replay",
+              "--remote-attachment-all-capabilities-fixture",
+              "--remote-command-message-fixture",
+              "--remote-search-message-fixture",
+              "--remote-search-action-fixture",
+              "--remote-file-message-fixture",
+              "--remote-review-message-fixture",
+              "--remote-rich-message-fixture",
+              "--remote-linked-file-fixture",
+              "--remote-file-citation-fixture",
+              "--browser-preview-fixture",
+              "--chat-browser-fixture",
+              "--remote-model-slider-fixture",
+              "--remote-permission-fixture",
+              "--remote-context-usage-fixture",
+              "--remote-thinking-group-fixture",
+              "--remote-history-group-fixture",
+              "--remote-latest-group-fixture",
+              "--remote-project-sort-menu-fixture",
+              "--remote-task-controls-fixture",
+              "--chat-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+              "--remote-draft-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+              "--auth-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D"
+            ],
+            "environmentVariables": {
+              "TERM": "dumb"
+            },
+            "platformSpecificOptions": {},
+            "startStopped": false,
+            "terminateExistingInstances": true,
+            "user": {
+              "active": true
+            }
+          },
+          "process": {
+            "auditToken": [
+              4294967295,
+              501,
+              501,
+              501,
+              501,
+              19160,
+              0,
+              342347
+            ],
+            "executable": "file:///private/var/containers/Bundle/Application/89F3CC04-7E24-4DE4-88A7-72678CAECF4A/REAChatGPTHost.app/REAChatGPTHost",
+            "processIdentifier": 19160
+          }
+        }
+      },
+      "running_processes": [
+        {
+          "executable": "file:///private/var/containers/Bundle/Application/89F3CC04-7E24-4DE4-88A7-72678CAECF4A/REAChatGPTHost.app/REAChatGPTHost",
+          "processIdentifier": 19160
+        }
+      ],
+      "process_container_matches_new_install": true,
+      "pid": 19160,
+      "kept_running": true,
+      "processes_record": "ios-settings-fifth-device-processes-20261113.json"
+    },
+    "display": {
+      "inventory": "Color LCD + BenQ RD280U",
+      "observed": "Device Hub REA ChatGPT Offline selected; Window menu offers only Move to Built-in Retina Display, indicating window already on external display in this two-display setup; menu cancelled using exposed AX Cancel.",
+      "screenshot": "Native Device Hub screenshot unavailable; independent simctl/runtime and test screenshots verify app contents separately.",
+      "ui_changes": "Selected only dedicated REA simulator; did not start another simulator or act in another product."
+    }
+  },
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  },
+  "status": "archived-front-end-integrations-with-explicit-source-and-runtime-boundaries",
+  "next": "Module10 login/account frontend; then module9 Plugins only. Keep broad goal active."
+}

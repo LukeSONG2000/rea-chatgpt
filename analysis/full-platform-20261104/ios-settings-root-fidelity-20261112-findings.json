@@ -1,0 +1,53 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "classification": "static instruction evidence; independent native adapter",
+  "root_correction": {
+    "entry": "Passwords",
+    "key": "orbit_passwords_title",
+    "literal": "8888720",
+    "key_load": "1088f7c",
+    "gate": "1088f74 calls10871d4;1088f78 skips row",
+    "navigation_construct": "1088ff4 ->7566028",
+    "following_entry": "Storage key1089038 literal8888700",
+    "implementation": "added returnable Passwords root entry before Storage; original icon unresolved and slot left empty"
+  },
+  "general_suggestions": {
+    "section_title_key": "settings_suggestions_section_title",
+    "key_literal": "8889530",
+    "parent": "10e2938..10e29a4",
+    "content": "10e3698",
+    "ordered_rows": [
+      {
+        "key": "Autocomplete",
+        "smallstring": "helper11aaa80 +10e372c..3738",
+        "gate": "10e371c calls10e38a4;10e3724 skip; flag literal88896e0 showAutocompleteSuggestionsSettings"
+      },
+      {
+        "key": "Trending searches",
+        "literal": "88896c0",
+        "load": "10e37b8"
+      }
+    ],
+    "implementation": "source-ordered two rows with explicit offline autocomplete capability; service changes not implemented",
+    "verification": "ios-settings-general-suggestions-20261112.xcresult passed"
+  },
+  "limits": [
+    "Passwords order relative to Storage is proven inside inspected App settings branch; complete root branch selection and hierarchy remain open",
+    "No screenshot-derived order promoted to artifact fact",
+    "Original Passwords icon unresolved",
+    "General Intelligence group and other dynamic sections not reconstructed",
+    "No account service state read or mutated"
+  ],
+  "next_action": "Prioritize root composition and concrete account content owner; do not expand more settings child pages until root topology is closed",
+  "verification": {
+    "root": "ios-settings-root-passwords-20261112.xcresult",
+    "status": "passed",
+    "scope": "Chinese light 15 current reference entries reachable; Passwords/Storage/Help Center unavailable entry/back and scroll preservation; not full artifact topology proof"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "a6423c5b2e06db0ccbda79be7095584d909ba0a654964016db3c6b476b509aec",
+    "implementation/ios/Sources/OfficialText.swift": "a1a6a7c6c4a713729771019be23a2e94335c257a3893ed05cebbec89b0339b8e",
+    "implementation/ios/Sources/FrontendHaptics.swift": "d41e4ec5ed35139d228a5703cb9ccba4d675f89e3aece0763d010efc434218cb"
+  }
+}

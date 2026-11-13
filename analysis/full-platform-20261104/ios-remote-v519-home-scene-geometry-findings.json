@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "production_edits": false,
+  "runtime_verified": false,
+  "home_constructor": {
+    "call": "0x19f5180 -> 0x197bfe4",
+    "stack_proof": "159298 saves0x60; callee fp=sp+0x50 => callerSP-0x10",
+    "trailingOutsideContent": "callerSP+0x110 zeroed19f5030 -> calleeFP+0x120 -> local+0x178 -> generic field metadata+a0 at197c7ec..7f4",
+    "sceneMetrics": "callerSP+0x130/138 zeroed19f5028/2c; halfword0x100 at+0x140 from19f5020/24 -> nil wholemetrics tag+0x11. Constructor197c824..840 stores at generic metadata+b0",
+    "result": "Home supplies nil trailingOutsideContent and nil sceneMetrics; phone background local scene reader admitted"
+  },
+  "padding_order": {
+    "inner_if_no_trailingOutsideContent": "1981140 nilbranch19813fc ->1981fa4 VStack ->1c26b48->19821f4 content; inner wrapper198328c reads same field at1983638, cbnz1983650 skips style padding, nil invokes1981448 at1983654 then padding1983690",
+    "outer_if_trailingOutsideContent": "197edc4..197edfc applies styleInsets only nonnil, zero otherwise",
+    "home": "styleInsets once inside inner content; maximumWidth728 + dynamic1981560 correction + infinity outerframe for true appliesPaddingAndMaxWidthToBackground branch",
+    "limitation": "Existing host material boundary and every inner leaf spacing not revalidated here; do not remove styleInsets or replace all insets with correction"
+  },
+  "metrics_reader": {
+    "body": "1992fe0",
+    "children": [
+      "SceneCornerConfigurationProvider",
+      "DeviceSafeAreaInsetsReader.frame(...).allowsHitTesting(false)"
+    ],
+    "evidence_typerecords": [
+      "7e1cd60",
+      "7dbab40",
+      "7e1cdb0"
+    ],
+    "updates": "onChange(initial:true)19933a8/199347c ->1ce6b64/1d3a59c ->1ce6ca4 ->1993544",
+    "bottomCornerRadius": "min(bottomLeftRadius,bottomRightRadius),1993588/359c/35a4; SceneCornerConfiguration metadata975db74 confirms field order",
+    "bottomSafeAreaInset": "optional EdgeInsets.bottom,19935b8/35c4; absent preserved nil",
+    "dedup": "1993608..3654 compares radius and Optional safearea then writes Binding only if changed"
+  },
+  "scene_platform_provider": {
+    "UIViewRepresentable": "SceneCornerConfigurationProvider make757c88c->757c7ac; native SceneCornerConfigurationProvidingView didMoveToWindow sets observations and calls757cb78",
+    "chain": "view.window -> windowScene ->7610404",
+    "ios26_base": "761087c availability iOS26 plus internalflag + keyWindow ->7610ae0. Reads UIView.cornerConfiguration at7610b3c, temporarily sets corners(radius:.containerConcentric(minimum:nil))7610ba0/bac/bc0; effectiveRadiusForCorner raw1/2/4/8 at7610bd4/be4/bf4/c04; restores previous configuration7610c54",
+    "scene_adjustment": "7610404 also compares keyWindow bounds converted to screen.coordinateSpace with screen bounds and adjusts selected corners via displayradius76118dc",
+    "limitations": [
+      "Internalflag resolution and legacy fallback not complete",
+      "Full screen-edge correction predicates not fully transcribed",
+      "No claim that host arbitrary local view effectiveRadius equals official keyWindow measurement",
+      "DeviceSafeAreaInsetsReader exact native UIView subclass callback method still unclosed, make756aa44 uses class0xad1b638 and callback75867d4->756aab8"
+    ]
+  },
+  "next_minimum": [
+    "Complete safe-area native class0xad1b638 methods and scene coordinate correction if exact production geometry is required",
+    "Retain original styleInsets once; dynamic correction belongs outside maxwidth; runtime verify keyboard focus and nokeyboard separately"
+  ]
+}

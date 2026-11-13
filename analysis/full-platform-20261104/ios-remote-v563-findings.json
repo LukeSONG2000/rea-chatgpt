@@ -1,0 +1,50 @@
+{
+  "batch": "v563",
+  "status": "partial",
+  "question": "Remote history and reading position across process restart",
+  "artifact": {
+    "version": "iOS 1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    {
+      "type": "official_public_source_inventory",
+      "file": "analysis/upstream-codex-20261105/app-server-README.md",
+      "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+      "observation": "thread/read exposes a separately scoped revisioned read receipt for eligible threads. It is not a viewport offset contract. Mobile compatibility remains unproved."
+    },
+    {
+      "type": "official_artifact_observation",
+      "file": "analysis/full-platform-20261104/ios-remote-v550-findings.json",
+      "observation": "Native collection has distinct anchor, pinned-distance restoration, edge request and animation inputs. Algorithm and persistence remain unresolved."
+    },
+    {
+      "type": "independent_host_source",
+      "files": [
+        "implementation/ios/Sources/RemoteThreadReplay.swift",
+        "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift"
+      ],
+      "observation": "Replay turn IDs, content, pending prompts and reading positions currently live only in memory."
+    }
+  ],
+  "decision": "Persist the complete independent frontend replay snapshot and attachments with stable identities. Reconcile exact accepted draft identity after a crash between history commit and draft clearing. A locally interrupted replay gets an explicit replay-interruption failure and retains the source-observed error-action gate. Pending queued inputs remain available for explicit start/cancel. Persist scoped viewport positions after scrolling; restore against the same history IDs.",
+  "limitations": [
+    "Snapshot format, local replay-interruption policy and viewport algorithm are independent adaptations",
+    "No real service replay/resume or backend execution",
+    "Official history/cache lifecycle and Android ownership require separate evidence"
+  ],
+  "failed_probes": [
+    {
+      "file": "ios-remote-v563-contract-tests.log",
+      "finding": "Test incorrectly expected a generation failure to offer submission retry. Existing source-bound presentation gate rejects this. Corrected test to preserve the gate and explicitly start a saved queued input."
+    }
+  ],
+  "validation": {
+    "integration": "ios-remote-v563-integration.json",
+    "distinct_ui_cases_passed": 9,
+    "executions_passed": 11,
+    "ui_failures": 0,
+    "foundation": "r4 passed",
+    "failed_initial_assumption": "Generation failure retry expectation rejected by existing source-bound gate. Test corrected."
+  }
+}

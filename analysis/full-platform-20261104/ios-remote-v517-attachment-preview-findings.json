@@ -1,0 +1,215 @@
+{
+  "batch": "v517",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "scope": "Remote composer attachment strip and image/file item consumers. No original execution or production modifications.",
+  "confirmed": [
+    {
+      "offsets": [
+        "0x1985714",
+        "0x1985954..0x19859d4",
+        "0x198c274",
+        "0x198c464",
+        "0x198d394"
+      ],
+      "conclusion": "Normal composer builds a horizontal ScrollView with showsIndicators=false containing centered HStack and ForEach over attachments. Row builds CodexRemoteFileAttachmentChip or CodexRemoteImageAttachmentTile by attachment payload discriminant. fixedSize(horizontal:false,vertical:true) at1985a64."
+    },
+    {
+      "offsets": [
+        "0x19874b8..0x1987524"
+      ],
+      "conclusion": "Strip-content predicate checks attachments count at metadata+58 first, optional recentPhotosController at+78 via1892888 with returned x1 nonzero, selectedTextAttachments count at+5c, then nonempty filtered reviewFindingComments via19817cc→198e73c. Review filter excludes entries whose byte read through metadata+18 is nonzero. Recent photo payload precise semantic and review byte name remain unbound."
+    },
+    {
+      "offsets": [
+        "0x1985928..0x198597c"
+      ],
+      "conclusion": "Strip container also presents when local-or-supplied attachment error exists or isLoadingAttachments(+68) is true. The content predicate alone must not hide loading/error."
+    },
+    {
+      "offsets": [
+        "0x198c374..0x198c3d8",
+        "0x198c3dc..0x198c448"
+      ],
+      "conclusion": "HStack spacing reads MessageInputStyle.carousel.spacing (nested style+58). Explicit padding is horizontal and top,8; no bottom padding in this modifier. Default spacing6 from607f440..444."
+    },
+    {
+      "offsets": [
+        "0x197c4ec..0x197c55c",
+        "0x7e2ab90",
+        "0x7e2abd8",
+        "0x7e2ac20",
+        "0x198e360..0x198e5b4"
+      ],
+      "conclusion": "Image size is ScaledEnvironmentMetric keyed into EnvironmentValues MessageInputStyle→FileUploadCarouselStyle sizeWhenVerticallyCompact(offset16),sizeWithOtherFiles(offset0),sizeWithOnlyImages(offset8). Any materialized payload tag1 picks mixed; otherwise compact verticalSizeClass picks compact and other class picks only-images. There is no keyboard-height read in this selector."
+    },
+    {
+      "offsets": [
+        "0x6081284..0x6081290",
+        "0x607f41c..0x607f444",
+        "0x823bf40"
+      ],
+      "values": {
+        "sizeWithOtherFiles": 120,
+        "sizeWithOnlyImages": 120,
+        "sizeWhenVerticallyCompact": 120,
+        "spacing": 6
+      },
+      "conclusion": "DefaultMessageInputStyle delegates carousel to607f3e0. First two doubles120 stored as vector; third120 and first inner inset8 copied from literal823bf40. These are defaults before ScaledEnvironmentMetric. Prior v508 Home/Remote caller overrides do not rewrite these carousel geometry fields."
+    },
+    {
+      "offsets": [
+        "0x19746b4..0x19746c0",
+        "0x1974808",
+        "0x60abf70",
+        "0x60abfe8",
+        "0x60ac130",
+        "0x607f4d0..0x607f4e4",
+        "0x607f5b8..0x607f5f0"
+      ],
+      "values": {
+        "removeButtonSize": 24,
+        "imageRemoveButtonPadding": [
+          7,
+          7,
+          7,
+          7
+        ],
+        "itemShape": "RoundedRectangle",
+        "cornerSize": [
+          19,
+          19
+        ]
+      },
+      "conclusion": "Remote image uses shared MessageInputAttachmentTile, square size, style itemShape clipping, topTrailing remove overlay. Image remove padding comes from carousel field+5c. Default radius19 for both dimensions. Exact rounded-corner style enum remains unbound."
+    },
+    {
+      "offsets": [
+        "0x74fc680..0x74fc6d0",
+        "0x8a578b0",
+        "0x607f4dc..0x607f4e4"
+      ],
+      "conclusion": "Default remove icon factory74fc680 points to OpenAI/Symbols/xmark-circle-fill. Remove button uses shared MessageInputAttachmentRemoveButton plain button style. Native rendered asset metrics/color/backdrop still require consumer closure before declaring parity."
+    },
+    {
+      "offsets": [
+        "0x1c29ce4",
+        "0x1c2a714",
+        "0x1990a8c..0x1990b04",
+        "0x198d4b8..0x198d4c8",
+        "0x198d81c..0x198d834"
+      ],
+      "conclusion": "Remove and preview dispatch handle with raw8 removeAttachment and raw7 attachmentTapped, preserving captured attachment identity. Preview callback optional gated by isComposerAttachmentPreviewEnabled, remove remains provided."
+    },
+    {
+      "offsets": [
+        "0x198d634..0x198d6b8",
+        "0x1972ae4",
+        "0x1972b4c",
+        "0x1972bd0"
+      ],
+      "values": {
+        "fileChipHStackSpacing": 6,
+        "fileChipCornerRadius": 16,
+        "fileRemoveIconScaledMetricBase": 14,
+        "fileRemoveFrameScaledMetricBase": 16,
+        "fileIconScaledMetricBase": 16
+      },
+      "conclusion": "File chip is separate component with filename, optional preview and remove. Its geometry and scaled metrics differ from square image tile."
+    }
+  ],
+  "integration_ready": [
+    "Use horizontal strip above input text with center HStack spacing6 and horizontal/top8 insets. Keep vertical intrinsic sizing.",
+    "Use scoped attachment identity for remove/preview and keep error/loading strip visible even with zero selected attachments.",
+    "Image geometry comes from carousel style and ScaledEnvironmentMetric. Default120 square, roundedrectangle19, remove24 topTrailing inset7, official xmark-circle-fill asset factory.",
+    "Local PhotosPicker/fileImporter materialization and draft storage must be explicitly independent adapters, not labeled recovered uploads."
+  ],
+  "unknowns": [
+    {
+      "boundary": "0x7560ae4 wrapper and selected caller style environment",
+      "detail": "Full ScaledEnvironmentMetric dynamic scaling decision not closed. Raw default120 does not prove constant runtime size at accessibility sizes."
+    },
+    {
+      "boundary": "0x60ab0f0 and0x1ce8068",
+      "detail": "Exact image remove foreground/backdrop variant selection, pressed feedback, and source accessibility string not yet closed."
+    },
+    {
+      "boundary": "0x197490c and lazy-state loader",
+      "detail": "Full thumbnail aspect-fill/crop interpolation and asynchronous attachment image preparation not closed."
+    },
+    {
+      "boundary": "0x19874b8 optional controller1892888; reviewFindingComments198e73c metadata+18",
+      "detail": "Recent photo nonnil payload and review flag name not bound. Preserve exact gates rather than invent names."
+    },
+    {
+      "boundary": "0x1972ae4..0x1973534",
+      "detail": "File label truncation/color and file icon asset remain partial."
+    },
+    {
+      "boundary": "0x1985714 parent context",
+      "detail": "No new keyboard displacement or fixed composer-width rule established. Reuse existing v508/v513 native parent width/keyboard configuration."
+    }
+  ],
+  "validation": "Static only. No UI/parity/device acceptance performed.",
+  "evidence_sha256": {
+    "ios-remote-v517-attachment-preview-action-dispatch-calls.json": "4b6ebadcf917dad14bfc2babaded3860553c8e193a4aede29f45dd2284a70342",
+    "ios-remote-v517-attachment-preview-action-dispatch.asm": "7796034b2fb8c7cabdb82759145e9df941aefab213d127462d830cfa64ccc21a",
+    "ios-remote-v517-attachment-preview-carousel-default-calls.json": "4c3d442cba47f85770dcd59219b0e7308d219cd9a06088f997eb6044be0b017b",
+    "ios-remote-v517-attachment-preview-carousel-default.asm": "6675ab8ba9c75cbca9f929712e81101eb6f978243f0ead5b8e49cd02f644f52a",
+    "ios-remote-v517-attachment-preview-carousel-env-default-calls.json": "ebc0245e5cdbbeda9530a94c8d273b48c25c8d8c8e9b95a93bd5bd0b6752834d",
+    "ios-remote-v517-attachment-preview-carousel-env-default.asm": "1fcbf1e58ed21781640a5fbfcae150d52da4352fa77f05f1c1dc03cc478817af",
+    "ios-remote-v517-attachment-preview-carousel-env-init-calls.json": "c9cc0273ee4b150a133e005229487031cc7b0b2e5dc626c674470d610ea923e5",
+    "ios-remote-v517-attachment-preview-carousel-env-init.asm": "d5263f69cb55b2304f5a5f25bfc2989c675b8daf0559e2b756342f4e79f603a1",
+    "ios-remote-v517-attachment-preview-carousel-env-witness.json": "7eca1a2d6820fdfa91e75d44a338799c8041dc1a0cfb89330dadcf24842efd45",
+    "ios-remote-v517-attachment-preview-carousel-metadata.json": "412c1828a78e9c186fc383749ede608923ac7d691449bbbcb9e75b3a7c042b51",
+    "ios-remote-v517-attachment-preview-composer-consumer-calls.json": "5da090bb76836649b6636a4c5d19ad3682230bdd88470b4951491f5a210aa823",
+    "ios-remote-v517-attachment-preview-composer-consumer.asm": "f77bdb31d30862b2eb11ebc170417d7e1eff710530ab279709f34da48c90f4c7",
+    "ios-remote-v517-attachment-preview-constructor.asm": "31568ae3e5282afe443f3c3828f427e276f8807436d4a67c78005a82a1d74422",
+    "ios-remote-v517-attachment-preview-file-body-calls.json": "e6f2e94abf73d6b1f4d3761e9f6e2ebb50af362d210e5e35e3a960d28c55b9f5",
+    "ios-remote-v517-attachment-preview-file-body.asm": "ef74bdba34a5cf1f01ec381bb1459177fbb3d41cd4112057593125bc2d0ebd70",
+    "ios-remote-v517-attachment-preview-foreach-row-calls.json": "c81ad0a77481a7a6a647bd841d266e716466c36e7984d3711b6f888d840b41d9",
+    "ios-remote-v517-attachment-preview-foreach-row.asm": "41f6a4aad257e98edf62d7ba9e3e758108ebd44fe16457a737e85e9a1b171416",
+    "ios-remote-v517-attachment-preview-image-body-calls.json": "a40b7a3f497c1cf01a0d3d7e190a6dbdc1022597b9260cd8e04e61bae9b9c476",
+    "ios-remote-v517-attachment-preview-image-body.asm": "e5a79eb495ca37ac4c4ba3f6c0743f59950085fbaa867b381dc16719d5932100",
+    "ios-remote-v517-attachment-preview-item-closures-calls.json": "c665e9c7f5b3a400d1f674cb2ed5c3b8c7d4c11f82fc4424123520c20624a5c7",
+    "ios-remote-v517-attachment-preview-item-closures.asm": "1e84f8d95ed2b9d34a319faa09195d9cc0ba70789126e0ccf6fca8e87b33c2c6",
+    "ios-remote-v517-attachment-preview-metadata.json": "858fc37de4fa72ea9e950ea65c1e2e0c58ea63b3f9bb5ca5419dc0b7abdcb74f",
+    "ios-remote-v517-attachment-preview-metric-types.json": "8daec7ca16e9b545533e6a6de728852ec07c673ef0328208c8a1a9814e49095b",
+    "ios-remote-v517-attachment-preview-metric-wrapper-calls.json": "f1b33f4653334e9792c36473933dadc7e60f03f223ead0e112e26a2ad4c9fb54",
+    "ios-remote-v517-attachment-preview-metric-wrapper.asm": "a3c55097ad6b7141970fa24be8754689184fc5645ee49cbcde37eb1e3c1eb6d7",
+    "ios-remote-v517-attachment-preview-remove-body-calls.json": "a8f10ad01be53bdcd1bb070d6410891d380a173906daf9275a46b7523b4c3fcc",
+    "ios-remote-v517-attachment-preview-remove-body.asm": "fe76063304859241528ddbc0e572c2f0f9a5ee35bac94b448fa8773bb46d6d73",
+    "ios-remote-v517-attachment-preview-remove-icon-calls.json": "f0b922c560099905bae8f2f741bf24422b457fd7837ce22b9663aa50f03258ac",
+    "ios-remote-v517-attachment-preview-remove-icon.asm": "462a41a11a9f9b81f28a42075e1ea035e03bc42f9d2a383427faa16014867f70",
+    "ios-remote-v517-attachment-preview-remove-label-calls.json": "ce462a3d586aa3f50c8e08f6b35d02eaec3c8958180b48757a0980374145c16f",
+    "ios-remote-v517-attachment-preview-remove-label.asm": "c390aac324eece7acf47375b8f0960482c4a3c1f3dbdc2e87410e48cd0d0414d",
+    "ios-remote-v517-attachment-preview-review-filter-calls.json": "f776113a57dd431e6e8502ab1ac390dd3796b38d9caebf974fc69b3ea44815d3",
+    "ios-remote-v517-attachment-preview-review-filter.asm": "56b3839bf8dade8f75d839342b7db3f877f192b5bb38e45c484fff3efee44893",
+    "ios-remote-v517-attachment-preview-row-arguments-calls.json": "d5002d7ac20ea74c32db4508ad3b8f70183aededd0ae1581521dfd506e5db97f",
+    "ios-remote-v517-attachment-preview-row-arguments.asm": "77a67ec6fe9ecbb16ffc6369d9a47640de38f4abbb87055a7d9abf44fecec63a",
+    "ios-remote-v517-attachment-preview-size-calls.json": "de29ff4da01dfb18b69725d6f1077a505e714b11559dc3484ba4871bb4e0287d",
+    "ios-remote-v517-attachment-preview-size.asm": "0e216f5af772a296ee1e6258f18211ecbe3b5357efa3aecefc85c46e4de803c2",
+    "ios-remote-v517-attachment-preview-spacing-helper-calls.json": "fcba535ac7db02ad67ae022b60bed50cecd2ad1dc438b05a3a053fc2f9c12e95",
+    "ios-remote-v517-attachment-preview-spacing-helper.asm": "c809ac1f15683270333435adba95d8b33fbfccc140d631987d6eb1f5c1bb3805",
+    "ios-remote-v517-attachment-preview-strip-closures-calls.json": "451487e69f12a5383541749de4828081574f31a25038dfa6346f7ebe31c3b075",
+    "ios-remote-v517-attachment-preview-strip-closures.asm": "da1560ace827643afc038cfd138c9932384a1a3f516b85188ca487f4c7c03795",
+    "ios-remote-v517-attachment-preview-strip-condition-calls.json": "8e831148d38c97bb0426a1fda50cf7f1f89ae44690657c41120f602329d2c78b",
+    "ios-remote-v517-attachment-preview-strip-condition.asm": "f48c05cc22f24f6b7a3e2259543e0569e0ba32b36f71080cd14b3b585c6d38cd",
+    "ios-remote-v517-attachment-preview-strip-error-calls.json": "2e2db10c776c4d1f9bf37b314708ae7faaca1cb3c995eccc6998f01fdf4339af",
+    "ios-remote-v517-attachment-preview-strip-error.asm": "7f963702cb7cba8b38fce42829b10515c001b9d97d3427102460e3127160ac7b",
+    "ios-remote-v517-attachment-preview-strip-items-calls.json": "fa241f3db21db7e401af61ae07c659e1c327330d1a6629992281c2b536e6f8d2",
+    "ios-remote-v517-attachment-preview-strip-items.asm": "a908fec785dece190178f2748b537f0e32fbf06a7355762ac1d487e200a25132",
+    "ios-remote-v517-attachment-preview-strip-padding-helpers-calls.json": "d193d5bb9c4eab6a21edc217c41475ba8d3552465dc83f5cb9ca9dc5c59566c9",
+    "ios-remote-v517-attachment-preview-strip-padding-helpers.asm": "4b3e0885b48d82148471704a14fcc2651acbb1420f038ca6558ac4cf88002de8",
+    "ios-remote-v517-attachment-preview-style-default.asm": "fbc8acade0dc58e2b2b158533419615bbef26327eaaf89b78ef55f3f8ab68f7d",
+    "ios-remote-v517-attachment-preview-style-spacing-calls.json": "e7bb27fe0ed394a3724d1ee87b189f73efcf5755796ad45327d0c768db7a68d7",
+    "ios-remote-v517-attachment-preview-style-spacing.asm": "bada89a33866ac3222744182c63c5f2a0c9b000f4f6ec5296339ede750947df0",
+    "ios-remote-v517-attachment-preview-tile-body-calls.json": "2f29ea698bdc8d132ec931b226782f9c69dcf6a86e3e046d6b8b987d715483e2",
+    "ios-remote-v517-attachment-preview-tile-body.asm": "0dfb667ff143d2a7871a0b1960b37f5f7b7966b3a3961107dfaf9685c6f35650",
+    "ios-remote-v517-attachment-preview-witnesses.json": "570ee421b73cbef1451189968bce1abce8d5319bd95fd0853c72b99e8641c75e"
+  }
+}

@@ -2,7 +2,7 @@ import Foundation
 
 // Observed 293 field names; host/connection envelope and typed events are our
 // frontend boundary, not an official JSON schema or server implementation.
-struct RemoteUserInputScope: Hashable {
+struct RemoteUserInputScope: Hashable, Codable {
     let hostID: String
     let connectionID: String
     let id: String
@@ -10,6 +10,14 @@ struct RemoteUserInputScope: Hashable {
     let threadID: String
     let turnID: String?
     let itemID: String?
+    var callID: String? = nil
+
+    //293 ApprovalRequestKey fields; the surrounding host/connection/id scope
+    //is our explicit frontend envelope, not part of that original key.
+    var requestKey: RemoteApprovalRequestKey {
+        .init(requestID: requestID, threadID: threadID, turnID: turnID,
+              itemID: itemID, callID: callID)
+    }
 }
 struct RemoteUserInputQuestion: Hashable {
     struct Option: Hashable { let label: String; let description: String }
@@ -74,8 +82,17 @@ enum RemoteUserInputLayout {
 struct RemoteUserInputDraft: CustomStringConvertible, CustomDebugStringConvertible {
     enum Trigger { case button, keyboard }
     enum Navigation { case previous, next }
-    let request: RemoteUserInputRequest
-    private(set) var currentQuestionIndex = 0
+    enum Action {
+        case select(questionID: String, optionIndex: Int)
+        case submit(Trigger, questionID: String)
+    }
+    private(set) var request: RemoteUserInputRequest
+    private var selectedQuestionIndex = 0
+    //293 getter1a54310 reads the current request's questions before clamping.
+    var currentQuestionIndex: Int {
+        RemoteUserInputProgression.clampedIndex(count: request.questions.count,
+            current: selectedQuestionIndex) ?? 0
+    }
     private var answers: [String: [String]] = [:]
     private var customAnswersByQuestionID: [String: String] = [:]
     private var currentText = ""
@@ -87,6 +104,25 @@ struct RemoteUserInputDraft: CustomStringConvertible, CustomDebugStringConvertib
         }
     }
     init(request: RemoteUserInputRequest) { self.request = request }
+    mutating func updateRequest(_ value: RemoteUserInputRequest) {
+        let previousQuestionID = currentQuestion?.id
+        let keyChanged = request.scope != value.scope
+        request = value
+        if keyChanged {
+            //293 key onChange1cf4494 clears answers, per-question custom drafts,
+            //current custom text and index. Extra host/session scope changes
+            //also retire this local state; no answer payload is persisted.
+            answers = [:]
+            customAnswersByQuestionID = [:]
+            currentText = ""
+            selectedQuestionIndex = 0
+        } else if currentQuestion?.id != previousQuestionID {
+            //Independent stale-question guard for a same-key catalog change.
+            //Do not delete previously supplied answers/drafts by guessing an
+            //official reconciliation policy.
+            restoreCurrentDraft()
+        }
+    }
     var description: String { "<redacted>" }
     var debugDescription: String { description }
     // Initial task0x1cf49bc ->0x1a544d4/0x1a54514 submits an empty dictionary
@@ -117,10 +153,10 @@ struct RemoteUserInputDraft: CustomStringConvertible, CustomDebugStringConvertib
         switch direction {
         case .previous:
             guard canMovePrevious else { return }
-            currentQuestionIndex -= 1
+            selectedQuestionIndex = currentQuestionIndex - 1
         case .next:
             guard canMoveNext else { return }
-            currentQuestionIndex += 1
+            selectedQuestionIndex = currentQuestionIndex + 1
         }
         restoreCurrentDraft()
     }
@@ -154,22 +190,39 @@ struct RemoteUserInputDraft: CustomStringConvertible, CustomDebugStringConvertib
         }
         return record(value, for: question)
     }
+    // Independent synchronous host transaction around the recovered draft
+    // callbacks: intermediate questions advance locally; a terminal event must
+    // be accepted before its draft mutation is published. Failure leaves the
+    // last text/secret input or choice available for a deliberate retry. Nothing
+    // here is Codable or logs answer contents. This is not a recovered RPC.
+    @discardableResult
+    mutating func perform(_ action: Action, accepting: (RemoteUserInputEvent) -> Bool) -> Bool {
+        var next = self
+        let event: RemoteUserInputEvent?
+        switch action {
+        case .select(let id, let index): event = next.select(questionID: id, optionIndex: index)
+        case .submit(let trigger, let id): event = next.submit(trigger, questionID: id)
+        }
+        if let event, !accepting(event) { return false }
+        self = next
+        return true
+    }
     // Both original callbacks write one answer per question and use 0x1a56654.
     private mutating func record(_ value: String, for question: RemoteUserInputQuestion) -> RemoteUserInputEvent? {
         customAnswersByQuestionID.removeValue(forKey: question.id)
         currentText = ""
         answers[question.id] = [value]
         if let next = RemoteUserInputProgression.nextQuestionIndex(ids: request.questions.map(\.id), current: currentQuestionIndex, answeredIDs: Set(answers.keys)) {
-            currentQuestionIndex = next
+            selectedQuestionIndex = next
             restoreCurrentDraft()
             return nil
         }
         return .submit(request, .init(answers))
     }
 }
-enum RemoteUserInputFailure: Equatable { case staleRequest, unsupportedRequest, invalidAnswers, serviceUnavailable }
-struct DisconnectedRemoteUserInputAdapter {
-    func submit(_ event: RemoteUserInputEvent, current: RemoteUserInputRequest?) -> RemoteUserInputFailure {
+enum RemoteUserInputFailure: Equatable { case staleRequest, unsupportedRequest, invalidAnswers, serviceUnavailable, localStorage }
+struct RemoteUserInputIntentValidation {
+    func submit(_ event: RemoteUserInputEvent, current: RemoteUserInputRequest?) -> RemoteUserInputFailure? {
         guard event.request == current else { return .staleRequest }
         guard event.request.supported else { return .unsupportedRequest }
         if case .submit(let request, let answers) = event {
@@ -184,6 +237,18 @@ struct DisconnectedRemoteUserInputAdapter {
             }
             guard valid else { return .invalidAnswers }
         }
-        return .serviceUnavailable
+        return nil
     }
+}
+struct DisconnectedRemoteUserInputAdapter {
+    func submit(_ event: RemoteUserInputEvent, current: RemoteUserInputRequest?) -> RemoteUserInputFailure {
+        RemoteUserInputIntentValidation().submit(event, current: current) ?? .serviceUnavailable
+    }
+}
+// Independent receipt only. Answer content, especially secret answers, is never
+// persisted by the synthetic frontend adapter. This is not an official wire DTO.
+struct RemoteUserInputReceipt: Codable, Equatable {
+    enum Outcome: String, Codable { case answered, skipped }
+    let scope: RemoteUserInputScope
+    let outcome: Outcome
 }

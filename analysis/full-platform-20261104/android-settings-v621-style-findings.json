@@ -1,0 +1,132 @@
+{
+  "platform": "Android",
+  "version": "1.2026.293",
+  "type": "bounded-static-source-comparison",
+  "artifact_sha256_from_retained_inventory": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "source_base": "recovered/android-1.2026.293/jadx-src/sources/defpackage/",
+  "host_snapshot_note": "Read-only source comparison before any v621 parent edits. Source lines may shift afterward.",
+  "scope": "Settings root and General presentation",
+  "findings": [
+    {
+      "id": "settings-icons",
+      "status": "confirmed",
+      "official": [
+        "nm50.java:200-220",
+        "y940.java:9",
+        "h440.java:9",
+        "v740.java:7"
+      ],
+      "host": [
+        "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt:287"
+      ],
+      "finding": "Root rows carry official icon descriptors. General y940.c has a 24dp icon, Notifications h440.c and Codex Remote v740.c are explicit. ShellSettingsRow supplies no leadingContent.",
+      "action": "Preserve each route icon descriptor and recover actual drawable mapping rather than using a shared generic row icon."
+    },
+    {
+      "id": "grouped-settings",
+      "status": "confirmed",
+      "official": [
+        "nm50.java:176-220",
+        "g881.java:358-380",
+        "j881.java:689",
+        "q081.java:151-228",
+        "ldt0.java:149",
+        "q081.java:478-493",
+        "jbt0.java:8-12"
+      ],
+      "host": [
+        "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt:181-189"
+      ],
+      "finding": "Official settings uses semantic sections, first/last visible row rounding, 16dp row outer horizontal inset and 27dp corner token. General builds appearance and language as separate sections. Host renders one flat root list and adjacent General ListItems.",
+      "action": "Restore section-aware renderer before adjusting individual row positions. Apply 27dp only to exposed first/last section corners. Preserve capability-gated sections."
+    },
+    {
+      "id": "section-spacing",
+      "status": "confirmed",
+      "official": [
+        "jbt0.java:9",
+        "q081.java:2281-2288",
+        "q081.java:2165-2193"
+      ],
+      "host": [
+        "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt:282-284"
+      ],
+      "finding": "SettingsListSectionSpacer is24dp. SettingsListHeader composes horizontal inset tokens16+20dp, bottom4dp and typography on01.h. Current SettingsGroup is start20/top24/bottom8 with Material3 labelLarge.",
+      "action": "Use recovered header layout chain for sections with headers. Do not add header text to source sections whose title is null."
+    },
+    {
+      "id": "row-min-height",
+      "status": "confirmed",
+      "official": [
+        "jbt0.java:11",
+        "iet0.java:3232",
+        "androidx/compose/foundation/layout/b.java:106-118"
+      ],
+      "host": [
+        "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt:287"
+      ],
+      "finding": "Common official setting row applies min height54dp through b.k(...jbt0.e,0,2), which resolves to minHeight54/maxHeightNaN. Host inherits stock Material3 ListItem metrics.",
+      "action": "Implement explicit54dp minimum for relevant setting rows, allowing font/content expansion. InputSettingDecorationBox separately uses horizontal16/vertical12dp at q081:1905, do not assume every setting row has that padding."
+    },
+    {
+      "id": "typography",
+      "status": "confirmed-partial",
+      "official": [
+        "q081.java:2193",
+        "on01.java:13",
+        "sk10.java:62-63"
+      ],
+      "host": [
+        "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendTheme.kt:23",
+        "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt:282-284"
+      ],
+      "finding": "Official section heading on01.h resolves to Roboto/OpenAI Sans/sans-serif,16sp,24sp line height,0.1sp tracking,500 regular emphasis and600 alternate emphasis. Host uses stock M3 labelLarge and no restored typography system.",
+      "action": "Recover heading typography directly. Row label typography remains unresolved in this bounded pass and should be traced through iet0.l slot configuration."
+    },
+    {
+      "id": "semantic-surface",
+      "status": "confirmed-partial",
+      "official": [
+        "q081.java:479-493",
+        "q081.java:539-553"
+      ],
+      "host": [
+        "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendTheme.kt:14-23"
+      ],
+      "finding": "Section drawing uses semantic theme m2o0.c(...).c.a background and d.a 1dp stroke, with corners selected by first/last identity. Host currently hardcodes black/white root and general Material3 defaults. Exact numeric official colors and divider ownership are unresolved.",
+      "action": "Restore section surface semantics and trace theme token values before claiming official light/dark parity. Do not infer iOS colors for Android."
+    },
+    {
+      "id": "language-presentation",
+      "status": "confirmed-partial",
+      "official": [
+        "mv81.java:123-130",
+        "mv81.java:282",
+        "j881.java:689"
+      ],
+      "host": [
+        "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt:192-204"
+      ],
+      "finding": "General App language row calls mv81.b using iet0.h, while selection owner presents a tagged AppLocaleDialog via ts71.a. Host navigates to generic full-page options route. Dialog renderer appearance and API-level branches not traced.",
+      "action": "Inspect AppLocaleDialog and option row layout before replacing current presentation. Current full-page selector is independent host implementation."
+    }
+  ],
+  "limits": [
+    "JADX marks parts of iet0/j881/mv81 incorrectly decompiled. Constant declarations and explicit helper calls inspected, ambiguous branch logic remains unknown.",
+    "Root capability predicates remain conditional. No static list of all rows treated as universally visible.",
+    "No official runtime/device comparison performed by this child.",
+    "No implementation files changed."
+  ],
+  "source_sha256": {
+    "nm50.java": "0644e6e8112a66043f41f372cb5462149150029e782202444780aee410086296",
+    "g881.java": "116e8f0b6d8109368788d311b85bcfd52dcbbaa81f13f1aa1f569f764f833663",
+    "j881.java": "207415e6072952d75367a6281b4e62f4b7ec8832cfaf74a15e992742028a6282",
+    "q081.java": "83cc41ff271f54032f84ad2da85012daab388a57eb2a6cfd551489c60e9d962f",
+    "jbt0.java": "034587bdc525ed95567933a8e8e995162fdad64403181ba6a1accf3933f5f057",
+    "ldt0.java": "9f7c3fdcdcfd005fc32cf618b89782b1e0410a9893c75a7cfd042c6122d78ef7",
+    "iet0.java": "5073372c9a1b146c2f882cd7e4adcc012463898060bf6328dd8ec52d20386ad8",
+    "on01.java": "3cc34fb222864abe5fbbc702caa0e3f60ef9b6043d5e15262da861dc4ee60d04",
+    "sk10.java": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed",
+    "mv81.java": "02298e7df42843e8de58fbf7be07d781d13b269b753e304aa23a1690943e0e80"
+  }
+}

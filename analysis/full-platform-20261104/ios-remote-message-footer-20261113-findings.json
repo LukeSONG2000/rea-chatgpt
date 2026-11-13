@@ -1,0 +1,156 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Remote completed assistant reply footer/action consumer, style, copy feedback and haptic evidence; static only",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "status": "partial",
+  "official_observations": [
+    {
+      "conclusion": "The actual Remote HistoryFragment tail consumes SwiftUIStyleguide.CopyButton. This is not inferred from a shared name or code-block usage.",
+      "source": [
+        "0x7e11da8",
+        "0x1a341e0..0x1a342e0",
+        "0x1a34284 -> 0x6eeae2c"
+      ],
+      "evidence": [
+        "ios-remote-message-footer-20261113-tail.tree.txt",
+        "ios-remote-message-footer-20261113-copy-consumer.asm"
+      ],
+      "structure": "Tail VStack contains an optional footer Tuple. Its first element is Optional<ModifiedContent<SwiftUIStyleguide.CopyButton,CodexRemoteAssistantFooterButtonStyleModifier>>; following siblings include feedback/fork actions, hook stats and response timestamp. Sibling callbacks/conditions are separate."
+    },
+    {
+      "conclusion": "This copy branch requires the consumed turn-state raw tag 2, showsFooterActions == true, and nonnil responseCopyText. No nonempty-string check is seen in this branch.",
+      "source": [
+        "0x1a341e8 reads metadata+0xe4 (turnState)",
+        "0x1a341f8 cmp raw tag 2",
+        "0x1a3420c reads metadata+0x114 (showsFooterActions)",
+        "0x1a34230 reads metadata+0xf0 (responseCopyText)",
+        "0x1a3423c optional string discriminator"
+      ],
+      "evidence": [
+        "ios-remote-message-footer-20261113-bindings.json",
+        "ios-remote-v554-error-constructor.asm",
+        "ios-remote-message-footer-20261113-copy-consumer.asm"
+      ],
+      "limit": "Raw tag is a binary ABI observation, not a service/wire enum. Upstream showsFooterActions producer is outside this follow-up."
+    },
+    {
+      "conclusion": "The footer passes animated=true, while the separately evidenced code-header consumer passes false.",
+      "source": [
+        "0x1a3427c mov w4,1",
+        "0x1a34280 ->0x6ef8f8 clears only x6/x7",
+        "0x6eeae4c preserves x4",
+        "0x6eeaecc..0x6eeaed0 stores animated at metadata+0x1c"
+      ],
+      "evidence": [
+        "ios-remote-message-footer-20261113-copy-consumer.asm",
+        "ios-remote-message-footer-20261113-arguments.asm",
+        "ios-remote-v345-copy-initializer.asm"
+      ],
+      "limit": "Do not apply header nonanimated policy globally. Footer onCopy argument is nil in this construction (x7 zero); exact first-item construction is shared constructor behavior."
+    },
+    {
+      "conclusion": "Footer-specific styling is regular, icon-only, scaled 15-point icon font, original secondary icon foreground, and dedicated ButtonStyle with padding parameter 6.",
+      "source": [
+        "ViewModifier descriptor0x95adcb8/conformance0x7e1cb1c/body0x19a4554 ->0x19a430c",
+        "LabelStyle descriptor0x95af4a0/conformance0x7e22110/body0x19a4844 ->0x19a469c",
+        "ButtonStyle descriptor0x95af47c/conformance0x7e220d8/body0x19a4694 ->0x19a4558",
+        "0x19a43cc regular weight",
+        "0x19a43f4 15.0",
+        "0x19a441c ScaledMetric initialization",
+        "0x19a44ac/cc ->0x74ed744 ->literal0x8a51510 ChatGPT/icon/secondary",
+        "0x19a44fc 6.0 ->0x19a452c buttonStyle"
+      ],
+      "evidence": [
+        "ios-remote-message-footer-20261113-modifier.asm",
+        "ios-remote-message-footer-20261113-style.asm",
+        "ios-remote-message-footer-20261113-modifier-final.tree.txt",
+        "ios-remote-message-footer-20261113-button-tree.tree.txt",
+        "ios-remote-message-footer-20261113-label-tree.tree.txt",
+        "ios-remote-message-footer-20261113-bindings.json"
+      ],
+      "geometry": "LabelStyle renders configuration.icon, reads ScaledMetric.wrappedValue, applies Font and AspectRatio. Dedicated ButtonStyle applies all-edge positive padding, Rectangle content shape, then all-edge negative padding and automatic hoverEffect. Thus hit expansion is compensated in outer layout; a separate minimum44 frame is not evidenced in these bodies.",
+      "limit": "ScaledMetric relative text-style raw value and the exact shared Font helper implementation remain unclosed; do not treat 15 as a fixed pixel measurement. No claim that this proves every footer sibling condition."
+    },
+    {
+      "conclusion": "Shared copy feedback uses original square-on-square when idle and checkmark-lg when copied; string payload writes UIPasteboard.general.string.",
+      "source": [
+        "0x6ee9c88/0x6ee9cf0",
+        "0x74fb3ac ->0x8a570e0",
+        "0x74f5b1c ->0x8a547e0",
+        "0x6ee9fd0 generalPasteboard",
+        "0x6eea134 setString:"
+      ],
+      "evidence": [
+        "ios-remote-v345-item-copy-calls.json",
+        "ios-remote-v346-integration.json"
+      ],
+      "limit": "Static consumers; no original application execution."
+    },
+    {
+      "conclusion": "Animated shared CopyButton uses ReplaceSymbolEffect with speed 2, while its nonanimated branch uses identity content transition. Body attaches a SwiftUI _TaskValueModifier2 and reads __copied via LazyState.",
+      "source": [
+        "0x6ee90fc reads animated",
+        "0x6ee912c compares 1",
+        "0x6ee9138/15c ReplaceSymbolEffect",
+        "0x6ee9184 speed2",
+        "0x6ee91bc symbolEffect content transition",
+        "0x6ee91e8 identity",
+        "0x6ee920c/92b0 copied LazyState",
+        "0x6ee9430 _TaskValueModifier2 initializer"
+      ],
+      "evidence": [
+        "ios-remote-v345-style-copy-body-entry.asm",
+        "ios-remote-v345-style-copy-entry-calls.json"
+      ],
+      "limit": "Exact async reset/cancellation semantics remain unknown. Caller helper0x1d98964 supplies integer2000000000000000000 as duration component; interpreting it as two seconds remains a static inference until Duration layout and async continuation are closed."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "observed": "No explicit haptic/sensoryFeedback call is proved by the bounded footer modifier, label, ButtonStyle, CopyButton body and item-handler call inventories. Footer constructs nil onCopy callback.",
+    "limit": "Absence from these direct call inventories does not prove absence from all shared helpers or system Button behavior. Do not add a claimed-official haptic trigger solely for copy success.",
+    "evidence": [
+      "ios-remote-message-footer-20261113-modifier-calls.json",
+      "ios-remote-message-footer-20261113-style-calls.json",
+      "ios-remote-v345-style-copy-entry-calls.json",
+      "ios-remote-v345-item-copy-calls.json"
+    ]
+  },
+  "can_restore_now": [
+    "Scope whole-response copy to the actual reply footer, respecting status/footer admission and supplied responseCopyText, independently of per-code copy.",
+    "Replace the independent14pt/padding6/min44 footer with the recovered footer15pt ScaledMetric/regular/secondary icon LabelStyle and padding-compensated Rectangle ButtonStyle; keep native clipboard integration explicitly independent.",
+    "Use original idle/copied glyph resources and enable footer-specific symbol replacement transition; retain code-header animated=false.",
+    "Keep feedback identity scoped to account/device/task/turn/payload revision. Existing two-second timer/cancellation policy is an independent host policy pending full original lifecycle proof."
+  ],
+  "precise_unknowns": [
+    {
+      "gap": "Original responseCopyText/showsFooterActions upstream projection and footer sibling callback gates",
+      "next": "Trace CodexRemoteHistoryFragment construction from Thread render model; do not derive all footer actions from completion alone."
+    },
+    {
+      "gap": "Original confirmation reset duration/async task identity and cancellation",
+      "next": "Resolve _TaskValueModifier2 action entry captured at0x6ee940c/0x6ee94e8 (0x838ebb0) and its continuation / Duration components; current2s policy stays adapter."
+    },
+    {
+      "gap": "Explicit copy haptic",
+      "next": "Trace only concrete helper or callback if new evidence reveals an invocation; current bounded callsites do not prove one."
+    },
+    {
+      "gap": "ScaledMetric relative text style / full original effective parent font environment",
+      "next": "Resolve font-style binding at0x19a43d4..0x19a441c and shared LabelStyle font helper; no fixed frame guessed."
+    }
+  ],
+  "validation": {
+    "kind": "static original artifact and existing source-bound evidence reuse",
+    "app_changed": false,
+    "built": false,
+    "original_app_run": false,
+    "tests_run": false
+  }
+}

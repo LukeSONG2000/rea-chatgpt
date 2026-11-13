@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "batch": "v530",
+  "status": "partial",
+  "platform": "iOS",
+  "artifact_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "reference_index": "ios-remote-v517-controls-user-reference-index.json",
+  "reference_version": "unknown; current official runtime screenshots supplied by user",
+  "source_reports": [
+    "ios-remote-v530-keyboard-findings.json",
+    "ios-remote-v530-slider-animation-findings.json"
+  ],
+  "implemented": [
+    "Ordinary source-to-expanded layout, spring open/close and separate phased title/meter/chrome visibility",
+    "Advanced explicit-return appearance fade with no-animation initial expanded transaction",
+    "Elevated window level statusBar minus one",
+    "Active in-process keyboard capture, clipped snapshot fallback and alpha restoration on cleanup",
+    "Direct source keyboardRect assignment with viewport intersection guard; removed second cross-window conversion"
+  ],
+  "independent_adapters": [
+    "Native UIKit sibling container for SwiftUI overlay and keyboard snapshot; key-window guard",
+    "Presentation generation suppresses obsolete animation completion",
+    "Background interruption discards pending selection and restores keyboard",
+    "Reduce Motion suppresses host animation; original full accessibility policy remains unresolved",
+    "Synthetic per-task capability/configuration state; no model execution or service writes",
+    "Advanced return scheduled outside SwiftUI sheet-dismiss transaction and guarded by composer session identity",
+    "Facade viewport intersection guard; parent UIView exact identity and multiwindow acceptance remain partial"
+  ],
+  "validation": {
+    "foundation": "passed",
+    "foundation_log": "ios-remote-v530-foundation.log",
+    "r1_ui": "Chinese quick picker passed before animation integration; keyboard blur visually missing",
+    "r2_ui": "compile failed: omitted completion closure and obsolete CGRect formatting API; corrected",
+    "r3_ui": "Chinese quick picker passed; diagnostic showed added scene-equality guard rejected UIKit keyboard scene",
+    "r4_ui": "4 passed including Chinese and English/dark quick picker with background interruption; snapshot still rejected by additional screen-wrapper identity guard",
+    "device_install": false,
+    "display": "built-in Color LCD only",
+    "retention_targets": [],
+    "r5_ui": "2 failed on Advanced return; afterScreenUpdates snapshot reentered SwiftUI SheetBridge layout and caused exclusivity abort",
+    "r6_ui": "Chinese/light and English/dark quick picker passed, including Advanced return and background restoration; screenshot keyboard blank",
+    "r7_ui": "Chinese quick picker passed; diagnostic proved facade frame {{inf, inf}, {0, 0}} after unnecessary cross-window conversion",
+    "r8_ui": "2 passed, Chinese/light and English/dark quick picker including Advanced return, long-press drag, A-B-A, draft typing after close and after background interruption",
+    "ui_result": "ios-remote-v530-r8-ui.xcresult",
+    "ui_passed_final": 2,
+    "ui_failed_final": 0,
+    "companion_validation": "r4 Advanced and permission Chinese passed before final keyboard facade coordinate correction",
+    "runtime_warnings": [],
+    "visual": "Final Chinese/light and English/dark opened screenshots visually inspected: keyboard remains visible, upper keys progressively blurred, lower keys clear. Chinese interruption-restored screenshot has visible keyboard and resumed draft. CUA observed opening intermediate geometry and normal close/reopen. Exact official frame parity remains unaccepted.",
+    "keyboard_probe": "ios-remote-v530-r8-keyboard-probe.json",
+    "animation_video": "ios-remote-v530-final-animation.mp4",
+    "preview": "ios-remote-v530-preview.png",
+    "preview_language": "system-following Chinese; native keyboard currently English layout",
+    "preview_observed": "Device Hub displays ordinary quick picker with keyboard; left running",
+    "bundle_version": 530,
+    "signature_verified": true,
+    "launch_receipt": "ios-remote-v530-launch.txt",
+    "disk_available": "17 GiB"
+  },
+  "remaining": [
+    "Full original valid-layout readiness and displayedLabelIndex auxiliary guard semantics",
+    "Fill visibility predicate, inherited theme and label width producer",
+    "Keyboard observer/borrowed facade lifecycle, source rotation and multiple-window runtime acceptance",
+    "Rubberband/press and real-device haptic acceptance",
+    "Dictation capture/transcription/stop/send/cancel/error/draft lifecycle",
+    "Service capabilities and configuration acknowledgement, persistence, Android independent implementation"
+  ],
+  "next_minimal_evidence": "Trace dictation producer and stop/send/cancel/error/draft lifecycle. Continue exact slider source parent, readiness/label and gesture policy independently.",
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "cad3943192ec0d8a75b2dd2095c0e3ee30af5c3dd06db193d4e531dc4cbee7ed"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteModelSliderConfiguration.swift",
+      "sha256": "6aa7cc4c86283193948a733fe5d73125c08a3b11c03a0df51dcdea08dcda3cad"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "062e3b828c1f1570a9ec6133a17ca3b64a52339b88623ebf819024ca27041aac"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "9ef7c54d93fee2140497ff75af2dcdf138b97716b42bf1f741db0b2ab1dd53fc"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "9f4ffb8000609b7844b827e77b07016ff28c7b08ba8cbfc124925daea00dc57f"
+    }
+  ]
+}

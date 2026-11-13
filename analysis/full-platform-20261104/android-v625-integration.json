@@ -1,0 +1,110 @@
+{
+  "version": 625,
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "user_feedback": [
+    "Sidebar top-right is search",
+    "Ordinary Chat has a single-layer composer without more configuration"
+  ],
+  "causes": [
+    "Host sidebar header erroneously wired back glyph to drawer.close",
+    "v624 supplied a synthetic model selector slot to both modes, enabling focus/nonempty expansion in Chat"
+  ],
+  "implemented": [
+    "Restore original24dp search glyph and localized Search chats action",
+    "Distinct search capability route with return to the same sidebar",
+    "Ordinary Chat modelLabel=null, Default layout keeps empty/short text compact with IME open/closed",
+    "Work explicit model slot preserved; transient composer state keyed by mode",
+    "Existing per-mode drafts and restart persistence retained"
+  ],
+  "not_implemented": [
+    "Global Search query UI, history retrieval and results navigation",
+    "Complete inherited sidebar header style/material",
+    "Full Work model configuration"
+  ],
+  "evidence": [
+    "android-sidebar-v625-header-source.json",
+    "android-home-v625-chat-source.json"
+  ],
+  "scope_notes": [
+    "293 source has independent overflow/empty-Enter expansion paths with no model slot. These remain implemented; no universal all-text always-compact claim.",
+    "Latest user reference application exact version remains unknown. User reference selects ordinary no-configuration Chat fixture; all account/experiment gates remain unresolved.",
+    "Search destination currently provides an explicit missing-capability explanation, not actual search results."
+  ],
+  "tests": {
+    "implementation": "Independent frontend with Android293 evidence and synthetic data",
+    "serial": "172.16.197.16:5555",
+    "manufacturer": "OnePlus",
+    "model": "ONEPLUS A6003",
+    "sdk": "35",
+    "run_id": "de4b99238c304c35b00242f7675ba5b4",
+    "ui_matrix": [
+      "zh-CN/light",
+      "en/dark",
+      "system/system"
+    ],
+    "status": "passed",
+    "steps": [
+      {
+        "apk": "app/build/outputs/apk/debug/app-debug.apk",
+        "sha256": "ff7f04875e214a6546fc5ac9090d3f7cae74fbb36b5363af1b3600c94a5b7d9e"
+      },
+      {
+        "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+        "sha256": "05402bf1a929764701970446f614f297663184d76eaf7830e3954b5c120d1d84"
+      },
+      {
+        "test": "preferences",
+        "passed": true
+      },
+      {
+        "test": "composer",
+        "passed": true
+      },
+      {
+        "test": "journey",
+        "passed": true
+      },
+      {
+        "test": "verifyRestart",
+        "passed": true
+      }
+    ],
+    "export_errors": [],
+    "preview_launch": {
+      "skipped": "Foreground belongs to another app or cannot be established"
+    }
+  },
+  "visual_comparison": {
+    "before": [
+      "android-v625-before-home.png",
+      "android-v625-before-sidebar.png",
+      "android-home-v624-oneplus-r2/composer-zh-keyboard.png"
+    ],
+    "after": [
+      "android-v625-after-home.png",
+      "android-v625-after-sidebar.png",
+      "android-v625-after-chat-keyboard.png",
+      "android-v625-work-stable.png"
+    ],
+    "observations": [
+      "Sidebar arrow replaced by search glyph",
+      "Chat with actual device IME remains compact and has no model control",
+      "Work stable frame preserves expanded editor and controls"
+    ],
+    "capture_note": "Initial postlaunch hierarchy returned null; fresh retry succeeded. Immediate Work frame was incomplete; independently captured stable frame after2 seconds includes all controls. Timing/root cause of intermediate capture remains unproven."
+  },
+  "final_preview": {
+    "versionCode": 625,
+    "pid": 18283,
+    "profile": "preview",
+    "mode": "chat",
+    "language": "system",
+    "appearance": "system",
+    "observed_language": "Chinese",
+    "running": true,
+    "screenshot": "android-v625-final-preview.png"
+  },
+  "rule_update": "AGENTS.md now requires per-mode capability inputs and absent/present-slot keyboard regressions."
+}

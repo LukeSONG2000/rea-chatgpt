@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "report_id": "android-remote-v626-header-source",
+  "platform": "android",
+  "version": "1.2026.293",
+  "scope": "Remote home header, overflow menu and bounded sort-mode producer review; no implementation/device operations",
+  "artifact": {
+    "sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+    "source": "analysis/takeover-20261103/baseline.json",
+    "limit": "Recorded original package digest reused; individual evidence sources hashed below."
+  },
+  "sources": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java",
+      "sha256": "db199891c8272288addb93c1e017f895db566f3de002f59368f8c13834fa3cfb"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ezi.java",
+      "sha256": "b8196d3d6088b8fd3992bccbe0b752cb90755a3decd96d763fdc4daf614e7a6d"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/u28.java",
+      "sha256": "3eca69f0ef511166cd81f14594a251fd07da7db286c13574a70a53b853a49f50"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/v1.java",
+      "sha256": "970b8ac44e0d80d317e53c5b6ec68f0d1938aed9f6359144984b032ae3c9146c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/fh1.java",
+      "sha256": "816abb7515688b279f694d36cedf81c8b94d67735d79a9bfc2cbfff7829de397"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nt71.java",
+      "sha256": "dfd42ef3be0e1a2a83cff809f2a031efc737035530e0708f163709842942eee3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zkn.java",
+      "sha256": "cfdec507f52fd6266189219c0344b794d89188fa62d022419fbf9d6cc27463c3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sln.java",
+      "sha256": "29cb97939ce259c7d2c83e4f529d474f29258e9762fc7f6c9a877b8b1050eb43"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/o8m.java",
+      "sha256": "9a0f4bd9668a589ef2bc98ff86f1a186a0ac9da271d0b49d0b7bdab44e02768a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/v98.java",
+      "sha256": "c3dc569df54aada85358f7e398334cde58647c614510e6be46c612f4091cb644"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/tf0.java",
+      "sha256": "0d99d5eace3dd444b8f2bd8619f4381ba5212aa60a17f9498cdb198d6bec6ba9"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/xz.java",
+      "sha256": "2d18e77ad1dcd40ec609003c9747ce875a8d7f8d57a0dba47bb47e56fb503071"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/opz0.java",
+      "sha256": "d3eed8c229af6e6d2dc4aace75830dd2a57df12e6edb623e2abe4358c9e08094"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/rpz0.java",
+      "sha256": "9433de755b55425d14dc185e49a77ca58bcc404170c23c7868115da68e12c084"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/di1.java",
+      "sha256": "ddba369ad5110b471e5fedf4e97a782aceb414a5581dcd999ed8a6deeee2447b"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/on01.java",
+      "sha256": "3cc34fb222864abe5fbbc702caa0e3f60ef9b6043d5e15262da861dc4ee60d04"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java",
+      "sha256": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bbv0.java",
+      "sha256": "caaa97ac1b162ceea4d4b31d59cb67c1d2885b1d35723963f32cbe1a24be8096"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sz81.java",
+      "sha256": "17feecff81f47f92ce1478d0a4755c2207fa4d8c56ef1a30dba001f78b769df2"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/u58.java",
+      "sha256": "16e2be927aa5bce595cfb7b8faa35b1d4e99decbddba6d607f0e57561ea2541f"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sq7.java",
+      "sha256": "2bf0306dd3b50d4bd97a4d820a18a27ea475c8da20db7ac91c52b7193725a4fb"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ak0.java",
+      "sha256": "fd9adce2fdaaaa0eec23bb78d4cd991ad54c2391908db4eb2df0dd9fedbdab9a"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/wk30.java",
+      "sha256": "9948cb79c1cd5f3f20b7a6d285a8b60a5174ff1d7314fd5f34c9ad9c060d81a3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dcj.java",
+      "sha256": "d14f06d9e0bfb8e26fd2e2630ac7f3d90451497bfb680a1fd0283a8696ef83ba"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ba0.java",
+      "sha256": "daecb4f3377aa9839acd909a0b9007682ee888f25b41fd3328aa997ccb119f4e"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vs0.java",
+      "sha256": "a67eaa34b3905d62f1e33978a628abbdf81694f7dfefa2d265d3550318b992dc"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/b7k.smali",
+      "sha256": "13b278a0f9b658cb36d206a67feb54e4e4d7b4c4864c74bd2a1d1006417be6ab"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes3/c7k.smali",
+      "sha256": "896654635917f5ecab5f9c5610fa268c953598ffae670b54d83ec9e018d0af29"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes7/fh1.smali",
+      "sha256": "9b1b51b75df6cc926ec0e1795aad8e441b69093b0306536cfc542ca40f2d03d3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/split_config.zh/resources.arsc",
+      "sha256": "bcd67a9f988361860f6e92efe794a4c900e4904ea5ed1a017270774ea3dc403c"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ay10.java",
+      "sha256": "75601bb93deb896dd60f474a6a999ab18f9481b82ef4ad1b2cd2f262f321c138"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/t540.java",
+      "sha256": "ca7ccc9ef3a81b15fc8f518e7822aee4558c7bef3f1d6de6c34d86ae303299f3"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bhx.java",
+      "sha256": "cb050c803eb6e0ebf811646547f1d5edea363ff7b08ff04e38d230dfef4ee540"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/xgx.java",
+      "sha256": "381aa5f6099602d836294e6000e6a9c9b6a54aa9e804b2e3b881e521cd8a6813"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ji40.java",
+      "sha256": "b9f898d033d8cf0aecce9e3eb5fa0abaf6e72129797f60d6fccdd79bb7a7a8e6"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/phx.java",
+      "sha256": "56d8a4f5540c96869f9a98b986ebddb152c92e9272ca6c8e34eb1e34dacbcee5"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ohx.java",
+      "sha256": "8823aa59932aba5daccab5881fd4e78ee97ed28c2368af2d6ff5de2b5220ade2"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nbm0.java",
+      "sha256": "914ecdedbed924b73c927d507263292312a93c390fe3ddde6b438342840ef606"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lh7.java",
+      "sha256": "dbd2f1895c0048c7d1324a5a8302f8ed3356ef38083b9b1b56bb18c8b30afbdb"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/to60.java",
+      "sha256": "3698b059067c5456cd9b86edb61aff0cf89fb3316fd3bc46d8c8e1ee35649f73"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vhm0.java",
+      "sha256": "78c8ed2333ab461a167c4fbb6316174897ce1e231d4200c96b69e5222d7adbad"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vj81.java",
+      "sha256": "728b827475064a2648d354fde5f6bbb78ac4262abb14aa91d153eec0b170e702"
+    }
+  ],
+  "findings": [
+    {
+      "id": "header_state",
+      "evidence_type": "official_artifact_static_observation",
+      "conclusion": "ezi.a Browsing, ezi.b Searching, ezi.c Composing. qx81.b calls shared opz0.b and defines independent left, center and right slots. Browsing center invokes qx81.a with title-mode true; right slot contains one search icon action. Searching center becomes query input and right action becomes close. Null ezi selects a separate legacy header branch with possible right overflow, so right overflow must not be combined with Browsing title-menu mode.",
+      "references": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ezi.java:14-20",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java:241-339",
+        "recovered/android-1.2026.293/apktool-src/smali_classes3/b7k.smali:670-717",
+        "recovered/android-1.2026.293/apktool-src/smali_classes3/c7k.smali:248-361"
+      ],
+      "verification_status": "static_verified",
+      "limitations": []
+    },
+    {
+      "id": "title_geometry",
+      "evidence_type": "official_artifact_static_observation",
+      "conclusion": "qx81.a title mode uses clickable row anchored to njm0 menu state, gap4dp, vertically centered children, padding8dp, Codex label and 12dp chevron. Label on01.h.b maps sk10.p with font fallback Roboto, OpenAI Sans, sans-serif, size16sp, weight600, lineheight24sp, letterspacing0.1sp. Click d7k calls menu show. Shared rpz0 centers the title at width/2-titleWidth/2 and clamps between left/right slots, gap8dp.",
+      "references": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java:70-112",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/on01.java:15",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java:63",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/rpz0.java:17-84"
+      ],
+      "verification_status": "static_verified",
+      "limitations": []
+    },
+    {
+      "id": "parent_geometry",
+      "evidence_type": "official_artifact_static_observation",
+      "conclusion": "opz0.b uses minimum height bbv0.C=48dp, insets vvi0(14,12,14,12), system-inset handling, default background m2o0.c(...).c.g and default shadow style sit0.e. Leading/trailing ElevatedContent wrappers use to60.c defaults495. Full rendered height depends on insets/content and must not be equated with a fixed48dp total.",
+      "references": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/opz0.java:15",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/opz0.java:560-561",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/opz0.java:609-615",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/opz0.java:642-647",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/opz0.java:715-716",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/bbv0.java:38"
+      ],
+      "verification_status": "partial",
+      "limitations": [
+        "Exact background color resolution and shadow renderer are not newly closed by this bounded review."
+      ]
+    },
+    {
+      "id": "menu_items",
+      "evidence_type": "official_artifact_static_observation",
+      "conclusion": "fh1 case6 emits exactly three selected sort choices, divider, Add connection and Settings. First three selected indicators compare o8m.b/c/d. No Refresh or About item in this builder.",
+      "references": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/fh1.java:111-123",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/nt71.java:26-32",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/zkn.java:case6",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/sln.java:case1",
+        "recovered/android-1.2026.293/apktool-src/smali_classes7/fh1.smali:5436-5676"
+      ],
+      "verification_status": "static_verified",
+      "limitations": []
+    },
+    {
+      "id": "menu_actions",
+      "evidence_type": "official_artifact_static_observation",
+      "conclusion": "Priority invokes o8m.b, By project invokes o8m.c, Chronological list invokes o8m.d. sz81 passes ak0 case18 wrapping lfk(sortMode). Add connection uses u58 variant7/default sending bhp0.a. Settings uses sq7 variant8/default sending ujp0.a. Both action ownerships propagate through ab.E→h7k.a→qx81.b→qx81.a→fh1 case6.",
+      "references": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/v98.java:42-44",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/tf0.java:60-62",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/xz.java:52-54",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/sz81.java:1405-1449",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ak0.java:case18",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/u58.java:default",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/sq7.java:default"
+      ],
+      "verification_status": "partial",
+      "limitations": [
+        "Event owners bhp0/ujp0 service/navigation reducers not fully traced. Local capability pages should be labeled host adaptation."
+      ]
+    },
+    {
+      "id": "left_navigation_owner",
+      "evidence_type": "official_artifact_static_observation",
+      "conclusion": "u28 case1 dispatches left slot by current state. Searching omits left slot; Composing renders supplied back callback; Browsing prefers supplied Function2 shell content, then Function0 fallback icon, then default back. In primary sz81 host Function2 is passed through ab.E. This slot is controlled by shell navigation; replacing with unconditional activity finish is not source-backed.",
+      "references": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/u28.java:105-138",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/sz81.java:1449",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/qx81.java:241"
+      ],
+      "verification_status": "partial",
+      "limitations": [
+        "Outer shell Function2 concrete implementation remains outside bounded header review."
+      ]
+    },
+    {
+      "id": "sort_groups",
+      "evidence_type": "official_artifact_static_observation",
+      "conclusion": "Aggregated non-priority branch preserves pinned and custom sections. Chronological then uses dcj.k in ife.j date/group helper. ByProject renders project headers/rows with project-name host disambiguation and remaining recents. Priority renders priority header/list from dcj.l, then ife.j over dcj.m. dcj.l flattens each host t7m.i and applies comparator chain; dcj.m flattens t7m.j and applies distinct comparator chain. dcj.k flattens t7m.h and applies its comparator. These are distinct state collections, not one generic list renamed three ways.",
+      "references": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java:2966-3320",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/dcj.java:136-154",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ba0.java:129-142",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/vs0.java:case9"
+      ],
+      "verification_status": "partial",
+      "limitations": [
+        "Full t7m.i/j membership semantics and comparator precedence are unclosed. pkm large JADX method contains branch warnings, so empty/priority boundary conditions and exhaustive per-mode filters require targeted smali before fidelity claims."
+      ]
+    },
+    {
+      "id": "menu_check_and_search_close",
+      "evidence_type": "official_artifact_static_observation",
+      "verification_status": "static_verified",
+      "conclusion": "Selected item uim0.g renders t540 at24dp; t540→bhx.a→xgx case2 resolves ds_checkmark_lg_regular_24. Search close ji40→phx.s→ohx case0 resolves ds_xmark_lg_regular_24. Right nbm0.i inherits x040(f140.a,2,null), f140→ota tertiary. BasicIconButton medium nominal44dp yields minimum42dp inner content. Parent TopAppBar ElevatedContent supplies round50% q1r0.a and semantic background q5n.c.a. No explicit48dp wrapper like ordinary home TempChat path is present here.",
+      "references": [
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ay10.java:92-109",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/t540.java:8",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/xgx.java:23-24",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ji40.java:8",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/phx.java:24",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/ohx.java:28",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/lh7.java:60",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/nbm0.java:998-1013",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/nbm0.java:2405-2420",
+        "recovered/android-1.2026.293/jadx-src/sources/defpackage/to60.java:790-816"
+      ],
+      "limitations": [
+        "Final interactive hit bounds and shadow appearance still require reconstructed runtime measurement."
+      ]
+    }
+  ],
+  "menu": [
+    {
+      "source_enum": "o8m.b",
+      "source_name": "Priority",
+      "english": "Priority",
+      "callback": "Function1(o8m.b) → lfk(o8m.b)",
+      "official_chinese_zh": "优先级",
+      "resource_id": "0x7f13070e"
+    },
+    {
+      "source_enum": "o8m.c",
+      "source_name": "ByProject",
+      "english": "By project",
+      "callback": "Function1(o8m.c) → lfk(o8m.c)",
+      "official_chinese_zh": "按项目",
+      "resource_id": "0x7f13070c"
+    },
+    {
+      "source_enum": "o8m.d",
+      "source_name": "Chronological",
+      "english": "Chronological list",
+      "callback": "Function1(o8m.d) → lfk(o8m.d)",
+      "official_chinese_zh": "按时间顺序排列",
+      "resource_id": "0x7f13070d"
+    },
+    {
+      "english": "Add connection",
+      "callback": "Function0 → bhp0.a",
+      "official_chinese_zh": "添加连接",
+      "resource_id": "0x7f1304e3"
+    },
+    {
+      "english": "Settings",
+      "callback": "Function0 → ujp0.a",
+      "official_chinese_zh": "设置",
+      "resource_id": "0x7f130759"
+    }
+  ],
+  "localization_limit": "English strings resolved from base values/strings.xml. Official zh entries independently resolved using SDK36.0.0 aapt2 dump resources on temporary zip of existing split_config.zh/AndroidManifest.xml and resources.arsc; temporary zip deleted immediately.",
+  "unknowns": [
+    "Exact menu dimensions, placement animation and material environment",
+    "Outer left shell Function2 owner",
+    "Full sort collection membership/comparator semantics",
+    "Concrete event navigation handlers for bhp0.a and ujp0.a",
+    "Exact shadow/background raster appearance"
+  ],
+  "implementation_guidance": [
+    "Use a shared toolbar center slot with clickable Codex menu and one search action in Browsing state.",
+    "Keep search mode input/close transitions distinct.",
+    "Connect five menu actions, preserving explicit state/capability effects.",
+    "Do not assert complete official priority behavior by sorting all tasks on an invented status score.",
+    "Retain list position and identity per filter/sort choice."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "batch": "v546",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official_artifact_observation",
+  "confirmed": [
+    {
+      "site": "0x1d1b928",
+      "observation": "Menu content thunk loads its capture and tail-branches to 0x1a00324; wrapper calls 0x1a00500."
+    },
+    {
+      "site": "0x1a00604..0x1a0061c",
+      "observation": "Edit branch requires byte at capture+0x18 equal to 1 and nonzero function pointer at +0x20. Localization key codex_remote_pending_prompt_menu_edit_message at 0x88bedc0."
+    },
+    {
+      "site": "0x1a006f8..0x1a00774",
+      "observation": "Toggle branch requires nonzero function pointer at +0x30. Byte at capture+0 selects steer_instead key 0x88bedf0 when zero, queue_instead key 0x88bee20 otherwise."
+    },
+    {
+      "site": "0x1a00828..0x1a00854",
+      "observation": "Start branch requires nonzero function pointer at +0x40. Key codex_remote_pending_prompt_menu_start_message at 0x88bed90; inline English Start now."
+    },
+    {
+      "site": "0x1a008f0..0x1a009a0",
+      "observation": "Cancel message key at 0x88bed60 and destructive ButtonRole construction. Action thunk address 0x1d1bd50."
+    }
+  ],
+  "static_inference": [
+    "Metadata field order from v544 is consistent with capture offsets mapping kind=0, canEdit=0x18, editPrompt=0x20, togglePromptMode=0x30, startPrompt=0x40. Runtime value-layout offsets require independent verification."
+  ],
+  "limits": [
+    "This proves individual menu construction gates and localization references. It does not establish provider policy, wire enum values, mutation behavior or pending-row geometry.",
+    "areActionsEnabled modifier and action closure forwarding remain unresolved. No queue/steer frontend behavior is promoted to implemented by this record."
+  ],
+  "next_minimal_actions": [
+    "Verify value-layout offsets for menu metadata accessor 0x1cec228 and ordinary constructor.",
+    "Trace cancel action thunk 0x1d1bd50 and owner callbacks for identity-scoped cancellation/toggle.",
+    "Inspect row body 0x19ffa1c and label callback 0x1a00ad8, then integrate synthetic pending-item state through the existing submission adapter."
+  ],
+  "sources": [
+    "ios-remote-v544-pending-prompt-metadata.json",
+    "ios-remote-v546-pending-menu-thunk.json",
+    "ios-remote-v546-pending-menu-content.json",
+    "ios-remote-v546-pending-menu-content.asm"
+  ]
+}

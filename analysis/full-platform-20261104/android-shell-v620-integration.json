@@ -1,0 +1,147 @@
+{
+  "version": 620,
+  "scope": "Android main shell frontend increment",
+  "platform": "Android 15 / API35 OnePlus A6003",
+  "status": "implemented shell with explicit pending feature destinations",
+  "implemented": [
+    "Normal launcher -> native home",
+    "Chat/Work selection and independent durable drafts",
+    "Eight source-identified sidebar destinations plus Chat and Settings",
+    "Codex -> existing Remote list -> close/back -> retained home draft",
+    "Returnable pending destination pages",
+    "Settings root -> General -> language/appearance",
+    "System/Chinese/English and system/light/dark persisted per profile",
+    "Shared shell and Remote palette/configuration",
+    "Restart restores mode, both drafts, language and appearance"
+  ],
+  "official_evidence": [
+    "android-shell-v620-source.json",
+    "android-settings-v620-source.json",
+    "android-shell-v620-assets.json"
+  ],
+  "independent_adaptations": [
+    "Compose drawer and back navigation",
+    "Explicit offline capability selection and sidebar order",
+    "Chat/Work home container and editor",
+    "Icon-to-row assignment where original accessor unknown",
+    "Material palette, fonts, spacing and animations",
+    "Profile storage keys, synchronous small draft persistence and failure feedback",
+    "Chinese host translations"
+  ],
+  "unimplemented": [
+    {
+      "page": "Remote conversation",
+      "behavior": "Android history/messages/approval/steer/queue and list composer",
+      "priority": "next",
+      "evidence_gap": "Android content observer and render host consumers",
+      "next": "Trace existing Android Remote thread route and message owner, connect synthetic history and native components",
+      "acceptance": "List -> task -> message history and basic item interaction -> return with state"
+    },
+    {
+      "page": "Chat/Work",
+      "behavior": "Conversation list, message history, sending, attachment and voice flows",
+      "priority": "after Remote",
+      "next": "Trace Android home/thread state then reuse proven message contracts",
+      "acceptance": "Create conversation, send synthetic turn, switch and recover draft"
+    },
+    {
+      "page": "Settings",
+      "behavior": "Capability-dependent account groups and feature settings beyond language/appearance",
+      "priority": "with feature pages",
+      "next": "Consume real feature capability inputs and trace corresponding owners",
+      "acceptance": "Each setting affects its feature with failure and return semantics"
+    },
+    {
+      "page": "Shell visuals",
+      "behavior": "Exact official order/icon caller mappings/typography/materials/transitions",
+      "priority": "page follow-up",
+      "next": "Trace uy81/urr/sen callers and style owners",
+      "acceptance": "Source-scoped page comparison with common states"
+    },
+    {
+      "page": "Platform",
+      "behavior": "Real IME composition/selection restore, haptics and notifications",
+      "priority": "page follow-up",
+      "next": "Keyboard-state UI loop and source-backed capability callbacks",
+      "acceptance": "Current OnePlus IME composition and physical interaction checks"
+    }
+  ],
+  "tests": {
+    "shell_report": "android-shell-v620-oneplus-r4.json",
+    "shell_status": "passed",
+    "methods": [
+      {
+        "test": "preferences",
+        "passed": true
+      },
+      {
+        "test": "journey",
+        "passed": true
+      },
+      {
+        "test": "verifyRestart",
+        "passed": true
+      }
+    ],
+    "input_method": "AX text assignment; IME composition not exercised",
+    "screenshots_inspected": [
+      "sidebar-zh-light",
+      "settings-en-dark",
+      "home-before-restart",
+      "home-system-restored",
+      "remote-from-shell-en-dark"
+    ],
+    "failed_runs_retained": {
+      "shell_r1": "Back after AX text assignment exited app because IME was not open; removed assumed keyboard dismissal",
+      "shell_r2": "Tapped drawer entry before opening animation settled; test now waits for settled drawer",
+      "shell_r3": "Tests passed, screenshot timing later tightened in r4",
+      "remote_r1": "Expected error page absent; official ChatGPT subsequently observed foreground. User confirmed another test window, rerun required",
+      "remote_r2": "Legacy search helper assumed IME and pressed Back; foreground subsequently external. Back assumption removed, no root-cause equivalence claim.",
+      "remote_r3": "Legacy MainActivity trampoline entry failed to expose title during instrumentation. Direct Remote Activity test plus separately passing normal launcher/sidebar path used in r4; legacy trampoline lifecycle remains a separate unresolved test boundary."
+    },
+    "remote_report": "android-shell-v620-remote-regression-r4.json",
+    "remote_status": "passed",
+    "remote_methods": [
+      {
+        "test": "modelRules",
+        "passed": true
+      },
+      {
+        "test": "listJourney",
+        "passed": true
+      },
+      {
+        "test": "verifyRestart",
+        "passed": true
+      }
+    ],
+    "test_apk_sha256_final": "2184c71a977cb24c3db97ac72d746018b87179e1171d0a89c977a7da96c452e5"
+  },
+  "apk_sha256": "af97c2cfcd69f063cb1603752ee2e986baee154d1a321819946e813692ed4ecb",
+  "source_files": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt",
+      "sha256": "5b6ae297636f5c14bf59a5cc926e800d6514c570aac3e5aec72a4cef380b5b0e"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendPreferences.kt",
+      "sha256": "49e639c05093bc407667412e6170d5494f93c833e5e918d1cc13a727133d112a"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendTheme.kt",
+      "sha256": "a92d2742cbf1ed1da3f42ecd5a328f0a499e7a361c85d1695e09fcd644e369d2"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListActivity.kt",
+      "sha256": "5e5f4536e73f117f303666914e22b80d989983f6856965c7f3718c1734144377"
+    },
+    {
+      "path": "implementation/android/app/src/main/AndroidManifest.xml",
+      "sha256": "74bf9db8023713e4a34c26ad238a4733093dc37cbdbd1a96ef73ce2bd40c4749"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/AppShellTest.kt",
+      "sha256": "95d83cf601ba20a04998934ae6475b03e7fc91e2800882f36442ffc121bd8713"
+    }
+  ]
+}

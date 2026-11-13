@@ -1,0 +1,209 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "New five-minute bounded task ONLY AssistantSettingsScreen/Content, not extension of earlier root analysis",
+  "status": "parent Form and three sections proven; detailed choice rows/save engine incomplete",
+  "screen": {
+    "name": "ChatGPTCustomInstructions.AssistantSettingsScreen",
+    "descriptor": "0x9640a18",
+    "accessor": "0x4260a5c",
+    "witness": "0x42629e4",
+    "body": "0x4260ae8",
+    "shape_record": "0x809ac50",
+    "shape_file": "screen-shape.tree.txt",
+    "shape": "AssistantSettingsContent wrapped in environment, navigationTitle, inline toolbarTitleDisplayMode, independent TupleToolbarContent, onChange of Boolean, save-error alert and navigationBarBackButtonHidden. Toolbar includes unsaved confirmationDialog wrapper.",
+    "toolbar_site": "0x4260f04",
+    "native_back_hidden_site": "0x4261218",
+    "state": [
+      "dismiss",
+      "isShowingUnsavedChangesConfirmation",
+      "viewModel",
+      "isPushed"
+    ]
+  },
+  "content": {
+    "name": "AssistantSettingsContent",
+    "descriptor": "0x96411a0",
+    "accessor": "0x4284d3c",
+    "witness": "0x4263b1c",
+    "body": "0x42629e8",
+    "shape_record": "0x809c430",
+    "shape_file": "content-shape.tree.txt",
+    "parent": "Grouped SwiftUI.Form, not hand-built ScrollView",
+    "evidence": [
+      "0x4262d9c Form.init",
+      "0x4262e60 GroupedFormStyle.grouped",
+      "0x4262eb0 View.formStyle",
+      "0x4262edc ScrollDismissesKeyboardMode.interactively",
+      "0x4262f08 scrollDismissesKeyboard"
+    ],
+    "style": [
+      "SettingsLabelStyle",
+      "SettingsLabeledContentStyle",
+      "SafeAreaPaddingModifier",
+      "ListRowInsetsTraitKey on each section",
+      "scrollContentBackground",
+      "background Color",
+      "keyboard overlap measuring background",
+      "onScrollGeometryChange0x42632e8"
+    ],
+    "actual_tuple_order": [
+      {
+        "position": 0,
+        "type": "Optional<AssistantAppearanceSection>",
+        "descriptor": "0x9641258",
+        "limit": "Actual appearance availability gate not resolved."
+      },
+      {
+        "position": 1,
+        "type": "AssistantPersonalitySection",
+        "descriptor": "0x9641234"
+      },
+      {
+        "position": 2,
+        "type": "AssistantCustomInstructionsSection",
+        "descriptor": "0x9641210"
+      }
+    ],
+    "do_not_infer": "Do not split trait into a fourth root section or derive slider range/default from view-model fields. Personality choice/trait subrows require section-specific body recovery."
+  },
+  "strings": {
+    "title": {
+      "site": "0x4260db4",
+      "helper": "0x75d4c60",
+      "packed_literal": "Personality",
+      "evidence": "0x75d4c60-localization.asm",
+      "not": "Adjacent function0x75d4c9c Custom instructions does not belong to title consumer."
+    },
+    "save": {
+      "site": "0x4261d38",
+      "helper": "0x75d29a8",
+      "packed_literal": "Save"
+    },
+    "unsaved_title": {
+      "site": "0x4261620",
+      "helper": "0x75d1e70",
+      "packed_literal": "Unsaved changes"
+    },
+    "discard": {
+      "site": "0x42619a0",
+      "helper": "0x75d1ef8",
+      "packed_literal": "Discard changes"
+    },
+    "unsaved_message": {
+      "site": "0x4261a98",
+      "helper": "0x75d1e94",
+      "literal_address": "0x8a58eb0",
+      "literal": "Are you sure you want to discard your changes?\nAny changes you made will be lost."
+    },
+    "keep_editing": {
+      "helper": "0x75d1f1c",
+      "packed_literal": "Keep editing",
+      "limit": "Neighbor helper literal observed, exact caller in confirmation action builder not separately bound in this task."
+    },
+    "save_error_title": {
+      "site": "0x4261024",
+      "helper": "0x75d56c0",
+      "literal_address": "0x8873600",
+      "literal": "Something went wrong"
+    },
+    "save_error_message": {
+      "site": "0x4262924",
+      "helper": "0x75d572c",
+      "literal_address": "0x886c610",
+      "literal": "Something went wrong. Please try again."
+    },
+    "localization_limit": "Source English literals/consumers established. Exact compressed keytable identities/localized Chinese values not fully decoded in this scope; use existing original text extractor, not ad-hoc translations.",
+    "not_recovered": [
+      "appearance section heading",
+      "personality/trait row labels",
+      "custom instructions placeholder",
+      "exact save-error dismissal button string"
+    ]
+  },
+  "back_and_close": {
+    "isPushed": {
+      "metadata_field_index": 3,
+      "field_offset_slot": "metadata+0x1c (field offset vector begins+0x10)",
+      "load": "0x426175c metadata field offset;0x4261760 reads Bool",
+      "branch": "0x4261774 cmp1;0x4261778 routes alternative close/back builders",
+      "branches": [
+        "0x426177c..0x42617ac",
+        "0x42617b0..0x42617d8"
+      ]
+    },
+    "dirty_close_flow": {
+      "handler": "0x426180c area",
+      "predicate_call": "0x4261830→0x4262044",
+      "true_branch": "0x4261838..0x4261850 sets unsaved confirmation Boolean to true",
+      "false_branch": "0x426185c..0x4261884 obtains dismiss from environment and ends in0x7c5476c",
+      "limit": "Predicate meaning matches dirty-confirmation structure but full draft comparison implementation not rederived. Do not assert isSaving/discard policy for all dismiss gestures."
+    },
+    "icons": {
+      "status": "unknown",
+      "observation": "Explicit custom toolbar button and circle ButtonBorderShape at0x4261bec/0x4261c58; exact back/close glyph builder not followed. Source does not authorize arbitrary icon substitution as recovered."
+    }
+  },
+  "save_contract": {
+    "original_viewmodel_fields": [
+      "draft",
+      "initialDraft",
+      "availablePersonalities",
+      "availableTraits",
+      "availableColors",
+      "customInstructionsCharacterLimit",
+      "isSaving",
+      "didSave",
+      "saveError"
+    ],
+    "draft_fields": [
+      "color",
+      "personality",
+      "traits",
+      "customInstructions"
+    ],
+    "original_actions": [
+      "colorSelected",
+      "personalitySelected",
+      "traitSelected",
+      "customInstructionsChanged",
+      "viewAppeared",
+      "saveButtonTapped",
+      "saveErrorDismissed"
+    ],
+    "ordinary_frontend": "Keep local draft separate from confirmed draft; Save routes to the adapter, isSaving blocks duplicate submission; success/didSave and error/saveError are distinct emitted states. Close uses isPushed-specific navigation plus unsaved confirmation.",
+    "provenance": "Field/action names and parent presentation source-backed; backend response/revision and independently implemented save reducer are frontend adapter contract, not recovered official wire.",
+    "unknown": "Exact enable/disable predicate, onChange success auto-dismiss, validation bounds, save-error retry semantics and async generation guards need model action-owner caller proof."
+  },
+  "minimum_implementation": [
+    "Use grouped Form with optional appearance, personality, custom-instructions sections in proven order.",
+    "Use original title/save/unsaved/error resource consumers, retaining exact localization boundary.",
+    "Use provider-supplied declared options and explicit fixture choice data; no fabricated official options/defaults.",
+    "Connect local draft/save/failure/back contract with independent service adapter. Root Customize itself retains no generic Save."
+  ],
+  "remaining": [
+    {
+      "boundary": "Personality and trait subrows",
+      "next": "AssistantPersonalitySection0x9641234 body; recover SliderRow only if present and bind real range/level producer; currently unknown."
+    },
+    {
+      "boundary": "Appearance controls and instructions editor",
+      "next": "AssistantAppearanceSection0x9641258 and AssistantCustomInstructionsSection0x9641210 bodies; preserve section parents."
+    },
+    {
+      "boundary": "Exact original localizations and icons",
+      "next": "Decode true helper output key identity75d4c60/75d29a8 etc.; back/close branch captured at4261714..17d8 points to429f70c/429addc child builders."
+    },
+    {
+      "boundary": "Save/dirty behavior",
+      "next": "4262044 draft comparison; AssistantSettingsViewModel action handling behind saveButtonTapped and didSave onChange closure; root field data not sufficient."
+    }
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-assistant-settings-child-20261112",
+  "limits": [
+    "Stopped at five-minute bound.",
+    "No host edit/build/device/global setup/target execution.",
+    "No unrelated customization destinations analyzed."
+  ]
+}

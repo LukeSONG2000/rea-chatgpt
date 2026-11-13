@@ -1,0 +1,85 @@
+{
+  "batch": 592,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Which Settings entry and permission/action ownership must be connected for the current notification frontend?",
+  "official_observations": [
+    {
+      "type": "artifact_observation",
+      "symbol": "SettingsGeneralSection.body",
+      "offset": "0x1088998",
+      "record": "ios-settings-v592-general-return-type.json",
+      "conclusion": "Returned type includes SettingsNotificationsAndVoiceRows inside the general section. Exact root placement remains partial."
+    },
+    {
+      "type": "artifact_observation",
+      "symbol": "SettingsNotificationsAndVoiceRows",
+      "offsets": [
+        "0x108bc30",
+        "0x108bc3c",
+        "0x108bc48",
+        "0x108bc50"
+      ],
+      "record": "ios-settings-v592-row.asm",
+      "conclusion": "Availability and optional model guards precede Notifications title factory75d6c0c and bell factory74f4e64. notificationSettingsAvailable literal8889d10 appears in helper108bddc."
+    },
+    {
+      "type": "artifact_observation",
+      "symbol": "NotificationSettingsPushPermissionStateSectionPart",
+      "offset": "0x958ccf0",
+      "record": "ios-settings-v592-permission-type.json",
+      "conclusion": "Separate pushPermissionState, manageNotifications and requestPushPermission fields."
+    },
+    {
+      "type": "artifact_observation",
+      "symbol": "ChatGPTNotificationsInterface.NotificationPermissionState",
+      "offset": "0x96a61ec",
+      "record": "ios-settings-v592-permission-cases.json",
+      "conclusion": "loaded, notDetermined and loading cases. loaded payload/tag correspondence remains unknown."
+    },
+    {
+      "type": "artifact_observation",
+      "symbol": "NotificationSettingsPushPermissionStateSectionPart.body",
+      "offsets": [
+        "0x103eef8",
+        "0x103ef58"
+      ],
+      "record": "ios-settings-v592-permission-body.asm",
+      "conclusion": "Device notifications disabled text and separate supporting text have original resource consumers."
+    }
+  ],
+  "missing_integration": "NativeVisualSettings had only Codex in its App settings group and routed every string destination to the same Codex child. No permission provider or notification child was connected.",
+  "independent_adapter": [
+    "Native notification permission API, read/request/manage operations and scene-active refresh.",
+    "Generation and Task cancellation protect closed/reopened page results; actual OS authorization remains system-owned.",
+    "Explicit offline fixture provider supports permission denial, success, failure/retry and delay. No synthetic provider is selected by default.",
+    "System Form layout and local permission status labels are native reconstruction. Known official entry title, bell and disabled label are reused.",
+    "Returnable service-pending explanation, without writing business preferences or registering a remote token."
+  ],
+  "limits": [
+    "Official availability/view-model predicate and exact section layout remain unresolved.",
+    "Native request options and lifecycle are independent host implementation, not proof of the official options.",
+    "Category preferences, token registration transport, foreground/unread routing and push delivery remain pending.",
+    "Simulator interaction does not establish actual notification delivery or device visual/haptic acceptance.",
+    "Android permission implementation needs independent source evidence. Candidate sharing is permission-state tests and service contract, not native UI."
+  ],
+  "validation": "Six UI tests and Foundation passed; native authorization prompt and return verified; native Settings destination partial. See integration/runtime reports.",
+  "public_source_check": "ios-settings-v592-public-source.json",
+  "public_source_observation": "Pinned openai/codex tree c90354172c5c49535b122443e9a8ed52c2233b80 has 10412 entries and no .swift paths. The iOS page is therefore traced in the293 artifact. This does not establish other commits or private sources.",
+  "native_sdk_headers": [
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UNUserNotificationCenter.h",
+      "sha256": "7e79a7672061ab07511f71aa9cd5b7883dc83107cfabfb100d32d758bae3d281"
+    },
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UNNotificationSettings.h",
+      "sha256": "f6776d65f442eec9c750e8ad2e5967a83e6e7a6a03a4ffbd4b5bfe44d59e23ca"
+    },
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h",
+      "sha256": "8e666ad2c62a2b970e00ad65a1ab8e9c596ebffa2fb11d8509f374b2b0745d8d"
+    }
+  ]
+}

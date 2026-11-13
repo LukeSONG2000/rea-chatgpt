@@ -1,0 +1,97 @@
+{
+  "batch": "v518",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static-instructions-and-metadata",
+  "confirmed": [
+    {
+      "offset": "0x1972ae4..0x1972c18",
+      "conclusion": "Outer center HStack spacing6, padding6 all edges through6ffca4, ChatGPT/bg/secondary resource through74ecde0, rounded rectangle16."
+    },
+    {
+      "offset": "0x197313c..0x1973530",
+      "conclusion": "Filename Text caption via1d84fac→74e27b8→74e27a4 andaad3900; lineLimit payload1, middle truncation viaaad3b30, Text maximum width140 via1973484 and267d50 FlexFrame."
+    },
+    {
+      "offset": "0x1972fe8..0x1973138",
+      "conclusion": "Remove xmark-circle-fill via74fc680, scaled glyph14 and frame16 fromconstructor198d634..6b8, regular weight and secondary style, plain button. Preview and remove are distinct buttons."
+    },
+    {
+      "offset": "0x197313c",
+      "conclusion": "FileIconView independent of square image tile; glyph16, icon background28 and shape corner10. File kind/style details are separately bound in file-icon evidence."
+    },
+    {
+      "offset": "0x1985a64",
+      "conclusion": "Horizontal attachment ScrollView applies fixedSize(horizontal:false,vertical:true). Host now restores the intrinsic vertical sizing modifier."
+    }
+  ],
+  "bindings": {
+    "0xaad3900": {
+      "symbol": "_$s7SwiftUI4FontV9TextStyleO7captionyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9717,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaad3b30": {
+      "symbol": "_$s7SwiftUI4TextV14TruncationModeO6middleyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9787,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    }
+  },
+  "background_resource": "ChatGPT/bg/secondary",
+  "unknowns": [
+    "Full custom font resolver environment variants; native caption bridge uses system dynamic font.",
+    "Original upload materialization/type discriminator and preview service ownership.",
+    "Image thumbnail cropping and image-remove style remain v517 gaps."
+  ],
+  "evidence": [
+    "ios-remote-v517-attachment-preview-file-body.asm",
+    "ios-remote-v517-attachment-preview-file-body-calls.json",
+    "ios-remote-v518-file-chip-types.json",
+    "ios-remote-v518-file-icon-findings.json"
+  ],
+  "evidence_hashes": {
+    "ios-remote-v518-chip-background.asm": "fafabb92c923cb89e2e8bd250a8681d9a52329b03e8eef304c8688030bf5a606",
+    "ios-remote-v518-chip-frame-args-calls.json": "70215b303ae5c64920db5bca2479588f73575ce0e0141cd3e463e6addd07a18d",
+    "ios-remote-v518-chip-text-font-calls.json": "3179bbb28d073607d22deef3b2739e8bfacfb6ee9a289a2c10e7c608fb304dac",
+    "ios-remote-v518-chip-text-font-value.asm": "597dfb334efd34d05eb7308818d29d6d669e342d43cb8e43468e34e438676bec",
+    "ios-remote-v518-chip-frame-calls.json": "43d45060af348e9ba536aeb51617f5317467e2fb6d99aa60912c7aff85141eab",
+    "ios-remote-v518-chip-frame-tail.asm": "1a4de223840a06a44cdbff674a0853583033f949609c63dfe4cbd18360e106b1",
+    "ios-remote-v518-chip-padding-calls.json": "faf31f13e0c14d7429c093bb60bd63af79f184850d175c0e62eed20b20c9399c",
+    "ios-remote-v518-chip-trunc-value.asm": "f9eb02b4b604fb92201810bddbf3442a6d83970de6bda481e4c493dfc700ab1d",
+    "ios-remote-v518-chip-font-lookup.asm": "93c310279f4697fb24e966e2dcff140491dd9114aceead6a6350df720537345b",
+    "ios-remote-v518-chip-truncate-type-calls.json": "8f49d79f1f0261c6d25453536d678b1324ba31407bcd87a43cbef525492f16a2",
+    "ios-remote-v518-chip-truncate.asm": "9e724d8d5159fb94040aef9a7a34592ebf8a74e2538cb3b656a49f9a440fa3f0",
+    "ios-remote-v518-chip-text-setters.asm": "f3c4790e6ff220d2c793e2ed5ff4adb0cd2b1d7371fc16cd7a4c0942a4c0dd48",
+    "ios-remote-v518-chip-truncate-calls.json": "a75e568e90016852faa202467083f15fe0d4287723cfd1b081004c12aadad9ff",
+    "ios-remote-v518-chip-frame-args.asm": "76be79a6092d3cb13d05ab20b07dfb4c072d3289b9289c912d9fb968d6cd513c",
+    "ios-remote-v518-chip-padding.asm": "98e7bd9eca8e93bf06342aebeb899ba350751f97a8929698307503d4b1e9118f",
+    "ios-remote-v518-chip-trunc-tail.asm": "5b2a9ee86688ae46a6fb9a3a2324aa701ae052a39c9395853a6a818e5acd9dc8",
+    "ios-remote-v518-chip-trunc-value-calls.json": "bc19d4a81d53cd8d44311dbd93f9a59b62be28d922fb998a8398883a622c2f67",
+    "ios-remote-v518-chip-font.asm": "117721bef026b1256e4b12f8353d305def0f4a97fbc3b08502d8c0806471302b",
+    "ios-remote-v518-chip-font-resolver.asm": "bfdd3fde5575415b15fb52460a204296647a5cc99f64d5d54478277aa6a10eab",
+    "ios-remote-v518-chip-line-set.asm": "006ade918c1277d5d5764db93507768b0b4c605a769d75a016b6a58b4d443e79",
+    "ios-remote-v518-chip-text-setters-calls.json": "dc98c2a0f2ed62ac49ab6173d65eead118e6365f052bb82a19ccd9d1410f7af2",
+    "ios-remote-v518-chip-frame.asm": "c5c0cbbf0225ef3ab4f28f0234baa4788dc8229a030b9d3b16b2f8428f9d1a92",
+    "ios-remote-v518-chip-line-limit-calls.json": "19853afcfbbf1bb50323e6fecd097e5ab7aff29d93bb225c4992e09bc911ff96",
+    "ios-remote-v518-chip-line-limit.asm": "f44d9bf7d772d8a72e604f722043db8337593f91e46db14e8fef2f154de17def",
+    "ios-remote-v518-chip-line-value.asm": "40d60ec7f2b3716c4cdf29e19d3f6d52bdb537010b2e4c42de8bc48ad84f17f2",
+    "ios-remote-v518-chip-background-calls.json": "e49e4d30d92af95d8c16a969914ccabafe8927c2571d67a5f4901f75a43efa08",
+    "ios-remote-v518-chip-truncate-type.asm": "0439cdc434e207fdd76d19e8bb04355de50c1794a02c36d3ad8a63191ee41e20",
+    "ios-remote-v518-chip-text-font.asm": "a7947ebaffa14beca14ee0dc9f5c0101d02ec8617e42403eb37d0ec5a85d4aa7",
+    "ios-remote-v518-chip-file-icon.asm": "5510bc25e04c046a70d7279bc3dd244c39a6093d2c87b7c9de470ade557b6798",
+    "ios-remote-v518-chip-font-resolver-calls.json": "b54f664d35dab374e505bb9a41b5c9200d959396565700cc13eadba0c5fa4c69",
+    "ios-remote-v518-chip-font-calls.json": "fb5c3eeafcb4ffff1b187e70e0abe7aab1ac61b8b0c39cf578f6431c33159120",
+    "ios-remote-v518-chip-line-set-calls.json": "956fb4d19caf99e1ffc9838a443edc65f739e97915d85c1670c4ae1493231dd4",
+    "ios-remote-v518-chip-file-icon-calls.json": "2a41ff1304511c9eae2aa672f8bd5e16da0957e7bc2b0b5d634548038d84ac8e"
+  }
+}

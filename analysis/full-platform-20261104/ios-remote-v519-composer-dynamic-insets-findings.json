@@ -1,0 +1,99 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "scope": "Remote composer geometry, no original runtime or production edits",
+  "style_insets": {
+    "helper": "0x1981448",
+    "selection": "focused && focusedOuterInsets != nil ? focusedOuterInsets : outerInsets; DeviceDependent second value on iPad; optional outerHorizontalPadding overrides leading/trailing",
+    "style_metadata_fields": {
+      "0x10c": "focusedOuterInsets",
+      "0x110": "outerHorizontalPadding",
+      "0x118": "outerInsets"
+    },
+    "default_nonipad": [
+      8,
+      12,
+      12,
+      12
+    ],
+    "default_ipad": [
+      12,
+      12,
+      12,
+      12
+    ],
+    "default_focused_override": null
+  },
+  "dynamic_insets": {
+    "helper": "0x1981560",
+    "calculation": "0x19873c8",
+    "returned_values": "leading,bottom,trailing in d0,d1,d2; caller supplies top=0",
+    "inputs": {
+      "focus": "_isFocused Binding read0x197cf88",
+      "style": "_messageInputStyle, generic metadata+0x120",
+      "selected_style_insets": "0x1981448",
+      "sceneMetrics": "CodexRemoteComposerSceneMetrics optional, generic metadata+0xb0",
+      "fallback_metrics": "__localSceneMetrics LazyState, generic metadata+0x108",
+      "metrics_type": "0x95ac7b8",
+      "metrics_fields": [
+        "bottomCornerRadius:CGFloat",
+        "bottomSafeAreaInset:CGFloat?"
+      ],
+      "idiom": "0x77123b0 -> UIDevice.current.userInterfaceIdiom==0 (phone)",
+      "maxConcentricPadding": "style fixed+0x70, default40"
+    },
+    "formula_finite_values": [
+      "if focused: return (0,0,0)",
+      "if phone && bottomSafeAreaInset==nil: return (8,8,8)",
+      "r = 24",
+      "if bottomCornerRadius>0 && maxConcentricPadding>24: r=min(maxConcentricPadding,max(24,bottomCornerRadius-24))",
+      "p=max(r,bottomSafeAreaInset.payload)",
+      "return (max(0,p-O.leading),p-bottomSafeAreaInset.payload-O.bottom,max(0,p-O.trailing))"
+    ],
+    "instructions": {
+      "focus_zero": "0x19873ec..0x19873f8",
+      "phone_nil8": "0x1987408..0x1987428",
+      "concentric_clamp": "0x198742c..0x1987464",
+      "safearea_max": "0x1987468..0x1987470",
+      "leading_bottom_trailing": "0x1987474..0x1987494"
+    },
+    "attachment_predicate": "No attachment count/content or presentation mode is read in this geometry helper. Focus lifecycle may differ from expanded/composing state.",
+    "nonphone_nil_limit": "Nonphone path reads Optional CGFloat payload even if nil; producer/default payload not established. Do not invent a nil policy."
+  },
+  "modifier_order": {
+    "style_padding": "0x197edc4..0x197edfc reads trailingOutsideContent (generic metadata+0xa0); applies0x1981448 iff nonnil, otherwise zero",
+    "dynamic_correction": "For appliesPaddingAndMaxWidthToBackground=true, content maxWidth728 at197efbc, correction padding at197f024, infinity frame at197f090",
+    "caveat": "This helper computes additional correction. Do not blindly replace every style-local inset with its result or cap entire parent at728."
+  },
+  "background": {
+    "callback": "0x1c2668c",
+    "resolved_type": "CodexRemoteThread.CodexRemoteComposerSceneMetricsReader descriptor0x95ae3d0 accessor0x1c26858",
+    "gate": "UIDevice phone && supplied sceneMetrics is nil",
+    "state_binding": "__localSceneMetrics LazyState at generic metadata+0x108",
+    "fields": [
+      "_metrics",
+      "__sceneCornerConfiguration",
+      "__deviceSafeAreaInsets"
+    ],
+    "conclusion": "Background callback attaches a scene-metrics reader, not a recovered visual-material fill. Prior v513 description of background focus/layout branches is superseded for this closure.",
+    "reader_runtime_layout": "pending body/producer inspection"
+  },
+  "home_vs_thread": {
+    "confirmed": "Both shared Remote MessageInputStyle defaults preserved by v508 Home/Remote overrides",
+    "unknown": "Parent caller presence of trailingOutsideContent and supplied sceneMetrics must be closed independently for Home and thread before complete geometry integration."
+  },
+  "validation": {
+    "metadata": true,
+    "arm64": true,
+    "runtime": false,
+    "production_edits": false
+  },
+  "next_minimum": [
+    "Trace scene metrics reader body0x95ae3d0 conformance0x7e1c988 for public/platform measurement semantics.",
+    "Bind Home/thread constructor arguments trailingOutsideContent and supplied sceneMetrics.",
+    "Verify selected style baseline in background-host wrapper vs correction-only padding to avoid double insets."
+  ]
+}

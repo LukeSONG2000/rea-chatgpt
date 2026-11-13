@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "module": "9.7 Orbit assistant onboarding and room boundary",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-native-personal-assistant-route-20261112-findings.json",
+      "sha256": "c079ac88356d30b13c4064255fc4401200f4881c271b68e005a78092f49717f6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-native-personal-assistant-page-20261112-findings.json",
+      "sha256": "909de4144a3483ce3eb4be5191924536a792f3f0247a1c93f65d1c5a5c6723bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-native-personal-assistant-assets-20261112.json",
+      "sha256": "64c3a0ee07dc6f4fe2f33c15147ec17a9eca510918e7d416381d3431c3797549"
+    }
+  ],
+  "official_observations": [
+    "HistorySelection.orbit; PersonalAssistantHistoryNavigationCell is a dynamic label, not destination or universal persona.",
+    "RootOrbitPane -> OrbitConversationScreenTemplate -> stored AnyView screen closure; concrete DI registration remains unknown.",
+    "OrbitSidebarOnboardingPresentation owns introduction/connections/creation alongside conversation.",
+    "Introduction GeometryReader/ScrollView/Header/Details/footer; optional data disclosure; source text keys and bolt/personalization/shield-checkmark resources.",
+    "Connections rows are passive connector projections; footer uses explicit provider/status predicate for Continue versus Connect-provider, not an inferred all-connected test.",
+    "Creation has progress/error/retry/capacity branches.",
+    "Existing-room payload is TibroConversationScreenTemplate plus navigation; concrete TibroConversationView contains Calpico room and task infrastructure. Ordinary Chat is not proved equivalent."
+  ],
+  "implemented": [
+    "Native independent entry, introduction/details/source links, passive connector list, explicit primary action and skip capability.",
+    "Creation progress/failure/retry/capacity and return; independent unavailable pages intercept known service links without network access.",
+    "Account/request fencing, one-shot receipts, duplicate actions, cancellation/late result rejection and assistant/room A-B-A generation fence.",
+    "Typed native room-builder integration slot, nil by default with clear missing-view state. Default fixture never provisions account/assistant or marks authorization successful.",
+    "Source English/Chinese labels and six one-argument formatter contracts; frontend supports system locale/appearance.",
+    "Common sidebar gesture feedback goes through General haptics preference; no guessed assistant-specific trigger."
+  ],
+  "independent_adaptations": [
+    "Neutral Assistant label in host available-features catalog; provider fixture is synthetic, not original account configuration.",
+    "Host Back placement, easeInOut0.25 transition/reduceMotion adaptation, footer style, geometry and unavailable pages are not claimed exact original visuals.",
+    "Injected AnyView animation/room slots are host interfaces, not recovered official service schema; missing animation renderer is not filled by an arbitrary character."
+  ],
+  "not_implemented": [
+    "Existing assistant messages/composer/tools/tasks via original Tibro/Calpico builder.",
+    "Real connection/auth/provisioning service or backend; default provider returns explicit unavailable/capacity.",
+    "Concrete template DI registration, animation renderer/default character/avatar/complete sidebar catalog and capability assignments.",
+    "Original full dimensions/materials/matched geometry, gestures and assistant-specific haptics; cross-process onboarding navigation persistence."
+  ],
+  "precise_frontier": [
+    {
+      "owner": "RootOrbitPane",
+      "sites": [
+        "0x5174fc",
+        "metadata+0x70",
+        "0x7656724",
+        "0x7669fd8"
+      ],
+      "missing": "injected builder and template registration to concrete screen"
+    },
+    {
+      "owner": "OrbitSidebarConversation loaded payload",
+      "sites": [
+        "0x95bae58",
+        "0x8e85efc"
+      ],
+      "missing": "TibroConversationScreenTemplate DI and concrete registration"
+    },
+    {
+      "owner": "TibroConversationView",
+      "sites": [
+        "0x95be7f0",
+        "0x203dc4c",
+        "0x2038c58"
+      ],
+      "missing": "CalpicoRoomView inner message/composer host/actions"
+    }
+  ],
+  "source_and_test_files": [
+    {
+      "path": "implementation/ios/Sources/FrontendPersonalAssistant.swift",
+      "sha256": "96867826e3deb7db8744614349081728401f814a6d590acd922e2bd0c7777882"
+    },
+    {
+      "path": "implementation/ios/Sources/NativePersonalAssistantPage.swift",
+      "sha256": "8aba8731c8e8ffc38aea2f09d87e0662e7afab28bc5316d54ffab3fc25658712"
+    },
+    {
+      "path": "implementation/ios/Tests/PersonalAssistant/main.swift",
+      "sha256": "c6f1ba0fd4233f72737eba5e2630e8d8f875d6e8db5c7a64627a5cc26d240f16"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "b81e348a0b0627b8c5a6b4a0095991c6be5391b4519ba45ff9b4754e5282f4c9"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "6b84e5035d3dcfc291eacf74198aeac3007c66685a1115abfecf002e5c64c650"
+    }
+  ],
+  "verification": {
+    "contract": {
+      "result": "passed",
+      "log": "/tmp/rea-personal-assistant-contract-r3-20261112.log",
+      "scope": "state identities, explicit success projections only from matching receipts, no default fake provisioning, six Chinese/English formatter contracts"
+    },
+    "failures_preserved": [
+      {
+        "artifact": "ios-native-personal-assistant-20261112-r1.xcresult",
+        "reason": "whole-module type-name collisions with customization; renamed only new profile/failure types"
+      },
+      {
+        "artifact": "ios-native-personal-assistant-20261112-r2.xcresult",
+        "reason": "missing OfficialTextKey.argumentCount for six new format keys; actual runtime precondition crash fixed, contract regression added"
+      },
+      {
+        "result": "passed",
+        "test": "testPersonalAssistantExistingRoomBoundaryChinese",
+        "seconds": 26.722,
+        "artifact": "ios-native-personal-assistant-20261112-r2.xcresult",
+        "scope": "explicit unsupported room and sidebar return, not actual messages"
+      }
+    ],
+    "onboarding_ui": {
+      "result": "passed",
+      "test": "testPersonalAssistantOnboardingChinese",
+      "seconds": 35.135,
+      "artifact": "ios-native-personal-assistant-haptics-20261112-r3.xcresult",
+      "scope": "ordinary entry/load failure/retry/introduction/provider failure/skip/creation failure/retry/Back/data-controls information/sidebar reentry",
+      "screenshot": "ios-native-personal-assistant-haptics-20261112-r3-attachments/1D9E5DE6-C194-4AA0-BE12-84B5149B02AD.png",
+      "screenshot_viewed": true
+    },
+    "device": {
+      "signed_build": "succeeded",
+      "build_log": "/tmp/rea-assistant-haptics-device-build-20261112.log",
+      "app_path": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "33a16deb9255c69bd86cb02fe7c43ccbe2cc85a25d1db6edbd8e642d878c8d1a",
+      "preflight": "ios-assistant-haptics-20261112-device-final-state.json",
+      "connection": "unavailable",
+      "installed_this_candidate": false,
+      "last_recorded_installed_candidate": "Settings fixed-close candidate; current contents cannot be read while device unavailable",
+      "physical_playback_verified": false
+    },
+    "simulator": {
+      "report": "ios-assistant-haptics-20261112-preview.json",
+      "installed_hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 61293",
+      "executable_sha256": "b46c4fa8aa74e03438d1af0ba82ba666549a67d43519d776a14dfe31398b1e08",
+      "screenshot": "ios-assistant-haptics-20261112-ordinary.png",
+      "observed": "Chinese/light ordinary core chat and composer visible, preview left running. Assistant creation-unavailable screenshot reviewed separately."
+    }
+  },
+  "review_path": "Sidebar > available features > Assistant > Continue > Connect provider / Skip > creation failure / Retry / Back",
+  "next_major_module": "login/account frontend; keep precise existing-room blocker separate"
+}

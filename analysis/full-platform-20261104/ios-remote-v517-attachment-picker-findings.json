@@ -1,0 +1,369 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "authority": "official-shipped-artifact-static",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Remote composer system photo/file picker presentation and result action boundary. No production edits, builds, official runtime, network or service calls.",
+  "presentation_owner": {
+    "type": "CodexRemoteMessageInputView",
+    "type_descriptor": "0x95ac77c",
+    "body": "0x1983814",
+    "inner_composer": "0x1984534",
+    "queue": "LazyState<PresentationQueue<AttachmentPresentation>>",
+    "queue_field_offset_vector_slot": "0xf0",
+    "case_raw_values": {
+      "attachmentMenu": 0,
+      "fileImporter": 1,
+      "camera": 2,
+      "photosPicker": 3
+    },
+    "transition": "Existing v512 menu actions queue the destination and dismiss menu case0 through 0x1990d48. Both system picker presented bindings are made by 0x7554b70 from the same queue.",
+    "prior_evidence": [
+      "ios-remote-v512-attachment-menu-findings.json"
+    ]
+  },
+  "photos": {
+    "status": "verified-static-presentation-partial-conversion",
+    "api": "SwiftUI.View.photosPicker(isPresented:selection:maxSelectionCount:selectionBehavior:matching:preferredItemEncoding:photoLibrary:)",
+    "call": "0x1983f54",
+    "import_slot": "0xaad6028",
+    "configuration": {
+      "isPresented": "queue case3 binding, 0x1983d38/0x1983d80",
+      "selection": "Binding<[PhotosPickerItem]> from __selectedPhotoItems, field vector slot0x104, 0x1983ddc",
+      "maxSelectionCount": 10,
+      "maxSelection_evidence": "0x1983f4c w6=10 / 0x1983f50 w7=0 (non-nil)",
+      "selectionBehavior": "default at0x1983f00",
+      "matching": "PHPickerFilter.any(of:[.images,.videos]) at0x1983e78/0x1983e80/0x1983e88",
+      "preferredItemEncoding": "current at0x1983ec4",
+      "photoLibrary": "PHPhotoLibrary.sharedPhotoLibrary at0x1983ed4"
+    },
+    "consumer": {
+      "mechanism": "task(id: selectedPhotoItems)",
+      "type_records": [
+        "0x7e12dd0",
+        "0x7e12db8"
+      ],
+      "closure": "0x1c26c44",
+      "processing": "0x198aa8c -> 0x198aad4 -> 0x198ab78 / 0x198ac18",
+      "state_getter": "0x198100c",
+      "action_owner": "captured composer.handle field vector slot0xc4 at0x198ac5c..0x198ac70",
+      "start_loading": "nonempty and not-cancelled at0x198ac2c..0x198ac48; setLoadingAttachments(true) at0x198ac74..0x198ac88, enumtag13 via0xad10f4",
+      "success": "per prepared attachment handle(.addAttachment(attachment, playsSuccessHaptic:false)); loop0x198ada8..0x198adc8 and corresponding continuation loops. Helper0x1d7f0c8 writes false atpayload+0x48 and enumtag5; 0x1da388c invokes capturedhandle.",
+      "cleanup": "Normal completion calls0x1d73c1c ->0x1981034 to clear selectedPhotoItems, followed by setLoadingAttachments(false) through0x1d674b4 andhandle. Error branch0x198afc8 also clears selectedPhotoItems and sends false at0x198afcc..0x198afdc.",
+      "selection_clear_proof": "0x1981034 writes fieldslot0x104 using0x1d7ec04; helper loads0xaad9298 bound to __swiftEmptyArrayStorage.",
+      "cancellation": "Multiple Task.isCancelled/checkCancellation checks before processing and append. Exact all-exit cleanup and race behavior not proven."
+    },
+    "conversion_limit": "Photo conversion uses loadTransferable path0x198b1c4, with CodexRemoteVideoAttachment descriptor0x95ad678 via witness0x1c276fc/0x7e1c8a0 on one branch. Full image/video conversion, limits and error localization are not closed."
+  },
+  "files": {
+    "status": "verified-static-presentation-and-result-action-partial-conversion",
+    "api": "SwiftUI.View.fileImporter(isPresented:allowedContentTypes:allowsMultipleSelection:onCompletion:)",
+    "call": "0x19843ec",
+    "import_slot": "0xaad3fa0",
+    "configuration": {
+      "isPresented": "queue case1 binding at0x1984248/0x198425c",
+      "allowedContentTypes": [
+        "UTType.item"
+      ],
+      "allowedContentTypes_evidence": "UTType.item import0xaada0b8 at0x19842f8; one-element array setup",
+      "allowsMultipleSelection": true,
+      "allowsMultipleSelection_evidence": "0x19843dc w4=1"
+    },
+    "consumer": {
+      "completion": "0x1c26ca4 ->0x198bb88",
+      "scheduling": "MainActor.shared0x198bc20, Actor.unownedExecutor0x198bcb4, Task closure capturesResult",
+      "result_dispatch": "0x198be14..0x198c1c4",
+      "success": "URLs passed into async conversion at0x198bf8c ->0x763822c. Prepared attachments iterate at0x198c094..0x198c104 and call captured composer.handle(.addAttachment(attachment, playsSuccessHaptic:true)).",
+      "success_proof": "0x198c0cc writes true atpayload+0x48; 0x198c0d4 ->0x157f14 sets enumtag5; handle call0x198c0e8.",
+      "cleanup": "0x1990bcc dispatches setLoadingAttachments(false), reached by success0x198c118 and error/empty result paths0x198bfe0/0x198c1ac.",
+      "cancellation": "Task.isCancelled at0x198be30/0x198bf90/0x198c078/0x198c178; 0x198c078 gates success append.",
+      "local_error": "0x197ccc8 writes __localAttachmentErrorMessage fieldslot0xf8. Error presentation/localized text remain partial."
+    },
+    "conversion_limit": "0x763822c and its per-URL callback have not been fully decoded. File security-scoped URL access, copying, media validation and imported-file lifetime require follow-up. Immediate64 at0x198bf6c belongs to conversion helper arguments and is not established as picker selection limit."
+  },
+  "camera": {
+    "status": "partial",
+    "queue_consumer": "onChange0x1984518 callback0x1c26ce8 ->0x198c1c4",
+    "transition": "0x198c1fc compares case2; 0x198c234 removes/dismisses camera queue case through0x7553884, writes queue back, then composer.handle(.takePhotoAttachment) tag24 at0x198c258.",
+    "owner_boundary": "composer.handle field vector slot0xc4",
+    "unknown": "Actual parent action handler, camera presentation API/configuration, selection completion and cancel cleanup remain unclosed. Do not infer UIImagePickerController from this route.",
+    "separate_embedded_flow": "Composer also has makeCameraAttachmentFlowViewModel fieldslot0xb8 of CameraAnnotationFlowViewModel factory type. Presence alone does not bind it to full-screen takePhotoAttachment action."
+  },
+  "action_schema": {
+    "type": "CodexRemoteMessageInputAction",
+    "descriptor": "0x95aea7c",
+    "tag5": "addAttachment(CodexRemoteAttachment, playsSuccessHaptic: Bool), typeref0x8e10c86",
+    "tag6": "addPhotoPickerResults([PHPickerResult], didPrepareAttachment: optional callback), typeref0x8e38c52. Distinct action, not the observed systemPhotosPicker results path.",
+    "tag13": "setLoadingAttachments(Bool)",
+    "tag24": "takePhotoAttachment",
+    "scope": "Selection and result handling are composer-owned and routed through its captured handle. Exact thread/host identifiers live upstream of this boundary and were not proven in this pass."
+  },
+  "integration_ready": [
+    "Present system photosPicker from the composer queue with the confirmed selection/configuration; use native selection results and preserve composer ownership.",
+    "Present system fileImporter with [.item] and multiple selection.",
+    "Route prepared results through separate addAttachment and setLoadingAttachments actions; source photo/file success-haptic flag differs.",
+    "Preserve native cancel and conversion failure as separate results; do not equate picker appearance or selected URL with successfully prepared attachment."
+  ],
+  "remaining_unknowns": [
+    "Camera actual host and action-result owner after .takePhotoAttachment.",
+    "Exact attachment conversion implementation and file security-scope/copy lifetime.",
+    "All-exit cancellation cleanup and concurrent task ordering.",
+    "Original error strings and user-visible picker/conversion error presentation.",
+    "Upstream thread/host scope binding after composer.handle."
+  ],
+  "validation": {
+    "static": "API imports, raw parameters, metadata names, enum tags and direct dispatch instruction chains inspected.",
+    "runtime": "not run",
+    "behavior_equivalence": "not asserted"
+  },
+  "evidence_files": [
+    {
+      "path": "ios-remote-v517-attachment-picker-attachment-tag.asm",
+      "sha256": "2fa88d5d4598a4c80939cc311205abb6f3483b7f1d36b379dec94f978c52f6d7"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-attachment-tag.json",
+      "sha256": "b35fe818a2777077dc4bb112d67ed497c3b2e46444307e5bfdd281dde71ce686"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-callbacks.asm",
+      "sha256": "e6050fb00e4cf679f7d1b0ebfbaf88f571698ea4886ef0c9842a9683f9229cd2"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-callbacks.json",
+      "sha256": "73e3e78adc715f2f2344c7db4ab2ff9ef9196a8030049f8b295f1eef1e743ecb"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-camera-modifier.asm",
+      "sha256": "9123857660e8b18b87843b4f7c3feda7367392294d2a3de31e45756ea0f53c71"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-camera-modifier.json",
+      "sha256": "cd5a9fab715de38df68fdf0e3a54cb8bb338bbfaa200e90ed26e95f3de8e4d28"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-dispatch-tag5.asm",
+      "sha256": "ab38d1e1d821f91b91cd0bf23a90b88561014cb902d6ce679de16696d9b93226"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-dispatch-tag5.json",
+      "sha256": "0c190c06423f9a20b15c47cc9e9944c786cb727011939fc87b744fdc64265603"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-field-8e14ff8.json",
+      "sha256": "d0ec6fa2d72ae1be5e5849090229353949cc6752789b334aa12b737f19639fde"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-field-8e1579a.json",
+      "sha256": "531121d176719ec70e0e047f4779a3c37213835770c845e0bc1757dcc494d4b0"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-field-8e157b4.json",
+      "sha256": "976419537ec59fdd63f72d1f9c4becf656969b7383f27561a7973f26bf8e9159"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-file-action.asm",
+      "sha256": "1c6aadc5ee021698380bd0147a2dca3e1334d0e522f3b0fcca506197aacd19fe"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-file-action.json",
+      "sha256": "68e2dc3fdabac23309c3d4370a75ea0c6ab0a217ec0b02ac6967775c197f606a"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-file-cleanup.asm",
+      "sha256": "9899142e6b27d93bea6daed4ec965f7c9d700ced7f05d2910a7dc348c24b5590"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-file-cleanup.json",
+      "sha256": "f8f76e4cfecc79c43f68684eb3b5108d620be908c9c137885f2c834454f33eee"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-file-result.asm",
+      "sha256": "81b06c9384f68ab10b45992efe6c5477cf6537f8daaffc7004b61bce61d7535c"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-file-result.json",
+      "sha256": "dfdc1f873ddb338d06263ed4f8995f70183f3943e8a52904cd8f6686e9971187"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-loading-false.asm",
+      "sha256": "bed251e8159f579e2c257f969871edca3f13b7c7973cb6a0b83d12aa78be9efb"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-loading-false.json",
+      "sha256": "54a7c37407baa88f512b900257081815773c43a73f3a812157c488c6baa06235"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-loading-tag.asm",
+      "sha256": "ef7bb7942dcc9466017f4f90f7c051d5b1572cc0d6530422a279ee31618700c7"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-loading-tag.json",
+      "sha256": "5f92504d65e7179b3f12b2a87746f9c7ed261e0889579eaffc8d07143aba29f8"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-local-error-reset.asm",
+      "sha256": "2172519269fa3b391084efdbb612788b0254e8f68cfcd50360ee3e6674c7542c"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-local-error-reset.json",
+      "sha256": "afb80a0164eb5bddaae1c4e75c5f95b81a35974a1f2a588ae9c62c4a31341706"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-metadata-95aea7c.json",
+      "sha256": "5b91423cf79a9cc96472a3afdfcc28ce26011f7dd54350f977d766cc82d2aad6"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-metadata-96929a0.json",
+      "sha256": "5b76d81b9bc0b7a4085fdd7b0f9de00e2673024986dcb4326fc2a1efdb962658"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-onchange.asm",
+      "sha256": "0563a69bdd0d8f2a1495b3c77aef7a6662add1607da97a11d90f183e19c07c9d"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-onchange.json",
+      "sha256": "3314a2afc306548a8a3a7c6b3d1345c35074bef8cc34f305263f5cf97c0502ee"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-outer-body.asm",
+      "sha256": "4c77c7d7ca69a8fd6e2cd9d3c0fd2d3c273ddebd3ebe35ae9260c957b207235d"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-outer-body.json",
+      "sha256": "f91b493b0783abb9d5a6dee8f378fec9d0f5fe92680b1a4f4c7440cc23ce0379"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-parent.asm",
+      "sha256": "3ca15d46c2d5e0dccdc986fe3bfef109b20a50927ad40b1f6693b5260215910b"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-parent.json",
+      "sha256": "551335680c7c0d97776836e79a289ea3f76419c31e18fff1123615d88101710c"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-payload-8e10c86.json",
+      "sha256": "ec2f8697d42dfd954978b6d5a5720f82724a0d86f782aef0bbaa2a5165dc4e44"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-payload-8e38c52.json",
+      "sha256": "3dbdc006e3f9f35df018c2053f5c55080d688c0a3ac22f28da398c5165f73b96"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-clear-array.asm",
+      "sha256": "6009ab8d766b617b932d6441445c1f77f1b23f0aae1f81b1c3a8f190dc49e087"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-clear-array.json",
+      "sha256": "cc0165fcd97f48ed28994cfcf54880118b7b3eda63b604080f78dec95d6de6f9"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-result-buffer.asm",
+      "sha256": "7b13847901802a21106a46b8d7fa0b68419f79e1a82093aba75d8aefdd297ad2"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-result-buffer.json",
+      "sha256": "ed88bcd1d68dceaa5ee9eff64ebc4647b5b5f2cae4691e3c73956a861689b1ed"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-result-tail.asm",
+      "sha256": "3974de453df52301ef0cf3c1ac9d27e4b2fc87383edfec37b5e0f4b02b80a7fc"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-result-tail.json",
+      "sha256": "eb6b4fbc32fa8e5ecc8255ab5f40100ed62d5881ece99858bc5d3cb62fd1c113"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-result.asm",
+      "sha256": "4032614bca97862007791328851f2b4c713be81779f7161b9f49b0ea2f332d31"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-result.json",
+      "sha256": "ba14b6ecf3cff5cbaf71fb7cb1cc4d6f0ae55e7899a46799cd558d31f58af6ca"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-state.asm",
+      "sha256": "f328b84b0f787288bc42946f96fcc9ef8d474c67ac332e19014f416e11dfd2ce"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-state.json",
+      "sha256": "52240c054e8cd30272218d42c572d108266ffd096c98194269346c1f3d9e1607"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-transfer-type.asm",
+      "sha256": "3510f090b5f42a6e824763a4fc89b3e7e57edf626c9a79d86c5c32e063491173"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-transfer-type.json",
+      "sha256": "9cf6eec0c998efe99268b83864b3dc3270bc0270c5a1d241a0701bc01f1db80c"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-queue-change.asm",
+      "sha256": "6d855933132e32680afbb21fc79ff28d3debc50070bf3c2f92fb19fbb651b86f"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-queue-change.json",
+      "sha256": "a104c2aaa261fc89a24351c33b238e5d8b42270beb36201ce2467960011e837e"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-result-actions.asm",
+      "sha256": "09e14bc1c5eb6b7660645a4784b909c1c01ab18e1e87cb4e2143fa5af0989071"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-result-actions.json",
+      "sha256": "76dd319c06ac2157ed7b2436c7112672bfd65f803acd4e81942a096e4e199a9c"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-result-helper.asm",
+      "sha256": "eb2c82bf928904176ce185c971e16a148848d6b7ffcdda8ca7157e297846ca15"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-result-helper.json",
+      "sha256": "938dd329af4657c90c1914bf73776a919419d975e22ded09fd9d25d75bff8680"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-result-helper2.asm",
+      "sha256": "3b765b090a5d611e96dd1d2853c27baf32ae414a2f0d3e6cf35897c192371e56"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-result-helper2.json",
+      "sha256": "8c9f480055326b791589b563437244168e1cf12844f87c112f13196c96c004b6"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-result-helper3.asm",
+      "sha256": "74d41c315166debcfb41af9a67e817afb69c71cfc01e29abf65df49e3f900488"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-result-helper3.json",
+      "sha256": "51f3e94f64a200a32251f9f2253ec5f2600f55c9cddae3a73fc4f4780e7ccc8a"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-root.asm",
+      "sha256": "acfc8f9b1f0d298216eaab0ae9c4bed02a2c7a3f43312e07fb56634017185679"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-root.json",
+      "sha256": "d46689ae5ccca13997e063eb250aaf68969e3d05249612f5fd46eed6ab7da41f"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-type-7e12d90.json",
+      "sha256": "4dd947efea45d139599ee29de24d2dcbad70384bd6ca2f5c09a48452599bbd8d"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-type-7e12d98.json",
+      "sha256": "33ebd404d94760cd73444ae3224b7068d1ac58ebf81cf882059d967dfa2da7de"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-type-7e12db8.json",
+      "sha256": "e65339f39b2b738d0d4169e8a23125438df795f827e708ef2da4dc19dcfe87c3"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-type-7e12dd0.json",
+      "sha256": "30a474f2f8257ac96bad0f9913ada1369c23530280ee53f23500d488c495d714"
+    }
+  ]
+}

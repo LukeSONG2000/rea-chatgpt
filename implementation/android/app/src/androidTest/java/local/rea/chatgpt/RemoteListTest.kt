@@ -1,0 +1,212 @@
+package local.rea.chatgpt
+
+import android.content.Intent
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Direction
+import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiObject2
+import androidx.test.uiautomator.Until
+import kotlinx.coroutines.runBlocking
+import org.junit.Assert.*
+import org.junit.Test
+import java.io.File
+
+class RemoteListTest {
+    private val instrumentation = InstrumentationRegistry.getInstrumentation()
+    private val context = instrumentation.targetContext
+    private val device = UiDevice.getInstance(instrumentation)
+    private val runID = InstrumentationRegistry.getArguments().getString("runId") ?: error("runId required")
+    private val language = InstrumentationRegistry.getArguments().getString("language") ?: "zh-CN"
+    private val appearance = InstrumentationRegistry.getArguments().getString("appearance") ?: "light"
+    @org.junit.Rule @JvmField val failureCapture = object : org.junit.rules.TestWatcher() {
+        override fun failed(error: Throwable, description: org.junit.runner.Description) {
+            if (device.currentPackageName == context.packageName) capture("failure-${description.methodName}")
+        }
+    }
+    private fun node(id: String): UiObject2 = device.wait(Until.findObject(By.res(id)), 8000) ?: error("Missing $id")
+    private fun refresh() { instrumentation.uiAutomation.clearCache() }
+    private fun click(id: String) {
+        val target = node(id)
+        assertEquals("Stop if another app has foreground", context.packageName, device.currentPackageName)
+        target.click(); device.waitForIdle(); refresh()
+    }
+    private fun start(failFirst: Boolean = false) {
+        val intent = Intent(context, RemoteListActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra("remote-profile", "test-$runID")
+            .putExtra("remote-language", language).putExtra("remote-theme", appearance)
+            .putExtra("remote-fail-first", failFirst)
+        context.startActivity(intent)
+        node("remote-title")
+    }
+    private fun capture(name: String) {
+        assertEquals(context.packageName, device.currentPackageName)
+        val dir = File(context.filesDir, "remote-list-test-$runID").apply { mkdirs() }
+        assertTrue(device.takeScreenshot(File(dir, "$name.png")))
+        device.dumpWindowHierarchy(File(dir, "$name.xml"))
+        File(dir, "$name.pid").writeText(android.os.Process.myPid().toString())
+    }
+    private fun host(id: String) {
+        var chip = device.findObject(By.res("remote-host-$id"))
+        if (chip == null) {
+            node("remote-hosts").swipe(Direction.LEFT, 0.7f)
+            chip = node("remote-host-$id")
+        }
+        chip.click(); device.waitForIdle(); refresh()
+        assertTrue(device.wait(Until.hasObject(By.res("remote-host-$id").selected(true)), 8000))
+    }
+    private val imePackage: String get() = android.provider.Settings.Secure.getString(context.contentResolver,
+        android.provider.Settings.Secure.DEFAULT_INPUT_METHOD).substringBefore('/')
+    private fun search(text: String) {
+        if (!device.hasObject(By.res("remote-query"))) {
+            click("remote-search")
+            assertTrue("Search entry opens the current system keyboard", device.wait(Until.hasObject(By.pkg(imePackage)), 5000))
+            assertTrue("Search entry focuses the editor", node("remote-query").isFocused)
+            val height = node("remote-search-field").visibleBounds.height()
+            assertTrue("Source search surface has minimum height44dp", kotlin.math.abs(height - 44 * context.resources.displayMetrics.density) <= 3)
+            capture("search-auto-keyboard")
+        }
+        node("remote-query").text = text
+        device.waitForIdle(); refresh()
+        // Wait for the asynchronous semantics update after accessibility text assignment.
+        assertTrue("Search text must reach the requested value", device.wait(
+            Until.hasObject(By.res("remote-query").text(text)), 5000))
+        assertEquals(text, node("remote-query").text)
+    }
+    private fun taskA() = "remote-task-pinned-fixture-a-shared-task"
+    private fun taskB() = "remote-task-project-fixture-b-demo-fixture-b-shared-task"
+    private fun draft(text: String) {
+        node("remote-draft").text = text
+        device.waitForIdle(); refresh()
+        assertTrue("Draft text must reach the requested value", device.wait(
+            Until.hasObject(By.res("remote-draft").text(text)), 5000))
+        assertEquals(text, node("remote-draft").text)
+    }
+    @Test fun modelRules() = runBlocking {
+        val data = SyntheticRemoteListProvider(false).load()
+        assertEquals(setOf("Demo"), data.ambiguousProjectNames)
+        assertEquals(2, data.tasks.count { it.key.threadID == "shared-task" })
+        assertEquals(1, data.visibleTasks("fixture-b", "components").size)
+        assertTrue(data.visibleTasks(null, "no-match").isEmpty())
+        val sameHost = RemoteListSnapshot(data.hosts, listOf(RemoteListProject("fixture-a", "a", "Same"),
+            RemoteListProject("fixture-a", "b", "Same")), emptyList())
+        assertTrue(sameHost.ambiguousProjectNames.isEmpty())
+        val prefs = context.getSharedPreferences("remote-model-$runID", 0)
+        val store = RemoteListStore(prefs)
+        val a = RemoteTaskKey("fixture-a", "shared-task")
+        val b = RemoteTaskKey("fixture-b", "shared-task")
+        assertTrue(store.saveDraft(a, "A")); assertTrue(store.saveDraft(b, "B"))
+        assertTrue(store.saveList("fixture-a", "Demo", setOf("pinned"), 4, 12))
+        val restored = RemoteListStore(prefs)
+        assertEquals("A", restored.draft(a)); assertEquals("B", restored.draft(b))
+        assertEquals(4, restored.index); assertEquals(12, restored.offset)
+        assertEquals(setOf("pinned"), restored.collapsed)
+        val failing = SyntheticRemoteListProvider(false, true)
+        assertTrue(runCatching { failing.load() }.isFailure)
+        assertEquals(3, failing.load().hosts.size)
+    }
+    @Test fun listJourney() {
+        start(failFirst = true)
+        node("remote-load-error"); click("remote-retry"); node("remote-task-list")
+        val title = node("remote-title").visibleBounds
+        assertTrue("Title must be centered on the screen", kotlin.math.abs(title.centerX() - device.displayWidth / 2) <= 3)
+        assertFalse("Browsing has one right search action", device.hasObject(By.res("remote-menu")))
+        assertTrue(node("remote-host-all").isSelected)
+        assertFalse(node("remote-host-cloud").isSelected)
+        assertFalse(device.hasObject(By.res("remote-connection-cloud")))
+        node("remote-connection-fixture-a")
+        capture("list-initial")
+        click("remote-sidebar"); node("shell-drawer")
+        capture("sidebar-from-remote")
+        device.pressBack(); device.waitForIdle(); refresh()
+        assertTrue(device.wait(Until.gone(By.res("shell-drawer")), 8000))
+        node("remote-title")
+        assertEquals(context.packageName, device.currentPackageName)
+        click("remote-sidebar"); node("shell-drawer"); click("shell-entry-remote")
+        assertTrue(device.wait(Until.gone(By.res("shell-drawer")), 8000))
+        node("remote-title")
+        val titleAnchor = node("remote-title-anchor").visibleBounds
+        click("remote-title")
+        for (id in listOf("remote-sort-priority", "remote-sort-project", "remote-sort-time", "remote-add-connection", "remote-settings")) node(id)
+        val labels = if (language.startsWith("zh")) listOf("优先级", "按项目", "按时间顺序排列", "添加连接", "设置")
+            else listOf("Priority", "By project", "Chronological list", "Add connection", "Settings")
+        for (label in labels) assertTrue("Menu locale must match page: $label", device.hasObject(By.text(label)))
+        assertTrue(node("remote-sort-project").isChecked)
+        val popup = node("remote-title-menu").visibleBounds
+        assertTrue("Title menu is centered", kotlin.math.abs(popup.centerX() - device.displayWidth / 2) <= 3)
+        assertTrue("Menu starts on the title anchor", kotlin.math.abs(popup.top - titleAnchor.top) <= 3)
+        capture("title-menu")
+        click("remote-sort-project")
+        assertTrue(device.wait(Until.gone(By.res("remote-title-menu")), 8000))
+        for (id in listOf("remote-sort-priority", "remote-sort-time", "remote-add-connection", "remote-settings")) {
+            click("remote-title"); click(id); node("remote-pending-action")
+            assertTrue(device.hasObject(By.text(if (language.startsWith("zh")) "完成" else "Done")))
+            click("remote-pending-done")
+            assertTrue(device.wait(Until.gone(By.res("remote-pending-action")), 8000))
+            node("remote-title")
+        }
+        assertTrue(device.hasObject(By.res("remote-host-label-project-fixture-a-demo")))
+        assertFalse(device.hasObject(By.res("remote-host-label-project-fixture-a-mobile")))
+        click("remote-group-project-fixture-a-demo")
+        assertFalse(device.hasObject(By.res("remote-task-project-fixture-a-demo-fixture-a-layout")))
+        search("Demo")
+        assertFalse(device.hasObject(By.res("remote-title")))
+        assertFalse(device.hasObject(By.res("remote-sidebar")))
+        node("remote-task-project-fixture-a-demo-fixture-a-layout")
+        capture("search-expanded")
+        device.pressBack(); device.waitForIdle(); refresh()
+        assertTrue(device.wait(Until.gone(By.pkg(imePackage)), 5000))
+        assertEquals("Back first dismisses IME while preserving query", "Demo", node("remote-query").text)
+        click("remote-query")
+        assertTrue(device.wait(Until.hasObject(By.pkg(imePackage)), 5000))
+        search("no-such-task-618"); node("remote-empty")
+        search(""); click("remote-search")
+        assertTrue(device.wait(Until.gone(By.pkg(imePackage)), 5000))
+        assertFalse(device.hasObject(By.res("remote-query")))
+        node("remote-title"); capture("search-closed")
+        host("fixture-a")
+        assertTrue(node("remote-host-fixture-a").isSelected)
+        assertFalse(node("remote-host-cloud").isSelected)
+        capture("host-selected")
+        click(taskA()); assertEquals("Studio Mac", node("remote-task-host").text)
+        draft("Draft A $runID"); capture("task-a-draft"); click("remote-task-back")
+        host("fixture-b")
+        click(taskB()); assertEquals("Studio PC", node("remote-task-host").text)
+        assertEquals("", node("remote-draft").text)
+        draft("Draft B $runID"); click("remote-task-back")
+        host("fixture-a"); click(taskA()); assertEquals("Draft A $runID", node("remote-draft").text)
+        click("remote-task-back")
+        val recent = "remote-task-recent-fixture-a-recent-8"
+        repeat(8) {
+            if (!device.hasObject(By.res(recent))) {
+                node("remote-task-list").swipe(Direction.UP, 0.6f)
+                device.waitForIdle()
+                android.os.SystemClock.sleep(500)
+                refresh()
+            }
+        }
+        capture("list-before-task")
+        val before = node(recent).visibleBounds
+        click(recent); node("remote-draft"); node("remote-task-back")
+        device.pressBack(); device.waitForIdle(); refresh()
+        val after = node(recent).visibleBounds
+        assertTrue("Return must preserve row position", kotlin.math.abs(before.top - after.top) <= 8)
+        capture("list-return")
+        click("remote-sidebar"); node("shell-drawer"); click("shell-entry-remote")
+        assertTrue(device.wait(Until.gone(By.res("shell-drawer")), 8000))
+        assertTrue("Sidebar return preserves host", node("remote-host-fixture-a").isSelected)
+        assertTrue("Sidebar return preserves reading position", kotlin.math.abs(before.top - node(recent).visibleBounds.top) <= 8)
+        capture("sidebar-retained-position")
+    }
+    @Test fun verifyRestart() {
+        start(); node("remote-task-list")
+        node("remote-task-recent-fixture-a-recent-8")
+        capture("list-restart")
+        search(if (language.startsWith("zh")) "\u68c0\u67e5\u754c\u9762" else "Inspect UI")
+        host("fixture-a"); click(taskA()); assertEquals("Draft A $runID", node("remote-draft").text)
+        click("remote-task-back"); host("fixture-b"); click(taskB())
+        assertEquals("Draft B $runID", node("remote-draft").text)
+        capture("task-b-restored")
+        click("remote-task-back")
+    }
+}

@@ -1,0 +1,62 @@
+{
+  "batch": "v629",
+  "platform": "iOS Simulator",
+  "implemented": [
+    "Remote whole-response copy only for completed turn",
+    "Original square-on-square icons for Remote reply and generic code copy",
+    "Compact14pt glyph through existing host font scaling",
+    "Exact raw Markdown and code copy preserved"
+  ],
+  "verification": [
+    {
+      "report": "ios-remote-v629-copy-r1.xcresult",
+      "passed": [
+        "testRemoteRichMessageChinese",
+        "testRemoteRichMessageEnglishDark",
+        "testRemoteCopyFeedbackLifecycle",
+        "testRemoteCopyOnlyAfterCompletion"
+      ]
+    },
+    {
+      "report": "ios-remote-v629-copy-r3.xcresult",
+      "passed": [
+        "testChatWorkActionVisibilityChinese"
+      ]
+    },
+    {
+      "report": "ios-remote-v629-copy-r4.xcresult",
+      "passed": [
+        "testCopyWholeReplyPreservesMarkdown"
+      ]
+    }
+  ],
+  "retained_failures": [
+    {
+      "run": "r1",
+      "reason": "Legacy Chat test expected Send after empty composer restored Voice; also default launch used unavailable local harness"
+    },
+    {
+      "run": "r2",
+      "reason": "Unavailable local harness generated failed empty response; recorded test video confirms error"
+    },
+    {
+      "run": "r3",
+      "reason": "Fast fixture scrolled user row outside virtualized list before ID lookup; test now uses slow fixture and response-scoped status identity"
+    }
+  ],
+  "remaining": [
+    "Full generic code-panel header/background styling",
+    "Exact native Remote parent glyph metric",
+    "Physical-device copy visual confirmation"
+  ],
+  "source": "mobile-v629-copy-source.json",
+  "launch_report": "ios-remote-v629-launch.json",
+  "executable_sha256": "ad9086d893bc75a17405dbc25703c744e5585700cbb8d016c242b769a453229d",
+  "installed_hash_match": true,
+  "preview": "Core Chinese preview running; external display placement not confirmed by CUA",
+  "limits": [
+    "Completion-only Remote policy maps independent frontend turn states",
+    "Legacy Chat test migrated to offline fixture, with exact expected Markdown",
+    "UI automation could inspect Device Hub AX but could not obtain its macOS window screenshot"
+  ]
+}

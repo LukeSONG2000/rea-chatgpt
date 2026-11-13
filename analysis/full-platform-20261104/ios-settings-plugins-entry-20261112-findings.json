@@ -1,0 +1,268 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial-source-proven-row-projection",
+  "scope": "legacy Customize ChatGPT section rows and Settings plugins entry; static only",
+  "host_observation": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbol": "NativeVisualSettings",
+    "problem": "Three customization rows are hardcoded; plugin default branch goes unavailable. NativePluginsPage exists independently, but equivalent Settings destination cannot be inferred by title."
+  },
+  "parent": {
+    "section": "CustomizeChatGPTSection descriptor958a1ac;Viewconformance7d8a6c8;body1088990→108895c",
+    "body_type": "8d1b824 = SettingsHomeSection<SettingsPersonalizationRows>",
+    "rows": "SettingsPersonalizationRows descriptor958ba6c;accessor11657d0;body108ba78→108b630"
+  },
+  "ordered_rows": [
+    {
+      "row": "Personalization",
+      "visibility": "unconditional within this rows body; no row gate before creation",
+      "title_factory": "108b6f8→75d69c8",
+      "title": "Personalization",
+      "icon_factory": "108b700→74f6eb4",
+      "navigation": "108b718 storeEnumTagMultiPayload30 thenNavigationLink constructor7566028 at108b760",
+      "limits": "Containing root branch and selected account conditions remain at owner; unconditional here does not mean globally visible before login."
+    },
+    {
+      "row": "Memory",
+      "visibility": "conditional",
+      "gate": "108b764→1077840;108b768 false skips to108b7d8",
+      "gate_instructions": "1077858 keypath helper11ac9cc;107785c→119bef0 sets x22=b164980;1077868 loads compiled field-offset cache[x22+5e0];107786c reads boolean from SettingsViewModel instance",
+      "semantic_candidate": "_isMemoryAvailable (existing metadata index58), not proven by mere field ordering; preserve raw getter1077840 as authoritative predicate",
+      "row_label": "SettingsMemoryRowLabel",
+      "navigation": "108b770..774 uses enum tag27, creates label through1172d20 andNavigationLink7c47650 at108b7d0"
+    },
+    {
+      "row": "Apps or Plugins",
+      "visibility": "conditional showConnectors",
+      "gate": "108b800→107abd8;108b804 false skips whole row to108b8e0",
+      "gate_name_proof": "107ac24..40 constructs full small string showConnectors, count14 marker0xee; cached bool property getter107abd8 returns lowbit at107ac70",
+      "presentation_branch_gate": "108b808/108b88c→108ba40",
+      "branch_true": {
+        "title_key": "connectors_plugins_title",
+        "key_literal": "0x88629a0 loaded108b810..814",
+        "fallback": "Plugin smallstring108b824..830 (localization key retains authority)",
+        "icon_factory": "108b894→74fa408",
+        "icon_literal": "0x8a569e0",
+        "icon": "OpenAI/Symbols/plugin"
+      },
+      "branch_false": {
+        "title_factory": "108b880→75d4adc",
+        "title": "Apps",
+        "complete_string": "75d4adc w0=0x73707041→75e1c50 x1/x2=e400000000000000",
+        "icon_factory": "108b89c→74f6208",
+        "icon_literal": "0x8a54b40",
+        "icon": "OpenAI/Symbols/circle-grid-2x2"
+      },
+      "branch_gate_field": "108ba40 reads bool viaKeyPath7d8fd70/helper11ad104 and compiledfield-offsetcache[x22+698]; metadata _pluginsExperienceEnabled exists(index92), but exact cache-to-field map not proved in this bounded pass. Do not claim it just from field names.",
+      "navigation_value": {
+        "proof": "108b8a4 zeroes payload,108b8a8..8ac sets inner byte4;108b8b4→15d850 sets outer enumtag3 beforeNavigationLink7566028 at108b8d8",
+        "inference": "SettingsViewModel.NavigationDestination.connectors(.root): outer enum metadata descriptor958a4fc payloadcase connectors index3/record9a0d2b4 typeref8d1b5fe→nested Connectors enum; nested cases details/pluginDetails/pluginAdditionalSettings/health/root. This is emitted value projection plus metadata, stronger than same-name page inference."
+      },
+      "limit": "Root connectors destination render-consumer not fully traced to concrete owner; do not replace with directory root solely from this navigation value."
+    }
+  ],
+  "destination_owner": {
+    "confirmed": [
+      "Existing SettingsRootContent typeref proves native ConnectorsView branch.",
+      "ConnectorsView descriptor9683f58 stores viewModel/showConnector/showApp/dismissRootSheet/showPluginSettings/showPluginsDirectory/refreshableAndInteractiveDismissDisabled.",
+      "SettingsViewModel.Presentation.pluginsDirectory payloadtyperef8c21d70 is BaseAnyViewModel<ChatGPTPluginsDirectoryScreenTemplate,AnyView>. It is separately presented, distinct from connectors root destination.",
+      "Native directory original rootE7AEA4 exists (reused ios-sidebar-apps-sites-images report)."
+    ],
+    "conclusion": "No direct source-backed equivalence between Settings Apps/plugins root row and NativePluginsPage has been proved. Keep separate connectors settings root and directory intents. A frontend capability-projected returnable unsupported root is honest until exact destination branch closes.",
+    "unknown": [
+      "NavigationDestination.connectors(.root) consumer branch exact builder/callback.",
+      "ConnectorsView.showPluginsDirectory callback to SettingsViewModel.Presentation.pluginsDirectory construction/enqueue.",
+      "Whether plugin experience changes root destination or only labels/content below native ConnectorsView."
+    ]
+  },
+  "legacy_root_check": {
+    "reuse": "compose10e07c0 and tuple7d901b0/7d90208 existing source reports",
+    "known_topology": "Customize→Account→Appearance→General→GetHelp, with common profile/conditional content/signOut wrapper. Consumer identity is alternate branch, not extra merged section.",
+    "deterministic_current_gap": "Customization row visibility and title/icon branch are flattened to three hardcoded rows. This is a concrete projection mismatch; exact active availability values are not known.",
+    "no_new_unconditional_missing_root": "No additional definitely always-visible legacy root row established by this narrow pass. Existing Passwords/Ads/ReportIssue/PrivacyCenter remain conditional; do not unhide on enum presence.",
+    "other_limits": [
+      "GetHelp source order and sharedSignOut already covered; not re-investigated.",
+      "Current local fixture capability defaults do not prove official account configuration."
+    ]
+  },
+  "minimum_adapter": {
+    "classification": "independent frontend projection guided by official predicates",
+    "inputs": [
+      "memory row capability",
+      "connectors row capability",
+      "plugins experience presentation branch"
+    ],
+    "projection": "Personalization + optionalMemory + optionalAppsOrPlugins; original row order maintained",
+    "unknown_policy": "Represent absent capability separately fromfalse. Offlinefixture may explicitly supply values and must not claim recovereddefault assignment.",
+    "service": "Keep root route/return and explicit missing-service status. No production service action."
+  },
+  "limits": [
+    "No host/build/device/network/application execution.",
+    "No other product source.",
+    "Screenshots not used as293facts.",
+    "No account capability values inferred from current UI."
+  ],
+  "evidence_files": [
+    {
+      "path": "ios-settings-plugins-entry-20261112-apps-icon.asm",
+      "sha256": "f5e2751e26eb42915232a6e5cc94b3a617f4e8f3254c75cb62c9ae31096d70c6"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-connectors-vmget.asm",
+      "sha256": "3e5a13661361d2640c975b708bd98582ebb586d8cdaa0d28453a63aaa2dce043"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-customize-builder-helper.asm",
+      "sha256": "3d1164e6fa6caffae56005dd093e220b355060ac4631c0d3e90f54c61848af39"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-customize-builder-helper.json",
+      "sha256": "4e52aa1439badb661ff1945a0871149cee0c565fe387314bad27f51b3fa8da1f"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-customize-content.asm",
+      "sha256": "fec489e7e906429bb0502149117367db592acc185c2414446c2f544d5445e9e1"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-customize-content.json",
+      "sha256": "f9ee3d1f60913a4c3c3362b620ed222eca8a927b6c3d14c038eb5d87bf3f5e87"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-customize.asm",
+      "sha256": "44748825cb54ffc39f5730b045562d15e29f7e4c076649bac4af6f613745649d"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-customize.json",
+      "sha256": "1ccd7013b458df2945129912b3d4d67ea67ddfef8dd5c9212d3c4f52eeeeabfe"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-gate-field-helper.asm",
+      "sha256": "0a12137a09c8c278989c0f351320658e5b6279afd893ec15435d95fabe7e5372"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-gate.asm",
+      "sha256": "de32746d48a29aefb29dbdfa895b74a8bd059fd7a79f2e1dec91de1f70517515"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-gate.json",
+      "sha256": "3b034285b91f65f7438d96ba164bc264525a7799be01726109c4ab6ebb665e0a"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-gatehelper.asm",
+      "sha256": "5481569cf17d5d70f1a5c7eca931ef32254cfdc7b470bdcf37a609cc122dbeea"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-gatehelper.json",
+      "sha256": "2ef63554bfc55d59594bbb9ca202679652bfab4bcc0a3bd190d1610cc3ff75e7"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-memory-gate.asm",
+      "sha256": "d87151fee9c8c5df6a8bf0cae17c3ed403c1aeb8c94481e70a511eb099dd0495"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-meta.json",
+      "sha256": "9050e8e4d95154104ade63042f0470c49467e9da0d884652df1421314bb3cfc6"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-navigation-tag.asm",
+      "sha256": "f77a9fc27251b60f712832e6ab9485c8502e557f81eff2f373d178c74b8ba5a4"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-personal-label.asm",
+      "sha256": "04384e31535f17155c9cdabfcdc0177fed7fc7523c8cd8c93314001669ac2bca"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-plugin-icon.asm",
+      "sha256": "5a283c634422d6a4ebe9ecc4bdb459e56669eb146473ee5bc090e2c5963e47b6"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-root-connectors-callbacks.asm",
+      "sha256": "1bdcf0c5fe995cb12ca87cf2b2cee73878e45c2762d1497c9b80e1a681557bb4"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-root-connectors-callbacks.json",
+      "sha256": "d411f8e39cd9c1cb6e1058c3d127abd911726723237b979efc4dc97f8482bc1b"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-root-route.asm",
+      "sha256": "cd0b6426676e66482be06d27f5f36dad5e9ff4f3869313ee61f4d0d2c14a74f5"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-root-route.json",
+      "sha256": "4a17cec2d5eb7bb5f3ebe98668c6121c18034ff4f4b50e56d6acb4914d57dbd7"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-rows-meta.json",
+      "sha256": "0af1c82c98b8d712e0f03349560b0b47e39b94da4d2509346e220f5262dfb5d8"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-rows.asm",
+      "sha256": "52cd774f40270271a226a528432ca1b8fa4251e3bbb02f826615ed94176dda3a"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-settings-plugins-gate.asm",
+      "sha256": "b480adda7111971b3420be98c59e71bb9f6483f3985afe66083ae850d2fded65"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-title.asm",
+      "sha256": "c5d2fca6ca6232ca137670fc9cbcb806dbe032c3c6e1e2a60a14a6e0f8a9ecd9"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-title.json",
+      "sha256": "b712bcce6b6c210ed2b59b1cb832e824f38487d52c8058f0843a0f0b87127b8a"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-type-7d96de8.json",
+      "sha256": "125f757253bbfe813fe356c4a0f7a2ab67b8d88a15ce8415acc35c0dd88aa2ec"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-type-7d96df0.json",
+      "sha256": "2b37dba1f058c748dd38de34e047c70aa8042377f5abd6721383fb5033cc0cb6"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-type-7d96df8.json",
+      "sha256": "cdc930872cdafe83e8ec5cd72c3872cc28f902cb9afddf7cdc5f17f4ffe85847"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-type-7d9c078.json",
+      "sha256": "67ab2a0ac91ff3edb60e53aa97ed8d0184b8c4acfe47a123e7d572d4494abf6c"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-type-7d9c080.json",
+      "sha256": "e70a4d0a29876a5c73f9cc19ca343cf596aa9148bb82a57216112541ccdbf77a"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-type-8c21d70.json",
+      "sha256": "a73bd5420125e3bfc1473701a925bd1bf422f695e0e8d88237a116524fb87ef5"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-type-8d1b5fe.json",
+      "sha256": "72109d886d96e89c934369e9a426bd6a52b5c94bc0f51433fc9868404d740a5d"
+    },
+    {
+      "path": "ios-settings-plugins-entry-20261112-type-8d1b824.json",
+      "sha256": "3270af1c3f25d0845e681d6642049b2359fdd69e5cb3cfbe9a383ba2ca085310"
+    }
+  ],
+  "original_row_strings": {
+    "connectors_plugins_title": {
+      "index": 5598,
+      "en": "Plugins",
+      "zh": "插件"
+    },
+    "Apps": {
+      "index": 362,
+      "en": "Apps",
+      "zh": "应用"
+    },
+    "Personalization": {
+      "index": 1943,
+      "en": "Personalization",
+      "zh": "个性化"
+    }
+  }
+}

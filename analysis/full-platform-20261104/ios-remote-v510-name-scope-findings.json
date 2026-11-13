@@ -1,0 +1,155 @@
+{
+  "batch": "v510",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-dataflow",
+  "question": "Does ordinary Remote workspace title collision use candidates before or after source selection, and what constitutes a duplicate?",
+  "answer": {
+    "source_scope": "after_source_filter",
+    "source_scope_status": "verified_static",
+    "duplicate_key": "Workspace DisplayName.title after per-host directory display-name projection",
+    "duplicate_threshold": "at least two distinct CodexRemoteHostIdentity values for that title",
+    "host_suffix_requires": "host display-name lookup succeeds",
+    "same_host_repetition": "does not itself add the device name"
+  },
+  "chain": [
+    {
+      "location": "0x323cdc;0x32418c;0x3241ec;0x324230;0x32429c;0x3242f0",
+      "observation": "TaskSourceFilter publisher getter0x35ea3c participates in CombineLatest3. Closure0x3611fc maps to a publisher, switchToLatest follows, result is assigned using keypath0x7cfa560."
+    },
+    {
+      "location": "0x3611fc ->0x35f7dc",
+      "observation": "Closure unpacks the 65-byte TaskSourceFilter value from input+0x20 and passes its address in x4. TaskSourceFilter metadata0x955e6d4 names cases remoteHost and all."
+    },
+    {
+      "location": "0x35fc00..0x35fca0",
+      "observation": "Discriminator+0x38 ==0xff takes the all-host identity array from local+0xd0. remoteHost validates membership via0x2fcdc8 and constructs a singleton array on success, or the empty array on failure. Chosen array is stored local+0x70."
+    },
+    {
+      "location": "0x35ffe0..0x35ffe8;0x360018;0x3e95ac",
+      "observation": "Selected identity array and auxiliary Set are captured at closure context+0x10/+0x18. Closure0x3e95ac forwards these in x1/x2 to0x360144."
+    },
+    {
+      "location": "0x360164 ->0x161054;0x3602b4..0x3603d8",
+      "observation": "Helper0x161054 preserves selected array x1 as x21. Aggregator loops 192-byte host snapshots. Snapshot first57 bytes and each selected identity are compared via0x451f10->0x2441910; only matching snapshots are appended to local+0x120. Zero selected identities drops all snapshots."
+    },
+    {
+      "location": "0x3603e0 onward;0x361128..0x361140",
+      "observation": "Subsequent aggregation operates over the retained snapshots. Final output is six words, matching VisibleRemoteTaskListState descriptor0x955e518 fields threadAutocompleteItems/items/projectItems/projectHosts/customSections/hostIdentitiesAwaitingInitialThreads."
+    },
+    {
+      "location": "0x7cfa560;getter0x32aecc;0x31ffb0;0x32052c;0x3207dc;0x3ea584;0x35eb58",
+      "observation": "The ordinary section projection pipeline reads that same VisibleRemoteTaskListState via0x352fc0. Combine projection closure0x3ea584 invokes0x35eb58. State.items, projectItems, projectHosts and customSections feed ordinary grouping0x32ff44 at0x35ef04. The TaskSourceFilter argument is separately used in empty/error handling; there is no later global host re-expansion in this demonstrated path."
+    },
+    {
+      "location": "0x330a98;0x330ab0;0x330f98;0x3310d4",
+      "observation": "By-workspaces branch constructs per-host candidate directory records from projected task items; local+0xf0 is reassigned before the naming loop. Per-host directory list passes to0x2ace250. Initial x0 of0x32ff44 is not the eventual host-directory dictionary and must not be treated as such."
+    },
+    {
+      "location": "0x331340..0x331570;0x2cf010;0x2cf390",
+      "observation": "Existing v489 evidence applies after that per-host projection. Group by DisplayName.title, collect Set<CodexRemoteHostIdentity>, then add device text only when Set.count>=2 and host name resolves."
+    },
+    {
+      "location": "0x3372f4;0x337980..0x3379fc;0x39ced0;0x39d0a8",
+      "observation": "v490 follows display map into Descriptor.title/subtitle and header consumer. No header-level device-count heuristic is needed."
+    }
+  ],
+  "behavior_cases": [
+    {
+      "input": "All, A/test and B/test have same projected title",
+      "expected": "Both receive their own device names when the name map resolves."
+    },
+    {
+      "input": "Switch All -> A, B is excluded by source filter",
+      "expected": "A no longer receives a device suffix solely because hidden B has the same title. Retain any directory-disambiguation subtitle."
+    },
+    {
+      "input": "Switch A -> B -> All",
+      "expected": "Recompute from each selected candidate set. Return to All restores cross-host disambiguation."
+    },
+    {
+      "input": "A has two different directories with the same projected title, no other host shares that title",
+      "expected": "Distinct-host count is one, so device text is not added. A directory/path subtitle may exist independently."
+    },
+    {
+      "input": "A has several same-title directories and B has one same-title directory",
+      "expected": "Distinct-host count is two, independent of number of rows; qualifying entries use host text, preserving any preexisting path subtitle."
+    },
+    {
+      "input": "A and B have identically named devices but distinct host identities and same workspace title",
+      "expected": "Identity Set still has two members. Device-name equality does not suppress the suffix."
+    },
+    {
+      "input": "Raw basenames are equal but first-stage DisplayName.title differs due to a display-name override/special path branch",
+      "expected": "Raw basename collision alone does not establish the device suffix condition."
+    },
+    {
+      "input": "Device name map missing for a qualifying host",
+      "expected": "Preserve first-stage subtitle unchanged."
+    }
+  ],
+  "first_stage_directory_projection": {
+    "status": "partial",
+    "confirmed": [
+      "0x2ace250 is called separately per host before cross-host matching. It normalizes strings and constructs a title-group map using0x2acef40.",
+      "Ordinary directory path title falls through0x2ace068 -> last component (0x7ac2f0);0x2ace6f8..0x2ace768 uses the corresponding last-element logic. Special-path and override branches precede this.",
+      "0x2ace79c..0x2ace7e4 only runs path disambiguation for a title group with count>=2; the smaller group stores nil subtitle.",
+      "0x2ace8f8..0x2ace964 skips a sibling path equal to the current path. Subsequent suffix-set construction and comparison are independent of the later cross-host Set.",
+      "0x2ad934c ->0x2ac94e0 uses count-1 to exclude the final path component while generating parent suffixes.0x2acec64..0x2acecc8 increases suffix length when a suffix is present among peers.",
+      "Cross-host formatting leaves title unchanged and composes host then prior subtitle using codex_remote_workspace_subtitle_with_host (%1$@ · %2$@)."
+    ],
+    "inferred": [
+      "For ordinary normalized POSIX paths, the first-stage subtitle chooses a distinguishing trailing parent path, while title remains basename."
+    ],
+    "unknown": [
+      "Exact alias/special-path grammar, fallback formatting and all path-normalization edge cases are not fully reconstructed in v510. Do not label a general basename-only naming implementation as fully recovered."
+    ]
+  },
+  "integration_recommendation": {
+    "can_apply_now": "For ordinary nonpriority by-workspaces list, run source selection first, then compute device subtitle collisions over the resulting workspace display-name candidates using distinct host identities. Preserve the existing subtitle.",
+    "validation": "Use All -> A -> B -> All, same-host duplicate paths, three entries on two identities, missing host names, and equal device-name/different identity cases. Tests should assert model output and visible title/subtitle separately.",
+    "boundary": "This report does not establish search-query-relative collision scope, priority-list subtitles, server-provided cloud project names, or full general directory alias/path projection."
+  },
+  "runtime": {
+    "official_app_executed": false,
+    "services_accessed": false,
+    "production_modified": false,
+    "build_or_install": false,
+    "ui_verified": false
+  },
+  "previous_evidence": [
+    "ios-remote-v489-duplicate-name-findings.json",
+    "ios-remote-v490-descriptor-chain.json"
+  ],
+  "evidence_files": {
+    "ios-remote-v510-directory-names-calls.json": "39958524fa3802b99ae2ed9d90aef532fd6b9460f8f177991f4a7813231375df",
+    "ios-remote-v510-directory-names.asm": "ad97dcc68cd58e801b85209ed98e37abe413ef8aa42f7e7ef287694c4a9f43bf",
+    "ios-remote-v510-directory-suffix-helpers.asm": "f45e79c108651b8b7b35ab19cb161e1319168f540a5acf680fe8944afc6dffc4",
+    "ios-remote-v510-filter-candidate-bridge.asm": "e34d4e73e284c5932d56afbabfb9002886622c9d5eaa847d90ec3e4146bcc40d",
+    "ios-remote-v510-naming-filter-helpers.asm": "89172c5ec1ddc628a651d8123dada6af51d4a6ea167d958bbc8793463a88cdee",
+    "ios-remote-v510-pipeline-calls.json": "27740cc3912f6fb67c2cc052edf5f62382c97636cd3c736b5cc9bd0c25599a5d",
+    "ios-remote-v510-pipeline.asm": "a3b51b7369f5ba3ba1b75c30fd15f75c082ae44c790b816914b6f906b99c9ecb",
+    "ios-remote-v510-producer-argument-entry.asm": "cdfa0ed789007591a87c836853e2c79c9e10fb2bcb72294c4f517ba4e3b4823a",
+    "ios-remote-v510-producer-refs.json": "0c8645d8e071323d3ffa3f52c53451b239e1b7aa34f43712d9091f18f412b5f6",
+    "ios-remote-v510-projection-body.asm": "99efc2b2d99b01a0d4c9e2b111bc22fe492a647a1f62672ff9499f4c1d8d544e",
+    "ios-remote-v510-projection-closure-refs.json": "b21f11e76370b31efe5e55346f9c126135dbb8cedb2667df8377e6a1e750d3f0",
+    "ios-remote-v510-projection-owner-types.json": "02269f0f14858c0312a038823a5ec7f631a51d7a3bf585fb63e1afbe54483b13",
+    "ios-remote-v510-projection-unpack-body.asm": "1370f477ce4d971a5f2df9e096c40d187b91356186024e90f250ac1b9f471e55",
+    "ios-remote-v510-projection-unpack.asm": "6d5357fdb23876d3b7553d3261d8cdcedf9f1dfb23f7af7ad906d05ed51a0fe1",
+    "ios-remote-v510-publisher-getters.asm": "37fe17eafb54b62754b8a55581c3f6990d6cedaf8024da2b67b7f8ca0b4ed570",
+    "ios-remote-v510-visible-aggregate.asm": "d5c09325a2b88ad9aa27b1f4e65d8717a3bfc18ce520278b60c7341d3d808056",
+    "ios-remote-v510-visible-assign-calls.json": "35ce0943363396ed650f6ab36a9c3b0262e8fcef2806cabdb6c2b198d42b6f14",
+    "ios-remote-v510-visible-assign.asm": "20b301de83e6b227aa9a060da84becf9ea69dc81b769f81aae734e94f84a6184",
+    "ios-remote-v510-visible-helper-refs.json": "983112778753d631d851f6e7e9f2f9bdeb8bda4918a309d9c2f3bfe6b049a278",
+    "ios-remote-v510-visible-search-pipeline-calls.json": "24dc26a245c426a34d2b0e7946cbd6557bea72000f73af251093b8c5d159016a",
+    "ios-remote-v510-visible-search-pipeline.asm": "75145c5553ecfc6d1527a258d35160272b9a0b94f2077940db63b2d91863d368",
+    "ios-remote-v510-visible-source-filter-calls.json": "a99a45dbd6b75abea92572149a7a6470334cbb1fec6ee10a01105be252a4cebc",
+    "ios-remote-v510-visible-source-filter.asm": "aab9d50087193153bcd1394c5bb66ea13a36a5066192c1f49ea150f630616ab3",
+    "ios-remote-v510-visible-state-refs.json": "04727daa9e5e759abcab524d1dfb75c1fa2d498a795338b33cc1702a8d2a69e3",
+    "ios-remote-v510-visible-state-types.json": "d806de779a2a241bc72c603c28ac9dbf876b4bef1b270c6ac72d8ff4a56e012b",
+    "ios-remote-v510-visible-upstream-calls.json": "aec9a51eb2046ddbbe96a8c40e1415149fae5b3eab64460ce199a128584fb315",
+    "ios-remote-v510-visible-upstream.asm": "8b30cf812253d4ebc815bf0b5d62ad44089616f6f893f0cb7d76cb321179e493"
+  }
+}

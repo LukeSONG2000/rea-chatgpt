@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "module": "10 Login/account frontend third pass: actual profile form",
+  "status": "partial-form-content-and-action-consumers-closed",
+  "scope": "Read-only static; two candidate groups (corrected associated Body and actual Content body/actions). No host/tests/build/device/network actions.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "previous_report": "ios-auth-account-parent-20261113-findings.json",
+  "correction": {
+    "conformance": "0x7e6bea8",
+    "encoded_associated_body": "0x8eed91b",
+    "normalized_mangled_address": "0x8eed91a",
+    "first_nominal_target": "0x95c85e8",
+    "name": "CalpicoUserProfileEditView",
+    "original_report_limit_superseded": "Not a fully unresolved DI body; the old lookup had inspected unrelated self typeref0x8ef66fc rather than normalized associated Body."
+  },
+  "group1_actual_parent": {
+    "settings_consumer_reused": "Settings.Presentation.editProfile 0x10e7198 ->builder0x1149d98 ->CalpicoUserProfileEditSheetView",
+    "sheet": {
+      "descriptor": "0x95c85a4",
+      "conformance": "0x7e6bea8",
+      "body": "0x2246734 ->0x22466cc",
+      "associated_body": "0x8eed91a ->descriptor0x95c85e8 CalpicoUserProfileEditView",
+      "actual_construct": "0x22466f8 constructs observable VM;0x2246728 Bindable.init for the concrete edit child. View has same native VM owner; not invented TextFields."
+    },
+    "edit_view": {
+      "descriptor": "0x95c85e8",
+      "conformance": "0x7e6bef8",
+      "body": "0x2247ba8 ->0x224673c",
+      "content": "CalpicoUserProfileEditContentView desc0x95c95cc accessor0x22c4420",
+      "builder": "0x2246dcc..0x2246f5c writes actual Content fields via metadata offsets",
+      "configuration": {
+        "horizontalPadding": {
+          "value": 16,
+          "site": "0x2246f48..0x2246f50",
+          "metadata_field_offset": "0x68"
+        },
+        "verticalPadding": {
+          "value": 20,
+          "site": "0x2246f54..0x2246f5c",
+          "metadata_field_offset": "0x6c"
+        }
+      },
+      "buttons": {
+        "primary": "Save profile inline at0x2246b80..0x2246ba0 ->Content primaryButtonTitle metadata+0x30 at0x2246e40..e4c",
+        "secondary": "Cancel factory0x75d21c4 at0x2246bb8 ->Content secondaryButtonTitle metadata+0x34 at0x2246e50..e5c"
+      },
+      "footnote": "Your profile helps people recognize you in group chats. literal0x88d4110 consumed0x2246b5c..b74 ->Content footnote metadata+0x2c at0x2246e30..e3c",
+      "onSave": "Content metadata+0x4c at0x2246ea8..eb8 receives0x22c468c; closure invokes VM method0x2223a20 at0x22c46f0",
+      "onCancel": "Content metadata+0x50 at0x2246ebc..ecc receives0x22c4704; calls0x2247820 and dismiss/helper chain. Exact unsaved-discard policy and full auto-dismiss-on-save not closed."
+    }
+  },
+  "group2_actual_content": {
+    "descriptor": "0x95c95cc",
+    "conformance": "0x7e6ef4c",
+    "body": "0x2249b70 ->0x2247bac",
+    "full_generic_records": {
+      "scroll": "0x7e6f028",
+      "inner_vstack": "0x7e6f060",
+      "parent_with_bottom_controls": "0x7e6f040",
+      "button": "0x7e6f0e8"
+    },
+    "actual_main_builder": "ScrollView constructor0x2247da8..0x2247dc4 supplies closure0x22ebc64 ->0x22481d8",
+    "shape": "ScrollView/VStack with measured content and separate bottom button region; native scrollBounceBehavior and scrollDismissesKeyboard; original opaque outer modifier0x9757340 preserved. Not Form and not toolbar-only Save.",
+    "visible_order": [
+      {
+        "component": "CalpicoUserProfileImageMenu",
+        "consumer": "0x2248244 ->0x2248384",
+        "limits": "Actual image/menu slot proved; exact camera/library/file menu tree and permission/eligibility remain unclosed."
+      },
+      {
+        "component": "Optional uploadErrorText styled Text",
+        "type_tree": "inner_vstack tuple item1 after image/menu",
+        "limits": "Actual supplied optional error, not always-visible inventory."
+      },
+      {
+        "component": "Name LabeledTextInput",
+        "consumer": "0x224896c builder;0x2248ac8 and0x2248ad4 call0x75d64f8",
+        "label_and_prompt": "Name",
+        "binding": "0x2248adc reads content name Binding via metadata+0x38;0x2248aec..af4/label builder constructs LabeledTextInput",
+        "field_focus_id": "0x2248af8 writes field0; names identity from actual respective binding, not declaration ordinal alone."
+      },
+      {
+        "component": "Username LabeledTextInput",
+        "consumer": "0x2248bec..0x2248c84",
+        "label_and_prompt_key": "calpico_username literal0x88d44c0",
+        "default": "Username",
+        "binding": "0x2248c9c..cb4 reads content username Binding via metadata+0x3c and constructs second LabeledTextInput",
+        "field_focus_id": "0x2248cb8..cbc writes field1"
+      },
+      {
+        "component": "Optional saveErrorText styled Text",
+        "consumer": "0x2248d88..0x2248d98 reads content+0x28 optional pair and branches on absent"
+      },
+      {
+        "component": "SwiftUIToolbelt.OptionalText footnote",
+        "type_tree": "inner_vstack tuple tail",
+        "consumer": "Content footnote supplied by actual parent at0x2246e30..e3c"
+      }
+    ],
+    "configuration": {
+      "alignment": "center",
+      "alignment_consumer": "0x2248220 imports SwiftUI.HorizontalAlignment.center",
+      "spacing": {
+        "value": 13,
+        "consumer": "0x2248224..0x2248228 supplies double13 to VStack helper0xae2f50"
+      },
+      "padding_inputs": "Content horizontal16/vertical20 from parent; do not generalize these to unclosed inner TextField frame."
+    },
+    "actions": {
+      "primary_button_build": "0x2249550..0x224956c supplies action0x22ec4f0 and label0x22ec514",
+      "primary_button_action": "0x22ec4f0..0x22ec510 reads actual Content metadata+0x4c onSave, then dispatch0x4603c4 loads closure pair and br callback",
+      "secondary_button_build": "0x22496f0..0x2249708 supplies action0x22ec550 and label0x22ec574",
+      "secondary_button_action": "0x22ec550..0x22ec570 reads Content metadata+0x50 onCancel and same actual dispatch",
+      "loading": "Original parent/tree contains isSaving-controlled presentation, primary ZStack/OAIProgressView and opacity; exact disable/validation/style semantics not completely closed.",
+      "styles": "CapsuleButtonStyle appears in full parent tree, separate secondary button tree has Text/font/flex/padding; exact style variant/color not recovered, not guessed."
+    }
+  },
+  "current_host_gap": {
+    "file": "implementation/ios/Sources/NativeFrontendAuthentication.swift",
+    "symbol": "FrontendProfileEditBoundarySheet",
+    "current": "Only returnable capability explanation and Done; no profile fields or save/cancel form. The earlier evidence hold is now superseded for the two proven fields and actual callbacks."
+  },
+  "minimum_frontend_decision": {
+    "classification": "Artifact-backed content reconstruction plus explicit independent offline model/service adapter",
+    "admitted": [
+      "Replace capability-only placeholder with actual ScrollView/content/bottom-buttons structure.",
+      "Provide account-scoped name/username draft bindings and original labels/footnote, image/menu slot with explicit source-availability entry.",
+      "Save uses a scoped frontend save request, retains draft and displays failure/unavailable without pretending official account changed. Cancel returns without publishing draft.",
+      "Use source-supplied horizontal16/vertical20, center VStack13; preserve platform text/font scaling and keyboard adaptation."
+    ],
+    "not_admitted": [
+      "Invent successful service save or original server schema.",
+      "Infer complete username/name validation regex, button disabled condition, save auto-dismiss or unsaved swipe/discard policy from this partial state.",
+      "Claim full original ImageMenu/picker flow, profile-image raster metrics or original modal height/corners.",
+      "Add guessed haptics or bio field from VM inventory."
+    ]
+  },
+  "precise_remaining_breakpoints": [
+    "CalpicoUserProfileImageMenu actual body/options and original media-picker eligibility.",
+    "Exact CapsuleButtonStyle variants, label/font parameters, scrollBounceBehavior/scrollDismissesKeyboard mode and outer opaque modifier0x9757340.",
+    "Original save validation/admission and completion result/dismiss flow in VM0x2223a20; not followed into service.",
+    "Exact parent cancel/discard admission beyond callback0x22c4704; no new unsaved policy claimed."
+  ],
+  "haptics": {
+    "new_direct_caller_proven": false,
+    "scope": "No explicit haptic emitter demonstrated in the inspected actual parent/content/button callback windows; indirect helpers/shared system feedback remain unknown."
+  },
+  "raw_directory": "analysis/full-platform-20261104/ios-auth-account-third-20261113",
+  "stop_reason": "Two groups closed visible fields and concrete save/cancel consumers. Stop before media/services/full validation.",
+  "localization": {
+    "Name": {
+      "factory": "0x75d64f8 ->0x75e1c50 ->0x75db078",
+      "key": "Name",
+      "fallback": "Name",
+      "existing_293_en": "Name",
+      "existing_293_zh": "名字",
+      "official_compressed_key": "Name",
+      "official_zh": "名字",
+      "official_shared_index": 1725
+    },
+    "Username": {
+      "key": "calpico_username",
+      "fallback": "Username",
+      "consumer": "0x2248bec..0x2248c84",
+      "official_compressed_key": "calpico_username",
+      "official_zh": "用户名",
+      "official_shared_index": 3845
+    },
+    "Save profile": {
+      "actual_literal": "Save profile",
+      "consumer": "0x2246b80..0x2246ba0",
+      "localization_helper": "0xc5bf38 ->0x75dbe64",
+      "calpico_prefixed_key_proven": false,
+      "official_compressed_key": "Save profile",
+      "official_zh": "保存个人资料",
+      "official_shared_index": 2234
+    },
+    "footnote": {
+      "actual_literal": "Your profile helps people recognize you in group chats.",
+      "consumer": "0x2246b5c..0x2246b74",
+      "localization_helper": "0xc5bf38 ->0x75dbe64",
+      "calpico_prefixed_key_proven": false,
+      "official_compressed_key": "Your profile helps people recognize you in group chats.",
+      "official_zh": "你的个人资料可帮助他人在群聊中认出你。",
+      "official_shared_index": 3381
+    },
+    "Cancel": {
+      "factory": "0x75d21c4 ->0x75e21dc",
+      "actual_literal": "Cancel",
+      "official_compressed_key": "Cancel",
+      "official_zh": "取消",
+      "official_shared_index": 501
+    },
+    "resource_table_limit": "Superseded limited lookup: localization-selection.json and localization-table-hits.json cover packaged en/zh *.strings only, not Assets_Assets.bundle/CompressedStrings. Their negative results must not be generalized to missing official translations. CompressedStrings proves all five original keys have Chinese translations; no independent Chinese adapter translation is needed.",
+    "evidence": [
+      "localization-selection.json",
+      "localization-table-hits.json"
+    ],
+    "compressed_strings_correction": {
+      "evidence": "analysis/full-platform-20261104/ios-auth-third-text-20261113.json",
+      "report_sha256": "f949d3c5edeaece6649a7f3fa5299b50d537b79fc08d8cf25cba14cb88a875e4",
+      "shared_keys": {
+        "source": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/SharedKeys/keys.json.lzfse",
+        "sha256": "02c051431cfc9f5c4b54d1459688bd95c5cd7c864fc8645c1db48652412182a8",
+        "count": 8536
+      },
+      "sources": [
+        {
+          "source": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+          "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5",
+          "locale": "en",
+          "array_count": 8536
+        },
+        {
+          "source": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+          "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+          "locale": "zh-Hans",
+          "array_count": 8536
+        }
+      ],
+      "values": {
+        "Name": {
+          "index": 1725,
+          "en": null,
+          "zh-Hans": "名字"
+        },
+        "calpico_username": {
+          "index": 3845,
+          "en": "Username",
+          "zh-Hans": "用户名"
+        },
+        "Save profile": {
+          "index": 2234,
+          "en": null,
+          "zh-Hans": "保存个人资料"
+        },
+        "Your profile helps people recognize you in group chats.": {
+          "index": 3381,
+          "en": null,
+          "zh-Hans": "你的个人资料可帮助他人在群聊中认出你。"
+        },
+        "Cancel": {
+          "index": 501,
+          "en": null,
+          "zh-Hans": "取消"
+        }
+      },
+      "output": "implementation/ios/Resources/OfficialTranslations.json",
+      "output_sha256": "b597d5f961015a90392873260e9c596744bb15980527f7dcc878f9546285da8b",
+      "status": "official packaged resource keys/translations verified by existing prepare-official-text decode; no new artifact probe"
+    }
+  }
+}

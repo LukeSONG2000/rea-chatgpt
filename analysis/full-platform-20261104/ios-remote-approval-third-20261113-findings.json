@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "Remote approval third pass: outer style-owned width, request identity and feedback lifecycle; three bounded candidates; static only",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "official_observations": [
+    {
+      "id": "APPR3-01",
+      "conclusion": "ApprovalCard applies an effective MessageInputStyle-owned maxWidth after its outer padding. This is a real consumer and closes the previously recorded missing cap input; it does not justify using the shared default width for every parent.",
+      "source": [
+        "CodexRemoteThreadApprovalCard descriptor0x95ac5c8/body0x1a2ab4c",
+        "field4 _messageInputEnvironmentStyle record0x9a36f90; descriptor fieldOffsetVectorWord4 gives metadata slot0x30",
+        "field type at0x8d0bfd4=Environment<ChatGPTMessageInputUI.MessageInputStyle>",
+        "0x1a2ae74..0x1a2ae80 resolves that field through0x1d94fc0→0x2e2b30",
+        "0x1a2ae84 ldr d8,[style,#0x20]",
+        "0x1a2ae90 Alignment.center;0x1a2aec0 fmov x4,d8",
+        "0x1a2aedc→0x44ba5c supplies nil min/ideal widths;0x1a2aee0→0x267d50 w5=0 marks maxWidth present, then tails SwiftUI._FlexFrameLayout.init at0x7c48058;chained binding0xaad1828",
+        "outer root generic record0x7e141d8 contains IDView<Banner,ApprovalRequestKey>,three PaddingLayout wrappers and two FlexFrameLayout wrappers"
+      ],
+      "selected_parent_context": [
+        "Retained v522 ordinary CodexScreen branch0x3040ac→ThreadView;0x3040c0→0x2de24c;0x30410c→0x6081e84 injects MessageInputStyle",
+        "v522 selected ordinary parent style geometry maxWidth728; shared default608 is a different producer"
+      ],
+      "limits": [
+        "Exact live environment can vary with caller. Consume the same explicit style input used by ordinary Remote content; do not globally hard-code728 across alternate embeddings.",
+        "Not every indirect ancestor modifier was enumerated; selected ordinary branch attribution is retained from v522.",
+        "Inner banner maxWidth.infinity and outer style cap serve different layers; replace neither with a single unconstrained leading frame."
+      ]
+    },
+    {
+      "id": "APPR3-02",
+      "conclusion": "The ordinary ApprovalBanner itself is keyed by ApprovalRequestKey in the outer ApprovalCard. The earlier banner-only finding that only its form subtree has explicit IDView must not be read as absence of identity for ordinary feedback.",
+      "source": [
+        "Root0x7e141d8 full tree IDView<CodexRemoteThreadApprovalBannerView,CodexRemoteSession.ApprovalRequestKey>",
+        "0x1a2adb0/0x1a2add4 copyrequest payload;0x1a2ade0→0x1aa30d4 copies key-type value before outer wrappers",
+        "ApprovalRequestKey descriptor0x95d4610 fields requestID/threadID/turnID/itemID/callID retained v409 metadata",
+        "Banner local field __feedbackText; identity-bound whole banner owns field state"
+      ],
+      "limits": [
+        "SwiftUI identity reconstructs the keyed banner when key changes; explicit assignment of feedbackText empty on request replacement is not asserted.",
+        "ApprovalRequestKey has no host/connection field; enclosing session/domain owner remains necessary.",
+        "Same key content/actions updates do not establish automatic draft clearing. Current full input equality validation is a separate independent safeguard."
+      ]
+    },
+    {
+      "id": "APPR3-03",
+      "conclusion": "Feedback trim/empty-submit/clear-before-callback behavior already present in current host is consistent with existing native consumer evidence. There is no reason to rewrite it as a new dialog or add a guessed submit lifecycle.",
+      "source": [
+        "0x1a1fa98 source trim whitespacesAndNewlines",
+        "0x1a1f680 keyboard submission empty branch no-op",
+        "0x1cf342c button action selects deny when empty versus feedback when nonempty",
+        "retainedv410 owner forwards tag37 with Redacted<String>; approve/deny tags35/36 are separate",
+        "current RemoteApprovalFeedbackDraft.submit clears text before emitting nonempty feedback"
+      ],
+      "limits": [
+        "No new official feedback service acknowledgement/rollback path closed.",
+        "Current disconnected failure messaging and exact stale-scope validation remain declared host adapter behavior."
+      ]
+    }
+  ],
+  "current_host_comparison": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "confirmed_omission": "RecoveredRemoteApprovalCard has inner .frame(maxWidth:.infinity,alignment:.leading), source surface and outerh20/top4/bottom8 but no outer style-owned maxWidth cap.",
+    "already_present": [
+      "source-restored action group/rectangle separator/feedback sibling dimensions and capsule label",
+      "request attachment .id(request.scope) at userInputBar",
+      "trimmed feedback, empty keyboard no-op, empty button denial, clear-before-callback",
+      "complete request value check in RemoteApprovalIntentValidation"
+    ],
+    "independent_boundary": "Host scope includes host/connection+key and is stronger than source ApprovalRequestKey alone. Preserve domain isolation; do not replace it with a bare key across host switches."
+  },
+  "safe_minimum_change": {
+    "decision": "Pass explicit effective MessageInputStyle maxWidth into ApprovalCard; constrain the outer padded card with that cap and keep centered embedding. For the already-selected ordinary parent use the source-backed728 configuration; separate alternate callers and fixture overrides.",
+    "not_required": "No blanket feedback lifecycle reset or additional haptic based on the banner-only prior unknown; key-bound parent is now proven and current scoped ID already exists.",
+    "suggested_checks": [
+      "Wide viewport proves card cap vs width fill; narrow phone retains current outer padding without clipping.",
+      "Request A→B changes feedback identity; host A/keyX and hostB/keyX cannot share text.",
+      "Same key action update retains local text while stale captured action fails full input validation."
+    ]
+  },
+  "haptics": {
+    "status": "unknown",
+    "observation": "No explicit haptic/sensoryFeedback caller proved in selected ApprovalCard environment/frame, feedback trim/keyboard/button consumers. No extra approval/deny/feedback vibration inferred. Existing shared app preference caller is separate scope."
+  },
+  "precise_remaining_boundaries": [
+    "All dynamic ordinary/alternate ancestor style overrides beyond retainedv522 chain.",
+    "Approval action availability and async pending/error/ack presentation remain provider contracts, not inferred from no disabled modifier.",
+    "OpenAIForm request-kind selector branch and its distinct controls.",
+    "Feedback same-key revision policy and upstream service response lifecycle."
+  ],
+  "reused_evidence": [
+    "analysis/full-platform-20261104/ios-remote-approval-parent-20261113-findings.json",
+    "analysis/full-platform-20261104/ios-remote-v409-request-boundary-report.json",
+    "analysis/full-platform-20261104/ios-remote-v409-approval-card.asm",
+    "analysis/full-platform-20261104/ios-remote-v410-integration.json",
+    "analysis/full-platform-20261104/ios-remote-v522-thread-style-findings.json"
+  ],
+  "validation": {
+    "candidate_groups": 3,
+    "mode": "read-only static source and host audit",
+    "product_modified": false,
+    "tests_run": false,
+    "build_or_device": false,
+    "official_runtime_or_network": false,
+    "stop_reason": "Concrete safe parent cap decision closed; remaining service/dynamic branches left precise."
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-environment-resolve.asm",
+      "sha256": "180b5057ad0dd0585d25869c3c17bedc815e627142d3144061bded09b96d9830"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-environment-resolve.json",
+      "sha256": "fe04e5648d61ef54ebd74a0bf3fa2c669cdedf9bab5545c1d1d85153cdf47db2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-field-slots.json",
+      "sha256": "71f36f53445ce96f1a342d3d8fb56cbd0c77003f9b9b48cb519cd023508906cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-frame-defaults.asm",
+      "sha256": "919ba56843c9af08080af0f86e97f61449e1cddf71a6fdb7df559ed29563fccd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-frame-defaults.json",
+      "sha256": "982edf10ba4176f74e730b94bb4b5b737347ee403a70edada4be66ffdbbfa468"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-frame-helper-final.asm",
+      "sha256": "75dada950111cf5aadf04c8283ca48b7663beadd41de0c7ab2f0da2da2a4daa6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-frame-helper-final.json",
+      "sha256": "f2a18cd7c2a7bcb64f397d097f7ab21d63c446990ba4afc2ab63bbc98f175674"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-frame-helper.asm",
+      "sha256": "4443fbe8b6431f7bb29e3a18f7d3f6a5745a28a8f2d3186fcdfc70ada4403d7a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-frame-helper.json",
+      "sha256": "93bb30d9475fd5cc937ac0cfc253fe020a5ed88d5539b486a033f1ad4d4cfe5f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-outer-frame.asm",
+      "sha256": "b8b1a95fe11288cdd8714a46083c5077f1fcd1f8d53ec785b52ef7c275cba247"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-outer-frame.json",
+      "sha256": "6e3da4dd30edfe2e34c6dc9d052c2b4d545511c7d0ad0f6ac4a491a3bd0a9ce3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-root-tree.json",
+      "sha256": "171fdebbf85bcd3a35c7f412d5642299e3dbfec7585daa9db2ad7aaf0e6117d3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-root-tree.raw",
+      "sha256": "4b492b55150b23cc4686f2c1ec68f9239706c77b6d788c8e70e1c140049d1054"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-root-tree.refs.tsv",
+      "sha256": "63e0d050183b15d4cc4c411353370b1e2aebfdf6f7f285a6197b2b2be96c92a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-root-tree.tree.txt",
+      "sha256": "9fdcf3f5bff873bf5534b9a76b7467811d5379935bf793bdf93da52248f39a6a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/card-style-environment-type.json",
+      "sha256": "a8ea0c2493cb2757cf4cd1d66a40e19eb6cb9dbf355aad467ff4c73b8b4efdfb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/environment-dispatch.asm",
+      "sha256": "136e8602aa5f42f851521b6141309981e479ad18eaa476bcd04c67d28b7949ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/environment-dispatch.json",
+      "sha256": "49bac707699a32a605195b2aefd27d84e4a6464fbf1963cb06661289a77fcfa6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/feedback-button-selector.asm",
+      "sha256": "a0e2ce8268a2e6876015b05923109c58b68e99781fc59160a085ff0eca4c2460"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/feedback-button-selector.json",
+      "sha256": "233cbf51689516e7208f96dd5c97185e47697294b2476e172ba2ecf8d7a3edba"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/feedback-empty-keyboard.asm",
+      "sha256": "976f00898180c1bb96782e28c28a8f381016eb530cabf02876025758a231e09d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/feedback-empty-keyboard.json",
+      "sha256": "495594c1b50f50134df5efae83dd0299d6e62d0a5ff3b5379abb035087000eb0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/feedback-submit-normalization.asm",
+      "sha256": "59651c3517f9bede344ef2bac5a3c067cda28a60167eb78a64cf172a29d8b608"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/feedback-submit-normalization.json",
+      "sha256": "c6c9c83416071598ac4ac6c9b1e1032b20c696e5a713f927cbf6a1a2ceb84983"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/frame-import-bindings.json",
+      "sha256": "df97ff2afb2a27a2033c02d616e4f99f2753c8391fe98b5a3941d8e69c72691d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/host-source-excerpts.json",
+      "sha256": "32ea7714b35ba954d3b06414cbedbd07b7625245ca87b735116782fc2eb81153"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/request-key-id.asm",
+      "sha256": "465b8c3318fd2bab0f89bf919b7fe91852043cd2b2f3cf713e624cfa74a6c4a4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113/request-key-id.json",
+      "sha256": "15f7d1bf354f623640866452a35b672595c32110a36fdcb50ca121e644f261bc"
+    }
+  ]
+}

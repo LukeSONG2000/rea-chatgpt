@@ -1,0 +1,38 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_type": "ios-settings-root-content-closure-type-20261112.json includes ChatGPTSettings.SettingsSignOutSection; type membership does not establish full runtime branch",
+  "section": {
+    "descriptor": "0x958a050",
+    "body_witness": "0x108c3ac",
+    "body": "0x108c0e0",
+    "content_descriptor": "0x958b95c",
+    "content_body_witness": "0x108c7d0"
+  },
+  "action_observations": [
+    {
+      "address": "0x108c188",
+      "literal": "0x8888620",
+      "value": "Tapped log out button"
+    },
+    {
+      "address": "0x108c318",
+      "literal": "0x8888640",
+      "value": "save_login_option_presented"
+    }
+  ],
+  "label": {
+    "content_label_thunk": "0x108c790",
+    "factory": "0x75daa94",
+    "smallstring": "Log out"
+  },
+  "assembly": "ios-settings-signout-20261112.asm",
+  "implementation": "missing from host settings root; no sign-out button added from screenshot alone",
+  "next_action": "trace concrete SettingsHomeFormContent.rows branch and SignOutSection owner configuration; restore list entry with frontend-only service boundary",
+  "unresolved": [
+    "root branch and visibility predicates",
+    "exact placement and parent style",
+    "complete confirmation/save-login branches",
+    "real account sign-out service intentionally not connected"
+  ]
+}

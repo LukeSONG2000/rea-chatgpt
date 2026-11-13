@@ -1,0 +1,302 @@
+{
+  "status": "verified-static-progress-and-core-layout-partial-formatting",
+  "scope": "Continuation of one timestamp reveal question, bounded1289338/764d718 andHistoryTimestampRevealRow/Layout actualView consumers. No product/build/device work.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "version": "1.2026.293"
+  },
+  "supersedes": "Prior gesture report leaves1289338 andlayout math unknown; this report closes normal finite positive-metric math, not fullroot gesture arbitration.",
+  "progress": {
+    "source": [
+      "1289394..9490 gesture movement",
+      "701f40 confirms d0=translation.x,d1=scaled maximum offset",
+      "1289338..938c clamps logical displacement at0 thencalls764d718 anddividesmaximum",
+      "764d718..7c0 rubberband genericfunction",
+      "selected-bindings-and-literals.json"
+    ],
+    "maximum": "M=UIFontMetrics(forTextStyle:.footnote).scaledValue(for:60,compatibleWith:attachedView.traitCollection). Important correction: aac66d0 is UIFontTextStyleFootnote, not body.",
+    "normal_domain": "Finite translation andM>0; invalid-domain policy is not recovered.",
+    "formula": "x=max(0,LTR?translationX:-translationX); b=M/2; p=x<=M ? x/M : (M+b*(1-1/(1+(x-M)*0.55/b)))/M",
+    "range": "No clamp to1: asymptotically1.5 forpositive longdrag.",
+    "reset": "1289100 zeroesprogress directly ifnonanimated, elsewithAnimation. ReduceMotion chooses easeOut0.15; otherwise spring(response0.35,dampingFraction0.82,blendDuration0). Ended/cancelled/failed route reset."
+  },
+  "layout": {
+    "actual_body": "View witness124512c ->12446c4, ZStack contentclosure1244a18",
+    "timestamp_type": "HistoryTimestampRevealRow.timestamp typeref8da8240 isFoundation.Date Sg, soOptional<Date>; no valid date mustremainabsent. Layoutconsumes separatelyformattedOptional<String> timestamp/compactTimestamp.",
+    "metric": "Layout maximumOffsetconstructor1244fb8 literal60 ->ScaledMetric(relativeTo:.footnote) importslot aad3910; getter1394c4c ->7c46fc0.",
+    "text_present_gate": "1244b08..b18 requiresbothtimestampString optionaldiscriminator andcompactTimestampString discriminatorpresent beforecreating text alternatives; no fake timestamp insertedbyview.",
+    "text_style": "ViewThatFits(in:.horizontal) containslong/compactText alternatives; sharedfontproducer74e2788 ->74e2774 ->footnote enumslot aad3910, foreground secondary.",
+    "geometry": "ZStack(alignment:.leading), fullcarrierclipped(antialiased:false). Timestamp branchframewidthM withalignment.trailing. Textopacity=min(1,max(0,p)); contentoffsetX=directionSign*M*max(0,p); timestampoffsetX=directionSign*(M*max(0,p)-M); y0. DirectionSign LTR+1,RTL-1.",
+    "math_sources": [
+      "1244c90..ca8 opacityclamp",
+      "1244d6c..d94 widthfrommaximumOffset,alignment.trailing",
+      "1244df0..4e20 timestampoffset via139a028 directionSign and1399b94 ->1245028 unboundednonnegativep*M",
+      "1244ee8..4f08 contentoffset uses same rawp*M",
+      "1245028 clampsonlylower0 thenmultipliesmetric",
+      "1245088 layoutDirection enumcomparison returns+1/-1"
+    ],
+    "important_rejected_adjacent": "layout-progress-offset-shim.asm / layout-math-helpers.asm containsfirst mistyped neighboring13999b4/hashpath; irrelevant and rejected. Correcthelper is1399b94 inlayout-real-offset-helper.asm ->1245028."
+  },
+  "formatting": {
+    "status": "partial-do-not-block-host",
+    "inputs": "Rowowns_calendar,_locale,_timeZone,currentDate;1244200 buildsreferencecomparisonDate usingexplicitcurrentDate whenpresent orsharedrevealState.referenceDate fallback. Firstgesturebegan capturesDate.now onceinsharedstate. Calendar.timeZoneissettoenvironmenttimezone beforeformatselection.",
+    "long_primary": "1243fe0 ->1287cf8 derivesnonnegativecalendarstartOfDay gap, gap1->localizedYesterdayfactory75d4f4c;gap2...7->weekdayformat1287fac withwide/abbreviated alternatives;gap>=8->sameyear versusother-yearstyle1288194/12883cc.",
+    "today_boundary": "gap0branchesbetweenlocalizedTodayandtime-onlyshortenedformat1287e4c. The controllingflag is notboundprecisely; do notassertoneuniversalpolicy.",
+    "compact": "12442a8 uses Date.FormatStyle withnumericmonth/defaultDigits plusday/defaultDigits andconditionalyear; exactyear branchpredicate isnotfullyclosed.",
+    "preservation": "Use locale/calendar/timeZone awareformatters forhost; labelunclosedbranchmappingasindependentadaptation. Do nothardcodeMM/ddor24h. Omitnil timestamps.",
+    "source": [
+      "row-body.asm frompreviousrawdirectory",
+      "timestamp-relative-day.asm/json",
+      "timestamp-format-style-bridges.asm/json",
+      "short-weekday-format.asm/json",
+      "compact-time-decision-tail.asm",
+      "timestamp-relative-labels.asm"
+    ]
+  },
+  "implementable_decision": [
+    "Transferprogressformula, .footnote scaling,one-touchnativecollectionpan andlayoutoffsets separatelyfromrename/deleteability.",
+    "KeepoptionalDateinput;syntheticfixturesexplicitlyown syntheticdates,oldunknownsnapshotdatesremainnil.",
+    "Captureone referenceDate atbegin,stableforvisible rows duringgesture.",
+    "Usecorelayoutandlocalawaredateformatadapter now;do notwiden workjusttoexhausthistoricalrelative-dateedgecases."
+  ],
+  "unknown": [
+    "ExactfullToday/time-onlyflagandallcompactyearpredicatebranches.",
+    "Exactroot sidebarrecognizerfailure precedence andUIKitselectioncancellationbehavior outsideoriginaltimestampclass.",
+    "Invalid/NaN/zero-scaledmaximum policy; transcript hostguards areindependent."
+  ],
+  "validation": {
+    "static_only": true,
+    "math_vectors": "Independent normal-domaintranscription,notoriginalexecution",
+    "product_changed": false,
+    "built": false,
+    "devices_operated": false
+  },
+  "evidence_manifest": [
+    {
+      "path": "0x8da8240-type.json",
+      "sha256": "47f53a36a4fff4ed0c13240a68e60243012d6e39efe8be16c956b49083f9535c",
+      "bytes": 733
+    },
+    {
+      "path": "0x8e14620-type.json",
+      "sha256": "163c8392364cf30c47c328368b28c2e0a4f9f615a34d673f4b88f99a35c2d1a1",
+      "bytes": 729
+    },
+    {
+      "path": "compact-time-decision-tail.asm",
+      "sha256": "83acbb9f478f32a6b0f2f26910b064c55fb4720a98a8291505c298a5e1c03a72",
+      "bytes": 577
+    },
+    {
+      "path": "compact-time-decision-tail.json",
+      "sha256": "185e6dd93fcc00cda9afd3a817afb15a2d3604ebf67674e247d986c835090e8b",
+      "bytes": 1372
+    },
+    {
+      "path": "gesture-pre-helper.asm",
+      "sha256": "a0589f383289bfd063a376cb876b2224490e394d67ac1f8608de257dd4120e31",
+      "bytes": 361
+    },
+    {
+      "path": "gesture-pre-helper.json",
+      "sha256": "563c3992b5c7b7c3f65555d40ad55449c68c5f16cb88133c9f6e134e4c103096",
+      "bytes": 907
+    },
+    {
+      "path": "independent-transcription-vectors.json",
+      "sha256": "dfe471b04baf2db314942c0836604f4e1441dbe239224fc032e8640edff361fc",
+      "bytes": 1300
+    },
+    {
+      "path": "layout-body-dispatch.asm",
+      "sha256": "de8d02941514b39cc2cd144423fc574ddfd45f8b0fd68eefa7049842d1d39f3d",
+      "bytes": 988
+    },
+    {
+      "path": "layout-body-type.json",
+      "sha256": "e41c47c014930234d17273d94f83fda20912a7475966955ef47601d47ce8772a",
+      "bytes": 3503
+    },
+    {
+      "path": "layout-body.asm",
+      "sha256": "2a1d1450be20b98fdc47bfb8c25bf3ea685f09ce8a092df2c1a030a80fe4e548",
+      "bytes": 33217
+    },
+    {
+      "path": "layout-body.json",
+      "sha256": "97d7d8f60575d451a78f6cf58575c22c36b25a8e2eaece5bfe03612015026f74",
+      "bytes": 32108
+    },
+    {
+      "path": "layout-getters-helper.asm",
+      "sha256": "35cf669519c1636fed0f178343f0b09fa283bce29206aaf85234bd6eab6c6148",
+      "bytes": 599
+    },
+    {
+      "path": "layout-getters-helper.json",
+      "sha256": "1e6da7803663364c804a50dc59fcc708b7d047d71b626ac1114ca66a79443b34",
+      "bytes": 963
+    },
+    {
+      "path": "layout-helper-offset.asm",
+      "sha256": "39643dfb17e38c87aa9376a54ba949dba0ac8b0992c783ccbf1cb347db0ae9fd",
+      "bytes": 715
+    },
+    {
+      "path": "layout-helper-offset.json",
+      "sha256": "5ce009124451319d20e26b4612d10e6d367ffd75799650685fce64246285feea",
+      "bytes": 946
+    },
+    {
+      "path": "layout-math-helpers.asm",
+      "sha256": "ce084de44808f23a1abd4251f4281639c007ba9d52b545da67bf1b9d2f4b99ad",
+      "bytes": 1250
+    },
+    {
+      "path": "layout-math-helpers.json",
+      "sha256": "3df9bae2d603969c09fff7dcc0f91a36b523aa1be921f8c614a4a691197737ae",
+      "bytes": 1031
+    },
+    {
+      "path": "layout-metadata.json",
+      "sha256": "512c927f646fb4f9b8f0f959bfb5732148756e601872697199344f40efe84449",
+      "bytes": 1925
+    },
+    {
+      "path": "layout-progress-offset-shim.asm",
+      "sha256": "20eac38de347ad4ddccdba391b09d973cbd85557b2e0e1be20980bcdc923991f",
+      "bytes": 1001
+    },
+    {
+      "path": "layout-progress-offset-shim.json",
+      "sha256": "0e7273ca68f2636a4f51292d6961ddb74fe0ddd6b1191dca390cd74d16f9a422",
+      "bytes": 2194
+    },
+    {
+      "path": "layout-real-offset-helper.asm",
+      "sha256": "37caf64a6754f210c384949d1a69871e081035034d228b4a7e5467f87b9061d0",
+      "bytes": 506
+    },
+    {
+      "path": "layout-real-offset-helper.json",
+      "sha256": "b22728d3a844e229489be46069678751591ee37c2413c52824f2190202d589b9",
+      "bytes": 929
+    },
+    {
+      "path": "layout-view-witness.json",
+      "sha256": "4359552c39c993dfb8a5e1171a7acd3f0e0e9507753bef0b0a1f2e3d58a55b00",
+      "bytes": 4613
+    },
+    {
+      "path": "positive-value-helper.asm",
+      "sha256": "1f7f238d650124a044fa989cd9f4edc0063de21f9566172049430eed5b3efef5",
+      "bytes": 555
+    },
+    {
+      "path": "positive-value-helper.json",
+      "sha256": "bc51c3791509c9dfeb35eedc3bbd6caddc6c48c8a996d3820aca707147cce647",
+      "bytes": 939
+    },
+    {
+      "path": "rubberband-helper-tail.asm",
+      "sha256": "968345951fc2ed7f3864a3f8ecd337028796dd57316ddbaf2e44732835902c0b",
+      "bytes": 364
+    },
+    {
+      "path": "rubberband-helper.asm",
+      "sha256": "a38c685013608503ec07085d984e264569fa0b792b7214191b1ef532cc20fc3a",
+      "bytes": 1837
+    },
+    {
+      "path": "rubberband-helper.json",
+      "sha256": "5662d5658546ec2dadd1d7c96c5efc51a55cb87b7866508b11768b7152a423ff",
+      "bytes": 895
+    },
+    {
+      "path": "selected-bindings-and-literals.json",
+      "sha256": "5d602d26945a02010e08913e9efea7c251272e817bfd35a849ee2c1ba07e4787",
+      "bytes": 1122
+    },
+    {
+      "path": "short-weekday-format.asm",
+      "sha256": "25a48ba066f7ea39ee2d1fe631e58a7d64d76faeacdaaad3c2e85076eac6b409",
+      "bytes": 5831
+    },
+    {
+      "path": "short-weekday-format.json",
+      "sha256": "312e1143f9825ea793807d7ffedca20819daaeb57a6b117e93eda8828d4daafe",
+      "bytes": 9021
+    },
+    {
+      "path": "timestamp-calendar-component-helper.asm",
+      "sha256": "d78725ff3f76dbb62b44fa52a2fd47a3da2916b6510cfe8dcc3224473fe2136b",
+      "bytes": 433
+    },
+    {
+      "path": "timestamp-calendar-component-helper.json",
+      "sha256": "99594c0ed034fefa16cf51b3088e6521f8e98293cacfa068e9f097a0eab27637",
+      "bytes": 907
+    },
+    {
+      "path": "timestamp-font-footnote-tail.asm",
+      "sha256": "3440bf6c6ef2a0394d37b9e81382206179bc0863f46e0d37666679421f1b9bcc",
+      "bytes": 445
+    },
+    {
+      "path": "timestamp-font-footnote-tail.json",
+      "sha256": "566724696ce3da08f7bc5c6f80e99eb313a0da244509916bd8be359518d3e375",
+      "bytes": 895
+    },
+    {
+      "path": "timestamp-font-producer.asm",
+      "sha256": "a30a36da9df516af39d1b645b58184fe2b1aa5eadfa771c4bf30bea9bcc2f5c1",
+      "bytes": 1454
+    },
+    {
+      "path": "timestamp-font-producer.json",
+      "sha256": "345016e57f03b907ef4c70a59588e9dae469e70e751104895a03bec339f51b09",
+      "bytes": 946
+    },
+    {
+      "path": "timestamp-font.asm",
+      "sha256": "83a65c8174d0b512005e0023260ebe4626cb747584b6c5a4fdf4d4ed82112205",
+      "bytes": 817
+    },
+    {
+      "path": "timestamp-font.json",
+      "sha256": "a5e1ccfc4e06bf7396b325e4cc5c90afe426c224010ef69cf65a550577adc7f5",
+      "bytes": 912
+    },
+    {
+      "path": "timestamp-format-style-bridges.asm",
+      "sha256": "cc030cb84bad2a146f319252439de964472772b9eb98ab5ccc366b54a69f2235",
+      "bytes": 4374
+    },
+    {
+      "path": "timestamp-format-style-bridges.json",
+      "sha256": "169cdd90a8e47aecc147109bd43a3955c3f25826d51bf18ae478666c308c37c1",
+      "bytes": 6324
+    },
+    {
+      "path": "timestamp-relative-day.asm",
+      "sha256": "697fb1f5ef53da1274a1bd90f0d468cda7b920ce5af5fe2c78492c7f54333b48",
+      "bytes": 4263
+    },
+    {
+      "path": "timestamp-relative-day.json",
+      "sha256": "888beec03b337289de20bd28850b54de37dc12e87eb2925d495ab97fcb0a3a18",
+      "bytes": 5555
+    },
+    {
+      "path": "timestamp-relative-labels.asm",
+      "sha256": "92a494b12ec1431a9d95af36c587469c8b5d5663e06ae36cdeb16f43fd1fe539",
+      "bytes": 792
+    },
+    {
+      "path": "timestamp-relative-labels.json",
+      "sha256": "02b4d63a22e322bba838951c167e9e4a9b6c4b5446c8767c4eb5c3c0390b5318",
+      "bytes": 1012
+    }
+  ]
+}

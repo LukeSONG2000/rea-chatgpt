@@ -1,0 +1,123 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two bounded groups: actual General App language parent action/value owner; retained General parent and selected starting-page candidate checks. No product/runtime changes.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_evidence": [
+    "ios-settings-general-list-20261112-findings.json",
+    "ios-settings-general-builder-20261112.asm",
+    "ios-settings-haptic-parent-20261112.asm"
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-settings-general-fifth-20261113",
+  "answered": [
+    {
+      "id": "app-language-value-owner",
+      "type": "official_artifact_observation",
+      "conclusion": "The General App language row displays the actual main bundle preferred localization, localized to a human-readable language name. It does not display an independently persisted frontend language choice.",
+      "source": [
+        "General content0x10e2f10 ->row0x10e1d80",
+        "0x10e1d98..0x10e1db0 literal App language",
+        "0x10e1dd4 ->0x10e0334",
+        "0x10e0368 NSBundle.mainBundle",
+        "0x10e0378 preferredLocalizations",
+        "0x10e03a0 empty-array check /0x10e03a8 first String",
+        "0x10e03c8 Foundation.Locale.localizedString(forIdentifier:)",
+        "0x10e1dd8..0x10e1de8 nil detail coalesces to empty String"
+      ],
+      "evidence": [
+        "app-language-row.asm",
+        "app-language-value.asm",
+        "app-language-value.json"
+      ],
+      "limit": "The Locale environment field producer is only partially identified. Empty bundle localization/name cases do not justify an invented language label."
+    },
+    {
+      "id": "app-language-action-system-settings",
+      "type": "official_artifact_observation",
+      "conclusion": "The actual General parent supplies an action which opens UIApplicationOpenSettingsURLString through the injected SwiftUI OpenURLAction. The original action is the app system-settings entry, not an in-app language selector.",
+      "source": [
+        "0x10e2ef8..0x10e2f00 action closure0x1150d50 +captured context",
+        "0x1150d50..0x1150d60 target0x10e1d14 via0x43cf00",
+        "0x43cf0c..0x43cf28 captured receiver extraction then br x1",
+        "0x10e1d44..0x10e1d50 owner metadata+0x28 OpenURLAction context",
+        "0x10e1d5c ->0x7611e58 tail0x7611d3c",
+        "0x7611d70..0x7611d74 slot0xaac6570 chained binding _UIApplicationOpenSettingsURLString",
+        "0x7611d84 Foundation.URL.init(string:)",
+        "0x10e1d64 ->0x757b1b8",
+        "0x757b218 SwiftUI.OpenURLAction.callAsFunction(URL)"
+      ],
+      "evidence": [
+        "language-parent-action.asm",
+        "language-action-capture-thunk.asm",
+        "language-parent-action-target.asm",
+        "language-action-value.asm",
+        "language-settings-url-value.asm",
+        "language-settings-url-binding.json",
+        "language-action-consumer.asm",
+        "language-action-consumer.json"
+      ],
+      "limit": "Opening the system settings URL does not prove which rows iOS presents, availability of per-app language in every environment, or app restart behavior. No system settings were opened in this investigation."
+    }
+  ],
+  "starting_page": {
+    "status": "unknown",
+    "type": "unknown",
+    "conclusion": "No source-bound Starting page row, options, mutation owner or persistence was closed in the selected293 General chain. This is not proof that the feature is absent from293.",
+    "checked": [
+      "Retained General builder0x10e253c..0x10e2e00, confirmed content0x10e2e00..0x10e313c and adjacent selected function0x10e2164..0x10e253c",
+      "SettingsGeneralSection descriptor0x958a088 has viewModel field; selected type-name candidates do not identify a dedicated starting-page component",
+      "Exact bytes Starting page/starting_page/startingPage absent from the uncompressed binary; this has no absence authority because Swift small strings and compressed resources exist"
+    ],
+    "precise_boundaries": [
+      "Actual owner/view builder around the selected General parent pre-content branch0x10e27b8..0x10e2838, which constructs additional optional state rather than a proven Starting page row",
+      "General Intelligence conditional branch0x10e287c..0x10e2914 and row0x10e3ae4 remain separately unresolved; do not relabel Intelligence as Starting page",
+      "A source consumer/localized key for Starting page, its visibility predicate, available cases, selected value store and launch application are all unclosed"
+    ],
+    "next_minimal_action": "Resolve the General viewModel type and the immediate optional pre-content branch into its actual label/selector consumer. Only if a Starting page consumer is found trace its binding and launch owner. No screenshot-driven row should be added."
+  },
+  "implementation_decision": {
+    "type": "independent_host_adaptation_recommendation",
+    "can_implement": [
+      "Replace the current App language explanation-only entry with an app-settings URL open action using the platform adapter, with explicit unavailable/open-failure handling.",
+      "Display Bundle.main.preferredLocalizations.first through Locale.localizedString(forIdentifier:), and refresh the displayed value when the settings owner is recreated or the app becomes active.",
+      "Keep default language following the system/app language environment rather than a new UserDefaults-only override."
+    ],
+    "do_not_implement_as_recovered": [
+      "Do not add a custom Chinese/English picker under App language and claim it is293.",
+      "Do not add Starting page options/storage/launch switching as official293 recovery until its consumer is closed. A user-requested independent adapter would need separate labeling."
+    ],
+    "limits": [
+      "Refresh-on-active and explicit failure UI are host integration decisions; exact original refresh/failed-open UI was not recovered."
+    ]
+  },
+  "rejected_interpretations": [
+    {
+      "candidate": "0x7565f8c SwiftUI.Menu generic carrier adjacent to row initializer0x7565e90",
+      "reason": "A generic Menu constructor is not the General App language action. The concrete parent separately supplies0x1150d50, whose destination is proven system settings. Do not infer an in-app language menu from adjacent carrier code."
+    },
+    {
+      "candidate": "0x7611ddc..0x7611e54 adjacent notification-settings URL factory",
+      "reason": "Language uses0x7611d3c; adjacent openNotificationSettingsURLString is a distinct function and not its destination."
+    }
+  ],
+  "validation": {
+    "performed": [
+      "Selected LLVM windows and imported-symbol binding",
+      "Concrete parent callback and capture thunk tracing",
+      "NSBundle preferredLocalizations value consumer",
+      "Targeted metadata candidates"
+    ],
+    "not_performed": [
+      "Product edits",
+      "Build",
+      "Simulator or physical device operations",
+      "Official runtime or online services"
+    ]
+  }
+}

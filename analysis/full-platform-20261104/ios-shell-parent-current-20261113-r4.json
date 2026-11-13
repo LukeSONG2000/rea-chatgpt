@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T11:04:20.595725+08:00",
+  "module": 1,
+  "pass": "sixth_sidebar_spacing",
+  "status": "partial_original_parity",
+  "user_review": {
+    "accepted": "Sidebar appearance in newly installed build",
+    "quote": "我看到新的包了，外观正确了。但是侧边的助手入口需要补齐",
+    "remaining_request": "Restore sidebar assistant entry; existing assistant page/service scope not expanded"
+  },
+  "baseline": "iOS1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_snapshot": "ios-shell-parent-current-20261113-r3.json",
+  "source_reports": [
+    "ios-sidebar-row-sixth-20261113-findings.json",
+    "ios-sidebar-spacing-sixth-20261113-findings.json",
+    "ios-sidebar-spacing-sixth-20261113-r2-findings.json",
+    "ios-sidebar-history-wrapper-sixth-20261113-findings.json",
+    "ios-sidebar-spacing-sixth-20261113-r3-findings.json",
+    "ios-sidebar-spacing-sixth-20261113-r4-findings.json"
+  ],
+  "implemented": [
+    "Ordinary feature and FileLibrary plain UICollectionViewCell registration; hosting margins2/10/2/10; preserve child min44 and self-sizing rather than forcing feature48",
+    "Body-scaled itemSpacing12, source symbolFont18 and independent24square slot; remove fitted bitmap resizing for these rows",
+    "History records use copied-attribute height48 only at actual categoryLarge; other sizes adapt. ListCell remains independent swipe carrier",
+    "HistoryItem hosting2/0/2/0 plus actual HistoryCell additionalContentInsets0/10/0/10 outside complete selected surface; inner leading22 unchanged",
+    "Section header uses source plain cell and hosting2/10/2/10; scaled minimum44 with proved true admission. Existing collapse action/chevron remains host adapter"
+  ],
+  "verification": [
+    {
+      "bundle": "ios-sidebar-spacing-sixth-20261113-r1.xcresult",
+      "test": "testSidebarGroupedCollectionChinese",
+      "result": "passed",
+      "seconds": 39.175,
+      "scope": "Feature geometry all48 at normal font;buttonleading10;history48; pin/collapse/reopen/process restart/unpin/enter. Before subsequent header+history wrapper corrections."
+    },
+    {
+      "bundle": "ios-sidebar-spacing-sixth-20261113-r2.xcresult",
+      "test": "testSidebarGroupedCollectionChinese",
+      "result": "passed",
+      "seconds": 37.771,
+      "scope": "Final header/history wrapper source. Feature geometry48/buttonleading10, history48, header48/buttonleading10; full grouping interaction repeated."
+    }
+  ],
+  "observed_geometry": "ios-sidebar-spacing-sixth-20261113-r2-attachments/F324E218-B6A6-4551-9FC7-626B76B5F793.txt",
+  "screenshots_viewed": [
+    "ios-sidebar-spacing-sixth-20261113-r1-attachments/EDD7FCB3-309C-4FF8-BE6F-3A4FB301AF48.png",
+    "ios-sidebar-spacing-sixth-20261113-r2-attachments/026EEEFE-97CB-4D3B-AB1A-26EC6D45092A.png"
+  ],
+  "not_implemented": [
+    "Sidebar assistant entry still placed in additional catalog; current next user request",
+    "Exact per-feature prominent/body flag assignment remains unclosed; no blanket headline change",
+    "Pinned projection spacing(.pinned) inserted when existing snapshot not empty; Section?payload proved, numerical height consumer still unclosed; no guessed12",
+    "Full catalog availability/order, recent fitter and live account/avatar data",
+    "Complete original history carrier and gesture arbitration; ListCell swipe remains independent adaptation"
+  ],
+  "runtime": {
+    "simulator": {
+      "date": "2026-11-13T11:01:33.918380+08:00",
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "profile": "c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--chat-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "--remote-draft-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "--auth-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light"
+      ],
+      "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/D0B1FB6B-DAA7-446F-A511-21480D03DC14/REAChatGPTHost.app",
+      "executable_sha256": "098c4c9dc7116150dfc0754d2bcb3f00dcfc89d68134f1ff35c71fe6d92387af",
+      "installed_hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 29286",
+      "process": "29286 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/D0B1FB6B-DAA7-446F-A511-21480D03DC14/REAChatGPTHost.app/REAChatGPTHost --offline-fixture --codex-home-fixture=tasks --remote-interactive-replay --remote-attachment-all-capabilities-fixture --remote-command-message-fixture --remote-search-message-fixture --remote-search-action-fixture --remote-file-message-fixture --remote-review-message-fixture --remote-rich-message-fixture --remote-linked-file-fixture --remote-file-citation-fixture --browser-preview-fixture --chat-browser-fixture --remote-model-slider-fixture --remote-permission-fixture --remote-context-usage-fixture --remote-thinking-group-fixture --remote-history-group-fixture --remote-latest-group-fixture --remote-project-sort-menu-fixture --remote-task-controls-fixture --chat-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf --remote-draft-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf --auth-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf -AppleLanguages (zh-Hans) -AppleLocale zh_CN -rea.preview.appearance light",
+      "kept_running": true,
+      "language_and_theme": "Chinese light preview only; device user preferences not overridden"
+    },
+    "physical_device_record": "ios-sidebar-spacing-sixth-device-review-20261113.json",
+    "signed_build": "succeeded",
+    "codesign_strict": "passed",
+    "physical_installed_and_process_verified": true,
+    "kept_running": true
+  },
+  "preserved_module8": "ios-files-fifth-20261113-interrupted-handoff.json",
+  "cross_platform": "iOS only; Android expansion remains paused",
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "1303a876f47d8a39810b7b9268d4f48a4fb72d03d38b4a943bddaf1da26983ef"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "a21edd4ce1477c76e163e001da8ef24bde5028d026b5631810d5e9c48b3d3aef"
+    }
+  ],
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "released": false
+  },
+  "next": "Restore only assistant sidebar entry from293 evidence and existing host; user has accepted current row appearance."
+}

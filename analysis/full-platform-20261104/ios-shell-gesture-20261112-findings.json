@@ -1,0 +1,201 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "shipped-artifact static ARM64 + metadata; SDK enum labels independently checked; no official target executed",
+  "owner": {
+    "type": "ChatGPTConversationRoot.ModernSideMenuContainerViewController",
+    "descriptor": "0x95649b0",
+    "callback_selector": {
+      "slot": "0xaca7ba8",
+      "name": "handlePanGesture"
+    },
+    "callback_native_body": "0x62b918",
+    "recognizer": "UIPanGestureRecognizer",
+    "recognizer_class_binding": "0xaac6218",
+    "getter": "0x62ac50",
+    "fields": [
+      {
+        "entry": "0xaaf5b98",
+        "storage": "0xad5cbc0",
+        "name": "canDragOpenSideMenu"
+      },
+      {
+        "entry": "0xaaf5bb8",
+        "storage": "0xad5cbc8",
+        "name": "canDragCloseSideMenu"
+      },
+      {
+        "entry": "0xaaf5bd8",
+        "storage": "0xad5cbd0",
+        "name": "keyboardSnapshotCoordinator"
+      },
+      {
+        "entry": "0xaaf5cf8",
+        "storage": "0xad5cc18",
+        "name": "disableSidebarSwipeActionPrecedence"
+      },
+      {
+        "entry": "0xaaf5e58",
+        "storage": "0xad5cc70",
+        "name": "originalAnimatorState"
+      },
+      {
+        "entry": "0xaaf5e78",
+        "storage": "0xad5cc78",
+        "name": "targetAnimatorState"
+      },
+      {
+        "entry": "0xaaf5e98",
+        "storage": "0xad5cc80",
+        "name": "dragBeginFractionComplete"
+      },
+      {
+        "entry": "0xaaf5eb8",
+        "storage": "0xad5cc88",
+        "name": "dragHapticTracker"
+      },
+      {
+        "entry": "0xaaf5f38",
+        "storage": "0xad5cca8",
+        "name": "$__lazy_storage_$_panGestureRecognizer"
+      },
+      {
+        "entry": "0xaaf5f78",
+        "storage": "0xad5ccb8",
+        "name": "propertyAnimator"
+      }
+    ]
+  },
+  "recognizer_state_dispatch": {
+    "jump_base": "0x62b974",
+    "table": "0x62bf30",
+    "entries": [
+      {
+        "raw": 0,
+        "label": "possible",
+        "target": "0x62bf18",
+        "behavior": "return"
+      },
+      {
+        "raw": 1,
+        "label": "began",
+        "target": "0x62bc60",
+        "behavior": "snapshot current state, prepare opposite-target animator, pause it, store actual fractionComplete as dragBeginFractionComplete, apply translation progress"
+      },
+      {
+        "raw": 2,
+        "label": "changed",
+        "target": "0x62bcb8",
+        "behavior": "pause animator, clear reversed flag, calculate translation fraction, setFractionComplete"
+      },
+      {
+        "raw": 3,
+        "label": "ended",
+        "target": "0x62b984",
+        "behavior": "project translation and settle to endpoint"
+      },
+      {
+        "raw": 4,
+        "label": "cancelled",
+        "target": "0x62b984",
+        "behavior": "same native branch as ended; do not independently force the original endpoint"
+      },
+      {
+        "raw": 5,
+        "label": "failed",
+        "target": "0x62bab0",
+        "behavior": "keyboard snapshot/coordinator update and state/layout synchronization; exact service payload not decoded"
+      }
+    ],
+    "sdk_label_source": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIGestureRecognizer.h:20"
+  },
+  "portable_arithmetic": {
+    "inputs": [
+      "beginFraction: recorded UIViewPropertyAnimator fractionComplete at pan begin",
+      "targetIsOpen: original targetAnimatorState.isOpen predicate; raw states0/1/2 map false/true/true; associated dragging delegates to nested state",
+      "translationX: pan.translation(in: owning view).x",
+      "velocityX: pan.velocity(in: owning view).x",
+      "directionSign: 0x629f74 / existing RecoveredSidebarGeometry.displacementSign",
+      "resolvedDragExtent: exact original 0x62b598 branch, positive length; not unconditionally screen width",
+      "decelerationRate: imported UIScrollViewDecelerationRateNormal runtime value"
+    ],
+    "live_fraction": "if extent <= 0: delta = 0; else delta = translationX / extent; fraction = beginFraction + (targetIsOpen ? 1 : -1) * directionSign * delta",
+    "live_source": [
+      "0x62b6a4 tests positive extent and divides translation x by extent at0x62b6fc",
+      "0x62b648 reads targetAnimatorState and dragBeginFractionComplete at0x62b664..668; applies target sign0x62b684..68c, direction0x62b690 and addsbegin0x62b698",
+      "0x62bcf4 writes this fraction to animator"
+    ],
+    "projected_translation": "projectedX = translationX + velocityX / (1000 * (1 - UIScrollViewDecelerationRateNormal))",
+    "projection_source": [
+      "helper0x760d324 obtains velocity0x760d34c and translation0x760d370 in same view",
+      "binding0xaac68a8 = UIScrollViewDecelerationRateNormal",
+      "0x760d38c..3a8 computes projection; constant0x7cd9630=1000"
+    ],
+    "projected_fraction": "projectedFraction = beginFraction + (targetIsOpen ? 1 : -1) * directionSign * (extent > 0 ? projectedX / extent : 0)",
+    "commit": "if projectedFraction >= 0.5: settleIsOpen = targetIsOpen; else settleIsOpen = !targetIsOpen",
+    "commit_source": [
+      "0x62b9b8..9fc reads target/begin and signed normalized projected translation",
+      "0x62ba24 literal0.5;0x62ba28 fcmp;0x62ba2c and0x62ba44 pick targetBool or its inverse",
+      "0x62bb70..7c repeats comparison and calls setReversed(projectedFraction <0.5)"
+    ],
+    "clamping": "Original helper62b648 does not clamp; output is passed to UIViewPropertyAnimator. If a replacement host clamps visual progress, identify that as host adaptation, not recovered arithmetic.",
+    "settling_velocity": "Native branch normalizes velocity by remaining physical travel to selected endpoint and mirrors direction; then constructs UISpringTimingParameters via0x629898 and continueAnimationWithTimingParameters(durationFactor:1) at0x62bd58. Complete remaining-distance geometry includes transformed surfaces and is not fully relabeled."
+  },
+  "gesture_begin_gates": {
+    "owner_entry": "0x629e70 (wrapper0x629fdc)",
+    "observations": [
+      "Checks recognizer identity against own pan recognizer before applying this gate.",
+      "Own pan requires abs(velocityX) > abs(velocityY); equality is rejected at0x629edc..ee0.",
+      "Checks canDragCloseSideMenu or canDragOpenSideMenu via bound field slots0xad5cbc8 /0xad5cbc0 and directionSign*velocityX sign.",
+      "The selected current-state branch is decoded through state witnesses; preserve raw branch limits rather than claiming every dragging state is equivalent."
+    ],
+    "arbitration": "Separate delegate chain0x62a398 checks disableSidebarSwipeActionPrecedence, navigation/scroll recognizers, selected text ranges, scroll edges and custom responder hooks. It must not be replaced with an unconditional simultaneous-recognition flag."
+  },
+  "lifecycle_reuse": {
+    "known_noninteractive_animation": "ios-sidebar-v291-animation-findings.json: duration0.3; mass1;stiffness986.96025;damping62.832",
+    "interruption": "Pan began pauses existing animator and records actual fractionComplete; pan changed continues from that saved value. Reinitializing beginFraction to0/1 would jump when interrupting animation.",
+    "mounting": "Existing v264 proof requires attached surface; preserve both child surfaces and appearance lifecycle through transition.",
+    "keyboard": "Began/ended/failed branch accesses existing keyboardSnapshotCoordinator; full official keyboard snapshot lifecycle is not recovered by arithmetic alone.",
+    "completion": "onTransitionCompleted belongs to same container; existing transition identity approach remains independent host adaptation."
+  },
+  "implementation_boundary": {
+    "minimum_source_backed": "Native pan-driven animator fraction, direction mirroring, velocity-projected0.5 endpoint decision, continuation from interrupted fraction, dominant-horizontal and enabled-direction gate.",
+    "independent_host_adaptations": [
+      "Use supported UIKit public APIs for host gesture/animator ownership.",
+      "Continue existing transition identity guards and mounted child lifecycle.",
+      "Resolve unavailable original surface geometry inputs explicitly; do not silently assume every drag extent equalsmenuExtent."
+    ],
+    "not_authorized_to_claim": [
+      "Exact gesture competition with all text/list/navigation controls",
+      "Complete original keyboard snapshot/dismiss behavior",
+      "Haptic equivalence",
+      "Runtime experiment movement style assignment"
+    ]
+  },
+  "unknowns": [
+    "Exact class/selector method-table mapping of every delegate hook; callback name/body inferred from recognizer construction + field consumers, not officialruntime observation.",
+    "Original 0x62b598 uses special state branch -> container bounds width; remaining branch uses0x626f1c geometry. Need finish current state label mapping before generalizing resolvedDragExtent.",
+    "Exact physical remaining-distance computation0x62b378 used for spring velocity across both movement styles.",
+    "Full selected-text, scroll-edge, gesture failure precedence, private responder override arbitration.",
+    "Reduced motion adaptation for interactive settle; original noninteractive branch only partially understood.",
+    "Sidebar dragHapticTracker trigger/dispatch remains unclosed. 0x62b770 is overlay alpha/color selection, not haptic thresholds; see correction below."
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-shell-gesture-20261112",
+  "limits": [
+    "Static source-bound transcription; no runtime or device acceptance.",
+    "No host/build/device changes.",
+    "No new arbitrary width/threshold ratio introduced."
+  ],
+  "corrections_20261112": [
+    {
+      "superseded_statement": "Drag haptic tracker thresholds0.2/0.55 observed in0x62b770 but trigger mapping unresolved; do not use as commit thresholds.",
+      "current_evidence": "ios-sidebar-content-icon-20261112-findings.json; ios-haptics-gesture-audit-20261112-findings.json",
+      "reason": "Later bounded decode resolved overlay alpha/color role. Existing evidence retained; no gesture haptic threshold implementation derived from it."
+    }
+  ]
+}

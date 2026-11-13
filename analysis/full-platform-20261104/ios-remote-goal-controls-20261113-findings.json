@@ -1,0 +1,610 @@
+{
+  "schema": "rea-scoped-native-findings-v1",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Source-backed Goal pill/details hierarchy, geometry, semantic resources and actual haptic consumer",
+  "analysis": {
+    "kind": "offline static ARM64 and Swift generic-tree recovery",
+    "original_target_execution": false,
+    "host_or_shared_tool_edits": false,
+    "device_or_build": false
+  },
+  "findings": [
+    {
+      "id": "goal-pill-actual-parent",
+      "status": "verified",
+      "evidence_type": "official_artifact_static",
+      "chain": [
+        "View conformance7e20f88 body witness1a2c13c tails1a2b114.",
+        "1a2b368..378 resolves concrete record7e230b0; full tree is CodexRemoteComposerStatusPill<HStack<TupleView<(Image modifiers,Text,Optional<duration conditional>)>>>.",
+        "1a2b330 reads hapticEngine/action field offsets from correctly selected metadata1ce9d44;1a2b338..364 constructs shared pill fields with selection, engine, accessibility and callback.",
+        "1a2b380 center HStack;1a2b384 gives spacing8 before label1a2b3b4."
+      ],
+      "change": "Reuse one source-backed ComposerStatusPill carrier for Goal and agents; do not continue independent target-only capsule styling.",
+      "tree": "goal-pill-tree.json"
+    },
+    {
+      "id": "pill-symbol",
+      "status": "verified",
+      "evidence_type": "official_artifact_static",
+      "resource": "OpenAI/Symbols/target",
+      "chain": [
+        "Goal label1a2b468 ->74fb994 creates ImageResource with name string8a57380.",
+        "1a2b488 resizable image;1a2b4a4 ->11a0f40 makes frame16x16.",
+        "1a2b4dc reads isSelected;1a2b50c->19ad104 uses MainSurfacePrimary for selected and factory74ed744 for unselected."
+      ],
+      "limits": [
+        "Exact image aspect-fit is generic-tree proven; asset reuse still requires existing extracted image resource.",
+        "Unselected image color factory74ed744 name not resolved here."
+      ]
+    },
+    {
+      "id": "shared-pill-label-and-style",
+      "status": "partial",
+      "evidence_type": "official_artifact_static",
+      "label": {
+        "entry": "19b7390 supplied as label thunk1d2b084 by shared body19b71b0",
+        "horizontal_padding": {
+          "value": 12,
+          "chain": "19b7470 Edge.horizontal;19b74b4->1da5e14 passes optional12;19b74c0 View.padding"
+        },
+        "vertical_padding": {
+          "value": 8,
+          "chain": "19b74cc Edge.vertical;19b74f8->1d9f404 passes optional8;19b7504 View.padding"
+        },
+        "foreground": {
+          "selected": "OneOff/MainSurfacePrimary",
+          "unselected": "ChatGPT/text/secondary",
+          "chain": "19b7600 chooses factory74f0f48 or74ee310; resource names8a526c0/8a51bc0;19b7650 foregroundStyle"
+        },
+        "font": {
+          "semantic": "caption",
+          "chain": "19b75e4->74e27b8 lazy initializer74e27a4 imports aad3900 Font.TextStyle.caption",
+          "warning": "Nearby aad3908 is caption2 but is not the initializer used by this factory. Do not infer caption2 from adjacency."
+        }
+      },
+      "button_style": {
+        "status": "verified_actual_owner",
+        "descriptor": "0x95b2880",
+        "conformance": "0x7e26278",
+        "body_witness": "0x19b8d28 ->0x19b8c3c",
+        "tree": "status-pill-actual-style-tree.json",
+        "composition": "ButtonStyleConfiguration.Label + CodexRemoteComposerStatusSurfaceModifier<Capsule> + MinimumTapTargetShape contentShape",
+        "padding": "none in this actual style; use proved inner label horizontal12/vertical8 only",
+        "limits": [
+          "Full shared View body associated-type record is unsupported by existing raw parser. Actual construction/witness call chain is proved."
+        ]
+      },
+      "unknown": [
+        "Unselected inner background environment assignment and optional stroke environment production remain owner inputs, not fixed default values.",
+        "No runtime pixel equivalence or tactile observation."
+      ]
+    },
+    {
+      "id": "pill-selection-haptic",
+      "status": "verified",
+      "evidence_type": "official_artifact_static",
+      "trigger": "Shared ComposerStatusPill Button action, before owner action, for Goal and any proven shared consumer",
+      "chain": [
+        "19b71a8..1c0 installs action thunk1d2b03c.",
+        "1d2b050->1d23324 metadata;1d2b054 selects callback field;1d2b05c loads haptic witness;1d2b068 loads witness+78;1d2b070 invokes.",
+        "1d2b074/78 invokes owner.action afterwards.",
+        "Existing ActorBackedHapticEngine conformance83900dc patterna98e210 maps witness+78 to6fe2158.",
+        "6fe2168->6fe1344;6fe1394 calls selectionChanged;bounded concrete window retained."
+      ],
+      "feedback": "selection feedback, not impactOccurred",
+      "integration": "Route through existing persistent Settings > General > Haptics admission and hardware/activity gate. Do not add a second feedback at caller when common pill already owns it.",
+      "limits": [
+        "Concrete DI selection at runtime remains unknown; static concrete witness correspondence is proved.",
+        "No exact tactile device observation in this task.",
+        "No extra edit/pause/delete feedback is inferred from metadata or button existence."
+      ]
+    },
+    {
+      "id": "goal-details-tree",
+      "status": "verified_parent_with_partial_surface_inputs",
+      "evidence_type": "official_artifact_static",
+      "chain": [
+        "View conformance7e21db8 body1a2d62c tails1a2c140.",
+        "Root concrete record7e225f0 consumed1a2c37c..384; full generic tree recovered.",
+        "Root VStack tuple: (1) FittedScrollView of Text with Font/Color/fixedSize, hidden vertical scroll indicators; (2) trailing full-width plain-style HStack action group.",
+        "Action group tuple preserves Optional edit, Optional status(toggle or in-progress indicator), common clear. Exact predicates remain separate from tuple shape.",
+        "Root then horizontal padding12 via1a2c1ac/1b0->459438, vertical8 via1a2c1d4/1d8->c1871c.",
+        "Root outer modifier context95b1848 is named CodexRemoteComposerStatusSurfaceModifier. It uses RoundedRectangle, initial corner-size16x16 at1a2c21c/220, and isSelected=false at1a2c234. It shares surface body with status pill Capsule."
+      ],
+      "content": {
+        "scroll_height_max": 180,
+        "height_chain": "1a2c7dc loads0x4066800000000000=180;1a2c7ec calls7545a80 FittedScrollView constructor;indicator hidden1a2c7f4 and modifier1a2c870",
+        "actions_spacing": 12,
+        "actions_chain": "1a2c88c center alignment;1a2c890 spacing12;1a2c8bc constructs actions1a2cb68;1a2c9f4 alignment.trailing",
+        "alignment": "root content/action expansion exact parent alignment still not independently named",
+        "action_icon_size": "_actionIconSize ScaledMetric is consumed1a2d5d8; initialization/default not proved this pass",
+        "tree": "goal-details-tree.json"
+      },
+      "change": [
+        "Replace independent ScrollView max180 only if retaining fitted-height semantics; current max180 happens to match source but FittedScrollView parent differs.",
+        "Use root horizontal12/vertical8 and action-group spacing12; preserve common clear and predicate-bound optional actions.",
+        "Keep root material/corner modifier explicitly independent until anonymous owner closed; do not assert current regularMaterial/radius18 is original.",
+        "Use shared StatusSurfaceModifier carrier for details shape RoundedRectangle(cornerSize16x16), preserving parent environment inputs."
+      ]
+    },
+    {
+      "id": "localization-consumers",
+      "status": "partial",
+      "evidence_type": "official_artifact_static",
+      "keys": [
+        {
+          "address": "0x88bd0f0",
+          "key": "codex_remote_goal_delete_confirmation_title",
+          "consumer": "1a2c260/264",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88bd120",
+          "key": "codex_remote_goal_delete_confirmation_message",
+          "consumer": null,
+          "status": "local_resource_inventory_only"
+        },
+        {
+          "address": "0x88bd180",
+          "key": "codex_remote_goal_edit_accessibility_label",
+          "consumer": "1a2cd80/84",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88bd1b0",
+          "key": "codex_remote_goal_delete_accessibility_label",
+          "consumer": null,
+          "status": "local_resource_inventory_only"
+        },
+        {
+          "address": "0x88bd1e0",
+          "key": "codex_remote_goal_resume_accessibility_label",
+          "consumer": null,
+          "status": "local_resource_inventory_only"
+        },
+        {
+          "address": "0x88bd210",
+          "key": "codex_remote_goal_pause_accessibility_label",
+          "consumer": null,
+          "status": "local_resource_inventory_only"
+        },
+        {
+          "address": "0x88be4a0",
+          "key": "codex_remote_goal_expand_accessibility_hint",
+          "consumer": "1a2b298/29c with isSelected csel at1a2b2d4..2e4",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be4f0",
+          "key": "codex_remote_goal_collapse_accessibility_hint",
+          "consumer": "1a2b2a4/2a8 with same isSelected csel",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be540",
+          "key": "codex_remote_goal_zero_duration",
+          "consumer": null,
+          "status": "local_resource_inventory_only"
+        },
+        {
+          "address": "0x88be560",
+          "key": "codex_remote_goal_unknown_status",
+          "consumer": "1a2b84c/850",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be590",
+          "key": "codex_remote_goal_complete_status",
+          "consumer": "1a2b9ac/9b0",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be5c0",
+          "key": "codex_remote_goal_blocked_status",
+          "consumer": "1a2b910/914",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be5f0",
+          "key": "codex_remote_goal_usage_limited_status",
+          "consumer": "1a2b944/948",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be640",
+          "key": "codex_remote_goal_budget_limited_status",
+          "consumer": "1a2b8d0/8d4",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be670",
+          "key": "codex_remote_goal_paused_status",
+          "consumer": "1a2b97c/980",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be690",
+          "key": "codex_remote_goal_active_status",
+          "consumer": "1a2b8a0/8a4",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be6b0",
+          "key": "codex_remote_goal_summary_without_progress_accessibility_label",
+          "consumer": "1a2b1f4/1f8",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be6f0",
+          "key": "codex_remote_goal_summary_accessibility_label",
+          "consumer": "1a2b14c/150; showsDuration branch",
+          "status": "direct_consumer_verified"
+        },
+        {
+          "address": "0x88be720",
+          "key": "codex_remote_goal_elapsed_accessibility_label",
+          "consumer": null,
+          "status": "local_resource_inventory_only"
+        },
+        {
+          "address": "0x88be750",
+          "key": "codex_remote_goal_tokens_used_accessibility_label",
+          "consumer": null,
+          "status": "local_resource_inventory_only"
+        }
+      ],
+      "limits": [
+        "Keys tagged inventory-only must not be presented as proved callsites.",
+        "Status switch1a2b884..89c uses table7dfdf1b; named string consumers prove keys, but raw enum-case mapping should remain tied to existing KnownThreadGoalStatus validation rather than field order.",
+        "Use existing compressed resource extraction for zh/en; literal English fallback strings are not the preferred localization source.",
+        "Duration TimelineView updates every1 second at1a2bd38/40 and uses Text.monospacedDigit at1a2bf7c. Exact localized duration unit formatting remained partial."
+      ]
+    },
+    {
+      "id": "subagent-same-carrier",
+      "status": "verified",
+      "evidence_type": "official_artifact_static",
+      "chain": [
+        "CodexRemoteSubagentStatusPill desc95af614 conformance7e21078 body1a1981c tails1a193c4.",
+        "1a19578..588 consumes record7e23080 whose actual root is CodexRemoteComposerStatusPill<HStack<TupleView<(modified Image,modified Text)>>>.",
+        "1a19548..574 writes selection,haptic and action fields into shared carrier;1a19590/94 HStackcenter spacing8.",
+        "1a19628 calls74f3dc0 image factory, string8a53930 is OpenAI/Symbols/agent.",
+        "1a1966c->11a0f40 gives16x16;1a196a0->19ad104 same selected icon foreground."
+      ],
+      "limits": [
+        "Only pill consumer verified; subagent details/state/catalog not expanded.",
+        "Counts are owner-supplied, never use screenshot personal count as default."
+      ]
+    },
+    {
+      "id": "actual-shared-status-surface",
+      "status": "partial_inputs_verified_carrier",
+      "evidence_type": "official_artifact_static",
+      "descriptor": "0x95b1848",
+      "name": "CodexRemoteComposerStatusSurfaceModifier",
+      "fields": [
+        "shape",
+        "isSelected",
+        "isPressed",
+        "_innerBackgroundColor",
+        "_stroke"
+      ],
+      "body": "ViewModifier conformance7e251bc witness19b9204 ->19b8d30",
+      "common_consumers": {
+        "pill": "StatusPillButtonStyle19b8c3c builds shapeCapsule with isSelected and actual ButtonStyleConfiguration.isPressed19b8c88. Shape modifier genericrecord7e26790.",
+        "details": "GoalDetails root7e225f0 uses same modifier specializedRoundedRectangle; writes16x16corner and isSelected=false1a2c21c..234; isPressed/default from construction remains no active press input here."
+      },
+      "surface_layers": [
+        {
+          "layer": "fallback background",
+          "call": "19b8fa0 ->756d520 (GlassFallbackBackgroundContent, retained v529 wrapper identity)",
+          "selected": "OneOff/AppForeground via19b8f48..4c ->74f0420, literal8a521d0",
+          "unselected": "_innerBackgroundColor dynamic environment value, retrieved19b8f54..60 ->195ef94",
+          "limit": "Do not assign a guessed solid white/regularMaterial as original unselected default; producer is unclosed."
+        },
+        {
+          "layer": "glass",
+          "call": "19b9004 ->756d3ec (GlassEffectContent, retained v529 wrapper identity)",
+          "raw_style": 0,
+          "style": "regular",
+          "tint_selected": "OneOff/AppForeground",
+          "tint_unselected": null,
+          "interactive": true,
+          "chain": "19b8fb4/8 selects isSelected;19b8fc8 chosenAppForeground or nilx28;19b8fd8 x0=0;19b8fdc->1bea18 setsx1=tint,w2=1;19b9004 constructs wrapper. Existing756dbf4 style mapping raw0=regular."
+        },
+        {
+          "layer": "overlay stroke",
+          "call": "19b9068 View.overlay",
+          "source": "_stroke environment value; optional StrokeShapeView in generic metadata19b8e3c",
+          "limit": "Stroke producer/width/color here unresolved; Adjacent0.5 must not be substituted as source fact."
+        },
+        {
+          "layer": "shadow",
+          "call": "19b90d4 View.shadow",
+          "color": "OneOff/AppForeground opacity0.08",
+          "radius": 16,
+          "x": 0,
+          "y": 6,
+          "chain": "19b9078 factory74f0420;19b9084 constant7d3e0d0=.08;19b9088 Color.opacity;19b90b4 d0=16,d1=0,d2=6;call19b90d4"
+        },
+        {
+          "layer": "pressed motion",
+          "opacity_pressed": 0.7,
+          "opacity_normal": 1,
+          "scale_pressed": 0.97,
+          "scale_normal": 1,
+          "animation": "easeOut(duration:0.12)",
+          "chain": "19b90ec metadata+28 isPressed;19b9114 constant7cdb410=.7;19b9124 constant7d193f8=.97;19b913c opacity;19b9190 scaleEffect(center);19b91a0 constant7ce2070=.12;19b91a4 easeOut;19b91dc animation value keyedsameisPressed"
+        }
+      ],
+      "implementation_guidance": [
+        "Status pill has label12/8 only; never layer Adjacent16/8.",
+        "Selected glass regular.tint(AppForeground).interactive(true), unselected regular.tint(nil).interactive(true), with versioned fallback carrying supplied innerBackgroundColor.",
+        "Both Goal details and status pill must share the surface adapter so radius/shape differ but material, border environment and shadow have one owner.",
+        "Existing host compatibility for unsupported glass remains independent; do not claim this static analysis ran original glass effects."
+      ]
+    }
+  ],
+  "resources": {
+    "0x8a57380": "OpenAI/Symbols/target",
+    "0x8a53930": "OpenAI/Symbols/agent",
+    "0x8a51bc0": "ChatGPT/text/secondary",
+    "0x8a526c0": "OneOff/MainSurfacePrimary",
+    "0x8a51ba0": "ChatGPT/text/primary",
+    "0x8a510b0": "ChatGPT/border/default"
+  },
+  "unknowns": [
+    "Unselected _innerBackgroundColor environment producer/default and optional _stroke producer",
+    "Full shared View Body associated-type tree unsupported symbolic-kind7; actual Button/style call chain proved",
+    "Details icon ScaledMetric base and full action enabled predicates",
+    "Precise localized duration formatting and remaining inventory-only key consumers",
+    "No runtime optical or device tactile equivalence"
+  ],
+  "next_minimum_actions": [
+    "Integrate actual status carrier with label12/8 and sharedSurface; keepAdjacent carrier separate",
+    "Reuse directly observed localization keys and selection feedback through General haptics",
+    "Preserve unknown environment input/defaults as explicit host adapter inputs, not guessed official values"
+  ],
+  "evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-fallback-background-getter.json": "44a42597cfb492dedbec72e03ef88f169e2307ea613fdb40dc7c40895e5c6f70",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-robot-factory.asm": "c7ca10be92f90e31207f6cccac36d605a975b797fe5955f08193a6076bdb3e4b",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/resource-string-offset-helper.asm": "1dba9b5a5ffb37b4096ae3ae638b0443468ca7de983c2002169cf5a35b6341a4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-selected-text-factory.asm": "ade369a32d8404019a3cb52d39ace87f7f8df30d044531b743cb4d78246f4c8e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-details-tree.tree.txt": "f0aa7bb8fadcbc5ec56e32a471f8d405386947af24d76fc23efd939553fa005d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-scale-args.asm": "2ea206cb40ed923dfc533fc17c3a15cd60e0adb57e22a180d13d66ed5dd477d7",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-actual-style-tree.tree.txt": "db59cbd735609d7b07207c1f943f287950c091d3054158d751081250331cf39b",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-witness.json": "b7ed0c317837180c8becfcffbf72e4ed2fdaa5424241730e4eb5dfd62dc57975",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-resource-key-neighborhood.json": "bc4d47f71ca0b0df216c388ec5bf9cf2b9e7804954d9875152062a894760a14f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-background-fill.asm": "e84f044cc0db6546f7a43fbeff01de07ed5f7f0e7a384d049afe33f8509390b3",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-glass-helper.json": "9dad27be48d8037dbb38883f13e5276ee7b44d555fdc85301f49ad5ba3af4ace",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/color-selected-name.json": "d56e8f74e4ff6434d6e38ab5359e063bec0c2ccff787cb005f35b3b7e27e95e4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-action-icon.json": "51319e91b9b0a1e0b150548748587404ccabbd072667bf8d2c6e85bc321e279f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-label-modifier-record-helper.asm": "f4d200a1745473db94f1594a7452c5db380154961c051b0c65fa28b055ae01df",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/resource-string-offset-helper.json": "3c507692665e18b50151ecc4d83ef2b2f6baec6585aac40a2fa54c82a24c921a",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-details-content.json": "d3bd3574c11719fa2b916c7c16ffc72bf3e0a02cd221f2501c3c112bfbbb7654",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-press-helpers.asm": "8ae398f86d0120a267a5917c41100b3061d2a7c60b12470b48fb5a14cac255a7",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-vstack-helper.asm": "3cfb49ed9a83ab166d0ffdf4687c3e4e05a1361588739ef0421064ebfd0c93fe",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-font-key.asm": "478eb641ba2e94fb40ce7c0bfff66b2ddbea9c9e10a4e915958111d17863426a",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/haptic-concrete-selection.json": "dcdbd83158a1c83ad865b9dadd5fbdac82a5d0eb7f4ea89ef5c3bf6cdedc9d3d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-shadow-args-helper.json": "58c4d07234810095e7642ba59b693ca0b29fb9047979aa1dae1a2ffbf481b844",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/haptic-arg-helper.asm": "15c7686d2ec3999098b9203661cecce91c65eae7ad502a741d9b35cad741d275",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/font-caption2-init.json": "a809834f88a8388d00fda05c02ce89d502ae54bccb5c9088437348df7b2ed2fe",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-surface-body-witness.asm": "a7e6a1b4b39d936bcd613566362236f1f0a536dc1964af0cc96f0539b3f3384f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-icon-init.json": "922ec69de743f45282708d15ad13e04af3f58d7216b88274f3f65ac88b4d960d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill.asm": "5d456e0f0880ff38c848c27224eb04c180e3aaefeb6aa4e848b8613a0de774ab",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/font-caption2-init.asm": "24514f03779b9e01eaa9b52c09a11a108290dd32799f19c5b86134b3b2868a79",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill.asm": "3bb0c1093f1edfeb627c663a7727b38f3e78e38f9e5ec09523fa0228036ccafa",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-label-modifier-record-helper.json": "204b0644704b28b34064f419d33f23df45e7d9ade5ef3154faf8518910eea810",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-fontcaption2.json": "a809834f88a8388d00fda05c02ce89d502ae54bccb5c9088437348df7b2ed2fe",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/CodexRemoteComposerStatusPillButtonStyle-witness.json": "5ac80ed37859f19df5d94c53114c7906cbbc87135210b621d537cf56d534cad6",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/haptic-slot78.json": "78d57bff07626d94d89c3d6448756d0820a6ad17ec4f756b1768b01b0836b409",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-action-icon.asm": "a666319d5da17952cbd978df55e95c9a49404dc7009fd579dabba5567f5856cd",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-details-tree.refs.tsv": "753c1a1d709e2054bb47aabe8734af2c7dade62231cb39c6f17ec2455579b55a",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-actual-style-tree.refs.tsv": "a8f83dfdbf508c19fe3883b725c0384793ed88884174d1d1b6a4a3edfce3fe27",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-action-init.asm": "60ebe8c51a250f1fb373a564beb5ace7464d81dd773018d0739dbf86d5cbc286",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-padding-helper.asm": "8cdf31e1e7e245bf5b36f876abbc19d8db391ced63e6e3958e0150f15eef9a0f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/image-factory.json": "f34dec6db203fc240886a9decb960d43fd735eb638ce936ce5d740aeb509bb20",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/haptic-arg-helper.json": "3c8b621e56e0d52fe3035f911da59be4d643f596ad469e709ab293e768d64812",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-vertical-helper.asm": "832f96e693695671794d8670af78b3e7b8b7c608e277a2a33471a2ab0b26bc82",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/detail-pause-name.json": "6600e6b7478dad866f5f6e32bc907fb46e038ef98cf567931da6dc8828833a3c",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-glass-flag-helper.json": "b732bdf263e107d78ac4f8dca076505d00a1c7c3bb30b845a92b55f477cd44af",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill-witness.json": "55c14d6276a7b485f5d9c321fe36baa078edb69e1cf407e700c779aea2a3677f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/geometry-font-helpers.json": "379fc9f61145470dbc14e3b30dd91ae162f7636553cdd2218783d6f3f73beb52",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/haptic-concrete-selection.asm": "990565bb4ce24b94469648474993ffa0714fe05ddea1b2377cb3f83ce2f959c1",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/resource-name-helpers.json": "01e38ad4d3986669c0c64db2ae3e4bc3911919396c1d0db2c392a3d102dfe87d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-action-init.json": "802d5278d2c89bd2eb151b25e3f94e477cb992820107eb25d385b5f7fc7a4169",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-background-fill.json": "30401bbb787ea5ffa4fb9750eb3cba7e8a6a48299e62a8934e23885a39d21e8f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill-body.asm": "103f150cf0c11eb1aab87edbb29c245adb33f01524ab19313a4f8b51578494ab",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-font-key.json": "8d8ab232d9754429f436748170dc73e41257ced8353c05e79fcc994dc1e79e37",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-text-label.asm": "a6941b3a9a284c7e88f7847e8b8e84144546242f8e72b0963d7bb36c618be7fd",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-shared-fontbody-init.json": "355e3abfa88366660ef427c680cc1b5bdf96697ba0aebe9d8f85ad158ec531dd",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-style-tree.json": "fc8b7e870d3ae307f6db2449995e93332c5f908a563955c9f3a335a2360314a7",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-background-color.asm": "52b29a59c65e8c37d7fbb314a8ad87f218987d1faa2ad1fe499e3ff829c46e07",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-pad-args.asm": "80992ab9cda5f0969be60136f0679c7766faf2db0b20aaecfde7ea6ae9469096",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-pill-tree.raw": "69473e907cfc0870c0d55af66ee675dcb2fcd14cff77c0e26c580be241264f72",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-actual-style-tree.raw": "341bddf49942b3b3f069c9f7c5ea381bb587374f7a874260692d879fc80e89f8",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-colors.json": "75bbe3d19e065a5c31588ced53299f615355eb5a074a38d273198f0770cdf20d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-background-color.json": "76f104f407f18ddbfa07c6e7554f6122b711cb7673a5a436783aecc8a9621bff",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-installed-style-witness-helper.asm": "c5d1ab1fdc5dc7854bc9d183bbafeda8bd8830784c922c77bc9f00aa0a0c2f4a",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-shadow-args-helper.asm": "6af7d83f01995adacb2b786c87e1cd58ad7d475d5b93d94eac3883f8216f959b",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-surface-actual-body.asm": "c09490fb6426b511556be6f170f3e96704b9a6268bc09f7a3d123b039662cb68",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-action-base.json": "30e9699ef33fc98f87799714b4e7c253d84aa2f4601a79293f3a6e093ed095da",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/CodexRemoteComposerStatusSurfaceModifier-actual-witness.json": "496f71893f6d699d070b17b869b619156257ea318177e993608a57f97a969af0",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/detail-editor-name.json": "26e97bc6a89747918ec3f9b11560165f8da7a75f2e96f7f5dca154f7d2838860",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-details-content.asm": "544145c48cca4344179141d03a61852a451a50c7204a5b43b8a462b057afeaf8",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-symbol-pause.asm": "2fb6926e515361b11f2cf7b029f2df882c63b73c17519814db0ec47bf5d97b89",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-surface-actual-body.json": "09d0f4872e7952daeefbfd1321f2c9d828c6eb888a7cb83f19f5463326639af6",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-region.json": "3afa8138204240fa17bb6ed2924d27b6fd2ebe403163986878c70c477be76685",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-symbol-editor.json": "b4431dbea652c9b6411bf3f05dc522f9f2077a791030574e09c9cc543ff251bf",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-vertical-helper.json": "4606efeab808217dc6c18ac06ebba060f8f8cf93471571a0a3149a55766616d7",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-pill-background.asm": "e40e32770251f0cd09b62f3773edfebad78b3f34124536d2bafccb4b740b6a66",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-style-helpers.asm": "ceba084bac0b2b4ce7a00929f5d7aecf2556c93306640d99b7a555facb7c8e86",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-padding-helper.json": "db1acb936d6b3a98456b523977c383394ec56c5b8c2e509772a6a8698f5a25ed",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-font-small.asm": "c480b86b723f729ca65dc57976f08d290cc4fc361d80128caa0d2148710e1ce9",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-button-style-call-args.asm": "da96104b4e54c71495877be172c8e4c2ac08c668515c7b80b390de20ed415d40",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-witness.asm": "9300baff1c48416de624745042ce1d95bdc2deb75895aa5e7f90c931a258b63c",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-post-glass-helper.json": "c19f19bc193242ea92ef10b22d08befcec055f175b5641fe907480e8f5e726ee",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-surface-body-region.asm": "cd58a700033504d919b15aae72360dc436e5abe513151b35a2bd50afb95f17bd",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-symbol-editor.asm": "6547c8fbba4e355aa201a0e1d23da5fe4febcc0390e2307ba91b1665766d4150",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-glass-input-helper.asm": "b96411727932a50c4f2c789339ffc0057f9d75cb14f61c7b895b0762f10599e9",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-pill-tree.refs.tsv": "8d21a90bff9507251bb7e0fb316eb98418c78c1bc3625fe9bea7417bf31190ba",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-selected-color.json": "79a277c5d791f145a8c343234ba3f3a4991a199261751e000659b87fd3095e5a",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-haptic-prepare.json": "1964f7039aacc309818b3109871165cbcfb00e862ebd895d4c25b0e789571a36",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-actual-style.asm": "e86a833775c699c03a18bf6ae35aad4d1c37c4c287b6581dbfe0eea348af0305",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill.json": "42594d8a65b565d2a9e6e07d00132ee7ac9414d401ef4fd211f6a4dd8800e0a8",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-icon-frame.asm": "914b06a3ad849881f75f3323f9230c2fcaeeb3da699847f881a2f314742df08d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-selected-color.asm": "6f3f121f362f2eb8f109369c3cb2e0b20a702efbfe46baedb3ae50a223f26d3f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/sibling-metadata.json": "5522c3fc1109a36aa9406e33a4841235734701c40d2f68b3862884c5223076f4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-desc-witness.asm": "dcd0e41f9033d771c686474b993c7796e52eb63b1d5478c201aefc52f4f8e368",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-witness.asm": "bc1f05be873f7a6da04789919ff60ec9131bbb64b9d12c6699eaf2be8de239c8",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-action-base.asm": "a594b62d0af9c89ec69e434eb0a97ca5012e605c20af2c4330f8c4c2652a3daf",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-post-glass-helper.asm": "7895504f162d6b94cad4b2723dc5a3673854b13f73e0d5291912cc9e30fe98f1",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-icon-size-base.asm": "3bcff10976a2bbbca25055f5d1a4a399a47f7e7ee7743221692ade302fcf7d96",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/style-stroke-linewidth.asm": "940b1466f3e1386dcaf5c957dca305aa629efc21d344c95f69cc1e5f36704b2d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-robot-factory.json": "447e592d80706fd239b6ea71f2f27a14ed6660976ef87109011bc42524c449c5",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-witness.json": "05b4ffffbc0215e07050bb3fd19bdc8ccd380194426673cf15547edbe17183dd",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill-body.json": "53040c1d8e4a32d334e72c80a01f2060c08d97e4da974aaf6905707263ae4a75",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-region.json": "feca201549d46f67a27b1bf0202fa65d812cdc86363175909ee3d968a40162e4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/detail-editor-name.asm": "4336a1efb7ba4e3343029494dcd5ddf5cd4840157188bd5b8139279c644f8cd6",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-padding-helpers.asm": "f8a85c43b45886eb96c409b0acf30c63072222b00a6e8d085861493e39358714",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/CodexRemoteComposerAdjacentPillButtonStyle-actual-witness.json": "f65a1f6c8adca1436915a834ea478ae1f2bc9bff8255a2f67dc9dca366cbd945",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-installed-style-witness-helper.json": "59824252cd270636c1c0fe7f4499d8e39fdcbc3823e75d3c482c93694dbb8944",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill.json": "2aed5bbf69a30893350da8063f8e37dd4ce175cf2fe6f743c76928232d3d4573",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-action.json": "af4df99a32e0e4a8642dee29bdd776846b29a28396c1e8a5d78023358d2b8600",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-action.asm": "2c92fe9807812393672cfb1dd7e9542145be389ee7c121ec6fdca2c58a04b116",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-icon-aspect.json": "abbefaceddaa77439e7a5a1412490723a09d7155b6ffd8cecd4bc28038e26ff4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill-root.asm": "ff1aecd9f2da7e105453b672fc70352f03e4494c7be44dbf3b484e56481b0817",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-inner-style-getter-tail.json": "a801cd1597397e02e8b1024e8870ac7884edb5f7ce28c0258fd5e73a0221e3f6",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-pill-background.json": "3d8f27469f751eae90c97acfc9674b381ea9d5a83cf33fa1ad05f3b422398dce",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/style-vertical-padding.json": "21b1a5f539c377fa7fad64b1dda2be3e52ae75c28f4a7ceb856bda06816646ba",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-press-helpers.json": "29266c52d128d659800c61767bb3d1bc1407e86078b5428c57c53e370e75337e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-button-style-call-args.json": "d3766738d761ea0d4f7ed75c6bab9dc5f285377a212ddefe9b475d35e6dc57a3",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-padding-helpers.json": "e8ed801d3dc9396e9d71c0c0e572e968ef687040d055a9afb2000a4d5429a1ac",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-vstack-helper.json": "945b074c87aecff7ff2149681c9440fc1d0405916b9eec6902f7a3a2f3d7877e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-icon-aspect.asm": "5cdc7b4937362f3e7016b79edb276be212895b44987f27c1bf080fd602d9beb7",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/style-body-witness.json": "8fa231eafa680a5b58f955b5eb73a6ca3727a448884535b3ae6cd33827d933a1",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-fontcaption2.asm": "24514f03779b9e01eaa9b52c09a11a108290dd32799f19c5b86134b3b2868a79",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-glass-flag-helper.asm": "5c75edf8105dce17831cb1e7d20b5fc227d9f2b4fbaf0d583a9932e04741d98d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-region.asm": "281961bff704336d00b40e8a66f89d0051a0d5d0af99664e95e9745234d02f93",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-pad-args.json": "95b96510c6cef0f0d29be0985b58c2d0f3728df48cbe8dc7e5cd038169c582c1",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-symbol-pause.json": "d22d6bd020e03a624d8c1d706b463e546b986ca2511129e0ad3e77f9916f462e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/color-unselected-name.json": "b58163367ab75f643b387594c4ff284b956a58bef83b795c83fe035fb243a1a6",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-fallback-background-getter.asm": "c813206f39955d7f61bff065c553010420e6002d180c4f1fb06853413f3ca84e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-selected-text-factory.json": "9f95806e6ce33c0f31e1ea2938d43f4a34ccbe08123c4851e9e541bfb6795678",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-details-tree.json": "3240e5d3ef94bb72476689db60e957da30708b3d5ae7e5ebfb9a1e1e5871f237",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-pill-tree.tree.txt": "6eb89cce78c4600656df411dcf99e06fb5281bb1369e48250619246895130c68",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/style-stroke-linewidth.json": "1747b5bddaed2d04fb9a68b3b0c04a962d336f60eb312ad79d47fa35887cc8c3",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-style-helpers.json": "44b633e423e98a94e2937ad4aec204b9d3e746e92dc6ff0de4d506120826dbe8",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-metadata.json": "c67b8c3e0123acf12dd33dc90cf8432f5cc85a0c237fac3009b053b34405d218",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-actual-style-tree.json": "4d7db60837b8dd29009359b2c2b245cea1c47d30ece9aa040867982155788a7f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-glass-input-helper.json": "38333f923a99b8770f04a13094f3e4b14783a8b3af7ebdde5224b319df97a1af",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-witness.json": "d8fd1fe175dd00794aa7a52a46efb9fd62cb0aac11080b5da5914fbd4c2f3d65",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-surface-body-region.json": "4dc71c12e019c73692a6103033da7c89dbd2cdc6d3c353f02f7e677c28f521fb",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/style-body-witness.asm": "ca47fc0373327b069f9f71185b32acf1ec3045c250acc59aa86e960a1fa3745d",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/detail-icon-scaled-init.asm": "c28bb579f81718c7f3d435da4c83483c7894828e95173486c19f75bd5d745205",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill-root.json": "864abd091ea15c88c632583f94fea11d0e32078ca9952e56149f761e4de07795",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-icon-init.asm": "2f294a65da44b10e5bf035eed1cc0ee2f186e97d4d30b0088192879153e5f69f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-pill-tree.json": "cc23065518c7a6be9c117ed48049d0f224b4ac86c097561eb3a03161b77de6e8",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-pill-actual-style.json": "aeb008e2ff961a44472ce4a6176d9bf8e5f8c8fbaeeb55d062b72adba2cec5c2",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/status-surface-body-witness.json": "6ee72d1be5a204462818ebb901a30a1f9d960727dda2ea06a3a3d5d165492e8b",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/style-vertical-padding.asm": "d30398461069cf5062aaebf398e9e46a01fdef2d5faf42a3f7b309afc4dc35db",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-selected-color.asm": "de93e3708dbfbe78bf95878792fa38861bcbafe563b01c05923975bc9fde405a",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/geometry-font-helpers.asm": "4c21f20d5dedf7e97379cb936145fe4d5ca188cbaea2bc1bc082d8460e132833",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/color-unselected-name.asm": "fbe9fe49fab9686bf51a9b6ce549665ba5e4588136e6ba1fd6a1f64ad313fe00",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/initial-findings-before-style-owner-correction.json": "dd2124ceaa8b41768196c1f4e5b28a2e55b71619174354f9697614a1e80c02d8",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-font-small.json": "9ae8048bc1c20c9d9996169a6a5ab03b49383d17c7cf43d66fb955e7f9245e6c",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/details-text-label.json": "7960499fb9340bdbed6e72ec5796b3c5bdc3cff4c0bbd72b9814907eebfda6cb",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-style-tree.refs.tsv": "26cd70fd12e920a96189afaa62209a9551b3c86c4c4f067b063c623f3c14a130",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-icon-frame-helper.asm": "46175492a190e8ec6333a8129f46dabf8ed6bb1a4aa4aedde6a8afba1499bc49",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-inner-style-getter-tail.asm": "73885ed37caa3e42f6f12590cfa497fdbbc7d882832709b5080a479497839e03",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/detail-pause-name.asm": "4098916de7893aba3063ad6e54abb375b8a9cbb6ddfdb9031c6f27d191316138",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-region.asm": "2c32e0be6d4ec81b2e3b9b9c42593ed5fd525eac602c197b50bc27b9b6c696f3",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/detail-icon-scaled-init.json": "da4303cd270d596504dcea7e2a1e8ba3e3588a52af8b504ef7b59ea01292b852",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-style-tree.tree.txt": "66a39d2bb007778b3f05f6a440b1607ff1e1b8531759abf09c54b4b77a85259e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-haptic-prepare.asm": "94e1d370978349506005c814d1584ccb419a2bad218f07de24be8df9056571ad",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-font.json": "f70cbfc8b1df510c7304324f267c94fd11741bd7facc00df3516714a57f3ca1e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/actual-carrier-metadata.json": "0cd1c2523a88319f134054777542cfc0f52022677dc8d4273d148275ec1cb34f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-colors.asm": "7727afcdff00285db33f93c435bdd614c3f920fdd758867d7c3db076ffea5cc9",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/color-selected-name.asm": "df57be87d35c34936e1dcba27e03af5118dd0bf47556406231c4b2bbb69a4d3e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/image-factory.asm": "2b04b1a1f11d1a09603903cd44c207923d1f52fbd0fd07148fe5c30d823b8603",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-icon-frame.json": "00297ea8980f2031d1cb52070d03bd5eb3e3291c4bd7a12b3b497b40b486a8b4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-scale-args.json": "05bc679874856c2048a3530b230ebd67792622407066e1aabbd4894624595451",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/haptic-slot78.asm": "8e25505c68a7dee4e8658c3577f0e5eefa6f8c006b97ab7af86cbd0c6dc812f4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-selected-color.json": "8ddee134f7a58046b1e0657aa7a44a985c5e8fd7b884ecce744ef49fdeff670f",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill-type.json": "3de0530dbab8e5e0c566f09ab2ec719632763e85ff1fa81e1ef242aa2686126c",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-desc-witness.json": "2a5ccc8f1b0be66afd98275a66f1af26f0eb6f4f32202bb26e00347a15319660",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-details-tree.raw": "dba8807751c5d9909907498c83001871516eec1a7a6cbdc8d9cc6b9e05a3eef7",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-icon-frame-helper.json": "93c370900e1748582528b6dfbc6c671b30ed14d6607f573b20db9e166beaf0c4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/resource-name-helpers.asm": "42fe4ba83778416fedf80c337bd91440c0b98e33f47ec6220ae5966d69e706d4",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/pill-shared-fontbody-init.asm": "ff62d6a2579fb28bd5fa14e0c4ba9f12940b37b886197f4154833710f9ca67f0",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/goal-icon-size-base.json": "816c7be12f230f82e118944512fa92f7ccffdf8dc5a4ea1bc22793b8a61f7cc6",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-style-tree.raw": "7af125b70905512213698408dc9261dcd1806b4458c9572032512610d47e0ff9",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/subagent-pill-metadata.json": "b6e7633671ac673855835c8c5d70ec1ae7d3ccd0648281c48aae3341cb6e14f2",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/surface-glass-helper.asm": "b5ef6315a1310dafd7b23ac00fc6e4f7bdf96137bd3becf4e6bb59dfb0e6d14e",
+    "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/shared-pill-font.asm": "1c3a0808f8a8df70885a6316fdcd68272b012c8897b9d56ce7fd523fa0a3ab18"
+  },
+  "prior_evidence": [
+    "analysis/full-platform-20261104/ios-remote-goal-core-20261112.json",
+    "analysis/full-platform-20261104/ios-haptics-v597-engine-witnesses.json",
+    "analysis/full-platform-20261104/ios-haptics-v597-engine.json"
+  ],
+  "correction": {
+    "id": "actual-status-style-owner-20261113",
+    "supersedes": [
+      "shared-pill-label-and-style.button_style",
+      "claim pressed feedback is opacity-only",
+      "claim details StatusSurfaceModifier unidentified"
+    ],
+    "reason": "Initial pass assigned neighboring AdjacentPillButtonStyle body19b6c4c to StatusPillButtonStyle without following actual protocol witness. Parent caught the mismatch before host integration. Full actual witness chain now followed.",
+    "preserved_initial_snapshot": "analysis/full-platform-20261104/ios-remote-goal-controls-20261113/initial-findings-before-style-owner-correction.json",
+    "initial_sha256": "dd2124ceaa8b41768196c1f4e5b28a2e55b71619174354f9697614a1e80c02d8",
+    "withdrawn": [
+      "Do not add Adjacent16/8 padding to StatusPill label12/8.",
+      "Do not apply Adjacent0.5 capsule stroke as StatusPill local stroke.",
+      "Status pill press also scales0.97; not opacity-only.",
+      "Subagent asset is OpenAI/Symbols/agent, not robot; first narrative had a naming error."
+    ],
+    "actual_install_chain": [
+      "Shared pill body witness19b766c ->19b6edc.",
+      "19b7080 calls1d2afa8 witness helper;1d2afc0/afc4 selects conformance7e26278,1d2afc8/afcc metadataa51c478,1d2afd0 swift_getWitnessTable.",
+      "19b7088/8c materializes same metadataa51c478;19b71d8 reads shared isSelected;19b71dc..1ec constructs one-byte StatusPillButtonStyle value.",
+      "19b71f0..7214 supplies style type/witness;19b7218 calls View.buttonStyle.",
+      "StatusPillButtonStyle conformance7e26278 desc95b2880 makeBody witness19b8d28 loads isSelected and tails19b8c3c.",
+      "Actual tree7e26790: ModifiedContent<ModifiedContent<ButtonStyleConfiguration.Label,StatusSurfaceModifier<Capsule>>,_ContentShapeModifier<MinimumTapTargetShape>>. No padding/font/stroke direct in this actual style.",
+      "AdjacentPillButtonStyle desc95b0064 conformance7e21590 has makeBody witness19b6ed8 ->19b6c4c. Its16/8/stroke belongs to Adjacent, not Status."
+    ],
+    "full_shared_body_tree_limit": "The associated body records8e69c85/8e69c8d use unsupported symbolic kind7 / associated-type encoding in the existing raw reader. Full dynamic generic Body tree was not decoded. Actual Button construction and style type/witness arguments prove the installed carrier without treating neighboring type refs as containment."
+  },
+  "subagent_count_keys": [
+    {
+      "key": "codex_remote_subagent_roster_count_one",
+      "address": "0x88be300",
+      "consumer": "1a196b4/b8 branch count==1 at1a196ac",
+      "status": "verified_static"
+    },
+    {
+      "key": "codex_remote_subagent_roster_count_many",
+      "address": "0x88be2d0",
+      "consumer": "continuation after1a196dc; exact key site not newly closed",
+      "status": "partial"
+    },
+    {
+      "key": "codex_remote_subagent_roster_count_accessibility_one",
+      "address": "0x88be370",
+      "consumer": "1a193f4/f8 branch count==1 at1a193ec",
+      "status": "verified_static"
+    },
+    {
+      "key": "codex_remote_subagent_roster_count_accessibility_many",
+      "address": "0x88be330",
+      "consumer": "1a1943c/440",
+      "status": "verified_static"
+    }
+  ]
+}

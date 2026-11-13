@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "revision": "v535",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Bind ordinary Remote title outer navigation owner without changing principal placement from newer screenshots alone.",
+  "findings": [
+    {
+      "id": "correct-type-owner",
+      "status": "verified_static",
+      "offsets": [
+        "0x3016f4",
+        "0x3016f8",
+        "0x45ed10",
+        "0x7cf4c20",
+        "0x955fbe8"
+      ],
+      "conclusion": "The metadata saved to x26 is returned by45ed10, which resolves7cf4c20. Symbolic type references identify CodexContentView, _ConditionalContent, CodexTaskList, CodexHomeNavigationRoot, LazyView and CodexArchivedTasksNavigation. The proposed generic tree CodexContentView<_ConditionalContent<CodexTaskList,CodexHomeNavigationRoot>,LazyView<CodexArchivedTasksNavigation>> follows the mangled skeleton.",
+      "correction": "456dbc obtains swift key path7cfa3a8. It is not the metadata of the large content wrapper.",
+      "limits": "Symbolic parser names the components; unresolved extension context names are preserved."
+    },
+    {
+      "id": "native-navigation-stack",
+      "status": "verified_static",
+      "offsets": [
+        "0x7cf5c10",
+        "0x30b218",
+        "0x3048f8",
+        "0x304fc4..0x304fe4",
+        "0x305090..0x3050b8",
+        "0x4287e4"
+      ],
+      "conclusion": "CodexContentView View conformance body witness30b218 tails3048f8. Body projects its first Binding and calls SwiftUI.NavigationStack.init(path:root:) at3050b8, with root closure4287e4 forwarding305288. Metadata first field is _navigationDestination.",
+      "limits": "This closes the actual shared wrapper to native SwiftUI NavigationStack. It does not yet bind every destination closure to the ordinary thread toolbar, nor prove UINavigationItem title sizing on a runtime OS."
+    },
+    {
+      "id": "root-inline-display",
+      "status": "verified_static",
+      "offsets": [
+        "0x305c30..0x305c74",
+        "0x305ca4",
+        "0x305cb4..0x305cd0",
+        "0x305cec",
+        "0xaad1ca0"
+      ],
+      "conclusion": "One root branch applies empty navigationTitle then navigationBarTitleDisplayMode(.inline). Imported case at aad1ca0 resolves _$s7SwiftUI17NavigationBarItemV16TitleDisplayModeO6inlineyA2EmFWC. The enum value is loaded into w1 and injected through VWT+68 before305cec.",
+      "limits": "Branch conditions are dynamic metadata field slots98,a0,90 and fixed fieldf0. Their semantic mapping and ordinary-thread destination inheritance remain unclosed. inline is title display mode and supplies no leading-placement override."
+    },
+    {
+      "id": "window-finding-modifier",
+      "status": "verified_static",
+      "offsets": [
+        "0x305124..0x305148",
+        "0x754e2ec",
+        "0x756cdb0",
+        "0x84b7640",
+        "0x428834..0x4288a8"
+      ],
+      "conclusion": "The first post-NavigationStack wrapper receives callback428834. Its type record84b7640 resolves WindowFindingView with _AllowsHitTestingModifier and AccessibilityAttachmentModifier. The callback eventually sets a LazyState value through7c4bb38.",
+      "limits": "The generic field vector c4 is not yet mapped exactly to __hostingWindow versus __navigationBarContentWidth. No title position mutation is established by this finding."
+    }
+  ],
+  "baseline_retained": {
+    "source_report": "ios-remote-v531-thread-title-findings.json",
+    "placement": "iOS26+ principal; pre26 topBarLeading",
+    "label": "leading VStack spacing3, height44, xLarge cap",
+    "new_thread_visibility": "303fac computes capturedWordAtContext20 == 0. Semantic field remains unknown.",
+    "decision": "No source-backed change to principal placement or arbitrary horizontal spacer is established."
+  },
+  "remaining_boundaries": [
+    {
+      "boundary": "CodexContentView NavigationStack root/destination -> ordinary303aec thread branch",
+      "next_action": "Inspect captured destination builder originating at305288 plus final modifier closure4288b4->307784, and the navigationDestination content callback. Bind destination type before applying root title modifiers to it."
+    },
+    {
+      "boundary": "Post-stack wrappers and title hosting",
+      "next_action": "Resolve6f4a980 (bounded evidence shows AnyView/_ConditionalContent),75b9070->756b878 and closure307784. Do not treat these unidentified wrappers as title alignment hooks."
+    },
+    {
+      "boundary": "Context+20 at303e20 semantic owner",
+      "next_action": "Bind argumentx1 entering303aec to its exact captured struct and field layout. Existing CodexScreen metadata alone does not assign fixed20 safely."
+    },
+    {
+      "boundary": "Newer official screenshot left aligned vs293 principal",
+      "next_action": "Confirm reference build/OS or recover matching artifact. A screenshot position does not establish a293 placement mutation."
+    }
+  ],
+  "integration_guidance": {
+    "ready": [
+      "Use native NavigationStack for the shared Codex navigation architecture.",
+      "Keep current evidence-backed toolbar placement and leading internal title label.",
+      "Distinguish title display mode inline from principal content alignment."
+    ],
+    "not_established": [
+      "Forced UIKit titleView leading alignment",
+      "Newer screenshot equivalence",
+      "A named semantic replacement for the new-thread predicate",
+      "Ordinary destination inheritance of root empty navigationTitle/inline conditions"
+    ]
+  },
+  "validation": {
+    "target_executed": false,
+    "production_edited": false,
+    "tests_or_preview_changed": false,
+    "bounded_windows_only": true
+  },
+  "evidence_files": [
+    {
+      "path": "ios-remote-v535-navigation-type-helper.asm",
+      "sha256": "406918ba09714383b65eca990c0939b46c0ca822598e237e9b597f2d67fdbc92"
+    },
+    {
+      "path": "ios-remote-v535-navigation-middle.asm",
+      "sha256": "240f725598fcc164f6fafb75b9c1a934781bc82768f711b191c96b6435cfe8ff"
+    },
+    {
+      "path": "ios-remote-v535-navigation-metadata-helper.asm",
+      "sha256": "638bad379a39a9ba3558175a840f680de8e8985c8f3f30f188c88cd6cde72df8"
+    },
+    {
+      "path": "ios-remote-v535-navigation-type.json",
+      "sha256": "e8e28f006389d945f39d2ee4122b10d5df5f9e8f6963b89428dec3d4ecd7f4da"
+    },
+    {
+      "path": "ios-remote-v535-navigation-outer-metadata.json",
+      "sha256": "542cc9251ef812d5afc3ea331ea0de27118e53cd13b3ca3511c055d42bc0f4b1"
+    },
+    {
+      "path": "ios-remote-v535-content-view-witnesses.json",
+      "sha256": "bef3127dc08b85518fe65b85565e70f267fd78a45089dc2c425b73adb1f7dbe4"
+    },
+    {
+      "path": "ios-remote-v535-content-body-witness.asm",
+      "sha256": "a0ad710cebd406eae7adf0464392bfa873dcd2f87e5ce9205cc4dae46f3961f8"
+    },
+    {
+      "path": "ios-remote-v535-content-body.json",
+      "sha256": "d9b44b1e5b49b196f0f89781edae06c8253cf19b3c31b312a338f2f85246fc41"
+    },
+    {
+      "path": "ios-remote-v535-content-body.asm",
+      "sha256": "92b4c1f32d59ced2bf2dde5a2ed167595b9853fef09dd59e18e3f11d480eccd7"
+    },
+    {
+      "path": "ios-remote-v535-content-root-thunk.asm",
+      "sha256": "4a821d7d16fcdcde002dc4af1eb3450290bc8f4ad8dfd55a54340c9825f8cce6"
+    },
+    {
+      "path": "ios-remote-v535-content-root-thunk.json",
+      "sha256": "ff0b8f2704980a500709ff29f8b67cf36a4107ad114cff338584c65dc042b175"
+    },
+    {
+      "path": "ios-remote-v535-content-root.asm",
+      "sha256": "284a009f86b0447fe6058c46c7ae859860d938b63411fc77ed115fab214dcff7"
+    },
+    {
+      "path": "ios-remote-v535-content-root.json",
+      "sha256": "b08883deb848cda04a8c815c9d860b2dd68057c034524cad75cbf3a7fe8b8396"
+    },
+    {
+      "path": "ios-remote-v535-navigation-modifier.asm",
+      "sha256": "db9266c0ba45106502bc84a192ba8126b7c68f1a4bd7b5f3175038ba5f6ce277"
+    },
+    {
+      "path": "ios-remote-v535-navigation-modifier.json",
+      "sha256": "b7259fe66311b8dd303b826ca7a38e1cef907266b7be3586cd068dfe3a189995"
+    },
+    {
+      "path": "ios-remote-v535-navigation-destination-thunk.asm",
+      "sha256": "9a170f3066f191a6c4a301df8789b0afa0528798aa220d8c8bf0870a7885f674"
+    },
+    {
+      "path": "ios-remote-v535-navigation-destination-thunk.json",
+      "sha256": "e5b496b91243330fb46133ceb90f1189c2d37cbb632b36491203c6eec31b1aee"
+    },
+    {
+      "path": "ios-remote-v535-root-inline-helper.asm",
+      "sha256": "83d4d407dcb9f26adcc42958d9c8e10cfbf226dde99891d7b5afb629d36039e6"
+    },
+    {
+      "path": "ios-remote-v535-root-inline-helper.json",
+      "sha256": "8d18c77ada105a9989c32387d743b6270ff36fc527c5a6f646e8ab81ed49ec8c"
+    },
+    {
+      "path": "ios-remote-v535-outer-modifier-helper.asm",
+      "sha256": "58fd54b6e39a462ae971b5d415ca9b89d7c0902bea29ce4604e195afbc0a9d74"
+    },
+    {
+      "path": "ios-remote-v535-outer-modifier-helper.json",
+      "sha256": "ccb7274e89e90588cdc1c9caf292fe2b5d977ecdc2526960f1a0ffabad39d5e9"
+    },
+    {
+      "path": "ios-remote-v535-outer-environment-helper.asm",
+      "sha256": "4d75ba5233c420f8c7d93bd93f711a2768b29d155fe5f32ac2388b07975d66ac"
+    },
+    {
+      "path": "ios-remote-v535-outer-environment-helper.json",
+      "sha256": "78d6167ed1485402093c6f3cc914eb98c380e52d512ad04395b24c5504019799"
+    },
+    {
+      "path": "ios-remote-v535-outer-final-helper.asm",
+      "sha256": "d5e34035fbd73f58ee35bc744c67e0a0f5bff290389bd4ee67256127df98a44c"
+    },
+    {
+      "path": "ios-remote-v535-outer-final-helper.json",
+      "sha256": "4b9b9278cea7c708e8f242c55bc4d53029bfa133ac5ec62531eb4141631c355e"
+    },
+    {
+      "path": "ios-remote-v535-root-content.asm",
+      "sha256": "27a9d2d2bd11735d79422dd27945629ac3a466b19c0983bedfb77dbcf3e36742"
+    },
+    {
+      "path": "ios-remote-v535-root-content.json",
+      "sha256": "9ce58f4a7d1596155cab12b3dd129b7962b778dcbdc8dbe583f975d4943331d8"
+    },
+    {
+      "path": "ios-remote-v535-hosting-window-wrapper-type.json",
+      "sha256": "cfd5f1e9cd9be07094bb2731e60d256d6d895b89527f0fec4fd211bae7dc760a"
+    }
+  ]
+}

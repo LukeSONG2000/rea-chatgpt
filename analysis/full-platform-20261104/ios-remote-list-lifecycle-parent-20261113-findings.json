@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS293 ordinary Remote task list parent, visibility/selection lifecycle, and storage boundary; three bounded candidate groups, static only",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "official_artifact_observations": [
+    {
+      "id": "LISTLIFE-01",
+      "classification": "official-artifact-observation",
+      "conclusion": "The ordinary scroll carrier is SwiftUI List<Never,Content>, not ScrollView and not a List(selection:) binding. selectedThreadID is supplied separately to the content/row navigation path. No viewport anchor follows from selectedThreadID alone.",
+      "source": [
+        "CodexTaskListContainer descriptor0x95d0b08 conformance0x7e854a8 bodywitness0x2403b68→0x24034e0",
+        "0x240390c SwiftUI.ListVAAs5NeverORszrlE7content...init(content:)",
+        "0x2403918 PlainListStyle.init /0x2403948 listStyle",
+        "0x24039dc listSectionSeparator /0x2403a18 listRowSpacing /0x2403a34 custom ListSectionSpacing(0) /0x2403a5c listSectionSpacing",
+        "0x2403968..0x240399c usesSoftScrollEdges forwards to0x2403b58; v540 evidence retained"
+      ],
+      "limits": [
+        "List row spacing call receives zero and optional tag0 at0x24039f8/39fc; generic ABI optional-tag interpretation is not elevated to a global host style rule.",
+        "No implicit SwiftUI List viewport persistence guarantee established."
+      ]
+    },
+    {
+      "id": "LISTLIFE-02",
+      "classification": "official-artifact-observation",
+      "conclusion": "TaskList lifetime wraps CodexTaskListContent in two AppearanceActionModifiers and a CodexRemoteThreadRenamePresentation. The on-appear/disappear callbacks operate __hasAppeared and call a common VM Bool setter; these calls do not establish scroll restoration.",
+      "source": [
+        "CodexTaskList descriptor0x955fb94 conformance0x7cf5778 bodywitness0x397038→0x395b50",
+        "actual parent records0x7cf65a0/0x7cf65a8/0x7cf65b0/0x7cf65b8; unresolved anonymous context retained as original descriptor0x9560294=CodexTaskListContent",
+        "0x395c94..0x395ca4 callback0x42dc84 /0x395cd0..0x395cd8 callback0x42dd70",
+        "0x42dcb8 LazyState wrappedValue;0x42dcc0 guards existingtrue;0x42dcd8 sets true;0x42dcf0..f4 calls0x31e6ac(true);0x42dd0c calls0x3424fc",
+        "0x42dd90..98 clears local LazyState through helper;0x42ddac..b0 calls0x31e6ac(false)",
+        "TaskList metadata fieldrecord0x99d8d34=__hasAppeared",
+        "0x395b90 loads ScenePhase type and0x395d14..d34 attaches further lifecycle helper; precise scene semantics remain unresolved"
+      ],
+      "limits": [
+        "VM setter0x31e6ac reads dynamic offsetslot0xb0c8da8. Exact property-name-to-offset binding not closed, so it is not asserted to be _isTaskListVisible solely by inventory.",
+        "0x3424fc downstream behavior not fully reconstructed; do not label it restoreScrollPosition.",
+        "No explicit haptics discovered in these selected callbacks; this is scoped absence, not global absence."
+      ]
+    },
+    {
+      "id": "LISTLIFE-03",
+      "classification": "official-artifact-observation",
+      "conclusion": "The content parent has stable section/item generic identities and explicit source/search/selection callbacks, but the selected parent tree does not contain ScrollViewReader, scrollPosition or IDView.",
+      "source": [
+        "CodexTaskListContent descriptor0x9560294 conformance0x7cf6ed8 body0x39f060→0x397608",
+        "existing fulltree record0x7cf7528 reused: CodexTaskListContainer + section/item ForEachWithIndex and TaskSection.ID/Item.ID, row wrappers and source controls",
+        "0x397df0 refreshable /0x397e38 scrollDisabled /0x397ecc animation(value:) /0x397f48 modifier",
+        "selectedThreadID fieldindex29; source callbacks0x396ac0..0x396b08→0x42e0dc/0x42e12c/0x42e130",
+        "row action0x39e830..0x39e8d4 dispatches supplied showCodexThread/actionHandler callbacks, not a List selection binding"
+      ],
+      "limits": [
+        "Some tree nominal nodes retain anonymous descriptor addresses; no internals invented.",
+        "Generic-tree absence does not prove no viewport adapter exists in an untraced outer owner.",
+        "Correspondence between every ForEach concrete item ID and host fixture ID is an independent adapter obligation."
+      ]
+    },
+    {
+      "id": "LISTLIFE-04",
+      "classification": "official-artifact-observation-metadata-only",
+      "conclusion": "The top-level owner has account-scoped settings for collapsed remote sections, grouping, chats-first and project sorting, plus an OrderedDictionary keyed by CodexRemoteHostIdentity for host view models. Host view model separately stores selectedThreadID and task-list data snapshots. Snapshot/cache fields are data inventory, not reading-position evidence.",
+      "source": [
+        "CodexViewModel descriptor0x955df7c fields0x99d5c20/2c/38/44: AccountScopedSetting wrappers",
+        "_codexRemoteViewModelsByHostIdentity field0x99d5c5c typed OrderedDictionary<CodexRemoteHostIdentity,CodexRemoteHostViewModel>",
+        "CodexRemoteHostViewModel descriptor0x95a8574 fieldrecords include _selectedThreadID: CodexRemoteThreadRepositoryID, restoredTaskListSnapshot/lastSavedTaskListSnapshot:CodexRemoteTaskListSnapshot",
+        "existing frozen inventory swift-types-full.txt: CodexRemoteTaskListSnapshot fields=codexHomePath,usesRecencySort,tasks; TaskListCacheWindow fields=oldestFetchedDate,hasMoreThreads"
+      ],
+      "limits": [
+        "No host selected-thread setter/restore callback closed in this bounded pass.",
+        "No snapshot serialization consumer or cross-process policy proved here.",
+        "Account-scoped grouping/collapse wrappers do not imply separately persisted filter-specific viewport anchors.",
+        "Host class field-kind1 is supported here only as field-record inventory; no unsupported runtime offsets inferred."
+      ]
+    }
+  ],
+  "independent_design_recommendations": [
+    {
+      "decision": "Keep the existing runtime-proven back-to-list position behavior; do not add an alleged official viewport algorithm from unknown evidence.",
+      "classification": "independent-host-adapter"
+    },
+    {
+      "decision": "If explicit reading restoration is later needed, make it a separate host adapter with scope(account,home instance,source/filter,grouping,search state) and stable semantic row identity. Save visible row/relative offset before navigation or scope transition; restore only when that scoped row exists, otherwise use an explicit fallback. Selection/navigation and reading anchor are separate state.",
+      "classification": "independent-design-suggestion-not-official-recovery"
+    },
+    {
+      "decision": "Keep data-cache recovery, source/group/collapse preferences, current navigation target, ephemeral visibility and viewport reading state separate. Do not interpret restoredTaskListSnapshot as a viewport snapshot.",
+      "classification": "independent-design-suggestion-supported-by-type-boundaries"
+    }
+  ],
+  "precise_remaining_boundaries": [
+    "0x31e6ac dynamic offsetslot0xb0c8da8 semantic field binding;0x3424fc first-appearance downstream effect.",
+    "0x395d14..0x395d34 helper0x7573688 and0x395dcc→0x3dedac scene-phase callback semantics.",
+    "CodexRemoteHostViewModel._selectedThreadID read/write navigation consumers and any persisted selected-thread restore.",
+    "Unidentified outer viewport owner, if one exists; no source-backed per-filter/per-host anchor map or process-restart scroll policy established.",
+    "Root didReturnToTaskList remains optional callback with destinations unresolved after0x5319ac per retained v540 report."
+  ],
+  "reused_evidence": [
+    "analysis/full-platform-20261104/ios-remote-list-parent-current-20261113.json",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112-findings.json",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/list-parent-tree.json",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-findings.json",
+    "analysis/full-platform-20261104/ios-remote-v540-title-findings.json",
+    "analysis/full-platform-20261104/ios-remote-v537-navigation-content-selection-binding.asm",
+    "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-selection.asm",
+    "analysis/full-platform-20261104/ios-remote-v494-viewmodel-fields.json"
+  ],
+  "validation": {
+    "official_runtime": "not_run",
+    "product_changes": false,
+    "build_or_device_actions": false,
+    "candidate_groups": 3,
+    "stop_reason": "Parent requested close after bounded three groups; no speculative algorithm added."
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/CodexHomeTaskList-witness.json",
+      "sha256": "57019f80ef62bf8ddc9558d2e3cbf7e45fed3c4426d29a563c4bb16627603a5f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/CodexSidebarTaskListView-witness.json",
+      "sha256": "3ed761c86b7d4104d09b83baf47ba681e6d6f085752f2ddaab1109deb8c1e477"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/CodexTaskList-witness.json",
+      "sha256": "1dffcc65fd45796a650d6b0c10a0bb6cd584eda395356f3c651f7a7bf1b1c88e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/CodexTaskListContainer-witness.json",
+      "sha256": "0b34b2b47338ab9e30006aa3af13326b76eedf580c77323ac798a7cd74459262"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/CodexTaskListContent-witness.json",
+      "sha256": "9f5f148b5d12f9e920157a4c6f979cc4aface82acd1fbc1a12b9ae5d59e6ed7d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/container-body.asm",
+      "sha256": "f3b126e5f44cc815bbfbfbf9a6a87a1395c71cf968b92c1b55954ba693b021bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/container-body.json",
+      "sha256": "bac25857f6fd188082d2dbd29a2967d6edaee05cf2ae9ddf1006a3e2171db02e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/container-implementation.asm",
+      "sha256": "19211c29c1d35eb6fcdc073071b060294c2008188a67e217fdd0d8d40b58adb8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/container-implementation.json",
+      "sha256": "448ad5ef15de8b28498c242a17fb94a75b068bc70bb4df481a35eba485a4675d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/content-body.asm",
+      "sha256": "965211f0d380bf81309a19c756ff2daf1a6b1628ced7c07e664d15a870f1c0a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/content-body.json",
+      "sha256": "6e02210ec3e2ef11217f92e476d95a7e29da8a1cc087ad2a037246a306a30b83"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/content-implementation.asm",
+      "sha256": "f713090fed87b181ffa5c932ca7740aeb28e48324c1da2f50f316aecedc6ba40"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/content-implementation.json",
+      "sha256": "88407665b42d1880695bbfe0b72ce7b65b2da883f5fe4d9210fa8bbcdd3411c8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/first-appearance-owner.asm",
+      "sha256": "529b9dd96e29ea24d37dca2bfb94763290269d6712115e5cd20d7113a038188f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/first-appearance-owner.json",
+      "sha256": "3f95ace010c4d90f1b8f03b80024669c0da47ee0f0a39e72b6c5aebfcf491f09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/home-body.asm",
+      "sha256": "8a46da7a4e06318cceace2480559eeb72b549240c3bb5216434914bcfef6406f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/home-body.json",
+      "sha256": "164c76f60b6c23f33c8c76a1a442ed1112951fc71a7247287e8fc5915b863b10"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/lifecycle-modifier.asm",
+      "sha256": "7abffd804ba918dd80cb6c1aeae963d8bd66bf4221389dcf0bbb39f391170a03"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/lifecycle-modifier.json",
+      "sha256": "31175a2b5d1bf6d062dbabec237199b0bc05477419c7f970821ad81df25ad416"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/lifecycle-owner-appear.asm",
+      "sha256": "17626e8446ebf6660144bdcfe98fa19918c9ff935a24aa283605bee1e960f08e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/lifecycle-owner-appear.json",
+      "sha256": "2af97d5491a837e7bb618164135acbda937559620951d371440e415f8a206484"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-appearance-tree.json",
+      "sha256": "6465230bab574175dc259046c52eb2b3cd7bd5c9a89951948adb83483d5e514e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-appearance-tree.raw",
+      "sha256": "c876ddc4400846c253306dd6fb5a806ab61285eb8e278e9b695ef39d327343a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-appearance-tree.refs.tsv",
+      "sha256": "0856e69f5bc1cdd6767b615dc6d6be88d97939682f4896a1e15a3bbc2d79ae94"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-appearance-tree.tree.txt",
+      "sha256": "c2a186cc1a16fa7e7d3ba9599396420ed4f24ea6e249048a8b4661c5bd4f148f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-body.asm",
+      "sha256": "4216a846a60d5ad580b3950b26c780934e5ae7d8d9a6816b40ca8698360e1f70"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-body.json",
+      "sha256": "9d75354f3b527d17e77ce215dd85103e7a11f26ae1accb59bb4b102cb8f81f36"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-implementation.asm",
+      "sha256": "ddd33dcb1727d90bce7f667c0959d9febfa7e3519aa3fc5fc6e251dc611cad57"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-implementation.json",
+      "sha256": "7d377930b1bb9fb46d4b5a9e76f29f749823e994cea2470cf72d469c7e16d087"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-inner-tree.json",
+      "sha256": "b3d4089d80455912f316ca15099fc21bb6fdd02907beb2ee6dc9d86555573ec8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-inner-tree.raw",
+      "sha256": "915c41086f3a1baa7c8b70d96d8473582b5f84220c318403b93ffbc8d4a03bbb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-inner-tree.refs.tsv",
+      "sha256": "53c8cb7a7e1148cc201f2cd67dd5e1f41cd27b295ab3b4fb11098d37cd3716ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-inner-tree.tree.txt",
+      "sha256": "3c717db589d3157ebbf2e7b28dbfee1ad47ca1a476a4aae472167e18ebc5859f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-lifecycle-callbacks.asm",
+      "sha256": "f96217a12290a2b42b63e2308f87d878460da109ef6a6108abba379db281ae32"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-lifecycle-callbacks.json",
+      "sha256": "91d1cd1f233ad3feae26e8834b635ba38851bd0a232ed25fe7e7d4cb934019de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-lifecycle-tree.json",
+      "sha256": "45c0cc34922d9a6882e2fcf4f5583dd028c55a05df8a9430c11b81a28ec0090c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-lifecycle-tree.raw",
+      "sha256": "4363e32511dc67b16494feeb351f3aa20eb3dae4264207cd0d1cca66d0068927"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-lifecycle-tree.refs.tsv",
+      "sha256": "ab28f5f918710cfd9427afd5f80c07b2673912030d5a1e44d54cd5d02a0a0558"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-lifecycle-tree.tree.txt",
+      "sha256": "1c7c180a4635bca07643274e805bffcd6efe816fccd09bdd5e7e522bbac43401"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-metadata.json",
+      "sha256": "603e3ad2e174013835ffb06b60fa3263cd948d2eeb2fa653818353b0cd1d0cfd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-parent-final.asm",
+      "sha256": "6fb647b12ba9c6ad7be620391af4aef843516483ea880b3b8d2ac642ba8933d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-parent-final.json",
+      "sha256": "8d4b3eb4fce4e7857a1adb8c28055ed4fd7a5be1f5647156ea83568240c3f118"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-root-tree.json",
+      "sha256": "76961320be256905be2736769876168d347c0aa34d01addf558599cfb6b04832"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-root-tree.raw",
+      "sha256": "66bbd2dc606b61115a800cc8fd4569519cac7c2ba7e8fbc52c928283040bb205"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-root-tree.refs.tsv",
+      "sha256": "4c523f3a8966a8d38dc517e535fed15834430b5757e69ba70b09fe7c6b6e7148"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/list-root-tree.tree.txt",
+      "sha256": "9be21985ac601a97757763fd19b2a5fad4fa506c164eb1e56a0baba7fa182ea0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/owner-state-types.json",
+      "sha256": "b554cbd6f1fdb39a92848f03602ea0eb4e8e814357412693827c400233e9115f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/remote-host-state-types.json",
+      "sha256": "d36ae2257730bb9947d4bb066f4534b2e9ea24ea4eaea71389f366b174fa7450"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/scene-callback.asm",
+      "sha256": "86f6bb1c358ddcfbc7abb0731ca825607c2dc226bf56326bff8e3c3cc2a0e589"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/scene-callback.json",
+      "sha256": "58d14e82ae6a7583962c6006ccb01634b8c89672bf98e081cf388f541143e0de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/scene-modifier-helper.asm",
+      "sha256": "c483b00d659043b8ddfc725153e3c01d9c94d212dd87756a3bd8f83908e9b16d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/scene-modifier-helper.json",
+      "sha256": "0b23bb34146bc7f35364bf7a7d059b96439b042b0d1f95d09bd208ebfb5153e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/selection-owner.asm",
+      "sha256": "97501a32664dfd5b24c49b42dca189154bedf63c457a4a23745f43f26f1a7af6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/selection-owner.json",
+      "sha256": "e064b860e03b1562ac31c8af151214546addb208f8204e8f65d8a192d2cbb26a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/selection.asm",
+      "sha256": "48d1b3e6a9e05c75ce38e6bf90a186a1de342efbb7e155d71a09055b55461c6c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/selection.json",
+      "sha256": "426513a8a17b114f378b6a5ea4a3af99beeacd561081c19f3a93d808aedf4645"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/tree-selected-identifiers.json",
+      "sha256": "957a2ccda9142f28f5fac116f61fd97e2e93b12d1a769569c5f69a8f4373c32d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/visibility-setter.asm",
+      "sha256": "e47b6906a4f82fa2541cea2b36c15afea534df4050e266d9c23275b09340bf44"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-lifecycle-parent-20261113/visibility-setter.json",
+      "sha256": "9061d92c398ae18c29ea7b0e6ad9417f9b9bd9556c1436f811bba5333f48d3d3"
+    }
+  ]
+}

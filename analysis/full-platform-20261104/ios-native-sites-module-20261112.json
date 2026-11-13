@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "module": "9.5 ChatGPTSites",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "minimum_native_sites_list_and_local_preview_loop_implemented_builds_passed",
+  "scope": "Frontend and deterministic local provider only; distinct from ChatGPTProjects and Remote workspaces. No publishing, authentication or business backend.",
+  "source_reports": [
+    {
+      "path": "ios-native-sites-list-20261112-findings.json",
+      "sha256": "2d3ea61c106adde0b60d0deccd9a4b8c08bd3c97f2e29a0ab6c1fed26654e4c9"
+    },
+    {
+      "path": "ios-native-sites-preview-20261112-findings.json",
+      "sha256": "ebfd4d9dee5d99b030876e3d3e32b3d91b2a13e8e091838c2326efce6ee2e3de"
+    }
+  ],
+  "source_observations": [
+    "SitesScreen View14a26bc ->149d304, root14a36f8 ->14a2ed8, content14a4d80 ->14a3a58; full7dcc548/7dce4b0 prove Plain List, optional header/segmented tab, phase branches, Button rows and pagination.",
+    "List tree has no contextMenu. Row14a4bd8 closes focus and sends project identity raw11; selection setter1539c9c ->14a515c sends raw10. Enum inventory is not a visible action catalog.",
+    "sites_display_name and sites_create_site are bound to concrete root/toolbar/empty consumers; 248 selected labels across65 locales after extraction.",
+    "Preview1478a60 ->1478028 composes native top controls and SitesProjectWebPreview. xmark-lg and chevron-left-md are branch-backed resources.",
+    "Web preview uses UIViewRepresentable make1482790 ->1481fa8/update1482794 ->148255c/dismantle1482798 ->1481bd0/coordinator14827a0 ->1481cbc. Its default View body trap is not a content builder."
+  ],
+  "implemented": [
+    "Explicit sidebar available-features adapter registers retained Sites native Plain List with provider-selected owned/shared tabs, search, paging, disabled preview capability, loading/empty/failure/retry.",
+    "Preview resource requests bind exact account/site/request identity; replacement, cancellation and late capability revocation reject old results.",
+    "Revision-canonical list projection prevents stale payload rollback; duplicate identifiers, equal-revision conflicts and cursor loops fail explicitly.",
+    "Independent WK browser adapter reuses address/progress, back/forward/reload, local resource failure/retry and Close; ordinary native list selection/cache survive cover return.",
+    "Local rea-site scheme is isolated per request UUID; only supplied document paths load, with no query/fragment/user/password/port, JavaScript or native bridge.",
+    "Copy link writes the provided synthetic HTTPS URL to UIPasteboard; no extra navigation-height prompt is inserted. Scoped capability actions open a returnable status panel; failure/retry and unsupported are explicit.",
+    "Create/edit/share/publish/settings/analytics/external-browser operation entrances issue scoped frontend requests without claiming real service success.",
+    "Dismissed action panels retire request tokens; providers ignoring cancellation cannot block later actions or apply late receipts to a new panel.",
+    "Shared sidebar gesture feedback continues to use Settings > General > Haptic feedback. No unproven Sites-specific gesture/tap haptics added.",
+    "Stable UIKit menu owner survives unrelated observed-state updates; no transient copy prompt changes navigation-bar geometry."
+  ],
+  "independent_adaptation": [
+    "Available-feature menu is an explicitly labeled host directory, not recovered original More catalog presentation.",
+    "Owned/shared labels/order/availability, synthetic catalog/actions/artwork and row geometry are fixture/host policy; root/create translations alone have concrete original consumer proof.",
+    "Native searchable, fullScreenCover, shared browser toolbar and management action slot are independent host integrations; original menu producer/actual row-to-preview route remain unclosed.",
+    "Original WK authenticated-session and URL/bootstrap policy are not reused. The offline custom scheme is a bounded local resource adapter, not official navigation equivalence.",
+    "Identity/revision/cursor/cancellation contracts are independent frontend design."
+  ],
+  "not_implemented": [
+    "Exact account/feature gates and original owner catalog, full row fonts/dimensions/material/thumbnail and transitions.",
+    "Original native search shell, management menu producer/ordering/callback factory, Close versus Back route selection and interactive edge-pop behavior.",
+    "Authenticated WK/session/bootstrap, original URL allowlist/navigation policy, settings/analytics/editor/share/publishing actual forms and service behavior.",
+    "Real site list/resource/edit/create/publish/share/auth/analytics services or backend; source-only model/action inventory is not claimed as implemented functionality.",
+    "Cross-process site list/navigation restoration, actual OS clipboard readback verification, physical haptic playback; Sites-specific original feedback triggers remain unclosed."
+  ],
+  "verification": {
+    "contract": "passed; /tmp/rea-sites-contract-run-20261112.log",
+    "r1": {
+      "artifact": "ios-native-sites-20261112-r1.xcresult",
+      "result": "partial journey; transient prompt assertion failed",
+      "passed": [
+        "list failure/retry",
+        "paging/disabled preview",
+        "preview resource failure/retry",
+        "WK detail/back",
+        "WK failure/retry",
+        "copy action invocation"
+      ],
+      "failure": "Two-second copy prompt expired during XCTest idle wait. Removed transient prompt assertion; no clipboard readback claim. The independent transient navigation prompt was later removed while fixing the actual r2 menu-owner issue."
+    },
+    "r2": {
+      "artifact": "ios-native-sites-20261112-r2.xcresult",
+      "result": "failed after copy action on menu reopen",
+      "failure": "Unconditional native bar-item reconstruction and expiring navigation prompt dismissed an open menu. Stable cached action owner now rebuilds only for capability/enabled changes; extra prompt removed."
+    },
+    "physical": {
+      "preflight": "ios-native-sites-20261112-device-final-state.json",
+      "connection": "unavailable",
+      "installed": false,
+      "last_installed": "Settings fixed-close candidate",
+      "build": "succeeded",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "69f9e2037d770ee82e0bd4e75fd8371941138416a6931b32798dbd921cf13d86",
+      "install": "not_attempted_preflight_unavailable"
+    },
+    "r3": {
+      "artifact": "ios-native-sites-20261112-r3.xcresult",
+      "test": "testNativeSitesCoreChinese",
+      "result": "passed",
+      "seconds": 66.383,
+      "scope": "Chinese/light list failure/retry/paging/disabled preview, resource retry, WK detail/back/failure/retry, copy/menu reopen, action failure/retry/unsupported, close, shared filter, create entrance, sidebar reentry. No clipboard readback or official pixel equivalence."
+    },
+    "visual": {
+      "inspected": true,
+      "screenshot": "ios-native-sites-20261112-r3-attachments/BA8EE163-4E09-46CE-A372-A651006CA2C8.png",
+      "scope": "Native shared-site list visible, semantic host adapter only."
+    },
+    "simulator": {
+      "report": "ios-native-sites-20261112-preview.json",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 48015",
+      "binary_sha256": "be75a12358840e89e3ae8b290b5e14bcacd6bb04900b049303b60b78e5aeb62a",
+      "ordinary_screenshot": "ios-native-sites-20261112-ordinary.png",
+      "observed": "Visible ordinary core Chat after normal launch; left running."
+    },
+    "haptics_wiring": "ios-haptics-settings-wiring-20261112.json; all explicit active-feedback call sites use the General preference; physical playback not observed"
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendSites.swift",
+      "sha256": "4bb1142d1fd1190360e739fda1d78573d7a9dea044773c8e582123979c420dc0"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSitesPage.swift",
+      "sha256": "0f6e639deeb4c9923a923ee0fb3f8405c89742ca9a04053b28df8ac6aae59c5b"
+    },
+    {
+      "path": "implementation/ios/Tests/Sites/main.swift",
+      "sha256": "55287a255da731a8bef1b587657b6c1a4d23cf708131514f8f8cd30c790e049c"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "e1484e0e142b6b36d16ce8270c6de826ba7cbd9bceb31d49548bef2101f9c498"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "e0309f4aed51d2f6b06b145dc9ed21099505099daaca0e444e4f87e53812b282"
+    }
+  ],
+  "review_route": "Sidebar > More/available features > Sites > synthetic site > local preview > actions/Close > shared selection; create and service actions show capability status.",
+  "next_package": "Images native entry/library; preserve version-bound source route and avoid treating bundled library JS as proof of native entry wiring."
+}

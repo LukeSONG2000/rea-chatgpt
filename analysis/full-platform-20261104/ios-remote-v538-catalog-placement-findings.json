@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Does the catalog/projects super-section heading belong to the native Section header or content slot?",
+  "observations": [
+    {
+      "offset": "0x7cf7868",
+      "conclusion": "Catalog status Section has EmptyView native header/footer; first content element is optional V2 header with width, insets and separator traits followed by RemoteProjectCatalogRequest ForEach."
+    },
+    {
+      "offset": "0x39c208 / 0x39c238",
+      "conclusion": "Catalog content builder computes preceding-section top spacing then constructs V2 visual heading via39c628."
+    },
+    {
+      "offset": "0x39c240..0x39c27c",
+      "conclusion": "Catalog requests independently respond to suppression/collapse gates, retaining the visual heading for interaction."
+    },
+    {
+      "offset": "0x39a324..0x39a344 / 0x7cf7870",
+      "conclusion": "Catalog Section receives MainSurfacePrimary list-row-background trait."
+    }
+  ],
+  "integration_decision": "Move existing Projects heading into first content row of catalog Section and hide its row separator; apply section background. Retain state owner, existing metrics/insets, collapse routing and IDs. Ordinary workspace Section headers stay in their separately proved slot.",
+  "limits": [
+    "Current fixture has projects; catalog-only producer insertion position remains unresolved.",
+    "Native pinned workspace header overlap is a separate defect.",
+    "Exact runtime appearance and accessibility containment require this batch UI validation."
+  ],
+  "reused_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-findings.json",
+      "sha256": "4dfe9b80c296f0a41164b7641aeb1d98dc00022cfda5e0645528160558c50410"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-neighbor-types.json",
+      "sha256": "c29688113454f57041957bd3a9bbeecc3d08ae62caf33c54acdf7dd43f28340b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-content.asm",
+      "sha256": "2037e93da494870f0e2ea71d7bb273531818afc63994fe55ba6780fa5751d53b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-constructor.asm",
+      "sha256": "d9729b96cf1dbe2a4ac0a2b1901bcacaef1ca17f4788fcd929e7961cf11f999d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-wrapper.asm",
+      "sha256": "7fe80701b449fdc54de4c3dddb0428cc5c13aa04702891232bf3341413b282f4"
+    }
+  ]
+}

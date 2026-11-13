@@ -1,0 +1,21 @@
+{
+  "Simulator Target Bundle": "local.rea.chatgpt.ioshost",
+  "aps": {
+    "alert": {
+      "title": "前端通知回放",
+      "body": "打开合成会话 B"
+    }
+  },
+  "rea_frontend_v1": {
+    "version": 1,
+    "id": "v593-chat",
+    "scope": {
+      "accountID": "offline-fixture-account",
+      "sessionID": "offline-fixture-session"
+    },
+    "target": {
+      "kind": "chat",
+      "conversationID": "fixture-b"
+    }
+  }
+}

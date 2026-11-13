@@ -1,0 +1,60 @@
+{
+  "batch": 571,
+  "status": "partial",
+  "source_evidence": "ios-chat-v571-findings.json",
+  "validation": {
+    "state": "PASS; footer phases, exact cancellation scope, terminal precedence, empty/unknown results and existing history/draft tests",
+    "ui": {
+      "result": "ios-chat-v571-r1.xcresult",
+      "passed": 3,
+      "failed": 0,
+      "cases": [
+        "testChatUserBubbleChinese",
+        "testChatWorkOfflineCoreChinese",
+        "testChatWorkOfflineCoreEnglishDark"
+      ],
+      "coverage": [
+        "short/long user bubble and native selection",
+        "Chat and Work failure/retry, cancellation and localized feedback",
+        "draft/identity preservation across conversation switch and process restart",
+        "raw debug phase absent from assistant text"
+      ]
+    },
+    "visual": "Chinese/light and English/dark captures inspected. Localized failure/stopped footers visible; completed body no raw phase. Large block gaps, independent action menus and Chinese synthetic reply in English mode remain open.",
+    "runtime": "ios-chat-v571-runtime.json",
+    "retention": "no stale full builds in retention preflight"
+  },
+  "independent_decisions": [
+    "Frontend phase mapping and localized labels, caption/error style and height are independent adapters.",
+    "Completed nonempty reply omits status; completed empty reply explicitly reports no content.",
+    "Existing block geometry is retained pending surrounding-context/parent mapping."
+  ],
+  "open_items": [
+    {
+      "page": "Chat/Work",
+      "priority": "P1",
+      "missing": "source-bound role-aware outer padding and paragraph/block spacing",
+      "evidence_break": "MessageRowContainer surroundingContext producer and enum mapping ->0x38dda6c; content block parent",
+      "next": "resolve context fields/role cases and compare whole-row measurement",
+      "acceptance": "source-bound spacing verified with alternating roles and mixed Markdown in both appearances"
+    },
+    {
+      "page": "Chat/Work",
+      "priority": "P1",
+      "missing": "attachment submit and resource-preview return",
+      "evidence_break": "composer references -> stored user turn",
+      "next": "connect scoped resource adapter",
+      "acceptance": "add/remove/send/open/close preserve correct conversation and draft"
+    },
+    {
+      "page": "Chat/Work",
+      "priority": "P2",
+      "missing": "official status/footer/action predicates and styling",
+      "evidence_break": "MessageRowContent footer provider and responseEndVisibility consumer",
+      "next": "trace provider into source controls",
+      "acceptance": "capability-driven actions and source-backed status presentation"
+    }
+  ],
+  "delivery": "v571 installed; Chinese system-following preview left running; only built-in display available",
+  "shared_boundary": "Independent pure frontend status projection may be shared; no official Android equivalence established."
+}

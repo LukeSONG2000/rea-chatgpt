@@ -1,0 +1,54 @@
+{
+  "batch": "v501",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "no progress: status report; continuation corrected and revalidated the offscreen test and proceeded with catalog integration",
+  "integration": [
+    "Standalone Projects kind2 header with official localized title",
+    "Global collapse excludes workspace/project/noWorkspace groups, preserves pinned/Recents and individual collapsed states",
+    "No request-only insertion or empty/search projection equivalence claimed"
+  ],
+  "source_evidence": [
+    "ios-remote-v501-projects-collapse-findings.json",
+    "ios-remote-v501-projects-collapse-spacing.json",
+    "ios-remote-v500-projects-findings.json"
+  ],
+  "validation": {
+    "ui_initial": {
+      "passed": 3,
+      "failed": 1,
+      "failure": "NoWorkspace final assertion queried second host header below viewport after source reset; line149 matching snapshot missing",
+      "passed_cases": [
+        "fixed approval while history scrolls",
+        "Projects global and individual collapse isolation/filter/return",
+        "Recents and host-only drafts"
+      ]
+    },
+    "ui_r2": {
+      "passed": 3,
+      "failed": 0,
+      "correction": "Reveal second host header before checking its value, retaining preceding host assertion. No production change for this failure.",
+      "cases": [
+        "NoWorkspace isolation/filter/return",
+        "large-text source filtering",
+        "project new draft and return"
+      ]
+    },
+    "signed_device_build": "501 build and codesign passed",
+    "device_install": "not installed; paired iPhone unavailable, last installed496",
+    "preview": "superseded by next v502 integration before final preview; no v501 standalone visual acceptance"
+  },
+  "limits": [
+    "Synthetic collection/order/navigation and draft owner",
+    "Full official visual and runtime equivalence unaccepted",
+    "Android requires independent implementation evidence",
+    "No commit or push"
+  ],
+  "evidence_hashes": {
+    "ios-remote-v501-projects-collapse-findings.json": "ffb02b95752a983f8c9b34bbd10f699a03233a7b49c9d1c623cd74eaa158a78d",
+    "ios-remote-v501-projects-collapse-spacing.json": "aebd9f2684d41e23b9d00611befb0b892f621731d9c740850c014d30dda42795",
+    "ios-remote-v500-projects-findings.json": "77583069427c059318acb3a397006844b67d03e004b79f4d1b6c5d5aa77fa0e5"
+  }
+}

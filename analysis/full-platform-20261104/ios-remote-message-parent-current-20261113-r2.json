@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "module": "4 Remote messages third parent pass",
+  "date": "2026-11-13",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core_usable_with_explicit_fidelity_and_service_gaps",
+  "previous_goal_turn": "progress: Remote filter parent selection source/destination restored, tested and archived; current source matches that report before this pass",
+  "source_reports": [
+    "ios-remote-message-inner-parent-20261113-findings.json",
+    "ios-remote-message-footer-siblings-20261113-findings.json",
+    "ios-remote-message-header-fade-20261113-findings.json",
+    "ios-remote-message-parent-current-20261113.json",
+    "ios-remote-timestamp-text-20261113-validated.json"
+  ],
+  "implemented_this_pass": [
+    {
+      "component": "registered message width parent",
+      "source": "1a4d6f0→1c30ca0→1a518e0→1a2858c",
+      "change": "inner maxWidth728 followed by outer infinity; existing leading alignment and horizontal16 remain explicitly independent host policy",
+      "scope": "Three registration chains prove common carrier; six others not closed. Unified synthetic host uses the cap, not a claim all nine original classes match."
+    },
+    {
+      "component": "reply footer sibling composition",
+      "source": "HistoryFragment1a341e8..1a34844 / layout1a34aa0",
+      "change": "copy and optional completion timestamp share source center/spacing12/leading footer; timestamp is independent of copy/footer-actions flag; timestamp-only parent remains reachable"
+    },
+    {
+      "component": "completion time ownership",
+      "source": "official render field responseCompletedAt; event envelope and storage are independent",
+      "change": "optional completedAt event maps to persistent responseCompletedAt, accepted only on completed with finite date; existing scope/attempt/sequence gates retained; retry clears it; absent older history stays absent; no render/decode Date.now"
+    },
+    {
+      "component": "timestamp view",
+      "source": "ResponseTimestamp1a08b44 / TimestampText1a08dd4 / format1a0949c",
+      "change": "every-minute timeline, caption, original secondary text, calendar/locale/timezone inputs; same-day hour/minute, other-day month/day, other-year year; recent weekday override remains explicit fallback"
+    },
+    {
+      "component": "localized accessibility",
+      "source": "codex_remote_response_completed_at actual1a0938c/1a09464",
+      "change": "original selected key extracted and arity-validated across65 locale tables; full day/wide-month/year/hour/minute accessibility date"
+    }
+  ],
+  "retained_core": [
+    "Normal Remote list entry, host/thread scope and back navigation",
+    "Native transcript collection, previous history expansion, scoped reading and disclosure state, user scroll and jump-to-bottom",
+    "Body Markdown/code/table projection, selection/copy and scoped file/browser link entry",
+    "Tool activity groups, command shell/output, search, file differences and review summaries",
+    "Transient reasoning/group summaries, generation/error/stop state, error-card and existing retry lifecycle",
+    "Reply copy only on completed eligible turn; per-code copy remains independent"
+  ],
+  "header_audit": "Original editor role, principal title hidden shared background/fixed44 and collection topEdgeEffect.soft are already integrated. No direct Remote TopBarFadeBackground/VariableBlur consumer proved; sidebar radius2 not transplanted.",
+  "independent_adaptations": [
+    "Synthetic unified row aggregation/hosting, horizontal16 and leading alignment; original standalone horizontal owner and all nine registrations not fully closed",
+    "Synthetic provider Date() is sampled at completion event creation, not a service timestamp or deterministic wall clock; fixed supplied dates are used in pure replay tests",
+    "Recent same-year1..6-day weekday formatter remains unknown at1a09b48→11a7620; readable native month/day fallback retained explicitly",
+    "UIKit hosting, rich-text block renderer and reading restoration do not prove full original OAIMarkdown/heterogeneous collection equivalence",
+    "Preference key/default, hardware/activity gate and native gesture arbitration remain host integration"
+  ],
+  "not_implemented": [
+    "Full original reasoning body/DIL, heterogeneous item producer and renderer",
+    "Positive/negative feedback, fork and hook-stat footer actions; original optionals/glyphs identified, complete async outcome/error/fork destination and owner callbacks not integrated",
+    "Original exact recent-weekday formatting, footer outer padding/producer and complete fonts/materials/animation",
+    "Original per-registration alignment and standalone horizontal padding; wide-screen runtime geometry not tested in this phone-only batch",
+    "Complete original scroll/update animation and initial-bottom protection; existing host restoration retained",
+    "Real service/pagination/reconnect behavior; message attachments remain deferred; no business backend added"
+  ],
+  "haptics": {
+    "source": "ios-gesture-haptics-current-20261113-r2.json",
+    "current": "Existing five consumer categories retain Settings > General > Haptic feedback gate; full pure suite rechecked admission. No new footer/header/width gesture feedback caller proven or invented. OS implicit feedback is separate.",
+    "physical_playback_verified": false
+  },
+  "verification": {
+    "pure": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "result": "passed",
+      "log": "/tmp/rea-remote-message-third-text-20261113-r2.log",
+      "new_scope": [
+        "Timestamp independent of action/copy capability and absent-input admission",
+        "Wrong host/nonterminal/nonfinite/late events rejected",
+        "New and legacy history codec preserves or omits supplied completion time",
+        "Calendar/time-zone midnight and year branches, full accessibility date and original Chinese format"
+      ]
+    },
+    "ui": {
+      "test": "testRemoteCopyOnlyAfterCompletion",
+      "result": "passed",
+      "seconds": 63.648,
+      "artifact": "ios-remote-message-third-20261113-r1.xcresult",
+      "scope": "Chinese/light normal list→thread→synthetic stream→completed copy and timestamp; clipboard exact payload; same footer vertical center; task A/B/A isolation; process-restart timestamp persistence",
+      "not_rerun": "All activity details, wide-screen geometry, unrelated pages and four locale/appearance combinations"
+    },
+    "screenshots_reviewed": [
+      "ios-remote-message-third-20261113-r1-attachments/D50057A3-E047-402B-96BC-FD2DFECD5A59.png",
+      "ios-remote-message-third-20261113-ordinary.png"
+    ]
+  },
+  "runtime": {
+    "simulator": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "launch": "local.rea.chatgpt.ioshost: 19415",
+      "hash_match": true,
+      "executable_sha256": "07b2ef96f30111eefae199fd40f96e6c85e9abc65908ee74052fbe718a66fa9e"
+    },
+    "preview": "ios-remote-message-third-20261113-preview.json",
+    "ordinary_preview_left_running": true,
+    "physical": {
+      "name": "iPhone Air",
+      "device": "00008150-001E34E93A12401C",
+      "pairing": "paired",
+      "tunnel": "unavailable",
+      "ddi_available": false,
+      "installed_this_batch": false,
+      "signed_build": "succeeded",
+      "strict_codesign": "passed",
+      "physical_haptics_tested": false,
+      "executable_sha256": "c68d2d86701784eced84bbf7d076c88fade968bb1204ffc7cf2be2ae53cd7b7a"
+    }
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "cfd344cfe9aa18bbb22d2620c94a0cf11fc31073cc838fa967dcf95f13a92038"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteTranscriptLayout.swift",
+      "sha256": "2cd21a21aa28b2b20898b32bb279e0473b0b71d0b956f954b7ed9577e5f91337"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "sha256": "f2a850d7bf113dd59552257cef6d614a2f79d31e4db8ff9530e020cca5e6b85d"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift",
+      "sha256": "9c16a26957260801340c8c2aadbd3870f69806e3ac5760f6648b4a81087119c9"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "c25b1484810792007b9bb350ce7c3a2af5a55806aaf541df64707c3f5a181cdc"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "f3e7a4afa3e99bc15b6abc6d4e4804058e818c7c69f4b70ece0e22666dc68496"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "ace3690ac6647f7264da2f741134c1b78261aeb7dabaa355ffb9860a85c69ab2"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "03557e4087fcb767ea5fedf0f5219936ddc847b8234b251d00cc3b0de4954f61"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "bef88639174f052c3b206ffd99bc2f174e668f93da3f6a37e260dd14d2aefb1c"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    }
+  ],
+  "rule_added": "AGENTS: independent optional footer siblings; completion time belongs to event/snapshot owner, never rendering or historical decode",
+  "review_path": "Ordinary core→sidebar→Codex→task→send synthetic text→copy and completion time; switch task/back; restart retains supplied time. Existing history without time remains blank.",
+  "next_major_module": "5 Remote composer/task controls",
+  "git_mutations": "No commit/push/release; unrelated existing dirty work preserved"
+}

@@ -1,0 +1,74 @@
+{
+  "batch": 576,
+  "status": "partial",
+  "scope": "Shared native Markdown line-fragment padding and Chat/Work/Remote regression",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "type": "shipped-artifact-static",
+      "evidence": [
+        "ios-remote-v478-container.json",
+        "ios-chat-v576-text-container.asm"
+      ],
+      "offset": "0x69386b4/0x69386b8",
+      "conclusion": "MarkdownTextRenderer initializes NSTextContainer.lineFragmentPadding with double zero."
+    },
+    {
+      "type": "shipped-artifact-static",
+      "evidence": [
+        "ios-assistant-stack-types-v1.json",
+        "ios-remote-v551-findings.json"
+      ],
+      "conclusion": "Chat assistant body contains OAIMarkdown.MarkdownBlockStack. Remote cached Markdown reaches the same native Markdown subsystem through separately traced callers."
+    },
+    {
+      "type": "shipped-artifact-static",
+      "evidence": [
+        "ios-chat-v576-style-insets.asm",
+        "ios-chat-v576-intrinsic-insets.asm",
+        "ios-remote-v478-text-objc.json"
+      ],
+      "offset": "0x6931094..0x6931150; intrinsic helper 0x69316c8",
+      "conclusion": "MarkdownTextBlockView.markdownOptions is identified by ivar-offset storage0xb8b7e40. Its inset accessor sums two four-double groups at configuration offsets0x298 and0x2d8, swapping horizontal components according to direction. Intrinsic helper adds these results to renderer size. Actual effective style values remain unresolved."
+    },
+    {
+      "type": "shipped-artifact-metadata",
+      "evidence": [
+        "ios-chat-v576-markdown-options.json",
+        "ios-chat-v576-options-storage-type.json"
+      ],
+      "conclusion": "MarkdownOptions descriptor0x96fca7c is a struct with a single _storage reference resolving to0x96fcaa0. Storage field-vector parsing is unsupported by the existing strict parser, so inset names and effective values remain unknown."
+    }
+  ],
+  "implementation": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbol": "NativeMessageBlock.init(frame:)",
+    "change": "Explicitly set textContainer.lineFragmentPadding=0 for the shared independent UIKit content adapter. This also affects its text/code/reasoning representations.",
+    "attribution": "Official renderer configuration reused in independent UITextView host. Native host is not the recovered custom TextKit2 view.",
+    "test_isolation": "Chat/Work core test now uses one UUID profile retained for its relaunch assertions."
+  },
+  "limitations": [
+    "Block insets, paragraph styles, outer row spacing, minimum height and footer sizing remain independent or unresolved.",
+    "Line fragment configuration alone does not establish full-page visual equivalence.",
+    "No physical-device acceptance or Android parity in this batch."
+  ],
+  "validation": {
+    "state": "passed; ios-chat-v576-state.log",
+    "ui": "4 passed, 0 failed, 0 skipped; ios-chat-v576-r1.summary.json",
+    "visual": "Inspected Chat/light/dark and Remote/light/dark captures. Text and code visible; existing wide vertical gaps and independent footer styling persist. English Chat fixture content remains Chinese.",
+    "runtime": "v576 signed, installed, executable hash matched; stable Chinese/light preview restored",
+    "retention": "dry run has no stale package targets"
+  },
+  "next_actions": [
+    "Resolve effective ordinary Markdown block style insets and connect to parent before changing vertical spacing.",
+    "Close row action visibility and full-page minimal flow ledger."
+  ],
+  "investigation_limits": [
+    "Initial class parser correctly rejected MarkdownOptions as a non-class; struct parser resolved it. _Storage class parser rejected unsupported field descriptor. No inferred field labels or tool modifications were used."
+  ]
+}

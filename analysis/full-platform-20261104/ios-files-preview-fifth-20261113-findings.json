@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "module": 8,
+  "scope": "Two bounded groups: actual source VM.lines producer and old ReadingState cache matching prefix. No UI, product edits, builds, devices, actual app/services or attachments.",
+  "status": "source_line_semantics_closed_cache_partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "Version-bound official iOS293 static instructions and imports, plus current host source comparison",
+  "reused_reports": [
+    "ios-files-preview-fourth-20261113-findings.json",
+    "ios-files-browser-parent-current-20261113-r3.json",
+    "ios-remote-v617-line-preview-findings.json"
+  ],
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "What exactly constructs the actual source-preview lines, including trailing/empty/Unicode behavior?",
+      "status": "verified_static_implementable",
+      "actual_producer": {
+        "entry": "0x1a15418",
+        "next_function_start": "0x1a159c4",
+        "owner": "Concrete source VM constructor1a15a08 invokes1a15418 then storesVM.lines; reused fourth evidence",
+        "element_type": "typeref8e14d46 = Array<CodexRemoteThread.CodexRemoteSourceCodeFilePreviewLine>, nominal95abc84"
+      },
+      "observations": [
+        {
+          "sites": [
+            "0x1a15430..0x1a15450",
+            "0x458ba4",
+            "0x4571e8"
+          ],
+          "meaning": "Loads small string CRLF=0xa0d / UTF8 length2, passes original source into String.hasSuffix via7c4d98c. True branch supplies drop count2 to195065c."
+        },
+        {
+          "sites": [
+            "0x1a15458..0x1a15488",
+            "0x1d91918"
+          ],
+          "meaning": "Else tests suffixLF (helper1d91918 small string0xa), then suffixCR0xd. Either true supplies count1 to1a15bb0. No other suffix is removed."
+        },
+        {
+          "sites": [
+            "0x195065c..0x1950714",
+            "0x1a15bb0..0x1a15c94"
+          ],
+          "meaning": "Helpers compute UnicodeScalarView end-relative/start-limited slice; actual imported constructor at19506d8/1a15c58 is UnicodeScalarView.subscript(Range<String.Index>). Source reconstructs String from returned UnicodeScalarView at1a1548c. This is scalar deletion, not Character.dropLast2 on CRLF."
+        },
+        {
+          "sites": [
+            "0x1a155fc..0x1a15604",
+            "0x1a15664..0x1a156bc",
+            "0x1a1577c..0x1a15878"
+          ],
+          "meaning": "Iterates Unicode scalars, only LF0xa andCR0xd trigger segment append. CR followed byLF consumes both as one separator. Other Unicode newline scalars are ordinary content; empty interior segments are preserved."
+        },
+        {
+          "sites": [
+            "0x1a1589c..0x1a158f8"
+          ],
+          "meaning": "After loop unconditionally appends current segment, with no empty-text guard. Thus empty input yields one empty line, one trailing LF/CR/CRLF is stripped before splitting, and two final sequences leave one empty final line."
+        },
+        {
+          "sites": [
+            "0x1a15918..0x1a15988"
+          ],
+          "meaning": "Builds final24-byte source line array with incrementing1-based integer then content String; first stored number1, next2, etc."
+        }
+      ],
+      "source_equivalent_algorithm": [
+        "Take original source Unicode scalars. If suffix is CRLF, exclude exactly2 trailing scalars; else if suffix LF orCR, exclude exactly1; otherwise keep all.",
+        "Iterate remaining scalars; split only atLF orCR, treating adjacent CRLF as one separator; append empty segments as well.",
+        "Always append the final segment, even when empty. Assign line numbers starting1."
+      ],
+      "current_host_gap": "At initial inspection RemoteSourceFilePreview.nativeLineCount/range uses NSString logical line rules: empty0 and extra trailing line, with broader Unicode line separators. These are not equal to this now-closed source producer. Current host within-presentation mode retention is already deliberate; do not describe it as missing solely because cache identity is unresolved.",
+      "safe_product_decision": "Implement a separately named source-backed logical line map/count and use it for293 linked-line validation. Keep original contents/resource/share bytes unchanged; derive native UTF16 ranges against original text, excluding separators while preserving original offsets. Strip suffix only for the source line interpretation, not the whole document. Empty file line1 may have range(0,0). No invented syntax highlighting or font/insets follow from this producer.",
+      "correction_to_prior": "Previous fourth report correctly left VM.lines open; it is now closed. Its linked-line helper empty-array brk remains an observed low-level guard, but this concrete producer returns at least one line, so empty content alone does not imply that trap is reachable. Do not use safe empty-file handling to claim exact old NSString count.",
+      "vectors": "source-derived-line-vectors.json; expected static transcription vectors, not official execution evidence"
+    },
+    {
+      "id": 2,
+      "question": "Can the original old-state cache key/reuse be directly recovered enough to replace the host request-local reading state?",
+      "status": "partial_do_not_implement_guessed_key",
+      "observations": [
+        {
+          "sites": [
+            "0x18a061c..0x18a0654"
+          ],
+          "meaning": "Actual cache search copies several input values and produces an additional first key via1d7c7cc; semantic input type and key owner are not yet labeled. Do not name them fileID/account/thread based on shape alone."
+        },
+        {
+          "sites": [
+            "0x18a0658..0x18a0684",
+            "0x18a0688..0x18a069c"
+          ],
+          "meaning": "Reads owner field using runtime offset storageb1e81b8, obtains array count; entries are56 bytes with separate key fields and ReadingState pointer. Zero count follows the already-proved new-state path."
+        },
+        {
+          "sites": [
+            "0x18a06ac..0x18a0708"
+          ],
+          "meaning": "Matches first key using2ac9acc, an optional/raw pair, and optional object identity-or-equality via18a095c. Matching path preserves entry ReadingState x25; nonmatch advances stride56. This is not demonstrably just filename or request UUID equality."
+        },
+        {
+          "sites": [
+            "0x18a0734..0x18a074c",
+            "prior0x18a0754..0x18a07e4"
+          ],
+          "meaning": "Match reuses old ReadingState and skips its initializer; exhausted search allocates1a135b8/newMarkdown and appends. Existing mode should not reset merely because page rerenders."
+        }
+      ],
+      "unknowns": [
+        "Concrete parent owner of runtime cachefieldb1e81b8 and full input value type of18a0608",
+        "Semantic first key generated by1d7c7cc and equality2ac9acc; whether optional-key fields are resource revision/presentation/input settings",
+        "Cache eviction, clearing, account/host/task scope, page and process lifetime",
+        "Exact original raw/rendered ScrollPosition persistence application beyond prior linked-line proof"
+      ],
+      "safe_product_decision": "Keep current within-presentation retained readers and request-local identity as explicitly independent; do not introduce a filename-only or requestUUID-only cache and call it recovered. A future cache adapter needs explicit account/host/task/resource/revision scope, but that is design work, not established official schema.",
+      "precise_next_actions": [
+        "Decode actual18a0608 caller input type and1d7c7cc key producer, then verify optional equality receiver18a095c against metadata before changing cache ownership.",
+        "For per-mode scroll beyond current retained views, resolve actual ScrollPosition/offset setters of1a133c0 and parent lifecycle, not only declared fields."
+      ]
+    }
+  ],
+  "browser_boundary": "No third browser candidate opened after two groups. Existing offline WK host remains independent from original ManagedSafari/SFSafariViewController; no public-network fallback, original app runtime or browser service added. Prior exact policy/presentation unknowns retained.",
+  "haptics": "No new explicit haptic caller proved in these selected line/cache windows; no new feedback recommended.",
+  "source_snapshot": [
+    {
+      "path": "implementation/ios/Sources/FrontendFilePreview.swift",
+      "sha256": "f4dbc5d61fa8fd9a0aaab36f392889abfbe9c8dd06732925ba2419348a0d5dc6",
+      "note": "Snapshot at report generation; parent may be integrating concurrently"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteComposerInteraction.swift",
+      "sha256": "2de299e200f65a04604e054d5826b747c55d902dafc4c4866d15cc1d1e5143ba",
+      "note": "Snapshot at report generation; parent may be integrating concurrently"
+    }
+  ],
+  "bounded_stop": {
+    "groups_used": 2,
+    "product_changed": false,
+    "tests_or_builds": false,
+    "devices_or_official_runtime": false,
+    "services_or_attachments": false
+  },
+  "evidence_manifest": [
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/drop-argument-helper.asm",
+      "sha256": "2225b7e6c810ee1e8d7c5d6a16351fb74c4f9b4be38cb8fc1fb81ae22acecbdd",
+      "bytes": 411
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/drop-argument-helper.json",
+      "sha256": "b4ef7870b91016db6dd99730b2e408d69296128e98d14e3f08c8edeeb022bd92",
+      "bytes": 908
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/final-append-helper.asm",
+      "sha256": "e346f692c330872b0bb9c959bd0735bb3f3c97d224525e5b5367797e6a853cb1",
+      "bytes": 470
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/final-append-helper.json",
+      "sha256": "824308dc2b116c1d304233ada947afd2681ba7b8c07e421a9bab2dac2d2aa55c",
+      "bytes": 930
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/lf-literal.asm",
+      "sha256": "20158a63d7285c6b6325d597ef98dac814e9e5f56b8f040ffaabc7a3fdd2c85d",
+      "bytes": 437
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/lf-literal.json",
+      "sha256": "23680e49bac38dec9e37228ceb10391cd3c0f34fa5389301d2e65a5357f05522",
+      "bytes": 913
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/line-helper-state.asm",
+      "sha256": "294bdcb1a3746917a7f6017e2c3a0beb01ce35c8abfd47349d6a7b9fcd6859a2",
+      "bytes": 520
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/line-helper-state.json",
+      "sha256": "fb1d3ed460adc12f4535617c28bf15c082a3edb8f5e21108316f728e9b7d694a",
+      "bytes": 930
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/newline-drop-crlf-complete.asm",
+      "sha256": "5bb263fe8bbc9707078b627e003e9b20dae37ed2c4de90e05d936f1948402665",
+      "bytes": 2325
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/newline-drop-crlf-complete.json",
+      "sha256": "4fa89acedd6a92e9da99ba2796ec74e4bd7d4a65b8975cab2375f5cd75838359",
+      "bytes": 1592
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/newline-drop-one-complete.asm",
+      "sha256": "66ce9e18a245b8ca3ee2d344c00098a5660e3835198e75c4f6462772396ba439",
+      "bytes": 2928
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/newline-drop-one-complete.json",
+      "sha256": "119fcf77796e4696d4b79165feeb4ca5b12edfa8c19c1f61987115a0ca24c973",
+      "bytes": 1805
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/newline-normalize-cr.asm",
+      "sha256": "126dc798d0a738ad57361819908a9e0f5fa89d0ad04a23dc09b0d2d400fe6b0b",
+      "bytes": 821
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/newline-normalize-cr.json",
+      "sha256": "244b522091ba092c039364e4ffba0a0c7b4b470f02200d26fbfedaa0d741f30a",
+      "bytes": 996
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/newline-normalize-crlf.asm",
+      "sha256": "02dd4713292f8042bd2b23b9bbe4ba1e60fca43554857cdbee83945e5e12c4d9",
+      "bytes": 1451
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/newline-normalize-crlf.json",
+      "sha256": "b03055659ad377e90b791657aeff60fb92873a395b9b7cc9c8f1eb949f5a4561",
+      "bytes": 997
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/reading-cache-prefix.asm",
+      "sha256": "b4681f4c4db71eb4427c5806ec9b8f04c7c28f756d1a92ad8ced7bcdf06ba40a",
+      "bytes": 4993
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/reading-cache-prefix.json",
+      "sha256": "87cc22d82b171cf62c65254f6339bb137685a191e77aa72c449cfe4050668341",
+      "bytes": 3479
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/source-argument-helper.asm",
+      "sha256": "ffe4597c445cf81c74f2ec35eed34ef52ee0bbb997720b275ba2e47844476425",
+      "bytes": 498
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/source-argument-helper.json",
+      "sha256": "73976c6a11d3bfd9115e19b5d9b41ea4305ecbc10c25569a653d56c1888dd04f",
+      "bytes": 924
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/source-derived-line-vectors.json",
+      "sha256": "3ea6503740eb17b8734efcc1ac5ff1c00f29428ca925a380a6a37a7ee8d3b932",
+      "bytes": 1261
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/source-lines-element-type.json",
+      "sha256": "1469a50a9133a3336bdea72e6145a1975d9d4775a5503662ece31998314fab4c",
+      "bytes": 776
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/source-lines-producer.asm",
+      "sha256": "fdae388c066830101349e54ab4adf5458aa79c0e961b2c8b2e0f73492e200dbf",
+      "bytes": 14618
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/source-lines-producer.json",
+      "sha256": "13e5cc00b7054c67e7177b663145c231e81b479e4ea787f69e28dee9bfd61207",
+      "bytes": 12258
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/source-lines-tail.asm",
+      "sha256": "751eb50b5ec840992e39f33e960cfb681b3219bfe8de15b2065f93b8e5012cfe",
+      "bytes": 8143
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/source-lines-tail.json",
+      "sha256": "53443e4ecafd3ff6c48a9b755bcdd873f71bc8887038fa8d88bf6851749f31a7",
+      "bytes": 5410
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/suffix-argument-helper.asm",
+      "sha256": "e3f331b357c0de86ba46531372eb354d049e3024e6a7ce286ebe6a2ede031df7",
+      "bytes": 348
+    },
+    {
+      "path": "ios-files-preview-fifth-20261113-raw/suffix-argument-helper.json",
+      "sha256": "6959cd098dbbe8798167044295295ce37db383d5afd93ec4dca772adcc2d1092",
+      "bytes": 908
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "batch": "v516",
+  "date": "2026-11-07",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Thread title fixed height44 after Dynamic Type cap and iOS26 sharedBackgroundVisibility hidden.",
+    "Thread menu Section with task title header, base actions and conditional Changes/Files separated by Divider.",
+    "Original branch/folder/square-and-pencil symbols and Changes/Files translations.",
+    "Explicit fixture-A new-thread target opens scoped synthetic draft route."
+  ],
+  "evidence": [
+    "ios-remote-v516-title-layout-findings.json",
+    "ios-remote-v516-toolbar-menu-findings.json",
+    "ios-remote-v516-translations.json",
+    "ios-remote-v516-user-reference-index.json"
+  ],
+  "independent_adaptations": [
+    "showsChanges/showsFiles/newThreadTarget are explicit fixture capabilities; upstream official derivation remains partial.",
+    "Changes/Files preserve scoped disconnected-service failure; inspectors not implemented.",
+    "New-thread destination is existing independent scoped draft fixture; official captured owner context incomplete."
+  ],
+  "validation": {
+    "model": {
+      "status": "passed",
+      "log": "/tmp/rea-v516-model.log"
+    },
+    "ui_initial": {
+      "summary": "ios-remote-v516-ui.summary.json",
+      "passed": 1,
+      "failed": 3,
+      "causes": [
+        "Incorrect AX text height assertion instead of native title container.",
+        "Native Section rows expose localized labels but omit custom action identifiers."
+      ],
+      "retained": true
+    },
+    "ui_final": {
+      "summary": "ios-remote-v516-r2-ui.summary.json",
+      "passed": 3,
+      "failed": 0,
+      "runtimeWarnings": [],
+      "coverage": [
+        "Standard/XXXL title container44 and scrolling",
+        "A/B/A menu scope and rejected-action task retention",
+        "Chinese/English conditional menu, new-thread destination, draft return restoration"
+      ]
+    },
+    "physical_device": "not tested; simulator-only user instruction",
+    "test_only_followup": "Pinned-section test selector updated to native localized Unpin label after r2 compilation; that separate test was not rerun. No production code changed after tested build.",
+    "visual_review": [
+      "Chinese menu header, divider, six rows and original icons inspected in screenshot and live simulator.",
+      "Default short Chinese title still centered; left-alignment gap retained."
+    ]
+  },
+  "remaining": [
+    "Newer reference left-aligned short title versus iOS293 principal placement: parent/version boundary unresolved; no arbitrary left offset.",
+    "Official menu capability field names/owner derivation and Changes/Files downstream routes.",
+    "Official new-thread captured context and gate derivation.",
+    "New usage-error and attachment/keyboard geometry references registered only; not implemented or accepted.",
+    "Queued steer/cancel, settings consumers, attachment import/candidates, full material transitions, Chat/Work, haptics and independent Android."
+  ],
+  "preview": {
+    "status": "running",
+    "build": 516,
+    "pid": 72348,
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle_id": "local.rea.chatgpt.ioshost",
+    "language": "default system Chinese; no language launch override",
+    "screen": "Chinese fixture-A thread menu; approval fixture below",
+    "screenshot": "ios-remote-v516-default-language-preview.png",
+    "external_display": "not reverified this batch"
+  },
+  "retention": {
+    "schema": "rea-build-cleanup-v1",
+    "time": "2026-11-07T03:21:41.749655+08:00",
+    "apply": false,
+    "keep": [
+      "v172-r2-macos",
+      "v172-windows",
+      "v173-windows",
+      "v174-r4-macos"
+    ],
+    "targets": [],
+    "skipped": [],
+    "completed": []
+  },
+  "git": {
+    "committed": false,
+    "pushed": false
+  },
+  "source_snapshots": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "b0ceebb3b219763c4c8552e0491d3611d1321d6c839401a3886865a933957b27",
+    "implementation/ios/Sources/OfficialText.swift": "4caed179374785f171dcbeb0172a12fa11c4dd42c7d26cd8668e4602ecb9f0aa",
+    "implementation/ios/Tools/prepare-official-text.py": "7d79c62edbfe8c2ff10ac72148bf4d8341e5beec4d337285181ad898caf8bb5e",
+    "implementation/ios/Resources/OfficialTranslations.json": "574ace91e20cfedf2a1858d017537e10f3eb82d777fbfbf018e53f195142c20f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "823f97c3b022e748c2dd577ca9e62af117616606276f50772f6f4c3a70540f83"
+  }
+}

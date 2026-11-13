@@ -1,0 +1,124 @@
+{
+  "batch": "v498",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "no progress: status report only; revalidated current source, receipts and running simulator before continuing",
+  "integration_decision": "Determine membership, header variant and new-thread destination for Recents/no-workspace before adding them to the live list",
+  "evidence_type": "official artifact static metadata and ARM64 instructions; no original target execution",
+  "findings": [
+    {
+      "offset": "0x3372f4;0x3373ac..0x3373c8;table0x7ceb610",
+      "conclusion": "Projection receives CodexRemoteThreadListGrouping and TaskSection.Item. Four-way dispatch is raw0/2 to0x3373cc, raw1 to0x337494 and raw3 to0x3375cc. Metadata names priority/byWorkspaces/chronological/byRemoteHost in that order. Name-to-tag mapping remains an ABI-based inference pending an explicit producer/raw-value check."
+    },
+    {
+      "offset": "0x455f18 ->0x25d3ea0 ->descriptor0x95d1770;0x3374ec..0x337508",
+      "conclusion": "Working-directory branch reads CodexRemoteTaskListItem metadata slot+0x50, bound to workingDirectoryPath, not title or projectID. Nil second word goes to No workspace label; nonnil path uses string predicate0xf87cc before continuing. Full string-predicate semantics remain unresolved, so whitespace policy is not asserted."
+    },
+    {
+      "offset": "0x3374c8..0x3374e8;0x337744..0x33775c",
+      "conclusion": "A specific host representation with tag byte2 and zero payload bypasses no-workspace handling and calls Recents constructor. Host metadata includes slingshot/ssh/cloud; this branch matches the no-payload cloud representation. Host-kind construction remains independently version-bound."
+    },
+    {
+      "offset": "0x337728..0x337740;0x2acd760..0x2acda48",
+      "conclusion": "A nonempty-path branch may also enter Recents if0x2acd760 returns true. That predicate examines path components including Codex and Documents and additional component/count checks. Its full accepted path grammar is unresolved. Thus nil project/workspace alone cannot reproduce Recents membership."
+    },
+    {
+      "offset": "0x337210;0x458d9c;0x464c14 ->0x3e0a60;metadata0xa572e18",
+      "conclusion": "Constructor input is CodexRemoteHostIdentity, proven by copy helper metadata descriptor0x95d1538. It constructs a new-thread target from this host and zero-initialized directory/project storage. It does not simply copy a fully supplied new-thread target. This refines the v497 description."
+    },
+    {
+      "offset": "0x332930;0x332b24",
+      "conclusion": "Two additional Recents calls occur in the larger section producer. One follows host inclusion helper0x2d1644 and a nil projectID read at metadata+0x58. The second uses a host candidate collection and existing-section checks. Their host arbitration/merging policy is unresolved; do not choose first or active host based on screenshots."
+    },
+    {
+      "offset": "0x33729c..0x3372b8;0x399fd4..0x39a020;0x39cf18..0x39cf38;0x39d4b0..0x39d520",
+      "conclusion": "Recents descriptor ID is empty-case payload2/tag6. It reaches common header and selects kind2. Pinned selects kind0. Existing header evidence shows kind2 uses expanded-chevron fade behavior, so the two headers cannot share all presentation flags."
+    },
+    {
+      "offset": "0x32a614..0x32a654;0x3372c8..0x3372d8",
+      "conclusion": "Recents supplies no project folder icon and has a host-scoped new-thread target. New button routing must retain this target separately from displayed title and global section identity."
+    }
+  ],
+  "confirmed_checks": [
+    "artifact SHA256 matches frozen293",
+    "4-entry grouping jump table decoded with bounded reads",
+    "host/target copy metadata descriptors independently resolved",
+    "workingDirectoryPath and projectID metadata slots bound separately"
+  ],
+  "errors_and_limits": [
+    "Initial conformance witness read rejected non-null pointer outside fixup segment. Focused reread shows all three selected witness relative fields are zero; no witness/tag semantics inferred.",
+    "Adjacent ADRP/ADD search for grouping value strings returned no hits. This bounded pattern does not establish absent consumers.",
+    "Section membership and host selection remain partial. No official runtime or new UI acceptance asserted."
+  ],
+  "changes": [
+    "Finalized v497 actual test/build/install receipts and preview screenshot",
+    "Recorded Recents/no-workspace projection, header variant and host-target input boundary"
+  ],
+  "current_runtime": {
+    "simulator": "v497 preview checked and retained",
+    "physical": "v496 latest successful install; rechecked iPhone unavailable, v497 signed build pending install",
+    "new_build_this_batch": false
+  },
+  "remaining": [
+    "Resolve0x2acd760 full path-classification predicate and direct grouping-tag producers",
+    "Trace0x3327f8 host filtering and0x332978 host-candidate/existing-section merge before selecting Recents creation destination",
+    "Integrate distinct recent/noWorkspace section identities with correct header kind and host-scoped new-thread target",
+    "List cloud, Projects superheader, search/mode and fixed composer",
+    "Remote full message rendering; Chat/Work; haptics; feedback ledger; independent Android recovery"
+  ],
+  "next_minimum_action": "Close path classifier and multi-host Recents target policy, then integrate the supported recent/no-workspace slice with filter/collapse/new-thread/return regressions",
+  "cross_platform": "No Android equivalent proved. Keep iOS metadata offsets and native header effects platform-specific; independently designed service contracts may carry scoped host/workspace/section identities.",
+  "public_source_reference": {
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "record": "analysis/upstream-codex-20261105/reuse-map.json",
+    "limit": "Existing bounded upstream inspection did not establish published mobile UI implementation"
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-grouping-conformances.json",
+      "sha256": "33309789138d8282287a8ef49e36263c466d21600ef070d2876378cedb1dfb22"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-grouping-metadata.json",
+      "sha256": "cd0e75a4c6ccec8373ee4553092a78fdc5f0df2428c75ff1f7f46d83c7e04b68"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-grouping-strings.json",
+      "sha256": "6ceb61e3e4ca6901f3a66eb5a6b96ed55b88ddb5bcdaa125081cd0e27fee86b8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-grouping-types.json",
+      "sha256": "78be9c250cc9a2d8f2c328b79ecc9df7da2ac122f4d764222e7bacb5c81b6a01"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-grouping-xrefs.json",
+      "sha256": "3a5316f9efcb0a2e5727e00410f0b24e5bd4933bdee7ae9f9cc6ea8dfd2cf6fd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-host-identity.json",
+      "sha256": "143e1efb6fe71aa6a300b0171dd95636db21af1ffebb7267b5eaa7d1718dfc5e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-projection-helpers.asm",
+      "sha256": "82d27ce484ec3aa0f9b8d05d291d45f32b70483f564a19259436288f213e1335"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-recent-callers.asm",
+      "sha256": "06b0ec6664bd31aa9fb3a59b9dbd03e1999ce51b71fbd83fe863da2dc48dc3f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-recent-header.asm",
+      "sha256": "d2c0fbcefddb21c88fc4bd789415a9f6b7eab39645b98e993650834603fc42d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-thread-fields.json",
+      "sha256": "aa4e73609b704fd802040bdb70ce697d818ce88c446245dec3307a4a052ebdf0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v498-workspace-predicate.asm",
+      "sha256": "983db63c89be2a95cec41d86d51c5d0900e5cb62d734cb6df4c74d41aa4e9a68"
+    }
+  ]
+}

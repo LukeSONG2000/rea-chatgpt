@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "module": "2 Settings topology/entries third pass bounded audit",
+  "status": "no_new_core_topology_gap_found_in_selected_legacy_branch",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "Topology and entries only, per user boundary. No new settings child behavior, account service, production mutation or build.",
+  "source_reports": [
+    "ios-settings-topology-entry-current-20261112.json",
+    "ios-settings-fixed-close-20261112-findings.json",
+    "ios-settings-plugins-entry-20261112-findings.json",
+    "ios-settings-signout-detail-20261112-findings.json",
+    "ios-auth-account-parent-20261113-findings.json"
+  ],
+  "current_source_review": [
+    {
+      "area": "selected root",
+      "finding": "Explicit legacy profile/upsell, Customize, Account, one shared Theme group, appSettings, help, common SignOut; no ConsumerIdentity branch merge."
+    },
+    {
+      "area": "close/back",
+      "finding": "close-settings remains topBarTrailing in outer NavigationStack, outside settingsContent ScrollView; destinations use typed navigation with returnable unsupported pages."
+    },
+    {
+      "area": "customization",
+      "finding": "orderedEntries with independent memory/showConnectors capabilities and complete Apps/Plugins label/icon choice; not a direct jump to unrelated directory."
+    },
+    {
+      "area": "conditional/account",
+      "finding": "Password/ads use explicit positive capabilities; account phone/age details remain separate supplied inputs; no always-visible multi-account switcher added."
+    },
+    {
+      "area": "theme/haptics",
+      "finding": "Appearance and accent share settings-theme-group. General owns persistent haptic toggle; root has General destination rather than root-level switch."
+    },
+    {
+      "area": "profile",
+      "finding": "Module10 source-proven editProfile opens separate incomplete sheet; visible fields/save are not invented."
+    }
+  ],
+  "retained_limits": [
+    "Actual account/experiment assignment and alternate ConsumerIdentity root",
+    "Exact original material/geometry/typography and close placement policy",
+    "Connectors management root and deferred business handlers",
+    "Unknown child forms and service capabilities remain explicit unavailable routes"
+  ],
+  "verification": {
+    "current_source_inspected": true,
+    "new_ui_run": false,
+    "reused_recent_ui": "ios-shell-parent-20261113-r1.xcresult/testPrimaryVisualSurfaces (40.269s) covers current ordinary Settings/profile close and Chat return, not all topology branches",
+    "historical_fuller_checks": "ios-settings-entry-20261112-current-r1.xcresult topology branches/fixed close are historical, not claimed rerun",
+    "new_build": false
+  },
+  "next_major_module": "3 Remote list",
+  "date": "2026-11-13T03:43:44.148708+08:00",
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "d10f137f879488549f634b63a6aebb999fbe186664327eeee9aa7752664c1c6c"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendSettingsTopology.swift",
+      "sha256": "3f27d6f78c58ad703865f0a7844cab1cbee8bc4059a9f6e4efcf848922dbaea8"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeFrontendAuthentication.swift",
+      "sha256": "6cbe5fb07eed2416e0210abde53c55fef969c388307f82e603a98e804bfbae33"
+    }
+  ]
+}

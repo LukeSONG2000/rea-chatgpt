@@ -1,0 +1,109 @@
+{
+  "version": 527,
+  "status": "partial",
+  "official_baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_reports": [
+    "ios-remote-v526-model-advanced-findings.json",
+    "ios-remote-v526-advanced-settings-style-findings.json",
+    "ios-remote-v526-model-options-findings.json",
+    "ios-remote-v527-model-legacy-entry-findings.json",
+    "ios-remote-v527-advanced-title-display-mode-findings.json",
+    "ios-remote-v527-slider-lifecycle-supplement.json",
+    "ios-remote-v527-model-localization-mapping.json"
+  ],
+  "recovered": [
+    "NavigationStack grouped Form medium detent",
+    "Inline navigation title display mode from bound import",
+    "Model and effort section; optional separate speed section",
+    "17 official localization keys, 143 total, 65 locales"
+  ],
+  "independent_adaptations": [
+    "Explicit --remote-model-advanced-fixture auto-presentation on entering task; ordinary slider route pending",
+    "Per-task in-memory synthetic model capabilities and selection",
+    "Fixture model change picks first effort and speed; no official transition policy asserted",
+    "Native Picker tag rows, partial shared settings style and Bool presentation",
+    "Advanced title callback displays pending quick-slider transition notice"
+  ],
+  "validation": {
+    "ui_passed": 3,
+    "ui_failed": 0,
+    "runtime_warnings": [],
+    "ui_result": "ios-remote-v527-r3-ui.xcresult",
+    "model_log": "ios-remote-v527-model-final.log",
+    "r1_failures": "Two Picker assertions used empty native accessibility value; label assertions match actual row representation. Original logs retained.",
+    "r2": "Two advanced UI tests passed before inline correction",
+    "r3": "Two advanced UI tests plus permission regression passed after inline correction",
+    "bundle_version": 527,
+    "signature_verified": true,
+    "preview_pid": 25944,
+    "preview": "ios-remote-v527-preview.png",
+    "preview_language": "system-following Chinese",
+    "preview_observed": "Native Device Hub window visibly displays Advanced form with three controls",
+    "display": "built-in Color LCD only",
+    "device_install": false
+  },
+  "remaining": [
+    "Quick slider ordinary entry, gestures, blur and haptics",
+    "Return from advanced to slider",
+    "Drag indicator parent configuration",
+    "Complete inherited style and model title normalization",
+    "Authoritative server state, failed writes, restart persistence and stale-model callbacks",
+    "Dictation",
+    "Chat/Work and Android remaining scope"
+  ],
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RemoteAdvancedConfiguration.swift",
+      "sha256": "b1c592ff805d5f95431529180a5c2bb42a61349faa7e4dbdf749725417bff016"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteModelSliderConfiguration.swift",
+      "sha256": "467b3967db58bbc0653fe98d2fd70d0aa46cbb96c96016670ff4a6a9804dbfd4"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "e1ff74832e7c237279b39d885be822478c57c0683346c3e198d0d3e15cf5c08d"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "aa649d1cfbd14bd31cf04ba5dc075455ee946b74e0f2b69f7e82fb9e2265e6f8"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "40372936088d62d511a3a88b0dc99fe242666a58c98a42eaa337051e28c92a59"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "23b927f6ba79fd0b5158a6246e71e6d3590bb52f5a69e510f9a620da14a7503d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-advanced-findings.json",
+      "sha256": "8f0d72d6f10a842dbce10b6503a8055959f0028cd790571ec83bc3dd2d00eb14"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-advanced-settings-style-findings.json",
+      "sha256": "79ad537afd4b99c4b8c425ccf32b4d0cc0b3aecb0b521afe6fc4e099540d7633"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-options-findings.json",
+      "sha256": "08d095d4906e6a2265607eb56635e0dfe1eb55045119d2bbfa864d053667ef1e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-entry-findings.json",
+      "sha256": "25d88ae3bfde71c7b95099290bfb679a5ef04b7800971f990bbe1e8750611098"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-advanced-title-display-mode-findings.json",
+      "sha256": "ea94943b296a6336c7a1d1b67e3feae046c8fc8bb128081cb9ab514be63e0201"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-slider-lifecycle-supplement.json",
+      "sha256": "68762e702b33d91f6c6a2eef7dfb314ab878f066f4cec5fcfad47966ce3f51cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-localization-mapping.json",
+      "sha256": "b23eca39a9893dfbfd9de595ba5dd36dc4f5c0774233d429840f72c37219da07"
+    }
+  ]
+}

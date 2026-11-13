@@ -1,0 +1,568 @@
+{
+  "schema_version": 1,
+  "slice": "v531 ordinary Remote dictation visual assembly",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": "Read-only bounded arm64 disassembly, Swift field metadata, imported symbol resolution and retained v510 evidence. No official app, microphone or network execution.",
+  "findings": [
+    {
+      "id": "V531-S01",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x95ad7bc",
+        "0x7e1ab90",
+        "0x1991e80",
+        "0x19917ac",
+        "0x1cecc9c",
+        "0x1991960"
+      ],
+      "conclusion": "CodexRemoteWhisperComposerFieldRow has whisperComponent, generic waveform, _hapticEngine and _horizontalSpacing. View witness tail-calls19917ac; centered HStack uses resolved scaled horizontalSpacing and builder1cecc9c→1991960. Final frame is minHeight44, other optional frame constraints absent at this call. Row gap base value is unbound.",
+      "limits": [
+        "This establishes the row itself. Which presentation states instantiate it must follow the owner report and original parent, not screenshots."
+      ]
+    },
+    {
+      "id": "V531-S02",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1991a20",
+        "0x1991a38",
+        "0x1991a4c",
+        "0x1991b28",
+        "0x60711b4",
+        "0x60b14a4",
+        "0x96cad30"
+      ],
+      "conclusion": "First optional row slot constructs MessageInputAccessoryButtonPart at60711b4. Type accessor60b14a4 directly names descriptor96cad30. This is not MessageInputWhisperPart. Presence follows component protocol+0x78 result and comparison helper458028; exact optional discriminator is left to owner. Constructor receives isDisabled=false,isSelected=false, iconAnimationEnabled=false; other state bytes are protocol-derived.",
+      "limits": [
+        "The derived accessoryType and its actual glyph remain unbound. Do not infer x glyph solely from cancel action or screenshot."
+      ]
+    },
+    {
+      "id": "V531-S03",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1991b34",
+        "0x1991b84",
+        "0x1991db4",
+        "0x1991de0",
+        "0x1991dec",
+        "0x1991e0c",
+        "0x1991e58"
+      ],
+      "conclusion": "Only accessory subtree receives MessageInputStyle transform1991db4. Metadata vector begins+0x10. +0xf0 index56=minHeight is set32. +0x58 index18=attachments is copied; child byte offset+0xa0 is replaced with color factory6071160, +0xa8,+0xb0,+0xb8 cleared. +0xd8 index50=glass receives qwords0,1 and trailingbyte0.",
+      "limits": [
+        "Do not apply the accessory minHeight32 as whole row or capsule height. FieldRow has independent minHeight44. Attachments child +0xa0 symbolic field and glass enum meaning were not closed in this slice."
+      ]
+    },
+    {
+      "id": "V531-S04",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6071160",
+        "0x610f31c",
+        "0x607fc64",
+        "0x74f16f4",
+        "0x74f1720",
+        "0x8a52ae0"
+      ],
+      "conclusion": "The accessory override color resolves via6071160→610f31c swift_once607fc64→74f16f4 to ColorResource named OneOff/UserMessageBackground. It is resource-backed, with bundle resolution in the factory.",
+      "limits": [
+        "This identifies semantic resource only, not RGBA or exact material compositing. Child field meaning remains unbound."
+      ]
+    },
+    {
+      "id": "V531-S05",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1991ba4",
+        "0x1991bc4",
+        "0x1991ce0",
+        "0x1cecca8",
+        "0x1cecd60",
+        "0x1992240",
+        "0x1992260",
+        "0x1cecd00",
+        "0x7656724"
+      ],
+      "conclusion": "Trailing row uses MessageInputTrailingButtonsPart ctor606e088, independent microphone and primary closures. Microphone closure checks component protocol+0x88 raw8 and omits it for that optional-nil value. Both standalone microphone body1992240 and row microphone builder1cecca8 supply ComposerWhisperTemplate.ViewParams raw5 codexCollapsed, with associated closure payload slots nil.",
+      "limits": [
+        "Component+0xc0 and+0x98 conditional composition remains distinct from simple microphone optional presence. Do not show stop and send unconditionally across all states."
+      ]
+    },
+    {
+      "id": "V531-S06",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x16ea054",
+        "0x16ea0e8",
+        "0x7decccb",
+        "0x16ea44c",
+        "0x16ea62c",
+        "0x16ea650",
+        "0x16ea660",
+        "0x16ea744",
+        "0x1767ab8"
+      ],
+      "conclusion": "Retained shared ComposerWhisperView jump table maps raw5 to16ea44c. Because caller passes no associated payload, OR of x26/x27/x28 is zero and flows16ea62c. It fetches microphone state via defaultPresentation→protocol+0x88, returns empty on raw8, otherwise constructs MessageInputWhisperButtonPart. The nonnil-payload branch16ea458 is not the row caller used here.",
+      "limits": [
+        "Raw5 codexCollapsed must not be merged with generic MessageInputWhisperPart6073980 or ComposerDictationWaveform16e8024 purely by similar name. Stop glyph and state-dependent label body still require the selected MessageInputWhisperButtonPart leaf."
+      ]
+    },
+    {
+      "id": "V531-S07",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1991e84",
+        "0x1991f2c",
+        "0x1991f48",
+        "0x1991fb0",
+        "0x1991fc0",
+        "0x1992048",
+        "0x199205c",
+        "0x606955c"
+      ],
+      "conclusion": "CodexRemoteWhisperPrimaryButton uses component primary-action state, then constructs shared MessageInputPrimaryButtonPart at606955c. Ordinary send/loading/retry/settings action projection is stateful. Observed mapped icon values are0,8,9 with elevatedPresentation raw3. It adds accessibility Text and provider-driven enablement/haptic modifiers after construction.",
+      "limits": [
+        "Exact icon enum semantics, localization call1233300/462794, and retry/settings action discrimination need separate closure mapping. Do not replace this with an always-enabled send arrow."
+      ]
+    },
+    {
+      "id": "V531-S08",
+      "validation": "verified_static_cross_agent",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1cecee4",
+        "0x1ced21c",
+        "0x1783d18",
+        "0x5c358f4",
+        "0x96b1c68"
+      ],
+      "conclusion": "Owner agent independently bound the dispatched event to ComposerWhisperStateEvent. Accessory callback1cecee4 payload2/tag7 is cancelRecording. Primary callback1ced21c capturedBool true payload3/tag7 is retryRecording; false tag1 carries finishRecording(autoSend:true). This corrects the raw file label primary-action-send, which includes retry.",
+      "limits": [
+        "Finish-trigger optional payload remains opaque. Event dispatch is established; draft rollback, delivery or transcription behavior is not accepted by this visual slice."
+      ],
+      "cross_reference": "ios-remote-v531-dictation-owner-findings.json"
+    },
+    {
+      "id": "V531-S09",
+      "validation": "partial",
+      "evidence_type": "static_inference",
+      "offsets": [
+        "0x16e8024",
+        "0x16e80c8",
+        "0x16e80e8",
+        "0x16e8140",
+        "0x6073980",
+        "0x6072440",
+        "0x6072b48"
+      ],
+      "conclusion": "Several shared waveform views were inspected as candidates. ComposerDictationWaveform uses a round-capped StrokeStyle lineWidth2 and AudioWaveform ctor6ecdbf8, plus accessibilityHidden(true). These are candidate leaf observations only. The row generic waveform producer was not closed, so these constants are not an ordinary Remote implementation specification.",
+      "limits": [
+        "No use of screenshot-measured dimensions, arbitrary dot counts, static/synthetic waveform as restored audio behavior, or general WhisperPart style substitution."
+      ]
+    }
+  ],
+  "implementation_readiness": {
+    "safe": "Provider-backed projection and structural row contract may be represented independently, using the action/projection owner report. Existing v530 app can remain the review target.",
+    "not_ready": [
+      "Full source-faithful visible dictation row",
+      "Waveform samples/geometry/color/animation",
+      "Stop leaf glyph/body and state-specific accessibility label",
+      "Recording transition and outer capsule/layout changes"
+    ]
+  },
+  "minimal_next_evidence": [
+    {
+      "target": "Row generic waveform producer",
+      "entry": "Only direct BL callers of row metadata accessor1c7dc7c are19919f0,1cece7c,1cecefc. Resolve generic producer/metadata around1cece7c and parent field builder; do not scan unrelated waveform implementations."
+    },
+    {
+      "target": "Selected microphone label",
+      "entry": "Continue the nil-payload codexCollapsed branch16ea744→MessageInputWhisperButtonPart1767ab8. Resolve concrete body active/stopped branch and inherited attachments style, then glyph plus localized label consumer."
+    },
+    {
+      "target": "Local accessory styles",
+      "entry": "Bind attachments child byte+0xa0 from1991e10 and glass payload(0,1,0) from1991e68 to known metadata/default constructors before applying background or material."
+    },
+    {
+      "target": "Transition",
+      "entry": "Trace owner presentation switches into FieldRow independently of shared generic expandable controls already covered by v250/v251."
+    }
+  ],
+  "corrections": [
+    "Raw evidence filename whisper-ctor60711b4 denotes MessageInputAccessoryButtonPart.",
+    "Raw filename cancel-label1991db4 is an environment style transform, not a label producer.",
+    "Raw filename mic-simple-body16e8974 was an exploratory candidate and is not accepted as the selected Remote body."
+  ],
+  "user_reference": {
+    "index": "ios-remote-v517-controls-user-reference-index.json",
+    "role": "Runtime visual reference only; screenshot version not established as1.2026.293. Personal host/thread/model names are not defaults."
+  },
+  "validation": {
+    "production_edits": false,
+    "tests_or_builds": false,
+    "official_app_execution": false,
+    "microphone": false,
+    "network": false,
+    "claimed_visual_acceptance": false
+  },
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-accessory-body.asm",
+      "sha256": "2c930a76bd7c02b64e5eb8f13faf6765f1ba8e2a3fdde1f0e4f4b892729c5372"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-accessory-body.json",
+      "sha256": "c8fb81b0ff76c1cc2eb1e1741eba36c06503bdecab29f07d851d6fc39bb94910"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-accessory-call-helper.asm",
+      "sha256": "1b217d21f1d85748091b22f4888bb0301a179d93b283aa72edc0707f40181571"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-accessory-call-helper.json",
+      "sha256": "0c464a5f3a62f15b7c4ae3b61881a7fedea60deece9b97749afff12349430cdf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-accessory-label.asm",
+      "sha256": "5c96ace187bfaac6b19bd92cbef4fb604d56d7f545718fd5ac4e87baa09e19e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-accessory-label.json",
+      "sha256": "167c8fc580c145356872b6f74f17ae41c5442fc13eb157df066a4c52022e7c38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-accessory-witness.asm",
+      "sha256": "9051534ddc55e2f261a2205658fc8fb81e89be09901c3336b3492617f24aecce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-accessory-witness.json",
+      "sha256": "ea66878b61a8e2ffc7d22d86fdd6728f0e6432794df065e35b0bfe87a95162fd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-attachments-background-default.asm",
+      "sha256": "a8166f883fdbb30c27be7cb5f70fca0a9a74d7807bd22967b6c262a79c4b20b3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-attachments-background-default.json",
+      "sha256": "96bf7c1fcab8665c99162cf28e7b4d4e1c80b654e0360e20556243fab5b04699"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-attachments-background-init.asm",
+      "sha256": "a8166f883fdbb30c27be7cb5f70fca0a9a74d7807bd22967b6c262a79c4b20b3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-attachments-background-init.json",
+      "sha256": "96bf7c1fcab8665c99162cf28e7b4d4e1c80b654e0360e20556243fab5b04699"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-cancel-label.asm",
+      "sha256": "93a012330a7ade287786994176fa3620a1c323e708f1e6fb85d58ad14d1d70f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-cancel-label.json",
+      "sha256": "6347de2379186deca6661cb562c3a7d2e29c038a8f50a5bf2ad501bd75ef84d4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-collapsed-simple-type.asm",
+      "sha256": "32d5696d31d18448ce52bf6934f4207ede66960723424000c1d741db42bfb60c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-collapsed-simple-type.json",
+      "sha256": "4c8e493ef31650d79668317d9956285efc8cfcc8ea24e1f204e09c8019364c1d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-color-factory.asm",
+      "sha256": "495bb841362dee7c326bf8a5a80b83bd524c745a40b45b9ff65fafe7c6038779"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-color-factory.json",
+      "sha256": "18f5c21cb913d0a255cebf98599a2f54166f6ab6d110cb52f03214fa2434385d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-composer-waveform-body.asm",
+      "sha256": "5b92d0a841edacf669903875ec2ebfacea15aca6194cbba6ebde147eeebd5446"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-composer-waveform-body.json",
+      "sha256": "b3e03defda91c4e0cea67a720aff6073f6256d87f234a703d9c266dca316b847"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-composer-waveform-witness.json",
+      "sha256": "6da21ba47d964f7c6a1bc779eab542be6b3549776a4317273bb428948baa13d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-composer-waveform.asm",
+      "sha256": "ea42f757c50f5ff5c38434225e52c6c9739018983a13449a6375efdc8c6bdd6a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-composer-waveform.json",
+      "sha256": "082278b59a722b12b109e20593df325f05491073b125e1218202ed8204fa3413"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-extra-metadata.json",
+      "sha256": "82e66aae557fd1cc78c63874c0a780236e3cb1658055a34afa2696e8fdfc648a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-frame-call-helper.asm",
+      "sha256": "c098c40005e5dbaf73fbb8386a058d61a4375429bfc2d8093c20dabd3ea06608"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-frame-call-helper.json",
+      "sha256": "6acf692d144d7647d4b77cd479ebf15623eea5acb7fc496884275b1599ff0752"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-leaf-metadata.json",
+      "sha256": "3a72c871dd31f95fb942f321645fb9621033f7f43dbecbe76263ff7ba4f8a135"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-mic-body.asm",
+      "sha256": "c5a59f08c7c53047df347346ffa75855a053ed068451ef68e0f05ebddf7d3dcd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-mic-body.json",
+      "sha256": "73bcdd5c4f38154ef64652bd295d234ff1ec552a4189e0ac9b07f544e2271f8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-mic-simple-body.asm",
+      "sha256": "bcaf63de1a0a94275e6eec3a6af6fb6e12a43134855ab32b9f4c7ab8b3beb565"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-mic-simple-body.json",
+      "sha256": "b183750f72f85266846e0be48060b05fa7f96ad7645362a8ace1d3839ccb0328"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-mic-witness.asm",
+      "sha256": "08bb4423454973a2e8f27fa86d3c6e4d13eb94eb00b1f52579756b14118a116a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-mic-witness.json",
+      "sha256": "73574ed071ff9266ec63a2cf132c26d507968e92c833025a6c2eb37dea3b7ebe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-min-frame-helper.asm",
+      "sha256": "cd5a8acba3bfe4aa3d691f6c74bcdaf9270110b34a1a1b79075a7a88fad362a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-min-frame-helper.json",
+      "sha256": "f4cc812989fbbbfb0dad77830de97f571462e496351637076934e3e07a483bb2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-part-body.asm",
+      "sha256": "7a7cf56e4fd14446c19e20fd40cf6883a3c501161ea55b66870b4913e3394bff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-part-body.json",
+      "sha256": "abffcf2484fa58ef33e101e46cff9d5bcb75b428528f2b646fb4941cf7e300bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-part-color.asm",
+      "sha256": "94a75f85ba62c07f3c8fa5667a8fa3f145f8da12f245ae1658794b7faddf7175"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-part-color.json",
+      "sha256": "fe6f474e3d7c323967d65ab9a12f85218a0cfee13f2963258a0559bd25a53e1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-part-witness.asm",
+      "sha256": "36fd5b8dc255c5ea04148f505269c67ebcf82dae4df2849c0df49a98b9b929d8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-part-witness.json",
+      "sha256": "f2f70e164bf82a39df2f87befee4c0f90dfa005d133675dda32e4efde74bb9ce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-action-send.asm",
+      "sha256": "cd16250e3149ddc9a56cbd08f617c4ca45d6b0a3d2f3159be3e1fdc2268790f4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-action-send.json",
+      "sha256": "89ba259f7f56523a5cbeeddf9ae057b829f647ecaac601b0eb30b00f926a22a0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-action-settings.asm",
+      "sha256": "74df342ce19681d52ec90e7c7274e155d2c1990246c2ea13961c21322c8268a1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-action-settings.json",
+      "sha256": "a7c72a7edb18b66507e07b1c5ea87d060273bef0a3c46f1ca4f15f4a3c928671"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-body.asm",
+      "sha256": "2e92aef4832a7514a37639b88307331419ed34425bce63da07c920a704d19117"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-body.json",
+      "sha256": "4e6997c4ecee2a2eec991c2d744ee0737ef472079fc3e3aa968d0db2baf5747a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-send-icon.asm",
+      "sha256": "fb9c3c7276de9bdbce7cc7d9c96a77f62d0a6a831018d06f680134293323a51e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-send-icon.json",
+      "sha256": "d03469e22a89d314fdb322f97c111cc69bd80c36ce97546480e4e1922938350f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-witness.asm",
+      "sha256": "c0cb137a4d849326212ff45b7e8f1e22e699a44d69c649c61aedd29c507b4a46"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-primary-witness.json",
+      "sha256": "2af36f3b21a3efbeff0884a5672bb4eab45389faeb90c0a9f67f0dc276108f02"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-recording-button-background.asm",
+      "sha256": "1c5c0790f5658f9498c9351b380563faabc838a5dbeaad8f1c81cef04153a8f0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-recording-button-background.json",
+      "sha256": "8db1d4e8c7a343c3084e26be6a20b48a3809638b80cbff4a49d0f568dc42a4e6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-body.asm",
+      "sha256": "5502c22dfe4652d74361618b0f239fc4d21246effafc50986b18939d930a209c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-body.json",
+      "sha256": "9143aee35b430adfc630f6f8a1f84753d117f023f723029ae44c5ba0b5a3404f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-builder.asm",
+      "sha256": "dcd87286cf3980d87ec3e294cbc0e908e3df9f1d637482ebe5664bfa3e72f78d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-builder.json",
+      "sha256": "1b7613c99bd231901edf5d4d4325b1b01a5588603f129f1ecb4b1b95de45f38b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-cancel.asm",
+      "sha256": "50aebfeaecacf2e0498a799e22f4be6b8aef26dfd2d140439f57e8a8268fc7e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-cancel.json",
+      "sha256": "23bdc1f0dd5c99274cda287649ff98c397022e2f5ae48410f3967b8ac5d0c776"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-content.asm",
+      "sha256": "31370ada5edd42d12c40a8498d50e4fcfca75ba5403f8af006a47b6f858fb76a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-content.json",
+      "sha256": "348dd17d3f37120f57a61a08082317d4a25eb8eb73a50e57e643752e86e6e863"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-frame-helper.asm",
+      "sha256": "d55c62615858a3b2bb2feb01d59fe8596c80fe5f08b748ae7896c14d58bc763d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-frame-helper.json",
+      "sha256": "479e10a22142c5b3038f2084116b3bc27dd1e41b16e6abb6aa127d7410e78980"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-metadata-callers.json",
+      "sha256": "a583151cd5b63b6df9d3c0d1a0b465be084b1e835c078e426274754458f57df4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-trailing-mic.asm",
+      "sha256": "6cae47cc51048970ad9239f85bb75bce4645d69cfda8830d1fd781b349f19fa2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-trailing-mic.json",
+      "sha256": "8ff4fc6b3218476d35db267385f75a5101671841d7227bab83aea89306653746"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-trailing-primary.asm",
+      "sha256": "00ac379e9d88f371783d2608fc4049fafa5d15bd6f8e8098574902358820d73a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-trailing-primary.json",
+      "sha256": "ff51cffad853c53f5209fcbf6b43f941aa96321e23c3ededebd6194aa0d21083"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-witness.asm",
+      "sha256": "630f803ef20de4e075d3a1cb32855434f008c8a2bdc4f47c9d48aba7ec4b246d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-row-witness.json",
+      "sha256": "8c1de7fb90897cb231058f16327f536ac64775678b7452f33a717dc007008e95"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-shared-ctor-type.asm",
+      "sha256": "89a78e33a41ba5c84078278c57f9979eb0bee89653bb62b2ea130341b1104486"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-shared-ctor-type.json",
+      "sha256": "73f9140af4edf786c79f901d6b393fa23c355f92610ee11ea090aadf359eeb4f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-streaming-body.asm",
+      "sha256": "9c7f6771b6c471bda9f2a2a53dcccf5c69ccbb800d5edb060b15a5fc953cd7f0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-streaming-body.json",
+      "sha256": "a626dc03cb3700d8178cbd909e176b279588a85380e02a71a728e9caf6d5f87d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-streaming-witness.asm",
+      "sha256": "3be838fa5e8c90218e446f2c0249d2c1e8fbb05b13c5a5816ab0a23e4c70ac92"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-streaming-witness.json",
+      "sha256": "75efd4f25c764ed5cae1bd8348ca3f02fdb3f1c533cec61e3854c1b242d4dae1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-style-sub-copy.asm",
+      "sha256": "d58786f1a56dcffbda6aaf3020501960aba5d2d26c02e04f4f2d65b6497787db"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-style-sub-copy.json",
+      "sha256": "31036d0acdd8506eee8bb7f9fe6f4e8cb587432944094599240612c5b3970520"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-waveform-body.asm",
+      "sha256": "21ab382512a07ee569af3a27e76dc8c07e42e55e1e2b503d036a57c7383b711c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-waveform-body.json",
+      "sha256": "80f15ffd5a11cd1a8b71ae677b603387c1c8fead31525279fff661d83ddc0cb4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-waveform-witness.asm",
+      "sha256": "a044c81e5b865de5f07d539cc56789b07570c4e99ec29b97e5791743c981aee8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-waveform-witness.json",
+      "sha256": "e1dc2822cfe2d2015c5a3733ddaafd99066662efa9d1bbe7c7ebc3ebb4165b90"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-whisper-ctor.asm",
+      "sha256": "10059aa8bfbc28fd8f9dc59b3e5baff5579cd63ff85c0059e75c6d62ea682b1e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-whisper-ctor.json",
+      "sha256": "ccf806a8ec7da67597f064ccb92e59f983904925088461c047c829db6f4e6ea8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-whisper-part-type.asm",
+      "sha256": "94e879ab05041869160f26baa5e19e03bc68c94b5a516f2d84d3ecc340b87913"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v531-dictation-style-whisper-part-type.json",
+      "sha256": "fea7ede044b0c9f9b11ded2d47ca4da7262b380038476c1f65f617a45f3462c2"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-instructions-and-metadata",
+  "decision": "Restore Chat compact/expanded surface selection; do not assume the Remote inner glass shape is shared.",
+  "observations": [
+    {
+      "symbol": "MessageInputViewContent.body",
+      "offset": "0x4cbc6dc",
+      "conclusion": "Witness supplies body callback 0x4cb8cf0. Existing witness record ios-composer-inner-content-witnesses-v245.json binds its type."
+    },
+    {
+      "offset": "0x4cb9078",
+      "conclusion": "Chat content calls 0x6081cb8, the same outer HeightConditionalShape<Capsule,UnevenRoundedRectangle> factory followed in Remote. Boolean argument is read from content+0x29; its semantic field is not bound yet."
+    },
+    {
+      "offset": "0x4cb90d4",
+      "conclusion": "Chat content also calls optional outer stroke factory 0x60819dc."
+    },
+    {
+      "symbol": "HeightConditionalShape",
+      "offset": "0x96ca860",
+      "conclusion": "Fields are heightThreshold, ifShape, elseShape. Shape path witness 0x606707c calls 0x6066fd8."
+    },
+    {
+      "offset": "0x6067000..0x6067054",
+      "conclusion": "CGRectGetHeight result is compared with stored threshold. ARM64 HI selects second shape metadata/field/witness; otherwise first. For finite nonnegative layout heights this means height greater than threshold selects elseShape; equal selects ifShape. Factory type order binds Capsule then UnevenRoundedRectangle."
+    },
+    {
+      "symbol": "MessageInputStyle default initializer",
+      "offset": "0x6081398..0x60813a0",
+      "conclusion": "Initializer 0x60810f8 reads field offset at metadata+0x9c and stores IEEE754 0x4046000000000000 = 44. This binds the default capsuleRectHeightThreshold, not the selected runtime Chat style."
+    },
+    {
+      "symbol": "glass transform 0x6082134",
+      "offset": "0x6082134..0x608220c",
+      "conclusion": "Direct stores target metadata slots d8,dc,e0,e4,e8 and conditionally 10c,118. No direct write to threshold slot9c in this function. Copy/helper side effects and Chat selection still need tracing; do not claim all glass transforms preserve threshold."
+    }
+  ],
+  "host_observation": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbol": "composerSurface",
+    "conclusion": "Before repair: CALayer radius28 and clipping without explicit glass contour. After repair: compact cornerConfiguration.capsule; expansion restores saved original configuration."
+  },
+  "limits": [
+    "Exact Chat style producer and threshold value unresolved.",
+    "Chat inner glass/material shape and its relationship to the outer shape remain unresolved.",
+    "MessageInputBackgroundPart body window contains multiple helper functions; UnevenRoundedRectangle import at 0x4d4b430 is in helper 0x4d4b2f0, not direct proof of the editor face shape.",
+    "Controlled local ablation confirms host contour correction, not exact official glass optical equivalence.",
+    "Expanded keyboard state inspected; return-to-compact and frame-by-frame transition not verified."
+  ],
+  "next_actions": [
+    "Install signed physical candidate.",
+    "Exercise keyboard compact/expanded transition.",
+    "Trace official selected Chat style threshold and inner glass consumer separately."
+  ],
+  "evidence_sha256": {
+    "ios-chat-input-content-20261112-body.asm": "a759fda4bc956bf9a7746b45e51fa75eb9a62feb32f4911d8d7e09eabe7f723d",
+    "ios-chat-input-content-20261112-body.json": "d21dc1edb482c2bc07ae9f44b4b281616986bb3197966f2aee9527a87bf04bec",
+    "ios-input-height-shape-20261112-path.asm": "7c9bae8cd0d2af084d892a8ccb3f5ae04e12b5bbdd9f1b452274993160ace600",
+    "ios-input-height-shape-20261112-path.json": "1e65d00c7ba39465af6d8f2007b16edad1babd5fa0afb65743a2ce07eaa2abd0",
+    "ios-input-height-shape-20261112-metadata.json": "44b125c7f40d5be9255068745dda3e579f5f5a44695350943584d4cc2758ff42",
+    "ios-input-height-shape-20261112-witness.json": "8f77a347094db6560fd09c31b46ea0c3f5b0970dfe03c2a18d99a60686a8f47f",
+    "ios-remote-v520-record-8234570.json": "fdbfceb5ff0e56ad790318621d0ffddf5fb4bc9672022d72e6e4c171cf096cc4",
+    "ios-remote-v508-style-default-helpers.asm": "c6e0dee0fb6476ee22e68fdb2166694bfe7606bf85d244670d25a97134cc3a96",
+    "ios-chat-shape-20261112-style-helper.asm": "25b1999df3ffe04fed64b7a0023fffc13d0aa8e31895d0aa5f9f3241abc7463d",
+    "ios-chat-shape-20261112-glass-transform.asm": "2a86d1991923093caaa621386f56d20e611c4b532fc1ba6e4d3c10e1559c89cd",
+    "ios-chat-shape-20261112-inner-branch.json": "a6268ee1a955f19dc7ba2976ac88dcabe13c7a4f959b9e142e413055ebfab2e2",
+    "ios-chat-shape-20261112-inner-branch.asm": "672c53f0416293ca4cf57002a891c774c363ee8e51c3be9b5049ac548754777b",
+    "ios-chat-shape-20261112-inner-surface.json": "2eb2c9b1697d42250a84707a4facb981e93cd6766953d39ca51ee6d9df6da7f8",
+    "ios-chat-shape-20261112-inner-surface.asm": "b66ce57fe4fc27e132ddfca1b21002b539e4a088cca327cda501ff4fb2cb1881",
+    "ios-chat-shape-20261112-outer-surface.json": "4198d3fe5ed8e5125ab17e15dcec3fa70601eb9389e6bccf50c80a48d2b2a514",
+    "ios-chat-shape-20261112-outer-surface.asm": "569135c6599e258b90024cb87d54fd088e7d1eb90ec0ab9ad2740b86cfd20e80",
+    "ios-chat-shape-20261112-baseline-ready.png": "5daace2e5542debdef30d28963e372dffd491d455a5aa56607ceff5293d2b679",
+    "ios-chat-shape-20261112-capsule-ready.png": "92bdfc33b66f79eba95eb4fa28fc59d2a88d973b3d2f9c5ba303f0a1fa6b4f13",
+    "ios-chat-shape-20261112-production.png": "9a94773d1b337d568dd7d67b8e65cc0c5f2efbb998f0bf80a4aec1f163c85387"
+  },
+  "runtime_probe": {
+    "status": "compact-difference-reproduced",
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "runtime": "iOS 27.0 simulator",
+    "sequence": [
+      "baseline",
+      "capsule",
+      "baseline"
+    ],
+    "observation": "Default glass plus CALayer radius28 produces pointed midpoint at both ends; setting UIView.cornerConfiguration.capsule removes the points; returning to baseline reproduces them. Same binary, isolated profile, Chinese/light, empty compact editor.",
+    "invalid_captures": [
+      "ios-chat-shape-20261112-baseline.png",
+      "ios-chat-shape-20261112-capsule.png"
+    ],
+    "valid_captures": [
+      "ios-chat-shape-20261112-baseline-ready.png",
+      "ios-chat-shape-20261112-capsule-ready.png"
+    ],
+    "limits": [
+      "Initial captures taken before app ready are not accepted",
+      "No exact official optical equivalence claim",
+      "Expanded state and physical device not tested in probe"
+    ]
+  },
+  "repair": {
+    "classification": "independent UIKit bridge correction guided by official Capsule shape and controlled local reproduction",
+    "implementation": "Explicit capsule cornerConfiguration in compact state; restore saved original configuration on expansion. No guessed threshold44 applied. Diagnostic launch override removed.",
+    "build": "simulator and iphoneos succeeded",
+    "physical_install": "installed on iPhone Air",
+    "physical_launch": "denied by iOS Security: invalid signature, entitlements or profile not explicitly trusted; local codesign strict verification passed, provision includes device and matches app/team",
+    "physical_executable_sha256": "59a667c04cff417f2eee5442b2d302337c16365294be3cc988b3f6a692726172",
+    "keyboard_regression": {
+      "test": "testPrimaryVisualSurfaces",
+      "result": "passed",
+      "artifact": "ios-chat-shape-keyboard-20261112.xcresult",
+      "covered": [
+        "compact home",
+        "focus and visible keyboard",
+        "expanded screenshot inspected",
+        "typing and send action label",
+        "sidebar and settings return preserving draft"
+      ],
+      "not_covered": [
+        "clear text and resign back to compact",
+        "frame-by-frame transition",
+        "physical device keyboard"
+      ],
+      "locale": "Chinese app / light; existing English system keyboard preserved"
+    }
+  }
+}

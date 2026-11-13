@@ -1,0 +1,593 @@
+{
+  "schema_version": 1,
+  "slice": "v533 AudioWaveformView sample-time projection and drawing",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": "Bounded read-only arm64 disassembly, resolved imported symbols and retained Swift metadata. No original application, microphone, service or runtime execution.",
+  "findings": [
+    {
+      "id": "V533-W01",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6ecdbf8",
+        "0x6074400",
+        "0x6074da8",
+        "0x6ecea2c",
+        "0x6ecdcf0"
+      ],
+      "conclusion": "Actual leaf is AudioWaveformView, descriptor971bb10 and View conformance8381810. MessageInputWhisperPart selected starting/listening waveform branch6074400 supplies velocity30, spacing3, minHeight0, maskWidth6, StrokeStyle(lineWidth3, lineCap.round, lineJoin.miter, miterLimit10, dash empty, dashPhase0), height28 and Float normalizer(sample*16). Present/missing colors are caller style values. Earlier ComposerDictationWaveform lineWidth2/minHeight2 candidate is a different construction.",
+      "limits": [
+        "The parent mode is an enum. See v533-dictation-mode findings. This report does not prove that ordinary Remote starts in disabled mode."
+      ]
+    },
+    {
+      "id": "V533-W02",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6ecdbf8",
+        "0x6ecdca0",
+        "0x6ecdde4",
+        "0x6fda698",
+        "0x6ece400",
+        "0x6ece484",
+        "0x6ece4c0",
+        "0xc5eaf8",
+        "0x1c0620"
+      ],
+      "conclusion": "AudioWaveformView keeps pendingSamples, displayedSamples and offset in LazyState. frameRate is Double1/30. Timeline uses AnimationTimelineSchedule whose paused argument is !sampling. Both observed onChange registrations use initial=false. Date changes drive offset updates and samples-reference changes append novel Float samples. AnimationTimelineSchedule.minimumInterval is nil (x0=0, optional tag1) and the static guard byte84d40ec is0.",
+      "limits": [
+        "frameRate caps the integration step. It is not an observed device-frame-rate measurement. Runtime behavior of the schedule wrapper selected by flag84d40ec is unverified."
+      ]
+    },
+    {
+      "id": "V533-W03",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6fc955c",
+        "0x6fc95b4",
+        "0x6fc969c",
+        "0x6fc96d4",
+        "0x6fc973c",
+        "0x6fc974c",
+        "0x6fc99c8"
+      ],
+      "conclusion": "On each Date change, elapsed=newDate.timeIntervalSince(oldDate). If the low bit of flag84d40ec is set, callback returns. Otherwise dt=min(frameRate,max(elapsed,0)), offset+=dt*velocity. When offset>lineWidth+spacing, exactly one column is processed and offset decreases by that pitch. Equality does not process a column. There is no catch-up while loop in this function.",
+      "limits": [
+        "Nonfinite values and caller invalid geometry are outside this finite-input reconstruction. Global flag semantics remain unknown."
+      ]
+    },
+    {
+      "id": "V533-W04",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6fc95e8",
+        "0x6ece580",
+        "0x6ecea30"
+      ],
+      "conclusion": "Incoming collection snapshots are compared by longest overlap. Starting with min(old.count,new.count) and decreasing to1, compare old.suffix(k) with new.prefix(k) using per-Float ==. Append only new.dropFirst(k) for the first matching overlap. With no overlap, append all new values. Empty novel suffix leaves pending state unchanged.",
+      "limits": [
+        "Float comparison uses fccmp, so NaN does not match itself. This overlap algorithm also treats identical repeated snapshots as no new data."
+      ]
+    },
+    {
+      "id": "V533-W05",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6fc97dc",
+        "0x763b130",
+        "0x763b218",
+        "0x765be14",
+        "0x6fc9890",
+        "0x6fc99a0"
+      ],
+      "conclusion": "When a column boundary is crossed and pendingSamples is nonempty, compute arithmetic sum starting from additive zero, divide by count, and append that Float mean to displayedSamples. Pending samples are cleared after the boundary processing. The current drawn history is retained in this bounded function.",
+      "limits": [
+        "No displayed-history pruning is present in the inspected update function. An independently bounded storage policy would be an implementation adaptation."
+      ]
+    },
+    {
+      "id": "V533-W06",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6fc980c",
+        "0x20ce68",
+        "0x6fc986c",
+        "0x763b2bc",
+        "0x763b4dc",
+        "0x763b528",
+        "0x763b834",
+        "0x763b878"
+      ],
+      "conclusion": "With no pending samples, take displayedSamples.suffix(5) and call763b2bc. For count<2, return first, including nil for empty. Larger collections compute mean and regression-like arithmetic over collection.indices. Zero denominator returns last. A nonnil result is appended, nil adds nothing.",
+      "limits": [
+        "The generic loop uses collection.indices, and the suffix retains its original indices. Do not silently rebase its indices to0 or substitute last-value/zero/noise. Complete Float-exact fallback formula is retained as a bounded unresolved branch below."
+      ]
+    },
+    {
+      "id": "V533-W07",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6ece734",
+        "0x6ece780",
+        "0x6ece7b8",
+        "0x6ece884",
+        "0x6ece8d0",
+        "0x6ece968"
+      ],
+      "conclusion": "Drawing uses pitch=lineWidth+spacing and columnCount=floor(width/pitch)+1. Iterate newest displayed sample first from the right. Column i has x=width-i*pitch-offset. Present lineHeight=max(minHeight,min((height-lineWidth)*Double(normalizeSample(sample)),height-lineWidth)). Missing samples use the same clamp with value0 and missingSampleColor. For lineHeight>0, stroke a vertical centered segment using supplied StrokeStyle. For zero height, fill an ellipse centered at(x,height/2) with diameter lineWidth.",
+      "limits": [
+        "Offsets are function-level anchors plus precise raw assembly. No random waveform, fixed number of bars, interpolation between neighboring bars or peak/RMS computation appears in this drawing leaf."
+      ]
+    },
+    {
+      "id": "V533-W08",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6ece000",
+        "0x6ece008",
+        "0x6ece030",
+        "0x6ece038",
+        "0x6ece050",
+        "0x6ece06c",
+        "0x6ece088",
+        "0x6ece08c",
+        "0x6ece0bc",
+        "0x6ece0d0"
+      ],
+      "conclusion": "Edge mask comprises leading-to-trailing linear gradient clear→black of width maskWidth, black center, and leading-to-trailing black→clear gradient of width maskWidth. Caller maskWidth is6. HStack state at6ece1cc stores zero spacing with present optional tag. Mask colors are alpha carriers. No bitmap waveform resource is consumed in this path.",
+      "limits": [
+        "The exact generic modifier type is not demangled in this slice. Gradient assembly and widths are directly visible."
+      ]
+    },
+    {
+      "id": "V533-W09",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6ece3ec",
+        "0x6fc9460",
+        "0x6ece734"
+      ],
+      "conclusion": "Timeline content builds Canvas with opaque=false and rendersAsynchronously=false, and forwards GraphicsContext and Size to renderer6ece734. Geometry is drawn by Path stroke and filled ellipses using caller-provided colors.",
+      "limits": [
+        "Canvas colorMode enum case was not named in this slice. Native Canvas default equivalence should be checked before claiming exact parity."
+      ]
+    },
+    {
+      "id": "V533-W10",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6073888",
+        "0x6073980",
+        "0x16e5534"
+      ],
+      "conclusion": "Correction to v532: MessageInputWhisperPart+0x28 represents MessageInputWhisperPushToTalkMode, not Bool. Mode projection is disabled0, releaseToSend1, tapToSend2. Source WhisperPushToTalkMode has tapToSend1/releaseToSend2 and16e5534 swaps1/2. A fixture may explicitly choose disabled to exercise the recovered waveform branch.",
+      "limits": [
+        "Default mode binding for ordinary Remote is tracked by companion ios-remote-v533-dictation-mode-findings.json."
+      ]
+    }
+  ],
+  "algorithm": {
+    "valid_domain": "Finite Float samples, nonnegative finite geometry, positive pitch.",
+    "incoming_samples": [
+      "k = largest overlap length with old.suffix(k) == new.prefix(k)",
+      "pending += new.dropFirst(k), or all new when no overlap"
+    ],
+    "tick": [
+      "if flag84d40ec & 1: return",
+      "offset += min(1/30, max(newDate-oldDate,0)) * velocity",
+      "if offset > lineWidth+spacing:",
+      "  sample = mean(pending) if nonempty else originalPredictor(displayed.suffix(5))",
+      "  if sample != nil: displayed.append(sample)",
+      "  pending = []",
+      "  offset -= lineWidth+spacing"
+    ],
+    "draw": [
+      "pitch = lineWidth + spacing",
+      "for i in 0..<(floor(width/pitch)+1):",
+      "  x = width - i*pitch - offset",
+      "  sample = displayed[displayed.count-1-i] when in bounds",
+      "  normalized = Double(Float(sample*16)) for present sample, otherwise0",
+      "  h = max(minHeight, min((height-lineWidth)*normalized, height-lineWidth))",
+      "  color = presentSampleColor for present sample, otherwise missingSampleColor",
+      "  if h>0: stroke segment (x,(height-h)/2) to (x,(height+h)/2)",
+      "  else: fill ellipse x-lineWidth/2, height/2-lineWidth/2, lineWidth,lineWidth"
+    ]
+  },
+  "unresolved": [
+    {
+      "id": "predictor_exact_generic_indices",
+      "entry": "0x763b2bc",
+      "boundary": "0x763b4d4..0x763b8d8",
+      "detail": "Regression-like candidate meanX=(count-1)/2, slope=sum((index-meanX)*(value-meanY))/sum((index-meanX)^2), next=meanY-slope*meanX+slope*count. Arithmetic shape observed, exact generic register-to-value/index semantics not fully validated. Keep original collection.indices, do not assume zero-based suffix.",
+      "next_minimum": "Resolve generic Float accumulator argument shims at7669988/766a270 and instantiated Slice collection.indices dispatch, then controlled finite-vector replay."
+    },
+    {
+      "id": "ordinary_parent_mode",
+      "entry": "0x1785928",
+      "detail": "Follow companion owner report for activation capture producer and ordinary default."
+    },
+    {
+      "id": "cancel_glyph",
+      "entry": "0x60718c4",
+      "detail": "Root inspects actual accessoryType label. Existing1991db4 file is style environment override, not glyph."
+    },
+    {
+      "id": "runtime_parity",
+      "detail": "No original execution or device waveform comparison. Synthetic render tests must retain their evidence type."
+    }
+  ],
+  "reuse": {
+    "original_resources": "Procedural Canvas, Path and alpha gradients. Reuse caller theme styles and platform Canvas geometry.",
+    "parent_reports": [
+      "analysis/full-platform-20261104/ios-remote-v532-dictation-style-findings.json",
+      "analysis/full-platform-20261104/ios-remote-v532-whisper-parent-findings.json",
+      "analysis/full-platform-20261104/ios-remote-v533-dictation-mode-findings.json"
+    ]
+  },
+  "verification": {
+    "static_instruction_review": true,
+    "controlled_replay": false,
+    "original_runtime": false,
+    "production_changes": false
+  },
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-body-witness.asm",
+      "sha256": "da9008378224ca17afc18ce2083f0507c0d0817a65edf19ad8e39216dd4a143a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-body-witness.json",
+      "sha256": "e1efaafc76d69e7e7041704a30abdb9fb4b10d6b33d56f76a913fcf2ec52b074"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-body.asm",
+      "sha256": "d8e82d3f6429e7fa6972c2cf381da14bf24eb055e0461ef73560e35dd102ce97"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-body.json",
+      "sha256": "cb198322ccf5c7715ab094dd8c4e211b5f3fae846638517d0535d803b3bf3b48"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-boolinitial.asm",
+      "sha256": "be87a356410a62fb8b46534d34e0e2dd8ceda3320ad727f5a4754914b9a9ef5a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-boolinitial.json",
+      "sha256": "f88e9638382d1e7675bb7b0942c876e6323d8029e522542c1daf4b52ee666cd5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-boolother.asm",
+      "sha256": "8d54177b90977e79cb4e77d73d9de6daa91fa52aa2f9903be04b9535c1117f0e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-boolother.json",
+      "sha256": "3319c4f49e3571a751d841d655686b76dc1915609463bf18e3f73a76588ef5dd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-canvas.asm",
+      "sha256": "4edf1538ad130fc8fbae3faa9106932774febf653718ba6da58dfdfce297151d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-canvas.json",
+      "sha256": "ba0e0ac48c766311127efad1735337ccb1511b4638d3836f82a8ef745b0561ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-displayed-suffix.asm",
+      "sha256": "e98b825263a3f7c7e42cc309146505993a30aa70683deacde62079057712230a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-displayed-suffix.json",
+      "sha256": "fcf1b5cb9a7d7a2bb89d828a71da6cec2c43cc581ea4850fc851aac5068b8093"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-draw-callback.asm",
+      "sha256": "5a4db7ce65ffa4ce097447928f3696e3d09145d7c1f787a2bbd5936decf0fc98"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-draw-callback.json",
+      "sha256": "05eadb08faa9f88cacbe1affb40c28998472eea69f45fdad35f362d361a56ad0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-draw.asm",
+      "sha256": "0271aa10854751040bd5b480753016e42dac353da9375710828d539a029b65da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-draw.json",
+      "sha256": "af9733c8f5c7844b846d794f6f2f598587ac319f7e3e3455a61d70358d29dabd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-fallback-aggregate.asm",
+      "sha256": "45e211e57f191d2fe809f120e6bcb08d617fffde7327019a017ea6908a84f5a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-fallback-aggregate.json",
+      "sha256": "192ee4041a70bb67f67f32502febec441b4b5d26f2473db50470493cd59c20f9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-array-tail.asm",
+      "sha256": "9c0e8cc5ea034048be0b5f25cc3b86b134235d958f682d64534d7c9dbc9fe167"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-array-tail.json",
+      "sha256": "c9c27efb767cbd6ac635845980860db74616452916612faeb9d119ec6a3c183a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-displayed.asm",
+      "sha256": "3687add4d3b3e06213e97ec8ba960b2df9e76da6a58e67d9509b31c1dcfd5c87"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-displayed.json",
+      "sha256": "ae57f51fe4c6e6664364a7d10343314d8b82dd92c7575b3f5ee8eecba960df8a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-offset.asm",
+      "sha256": "26ab4178bddbcfe0d60b06d311dd75616911bf0ff83f8963e2c32cdb586ee618"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-offset.json",
+      "sha256": "5df86c23b669fa496eda07ca95ec0226a22820f31463b74586765733da0eb402"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-pending.asm",
+      "sha256": "34741f95c3e9a5c0ac9600e0b2a2f0e170747e069784d26798a038006f18f7ce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-pending.json",
+      "sha256": "f05e9c6ddc1f18570db4b8f047341f484f7c6f224e09123accb8d3d1af3dd026"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-zero-tail.asm",
+      "sha256": "3ed9a43a66627d6e336c31f971e67cf1e275a18bd033a614a2548cfc9fa01492"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-init-zero-tail.json",
+      "sha256": "774a5bae3d802ee15d7b111e92f04099726a2256813880bbc42e158708291a77"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-literal-convert.asm",
+      "sha256": "56ec44e9fc7de1f50862e3c0c65a4509b7f8746c5ac340489532648168bb26c8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-literal-convert.json",
+      "sha256": "7dcfad4265ec0722f81ee8f4df71494fce0d75c83aa07ab7f32c07b42f6e31be"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-literal-helper.asm",
+      "sha256": "9ab0d351401f2b9fa01b6d9d2c0a1726afb44b10abf0996c4fed2c8f5bdc9db3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-literal-helper.json",
+      "sha256": "938caf208b2ba639c724e8a8c583e213aecbd26624609b18c5a6df5caa2525a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-literals.json",
+      "sha256": "418c376d5cf3cb3ed0862d03fbab48aefaf4423c8889325729d4d14882da3241"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-mask-gradient-left.asm",
+      "sha256": "61d89eae0a635df70a2cab0ca64619c42bd1cbdad0f30852553748466041d7f5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-mask-gradient-left.json",
+      "sha256": "a1c16c8da9162884fcad5d1360b80027170b12ced88efdd65b6a44ae4569fc8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-mask-gradient-right.asm",
+      "sha256": "2d43b4335240f0413b635af41e8e29b8d407bdb188f97ea72afa51751acb88e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-mask-gradient-right.json",
+      "sha256": "afb01e9c031ac0f7129e6bbd3e2eea48cab10a21a8389c95969abb20e3f1064b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-mask-helper.asm",
+      "sha256": "72f7c48a03aee33c27b63886c21bc90196ce3d3b9f2d8afa69904d37bb55379e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-mask-helper.json",
+      "sha256": "fce4e4ccaf366a825f9d139566699304b0e761bc891d492ab385b0e6c9e2e90b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-mask-stack.asm",
+      "sha256": "c74022dd0f51131fd16b48f079a6aee0d86bf9299a86e8c104e739620b0430a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-mask-stack.json",
+      "sha256": "a74ce7826c6dd75d014b2828b58a99c91e1c600955c559dd824975e9f536f3ad"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-minus-args.asm",
+      "sha256": "c979b689fd76fbf4abe987bede65c8b82099d5fd1b9185a71711eafe3fb1d0f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-minus-args.json",
+      "sha256": "1eb50f560b80d46a180ea5ee5aaa158ce39798d0d0989086431694cf3ad2402c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-multiply-helper.asm",
+      "sha256": "7dea8893df5d2d2afae14d988644e2689835da58264f418b6ce360f3c7f39e20"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-multiply-helper.json",
+      "sha256": "dc247b1183724fd49a301d20305daba7eab76d8d004ebb5f8445423919957c6a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-norm-args.asm",
+      "sha256": "8f6bd928bef630307449143a885b8a61973f056b465e143a8f84ae1563dde3c1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-norm-args.json",
+      "sha256": "788af28dc6b3750855ca7bfca86f0c44e2c0146a183395b684251e3ccf9ff504"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-numerator-args.asm",
+      "sha256": "e332033911cc3f8511f8eafdd093cc3d29378fc7b6a93572879a316adcad16df"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-numerator-args.json",
+      "sha256": "7d4aefb4cb82fb61ef641fc04bb8e70cef5ec16c58bf4d3617a9adada0ef67b2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-pair-args.asm",
+      "sha256": "16f83a1bd8fd2275bae3bdf0b41db9c4f4dc2a47fdd21e3408b539478d199c57"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-pair-args.json",
+      "sha256": "5f8e2ce72526c5aacba4f4fa761fafca24596079fff73d727b4b17017013b67f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-pending-aggregate.asm",
+      "sha256": "accd0cc1270831c8a7bf05d523beddc78dfc6e20dc748cb5ad906f5086fad723"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-pending-aggregate.json",
+      "sha256": "9c6f374337cb551050376b872bd437718146b6b99cb7a01f441935b75d81239c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-reduce-flag.asm",
+      "sha256": "d132fc0cb48783aa1ef5c7a1a534788519fed5c09d9fb256c8f9f57516b90986"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-reduce-flag.json",
+      "sha256": "1151dfdfdb82fef8a523e8f414ac4cea00fb3e223e08ff7553dfb4e8c9d8a47e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-sample-compare.asm",
+      "sha256": "6fef035845b5eda1abc349a983a0b48e9a4fed4f5a10bf3dc3cf20d8582c723a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-sample-compare.json",
+      "sha256": "16903346cddfbbac434d7ae12a0f7eeb1249e135e2a60fbaa0a1894ab2909701"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-sample-suffix.asm",
+      "sha256": "4edf1538ad130fc8fbae3faa9106932774febf653718ba6da58dfdfce297151d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-sample-suffix.json",
+      "sha256": "ba0e0ac48c766311127efad1735337ccb1511b4638d3836f82a8ef745b0561ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-samples-callback.asm",
+      "sha256": "96c2806c42c902b8f3f2641aeff22e136cf58a8281b64459798511162d2bca67"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-samples-callback.json",
+      "sha256": "742e804a3ca467bcb60f1d971ce814bb0cb2d4b06ee8b03e45d2ccdf236efe15"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-schedule-init.asm",
+      "sha256": "655d2278f0464b1620ea25a2e5e886eb3895c553376e8cc250bd50134d75007f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-schedule-init.json",
+      "sha256": "da3c65112f7f86862e29225dc6bd7f78fbb99028c3873f7c0dd28985129f53f2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-schedule.asm",
+      "sha256": "56ea1154f8382b2cd4a6a2510d770a88172df426b7827ec902deb26a358f6320"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-schedule.json",
+      "sha256": "41c95d40b2bc61d3a9c8dbe67a9e723ac136ed718697c91f166933b58bdaaceb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-sum-add.asm",
+      "sha256": "2fd58a0c0d559c604ff3ef4af257bd9c9c1a2a22176e2a4a19a128da9f28bc16"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-sum-add.json",
+      "sha256": "4b7b696c255442c40204c37b7fd55738414db125c80322292335012518fccbff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-sum.asm",
+      "sha256": "42e83589c0e3b5e6a455e737d239be0b95160cfcece223eecb2c04c000869cd5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-sum.json",
+      "sha256": "ee2cada313e1d13b7b8100fa7d8f90a7ea9308d649e10d62b13594d299d511cc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-tail-bindings.json",
+      "sha256": "b495b36e747e631161cfc4cd2f6a49176c823ecce8df28ba92ecb6bea2c9e7ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-tick-callback.asm",
+      "sha256": "6e5ee08439e0d4901c2ccc9ec66eb51a2c72a9f932a47707e2e938ac0f516f5e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-tick-callback.json",
+      "sha256": "9899f74dc125e4e813cc37908ced58ccc9b82b3a444d4f61aff434164e701666"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-tick-thunk.asm",
+      "sha256": "99afa7dfbe43ffbc044c0f49f88ffb1056d24a3e3ea7ad60391e986433125a55"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-tick-thunk.json",
+      "sha256": "9a49743a4abf21e59a0dbf624b8c67623969cfc75d1ad52d710d14b0f39ffe20"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-tick.asm",
+      "sha256": "9d0a60655030473b105b0f86e31c585d0ed4e8dc7cff04782a9e13c640279c1f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-tick.json",
+      "sha256": "43448c485c5cdd1a51ce23ba5a684cf157d1fdcaa2329ff4c8d8c9582ac3fd4f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-timeline-before.asm",
+      "sha256": "bd977477bf9dd9a6f5325df658d388174fce3517eee7d3d1d9f60e8efe89f0ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-timeline-before.json",
+      "sha256": "d274fa4dd8684fa2034743a9ea25517f1e4c64b0462a16ebc883b193e2c195c7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-timeline-closure.asm",
+      "sha256": "083085bcca97b75a817d5acbb074cb99607c2ae582090702023df79fa4d099a9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-timeline-closure.json",
+      "sha256": "070c5ca5bbbc29514bc77f531aaaa9d8166544b571676932744fe5f61dca1157"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-timeline-next.asm",
+      "sha256": "a2ed9b7bf8aa0e4b2516177dd7dd1647e4535294e5af7b4f5a4fa107b1e43ddb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-timeline-next.json",
+      "sha256": "18fa9a6e09c5c74a29a34a04b302d17df827d17b7ed85585ee1106c3c6c28bd3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-whisper-style-init.asm",
+      "sha256": "f8dec658d1806b69cc695c892f591fa9aed718f3326a22d14f1edaa37c906cc8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-whisper-style-init.json",
+      "sha256": "59122ed5fa89066334adfd832cc4edad587b2e9cbec8926a46966b33c9507f5e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-witness.json",
+      "sha256": "53bfa2f6aadbe97f1d0b0272ae7dabb7a02e7f75418337e7d3298072c41c4601"
+    }
+  ],
+  "followup_closed": {
+    "field_row_spacing": "ios-remote-v533-field-spacing-findings.json proves8pt at messageInputStyle.whisper.horizontalSpacing"
+  }
+}

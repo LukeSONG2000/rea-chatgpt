@@ -1,0 +1,92 @@
+{
+  "batch": "v562",
+  "status": "partial",
+  "delivery": "Remote local draft process recovery",
+  "implementation_status": "核心验收通过",
+  "official_recovery_status": "Draft owner evidence reused; official disk persistence unproved",
+  "changes": [
+    "Independent account/profile + typed destination snapshot adapter",
+    "Atomic manifest commit after attachment blobs, cleanup after commit",
+    "Stable attachment identity and preview bytes through process restart",
+    "Accepted draft clearing persisted, sibling host draft retained",
+    "Unreadable snapshots preserved; storage failure presentation added"
+  ],
+  "validation": {
+    "foundation": "passed",
+    "restart_ui": {
+      "run": "r3",
+      "tests": 2,
+      "failures": 0,
+      "seconds": 148.056,
+      "matrix": [
+        "Chinese/light",
+        "English/dark"
+      ],
+      "actions": [
+        "edit with attachment",
+        "switch to another host same thread ID",
+        "terminate and relaunch",
+        "read restored draft",
+        "open restored attachment QuickLook",
+        "send accepted draft",
+        "terminate and relaunch again",
+        "verify cleared draft and retained sibling draft"
+      ]
+    },
+    "existing_combined_ui": {
+      "run": "r2",
+      "tests": 2,
+      "failures": 0,
+      "scope": "approval, component disclosure, attachment send/preview, queue/cancel/start, task return"
+    },
+    "retained_failed_probes": [
+      "r1 two restart tests selected userInput-owned task",
+      "r2 two restart tests selected same unavailable ordinary composer; combined tests passed"
+    ],
+    "screenshots_visually_reviewed": [
+      "ios-remote-v562-r3-attachments/5A4287AA-560A-4C04-81EC-6CBAD710E84F.png",
+      "ios-remote-v562-r3-attachments/1F907E82-A123-4936-98F4-3FD78B4D13A3.png"
+    ],
+    "keyboard": "System Pinyin 9-key visible in both language runs; English IME acceptance remains separate"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "96d39da8275a2c2c3aedafe45261b7a73e05e85ccbab2aa6343e993686f3b052",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "510d9e37312c3dd58c7b97a447972ad3e8e61565904803dea629fb84292e3b49",
+    "implementation/ios/UITests/HostInteractionTests.swift": "087d21b5bc9b9af7c43af9d72f2639888638e9dc2ac46002a6bcab7ee8f2f9ef",
+    "implementation/ios/TextTests/main.swift": "727e3fe62871b50c8a20df88479db5900478306b29d85b93fa5a8c729cc8ff7d"
+  },
+  "evidence": "ios-remote-v562-findings.json",
+  "runtime": "ios-remote-v562-runtime.json",
+  "remaining": [
+    {
+      "item": "Message history and reading anchor after process restart",
+      "reason": "Replay turn IDs and contents remain process-local",
+      "next_action": "Trace history owner and stable turn/item identity; add frontend snapshot/reload boundary before restoring anchor",
+      "acceptance": "Terminate/relaunch, reopen task, resolve same history row and pixel offset with delayed/missing row handling"
+    },
+    {
+      "item": "Official draft persistence",
+      "reason": "messageDraftStore protocol target 0x95d2654 unresolved",
+      "next_action": "Resolve concrete persistence owner when source fidelity blocks integration"
+    },
+    {
+      "item": "Large attachment IO performance",
+      "reason": "Durable blob IO currently performed on store actor; large-file latency unmeasured",
+      "next_action": "Measure import/commit with bounded representative files before offloading or introducing batching"
+    },
+    {
+      "item": "Storage error alert runtime",
+      "reason": "Foundation error guards verified; corrupted-file alert not UI exercised",
+      "next_action": "Isolated corrupt-profile launch and edit recovery test"
+    },
+    {
+      "item": "Full page visual fidelity, device haptics/notifications and Android",
+      "reason": "Independent gates remain open"
+    }
+  ],
+  "quota": {
+    "used_percent": 19,
+    "remaining_percent": 81,
+    "reset_cards_available": 0
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "batch": 573,
+  "status": "partial",
+  "scope": "Chat/Work frontend photo attachments",
+  "verification": {
+    "state": "ios-chat-v573-state.log",
+    "service": "ios-chat-v573-service.log",
+    "r4_ui": {
+      "passed": 7,
+      "failed": 0,
+      "result": "ios-chat-v573-r4.xcresult"
+    },
+    "r5_final_ui": {
+      "passed": 2,
+      "failed": 0,
+      "result": "ios-chat-v573-r5.xcresult",
+      "scope": "Chinese/light and English/dark photo journeys after foreground control-layer change"
+    },
+    "ordinary_picker": "Single generated PNG selected through ordinary Photos UI, imported, previewed and returned on simulator",
+    "visual": "Final dark draft and installed Chinese/light preview inspected; Send glyph visible"
+  },
+  "retained_failures": [
+    "r1 QuickLook return timing; exact root cause unproven",
+    "r3 shared catalog capacity128; isolated profiles added",
+    "r4 semantic-color-only fix left dark Send glyph invisible; final sibling foreground layer verified"
+  ],
+  "decisions": [
+    "Independent PhotosUI, ImageIO thumbnail and existing file-row geometry until official parent/grid closes",
+    "New attachment tests use UUID profiles; stable preview profile preserves legacy records",
+    "Old unprofiled tests remain for later migration"
+  ],
+  "runtime": "ios-chat-v573-runtime.json",
+  "retention": "ios-chat-v573-retention.json",
+  "pending": [
+    "Official Chat image grid and menu geometry",
+    "Missing resource recovery and additional preview formats",
+    "Multiple photo selection, HEIC orientation, camera/video",
+    "Full message operations and role-context spacing",
+    "Device performance/haptics/notification delivery",
+    "Android independent adaptation"
+  ],
+  "next_action": "Close missing-resource return/retry flow, then remaining page-level message actions and preview formats",
+  "service_status": "Frontend synthetic events only; business service pending"
+}

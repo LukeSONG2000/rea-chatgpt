@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS293 welcome authentication action carrier and LoginButtonListStyle consumers, read-only bounded second pass",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "prior_evidence": [
+    "ios-native-auth-welcome-20261112-findings.json",
+    "ios-native-auth-welcome-20261112-presentation-followup.json",
+    "ios-login-v1-native-evidence.json"
+  ],
+  "official_artifact_observations": [
+    {
+      "id": "parent-action-carrier",
+      "facts": [
+        "LoginAuthenticationActions descriptor957cd90 View conformance7d644f8, actual witnessd91668 and content builderd90e24. Actual parent uses centered VStack spacing12; authButtons is supplied by owner.",
+        "Flags loginButtonsDisabled, includesCombinedDisclosure/includesDisclosureFooter, knownSignedOutAccountRow and onSkipTapped remain independent inputs; root variant and production assignment were not changed.",
+        "LoginButtonListView desc957ee40 View witness e086d8 ->e0599c; complete tree record7d6afa8 is VStack<ForEach<Array<LoginButtonType>,LoginButtonType,...conditional button branches...>>. It includes system Apple/custom Apple and ordinary RoundedRectangleButtonStyle branches.",
+        "ForEach content uses platform availability branch e05c44..e05cdc and fallback e05cf4..e05e48; do not flatten all routes into one visual button."
+      ],
+      "evidence": [
+        "ios-auth-welcome-parent-20261113/metadata.json",
+        "ios-auth-welcome-parent-20261113/witnesses.json",
+        "ios-auth-welcome-parent-20261113/actions-body.asm",
+        "ios-auth-welcome-parent-20261113/button-carrier-tree.tree.txt",
+        "ios-native-auth-welcome-20261112/login-buttons.asm"
+      ]
+    },
+    {
+      "id": "style-is-owner-input",
+      "facts": [
+        "LoginButtonListStyle is actual struct desc9635b74, accessor3f837f0 returns metadataa6eda30; field vector base16 bytes.",
+        "Field offsets: buttonHeight0; optional notBorderedButtonBackgroundColor8; neutralLoginButtonStyle16; buttonCornerRadius24; optional borderColor32; borderWidth40; appleButtonStyle48; transferrableTokenInputAppearance49; allBordered50. Value size51,stride56.",
+        "LoginButtonListView generic metadata style slot is field13 /metadata offset44; actual consumers e061b0,e06990,e07238 load this named field before reading style values.",
+        "The literal56 at e0732c is memory allocation size argument to swift allocation helper1531a0. It is not buttonHeight. Actual minHeight input is loaded from style[0] at e07324.",
+        "Corner is loaded from style+18 at e07318. Existing host Capsule does not represent this explicit RoundedRectangle corner input."
+      ],
+      "evidence": [
+        "ios-auth-welcome-parent-20261113/style-field-map.json",
+        "ios-auth-welcome-parent-20261113/style.asm",
+        "ios-native-auth-welcome-20261112/login-buttons.asm"
+      ]
+    },
+    {
+      "id": "ordinary-button-style-consumer",
+      "facts": [
+        "One concrete ordinary text branch e0719c..e07444 obtains a native localized label factory75daa38 at e0722c. It takes neutralLoginButtonStyle at e07240, all owner conditions are not renamed from surrounding constants.",
+        "It chooses OneOff/MainSurfacePrimary versus OneOff/AppForeground foreground via factories74f0f48/74f0420 at e072d8..e072e4.",
+        "It calls actual background selector e08564 at e072fc, border selector e085a8 at e0730c, loads explicit cornerRadius e07318 and explicit buttonHeight e07324, obtains Font.Weight.medium e0731c and constructs RoundedRectangleButtonStyle throughc1ae0c ->6ef0a84 at e0736c.",
+        "Other ordinary button branches use Font.Weight.medium at e07620/e07a5c; other native input-like branches use regular at e07e7c/e080e4/e083c8. Therefore no global semibold substitution justified. Exact case-to-each-font branch mapping not closed in this pass.",
+        "RoundedRectangleButtonStyle is separately confirmed by descriptor971fce4/conformance8384f80. Its makeBody witness6f48338 forwards6f47044. Named inputs include foregroundColor,border,cornerRadius,fontWeight,minHeight,maxWidth,insets,background. No hardcoded universal point font size established."
+      ],
+      "evidence": [
+        "ios-native-auth-welcome-20261112/login-buttons.asm",
+        "ios-auth-welcome-parent-20261113/buttons-consumer-calls.json",
+        "ios-auth-welcome-parent-20261113/rounded-style-metadata.json",
+        "ios-auth-welcome-parent-20261113/rounded-style-constructor.asm",
+        "ios-auth-welcome-parent-20261113/rounded-style-forward.asm",
+        "ios-auth-welcome-parent-20261113/rounded-style-witness.json",
+        "ios-auth-welcome-parent-20261113/rounded-style-body.asm"
+      ]
+    },
+    {
+      "id": "colors-and-border-selection",
+      "facts": [
+        "e08564 second Bool argument true returns original OneOff/AppForeground factory74f0420. Otherwise first Bool true returns SwiftUI Color.clear (import7c4b07c); both false uses optional style.notBorderedButtonBackgroundColor, falling back to e08660 environment color selection.",
+        "e085a8 returns no border when second Bool true or first Bool false. Only second=false and first=true uses optional style.borderColor (otherwise e05e6c default) with style.borderWidth.",
+        "Default border e05e6c obtains colorScheme, selects UIColor.tertiarySystemBackgroundColor on a selected nondefault branch, and Color.black.opacity(0.25) on the other observed fallback branch. Exact environmentcase map not named here.",
+        "e08660 background fallback similarly reads colorScheme; observed system-color leaves include tertiarySystemBackgroundColor and tertiarySystemFillColor. No evidence for the current unconditional secondarySystemBackground.",
+        "Full resource names are literal8a521d0 OneOff/AppForeground and8a526c0 OneOff/MainSurfacePrimary. They must be loaded as official semantic resources and retain dark variants."
+      ],
+      "evidence": [
+        "ios-auth-welcome-parent-20261113/style-projection.asm",
+        "ios-native-auth-welcome-20261112/login-buttons.asm",
+        "ios-auth-welcome-parent-20261113/background-colors-calls.json",
+        "ios-auth-welcome-parent-20261113/appforeground-factory.asm",
+        "ios-auth-welcome-parent-20261113/mainprimary-factory.asm",
+        "ios-auth-welcome-parent-20261113/literal-colors.json"
+      ],
+      "limit": "The selectors Bool arguments are preserved as actual parameters. Complete first/promoted/neutral/allBordered upstream role association was not closed for every provider case; do not simply call all buttons promoted."
+    },
+    {
+      "id": "apple-distinct-branch",
+      "facts": [
+        "Style.appleButtonStyle raw2 is explicitly tested at e061b8..e061c0 before CustomSignInWithAppleButton construction; alternative path builds system SignInWithAppleButton.",
+        "Custom Apple fields are action,cornerRadius,font,height,colorScheme,isEnabled. Selected caller loads style.cornerRadius e061c4 and style.buttonHeight e06238; passes Font.Weight.regular e061d0 and constructs a scaled font carrier with base18 at e0621c..e06224.",
+        "Do not apply ordinary medium or a generic HStack icon layout unconditionally to system/custom Apple.",
+        "Existing resource apple-logo versus Google source mapping was not independently reclosed; full root tree does prove their distinct icon carriers and branches."
+      ],
+      "evidence": [
+        "ios-auth-welcome-parent-20261113/metadata.json",
+        "ios-native-auth-welcome-20261112/login-buttons.asm",
+        "ios-auth-welcome-parent-20261113/button-carrier-tree.tree.txt"
+      ],
+      "limit": "Apple style case name custom from enum metadata; live caller style value and scale category remain unproved."
+    }
+  ],
+  "host_comparison": {
+    "path": "implementation/ios/Sources/SignedOutWelcomePreview.swift",
+    "confirmed_independent_estimates": [
+      "Explicit apple/google/loginOrSignUp catalog and order",
+      "20pt icon frame",
+      "body semibold for every provider",
+      "56 minimum height",
+      "Capsule corner",
+      "unconditional secondarySystemBackground"
+    ],
+    "source_gaps_that_can_be_structured_now": [
+      "Style must become an explicit owner/configuration input instead of implicit common preview constants",
+      "RoundedRectangle cornerRadius separate from height",
+      "Promoted/bordered/neutral presentation separate inputs and semantic original resources",
+      "Apple style separate from ordinary text button implementation"
+    ]
+  },
+  "minimum_adaptation": [
+    "Extract a clearly identified welcome fixture style and provider catalog; carry buttonHeight,buttonCornerRadius,neutral/allBordered,borderColor/borderWidth,notBorderedBackground,appleStyle explicitly.",
+    "Use concrete ordinary RoundedRectangle presentation and explicit semantic foreground/background/border relationship; preserve unknown branch association as adapter configuration.",
+    "Keep56 as explicit fixture height until actual selected welcome style producer is proved. Do not relabel allocation-size56 or adjacent52/38 field values as recovered geometry.",
+    "Keep provider/case-specific font weight, and avoid claiming universal recovered font size. Ordinary medium is source-proven in named concrete branches; custom Apple regular18 scaled is separate.",
+    "Preserve existing auth event contract, failure/cancel/return and native-vs-browser owner choice. This pass does not change actual authentication service behavior."
+  ],
+  "precise_unknowns": [
+    {
+      "id": "welcome-style-producer",
+      "boundary": "LoginAuthenticationActions.authButtons is type-erased owner input. Full LoginControlsViewBuilder/Configuration.style supply to selected welcome branch not closed.",
+      "next": "Trace only exact owner-injected LoginControlsViewTemplate.buttons config; recover height/corner/colors there before replacing fixture numeric values."
+    },
+    {
+      "id": "predicate-binding",
+      "boundary": "e08564/e085a8 two Bool inputs and per-provider promotion/neutral/allBordered calculation not closed as one universal equation.",
+      "next": "Use exact selected caller expression if needed; do not infer from variable/register name or copy one case globally."
+    },
+    {
+      "id": "font-body",
+      "boundary": "RoundedRectangle style generic makeBody6f47044 point size/pressed environment not further investigated; source fontWeight consumer sufficient for this pass.",
+      "next": "Do not claim body17/18 or exact pressed animation from adjacent carrier."
+    },
+    {
+      "id": "hero-and-action-haptic",
+      "boundary": "No explicit new auth-action haptic/gesture dispatch proved. Hero typing haptic inventory is separate.",
+      "next": "Do not invent sign-in tap vibration or claim General preference gate unless actual trigger and gate consumption close."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "app_source_modified": false,
+    "builds_tests_device": false,
+    "official_app_or_online_service": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-auth-welcome-parent-20261113/"
+}

@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-13T12:06:43.593153+08:00",
+  "scope": "One coordinated iOS frontend pass for modules3-7, ordinary source293 baseline; no backend, Android, message-attachment expansion or official runtime.",
+  "previous_goal_turn": "Progress: module8 fifth-pass current-source/contract reconciliation and complete module archive, plan advanced to3-7.",
+  "status": "core-frontend-coordinated-pass-delivered-to-simulator-device-candidate-signed-install-unavailable",
+  "source_reports": [
+    "ios-remote-row-menu-fourth-20261113-findings.json",
+    "ios-remote-read-status-fifth-20261113-design.json",
+    "ios-remote-prompt-fifth-20261113-findings.json",
+    "ios-remote-pending-edit-fifth-20261113-findings.json"
+  ],
+  "modules": {
+    "3-list": {
+      "added": [
+        "Source labels/icons/order for read-status menu action with independent explicit frontend admission.",
+        "Optional account/profile/host/thread read metadata, revision fencing, idempotence and atomic local save.",
+        "Notification unread can independently make a read task unread again; a failed notification checkpoint retains visible unread and reports failure.",
+        "Actual task entry clears local read status; context preview never selects or marks read. This route policy is an independent frontend adaptation."
+      ],
+      "preserved": [
+        "Filters, grouped pinned/project/recent, search, same-name host disambiguation, pin/rename/copyID/archive, preview/swipe separation."
+      ],
+      "unknown": [
+        "Original raw capability/activity gates and downstream read service owner",
+        "Live Activity subscription owner"
+      ]
+    },
+    "4-messages": {
+      "added": [
+        "Dedicated prompt full/collapsed source projection and optional expansion-button override; action sets expanded true.",
+        "Admitted prepared source must match current full source; nil leaves complete message visible. No guessed source line splitter or global40/2 policy.",
+        "Per-task/per-message expansion retained in frontend reading owner through reactive updates and task return.",
+        "User prompt now projects through retained official293 JS Markdown parser; intrinsic inline native text and existing code/table/resource carrier. Prompt owner stays separate from optional assistant footer.",
+        "Scoped file/browser resources and selection/copy available through existing native block adapters."
+      ],
+      "unknown": [
+        "Private OAIMarkdown renderer options/inline references/autocomplete/menus and full optical parity",
+        "Actual owner40/2 assignments and complete source-slicing behavior",
+        "Full reasoning content/DIL typed producer-to-consumer chain"
+      ]
+    },
+    "5-controls": {
+      "new_evidence": [
+        "canEdit+0x48 and canRestoreComposerDraft+0x49 independently bound from original metadata offsets.",
+        "Original edit snapshots originalDraft, restores structured pending draft, and cancel clears edit state and restores originalDraft through same setter.",
+        "Effectful192b1cc is not a predicate or service acceptance."
+      ],
+      "preserved": [
+        "Drafts, send/stop, queue/steer/start/cancel, model/permission/context controls, Goal/subagent frontend state."
+      ],
+      "not_implemented": [
+        "Pending Edit UI remains capability-off because original submission/replacement/receipt/failure restoration and complete local structured payload are not closed; no text-only editor substituted."
+      ]
+    },
+    "6-requests": {
+      "current_source_audit": "Existing request-key parent, ordinary approval header/main/detail siblings and scoped acceptance/rejection/user-input contracts retained.",
+      "new_product_change": false,
+      "unknown": [
+        "All permission/MCP/network kind-specific forms",
+        "Full original async resubmission and viewport lifecycle"
+      ]
+    },
+    "7-chat-work": {
+      "current_source_audit": "Kept mode-specific native parent and user bubble; no unproved sharing of Remote prompt owner. Existing exact-scope stream cursor, revisions and action visibility remain.",
+      "ui_result": "testChatWorkRevisionAndFooterChinese passed103.405sec in r1; both Chat andWork, running-copy exclusion, completed copy and A/B restoration.",
+      "unknown": [
+        "Full original mode measurement/material and action inventory",
+        "OAIMarkdown/reasoning/DIL and complex menu projection",
+        "Real services remain interfaces"
+      ]
+    }
+  },
+  "validation": {
+    "pure": "ios-remote-coordinated-fifth-20261113-final-contract.log passed; read metadata + prompt projection + existing contracts",
+    "ui_r1": "Chat/Work passed; Remote read status and restart passed, prompt Expand lookup failed because ancestor accessibilityIdentifier overrode child ID. Visible button corroborated in r1 video frame.",
+    "ui_followup": {
+      "bundle": "ios-remote-coordinated-fifth-20261113-r2.xcresult",
+      "test": "testRemoteReadStatusAndPromptParentChinese",
+      "result": "passed",
+      "seconds": 47.032,
+      "scope": [
+        "mark unread, host separation, process-restart retention, mark read, entering actual task clears read",
+        "source-label expand child reachable independently, rich prompt parsed withoutliteral markers",
+        "expanded full body and code/copy control present",
+        "Back/re-entry retains expanded state"
+      ]
+    },
+    "observed_screenshot": "ios-remote-coordinated-fifth-20261113-r1-prompt.png",
+    "not_claimed": [
+      "Device gesture/haptic acceptance",
+      "Official visual equivalence",
+      "Complete backend operation restoration"
+    ],
+    "screenshots_viewed": [
+      "ios-remote-coordinated-fifth-20261113-r1-prompt.png",
+      "ios-remote-coordinated-fifth-20261113-r2-attachments/FE179C27-CE24-4E6B-95D7-2FEE9FEDA1D0.png"
+    ]
+  },
+  "haptics": "No new direct source emitter established for new menu/expand actions, so none invented. Existing General preference/hardware/activity gating retained.",
+  "runtime": {
+    "simulator_record": "ios-remote-coordinated-fifth-simulator-20261113.json",
+    "simulator_installed_and_hash_matched": true,
+    "simulator_running": true,
+    "simulator_pid": 46561,
+    "device_record": "ios-remote-coordinated-fifth-device-review-20261113.json",
+    "device_build_and_signature": "passed",
+    "device_install": "failed-connectivity-unavailable4016",
+    "device_installed_this_batch": false,
+    "prior_phone_app_not_stopped_by_failed_install": true,
+    "device_ui_automated": false
+  },
+  "next": "Module2 named settings integration; retain precise Remote/Chat source gaps and physical installation followup. Do not reclassify signed candidate as installed.",
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  },
+  "source_files": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "84f67ca8229e0b971b18046cd14d7acb9f6d299efb938a1d4948fd9acf9d5445",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "7ee1c5e1f78cdf52aceec4f5d06400f5d1fed4af9cf1b6b8c19f5f3719834824",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "bd9216549c3f29a63ca38025d2b241981ca6344ffa523c94427a1331fd232eec",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "d893c5326ec0602e8e226f1ae3b8918e35c9cbf51af4cd0f9df057b531d963af",
+    "implementation/ios/Sources/OfficialText.swift": "750e34716da0c5300bede809b61b6a54a4d8d765449131d34df747af98316e68",
+    "implementation/ios/Tools/prepare-official-text.py": "5b26c4fa1f1205f0ba356e48cf7aed4c93d7f538df26889e0bc3ba4ac12a5ce6",
+    "implementation/ios/TextTests/main.swift": "a4c0a3540c15767cbd35e3674a1694cada2fe18c61fd3fc2b1ded273ed6b09bf",
+    "implementation/ios/UITests/HostInteractionTests.swift": "f75d43de4703ebd5c758ccb559dcab872b992f711890b29c585d2612bd025ac5"
+  },
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "previous_module_snapshots": [
+    "ios-remote-list-parent-current-20261113-r3.json",
+    "ios-remote-message-parent-current-20261113-r3.json",
+    "ios-remote-controls-parent-current-20261113-r3.json",
+    "ios-remote-requests-parent-current-20261113-r3.json",
+    "ios-chat-work-parent-current-20261113-r3.json"
+  ]
+}

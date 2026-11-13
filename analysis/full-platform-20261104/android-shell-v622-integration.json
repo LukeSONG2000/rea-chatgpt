@@ -1,0 +1,119 @@
+{
+  "version": 622,
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "implemented": [
+    "Ordinary sidebar Small row metrics: 16sp/24sp medium text, 24dp icon, 32dp leading and 12dp icon-label gap, min48 and vertical8",
+    "Ordinary sidebar fixed Chat and account fallback footer, capsule and circle geometry, Blue default #3566F0/white and q5n.c.a gear fill",
+    "Normal Chat/Work picker cr71.g geometry, selected track and normal light/dark colors, preserving separate mode drafts",
+    "Settings simple-row renderer, 27dp grouped corners, 1dp outline/dividers, min54, 16sp/24sp text, recovered slot spacing/colors",
+    "Existing settings root entries bound to original vector assets, direction-aware trailing chevron",
+    "General appearance/language rows use shared recovered grouping and retain persistence/navigation"
+  ],
+  "source_reports": [
+    "android-sidebar-v622-source.json",
+    "android-settings-v622-source.json",
+    "android-mode-picker-v622-source.json",
+    "android-shell-v622-assets.json"
+  ],
+  "source_correction": {
+    "location": "urr.smali:1163,1295",
+    "finding": "Dialog selects NovaSidebar; non-Dialog selects ordinary urr with Small branch. JADX condition is inverted."
+  },
+  "adapter_decisions": [
+    "Explicit offline feature availability fixture; live eligibility and actual selected sidebar-mode producer are not supplied by a service",
+    "Default accent consumer coerces Default to Blue. No personal screenshot accent or avatar data is seeded",
+    "No account avatar in fixture selects the official gear fallback",
+    "Data-control icon selects nonexperimental storage_badge_gear branch; actual service producer is unknown",
+    "Library retains books branch; tilted-documents upstream rc6.a is unclosed",
+    "Current footer Chat navigates home retaining draft; starting a new service conversation remains unimplemented",
+    "Picker animation uses independent Compose animateDpAsState; exact original drag/resize/spring is unimplemented",
+    "Existing Android native drawer width/motion/header and FontFamily.SansSerif remain independent host adapters"
+  ],
+  "not_implemented": [
+    "Complete sidebar capability expansion/history/search and original drawer width/scrim/motion chain",
+    "Header search/right conversation action source integration",
+    "Compact versus keyboard-expanded home composer and original parent underlap/gradient effects",
+    "Full settings account/profile and other service-owned groups, search and corresponding operational subpages",
+    "Original AppLocaleDialog and complete application font resolver/high contrast/accent preference",
+    "Original sit0.e footer shadow renderer and selected-row special style branches",
+    "Picker drag and constrained width handling for original unusual viewport/large-text cases",
+    "Special destructive/disabled settings-row tint branches",
+    "Android Remote message/approval core remains separate subsequent work"
+  ],
+  "validation": {
+    "implementation": "Independent frontend with Android293 evidence and synthetic data",
+    "serial": "172.16.197.16:5555",
+    "manufacturer": "OnePlus",
+    "model": "ONEPLUS A6003",
+    "sdk": "35",
+    "run_id": "98b540c67f0b46d3bbe1ee5260635cba",
+    "ui_matrix": [
+      "zh-CN/light",
+      "en/dark",
+      "system/system"
+    ],
+    "status": "passed",
+    "steps": [
+      {
+        "apk": "app/build/outputs/apk/debug/app-debug.apk",
+        "sha256": "24dd85eb645ff63a357dbc382446865ec68cb53aa1d85b9817e537efc484a6e8"
+      },
+      {
+        "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+        "sha256": "4e6139e616302e27c44c5c87a6f54b947af0bfa19f8456ae984bea4121c1a9c1"
+      },
+      {
+        "test": "preferences",
+        "passed": true
+      },
+      {
+        "test": "journey",
+        "passed": true
+      },
+      {
+        "test": "verifyRestart",
+        "passed": true
+      }
+    ],
+    "export_errors": [],
+    "preview_launch": {
+      "skipped": "Foreground belongs to another app or cannot be established"
+    },
+    "report": "android-shell-v622-oneplus-r3.json",
+    "build_log": "android-shell-v622-build-r4.log",
+    "installed_version_code": 622,
+    "visual_observations": [
+      "Reviewed home picker and root settings in light; sidebar/settings in dark",
+      "UiAutomation repeated-dark snapshot had partial missing paint; actual cause remains unknown",
+      "Independent adb screencap after Chinese light and dark drawer close/reopen displayed labels and glyph correctly; saved both captures",
+      "Original drawer/header/composer visual gaps remain listed"
+    ],
+    "independent_captures": [
+      "android-shell-v622-handoff-sidebar-reopened.png",
+      "android-shell-v622-adb-dark-reopened.png",
+      "android-shell-v622-final-preview.png"
+    ],
+    "final_preview": {
+      "profile": "preview",
+      "language": "system",
+      "appearance": "system",
+      "screen": "sidebar",
+      "foreground": "topResumedActivity=ActivityRecord{46771705 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1113}",
+      "pid": "17227",
+      "left_running": true,
+      "launch": "Stopping: local.rea.chatgpt.androidhost\nStarting: Intent { cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity }"
+    }
+  },
+  "regression_notes": [
+    {
+      "report": "android-shell-v622-oneplus-r1.json",
+      "result": "preferences passed; journey failed because picker tag followed padding and measured the inner36dp box. Moved instrumentation tag before padding to measure the44dp track. Layout dimensions were retained."
+    },
+    {
+      "report": "android-shell-v622-oneplus-r2.json",
+      "result": "All three tests passed. Dark Chat glyph absent in one snapshot. Explicit recovered white tint supplied; first dark r3 snapshot contains glyph. Reopened screenshot shows wider missing paint, requires independent capture."
+    }
+  ]
+}

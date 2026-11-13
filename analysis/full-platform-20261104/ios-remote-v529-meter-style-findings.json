@@ -1,0 +1,170 @@
+{
+  "batch": "v529",
+  "status": "verified_static_core_with_partial_environment",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static",
+  "component": "MessageInputThinkingEffortMeter",
+  "parentEvidence": [
+    "ios-remote-v529-meter-metadata.json",
+    "ios-remote-v529-meter-body.asm",
+    "ios-remote-v529-meter-constants.json"
+  ],
+  "geometry": {
+    "body": "0x60a26b4",
+    "geometryClosure": "0x60b74bc ->0x60a277c",
+    "arc": {
+      "shape": "0x60a3058",
+      "center": [
+        "rect.midX",
+        "rect.height * 13/24"
+      ],
+      "radius": "rect.width * 11/24",
+      "startDegrees": 137,
+      "rangeDegrees": 266,
+      "clockwise": false,
+      "emptyWhen": "progress <= 0",
+      "effectiveProgress": "min(progress,1) for positive progress",
+      "backgroundProgress": 1,
+      "backgroundProgressStore": "0x60a2838..0x60a283c",
+      "strokeWidth": "geometry.size.width / 12",
+      "strokeWidthEvidence": "0x60b74dc..0x60b74e8; distinct from needle path minDimension / 12",
+      "strokeStyle": {
+        "lineCapRaw": 1,
+        "lineJoinRaw": 0,
+        "miterLimit": 10,
+        "dashPhase": 0,
+        "evidence": "0xc5d9e4..0xc5d9f4 ->SwiftUI.StrokeStyle.init; empty-array binding0xaad9298"
+      }
+    },
+    "needle": {
+      "shape": "0x60a2d9c",
+      "frame": [
+        "geometry.size.width",
+        "geometry.size.width"
+      ],
+      "frameAlignment": "center",
+      "frameEvidence": [
+        "0x60a29d8 geometry.size width savedx24",
+        "0x60a29e0 geometry.size ->0x765d30 saves widthx20, Alignment.center",
+        "0x1bfd00 moves alignmentx0/x1 to x4/x5",
+        "0x44f07c x0=widthx24, x2=widthx20, both optional-present flags0 ->FrameLayout.init"
+      ],
+      "rotationAnchor": "UnitPoint.center,0x60a2c50",
+      "rotationDegrees": "137 + 266 * selectionProgress",
+      "position": [
+        "geometry.size.width * 0.5",
+        "geometry.size.height * 13/24"
+      ],
+      "positionEvidence": [
+        "0x60a2aa0..0x60a2ad0",
+        "typeref0x823a120 and0x823a180 resolve _PositionLayout"
+      ],
+      "positionSemantics": "Absolute .position(x:y:) after center-anchored rotation. It is not a relative offset.",
+      "path": {
+        "lineWidth": "min(rect.width,rect.height)/12",
+        "ringOuterDiameter": "minDimension*7/24",
+        "ringPathEllipse": "CGRect(x:midX-diameter/2,y:midY-diameter/2,width:diameter,height:diameter).insetBy(dx:lineWidth/2,dy:lineWidth/2), then strokedPath",
+        "pointerLineStart": [
+          "rect.midX + diameter/2 - lineWidth/2",
+          "rect.midY"
+        ],
+        "pointerLineEnd": [
+          "rect.midX + minDimension*5/16",
+          "rect.midY"
+        ],
+        "pointerLineCapRaw": 1,
+        "ringLineCapRaw": 0,
+        "evidence": "0x60a2df8..0x60a2f1c and helper0x61130d0"
+      }
+    }
+  },
+  "selectionProgress": {
+    "base": "levelCount > 0 ? clamp(levelIndex+1,1,levelCount)/levelCount : 0",
+    "emphasis": "if isSelectionEmphasized then add (base > 0.84 ? -0.16 : 0.16)",
+    "arcProducer": "0x6102168..0x61021d0",
+    "needleProducer": "0x60a2bbc..0x60a2c28",
+    "constants": {
+      "0x7ce2250": 0.84,
+      "0x7d496d0": -0.16,
+      "0x7ce2358": 0.16
+    },
+    "limit": "Arc shape caps supplied progress at1. Needle rotation uses supplied emphasized progress directly."
+  },
+  "colors": {
+    "tintFieldOffset": "+0x50",
+    "isEnabledEnvironmentOffset": "+0x20,tag+0x28",
+    "disabledStateStyleEnvironmentOffset": "+0x10,tag+0x18",
+    "themeColorEnvironmentOffset": "+0x30,tag+0x38",
+    "resources": {
+      "0x74ed87c /0x8a51590": "ChatGPT/icon/tertiary",
+      "0x74ed6f4 /0x8a514f0": "ChatGPT/icon/primary"
+    },
+    "backgroundArc": {
+      "base": "tintColor ?? icon/tertiary",
+      "opacity": "isEnabled ? .55 : (disabledStateStyleRaw == 1 ? .55 : .35)",
+      "evidence": "0x60a2840..0x60a28a0; helper6112b14 bool Env; helper61108e8 style Env;159fec comparesraw1"
+    },
+    "progressArc": {
+      "color": "(isEnabled || disabledStateStyleRaw == 1) ? (tintColor ?? themeColor) : icon/tertiary",
+      "evidence": "0x61021d8..0x6102214; themeColor read+0x30/+0x38 ->195ef94"
+    },
+    "needle": {
+      "color": "(isEnabled || disabledStateStyleRaw == 1) ? (tintColor ?? icon/primary) : icon/tertiary",
+      "evidence": "0x60a2994..0x60a29d4"
+    },
+    "disabledStyleMetadata": {
+      "type": "SwiftUIStyleguide.DisabledStateStyle",
+      "descriptor": "0x971f284",
+      "fieldDescriptor": "0x9c0d8c4",
+      "noPayloadCaseOrder": [
+        "enabled",
+        "disabledWithoutDimming",
+        "disabled"
+      ],
+      "scope": "raw1 comparison corresponds to second no-payload case order; raw dispatch/demangle runtime not executed"
+    }
+  },
+  "composition": [
+    "ZStack alignmentcenter",
+    "full arc progress1 in backgroundArc color/stroke",
+    "progress arc overlay in progressArc color using shared selectionProgress",
+    "needle filled shape with center rotation and absoluteposition atarc center"
+  ],
+  "readyToIntegrate": [
+    "Official proportional arc and needle geometry",
+    "Independent tint/theme foreground/backdrop colors",
+    "Shared emphasizedprogress arithmetic",
+    "Position vs offset and square needle frame"
+  ],
+  "unknowns": [
+    "Effective themeColor producer upstream remains scoped to environment; no hardcoded green justified.",
+    "Animation response/damping helper460120 and timing enforcement not fully mapped here.",
+    "No current runtime/glyph/visual parity verified."
+  ],
+  "additionalEvidence": [
+    "ios-remote-v529-meter-style-types.json",
+    "ios-remote-v529-meter-environment-types.json",
+    "ios-remote-v529-meter-frame-helper.asm",
+    "ios-remote-v529-meter-frame-arguments.asm",
+    "ios-remote-v529-meter-alignment-arguments.asm",
+    "ios-remote-v529-meter-arc-modifier.asm",
+    "ios-remote-v529-meter-needle-modifier.asm",
+    "ios-remote-v529-meter-background-color.asm",
+    "ios-remote-v529-meter-foreground-color.asm",
+    "ios-remote-v529-meter-view-state-helpers.asm",
+    "ios-remote-v529-meter-disabled-style-compare.asm",
+    "ios-remote-v529-meter-geometry-stroke.asm",
+    "ios-remote-v529-meter-stroke-constructor.asm",
+    "ios-remote-v529-meter-stroke-argument-helper.asm"
+  ],
+  "validation": {
+    "originalAppRun": false,
+    "productionEdits": false,
+    "network": false,
+    "report": "json.tool passed"
+  }
+}

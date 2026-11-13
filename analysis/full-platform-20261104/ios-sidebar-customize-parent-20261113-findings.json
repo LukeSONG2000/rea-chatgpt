@@ -1,0 +1,169 @@
+{
+  "schema": "rea-ios-sidebar-customize-parent-v1",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Read-only Customize root actual row icon consumer and AssistantSettings parent/availability/save/back audit; no product/build/test/device/network change.",
+  "existing_parent_proof": {
+    "root": [
+      "CustomizePane NavigationStack→type-erased OrbitCustomizeScreen adapter (concrete registry still missing).",
+      "OrbitCustomizeScreen1f0b024→OrbitProfileCustomizeView1f58234; Form over supplied sections; refreshable/always bounce/title/inline toolbar.",
+      "Observed section dictionary lookup + isVisible callback; enum does not define visible catalog.",
+      "Personality destination real constructor1f5a6e8→4260a5c AssistantSettingsScreen, not Settings Personalization or Valdi AccountCustomizations."
+    ],
+    "child": [
+      "AssistantSettingsScreen witness42629e4→4260ae8.",
+      "AssistantSettingsContent witness4263b1c→42629e8 grouped Form, interactive keyboard dismissal; tuple Optional Appearance→Personality→CustomInstructions.",
+      "isPushed-specific custom navigation plus unsaved confirmation/save/error source-backed; original async success dismissal policy remains incomplete."
+    ],
+    "reports": [
+      "ios-sidebar-customize-20261112-findings.json",
+      "ios-assistant-settings-child-20261112-findings.json"
+    ]
+  },
+  "new_proven_gap": {
+    "problem": "Current NativeCustomizePage four supplied entries render title/status/chevron but omit original leading icons.",
+    "actual_chain": [
+      {
+        "owner": "OrbitProfileCustomizeSection row builder",
+        "address": "0x1f5c460",
+        "consumer": "0x1f5c5b8..0x1f5c5cc supplies label closure2128750 and Button; applies OrbitProfileCustomizeButtonStyle1f5c604"
+      },
+      {
+        "owner": "OrbitProfileCustomizeRowContent (not common row content)",
+        "descriptor": "0x95c273c",
+        "view_conformance": "0x7e59f68",
+        "witness": "0x1f5c904",
+        "body": "0x1f5c824",
+        "body_input": "setting/status/isEnabled copied by2128750..2128798"
+      },
+      {
+        "owner": "common OrbitCustomizeRowContent<OrbitProfileCustomizeIcon>",
+        "actual_type_record": "0x7e5aac8",
+        "constructor": "0x1f5c824",
+        "title_projection": "0x1f5c860→1f0a818",
+        "icon_payload": "0x1f5c8ac/b0 copies same setting raw value into the common icon field; type argument resolves95c34dc"
+      },
+      {
+        "owner": "OrbitProfileCustomizeIcon",
+        "descriptor": "0x95c34dc",
+        "view_conformance": "0x7e5b9e0",
+        "witness": "0x1f5e1d8",
+        "actual_body": "0x1f5e078",
+        "switch": "0x1f5e0c8..0x1f5e0e0; raw-byte table7e360ff; jumpbase1f5e0e4"
+      }
+    ],
+    "four_current_entries": [
+      {
+        "setting": "personality",
+        "raw_input_bound_to_title_dispatch": 0,
+        "jump_byte": 18,
+        "branch": "0x1f5e12c",
+        "factory": "0x74f9000",
+        "asset_string_address": "0x8a56070",
+        "asset": "OpenAI/Symbols/multicolor-personalization-24"
+      },
+      {
+        "setting": "location",
+        "raw_input_bound_to_title_dispatch": 8,
+        "jump_byte": 14,
+        "branch": "0x1f5e11c",
+        "factory": "0x74f8f10",
+        "asset_string_address": "0x8a55fe0",
+        "asset": "OpenAI/Symbols/multicolor-map-24"
+      },
+      {
+        "setting": "browser",
+        "raw_input_bound_to_title_dispatch": 9,
+        "jump_byte": 28,
+        "branch": "0x1f5e154",
+        "factory": "0x74f8c90",
+        "asset_string_address": "0x8a55e60",
+        "asset": "OpenAI/Symbols/multicolor-app-window-cursor-24"
+      },
+      {
+        "setting": "plugins",
+        "raw_input_bound_to_title_dispatch": 15,
+        "jump_byte": 22,
+        "branch": "0x1f5e13c",
+        "factory": "0x74f90a0",
+        "asset_string_address": "0x8a560d0",
+        "asset": "OpenAI/Symbols/multicolor-plugin-24"
+      }
+    ],
+    "mapping_authority": "Raw setting bytes are tied to actual existing localized title dispatch1f0a818. Icon switch receives exactly that same byte. This is not enum-declaration-based ordering or visibility.",
+    "icon_geometry": {
+      "source": [
+        "0x1f5c8d0→0x218596c",
+        "0x1f5c8ec..0x1f5c8f4",
+        "0x1f5d110..0x1f5d170"
+      ],
+      "scaled_metric_base": 24,
+      "consumer": "Common row reads _iconSize atmetadata+0x34 twice through ScaledMetric.wrappedValue, passes explicit nonnil width/height to View.frame(width:height:alignment:)1f5d170. This is actual frame geometry, unlike earlier Chat font-size inference.",
+      "limits": "Relative text style, complete row gap/insets/material and active full color rendering environment not rederived; native row/trait environment remains an adapter."
+    },
+    "integration": "Add provider-bound official icon name to these already explicit four fixture entries and render the source-backed scaled24 square leading slot. Retain the multicolor assets rather than tinting to arbitrary monochrome. Verify assets exist in extracted resources before delivery; do not create new visible catalog entries from the icon switch."
+  },
+  "root_catalog_and_actions": {
+    "already_implemented": "Form supplied sections/entries, isVisible/isEnabled, no root Save, real typed personality child, unavailable returnable other entries.",
+    "not_newly_recovered": "Actual full root section membership/order/header resources/runtime capability assignment. Existing Preferences/Connections/Permissions+four entries remain explicit fixture.",
+    "source_actions": [
+      "select",
+      "appeared",
+      "disappeared",
+      "editAvatar",
+      "dismissWalletSetup"
+    ],
+    "do_not_add": "No generic root Save or substitute PluginsDirectory as same destination."
+  },
+  "child_appearance_gate": {
+    "actual_Form_closure": "0x4262d88..0x4262d9c supplies42948dc",
+    "instructions": "0x42948fc loads current view-model reference;4294900 loads reference atinstance+0x78;4294904 reads collection count+0x10;4294908 zero→absent Appearance branch4294924. Nonzero constructs optional appearance, consistent with full Form tuple.",
+    "limit": "The instance+0x78 field identity could not be strictly bound in the existing class-field reader; do not call it a recovered permissions flag or affirm availableColors solely by resemblance. Current !colors.isEmpty policy is an independent provider contract with matching shape.",
+    "probe_failure": "inspect_swift_class_fields on AssistantSettingsViewModel descriptor9640ac8 rejected unsupported field descriptor. No fallback mapping from declaration order was applied."
+  },
+  "child_save_back": {
+    "source_resources": "Existing child report has Personality, Save, Unsaved changes, Discard changes, unsaved confirmation and save-error consumers. Exact child zh keytable and all action labels remain incomplete.",
+    "confirmed_host_adapter": "Current isSaving disables Back/Save; after success keeps page; save-error provides retry. Those policies remain independent, not proved source behavior.",
+    "unsaved_style_gap": "Actual screen tree carries confirmationDialog wrapper, while current host uses alert for unsaved edits. This is a source-backed parent presentation difference. Source title/message consumers4261620/4261a98; exact Keep editing action consumer still incomplete.",
+    "recommendation": "If restoring the original presentation wrapper this batch, use source-shaped confirmationDialog with existing independent discard/keep behavior and label the unclosed edge-pop arbitration. Do not claim original swipe-back interception or success auto-dismiss."
+  },
+  "haptics_and_gestures": {
+    "status": "unknown",
+    "conclusion": "No explicit haptic call established in root row Button/actual icon body or existing child save/back bounded evidence. Do not add feedback from generic action/type presence. Source gesture/interactive-pop unsaved arbitration remains unresolved."
+  },
+  "current_host": {
+    "path": "implementation/ios/Sources/NativeCustomizePage.swift",
+    "sha256_at_inspection": "ee14c8df9dcfd8d4a9b66791b8200d38ba850944cedc7ffdbdbdbf2adb849e2a",
+    "safe_changes": [
+      "Leading source asset slot for four already supplied entries.",
+      "Restore unsaved confirmationDialog wrapper with existing host-state contract, documenting original gesture policy gap."
+    ],
+    "retain_unknown": [
+      "Section/entry catalog fixture",
+      "Trait options/ranges",
+      "Runtime capability/permission gate assignments",
+      "Source async save lifecycle"
+    ]
+  },
+  "evidence_files": [
+    "ios-sidebar-customize-parent-20261113/root-row-builder.asm",
+    "ios-sidebar-customize-parent-20261113/root-label-thunks.asm",
+    "ios-sidebar-customize-parent-20261113/actual-row-witness.json",
+    "ios-sidebar-customize-parent-20261113/actual-row-body.asm",
+    "ios-sidebar-customize-parent-20261113/actual-row-content-tree.json",
+    "ios-sidebar-customize-parent-20261113/root-icon-metadata.json",
+    "ios-sidebar-customize-parent-20261113/root-icon-witness.json",
+    "ios-sidebar-customize-parent-20261113/root-icon-body.asm",
+    "ios-sidebar-customize-parent-20261113/root-icon-dispatch.json",
+    "ios-sidebar-customize-parent-20261113/row-icon-base.asm",
+    "ios-sidebar-customize-parent-20261113/row-icon-frame.asm",
+    "ios-sidebar-customize-parent-20261113/child-appearance-gate.asm"
+  ],
+  "validation": "Static only, pinned artifact and full relevant generic type argument. No visual equivalence or runtime behavior claimed.",
+  "stop_boundary": "Actual missing four leading icons now linked through the real row producer and shared icon carrier. Child optional section gate arithmetic established but field identity unclosed. No further catalog/traits expansion."
+}

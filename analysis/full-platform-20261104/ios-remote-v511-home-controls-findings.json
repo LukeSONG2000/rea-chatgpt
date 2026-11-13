@@ -1,0 +1,264 @@
+{
+  "batch": "v511",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "scope": "Remote Home ordinary empty-input attachment, Whisper idle and primary voice geometry/style. No official app execution or service/audio calls. Production untouched by this evidence task.",
+  "attachment": {
+    "predicate_source": "ios-remote-v510-home-controls-findings.json",
+    "label": {
+      "symbol": "OpenAI/Symbols/plus-lg",
+      "font_base": 18.808777429467085,
+      "font_weight": "regular",
+      "glyph_frame": "font x font",
+      "padding": "(MessageInputStyle.minHeight - attachmentFont)/2",
+      "compact_padding_base": 12.595611285266457,
+      "expanded_padding_base": 14.595611285266457,
+      "source": [
+        "0x19863cc",
+        "0x198e918",
+        "v510 attachment label geometry"
+      ],
+      "accessibility_title_status": "unresolved",
+      "padding_dynamic_type": "Raw MessageInputStyle values through Environment<Double>; no UIFontMetrics scaling. 0x6071108..0x6071134 computes raw difference,0x6070edc..0x6070ee8 reads via0x1a25a4. Only glyph/font metric uses0x6111f34 ->0x7560ae4."
+    },
+    "style": {
+      "status": "verified-static",
+      "type": "MessageInputButtonStyle",
+      "entry": "0x198e918",
+      "constructor": "0x606c86c",
+      "isFilledIcon": false,
+      "isSelected": "attachmentPresentation == attachmentMenu(raw0)",
+      "isPressedOverride": false,
+      "foregroundOverride": {
+        "normal": "ChatGPT/icon/primary",
+        "selected": "ChatGPT/icon/primary",
+        "pressed": "ChatGPT/icon/primary"
+      },
+      "background": null,
+      "border": null,
+      "disabledOpacityOverride": null,
+      "minHeightOverride": null,
+      "pressedOpacity": 1,
+      "pressedScale": 0.97,
+      "disabledOpacity": {
+        "light": 0.12,
+        "dark": 0.2
+      },
+      "proof": [
+        "0x198f2d8 calls0x74ed6f4 three times; resource0x8a514f0",
+        "0x608006c ->0x606d030 selects nonnil override, skips opacity branch0x60800c4",
+        "0x6080534..0x6080544 scale literal0x7d193f8",
+        "0x60806c0..0x608074c disabled nil-default;0xaad00b0 binds SwiftUI.ColorScheme.light"
+      ]
+    },
+    "presentation": {
+      "status": "partial",
+      "owner_enum": "CodexRemoteComposer.AttachmentPresentation",
+      "descriptor": "0x95ac810",
+      "raw_cases": {
+        "attachmentMenu": 0,
+        "fileImporter": 1,
+        "camera": 2,
+        "photosPicker": 3,
+        "optionalNil": 4
+      },
+      "plus_action": "0x1c286d4 updates presentation via0x1980e0c; ordinary menu raw0",
+      "menu_type": "CodexRemoteAttachmentMenu",
+      "menu_descriptor": "0x95b1b44",
+      "menu_body": "0x1961b10 ->0x1960910",
+      "observed_fields": [
+        "addPhotosTitle",
+        "goalCommand",
+        "isPlanModeEnabled",
+        "isPlanModeActionDisabled",
+        "supportsPlanMode",
+        "supportsRemoteAttachments",
+        "takePhoto optional",
+        "addPhotos",
+        "addFiles",
+        "hasPlugins",
+        "showPlugins",
+        "pursueGoal",
+        "setPlanModeEnabled"
+      ],
+      "limit": "Metadata and state-owner evidence do not prove complete rendered menu order, action gating or dismissal behavior. Preserve explicit pending menu entry until child builders and ownership transitions close."
+    }
+  },
+  "whisper_idle": {
+    "status": "partial",
+    "request": "standard codexActivation raw4, idle state raw2, compactControlState raw10; see v510",
+    "symbol": "OpenAI/Symbols/microphone",
+    "symbol_factory": "0x74f894c",
+    "font_base": 18.808777429467085,
+    "font_weight": "regular",
+    "glyph_frame": "font x font",
+    "padding_all_edges": 13,
+    "padding_proof": [
+      "0x16f996c reads ScaledEnvironmentMetric field-vector0x4c (attachmentsButtonFontSize)",
+      "0x16f9978 resolves SwiftUI.Font.Weight.regular",
+      "0x16f9a04..0x16f9a40 glyph frame",
+      "0x16f9a68..0x16f9b28 reads MessageInputAttachmentsPartStyle.whisperButtonPadding optional at0x150/0x158; nil falls back attachmentsPadding0x18",
+      "0x607fbec/0x607fbf0 default whisperButtonPadding nil;0x823bf70 doubles18,13"
+    ],
+    "natural_label_base_size": 44.808777429467085,
+    "outer_frame": {
+      "status": "partial",
+      "width_and_height": "optional trailingButtonMinimumInteractionSize environment value",
+      "source": "0x16f8c34 ->0x16f9008 twice",
+      "limit": "Ordinary idle streaming branch reaches0x16f9038 directly. Other branches max(value,44) do not prove ordinary idle fixed44. Current resolved environment optional remains unclosed."
+    },
+    "foreground": {
+      "status": "partial",
+      "enabled": "MessageInputAttachmentsPartStyle.buttonForeground at0x80",
+      "disabled": "factory0x74ed87c unless state raw4",
+      "source": "0x178d790..0x178d804",
+      "limit": "Effective Home buttonForeground resource and full Whisper ButtonStyle pending."
+    },
+    "accessibility": {
+      "idle_title": "Dictation",
+      "active_title": "Stop",
+      "factories": [
+        "0x75d3150",
+        "0x75d3040"
+      ],
+      "consumer": "0x178d738"
+    },
+    "action": "standardcodexActivation -> startWhisper raw26 via0x19903f8; no audio implementation executed",
+    "correction": "Leaf _style is Environment<MessageInputAttachmentsPartStyle>. Field-vector0x50 is primaryButtonFontSize, not elementSize. WhisperPartStyle.elementSize44 and padding2 are separate fields and cannot size this idle leaf directly.",
+    "padding_dynamic_type": "Raw attachment style double, remains13 while glyph scales, unless style explicitly overrides it."
+  },
+  "voice_primary": {
+    "status": "partial",
+    "icon_raw": 5,
+    "symbol": "OpenAI/Symbols/voice-button",
+    "symbol_proof": [
+      "0x606b61c..0x606b638 jump table0x8233c88 raw5 ->0x606b66c",
+      "0x606b66c ->0x74fc394 ->resource0x8a577b0"
+    ],
+    "wrapper": "SwiftUIStyleguide.CircularControlIcon",
+    "wrapper_type_record": "0x823a6e0",
+    "font_base": 30,
+    "diameter": "resolved font * 16/15",
+    "diameter_base": 32,
+    "geometry_proof": "0x606b678..0x606b6ac; type record retains CircularControlIcon, not a bare symbol",
+    "background": {
+      "ordinary_raw5": "MessageInputPrimaryButtonPartStyle.primaryColor",
+      "source": "0x606a47c..0x606a4d0",
+      "default_resource": "OneOff/AppForeground",
+      "default_factory": "0x606bf5c ->0x74f0420 ->0x8a521d0",
+      "home_effective_status": "unresolved theme override",
+      "limit": "Home theme transform0x6081f4c may change effective style. Screenshots do not prove fixed green."
+    },
+    "icon_color": {
+      "source": "0x606b984 ->0x606bc28",
+      "rule": "Use optional style.iconColor at0x10 when nonnil; otherwise primaryColor/theme/colorScheme contrast path, ultimately black or white branches. Special Whisper state has separate override.",
+      "home_effective_status": "partial"
+    },
+    "accessibility": {
+      "identifier": "message-input-voice-button",
+      "identifier_resource": "0x89e8240",
+      "title": "Switch to Voice",
+      "title_factory": "0x75dae80",
+      "title_consumer": "0x606bbe8"
+    },
+    "limit": "Current type proof permits existing CircularControlIcon renderer reuse. Inner0.75 geometry/palette remains governed by separately verified shared component evidence, not newly proved by this raw5 caller."
+  },
+  "dynamic_type": {
+    "status": "verified-static-leaf; partial-parent",
+    "metric_type": "SwiftUIToolbelt.ScaledEnvironmentMetric",
+    "constructor": "0x7560a74",
+    "getter": "0x7560ae4",
+    "dynamic_type_keypath": "0x75bd3a4 ->0x84b7728",
+    "getter_slot": "0xaad1a28",
+    "getter_symbol": "SwiftUI.EnvironmentValues.dynamicTypeSize.getter",
+    "keypath_accessors": [
+      "0x23ec78",
+      "0x23ec98"
+    ],
+    "rule": "Metric getter reads standard SwiftUI DynamicTypeSize and invokes UIFontMetrics with corresponding trait collection. Attachment/mic/primary controls use this metric.",
+    "limit": "No proof that MessageInputStyle.scalesMetricsForDynamicType=false disables these ScaledEnvironmentMetric fields. Do not replace their scaling with constants based on that flag. Parent-level dynamicTypeSize clamp remains unresolved.",
+    "relative_text_style_status": "Metrics carry relative text-style input. Exact body mapping of each control constructor is not re-proved in this report."
+  },
+  "validation": {
+    "method": [
+      "targeted llvm-objdump windows",
+      "Swift metadata field vectors",
+      "chained-fixup imported symbol resolution",
+      "string/literal inspection"
+    ],
+    "runtime": false,
+    "behavioral_equivalence": false
+  },
+  "open_boundaries": [
+    "Attachment full menu rendered order, action gates and presentation dismissal",
+    "Attachment accessibility title",
+    "Whisper actual foreground and ButtonStyle",
+    "Idle trailingButtonMinimumInteractionSize resolved value",
+    "Home effective theme primaryColor/iconColor",
+    "Parent dynamicTypeSize overrides"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-button-style-metadata.json",
+      "sha256": "dd6b53e6c6c0f0f6117cca74f13acaa61a3350622c66d728006ca0ad50e428da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-attachment-foreground.asm",
+      "sha256": "f44dd65535446b6dd916cbc4fbb10ef47d52bbf24caf88d5d18c499c6023b09e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-button-foreground-selector.asm",
+      "sha256": "5426c52b439e7b03d40fb53af76639ec64b9e33291e8a12964ab71f59b0f2082"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-whisper-icon-closure.asm",
+      "sha256": "2132bc4a433b13c5f7c1e0648af102fea2dd1a8d2d3e730237ae1757b3997482"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-attachments-default-style.asm",
+      "sha256": "12688a70c26b564af0b344c6e7dde01b45cebf6cc05e12eca5870cbf24ea662a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-voice-symbol.asm",
+      "sha256": "f74a5a2e2048a21f349311ba78468265d382d8388c0d6585d5937d6557f91b69"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-voice-layout-types.json",
+      "sha256": "5d7e223494c6c4df8080a13601a20baf77240b5e065e883406da6d969f1825c5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-primary-default-colors.asm",
+      "sha256": "1c27f2c23048fbe93895cbce69fd177582753a5ab8dda6bb325fc0015752dba8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-voice-title-factory.asm",
+      "sha256": "2ad7eba21822bcd3f8d2d4c90e461ab755812b105ec087f69e9fa923f4c8b91f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-metric-getter.asm",
+      "sha256": "5daa9e447f1a5491407e567b365a519e39c9f375223960afe0030d95b8382b92"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-metric-dynamic-type-accessors.asm",
+      "sha256": "0ec76deca1e5ebadd8cab4657f13a7cc499c42be9300925ecf24483d1fd49d2f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-attachment-menu-metadata.json",
+      "sha256": "057c2da68f85b66b9c9555849a5aaf7a9fc77f8e614c49434e7bbf4621a4a3ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-menu-content.asm",
+      "sha256": "ebe39669005be007893626fe70c0df3a7556a5ea3bc894ab3a8663b8d5a1df81"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-control-labels.asm",
+      "sha256": "2f0fb9f84a9686e94653711d04b88e84be0aaabd02740b8563b2f5a235613ed1"
+    }
+  ]
+}

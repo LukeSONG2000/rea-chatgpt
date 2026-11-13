@@ -1,0 +1,176 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "scope": "v532 bounded pending dictation completion consumer, revision guard and clear. No app execution/audio/services or implementation edits.",
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "findings": [
+    {
+      "id": "pending-layout",
+      "status": "verified_static",
+      "conclusion": "ComposerState promptRevision+0x138; pendingDictationCompletion+0x140. Pending metadata is existential DictationTranscriptionMetadata; promptRevision+0x28, autoSendRequested+0x30, awaitsDirectSend+0x31 within pending. Optional presence uses metadata type word+0x18.",
+      "sources": [
+        "ios-remote-v531-pending-dictation-metadata.json",
+        "ios-remote-v532-pending-metadata-type.json"
+      ],
+      "protocol": {
+        "descriptor": "0x96b2224",
+        "name": "DictationTranscriptionMetadata",
+        "requirement_count": 8
+      },
+      "limits": "Presence/layout does not identify whether a recording is current."
+    },
+    {
+      "id": "prompt-revision-invalidates",
+      "status": "verified_static",
+      "conclusion": "Prompt mutation preserves pending only if its staged revision matches the new actual revision; otherwise it clears pending. Unchanged text does not increment.",
+      "entry": "0x188ea50",
+      "offsets": {
+        "write_prompt": "0x188ea64..68",
+        "string_equal_fast_and_slow": "0x188ea6c..84",
+        "increment_and_overflow_trap": "0x188ea88..94;0x188eaec",
+        "pending_presence": "0x188eaa4..a8",
+        "compare_revision": "0x188eaac..b4",
+        "clear_nil": "0x188eab8..d4"
+      },
+      "source": "ios-remote-v532-composer-pending-access.asm",
+      "limits": "This acts on pending bookkeeping after prompt changes. It does not reject late transcription text before the completed handler merges it."
+    },
+    {
+      "id": "non-direct-consumption",
+      "status": "verified_static",
+      "entry": "0x188ece4",
+      "conditions": [
+        "pending nonnil",
+        "awaitsDirectSend false at188ed38..3c",
+        "pending.promptRevision == owner.promptRevision at188ed40..4c",
+        "supplied text equals current prompt at188ed50..78"
+      ],
+      "success_order": [
+        "clear pending to nil188ed8c..a8",
+        "invoke saved metadata witness+0x38 with autoSendRequested188edac..c4",
+        "destroy saved copy"
+      ],
+      "failure": "returns without callback and without clearing this pending field on these local mismatches",
+      "caller": [
+        "1892bb0 wrapper reads NewThread composer at ivar slotb07db78",
+        "19431b4 passes188ece4 to1892bd8 owner wrapper"
+      ],
+      "source": "ios-remote-v532-composer-pending-access.asm",
+      "limits": "Do not label metadata callback as actual message delivery or transport acknowledgment."
+    },
+    {
+      "id": "autosend-post-dispatch-reconcile",
+      "status": "verified_static",
+      "entry": "0x188edd8",
+      "call_site": "0x18839b8 after1883978/18839a4 autosend route; also18837f0 sibling completed path",
+      "conditions": [
+        "input metadata nonnil188ee28..2c",
+        "pending nonnil188ee44..48",
+        "awaitsDirectSend == true through1d9beac (188ee4c..50)",
+        "both UUID getters+8/+10 match input metadata188ee54..188ef0c",
+        "revision equal188ef10..1c",
+        "exact current prompt equality188ef20..48"
+      ],
+      "success": "copy pending; set only awaitsDirectSend=false188ef78; write back188ef80..90. Does not clear pending; no metadata callback here.",
+      "failure": "no local pending mutation",
+      "sources": [
+        "ios-remote-v532-composer-pending-access.asm",
+        "ios-remote-v532-pending-consumers.json",
+        "ios-remote-v532-pending-callers.asm"
+      ],
+      "limits": "Matching two UUIDs is proved; default implementation identifies them as dictationSessionID and attemptID. No proof they are host/thread/request identities."
+    },
+    {
+      "id": "direct-consumption",
+      "status": "verified_static",
+      "entry": "0x188ef9c",
+      "conditions": [
+        "pending nonnil188efec..f0",
+        "awaitsDirectSend == true through1d9beac188eff4..f8",
+        "revision equal188effc..188f008",
+        "supplied text and current prompt compare equal after Foundation trimming188f010..94"
+      ],
+      "success_order": [
+        "clear pending nil188f0ac..d0",
+        "invoke saved metadata witness+0x40 at188f0d4..e8"
+      ],
+      "failure": "returns without callback, without clearing pending in this branch",
+      "direct_caller_sites": [
+        "0x18b7c64",
+        "0x1914bd4",
+        "0x1915644",
+        "0x19158fc",
+        "0x1926078"
+      ],
+      "sources": [
+        "ios-remote-v532-composer-pending-access.asm",
+        "ios-remote-v532-pending-callers.asm",
+        "ios-remote-v532-pending-consumers.json"
+      ],
+      "limits": "Foundation trimming is imported and verified; specific CharacterSet target7c3f79c is not bound here. Caller lifecycle semantics not fully established."
+    },
+    {
+      "id": "metadata-callback-not-send",
+      "status": "verified_static",
+      "conclusion": "DefaultDictationTranscriptionMetadata conformance7def350 witnessa4f6290 implements slots+38/+40 via1734e30/34 ->1734c40/cf8. Both access field6 timingContext using metadata field-vector+28, guard optional presence and forward into17317cc/1731920. These pending consumers confirm metadata bookkeeping, not the network send itself.",
+      "layout_proof": "descriptor95a6890 fields7 vector2 (metadata+0x10); field6 thus+0x28; helper179a374 returns177b5bc metadata accessor",
+      "uuid_mapping": "witness+8 c66cc first field dictationSessionID; witness+10 1734d90 loadsmetadata+0x14 second field attemptID",
+      "sources": [
+        "ios-remote-v532-metadata-witness.json",
+        "ios-remote-v532-metadata-witnesses.asm",
+        "ios-remote-v532-metadata-callbacks.asm",
+        "ios-remote-v532-metadata-extra-bindings.asm",
+        "ios-remote-v531-whisper-nested-metadata.json"
+      ],
+      "limits": "TimingContext callback contents17317cc/1731920 remain unexpanded; no named method invented."
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "cancelRecording pending cleanup",
+      "boundary": "v531 eventcancel maps1cecee4 to ComposerWhisperStateEvent.cancelRecording then witness+108. No completed-dispatcher cancel branch or pendingclear linkage established.",
+      "next_minimal": "Trace shared Whisper reducer cancel branch into callback invalidation; do not infer from composer pending revision."
+    },
+    {
+      "question": "late completed event before text application",
+      "boundary": "1883820 reads current prompt, merges188321c, then stagespending18839ec and writesprompt188eb24. No old-session/revision guard before merge proved in this scope.",
+      "next_minimal": "Locate handleEvent emission session/attempt guard upstream; pendingconsumer checks alone cannot establish it."
+    },
+    {
+      "question": "owner/task switching",
+      "boundary": "Per-owner composer state is shown, but switch/disappear cancellation and ownership lifetime of captured completion callbacks remain unknown.",
+      "next_minimal": "Find sharedWhisper owner cancellation/teardown binding before adding task-switch isolation claims."
+    },
+    {
+      "question": "pending destruction",
+      "boundary": "189240c destroys field+140 among object fields; this is deallocation cleanup, not evidence that switching task deallocates or cancels recording."
+    }
+  ],
+  "safe_integration": {
+    "source_backed": [
+      "Represent staged revision and autoSend/awaitsDirectSend separately",
+      "Clear stale pending when actual prompt revision advances away from staged revision",
+      "Clear before metadata callback to avoid second consumption/reentrancy duplicate",
+      "Two metadata UUIDs and revision/content are independent checks"
+    ],
+    "not_proven": [
+      "Cancellation must roll back prompt",
+      "Late completed transcript must be dropped by this pending mechanism",
+      "Task switch automatically clears old recording",
+      "metadata callbacks are service-accepted send confirmations"
+    ]
+  },
+  "verification": {
+    "raw_ranges_bounded": true,
+    "official_runtime": "not run",
+    "network": "not used",
+    "audio": "not recorded",
+    "implementation_edits": "none"
+  },
+  "next": "Shared Whisper reducer cancellation and event producer identity guard, not broader remote sending."
+}

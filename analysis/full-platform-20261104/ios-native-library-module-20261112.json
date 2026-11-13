@@ -1,0 +1,68 @@
+{
+  "module": "9 sidebar packages / native FileLibrary legacy browse",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core_browse_loop_implemented_archived_for_later_user_review",
+  "official_sources": [
+    "ios-sidebar-feature-routes-20261112-findings.json",
+    "ios-library-legacy-list-20261112-findings.json"
+  ],
+  "implemented": [
+    "sidebar Space entry to retained native root owner",
+    "NavigationStack directory routes and source-backed ScrollView/LazyVStack/ForEach/footer structure",
+    "explicit legacy/list/hidden-selection synthetic branch",
+    "account/directory/query/request-scoped provider interface with loading, empty, failure/retry and pagination",
+    "synthetic text/source files through existing shared temporary-resource and native QuickLook utility",
+    "preview request fencing, closing and return to directory",
+    "directory/search data retained by parent across sidebar navigation"
+  ],
+  "independent_adaptations": [
+    "History sidebar to native builder invocation is an independent host route; original dispatcher remains partial",
+    "same explicit Space branding as current sidebar; original native title factory unclosed",
+    "semantic body fonts, 12/20 padding, folder/document mapping, and native searchable UI; not measured original geometry",
+    "local title filtering and three-item fixture pagination; not official matching/ranking or server behavior",
+    "QuickLook and request/resource envelopes are frontend adapters"
+  ],
+  "not_implemented": [
+    "IA refresh alternative, actual experiment/account capability selection",
+    "grid and full original BrowseControls/filter/selection/provider/favorites/recently-deleted surfaces",
+    "upload/import, rename/move/delete/share/start-chat actions and corresponding service mutations",
+    "complete original row thumbnail/provider/badge/upload/selection state rendering and original action dispatcher",
+    "precise toolbar labels/order, row metrics/material/transitions, source-specific gesture haptics",
+    "real cloud storage, resource retrieval/auth/download; Settings Storage entry stays returnable but has no new cache-management behavior"
+  ],
+  "verification": {
+    "contract": "passed /tmp/rea-library-contract-20261112.log; old search/account/directory, duplicate/cancel, A-B-A, overlapping pages and cursor loop",
+    "source_typecheck": "passed /tmp/rea-library-typecheck-20261112.log",
+    "ui": {
+      "r1": "ios-native-library-20261112.xcresult failed before document-ready close; entrance video showed blank document with toolbar already accessible",
+      "r2": "ios-native-library-20261112-r2.xcresult passed steps for retry/pagination/folder/document-ready preview close/empty/search no-result; failed old Cancel label lookup",
+      "r3": "ios-native-library-20261112-r3.xcresult testNativeLibrarySearchReturnChinese passed 27.027s; actual Close label, cleared query, sidebar return and repeated entry",
+      "limits": "No claim entire core journey passed in one final test; combined observed steps cover the core browse loop on identical product sources. Test-only readiness/OS-label corrections did not change production dismissal/search."
+    },
+    "visual": "Inspected r3 native root screenshot; semantic host presentation, not official pixel-parity evidence",
+    "physical": {
+      "state": "unavailable",
+      "state_report": "ios-native-library-20261112-device-state.json",
+      "build": "succeeded",
+      "last_installed": "Settings fixed-close candidate; created-config and Library candidates not installed",
+      "install": "not_attempted_after_preflight_unavailable",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "550a2a85cf922681129b363d5fc25abaaa8c503a3053b00005fdea9d8e818c78",
+      "final_state_report": "ios-native-library-20261112-device-final-state.json"
+    },
+    "simulator": {
+      "launch_report": "ios-native-library-20261112-preview.json",
+      "hash_match": true,
+      "ordinary_screenshot": "ios-native-library-20261112-ordinary.png",
+      "left_running": true,
+      "ordinary_screenshot_inspected": true
+    }
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/FrontendFileLibrary.swift": "23fa820be27b03cb5dd9621f36070c6de9ee2f5d5b9714ff84da49677c29cc4f",
+    "implementation/ios/Sources/NativeFileLibrary.swift": "10724489d2c9dd4a8548f5d44b28722ba3205acae5f1dd1969056a2e55941194",
+    "implementation/ios/Sources/NativeConversationHost.swift": "e4981e93b992537e69f4e539400c3c723c6c15c89dc177fa94280d298dbe60b9",
+    "implementation/ios/UITests/HostInteractionTests.swift": "032b8d28ebfaf6e569cfa0719aed305856d92e1bf1385fcdb7f195fea796247d"
+  }
+}

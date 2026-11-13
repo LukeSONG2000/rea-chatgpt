@@ -1,0 +1,433 @@
+{
+  "schema_version": 1,
+  "id": "ios-remote-prompt-fifth-20261113",
+  "status": "partial",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Two bounded groups: actual renderer expansion/truncation projection and ordinary MarkdownPart line-limit caller inputs. No product changes, target execution, build or device operations.",
+  "reused_reports": [
+    "ios-remote-message-parent-current-20261113-r3.json",
+    "ios-remote-user-message-fourth-20261113-findings.json",
+    "ios-remote-v476-render-context.json"
+  ],
+  "observations": [
+    {
+      "id": "structured-prompt-preparation",
+      "type": "official_artifact_observation",
+      "sources": [
+        "0x95d1c00 ParsedUserMessageMarkdown descriptor",
+        "0x1a01688..0x1a017dc",
+        "0x1d8e4e8 typepair0x7e122b0",
+        "0x1ceec1c",
+        "0x2438098"
+      ],
+      "conclusion": "Renderer input contains optional CodexRenderedItem.ParsedUserMessageMarkdown with _document, _collapsedDocument, markdown and collapsedLineLimit. It copies a supplied prepared projection when available; otherwise 0x2438098 prepares one from source text and the effective collapsedLineLimit.",
+      "limits": "The exact cached preparation identity comparison includes input/context and must not be replaced with text-only cache identity. Full parser implementation is not reconstructed."
+    },
+    {
+      "id": "full-versus-collapsed-selection",
+      "type": "official_artifact_observation",
+      "sources": [
+        "0x1a0182c..0x1a0185c",
+        "0x1a018d0..0x1a01924",
+        "0x1d19de8",
+        "0x1ab4f54"
+      ],
+      "conclusion": "The renderer selects the full document when isExpanded is true or collapsedDocument is absent; otherwise it selects collapsedDocument. Expanded returns expansion-state raw2; unexpanded returns raw1 iff collapsedDocument is present, otherwise raw0. The state and projected rendered blocks are cached together on the renderer.",
+      "limits": "These are numeric implementation states observed from the selected consumer, not named official wire enum cases. This does not prove collapse-back interaction or service state."
+    },
+    {
+      "id": "result-to-button",
+      "type": "official_artifact_observation-reused-and-corroborated",
+      "sources": [
+        "0x1a0195c..0x1a01960 return blocks/state",
+        "0x1a6bac4..0x1a6bac8 saves returns",
+        "0x1a6bb00 passes saved state asx2",
+        "0x1a6bb64 keeps lowbyte",
+        "0x1a6bdbc..0x1a6bdd4 optional showsExpansionButton override",
+        "0x1d19c30..0x1d19c5c Binding setter"
+      ],
+      "conclusion": "When showsExpansionButton is nil, only renderer-state raw1 admits the expansion sibling. Explicit non-nil bool overrides this admission. The expansion action sets isExpanded Binding true, then rendering selects the full document and the default expansion button goes away. It is not a toggle.",
+      "limits": "No explicit expansion-action haptic was found in this scoped direct action. Per-message Binding persistence ownership remains separate."
+    },
+    {
+      "id": "source-line-budget-not-visual-line-budget",
+      "type": "official_artifact_observation",
+      "sources": [
+        "0x2438098..0x24381e0",
+        "0x243811c..0x2438148 limit>=1 / limit<sourceLineCount / suffix checks",
+        "0x265013c ->0x241d900",
+        "0x241d988..0x241d9e8 Unicode scalar newline recognition",
+        "0x265dbec ->0x18a2694 source suffix selection"
+      ],
+      "conclusion": "The effective collapsedLineLimit drives a source-string line projection before Markdown rendering. The line splitter recognizes LF through CR, NEL U+0085 and U+2028/U+2029. A collapsed candidate is omitted when budget is below1, source line count does not exceed it or selected remaining source is absent. This is not a viewport visual wrapped-line count.",
+      "limits": "Complete newline-pair/coalescing, trailing-empty and Markdown source slicing reconstruction were not fully proved in this pass. Do not implement a purportedly equivalent splitter merely from the recognized scalar set; use original/prepared projection when available."
+    },
+    {
+      "id": "ordinary-caller-narrowed",
+      "type": "official_artifact_observation-plus-bounded-inference",
+      "sources": [
+        "UserMessageBubble descriptor0x95addb4 field6 heartbeatTrigger",
+        "0x1a6cb28 metadata field-vector slot+0x28",
+        "0x1a6cb54 constructs address using that offset",
+        "0x1a6cb7c Optional single-payload test",
+        "typepair0x7e839e0 ->Optional<CodexRemoteHeartbeatTrigger>",
+        "0x1a6cbe8 supplies40",
+        "0x1a6cc5c supplies2",
+        "0x1a6cd04..0x1a6cd10 alternate query selects40/2"
+      ],
+      "conclusion": "The40/2 input is controlled by owner configuration including heartbeatTrigger Optional admission, not source text length. Metadata independently shows this is CodexRemoteHeartbeatTrigger, whose fields are automationID/currentTimeISO. A second Optional comparison and later0x2421bc8 query also participate; their exact source field/semantic condition was not closed.",
+      "limits": "Do not describe40 as the universal user-message default or2 as an ordinary short-message limit. The first nil test alone is insufficient to choose40 globally."
+    }
+  ],
+  "implementable_parent_contract": {
+    "classification": "source-backed interface with explicitly independent host renderer adapter",
+    "inputs": [
+      "stable message id",
+      "full source text",
+      "optional prepared {document,collapsedDocument,source,collapsedLineLimit}",
+      "original markdownOptions",
+      "user-input/reference projection and autocompleteItems",
+      "linkHandlers and menus",
+      "owner-supplied effective collapsedLineLimit",
+      "optional showsExpansionButton",
+      "per-message expanded Binding"
+    ],
+    "outputs": [
+      "projected prompt blocks",
+      "expansion state {noCollapsedCandidate/raw0,collapsedCandidate/raw1,expanded/raw2} local presentation names only"
+    ],
+    "parent_behavior": [
+      "Maintain dedicated prompt renderer separate from assistant Markdown styling.",
+      "Compose projected prompt blocks plus conditional expansion sibling in their recovered parent; preserve already-proven bubble geometry.",
+      "On expansion set Binding true and re-render full source. No character-count or visual Text measurement guess for original truncation.",
+      "When owning fixture does not supply verified line policy, expose an explicit independent fixture policy or omit folding; do not advertise that policy as recovered official default.",
+      "Cache by full relevant input/context identity including revision/options/traits/budget/expanded, not solely stable id."
+    ],
+    "not_ready_for_original_equivalence": [
+      "Unclosed effective40/2 caller identity prevents a globally source-equivalent default policy.",
+      "Exact source truncation slice/newline semantics, body font/options, inline reference/menu consumers remain partial."
+    ]
+  },
+  "platform_sharing": {
+    "iOS_Remote": "actual dedicated CodexRemotePromptMarkdownBlocks consumer proved",
+    "iOS_Chat_Work": "No actual shared caller proof in this bounded pass; do not promote this Remote renderer/40/2 policy to Chat or Work.",
+    "Android": "not investigated here"
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "0x1a6cb40..0x1a6cbdc second Optional comparison and0x2421bc8 input",
+      "next_minimum_action": "Bind original metadata/register owner of the second compared optional before assigning a human field name or calling ordinary40 default."
+    },
+    {
+      "boundary": "0x2438098 truncation source slicing through0x18a2694/0x2432c10",
+      "next_minimum_action": "Only if replacing prepared projection, close exact split/trailing/delimiter and Markdown reparse behavior with isolated fixture replay. No broad Markdown engine reconstruction."
+    },
+    {
+      "boundary": "Prompt block text font/options/per-block padding",
+      "next_minimum_action": "Recover actual per-row OAIMarkdown configuration before claiming full visual equivalence."
+    }
+  ],
+  "validation": {
+    "candidate_groups": 2,
+    "static_only": true,
+    "product_modified": false,
+    "builds_devices_or_target_execution": false,
+    "network": false,
+    "stopping_reason": "Renderer status/full-versus-collapsed parent is closed; effective caller default remains precise partial. No third candidate group."
+  },
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/bubble-metadata-accessor.asm",
+      "sha256": "bf25ecb0c4156b5c1eb03d954c33c596247ade8f5db13caba15736e2e42641d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/bubble-metadata-accessor.json",
+      "sha256": "9d851a48c59d0de961e70e3f5cbecb282c27f0b708a478fae97613402c6505b7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-config-optional-preserve.asm",
+      "sha256": "7f51752992648fdb7ecc2345f29c74c335e97c660f5dfe7f95ea48f759c5fb3a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-config-optional-preserve.json",
+      "sha256": "0f0a2c4a39adbf9387554501386205dc59f5f9da346602780aa9ad0fac283cce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-first-metadata-helpers.asm",
+      "sha256": "54384812bf7c04d3d23e28cc34cdefacf68977145b442e6f4a980d6728e0c40e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-first-metadata-helpers.json",
+      "sha256": "e05be670bbf2adc412ecce73ea58405feb272ae9f6cceac1307115b5af5b280a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-first-save-helpers.asm",
+      "sha256": "fa95801c18ac0efb529bc1995421735a546952823647e6f7d6b59584af814d8d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-first-save-helpers.json",
+      "sha256": "1cbf194578c18c7b83ea99395e3af47f83919eff1e9f79fb7ff55eecaae18b94"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-optional-copy.asm",
+      "sha256": "e893b2c716995c3571117595a22e88d4f8be118c97b69d49ddbdf23ae789d828"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-optional-copy.json",
+      "sha256": "449a558a0e150d16aac363a3142f5c12ca07fe1647e5c01291e700d07eb9ebc5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-optional-metadata-helper.asm",
+      "sha256": "981308e81b2fe8d4a11a62dd326f28f6538466f625c2ca502dfe96849a0152f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/caller-optional-metadata-helper.json",
+      "sha256": "ff037f8e4df30d1ecadc3351d0094523ff9634e5c4a1c9312a3719aa82e1037f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/collapse-line-data.asm",
+      "sha256": "a75087d48ecc1e2af4c054814220e17564e0018c36c569cc25ac8ff1f5524144"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/collapse-line-data.json",
+      "sha256": "b7c9eb770004e50861ac6d2ac5fef948929ddd133df75bf1a4285bbc5f683e1b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/collapse-line-slice.asm",
+      "sha256": "ba3d65d18ba07a259ec51318f477d8e6f0c915eb16bd4068ef614d3d80cceedd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/collapse-line-slice.json",
+      "sha256": "2ce2eaacc2a91fad3ac286f1a5c44cccd0d556d020c2d58b80ca2b25d28d8de9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-branch-context.asm",
+      "sha256": "bdf1b7588e44e68ad5c174a3e48d5699debfad39fef6e1a0e1289bb318438842"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-branch-context.json",
+      "sha256": "cb29042958af2e5c3d6826506fbc27c9983cd2b18dfadb7e2b1fb9d5586ec109"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-branch-helper.asm",
+      "sha256": "8f01bd7c764de1d2f963cff6891d2bdf0b1b31493805a706aeff340a1b1e0cda"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-branch-helper.json",
+      "sha256": "ec1da3ee3332f81f03d4dd4b5441b5a923fa34763a763ba7c00c230ba3c00291"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-branch-type-test.asm",
+      "sha256": "06a31ad4508a71a68d6e973b7bf760b8edc65f71ba292cf8052ef99042d4218c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-branch-type-test.json",
+      "sha256": "51725e2999f86d1f78964f9b8181741305bfd95a6a1c8b8515a99deb9eadf03c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-branch.asm",
+      "sha256": "b2103461f14b6a0c2b905495d50846156ede1b0c1c71c5ea0e712dfbb95d7264"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-branch.json",
+      "sha256": "52aedb24e411370dc26e529ed86f22c3d7cccd91eca805d6a1d0ef22e2e3c018"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-conditional-query.asm",
+      "sha256": "bdd41313736787f7e5e4c5a31996d4061f072684f780eb61a0331632e89290d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-conditional-query.json",
+      "sha256": "4cc73762bf0087bb6f4a05977fe61c64f23d32f19e557861ec8b01be18ea04d3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-entry.asm",
+      "sha256": "fe26ed66f709b070d01212de39bf26771cab4aa8af7e7f5a30d72057a3698b5c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-entry.json",
+      "sha256": "26b28370a7cdafcdb4cc320d24d040f161cb2f3b26de8214785be5f373ffdd9b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-mode-address.asm",
+      "sha256": "8aabd78aa5d93c24a3606fd357534b414149191e1690fd4804abe06963101d72"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-mode-address.json",
+      "sha256": "03c4b5b37465b6d5944b6bfee6b7ca7eef9902eb7e3345bba5b53570c26f1ad9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-mode-type.json",
+      "sha256": "a7cd55d710bdace7bced3b47b6af3b98b12ee4e3643cd7dd403ed1f9246815e3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-mode2-type-access.asm",
+      "sha256": "8c7cab171bae72e99da1f7ff1d7c9da0e87dc84aec89deb2b74ba7575a4f3111"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-mode2-type-access.json",
+      "sha256": "6dcc92779b0359cd2282a1a164185baa3ab08394bf6164c852dd97da9a7326cf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-register-save.asm",
+      "sha256": "49ece1d094ad3d2af909abe952470786c0638f78225eee924f6d8da4de11920e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-register-save.json",
+      "sha256": "263aac27b72696bf487cd318da05ca871e7abe08e463f7873247b9c2f80bb2c5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-register-transition.asm",
+      "sha256": "795b21dcc6a0cbba6a4efef851571a4d2778fb996768f1f04389e4b52694823f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-register-transition.json",
+      "sha256": "29805cf68faa3658c85c9c24fcd30eb183bde28c0d32efd7d316f84cf5cd6d48"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-type-setup.asm",
+      "sha256": "f9fa1b05138a738c5498549f653c62b28e8137b63b37476a4049a8ac6e855bb5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-type-setup.json",
+      "sha256": "d869d3bf5d6494103d844ca24ac87c08138902b25f9d3369adc03bad44bade09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-vwt-capture.asm",
+      "sha256": "1dea04df1c990df0b0b00541921eff5d8e5ad7c0cdeb1f202b5c70ab37583489"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/constructor-vwt-capture.json",
+      "sha256": "7f9773918b6e7d0af206fb12c29864587fd0cfb97a5250091c8f1546e429db5e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/optional-case-test.asm",
+      "sha256": "ceabf0cce266480357f1774c2f8465c62870d4da2755ef4ae21db3bc2e619981"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/optional-case-test.json",
+      "sha256": "287b7592ec384dd4f2a330b23468e0c30db38fff39fbf136b93017a870364fd1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/optional-none-test-vwt.asm",
+      "sha256": "b2fe9891d05209e0398ac5a409083604cd3daabf94dd11777e0b35dffdc62e45"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/optional-none-test-vwt.json",
+      "sha256": "51b110338a9abbcca628285e3edef94dd65d605c0941a708c9d3a002cb9cb7dc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/parsed-prompt-type.json",
+      "sha256": "6bbbe70b4c4eb571fcf5648e78a425f462aaa3aa06e9d6a26dce4c862fa7a7dd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/prompt-document-collapse.asm",
+      "sha256": "09e12aef696be20c464f75df17d7db2d34237c5d2eaa5e8de62d0ed48806a6c0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/prompt-document-collapse.json",
+      "sha256": "49ee21312e2c8a667bd2c13f246dd0d4d019ef3e8963cd1a34970b6c1f1f4f13"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-block-project.asm",
+      "sha256": "d8963d75f1ec0d617e31833152090a3460a4a4e604d0c3c529fd651972f32984"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-block-project.json",
+      "sha256": "86bf0f64ab0d30022f9bac3ffe07cf9ef8b4adaf184a5636ee14252cdbb15024"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-caller-state-shift.asm",
+      "sha256": "35c705b8762076d523cf40bdab2e73e2a14789c404d843f656e5ad93009570ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-caller-state-shift.json",
+      "sha256": "2a616418cfc147612f67a4ea49c237c752e7efa16da749ca3d06c617fcb3f3d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-collapse-extract.asm",
+      "sha256": "6f83be6a321ece4e66e6310b40c3a0a5588496338d8f569f0a58c8d388ce8b9f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-collapse-extract.json",
+      "sha256": "c1cddaa14a98a4563b391bc9406a0d37157ec9e0457493acabab9ed12b4a6ea2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-entry.asm",
+      "sha256": "bbd93e07576fbc98f08219f549a25b624119ea3a1d0a9a55db6b09c6c4679550"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-entry.json",
+      "sha256": "f6bbaa696f0f6f18d311eb4b4226a137c2601de823bfb9dc91469e6e064f3996"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-input-arg-save.asm",
+      "sha256": "e9ebefb0119dcfe40ac4958b2c87bd8271565505819f333027172cc2458a4322"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-input-arg-save.json",
+      "sha256": "c24d166504d6f3fed496c425fb93d44a0d52d66e3c619e0296dbc792fc9627c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-input2.asm",
+      "sha256": "8a7ab62711f7d18c2867444bce87de5d0e199c8df876de32390152023e9c5be4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-input2.json",
+      "sha256": "25a1ea09f5ea2cb12f1e52a63fb4734261b20846a5fcec9893a6983b99f1bbee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-measure-helper.asm",
+      "sha256": "3d675f35982a4988acb6e834bd1fef7a36ec92ee45fba9e7946bb5faddc2f12a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-measure-helper.json",
+      "sha256": "7646f36b5d5cd550cda6e56f7245470990409a85d410d5e10e7591704c9e3f0f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-prompt-measure.asm",
+      "sha256": "258a1daaefe917f13885ec7f4dd8ffd2863abc19fd634114bdb065a33a67ad71"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-prompt-measure.json",
+      "sha256": "84ade3a3de8adce523cb34c4b24e2e1ee4a8da4b5b59c01d1affc9e8a36aa1f4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-result-record.asm",
+      "sha256": "41017447b0d30fc0837991be644dd280f8107a48c0d00b77f07ac7b0f9a9fd7a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-result-record.json",
+      "sha256": "7fc27879f40f8383e595b2957cd3f1361dfd02f892fd83db7a5ff83df33a8eb8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-result-secondary.asm",
+      "sha256": "777b7561ce4638449639adfb51206772768173e08d0c015abd812e5d2347662e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-result-secondary.json",
+      "sha256": "3c22534738a1b1215ab1c9776e13a82875e18ddceaa8568ae5c84b85f0439be9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/renderer-result-type.json",
+      "sha256": "6813a0322bfef43236c44cd269bd8d93712db41fd6ef5206dcbaa44f4ab866d8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/selected-field-metadata.json",
+      "sha256": "465510691eee2892a018ac65ab732e692e3f2d30b7bbe4b784bc6b9d3a3c2c51"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/source-truncation-sequence.asm",
+      "sha256": "7d0c13e73ccff1eed5e725880d7dbfa742abf3b53b696f975f105b11a4da1d81"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-prompt-fifth-20261113/source-truncation-sequence.json",
+      "sha256": "1ce68de9c3329dd01a0ce860fde3acfa76611b7536cccc9fb416593e2a743097"
+    }
+  ]
+}

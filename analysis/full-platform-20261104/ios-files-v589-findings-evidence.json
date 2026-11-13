@@ -1,0 +1,108 @@
+{
+  "status": "partial",
+  "authority": "official-ios293-shipped-artifact-static",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "Remote Files frontend directory browser",
+  "findings": [
+    {
+      "component": "CodexRemoteFileBrowserSheet",
+      "descriptor": "0x95ae658",
+      "structure": "FileNavigationStack with FileDirectoryContent and ContentUnavailableView branch; presentationCornerRadius present",
+      "evidence": "ios-files-v589-sheet-body-evidence.json"
+    },
+    {
+      "component": "CodexRemoteFileNavigationStack",
+      "descriptor": "0x95af9b0",
+      "structure": "Conditional NavigationStack/NavigationSplitView, BalancedNavigationSplitViewStyle, NavigationPath, detail/feedback, toolbar Button, presentationDetents, appearance action",
+      "evidence": "ios-files-v589-navigation-body-evidence.json",
+      "limit": "horizontalSizeClass field observed; precise conditional predicate and detents not recovered"
+    },
+    {
+      "component": "CodexRemoteFileDirectoryContent",
+      "descriptor": "0x95af994",
+      "structure": "VStack(FileDirectoryHeader,FileDirectoryEntries), navigationTitle, navigationBarTitleDisplayMode, background Color and appearance",
+      "evidence": "ios-files-v589-directory-body-evidence.json"
+    },
+    {
+      "component": "CodexRemoteFileDirectoryHeader",
+      "descriptor": "0x95b1948",
+      "structure": "path, canNavigateToParent, actionHandler; selectable Text, Label Button, Divider",
+      "evidence": "ios-files-v589-directory-header-body-evidence.json"
+    },
+    {
+      "component": "CodexRemoteFileDirectoryEntries",
+      "descriptor": "0x95b1924",
+      "structure": "RequestStateView loading/unavailable branches; List/ForEach/FileDirectoryEntryRow, PlainListStyle, scrollContentBackground, listRowInsets and listRowBackground traits; retry Button branch",
+      "evidence": "ios-files-v589-directory-entries-body-evidence.json"
+    },
+    {
+      "component": "CodexRemoteFileDirectoryEntryRow",
+      "descriptor": "0x95b2940",
+      "structure": "entry,isOpening,actionHandler; PlainButtonStyle Button/HStack/Label(Text,Image), OAIProgressView/EmptyView, accessibility attachment and rectangular content shape",
+      "evidence": "ios-files-v589-directory-row-body-evidence.json"
+    },
+    {
+      "component": "CodexRemoteFileDirectoryAction",
+      "descriptor": "0x95ae428",
+      "cases": [
+        "entryTapped",
+        "viewAppeared",
+        "viewDisappeared",
+        "parentDirectoryTapped",
+        "retryTapped"
+      ],
+      "evidence": "ios-files-v589-directory-action-enum-evidence.json"
+    },
+    {
+      "component": "CodexRemoteFileDirectoryViewModel",
+      "descriptor": "0x95a9ef0",
+      "fields": [
+        "id",
+        "_currentDirectoryRelativePath",
+        "_loadState",
+        "workspacePath",
+        "service",
+        "directoryChangedHandler",
+        "openFileHandler",
+        "_cancelsPreviousStorage_directoryLoadTask",
+        "directoryRequestID",
+        "_cancelsPreviousStorage_filePreviewTask"
+      ],
+      "evidence": "ios-files-v589-directory-actions-evidence.json",
+      "limit": "Stored names support lifecycle/scoping hypotheses; cancellation semantics require action implementation validation"
+    }
+  ],
+  "branch_distinction": "WorkspaceBrowserContent (0x95b28f8) has ScrollView/LazyVStack/VisibleEntry/WorkspaceBrowserRow with DisclosureGroup. This is a separate tree from FileDirectoryEntries List/FileDirectoryEntryRow. Do not transfer disclosure structure to directory browser merely because both reference workspace entries.",
+  "minimal_host_guidance": {
+    "authority": "independent reconstruction constrained by observed structures",
+    "flow": [
+      "Files sheet opens directory state",
+      "Path header and parent action",
+      "Plain directory List with image/title/opening progress",
+      "Entry action routes directory load or file preview",
+      "Loading, unavailable/error and retry states",
+      "Back/dismiss restores thread state"
+    ],
+    "scope_identity": [
+      "account",
+      "host",
+      "thread",
+      "workspace",
+      "directory",
+      "request"
+    ]
+  },
+  "unknowns": [
+    "Exact upstream Files-menu predicate and root composition require parent evidence",
+    "Directory-row image asset names and displayed title derivation not recovered",
+    "Exact localizable keys not found by bounded main-app string search",
+    "Insets, fonts, colors, corner radius, detents and size-class branch predicate not recovered",
+    "Button handler enumeration presence does not prove runtime payload handling",
+    "No runtime or device validation"
+  ],
+  "tool_notes": [
+    "Body type witness target contains tagged low bit; raw mangled type begins at target minus one, verified via preceding marker. Initial uncorrected probes failed and no conclusions were used.",
+    "llvm-objdump --macho ignored bounds and was terminated. The generated oversized child-owned artifact was replaced with a failure marker. Standard --disassemble start/stop produced bounded evidence windows.",
+    "A protocol Body constraint was initially probed as a raw type and rejected; only associated Body type Tl record was subsequently used."
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "status": "partial",
+  "evidence_type": "official-shipped-artifact-static-observation",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "scope": "Minimal outside-touch/dismiss guards and ScaleButtonStyle consumer; production unedited, official app unexecuted",
+  "confirmed": [
+    {
+      "id": "touch-filter",
+      "owner": "AnchoredZoomPresentationController gestureRecognizer:shouldReceiveTouch: 0x62d6940",
+      "chain": [
+        "0x62d6940 ->0x62d68f8",
+        "0x62d6904 ->0x62f3f68 ->0x7c82960",
+        "0x7c82960 loads selector reference0xacb4bb8 = view",
+        "0x62d6918 resolves chromeContainerView via helper0x62f3860",
+        "0x62d6920 calls isDescendantOfView:",
+        "0x62d692c inverts result; nil touch.view returns true at0x62d6934"
+      ],
+      "predicate": "touch.view == nil || !touch.view.isDescendant(of:chromeContainerView)",
+      "limits": [
+        "Touches within the presented chrome subtree are excluded from these container recognizers. This does not establish simultaneous-recognition behavior."
+      ]
+    },
+    {
+      "id": "tap-and-pan",
+      "tap": "ObjC handleContainerAreaTap 0x62d67c8 ->0x62d67c4 ->0x62d6790",
+      "pan": "ObjC handleContainerAreaPan:0x62d6878 ->0x62d67f0; recognizer states1 or2 and magnitude(translationInView)>50 invoke0x62d6790 at0x62d6850 then set recognizer state3",
+      "limits": [
+        "State numbers and >50 threshold are static values; device gesture feel unverified."
+      ]
+    },
+    {
+      "id": "actual-dismiss-guards",
+      "chain": [
+        "0x62d679c ->0x62f36e8 weak-load anchoredZoomPresentationDelegate ivar0xafd24b0",
+        "0x62d67a0 returns if delegate absent",
+        "0x62d67ac ->0x62d9b78 coordinator dismissal owner",
+        "0x62d9b94 loads allowsInteractiveDismissal through ivar storage0xafd3238, requires value1",
+        "0x62d9bb0 ->0x2c656c invokes shouldBeginDismissal closure from ivar storage0xafd3248",
+        "0x62d9bb4 returns unless closure result true"
+      ],
+      "predicate": "delegate != nil && coordinator.allowsInteractiveDismissal && coordinator.shouldBeginDismissal()",
+      "limits": [
+        "Closure implementation and all contexts that temporarily veto dismissal are outside this slice. Existing composer factory passes allowsInteractiveDismissal=true."
+      ]
+    },
+    {
+      "id": "dismiss-after-guards",
+      "chain": [
+        "0x62d9bc4 objectForKey(presentationController) resolves existing interactionController",
+        "If controller absent or0x62d8080 returns false:0x62d9c18 ->0x62f3d70 ->presentedViewController (selector0xacafbf0)",
+        "0x62d9c28 ->0x3f77b20 ->dismissViewControllerAnimated:completion: (selector0xacabda8), animated=true, completion=nil",
+        "If controller0x62d8080 succeeds,0x62d9bfc loads coordinator.delegate and0x62d9c04 calls0x62e0af4 instead of fallback dismissal"
+      ],
+      "limits": [
+        "0x62d8080 inspects running animator state and may reverse/continue an existing transition. Full retargeting curve and delegate semantics remain partial; ordinary fallback dismissal is exact."
+      ]
+    },
+    {
+      "id": "pressed-opacity-consumer",
+      "chain": [
+        "ScaleButtonStyle ButtonStyle conformance witness0x6f487d8 ->0x6f48530",
+        "0x6f48624 and0x6f48660 ->0x6fdf310 ->0x7c49348 ButtonStyleConfiguration.isPressed getter",
+        "0x6f48628..0x6f48634 selects isPressed ? self.scale :1.0",
+        "0x6f48660..0x6f48668 selects isPressed ? self.opacity :1.0",
+        "0x6f4867c metadata from typeref0x9416b0c includes _ScaleEffect and _OpacityEffect;0x6f48684 writes selected opacity",
+        "0x6f48690 reads _isEnabled; disabled branch0x6f486a0 calls0x6f48710",
+        "0x6f48750..0x6f487bc reads optional disabledOpacity; explicit present value loads self+0x10",
+        "0x6f486ac writes separate outer opacity modifier",
+        "0x6f486b8 reads isPressed again,0x6f486f8/700 stores animation and Bool value"
+      ],
+      "formula": "label.scaleEffect(isPressed ? scale :1).opacity(isPressed ? opacity :1).opacity(isEnabled ?1:resolvedDisabledOpacity).animation(animation,value:isPressed)",
+      "action_icon_application": "Given the already recovered ordinary ActionIconStyle input scale=1, opacity=0.4, disabledOpacity=0.6, pressed enabled rendering is opacity0.4 and scale1. Consumer proves the opacity parameter controls actual pressed appearance. Explicit disabled opacity is a separate multiplicative layer.",
+      "limits": [
+        "The ActionIcon configuration literals are caller evidence supplied by root/current v514 investigation, not newly rederived in this consumer slice.",
+        "Default disabledOpacity nil follows color-scheme-dependent fallback0x6f4875c..0x6f487b4; do not generalize explicit0.6 to every ScaleButtonStyle.",
+        "Pressed animation exact timing depends on configured animation and remains caller-specific."
+      ]
+    }
+  ],
+  "unknowns": [
+    "shouldBeginDismissal closure producer and veto conditions",
+    "Existing-transition dismissal retargeting/delegate callbacks beyond ordinary fallback",
+    "Recognizer simultaneous/cancelsTouchesInView policies and device execution",
+    "Caller-specific animation and configuration of every ActionIconStyle variant"
+  ],
+  "integration_guidance": {
+    "classification": "source-backed-minimal-adaptation",
+    "outside": "Exclude chrome descendants, apply allowsInteractiveDismissal and shouldBeginDismissal guards, then request native animated dismissal. Reuse owner callbacks; do not treat arbitrary outside touch as unconditional queue clear.",
+    "pressed": "Ordinary source-backed ActionIcon configuration should dim whole styled label to0.4 while pressed, remain scale1, and resolve explicit disabled0.6 through isEnabled. Keep this in the shared style."
+  },
+  "validation": {
+    "static_verified": true,
+    "runtime_verified": false,
+    "production_edited": false
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-touch-helper.asm",
+      "sha256": "517e4649ebe5238ec182356643e8631c651e3190ba3d89bee02175652c0d624b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-touch-selector.asm",
+      "sha256": "da02ef2c8b2f540c16111ccd1ac563b1155f5715ea26b89def4e9ae1cb844664"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-owner-helper.asm",
+      "sha256": "2621c45dc862f30cbee753ae0443007482281a9e99dbf66937718631c395a6b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-fallback-helper.asm",
+      "sha256": "63eb7dded2dc30b89f34d0e4073543fe67cc7ee5ce3c8f5a2d761ef72c3722d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-parent-selector.asm",
+      "sha256": "8d39c206986436c630bd836aebd07c2c5eed49bb9c81fa1e284c2a8949a3ad38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-dismiss-selector.asm",
+      "sha256": "0c154423e8ed6c214739838ec84352d0a57d81b41583c204c62a4c508f9d53af"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-state-read.asm",
+      "sha256": "1d99bb2eb59a063358ada95132bd6b08cc68e74d39f65f59c99ceaecbeeaf89a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-fallback.asm",
+      "sha256": "f391c08f1c79f131519854c270b9d370fc8e030294ea9c214fccf51c59334f58"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-policy-complete.asm",
+      "sha256": "42310522ff94918346ace24ce36a6abb7b16f48bbfa9f691fc2759318cfcd43a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-policy-complete-calls.json",
+      "sha256": "fe1419ac32a733c979e2a3937ce0bf6e013acb449ac40c420e75a4d9fce0d893"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-scale-body-consumer.asm",
+      "sha256": "5e52a51e62dfc809f6ed5b0cab161edfc4dd124b08c12cc19f75a2afa4a4c0d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-scale-body-consumer-calls.json",
+      "sha256": "deb791816bcc206679d6c311d9c6dea33f8123e20255208fab464163517e326d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-scale-pressed-helper.asm",
+      "sha256": "91a7c4e33819bb125bed0ee373c69ddca761b1f62c74d6d69343a4d60dd19d32"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-scale-consumer-types.json",
+      "sha256": "83a47838bbeb53e0a8bf9ac9c869eeaa6be68a8adc7e32f267756ac05fd35ffb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-scale-witness.json",
+      "sha256": "c4394aaeb9898c4757b545a3c4e5451866c612136edc368460006111ff8c4cb7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-scale-button-fields.json",
+      "sha256": "25d203764e63a6a4a8d79bc763bb9ba8737b56d535683858da01f262e8bc6334"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-gesture.asm",
+      "sha256": "90d3756bcd9c617b937c00c347f67e76e964b7b8fce47df9604e32a6cae8f266"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-gesture-calls.json",
+      "sha256": "2850f8f160f3ba442a1c4aeeafe3b973d072aaba36914cabc412120e9b70b6ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-outside-dismiss.asm",
+      "sha256": "ef138cb0eb03b5257844f8ca51f7ddf3fe70cb18d28120a0f6cd5f6f95bb3e25"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-dismiss-delegate.asm",
+      "sha256": "b69af8fa701d0ac499ee34537db94116f24aff29173378033e3393ad32599121"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-dismiss-delegate-calls.json",
+      "sha256": "b0647e123ac98a3eb3f25b9a2bbc4aa38f093fdb1cfbfb84d74b9080bf5fb1bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-transition-coordinator-metadata.json",
+      "sha256": "50d63d8a9b9ead09fa3c1e7b24c9235f33ce6372a725de4a71b106d2026e77b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-controller-metadata.json",
+      "sha256": "185b061aa047b32edc90f0078094a750745d3a974e725bbfaa7e4c6715e67b96"
+    }
+  ]
+}

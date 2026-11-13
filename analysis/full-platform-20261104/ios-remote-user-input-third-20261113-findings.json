@@ -1,0 +1,162 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Remote ordinary QuestionCards/UserInput bottom form; third bounded parent/surface/frame audit",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": {
+    "static_only": true,
+    "candidate_limit": 3,
+    "candidates": [
+      "Question ScrollView frame arguments and height getter (closed)",
+      "ComposerAdjacentCardStyle body and ancestor MessageInputStyle writer (selected ordinary route closed by retained v522)",
+      "Nearby19b6650..19b67e0 probe (rejected: localization constructors, not environment initializer)"
+    ],
+    "no_new_geometry_defect_proved": true
+  },
+  "official_observations": [
+    {
+      "conclusion": "The question region is a maximum-height flexible frame, not an exact-height frame. Existing host .frame(maxHeight: ..., alignment: .top) matches this source boundary. Do not force short forms to140/180/220/360 points.",
+      "source": [
+        "1a53e88 calls1a5442c and saves d0 in d8",
+        "1a53e90 imports Alignment.top",
+        "1a53ed0 stores d8 at stack+16 and1a53ec8 stores its optional tag0 at+24",
+        "1a53ed8->1d4b7ac supplies nil min/ideal/maxWidth and nil idealHeight;1a53edc->1be48c supplies nil minHeight",
+        "1be494 tailcalls7c48058 _FlexFrameLayout.init(minWidth:idealWidth:maxWidth:minHeight:idealHeight:maxHeight:alignment:)"
+      ],
+      "evidence": [
+        "question-frame.asm",
+        "frame-defaults.asm",
+        "flex-frame-call.asm",
+        "frame-binding-and-literals.json"
+      ]
+    },
+    {
+      "conclusion": "Height getter consumes ordinary input viewport atview+0x98 and Bool FocusState, returning focused140; otherwise positive viewport*.45 clamped180...360, else220. ScrollView creation consumes vertical axis1a53e40; basedOnSize bounce applies through1a53f38. Navigation and answer footer remain outside the ScrollView, as proved by full existing tree.",
+      "source": [
+        "1a5442c..1a544d0",
+        "constants7ce20d8/7ce2190/7ce2130/7ce2180/7d51c30",
+        "1a53e40,1a53ef8,1a53f38",
+        "fulltype7e1ea00"
+      ],
+      "evidence": [
+        "question-height.asm",
+        "frame-binding-and-literals.json",
+        "question-frame-calls.json"
+      ],
+      "reuse": "ios-remote-user-input-parent-20261113-form-tree.tree.txt"
+    },
+    {
+      "conclusion": "The old statement that effective MessageInputStyle parent is wholly unknown is stale for the selected CodexScreen ordinary Thread branch. CodexScreen wraps ThreadView with EnvironmentKeyWritingModifier<MessageInputStyle> produced by2de24c; Thread body constructs Content and retained BottomBars/QuestionCards chain hosts UserInputRequestView. The AdjacentCard consumer reads that MessageInputStyle rather than an independent arbitrary theme.",
+      "source": [
+        "3040ac->1a0e63c",
+        "3040c4->2de24c",
+        "30410c->6081e84",
+        "records7cf6550/7cf6548",
+        "Thread body1a43e78 /1a43ec4..1a43ecc /1a4403c..1a440c0",
+        "QuestionCards1a2978c->1a2a1b8",
+        "AdjacentCard19b67e0"
+      ],
+      "reuse": [
+        "ios-remote-v522-thread-style-findings.json",
+        "ios-remote-v522-screen-thread-style-writer.asm",
+        "ios-remote-v421-input-owner.asm",
+        "ios-remote-v421-input-constructor.asm",
+        "ios-remote-v420-integration.json"
+      ],
+      "limit": "Selected ordinary CodexScreen route, not every embedding or live runtime capability. Intermediate unseen writers are not globally excluded."
+    },
+    {
+      "conclusion": "Selected builder base style has innerCornerRadius22. Actual innerBackground factory6081538->77107f8 chooses clear when admitted, else74f16f4 OneOff/UserMessageBackground; bounded theme transform6081f4c changes other fields but did not write innerBackground. This supports current AdjacentCard22/clear-or-asset default for this branch, rather than transplanting ordinary editor shape24 or StatusSurface capsule.",
+      "source": [
+        "2de24c",
+        "19a0a38/19a0860/60810f8",
+        "6081538..6081550",
+        "74f1720/24 ->8a52ae0",
+        "6081f4c"
+      ],
+      "reuse": [
+        "ios-remote-v522-thread-style-findings.json",
+        "ios-remote-composer-surface-parent-20261113-findings.json"
+      ],
+      "limit": "Remote glass flags and contextual effects remain separately gated. Source does not establish arbitrary user-selected runtime theme/feature flag values."
+    }
+  ],
+  "current_host": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256": "5faea22fba36452f893b4ab2434757302a750fde42a4f7d92b06930afd05f3f8",
+    "inspection": "RecoveredRemoteUserInputForm and RecoveredRemoteComposerAdjacentCard, not approval feedback form",
+    "matches": [
+      "separate question navigation / question ScrollView / custom footer",
+      "maxHeight rather than exactheight, topalignment, height function",
+      "leadingVStack18, cardpadding16, outerhorizontal16/top4/bottom8",
+      "Card uses contextual appearance22, clear-or-OneOff background, optional regular interactiveGlass, border/default0.5 and independent elevation gate"
+    ],
+    "stale_comments": [
+      "RecoveredRemoteCardAppearance still says ordinary Remote parent override unresolved; selected route now closed in v522",
+      "RecoveredRemoteUserInputForm comment still says effective parentstyle partial; qualify remaining runtime/alternate writer boundary rather than wholeparentunknown"
+    ],
+    "new_product_fix_required_by_this_evidence": false
+  },
+  "can_restore_now": [
+    "Correct evidence/comment scope: explicit ordinary Thread ancestor provides MessageInputStyle; reuse same contextual fields in UserInput AdjacentCard",
+    "Retain flexible maxHeight and separate navigation/footer; do not add guessed fixed card height, sibling plan height subtraction, radius24, or new generic spacing"
+  ],
+  "independent_adapters": [
+    "Host transcriptGeometry.height measurement is an independent viewport producer; original constructor consumes viewport but exact current host geometry equivalence is unproved",
+    "Current service envelope/draft reconciliation/validation and acceptance handling remain independent frontend contracts",
+    "Runtime material admission/ReduceTransparency ownership beyond observed ordinary branch is not inferred from defaultstyle"
+  ],
+  "haptics": {
+    "status": "unknown",
+    "result": "No explicit haptic/sensoryFeedback consumer established in retained request/body/footer/reset evidence or this bounded card/frame pass. Do not add claimed-official feedback for navigation, optiontap or submit. Shared helper internals/action-owner side effects not exhaustively excluded."
+  },
+  "unknowns": [
+    {
+      "gap": "Original viewport producer identity and live safearea/keyboard accounting",
+      "next": "Trace QuestionCards captured viewport argument through original ThreadViewContent geometry producer; do not substitute remaining available barheight."
+    },
+    {
+      "gap": "Complete innerGlass flags/elevation carrier runtime overrides",
+      "next": "Current default and selected ancestor are closed; a particular runtime override needs its actual writer before changing field material."
+    },
+    {
+      "gap": "Original focus/keyboard lifecycle for replacing requests",
+      "next": "No explicit FocusStatefalse or autoFocus proved; retain naturalhost lifecycle as adapter."
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "range": "19b6650..19b67e0",
+      "reason": "Observed string construction for Instructions/Message/Prompt/Agent activity. Adjacent location is not Card environment initialization; no semantics applied."
+    }
+  ],
+  "validation": {
+    "artifact_hash_verified": true,
+    "host_modified": false,
+    "tools_modified": false,
+    "tests_run": false,
+    "built": false,
+    "device_or_original_runtime": false
+  },
+  "raw_evidence": {
+    "ios-remote-user-input-third-20261113/card-body-calls.json": "2853a9e1f219971c06a076bd637291c16cfe56084428a2a68eddb1251051d74e",
+    "ios-remote-user-input-third-20261113/card-body.asm": "4d5bc89657393083493acf0697e93c58e8862b62f36a5c8913f8aa8c74c0d27b",
+    "ios-remote-user-input-third-20261113/card-env-init-calls.json": "70f71c6ef690bf53dea098597746b2b269db3cfec0688e74acd9206be80f88e8",
+    "ios-remote-user-input-third-20261113/card-env-init.asm": "19a2f7ece559999484298ce3d088106d2241b09bfb0e8c3a6a6161e0556e6ab7",
+    "ios-remote-user-input-third-20261113/flex-frame-call-calls.json": "2e2b39d24cc897bb52ef9c2afc4facc6289be5ab2f0977c39df75a3f120aad46",
+    "ios-remote-user-input-third-20261113/flex-frame-call.asm": "52cc9810e9d9c1db38ed72becec4e71f980256b30840f9fb0e307f7e649e140d",
+    "ios-remote-user-input-third-20261113/frame-binding-and-literals.json": "27aa72457c3cdb29c1d4644f190353ad99c28f3057f38377a3294e1418188385",
+    "ios-remote-user-input-third-20261113/frame-defaults-calls.json": "70837aac748bc341873bc24490cea56373ee16dad455c162c3fcbb6971a977f5",
+    "ios-remote-user-input-third-20261113/frame-defaults.asm": "ed822b1302772345661a87977080c452ab28f9ec8e7be7b7f30cd607b46660fb",
+    "ios-remote-user-input-third-20261113/question-frame-calls.json": "f8e0b0cb2e64b35351bc14fd86aae3c70910c93df15840c6224d7f353e9d76ce",
+    "ios-remote-user-input-third-20261113/question-frame.asm": "7d829dc37704d01b3a68f0fd735d292d87e0f0b787e16e2634d730150774b716",
+    "ios-remote-user-input-third-20261113/question-height-calls.json": "6a898ca0ad85e45c14393e72569e0072bc11528e0dd9ac7707e2d8e015b08131",
+    "ios-remote-user-input-third-20261113/question-height.asm": "a488255686ce3058ed28d785ad4b4ec759126f142d55afd81b18eefebeb03787"
+  }
+}

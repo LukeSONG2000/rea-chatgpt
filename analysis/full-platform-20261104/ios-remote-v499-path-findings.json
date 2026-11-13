@@ -1,0 +1,118 @@
+{
+  "status": "static-predicate-closed",
+  "evidence_type": "official-artifact-static-observation",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "predicate": "0x2acd760",
+  "call_site": "0x337730",
+  "algorithm": [
+    {
+      "step": "Trim input with Foundation CharacterSet.whitespacesAndNewlines",
+      "evidence": [
+        "0x2649df0",
+        "0xacd398 -> 0x7c3f79c",
+        "0xad241c -> 0x7c4f9b4"
+      ]
+    },
+    {
+      "step": "Split on slash or backslash, omitting empty path components",
+      "evidence": [
+        "0x766144",
+        "0x2ad92b8 -> 0x2ac8e24",
+        "0x2ac8ecc",
+        "0x2ac8eec"
+      ]
+    },
+    {
+      "step": "Find last component equal to Codex. Require immediately preceding Documents, with case-sensitive Swift String equality",
+      "evidence": [
+        "0x2acd84c..0x2acd8bc",
+        "0x2ac20c4..0x2ac2160"
+      ]
+    },
+    {
+      "step": "Require exactly one or two remaining path components",
+      "evidence": [
+        "0x2acd8c0..0x2acd8d4",
+        "0x2acda04..0x2acda10"
+      ]
+    },
+    {
+      "step": "For one remaining component, split hyphen preserving empty pieces, require at least four pieces, use first three as date and join remaining pieces by hyphen as slug",
+      "evidence": [
+        "0x2acd910..0x2acd918",
+        "0x2acf824",
+        "0x2acdd2c..0x2acdd98",
+        "0x265b754"
+      ]
+    },
+    {
+      "step": "For two remaining components, first is hyphen-split date preserving empties with exactly three pieces, second is slug",
+      "evidence": [
+        "0x2acda3c..0x2acda74",
+        "0x2acdce4..0x2acdd14"
+      ]
+    },
+    {
+      "step": "Date parts have Swift Character counts 4,2,2 and every Character.isNumber. No month/day range validation",
+      "evidence": [
+        "0x2acd99c..0x2acda00",
+        "0x2acdb50..0x2acdbb0",
+        "0x2acdc64..0x2acdcd8",
+        "0x2ad9188 -> 0x7c4d380",
+        "0x7c4f87c"
+      ]
+    },
+    {
+      "step": "Slug consists of nonempty hyphen-separated parts, each exclusively ASCII lowercase a-z or digits 0-9",
+      "evidence": [
+        "0x2acf3e8..0x2acf4b0",
+        "0x2abf924..0x2abfc54",
+        "0x2abfc00..0x2abfc18"
+      ]
+    }
+  ],
+  "forms": [
+    "<arbitrary-prefix>/Documents/Codex/<4 numeric Characters>-<2 numeric Characters>-<2 numeric Characters>-<slug>",
+    "<arbitrary-prefix>/Documents/Codex/<4 numeric Characters>-<2 numeric Characters>-<2 numeric Characters>/<slug>"
+  ],
+  "slug_regex": "[a-z0-9]+(?:-[a-z0-9]+)*",
+  "reference_replay": {
+    "path": "analysis/reference_models/ios_remote_recent_paths.swift",
+    "status": "passed",
+    "cases": 32,
+    "execution": "independent Swift implementation only"
+  },
+  "limits": [
+    "No execution of original binary",
+    "No calendar, filesystem existence, symlink or dot-path normalization is performed by the inspected predicate",
+    "Unicode numeric and whitespace properties in replay follow the local Swift/Foundation toolchain",
+    "This predicate alone does not prove host arbitration, grouping-mode raw tags, pinned overrides, section merge or official UI behavior"
+  ],
+  "files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-helpers.asm",
+      "sha256": "269cb093d81ec1baac5eb7853fb16a3dfa8bfe48feb0bd4224c3b47863b8dfa3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-predicate.asm",
+      "sha256": "12dde6e75b0cf5e342442d125ad9fdc64fe72eb5ef93663c1664d7b7a1ced1ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-imports.json",
+      "sha256": "5fef01d787b6cc73192dfd001bcf3f11343d8a70e0ba037ddde8252f0ed9073e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v499-path-replay.json",
+      "sha256": "a3e52a28e8597d98163c25dc604567c5686ef6bcbe7f582963e663021e203302"
+    },
+    {
+      "path": "analysis/reference_models/ios_remote_recent_paths.swift",
+      "sha256": "b6179198912366d157227ebe3aed4ac5aba34d697f15dd3b696852cf58575056"
+    }
+  ]
+}

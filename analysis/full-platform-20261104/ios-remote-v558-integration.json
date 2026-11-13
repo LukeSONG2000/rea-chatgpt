@@ -1,0 +1,99 @@
+{
+  "version": "558",
+  "status": "partial",
+  "page": "Remote conversation",
+  "changes": [
+    "Dynamic search snapshots through normal synthetic send",
+    "Scoped search expansion restoration across task navigation",
+    "Source-backed search icon, running/completed labels and shimmer",
+    "Explicit independent failure/cancellation presentation"
+  ],
+  "validation": {
+    "ui": "ios-remote-v558-r1-search.xcresult",
+    "passed": 4,
+    "failed": 0,
+    "cases": [
+      "Chinese light search completion, expand/collapse and A-B-A restoration",
+      "English dark search failure and preserved detail",
+      "Cancellation with retained detail after late callbacks",
+      "Existing dynamic command regression"
+    ],
+    "foundation": "passed; ios-remote-v558-contract-tests.log",
+    "visual_inspection": [
+      "Chinese light expanded search",
+      "English dark failure card and search",
+      "Chinese task-list handoff"
+    ],
+    "limits": [
+      "Focused UI regression only",
+      "Official page fidelity remains partial",
+      "No physical-device or Android acceptance"
+    ]
+  },
+  "source": "ios-remote-v558-findings.json",
+  "independent_adaptation": [
+    "Search snapshot payload/ordering",
+    "Failed/cancelled titles",
+    "Plain synthetic detail and state retention"
+  ],
+  "open_items": [
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Reasoning history and expansion",
+      "evidence": "ID.reasoning exists; item kind dispatch located; producer-to-content/kind and visibility remain unproved",
+      "next_action": "Locate reasoning ID producer and its kind/content write before selecting a disclosure consumer",
+      "acceptance": "Version-bound history entry, display predicate and open/close ownership established; scoped replay validates return"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Search result detail, links and preview",
+      "evidence": "Summary and outer tool group established; plain synthetic details are independent",
+      "next_action": "Trace webSearch ActivityRow detail consumer and route destinations",
+      "acceptance": "Open, close, return and task isolation with local resources"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Dynamic file differences and automatic review",
+      "evidence": "Existing static recovered components",
+      "next_action": "Connect file-difference snapshots to current scoped replay and existing code-block component",
+      "acceptance": "Revision, expand/collapse, copy, terminal outcome and task return"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote whole page",
+      "state": "部分实现",
+      "missing_behavior": "Title left alignment, exact message geometry and process restoration",
+      "evidence": "Existing user feedback and parent ownership reports",
+      "next_action": "Close title parent placement and persistent reading/operation contracts in a page-level batch",
+      "acceptance": "CN/EN light/dark normal-size page loop and restart restoration"
+    },
+    {
+      "priority": "P2",
+      "page": "Remote/Chat/Work",
+      "state": "待设备验证",
+      "missing_behavior": "Physical IME, haptic feel and external-display placement",
+      "evidence": "Simulator-only user direction, built-in-only display inventory",
+      "next_action": "Resume on requested available device/display",
+      "acceptance": "Separate device observations"
+    }
+  ],
+  "cross_platform": "iOS-only evidence; Android requires independent consumers",
+  "runtime": "ios-remote-v558-runtime.json",
+  "retention": {
+    "report": "ios-remote-v558-retention.json",
+    "stale_targets": 0
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "f5e6d56f6aeee1cffe9a3b230263ee30f7069f36d8be53b008bdad440b510a6f",
+    "implementation/ios/Sources/NativeConversationHost.swift": "83b3181c5380cf926c73769db0a430b18a588362746517f0b13aef382bd79f79",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "1452d3b255dd9f9850b31d6ef841e20526455e27c036b45354f4d0741f3492dd",
+    "implementation/ios/UITests/HostInteractionTests.swift": "33965d635f4b7c58b92b98466e11b43691839fa28cc87177030d04bddaaed265",
+    "implementation/ios/TextTests/main.swift": "2c9c753a3afdbf2f5cc1bd873439a9864aa2f1bb14f6df73f446b5ae7f8c8e5e"
+  }
+}

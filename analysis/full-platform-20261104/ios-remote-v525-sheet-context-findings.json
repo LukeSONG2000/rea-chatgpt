@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS293 Remote permission picker self-sizing environment and conditional sheet background",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": "Bounded retained-artifact ARM64, Swift metadata, symbolic type and import-binding inspection. No official target execution.",
+  "findings": [
+    {
+      "id": "environment-value-type",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "Value is SwiftUIToolbelt.SelfSizingSheetPresentationContext enum. Case raw0 uiKit, raw1 swiftUI. Treating this as Bool loses ownership semantics.",
+      "evidence": [
+        "key descriptor0x975886c __Key_selfSizingSheetPresentationContext",
+        "EnvironmentKey conformance0x84becf0",
+        "Value requirement encoded0x8ea6421 resolves typeref0x8ea6420 after low-bit tag removal",
+        "typeref indirect context0xaab7738\u2192descriptor0x9755198",
+        "enum field record0x9c54240 cases uiKit then swiftUI"
+      ]
+    },
+    {
+      "id": "default-and-reader",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "Declaration default is swiftUI raw1. SelfSizingSheetModifier creates Environment storage using keypath0x84b7758. Environment projected evaluation supplies context to branch.",
+      "evidence": [
+        "defaultValue witness0x3af10 movw9,1\u21920x159a50 strb w9,[x8]",
+        "0x7560f94 keypath\u21920x7560fa0 Environment initialization",
+        "0x7560ffc/0x7561030 getter/setter share key metadata0xaa5a1d8",
+        "0x75611dc\u21920x75bd654\u21920x5860e3c evaluates stored environment keypath"
+      ]
+    },
+    {
+      "id": "self-sizing-branches",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "swiftUI raw1 selects presentationDetents builder0x75612fc. uiKit raw0 uses alternate content frame(height) path0x7561260. Existing v524 measurement/detent rules apply only in their respective branch.",
+      "evidence": [
+        "0x75611e0\u21920x159fec compares low byte to1",
+        "0x75611f0 invokes detents only on equality",
+        "0x7561248 context reread, nonzero skips frame; zero enters0x7561260"
+      ]
+    },
+    {
+      "id": "writers",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "A UIKit presenter content builder explicitly writes context uiKit raw0 around its supplied content. OrbitProfileAppConnection writer separately writes swiftUI raw1. Both are real writers, so declaration default alone cannot establish permission sheet final context.",
+      "evidence": [
+        "0x62aed9c loads keypath0x8263330",
+        "0x62aedc8 stores keypath and0x62aedcc stores raw0 into EnvironmentKeyWritingModifier",
+        "typeref0x93bd562 includes EnvironmentKeyWritingModifier<SelfSizingSheetPresentationContext>",
+        "typeref0x93bd522 additionally includes UIKitSheetEnvironmentModifier",
+        "0x62ae804 calls builder0x62aeba4 from UIKit presentation update",
+        "0x1ffde9c loads keypath0x7e54b70; 0x2175448/44c writes raw1",
+        "typeref0x8ea63f8 includes TibroCore.OrbitProfileAppConnection and EnvironmentKeyWritingModifier<SelfSizingSheetPresentationContext>"
+      ]
+    },
+    {
+      "id": "permission-parent-dispatch",
+      "status": "superseded-by-followup",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "Controls permission presentation enters generic wrapper0x629d070. It reads isolated_presentation_enabled and builds shared presentation wrapper0x7551ba0\u21920x75504b0. The exact dispatcher edge from this permission instance to UIKit content builder0x62aeba4 has not been closed.",
+      "evidence": [
+        "v524 owner 0x196596c\u21920x629d070",
+        "0x629d208 reads global0xb08bc51",
+        "0x62cf688 once initializer\u21920x62a8e28",
+        "0x62a8eb0 fallback byte0 and0x62a8f08 configuration lookup0x7070130",
+        "literal0x89ee750 isolated_presentation_enabled",
+        "literal0x89ee770 ChatGPTPresentation/PresentationConfiguration.swift",
+        "0x629d344\u21920x7551ba0;0x7551de0\u21920x75504b0",
+        "closure0x62b9fb0\u21920x62aa894\u21920x62aa0cc\u21920x6297694"
+      ],
+      "limits": [
+        "Config provider semantics/runtime effective value are not proved solely by its fallback literal.",
+        "Do not unconditionally label this specific permission sheet swiftUI/detents or uiKit/frame from the declaration default.",
+        "Followup below closes this specific permission style and SwiftUI sheet API edge. Original boundary retained as historical finding."
+      ]
+    },
+    {
+      "id": "background-and-corner-availability",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "Permission sheet background helper applies explicit presentationBackground(OneOff/AppBackgroundWithGray) only below iOS26. iOS26+ branch wraps the unchanged content in AnyView. SelfSizing detent branch similarly supplies cornerRadius28 below26 and nil on26+. These are application modifiers; underlying OS material remains native runtime behavior.",
+      "evidence": [
+        "0x195e010\u21920x6f4ae4c\u21920x757d778",
+        "0x757d798\u21920x1bdeac sets platform2,26.0.0\u21920x7c34368 availability comparator",
+        "0x757d79c cbz selects old path",
+        "modern0x757d7cc import _$s7SwiftUI7AnyViewVyACxcAA0D0RzlufC",
+        "old0x757d8b0 import _$s7SwiftUI4ViewPAAE22presentationBackgroundyQrqd__AA10ShapeStyleRd__lF",
+        "v524 style token resolver0x74f03d0",
+        "v524 corner0x7561340..0x756137c uses same0x1bdeac"
+      ]
+    },
+    {
+      "id": "permission-style-concrete-tag",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "This permission instance explicitly constructs PresentationStyle.sheet(size:nil). Its tag is0, written with Swift runtime multi-payload enum API. The byte at+0x3a=1 belongs to the nil optional SizeConstraints payload, not the PresentationStyle outer enum discriminator.",
+      "evidence": [
+        "0x1965644\u21920x1d8f530\u21920x75845b8 obtains PresentationStyle metadata, saved FP-0x90",
+        "0x1965898..0x19658a8 zeroes payload then setsbyte+0x3a=1",
+        "0x19658ac passes payload;0x19658b0 reloads metadata;0x19658b4\u21920x154054 setsw2=0 then tails0x7c54a18 _swift_storeEnumTagMultiPayload",
+        "descriptor0x9754830 fieldrecord0x9c53e14 enumerates sheet,popover,custom,fullScreenCover,fullScreenInteractiveDismiss",
+        "sheettyperef0x9453470 resolves SwiftUIToolbelt.SizeConstraints optional namedsize",
+        "0x755763c frame wrapper checks payload+0x3a==1 and supplies nil frame constraints"
+      ]
+    },
+    {
+      "id": "permission-swiftui-sheet-dispatch",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "The permission path reaches SwiftUI View.sheet(item:onDismiss:content:). It does not select the previously found UIKit presenter0x62aeba4 at this dispatcher. Existing SwiftUI sheet host direction is supported by the shipped artifact.",
+      "evidence": [
+        "0x196596c\u21920x629d070 preservesstyle inputatFP-0x120\u21920x629d300",
+        "0x629d344\u21920x7551ba0;0x7551cd0\u21920x75ba970 copiesstyle via itsmetadata accessor;0x7551de0\u21920x75504b0 storesstyle",
+        "PresentationStyleViewModifier metadata0x9758a28 bodywitness0x7558cd4\u21920x755604c\u21920x75561dc",
+        "0x755635c/60 getsstylemetadata then _swift_getEnumCaseMultiPayload",
+        "jumptable0x84b6f80 tag0\u21920x7556380;closure0x75ab8c8\u21920x7557224",
+        "0x7557524 invokesimport0x7c4acc8 _$s7SwiftUI4ViewPAAE5sheet4item9onDismiss7contentQrAA7BindingVyqd__SgG_yycSgqd_0_qd__cts12IdentifiableRd__AaBRd_0_r0_lF",
+        "sheetcontent0x75aba7c\u21920x7557548\u21920x75575e4 invokesstoredcontent;0x755763c appliesoptionalSizeConstraints frame"
+      ],
+      "limits": [
+        "Actual official runtime appearance and ancestor environment overrides remain unexecuted. This proves the presentation API/dispatcher, not all inherited environment values."
+      ]
+    },
+    {
+      "id": "isolation-flag-separate-from-style",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "isolated_presentation_enabled is forwarded to PresentationStyleViewModifier.enableIsolation. It does not change the explicit .sheet style tag into a UIKit style in the recovered permission construction and dispatch. Configuration fallback isfalse; effective remotely/configured value remains unknown.",
+      "evidence": [
+        "0x629d208 configbyte\u2192w25\u21920x629d304 x1\u21920x7551ba0",
+        "0x7551be4 savesw1;0x7551dd4 restoresit\u21920x75504b0",
+        "0x75504d8 savesw1;0x75505b8 readsfieldoffset metadata+0x5c;0x75505bc/c0 storesbyte",
+        "metadata0x9758a28 field1=enableIsolation",
+        "0x75561dc dispatchreads styleenum independently;sheetcase7557224 hasdirectSwiftUI.sheet call",
+        "previous0x62a8eb0 fallback0 retained;runtimeprovider result unobserved"
+      ],
+      "limits": [
+        "Do not force the flag false merely because its fallback isfalse. Conditional attachment structure is resolved in the followup finding below. Effective flag and visual runtime result remain unknown."
+      ]
+    },
+    {
+      "id": "sheet-isolation-attachment-structure",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "enableIsolation changes where the same SwiftUI sheet is attached. True uses Color.clear.accessibilityHidden(true) as the sheet source, then puts the resulting presented source with sourceModifier into original content.background. False uses the original ViewModifier.Content directly as sheet source and returns it. These recovered branches apply no additional blur/material fill themselves.",
+      "evidence": [
+        "sheetcase0x75563ac\u21920x75566ac\u21920x75bd6a4\u21920x7557720",
+        "0x7557744 reads enableIsolation offset+0x5c;helper0x2c60c0 readsbyte andcompares1",
+        "true0x7557774 Color.clear getter;0x75577c8 w0=1\u21920x75577d0 accessibilityHidden(true)",
+        "false0x75577dc..0x755780c copies ViewModifier.Content",
+        "0x755781c invokes same case-specific builder closure in both branches",
+        "0x7557844\u21920x7558b30 readsflagagain at0x7558c0c..18",
+        "true0x7558c54 closure0x75abbe8;0x7558c7c callsView.background(alignment:content:)",
+        "backgroundclosure0x75abc34 uses sourceModifier offset+0x60 and0x75abc4c callsView.modifier",
+        "false0x7558cac..cc4 typeerases previously built sheet view",
+        "outerbody0x75561bc appliesonChange, import0x7c4ae18"
+      ],
+      "limits": [
+        "Underlying OS material and compositing differences need runtime acceptance. Static absence of an explicit blur in these bounded functions cannot prove pixel-equivalent output between both attachment branches.",
+        "Runtime configuration effective value remains unknown."
+      ]
+    },
+    {
+      "id": "permission-context-local-writer-boundary",
+      "status": "partial",
+      "evidence_type": "static_inference",
+      "conclusion": "Recovered .sheet path and its isolated/non-isolated source wrappers contain no identified write to _selfSizingSheetPresentationContext. The concrete separate UIKit raw0 writer0x62aedcc is not selected at this dispatcher. The declaration default swiftUI is therefore appropriate for a local SwiftUI adapter whose own environment has no override. All official ancestors of the Controls view have not been traversed, so effective original environment is still conditional on inherited values.",
+      "evidence": [
+        "Known keypath getter/setter0x1ffdecc/0x1ffdef4 and indexed writer keypaths in parent-writer-refs report",
+        "sheetcontent0x75aba7c\u21920x7557548\u21920x75575e4;0x755763c optionalframe wrapper",
+        "sourceisolation0x7557720\u21920x7558b30\u21920x75abbe8 usesclear/accessibility/background/sourceModifier",
+        "permission content reporting chain0x62b9fb0\u21920x62aa894\u21920x62aa0cc\u21920x6297694",
+        "knownUIKitwriter0x62aeba4\u21920x62aedcc remains on distinct custom UIKit chain"
+      ],
+      "limits": [
+        "Reference scans and bounded call inspection do not exclude all indirect/generic writers in untraversed outer ancestry.",
+        "Do not label all permission instances globally as having effective context swiftUI, even though this concrete API isSwiftUI.sheet."
+      ]
+    }
+  ],
+  "integration_decisions": {
+    "ready": [
+      "Preserve enum context semantics instead of Boolean naming.",
+      "Use source-backed iOS26 background/corner availability condition.",
+      "Retain conditional selfSizing implementations with declaration default swiftUI.",
+      "Use SwiftUI sheet for this permission picker with source-backed selfSizing logic. Concrete parent dispatcher is now closed to SwiftUI View.sheet(item:onDismiss:content:).",
+      "If isolation is represented locally, preserve source-layer attachment semantics: clear/accessibilityHidden sheet in original source background when enabled. This is separate from modal material styling."
+    ],
+    "blocked": [
+      "Official effective isolated_presentation_enabled value and any outer ancestor context override remain unobserved; they do not justify replacing this concrete sheet with the separate UIKit presenter."
+    ]
+  },
+  "next_minimal_action": "No further presentation dispatcher exploration needed for this permission UI. Validate reconstructed SwiftUI sheet layout/detent transitions locally; preserve official runtime and ancestor environment claims as unverified.",
+  "validation": {
+    "static": "partial",
+    "official_runtime": "not_run",
+    "production_files_modified": false,
+    "tests_modified": false,
+    "dispatcher": "verified-static .sheet(size:nil) to SwiftUI.sheet(item:onDismiss:content:)"
+  },
+  "files": [
+    "ios-remote-v525-dispatch-153c28.asm",
+    "ios-remote-v525-dispatch-6297694.asm",
+    "ios-remote-v525-dispatch-6ec884.asm",
+    "ios-remote-v525-dispatch-7555bc0.asm",
+    "ios-remote-v525-dispatch-75589c4.asm",
+    "ios-remote-v525-dispatch-75845b8.asm",
+    "ios-remote-v525-dispatch-75ab8c8.asm",
+    "ios-remote-v525-dispatch-75b9ff8.asm",
+    "ios-remote-v525-dispatch-body-witness.asm",
+    "ios-remote-v525-dispatch-body.asm",
+    "ios-remote-v525-dispatch-bodytail.asm",
+    "ios-remote-v525-dispatch-custom-modifier.asm",
+    "ios-remote-v525-dispatch-isolation-2c60c0.asm",
+    "ios-remote-v525-dispatch-isolation-7557720.asm",
+    "ios-remote-v525-dispatch-isolation-7558b30.asm",
+    "ios-remote-v525-dispatch-isolation-75b9704.asm",
+    "ios-remote-v525-dispatch-isolation-75bd130.asm",
+    "ios-remote-v525-dispatch-isolation-75bd6a4.asm",
+    "ios-remote-v525-dispatch-isolation-background-thunk.asm",
+    "ios-remote-v525-dispatch-metadata.json",
+    "ios-remote-v525-dispatch-parent-style-helper.asm",
+    "ios-remote-v525-dispatch-permission-entry-head.asm",
+    "ios-remote-v525-dispatch-permission-entry.asm",
+    "ios-remote-v525-dispatch-permission-tag-store.asm",
+    "ios-remote-v525-dispatch-sheet-content-thunk.asm",
+    "ios-remote-v525-dispatch-sheetcase.asm",
+    "ios-remote-v525-dispatch-style-copy-helper.asm",
+    "ios-remote-v525-dispatch-style-decode.asm",
+    "ios-remote-v525-dispatch-style-factory.asm",
+    "ios-remote-v525-dispatch-style-init-helper.asm",
+    "ios-remote-v525-dispatch-style-metadata-alias.asm",
+    "ios-remote-v525-dispatch-stylemetadata.asm",
+    "ios-remote-v525-dispatch-tag-and-bindings.json",
+    "ios-remote-v525-dispatch-witness-0x84be248.json",
+    "ios-remote-v525-sheet-context-availability.asm",
+    "ios-remote-v525-sheet-context-availabilitytail.asm",
+    "ios-remote-v525-sheet-context-backgroundgate.asm",
+    "ios-remote-v525-sheet-context-cmphelper.asm",
+    "ios-remote-v525-sheet-context-conditional-presenter.asm",
+    "ios-remote-v525-sheet-context-context-init.asm",
+    "ios-remote-v525-sheet-context-context-init.json",
+    "ios-remote-v525-sheet-context-context-write-tail.asm",
+    "ios-remote-v525-sheet-context-context-writer-copy.asm",
+    "ios-remote-v525-sheet-context-defaulttail.asm",
+    "ios-remote-v525-sheet-context-envgetter.asm",
+    "ios-remote-v525-sheet-context-envgetter.json",
+    "ios-remote-v525-sheet-context-envhelper.asm",
+    "ios-remote-v525-sheet-context-envhelper.json",
+    "ios-remote-v525-sheet-context-key-default.asm",
+    "ios-remote-v525-sheet-context-key-gettertail.asm",
+    "ios-remote-v525-sheet-context-key-metadata.json",
+    "ios-remote-v525-sheet-context-key-witness.json",
+    "ios-remote-v525-sheet-context-key-writer-thunks.asm",
+    "ios-remote-v525-sheet-context-parent-body.asm",
+    "ios-remote-v525-sheet-context-parent-config.asm",
+    "ios-remote-v525-sheet-context-parent-flag-init.asm",
+    "ios-remote-v525-sheet-context-parent-flag-tail.asm",
+    "ios-remote-v525-sheet-context-parent-flag.asm",
+    "ios-remote-v525-sheet-context-parent-writer-refs.json",
+    "ios-remote-v525-sheet-context-presentation-wrapper.asm",
+    "ios-remote-v525-sheet-context-presenter-branch.asm",
+    "ios-remote-v525-sheet-context-presenter-closure.asm",
+    "ios-remote-v525-sheet-context-presenter-factory.asm",
+    "ios-remote-v525-sheet-context-presenter-helpers.asm",
+    "ios-remote-v525-sheet-context-refs.json",
+    "ios-remote-v525-sheet-context-relative-refs.json",
+    "ios-remote-v525-sheet-context-sheet-background.asm",
+    "ios-remote-v525-sheet-context-sheet-background.json",
+    "ios-remote-v525-sheet-context-sheet-parent-tail.asm",
+    "ios-remote-v525-sheet-context-sheet-parent.asm",
+    "ios-remote-v525-sheet-context-uikit-writer-head.asm",
+    "ios-remote-v525-sheet-context-uikit-writer-parent.asm",
+    "ios-remote-v525-sheet-context-uikit-writer-refs.json",
+    "ios-remote-v525-sheet-context-value-type.json",
+    "ios-remote-v525-sheet-context-writer-a-endhelpers.asm",
+    "ios-remote-v525-sheet-context-writer-a-refs.json",
+    "ios-remote-v525-sheet-context-writer-a.asm",
+    "ios-remote-v525-sheet-context-writer-b.asm",
+    "ios-remote-v525-sheet-context-writer-c.asm",
+    "ios-remote-v525-sheet-context-writer-refs.json"
+  ],
+  "limits": [
+    "Reference scans are incomplete candidate searches; absence does not prove absence of overrides.",
+    "v525 key-witness helper prints type requirement location with low-bit tag still set; value-type report records the corrected underlying typeref.",
+    "No actual device/simulator sheet screenshot or material parity acceptance performed by this agent."
+  ]
+}

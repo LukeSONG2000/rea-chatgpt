@@ -1,0 +1,401 @@
+{
+  "schema": "rea-ios-evidence-v1",
+  "batch": "v531",
+  "status": "partial",
+  "scope": "Ordinary Remote composer dictation ownership and source-backed action boundary. Shared state declarations are separate from proven transitions.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "proven_chains": [
+    {
+      "id": "idle-activation",
+      "status": "verified-static",
+      "chain": [
+        "MessageInput198a7dc loads whisperComponent fieldvector8c",
+        "198a864 constructs callback1c28660;198a874 stores ViewParams tag4 codexActivation",
+        "198a884 calls BaseAnyViewModel renderer7656724",
+        "ComposerWhisperView body16ea054 switches tag4→16ea1c8",
+        "16ea1c8..16ea204 obtains shared microphone projection, optional nil8 fallbackidle2",
+        "16ea324..338 builds MessageInputWhisperButtonPart;16ea34c..358 forwards captured onStartRecording",
+        "Leaf16f8b70 idle branch→16f8c24 callback→1225ac→1c28660→19903f8 Remote handle.startWhisper raw26"
+      ],
+      "limits": [
+        "Upstream Remote handle consumer and actual activation/permission session transition remain unclosed.",
+        "This proves action routing through the injected owner, not microphone permission success or audio capture."
+      ],
+      "references": [
+        "ios-remote-v510-home-controls-findings.json",
+        "ios-remote-v510-whisper-request.asm",
+        "ios-remote-v509-whisper-button.asm"
+      ]
+    },
+    {
+      "id": "owner-injection",
+      "status": "verified-static",
+      "conclusion": "whisperComponent is BaseAnyViewModel<ComposerWhisperTemplate,AnyView>. Thread and NewThread each declare an independent lazy component.",
+      "evidence": [
+        "type8e1575a resolves BaseAnyViewModel975f3dc/ComposerWhisperTemplate96b1dd0/SwiftUI.AnyView",
+        "CodexRemoteThreadViewModel95aa8a4 field14 lazy whisperComponent;ObjCclassade09b8;offsetstorage7e0ce68 raw608(0x260)",
+        "CodexRemoteNewThreadViewModel95aa210 field2 lazy whisperComponent;ObjCclassade01f8;offsetstorage7e0c7f8 raw32(0x20)",
+        "Thread lazygetter18e44ec reads260, nil branch18e4510 constructs ViewModelParams via5c30d14 at18e45e4 and component factory indirect18e4600;cachedstore18e4614"
+      ]
+    },
+    {
+      "id": "thread-configuration",
+      "status": "verified-static",
+      "conclusion": "Thread factory supplies granular capability callbacks and a common shared owner configuration. UI must consume these independent capabilities.",
+      "field_offsets_source": "ViewModelParams descriptor96b1dec fieldvectorword2 atmetadataa83af50 → offsets at a83af60; constructor5c30d14..d74 assigns register/stack inputs",
+      "parameters": [
+        {
+          "field": "tracksRecordingAnalytics",
+          "offset": "0x48",
+          "value": false,
+          "proof": "helper1da5b8c writesw11=0x600 tocallerSP8 at18e45cc;byte0=0;constructor5c30d50"
+        },
+        {
+          "field": "composerVariant",
+          "offset": "0x49",
+          "raw": 6,
+          "type": "Optional<DictationComposerVariant> (type8df31d6)",
+          "proof": "same packed0x600 byte1=6;5c30d54",
+          "limit": "Enum declares6cases. Optional nil interpretation is ABI inference, not independently replayed."
+        },
+        {
+          "field": "defaultTranscriptExpanded",
+          "offset": "0x4a",
+          "value": false,
+          "proof": "packedbyte2zero;5c30d58"
+        },
+        {
+          "field": "usesFullWidthWaveform",
+          "offset": "0x4b",
+          "value": false,
+          "proof": "packedbyte3zero;5c30d5c"
+        },
+        {
+          "field": "waveformRevealUIEnabled",
+          "offset": "0x50",
+          "value": "constant false callback298f8",
+          "proof": "helper1da5b8c setsx10=298f8;18e45c8→SP10;5c30d60 copiesq7→dest50"
+        },
+        {
+          "field": "canShowMicrophoneButton",
+          "offset": "0x70",
+          "value": "constant true callback217f60→3aea8",
+          "proof": "18e45b0..c0 SP30 callback;5c30d64 copiesq5→dest70"
+        },
+        {
+          "field": "canBegin",
+          "offset": "0x80",
+          "value": "weak owner callback1aa4898",
+          "proof": "18e45a4..ac SP40 callback;5c30d64 copiesq4→dest80",
+          "limit": "Callback guards weak owner, returns negated18e4638 result; semantic meaning of18e4638 not established."
+        },
+        {
+          "field": "canAutoSend",
+          "offset": "0x90",
+          "value": "constant true callback3aea8",
+          "proof": "18e4598..a0 SP50 callback;5c30d68 copiesq3→dest90"
+        },
+        {
+          "field": "hasSendableStreamingInput",
+          "offset": "0xa0",
+          "value": "weak owner callback1aa48dc",
+          "proof": "18e458c..94 SP60 callback;5c30d68 copiesq2→desta0",
+          "limit": "Callback depends on composer input predicate1883368 and attachment iteration. Full predicate not reconstructed."
+        },
+        {
+          "field": "acceptPendingSend",
+          "offset": "0xb0",
+          "value": "constant false callback298f8",
+          "proof": "helper1da1e68 returnsx8=298f8;18e4588 SP70;5c30d6c copiesq1→destb0"
+        },
+        {
+          "field": "recordingPermissionChecker",
+          "offset": "0xc0",
+          "value": "nil optional callback pair",
+          "proof": "helper1da1e68 clearsSP78..88;SP80/88 zero →destc0/c8 at5c30d6c",
+          "limit": "Injected override absent. Default shared-owner microphone permission behavior remains unclosed."
+        },
+        {
+          "field": "handleEvent",
+          "offset": "0xd0",
+          "value": "weak owner callback1aa4988",
+          "proof": "18e457c..84 helper writesSP90 callback/context;5c30d70→destd0",
+          "limit": "Callback forwards event toward1883aa0 after observing owner state. completed→draft mutation branch still unclosed."
+        }
+      ]
+    }
+  ],
+  "declarations_only": {
+    "remote_actions": {
+      "descriptor": "95aea7c",
+      "startWhisper": "emptycase26; actualidlecallbackverified",
+      "stopWhisper": "payloadcase15(autoSend:Bool), typeref8e38ca4; buttonconsumertransition unverified"
+    },
+    "shared_owner": "ComposerWhisperViewModel95a50c0/classadd4d08",
+    "state_layers": {
+      "DefaultComposerWhisperState95a6dd4": [
+        "idle(MicrophoneAvailability)",
+        "requestingMicrophonePermission(isTouchingInsideButton,pushToTalkMode)",
+        "active(Session)",
+        "inserting"
+      ],
+      "Session95a77ec": [
+        "state",
+        "pushToTalkMode",
+        "completionAction",
+        "isTouchingInsideButton"
+      ],
+      "WhisperState95a65fc": [
+        "transcribing",
+        "done",
+        "error",
+        "idle",
+        "preparing",
+        "listening"
+      ],
+      "ComposerWhisperContentState96b1a18": [
+        "error",
+        "hidden",
+        "starting",
+        "listening",
+        "transcribing"
+      ],
+      "ComposerWhisperMicrophoneButtonState96b1abc": [
+        "hidden(allowsInteraction)",
+        "idle",
+        "disabled",
+        "starting",
+        "active",
+        "stopped",
+        "loading"
+      ],
+      "ComposerWhisperPrimaryButtonAction96b1bcc": [
+        "send",
+        "loading",
+        "retry",
+        "settings"
+      ]
+    },
+    "completion_contracts": {
+      "ComposerWhisperPendingResult96b1ad8": [
+        "text",
+        "range",
+        "autoSend",
+        "metadata"
+      ],
+      "ComposerWhisperResult96b1c04": [
+        "text(optional)",
+        "shouldAutoSend",
+        "metadata"
+      ],
+      "ComposerWhisperDictation96b1a34": [
+        "attemptID",
+        "originalText",
+        "currentTextRange",
+        "audioAssetMetadata",
+        "transcriptionSource",
+        "pendingAudioAssetMetadata"
+      ],
+      "ComposerWhisperDraftState96b1a84": [
+        "dictations",
+        "wholePromptOriginatedFromDictation"
+      ],
+      "CodexRemoteComposerState95a9d20": "pendingDictationCompletion field20,instanceoffset140;actualclear/consumeunknown"
+    },
+    "lifecycle_actions": {
+      "ComposerWhisperAction96b19b8": [
+        "persistedDraftRestored",
+        "draftRestored",
+        "inputCleared",
+        "inputTextChanged",
+        "inputSubmitted",
+        "transcriptionCompleted",
+        "transcriptionInserted",
+        "toggleExpansion",
+        "cancel",
+        "stop",
+        "messageInputDidDismantle",
+        "draftCleared",
+        "draftSaved",
+        "inputEdited",
+        "nonInputSubmitted"
+      ],
+      "ComposerWhisperCancellationSource96b19e0": [
+        "cancelTap",
+        "conversationCoordinatorDidChange",
+        "conversationDidOpen",
+        "messageInputDidDismantle",
+        "newThreadDidStart"
+      ]
+    },
+    "limitation": "Declarations establish vocabulary and ownership fields, not event ordering, guards, rollback, auto-send timing, or completed-recording behavior."
+  },
+  "ready_to_integrate": [
+    {
+      "scope": "pure projection and dispatch",
+      "authority": "source-backed boundary",
+      "description": "Keep shared injected dictation presentation separate from text input state. Idle mic routes startWhisper to current scoped owner, gated by !preventsPromptSubmission && allowsSupplementaryWhisperButton and inherited shared mic state. Preserve independent canBegin/canAutoSend/streaming input flags."
+    },
+    {
+      "scope": "fixture design",
+      "authority": "independent design",
+      "description": "Synthetic provider can supply explicit content/microphone/primary states and record requested actions, testing owner identity and disabled/loading presentation. Avoid implementing transcript replacement, cancel rollback or automatic send until the event-consumer chain is closed."
+    },
+    {
+      "scope": "active dictation action dispatch",
+      "authority": "source-backed enum value witness and callback cleanup type",
+      "description": "Accessory callback dispatches cancelRecording; primary callback captured true dispatches retryRecording; false dispatches finishRecording(autoSend:true,finishTrigger raw0x100). State changes remain shared reducer responsibility."
+    }
+  ],
+  "precise_unknowns": [
+    {
+      "boundary": "Remote handle.startWhisper consumer",
+      "next": "Locate action-switch consumer forwarded by ordinary Thread handle closure and bind raw26/15 to shared owner methods. Thread injectiongetter18e44ec and wrapper1942d00 are established."
+    },
+    {
+      "boundary": "Shared state reducer",
+      "next": "DefaultComposerWhisperState95a6dd4 eventconsumer ofComposerWhisperStateEvent96b1c68. Trace bounded start/finish/cancel/reset branches rather than entire audio backend."
+    },
+    {
+      "boundary": "Cancellation/draft restore",
+      "next": "Bind messageInputDidDismantle, conversation switches and cancelTap to actual calls. Declaration names alone do not prove text rollback."
+    },
+    {
+      "boundary": "Errors and retry/settings",
+      "next": "Identify primaryButtonAction retry/settings producer from concrete error state. Resource candidatesv531 remain consumer-unverified."
+    },
+    {
+      "boundary": "Result→editor merge and pending consumer",
+      "next": "Dispatcher1883aa0 completed→1883820 and pending staging18839ec closed. Remaining exact boundaries188321c text/range projection; pending+140 downstream consume/clear;18f2e74/18f8884 autoSend routing. Cancellation has no proved completed-dispatcher branch."
+    }
+  ],
+  "validation": {
+    "artifact_static": "passed metadata reads, constructor offset mapping and bounded disassembly",
+    "audio_capture": "not run",
+    "official_runtime": "not run",
+    "production_edits": "none",
+    "ui_acceptance": "not performed by this evidence scope"
+  },
+  "scope_corrections": [
+    "thread-input-handler.asm is a retained candidate function18e97a8; its role is not established as input action handler. Do not cite filename as semantic evidence.",
+    "thread-whisper-getter.asm and thread-whisper-candidate.asm are rejected candidate ranges. Confirmedlazygetter is thread-whisper-lazy.asm18e44ec."
+  ],
+  "bounded_followup": {
+    "status": "partial",
+    "evidence_type": "official_artifact_static",
+    "scope": "handleEvent 1aa4988 -> 1883aa0 direct branches, completed callee1883820 and adjacent pending helper18839ec. No general Whisper reducer traversal.",
+    "state_event_action_binding": {
+      "proof": "Action callbacks destroy payload using1783d18, which uses metadataa83aeb8. ComposerWhisperStateEvent accessor5c3593c returns that same metadata. VWT a83ae38 getEnumTag5c358f4 reads byte+50, returns that value below7, otherwise payload uint32+7.",
+      "actions": [
+        {
+          "callback": "0x1cecee4",
+          "payload": "qword2,tag7",
+          "ordinal": 9,
+          "case": "cancelRecording"
+        },
+        {
+          "callback": "0x1ced21c",
+          "guard": "capturedBool+51 true",
+          "payload": "qword3,tag7",
+          "ordinal": 10,
+          "case": "retryRecording"
+        },
+        {
+          "callback": "0x1ced21c",
+          "guard": "capturedBool+51 false",
+          "payload": "Bool true, finishTrigger optional raw0x100,tag1",
+          "ordinal": 1,
+          "case": "finishRecording",
+          "autoSend": true,
+          "unknown": "finishTrigger optional raw semantic not independently bound"
+        }
+      ],
+      "dispatch": "component protocol witness+0x108; shared reducer consequences remain unknown",
+      "evidence": [
+        "ios-remote-v531-dictation-state-event-witness.json",
+        "ios-remote-v531-state-event-tag.asm",
+        "ios-remote-v531-state-event-cleanup.asm",
+        "ios-remote-v531-dictation-style-primary-action-send.asm",
+        "ios-remote-v531-dictation-style-row-cancel.asm"
+      ]
+    },
+    "completed_consumer": {
+      "entry": "0x1883aa0",
+      "branch": "tagbyte+40=0 ->1883ae0; optional text nil ->1883c98 tail2406780, no call1883820; nonnil ->1883b04 calls1883820 with text, shouldAutoSend and metadata",
+      "activation": "tagbyte+40=1 ->1883ad4 ->18f1d84",
+      "ordered_calls": [
+        {
+          "at": "0x1883860",
+          "callee": "0x188ea14",
+          "role": "read current prompt; matches retained v509 prompt getter chain"
+        },
+        {
+          "at": "0x1883874",
+          "callee": "0x1892958",
+          "role": "read three-word editor selection representation; semantic range type not yet independently bound"
+        },
+        {
+          "at": "0x1883898",
+          "callee": "0x188321c",
+          "role": "text+current prompt+selection -> proposed text+selection. Actual merge/range algorithm is exact next boundary"
+        },
+        {
+          "at": "0x18838d8",
+          "callee": "0x18839ec",
+          "role": "stage pending completion using metadata, proposed text and shouldAutoSend"
+        },
+        {
+          "at": "0x18838ec",
+          "callee": "0x1892994",
+          "role": "passes proposed selection representation to owner"
+        },
+        {
+          "at": "0x1883908",
+          "callee": "0x188eb24",
+          "role": "passes proposed text to composer; getter/setter pairing inferred from ABI and use, observable setter internals not expanded"
+        },
+        {
+          "at": "0x1883910",
+          "role": "shouldAutoSend false branches to return cleanup at18839bc"
+        },
+        {
+          "at": "0x1883918..18839b8",
+          "role": "true enters predicate18eecbc, context18ef58c,2418720 then18f2e74 or18f8884 and188edd8; downstream submission semantics not closed"
+        }
+      ],
+      "pending_completion": {
+        "helper": "0x18839ec",
+        "field": "CodexRemoteComposerState+0x140 pendingDictationCompletion",
+        "metadata_descriptor": "0x95ac3a0",
+        "fields": [
+          "metadata",
+          "promptRevision",
+          "autoSendRequested",
+          "awaitsDirectSend"
+        ],
+        "condition": "metadata+18 zero builds optional nil; nonzero copies metadata and stages value",
+        "revision": "1883a18 reads composer+138.1883a24..68 compare proposed and current prompt, add0 ifequal or1 ifdifferent, trap onoverflow.",
+        "flags": "1883a74..7c writes shouldAutoSend&1 to both pending Boolean fields",
+        "write": "1883a80 passes destination composer+140 to old-value cleanup1c57e8;1883a8c ->1d9a438 gives stack+20 source and composer+140 destination ->1341dc generic copy helper.",
+        "limitation": "pending consumer, subsequent clearing and revision guard remain unknown; metadata absent clears this field at completion staging only. This does not prove cancellation clears it."
+      },
+      "evidence": [
+        "ios-remote-v531-thread-whisper-event-consumer.asm",
+        "ios-remote-v531-thread-whisper-completed.asm",
+        "ios-remote-v531-pending-dictation-metadata.json",
+        "ios-remote-v531-pending-store-helper.asm",
+        "ios-remote-v531-pending-type-helper.asm"
+      ]
+    },
+    "integration_boundary": {
+      "ready": "Action mapping cancel/retry/finish is consumer-type-backed and supports pure dispatch tests. Completed event staging/order supports boundary assertions with opaque merge output.",
+      "not_ready": "Full transcript reducer requires188321c selection/merge algorithm and downstream pendingCompletion consumer. Do not introduce guessed append/replace/cancel rollback.",
+      "owner_projection": "Constructor nil variant6/false waveformRevealUI callback are proven injection inputs. Transfer into owner slotsb07d9e0/b1c50e0 used by v250/v251 DefaultPresentation is not established here. Do not compose these claims into an active-row selection proof."
+    }
+  }
+}

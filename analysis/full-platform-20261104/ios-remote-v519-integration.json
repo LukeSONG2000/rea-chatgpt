@@ -1,0 +1,84 @@
+{
+  "batch": "v519",
+  "date": "2026-11-07",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Attachment error rendered after horizontal strip with caption2, status/error color, horizontal10/bottom2. Local error precedes supplied error. Error forces expanded composer.",
+    "Admitted photo processing and file-import completion clear local error at processing start. Opening menu/search return preserves error. Conversion uses Error.localizedDescription.",
+    "Main-bundle en/zh language resources allow Foundation errors to follow system language. Independent host identity retained."
+  ],
+  "evidence": [
+    "ios-remote-v518-attachment-loading-error-findings.json",
+    "ios-remote-v519-attachment-error-lifecycle-findings.json",
+    "ios-remote-v519-localization-findings.json",
+    "ios-remote-v519-composer-dynamic-insets-findings.json",
+    "ios-remote-v519-home-scene-geometry-findings.json"
+  ],
+  "validation": {
+    "model": "ios-remote-v519-model.log",
+    "ui": [
+      {
+        "summary": "ios-remote-v519-ui.summary.json",
+        "passedTests": 3,
+        "failedTests": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "summary": "ios-remote-v519-r2-ui.summary.json",
+        "passedTests": 3,
+        "failedTests": 0,
+        "runtimeWarnings": []
+      }
+    ],
+    "visual": [
+      "ios-remote-v519-error-chinese.png",
+      "ios-remote-v519-error-english-dark.png",
+      "ios-remote-v519-default-language-preview.png"
+    ],
+    "visual_observation": "Chinese NSError displayed in Chinese, English dark screenshot has dark background and theme-resolved error foreground. Error above persistent editor. Preview uses default system language without override."
+  },
+  "failure_analysis": [
+    "Initial v519 action tests passed but visual inspection caught English Foundation errors in Chinese UI and ineffective AppleInterfaceStyle argument. Initial result preserved, stronger CJK assertion and existing rea.preview.appearance test configuration used for r2.",
+    "Chinese runtime failure traced to absent main-bundle language resources despite JSON translations. Added localized independent InfoPlist.strings, matching original main bundle en/zh availability. This does not translate service error strings."
+  ],
+  "independent_adaptations": [
+    "Local file copy/materialization, scope/session/import tokens, temporary files and QuickLook remain host adapters. CancellationError suppression is adapter-specific.",
+    "Explicit failure fixture uses nonexistent temporary file, next import is a synthetic text fixture. Eight-second delay confined to explicit file-chip fixture.",
+    "Only en/zh main-bundle availability added for this acceptance pair. Official full language coverage unaccepted."
+  ],
+  "geometry_findings": [
+    "Home supplies nil trailingOutsideContent and nil sceneMetrics; styleInsets occur once inside content. Existing12 must be retained.",
+    "Additional correction follows maxWidth728, uses focus/scene bottom radius/bottom safe area; background callback previously described as visual fill is actually scene metrics reader.",
+    "iOS26 cornerConfiguration/effectiveRadius source identified. Device-safe-area producer, scene-edge corrections, old OS fallback and complete material order remain partial. No geometry production edits this batch."
+  ],
+  "remaining": [
+    "Supplied attachment error producer, complete error resets across reused scope, original conversion cancellation predicate and validation limits.",
+    "Thread attachment wiring and full composer scene/material integration.",
+    "Permissions/context/model/advanced/dictation references remain source/runtime pending, exact reference version unknown.",
+    "Video/camera, upload/submit service, physical-device haptics, Android and process-restart attachment restoration."
+  ],
+  "preview": {
+    "pid": 98785,
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "scope": "Remote home synthetic task/all-capability fixture",
+    "default_system_language": "Chinese observed without override",
+    "left_running": true,
+    "external_display": "Only built-in Color LCD detected; external placement unaccepted"
+  },
+  "git": "No commit or push in this batch",
+  "source_hashes": {
+    "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift": "f8b1ff5f221f66160b42e15709dc9fa0367dde305c5e37c65cc7ccf387e0a8ab",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "b46531e04cc8821e478bdab8f1b04d6a004766bc3714daa3aa68957e487a8d1f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "46cf9bfcbf2d76a02426810cca1914a0976b6ff86196b1a6c95cc7fc5418b164",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "71b41f8429a9172cda10fcdf5024a010fb2ade059b9947e6445a3bd5d82ee069",
+    "implementation/ios/Resources/en.lproj/InfoPlist.strings": "4b67e2d1a574758fbc858c7b09a3fe0ca74131bbd5bd83638f9781807cc4bd25",
+    "implementation/ios/Resources/zh.lproj/InfoPlist.strings": "4b67e2d1a574758fbc858c7b09a3fe0ca74131bbd5bd83638f9781807cc4bd25"
+  },
+  "post_build_edits": "Only explanatory source comments adjusted after successful r2 build; executable logic unchanged.",
+  "executable_sha256": "dc01a2a667d3f3378580fd7387c294e15c91cc337ad3df69400bce311c8a169a"
+}

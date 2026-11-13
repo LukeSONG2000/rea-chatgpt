@@ -1,0 +1,111 @@
+{
+  "batch": "v491",
+  "status": "partial",
+  "previous_goal_turn": "no progress beyond revalidation/status; this batch integrates supported workspace path",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "version": "iOS 1.2026.293",
+  "official_evidence": [
+    "v489 distinct-host collision policy",
+    "v490 producer -> TaskSection.Descriptor.subtitle -> header",
+    "v491 project kind tag1, original folder assets and body",
+    "v491 project typography and ScaledMetric constants"
+  ],
+  "implemented": [
+    "Scoped workspace identity and collapse state",
+    "Workspace groups replace synthetic host-only sections",
+    "Disambiguation executes at projection owner",
+    "Original folder/folder-open state and project title/subtitle typography",
+    "Official subtitle format in language catalog"
+  ],
+  "independent_adaptations": [
+    "Explicit synthetic candidate membership/order",
+    "Disambiguate full fixture set before source filter; official upstream filter scope unresolved",
+    "Native SwiftUI font bridge",
+    "Reduce Motion behavior inherited from host"
+  ],
+  "tests": {
+    "typecheck": "passed with existing deprecation warnings",
+    "models": "passed after correcting missing format argumentCount=2",
+    "ui_summary": {
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+            "deviceName": "REA ChatGPT Offline",
+            "modelName": "iPhone 17 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 3,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "environmentDescription": "REAChatGPTHost · Built with macOS 27.3",
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "finishTime": 1793960991.533,
+      "passedTests": 3,
+      "result": "Passed",
+      "runtimeWarnings": [],
+      "skippedTests": 0,
+      "startTime": 1793960849.391,
+      "statistics": [],
+      "testFailures": [],
+      "title": "Test - REAChatGPTHost",
+      "topInsights": [],
+      "totalTestCount": 3
+    },
+    "screenshot_default": "ios-remote-v491-list-preview.png",
+    "screenshot_large_text": "/tmp/rea-v491-screens/07899947-4030-41C1-A535-D36F924E9B99.png",
+    "visual_inspection": "Project title/subtitle differentiated; same-name host suffixes and unique-name omission visible. Whole page parity partial."
+  },
+  "runtime": {
+    "device_build": "passed",
+    "device_install": "ios-device-v491-install.json",
+    "device_launch": "ios-device-v491-launch.json",
+    "simulator_pid": 67944,
+    "preview": "Remote list left open on external display, observed Window menu Move to Built-in Retina Display",
+    "device_touch_acceptance": "pending"
+  },
+  "remaining": [
+    "Official source-filter candidate scope",
+    "Project row inset, topSpacing and last-row padding",
+    "New-thread action owner and project header trailing control",
+    "Pinned/recent/cloud projections",
+    "List search/mode menu/composer",
+    "Independent Android evidence and acceptance"
+  ],
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "51aa1cb5a55458224353f3f679fd1d135443ff0dcc9c4ddd8f43eda9effefd54",
+    "implementation/ios/Sources/RemoteWorkspacePresentation.swift": "5cb135e03497a998f2e44ef172e8674e26084aec8c80402b4126c68f2d1908b2",
+    "implementation/ios/Sources/OfficialText.swift": "30583e09d525d30dcf74655672bdd22cec15a3a45362aea05866ac37fd3aa1c7",
+    "implementation/ios/TextTests/main.swift": "179fb2de3d86d1f84e5bfba9455f26cdf1cf1432c13714d52fc1ae9e4346ddcb",
+    "implementation/ios/UITests/HostInteractionTests.swift": "df4dcc13456b4212ec837d0c952dd481b266d2b69a29165868d4825fc5097128",
+    "implementation/ios/Resources/OfficialTranslations.json": "6cf6e1e3b09dfd91fc11ba5622c63c78440d764634d071f58b20d069f37f50f5",
+    "implementation/ios/Tools/prepare-official-text.py": "f73f9d39e16b24a0a029f8be416278fda4facb5b4e832e8d7f673281ca360cb4",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "828eefa50b11c9154482bdb0928a3a24ee4efcce8a21e591adc4df7f90e47c7a",
+    "implementation/ios/test-official-text.sh": "612dbf68ad409a5eb727e42296dad7400ab109a4b041bf9c8bff7289e83e61c9"
+  },
+  "retention": {
+    "schema": "rea-build-cleanup-v1",
+    "time": "2026-11-06T18:31:53.705521+08:00",
+    "apply": false,
+    "keep": [
+      "v172-r2-macos",
+      "v172-windows",
+      "v173-windows",
+      "v174-r4-macos"
+    ],
+    "targets": [],
+    "skipped": [],
+    "completed": []
+  }
+}

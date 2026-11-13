@@ -1,0 +1,166 @@
+{
+  "schema": "rea-ios-chat-message-parent-v1",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Read-only ordinary Chat/Work action-footer owner, selected layout branch, visibility and bounded haptics audit. Remote footer configuration is not reused as evidence.",
+  "source_owners": {
+    "type": "ChatGPTMessageRow.MessageRowInlineActionsPart<MessageRowViewModel>",
+    "descriptor": "0x96214a8",
+    "view_conformance": "0x802957c",
+    "body_witness": "0x38a2f20",
+    "actual_body": "0x389ece4",
+    "actual_parent_builder_call": "0x389f208 -> 0x389f538",
+    "model_conformance": "0x801be48",
+    "model_witness_pattern": "0xa6ac778",
+    "source_tree_files": [
+      "ios-chat-message-parent-20261113/flow-parent-tree.tree.txt",
+      "ios-chat-message-parent-20261113/footer-tuple-tree.tree.txt"
+    ]
+  },
+  "findings": [
+    {
+      "id": "missing_negative_parent_padding",
+      "evidence_type": "official_artifact_static",
+      "source": [
+        "0x389f208",
+        "0x389fb90..0x389fbd8",
+        "0x38a14e8..0x38a152c",
+        "0x7c4ad94"
+      ],
+      "conclusion": "Actual body invokes parent builder389f538. Builder reads the style via38a14e8 (legacy12/refreshed16), multiplies by-0.5 and invokes View.padding(CGFloat), an all-edges overload, around its composed action layout. This is parent compensation -6 or -8, separate from positive leaf hit padding.",
+      "values": {
+        "legacy_compensation_all_edges": -6,
+        "refreshed_compensation_all_edges": -8
+      },
+      "proof": "389fb90 BL38a14e8;389fb94 immediate-0.5;389fb98 FMUL;389fbcc moves result d0;389fbd8 BL7c4ad94, binding _$s7SwiftUI4ViewPAAE7paddingyQr12CoreGraphics7CGFloatVF.",
+      "limits": "Source branch also has conditional alternatives. This proves the explicit legacy/refreshed layout branch, not the original account experiment assignment. Do not replace this all-edge modifier with horizontal-only compensation."
+    },
+    {
+      "id": "leaf_metrics_distinct",
+      "source": [
+        "0x38cb5bc..0x38cb65c",
+        "0x3d95b84..0x3d95dc0",
+        "ios-chat-v580-findings.json",
+        "ios-chat-v580-layout-verification.json"
+      ],
+      "conclusion": "Legacy icon ScaledMetric base14 + all-edge padding6 + Rectangle contentShape. Refreshed uses separate icon16/minimum dimension20/padding8. Current host deliberately chooses legacy; runtime feature assignment and ordinary style overrides remain unknown.",
+      "values": {
+        "legacy_icon_base": 14,
+        "legacy_leaf_padding": 6,
+        "refreshed_icon_base": 16,
+        "refreshed_minimum_dimension": 20,
+        "refreshed_leaf_padding": 8
+      }
+    },
+    {
+      "id": "actual_parent_shape",
+      "source": [
+        "0x8024800",
+        "0x8024808",
+        "0x389fb24..0x389fbd8"
+      ],
+      "conclusion": "Decoded full record8024800 is ModifiedContent<_VariadicView.Tree<_LayoutRoot<SwiftUIToolbelt.FlowLayout>, ModifiedContent<MessageRowInlineButtonAction, AccessibilityAttachmentModifier>>, _PaddingLayout>. Thus at least this actual branch is FlowLayout, not a universal fixed HStack.",
+      "limits": "Do not infer all primary/overflow arrangement from this one branch; current minimal host has one assistant copy control and a separate user overflow menu."
+    },
+    {
+      "id": "presence_and_visibility",
+      "source": [
+        "ios-chat-v578-findings.json",
+        "0x38d9b00..0x38d9e68",
+        "ios-chat-v579-completion-chain.json",
+        "0x3971054..0x397106c",
+        "0x38a0938",
+        "0x38a0978"
+      ],
+      "conclusion": "Presence and visibility are separate. Consumer scope=0 or InlineActionsState raw2 selects sources-only; otherwise it composes actions/sources and applies canShow to opacity and hit-testing with0.2 easeInOut (separate animation suppression byte unresolved). Recovered enabled producer obtains canShow from Message.isComplete via382f9b0→65a53e4→67d99d0. Action presence also depends on primary/overflow/favorite availability, not just originalText.",
+      "limits": "Official transport statuses mapped into isComplete, role/feature eligibility and ordinary scope assignment remain incomplete. Host terminal-state policy is independent."
+    },
+    {
+      "id": "collections_and_action_order",
+      "source": [
+        "0x38cb7d0",
+        "0x38e3ad8",
+        "0x3aa0bfc",
+        "0x3946bfc",
+        "0x3946c34",
+        "0x395bf3c",
+        "0x395c950",
+        "ios-chat-v581-findings.json",
+        "ios-chat-v582-findings.json"
+      ],
+      "conclusion": "Model separately stores visiblePrimaryActions, visiblePrimaryActionDisplayItems, visibleOverflowActions and contextMenuActions. View consumes supplied arrays; action order must follow producer output. Copy carries CopyFormat array. Display items can include combinedFeedback.",
+      "limits": "Metadata enumeration is not a visible action catalog/order. Current assistant-copy-only projection is minimum host behavior, not complete source actions. Do not add thumbs/share/favorite/regenerate based on screenshots or Remote."
+    }
+  ],
+  "host_comparison": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256_at_inspection": "10e70ff6c6a9428cde22ab2364f3ae07b6d1567f86d3f750044c76103b6cd561",
+    "symbols": [
+      "NativeChatMessageActions",
+      "NativeHostedRow",
+      "collection row height measurement"
+    ],
+    "current": {
+      "legacy_icon_base": 14,
+      "leaf_padding": 6,
+      "reserved_height": "scaled14+12",
+      "container": "HStack spacing0; horizontal16",
+      "style": "plain; semantic secondary tint",
+      "minimal_projection": "assistant inline copy; user trailing copy/edit Menu"
+    },
+    "confirmed_missing": "No source parent all-edge compensation exists, leaving positive leaf hit padding to increase the final action footprint and glyph offset. The fixed height is derived from uncompensated leaf geometry.",
+    "safe_implementation": "Do not directly transplant the source FlowLayout negative padding into the independently fixed-frame HStack while deriving UIKit height from point size. Keep actual measured adequate hit carrier as an explicit adapter; recover source leaf intrinsic layout and FlowLayout proposal before source-geometry integration.",
+    "retained_adapters": [
+      "Horizontal16 belongs to current host integration until actual ordinary-row inset owner is closed.",
+      "User trailing Menu containment/ordering is host policy.",
+      "UIFontMetrics.default scaling and semantic secondary tint are not fully equivalent proved original environment.",
+      "Host originalText/terminal status eligibility and Reduce Motion override remain independent."
+    ]
+  },
+  "haptics": {
+    "status": "unknown",
+    "scope": "Reused v578..582 action body/model/callback evidence and bounded parent/label windows.",
+    "conclusion": "No explicit ordinary Chat footer copy/edit haptic trigger is proved in this pass. Shared Remote CopyButton or StatusPill haptics do not establish this consumer. Do not add inferred feedback globally."
+  },
+  "unknowns": [
+    "Complete action producer3945cf8 and arrangement395bf3c treatment/feedback enum mapping.",
+    "Projection395c950..395dedc actual role-specific eligible actions and ordering.",
+    "Ordinary caller scope/style overrides and active refreshed design assignment.",
+    "Full FlowLayout row wrapping/spacing and complete footer subfeature activation.",
+    "Exact icon resource and tint/animation semantics for every ordinary action; existing copy glyph is not re-proven by this narrow pass."
+  ],
+  "verification": {
+    "kind": "static_only",
+    "new_host_changes": false,
+    "target_runtime_execution": false,
+    "new_tests": false,
+    "full_generic_trees": "Record8024800 parent shape and8024b98 footer tuple resolved with pinned local demangler; generic shape does not prove live activation."
+  },
+  "evidence_files": [
+    "ios-chat-message-parent-20261113/inline-body.asm",
+    "ios-chat-message-parent-20261113/inline-parent.asm",
+    "ios-chat-message-parent-20261113/branch-geometry.asm",
+    "ios-chat-message-parent-20261113/label-body.asm",
+    "ios-chat-message-parent-20261113/builder-witness.asm",
+    "ios-chat-message-parent-20261113/flow-parent-tree.json",
+    "ios-chat-message-parent-20261113/footer-tuple-tree.json"
+  ],
+  "next_minimal_action": "Retain source negative padding evidence but correct the independent host hit carrier. Recover actual FlowLayout measurement and parent hosting geometry before transplanting its footprint; do not reduce row height to point-size14.",
+  "correction": {
+    "reason": "Host integration counterexample: applying parent negative padding to independently framed HStack and deriving UIKit height14 yielded glyph visible but non-hittable. Original report arithmetic was not a recovered original layout height.",
+    "superseded": "host_comparison.safe_implementation suggested applying compensation directly to the current HStack and treating14 as nominal compensated footprint. Withdraw that integration recommendation.",
+    "still_proven": "Actual source FlowLayout branch uses all-edge negative padding-6/-8; positive leaf padding6/8 is distinct.",
+    "source_recheck": {
+      "legacy_label": "3d95bcc w22!=1→3d95bf8 x24=0/w23=1 (nil minWidth);3d95c24 w28!=1→3d95c50 x25=0/w20=1 (nil minHeight);3d95cc4..cd8 passes these optionals to _FlexFrameLayout. There is no proven explicit14x14 frame for legacy.",
+      "refreshed_label": "Only the enabled refreshed checks read ScaledMetric20 and pass nonnil minimum width/height. They are minimums, not fixed bounds.",
+      "font": "Parent38a1530 selects ScaledMetric14/16 and389fbf4 uses Font.Weight.regular. Font point size is not an exact SwiftUI Image or line height.",
+      "parent": "Source8024800 is actual FlowLayout Variadic tree with AccessibilityAttachmentModifier, not the current independent HStack. Complete FlowLayout proposal, sizing, bounds and AX/hit ownership are unclosed."
+    },
+    "recommended_boundary": "Preserve independent adequate UIKit/SwiftUI hit carrier and measured row footprint until source layout carrier is reproduced. Do not claim a universal14pt row or clip hit regions to the font size. Negative padding should not be transplanted as a standalone fix when its parent/leaf layouts differ."
+  }
+}

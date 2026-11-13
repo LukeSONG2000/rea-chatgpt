@@ -1,0 +1,182 @@
+{
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static",
+  "validation_status": "verified_static_normal_list_projection",
+  "question": "How is sectionsWithProjectsCollapsed prepared, which members are removed, and when does a normal populated list use it?",
+  "confirmed": [
+    {
+      "claim": "The collapsed array producer is 0x32c270. It first searches for the exact .projectsTitle ID. Without that ID it retains/returns its input array unchanged.",
+      "locations": [
+        "0x32c288..0x32c2fc",
+        "0x32c2a0 tagword at element+0x38",
+        "0x32c2b0 full tagword equals 0xc000000000000000",
+        "0x32c2b8..0x32c2ec all other ID payload words zero",
+        "0x32c2fc retain ->0x32c51c return"
+      ]
+    },
+    {
+      "claim": "When Projects title exists, producer traverses all sections in original order, classifies the ID to common header kind, and excludes kind1. It preserves complete descriptors for surviving sections.",
+      "locations": [
+        "0x32c304..0x32c36c",
+        "0x32c3dc..0x32c420",
+        "0x32c424 skip/dispose kind1 descriptor",
+        "0x32c498..0x32c510 append original descriptor"
+      ]
+    },
+    {
+      "claim": "Excluded IDs are noWorkspace(raw1), remoteWorkspace(raw3), remoteProject(raw4). Their host scope and position do not exempt them. This includes No workspace in the Projects total-collapse behavior.",
+      "locations": [
+        "0x32c354 tag shift61",
+        "0x7ceb601 switch bytes [0,13,0,2,2,16,51]",
+        "raw1->0x32c3a4->0x32c3a8 kind1",
+        "raw3/raw4->0x32c378..0x32c3a8 kind1",
+        "0x45362c keypath0x7cf9d90 ->338d44/338d1c ->3a1580 extract equals1",
+        "0x32c420 nonnil extraction skips append"
+      ]
+    },
+    {
+      "claim": "Title(raw0), remoteHost(raw2), remoteCustomSection(raw5) are kind0 and survive. The no-payload tag6 cases Projects title, searchResults, remoteProjectlessThreads survive. Projects title and remoteProjectlessThreads map to kind2, searchResults maps to kind0.",
+      "locations": [
+        "raw0/raw2->0x32c370->0x32c3d8 kind0",
+        "raw5->0x32c3b0..0x32c3d8 kind0",
+        "raw6->0x32c43c",
+        "empty payload0 Projects ->0x32c48c kind2",
+        "empty payload1 searchResults ->0x32c488->0x32c370 kind0",
+        "other valid no-payload case payload2 ->0x32c48c kind2"
+      ]
+    },
+    {
+      "claim": "A request-state setter produces this prepared array when the extracted section-array value changes. It obtains the current available value, falls back to empty array when nil, calls32c270, then writes through the collapsed-array setter. Collapse toggling itself can therefore select an existing projection.",
+      "locations": [
+        "0x32c52c..0x32c554 request-state storage0xb0c8db0",
+        "0x32c560..0x32c59c old/current value extraction and equality",
+        "0x32c5b0..0x32c5d0 current available value or empty",
+        "0x32c5d8 ->0x32c270",
+        "0x32c5e4 ->0x462f14",
+        "0x32c5ec ->0x31dd2c",
+        "0x462f14 setter offset storage0xb0c8cd8"
+      ]
+    },
+    {
+      "claim": "The owner obtains normal request state from getter32c210 and the prepared array from32a8b8. It stores them at owner+8 and owner+0x18 respectively.",
+      "locations": [
+        "0x395fdc getter32c210 ->stack+0x120/+0x128",
+        "0x395ff0 getter32a8b8 ->stack+0x118",
+        "0x396928..0x396934 copies these to owner+8/+0x18",
+        "ios-remote-v385-list-field-offsets.json fields tasksRequestState and sectionsWithProjectsCollapsed"
+      ]
+    },
+    {
+      "claim": "In the normal available-list branch, a nonempty search after trimming whitespacesAndNewlines bypasses Projects collapse. With empty trimmed search, getter is called with exact.projectsTitle; true chooses owner+0x18, false returns the normal available array.",
+      "locations": [
+        "0x398f9c..0x398fa4 normal available array",
+        "0x398fac ->0x398dd8",
+        "0x398e0c owner._searchQuery+0x150",
+        "0x463ccc Binding.wrappedValue getter",
+        "0x460958 ->7c3f79c CharacterSet.whitespacesAndNewlines",
+        "0x398e34 ->7c4f9b4 trimmingCharacters(in:)",
+        "0x398e4c..0x398e54 nonempty check",
+        "0x398fb4..0x398fcc collapse getter .projectsTitle",
+        "0x398fd0..0x398fdc choose owner+0x18"
+      ]
+    }
+  ],
+  "minimally_implementable_projection": {
+    "input": "An existing ordered [TaskSection] with genuine typed section IDs.",
+    "pseudocode": [
+      "if !sections.contains(where: { $0.id == .projectsTitle }) { return sections }",
+      "return sections.filter { section in",
+      "    switch section.id {",
+      "    case .noWorkspace, .remoteWorkspace, .remoteProject: return false",
+      "    default: return true",
+      "    }",
+      "}"
+    ],
+    "preservation": "Keep surviving full descriptors, order, full host/section identities and row contents. Do not regroup, reorder, merge hosts, or nest folders beneath Projects.",
+    "normal_list_gate": "After normal available request-state selection, use the prepared projection iff searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && taskSectionIsCollapsed(.projectsTitle).",
+    "header_direct_content": "From v500, the standalone Projects header also gates its own projectCatalogRequests rows by its isCollapsed state. That is an additional existing direct-content rule, separate from the whole-list projection.",
+    "projects_insertion": "Use independently recovered v500 grouping/insertion rule. A populated workspace/project set can establish insertion even with no catalog requests. Do not create Projects unconditionally."
+  },
+  "independent_expected_vectors": [
+    {
+      "input": [
+        "title",
+        "noWorkspace(hostA)",
+        "remoteWorkspace(hostA,A)",
+        "remoteProject(hostB,B)"
+      ],
+      "expected": "identical input",
+      "reason": "No projectsTitle sentinel"
+    },
+    {
+      "input": [
+        "title",
+        "projectsTitle",
+        "noWorkspace(hostA)",
+        "remoteWorkspace(hostA,A)",
+        "remoteProject(hostB,B)",
+        "remoteHost(hostA)",
+        "remoteCustomSection(hostB,S)",
+        "searchResults",
+        "remoteProjectlessThreads"
+      ],
+      "expected": [
+        "title",
+        "projectsTitle",
+        "remoteHost(hostA)",
+        "remoteCustomSection(hostB,S)",
+        "searchResults",
+        "remoteProjectlessThreads"
+      ],
+      "reason": "Remove raw tags1/3/4 everywhere, preserve other original order"
+    },
+    {
+      "input": [
+        "noWorkspace(hostA)",
+        "projectsTitle",
+        "noWorkspace(hostB)"
+      ],
+      "expected": [
+        "projectsTitle"
+      ],
+      "reason": "Both host-scoped No workspace sections removed, including before Projects"
+    },
+    {
+      "query": " nonempty ",
+      "collapsed": true,
+      "expected_projection": "normal"
+    },
+    {
+      "query": " \n\t ",
+      "collapsed": true,
+      "expected_projection": "collapsed"
+    },
+    {
+      "query": "",
+      "collapsed": false,
+      "expected_projection": "normal"
+    }
+  ],
+  "unknown_or_out_of_scope": [
+    "No target-app runtime execution or independent replay was performed for this evidence batch. Expected vectors are static-derived test specifications.",
+    "Broader empty-state substitute selection before398f9c (homeEmptyState raw3, request-state unavailable combinations and39902c) is outside this normal populated-list result. Preserve existing behavior rather than reinterpreting those gates.",
+    "Project catalog host eligibility and ordering still have v500 boundaries. They are not required to prove the full-list exclusion predicate.",
+    "Field offset storage0xb0c8cd8 is directly tied to the owner collapsed-array getter. Initial exploratory scans of static metadata pattern offset slots yielded no adjacent references and are not evidence of absence.",
+    "Typed enum cases and exact payload checks apply to valid official values. Unknown binary enum tags must not be treated as supported."
+  ],
+  "evidence_files": [
+    "ios-remote-v501-projects-collapse-producer.asm",
+    "ios-remote-v501-projects-collapse-accessors.asm",
+    "ios-remote-v501-projects-collapse-owner.asm",
+    "ios-remote-v501-projects-collapse-kind-extraction.asm",
+    "ios-remote-v501-projects-collapse-query-helpers.asm",
+    "ios-remote-v501-projects-collapse-constants.json",
+    "ios-remote-v501-projects-collapse-accessor-xrefs.json"
+  ],
+  "next_integration": "Add flat Projects header insertion for supported ordinary grouping, header-kind2 disclosure, own catalog-request visibility, and whole-list projection excluding noWorkspace/workspace/project when the title is collapsed and search is empty. Test no title, title-only, duplicate names across hosts, No workspace across two hosts, and search bypass."
+}

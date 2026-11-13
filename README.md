@@ -1,9 +1,12 @@
 # rea-chatgpt
 
-当前方向（2026-11-06）为[桌面/Web 与移动端两条前端恢复主线](docs/full-platform/FRONTEND-PLAN.md)，核心能力由服务端提供。移动优先恢复 iOS 官方组件、页面及交互，再按独立证据推进 Android。当前恢复工作已按用户要求暂停，正在归档和同步已有成果。完整官方视觉与交互仍为 partial。
+当前方向（2026-11-08）为[桌面/Web 与移动端两条前端恢复主线](docs/full-platform/FRONTEND-PLAN.md)，核心能力由服务端提供。移动优先恢复 iOS 官方组件、页面及交互，再按独立证据推进 Android。当前按移动端最小可用计划推进，优先完成 Remote、Chat／Work、文件与浏览器预览、适用设置的前端交互。服务能力通过接口预留，当前使用离线合成事件。完整官方视觉与交互仍有未实现项。
 
 - [本次进展、用户反馈逐项状态及交付边界](docs/full-platform/PROGRESS-20261106.md)
 - [移动端当前计划](docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md)
+- [移动端全部大项：已做与剩余](docs/full-platform/MOBILE-REMAINING-20261113.md)
+- [普通启动、资料作用域与重启恢复](docs/full-platform/PROGRESS-20261113-STARTUP.md)
+- [iOS 插件第五轮：已做、未做与查看路径](docs/full-platform/PROGRESS-20261113-PLUGINS.md)
 - [Remote 任务与消息组件的最新证据和运行记录](docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md)
 
 桌面归档实际版本为 **26.1021.31345**，旧文件名 4.0.21 与包内版本不一致。较新设置布局的适配单独绑定来源；第三方 iOS 参考工程保留为历史实验。
@@ -11,6 +14,8 @@
 ChatGPT 制品的提取、静态分析与验证资料库，为 Xigua／Remote 前后端及移动跨平台开发提供独立参考架构。始终只研究 ChatGPT 及相关官方制品，不读取、对照或修改 Soul 实现。产物不是原始源码，文件数量也不代表语义恢复程度。
 
 ## 当前接管状态（2026-11-03）
+
+Android v620 已接通普通启动、侧栏、Chat／Work 主页、独立草稿及语言／外观设置，Codex 入口进入已有 Remote 列表。具体功能、未实现项与 OnePlus 测试记录见[移动端计划](docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md)及[Android 运行说明](implementation/android/README.md)。
 
 目标仓库：`LukeSONG2000/rea-chatgpt`。主研究基线为 Android / iOS **1.2026.293**；244/279 仅保留为历史材料。原包不入 Git；旧版原包当前本地缺失，不以新版替代。
 

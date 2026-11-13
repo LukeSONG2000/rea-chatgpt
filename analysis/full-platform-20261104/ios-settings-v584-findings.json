@@ -1,0 +1,56 @@
+{
+  "batch": 584,
+  "status": "partial",
+  "evidence_type": "official_artifact_static_observation",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "chain": "Settings18115b8→1811c14→18132c4 / 18143e8",
+      "conclusion": "Connection content and header precede composer section. Header1814570 reads codex_remote_host_management_title at8855250."
+    },
+    {
+      "chain": "Settings1813f74 / 1814070; type7df9348",
+      "conclusion": "ForEach uses CodexRemoteHostListItem and CodexRemoteHostIdentity. Content includes CodexRemoteHostManagementRow with tap/context-menu wrappers and delete-disabled trait."
+    },
+    {
+      "chain": "HostListItem descriptor95d1074 fields9a6019c..1cc",
+      "conclusion": "host, availability, isUserEnabled, isEnabled and icon are separate stored fields. Field names alone do not establish the availability classifier."
+    },
+    {
+      "chain": "HostManagementRow descriptor95a8bf4; conformance7df84b8 body1807200→1805b70",
+      "conclusion": "Row stores host, enrollment-loading flag, isEnabled Binding and scaled icon size. Body1806fec projects Binding,1807014 constructs Toggle,180702c hides toggle labels. Label key88aee80 is codex_remote_host_enabled_toggle."
+    },
+    {
+      "chain": "Header18146fc→label183c2a8",
+      "conclusion": "Predicate17c0830 chooses Disconnect All key88af9a0 at183c308 or Connect All key88af980 at183c338. Full predicate ownership remains unknown."
+    },
+    {
+      "chain": "Toolbar18120e0 /18123a8",
+      "conclusion": "Toolbar uses topBarLeading placement and circular bordered prominent button branch. Full active/inactive and environment selection remain separately unresolved."
+    }
+  ],
+  "independent_integration": [
+    "Existing native List with Toggle and onMove; exact official drag owner/commit ordering remains open",
+    "Local account/profile-scoped connection preference blob",
+    "Synthetic enabled/disabled subtitle explicitly identifies preview; no real network status inferred",
+    "Host selection affects submission eligibility and home source order; histories/drafts remain in existing scoped stores",
+    "Any visible enabled host selects bulk-disable; otherwise bulk-enable, pending exact predicate17c0830"
+  ],
+  "limits": [
+    "Full settings root/profile/connection-enrollment and behavior groups are incomplete",
+    "Availability/enrollment transient states, server receipt failure rollback and disabled-host approval/stop policy are pending",
+    "Precise row font/layout/material and editing toolbar styling remain partial",
+    "onMove is independent native frontend adaptation; static type references do not prove exact original dragging implementation"
+  ],
+  "evidence_files": {
+    "ios-settings-v584-1811c14.json": "483f591fe72fbea6ae3830301393a864f73501a7b17fa6fbc4d45bd9161f7eda",
+    "ios-settings-v584-18132c4.json": "66e12760d422db777166175626a8750c792f8991cdf1b6643491f14d367a85f6",
+    "ios-settings-v584-types.json": "c4a1e82bd41d5088a743fd797961ced92122e039c6347189b0c4d0c718cdc1f5",
+    "ios-settings-v584-host-metadata.json": "efc69371d2d901a0663417f5295be6314212f0f7b9f8701c5c5f45fe51cea585",
+    "ios-settings-v584-host-witness.json": "eae36eae9af28d0f3ddbd24f4f806103df325651ae8f952d7a597bc874f31ffd",
+    "ios-settings-v584-row.json": "3a5002a596a12211d2ce4b54ea61f12f83a42f737a1b0f01751d79078677c7cb",
+    "ios-settings-v584-all-label.json": "493ad2f8ba05b14d673bb05808be9a61ad30ef6e3f47de9421da0bed1030e7eb"
+  },
+  "target_runtime": false
+}

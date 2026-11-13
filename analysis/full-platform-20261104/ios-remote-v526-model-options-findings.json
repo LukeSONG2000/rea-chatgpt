@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "task": "v526 model-slider options producer and writeback owner",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official artifact static observation and instruction-level reconstruction",
+  "validation": {
+    "binary_executed": false,
+    "online_services_accessed": false,
+    "production_code_edited": false,
+    "controlled_replay": false
+  },
+  "types": {
+    "CodexRemoteModelSliderConfiguration": {
+      "descriptor": "0x95adaec",
+      "fields": [
+        "selections",
+        "selectedPresetID"
+      ]
+    },
+    "Selection": {
+      "descriptor": "0x95adb08",
+      "fields": [
+        "reasoningEffort",
+        "preset"
+      ],
+      "stride": 144
+    },
+    "MessageInputSliderPreset.ID": {
+      "descriptor": "0x96cbbb8",
+      "fields": {
+        "modelIdentifier": "String",
+        "effortIdentifier": "Optional<String>"
+      }
+    },
+    "CodexRemoteThreadConfiguration": {
+      "descriptor": "0x95d1830",
+      "model_offset": "0x0",
+      "reasoningEffort_offset": "0x138",
+      "reasoningEffort_optional_tag_offset": "0x148"
+    },
+    "Model": {
+      "descriptor": "0x95f60bc",
+      "id_offset": "0x68",
+      "model_offset": "0x88",
+      "displayName_offset": "0x50",
+      "supportedReasoningEfforts_offset": "0xc8"
+    },
+    "KnownReasoningEffort": {
+      "descriptor": "0x95d1868",
+      "enum_case_order": [
+        "none",
+        "minimal",
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "note": "Declaration order. UI order is the input supportedReasoningEfforts array order."
+    }
+  },
+  "entry": {
+    "controls": "0x1965c1c",
+    "current_configuration": "0x1965cc8..0x1965cd4 VM witness +0xb0; concrete 0x1942f08 -> 0x18e14c0 reads VM +0x28",
+    "configuration_producer": "0x1965ce0 -> 0x1969430",
+    "enabled": "0x1965d00..0x1965d0c VM witness +0x110 -> 0x1943008 -> 0x18e0e08 reads VM +0x360 (_isModelSliderEnabled)",
+    "meter_source": "VM witness +0x118 -> 0x194300c -> 0x18e0e8c reads VM +0x361 (_isModelGaugeEnabled)",
+    "control_constructor": "0x19696e4 captures the concrete viewModel, configuration and usesMeterSource"
+  },
+  "producer": {
+    "function": "0x1969430",
+    "input": "current CodexRemoteThreadConfiguration",
+    "guards": [
+      {
+        "offset": "0x196946c..0x1969474",
+        "rule": "nil model -> nil slider configuration"
+      },
+      {
+        "offset": "0x19694a8..0x19694c0",
+        "rule": "nil current reasoningEffort (tag 0xff) -> nil slider configuration"
+      },
+      {
+        "offset": "0x19694f4..0x1969508",
+        "rule": "supported effort count 0 or 1 -> nil slider configuration"
+      },
+      {
+        "offset": "0x1969564 -> 0x1897c9c",
+        "rule": "current reasoningEffort absent from supported enum array -> nil slider configuration"
+      }
+    ],
+    "options_source": "0x2451abc reads Model.supportedReasoningEfforts (+0xc8); extracts ReasoningEffortOption.reasoningEffort and parses each via resilient-enum initializer 0x752cf24",
+    "order_and_duplicates": "0x2451abc and 0x196959c..0x1969698 preserve input order and every element. No sorting, deduplication, default selection, nearest-value fallback or fixed stop-count construction occurs in this producer.",
+    "identity": {
+      "modelIdentifier": "Model.id at +0x68, loaded 0x1969488/0x196948c",
+      "effortIdentifier": "known lowercase enum raw string or original custom string",
+      "selectedPresetID": "0x19696a8 uses 0x1935540(current effort), paired with the current model.id"
+    },
+    "selection_preset_mapping": "0x1969650..0x1969674 append reasoningEffort, modelIdentifier, effortIdentifier, effort title from 0x244e72c, model title from 0x2433f6c. Names of remaining preset presentation members are outside this report.",
+    "membership_equality": {
+      "call_chain": [
+        "0x1897c9c",
+        "0x752d72c"
+      ],
+      "case_guard": "0x752d880..0x752d900 rejects differing known/custom tags before payload equality",
+      "consequence": "custom(\"low\") and known.low can map to identical effortIdentifier strings but remain unequal for membership. Preserve enum case identity in reference projection."
+    },
+    "duplicate_id_behavior": "Repeated efforts produce repeated IDs. ID lookup 0x19999ec returns the first matching selection. An input case collision can also produce identical IDs while membership distinguishes cases."
+  },
+  "titles": {
+    "function": "0x244e72c",
+    "known": [
+      {
+        "raw": 0,
+        "effort": "none",
+        "localization_key": "reasoning_effort_none",
+        "english_fallback": "None",
+        "localization_function": "0x75d96a4"
+      },
+      {
+        "raw": 1,
+        "effort": "minimal",
+        "localization_key": "reasoning_effort_minimal",
+        "english_fallback": "Minimal",
+        "localization_function": "0x75d9718"
+      },
+      {
+        "raw": 2,
+        "effort": "low",
+        "localization_key": "reasoning_effort_low",
+        "english_fallback": "Low",
+        "localization_function": "0x75d9788"
+      },
+      {
+        "raw": 3,
+        "effort": "medium",
+        "localization_key": "reasoning_effort_medium",
+        "english_fallback": "Medium",
+        "localization_function": "0x75d9808"
+      },
+      {
+        "raw": 4,
+        "effort": "high",
+        "localization_key": "reasoning_effort_high",
+        "english_fallback": "High",
+        "localization_function": "0x75d9874"
+      },
+      {
+        "raw": 5,
+        "effort": "xhigh",
+        "localization_key": "reasoning_effort_extra_high",
+        "english_fallback": "Extra High",
+        "localization_function": "0x75d98e8"
+      },
+      {
+        "raw": 6,
+        "effort": "max",
+        "localization_key": "reasoning_effort_maximum",
+        "english_fallback": "Max",
+        "localization_function": "0x75d9970"
+      },
+      {
+        "raw": 7,
+        "effort": "ultra",
+        "localization_key": "reasoning_effort_ultra",
+        "english_fallback": "Ultra",
+        "localization_function": "0x75d99ec"
+      }
+    ],
+    "known_dispatch": "0x244e778..0x244e790 uses jump table 0x7e8260a; mapping cross-checked with raw identifier tables 0x7e27318/0x7e27358 and enum metadata",
+    "custom": {
+      "persistent": "0x244e744..0x244e774 recognizes exact raw string persistent via 0x265e428/0x265c090, then 0x75d9a58 key reasoning_effort_persistent, fallback Persistent",
+      "others": "0x244e7a0..0x244e7b4 returns the custom original string"
+    },
+    "model_title": "0x2433f6c starts with Model.displayName (+0x50), invokes 0x24338a4 then a GPT- prefix branch. Exact display-name normalization remains partial, so raw displayName equivalence is not claimed.",
+    "translations": "English fallbacks and localization keys are bound from binary. Root en/zh *.strings contained no reasoning_effort_ keys. Exact Chinese runtime translations were not recovered in this bounded pass."
+  },
+  "selection_writeback": {
+    "callback": "0x1ce59f4..0x1ce5b64",
+    "action": "action discriminator at +0x20; tag0 selects, tag1 no-op; other presentation actions owned by separate report",
+    "guards": [
+      "nil preset ID -> no-op",
+      "0x19999ec no match in captured configuration -> no-op",
+      "fresh current VM effort equals selected resilient enum -> no setter"
+    ],
+    "lookup": "0x19999ec compares modelIdentifier and optional effortIdentifier; returns the first matching selection",
+    "setter": "0x1ce5b44..0x1ce5b50 VM witness +0x240 -> 0x19432a4 -> 0x18f92e4, identified by selectReasoningEffort(_:) log context",
+    "mutation": "0x18f93c0 closure 0x1c414b0 writes configuration reasoningEffort +0x138/+0x148 through mutation helper 0x1938880",
+    "local_state_order": "0x1938880 compares changed configuration, then 0x18d8b3c updates VM +0x28 synchronously before scheduling 0x192ad4c updateAppServerQueuedMessageSettingsIfNeeded. UI selection does not await that async update.",
+    "scope": "Control captures its viewModel and configuration. Selection callback fetches current configuration from that VM before comparing the effort.",
+    "stale_boundary": "No separate generation token or recheck of fresh VM model.id against captured selected modelIdentifier was observed in this callback. Downstream validation after model changes remains unknown.",
+    "failure_boundary": "Previously inspected queued-settings error continuations 0x192b080/0x192b118 log failure with no direct local rollback/picker reopen. Further propagation including 0x18f9cdc and authoritative service acceptance remain unresolved."
+  },
+  "implementation_guidance": {
+    "classification": "independent reference-model guidance derived from the above observations",
+    "safe_projection": [
+      "Require a present model and current effort, supported count > 1, and enum-case-sensitive membership.",
+      "Preserve supported input order and duplicates. Generate IDs from model.id and effort raw string.",
+      "Use first-match ID lookup, then compare to fresh current effort before invoking the owner.",
+      "Keep synthetic catalogs explicit. Screenshots do not establish a fixed set of six stops or actual available models.",
+      "Keep local selection state and backend acceptance separately represented."
+    ],
+    "required_vectors": [
+      "nil model",
+      "nil effort",
+      "0 supported",
+      "1 supported",
+      "current absent",
+      "custom original string",
+      "persistent custom title",
+      "duplicate effort IDs",
+      "known/custom identical raw string with different enum cases",
+      "nil selected ID",
+      "unknown selected ID",
+      "same effort no-op",
+      "changed effort writes captured owner"
+    ]
+  },
+  "unresolved": [
+    "Upstream model catalog acquisition/default assignment and capability gate producers.",
+    "Exact Chinese translations and full model display-title normalization.",
+    "Actual service propagation/acceptance and async reconciliation after selection.",
+    "Stale model change behavior beyond the inspected callback."
+  ],
+  "evidence_files": [
+    "ios-remote-v526-model-options-configuration.asm",
+    "ios-remote-v526-model-options-contract-metadata.json",
+    "ios-remote-v526-model-options-control-init.asm",
+    "ios-remote-v526-model-options-effort-titles.json",
+    "ios-remote-v526-model-options-equality.asm",
+    "ios-remote-v526-model-options-field-map.json",
+    "ios-remote-v526-model-options-fixed-offsets.json",
+    "ios-remote-v526-model-options-helper-tail.asm",
+    "ios-remote-v526-model-options-helpers.asm",
+    "ios-remote-v526-model-options-localization-resources.json",
+    "ios-remote-v526-model-options-localization.asm",
+    "ios-remote-v526-model-options-localization.json",
+    "ios-remote-v526-model-options-localized-effort.asm",
+    "ios-remote-v526-model-options-match.asm",
+    "ios-remote-v526-model-options-metadata.json",
+    "ios-remote-v526-model-options-model-title.asm",
+    "ios-remote-v526-model-options-mutation.asm",
+    "ios-remote-v526-model-options-symbolic.json",
+    "ios-remote-v526-model-options-vm-setter.asm",
+    "ios-remote-v526-slider-callbacks.asm",
+    "ios-remote-v523-controls-body.asm",
+    "ios-remote-v524-permission-owner-findings.json"
+  ]
+}

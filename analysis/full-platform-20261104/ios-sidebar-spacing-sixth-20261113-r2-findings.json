@@ -1,0 +1,474 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "One bounded followup group: generic Navigation and FileLibrary actual UIHostingConfiguration factories; preserves original sixth98raw unchanged.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reuses": "ios-sidebar-spacing-sixth-20261113-findings.json",
+  "official_observations": [
+    {
+      "id": "actual-navigation-cell-carrier",
+      "conclusion": "The generic HomeMenuLabelStyle.Style navigation registration directly uses UICollectionViewCell, without the custom HistoryCollectionViewCell or UIKit ListCell.",
+      "sources": [
+        "metadata helper0x1392888..0x1392898 ->record0x7dae9d0",
+        "record relative target resolved by0xfaa78",
+        "mangled CellRegistration<So20UICollectionViewCellC,HomeMenuLabelStyle.Style>"
+      ],
+      "evidence": "registration-type-7dae9d0.json",
+      "limit": "Typed generic cell is independently proved. No implication that HistoryItem shares this carrier; record7dae9e0 specifically has custom HistoryCollectionViewCell/HistoryItem."
+    },
+    {
+      "id": "generic-navigation-host-margin",
+      "conclusion": "A real generic HistoryNavigationCell configuration factory initializes UIHostingConfiguration<HistoryNavigationCell,EmptyView>, then applies .margins(.all,EdgeInsets(top2,leading10,bottom2,trailing10)), then returns. No fixed48 branch or minSize call appears in this selected whole factory.",
+      "sources": [
+        "registration closure0x1358840 supplies metadata record0x7daea20 to0x1356fa8",
+        "0x7daea20 ->mangled0x8d8df50 UIHostingConfiguration<HistoryNavigationCell,EmptyView>",
+        "content configuration builder0x1358834 ->0x12a4cdc",
+        "0x12a4d30 helper0x138d4f8 ->0x7c490f0 UIHostingConfiguration.init(content:)",
+        "0x12a4d38 ->0x7c49b1c Edge.Set.all",
+        "0x12a4d3c ->0x138ba68",
+        "0x138ba68..0x138ba74 puts2,10,2,10 in d0..d3",
+        "0x138ba84 ->0x7c490d8 UIHostingConfiguration.margins EdgeInsets",
+        "0x12a4d40 return value cleanup; no additional modifier"
+      ],
+      "evidence": [
+        "common-navigation-host-init.asm",
+        "hosting-margin-helper.asm",
+        "navigation-more-config-type-corrected.json",
+        "hosting-import-bindings.json"
+      ],
+      "limit": "Selected generic Navigation factory is positively closed; every individual feature selector/dequeue callback binding is not newly named. Do not confuse source rawItem20 with a proved product feature name."
+    },
+    {
+      "id": "library-host-margin",
+      "conclusion": "The FileLibrary-specific configuration independently uses exactly the same .margins(.all,2/10/2/10) helper. This is a real source parent outside the inner Library row.",
+      "sources": [
+        "registration closure0x1358170 supplies metadata record0x7daeca0 to0x1356fa8",
+        "0x7daeca0 ->mangled0x8d8e524 UIHostingConfiguration<HistoryFileLibraryCell,EmptyView>",
+        "configuration builder0x1358164 ->0x12a6038",
+        "0x12a60b8 ->0x138d4f8 ->UIHostingConfiguration.init(content:)",
+        "0x12a60c0 Edge.Set.all",
+        "0x12a60c4 ->0x138ba68 exact2/10/2/10",
+        "0x12a60c8 cleanup/return"
+      ],
+      "evidence": [
+        "library-host-init.asm",
+        "library-register-type.json",
+        "hosting-margin-helper.asm"
+      ],
+      "limit": "Library body provider12a169c is distinct from its actual configuration factory12a6038. Former alone could not establish hosting margins."
+    },
+    {
+      "id": "factory-name-correction",
+      "conclusion": "0x12a1330 installs/updates cell configuration lifecycle for a captured item and controller; it is not the constructor whose visible inner fields should be mistaken for final UIHostingConfiguration margins. The handler calls actual typed configuration producer before assigning UIContentConfiguration.",
+      "sources": [
+        "1356efc..1356f7c ->138ca84->12a1330 captures content/item ownership",
+        "1356f8c loads concrete generic config metadata, then1356fa8",
+        "1356fa8 resolves UIHostingConfiguration metadata/conformance, invokes captured builder, assigns UIContentConfiguration at1356ff4"
+      ],
+      "limit": "0x1356f8c specifically resolves PersonalAssistantHistoryNavigationCell; do not call that branch clock/customize/Codex. Used to recover generic pattern, not restored personal content."
+    }
+  ],
+  "minimum_implementation": {
+    "feature_carrier": "For current feature section use separately registered plain UICollectionViewCell; retain history swipe-capable ListCell as explicitly independent adapter. Apply source outer hosting margins2/10/2/10 to generic NavigationCell and FileLibrary-shaped feature rows, retain recovered inner row minimum44, padding and scalable typography.",
+    "do_not": "Do not fixed-height feature rows48, alter estimated60 to48, or add compositional interGroupSpacing4. Do not apply feature horizontal10 to HistoryItem.",
+    "expected_effect_classification": "Static inference to verify with actual host frames: child minimum44 plus hosting top/bottom2 naturally permits48 at ordinary size; no guarantee is made for arbitrary text, font, accessibility or runtime constraints.",
+    "runtime_next": "One Chinese/light ordinary-size frame check after integration; compare original and new cell frame/content frame, verify full-row activation, scrolling and sidebar close behavior. Do not broaden to a full theme/language matrix."
+  },
+  "remaining_unknowns": [
+    "Exact selector->configuration mappings for every current feature beyond closed generic Navigation and Library example",
+    "Original generic registration action/gesture admission, unrelated to restored margins",
+    "Independent swipe adapter original equivalence remains unproved",
+    "No new source-backed pinned-header/divider margins in this pass"
+  ],
+  "validation": {
+    "candidate_groups_used": 1,
+    "static_only": true,
+    "product_modified": false,
+    "build_device_or_official_target": false,
+    "network": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-sidebar-spacing-sixth-20261113-r2",
+  "evidence_files": [
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/bounded-shared-margin-helper-calls.json",
+      "bytes": 502,
+      "sha256": "a769419893a5c12e983bd00b78b737c5b76821bc6188348e8c7fd7c7a59aabf5"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/cell-carrier-marker.asm",
+      "bytes": 559,
+      "sha256": "0fec2e92fecd96aa927f20926abe6e915b7f60f128ec7a6a14e75f840a5976ff"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/cell-carrier-marker.json",
+      "bytes": 924,
+      "sha256": "e842b3c51e2a042509a49580fd51f03fb0ffa12a55278f980555291a79663751"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/cell-config-input-regs.asm",
+      "bytes": 942,
+      "sha256": "66304dd8f97755de526b5f903515e3c42b9c4a0d4e343bcc98308eb6e45e7ad5"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/cell-config-input-regs.json",
+      "bytes": 940,
+      "sha256": "79301e8cb31a7d54fb2e0adbd830c0401d052beabce80452e7b32ec4dd5275e7"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/cell-update-actual-wrapper.asm",
+      "bytes": 4051,
+      "sha256": "62a81c680ef0a9023b854eb20294c0351d5d0e78dac7a08971a1de3e5843c777"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/cell-update-actual-wrapper.json",
+      "bytes": 1639,
+      "sha256": "deed0ed5bf257b0ded3b5fbea760fcfdc24ebb1839d22047115aac19f7861924"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/cell-update-owner.asm",
+      "bytes": 1041,
+      "sha256": "5f76994d8034f4bc9813eb2d37199bed337e3f0acdfca6d0e2f5aada31795c7b"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/cell-update-owner.json",
+      "bytes": 1548,
+      "sha256": "bbe9b9db11c961bada5f6d39892e1867cf77ff2479c2f488d06f309f498bdcb6"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/class-metadata-config-setup.asm",
+      "bytes": 1609,
+      "sha256": "b4418c27b25d76040c421f2fdb12d0c1cab82e5cd121f94c368f43404eebf1b9"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/class-metadata-config-setup.json",
+      "bytes": 964,
+      "sha256": "0bd30b68152bfc6e2629cebbde5a3744ab371e2d4357ada3d6648ab2b9bd048e"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/class-registration-type-accessor.asm",
+      "bytes": 1455,
+      "sha256": "25016f0a935408afd0922077ea2c70253ba4438369a5d7a4107a91e452355704"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/class-registration-type-accessor.json",
+      "bytes": 981,
+      "sha256": "e159a2940357d93c069964cd21b97360ae4b07302d43fb20169cddcf08d3c5de"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/closure-type-init.asm",
+      "bytes": 638,
+      "sha256": "900945b4518203c2e0a2c858566915e80be4d5f39934a87789e4cbdf264d0c50"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/closure-type-init.json",
+      "bytes": 930,
+      "sha256": "36f92a3b3b2621e191cdbdf6b2abef3351e4f9a9ecf4d16e801b275f8f996910"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/common-navigation-cell-binding.asm",
+      "bytes": 3011,
+      "sha256": "aa0780fd6a70ab5d7b18eec43bc7d1d41a84a7f9be69b31e29bbd446618bac72"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/common-navigation-cell-binding.json",
+      "bytes": 3225,
+      "sha256": "3cd89df90d704220638a953e6f51bd5665af9e5e656f32ea0cf048512de59364"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/common-navigation-host-init-alt.asm",
+      "bytes": 2760,
+      "sha256": "4ca5444484d6603b5877e8da993514ce30203fdf2c9385911da670c9cf72a64f"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/common-navigation-host-init-alt.json",
+      "bytes": 3199,
+      "sha256": "78616295bca8fed24b5cafe1ae3b9f42fcd7c49a67c8702838d1b86913c60deb"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/common-navigation-host-init.asm",
+      "bytes": 1693,
+      "sha256": "f3bcbe978c72a0d1e1e7e0576553502ef78e7f140ca41894a1fe9fbb4dc9c6c2"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/common-navigation-host-init.json",
+      "bytes": 2751,
+      "sha256": "c9371c32e7df3faca56779439399fd370570710057a01d41c64939c9a842a34b"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/factory-class-call-input.asm",
+      "bytes": 1642,
+      "sha256": "47aeecb19792fe4aa35effddcab6def6d0c934a77274f219b1c31d3f3a9b250f"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/factory-class-call-input.json",
+      "bytes": 2147,
+      "sha256": "85715b5569392d56d3107d147bcc5d07f3ed402924826608199962e5931e73b1"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/feature-library-register-binding.asm",
+      "bytes": 1131,
+      "sha256": "87bdefce4a6d01af288ee8c0aac281c3bad0f8be9995e2f1629fbfb06c400105"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/feature-library-register-binding.json",
+      "bytes": 1865,
+      "sha256": "304a70665af49c843c88b2a3e0eec52fc79057fcd792bcb27e4689732e2d4016"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/feature-more-register-binding.asm",
+      "bytes": 1063,
+      "sha256": "f231bb39dcc19d78d52f0df22769ff8f91528d2258eff5d3bedd3a3309aaece3"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/feature-more-register-binding.json",
+      "bytes": 1668,
+      "sha256": "2c8f44e5ebb1fc7f13c8ee509d74a7210de4daf1abf69a3a403696fc6b9bff01"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/generic-cache-accessor.asm",
+      "bytes": 1314,
+      "sha256": "9b9434b4aa8dcc4c976c1aac0bae622a3362e357dafa5d5df06e3515763d27d0"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/generic-cache-accessor.json",
+      "bytes": 1037,
+      "sha256": "1dc03d8c3fd5d555c10f4b5608d41ed4ac75b6551ccb05a466c7a051f8865cf0"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/generic-config-typecall-args.asm",
+      "bytes": 640,
+      "sha256": "353cf426cc808c5cd2cdc957b6fe7a4e2250c9b2ac833a01fa5aafe48cd66448"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/generic-config-typecall-args.json",
+      "bytes": 947,
+      "sha256": "d298fd6f1647f666dfd00c2663971a92c17d8deae485f85d0e6af35d4f1dde5d"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/generic-host-postbuild.asm",
+      "bytes": 1249,
+      "sha256": "8d89745554670aaf47dcb6e1424b2dba88babf0ba5aff84b4472d8d9709a9038"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/generic-host-postbuild.json",
+      "bytes": 908,
+      "sha256": "892e19db7115d8ac490181a34638da1f7625fcd2ed9cf841f4a79777cc1ab2b5"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/generic-navigation-metadata.asm",
+      "bytes": 674,
+      "sha256": "8d894e0fb2954e141c6dd603b3b8cb7ed2b2b202aed659a47093a60d48e44318"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/generic-navigation-metadata.json",
+      "bytes": 896,
+      "sha256": "2b1b8c67334047cd657e6f90f510e803a7ce3a50aa014afa742042d1fdd12aae"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-closure-init-helper.asm",
+      "bytes": 1673,
+      "sha256": "85e238eaa1878d611f057aeb9fb7b800cc9f7640c3eb6614822fbc574d5df716"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-closure-init-helper.json",
+      "bytes": 1015,
+      "sha256": "055313d4c845ca4ef45ea8e8254481c5bc564be8c6f1ee0c4ae42a3dd08e8973"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-config-init-shared.asm",
+      "bytes": 1159,
+      "sha256": "27bba7b437ce54aa06249453ae2b4470e8b4f10a00fde22e6a95cec2930eb688"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-config-init-shared.json",
+      "bytes": 1238,
+      "sha256": "6b5a961472dff6d46b4cb281fb08c6d02360326c545f1cb2f4a798a2589295f2"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-generic-type.asm",
+      "bytes": 1090,
+      "sha256": "6232913cbacb944eb82949b45b7ec3e42d017f3c02978b17bdc0c9db43622932"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-generic-type.json",
+      "bytes": 972,
+      "sha256": "75f6bb2d271adfe758114f1d5c3d253d948b7ce99a84da24476069912ec23b5b"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-import-bindings.json",
+      "bytes": 1040,
+      "sha256": "12794c9d2bdba1011341ff58303c3aefa13ef51874cd2bd94143c45af990a294"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-init-edgeargs.asm",
+      "bytes": 804,
+      "sha256": "2f38fc7c89d4519907e273f0aad249b98d73ba13bc60f2d8de2a378795b0597d"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-init-edgeargs.json",
+      "bytes": 930,
+      "sha256": "f3c845ba0c0cf97c10e7596c059c2ed84e03e0d5e244d3cbeb73575b566d5225"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-margin-helper.asm",
+      "bytes": 1434,
+      "sha256": "30fdfbbf506cfe904d5132a4a643eaf8154b780f14e6cb7ec7bdb90c0de3916d"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-margin-helper.json",
+      "bytes": 913,
+      "sha256": "4f839d8bf43961b7018e883f73cbd1b8846f147288c37ede745436350845f795"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-return-helper.asm",
+      "bytes": 1236,
+      "sha256": "ac908ad88ccc8f3ba8b53750894c3911a1173b3e4e6ed0258cee005cccbeb344"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/hosting-return-helper.json",
+      "bytes": 964,
+      "sha256": "d1dcc35b8c342f03d38f907c3a30dcb2224287ceb55533504511139fea636aab"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/library-host-init.asm",
+      "bytes": 2339,
+      "sha256": "1bf79154a6e89ad45b9a857e9a84f7440bc46dda02469adb2f621e2725fa846b"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/library-host-init.json",
+      "bytes": 2945,
+      "sha256": "e96759c31eac6abb29440ff119c7d09d6f5f269dacb6088cfdb9d2343c3d995e"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/library-register-type.json",
+      "bytes": 1099,
+      "sha256": "2c11e85ee72c2583b53ffe1d6ee0178394c68a8d64a646731085290e6cf17984"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-config-inner-type.json",
+      "bytes": 573,
+      "sha256": "bd8ff12842c77244c4d032d291f605ed1e6d7f612634f2aa2f3e736394b6f763"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-config-interface.asm",
+      "bytes": 784,
+      "sha256": "15d52970d0fe33c8e56c474f8ac919ce47a165b604be29a9ffd6cc5ab44d77d5"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-config-interface.json",
+      "bytes": 964,
+      "sha256": "4b06372265b242a316d03449c596aca4b2ce54950cae36bd4d9007f37cb20d59"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-config-type-corrected.json",
+      "bytes": 1298,
+      "sha256": "ff4d2b552dc4b439e8aa219b31af2abebad9f0a388429ed5843b03c477b276a0"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-content-config-result.asm",
+      "bytes": 2443,
+      "sha256": "5a276f05ab1694051b06d2a18a7d25f8d839baf3132656ba2faea5e0ba32338c"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-content-config-result.json",
+      "bytes": 3220,
+      "sha256": "65861da077b348b613f64de2b658825c04a4cd8ffa2e095da0636dad532f6eb1"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-more-config-type-corrected.json",
+      "bytes": 1098,
+      "sha256": "937f136dfb831eaa8b5e12170fdc54c8c31206edf2cde6ae198bb0966b88c600"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-more-config-type.json",
+      "bytes": 573,
+      "sha256": "e82a228e6c5d97e9615c23179b8d839fbeead6c49e28c62bdaeec7ee8e01f40d"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-registration-prologue.asm",
+      "bytes": 1192,
+      "sha256": "c400f0269329e03670206c632f66cd5ff625d06d64b8c0c07f7ed3dfbec8d8c1"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/navigation-registration-prologue.json",
+      "bytes": 988,
+      "sha256": "0dd60c88f8e3eef1d2c7616ab56e09a867a82c21719aedbfe874f2ee632c26cc"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/personal-assistant-host-init.asm",
+      "bytes": 2337,
+      "sha256": "39cf53866623b45e214101eff7c45253b40e3ffab8e3001344818a157b3561eb"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/personal-assistant-host-init.json",
+      "bytes": 2945,
+      "sha256": "bdd4e7b2befa1d25adbbbe28b97d9ef40631305457e9a0571c006122f4eb1c4a"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-carrier-type-input.asm",
+      "bytes": 2636,
+      "sha256": "17fcb6cbe2fe95536ef77e5fe883eecaf9212cabf8b8aa9dab09f679ee64896c"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-carrier-type-input.json",
+      "bytes": 2452,
+      "sha256": "1857c7935c9b2de7a9e0e1c0594503aac8a3426ede987f5593d08ead9a07d4cd"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-7dae9a8.json",
+      "bytes": 1005,
+      "sha256": "46e5d65a2d3d79045c9adf70bf2bc35e8c1b214f03d6a1c57cea4d6bfc23521b"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-7dae9b0.json",
+      "bytes": 1201,
+      "sha256": "4fb293708dc63fe90fd2dd2e8bd0168dc5cdab3abb0f8a768429aee133437073"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-7dae9b8.json",
+      "bytes": 1167,
+      "sha256": "bc669648d3df6a2182a66c0a6891cdb56eee295d64dc61b87d36a2f142f63694"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-7dae9c0.json",
+      "bytes": 1152,
+      "sha256": "1346625e1521eeff4312645f536fc54854726fef24892611e6ea1603e1a5bb02"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-7dae9c8.json",
+      "bytes": 986,
+      "sha256": "4d2df6168af802653fd32a2d4756c7ec889d9821327691228f9e5fc597312972"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-7dae9d0.json",
+      "bytes": 1001,
+      "sha256": "7a3df0f71550a5c8f9325590ec0dab081528e590844bc93bad29b1c1d371cf53"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-7dae9d8.json",
+      "bytes": 820,
+      "sha256": "a41a3fed20e0e378679aaf07d8909da15fabcb5bf0bd476388bfcee24eabeca7"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-7dae9e0.json",
+      "bytes": 1306,
+      "sha256": "e048e23156a3e2dcdbed9c0fa58b2ef9138f3ec7ea10b902278f999d32ee6dba"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-helper-family.asm",
+      "bytes": 4625,
+      "sha256": "92d8496320fe0cdca5b0242571672e7582ef2c60c02d6a175ce842f20a7496aa"
+    },
+    {
+      "path": "ios-sidebar-spacing-sixth-20261113-r2/registration-type-helper-family.json",
+      "bytes": 1151,
+      "sha256": "46a3589bd5794d3eb90a1030f912456f51a213bd317c8bc5a3db2e2cd263a260"
+    }
+  ]
+}

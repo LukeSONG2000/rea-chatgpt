@@ -1,0 +1,140 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Module5 surface parent follow-up. Three bounded candidate groups: ordinary MessageInputStyle injection/default; theme/optional outer stroke; StatusSurface actual Body and projected environment keypaths. No product/build/device/original-app actions.",
+  "authority": "official artifact static instructions/metadata, concrete parent construction and complete generic tree; current host source is independent comparison",
+  "findings": [
+    {
+      "id": "ordinary-field-parent-retained",
+      "classification": "official-artifact-observation-reused",
+      "conclusion": "Selected ordinary Thread and NewThread routes explicitly inject builder2de24c, based on Remote19a0860 and default60810f8. The real ordinary inner surface uses continuous RoundedRectangle24; padding/clip/glass containment and reduceTransparency fallback are already separately proved. Do not mix this ordinary input owner with Goal/Agent StatusSurface merely because both have surfaces.",
+      "source": [
+        "ios-remote-v522-thread-style-findings.json",
+        "ios-remote-v520-home-surface-order-findings.json",
+        "ios-remote-v520-glass-gate-fallback-findings.json"
+      ],
+      "offsets": [
+        "3040ac→1a0e63c Thread construction;3040c4→2de24c;30410c→6081e84 environment writer",
+        "197fe90..197fec8 forwards same environment to ordinary child",
+        "1986b10..6b3c actual continuous24 shape",
+        "1984b78 reduceTransparency;true→6081edc fallback+nilglass;false→style.innerBackgroundColor andglass"
+      ],
+      "limits": [
+        "Current foreground/background split for native Menu remains an independently tested compatibility adaptation; original whole-content GlassEffectContainer is not universally restored by this report."
+      ]
+    },
+    {
+      "id": "ordinary-default-background-and-outer-stroke",
+      "classification": "official-artifact-observation",
+      "conclusion": "Default MessageInputStyle.innerBackgroundColor is Color.clear when the original77107f8 glass-admission predicate is true; otherwise factory74f16f4 uses OneOff/UserMessageBackground. ReduceTransparency separately chooses elevated/secondary. The actual optional outer-stroke value read at fixedslot+d0 is absent in default60810f8; this does not prove every future injected style has no stroke.",
+      "source": [
+        "ios-remote-v508-style-default-tail.asm",
+        "ios-remote-v420-style-value-init.asm",
+        "ios-remote-v520-surface-overlay-factory.asm",
+        "ios-remote-composer-surface-parent-20261113/style-default-stroke.asm",
+        "ios-remote-composer-surface-parent-20261113/background-resource-full.asm"
+      ],
+      "offsets": {
+        "inner_background": "6081538→77107f8;true6081540 Color.clear;false6081548→74f16f4;608154c/f550 stores field via metadata+f4(index57)",
+        "resource": "74f1720..24 constructs string8a52ae0=OneOff/UserMessageBackground",
+        "optional_stroke_default": "608119c constructs clear fill;60811a0 stp x0,xzr atstyle+c8, so slotd0=nil",
+        "outer_stroke_consumer": "6081a4c readsstyle+d0;6081a50 nil skips stroked HeightConditionalShape;present branch uses AnyShapeStyle payload"
+      }
+    },
+    {
+      "id": "theme-transform-boundary",
+      "classification": "official-artifact-observation",
+      "conclusion": "The actual theme transformer6081f4c copies raw0/raw11 style unchanged. Other branches update theme-dependent component fields but the inspected function does not write metadata+f4 innerBackgroundColor or fixedslot+d0 outer stroke. Therefore this transformer does not support inventing a new dynamic input background/stroke policy.",
+      "source": [
+        "ios-remote-composer-surface-parent-20261113/theme-style-transform.asm"
+      ],
+      "offsets": [
+        "6081fa0..1fbc raw0/raw11 copy",
+        "608201c..202c metadata+a8 primaryButton",
+        "6082030 metadata+68 input child",
+        "608204c metadata+a0 placeholder",
+        "6082094 metadata+70 plugin accent;60820e4 metadata+74 plugin attachment",
+        "60820f0 metadata+6c themeColorSetting"
+      ],
+      "limits": [
+        "Runtime theme/flag values and all alternate upstream writers remain unclosed; this bounded negative is not a universal absence statement."
+      ]
+    },
+    {
+      "id": "status-surface-full-body",
+      "classification": "official-artifact-observation",
+      "owner": {
+        "name": "CodexRemoteComposerStatusSurfaceModifier",
+        "descriptor": "0x95b1848",
+        "conformance": "0x7e251bc",
+        "body_witness": "0x19b9204→0x19b8d30",
+        "body_type": "0x8e6a116"
+      },
+      "conclusion": "Updated Body tag reader decodes the actual complete generic body. It retains glass/fallback opaque wrappers, an optional StrokeShapeView<Surface,AnyShapeStyle,EmptyView> overlay, source shadow, press opacity/scale and animation. The optional stroke is a shape-style input, not evidence that a handpicked border color should always be drawn.",
+      "source": [
+        "ios-remote-composer-surface-parent-20261113/status-surface-witness.json",
+        "ios-remote-composer-surface-parent-20261113/status-surface.tree.json"
+      ],
+      "limits": [
+        "Opaque internal glass wrappers remain by source address; exact nonnil stroke width is not reopened in this round.",
+        "No changes to the already implemented regular interactive glass, selected tint, shadow or press metrics are warranted by this report."
+      ]
+    },
+    {
+      "id": "status-environment-projection-closed",
+      "classification": "official-artifact-observation-correlated",
+      "conclusion": "Both StatusSurface environments project from EnvironmentValues.messageInputStyle: innerBackgroundColor and stroke. They do not have separate arbitrary default keys. The parent uses the same original MessageInputStyle environment already injected by the matched ordinary Thread route. This closes the source of the prior StatusSurface fallback adapter gap.",
+      "source": [
+        "ios-remote-composer-surface-parent-20261113/status-environment-keypaths.json",
+        "ios-remote-composer-surface-parent-20261113/status-background-env-type.json",
+        "ios-remote-composer-surface-parent-20261113/status-stroke-env-type.json",
+        "ios-remote-composer-surface-parent-20261113/message-input-style-key-witness.json",
+        "ios-remote-composer-surface-parent-20261113/status-background-env-getter.asm",
+        "ios-remote-composer-surface-parent-20261113/env-style-accessor.asm",
+        "ios-remote-goal-controls-20261113/status-pill-actual-style.asm",
+        "ios-remote-goal-controls-20261113/status-surface-actual-body.asm"
+      ],
+      "offsets": {
+        "background_environment_initialization": "19b8cd0 establishes7e29b78;19b8cd8 addsb8→7e29c30;19b8cdc swift_getKeyPath;19b8ce0/ce4 stores keypath environment in fieldoffset metadata+2c",
+        "stroke_environment_initialization": "19b8ce8..cf8 stores second environment using26ce04;helper passes retainedx20=7e29b78 toswift_getKeyPath",
+        "common_root_getter": "keypath7e29c58 reltarget2e5fcc;keypath7e29ba0 same2e5fcc;2e5fdc→60612ac",
+        "actual_key_identity": "60612bc→60af740 uses conformance82392c8, type descriptor96cc8ec __Key_messageInputStyle;60612c0→6113354 supplies witnessa882a40;60612d4 tailsEnvironmentValues subscript getter7c48508",
+        "background_projection": "7e29c64 stored-component descriptor then7e29c68=metadatafieldoffsetf4;MessageInputStyle metadata vector2words mapsf4→index57 innerBackgroundColor",
+        "stroke_projection": "7e29bac final stored-component encoded0x018000d0, physicalslotd0; matches actual60819dc optionalstroke consumer/defaultnil",
+        "unselected_consumer": "19b8f54..60 loads _innerBackgroundColor and resolvesEnvironment<Color>;selected path19b8f4c usesAppForeground"
+      }
+    }
+  ],
+  "can_change_now": [
+    {
+      "owner": "Goal/Agent shared StatusSurface only",
+      "change": "Replace independent secondarySystemBackground default with a supplied background from the proven shared Remote MessageInputStyle adapter. Selected fallback remains AppForeground. Preserve optional stroke as explicit supplied style and keep nil for the proven default branch.",
+      "basis": "status-environment-projection-closed",
+      "guard": "Do not use ordinary editor rounded24 shape or styleInsets on status pills/details. Their Capsule/RoundedRectangle16 geometry remains source-specific. Do not introduce a guessed stroke width or color."
+    }
+  ],
+  "not_a_required_change": [
+    "Ordinary field shape24, clear/UserMessageBackground admission and elevated/secondary reduceTransparency branch already match known source configuration.",
+    "No new glass/gradient/shadow decoration is justified for ordinary field by this pass.",
+    "Current iOS27 active glass route may show no optical change from correcting only the fallback environment; do not claim visual parity from static source."
+  ],
+  "unknowns": [
+    "Full dynamic parent theme/feature-flag assignments and alternate embeddings.",
+    "Nonnil StatusSurface stroke width/precise AnyShapeStyle upstream mutation beyond default nil.",
+    "All opaque glass compatibility wrappers and nativeMenu foreground/background adaptation."
+  ],
+  "haptics": "No new explicit feedback caller in these style/environment bodies. Shared status-pill selection feedback remains the separately proved existing consumer; do not add background/style-change haptics.",
+  "stop_condition": "Three bounded candidate groups completed. Stop before reopening all themes, geometry or business branches.",
+  "validation": {
+    "product_changes": false,
+    "builds": false,
+    "devices": false,
+    "network": false,
+    "target_execution": false
+  }
+}

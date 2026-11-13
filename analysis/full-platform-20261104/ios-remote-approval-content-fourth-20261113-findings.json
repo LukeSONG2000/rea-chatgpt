@@ -1,0 +1,626 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Module6 fourth bounded pass. Two selected groups only: ApprovalBanner title/reason/subtitle content and its actual Reversed carrier; independent detailReason ViewThatFits row. No permissions/MCP/network/form implementation expansion.",
+  "authority": "official shipped metadata plus exact static constructor/consumer observations",
+  "findings": [
+    {
+      "id": "approval-request-field-layout",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "ApprovalRequest accessor returns a file-backed fixed metadata record. Field-offset vector independently binds request content names to exact storage, so header reads are not named merely from declaration order.",
+      "descriptor": "0x95d462c",
+      "accessor": "0x25fb3e0→metadata0xa576470",
+      "metadata_descriptor_pointer": "0xa576478→0x95d462c",
+      "fieldOffsetVectorWord": 2,
+      "numFields": 22,
+      "selected_offsets": {
+        "kind": "0x79",
+        "reason": "0xc0",
+        "command": "0xd0",
+        "additionalPermissions": "0xe8",
+        "requestedPermissions": "0x118",
+        "networkApprovalContext": "0x150",
+        "mcpServerElicitationPayload": "0x1a0",
+        "title": "0x220",
+        "subtitle": "0x230",
+        "detailReason": "0x240"
+      },
+      "evidence": [
+        "ios-remote-approval-content-fourth-20261113-raw/approval-request-accessor.asm",
+        "ios-remote-approval-content-fourth-20261113-raw/request-field-slots.json"
+      ],
+      "limit": "Field storage alone does not prove a field is visible. Concrete header consumers below establish title/reason/subtitle/detailReason."
+    },
+    {
+      "id": "main-title-reason-priority",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Header main text chooses present, nonempty title; otherwise present, nonempty reason; otherwise request-kind-specific localized fallback. It does not trim whitespace for title/reason presence. Fallback strings and network/permission substitutions are owner/request-kind logic, not a universal phrase.",
+      "offsets": [
+        "0x1a1e3d8 loads title second word+0x228;nil skips",
+        "0x1a1e3e4 loads title firstword+0x220;0x1a1e3e8→0x701bfc checks native String storage length;nonzero0x1a1e3ec selects",
+        "0x1a1e3f0/0x1a1e3f8 loads reason+0xc0/+0xc8 and0x1a1e3fc applies same length check",
+        "0x1a1e404→0x1a1e7d0 renders chosen main value",
+        "0x1a1e40c..0x1a1e424 branches on kind using table0x7dfdf0a",
+        "0x701bfc..0x701c0c checks inline/heap length without a whitespace/normalization call"
+      ],
+      "safe_adapter_contract": "Keep title:String?, reason:String? and ownerSuppliedFallback:String distinct. Select first nonempty source string verbatim; no fallback inference from command, permissions, task name or screenshots.",
+      "limits": [
+        "Exact fallback formatting for all kind branches remains outside these two groups.",
+        "Nil and empty are absent; whitespace-only strings remain present by this source presence test."
+      ]
+    },
+    {
+      "id": "main-text-style",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Primary header main title/reason uses source semantic body font, medium weight, and ChatGPT/text/primary. Current initial inspection used callout.semibold, a concrete style mismatch.",
+      "parameters": {
+        "font": "body",
+        "weight": "medium",
+        "foreground_asset": "ChatGPT/text/primary",
+        "alignment": "leading"
+      },
+      "offsets": [
+        "0x1a1e7e4 SwiftUI.Text(StringProtocol:)",
+        "0x1a1e800→0x74e2728→0x74e2714 original body font factory",
+        "0x74e2720 loads0xaad38d8;verified chained symbol _$s7SwiftUI4FontV9TextStyleO4bodyyA2EmFWC",
+        "0x1a1e810 Font.Weight.medium;0x1d78624 supplies raw weight to0x74e2940 with optional flagfalse",
+        "0x1a1e83c→0x74ee2c0 factory loads resource0x8a51ba0=ChatGPT/text/primary",
+        "0x1a1e86c Alignment.leading"
+      ],
+      "limit": "Source semantic font factory adaptation to UIKit/SwiftUI remains existing host integration. Adjacent font values must not become a frame height or unrelated approval label style."
+    },
+    {
+      "id": "subtitle-presence-style",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Optional subtitle renders only when present and nonempty. It is a separate Text child with callout semantic font and ChatGPT/text/secondary, inside a conditional-order parent rather than an unconditional declaration-order subtitle.",
+      "offsets": [
+        "0x1a1e388/0x1a1e390 loads subtitle+0x230/+0x238",
+        "0x1a1e394→0x2a670 returns nil for zero-length String storage;0x1a1e398 skips ifnil",
+        "0x1a1e3a4→0x1a1eb18 constructs subtitle Text",
+        "0x1a1eb6c→0x1da0884→0x74e2758→0x74e2744 loads semantic Font.TextStyle.callout binding0xaad38f8",
+        "0x1a1eb90→0x74ee310 loads resource0x8a51bc0=ChatGPT/text/secondary",
+        "0x1a1ebac Alignment.leading"
+      ],
+      "limit": "Helper0x2a670 preserves nonempty strings verbatim; no trimming is observed. Explicit subtitle font-weight override was not established."
+    },
+    {
+      "id": "actual-subtitle-order-carrier",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "The original Group tuple constructs optional subtitle then main text, but Reversed.enabled=true reverses the concrete children. For kind raw!=4 the producer sets enabled=true, yielding main text then subtitle for these ordinary branches. The raw4 payload-dependent ordering remains unresolved and must not be generalized.",
+      "offsets": [
+        "Root full tree7e1e6a0 contains VStack<TupleView<(Reversed<Group<TupleView<(optionalSubtitle,main)>>>,optionalDetail)>>",
+        "0x1a1d4ac reads kind+0x79;0x1a1d4cc setsw20=1 when raw!=4",
+        "raw4 reads mcpPayload tail+0x219;0x1a1d4c4 setsfalse for absent markerff;otherwise0x1a1d4d8→0x2439298 computes enabled, not closed",
+        "0x1a1d530 passesw20bit0 into Reversed initializer0x75403d4",
+        "Reversed descriptor0x9755004 fields enabled/content;View witness0x755fdc8→0x755f95c",
+        "Reversed actual closure0x755fa84 readsenabled;true0x755fa9c..0x755fab8 uses type-record0x84bfa58",
+        "0x84bfa58 resolves _RandomAccessCollectionBox<ReversedCollection<_VariadicView.Children>>;false0x84bfa50 is ordinary Children",
+        "0x1a1d4e0/0x1a1d4e4 outer headerVStack leading,spacing4"
+      ],
+      "safe_scope": "If host typed kind mapping is already proven to ordinary nonraw4 cases, use main→subtitle. Otherwise carry explicit owner-supplied header order; do not label an invented MCP order original.",
+      "limits": [
+        "Reversed semantics are proven through actual collection types and enabled consumer, not inferred from the word Reversed alone.",
+        "Kind enum raw-to-name mapping is not newly established by this pass; selected raw4 local branch is retained as a precise boundary."
+      ]
+    },
+    {
+      "id": "detail-reason-optional-sibling",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "detailReason is a separate optional row after the whole Reversed group. It is not a replacement for main reason/title, not a button, and not an inline permission approval action. Nil/empty omits it.",
+      "visibility": [
+        "0x1a1d54c loads detailReason+0x248;nil→0x1a1d678 absent",
+        "0x1a1d558 loads+0x240;0x1a1d55c→0x2a670 tests nonempty;empty→0x1a1d678",
+        "0x1a1d5e4 builds separate ViewThatFits row0x1a1ebe8"
+      ],
+      "label": {
+        "key": "codex_remote_approval_reason_label",
+        "key_address": "0x88bc230",
+        "fallback_en": "Reason",
+        "packed_fallback": [
+          "0x1a1d58c movx0,#0x6552",
+          "0x1a1d590 movkx0,#0x7361,lsl16",
+          "0x1a1d594 movkx0,#0x6e6f,lsl32"
+        ],
+        "limit": "Original293 Chinese translation was not found in scoped existing en/zh Localizable.strings lookup; frontend translation must remain labelled independent rather than asserted source-exact."
+      },
+      "layout": {
+        "type": "ViewThatFits(in:.horizontal)",
+        "candidate_order": [
+          "HStack(alignment:.firstTextBaseline,spacing:12)",
+          "VStack(alignment:.leading,spacing:2)"
+        ],
+        "outer_padding_top": 4,
+        "text_child_modifiers": "label fixedSize and value frame/fixedSize, as full root tree; exact per-child frame/fixedSize flags not newly closed"
+      },
+      "offsets": [
+        "0x1a1ec38 Axis.Set.horizontal",
+        "0x1a1ec40 firstTextBaseline;0x1a1ec44..0x1a1ec50 spacing12 payload",
+        "0x1a1ed6c leading;0x1a1ed70..0x1a1ed7c spacing2 payload",
+        "0x1a1d5f0 Edge.Set.top;0x1a1d624→0x4640f8 supplies4 to padding layout initializer"
+      ],
+      "actions": "No action closure/Button for this optional row in full decoded tree or selected constructor; display-only on this scope.",
+      "limits": [
+        "The inherited explicit font modifier exists in full generic tree but its exact supplied value was not closed in these windows. Do not claim guessed font/weight/color as original detail-row style.",
+        "No parsing, Markdown rendering, truncation, links, or full permission schema behavior is proved for detailReason from this Text layout."
+      ]
+    }
+  ],
+  "current_host_boundary": {
+    "initial_observation": "RecoveredRemoteApprovalCard initially had reason:String,command:String? only, Text(reason).font(.callout.weight(.semibold)), no separate title/subtitle/detailReason projection. Main agent may modify concurrently after receiving findings; this describes the inspected starting point, not a post-build claim.",
+    "product_file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "safe_minimum": [
+      "Main text body.medium and original primary color.",
+      "Typed frontend title/reason/subtitle/detailReason fields, preserving original nil/empty and fallback contract.",
+      "Ordinary nonraw4 main→subtitle order and independent detailReason row, only with explicit kind/order capability.",
+      "Preserve exact full-value request comparison when adding new frontend content fields; stale callback admission is separate host safeguard."
+    ],
+    "do_not": [
+      "Do not manufacture additional permission buttons from requestedPermissions metadata.",
+      "Do not flatten subtitle/detailReason into main reason and lose source topology.",
+      "Do not infer a universal fallback, MCP form branch, permission grant or haptic from this header."
+    ]
+  },
+  "haptics": {
+    "status": "unknown",
+    "conclusion": "No actual explicit haptic caller established in selected static header/Text/Reversed/detail display path. No new feedback is recommended; approval actions remain their separately scoped existing chain."
+  },
+  "unknowns": [
+    "Permission preview full payload/rows and its command-vs-permissions branch.",
+    "Raw4 payload-dependent Reversed ordering and active form selector.",
+    "All kind-specific fallback interpolation; owner-supplied fallback remains required.",
+    "Exact detailReason text font/color/frame flags.",
+    "Source-exact Chinese label/resource bundle lookup."
+  ],
+  "validation": {
+    "product_changes": false,
+    "tests_run": false,
+    "builds": false,
+    "device_actions": false,
+    "target_execution": false,
+    "network": false,
+    "candidate_groups": 2
+  },
+  "stop_condition": "Both bounded groups completed with concrete header integration values. No third group, no permission schema expansion, no all-purpose form reconstruction.",
+  "evidence_manifest": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/approval-kind-description-map.asm",
+      "sha256": "f449af5bda3a4977e4f3890ba1f3028f8d57c4b1f01357c86a399120315a2aef",
+      "bytes": 1257
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/approval-kind-description-map.json",
+      "sha256": "05edb66fd6cf32c739542a4fb3c1739d772691b74ec9d13818cbc0faf7c82b22",
+      "bytes": 1293
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/approval-request-accessor.asm",
+      "sha256": "558a2509581cd2a6b82d4d332e67ba69a94ce511ef51beb979e41d2c0a425996",
+      "bytes": 812
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/approval-request-accessor.json",
+      "sha256": "7efa4bdef1579a22f93cf429b638699d2e04da67100dc5f7e99c3bf54db46ce2",
+      "bytes": 947
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-default-layout-helper.asm",
+      "sha256": "7e5f19476a9506d282185bdaa18c63262ec9e9ea2e84cc6109aafd2c5d2f46f7",
+      "bytes": 464
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-default-layout-helper.json",
+      "sha256": "4433295a046cdc78280bf2a1f7047009d4a87a4f28fd6726e42c26ab19c39008",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-font-helper.asm",
+      "sha256": "cb0f8aa21a32d82ecb797a5ca82f0930123fd716f25f318149f8204bb9e4a9a0",
+      "bytes": 440
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-font-helper.json",
+      "sha256": "98f7a0c5bfb6edf28416678f85ce0fb42b87cb575502e0bb14792ac8b81e4615",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-font-padding-producer.asm",
+      "sha256": "0b6d68609c932c5d8fdc1b3ef9902ecad06eeb22a07d7079d48a50255eccfdc6",
+      "bytes": 545
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-font-padding-producer.json",
+      "sha256": "d7ddf5870c389265e0363e6e7ace806abefb26393b08730e4df7153340147ac4",
+      "bytes": 940
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-label-localization-helper.asm",
+      "sha256": "a81cb2d00225789f0c6f6383399bcc043dd01540994cca5d38845eea2410f55e",
+      "bytes": 834
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-label-localization-helper.json",
+      "sha256": "4290916694687bd9bf517d3203af86e718f85a0ae40cbfc2815d943dcac6f1bc",
+      "bytes": 940
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-padding-default-proposal.asm",
+      "sha256": "54f4e64d45bbc603191caf146bf6fb6df764e8130eae75b130ea9a31f1d7123b",
+      "bytes": 277
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-padding-default-proposal.json",
+      "sha256": "9ae1f6050e0f7c73c6d918073dd323094be68e95e5ef459fbada208f934b85e9",
+      "bytes": 892
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-padding-font-copy.asm",
+      "sha256": "eb8f4ede1a9f86014b71be19734668ed91736470d888e02b3843e9ae91da190c",
+      "bytes": 573
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-padding-font-copy.json",
+      "sha256": "583b5000970c5553cc81ab4b7b1987e916b6bae34ef1eee5084980cf5d1ffd54",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-padding-font-helper.asm",
+      "sha256": "b1427a5f5cd0407394a9e8080b04e0ac12145eac32338ea369641f1d5ed5831e",
+      "bytes": 570
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-padding-font-helper.json",
+      "sha256": "eea00dd32c8a43be7d0c3d6adb398b718baf33d9c814a7635c3b52920bbc8a65",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detail-reason-localizations.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detailpadding-font.asm",
+      "sha256": "b1427a5f5cd0407394a9e8080b04e0ac12145eac32338ea369641f1d5ed5831e",
+      "bytes": 570
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/detailpadding-font.json",
+      "sha256": "eea00dd32c8a43be7d0c3d6adb398b718baf33d9c814a7635c3b52920bbc8a65",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-base-forwarder.asm",
+      "sha256": "8e872745efcbbf657a367a51e5c7d0bd3e9430335fb32ffe79936a98c0e82027",
+      "bytes": 607
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-base-forwarder.json",
+      "sha256": "bd8eb3699860c9be360f126af1271e7ab95ddf8c382935c550f2f79874c8ee38",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-instance-weight.asm",
+      "sha256": "7791a5fd4ce5aef6c119e21665f9530a62ace4cf5f3eb10d025fe412c46b0cab",
+      "bytes": 1368
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-instance-weight.json",
+      "sha256": "621d0bd2a14c7dd37e514821dec82fab50f4b4792a2a4bc96e66d1b568d1b2d8",
+      "bytes": 1743
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-semantic-binding.json",
+      "sha256": "2708b02d0f15dd24440371574e57b3689df39587bc1eddbb75a4a0794120f3ba",
+      "bytes": 252
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-semantic-bindings-final.json",
+      "sha256": "6014cbb9f69c17e55009d6abb6be50d438c93b5cc5911110cac043bf6c3e134d",
+      "bytes": 504
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-semantic-producer.asm",
+      "sha256": "ff62d6a2579fb28bd5fa14e0c4ba9f12940b37b886197f4154833710f9ca67f0",
+      "bytes": 445
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-semantic-producer.json",
+      "sha256": "62c34fa64f61f57fe49569a4d41dd803b10da31ff3512c4140f032b61bf0c498",
+      "bytes": 896
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-source.asm",
+      "sha256": "8ab8f8b7c2331730bf19b18253889d903c73976673b57641dc836768ec5394e3",
+      "bytes": 817
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-source.json",
+      "sha256": "30b0f6bd420bfd618cf2cdfd247c960bdca420485b5c5699e081b290a9fb3f61",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-weight-forwarder.asm",
+      "sha256": "ec914a63d7d5948b23fcae1cb3056632e34f512606aba1d52822a6d652e17c77",
+      "bytes": 653
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/font-weight-forwarder.json",
+      "sha256": "18a54f814065c0af7cedfc190ab59e2e85884e1f95f85f656df3fadb7d5d0dff",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-kind-map-getter.asm",
+      "sha256": "7ff10e3b9230cc3ff83cb845103c11aae2b822e973a5c20ab0171dce9b3a093c",
+      "bytes": 410
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-kind-map-getter.json",
+      "sha256": "ad21b0cdbbc80f0dea1c90a05cfbda004daa3217292464ffdaf9b88578164ddf",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-label-color-resources.json",
+      "sha256": "7b7ceb564cf299ff13daca009a93a697935262fe70bd0cb6e6ddc6afe17e0e79",
+      "bytes": 136
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-parent-reversed.asm",
+      "sha256": "992fbf2c6968d50e5ff4aad6ab39e2046215a53e667159c3b8bfc81ce9fb23df",
+      "bytes": 2319
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-parent-reversed.json",
+      "sha256": "cacfa04fafbf2ae84f1174c5714475a9ebeb29de95d0f7a5e23bcde7a177e688",
+      "bytes": 2036
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-reason-child.asm",
+      "sha256": "073d947d5d486baf9ab4ca8d62386f9534414a12b3047eea44926923b54efdd6",
+      "bytes": 8181
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-reason-child.json",
+      "sha256": "e6a0529009d98fb7afb0c3f7164a062b0b7a7b4bda584e84d44f1925fc9abf8b",
+      "bytes": 7465
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-reason.asm",
+      "sha256": "4dd0e0f82be2d5928f168ac4ff131071f6ae2283b4e60040dcae65647d5ea689",
+      "bytes": 32347
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-reason.json",
+      "sha256": "0b0bf20b8f3d8834321ec18e10a26a1a884120e408e8280bfb4cbf98a0bf43d2",
+      "bytes": 23554
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/header-reversed-metadata.json",
+      "sha256": "aba05c7b0c42733fd50b39707c3dfd8fb07152f816e0739f4432deb35ac86654",
+      "bytes": 1097
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/mcp-order-condition.asm",
+      "sha256": "f449af5bda3a4977e4f3890ba1f3028f8d57c4b1f01357c86a399120315a2aef",
+      "bytes": 1257
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/mcp-order-condition.json",
+      "sha256": "05edb66fd6cf32c739542a4fb3c1739d772691b74ec9d13818cbc0faf7c82b22",
+      "bytes": 1293
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/primary-color-source.asm",
+      "sha256": "52b29a59c65e8c37d7fbb314a8ad87f218987d1faa2ad1fe499e3ff829c46e07",
+      "bytes": 1220
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/primary-color-source.json",
+      "sha256": "2624949906c47305aafcc0055751c1842af6e200b0ccd931dc271297a39e48ed",
+      "bytes": 2116
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/primary-font-object.asm",
+      "sha256": "403d6421b258cc093653f5eee047ec1524a078232db6fef7ebd6f19468b33fff",
+      "bytes": 1251
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/primary-font-object.json",
+      "sha256": "c8482bebc79b29f32ef9942c8dbe01984593c94b7298e8f54cb630ec13996712",
+      "bytes": 947
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reason-detail-layout.asm",
+      "sha256": "b257b33a9a0f880688ce691320757539bdc2154962b8eb99ce65147c8bd984d4",
+      "bytes": 5015
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reason-detail-layout.json",
+      "sha256": "8e8a8ce767091c68da67bf90d8767ee572a4e53a07500d5b5e3f44d569c2f2ce",
+      "bytes": 5862
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reason-detail-parent.asm",
+      "sha256": "c87e025b3aa8a9cb1bad643bb1405718ca0f0647c248d6ad1b714e4681ab56d0",
+      "bytes": 3977
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reason-detail-parent.json",
+      "sha256": "34fca9743aadd27f5b9bfd3d3313508c001afb2d0fa00bf02f7363610818fc31",
+      "bytes": 3836
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reason-subtitle-font.asm",
+      "sha256": "7253a2c8d7c0e02d2cc1a9516b22c47b1626fca10e16cf2b8eaedd8a87116212",
+      "bytes": 2719
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reason-subtitle-font.json",
+      "sha256": "c8fa90f7585dd8bd3b42b8ed6138c34d8bb5d755c516a3780d65cfdbd3a1f9e3",
+      "bytes": 3408
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/request-field-slots.json",
+      "sha256": "daea3e6ca3a49a94996f9f3be51fd7f2521c97d322e8584f24ff51ed8db6325d",
+      "bytes": 3624
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-body-actual.asm",
+      "sha256": "f1b441d7ebf83166dd74f5efd3a27d3df71f46013cc08ae347f2bb692b01b629",
+      "bytes": 9248
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-body-actual.json",
+      "sha256": "1c1aa22b43ad9b0d65794da49c6e808897ae3a5a99131f887a2fb2172a1a8c07",
+      "bytes": 6700
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-body-type.json",
+      "sha256": "9aafd360cbbf6d745a6e9e90f4a3df89a06dfd1f7305015ee9e8bf803138706c",
+      "bytes": 1435
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-body.asm",
+      "sha256": "d2a2f26fc8057710d0a6712d071c08a0467ec19c51515204b66574dac5780ca3",
+      "bytes": 2449
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-body.json",
+      "sha256": "e7ffa775cad21cf8f972962e8a15ec710ec1c320b598e9809269c0b6d4ffcd7e",
+      "bytes": 2934
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-enabled-collection-type.json",
+      "sha256": "ce6962e3dc85b8007d96542f2874f805b76311341d71e7c44a323e612fc2b9b6",
+      "bytes": 1100
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-init-complete.asm",
+      "sha256": "5b735605f15bcb339d3601aca8dfeceac476f3b1305caaad7eaa918fa5c1660f",
+      "bytes": 955
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-init-complete.json",
+      "sha256": "b23b2b6a4a85cbdbeefdbc2de943216a685efc56eebbee04162ff2ace9cf74d5",
+      "bytes": 1014
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-init.asm",
+      "sha256": "1af0aa4a96c2f7e7bb443d16ee6c69c4bf68d8f5f8f68ef441f45355a8d35080",
+      "bytes": 613
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-init.json",
+      "sha256": "a2846425705b571b068ee2b8f0b38e94f7432bf3bda06ae085f2142ec8bb2415",
+      "bytes": 896
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-normal-collection-type.json",
+      "sha256": "fe4de41d2f6783043f16b5addff67060eaa16f3c86058b226152004461be620b",
+      "bytes": 930
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/reversed-witness-84b89b4.json",
+      "sha256": "b8dff5f98985d0a4b03301c605a2bc5f4c772ba7e47f5f9dbb2b9503fb831c45",
+      "bytes": 4613
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-color-source.asm",
+      "sha256": "6b28261bcdc465e77941af92066818d7a4db83c587c373492107254affcac83c",
+      "bytes": 1220
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-color-source.json",
+      "sha256": "e47258550dec93a8531acad2354bde106072fa0330753ac37cdc08ec35f1cee7",
+      "bytes": 2116
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-font-apply.asm",
+      "sha256": "1040e223dee6fd8053929017837f5a13cf54868f2f09875148c4a91011cc8793",
+      "bytes": 437
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-font-apply.json",
+      "sha256": "32e43b299a7ae381230c88f8bfaf287abf4df2eede2842fb1df07cc75934fdc6",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-font-binding-probe.json",
+      "sha256": "49608a8fcd266b3cc5ac8f13cf497733cccc23a77b40e664f7afb7d471dbbf1b",
+      "bytes": 254
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-font-producer.asm",
+      "sha256": "e924177b76183925f3810edbe86649e8348a90e524261dbf2224292f14ddc3f1",
+      "bytes": 817
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-font-producer.json",
+      "sha256": "9f1d4537893de178e0b23da686cd4e510ce75c97ea47d61626bd7d5036324b9c",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-font-semantic.asm",
+      "sha256": "523e88e50d35d18d6ab70d5291349856d5aaa21183ad9c8256c2d747b8a5f52a",
+      "bytes": 520
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-font-semantic.json",
+      "sha256": "d4e87574297beaa609a06b4bfd0c734c70092fa3fa2d39123aab000aa7bb2ff1",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-normalize-helper.asm",
+      "sha256": "1b4faacc2be4f3735a468a48ff44601fb9552740371b3198f801ed2a3e8366bd",
+      "bytes": 1274
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/subtitle-normalize-helper.json",
+      "sha256": "45303e30ed2ea9c9cb1aad301e829d65138b42fef3a059ab5c7381968764bccd",
+      "bytes": 1121
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/title-nonempty-check.asm",
+      "sha256": "7466aa3d419cb09a5151c1eb622f8489ee1ce2ea9f82f8f0bd808c8a92f38ca5",
+      "bytes": 681
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-content-fourth-20261113-raw/title-nonempty-check.json",
+      "sha256": "f6666aa921a9b88d6091f505ecac87b938d98c4f21caf3865ab5eb08023847e8",
+      "bytes": 908
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-parent-20261113/banner-root-tree.compact.txt",
+      "sha256": "e5878cef1042c581ea1729ea92e0230afbe7e2e1c29295be207966b76aa83bb4",
+      "bytes": 5142
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-parent-20261113/banner-root-tree.tree.txt",
+      "sha256": "c91e4e29596415a9da8f2e7cd53772b3b2325e26b81c66937c0da207de2c7020",
+      "bytes": 180470
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-parent-20261113-findings.json",
+      "sha256": "e7dd25ed0d29509ad0027f748268224f7f77f89ba4d9520536505ac3597e573b",
+      "bytes": 10383
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113-findings.json",
+      "sha256": "5a866d8972bcd065f05fda2c2d557ef44f1cd36cf8028ae663d44fd3b9176db6",
+      "bytes": 13593
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-request-identity.json",
+      "sha256": "f01a55766ab7563f7aee7f58f4d60a6fc051408ba8eab43b6f03969226e3325f",
+      "bytes": 6661
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-banner-builders.asm",
+      "sha256": "a6f263d4915133dca00b729a95e7a21e5540aad43fa1b1b7e1f33b0fd0cdd06f",
+      "bytes": 192582
+    }
+  ]
+}

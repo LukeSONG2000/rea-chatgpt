@@ -1,0 +1,51 @@
+{
+  "batch": "v569",
+  "status": "partial",
+  "implementation": [
+    "per-conversation mode persistence with atomic commit and legacy Chat default",
+    "mode included in send and stored turn; retry preserves original mode",
+    "fixture accepts explicit mode; legacy adapter returns unsupported_mode for Work"
+  ],
+  "source_evidence": "ios-chat-v569-findings.json",
+  "validation": {
+    "state": "PASS; legacy absent/unknown mode, rename, rollback, cold restore and retry scope",
+    "service": "PASS; explicit mode through protocol dispatch, parallel identity and legacy rejection",
+    "ui": {
+      "r1": "3 failed at missing new-conversation-entry on restored empty home; retained test assumption failure",
+      "correction": "All three tests use normal sidebar-new-chat entry, available from empty and occupied pages",
+      "r2": "3 passed, 0 failed; mode restoration and Chinese/light plus English/dark send/retry/cancel flows"
+    },
+    "runtime_history": "ios-chat-v569-runtime-history.json confirms Work send/retry/cancel snapshots and Chat isolation",
+    "visual": "inspected restored Chinese Work home and English/dark transcript screenshot; temporary status rows, gaps, localization and Work controls still partial",
+    "runtime": "ios-chat-v569-runtime.json"
+  },
+  "decisions": [
+    "Missing historical mode and new local conversation default to Chat as an independent compatibility policy.",
+    "Local account/conversation persistence and fixture request contract are independent implementation; official wire/persistence still unknown."
+  ],
+  "open_items": [
+    {
+      "page": "Chat/Work",
+      "priority": "P1",
+      "missing": "official message role presentation, state rows, spacing and mixed-language labels",
+      "next": "trace Chat message row role/style owner and restore into current host",
+      "acceptance": "Chinese/light and English/dark core transcript with plain user/assistant roles, failure/retry/cancel and copy/selection"
+    },
+    {
+      "page": "Work",
+      "priority": "P1",
+      "missing": "mode controller implementation, composer presentation gates, model-specific capabilities",
+      "next": "resolve modeSelected consumer and forcesDoubleLineComposer parent",
+      "acceptance": "source-bound configuration state and presentation with capability-unavailable handling"
+    },
+    {
+      "page": "Chat/Work",
+      "priority": "P1",
+      "missing": "attachment send and preview return chain",
+      "next": "connect scoped resources through the existing preview adapter",
+      "acceptance": "attachment add/remove, synthetic submit, preview, close and conversation recovery"
+    }
+  ],
+  "shared_boundary": "Frontend configuration and deterministic vectors are candidates for sharing; Android owner/UI not verified.",
+  "delivery": "569 signed and installed; Chinese new-chat preview remains running; no commit/push/release"
+}

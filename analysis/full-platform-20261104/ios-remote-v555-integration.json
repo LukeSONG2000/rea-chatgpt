@@ -1,0 +1,99 @@
+{
+  "batch": "v555",
+  "page": "Remote conversation",
+  "page_status": "部分实现",
+  "slice_status": "核心验收通过（模拟器合成提交失败重试）",
+  "source_findings": "ios-remote-v555-findings.json",
+  "runtime": "ios-remote-v555-runtime.json",
+  "implemented": [
+    "Submission-failure fallback uses the official Chinese/English package translation",
+    "Retry opens a pending/loading state and disables repeat taps",
+    "Successful callback resumes the same prompt/attachment turn, failure exposes retry again, cancellation closes the pending attempt",
+    "Independent attempt identities reject wrong scope, duplicate intent, reused IDs and late callbacks"
+  ],
+  "validation": {
+    "foundation": "ios-remote-v555-foundation.log passed",
+    "typecheck": "ios-remote-v555-typecheck.log passed with existing warnings",
+    "ui": [
+      {
+        "result": "ios-remote-v555-r1-retry.xcresult",
+        "passed": 4,
+        "failed": 0
+      },
+      {
+        "result": "ios-remote-v555-r2-retry.xcresult",
+        "passed": 2,
+        "failed": 0
+      }
+    ],
+    "distinct_cases": [
+      "testRemoteSubmissionRetryChinese",
+      "testRemoteSubmissionRetryEnglishDarkFailure",
+      "testRemoteErrorCardChinese",
+      "testRemoteErrorCardEnglishDark"
+    ],
+    "coverage": [
+      "Chinese light success",
+      "English dark repeated submission failure",
+      "Cross-task failure retention and isolation",
+      "Spinner and disabled retry control",
+      "Retry cancellation and late result rejection",
+      "Existing error/link/next-turn cancellation regression"
+    ],
+    "visual": "Inspected Chinese light and English dark failure screenshots and dark pending/loading capture. Card and retry/loading controls are visible. Exact original button styling remains partial.",
+    "manual_preview": "Signed555 installed, hashes verified, Chinese system-language/system-appearance failure card left running on fixture-a/completed-thread. CUA typed Retry preview through an active composition and the sent value became retry. This is recorded against the existing marked-text P1, not accepted as IME correctness."
+  },
+  "independent_adaptation": [
+    "Synthetic attempt UUID and per-turn revision checks",
+    "Stable row/prompt/attachment retention through retry",
+    "Only the latest failed submission can retry in the sequential replay adapter",
+    "Native bordered button approximates the partially resolved original style",
+    "Synthetic failure/success/cancellation producer"
+  ],
+  "open_items": [
+    {
+      "page": "Remote conversation",
+      "behavior": "Full reasoning history and disclosure",
+      "priority": "P1",
+      "breakpoint": "ThinkingStatus only covers transient status. Complete reasoning item-to-fragment projection unresolved.",
+      "next": "Trace reasoning ThreadItem to row/action owner.",
+      "acceptance": "Scoped updates, disclosure/copy and navigation recovery."
+    },
+    {
+      "page": "Remote composer",
+      "behavior": "Marked-text submission",
+      "priority": "P1",
+      "breakpoint": "CUA-generated composition displayed retry preview, then submitted retry. UITextView marked range, commit ordering and simulator input bridge need separate observation.",
+      "next": "Capture editor text, markedTextRange and submission snapshot at the same event boundary.",
+      "acceptance": "Chinese and English composing text sends the confirmed full draft without truncation."
+    },
+    {
+      "page": "Remote conversation",
+      "behavior": "Retry style and callback ownership",
+      "priority": "P2",
+      "breakpoint": "RoundedRectangleButtonStyle and LoadingOverlay types confirmed, exact style payload and final service callback owner unresolved.",
+      "next": "Resolve remaining style payload when reviewing whole-page visuals and bind a future service adapter to the existing retry contract.",
+      "acceptance": "Source-backed light/dark appearance and explicit service callback outcomes."
+    },
+    {
+      "page": "Remote conversation",
+      "behavior": "Page geometry and persistent recovery",
+      "priority": "P1",
+      "breakpoint": "Principal title remains centered, whole-message outer spacing and process restoration are partial.",
+      "next": "Trace outer navigation owner and persist scoped reading/draft state through the established page interface.",
+      "acceptance": "Ordinary-size Chinese/English light/dark navigation and process-restart recovery."
+    }
+  ],
+  "other_open": [
+    "Automatic recovery",
+    "Dynamic search/file differences/review components",
+    "Body reflow reading anchors",
+    "Multiple accounts",
+    "Physical haptics/notifications",
+    "Android independent implementation"
+  ],
+  "retention": "ios-remote-v555-retention.json reports targets empty. Fixed build directory reused. Four duplicate screenshot exports removed only after matching retained capture hashes.",
+  "disk_available": "13 GiB observed",
+  "display": "Only Color LCD detected. External-display placement pending.",
+  "commit_push_release": "not performed"
+}

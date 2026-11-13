@@ -1,0 +1,307 @@
+{
+  "platform": "Android",
+  "version": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "artifact_digest_source": "analysis/full-platform-20261104/android-remote-v628-search-source.json",
+  "status": "partial",
+  "question": "Remote thread transcript and composer source chain for Android frontend catch-up",
+  "observations": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/p2d.java",
+      "lines": "513",
+      "sha256": "8b5595af2787aa6b2bd7b2b20d7d5e046447a6c5c5b5194f2283dc1d40938f72",
+      "conclusion": "Thread route renders CodexRemoteThreadRouteContent. Exact route loading owner remains partial.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/j5q.java",
+      "lines": "289,845,3298,3764",
+      "sha256": "28b33bf0ce8cc3ec93bfa42998e2b2be113855ecf60ce381f52dc07b2be4bd5b",
+      "conclusion": "Main CodexRemoteThreadMessagesScreenContent delegates ordinary thread mode to CodexRemoteOpenedThreadSurface; loading/error/realtime branches remain separate.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "lines": "4219-4445",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c",
+      "conclusion": "CodexRemoteThreadTranscriptList uses lazy list with model-derived stable keys/content types and independent transcript header/status items.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/fkm.java",
+      "lines": "6-11",
+      "sha256": "7e2528bf522cbe15fc34670a678d67bd102ccfb13f55eb30ea52e812a078f3c0",
+      "conclusion": "Transcript key property explicitly names getKey and returns njm.a.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/gkm.java",
+      "lines": "8-35",
+      "sha256": "b639872d15cfd7752f814c6f281d726c27a081f7800fd9dad4a0848beb7b81a2",
+      "conclusion": "Content type is based on transcript item shape g/e and kxk/lxk content rather than list position.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nkm.java",
+      "lines": "56-104",
+      "sha256": "46e9f57e04b827585d80f0b4503be47b1d5db2548cc97397e41e8ba00bead735",
+      "conclusion": "Each item receives leading indent 16dp multiplied by njm.h. Specialized g/e rows and standard content render through shared content box.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "lines": "2106-2240,4460-4515",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c",
+      "conclusion": "nxk standard message content delegates to shared sm5.n.E. Attachments rq8.a receive horizontal16/vertical8 padding. TranscriptContentBox constrains maximum width if specified and centers. Exact width and bubble metrics not established.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/jkm.java",
+      "lines": "65-125",
+      "sha256": "4894a310f81c2d8fdd569c33d5d94dece4fa7b5523115577a61749460547701c",
+      "conclusion": "kxk/lxk render compact tool rows; nxk renders standard message path. These branches must not collapse into one textual message row.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qy81.java",
+      "lines": "2745-2817,2924",
+      "sha256": "c30f47e13b68021041134c57358b1bbe87e7cbd2033590b2edbe5d3a3c0bb39b",
+      "conclusion": "Thread reply composer distinguishes vam branches; mck send callback is qs case5. Optional stop is e9 case8. Reply composer delegates to qy81.f.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qy81.java",
+      "lines": "1681",
+      "sha256": "c30f47e13b68021041134c57358b1bbe87e7cbd2033590b2edbe5d3a3c0bb39b",
+      "conclusion": "Inline composer delegates to se8.i.F with separately composed actions/slots.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/se8.java",
+      "lines": "2258,2314-2320",
+      "sha256": "c2460f4bf71f25d3bd871ab3b19a69507de545b476f118ebd0b5c4a4306ca131",
+      "conclusion": "CodexRemotePromptComposer injection delegates to l0l.a; preview and normal injection are distinct.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/l0l.java",
+      "lines": "152",
+      "sha256": "38bef6583d1c78a0899ae7e3e36e6fd89e2f2c56bc8dd719027467861a62005a",
+      "conclusion": "Remote composer content delegates to e191.a.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/e191.java",
+      "lines": "500,558,566-583",
+      "sha256": "9ef780864dd4598269325d36e9442426bf492247fc36029666626a1d41094fd2",
+      "conclusion": "Remote text editor and placeholder use np11.Q. Remote composition delegates to sht.e; slots differ from Home.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pt61.java",
+      "lines": "694,734",
+      "sha256": "f1faa4980468df6d86eb84044e40bb23509d30344e0c991f26e134d547dfedb6",
+      "conclusion": "Home composer also delegates to sht.e, establishing shared lower-level composition.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sht.java",
+      "lines": "1761",
+      "sha256": "29c6dd64a5ae90566f75b51cec4de4a9a855fd11c19d31955cd45b23c9c1e234",
+      "conclusion": "MultilineComposerLayout delegates to pup.i.h.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pup.java",
+      "lines": "318,339-345",
+      "sha256": "8ca8ff6cedd8abe5127b3129926ae629b4321d1fec2af7724b1ab11df6988bab",
+      "conclusion": "MultilineComposerLayoutContent delegates to vzd0.a.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vzd0.java",
+      "lines": "140",
+      "sha256": "7613f0ccee0687c5f2035870cdcb31d67e3d2a6face9ab5ea1b3ccd8cc08e263",
+      "conclusion": "Shared content delegates to lzr.h.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lzr.java",
+      "lines": "1538-1619",
+      "sha256": "acb4c0534fc597a2e6d0370b55fe3debb41044af3195ad8402514434452d4c3c",
+      "conclusion": "Shared layout creates u0e0 and drives layout state from editor/body/action parameters. Exact Remote defaults must respect its input parameters.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/np11.java",
+      "lines": "442-444",
+      "sha256": "41b37ad25dc0c48805384081fe62e9b60471a426e54900241495be11e8e5fd5f",
+      "conclusion": "Q resolves on01.a semantic body text plus text configuration.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/on01.java",
+      "lines": "6",
+      "sha256": "3cc34fb222864abe5fbbc702caa0e3f60ef9b6043d5e15262da861dc4ee60d04",
+      "conclusion": "on01.a links sk10.a/sk10.b regular/medium body tokens.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sk10.java",
+      "lines": "8-9",
+      "sha256": "a8aa15340b90fd3d72cbd330a4826ee18a1ff82df5ce884f327d891a0b2980ed",
+      "conclusion": "Body tokens declare Roboto/OpenAI Sans/sans-serif family list, 16sp, regular400 or medium500, line24sp, letter spacing0.1sp.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/qs.java",
+      "lines": "165-167",
+      "sha256": "bc9a34d5f1bf3ba336af7eaaf22d97c1373be10dd97a1921c9ca069bd543b304",
+      "conclusion": "Send callback creates hgk(text,List,gtk,fsk).",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/as6.java",
+      "lines": "59-61",
+      "sha256": "065f9ebcba4e76d428f9bad4bc108fc3062dda68f2509cdde03c620ea7ae65df",
+      "conclusion": "Editor text callback emits yek(String).",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/bs6.java",
+      "lines": "41-43",
+      "sha256": "fbd008f5b2858569c6b5bad2bcd7afad8a9b012e0bd79aa96f2da6652c247386",
+      "conclusion": "Attachment callback emits zek(List).",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/e9.java",
+      "lines": "48-50",
+      "sha256": "eb782050b2dff26849162aec0e50188f92fa1440bc774135e10a19fa03cc15f1",
+      "conclusion": "Stop callback emits bgk singleton.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/omm.java",
+      "lines": "1103-1108,1150-1317",
+      "sha256": "6f7c558c22a3d3a3fe061a78e22dbceaf860af08e5a124b93b6684bf7cf03fc6",
+      "conclusion": "Thread owner handles text/attachments and send event. Send resolves owner draft and attachments, blocks blank sends, scopes outgoing action. bgk resolves current host/thread/turn before scheduling interruption.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ux7.java",
+      "lines": "336-352",
+      "sha256": "44ade6007a83e383472dea16283636886b47351ed0f8ce10aa2b59fb33795baa",
+      "conclusion": "Stop coroutine binds s7m(host/thread scope) and current turn identity via ac1 case12.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ac1.java",
+      "lines": "522-530",
+      "sha256": "b0c023633c6f28cf1a57ace872ead0243dd44283ebd9d7f78b3f1f32eabb307c",
+      "conclusion": "Stop delegates to tnm.F(s7m,turnId).",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/tnm.java",
+      "lines": "766-810",
+      "sha256": "b74c721e7031eccd5166b3652aa999ef48be18853979dc05591d1caaf4a67ec1",
+      "conclusion": "Interrupt validates remote host connection and exact current running turn before service call.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/vp9.java",
+      "lines": "74-104",
+      "sha256": "4b300f3d0fafc0bb9037d0382d484fb0bc273ab2ef4764ea7335c6be8d8ee400",
+      "conclusion": "Remote placeholder uses np11.Q. Thread error banner has10dp padding and semantic error style; outer card structure remains untraced.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mwq.java",
+      "lines": "629-665",
+      "sha256": "f2ccd76b16d78e6fba07361823d82515d8dd99a38eca9509106ca6311b8e3e50",
+      "conclusion": "S applies symmetric horizontal/vertical padding. V maps start/top/end/bottom default masks before U.",
+      "evidence_type": "artifact-observation",
+      "validation": "static-source"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/pkm.smali",
+      "lines": "15627",
+      "sha256": "323cf20349a071ce63969ae21cd8618224a6f03b7d33a073506a3be150f1bbaf",
+      "conclusion": "Bytecode confirms shared sm5.E invocation from pkm.",
+      "evidence_type": "artifact-observation",
+      "validation": "smali-cross-check"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/omm.smali",
+      "lines": "7769-7799,9472-9518",
+      "sha256": "01a2a3f3a1a560df59b1bb909f891c1a1875e39d586c117e9fae12ded3da3d5a",
+      "conclusion": "Bytecode confirms hgk dispatch/field extraction and bgk branch with scope null guards.",
+      "evidence_type": "artifact-observation",
+      "validation": "smali-cross-check"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/e9.smali",
+      "lines": "369",
+      "sha256": "0762363b6c83eae2a9f614f3ce1b68bd311abb503c07e3975913b475348e589b",
+      "conclusion": "Bytecode confirms bgk event.",
+      "evidence_type": "artifact-observation",
+      "validation": "smali-cross-check"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes6/qs.smali",
+      "lines": "4699-4703",
+      "sha256": "4c9c74ec116c81a8f74e59761ee24309ecb23058bae543b52c77adc9bddf588d",
+      "conclusion": "Bytecode confirms hgk constructor arguments text/list/gtk/fsk.",
+      "evidence_type": "artifact-observation",
+      "validation": "smali-cross-check"
+    }
+  ],
+  "decisions": [
+    {
+      "type": "independent-host-adaptation",
+      "conclusion": "Reuse recovered Home composer lower-level geometry and editor implementation, keeping Remote action slots/state and callbacks distinct. Shared lower-level source chain is established; complete official parameter parity is not established."
+    },
+    {
+      "type": "independent-host-adaptation",
+      "conclusion": "A keyed LazyColumn with typed rows and existing Markdown adapter can implement the minimal transcript. Existing Markdown host is not byte-for-byte recovered sm5.E."
+    }
+  ],
+  "unresolved": [
+    "Exact standard user/assistant bubble geometry, colors, full Markdown renderer options and copy-condition role mapping.",
+    "Full thread route/history state owner and paging identity projection.",
+    "Exact Remote default parameter values controlling shared composer compact/expanded/attachment branches.",
+    "Retry service action not traced. Synthetic retry must remain explicitly independent frontend behavior.",
+    "Physical layout, gesture, theme and IME rendering require separate device execution."
+  ]
+}

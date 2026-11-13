@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "module": "5 Remote input and task controls second pass",
+  "date": "2026-11-13",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core_frontend_implemented_original_fidelity_and_service_gaps_remain",
+  "source_reports": [
+    "ios-remote-goal-controls-20261113-findings.json",
+    "ios-remote-pending-edit-20261113-findings.json",
+    "ios-remote-pending-edit-20261113-resources.json",
+    "ios-remote-controls-assets-20261113.json",
+    "ios-remote-controls-labels-20261113.json"
+  ],
+  "implemented_this_pass": [
+    {
+      "component": "shared Goal/Subagent status carrier",
+      "source": "Goal1a2b114 and agent1a193c4 -> shared19b71b0; actual style witness19b8d28 ->19b8c3c",
+      "change": "caption, label h12/v8, stack8, target/agent16, selected/unselected semantic icon/text colors; no adjacent-style padding"
+    },
+    {
+      "component": "shared surface",
+      "source": "StatusSurface19b8d30;19b9004 ->756d3ec",
+      "change": "regular interactive glass, selected AppForeground tint; shadow opacity.08/radius16/y6, press opacity.7/scale.97/easeOut.12; Capsule pills and RoundedRectangle16 details"
+    },
+    {
+      "component": "Goal details",
+      "source": "1a2c140; fitted text cap180, action HStack12, root12/8",
+      "change": "native measured fit adapter, hidden vertical indicators and right-aligned action row; seven source-backed status labels"
+    },
+    {
+      "component": "pending Menu",
+      "source": "19ffa1c/19ffac8; captures19ffb44..b90",
+      "change": "native Menu/Section displayText header; current-mode leading icon/ellipsis trigger; conditional ordered edit/toggle/start/cancel slots, enablement independent; target-mode toggle icon"
+    },
+    {
+      "component": "haptics",
+      "source": "shared1d2b03c -> engine witness+0x78 -> selectionChanged",
+      "change": "one shared dispatch before owner action, same persistent Settings/General preference, hardware and active gates"
+    }
+  ],
+  "retained_core": [
+    "ordinary editor, multiline, independent drafts and existing process restoration",
+    "send/stop, queue/steer/cancel, deterministic acknowledgments and FIFO",
+    "typed scope/session/operation model and permission changes, synthetic success/failure, send configuration snapshot, context read-only projection",
+    "Goal creation/edit/pause/resume/clear and scoped agent/details selection"
+  ],
+  "feature_chain": {
+    "entry": "Remote task list -> RemoteThreadFixturePage",
+    "identity": "offline account + host/destination + page session + request/message/revision",
+    "state": "existing draft/replay/configuration/Goal stores; local transient selection separate from accepted projection",
+    "data_source": "deterministic synthetic adapters; real service unconnected",
+    "projection": "typed per-task config, pending mode/capabilities, Goal status and agent summary",
+    "render": "shared source-backed status carrier, native Menu, native editor and existing slider/permissions/context panels",
+    "side_effects": "scoped frontend operations, clipboard/file/platform adapters, preference-gated haptics; no AI or tool execution",
+    "cleanup_recovery": "existing draft JSON persistence; pending callbacks capture stable identity; Goal/config in-memory only"
+  },
+  "independent_adaptations": [
+    "native measured text height in place of original FittedScrollView implementation",
+    "Capsule hitshape until MinimumTapTargetShape geometry closed",
+    "pre-iOS26 secondarySystemBackground fallback and nil optional stroke; dynamic owner environment producer not closed",
+    "reduced-motion policy and native platform glass renderer",
+    "existing Goal edit sheet, count text/static time formatter and deterministic operation contracts"
+  ],
+  "not_implemented": [
+    "actual pending edit callback producer and composer restoration of text/attachments/review comments; host supplies canEdit=false/callback=nil",
+    "full shared body associated generic tree and MinimumTapTargetShape",
+    "dynamic inner background/stroke environment producer",
+    "all Goal detail action visibility predicates, icon metrics and original live duration owner/formatter",
+    "configuration and Goal cross-process persistence, full queued configuration propagation",
+    "real agent child-task navigation, real backend and physical haptic playback"
+  ],
+  "localization": {
+    "selected_keys": 292,
+    "source_locale_tables": 65,
+    "limit": "Not all selected keys exist in every locale; no blanket complete-translation claim",
+    "new_goal_keys": 7,
+    "new_pending_keys": 3
+  },
+  "haptics_report": "ios-gesture-haptics-current-20261113-controls.json",
+  "verification": {
+    "pure": "text/state and haptic tests passed",
+    "ui": [
+      {
+        "artifact": "ios-remote-controls-parent-20261113-r1.xcresult",
+        "case": "testCorePreviewRemoteControlsChinese",
+        "result": "passed",
+        "seconds": 65.027
+      },
+      {
+        "artifact": "ios-remote-controls-parent-20261113-r3.xcresult",
+        "case": "testRemoteGoalAndAgentsCoreChinese",
+        "result": "passed",
+        "seconds": 58.21
+      },
+      {
+        "artifact": "ios-remote-controls-parent-20261113-r3.xcresult",
+        "case": "testRemotePendingReplayChinese",
+        "result": "passed",
+        "seconds": 74.308
+      }
+    ],
+    "failures_preserved": [
+      "r1 short detail height reservation: product fix to one measured/capped frame",
+      "r1 native Menu identifiers absent although actions visible: test fallback to inspected native labels only",
+      "r2 intentionally interrupted after wrong test-edit path; not product failure"
+    ],
+    "routine_matrix": "Chinese/light only",
+    "screenshots_reviewed": [
+      "ios-remote-controls-parent-20261113-r3-attachments/C50E016D-1F7A-4CA0-96AB-A89B23E4DB3A.png",
+      "ios-remote-controls-parent-20261113-r3-attachments/48EC0E67-9C3F-4D97-8475-984865E0FA51.png",
+      "ios-remote-controls-parent-20261113-ordinary-ready.png"
+    ],
+    "diff_check": "passed"
+  },
+  "runtime": {
+    "simulator": {
+      "build": "succeeded",
+      "build_log": "/tmp/rea-remote-controls-parent-final-sim-20261113.log",
+      "preview_report": "ios-remote-controls-parent-20261113-preview.json",
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "hash_match": true,
+      "executable_sha256": "5bf8f67b592209295d75ec160a8dd64c40673cedc27b743856b36075e12717f0",
+      "launch": "local.rea.chatgpt.ioshost: 88779",
+      "kept_running": true,
+      "ordinary_profile_preserved": true
+    },
+    "physical": {
+      "build": "signed succeeded",
+      "build_log": "/tmp/rea-remote-controls-parent-device-20261113.log",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "executable_sha256": "9cfdfc0452183d56bf7b19cb670a1fa55c91c6ac6928a34ac2d2351cb94b2eaa",
+      "device": "00008150-001E34E93A12401C",
+      "state": "unavailable",
+      "inventory": "ios-remote-controls-parent-20261113-device-state.json",
+      "installed_current_candidate": false,
+      "last_evidenced_installed_candidate": "earlier Settings fixed-close candidate; current contents not read offline"
+    },
+    "external_display_placement": "not verified"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "6fe6a7f465a621d20bde7ad91ffb9e0cb1023746e65b4119f99b5084cc7c7d36"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "9234767d76a2d2be392cc93cf011a2241cbb5048e582089868c856ae434da0d5"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "4345b2d2305a6653e6322ab027648389e4a6140e529cf0c4535e4020d16da0bc"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift",
+      "sha256": "3719e8b3e6bbd9f7715cd45bfc922de1d71737a681b2378df0c1ec3c0054b631"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteGoalPresentation.swift",
+      "sha256": "119b43029eec8b178bb7778f352c82722f63eba13e6b11801d6c4d5865b2cae8"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteAgentsPresentation.swift",
+      "sha256": "db233de8dec894b8d8aa0378326b77e49d585cc7561d141dd4ec311e7f36f527"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "72baa262677536d00a54822cf90f9d06ea85c19c72f0e2b9f9a4c51b9ca50a0a"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "sha256": "347dd90e7a6c5fb15ecd49cd493a6a66e1b3de9f56f926ffdbfe9e5348c26262"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "84bfe980c405b7382fa3dc035521c1fd2b6253e83053e09148f5bb69c3f5c852"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "13377c1ac3e3186bbaa1ca184c4729f5cdd3a0e7cd8c6f7135bd03a829cb8447"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "e89f5dc6077cd7cf11f8bf3756b5e16093a592401c06b1f287381c3e5408eb46"
+    },
+    {
+      "path": "implementation/ios/Tests/Haptics/main.swift",
+      "sha256": "962c86756334898b27a5f4bb32d19a31644e5cb1344d20fc4391fcd8e6e73240"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "a7e65a5345e696397895b689db3672a2483391115c753bbbffaf9bb44f57eed8"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "c0a5d7e7d4871d0a3d062edb40989c7554352d0ddc90dd799220c458198b1177"
+    }
+  ],
+  "next_major_module": "6 Remote approvals and user input",
+  "git_mutations": "none; no commit/push/release"
+}

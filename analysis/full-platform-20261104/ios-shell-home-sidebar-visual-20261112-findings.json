@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "scope": "Home compact editor contour and sidebar New Chat parent/label/chrome; static evidence only",
+  "scope_guards": {
+    "host_edits": false,
+    "builds": false,
+    "device_control": false,
+    "official_target_execution": false,
+    "screenshots_used_as_schema": false
+  },
+  "home_composer": {
+    "confirmed_prior_evidence": "analysis/full-platform-20261104/ios-chat-input-shape-20261112-findings.json",
+    "source_chain": [
+      "MessageInputViewContent body witness4cbc6dc ->callback4cb8cf0",
+      "4cb9078 invokes6081cb8 HeightConditionalShape<Capsule,UnevenRoundedRectangle> with content+29 Bool",
+      "4cb90d4 invokesoptionalstroke60819dc",
+      "HeightConditionalShape desc96ca860; path606707c->6066fd8; CGRect height>threshold selects else, otherwise if for finite nonnegative heights"
+    ],
+    "confirmed_problem": "UIKit host previously supplied CALayer radius28 only, which did not supply the same contour to UIGlassEffect. Prior same-binary baseline/capsule/baseline controlled probe reproduced pointed ends and corrected them via cornerConfiguration.capsule. This experiment belongs to earlier report, not a new run here.",
+    "current_host_snapshot": {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "line": 206,
+      "code": "Compact surface uses cornerConfiguration=.capsule(); expansion restores saved cornerConfiguration. CALayer radius28 still exists as fallback/clipping.",
+      "classification": "independent UIKit bridge repair guided by official Capsule, not recovered official SwiftUI code"
+    },
+    "do_not_apply": [
+      "Do not apply Remote scene correction formula or scene/window concentric radius directly to Chat editor contour. Those are different owner/shape roles.",
+      "Do not hard-code default initializer threshold44 as selected Chat threshold; selected style producer remains unresolved.",
+      "Do not reset all expanded editor radii based on compact screenshot."
+    ],
+    "precise_open_boundaries": [
+      "Map Chat content+0x29 to semantic field and actual style producer",
+      "Trace selected runtime capsuleRectHeightThreshold through Chat style configuration",
+      "Close Chat inner material shape relationship to outer HeightConditionalShape",
+      "Return-to-compact geometry and physical-device runtime not rerun by this agent"
+    ]
+  },
+  "sidebar_chat_button": {
+    "confirmed_chain": [
+      {
+        "type": "HistoryNewChatButton",
+        "descriptor": "0x9592710",
+        "body_witness": "0x127c940",
+        "actual_body": "0x127c750",
+        "title_literal_load": "0x127c7bc..0x127c7c0",
+        "title_literal": "0x8898010",
+        "title_key": "history_concise_chat_action_title"
+      },
+      {
+        "type": "HistoryNewChatButtonContent",
+        "descriptor": "0x95939fc",
+        "body_witness": "0x127d464",
+        "actual_body": "0x127c94c",
+        "label_helper": "0x127d08c",
+        "label_tail": "0x127d0f0 ->0x6f2c064"
+      },
+      {
+        "type": "ThemedChatButtonLabel",
+        "descriptor": "0x971ead0",
+        "initializer": "0x6f2c064",
+        "body_witness": "0x6f2c8e0",
+        "actual_body": "0x6f2c178",
+        "layout_records": [
+          "0x8380fe0",
+          "0x8380fe8",
+          "0x8381018",
+          "0x8381028"
+        ]
+      },
+      {
+        "type": "ThemedChatButtonChromeModifier",
+        "descriptor": "0x972096c",
+        "body_witness": "0x6f2ccc4",
+        "actual_body": "0x6f2c91c",
+        "records": [
+          "0x838b668",
+          "0x838b670",
+          "0x838b678",
+          "0x838b680"
+        ]
+      }
+    ],
+    "label": {
+      "key": "history_concise_chat_action_title",
+      "en": "Chat",
+      "zh": "聊天",
+      "icon": "OpenAI/Symbols/square-and-pencil",
+      "icon_call": "0x6f2c67c ->0x74fb220",
+      "icon_literal": "0x88467c0",
+      "asset_exact_matches": 18,
+      "accessibility_separate_label": "New chat from75d2794 (MOV/MOVK x0=4e65772063686174, tail75e1c2c x1/x2=e800000000000000), consumed127ce38; this is separate from visible concise title"
+    },
+    "source_layout": {
+      "shape": "center-aligned HStack<Image,Text>, outer semibold fontWeight, foreground selection, per-placement ScaledMetric padding and min-height, Capsule contentShape/background. Image/text inner font configuration has additional regular font reads; do not equate all children to one manual UIFont.",
+      "placement_proof": "Helper127d08c calls45a7fc at127d0dc, which explicitly setsx4=0,w5=1; initializer6f2c064 storesw5 into configuration.placement at6f2c16c. Raw1 branch at6f2c46c uses field index5 _sideMenuMinimumHeight, establishing sideMenu mapping. Raw0 uses standalone metrics; other valid placement uses toolbar.",
+      "metrics_initialization": "ThemedChatButtonLabel descriptor fieldOffsetVectorOffset=2 words, so vector startsmetadata+0x10. initializer6f2c064 reads offsets14..3c and writes ScaledMetric bases via6fd69e0/6fd6adc; first field uses direct init7c46fb4.",
+      "base_scaled_metrics": {
+        "standaloneVerticalPadding": 15,
+        "standaloneLeadingPadding": 18,
+        "standaloneTrailingPadding": 20,
+        "standaloneSpacing": 11,
+        "standaloneIconFontSize": 20,
+        "sideMenuMinimumHeight": 48,
+        "sideMenuSpacing": 10,
+        "toolbarVerticalPadding": -2,
+        "toolbarHorizontalPadding": 8,
+        "toolbarIconFontSize": 16,
+        "textFontSize": 17
+      },
+      "sideMenu_selected_geometry": {
+        "leading": 18,
+        "trailing": 20,
+        "vertical": 0,
+        "spacing": 10,
+        "minimumHeight": 48,
+        "iconFontBase": 20,
+        "textFontBase": 17,
+        "scales_with_Dynamic_Type": true,
+        "width": "intrinsic label width plus scaled leading/trailing; no fixed overall width recovered"
+      },
+      "source_sites": {
+        "spacing": "6f2c200..6f2c228",
+        "vertical": "6f2c340..6f2c37c raw1 takes zero inset",
+        "leading": "6f2c3ac..6f2c3cc",
+        "trailing": "6f2c3fc..6f2c41c",
+        "minimumHeight": "6f2c454..6f2c4dc",
+        "iconSize": "6f2c690..6f2c6b8"
+      }
+    },
+    "chrome": {
+      "configuration_fields": [
+        "themeColorSetting",
+        "enableLiquidGlass",
+        "showsShadow"
+      ],
+      "source_constructor": "6f2c8e4 packs3bytes thenGenericViewModifierinit; witness6f2ccc4 packs samebytes to6f2c91c",
+      "history_call": "127cf28..127cf60: normalize theme setting; w0=theme,w1=enableLiquidGlass,w2=0 ->6f2c8e4",
+      "sidebar_showsShadow": false,
+      "shape": "Capsule",
+      "glass_wrapper": "6f2cb2c ->756d3ec (same previously identified GlassEffectContent generic wrapper)",
+      "liquid_branch": "6f2ca80 checkspackedbit8 enableLiquidGlass; admitted branchderives themed tint payload via74e45bc thenforwards optionalglass to756d3ec. Nonadmitted usesnilglass payload.",
+      "foreground": "Optional explicit foregroundColor else theme palette through74e45bc; Capsulebackground is clear on eligibleglassbranch, themedfallback otherwise (6f2c53c..6f2c590)",
+      "shadow_if_enabled_elsewhere": {
+        "color_opacity": 0.24,
+        "opacity_constant": "0x7ce2030",
+        "radius": 10,
+        "x": 0,
+        "y": 4,
+        "sites": "6f2cb58..6f2cc04",
+        "limit": "Historysidebar callpassesfalse, so do notaddthisshadow to the actualsidebar button"
+      },
+      "unknowns": [
+        "FullGlassEffectContent optical behavior and optionalglasspayload semantic mapping; nativeChromeusingthecommonhelperisproven",
+        "Originalaccountthemeproviderlifecycle notfollowed; localpreferenceproviderisindependent"
+      ],
+      "enableLiquidGlass_source": {
+        "value": true,
+        "owner": "HistoryNewChatButton actualbody127c750",
+        "site": "127c824 movw8,#1;127c828 strbw8,[x23,#0x10]",
+        "binding": "HistoryNewChatButtonContent field1 enableLiquidGlass immediatelyfollows16-byte title; nativebuilder stores rest of originalfields at18..31",
+        "limit": "Commonglass helperstill ownsOSbuildavailability"
+      },
+      "palette_factory": {
+        "factory": "0x74e45bc",
+        "fields_in_return_order": [
+          "picker",
+          "accent",
+          "onAccent",
+          "background",
+          "onBackground"
+        ],
+        "label_foreground": "6f2c2c8 base=sp+18;6f2c2d0 readsbase+10=onAccent",
+        "label_fallback_background": "6f2c55c base=fp-c0;6f2c564 ldp x8,x24 readsbase+8=accent",
+        "chrome_tint": "6f2ca94 base=sp+60;6f2ca9c ldp x8,x25 readsbase+8=accent; forwardedto756d3ec",
+        "caller_policy": "127cf28..38 and127d0ac..cc replaceKnownThemeColorSetting raw0/default or11/unknown withraw4/blue",
+        "default_resources": {
+          "accent": "ChatGPT/accent/blue/background-emphasis",
+          "onAccent": "ChatGPT/accent/blue/text-on-emphasis"
+        },
+        "green_resources": {
+          "accent": "ChatGPT/accent/mint/background-emphasis",
+          "onAccent": "ChatGPT/accent/mint/text-on-emphasis"
+        },
+        "fullmap_evidence": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-theme-resources.json",
+        "enum_name_basis": "analysis/full-platform-20261104/ios-remote-v566-palette-map.json; newlyrecheckedraw4/3factoryliteralbytes"
+      }
+    },
+    "parent_boundary": {
+      "confirmed": "Native HistoryNewChatButtonContent owns its label/chrome and adaptive-label state; this is not a plain UIBarButtonItem title. History floating action/native UIKit hosts exist separately from source label.",
+      "open": "FullHistoryViewController bottom actionbar placement/setup and exact container insets remain unclosed in this bounded pass. 126e1cc is another History toolbar label bridge passingplacement2, not the sidebar sideMenu branch; do not copy its toolbar metrics."
+    },
+    "minimum_implementation_recommendation": {
+      "classification": "independent-native-host-transcription-guided-by-frozen-source",
+      "steps": [
+        "Replace plain + Chat toolbar text with hostedsource-shaped label plusoriginalsquare-and-pencil resource",
+        "Use sideMenu-scaled minimumHeight48/spacing10/L18/R20/V0/icon20/text17; preserveintrinsic width and DynamicType",
+        "Retain currenttheme setting; source containsThemedChatButtonChromeModifier andCapsule/glass; do notfake it asforeground tintonly",
+        "Respectsource showsShadow=false for this call; do notaddshadow from unrelatedstandalonebranch",
+        "Keepnew-chat action routed throughcurrentfrontendnavigation identity; do notresetservice/account state"
+      ],
+      "theme_provider": {
+        "file": "implementation/ios/Sources/AppDelegate.swift",
+        "type": "PreviewAccent",
+        "storage_key": "rea.preview.accent",
+        "classification": "independent-host-local-persistent-provider",
+        "rule": "Map chosenenumusingoriginalpalette; sourcebuttonnormalizesdefaulttoBLUE; greenmustmapmint. Donothardcodegreen/cyanfromscreenshots."
+      }
+    },
+    "current_host_snapshot": {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "symbol": "NativeConversationList.viewDidLoad",
+      "observed": "IndependentUIBarButtonItem(title:+Chat) plussettings toolbar still lacksoriginal label/chrome composition at inspectiontime; parent may modifyconcurrently."
+    }
+  },
+  "reused_evidence": [
+    "docs/full-platform/IOS-SIDEBAR-VISUAL-RECOVERY.md",
+    "analysis/full-platform-20261104/ios-chat-input-shape-20261112-findings.json",
+    "analysis/full-platform-20261104/ios-sidebar-v289-concentric-findings.json",
+    "analysis/full-platform-20261104/ios-remote-v519-home-scene-geometry-findings.json",
+    "analysis/full-platform-20261104/ios-remote-v520-home-surface-order-findings.json"
+  ],
+  "limits": [
+    "No officialapplication execution",
+    "No newly performedvisual/deviceacceptance",
+    "Swift symbolic contextkind4 unresolvedcontexts retained as unknown",
+    "Partialnativecontainer topology; no guessedUIfrom screenshots"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-SidebarNavigationButton-witness.json",
+      "sha256": "aeba85545d6672de72537aa81b17221416e9f4e48edc2923fa1e501ec1baa9c4",
+      "bytes": 3609
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-ThemedChatButtonChromeModifier-witness.json",
+      "sha256": "3afb1f1aca0e55c7e7d4db412c863f066606426beadc3e4a7f3211e09f509f83",
+      "bytes": 3759
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-ThemedChatButtonLabel-witness.json",
+      "sha256": "e028ad60d723a699081b738b3f60d9dd576bb45b7c62d05676e65df5e4a0684e",
+      "bytes": 3609
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-button-icon.asm",
+      "sha256": "fa8cb0bfc4cce3b7ea9fbf004906bcb00d2f588c71f80b396d884d483368d92b",
+      "bytes": 1613
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-button-icon.json",
+      "sha256": "273973537306aaf228b6c014dec710b716857414e1233a245e2fe17fb8e4269d",
+      "bytes": 2328
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-button-refs.json",
+      "sha256": "e6c0d261c39b5765be507d723e9f5adcd001ffb168d320afec492ff67dd87909",
+      "bytes": 5918
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-button-types.json",
+      "sha256": "891c37ecb230b0117cc93c643399fd5606f73afed729d5ba5bfc22ee57ae4a9c",
+      "bytes": 4837
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-chrome-body.asm",
+      "sha256": "f1930e9df2e4a0f979b764655955d76938eaca902ac8ff31fb862213bf597ae9",
+      "bytes": 11965
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-chrome-body.json",
+      "sha256": "4881a6a82c6e76bc6e5c893c257f3deb176ff89d7524aaad344158d8ab5a57b3",
+      "bytes": 10290
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-chrome-calls.json",
+      "sha256": "c758108f3e512c037b4b8580ab499f3cb6adaa0ef4b4496b657823b9cb29f0f0",
+      "bytes": 9779
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-chrome-wrapper.asm",
+      "sha256": "8d745a62f75f2b45902e8336730eab3f8a05c8691b44c3373dda73c2faaa8851",
+      "bytes": 4204
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-chrome-wrapper.json",
+      "sha256": "bf81234d0e8ec4ff43b8496a8e606ed804b6c0ad4473cb7cfea4c352cf509b31",
+      "bytes": 3079
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-history-button-types.json",
+      "sha256": "e3b78cb8062108044552b233730b56c46d1dbd920ecff5467dd1c2bd186ec10d",
+      "bytes": 4650
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-history-newchat-builders.asm",
+      "sha256": "1c2003f3e371f6aae6c24680646f9c6797a6ea0f696853cf364d91557846d97b",
+      "bytes": 33689
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-history-newchat-builders.json",
+      "sha256": "d6575aed20cee51fb873d13c1c7454302eaa2ad41cc5f738a1fcf97bf78f6ac8",
+      "bytes": 27183
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-history-newchat-content.asm",
+      "sha256": "4bfb0a49f12865610568dc4991444675b127cebae7f40f198c96cdfa959a09ab",
+      "bytes": 586
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-history-newchat-content.json",
+      "sha256": "df74b7a06911aa61bd8039adb1b9908466f059329986b1ff1091c4afe61f18e1",
+      "bytes": 930
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-history-newchat-owner.asm",
+      "sha256": "0861517871d9254325e55ee8fa3ebb1e6809bf2d060dad1ce0fa2f49885301ed",
+      "bytes": 6328
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-history-newchat.asm",
+      "sha256": "89659cf2857b3bf314a40da7c5e7f5f76ea7355d00b99a29a2c5060e3baa3be9",
+      "bytes": 2917
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-history-newchat.json",
+      "sha256": "cbc44b13927d1ae71c94a20152554b02b04f7ef619dffd90d40b5e36533a0537",
+      "bytes": 2736
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-label-body.asm",
+      "sha256": "03646bf70b476f41114e97179424c68d02259497acdf6acffd7a4eb8ec7c90ba",
+      "bytes": 23879
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-label-body.json",
+      "sha256": "926111a7e37cd96f180d229805a19d585176a22f19dc76b8bf3f7368f35a128c",
+      "bytes": 23893
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-label-calls.json",
+      "sha256": "3cba2c94b52b2e787e53df8d0abdc9bfdcaf7d38f53bc1383518e06072f428ad",
+      "bytes": 10844
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-label-init-refs.json",
+      "sha256": "427cf69fc3db3bfcab9f18d78e94dd7c19b3e6c6318558970a3b1d552e995a4c",
+      "bytes": 999
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-label-init.asm",
+      "sha256": "d23aa1bd155201637aa775de6c8741378ed5a04aba32d497a9953134e2ef8e41",
+      "bytes": 3698
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-navigationbutton-calls.json",
+      "sha256": "26ad959346ea1bc37c83308f9966341050c0189a1822e280063d8900578fa87a",
+      "bytes": 14312
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-newchat-title-factory.asm",
+      "sha256": "ff8fb1207b61ad0345e15d76a8cabcab580b5a0baca7d8e84352c3976506cd6b",
+      "bytes": 442
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-newchat-title-tail.asm",
+      "sha256": "e1e697305585915b0e36fc3be85544dcfbd3a012f75cfe64cd0d2dee30ee6a59",
+      "bytes": 385
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-palette-assets.json",
+      "sha256": "aad1b7a7f3dc92154e004a6193d4ff3fb1071251d8fc7f1cf3cd77d9b3b56dae",
+      "bytes": 16755
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-palette-factory.asm",
+      "sha256": "35602b3c94570c96c39c0d37330651c2f03a7081de84a9a9342841704b74e037",
+      "bytes": 5944
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-resources.json",
+      "sha256": "b82a9e4cf0ca54d050cb36147324d2d3df3c47b97caca9b5e6f0c26e727c3069",
+      "bytes": 13887
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-sidebar-label-bridge.asm",
+      "sha256": "a88c1b66627356a01149c60361c6e91fdfe27666664c4fdd0222055d13da1d40",
+      "bytes": 7686
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-sidebar-label-bridge.json",
+      "sha256": "c1881fd36d6de2c049fcb0667ce6b20b736e9bb700d7a21e28b1708705007885",
+      "bytes": 7250
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-source-enableglass.asm",
+      "sha256": "310c52a586bfb09d9c0093df4ef81b8ca85cd87c31b02dee43fa7ce42578a81a",
+      "bytes": 1809
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-source-helper.asm",
+      "sha256": "9d0ed859b25c41ef68f1790667bb9e9ca6c258d000f3c4a7afb34d4a9b6996b1",
+      "bytes": 318
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-theme-resources.json",
+      "sha256": "23789fd4142e5eb180ea9451ea7f9ecadeab6c17e4e58b508c217b5b4bb9a5e4",
+      "bytes": 17890
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-theme-table.json",
+      "sha256": "6c5600e25a4a4b1d0efcf3f4d3ceed3be638a85a02a3dd38802c560acedb7f22",
+      "bytes": 6909
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-theme4-factories.asm",
+      "sha256": "5d463cba5e3f552aae4aaa2a268f327d0f9629ec6ba1f4c5bd0dcda1a9cb03b0",
+      "bytes": 6099
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-type-8380fe0.json",
+      "sha256": "4408e831229c3e4b60930e7139b6c2448fc98e50c94b6ab6c635162720accc9a",
+      "bytes": 1955
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-type-8380fe8.json",
+      "sha256": "b08628e964d920fcbdae8e15d4f8bccfc4b7f0fe45651fa7ef7e2d40abc72381",
+      "bytes": 3242
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-type-8381018.json",
+      "sha256": "954b91c86ffc9dcb42c6199a0d3cf3f33a47c1b2d9b6c86227de5df0a47358c8",
+      "bytes": 2891
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-type-8381028.json",
+      "sha256": "31d510b605aba4a99ae321168c2e4d2cfcd5523ea6272eced278617e99465a34",
+      "bytes": 3451
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-type-838b668.json",
+      "sha256": "1fe5696f9bd26d007985ca8ed1dd508ea5764b2130163c9c911689a4837147ad",
+      "bytes": 1664
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-type-838b670.json",
+      "sha256": "7fa5684651f3fc267d76db5c9fae24394bb3a624637b89578191f48f109bf9fa",
+      "bytes": 2534
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-type-838b678.json",
+      "sha256": "cc3af3efdc7cd049cfef95cebc6ec1759868c3bd7974aec551329fa59a12c3ad",
+      "bytes": 1129
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-home-sidebar-visual-20261112-type-838b680.json",
+      "sha256": "0aa9c7d4e30c9d658f728a0bacbf9e0610c5072e947be1d56d8370a3b641fe66",
+      "bytes": 2355
+    }
+  ]
+}

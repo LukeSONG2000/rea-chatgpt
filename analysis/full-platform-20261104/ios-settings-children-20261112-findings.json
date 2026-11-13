@@ -1,0 +1,82 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official artifact static observation",
+  "help": {
+    "type": "SettingsGetHelpSection",
+    "descriptor": "0x958a06c",
+    "conformance": "0x7d8a9e0",
+    "body_witness": "0x1089d1c",
+    "body": "0x1089580",
+    "section_title": {
+      "text": "Get help",
+      "small_string_at": "0x10895c0"
+    },
+    "content_closure": "0x1089624",
+    "ordered_children": [
+      {
+        "label": "Report app issue",
+        "label_getter": "0x75d31f8",
+        "title_literal": "0x8a59260",
+        "localization_key_literal": "0x8a59240",
+        "key": "button_report_app_issue",
+        "icon": "OpenAI/Symbols/flag",
+        "icon_literal": "0x8a55360",
+        "build_call": "0x10897b4",
+        "condition": "0x108977c calls 0x10119f0 using self+0x18 and self+0x20; cbz at 0x1089780 skips row when result nil",
+        "action_thunk": "0x1147df8",
+        "limit": "Presenter resolver semantics not independently decoded; field association inferred from field order, not a proved Swift runtime offset table."
+      },
+      {
+        "label": "Help Center",
+        "label_getter": "0x75d6bf0",
+        "build_call": "0x1089868",
+        "icon": "OpenAI/Symbols/questionmark-circle",
+        "icon_literal": "0x8a56b40",
+        "action_thunk": "0x1147df0",
+        "action_body": "0x1089ad4",
+        "condition": "No direct optional branch around row construction in inspected closure",
+        "limit": "Exact URL has not been resolved."
+      },
+      {
+        "label": "Privacy Center",
+        "key": "settings_home_privacy_center_title",
+        "key_literal": "0x8888660",
+        "label_body": "0x1089c20",
+        "build_call": "0x10898dc",
+        "condition": "self byte 0 tested by tbz at 0x1089898; false skips row",
+        "field": "showPrivacyCenter",
+        "action_capture": "0x4c89b0",
+        "limit": "Action closure target behavior not decoded; showPrivacyCenter association follows first metadata field plus load at struct offset zero."
+      }
+    ]
+  },
+  "general": {
+    "type": "SettingsGeneralSection",
+    "descriptor": "0x958a088",
+    "body_witness": "0x1089578",
+    "body": "0x1088998",
+    "section_title": "App settings",
+    "title_small_string_at": "0x10889d8",
+    "conclusion": "Root app-settings section; type name is not evidence of General destination child list.",
+    "general_destination_children": "unresolved in this bounded pass",
+    "haptics_parent": "User supplied official Settings > General > Haptic feedback; independent native destination list not yet closed.",
+    "destination_trace": {
+      "general_label_load": "0x1088c60",
+      "navigation_type_accessor_load": "0x1088ca4",
+      "navigation_type_accessor": "0x111f2e8",
+      "navigation_type_descriptor": "0x958a4fc",
+      "navigation_type_name": "NavigationDestination",
+      "nearby_discriminator_assignment": "0x1088cb4 sets w22=1; enum case association not confirmed",
+      "constructor_call": "0x1088cf4 -> 0x7566028",
+      "next_action": "Resolve NavigationDestination case dispatch to General destination builder; do not assume root section metadata is child list."
+    }
+  },
+  "limits": [
+    "Static construction order, not runtime proof of all visibility conditions.",
+    "Frozen iOS293 only; newer user screenshots kept separate.",
+    "No production files changed, official app launched, or runtime execution performed."
+  ]
+}

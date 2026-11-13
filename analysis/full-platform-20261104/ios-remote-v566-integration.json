@@ -1,0 +1,81 @@
+{
+  "batch": 566,
+  "status": "accent_and_multiline_acceptance_passed_page_partial",
+  "page": "Remote task list and conversation",
+  "evidence": "ios-remote-v566-findings.json",
+  "implementation": [
+    "Exact iOS293 default and ten accent-dependent ordinary user-message background assets",
+    "Local preview accent selector with injected fixture available colors and persistent selection",
+    "Independent plain-text intrinsic vertical sizing prevents truncation in the self-sizing collection"
+  ],
+  "independent_adaptations": [
+    "Local UserDefaults preference and all-known-case offline capability list",
+    "Picker placement and Chinese/English labels in the provisional root settings page",
+    "Text height adaptation; official Markdown and text-accent consumers remain partial"
+  ],
+  "tests": {
+    "foundation": "passed; contract-tests-r2.log",
+    "resources": "Eleven mapped backgrounds verified in Assets.car including appearance renditions",
+    "r1": "Four UI action tests passed; visual inspection still found truncated English request text",
+    "r2": "Four UI tests passed after intrinsic-height repair, including explicit two-line height, accent persistence/draft preservation and long/short new-thread messages",
+    "r3": "Two final combined journeys passed on the repaired binary, Chinese/light and English/dark",
+    "visual": "r2 English dark user request now renders its full two-line text; Chinese light background and settings screenshots inspected",
+    "distinct_ui_cases": 6,
+    "passing_executions": 10,
+    "failed_ui_executions": 0,
+    "visual_defects_detected_after_passing_tests": 1
+  },
+  "remaining": [
+    {
+      "priority": 1,
+      "area": "Remote title",
+      "gap": "Exact parent navigation placement differs from user reference; leading alignment unclosed",
+      "next": "Trace 293 outer navigation title placement and parent payload",
+      "acceptance": "Source-bound title geometry and accessible trailing controls at normal CN/EN sizes"
+    },
+    {
+      "priority": 1,
+      "area": "Remote message layout",
+      "gap": "Ordinary background palette is connected; original Markdown/annotations/menu owner, foreground accent, special goal/question/delegation branches and exact attachment grid remain partial",
+      "next": "Trace rich user content and original foreground consumers only where required for the core page",
+      "acceptance": "Source-backed ordinary accented and rich-message interaction in CN/EN light/dark"
+    },
+    {
+      "priority": 1,
+      "area": "New-thread composer",
+      "gap": "Project draft attachment/configuration slots and service capabilities remain partial",
+      "next": "Trace original NewThread configuration owner and reuse matching existing inputs",
+      "acceptance": "Attach/configure, submit synthetic task, return with scoped state"
+    },
+    {
+      "priority": 2,
+      "area": "Remote history",
+      "gap": "Full reasoning, search result links, horizontal table position across process restart and large history performance",
+      "next": "Close current page consumer paths incrementally",
+      "acceptance": "Independent reproducible core journeys"
+    },
+    {
+      "priority": 2,
+      "area": "Service",
+      "gap": "Official task creation, server title generation, idempotency and actual connection availability",
+      "next": "Future replaceable service adapter",
+      "acceptance": "Separate authorized integration"
+    },
+    {
+      "priority": 2,
+      "area": "Platform",
+      "gap": "Physical haptics/notifications, external display and Android independent acceptance",
+      "next": "Use available authorized platform later",
+      "acceptance": "Actual platform evidence"
+    },
+    {
+      "priority": 2,
+      "area": "Accent settings",
+      "gap": "Current setting stores an independent local preview preference. Official availableColors producer, account update/refresh completion policy, default theme replacement and selector layout remain open.",
+      "next": "Bind future settings capability and update contract to the verified selector inputs",
+      "acceptance": "Unavailable choices stay absent; pending/failure and account scope are explicit; selected background preserves draft and reading state"
+    }
+  ],
+  "cross_platform": "iOS evidence only. Proposed shared theme identity does not establish Android palette or platform equivalence.",
+  "runtime": "ios-remote-v566-runtime.json"
+}

@@ -1,0 +1,100 @@
+{
+  "batch": 585,
+  "status": "partial",
+  "scope": "Codex settings add-connection image/layout and independent native tint containment",
+  "official_evidence": "ios-settings-v585-findings.json",
+  "implemented": [
+    "Original plus-md ImageResource with HStack spacing10, scaled icon frame and leading layout",
+    "Scoped tint(nil) isolates native switch coloring from monochrome Chat ancestors"
+  ],
+  "independent_adaptations": [
+    "Native List/navigation and tint(nil) containment. Official global tint provenance remains unresolved."
+  ],
+  "validation": {
+    "passed_ui_cases": 4,
+    "summary": "ios-settings-v585-r3.summary.json",
+    "cases": [
+      "testRemoteComposerSettingsChinese",
+      "testRemoteComposerSettingsEnglishDark",
+      "testRemoteConnectionsChinese",
+      "testRemoteConnectionsEnglishDark"
+    ],
+    "coverage": [
+      "Chinese/light and English/dark",
+      "Root and Remote menu settings entries and return position",
+      "Queue/steer and dismiss-keyboard preference consumers",
+      "Per-host enable/disable, bulk actions, reorder and process restart",
+      "Disabled-host draft preservation and reenabled sending"
+    ],
+    "foundation": "ios-settings-v585-text.log",
+    "initial_failures": [
+      {
+        "round": 1,
+        "reason": "Incorrect UI test target name in invocation; no tests executed. Corrected to existing REAHostUITests."
+      },
+      {
+        "round": 2,
+        "reason": "Nonexistent OfficialVisualAssets type in first edit. Corrected by reusing existing officialVisualResource helper."
+      }
+    ],
+    "visually_reviewed": [
+      "ios-settings-v585-r3-attachments/05DB8231-C94A-4D01-A96D-EEC83960C55A.png",
+      "ios-settings-v585-r3-attachments/268A4CA5-25E9-4FA8-9358-107F07921D43.png",
+      "ios-settings-v585-preview.png"
+    ],
+    "visual_result": "Add plus visible; native enabled switches show distinct white thumb and green track in both appearances. Root-entry action text blue, Remote-entry action text monochrome; exact action styling remains partial.",
+    "runtime": "ios-settings-v585-runtime.json",
+    "retention": "ios-settings-v585-retention-final.json",
+    "display": "Color LCD only; external-display acceptance pending"
+  },
+  "unfinished": [
+    {
+      "page": "Codex settings",
+      "priority": "P1",
+      "missing": "Behavior rows, profile entry and complete root visibility",
+      "evidence_gap": "Remaining Settings body branches and destination owners",
+      "next": "Trace applicable behavior controls and connect existing frontend consumers",
+      "acceptance": "Applicable rows affect their frontend behavior, preserve return and restart state"
+    },
+    {
+      "page": "Codex settings appearance",
+      "priority": "P1",
+      "missing": "Action tint differs between root and Remote entry; exact toolbar/row styling",
+      "evidence_gap": "Official global and destination tint/environment ownership",
+      "next": "Trace final environment payload and navigation entry propagation",
+      "acceptance": "Both entries preserve verified source colors and accessible native controls in light/dark"
+    },
+    {
+      "page": "Codex connection settings",
+      "priority": "service",
+      "missing": "Enrollment, availability transient state, receipt failure rollback and bulk predicate owner",
+      "evidence_gap": "Predicate17c0830 and host connection owner action implementation",
+      "next": "Specify service adapter receipt and independent frontend failure fixtures",
+      "acceptance": "Host-scoped responses preserve unrelated connections and drafts"
+    },
+    {
+      "page": "Remote thread",
+      "priority": "P2",
+      "missing": "Disabled-host approval/stop behavior and error-alert automatic focus restoration",
+      "evidence_gap": "Official action availability and error presentation owner",
+      "next": "Trace action owner guards and focus cleanup",
+      "acceptance": "Unavailable actions and scoped drafts behave predictably across failure and return"
+    },
+    {
+      "page": "Settings/system",
+      "priority": "device",
+      "missing": "Physical haptics, notification delivery and external-display placement",
+      "next": "Run independent acceptance when devices/display are available",
+      "acceptance": "Observed real device interaction and routing"
+    }
+  ],
+  "cross_platform": {
+    "ios": "Native SwiftUI List and onMove adapter with Foundation preference model",
+    "android": "Not implemented or verified by this batch; independent Android evidence required"
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteContextUsage.swift": "d2afe49d14d40fdb9d72505818601095efafd7ed59d530bb1233da73d1afc6c4",
+    "implementation/ios/Sources/NativeConversationHost.swift": "01fe1b83e0750d4bcdc1acfc8087e0a0b7875dde1c7f65164ac4bf58802eac88",
+    "implementation/ios/UITests/HostInteractionTests.swift": "eaf70f6533a47369d08d74e7c5a31c1e0a65da88b43be1c6ff7ca4046ec90136"
+  }
+}

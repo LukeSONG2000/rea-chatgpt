@@ -1,0 +1,115 @@
+{
+  "batch": 603,
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "What does the expanded Remote web-search activity actually render?",
+  "public_source": {
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "evidence": "analysis/upstream-codex-20261105/reuse-map.json",
+    "boundary": "Pinned public source inventory provides protocol/engine references; mobile UI ownership continues in the shipped artifact."
+  },
+  "observations": [
+    {
+      "evidence": [
+        "ios-remote-v603-search-metadata.json",
+        "ios-remote-v603-queries-field.json"
+      ],
+      "conclusion": "WebSearchQueryList descriptor95ae0b4 has one queries field; raw type SaySSG is [String]."
+    },
+    {
+      "evidence": [
+        "ios-remote-v603-search-witness.json",
+        "ios-remote-v603-search-entry.asm"
+      ],
+      "conclusion": "View.body witness1a42024 loads queries and branches to1a41dec."
+    },
+    {
+      "evidence": [
+        "ios-remote-v603-search-body.asm",
+        "ios-remote-v603-search-body.json"
+      ],
+      "sites": [
+        "0x1a41e04",
+        "0x1a41e2c",
+        "0x1a41e3c",
+        "0x1a41ec8",
+        "0x1a41f08",
+        "0x1a41fb0"
+      ],
+      "conclusion": "Body constructs leading content with spacing6 and row closure1a41e58. Row formats enumeration index+1 followed by the small string . space, appends query, and enables text selection."
+    },
+    {
+      "evidence": [
+        "ios-remote-v603-query-row-type.json",
+        "ios-remote-v603-query-text-type.json",
+        "ios-remote-v603-query-style-helper.asm"
+      ],
+      "conclusion": "Returned row composition contains Text, font/color modifiers, enabled selection and FlexFrameLayout. Foreground helper74ee2c0 resolves ChatGPT/text/primary at8a51ba0."
+    },
+    {
+      "evidence": [
+        "ios-remote-v397-activity-types.json",
+        "ios-remote-v397-activity-container.asm"
+      ],
+      "conclusion": "Existing tool-activity ForEach/conditional returned composition includes WebSearchQueryList. Exact query producer mapping still needs tracing."
+    },
+    {
+      "evidence": [
+        "ios-remote-v603-search-body.asm",
+        "ios-remote-v603-query-font-helpers.asm",
+        "ios-typography-v303-findings.json"
+      ],
+      "sites": [
+        "0x1a41f2c",
+        "0x74e2728",
+        "0x74e2714",
+        "0xaad38d8"
+      ],
+      "conclusion": "Query row calls the shared body-style factory. Its initializer loads the verified SwiftUI.Font.TextStyle.body import. Complete subsequent font conversion and any environment overrides remain unresolved."
+    }
+  ],
+  "host_gap": "RemoteReplaySearchView only displayed one independent details string. It did not supply or render structured queries.",
+  "implementation_plan": [
+    "Add optional queries to independent replay snapshot with legacy decoding preserved. Nil retains legacy detail; explicit empty queries stays empty.",
+    "Render ordered, numbered, selectable query rows with source-backed leading spacing and primary color.",
+    "Pass synthetic query snapshots through existing lifecycle, persistence and expansion ownership."
+  ],
+  "independent_adaptations": [
+    "Replay envelope and synthetic query data",
+    "Stable row index identity in reconstructed SwiftUI host",
+    "SwiftUI body font and infinite-width leading frame in the independent host; complete official font conversion and frame payload remain unresolved"
+  ],
+  "unresolved": [
+    "Exact official font resolver and full parent modifiers",
+    "Query producer to activity payload chain",
+    "Search result/citation URL consumer; this query component does not establish a result-link callback"
+  ],
+  "failed_probes": [
+    "Body associated-type raw reference uses unsupported symbolic kind7; retained limitation.",
+    "7e1e4a8 is not a relative mangled type record; existing reader correctly rejected it. Actual row type7e1e4c8 decoded."
+  ],
+  "implementation": {
+    "completed": [
+      "Optional structured query snapshot with legacy details compatibility",
+      "Ordered numbered selectable rows, leading spacing6 and primary text color",
+      "Synthetic query revisions through existing turn identity, terminal handling and history persistence"
+    ],
+    "tests": {
+      "foundation": "passed; ios-remote-v603-text.log",
+      "ui": {
+        "summary": "ios-remote-v603-r1-summary.json",
+        "passed": 3,
+        "failed": 0,
+        "coverage": [
+          "Chinese light completed queries",
+          "English dark failed queries with long wrapping",
+          "Cancellation retains received queries",
+          "Cross-host isolation, disclosure reopen and process restart"
+        ],
+        "visual_review": "All three retained screenshots inspected. Numbered query rows are visible, primary text contrasts in both appearances, and the long English query wraps."
+      }
+    }
+  }
+}

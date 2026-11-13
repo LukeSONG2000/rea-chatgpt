@@ -1,0 +1,534 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "required_decisions": [
+    "Can directory failure use original text/image/retry and preserve the real action owner?",
+    "Does the previously named label-style factory supply recoverable row icon metrics?"
+  ],
+  "scope": "Two bounded static candidate groups only: Directory Entries RequestStateView failure/retry/default-loading boundary, and selected Label construction chain. No product edits, tests, builds, devices or network.",
+  "findings": [
+    {
+      "id": "F4-failure-original-content",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Directory failure closure0x19cbdb8 constructs ContentUnavailableView<Label<Text,Image>,Text,Button<Text>>. Failure is distinct from successful-empty folder. Title/image/actions can be restored with their original consumers, rather than host Unable-to-load-directory text and SF folder.badge.questionmark.",
+      "offsets": [
+        "Entries0x19cba44..0x19cba70 passes error closure0x19cbdb8 into RequestStateView initializer0x755f518",
+        "0x19cbe20..0x19cbe54 sets label0x19cbe68/description0x1d2cbb0/actions0x1d2cbe4",
+        "0x19cbe5c invokes native ContentUnavailableView.init(label:description:actions:)"
+      ],
+      "title": {
+        "key": "codex_remote_file_browser_load_failed_title",
+        "key_literal": "0x88c01f0",
+        "fallback_en": "Couldn't Load Files",
+        "fallback_literal": "0x88c0220",
+        "consumer": "0x19cbe80..0x19cbea4",
+        "original_293_values": {
+          "en": "Couldn't Load Files",
+          "zh": "无法加载文件"
+        },
+        "resource_index": 4591
+      },
+      "image": {
+        "factory": "0x74f70bc",
+        "consumer": "0x19cbebc",
+        "resource": "OpenAI/Symbols/exclamation-mark-triangle",
+        "literal": "0x8a55200"
+      },
+      "evidence": [
+        "ios-files-directory-fourth-20261113-raw/entries-failure-closure.asm",
+        "ios-files-directory-fourth-20261113-raw/failure-image-factory.asm",
+        "ios-files-directory-fourth-20261113-raw/failure-localization-293.json"
+      ]
+    },
+    {
+      "id": "F4-description-provider",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Failure description is captured provider-supplied String rendered through Text(StringProtocol:), not a fixed localized message and not an NSError.localizedDescription conversion in this closure. Current host retry/return explanation remains an independent adapter message unless a provider supplies the actual failure text.",
+      "offsets": [
+        "0x19cbdd4 reads String pair from failure callback argument;0x19cbdd8 stores it for capture",
+        "description closure0x1d2cbb0 reads captured String pair0x1d2cbc8",
+        "0x1d2cbd4→0x1d6fd24 loads String metadata slot0xaad6968=_$sSSN then tail-calls SwiftUI.Text(StringProtocol:)0x7c4a068"
+      ],
+      "limits": [
+        "Upstream error-to-String producer, redaction, localization and network error policy remain unresolved.",
+        "No original fixed Chinese/English description should be invented from the native ContentUnavailableView type."
+      ]
+    },
+    {
+      "id": "F4-retry-owner-and-style",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Failure actions contain an ordinary Button<Text> labelled Retry, with captured retry callback. The passed callback constructs the typed directory retry action and calls the same owner Handler; it does not create a new navigation or grant capability. This selected failure subtree has no explicit buttonStyle or role and no explicit title/description font or foreground modifier.",
+      "label": {
+        "factory": "0x75d28e0",
+        "consumer": "0x1d2cc00",
+        "packed_english": "Retry",
+        "tail": "0x75e1c5c→0x75db078 supplies same short-string key/default",
+        "resource_key": "Retry",
+        "resource_index": 2211,
+        "original_293_values": {
+          "en": null,
+          "zh": "重试"
+        },
+        "english_resolution": "Shared en entry null; original factory fallback Retry is used."
+      },
+      "constructor": {
+        "type_record": "0x7ce1b50=Button<Text>",
+        "site": "0x1d2cc1c→0x1daa04c→0x7c4b3ac",
+        "binding_slot": "0xaad5028",
+        "symbol": "_$s7SwiftUI6ButtonVA2A4TextVRszrlE_6actionACyAEGqd___yyctcSyRd__lufC",
+        "role": "No role argument in this initializer",
+        "style": "No explicit buttonStyle modifier in this exact returned failure content type/constructor; inherit native parent/system style."
+      },
+      "action_chain": [
+        "Entries0x19cba4c/0x19cba50 passes callback0x1d2ca40 and captured owner context to RequestStateView",
+        "failure callback0x19cbdb8 captures retry function/context argumentsx1/x2 atsp+0x30",
+        "actions0x1d2cbe4 loads captured function/context0x1d2cbfc;helper0x1543e8 passesx21/x20 as Button action function/context",
+        "callback0x1d2ca40 copies Entries.actionHandler through captured value and constructs empty-case raw3 at0x1d2ca58",
+        "0x1d2ca5c→0x1d9c80c zeros remaining payload fields then dispatches Handler functionx8",
+        "raw3 matches fourth empty case retryTapped in CodexRemoteFileDirectoryAction descriptor0x95ae428 (one payload case entryTapped precedes empty cases); typed name corroborated by existing parentDirectory raw2 consumer. Ordinal remains native layout evidence, never wire schema."
+      ],
+      "limits": [
+        "Complete upstream VM reload task/error lifecycle remains separate; independent host loadGeneration/cancellation/identity admission must not be advertised as recovered original transport.",
+        "No local modifier is not proof no indirect ancestor may override buttonStyle/font/color. Prefer native ContentUnavailableView inheritance; do not infer fixed dimensions.",
+        "Current borderedProminent is independent additional host styling; removing it restores the selected subtree absence of an explicit local override, not every environment."
+      ]
+    },
+    {
+      "id": "F4-label-constructor-correction",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "The selected0x7565e40/0x75861dc/0x40d148 chain is a convenience Label<Text,Image> initializer, not a LabelStyle/metrics factory. The old labelStyle attribution in third report is superseded for these exact offsets. No icon width/point size can be recovered from this chain.",
+      "offsets": [
+        "row0x19cc178 obtains entry title and0x19cc180..0x19cc18c picks image",
+        "row0x19cc1a0 invokes0x7565e40",
+        "0x7565e60..0x7565e6c supplies title callback0x75861dc and image callback0x40d148",
+        "0x75bb96c supplies Text/Image metadata and their View witnesses;imports0xaad3c50/0xaad4f30/0xaad3c40/0xaad4f20",
+        "0x7565e78 directly calls0x7c4b298 bound SwiftUI.Label.init(title:icon:)",
+        "title0x75861dc→0x7565f30 ends with Text(StringProtocol:)0x7565f70",
+        "image0x40d148 writes captured Image and retains value, then returns it"
+      ],
+      "correction": {
+        "prior_report": "ios-files-directory-third-20261113-findings.json",
+        "superseded_field": "F3-row-style-and-disclosure.label.label_style plus corresponding row-style unknown boundary",
+        "preserve": "Historical report and probes retained unchanged; source-backed body font/primary color/listRowInsets/background/disclosure facts remain valid."
+      },
+      "limits": [
+        "Complete selected row generic tree was reused and contains Label modifiers for font/foreground/frame, without an explicit labelStyle node. This is not a universal absence claim for every ancestor environment.",
+        "Use original Label<Text,Image> and already-proved semantic font/assets; do not add guessed fixed leading icon frame."
+      ]
+    },
+    {
+      "id": "F4-requeststate-closure-roles-loading-boundary",
+      "evidence_type": "official-artifact-observation-and-bounded-unknown",
+      "conclusion": "Prior third-pass role names were inaccurate:0x1d2ca38 is success-content forwarding,0x19cbdb8 is failure-content,0x1d2ca40 is retry owner. The first is not a loading spinner builder and the last is not a loaded-list builder. Default loading remains supplied by the generic RequestStateView initializer; exact original visible loading child/text/config was not closed in this bounded pass.",
+      "offsets": [
+        "0x1d2ca38 adds capture offset and tails0x19cbab0, which constructs loaded PlainListStyle/empty success branch",
+        "0x1d2ca40 constructs directory retryTapped action, not view output",
+        "RequestStateView descriptor0x9754ebc fields requestState/loadingPart/successPart/errorPart/retryHandler",
+        "initializer0x755f518 adapts to0x755f25c and supplies default loadingPart;selected generic Body typeref0x9452aea only establishes conditional generic contents, not selected concrete spinner parameters"
+      ],
+      "precise_unknown": "Concrete default loadingPart value constructed through0x755f518 helper inputs and selected generic substitution; current host ProgressView(\"Loading directory\") is independent pending that closure/configuration proof.",
+      "do_not": "Do not relabel the success list closure as source evidence for loading text or derive spinner size from initializer stack allocation."
+    }
+  ],
+  "localization_evidence": {
+    "method": "Read-only import of existing prepare-official-text.py decode function; main() never invoked, no product catalog generated/modified. Decode only SharedKeys plus en/zh compressed tables and exact selected keys.",
+    "sources": [
+      "Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/SharedKeys/keys.json.lzfse",
+      ".../en.json.lzfse",
+      ".../zh.json.lzma"
+    ],
+    "details": "ios-files-directory-fourth-20261113-raw/failure-localization-293.json",
+    "limits": "The original shared293 zh locale is Simplified Chinese. Null en Retry correctly means use supplied original fallback, not missing UI."
+  },
+  "safe_product_decision": {
+    "can_restore": [
+      "Original directory-failure ContentUnavailableView title key and image resource.",
+      "Original Retry label and callback to the existing scoped directory retry owner, retaining host request identity/cancellation safeguards.",
+      "Native failure content inheritance without an invented local borderedProminent override.",
+      "Continue ordinary original Label constructor and semantic row appearance; no extra dimensions from the misnamed factory."
+    ],
+    "keep_explicit_adapter": [
+      "Current failure description until a typed provider failure String is available.",
+      "Current loading label/spinner parameters until concrete default loadingPart is closed.",
+      "Offline loader loadGeneration/cancellation/persistence remain independent, not official server/VM behavior."
+    ],
+    "not_required": [
+      "No new fixed icon size/width or row height.",
+      "No new modal, navigation, backend or permission action.",
+      "No guessed haptic on retry/row taps."
+    ]
+  },
+  "haptics": {
+    "status": "unknown",
+    "scope": "Selected retry Button callback/typed Handler dispatch and Label construction",
+    "conclusion": "No explicit haptic emitter proved in these bounded paths. Handler eventual effects and inherited native control feedback remain separate; do not add vibration."
+  },
+  "validation": {
+    "product_changes": false,
+    "tests_run": false,
+    "builds": false,
+    "device_actions": false,
+    "target_execution": false,
+    "network": false,
+    "candidate_groups": 2
+  },
+  "probe_corrections": [
+    "A request to inspect import stub0x7c4b3ac with inspect_window was rejected because it lies outside __text; corrected to strict Reader stub instruction/binding decode, saved retry-button-binding.json.",
+    "loading-closure.asm is retained as an initially named probe, but its0x1d2ca38 target is success-content, not loading.",
+    "label-style-* filenames are retained probe names, not authoritative style classification. The direct imported initializer supplies corrected interpretation."
+  ],
+  "stop_condition": "Both requested groups answered to safe UI decision or exact default-loading boundary. Do not expand a third generic spinner or VM transport investigation.",
+  "evidence_manifest": [
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/button-action-retain-helper.asm",
+      "sha256": "5f7851ab0da5aaa15e9cf4f9dd61b1adb99eb198edef654fc94c35c9fedf543c",
+      "bytes": 499
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/button-action-retain-helper.json",
+      "sha256": "bd081074e3a85e663848fd655be1166237e7b743b20dca63f8a0cbd0ac2b3fae",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/entries-failure-closure.asm",
+      "sha256": "8733149fcfd339da1deeeef604c000a9943ed8b859d1c124fc21b72ce2806a52",
+      "bytes": 3666
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/entries-failure-closure.json",
+      "sha256": "2254e9894d0b7f468b5763bbd97a1a557fc0cb581b92fba099094a02136cd3d7",
+      "bytes": 3737
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/entries-retry-owner.asm",
+      "sha256": "d2f07ba964f6bf172fe396066f8097f078a8a6a95eb71c22e8f7500032083748",
+      "bytes": 676
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/entries-retry-owner.json",
+      "sha256": "76d3d7ac6ead55a549df1a11b23695b2c9e4b378b753e9834365a87950196c2a",
+      "bytes": 997
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/entries-state-root.asm",
+      "sha256": "0328279408e7198b249bdad4eebbfa98bff6e88411060477fa37cab4e7c6a630",
+      "bytes": 6082
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/entries-state-root.json",
+      "sha256": "326dea8bd61bb896afebff65158ce1431edbc0aaf4faf1926de0b108772f1c3d",
+      "bytes": 4740
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/factory-bindings.json",
+      "sha256": "88a22a4c6161dfb496997fdf156911fa8ab2e56dbe78865205f4028e5d55396a",
+      "bytes": 1147
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-actions-constructor.asm",
+      "sha256": "38802206205841240e8f7c9bdf64f95b90714e0b2505e75f9e8639e161d51cb9",
+      "bytes": 610
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-actions-constructor.json",
+      "sha256": "941e9610db23792aa070d2aa27e583f6d5de0c5f5a33e03cc949cae606cf9898",
+      "bytes": 940
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-defaults-helper.asm",
+      "sha256": "055158e12e7a5d9b4df5506d1c1ff7c139c3bf5d6e3c47f559d7878d7bb07dfe",
+      "bytes": 491
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-defaults-helper.json",
+      "sha256": "9e3c8773f6057f39090c5f7eedf5f54c9bf6b4dfd6e8315e9674d500e05a67b6",
+      "bytes": 930
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-description-and-actions.asm",
+      "sha256": "2aa20663a66c40c9eaff6b3b36c494492eed3fb8241ce1de211b3ddf22929b30",
+      "bytes": 2243
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-description-and-actions.json",
+      "sha256": "e30f3d898060b5e6b7823facd73b0578e81cefd06d9bf015e0b2ddc6877d4a51",
+      "bytes": 2547
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-description-format.asm",
+      "sha256": "c5f16f1b4aab511d57dfe8aaf562a77f1f1d0ee36287cbc6ff652b57232fd09a",
+      "bytes": 432
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-description-format.json",
+      "sha256": "15bc12f9bb856bd17d21e95eafa113355ee8df427fe79c0d9e2e350d3159b89b",
+      "bytes": 908
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-description-result.asm",
+      "sha256": "0ae56558b709090d789b80516019725b4c2fb26083d7e4da2c6f15dcc7a06e57",
+      "bytes": 612
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-description-result.json",
+      "sha256": "9a65633eb14ddc4bca5ee3c677737147d0e432abd12b00486858c6353b4acba8",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-image-factory.asm",
+      "sha256": "939f09489aa35de79e28bd97407b404ee144ff1e2b925ca0a102a8fe4c918e9b",
+      "bytes": 1218
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-image-factory.json",
+      "sha256": "8625daa897976632b2d96e26bcfba14ee91debf275d0341aa1e6d821397ebf81",
+      "bytes": 2115
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-literals.json",
+      "sha256": "953f2c85ceb624ca25d58524ea6145173822a5cd4243428ae22726d21c7cd0e6",
+      "bytes": 103
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-localization-293.json",
+      "sha256": "3679bf07d46dbcb5de2919f461a8169acfb6a9aee11e4c4a334c10d6aeb8c983",
+      "bytes": 1403
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-text-description-dispatch.asm",
+      "sha256": "6fe4fc7b16dbb7412ef971101ac559f02446178e423ac04bfbeb77ab7d4ef2b7",
+      "bytes": 542
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-text-description-dispatch.json",
+      "sha256": "c642f3e1406d82fb61199202fb1fb4d356af864221e703d4eb93526769ea5d59",
+      "bytes": 930
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/failure-type.json",
+      "sha256": "5167af28ba69819ea256b1fea86274dfd14e5989a7fafb5f5e8f969c67888455",
+      "bytes": 897
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-constructor-complete.asm",
+      "sha256": "38c69cf1edf41ae993cd2450652f996fe2efa293eb5ec3b88301329de3b20386",
+      "bytes": 1174
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-constructor-complete.json",
+      "sha256": "588423555c3d20cfaec3b83736935330f42556b3e1af0b14f3c6914485e8b1ec",
+      "bytes": 1785
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-constructor-helper.asm",
+      "sha256": "1644e779fcbdb6df818e31c8eaf7b2babcc843ac2e28aad81fe58566b76829f7",
+      "bytes": 964
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-constructor-helper.json",
+      "sha256": "54e267eade6d1bf025069aeac7c8f6fd5cd0c3444799afcfab79c14e96fb9524",
+      "bytes": 930
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-style-body.asm",
+      "sha256": "db003b610f665b28f5e32a191852dafbfaeec5f70ce3439b73252d7effe5433b",
+      "bytes": 7645
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-style-body.json",
+      "sha256": "a5d807206bffdaccdd614c50ab90f051068062d8eeab00bfc1420d215644758f",
+      "bytes": 7746
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-style-factory.asm",
+      "sha256": "715701fb14e5ce5fe82e0003cfb41b5a3c15741e7b812e9358755f27246f80bc",
+      "bytes": 1141
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-style-factory.json",
+      "sha256": "db50aeca389cc32a876f8ec8b3e770db9465a1955860866060badabb66aba11f",
+      "bytes": 1229
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-style-helper.asm",
+      "sha256": "4745ea5d98c27324995b9839ef448c64874db9b0bb279020fd867c26f847fec1",
+      "bytes": 765
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-style-helper.json",
+      "sha256": "a5dc371520ee6d7fd68e593996f9b9614ea5305953319f5abf0f652f09c1ba17",
+      "bytes": 996
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-style-witness-helper.asm",
+      "sha256": "5173e6dd559b6aeb8eb20232e5f59b00bf4c0f434753650771851fdd8a226f2e",
+      "bytes": 622
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/label-style-witness-helper.json",
+      "sha256": "fce0c26858b299a33dc7ad564f91c3c038689a82a3531055b11f415e72dfa2aa",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/loading-closure.asm",
+      "sha256": "bd3572451284e00ff710656d8cd0cd1e9f145240e51c52f99edaa9363027494c",
+      "bytes": 774
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/loading-closure.json",
+      "sha256": "caf1b65a34692b0385530abcfda0a5884fa9a7566ed0f2e306f3f87f9f992bca",
+      "bytes": 1014
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/request-state-body-type.json",
+      "sha256": "5536e1fabbb185fe3b4b358087c62e9771af4ed73194fcbdcfb0eca8db41f606",
+      "bytes": 773
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/request-state-body-witness.asm",
+      "sha256": "f0eaaa1223264cfe29552f57d3e2ddbe7bb948c392c472133174e5456bd6057a",
+      "bytes": 231
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/request-state-body-witness.json",
+      "sha256": "8edc9dea263f6d2e020d2c1192be9941a8b9ae85a042854c8bb1f91cc9b45e8e",
+      "bytes": 896
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/request-state-default-loading.asm",
+      "sha256": "53177763a8949156a01b382cb1993038e600c0cc2d014b6b6c36bd0f7b6b5d6a",
+      "bytes": 3894
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/request-state-default-loading.json",
+      "sha256": "3c818331cc87e59654acbab168d956062b40dfea96b97d35bd03169f9351b8b6",
+      "bytes": 3762
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/request-state-initializer.asm",
+      "sha256": "6a435e39b3c845e56b54244b9e6880fc1cde04478521ca45e099fe0162e25e30",
+      "bytes": 4669
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/request-state-initializer.json",
+      "sha256": "0f3322be2f258db883db474533a02a76a86a50c8614468fbc91c445e5cfbde53",
+      "bytes": 1995
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/request-state-view-metadata.json",
+      "sha256": "8f8954004cd4c04b691a1b2469587542086ea91d65b4c409bc972e7e69fd6a6d",
+      "bytes": 1494
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/requeststate-witness-84b88c4.json",
+      "sha256": "7a20d59475280d68d78c17161efbce9d9595b3dd423b8d753ffe307b09036b36",
+      "bytes": 4613
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-action-closure-setup.asm",
+      "sha256": "472de4f2eae97cb5509a025c60bda08522e83628d76ee8cca205f3ffeb9c3410",
+      "bytes": 675
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-action-closure-setup.json",
+      "sha256": "a25292ac11575b4e08b15a669344a145c6a6fe05da979737b81550a5c04627c4",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-button-action-supply.asm",
+      "sha256": "59a4e40b56193ac9a302b5761136d000cab46729adab685dffab7d87acfb9209",
+      "bytes": 426
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-button-action-supply.json",
+      "sha256": "dd5acf8d9b97a3a431adcf44d37e3c94ddebc9fb1168d40d69f949b6146748da",
+      "bytes": 930
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-button-binding.json",
+      "sha256": "a300ef606fcf2d934ee941b7b31fa23c21389abe63db7ce96b8542152fcae69a",
+      "bytes": 435
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-button-constructor.asm",
+      "sha256": "4b7cecc9fb20d2d60dfe833d93750565abd99c60635868c00421a6be2c48aab0",
+      "bytes": 587
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-button-constructor.json",
+      "sha256": "9537f725f896ec38861c1c090bb26cf9bc25f70d25e92b0dd59e67bdc7f3c9e8",
+      "bytes": 947
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-handler-dispatch.asm",
+      "sha256": "51698ee1a07ad3e6220dbfddb751715ea5a9040b3b6d4dbb8780b5b910a97a24",
+      "bytes": 495
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-handler-dispatch.json",
+      "sha256": "4e2e04ada882095b51caccefc0e14b4ea0b6ce03d165c25932b5c7af1726f93c",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-localization-tail.asm",
+      "sha256": "d75fc6bea941fcf9af1d7486575797e1d20c4dc86be24b92651edb997e1a6040",
+      "bytes": 573
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-localization-tail.json",
+      "sha256": "13a8a0f0d45873ff9a330c811daf8b82f1c61ce8a72c5430e370bd88d65bd810",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-title-factory.asm",
+      "sha256": "d34b3b7a42fd7879ca90d6ff72d521bd3f0a9946cc9f2779f96e886bbe94530f",
+      "bytes": 1255
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/retry-title-factory.json",
+      "sha256": "dec3c048c916f324bb6be99f8788fe9aaadf715fdcee6fb348e95ebffbd2cab5",
+      "bytes": 947
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/row-labelstyle-callsite.asm",
+      "sha256": "814c440117ba97980d096a3dfdb9e9577af26c3f4efc336282faa2bcc148bc07",
+      "bytes": 1038
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-fourth-20261113-raw/row-labelstyle-callsite.json",
+      "sha256": "6f06ab8be2800f94ce6a09949b628bd438a451d234b4b65b2e015cf7812bc90c",
+      "bytes": 1667
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-parent-20261113/row-tree.tree.txt",
+      "sha256": "36dade51471b88e1fd43d7f6d1d26f6ad6b0f2e79a044abeb03d8ce703f301ed",
+      "bytes": 15865
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-parent-20261113-findings.json",
+      "sha256": "e287252b28bb0e48dad345a1cc871b438a61baa990c571a7b609c6358f993495",
+      "bytes": 11437
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-directory-third-20261113-findings.json",
+      "sha256": "8d1238552db05c22063920e205a6b68e9ad0536644a6e0c57774c6105f379690",
+      "bytes": 9808
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-v589-directory-action-enum-evidence.json",
+      "sha256": "25d690a943c793ab2c90e089f94558fe0c1db6db3377dd3d3bc05ef882024823",
+      "bytes": 717
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-v589-directory-row-helper-evidence.asm",
+      "sha256": "be4e4376f4d9de6a3204abf17fc5d2a8889e52996ecc90339095b26e87fd096a",
+      "bytes": 16239
+    }
+  ]
+}

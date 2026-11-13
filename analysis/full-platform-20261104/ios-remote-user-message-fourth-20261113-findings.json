@@ -1,0 +1,455 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Module4 Remote ordinary user bubble. Two bounded groups: UserMessageBubble ordinary content→MarkdownPart and its line-limit/expansion owner; specialized CodexRemotePromptMarkdownBlocks consumer. Static metadata/LLVM only.",
+  "authority": "official-artifact-observations plus explicitly labelled inferences and current-host inspection",
+  "findings": [
+    {
+      "id": "current-host-gap",
+      "evidence_type": "current-source-observation",
+      "conclusion": "RecoveredRemoteUserMessage currently renders Text(text), .font(.body), textSelection enabled and independent intrinsic-height repair. Its source-backed outer proportional layout, padding, background and shape already exist; ordinary user MarkdownPart and specialized renderer remain absent.",
+      "source": "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift:6",
+      "snapshot": "ios-remote-user-message-fourth-20261113/current-user-bubble-source.json",
+      "limit": "The current .body font and textSelection modifier are host adaptations, not newly recovered body typography/selection policy."
+    },
+    {
+      "id": "actual-markdownpart-consumer",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Ordinary user text uses a dedicated MarkdownPart, not a generic assistant MarkdownBlockStack and not plain Text. UserMessageBubble body constructs text surface through1a6b67c→1a6c830; the construction uses MarkdownPart accessor1cee9d4 and its View conformance7e21958.",
+      "offsets": [
+        "UserMessageBubble descriptor0x95addb4; View conformance0x7e1a3a8; body0x1a6d86c→0x1a6a06c",
+        "Text surface0x1a6b67c;0x1a6b720→0x1a6c830",
+        "0x1a6c998→MarkdownPart accessor0x1cee9d4;0x1a6c9cc passes conformance0x7e21958",
+        "MarkdownPart descriptor0x95afc44; View body witness0x1a6c140→0x1a6b980; tagged Body witness normalized0x8e56450"
+      ],
+      "metadata_fields": [
+        "id",
+        "text",
+        "userInputs",
+        "preparedProjection",
+        "parsedMarkdown",
+        "autocompleteItems",
+        "markdownOptions",
+        "linkHandlers",
+        "menus",
+        "collapsedLineLimit",
+        "showsExpansionButton",
+        "_isExpanded",
+        "_traitCollection",
+        "__renderer"
+      ],
+      "limits": [
+        "Field metadata establishes names/types, not live values or capabilities.",
+        "Selected constructed branch and references establish actual local consumer. Complete root owner choice for every special goal/question/delegation user message is outside this pass."
+      ],
+      "evidence": [
+        "ios-remote-user-message-fourth-20261113/markdown-part-metadata.json",
+        "ios-remote-user-message-fourth-20261113/markdown-witness-7e21958.json",
+        "ios-remote-user-message-fourth-20261113/bubble-markdown-content.asm",
+        "ios-remote-user-message-fourth-20261113/markdownpart-construction-tail.asm",
+        "ios-remote-v565-bubble-content.asm",
+        "ios-remote-v565-bubble-markdown.asm"
+      ]
+    },
+    {
+      "id": "dedicated-renderer-and-parent",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "MarkdownPart builds an actual CodexRemotePromptMarkdownBlocks content child and optional styled Button<Text> expansion sibling. Prompt blocks owns a leading VStack/ForEachWithIndex over attributed Markdown blocks, with MarkdownTextBlock consumer and per-block padding. Reusing the assistant renderer wholesale would discard this dedicated projection/configuration boundary.",
+      "offsets": [
+        "MarkdownPart0x1a6bcd4 invokes CodexRemotePromptMarkdownBlocks accessor0x1d19b0c",
+        "Prompt blocks descriptor0x95b1754; conformance0x7e247c8; body0x1a08b40→0x1a08658",
+        "Prompt block row callback0x1a0872c→0x1a0886c;0x1a087f4 invokes OAIMarkdown constructor0x693c30c",
+        "0x1a086a0 and0x1a08780 choose HorizontalAlignment.leading;0x1a08820 Edge.Set.all"
+      ],
+      "prompt_fields": [
+        "id",
+        "content",
+        "inlinePromptReferenceMarkdownProjection",
+        "autocompleteItems",
+        "markdownOptions",
+        "linkHandlers",
+        "menus",
+        "lineLimit",
+        "_colorScheme"
+      ],
+      "body_type_evidence": [
+        "ios-remote-user-message-fourth-20261113/markdown-body-type.json",
+        "ios-remote-user-message-fourth-20261113/prompt-blocks-body-type.json"
+      ],
+      "limits": [
+        "Symbolic references are retained as references, not falsely labelled a fully expanded generic tree. Construction/control-flow supplies containment and sibling evidence.",
+        "Exact block padding value/body font/MarkdownOptions defaults/reference menu admission are not closed.",
+        "InlinePromptReferenceMarkdownProjection semantics and URL/file actions must remain separate from ordinary assistant link policy."
+      ]
+    },
+    {
+      "id": "line-limit-production",
+      "evidence_type": "official-artifact-observation-and-bounded-inference",
+      "conclusion": "There is no verified universal collapsed line limit. The selected bubble producer computes40 or2 in different branches and writes the result into MarkdownPart storage+0x180, later loaded as renderer call argumentx6. Branch meaning and original top-owner capability selection remain unresolved, so neither value is safe to hardcode globally.",
+      "offsets": [
+        "0x1a6cbe8 sets40",
+        "0x1a6cc5c sets2",
+        "0x1a6cd04 tests previously computed branch bool;0x1a6cd08/0c load2/40;0x1a6cd10 selects",
+        "0x1a6cdb0 stores result at+0x180",
+        "0x1a6baa4 loads+0x180 into x6;0x1a6bac0 calls original renderer0x1a01618"
+      ],
+      "corroboration": "User-message renderer Input descriptor0x95abc28 has text/parsedMarkdown/markdownOptions/isExpanded/traitCollection/collapsedLineLimit, independently retained in ios-remote-v476-render-context.json.",
+      "limits": [
+        "Slot+0x180 attribution to collapsedLineLimit is corroborated by constructor/call ABI and declared renderer Input, but static metadata cache0xb1e01e0 is not file-backed; complete runtime field-offset vector is not claimed.",
+        "Do not infer branch identity from autocomplete, item names, nearby raw enum values or screenshot size.",
+        "Do not use char count, newline count or plain Text measurement as recovered original renderer truncation result."
+      ]
+    },
+    {
+      "id": "expansion-gate-and-action",
+      "evidence_type": "official-artifact-observation",
+      "conclusion": "Expansion is owner-configurable and renderer-result driven. Producer writes optional Bool raw2 (nil) at+0x188. Consumer uses the explicit bool when non-nil; for nil it shows the button only when the renderer-result byte is raw1. Button action sets the captured expanded Binding to true; it is not a toggle.",
+      "offsets": [
+        "0x1a6cdb4/0x1a6cdb8 store raw2 at+0x188",
+        "0x1a6bdbc reads+0x188;0x1a6bdc0..c8 compares renderer-return byte to1;0x1a6bdcc..d0 selects fallback only forraw2;0x1a6bdd4 skips Button iffalse",
+        "Renderer0x1a6bac0→0x1a01618 returns projected result;0x1a6bb38 receives third resultw2;0x1a6bb64 stores lowbyte later compared",
+        "0x1a6bea0/0x1a6bea4 capture actual action0x1d19c30",
+        "0x1d19c4c→0xc1aa84 writes byte1 atsp+0xf",
+        "0x1d19c58 uses captured Binding+0x190;0x1d19c5c calls Binding.wrappedValue setter",
+        "0x1a6ba78..0x1a6ba90 reads same Binding for renderer input isExpanded"
+      ],
+      "label": {
+        "key": "codex_remote_show_full_message",
+        "key_address": "0x88bdf20",
+        "fallback_en": "Show full message",
+        "fallback_address": "0x88bdf40",
+        "initializer": "0x1a6ddb8;0x1a6ddcc..dddc forms full30-byte key using helper0x1844230(+13 to supplied17);0x1a6dde4..ddec loads fallback17-byte string;0x1a6de0c caches pair at0xb1e8828",
+        "localization_limit": "The selected app-level en/zh Localizable.strings did not contain this key; framework/bundle-specific translated value was not expanded in this bounded pass. Do not claim Chinese source exact text."
+      },
+      "style": {
+        "observed": [
+          "PlainButtonStyle initialized0x1a6bec4",
+          "AutomaticHoverEffect initialized0x1a6bf18",
+          "top padding modifier at0x1a6bf68; exact value not closed",
+          "Font.Weight.medium at0x1a6bf94 applies to expansion sibling, not body text"
+        ],
+        "unknown": [
+          "actual semantic font/size and foreground resource of expansion label",
+          "renderer result raw1 enum case name/complete transition and collapse conditions",
+          "default40/2 producer branch meanings",
+          "view-state persistence owner beyond captured Binding"
+        ]
+      },
+      "evidence": [
+        "ios-remote-user-message-fourth-20261113/markdown-body-complete.asm",
+        "ios-remote-user-message-fourth-20261113/markdownpart-construction-tail.asm",
+        "ios-remote-user-message-fourth-20261113/expand-label-wrapper.asm",
+        "ios-remote-user-message-fourth-20261113/expanded-value-calculation.asm",
+        "ios-remote-user-message-fourth-20261113/expanded-binding-helper.asm",
+        "ios-remote-user-message-fourth-20261113/expansion-label-initializer.asm",
+        "ios-remote-user-message-fourth-20261113/expansion-label-helper.asm",
+        "ios-remote-user-message-fourth-20261113/expansion-label-resources.json",
+        "ios-remote-user-message-fourth-20261113/expansion-label-localizations.json"
+      ]
+    },
+    {
+      "id": "already-restored-and-not-new",
+      "evidence_type": "official-artifact-observation-reused",
+      "conclusion": "The ordinary outer bubble parameters already in host remain supported: trailing horizontal proportional width0.78; trailing VStack spacing6; text-surface Edge.Set.all insets9,15,9,15; RoundedRectangle radius20; default OneOff/UserMessageBackground and separate accent-dependent background. No new body-font or optical material parameter is established here.",
+      "source_reports": [
+        "ios-remote-v565-findings.json",
+        "ios-remote-v566-findings.json"
+      ],
+      "limits": [
+        "These shape/padding/background facts do not prove the plain Text renderer itself source equivalent.",
+        "Do not use the expansion label medium weight or a nearby font value as user-body typography.",
+        "No glass/blur material in the selected ordinary surface constructor; not a global absence claim for all user-message variants."
+      ]
+    }
+  ],
+  "integration_decision": {
+    "safe_new_product_change": false,
+    "reason": "Already recovered outer geometry/color are present. Newly closed expansion action/label cannot be made equivalent without the original renderer truncation result and effective collapsed-line-limit producer. A local guessed collapse would add another adapter rather than restore missing source behavior.",
+    "can_define_without_faking": [
+      "Explicit frontend presentation contract with owner-supplied collapsedLineLimit, optional showsExpansionButton, expanded Binding and renderer-provided truncation/result state.",
+      "A shared dedicated prompt renderer boundary that preserves source text, parsed user Markdown, projection, options, linkHandlers and menus separately from assistant rendering."
+    ],
+    "keep_current": "Plain Text remains explicitly independent until that renderer/producer is closed. No silent generic assistant Markdown replacement.",
+    "next_minimal_evidence": "Resolve renderer0x1a01618 returned projection/result enum raw1 and selected parent branches that assign40/2; bind only the ordinary user case before implementing collapse."
+  },
+  "haptics": {
+    "new_recoverable_trigger": false,
+    "boundary": "Selected expansion action1d19c30 directly sets a Binding; no explicit haptic dispatcher is observed in this scoped action path. Shared SwiftUI Button/platform feedback and other menu/link consumers were not established; do not add feedback to every user-message tap."
+  },
+  "probe_corrections": [
+    "Initial import inspect_address was invalid and failed before any binary read; corrected to inspect_raw_type.",
+    "File expand-button-action.asm is a neighboring image/resizable/accessibility component window, not the expansion action. The actual captured action is1d19c30, independently saved in expand-label-wrapper.asm. Do not use the filename as an action proof.",
+    "Metadata cache0xb1e01e0 is not file-backed; static direct layout values cannot be extracted by reading that runtime cache.",
+    "The source extraction helpers bound indirect argument/type references only as far as inspected; no general call graph or fully recovered Markdown engine is claimed."
+  ],
+  "validation": {
+    "product_changes": false,
+    "builds": false,
+    "device_actions": false,
+    "target_execution": false,
+    "network": false
+  },
+  "stop_condition": "Two scoped candidate groups completed. Existing current geometry kept; unknown renderer-result and effective line-limit producer explicitly retained, no third group or broad parsing project opened.",
+  "evidence_manifest": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/bubble-markdown-content.asm",
+      "sha256": "8a054f1ad3f85772c2bfcaf5ef825b381790cd7d23059cd59b3cbf149a894135",
+      "bytes": 12660
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/bubble-markdown-content.json",
+      "sha256": "53c659e3d6f30b8c824a3e890babe982e464d310e81d043d06e0f6171d80b690",
+      "bytes": 9443
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/current-user-bubble-source.json",
+      "sha256": "d7ebe202c2ad0678b7fe4413dfa87f3bfa45a3c813cdc03a64a423c03d66993c",
+      "bytes": 2398
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expand-button-action.asm",
+      "sha256": "323365d5b1eafe4e0ea1aebf7c35caa7585a34001347a7c8d0db1c02e1fb4a16",
+      "bytes": 4638
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expand-button-action.json",
+      "sha256": "855ab558d69e0eaf9d1ecd86ed379874b62506dee2a0780c8cbfef7f8d21b946",
+      "bytes": 5722
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expand-label-wrapper.asm",
+      "sha256": "d1f9358f2e6d28b532649ff0ca882d472de6c0abc869ba8845e177429a4193f0",
+      "bytes": 1452
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expand-label-wrapper.json",
+      "sha256": "ec29800493d7f1c71591b736c9dc415dbad036b6fab3e1355d9f6fd9317a0103",
+      "bytes": 1857
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expanded-binding-helper.asm",
+      "sha256": "81e6539561f08c6859b62e07bafedf15c9129d476c184d9060dd592a27892225",
+      "bytes": 391
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expanded-binding-helper.json",
+      "sha256": "64b21cd52ce96cb0b3efe946eabba56821c07ef4066554cc8b5918d7f73934d8",
+      "bytes": 908
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expanded-value-calculation.asm",
+      "sha256": "3bb450801cbd9a0e3aa363dd579925cf952fb6dd21ed3730d82fbaf83ad77091",
+      "bytes": 795
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expanded-value-calculation.json",
+      "sha256": "ec27f0cc2f1e58593d75644a22f5e7ed9e682dfc1057b7eac28471bf6335e9cd",
+      "bytes": 940
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expansion-label-default-helper.asm",
+      "sha256": "e3316e4fdeea44dfc075c392e3fe2fb0d7f8b3022663740f1b670b74cd7c51f5",
+      "bytes": 790
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expansion-label-default-helper.json",
+      "sha256": "799b4dfd28712a317dedb61a7bf4cd38beda330ef91a20430ccff30e93950b12",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expansion-label-helper.asm",
+      "sha256": "7d96db0d83a65d16d1871b7b117e7ff65dff9cf8eb0aceb52d7a27f2d9f2f6a3",
+      "bytes": 515
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expansion-label-helper.json",
+      "sha256": "c65f3b0121efc0337e0cd67f3276ca1005f72605551f06ddd75dddc91fecf92b",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expansion-label-initializer.asm",
+      "sha256": "7291b3b663e6b78ba92ba9330fc288d59416da6f690f5c8e4ee3eccd6329430d",
+      "bytes": 2772
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expansion-label-initializer.json",
+      "sha256": "919f78aea9ad6a259d5ee2d1815d00bcee47c7602b2a6b7e8701f101e2fca0eb",
+      "bytes": 2519
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expansion-label-localizations.json",
+      "sha256": "7226daf2e5ed3693c97eaddf6e931c7aa326935d5fc93518c80acb160d422fcb",
+      "bytes": 493
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/expansion-label-resources.json",
+      "sha256": "94281bfe665e0e3c53a7fb8ed07da35f2b80f6963f87aa3dacbd42dd241f2ea8",
+      "bytes": 88
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/field-layout-descriptor-headers.json",
+      "sha256": "5dfb37174377290f1ab809c866922c74bb27c724a95b2d825e3cde33967a494c",
+      "bytes": 524
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-body-complete.asm",
+      "sha256": "1455948d002c2e81bcbe512061b16ef1fb21a228e51c55a1439a21d578b114e0",
+      "bytes": 25251
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-body-complete.json",
+      "sha256": "c14a23152b0d2b04b94f38c793ca290f3a9f3ca17afebc7c3fd9687838cd6290",
+      "bytes": 22805
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-body-type.json",
+      "sha256": "a7f52cdc50ade67c2a895b30733453ee4204b829df89423e1240e17e08d2ef34",
+      "bytes": 3279
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-body.asm",
+      "sha256": "8f650d00d528029cdf10edd8cac17c8647cbe6c47eeaab71f74bb400dbd7698a",
+      "bytes": 18250
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-body.json",
+      "sha256": "2a3673e20f7a0e22b971685df5a018c38fc9226c568193589e419ebfcd6bc152",
+      "bytes": 16581
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-expansion-action.asm",
+      "sha256": "e547d0a8f63196386570d9a79f1831e31577d8cb200c1471d6bd668b9e0f907f",
+      "bytes": 920
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-expansion-action.json",
+      "sha256": "e09dd72ae788fe52d98898b8e335777912c11692f1b57602a2e71edd93f488b1",
+      "bytes": 1013
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-layout-init-headers.asm",
+      "sha256": "e5ac86fd0e9dedf7d89b506c72d2384cac7ea0d316a353520e21be46693907ee",
+      "bytes": 735
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-layout-init-headers.json",
+      "sha256": "18566b1c422876570d4f147fe95aefc8196714a2f746837188661adf76144e1c",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-metadata-completion.asm",
+      "sha256": "fc78fa5770f89242b8c228dbd0c17d46282bf180c79f1a0284695b2cfc57ad48",
+      "bytes": 4898
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-metadata-completion.json",
+      "sha256": "83761753b4984880658a81677131ae91e40b37e1c14c5b59f23b4dd3c4f5e5cb",
+      "bytes": 3442
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-part-metadata.json",
+      "sha256": "7efb4daeb33d7b8260633918b1d8546432eb3eea2487757355be3fc3ff6bf810",
+      "bytes": 2651
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdown-witness-7e21958.json",
+      "sha256": "23f7e33526a88ebdde489a77b142d81ec432345a9e7847d126fdf72145a228bb",
+      "bytes": 4614
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdownpart-accessor.asm",
+      "sha256": "91deff43a79b4f29977e1acadcec3873da965a2779a1090671b48160cb764730",
+      "bytes": 1739
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdownpart-accessor.json",
+      "sha256": "9c89d350501b47574a26a2427a446cd158cfce20f5386ee323df086cb2a1d6e2",
+      "bytes": 2290
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdownpart-construction-tail.asm",
+      "sha256": "a45889b0955046d56183dead9d10788f22ec5c155260c0ada95dcb5044972815",
+      "bytes": 6766
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/markdownpart-construction-tail.json",
+      "sha256": "9276afdac8175ce9174debf51e4f8dc10880b9515d5160b1955f7ce16a452c8f",
+      "bytes": 6537
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/prompt-blocks-body-type.json",
+      "sha256": "b0177b39bbe754396b5c31252dd6a74d99cd09e25158f383e9da224212e65383",
+      "bytes": 1996
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/prompt-blocks-body-witness.asm",
+      "sha256": "da0a4797a39db30425f8d213114ea7d613c15c88d6875e4e3df5b4928ad59c27",
+      "bytes": 543
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/prompt-blocks-body-witness.json",
+      "sha256": "514212bfcdf03dd984663a4ae76e676dfa026470e0543b2e98228d1fbc291aa6",
+      "bytes": 1013
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/prompt-blocks-body.asm",
+      "sha256": "780a4d7f2c08c7f734dead95ae356d590d36faa238748ec44b3592230b5e2e47",
+      "bytes": 15780
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/prompt-blocks-body.json",
+      "sha256": "b6bc05501b301a2d9d79fb17b6ffff9d083ee1f6a11bde252b096b25332b0f04",
+      "bytes": 13301
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/prompt-markdown-blocks-metadata.json",
+      "sha256": "8ceffc1b451f47d85503ad75bc37dd6e4d3fdd1db7e76f59d6d8c1b06238ba78",
+      "bytes": 2036
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/prompt-markdown-witness-7e247c8.json",
+      "sha256": "e9599cfabb535f8f4e3097c673df7860eba03fbe61f51db3fc4bfa66428ea6f2",
+      "bytes": 4614
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/renderer-input-call-helper.asm",
+      "sha256": "9b9d371fca305965f164d0af085b1fd88adb24a06b791c28386f5852d076b8d1",
+      "bytes": 425
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-user-message-fourth-20261113/renderer-input-call-helper.json",
+      "sha256": "310c20b879134a70bda759eb7f5c230418149f9a99b5d3816a8dd30431858e40",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v476-render-context.json",
+      "sha256": "affa2850d3aaa122827f27472d6913ae01da43102254f1c1fc1481352d6cfc9a",
+      "bytes": 11464
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v565-bubble-content.asm",
+      "sha256": "189a57de87d171bf76b07181049f12f229535d84089b8e43ae283f6210d60e11",
+      "bytes": 20989
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v565-bubble-markdown.asm",
+      "sha256": "dce2236babbc896dc7038b434383d5de88d67ba9413c81dcd9974eb60c6b843e",
+      "bytes": 25772
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v565-findings.json",
+      "sha256": "f053a2ccfd75732e4744fe36f249e4951d6e119241816941dc803d1022590408",
+      "bytes": 3449
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v566-findings.json",
+      "sha256": "87e64b3042384fa5391d89c5de3d6ffe69035f3fa1974f5c245cf8d77fc2885d",
+      "bytes": 4151
+    }
+  ]
+}

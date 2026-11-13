@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T12:06:43.593153+08:00",
+  "module": 4,
+  "scope": "Remote message page fourth pass; source-gated whole-page audit",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: Remote list row integration and two runtime journeys completed",
+  "product_changes_this_pass": false,
+  "new_build_this_pass": false,
+  "source_reports": [
+    {
+      "path": "ios-remote-user-message-fourth-20261113-findings.json",
+      "sha256": "a5ddfbc5d28ebeb187d48848208951dbc8f39467233ed083940748f59d104ff2"
+    },
+    {
+      "path": "ios-remote-reasoning-fourth-20261113-findings.json",
+      "sha256": "ad970f2ef4208dba00cf5e3f7467b94f9b8989ff7d7e01540dd7b4131460413d"
+    },
+    {
+      "path": "ios-remote-scroll-lifecycle-fourth-20261113-findings.json",
+      "sha256": "8fa02c6d10c39ebe32baa704f06d828a3380cbd15c1ad15f3b8d9ca851e398a0"
+    }
+  ],
+  "retained_core": [
+    "Ordinary task entry/back with scoped reading and disclosure state",
+    "Text/basic Markdown/code/tables, native selection and clipboard",
+    "Tool activity/command output/search/file changes/error and retry entry",
+    "Completed reply copy and independent event-owned completion timestamp",
+    "Scroll-to-bottom, file citations and browser/file preview routes"
+  ],
+  "new_evidence": [
+    {
+      "question": "ordinary user message",
+      "observation": "Dedicated MarkdownPart -> CodexRemotePromptMarkdownBlocks, not Text. Expansion label codex_remote_show_full_message, fallback Show full message; action writes Binding=true. Renderer returns expansion visibility; caller supplies conditional40/2 line limits.",
+      "decision": "Retain existing source-backed bubble geometry, do not guess universal folding or assistant-style parsing. Preserve specialized renderer as an explicit missing feature."
+    },
+    {
+      "question": "reasoning body",
+      "observation": "Summary normalized into ThinkingStatus is distinct from content; checked candidate functions operate on existing render arrays/cache or a different keypath/factory.",
+      "decision": "Do not call summary-only rendering full reasoning recovery. Full content producer/consumer remains unimplemented."
+    },
+    {
+      "question": "initial scroll and pinned restoration",
+      "observation": "Remote anchor is dynamically computed; one-time appearance admission, completion flag and guarded layout restoration are separate. Protection true-to-false invalidates generations, not another bottom scroll.",
+      "decision": "Retain independent identity reading adapter. Do not add default bottom scrolling without actual Remote owner configuration."
+    }
+  ],
+  "not_implemented": [
+    {
+      "feature": "Full private prompt renderer options/references/menus and source preparation policy",
+      "breakpoint": "MarkdownPart1a6b980 -> PromptMarkdownBlocks95b1754; full renderer1a01618 return status and caller40/2 branch identities",
+      "next_action": "Fifth pass restores prepared full/collapsed parent and one-way expansion with native block/resource adapter; close actual40/2 owner and exact preparer/private rendering before claiming full equivalence."
+    },
+    {
+      "feature": "Full reasoning content and disclosure, DIL",
+      "breakpoint": "content payload+0 to RenderedItem/Fragment consumer; summary payload+24 already separate",
+      "next_action": "Actual typed producer/consumer rather than adjacent getter or numeric-case search"
+    },
+    {
+      "feature": "Original full initial-position/pinned/animated-update lifecycle",
+      "breakpoint": "Remote1a4c198 constructor, dynamic anchor1a4c35c..3b0, original state getters and initialLayoutPosition provider",
+      "next_action": "Bind owner field identities and inputs before replacing current reading-state adapter"
+    },
+    {
+      "feature": "Full heterogeneous item projection, feedback/fork/hook owner and full optical fidelity",
+      "breakpoint": "Prior message parent/footer reports retained",
+      "next_action": "Specific supplied capabilities/action owners and content/render configuration; no unconditional fake buttons"
+    },
+    {
+      "feature": "Message attachments and backend services",
+      "next_action": "Attachments deferred; backend capabilities remain interfaces only"
+    }
+  ],
+  "haptics": {
+    "new_explicit_caller_proved": false,
+    "new_feedback_added": false,
+    "retained_gate": "Settings > General > Haptic feedback; persistent preference + hardware + active foreground",
+    "prior_current_audit": "ios-gesture-haptics-module3-fourth-20261113.json",
+    "system_implicit_and_physical_playback": "unverified, not claimed absent"
+  },
+  "verification": {
+    "type": "bounded source audit and ordinary existing preview inspection",
+    "source_target_hashes_unchanged": true,
+    "new_ui_regression": false,
+    "reason_no_rebuild_or_matrix": "No justified product change in this pass; preserve existing signed candidate and targeted previous evidence without claiming new test acceptance",
+    "observed_gui": "Ordinary Codex list -> full synthetic task, real message components and approval/bottom bar visible; no target official app or service executed"
+  },
+  "next_major_module": 5,
+  "next_major_module_name": "Remote composer and task controls",
+  "git_mutations": "no commit/push/release",
+  "previous_snapshot": "ios-remote-message-parent-current-20261113-r3.json",
+  "coordinated_current": "ios-remote-coordinated-parent-current-20261113.json",
+  "latest_increment": {
+    "added": [
+      "Dedicated prompt full/collapsed source projection and optional expansion-button override; action sets expanded true.",
+      "Admitted prepared source must match current full source; nil leaves complete message visible. No guessed source line splitter or global40/2 policy.",
+      "Per-task/per-message expansion retained in frontend reading owner through reactive updates and task return.",
+      "User prompt now projects through retained official293 JS Markdown parser; intrinsic inline native text and existing code/table/resource carrier. Prompt owner stays separate from optional assistant footer.",
+      "Scoped file/browser resources and selection/copy available through existing native block adapters."
+    ],
+    "unknown": [
+      "Private OAIMarkdown renderer options/inline references/autocomplete/menus and full optical parity",
+      "Actual owner40/2 assignments and complete source-slicing behavior",
+      "Full reasoning content/DIL typed producer-to-consumer chain"
+    ]
+  },
+  "historical_snapshot_note": "Older implemented/gap/runtime fields below describe r3; latest increment and coordinated current supersede overlapping facts. Old build/runtime are historical, not current.",
+  "next_module": 2
+}

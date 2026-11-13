@@ -1,0 +1,103 @@
+{
+  "batch": "v505",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official_artifact_static",
+  "status": "partial",
+  "question": "Minimal search consumer presentation, independent of unrecovered result provider",
+  "confirmed": [
+    {
+      "topic": "Predicate",
+      "conclusion": "Nonempty means query Binding trimmed with whitespacesAndNewlines, not composer searching mode alone. Empty/whitespace query takes normal presentation rules.",
+      "offsets": [
+        "0x398dd8..0x398e60"
+      ],
+      "reuse": "ios-remote-v391-gate-findings.json"
+    },
+    {
+      "topic": "Section structure",
+      "conclusion": "The consumer retains ordered TaskSection descriptors. Search bypasses Projects alternate collapsed-array selection and per-section collapsed filtering. It does not flatten descriptors. Each supplied section continues through its section header/row renderer. This does not prove how the upstream search provider groups actual results.",
+      "offsets": [
+        "0x398fac..0x398fec",
+        "0x39a6bc..0x39a8b8",
+        "0x39c0f4..0x39c278"
+      ],
+      "reuse": "ios-remote-v501-projects-collapse-findings.json"
+    },
+    {
+      "topic": "Header visibility",
+      "conclusion": "Nonempty query forces shared suppression39902c false. Projects header39c628 and ordinary header39cdec therefore do not take their suppression-to-empty branch. Existing supplied titles remain.",
+      "offsets": [
+        "0x399084..0x399088 ->0x399270",
+        "0x39c6a0..0x39c6c4",
+        "0x39ce98..0x39ceb8"
+      ]
+    },
+    {
+      "topic": "Collapse callback",
+      "conclusion": "Query forces displayed isCollapsed false, while toggle callback remains installed. Ordinary header stores callback44adf0; Projects stores438e18. Shared callback reads saved collapsed value, negates it and writes owner setter. A query can keep the section visibly expanded while a tap changes saved collapse state.",
+      "offsets": [
+        "0x39cf50 ->0x464374 ->0x398dd8",
+        "0x39cf58",
+        "0x39d0c4..0x39d0cc",
+        "0x39c6e8..0x39c6f0",
+        "0x439144..0x43915c"
+      ],
+      "limit": "Actual accessibility/touch interaction requires host runtime validation."
+    },
+    {
+      "topic": "Compact project indentation",
+      "conclusion": "For V2, isInProject remains derived from descriptor ID/header-kind projection. The derivation contains no query override. NoWorkspace/raw1, remoteWorkspace/raw3 and remoteProject/raw4 retain compact project indentation. Last-row bottom12 also remains eligible because query makes suppression false.",
+      "offsets": [
+        "0x39ad60..0x39adb8",
+        "0x45daf8",
+        "0x39b34c..0x39b3e4"
+      ],
+      "reuse": "ios-remote-v500-no-workspace-findings.json"
+    },
+    {
+      "topic": "Source bar",
+      "conclusion": "The examined list content constructs source bar when hostItems.count > 1 OR showsConnectComputer == true. This gate and its row constructor do not inspect query. Existing source bar is retained during search.",
+      "offsets": [
+        "0x397b10 ->0x39b948",
+        "0x39bab4..0x39bacc",
+        "0x466a38 loads array count at+0x10 and compares1",
+        "0x39bad4 ->0x399784",
+        "0x3997d4 owner+0x28 hostItems",
+        "0x3997e4 owner+0x1ca showsConnectComputer",
+        "0x3998b4..0x3998c0"
+      ],
+      "limit": "The upstream hostItems capability/order producer remains separately scoped; this result establishes consumer visibility only."
+    }
+  ],
+  "additional_branch_boundary": {
+    "offsets": [
+      "0x39d1f0 ->0x464374",
+      "0x39d1fc query true ->0x39d3f0",
+      "0x39d230 descriptor+0xf0"
+    ],
+    "conclusion": "Query skips building an auxiliary array used by the ordinary header. Its semantics remain unnamed in this pass. It must not be labeled catalog requests. Projects catalogRequests live at+0xf8 and39c240..0x39c278 retains them for nonempty query."
+  },
+  "minimum_integration": [
+    "Keep the section-driven list renderer and its existing title/indentation/source row rules.",
+    "Use a clearly labeled independent synthetic matching policy to supply a filtered ordered section array; matching, ranking and upstream search aggregation are not recovered.",
+    "With trimmed nonempty query, use normal available section array and effective isCollapsed=false without automatically rewriting saved collapse state.",
+    "If exposing official collapse action during query, preserve its read-saved-then-toggle behavior. Returning/canceling reveals the resulting saved state.",
+    "Use explicit source and host scopes for synthetic matching. Do not call online providers."
+  ],
+  "remaining": [
+    "Official query matching/ranking/pagination and exact provider-generated section identities",
+    "Auxiliary ordinary-header array atdescriptor+0xf0",
+    "Runtime visual/touch/keyboard acceptance"
+  ],
+  "evidence_files": {
+    "ios-remote-v505-search-consumer-30bc30.asm": "19ef34d9ddcc8075c028c5a9412de72837153e5893bd9feecd222254c33b6a7c",
+    "ios-remote-v505-search-consumer-39ac30.asm": "50cfb9aa3460dbea3a4547b423adce18b782f91ede5137b305f1f3af15c55fb3",
+    "ios-remote-v505-search-consumer-xrefs.json": "aa02ad0cd9120da20219817af80bba0d99f3a4388a2408f4404ce4c487531563",
+    "ios-remote-v505-search-consumer-39b34c.asm": "526495d73355a055c636d57c526ec84e939dc6eb3b2cb3ba0b832c07d298b178",
+    "ios-remote-v505-search-consumer-39ce80.asm": "4d32b301fce0f376e0c9875627084582ccd19cd4726776cc685de13df1b7f4ea",
+    "ios-remote-v505-search-consumer-756dc80.asm": "b40e732b2b3963cc64e6eb6e829e913ef0b0fb33a5609750eb458728216ea713",
+    "ios-remote-v505-search-consumer-39b948.asm": "d4478b6352c9d657454df2234e7e4719f66cfd96e4924e0a1f9c476186127f1d"
+  }
+}

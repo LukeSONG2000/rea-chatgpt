@@ -1,0 +1,65 @@
+{
+  "module": "Remote approvals and user input",
+  "platform": "iOS",
+  "scope": "Frontend only; synthetic service adapter; Chinese/light routine tests",
+  "baseline": "1.2026.293",
+  "official_evidence": [
+    "RemoteApprovalInteraction.swift: v409 metadata and v410 callback references",
+    "RemoteUserInputInteraction.swift: 0x1a53f60 custom input; 0x1a56654 progression; 0x1cf5058 dismiss; 0x1cf51f0 option selection",
+    "NativeConversationHost.swift: BottomBars QuestionCards 0x1a29b48 / 0x1a2a1b8"
+  ],
+  "implemented": [
+    "existing approval choice, deny and feedback integration retained",
+    "answered/skipped request receipts persisted without answer payload",
+    "exact current-request resolution replaces any-prior-approval check",
+    "ordinary composer resumes after request resolution",
+    "duplicate and stale request rejection; host/thread isolation; legacy snapshot decoding"
+  ],
+  "independent_adaptations": [
+    "host/connection envelope and typed frontend event contracts",
+    "local receipts, atomic persistence and deterministic synthetic continuation",
+    "skipping a question does not automatically cancel the task"
+  ],
+  "remaining": [
+    "live service transport and server policy",
+    "runtime request replacement and reconnect UI scenarios",
+    "all policy/form variants and exact official material geometry",
+    "secret input intentionally not persisted across process restart",
+    "Synthetic command/search fixture rows have independent running state; not a unified service activity lifecycle."
+  ],
+  "verification": {
+    "foundation": "test-official-text.sh passed; /tmp/rea-requests-contract-r2.log",
+    "r1": {
+      "passed": [
+        "testRemoteApprovalFeedbackReplayChinese",
+        "testRemoteInputSkipReplayChinese",
+        "testRemoteUserInputQuestionsAndScope"
+      ],
+      "failure": "testRemoteRequestsModuleChinese queried TextView only; actual SwiftUI input is TextField; test adapter corrected, no product change"
+    },
+    "r2": {
+      "passed": [
+        "testRemoteInteractiveReplayApprovalAndStop",
+        "testRemoteRequestsModuleChinese"
+      ],
+      "result": "ios-remote-requests-module-20261112-r2.xcresult"
+    },
+    "visual": "Inspected approval feedback with keyboard and post-restart declined task; ordinary composer restored. Existing synthetic tool rows remain independent of replay turn.",
+    "simulator": "core preview restored; ios-requests-20261112-preview.json",
+    "device": {
+      "name": "iPhone Air",
+      "build": "succeeded",
+      "install": "succeeded",
+      "launch": "succeeded",
+      "install_report": "ios-requests-20261112-device-install.json",
+      "launch_report": "ios-requests-20261112-device-launch.json",
+      "sha256": "6c08badcf7d9785003004fe4274625c9b0e30855bcd978df1a55a4aaa2800c3a",
+      "limits": "Physical interaction and haptics not run by this UI batch"
+    }
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/RemoteUserInputInteraction.swift": "25a0b5e2109c467f44c3f66d2b1da5871b27e47f4040b8820298ed851effd4ef",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "435fa2ee38304dca31086cf4dc2c094df12e6778b22b96cb983b9ed17bdafb7f",
+    "implementation/ios/Sources/NativeConversationHost.swift": "eb085d638598bdb3939938ada58662ca1efd1c0c7723952c5cdfb4aef176c383"
+  }
+}

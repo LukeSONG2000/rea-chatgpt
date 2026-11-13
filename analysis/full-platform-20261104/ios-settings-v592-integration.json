@@ -1,0 +1,104 @@
+{
+  "batch": 592,
+  "status": "partial",
+  "candidate_version": 592,
+  "scope": "Settings notification permission frontend and native return path",
+  "official_evidence": "ios-settings-v592-findings.json",
+  "public_source_check": "ios-settings-v592-public-source.json",
+  "chain": "Settings root -> notifications route -> permission model -> native/fixture permission provider -> state projection -> permission Form -> request/manage action -> cancellation and scene-active refresh",
+  "implemented": [
+    "Notifications title and bell entry",
+    "Native OS authorization read and explicit request",
+    "Loading, failed read/request and retry",
+    "Disabled permission supporting text",
+    "Returnable pending-service explanation",
+    "Navigation back, repeated entry and root scroll retention",
+    "Close/cancel and generation invalidation",
+    "Foreground refresh after native settings return"
+  ],
+  "provenance": {
+    "official": "293 title, bell, availability guards, permission-section inputs and enum cases",
+    "native_adaptation": "Form layout, native OS provider, state labels, lifecycle guards, fixtures and pending-service explanation"
+  },
+  "validation": {
+    "foundation": "passed",
+    "foundation_log": "ios-settings-v592-text-tests-r2.log",
+    "ui_tests": [
+      "testAppearancePersistence",
+      "testNotificationPermissionChinese",
+      "testNotificationPermissionEnglishDark",
+      "testNotificationPermissionFailureAndReturn",
+      "testNotificationPermissionLoadingCancellation",
+      "testNotificationSystemPermissionRead"
+    ],
+    "ui_summary": "ios-settings-v592-r3-summary.json",
+    "ui_passed": 6,
+    "ui_failed": 0,
+    "visual": "Chinese light and English dark captures reviewed; native Chinese dark preview reviewed",
+    "native_authorization": "OS prompt observed, allowed, authorized status and return refresh verified in simulator",
+    "native_manage_destination": "partial: public API opened Settings root in two attempts, app notification subpage not reached",
+    "runtime": "ios-settings-v592-runtime.json"
+  },
+  "failed_probes": [
+    {
+      "run": "r1",
+      "cause": "Three journeys reached the final Codex assertion with an incorrect accessibility identifier. Loading query used ProgressIndicator and a short delay."
+    },
+    {
+      "run": "r2",
+      "cause": "Loading query still used ProgressIndicator; captured hierarchy proves native ActivityIndicator. The remaining five cases passed."
+    },
+    {
+      "run": "r3",
+      "result": "All six cases pass with actual ActivityIndicator query and deterministic delayed provider; includes request-failure retry and close to chat."
+    }
+  ],
+  "page_status": {
+    "notification_permission": "核心验收通过",
+    "system_notification_settings_destination": "已实现待验收",
+    "notification_page": "部分实现",
+    "service_preferences": "待接服务",
+    "device_token_registration": "未实现",
+    "foreground_unread_click_routing": "未实现",
+    "physical_device_delivery": "待设备验证"
+  },
+  "open_items": [
+    {
+      "page": "Settings/Notifications",
+      "priority": "P1",
+      "gap": "Native manage link reaches Settings root in this iOS27 simulator",
+      "next_action": "Check simulator route availability separately from physical-device behavior when the user resumes device testing",
+      "acceptance": "Manage opens the app notification settings and changed OS authorization is reflected on return"
+    },
+    {
+      "page": "Remote and Chat/Work",
+      "priority": "P1",
+      "gap": "Foreground notification/unread and click routing",
+      "next_action": "Trace official event and route owner, integrate deterministic scoped notification injection",
+      "acceptance": "Matching account/host/thread routes to the target; stale or missing targets have a returnable state"
+    },
+    {
+      "page": "Settings/Notifications",
+      "priority": "P1",
+      "gap": "Token registration interface and service preference actions",
+      "next_action": "Recover owner inputs and define replaceable frontend registration/preference contract",
+      "acceptance": "Pending, failure/retry and acknowledgement are explicit, credentials stay outside UI state"
+    },
+    {
+      "page": "Settings/Notifications",
+      "priority": "P2",
+      "gap": "Official category list, exact group layout and visibility predicates",
+      "next_action": "Trace NotificationsSettingsScreen view-model projection after core frontend lifecycle",
+      "acceptance": "Source-bound categories, guards and style are mapped to host consumers"
+    },
+    {
+      "page": "Platform experience",
+      "priority": "P2",
+      "gap": "Provisional/ephemeral/unknown permission UI, large type, physical haptics and Android notification behavior",
+      "next_action": "Keep separate acceptance rows and verify platform-specific sources",
+      "acceptance": "State-specific usability with platform/device runtime evidence"
+    }
+  ],
+  "retention": "ios-settings-v592-retention.json",
+  "next_action": "Notifications frontend identity/routing and pending registration contract, followed by source-backed haptic preferences and consumers."
+}

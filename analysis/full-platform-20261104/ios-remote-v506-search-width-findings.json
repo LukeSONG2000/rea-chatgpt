@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "What determines CodexContentView principal search-bar width, including its producer?",
+  "confirmed": [
+    {
+      "claim": "CodexContentView wrapper function0x305288 observes content geometry, which is and transformed into max(contentGeometry.size.width - 40, 0).",
+      "offsets": [
+        "0x305a80 calls actual content builder 0x306054",
+        "0x305af0 passes transform 0x3062e8",
+        "0x305af8 passes action 0x428c48",
+        "0x305b24 calls modifier helper 0x213ff8",
+        "0x21405c _GeometryActionModifier.init(value:action:)",
+        "0x214094 View.modifier",
+        "0x3062f4 -> 0x1c0cec -> 0x7c471dc GeometryProxy.size getter",
+        "0x3062f8 immediate 0xc044000000000000 = -40.0",
+        "0x306300 addition",
+        "0x306304-0x30630c clamp against zero"
+      ],
+      "geometry_getter_binding": {
+        "slot": "0xaad0768",
+        "symbol": "_$s7SwiftUI13GeometryProxyV4sizeSo6CGSizeVvg"
+      }
+    },
+    {
+      "claim": "Geometry action writes Optional.some(measuredWidth) to the LazyState<CGFloat?> field __navigationBarContentWidth.",
+      "offsets": [
+        "0x428c7c reads transformed CGFloat",
+        "0x428c8c metadata field-offset slot +0xc0",
+        "0x428c94 stores payload",
+        "0x428c98 stores optional tag zero",
+        "0x428ca8 LazyState.wrappedValue setter"
+      ],
+      "field_typeref": "0x8bda7e0"
+    },
+    {
+      "claim": "The outer principal ZStack uses the measured width only for layout != taskList AND (canSearch OR isSearching). Otherwise frame(width:nil) is supplied.",
+      "offsets": [
+        "0x309c14-0x309c30 center ZStack content closure 0x4296cc ->0x309d50",
+        "0x309c48 layout metadata slot +0x94",
+        "0x309c4c helper0x460640 compares byte1",
+        "0x309c54-0x309c5c nilwidth for taskList",
+        "0x309c60-0x309c74 canSearch(+0x9c) OR isSearching(+0xa0)",
+        "0x309c78-0x309c90 width LazyState read",
+        "0x309cc4 frame(width:height:alignment:)"
+      ],
+      "layout_raw_values": {
+        "0": "standard",
+        "1": "taskList",
+        "2": "detail"
+      }
+    },
+    {
+      "claim": "An easeInOut duration0.2 animation is keyed to isSearching, subject to a separate helper availability gate.",
+      "offsets": [
+        "0x309cd4 constant0x7cd9658=0.2",
+        "0x309cdc Animation.easeInOut",
+        "0x309ce4 helper0x7710c7c",
+        "0x309cf8 isSearching",
+        "0x309d34 View.animation(value:)"
+      ]
+    }
+  ],
+  "minimum_integration": {
+    "standard": "Observe the actual content geometry. Store max(width - 40, 0) as optional measured width. Apply this width to the outer principal ZStack under the recovered gate. Preserve system ToolbarItem(.principal) hosting and search/title transition.",
+    "taskList": "Preserve nil explicit width at this wrapper. Its effective toolbar sizing depends on the parent/system host. This evidence does not authorize importing the standard-path width rule into taskList.",
+    "not_recovered": "Exact effective width allocation of a separately reconstructed sheet with an additional leading-dismiss item."
+  },
+  "unknowns": [
+    "System toolbar intrinsic/layout allocation in taskList remains unmeasured.",
+    "The concrete cause of the independent host search-field width changing with input text is not established by this binary-only trace.",
+    "No layoutPriority operation was found in the bounded 0x3099f8 wrapper. This is not a global absence claim.",
+    "The separate animation helper availability condition is not fully decoded here."
+  ],
+  "evidence_files": [
+    "ios-remote-v506-root-width-setup.asm",
+    "ios-remote-v506-search-parent-width.asm",
+    "ios-remote-v506-search-parent-width-calls.json",
+    "ios-remote-v506-search-width-helpers.asm",
+    "ios-remote-v506-width-transform.asm",
+    "ios-remote-v506-width-geometry-helper.asm",
+    "ios-remote-v506-width-observer.asm",
+    "ios-remote-v506-width-observer-calls.json",
+    "ios-remote-v506-width-state-callbacks.asm",
+    "ios-remote-v506-width-setter-references.json"
+  ],
+  "corrections": [
+    {
+      "file": "ios-remote-v506-width-setter.asm",
+      "note": "Exploratory filename is misleading. Range0x306754 is a toolbar content builder. Actual geometry-to-width setter is0x428c48 in width-state-callbacks.asm."
+    }
+  ],
+  "validation": "Static instruction/import/type chain only. Official executable not run. Production source not changed."
+}

@@ -1,0 +1,377 @@
+{
+  "batch": "v512",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static-instructions-and-Swift-metadata",
+  "scope": "Attachment first-level menu content, conditional visibility, action owners, queue transition boundaries; supplementary Whisper colors. No production changes or official runtime/audio/network execution.",
+  "first_level_menu": {
+    "status": "verified-static-content",
+    "type": "CodexRemoteAttachmentMenu",
+    "descriptor": "0x95b1b44",
+    "body": "0x1961b10 ->0x1960910 ->0x1960b84 ->0x1960c30",
+    "layout": {
+      "tree": "vertical ScrollView, VStack, ordered conditional ActionIconButton children",
+      "type_records": [
+        "0x7e25c20",
+        "0x7e25c28",
+        "0x7e25c58",
+        "0x7e25c70"
+      ],
+      "scroll_indicators": "never, source0x1960a0c..0x1960a80",
+      "row_style": "SwiftUIStyleguide.ActionIconStyle applied through environment, ActionIconButtonSVGOrImagePart labels",
+      "vertical_container_padding": {
+        "value": 13,
+        "source": "0x1960c04 vertical Edge.Set then0x1960c0c loads13"
+      },
+      "limit": "Full action row metrics, outer anchor/material, morph and dismissal animation remain partial. Type tree does not establish system Menu."
+    },
+    "rows": [
+      {
+        "order": 0,
+        "id": "camera",
+        "title": "Camera",
+        "title_factory": "0x75d2a48",
+        "symbol": "OpenAI/Symbols/camera",
+        "symbol_factory": "0x74f5640",
+        "resource": "0x8a54560",
+        "visible": "supportsRemoteAttachments && takePhoto != nil",
+        "gate_offsets": [
+          "0x1960dcc..0x1960df8"
+        ],
+        "action": "takePhoto closure at menu offsets0x28/0x30",
+        "label_and_action_consumer": "0x1960e04..0x1960e6c"
+      },
+      {
+        "order": 1,
+        "id": "photos",
+        "title": "addPhotosTitle parameter; Remote Home passes Photos",
+        "title_factory": "0x75d2bd0 called0x1986c74",
+        "symbol": "OpenAI/Symbols/photo",
+        "symbol_factory": "0x74fa03c",
+        "resource": "0x8a56850",
+        "visible": "supportsRemoteAttachments",
+        "action": "addPhotos closure at menu offsets0x38/0x40",
+        "label_and_action_consumer": "0x1960fb4..0x1961014"
+      },
+      {
+        "order": 2,
+        "id": "files",
+        "title": "Files",
+        "title_factory": "0x75d635c",
+        "symbol": "OpenAI/Symbols/paperclip",
+        "symbol_factory": "0x74f9744",
+        "resource": "0x8a56440",
+        "visible": "supportsRemoteAttachments",
+        "action": "addFiles closure at menu offsets0x48/0x50",
+        "label_and_action_consumer": "0x196112c..0x1961190"
+      },
+      {
+        "order": 3,
+        "id": "plugins",
+        "title": "Plugins",
+        "localization_key": "message_input_add_sheet_plugins_button_title",
+        "title_factory": "0x75d3da4",
+        "key_resource": "0x8a59660",
+        "symbol": "OpenAI/Symbols/plugin",
+        "symbol_factory": "0x74fa408",
+        "resource": "0x8a569e0",
+        "visible": "hasPlugins",
+        "gate_offsets": [
+          "0x1961374..0x1961380"
+        ],
+        "action": "showPlugins closure at menu offsets0x60/0x68",
+        "label_and_action_consumer": "0x1961384..0x19613f8"
+      },
+      {
+        "order": 4,
+        "id": "plan",
+        "title": "Plan mode",
+        "title_instructions": "0x19616e8..0x19616fc",
+        "symbol": "OpenAI/Symbols/list-circle",
+        "symbol_factory": "0x74f8474",
+        "resource": "0x8a55b10",
+        "visible": "supportsPlanMode",
+        "disabled": "isPlanModeActionDisabled",
+        "gate_offsets": [
+          "0x196152c..0x1961540",
+          "0x1961730",
+          "0x19617d0..0x19617ec"
+        ],
+        "action": "setPlanModeEnabled(!isPlanModeEnabled)",
+        "action_thunk": "0x1d2e324 reads captured isPlanModeEnabled at0x31, inverts and calls captured setter at0x90"
+      },
+      {
+        "order": 5,
+        "id": "goal",
+        "title": "Pursue goal",
+        "title_instructions": "0x1961930..0x1961948",
+        "symbol": "OpenAI/Symbols/target",
+        "symbol_factory": "0x74fb994",
+        "resource": "0x8a57380",
+        "visible": "goalCommand != nil",
+        "gate_offsets": [
+          "0x1961558..0x1961574, optional discriminator0x20 !=0xff"
+        ],
+        "action": "pursueGoal(goalCommand)",
+        "action_thunk": "0x1d2e3ac captured command x0/x1/w2 then owner closure0x80"
+      }
+    ],
+    "gate_separation": "Attachment group gate does not hide Plugins, Plan or Goal. Keep upstream v510 capability predicate plus these per-row conditions.",
+    "inline_integration": {
+      "composer_builder": "0x1986b48 constructs CodexRemoteInlineAttachmentMenu",
+      "inline_body": "0x1974c48 calls0x19755c8 at0x1974d48",
+      "menu_builder": "0x19755c8 copies title/goal/plan/remote attachment fields into CodexRemoteAttachmentMenu layout0x00..0x80",
+      "camera_optional": "0x1975670..0x19756c0 only creates camera closure when canTakePhotoAttachment byte0x26 ==1",
+      "callback_map": {
+        "takePhoto": "0x1ce7580 ->0x1976f74",
+        "addPhotos": "0x1ce7514 ->0x1976efc",
+        "addFiles": "0x1ce7528 ->Inline.addFiles at0x108",
+        "showPlugins": "Inline.showPlugins at0x120 copied directly",
+        "pursueGoal": "0x1ce754c ->Inline.pursueGoal at0x130",
+        "setPlanModeEnabled": "Inline.setter at0x140 copied directly"
+      }
+    }
+  },
+  "presentation_state": {
+    "status": "verified-storage-and-call-order; partial-queue-state-machine",
+    "storage": "LazyState<SwiftUIToolbelt.PresentationQueue<AttachmentPresentation>>",
+    "field_typeref": "0x8e157ca",
+    "queue_descriptor": "0x97548d8",
+    "queue_accessor": "0x75845d8",
+    "queue_fields": [
+      "enqueuedViews",
+      "state",
+      "viewsRequiringManualOnDismiss",
+      "_didEnqueue",
+      "_didPresent",
+      "_didDismiss"
+    ],
+    "cases": {
+      "attachmentMenu": 0,
+      "fileImporter": 1,
+      "camera": 2,
+      "photosPicker": 3
+    },
+    "correction": "The enum optional-nil representation recorded in v511 does not mean composer state is a single Optional<AttachmentPresentation>. It is a queue with its own state and lifecycle callbacks.",
+    "open": "Plus0x1c286d4 passes attachmentMenu raw0 to queue operation0x7552974 then writes queue via0x1980e0c. Recent-photos suppression precedes this path. Exact public method name and duplicate policy remain unresolved.",
+    "dismiss_owner": "Inline.dismiss at0xc8 points0x1c27804 (wired0x1987030..0x1987038). It reads queue0x1980dc4, passes attachmentMenu raw0 to0x7553884 and writes queue0x1980e0c.",
+    "target_transition": "0x1990d48 receives target raw.0x1990e04 applies queue operation0x7552dd0(target), writes queue, then0x1990e38 applies0x7553884(attachmentMenu raw0), writes queue again. Source preserves target route while dismissing menu.",
+    "owner_routes": {
+      "files": "Inline.addFiles0x108 ->0x1c278e0; preparation0x198ea7c must succeed;0x1990d48(target1,notify1)",
+      "allPhotos": "Inline.showAllPhotos0xf8 ->0x1c27930 ->0x1990d48(target3)",
+      "fullScreenCamera": "Inline.showFullScreenCamera0xd8 ->0x1c27970; preparation0x198ea7c then0x1990d48(target2)",
+      "fullScreenPhotos": "Inline.showFullScreenPhotos0xe8 ->0x1c2795c adapter into existing action route (precise callee outside this window)",
+      "plugin": "Inline.showPlugins0x120 ->0x1c278cc ->0x198ef2c; emits ComposerAttachmentMenuItem.plugin raw3 before later owner state changes; full downstream picker state remains partial",
+      "plan": "Inline.setPlanModeEnabled0x140 ->0x1c27880 ->0x198f1dc; first-level action inverts current flag",
+      "goal": "Inline.pursueGoal0x130 ->0x1c278b8 ->0x198f0b0 with selected command"
+    },
+    "photo_inline_branch": "0x1976efc checks0x19757fc. When allowed, invokes prepareEmbeddedPhotos0x98 and only after success writes local mode raw2. Otherwise invokes showFullScreenPhotos0xe8.",
+    "camera_inline_branch": "0x1976f74 has platform/presentation/availability checks and embedded camera preparation; fallback showFullScreenCamera at0x19771b4. Full eligibility predicate and async camera completion not closed.",
+    "implementation_boundary": "A local frontend coordinator may model menu/target transitions, but label that adapter independently. Preserve menu dismissal completion ownership; do not report a Boolean/single-sheet replacement as recovered PresentationQueue behavior."
+  },
+  "whisper_color_followup": {
+    "status": "partial",
+    "enabled_default_rule": "0x607fa28 calls0x77107f8; true chooses ChatGPT/icon/primary via0x74ed6f4, false chooses ChatGPT/icon/secondary via0x74ed744. Savedvalueatfp-0x70 is assigned attachments.buttonForeground0x80 by0x607fbb0..0x607fbb4.",
+    "gate": "0x77107f8 tests platform version26 then runtime preference flag; do not flatten to OS version alone.",
+    "disabled_resource": "ChatGPT/icon/tertiary via0x74ed87c ->0x8a51590",
+    "consumer": "0x178d790..0x178d804; enabled or Whisper state4 uses configured foreground, otherwise tertiary",
+    "unknown": [
+      "Whether Home theme overrides this default foreground",
+      "Full Whisper ButtonStyle"
+    ]
+  },
+  "validation": {
+    "static_only": true,
+    "method": [
+      "targeted llvm-objdump",
+      "Swift field metadata",
+      "symbolic generic type references",
+      "direct callback pointer stores",
+      "literal and asset string inspection"
+    ],
+    "runtime_parity": false
+  },
+  "open_boundaries": [
+    "Exact PresentationQueue method names, duplicate policy and all state transitions",
+    "Complete host presentation modifier and menu anchor/material/morph geometry",
+    "ActionIconStyle full row typography and interaction styling",
+    "Embedded camera/photo eligibility and preparation completion",
+    "Plan/goal/plugin downstream dismissal/focus outcomes",
+    "Whisper effective Home theme override and ButtonStyle"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-composer-inline-owner.asm",
+      "sha256": "fd5217e77d521173a467b94f9627ff27c15bad6aaaeebf4acab3dca40edc7498"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-destination-layout.asm",
+      "sha256": "97e6588ebf3a74a0c0bc412f302b0ddd5591e206d38f9652e63fc76ff2c540eb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-dismiss-operation.asm",
+      "sha256": "96b3d1e1a4f77c131cc8c282f8c6aad821f4094329e9235b8654eae8145a664d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-inline-first-body.asm",
+      "sha256": "73320131df28262a610662e95ee79e93ea67132c893edcda38020c864f333ba0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-inline-layout.asm",
+      "sha256": "fc47a8394c98813043bc80e0a948b7423310198f61d61da87166e723c33be637"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-inline-menu-build.asm",
+      "sha256": "7b3112267f2f5e072c99aaecec7e762656c8418d30ac9187cb029d960499bd9d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-inline-mode-meta.asm",
+      "sha256": "1c8ec4d0c6845da0ab2fb9ba83ddb2f29d1bf729d8180818e766ae3c30ee871b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-inline-photo-camera-transition.asm",
+      "sha256": "9264fd7e5cef2c1e9dc4cb43ecb0625be8d30365a51c35acc70ef290eda9c01c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-inline-row-actions.asm",
+      "sha256": "44871b060c09076854ee92c5c2db39612ec210d2400c48a22288bc38ac739e9d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-label-helpers.asm",
+      "sha256": "01513eb40b94170c92426caedcd95c758cf88dda5a917cbc91a803a7fbcbee01"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-factory-camera.asm",
+      "sha256": "e82bfbe0d60498704ed69229919b7bd5879029187638620413bd4edb1be3592e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-factory-files.asm",
+      "sha256": "126ddd91d98cb832e82b4a71e1383ce0f5af896e74fb6f8084391c0413a2748f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-factory-photos.asm",
+      "sha256": "5524df291b8c4caaddd9816fa3abf7f7cd7287d1d3495b89b0aade7f256d13f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-factory-plugins.asm",
+      "sha256": "4427bdcf2be3046155f01359aae5d2382aad417ef6c59a0feb2d842550667dac"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-label-camera.asm",
+      "sha256": "d11e7c7bbd5d6b026d10d9371b92e1d4650a9f7f3fcf2a37541de4565025ab0d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-label-files.asm",
+      "sha256": "d8a907eca21b07ff28965cdf8dbfbbdc87d779750d98fddd2993a8a4a2da9c90"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-label-plugins.asm",
+      "sha256": "4ed6a8e782207879924ec863e3892b27854c826cde13df088a2ddcdcb01e6819"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-layout-types.json",
+      "sha256": "2f2134465e23fa517e09348dadc177c51e3e03191261088916b4054a6ff90203"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-outer-thunk.asm",
+      "sha256": "2f372e49eeec121e981a906f74d255c8335070ed8492db77863b52f2eba5778e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-owner-refs.json",
+      "sha256": "4a068c3ee913cb0e1d6a17be359edb9357d9a79026d0f6b817924d131a324696"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-row-leaves.asm",
+      "sha256": "ffb86b44dd6499395ad5ecf929485955c707f655e484dd35c9ebc3a51a9fae53"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-symbol-goal.asm",
+      "sha256": "d463a0789c3f6d1786c65f31c8294ef1256462da9c12f08774b6348c91c2edd3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-menu-symbol-plan.asm",
+      "sha256": "71ddf9ac93e871067dc2e1f7ea4045e585ac0837478e095e6d3c25530e3d9b27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-mic-color-alternatives.asm",
+      "sha256": "9dce6e3f5eeeb4f5174925aacddce7fccde71c1c185bb511879775a8acfa1713"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-mic-default-color.asm",
+      "sha256": "23825016c8eef5a2eb81482119417cb973db1c58526491d6881677eeda85ce2f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-owning-content-helpers.asm",
+      "sha256": "b15a7bf2dcd476837ed4f42225a2f29ae9a4c300a0d87c8a47f3afe7e2e51f73"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-photos-title.asm",
+      "sha256": "3d233ef1ee52c0afca30e396f8369cf4a272318e3c9fd79ea6adbe72ff59d5c7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-plan-goal-actions.asm",
+      "sha256": "98d3723cea9410612f3b30bdd8ce96bb69f3be557c31a06b8a0275a580410671"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-plugin-goal-owner.asm",
+      "sha256": "f3cd7ed5c597a471c1f794511a64855ca3d308769d6ff8614d319b9d8fb27de5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-callback-refs.json",
+      "sha256": "ceb057844517673c15e7b6b570b9e6541a40ba0df8ef1044c6e75b1a152da9f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-dispatch.asm",
+      "sha256": "494c45614925f899c6c082d7e3f902114f995f9c6b71910bb574c6fb614149c8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-env-ref.asm",
+      "sha256": "535f49a4d9b3c1f7a30f20b6c71ac9538b1e1958427535135aeaff1f0e2fecfc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-gate.asm",
+      "sha256": "4e1c0c031e7c2587954cfb0f4963f188ccc6d5c578c56733a8d0696263e0a1bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-helper-types.asm",
+      "sha256": "7cfafe920a771eecf9ab8777ee6c6d94a608ae2e71739a5d6199c4f070fb23f2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-owner-actions.asm",
+      "sha256": "4a7f171d83faefd8e03dc000ca9723615e16515f46cd61af80b059e8aa8c6ca2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-queue-metadata.json",
+      "sha256": "cf2030c03dc7c0b4aeef6e251be8810fd59b840b429312e9fb8d99f9189bc404"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-remove-body.asm",
+      "sha256": "e8587f61ea30ad25c2930a916d1d42c1333c8b2d3eec9ec29ed049844c5205e2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-presentation-storage-type.json",
+      "sha256": "ec6d03fbb2c77142739424d396034f86ea3b17e7d7bace3f767a2b558b24f641"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-queue-operations.asm",
+      "sha256": "684650823af3ea875ec4a100ad44f31d774d0ae124b30ddcb598e3e59ccec0de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-queue-remove-tail.asm",
+      "sha256": "c41d96457c9e5cb8d44bbae2355da87632def7f34794bf35c26930218a3557c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-selector-state.asm",
+      "sha256": "3dd23b855c74db2a61eddb0ea4a17e64733193d9a3981f443ee0670e502acfc8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-style-feature-gate.asm",
+      "sha256": "6b84d4cf918706704309023b6c175bcb010d72ca5481ecab08d06863da13f5a8"
+    }
+  ]
+}

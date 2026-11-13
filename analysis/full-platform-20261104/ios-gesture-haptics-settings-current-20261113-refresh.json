@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T02:06:16.709063+08:00",
+  "scope": "Current source recheck for gesture haptics and Settings > General integration; no newly invented trigger",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "implemented": [
+    {
+      "owner": "sidebar drag",
+      "trigger": "normal ended; live progress strictly interior; final endpoint differs from captured initial endpoint",
+      "feedback": "one selection"
+    },
+    {
+      "owner": "model slider",
+      "trigger": "changed selected index",
+      "feedback": "selection"
+    },
+    {
+      "owner": "model slider boundary",
+      "trigger": "first transition to overscroll",
+      "feedback": "soft impact intensity 0.4"
+    },
+    {
+      "owner": "accepted file import",
+      "trigger": "accepted token and explicit playsSuccessHaptic flag",
+      "feedback": "light impact; Photos flag false suppresses"
+    },
+    {
+      "owner": "Goal/Subagent shared ComposerStatusPill",
+      "trigger": "shared carrier tap before owner.action; absent-Goal independent create entry excluded",
+      "feedback": "one selection",
+      "evidence": "1d2b03c engine witness+0x78 -> a98e210/6fe2158 ->6fe1344 ->6fe1394 selectionChanged"
+    }
+  ],
+  "settings": {
+    "route": [
+      "Settings",
+      "General",
+      "Haptic feedback"
+    ],
+    "storage_key": "rea.preview.hapticsEnabled",
+    "persistent": true,
+    "explicit_consumers_gate": [
+      "enabled",
+      "hardware supported",
+      "application active"
+    ]
+  },
+  "current_source_audit": {
+    "all_explicit_dispatchers": "Only UIKit selection/file impact in FrontendHaptics and two SwiftUI sensoryFeedback calls in RecoveredRemoteModelSlider; no independent bypass found in Sources",
+    "sidebar": "NativeSidebarContainer consumes one ended/live-interior/changed-endpoint token, then invokes shared dispatcher",
+    "status_pills": "Shared Goal/Subagent carrier dispatches once before owner action; no duplicate child dispatch",
+    "settings": "FrontendGeneralSettings writes the same key with AppStorage; UIKit reads current UserDefaults for each action and slider observes the same key",
+    "no_new_trigger_added": true
+  },
+  "verification": {
+    "command": "sh implementation/ios/test-haptics.sh",
+    "result": "passed",
+    "log": "/tmp/rea-gesture-haptics-20261113-refresh.log",
+    "prior_settings_ui": "ios-gesture-haptics-setting-20261112.xcresult; historical check only, not rerun in this refresh",
+    "physical_playback_verified": false
+  },
+  "not_implemented": [
+    "Unclosed per-page longpress/row-swipe/list-specific feedback triggers",
+    "Original physical waveform/timing verification",
+    "Control over OS implicit feedback",
+    "Unproved Chat/Work copy, mode, send, stop and approval-specific explicit feedback"
+  ],
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490",
+      "matches_prior_snapshot": true
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "9234767d76a2d2be392cc93cf011a2241cbb5048e582089868c856ae434da0d5",
+      "matches_prior_snapshot": true
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "4345b2d2305a6653e6322ab027648389e4a6140e529cf0c4535e4020d16da0bc",
+      "matches_prior_snapshot": true
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift",
+      "sha256": "3719e8b3e6bbd9f7715cd45bfc922de1d71737a681b2378df0c1ec3c0054b631",
+      "matches_prior_snapshot": true
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteGoalPresentation.swift",
+      "sha256": "119b43029eec8b178bb7778f352c82722f63eba13e6b11801d6c4d5865b2cae8",
+      "matches_prior_snapshot": true
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteAgentsPresentation.swift",
+      "sha256": "db233de8dec894b8d8aa0378326b77e49d585cc7561d141dd4ec311e7f36f527",
+      "matches_prior_snapshot": true
+    },
+    {
+      "path": "implementation/ios/Tests/Haptics/main.swift",
+      "sha256": "962c86756334898b27a5f4bb32d19a31644e5cb1344d20fc4391fcd8e6e73240",
+      "matches_prior_snapshot": true
+    }
+  ],
+  "rules": "AGENTS.md Page gesture scope already covers this instruction; no duplicate rule added"
+}

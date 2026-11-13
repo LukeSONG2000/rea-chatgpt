@@ -1,0 +1,59 @@
+{
+  "batch": 576,
+  "status": "partial",
+  "evidence": "ios-chat-v576-findings.json",
+  "runtime": "ios-chat-v576-runtime.json",
+  "retention": "ios-chat-v576-retention.json",
+  "implementation": "Source-backed zero line-fragment padding applied in shared independent NativeMessageBlock. Chat/Work core tests isolated with UUID profiles retained across restart.",
+  "tests": {
+    "state": "ios-chat-v576-state.log",
+    "ui": "ios-chat-v576-r1.summary.json",
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "coverage": [
+      "Chat/Work Chinese/light and English/dark failure retry, cancellation, A-B-A and cold restore",
+      "Remote Chinese/light and English/dark rich response, horizontal table restoration, code copy and paste"
+    ]
+  },
+  "visual": {
+    "checked": [
+      "Chat Chinese/light",
+      "Chat English/dark",
+      "Remote Chinese/light",
+      "Remote English/dark",
+      "Installed Chinese/light home with stable preview draft"
+    ],
+    "limits": [
+      "Existing large vertical gaps and action footer styling remain partial",
+      "English Chat synthetic response remains Chinese",
+      "Screenshot inspection is not exact official pixel or device acceptance"
+    ]
+  },
+  "pending": [
+    {
+      "page": "Chat/Work and shared Markdown",
+      "behavior": "Effective vertical block insets",
+      "priority": "P1",
+      "evidence_break": "MarkdownOptions._Storage field names and caller-selected values behind0x6931094",
+      "next": "Resolve inset fields and ordinary caller values",
+      "acceptance": "Shared measurement and display agree for short/long content without excess block gaps"
+    },
+    {
+      "page": "Chat/Work",
+      "behavior": "Row action visibility and role-context spacing",
+      "priority": "P1",
+      "evidence_break": "Ordinary parent style overrides and action consumer",
+      "next": "Trace explicit parent inputs then integrate",
+      "acceptance": "Core content/actions remain reachable through updates and returns in both themes"
+    },
+    {
+      "page": "Mobile",
+      "behavior": "Physical haptics, notification delivery and Android parity",
+      "priority": "follow-up",
+      "evidence_break": "Independent device/platform runs outstanding",
+      "next": "Follow existing page plan",
+      "acceptance": "Separate recorded device/platform gates"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "batch": 610,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official shipped-artifact static control flow and type records",
+  "answered_question": "Which component does SummaryStyle.latestItem select, and when does it fall back to history?",
+  "observations": [
+    {
+      "offset": "0x1a3947c..0x1a394e8",
+      "conclusion": "latestItem reads group metadata slot0x24, field5 latestActivity. Optional check chooses historyPresentation via1a39914 when absent, otherwise passes activity to1a39b48. The SummaryStyle associated ID is not itself rendered as label text."
+    },
+    {
+      "offset": "0x1a39c40..0x1a39c80",
+      "conclusion": "Activity metadata accessor1adc5c4 resolves descriptor95aca90. Runtime swift_getEnumCaseMultiPayload selects the8 payload cases via table7dfdf64 and base1a39c84. Complete mapping retained separately."
+    },
+    {
+      "offset": "0x1a39d64..0x1a39d88",
+      "conclusion": "automaticApprovalReview explicitly loads group historyPresentation and calls history label1a39914; latest activity presence does not guarantee item-specific label."
+    },
+    {
+      "offset": "0x1a39c84 ->0x1a3a200..0x1a3a27c",
+      "conclusion": "commandExecution calls existing summary builder1a3a4e8 and specialized label1a3a804, including commandAction scan. Reuse v405 and subsequent command-summary recovery rather than treating command text as an arbitrary history summary."
+    },
+    {
+      "offset": "0x1a39d10 ->0x1a3a150..0x1a3a19c",
+      "conclusion": "webSearch resolves its own summary1a3ac48, globe factory74f7a5c and ToolActivityLabel<Symbol,ToolActivitySummaryRow> via record7e11ed0. Existing v326/v327/v558 evidence covers reusable label presentation."
+    },
+    {
+      "offset": "0x1a39e54 ->0x1a3a2d4..0x1a3a414",
+      "conclusion": "fileChange handles optional file-change projection and selects conditional CodexRemoteFileChangeSummaryRowPart or ToolActivitySummaryRow; type record7e12380. The existing simple diff filename/count header does not alone establish equivalent latest-summary behavior."
+    },
+    {
+      "offset": "0x7e12338",
+      "conclusion": "Returned conditional type includes command summary, file-change row, plugin icon, shimmering text, dynamic/function tool views and history fallback. Two parent contexts remain unresolved by current symbolic parser."
+    }
+  ],
+  "case_dispatch": [
+    {
+      "tag": 0,
+      "case": "commandExecution",
+      "byte": 0,
+      "target": "0x1a39c84"
+    },
+    {
+      "tag": 1,
+      "case": "fileChange",
+      "byte": 116,
+      "target": "0x1a39e54"
+    },
+    {
+      "tag": 2,
+      "case": "webSearch",
+      "byte": 35,
+      "target": "0x1a39d10"
+    },
+    {
+      "tag": 3,
+      "case": "automaticApprovalReview",
+      "byte": 56,
+      "target": "0x1a39d64"
+    },
+    {
+      "tag": 4,
+      "case": "mcpToolCall",
+      "byte": 12,
+      "target": "0x1a39cb4"
+    },
+    {
+      "tag": 5,
+      "case": "dynamicToolCall",
+      "byte": 162,
+      "target": "0x1a39f0c"
+    },
+    {
+      "tag": 6,
+      "case": "functionCall",
+      "byte": 182,
+      "target": "0x1a39f5c"
+    },
+    {
+      "tag": 7,
+      "case": "externalEvent",
+      "byte": 77,
+      "target": "0x1a39db8"
+    }
+  ],
+  "implemented": [],
+  "unimplemented": [
+    "Latest-activity group label integration",
+    "Upstream latest-activity selection and automatic grouping",
+    "Complete file-change latest-summary optional/fallback handling",
+    "MCP/dynamic/function/external-event message components"
+  ],
+  "next_action": {
+    "scope": "Remote activity group summary integration",
+    "steps": [
+      "Reuse existing command/search summary renderers through shared label components while preserving original detail disclosure owners.",
+      "Represent latest-activity input with explicit scoped identity and history fallback; keep old history snapshots compatible.",
+      "Cover latest-to-history and activity-kind changes, preserved group expansion, failed/cancelled terminal events, cross-task isolation and restart.",
+      "Keep unsupported activity branches explicit until their component consumers are recovered."
+    ]
+  },
+  "runtime": "No new build in v610. Version609 remains running in Chinese dark mode with an expanded history group.",
+  "limits": [
+    "Static control flow only. No official application execution.",
+    "Does not establish automatic grouping, aggregate text, timing or whole-page fidelity.",
+    "Android requires independent investigation."
+  ],
+  "evidence_sha256": {
+    "ios-remote-v610-latest-consumer.asm": "0d8592294e0975062e5ea919050fcf5761b4dac76e5e401ea9471e3579c3041e",
+    "ios-remote-v610-latest-dispatch.json": "de606f5435866c3e2d9281208f6377ac225ba2df459873261ce829cc8dea17e9",
+    "ios-remote-v610-type-7e12338.json": "4f4ddeeb3061251d9829d325022430d5a4497db4c14b6d8ea22dd49992ee83d5",
+    "ios-remote-v610-type-7e12380.json": "cda49600038bc637c63f072ebc681ab11778a3b0a5ce666665f4ec533c869124",
+    "ios-remote-v610-type-7e11ed0.json": "e55f5563b84253cb19466618e4aed344a316ef0c163c6c851522ee9334a55b68",
+    "ios-remote-v607-reasoning-group-metadata.json": "56f7dacfb2a7c93fd6859104806c29d9c863f20817221596ba619607737e77bf",
+    "ios-remote-v553-thinking-consumer.asm": "5d25cbca067874ff0e5b2ae36985b2cbc3b778597ecce173440962d693d7b7da",
+    "ios-remote-v405-integration.json": "a8b3ec1602a30467c7724d61670ec80d35177625f47608bd47b1d14fbe1245c3",
+    "ios-remote-v326-label-integration.json": "a2c06012fb3fcfd9ba10f80d4293f4b7aef38ed362fa2591cc6798a8e305b995"
+  }
+}

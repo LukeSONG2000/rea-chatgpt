@@ -1,0 +1,279 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "official_artifact_static",
+  "runtime_verified": false,
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Remote Thread activation mode, captured-mode writer and successful permission continuation. No original app execution, audio or production edits.",
+  "conclusion": {
+    "verified": "CodexRemoteThreadViewModel start entry18f1d84, once its guarded callback receives true and the weak owner exists, invokes ComposerWhisperModel activation with WhisperPushToTalkMode.tapToSend(raw1), Bool false, Bool false. The retained mode is projected to MessageInputWhisperPushToTalkMode.tapToSend(raw2).",
+    "partial": "Ordinary idle mic callback is proved to dispatch MessageInput startWhisper raw26 in v531. The exact intermediate handle switch from that raw26 to BaseCodexThreadViewModel witness+1b0 has not been closed in this bounded pass. Do not label every activation gesture as tapToSend."
+  },
+  "thread_start": {
+    "conformance": {
+      "descriptor": "0x7e0b6f8",
+      "protocol_descriptor": "0x95a99a4",
+      "protocol": "BaseCodexThreadViewModel",
+      "type_descriptor": "0x95aa8a4",
+      "type": "CodexRemoteThreadViewModel",
+      "witness_table": "0xa504ab8",
+      "slot": "0x1b0",
+      "entry_address": "0xa504c68",
+      "implementation": "0x1943194",
+      "tail_target": "0x18f1d84"
+    },
+    "additional_reachable_entry": "Whisper handleEvent1aa4988 ->1883aa0: event byte+40==1 branches1883ad4..1883ad8 and calls18f1d84. Existing v531 metadata binds this activation event.",
+    "guard": "18f1d98 calls18e4638. Returned true exits18f1da4. Guard reads owner-dependent state, exact business meaning remains unknown.",
+    "callback_creation": [
+      "18f1dd0..18f1dd4 supplies callback1c415fc",
+      "18f1dd8..18f1ddc supplies fallback1aa4ad4",
+      "18f1de0..18f1de4 supplies Thread whisper getter18e44ec",
+      "18f1dfc calls119dae0, then18f1e00 calls18834ec"
+    ],
+    "callback_bridge": "1c415fc supplies getter18e44ec and branches1c46850. Bridge weak-loads owner and retains incoming Bool inw22.",
+    "success_branch": [
+      "1c46888 tests Bool bit0; false ->1c468cc captured fallback closure",
+      "1c46890 calls injected Threadgetter18e44ec",
+      "1c46898 loads concrete component +0x10 object/witness",
+      "1c468ac loads activation witness+0xd8",
+      "1c468b0 calls45c8a4, which writesw0=1,w1=0 at45c8a4..45c8a8",
+      "1c468b4 writesw2=0",
+      "1c468c0 invokes activation"
+    ],
+    "activation_arguments": {
+      "mode": {
+        "enum": "ChatGPTWhisperInterface.WhisperPushToTalkMode",
+        "raw": 1,
+        "case": "tapToSend"
+      },
+      "second_argument": false,
+      "third_argument": false,
+      "bool_parameter_names": "unknown"
+    },
+    "preflight_boundary": "18834ec reads shared owner state through witness+8, subscribes via18835c8 when its local Bool is true. Exact published-state predicate and Bool completion/fallback semantics remain unbound; not renamed to permission approval or capability without evidence."
+  },
+  "mode_capture_and_session_chain": [
+    {
+      "at": "0xa4f65b8+0xd8",
+      "detail": "ComposerWhisperViewModel conformance7def738 to ComposerWhisperModel; witness16f4f2c tailcalls16eea48."
+    },
+    {
+      "at": "0x16eea6c,0x16eeb70",
+      "detail": "Activation firstargumentx0 savedx22, thenw22 savedfp-0x12c."
+    },
+    {
+      "at": "0x16eef74..0x16eef8c",
+      "detail": "Compute dynamic capture regionx26, reload originalw0 fromfp-0x12c, store byte atcaptureRegion+0x10."
+    },
+    {
+      "at": "0x16ef024..0x16ef02c",
+      "detail": "Async descriptor7df4110 paired with capture. Descriptorrelative target is1785928."
+    },
+    {
+      "at": "0x16ef070..0x16ef080",
+      "detail": "Same mode reused in microphonePermissionRequested state event, tag2, then dispatch179b39c."
+    },
+    {
+      "at": "0x178597c..0x17859b8",
+      "detail": "Read capture byte+0x10 intow24, movw7=w24, branch16ef48c."
+    },
+    {
+      "at": "0x16ef4a8",
+      "detail": "Async context storesw7 atcontext+0x101."
+    },
+    {
+      "at": "0x16ef668..0x16ef674",
+      "detail": "Successful continuation reloads mode tow0 and invokes16eff34."
+    },
+    {
+      "at": "0x16eff34 ->0x1770678 ->0x1770910",
+      "detail": "v533 established unchanged modeforwarding toWhisperViewModel._pushToTalkMode object+0x30; getter16ed46c."
+    },
+    {
+      "at": "0x16e5534",
+      "detail": "v533 waveform mode projection maps source1tapToSend to MessageInput raw2tapToSend; consumed16f648c/6073888."
+    }
+  ],
+  "integration_guidance": {
+    "source_backed": "Use source mode1/UI mode2 for a fixture explicitly representing successful Thread activation18f1d84. This supplies a concrete nonzero mode test vector and avoids assuming content(false) selects disabled mode.",
+    "remaining_gate": "Claiming the production ordinary tap path fully closed still requires startWhisper raw26 handle consumer -> Base witness+1b0. No setting/default/capability override has been proved at that boundary.",
+    "do_not_infer": [
+      "No proof that all microphone gestures use this mode.",
+      "No proof that runtime capability overrides default tofalse.",
+      "No basis to bypass18e4638/preflight or assume captured Boolalways true.",
+      "No microphone/audio/runtime parity claim."
+    ]
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "Ordinary startWhisper raw26consumer",
+      "next": "Trace injected MessageInput handle closure action switch; bind branch toBaseCodexThreadViewModel witness+1b0 atThreadtablea504ab8 or direct18f1d84."
+    },
+    {
+      "boundary": "Guard18e4638",
+      "next": "Bind optional thread state+0x110 and equality helper461b74 toactual model field before naming the guard."
+    },
+    {
+      "boundary": "18834ec completion Bool",
+      "next": "Bind witness+8published state/predicate and downstream18835c8 callback before declaring canBegin/microphone permission semantics."
+    }
+  ],
+  "validation": {
+    "artifact_digest": "matched existing inspector output and Reader identity",
+    "pointer_chain": "verified MachO chained rebase for witness entries; metadata conformance names read from retained artifact",
+    "runtime": "not_run",
+    "audio": "not_run",
+    "implementation": "not_modified"
+  },
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activate-d8-a.asm",
+      "sha256": "dcf64dfbf1af2b7975c5fde0f583a54eb9e99f84f14e26f0e6e827685bffbee7",
+      "bytes": 3296
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activate-d8-b.asm",
+      "sha256": "81eb5cb81f453e9f4f2041a6010f54e7f642d70b9c493b0d3e75801a0cbf7a23",
+      "bytes": 2454
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-bridge-refs.json",
+      "sha256": "3e28a89d1e8cc29246f68417788e7451fe70c7feccf4a5d73ff21a39b34b74ec",
+      "bytes": 956
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-bridge.asm",
+      "sha256": "7b9cdad4e6737fa6abb772868593c62a127f2b2d4086c84661eca84e72d91451",
+      "bytes": 7549
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-guard.asm",
+      "sha256": "822fba076901c42d381b7aab19ffbae2b34f1dc3b54179d22595d28f19586d0f",
+      "bytes": 2292
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-input.asm",
+      "sha256": "295a91da2a4ec432caf06349f76920c8bfe9a06fc201e8926f0174b0b9eafea7",
+      "bytes": 42887
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-preflight.asm",
+      "sha256": "067a911c001e8ba668710a397137088105745c2fd3653f16600118d082946679",
+      "bytes": 8703
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-producer.asm",
+      "sha256": "463abf376febcd9c93063de813831684ff2e695661619825d4c9ccf8dc108f2a",
+      "bytes": 20714
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-refs.json",
+      "sha256": "d28d3e9e8b9f2fa696b8672467ed46783ae797cc50b98acef737ccd0341789aa",
+      "bytes": 2344
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-activation-witness.asm",
+      "sha256": "958ff7181a25620b475bd50a01dacc2397d04041b7d64bbc6c110333694f4001",
+      "bytes": 1765
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-base-method-candidates.json",
+      "sha256": "ed4f14ea9e645b77bf0ec99a0d4947f82f7bbe0ed2fa3091dbe82a408e366e15",
+      "bytes": 89
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-base-start-helper-candidates.asm",
+      "sha256": "40b90a856d7588241571c84501324ad114ff9c1e8a01d7fa5476e4c7d3a96f66",
+      "bytes": 3803
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-d8-helpers.asm",
+      "sha256": "a8f08eca2fefcca4794bf4c72035982042d19a57de5e3129eea78e3d0c6f539c",
+      "bytes": 32830
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-d8-indirect-candidates.json",
+      "sha256": "54110e27b86c438667ba0b12681e5eb9e9d50b1488f719e43a429873601b4a52",
+      "bytes": 1939
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-event-entry.asm",
+      "sha256": "8e144996a2cd8b326c209e9e093868988ee9645d63da6ec66915cebe73ef3ded",
+      "bytes": 7132
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-messageinput-action.asm",
+      "sha256": "46307f71d34c5f058128cf85aaba6b5804feed6e16bda98d5a2494fbb0ae84e3",
+      "bytes": 5583
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-messageinput-action2.asm",
+      "sha256": "1f721285d645f644ff06b5a5b812d0e61dc3a59b088d9f29dfc90baceb4947f4",
+      "bytes": 4036
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-producer-refs.json",
+      "sha256": "c2fdc861ed23ee577da8620cf77ba5cb2baf39edcbff0ab01dd75b0fba3ff00e",
+      "bytes": 537
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-reconcile.asm",
+      "sha256": "a8fcec8d722cdd23eb34efb946d37126a2162204ab6c7dd38269245fcb1d7036",
+      "bytes": 14091
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-start-consumer.asm",
+      "sha256": "fa209a5787327cfbf9cad1629e7f8bd5d438ebbd769e44e63a26fc32e7d5478f",
+      "bytes": 7017
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-start-consumer.json",
+      "sha256": "2b4efb602fc7b09caa1bae0abf67852ce7f929b53f6326b6f18a259499cd91db",
+      "bytes": 7191
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-start-witness-candidates.json",
+      "sha256": "7dfd2049339efe4510799e1de4ce9de6c266a8d2f49d280d7999335ebb4c3596",
+      "bytes": 267
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-thread-activation-refs.json",
+      "sha256": "b92d16f265afa5f423bddca01b8468d1cd326dfe3adca32d6d035f2d51f589c0",
+      "bytes": 563
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-thread-protocol.asm",
+      "sha256": "56b1985e4f9d2077563eb744735e2bca1ce2fb07582a9c09cf7b1e3e4c4eb4ad",
+      "bytes": 2537
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-thread-start-refs.json",
+      "sha256": "54f0b1530e9b9fc399633599f8d59c955ccb3fcffa858fddb6b21251816d0555",
+      "bytes": 747
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-thread-start.asm",
+      "sha256": "b56f0463cfed0cdb92b5f09c7d7ae53eecf0afdeb003786f355f4edc9815f535",
+      "bytes": 2028
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-thread-whisper-refs.json",
+      "sha256": "9eb3802a54e355aec1b5905769feb68e96f258106f59fbb391400e397f206e8f",
+      "bytes": 1409
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-forwarding.asm",
+      "sha256": "a0936f1a8b0565b945661e29f18dc84107922b5d46bd94185ed941725fc69af8",
+      "bytes": 3084
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-metadata.json",
+      "sha256": "1bf5edc9728377e1e1ad440b61789ba53352af0be568b6f101c3d73a73efa16b",
+      "bytes": 1301
+    }
+  ]
+}

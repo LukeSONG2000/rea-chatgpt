@@ -1,0 +1,123 @@
+{
+  "batch": 617,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static-observation",
+  "integration_gap": "RemoteFilePreviewController used QuickLook for every resource and never consumed request.lineNumber.",
+  "observations": [
+    {
+      "symbol": "CodexRemoteSourceCodeFilePreviewSource",
+      "descriptor": "0x95ace08",
+      "fields": [
+        "displayName",
+        "contents",
+        "language",
+        "lineNumber"
+      ],
+      "evidence": "ios-remote-v617-file-preview-metadata.json"
+    },
+    {
+      "symbol": "CodexRemoteSourceCodeFilePreview",
+      "body_witness": "0x1a13128",
+      "body": "0x1a11028",
+      "evidence": "ios-remote-v617-source-preview-witness.json",
+      "observation": "Body thunk reaches source preview body. Imported navigationTitle, inline title display mode and ShareLink calls are present. Exact style/highlighter behavior is unresolved."
+    },
+    {
+      "symbol": "CodexRemoteFilePreviewScrollPositionModifier",
+      "body_witness": "0x1a13b84",
+      "body": "0x1a13688",
+      "fields": [
+        "readingState",
+        "displayMode",
+        "linkedLineNumber",
+        "isUserScrolling"
+      ],
+      "observation": "Body binds ScrollPosition; chooses top or center depending on display mode; linked-line change callback is registered with initial=true at0x1a13868..0x1a13880. Geometry and phase changes have separate callbacks."
+    },
+    {
+      "symbol": "linked-line onChange closure",
+      "entry": "0x1d38cf8",
+      "consumer": "0x1a133c0",
+      "observation": "Thunk forwards optional Int and display mode to the reading-state action. Action has separate saved-position and linked-line branches, with previous-target comparison at0x1a13540."
+    },
+    {
+      "symbol": "linked-line navigation action",
+      "entry": "0x18a09f0",
+      "call": "0x18a0ac8",
+      "observation": "The action stores the target, obtains UnitPoint.center at0x18a0a40 and calls ScrollPosition.scrollTo(id:anchor:). Saved-offset path separately calls scrollTo(y:) at0x1a13514."
+    }
+  ],
+  "implemented": [
+    "Scoped UTF-8 plain/source text citation preview consumes the requested line number.",
+    "Native whole-document selection and copying; one initial centered target followed by normal scrolling.",
+    "Invalid/out-of-file line targets keep the complete file visible with an explicit localizable explanation.",
+    "Request identity, cancel, retry and resource-scope checks are reused."
+  ],
+  "independent_adaptations": [
+    "UITextView presentation, font/insets and modal close UI.",
+    "NSString UTF-16 line indexing, supported text-type classification and out-of-range policy.",
+    "Initial positioning on first laid-out viewport; original reading-state persistence and display-mode policy are not reproduced.",
+    "Synthetic120-line content and line60 citation."
+  ],
+  "unimplemented": [
+    "Source syntax highlighter, gutter, comments and raw/rendered Markdown modes.",
+    "Complete official source-preview owner and reading-state persistence.",
+    "file URL fragment consumer, line-range highlighting and full relative/sandbox routes.",
+    "Android corresponding source viewer."
+  ],
+  "validation": {
+    "foundation": "passed",
+    "build": "passed",
+    "ui": "r1:3 passed,0 failed; r2 pending",
+    "visual": {
+      "chinese_light": "Referenced line60 centered in source viewport; after user swipe visible range moves to76..110.",
+      "english_dark": "Wrapped logical line60 centered; dark native content and toolbar visible.",
+      "evidence": "ios-remote-v617-r1-attachments/manifest.json",
+      "method": "Manual inspection of exported XCTest screenshots",
+      "limits": "Exact official font, insets, gutter and source viewer chrome remain unimplemented."
+    }
+  },
+  "raw_evidence": [
+    {
+      "path": "ios-remote-v617-citation-constructor.asm",
+      "sha256": "f3c93c15c7812efbc3bc82ca6008ed57b9e7abbf2431cddd82fb612e35c11547"
+    },
+    {
+      "path": "ios-remote-v617-line-change-thunk.asm",
+      "sha256": "eec8ef6e2a02ce23c32d53c16d8c75642d6c7455cb835008c3434c8deacf73c0"
+    },
+    {
+      "path": "ios-remote-v617-line-position-action.asm",
+      "sha256": "2b0f0e16a33920aa5b0606b410efbfb4789387be6b37e33c9920c7c507768a16"
+    },
+    {
+      "path": "ios-remote-v617-scroll-position-body.asm",
+      "sha256": "f34a029104a944bd1d177f9c335e1666e904bd38619142e6fc36236845e3bb0f"
+    },
+    {
+      "path": "ios-remote-v617-scroll-position-entry.asm",
+      "sha256": "d155facdbaf8373f91775dd5e54eec607a89c97401b63ad5a86b1eba1620d36c"
+    },
+    {
+      "path": "ios-remote-v617-scroll-to-line.asm",
+      "sha256": "5c839aa4e0d1654947d17548f8bcdafb556b2de9ecc76f1eb51449654cb45506"
+    },
+    {
+      "path": "ios-remote-v617-source-preview-body.asm",
+      "sha256": "31b6f3697d4905889aada2c63ed213e5c9f428b0cbeb9a8d8c27f84b15be0636"
+    },
+    {
+      "path": "ios-remote-v617-source-preview-entry.asm",
+      "sha256": "8955c0a4f56662c99391d0e60c5fa25ba98c8341efe393de8267c86db4f7a580"
+    },
+    {
+      "path": "ios-remote-v617-url-classifier.asm",
+      "sha256": "c0bffbc047687400cf5231be54d868d1bd3bf24e2dcafc74fc06b37896958740"
+    }
+  ]
+}

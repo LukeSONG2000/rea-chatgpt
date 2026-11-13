@@ -1,0 +1,64 @@
+{
+  "batch": "v606",
+  "source": "ios-remote-v605-blur-findings.json",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "official_mechanism": [
+    "Collection contentInsetAdjustmentBehavior is never, raw2.",
+    "Content insets derive from outer safe-area top/bottom, measured whole BottomBars height, initial-height fallback and additional bottom inset. iOS26 extra bottom gap48, legacy10.",
+    "1a4c608..630 applies all-regions bottom ignore, followed by conditional top ignore1a4c634..66c.",
+    "Vertical indicator inset addition is zero.",
+    "Ordinary HomeNavigationRoot supplies zero initial and additional bottom inset at304034/304048.",
+    "Bottom-aligned ZStack contains the collection and an always-mounted non-hit-testing color sibling ignoring all safe areas. The ordinary visible transcript branch has zero color opacity."
+  ],
+  "expected_change": "Restore full bottom underlap and explicit collection insets together, retain independent row layout and reading anchor adapter.",
+  "runtime_before": "v605 runtime is installed, read-only source inspection confirms automatic adjustment and missing geometry inputs. Current screenshots are retained under v605.",
+  "independent_adaptations": [
+    "SwiftUI onGeometryChange and UIKit inset application bridge",
+    "Synthetic row spacing and padding remain separate from scroll insets",
+    "Existing scoped reading-position store and restoration, including the initialization overwrite fix",
+    "Bounded UI drags and explicit keyboard-layout readiness checks"
+  ],
+  "validation": "Foundation passed. Nine distinct UI cases have passing results across final r5/r6/r7. r7 repeated the exact English combined test without source/test changes and passed.",
+  "unresolved": [
+    "Full official row padding and anchor restoration algorithm",
+    "Optional transcript-hiding and MessageInputGlassGradientPart branches",
+    "Legacy OS runtime, other embeddings and Android integration"
+  ],
+  "sources": [
+    "ios-remote-v605-blur-findings.json",
+    "ios-remote-v606-blur-findings.json",
+    "ios-remote-v606-keyboard-findings.json"
+  ],
+  "host_gap_before": "v605 used automatic UIKit adjustment and ignored only the top edge; the explicit outer geometry, complete BottomBars height and bottom-aligned stack were absent.",
+  "implemented": [
+    "Source-driven explicit content/vertical-indicator insets and all-regions bottom underlap, conditional modern top underlap.",
+    "Bottom-aligned stack and zero-opacity color sibling for the visible transcript route.",
+    "Geometry-only updates retain the independent logical reading anchor rather than checkpointing unfinished layout."
+  ],
+  "runtime_findings": [
+    {
+      "run": "r1/r2",
+      "result": "Both inset tests sampled before visible keyboard completed its transition. AX existence was insufficient. Reading test made an assumption that one drag hides row0; bounded history drags are now used."
+    },
+    {
+      "run": "r3",
+      "result": "Stable keyboard inset about542pt and approval inset309/330pt observed. Returned and restarted tasks lost reading anchors because geometry-change checkpointing overwrote their stored position."
+    },
+    {
+      "run": "r4",
+      "result": "After removing geometry-only checkpointing, English inset/approval/return test and Chinese process recovery passed. Chinese test reached the tail after two long drags and followed its growing bottom. r5 selects middle-of-history and asserts followsTail=false explicitly."
+    },
+    {
+      "run": "r5",
+      "result": "Chinese/light and English/dark explicit inset, keyboard, approval, and return tests passed. Chinese creation and process recovery passed. Combined journey expected the pre-v603 search-details identifier; snapshot shows the recovered numbered queries correctly. English first-row test used AX hittability for content under a translucent navbar; video confirms it is outside the visible history. Tests now use current queries and visible geometry."
+    },
+    {
+      "run": "r6",
+      "result": "Chinese combined journey and English process reading recovery passed. English combined journey encountered repeated 60-second XCTest animation-idle timeouts after file import. The 18-second synthetic response completed while automation waited, so follow-up control was absent at its eventual tap. App process sample shows main thread mostly waiting in mach_msg; title regressions still running. Preserve failure and repeat this exact journey after terminal completion."
+    },
+    {
+      "run": "r7",
+      "result": "Exact English combined journey repeated without edits, passed. Attachment submit, queue, stop, start queued prompt, attachment preview, task return and saved draft completed. The prior animation-idle failure remains recorded as intermittent automation behavior."
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "module": "settings/system",
+  "status": "in_progress",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "sources": [
+    "ios-settings-v299-integration.json",
+    "ios-settings-v306-findings.json",
+    "ios-settings-v592-findings.json",
+    "ios-settings-v586-integration.json",
+    "ios-settings-children-20261112-findings.json",
+    "ios-settings-readable-topology-20261112.json",
+    "ios-settings-navigation-enum-20261112.json",
+    "ios-settings-general-list-20261112-findings.json",
+    "ios-settings-voice-topology-20261112-findings.json",
+    "ios-settings-next-actions-20261112.json",
+    "ios-settings-safety-topology-20261112-findings.json",
+    "ios-settings-account-buttons-type-20261112.json",
+    "ios-settings-account-owners-20261112.json",
+    "ios-settings-account-owners-witnesses-20261112.json",
+    "ios-settings-root-fidelity-20261112-findings.json",
+    "ios-settings-theme-passwords-fidelity-20261112.json",
+    "ios-settings-signout-20261112-findings.json"
+  ],
+  "changes": [
+    "Typed root destinations prevent unsupported routes falling through to Codex.",
+    "Existing customization/account entries open returnable unavailable pages instead of generic alerts.",
+    "Moved haptics into General, based on user-confirmed official navigation; retained existing persistent toggle. Original 293 General owner not yet proved.",
+    "Restored one grouped App settings list with General, Notifications, Voice, Parental controls, Trusted contacts, Safety, Security and sign-in, Codex, Cloud browser, Storage, Data controls. Order is official user runtime reference; 293 leaf predicates are partially traced.",
+    "Added Get help group: Report app issue, Help Center, Privacy Center in proven 293 construction order. Offline reference profile exposes conditional entries; live account capability mapping remains absent.",
+    "All added unavailable destinations have explicit no-service explanation and native back navigation.",
+    "Personalization and Memory root entries now open source-ordered child lists; advanced disclosure and mutually exclusive memory branches preserved. Service controls remain unavailable destinations.",
+    "General first group restored in artifact construction order: App language, Auto-correct spelling, Haptic feedback. Language/spelling retain returnable service-unavailable destinations.",
+    "Voice root opens source-ordered child rows: Language, Dictionary, Dictation history, Start with Voice, Background conversations. Modern language placement avoids duplicate legacy branch. Actions remain returnable unavailable destinations.",
+    "Safety root opens four source-ordered capability-gated rows: reduce sensitive content, Trusted contact, Parental controls, Time management; actions remain returnable unavailable destinations.",
+    "Added source-confirmed Passwords entry before Storage; original icon remains unresolved",
+    "General Suggestions list adds source-confirmed conditional Autocomplete then Trending searches"
+  ],
+  "classification": "independent native topology adapter with per-subtree artifact evidence; root order partly newer runtime reference",
+  "implemented_existing": [
+    "system/light/dark appearance and persistence",
+    "capability-fed accent picker",
+    "haptic preference and hardware gate",
+    "notification permission/read/request/manage/failure/retry",
+    "notification token registration interface and synthetic routing/unread state",
+    "Codex connection enable/reorder and composer follow-up/keyboard/context preferences",
+    "diff wrapping preference"
+  ],
+  "not_implemented": [
+    "complete official settings root order and visibility predicates",
+    "personalization/memory/apps/account service behavior",
+    "actual notification delivery service",
+    "physical haptic feel verification",
+    "exact original root geometry and transitions",
+    "Remaining General child list and complete settings subtree",
+    "Remaining General conditional groups and account native child lists; personalization trait catalog and memory capacity warning",
+    "Voice, parental, trusted-contact, safety, security, cloud-browser, storage, data-control and help service functionality; Voice/Safety child lists partly restored",
+    "Live root availability predicates; current offline list is an explicit reference profile",
+    "Voice selector and remaining branches; mode/capability conditions not mapped to live account state",
+    "SettingsSignOutSection root entry, placement/configuration and complete frontend confirmation flow"
+  ],
+  "verification": {
+    "r1": {
+      "result": "ios-settings-module-20261112-r1.xcresult",
+      "passed": [
+        "haptic persistence (old root placement)",
+        "notification remote routing",
+        "Remote composer settings"
+      ],
+      "failed": [
+        "unavailable page entry: plain button spacer hit area"
+      ]
+    },
+    "r2": {
+      "result": "ios-settings-module-20261112-r2.xcresult",
+      "status": "finished",
+      "scope": [
+        "General haptic persistence",
+        "unavailable entry return and repeated entry"
+      ],
+      "passed": [
+        "Settings > General > haptics preference persists after restart",
+        "Unavailable page entered twice and returned to same root row"
+      ],
+      "failed": [
+        "Test expected home after closing Settings, but correct parent is sidebar; updated test to close sidebar explicitly."
+      ]
+    },
+    "r3": {
+      "result": "ios-settings-module-20261112-r3.xcresult",
+      "status": "passed",
+      "scope": "unavailable entry and full return path"
+    },
+    "root_topology": {
+      "result": "ios-settings-topology-root-20261112.xcresult",
+      "passed": [
+        "testSettingsRootTopologyChinese: all 14 root entries reachable; storage/help return preserves position",
+        "testHapticsPreferenceChinese: General route and restart persistence"
+      ],
+      "device": "simulator Chinese light",
+      "physical_device": "iPhone Air unavailable; not installed"
+    },
+    "readable_children": {
+      "result": "ios-settings-children-topology-20261112-r2.xcresult",
+      "passed": [
+        "personalization advanced expansion and nested return",
+        "memory summary exclusive branch and nested return",
+        "unimplemented plugin entry return/re-entry"
+      ],
+      "physical_device": "unavailable"
+    },
+    "general_list": {
+      "result": "ios-settings-general-list-20261112.xcresult",
+      "passed": [
+        "Chinese first-group order and spelling entry/back",
+        "Haptic preference restart persistence"
+      ],
+      "device": "simulator Chinese light"
+    },
+    "voice_topology": {
+      "result": "ios-settings-voice-topology-20261112-r2.xcresult",
+      "status": "passed",
+      "scope": "Chinese light five rows, order, return and repeated entry"
+    },
+    "safety_topology": {
+      "result": "ios-settings-safety-topology-20261112.xcresult",
+      "status": "passed",
+      "scope": "Chinese light four ordered entries, each child/back, root return/re-entry; pure independent gates"
+    },
+    "general_suggestions": {
+      "result": "ios-settings-general-suggestions-20261112.xcresult",
+      "status": "passed",
+      "scope": "Chinese light source row order, both unavailable entry/back, root return"
+    },
+    "root_passwords": {
+      "result": "ios-settings-root-passwords-20261112.xcresult",
+      "status": "passed",
+      "scope": "Chinese light reference entry reachability, Passwords and Storage return preserves scroll; no complete source topology claim"
+    },
+    "theme_passwords": {
+      "result": "ios-settings-theme-passwords-20261112.xcresult",
+      "status": "passed",
+      "tests": [
+        "testSettingsRootTopologyChinese",
+        "testSettingsThemeAndPasswordCapabilityChinese"
+      ],
+      "scope": "Chinese light labels/shared theme group, default password absence, positive password fixture entry and back; independent logic unknown/false/true"
+    }
+  },
+  "priority": "Frozen293 root branch/composition and source fidelity first; screenshots comparison only",
+  "delivery": {
+    "simulator": "installed and launched; left running",
+    "physical": "iPhone Air installed and launched; left running; physical UI not automated",
+    "preview_report": "ios-settings-theme-fidelity-20261112-preview.json",
+    "physical_install": "ios-settings-theme-fidelity-20261112-device-install.json",
+    "physical_launch": "ios-settings-theme-fidelity-20261112-device-launch.json"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "e4f81421672ab07b6f68e2dc8fa34fc79501e955ffb85b059375aea4647ef576",
+    "implementation/ios/Sources/FrontendHaptics.swift": "d41e4ec5ed35139d228a5703cb9ccba4d675f89e3aece0763d010efc434218cb",
+    "implementation/ios/Sources/FrontendSettingsTopology.swift": "33a67d1cf9963f71b6618f48fab510be2d60a897140b9b314ae0773fec112041",
+    "implementation/ios/UITests/HostInteractionTests.swift": "230d3a4857dc95d18c67916d66a595451c512a86b04fde0442164a5f1f2eab74"
+  },
+  "corrections_20261112_theme_passwords": {
+    "supersedes": "Earlier unconditional Passwords entry and reversed Appearance/Theme labels",
+    "theme": "293 labels: Theme heading, Appearance and Accent color rows; one SettingsHomeSection and one host surface",
+    "passwords": "293 showPasswordManager predicate exists; unknown/false hidden by explicit host admission policy, positive fixture reachable; original image unresolved",
+    "root_state": "visibleSurfaces belongs to upsell surfaces and does not prove full settings menu visibility",
+    "root_remaining": "Concrete SettingsHomeFormContent.rows constructor, legacy/refreshed root branch predicate, complete account row supply, original Passwords image"
+  }
+}

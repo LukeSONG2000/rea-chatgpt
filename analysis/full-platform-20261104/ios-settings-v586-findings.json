@@ -1,0 +1,70 @@
+{
+  "batch": 586,
+  "status": "partial",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "type": "official_artifact_static_observation",
+      "source": "1814f00,1815018,18150d0,1815128",
+      "conclusion": "Settings body constructs localized diff-line-wrapping Toggle using Bindable keypath7df90d8."
+    },
+    {
+      "type": "official_artifact_static_observation",
+      "source": "19a23d0 →1dae4e8→88b21a0;1d861c4→73ef070",
+      "conclusion": "Preference factory uses codexRemoteDiffLineWrappingEnabled and standardUserDefaults, with declared default true."
+    },
+    {
+      "type": "official_artifact_static_observation",
+      "source": "1a592c0/1a5dec0; descriptors95af948,95af96c,95b16ac,95b2850",
+      "conclusion": "Diff sheet/list construction reads this preference. Turn/workspace content, file list and sections carry wrapsLines. DiffFileList also has collapsedFileIDs and scrollPosition."
+    },
+    {
+      "type": "official_artifact_static_observation",
+      "source": "1da2450→88b21d0;1a3d940..1a3d984;95afe24",
+      "conclusion": "Thread code blocks use a separate codexRemoteCodeBlockWordWrapEnabled preference, declared false. Inline Markdown/file disclosure equivalence is unproved."
+    },
+    {
+      "type": "independent_host_observation",
+      "source": "NativeConversationHost.performThreadAction",
+      "conclusion": "Before v586, Changes always presented service-unavailable even when scoped replay supplied file diff snapshots."
+    },
+    {
+      "type": "official_artifact_static_observation",
+      "source": "body witnesses19c051c/1a595c8/19bdf20; raw typerefs8e69f18/8e569ca/8e71448",
+      "conclusion": "Resolved final body types contain ScrollView/LazyVStack/scrollPosition/ForEachWithIndex/DiffFileSection for the file list, FileBrowserSheetContent/DiffSheetHeader for the turn sheet, and section/header/DocumentDiffView plus comments for file sections.",
+      "reports": [
+        "ios-settings-v586-body-typeref-8e69f18.json",
+        "ios-settings-v586-body-typeref-8e569ca.json",
+        "ios-settings-v586-body-typeref-8e71448.json"
+      ]
+    }
+  ],
+  "implementation_decision": [
+    "Restore the diff preference and label in Settings.",
+    "Add an explicitly synthetic latest-turn diff snapshot sheet to the existing Changes entry when replay is enabled. Preserve the unavailable response in disconnected mode. Snapshot identity is the selected account/host/thread and turn, with no historical/workspace aggregation.",
+    "Reuse existing selectable/copyable code preview with inverse horizontal-scroll flag only inside the new diff sheet. Restore the evidenced ScrollView/LazyVStack ownership. Native DisclosureGroup, default spacing and plain diff rendering remain independent minimum-usable adapters."
+  ],
+  "unknowns": [
+    "Full workspace diff owner/query/refresh is pending. Synthetic latest-turn snapshot is not equivalent to working-tree Changes.",
+    "Official diff section colors, gutters, line selection, comment actions, formatting and exact scroll restoration remain partial.",
+    "Settings binding setter and complete parent style are not fully recovered.",
+    "Failed type-record/raw probes at7e22988/7e22990 do not establish types. Correct7e22998 resolves a Tagged TurnDiffPresentation.File identity."
+  ],
+  "validation": "Foundation/text checks passed; r3 four UI cases passed; final ScrollView/LazyVStack r4 Chinese/light and English/dark journeys passed including collapse, copy, scope, draft and process restart. Screenshots reviewed and v586 installed/running.",
+  "runtime_findings": [
+    {
+      "type": "independent_host_runtime_observation",
+      "source": "ios-settings-v586-r2-attachments/D76C5B4B-D594-4F51-B21D-B32DCDB60AEC.txt",
+      "finding": "DisclosureGroup accessibilityIdentifier propagated over language, copy and body IDs. Wrapped content was rendered at250.7pt, but child selectors were replaced. Removed ancestor test ID, retained individual controls and native disclosure."
+    }
+  ],
+  "limits": [
+    "Initial associated-type probes used tagged addresses and failed. Resolving the raw type reference at address minus one succeeded for the three recorded witnesses. Exact modifier values, header behavior and comment implementation remain unverified."
+  ],
+  "upstream": {
+    "path": "opensource/codex",
+    "commit": "6905ecede7816e91373e9eabda3f6b0368fc747b",
+    "boundary": "Prior bounded wrapping search found TUI diff renderer. It does not establish iOS native consumer behavior."
+  }
+}

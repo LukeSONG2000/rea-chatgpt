@@ -1,0 +1,75 @@
+{
+  "module": "Files and browser",
+  "scope": "iOS frontend, synthetic resources, Chinese/light; no message attachment expansion",
+  "baseline": {
+    "version": "iOS 1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "official_evidence": [
+    "ios-files-v589-findings.json",
+    "ios-files-v590-findings.json"
+  ],
+  "changes": [
+    "Move directory pages, shared full-file resource owner and linked-line text viewer into FrontendFilePreview.swift; preserve existing consumers and lifecycle",
+    "Keep browser host in FrontendBrowserPreview.swift; feature ownership no longer embedded in conversation renderer"
+  ],
+  "implemented": [
+    "Task Files entry and scoped root/child directory navigation",
+    "Directory loading/failure/retry/empty and scoped cancellation",
+    "Text/code, PNG/PDF/RTF QuickLook resources; unsupported metadata and missing-resource distinction",
+    "Linked-line source viewer and native text selection",
+    "Local web title/address/progress/back/forward/reload/failure/retry/close",
+    "Task/conversation draft and reading-anchor restoration"
+  ],
+  "independent_adaptations": [
+    "Native QuickLook and UIKit/WKWebView preview hosts",
+    "Resource/request contracts and synthetic providers",
+    "Default directory glyphs/metrics and diagnostic path header"
+  ],
+  "not_implemented": [
+    "Service resource retrieval, authorization and downloads (outside current backend scope)",
+    "Exact official preview owner and directory glyph/metric fidelity",
+    "Wide-screen split selection and long-directory restore guarantee",
+    "Office/HEIC and large-resource acceptance",
+    "Full code highlighting and raw/rendered Markdown file modes"
+  ],
+  "verification": {
+    "ui": {
+      "passed": [
+        "testRemoteFilesChinese",
+        "testRemoteFilesFormatsChinese",
+        "testRemoteBrowserPreviewChinese",
+        "testChatWorkLongBrowserReturnChinese"
+      ],
+      "results": [
+        "ios-files-browser-module-20261112-r1.xcresult (3 passed, long-return failed)",
+        "ios-files-browser-module-20261112-r2.xcresult (long-return passed)"
+      ],
+      "diagnosis": "Long-return test assumed editor tap placed caret at tail. r2 establishes insertion point with temporary marker before browser, removes marker and checks same position after close. Both Chat and Work passed without changing browser restoration implementation."
+    },
+    "visual": {
+      "inspected": [
+        "r1 directory root",
+        "r1 browser retry-success"
+      ],
+      "limits": "Native independent host appearance, not proof of exact official fidelity."
+    }
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/FrontendFilePreview.swift": "4f7f7f9df4d7cf25a40b2349b8471b09436d3552576a4a24caa02d4c5e96c307",
+    "implementation/ios/Sources/FrontendBrowserPreview.swift": "6ae8fac51b6603fbcda460fecd675b2ec417b84f92caa2d99c9210155dffc5cd",
+    "implementation/ios/Sources/NativeConversationHost.swift": "2d8a5330fb28c7b29d8ad68d39a55918ab9a53eaff381e1788f0d7bc4105cdb1",
+    "implementation/ios/UITests/HostInteractionTests.swift": "a79017aed9e2bc8c26f922b1f6027162818ed88bf6882758b447ded462f2915a",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "b61231538a46d0a028c5a80f17cd546e75c4730fc018720b227b43185262883d"
+  },
+  "status": "core frontend loops implemented; listed service/fidelity gaps retained",
+  "delivery": {
+    "simulator": "current binary hash verified, core preview running",
+    "iphone": "signed build, install and launch successful on iPhone Air; physical interactions not exercised",
+    "reports": [
+      "ios-files-browser-20261112-preview.json",
+      "ios-files-browser-20261112-device-install.json",
+      "ios-files-browser-20261112-device-launch.json"
+    ]
+  }
+}

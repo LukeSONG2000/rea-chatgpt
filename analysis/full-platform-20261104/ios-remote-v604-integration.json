@@ -1,0 +1,63 @@
+{
+  "batch": 604,
+  "implemented": [
+    "Remote explicit file URL links dispatch to scoped injected resource loader; HTTP(S) dispatches to browser",
+    "Remote Markdown and table native renderers opt into file link attributes",
+    "Loading, cancellation, load failure retry, missing resource error and QuickLook return",
+    "Shared core preview includes synthetic linked file and browser content"
+  ],
+  "official_evidence": "ios-remote-v604-link-findings.json",
+  "independent_adaptations": [
+    "Bounded absolute-file URL admission and unsupported policy",
+    "Synthetic scoped resources and event payloads",
+    "Loading/error rows, request owner and QuickLook presentation"
+  ],
+  "tests": {
+    "foundation": {
+      "result": "passed",
+      "log": "ios-remote-v604-text-r3.log"
+    },
+    "ui": {
+      "summary": "ios-remote-v604-r5-summary.json",
+      "passed": 4,
+      "failed": 0,
+      "coverage": [
+        "Chinese light file load/cancel/open/close",
+        "English dark first-load failure and retry",
+        "Missing resource and local webpage route",
+        "Cross-host task and draft isolation, process restart",
+        "Chat and Work local browser regressions in both languages and appearances"
+      ],
+      "related_remote_browser": "r4 existing Remote browser regression passed",
+      "visual_review": "Inspected Chinese-light and English-dark full file content, plus Chinese Chat and English Work browser captures. Scoped fixture-a file text is visible in QuickLook."
+    },
+    "earlier_failures": [
+      "r1 renderer omitted file link attributes",
+      "r2/r3 transient loading observation; r3 confirms injected failure UI",
+      "r4 Chinese full-width AX Link tap hit empty text area; select actual child glyph node",
+      "r4 browser initial address queried before local navigation completed; wait for page content"
+    ]
+  },
+  "runtime": {
+    "report": "ios-remote-v604-runtime.json",
+    "version": "604",
+    "launch": "local.rea.chatgpt.ioshost: 47662",
+    "hash_match": true,
+    "handoff": "Chinese Remote list on stable preview profiles, system dark appearance; only built-in Retina Display available"
+  },
+  "not_implemented": [
+    "Official file citation attachment/card styling",
+    "File line/range positioning",
+    "Relative and sandbox URL classification",
+    "Search result/source citation complete URL producer and consumer",
+    "Complete official preview owner and layout",
+    "Remaining reasoning, title alignment and page-level visual feedback"
+  ],
+  "cross_platform": "Current changes use iOS source and an independent UIKit/SwiftUI host. Android requires independent implementation evidence; scoped resource contracts and fixtures are sharing candidates.",
+  "retention": {
+    "report": "ios-remote-v604-retention.json",
+    "stale_targets": [],
+    "free_disk": "13 GiB observed"
+  },
+  "next_action": "Return to Remote page-level gaps: trace the ordinary thread navigation title parent and recover alignment/scroll-edge ownership before changing layout."
+}

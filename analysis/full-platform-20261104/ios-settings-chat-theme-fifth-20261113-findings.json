@@ -1,0 +1,194 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Settings theme accent → native Chat MessageRow style producer/environment → ordinary user text bubble. Two bounded candidate groups; no product/build/device changes.",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_budget": {
+    "limit": 2,
+    "groups": [
+      {
+        "id": 1,
+        "question": "Does a real Chat parent call the theme resolver, rather than borrowing Remote behavior?",
+        "result": "Yes: MessageRowViewModel initial and recompute paths call3d974bc, write _messageRowStyle and preserve originalMessageRowStyle. Actual disablesSharedTheme gate identified."
+      },
+      {
+        "id": 2,
+        "question": "Does actual Chat cell context inject that model style into the consumed environment?",
+        "result": "Yes: MessageRowCellContextModifier builds _EnvironmentKeyWritingModifier<MessageRowStyle>, actual keypath and __Key_messageRowStyle getter/setter resolved; user TextPart reads Environment<MessageRowStyle> and existing bubble consumes its background. Work route-specific row-model registration remains unclosed."
+      }
+    ],
+    "stopped": true
+  },
+  "official_observations": [
+    {
+      "id": "chat-initial-theme-style",
+      "kind": "official-artifact-observation",
+      "conclusion": "The native Chat MessageRowViewModel itself applies the shared theme resolver during initialization. This is a real Chat caller independent of the known Codex Remote bubble caller.",
+      "source": [
+        "MessageRowViewModel descriptor0x961f1bc / ObjC class0xaeb1a50 _TtC17ChatGPTMessageRow19MessageRowViewModel",
+        "Initial function0x393ce48;0x393e350..360 stores disablesSharedTheme input viaivar storage0xb083380",
+        "0x393e380..398 picks raw11 when disablesSharedTheme istrue; otherwise reads selected setting via0x3931914;0x393e39c writes theme state",
+        "0x393e3b0..c4 copies original input style;0x393e3d4 calls0x3d974bc with selected theme;0x393e3d8..e0 stores result into model+0x58",
+        "Actual _messageRowStyle ivar storage0x801f258 has file-backed offset word0x58"
+      ],
+      "evidence": [
+        "row-initial-theme.asm",
+        "selected-owner-and-key-metadata.json"
+      ],
+      "limit": "Full top-level account/settings repository assignment and Work mode-specific factory remain outside this scope. disablesSharedTheme must not be renamed temporary chat."
+    },
+    {
+      "id": "chat-style-recompute",
+      "kind": "official-artifact-observation",
+      "conclusion": "The Chat model recomputes from originalMessageRowStyle and the current theme selection, compares against current style, then updates only when unequal.",
+      "source": [
+        "0x3945a18..30 reads disablesSharedTheme via0xb083380 and selects raw11 iftrue;false0x3945a34..40 reads source0x3931914",
+        "0x3945b34..44 loads originalMessageRowStyle using storage0xb4f6e48;0x3945b54→0x3d974bc",
+        "0x3945b60→0x38865f8 reads actual current model style;0x3945b6c→0x3d96f0c compares;equal skips update at0x3945b7c",
+        "0x3945b94→0x3942028 setter; getter0x3886638 reads object+0x58;setter0x3942048/84 writes same style storage with Observation path"
+      ],
+      "evidence": [
+        "row-update-theme.asm",
+        "row-style-getter.asm",
+        "row-style-setter.asm",
+        "selected-owner-and-key-metadata.json",
+        "model-style-references.json"
+      ],
+      "limit": "Observed recompute calls are not a complete settings subscription/account-switch lifecycle. Do not claim exact original disk or network synchronization from this consumer."
+    },
+    {
+      "id": "actual-cell-environment-parent",
+      "kind": "official-artifact-observation",
+      "conclusion": "The actual native MessageRowCellContextModifier injects the model-produced style through an EnvironmentKeyWritingModifier. It is not merely unused VM metadata.",
+      "source": [
+        "Function0x38e5660;0x38e56d8 calls model style getter0x38865f8;0x38e56dc..ec builds modifier with keypath +returned style",
+        "Full generic record0x8024010 resolves ModifiedContent<_ViewModifier_Content<ChatGPTMessageRow.MessageRowCellContextModifier>,_EnvironmentKeyWritingModifier<ChatGPTMessageRowUI.MessageRowStyle>>",
+        "0x38e56cc→0x3aa8e78 returns keypath0x8030250 throughswift_getKeyPath",
+        "Keypath computed getter relative word0x8030278→0x2946f08→0x3d95b0c;setter0x803027c→0x2946f48→0x3d95b44",
+        "Both property functions use metadata0xa6d9210, actual descriptor0x962fe6c named__Key_messageRowStyle;0x38e57d0 applies modifier via0x757b790"
+      ],
+      "evidence": [
+        "cell-environment-writer.asm",
+        "style-host-full.json",
+        "style-host-full.tree.txt",
+        "style-keypath-factory.asm",
+        "style-keypath-accessors.asm",
+        "environment-property.asm",
+        "environment-key-conformance.asm",
+        "selected-owner-and-key-metadata.json"
+      ],
+      "limit": "The full tree proves this exact modifier carrier. It does not establish that every Chat/Work special-message renderer or alternate snapshot path inherits it unchanged."
+    },
+    {
+      "id": "user-bubble-consumer",
+      "kind": "official-artifact-observation",
+      "conclusion": "Existing independently proven Chat user text component consumes MessageRowStyle environment and passes it to the bubble modifier; the ordinary bubble retains supplied background. Combined with the newly proven real Chat producer, themed ordinary Chat user backgrounds are source-supported.",
+      "source": [
+        "MessageRowUserMessageTextPart descriptor0x96256c0, witness0x3ae9f58→body0x3ae7d7c",
+        "0x3ae7ef4..0x3ae7f10 copies actual _messageRowStyle Environment input then calls0x2820040;0x3ae7f48..50 forwards returned style to bubble modifier",
+        "MessageRowUserMessageTextBubbleStyleModifier descriptor0x96256a4 body0x3aea070 consumes background atstyle+0x10, ordinary branch retains supplied background",
+        "Shared resolver0x3d974bc: raw0 or11 preserves incoming base; other admitted themes use ThemeColorPalette.background from0x74e45bc. userMessageAccent+0x18 remains a separate field, not proven text foreground"
+      ],
+      "reused_evidence": [
+        "ios-chat-v570-text-body-entry.asm",
+        "ios-chat-v570-user-style-body.asm",
+        "ios-chat-v570-findings.json",
+        "ios-remote-v565-style-resolver.asm",
+        "ios-remote-v566-palette-map.json"
+      ],
+      "limit": "TextPart initializer keypath assignment and every alternative row placement were not separately expanded; this result joins the actual typed environment parent and existing user-style consumer, not a claim of full UI reconstruction. Text foreground, links, borders, temporary/special bubbles need their own consumers."
+    }
+  ],
+  "current_host_gap": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256_at_read": "f81633419accc39710ac33aee4ba2c56c6bda4a08a9979c9c70aeb1781e10fc8",
+    "observed": "Native Chat user text surface assigns officialVisualColor(\"OneOff/UserMessageBackground\") directly (line1927 at read); it does not use current preview accent. Remote user bubble already has its own theme adapter. Parent may edit concurrently, so this snapshot is not a later runtime claim."
+  },
+  "safe_product_decision": {
+    "can_restore": [
+      "Apply the same recovered MessageRowStyle palette-background rule to ordinary Chat user message surfaces; this is backed by actual Chat initialization/recompute and environment writer, not only Remote similarity.",
+      "Preserve base OneOff/UserMessageBackground for default/unresolved source selection and for explicit disablesSharedTheme; use palette background only for admitted known themes.",
+      "Keep theme decision at row-style/settings owner and refresh affected native row appearance without resetting text, draft, selection or reading identity."
+    ],
+    "independent_adapter": [
+      "Current Settings preview accent persistence/catalog and UIKit row refresh lifecycle remain local frontend design; no official settings service schema recovered.",
+      "If current host Chat and Work deliberately share the same ordinary user row carrier, applying this same style there is a shared host integration. Official Work route→this row VM registration is not separately proven here.",
+      "Use an explicit disablesSharedTheme input or preserve original base for unsupported/special contexts; do not substitute isTemporary or infer capability from a screenshot."
+    ],
+    "do_not_apply_unconditionally": [
+      "userMessageAccent as foreground color",
+      "Every assistant/message/link/control accent",
+      "All Work/temporary/export/alternate-renderer branches",
+      "Remote-only layout/background behavior absent a Chat consumer"
+    ]
+  },
+  "precise_unknowns": [
+    {
+      "gap": "Work-specific native entry into this row-model/environment path",
+      "breakpoint": "Current evidence closes MessageRowViewModel and MessageRowCellContextModifier; root Work route/factory admission not traced within these two groups."
+    },
+    {
+      "gap": "Upstream selected theme and disablesSharedTheme assignments",
+      "breakpoint": "0x3931914 getter source; constructors choose raw11 from explicit disablesSharedTheme. Account settings subscription/owner semantics beyond this recompute not closed."
+    },
+    {
+      "gap": "All bubble/text foreground and special style branches",
+      "breakpoint": "userMessageAccent offset0x18 is distinct from resolvedbackground offset0x10; no corresponding native foreground consumer closed."
+    }
+  ],
+  "haptics": {
+    "direct_caller_proven": false,
+    "status": "unknown",
+    "result": "No new explicit haptic emission established in bounded theme resolver/model/environment path; no feedback added."
+  },
+  "tooling": {
+    "native_provider": "Existing provider unavailable state reused; no repeated diagnosis or setup",
+    "bridge": "Missing temporary bridge recreated only from existing pinned local source; full generic tree produced without target execution",
+    "partial_attempts": "Initial prepare_record attempts emitted raw/ref files before missing-executable failure; style-host-full is authoritative completed output. Runtime-only ivar offset storage remains unresolved numeric value, not guessed."
+  },
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "tests_or_build": false,
+    "devices_or_target_runtime": false,
+    "local_evidence_helper_compiled": true
+  },
+  "reused_reports": [
+    "ios-chat-v570-findings.json",
+    "ios-remote-v566-findings.json",
+    "ios-chat-v575-viewmodel-fields.json",
+    "ios-chat-v575-viewmodel-class.json"
+  ],
+  "raw_evidence": {
+    "ios-settings-chat-theme-fifth-20261113-raw/cell-environment-writer.asm": "d3b07a928e21dda52557436f82e9544f54c7ad12fd654e897f96ed0ab008dbab",
+    "ios-settings-chat-theme-fifth-20261113-raw/demangle-bridge": "c66beb578483a835357fc75c2c48abc8be02e4d8a9bad7f5f96d5468b91ada98",
+    "ios-settings-chat-theme-fifth-20261113-raw/environment-key-conformance.asm": "a652f3886c4be76929af3669e3974f2f18021db8382bd37ac039aafe31d70275",
+    "ios-settings-chat-theme-fifth-20261113-raw/environment-property.asm": "34a54a9b4666a0888fb56ba1e37bec7bc1404d9492f678c186ca08210f9efbf6",
+    "ios-settings-chat-theme-fifth-20261113-raw/model-style-references.json": "cc03654c79e4c8b7a691b6ace442358b666a99cc67904ee65db19594f844f7b3",
+    "ios-settings-chat-theme-fifth-20261113-raw/resolver-and-env-references.json": "ae0e12e49dee9075d15d057b842dedee445110af89bc5ef8de1b1a08c811cee9",
+    "ios-settings-chat-theme-fifth-20261113-raw/row-initial-theme.asm": "25f66bce3da6d4e07ccc098df7eb16971669e5fb13b6c74d40d7c0b92aee6c6e",
+    "ios-settings-chat-theme-fifth-20261113-raw/row-style-getter.asm": "8338927755e134a8f91c8bb727977fb1df8ac9441e1ceeb3f761ba445b8026f5",
+    "ios-settings-chat-theme-fifth-20261113-raw/row-style-setter.asm": "8ee0b55cefbc307901fb03b2999282fcd36d7cfca017f22b5f2484b70042ef56",
+    "ios-settings-chat-theme-fifth-20261113-raw/row-update-theme.asm": "6beea79fb811e60c224200c8b718ff19e058ca7661572ccb33f4f0afef4aa19c",
+    "ios-settings-chat-theme-fifth-20261113-raw/scope.json": "a06e46b5894d9cea71197fc7fecfec0378fc54921ddbc1e5db18b3630fc460d7",
+    "ios-settings-chat-theme-fifth-20261113-raw/selected-owner-and-key-metadata.json": "bdff5204f62f1def3dbf3b3a65e254381896d6f3f38634fedbc7158489c5bc5f",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-host-full.json": "c27fa21aebc85fffe80f1339b67026d64f12ebcb04e9099e457aa2cd3d249257",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-host-full.raw": "b93d54c5c1bcf7355e0c9a51289a0cf29a8cf70bbf59abe84089498404fee64e",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-host-full.refs.tsv": "88c01fb209bed758c1e0aa3d04dd24a49786018343f11c822b23f2e184765b31",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-host-full.tree.txt": "f3373033177942b95a1102f5885a0107038ff83da2d3b3fd7983af086be1616f",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-host-observed.raw": "64e806e294bd0375093e1a69d4199f6b9632538d19991550e696dc9d16a353ae",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-host-observed.refs.tsv": "2c3c11bd40ea0c0077db9e4ac22477026df19bb6cd546c28d7406d075b4a4d2d",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-host-type.raw": "b93d54c5c1bcf7355e0c9a51289a0cf29a8cf70bbf59abe84089498404fee64e",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-host-type.refs.tsv": "88c01fb209bed758c1e0aa3d04dd24a49786018343f11c822b23f2e184765b31",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-keypath-accessors.asm": "3c291f7ca515329a4336aafb9baa9e962c570766e262e0c46f81a8c9e88d9672",
+    "ios-settings-chat-theme-fifth-20261113-raw/style-keypath-factory.asm": "4e3b332a180729cb28dd52aba9b1cf6f4860845eacbc67cb0bfa0390ac1ee2cc",
+    "ios-settings-chat-theme-fifth-20261113-raw/tool-recovery.json": "efc87831480f4cbe2a137dcf02cb90af82246846b611dc0485f8a04aef515acc"
+  },
+  "stop_boundary": "Two groups exhausted. A real ordinary Chat theme-style producer and environment writer are recovered; Work-specific admission and special foreground branches remain precise unknowns. No broader tint or settings behavior inferred."
+}

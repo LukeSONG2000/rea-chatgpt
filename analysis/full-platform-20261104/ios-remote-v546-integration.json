@@ -1,0 +1,97 @@
+{
+  "batch": "v546",
+  "date": "2026-11-07",
+  "status": "partial",
+  "scope": "Frontend acceptance synchronization and targeted pending-menu evidence",
+  "changes": [
+    "Plugin regression waits up to five seconds for the original on-screen keyboard condition after XCTest text injection, then checks geometry and taps native z key to prove focus/caret and continued keyboard usability.",
+    "File-picker test waits up to fifteen seconds for DocumentManager cancellation entry; menu geometry, action, cancel and draft-return assertions preserved."
+  ],
+  "production_source_change": false,
+  "findings": {
+    "keyboard": "r1 captured y590 immediately after plugin selection, y918 after typeText, then visible keyboard by next polling observation about one second later. Both original failure paths passed without product source edits.",
+    "file_picker": "r2 dark compact Files action presented an empty native remote-controller surface at the five-second deadline. Simulator log for pid1168 records DOCRemoteViewController ready at17:34:30.536, about six seconds after Files tap. r3 uses a bounded system-service wait and passes.",
+    "pending_menu": "Official293 content thunk and edit/toggle/start/cancel construction gates located. Exact field-offset map, areActionsEnabled and action forwarding remain partial."
+  },
+  "tests": {
+    "r1-keyboard": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "r2-regression": {
+      "passedTests": 4,
+      "failedTests": 1,
+      "skippedTests": 0
+    },
+    "r3-lifecycle": {
+      "passedTests": 4,
+      "failedTests": 0,
+      "skippedTests": 0
+    }
+  },
+  "latest_distinct_cases": {
+    "passed": 6,
+    "failed": 0,
+    "cases": [
+      "testRemotePluginEditingChinese",
+      "testRemotePluginEditingEnglish",
+      "testRemotePluginGoalSuppression",
+      "testRemoteAttachmentMenuChineseDark",
+      "testRemoteAttachmentMenuEnglishLargeText",
+      "testRemoteInteractiveReplayChinese"
+    ]
+  },
+  "foundation": {
+    "status": "passed",
+    "log": "ios-remote-v546-foundation.log"
+  },
+  "failure_retention": [
+    "ios-remote-v545-r11-intrinsic-layout.xcresult",
+    "ios-remote-v546-r2-regression.xcresult",
+    "ios-remote-v546-picker-runtime.log"
+  ],
+  "preview": {
+    "build": "546",
+    "pid": 2814,
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle_id": "local.rea.chatgpt.ioshost",
+    "language": "system; observed Chinese",
+    "appearance": "system; observed light",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture"
+    ],
+    "note": "Explicit synthetic capability fixture exposes plugin menu for acceptance. Source page implementation matches v545; this batch changes acceptance tests and evidence.",
+    "binary_sha256": "80e7efae5d192f3709e2173966bb9c07b1931d5ed304894113f6a4d80b1b34b1",
+    "left_running": true
+  },
+  "source_sha256": {
+    "implementation/ios/UITests/HostInteractionTests.swift": "2c01e1de476d9e214532141a3cf6eadb1697d8edbaec4ac4a8b7610264760a7f",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "d65ba04119ea858282740ffcd6cf479b139f21543ce520d889b494f8cac94d81",
+    "implementation/ios/Sources/RecoveredRemoteAttachmentMenu.swift": "bb7c178452a3a280b0c7a7bf449af6d67a03472100c83fb9a200537576686068",
+    "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift": "f8b1ff5f221f66160b42e15709dc9fa0367dde305c5e37c65cc7ccf387e0a8ab"
+  },
+  "remaining": [
+    "Remote queue/steer pending-item projection and scoped mutation adapter",
+    "Attachment submission and feedback approval",
+    "Full message projection, task creation and reading-anchor restoration",
+    "Whole-page light/dark/system appearance transitions",
+    "Chat/Work, file/browser preview and settings page-level acceptance",
+    "Physical-device, haptic, notification-delivery and Android acceptance"
+  ],
+  "evidence": [
+    "ios-remote-v546-pending-menu-findings.json",
+    "ios-remote-v546-r1-screenshots/manifest.json",
+    "ios-remote-v546-r2-screenshots/manifest.json",
+    "ios-remote-v546-r3-screenshots/manifest.json"
+  ],
+  "git": {
+    "committed": false,
+    "pushed": false
+  },
+  "display": "built-in only; external display unavailable",
+  "disk_available_gib": 16
+}

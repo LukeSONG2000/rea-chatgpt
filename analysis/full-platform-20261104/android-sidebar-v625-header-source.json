@@ -1,0 +1,155 @@
+{
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "scope": "Ordinary ConversationSidebar top-right search identity and action, bounded v625 correction",
+  "evidence_type": "official_artifact_static_observation",
+  "observations": [
+    {
+      "id": "header_search_always_present_in_selected_topbar",
+      "source": [
+        "urr.java:1030",
+        "urr.java:2130-2142",
+        "urr.java:2247-2276",
+        "apktool-src/smali/xqr.smali:343-381"
+      ],
+      "conclusion": "Selected ordinary SidebarTopBar calls SidebarTopRightButtons. First child invokes nbm0.j with cw30.c unconditionally. The following notification/account children are separately gated."
+    },
+    {
+      "id": "search_glyph",
+      "source": [
+        "cw30.java:36",
+        "zin.java:192-205",
+        "pb40.java:8",
+        "chx.java:71",
+        "ygx.java:37-38"
+      ],
+      "conclusion": "cw30.c -> zin case10 -> pb40.c -> chx.n0 -> ygx case9 -> original ds_magnifying_glass_lg_regular_24.xml. Glyph nominal size24dp."
+    },
+    {
+      "id": "search_action",
+      "source": [
+        "urr.java:2130-2142",
+        "apktool-src/smali/urr.smali:15378-15385",
+        "kwn.java:33",
+        "apktool-src/smali/kwn.smali:59-63",
+        "lku0.java:146-147",
+        "lku0.java:569-573",
+        "lku0.java:794-796",
+        "k8v.java:10"
+      ],
+      "conclusion": "kwn with tag3 emits udu0. Handler identifies SEARCH_CHATS and invokes L(k8v.INSTANCE,!x1). k8v identifies itself as Global Search. L dispatches through r1 and n19.z. It is not a drawer close/back event."
+    },
+    {
+      "id": "default_button_metrics",
+      "source": [
+        "urr.java:2276",
+        "nbm0.java:2344-2345",
+        "h140.java:12-18",
+        "x040.java:6-11",
+        "nbm0.java:997-1012",
+        "gvx0.java:46-48"
+      ],
+      "conclusion": "nbm0.j mask254 selects inherited h140 icon-button style. If absent, x040.d selects f140 style and size enum2. nbm0.b maps enum2 to nominal44dp, then uses42dp minimum inner BasicIconButton container. Effective visual/hit geometry still follows style/layout ancestry. Search glyph24dp is directly verified.",
+      "limitation": "Do not assert exact screenshot circle geometry from this default alone; inherited style, material painter and hit-region expansion were not fully closed."
+    },
+    {
+      "id": "topbar_parent_metrics",
+      "source": [
+        "urr.java:23",
+        "urr.java:2094",
+        "urr.java:2115"
+      ],
+      "conclusion": "TopBar composes scroll/background and inset adapters, applies urr.a top12/bottom14 and additional start6. Logo and right controls live in same box. The effective ancestor inset/scroll-edge implementation remains separate from replacing the erroneous right action."
+    }
+  ],
+  "current_host_defect": {
+    "file": "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt",
+    "conclusion": "Right sidebar icon currently ds_arrow_left_lg_regular_24 bound to drawer.close with back accessibility label. This independent-host mapping contradicts the verified search action."
+  },
+  "minimal_correction": [
+    "Use the original magnifying-glass24 asset and localized Search description for the right action.",
+    "Bind a distinct global-search route/action with an explicit return path and retained home draft. Do not label close/back as search.",
+    "If the global-search UI/service is not implemented, represent the missing capability explicitly; a local sidebar-entry filter does not demonstrate the official Global Search contract.",
+    "Retain normal drawer dismissal via system back/scrim/gesture as host behavior."
+  ],
+  "unresolved": [
+    "Full Global Search page renderer, search request lifecycle and results navigation not analyzed in this bounded task.",
+    "Exact material/shadow and inherited h140 style owner not closed.",
+    "This record does not prove runtime behavior of an installed official app."
+  ],
+  "sources": [
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/urr.java",
+      "sha256": "c0dbe86736f39b6e8d89eff0f47391309d67aaf44ac436e2d01d1987075f3c1c"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/cw30.java",
+      "sha256": "19a598e5e067310c7d2e9175e8b10e25a6245df7693b3762aff4bba4cc17e86c"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zin.java",
+      "sha256": "e66a230c7f4875396487e3ab934d01072e5b5a3b8b8a7ae7323727f48aa1e39f"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pb40.java",
+      "sha256": "129e953d3431202cbfccfbae949b9f9f77338fff1c07d76303dfac132f13b027"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/chx.java",
+      "sha256": "c14a83b83aa730065a65c6d5d35856b8389d6b46d717c063ad424bad0796ffa0"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ygx.java",
+      "sha256": "46e6479c1cb644afc3ce492d4c9134ed992b4904964bc5eb650083596770a1ea"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/kwn.java",
+      "sha256": "f5d6adc9117b8f27b209674868ed080aae2fe55f03102ee3ad0d4d4e806464e2"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/lku0.java",
+      "sha256": "51844de9b105d9d3a31836b4025dc3f583c97b9c6a805a70b86c33c7ca819130"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/k8v.java",
+      "sha256": "3329577be7bd10b09bdf83241b7876adc79ac1ad4451a0d066208fdb54a63cca"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/h140.java",
+      "sha256": "4af9faa66ad59596db4698c0126a64f2079849ff493d9b703091ed3e07f73010"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/x040.java",
+      "sha256": "63069a0db9347b2b7fbd69cb9791bdc4a423bb62b955bcc2ffeacfc1beb6e01f"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/nbm0.java",
+      "sha256": "914ecdedbed924b73c927d507263292312a93c390fe3ddde6b438342840ef606"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/gvx0.java",
+      "sha256": "7117ed21344e6de14b6fe150955b5f2d9394589e072d76854f337575de33cd13"
+    },
+    {
+      "file": "recovered/android-1.2026.293/apktool-src/smali/urr.smali",
+      "sha256": "099075ad27cba3226f6de16ee50a0061d2c9be1416bbd1bff1c3d6ec2faeb6f5"
+    },
+    {
+      "file": "recovered/android-1.2026.293/apktool-src/smali/xqr.smali",
+      "sha256": "5f82df670253ab2c129a4483b995787cec4912749c43c93e46b9bdacc4953e19"
+    },
+    {
+      "file": "recovered/android-1.2026.293/apktool-src/smali/kwn.smali",
+      "sha256": "9a436a66552f4753d069a7371604f7af4e1f763a76482b3897511d38ff722a82"
+    },
+    {
+      "file": "recovered/android-1.2026.293/apktool-src/smali/zin.smali",
+      "sha256": "c040076720f0a050dd590656bb33bfed05df0c37eb5bb28dba78126c2f1a6b86"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/resources/assets/composeResources/com.openai.kmp.platform.design.resources/drawable/ds_magnifying_glass_lg_regular_24.xml",
+      "sha256": "2c9046c98106482ba0cf6d87ec43bdb9a9e716f702bf564da48a5b3149bf62fd"
+    }
+  ]
+}

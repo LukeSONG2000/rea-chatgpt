@@ -1,0 +1,68 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "CodexRemoteWhisperPrimaryButton action raw1 and shared primary leaf glyph/progress gate",
+  "findings": [
+    {
+      "evidence_type": "official-shipped-artifact-static",
+      "validation": "verified-static",
+      "offsets": [
+        "0x1991f50..0x1991fa8",
+        "0x1992034..0x199205c"
+      ],
+      "conclusion": "Primary action raw1 goes through the loading branch, but supplies shared icon raw0. Context pointer is nil. Action function is nil unless provider witness+0x30 returns raw0xb, in which case it supplies empty return function0x2eacc. showsProgress is extracted independently from packed input bit16 and passed as constructor w3."
+    },
+    {
+      "evidence_type": "official-shipped-artifact-static",
+      "validation": "verified-static",
+      "offsets": [
+        "0x6069584..0x6069588",
+        "0x60696b0..0x60696bc",
+        "0x606b594..0x606b5a0",
+        "0x2c60c0..0x2c60c8"
+      ],
+      "conclusion": "Constructor stores w3 into field vector+0x3c, showsProgress. Shared icon content function606b538 compares this byte to1. Only true enters606b5a4..606b618, calling606ba54 at606b5b8. False branches606b61c into icon jump table."
+    },
+    {
+      "evidence_type": "official-shipped-artifact-static",
+      "validation": "verified-static",
+      "offsets": [
+        "0x606b61c..0x606b63c",
+        "0x8233c88",
+        "0x74f4500..0x74f4534",
+        "0x8a53d40"
+      ],
+      "conclusion": "Icon raw0 selects606b63c, calls74f4500, and uses resource OpenAI/Symbols/arrow-up-lg-button. Therefore action1 with showsProgress=false yields the send arrow leaf, not the shared progress-style branch."
+    }
+  ],
+  "jump_table": {
+    "address": "0x8233c88",
+    "base": "0x606b63c",
+    "bytes": [
+      0,
+      8,
+      0,
+      6,
+      0,
+      12,
+      6,
+      10,
+      2,
+      2
+    ]
+  },
+  "limitations": [
+    "Provider raw0xb semantic name and effective theme/enablement remain unclosed in this focused check.",
+    "No runtime, recording, or visual validation performed.",
+    "606ba54 style is reused only when the separate showsProgress branch is selected. No inference changes showsProgress to true from action name."
+  ],
+  "evidence": [
+    "ios-remote-v531-dictation-style-primary-body.asm",
+    "ios-remote-v531-dictation-style-primary-send-icon.asm",
+    "ios-remote-v511-primary-full.asm",
+    "ios-remote-v511-primary-metadata.json",
+    "ios-remote-v534-primary-loading-helpers.asm"
+  ]
+}

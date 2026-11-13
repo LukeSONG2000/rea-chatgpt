@@ -1,0 +1,292 @@
+{
+  "batch": "v535",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Remote nonzero dictation content effective insets, nested height constraints and parent compact trailing inset modifier",
+  "findings": [
+    {
+      "id": "effective-input-insets",
+      "status": "verified_static",
+      "value": {
+        "top": 12,
+        "leading": 16,
+        "bottom": 12,
+        "trailing": 16
+      },
+      "chain": [
+        "v522 actualCodexScreen ordinarythread3040c4 invokes2de24c and30410c writesMessageInputStyle",
+        "2de24c obtainsRemote base19a0860 initializedfrom60810f8",
+        "60812a0 MessageInputStyle.metadata+68 isfield22 input",
+        "60812a8 invokes6080bc4 MessageInputPartStyle initializer",
+        "6080bf0..6080c00 writesinput first32bytes from7d86330=(12,16),823bf60=(12,8)",
+        "MessageInputPartStyle96cb39c firstfield insets",
+        "19a09ac..19a09b8 copiesinput+8 leading16 toinput+18 trailing",
+        "6082134 glass transform touchesglass/outerInsets anddoesnotwriteinput;6081f4c theme transform doesnotwriteinput",
+        "v534823bc78 keypath readsmessageInputStyle.input.insets directly"
+      ],
+      "distinction": "Expanded native editor198a548 derives17/16/13 values forordinarytext. The sharedWhisperPart environment keypath readsbase input.insets; thederived editor inset function is not invoked inthisleaf.",
+      "limits": [
+        "Applies to selectedordinary CodexScreen thread route establishedv522. Other embeddings andindependentstyle overrides require their own evidence."
+      ]
+    },
+    {
+      "id": "nonzero-content-height",
+      "status": "verified_static",
+      "modes": [
+        "displayraw1 releaseToSend",
+        "displayraw2 tapToSend"
+      ],
+      "formula": "resolvedScaledWhisperElementSize - inputInsets.top - inputInsets.bottom",
+      "default_metric": 44,
+      "unscaled_inset_total": 24,
+      "standard_size_result": 20,
+      "evidence": [
+        "6074a18 ->6074400 createsAudioWaveformView withheight28",
+        "6074a1c Partmetadata;6074a20 ->611213c resolvesScaledEnvironmentMetric elementSize;6074a24 preservesvaluein d8",
+        "6074a28 loadsPartmetadata+30 inputInsets offset;6074a2c ->6f38d4;6074a30 ->6111138 readsEnvironment insets via4fe040",
+        "6074a34 adds d0(top)+d2(bottom);6074a38 subtracts sumfrom d8(elementSize)",
+        "6074a3c ->765d30 setsheight;6074a4c ->216f6ac fixedheight frame;6074a78 Alignment.leading;6074a90 ->204ebc maxWidthinfinity frame",
+        "823bcb8 keypath selectsMessageInputStyle.whisper.elementSize(+48)",
+        "19a09c4..19a09c8 Remote baseelementSize44"
+      ],
+      "layout": "Innerdrawingheight remains28. Outerheight20 isalayoutframe anddoesnotclip/scale theinnerdrawing inthisboundedchain. Atstandardmetric the28pt drawing extends4pt above/below the20pt frame. Theparent HStack centersitschildren.",
+      "padding": "usesTextInputInsets=false foractualFieldRow content(false), sohorizontal leading/trailing leaf padding0; theheight subtractionstill applies.",
+      "transcribing": "State3 uses6074594 localizedbodyText withmaxWidthinfinity center. No20pt heightframe isappliedto statusText inthisbranch.",
+      "limits": [
+        "Do nothardcode20 acrossDynamicType. The44base metric resolvesviaScaledEnvironmentMetric; insets remainraw12/12. ActualUIFontMetrics behavior trackedv511."
+      ]
+    },
+    {
+      "id": "fieldrow-parent-constraints",
+      "status": "verified_static",
+      "chain": [
+        "1987900 actualactivebranchconstructscontent(false) through7656724",
+        "19917ac CodexRemoteWhisperComposerFieldRow body",
+        "1991870..199187c resolvesEnvironment spacing;v533bindsto whisper.horizontalSpacing8",
+        "1991898 VerticalAlignment.center",
+        "19918b8 HStack.init",
+        "19918e4 helper266c10 ->maxWidthinfinity only",
+        "19918ec importedView.frame(minWidth:idealWidth:maxWidth:minHeight:idealHeight:maxHeight:alignment:)",
+        "1991934 helper1d511a0 setsallwidthsnil",
+        "1991938 x6=44,199193c w7=0 ->present minHeight44",
+        "1991940 helper1d9f1f4 forwardsameView.frame"
+      ],
+      "layout": {
+        "alignment": "center",
+        "spacing": 8,
+        "maxWidth": "infinity",
+        "minHeight": 44,
+        "fixedHeight": null
+      },
+      "ancestor": "PersistentComposerFieldRow compactHeight48 from198538c..1985390; active row iscompact overlay. This isseparate fromwaveform28, wrapper20 androwminimum44.",
+      "leading_padding": {
+        "value": 2,
+        "source": "19879e8 Edge.leading,19879f0 EdgeInsets(_all:2),storedPaddingLayout"
+      },
+      "limits": [
+        "AminHeight44 isnotafixedrowheight. Childcontrols suchasscaledglyph+padding13 mayrequestmore. No device-layoutmeasurementperformed."
+      ]
+    },
+    {
+      "id": "compact-trailing-inset-parent",
+      "status": "verified_static",
+      "type": "CodexRemoteCompactTrailingInsetModifier",
+      "descriptor": "0x95ad800",
+      "body": "0x1991634",
+      "attachment": "1987900 activebranchafterleading2: type7e12f80 isModifiedContent<ModifiedContent<WhisperComposerFieldRow<AnyView>,PaddingLayout>,CodexRemoteCompactTrailingInsetModifier>",
+      "inputs": {
+        "hasPrimaryButton": "1987a34 presentationwitness+98;packedoptionalhighbyte!=2 at1987a5c..1987a64",
+        "primaryButtonStyle": "Environment<MessageInputPrimaryButtonPartStyle>",
+        "font": "ScaledEnvironmentMetric primaryButton.fontSize"
+      },
+      "rule": "if !hasPrimaryButton || !primaryButtonStyle.usesCapsule:8; else letD=scaledFont*(1+2*capsuleHorizontalPadding/baseFont);return(D-max(D,44)+48-scaledFont*16/15)/2",
+      "standard_values": {
+        "baseFont": 30,
+        "capsuleHorizontalPadding": 5,
+        "scaledFont_at_standard": 30,
+        "D": 40,
+        "capsule_true": 6,
+        "capsule_false": 8
+      },
+      "evidence": [
+        "1991660 selectsEdge.trailing",
+        "1991668..1991674 hasPrimaryButton guard otherwise8",
+        "199169c readsprimaryStyle+31 usesCapsule,otherwise8",
+        "19916cc ScaledEnvironmentMetric getter",
+        "19916dc loadsstylefontSize+38 andcapsuleHorizontalPadding+40",
+        "1d970a4 computes1+2*padding/baseFont",
+        "19916e4 multipliesbyscaledFont",
+        "1991714..199171c computes-scaledFont*16/15 via1daaa40",
+        "1991720..1991744 adds48and D-max(D,44), divides2",
+        "1991748 EdgeInsets(_all:result), appliestrailingonly"
+      ],
+      "rollout_limit": "usesCapsule isactualparentflag32cb28 injectedby2de24c. Itremainsparameterized; referencescreenshots cannotproveflagdefault. Currenthostusescircleprimary,whichcorrespondstofalse/8branch asanexplicitindependenthostchoice."
+    },
+    {
+      "id": "current-host-delta",
+      "status": "host_observation",
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256_at_inspection": "7461f9453b9258d3616b2f7a8b9baa2c26df453a9c4c9aa5f1e09e619409eeb6",
+      "current": "RecoveredRemoteActiveDictationRow usesHStackspacing8,leading2,rowminHeight44,commoncontentminHeight44,innerwaveform28,existingpersistentoverlay48. Itdoesnotapplytheofficialparentcompacttrailinginsetmodifier.",
+      "actionable": [
+        "Applythecomputedheightonlytowaveform content. UsebodyText intrinsicheight fortranscribing.",
+        "Preserveinner28ptCanvasdrawing andedgesmask; applyingframeheight20mustnotresizeCanvasdrawingto20 orclipit.",
+        "RetainrowmaxWidthinfinity/minHeight44 and48compactancestor asdistinctconstraints.",
+        "AddparenttrailingpaddingbasedonhasPrimaryButton andusesCapsule model. Currentcirclefixture mayexplicitlychoose8; do notclaimruntimeflagdefault.",
+        "Keepkeyboardsafearea/outerstyleInsetsownedbyexistingparent; theseinnerconstraintsadd noadditional12pt verticalpadding."
+      ],
+      "limits": [
+        "Comparison isreadonly sourceatinspectiontime. Parentmaymodifyimplementationconcurrently. Visualparitymustbevalidatedusingcurrentbuild."
+      ]
+    }
+  ],
+  "unknowns": [
+    "Actualruntime rolloutvalueofusesWiderMessageInputPrimaryButton/usesCapsule",
+    "UnenumeratedalternateThreadembeddingsandtheirenvironmentoverrides",
+    "DynamicTypeandplatformrenderedmeasurementacceptance;thisreportstaticonly"
+  ],
+  "references": [
+    "ios-remote-v522-thread-style-findings.json",
+    "ios-remote-v534-mode-content-findings.json",
+    "ios-remote-v533-field-spacing-findings.json",
+    "ios-remote-v508-style-base.asm",
+    "ios-remote-v508-style-default-helpers.asm",
+    "ios-remote-v531-dictation-style-row-body.asm",
+    "ios-remote-v532-whisper-parent.asm",
+    "ios-remote-v445-findings.json"
+  ],
+  "validation": {
+    "official_app_execution": false,
+    "network": false,
+    "microphone": false,
+    "production_changes": false
+  },
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-default-constants.json",
+      "sha256": "000dc30df23ba0e13306b6c1be161d2195d69a02d90451d2bf996072e37814bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-glass-style.asm",
+      "sha256": "7c104b77686449d9d779c976192b3d233c47dd74d1d2e695fa2b35f68c8718b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-glass-style.json",
+      "sha256": "26344954c9e30885b42e43ed7f6e137642b0591d15d60c8f30f57715fb754776"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-input-default.asm",
+      "sha256": "3d1f900d49e8ebf26a792a18804adddaa80d795c8657543b609a884f273240c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-input-default.json",
+      "sha256": "9bc73b9ba244c45083f6eb0f6240790e8f6e8541b2dd3bce089c7565b1d47d00"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-input-metadata.json",
+      "sha256": "52a0d4aef1a43726f086b21a8134609f67275d0f5588609038db8ded74ec714f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-input-theme.asm",
+      "sha256": "547a1d20411c206379dc8b1bbe721bb93a916832774cc6a61324dbc6746d7aae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-input-theme.json",
+      "sha256": "2da5769305dd5c4d168c8df6e5e72e2e31d126afd34c5ba70278460b7c5bf99b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-input-type.json",
+      "sha256": "a1762693cc9b6a515ecd791fa5e894920d22f23bef89d7af3cb5468da3864df2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-metadata.json",
+      "sha256": "e82874e8e0d5aecb0ada77a5bc5311da8b8cc85727c206cd66cf903910eec61f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-row-constraint-body.asm",
+      "sha256": "5502c22dfe4652d74361618b0f239fc4d21246effafc50986b18939d930a209c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-row-constraint-body.json",
+      "sha256": "9143aee35b430adfc630f6f8a1f84753d117f023f723029ae44c5ba0b5a3404f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-row-flexargs.asm",
+      "sha256": "2f47652efbbab2954e4c7d1afbb725d0fd998dc1a1f33c1bfc15c07c49f21779"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-row-flexargs.json",
+      "sha256": "bc6c7123f5171e9ae59b58ffc7f08d8adcf2b7f155acdd746e49a7ae1f6ee5e6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-row-frame-apply.asm",
+      "sha256": "c098c40005e5dbaf73fbb8386a058d61a4375429bfc2d8093c20dabd3ea06608"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-row-frame-apply.json",
+      "sha256": "6acf692d144d7647d4b77cd479ebf15623eea5acb7fc496884275b1599ff0752"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-row-frame-args.asm",
+      "sha256": "cd5a8acba3bfe4aa3d691f6c74bcdaf9270110b34a1a1b79075a7a88fad362a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-row-frame-args.json",
+      "sha256": "f4cc812989fbbbfb0dad77830de97f571462e496351637076934e3e07a483bb2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-divisor.asm",
+      "sha256": "3ca5af35a79ba0ede5202a6046068f8268de2cbadd1655ca834559969f64636a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-divisor.json",
+      "sha256": "4bcf0cfdadfff2478fac694fdb8ba1343cc13070093935e73777ec19e5cd08ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-modifier-body.asm",
+      "sha256": "533b185e55097ef88e3b99feac88e0ee4381483afbb219d13ce252fed299f17b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-modifier-body.json",
+      "sha256": "1aa71452de2668670aa1ba5b1d977fd2266c8f06ae12c643fe811aac11cf2811"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-modifier-thunk.asm",
+      "sha256": "fcc724ee6c7de2fa9b93ec745ee9644549cc0ddf92fcdc8edba08886387bd033"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-modifier-thunk.json",
+      "sha256": "c6f1b28c076b73afb62440efb1788fa0d861ea7fb16557802127d8dbe570d342"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-ratio.asm",
+      "sha256": "01017b1723edf28100ffa99b769482da469eb2d57630c6c60922540278f1e890"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-ratio.json",
+      "sha256": "55ba8fd1b8404c8ce96eeab33a325b3c5534b6f1838e2bcf5efa88a7aad66705"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-trailing-witness.json",
+      "sha256": "cb5457763b0dd26c376cb14d43f89a445e283e67a5a792c14aa141456255fd6c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-type-7e12f80.json",
+      "sha256": "cb794bd46e8c2c2a55992ad367fd062371366ad29d49bb1aaf1bc698cc35ade7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-type-7e1d818.json",
+      "sha256": "df4fb86a97cb37c69c8a01d115eff8ab2b411ddd5dc8c08c325d6c6e973ad8f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-type-7e1d820.json",
+      "sha256": "94faf0427ff1cfd160351d3d9db591f4e4637b94f6e612c9ea6ddaa44501df36"
+    }
+  ]
+}

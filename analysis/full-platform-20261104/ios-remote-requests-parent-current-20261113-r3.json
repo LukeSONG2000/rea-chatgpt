@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T08:15:22.723447+08:00",
+  "module": 6,
+  "scope": "Remote approvals and supplementary input fourth pass",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: module5 Goal checkpoint, state/IO tests and full UI/restart/failure journey plus signed/runtime delivery",
+  "source_reports": [
+    "ios-remote-approval-content-fourth-20261113-findings.json",
+    "ios-remote-request-pending-fourth-20261113-findings.json"
+  ],
+  "implemented_this_pass": [
+    "Header main semantic font body/medium and original primary text asset instead of callout/semibold",
+    "Separate optional title/reason and explicit owner fallback; first nonempty value verbatim, no whitespace trim",
+    "Explicit ordinary-layout header: leading stack spacing4, actual main/subtitle order, callout secondary subtitle",
+    "Separate detailReason inside the same header stack: horizontal ViewThatFits with baseline HStack12 then leading VStack2, top4; display-only",
+    "Header projection included in exact current request comparison to reject captured stale payloads",
+    "Context-checked original Reason key/default exposed; missing selected Chinese resource uses source English fallback"
+  ],
+  "retained_core": [
+    "Ordinary task entry and fixed-bottom card/form, independent transcript scrolling",
+    "Capability-scoped decisions, deny, feedback with failed synchronous admission retaining text",
+    "Choices/custom/secret, previous/next, skip, empty request; request-key draft reset and same-key current payload updates",
+    "Synthetic acceptance retires request and restores ordinary input; identity-only receipt restart, no question-answer persistence"
+  ],
+  "source_owner_newly_closed": [
+    "User-input single inflight userInputSubmissionTask gate",
+    "Independent Foundation.UUID stored as userInputSubmissionID",
+    "Actual awaited service method and attempt-identity guarded task/ID cleanup",
+    "Diagnostic error string is a log consumer, not proof of user-visible error copy"
+  ],
+  "independent_adaptations": [
+    "Nested RemoteApprovalHeaderInput/Layout is a frontend projection, not original flat ABI or wire schema",
+    "Ordinary header layout is supplied explicitly by synthetic provider; raw4 is not guessed from enum order",
+    "Detail text font/color/frame overrides remain current host environment; no full optical parity claimed",
+    "Existing synchronous Bool means committed synthetic admission; future async sending/enqueuing must not be returned as accepted"
+  ],
+  "not_implemented": [
+    "Full permission preview, MCP/network/OpenAIForm and all kind-specific fallback interpolation",
+    "Raw4 payload-dependent subtitle order",
+    "Original exact detail text styling/frame/fixedSize flags and selected Chinese Reason translation",
+    "Original async pending/disable/error/cancel UI and automatic resubmission rules; no real backend added",
+    "Arbitrary same-key question deletion/reorder reconciliation",
+    "Full original viewport/keyboard lifecycle, wide-device execution and physical haptic playback"
+  ],
+  "haptics": {
+    "new_explicit_caller_proved": false,
+    "new_feedback_added": false,
+    "gate": "Existing app-controlled feedback retains Settings > General persistent preference, hardware and active admission",
+    "source_current_audit": "ios-remote-controls-fourth-20261113-haptics.json",
+    "system_implicit_and_physical": "not verified, not claimed absent"
+  },
+  "verification": {
+    "foundation": {
+      "command": "sh implementation/ios/test-official-text.sh",
+      "exit_code": 0,
+      "log": "ios-remote-requests-fourth-20261113-foundation.log",
+      "new_coverage": [
+        "title/reason/fallback priority",
+        "nil/empty/whitespace",
+        "explicit layout supplement admission",
+        "stale changed-header event",
+        "source English fallback"
+      ]
+    },
+    "ui": [
+      {
+        "path": "ios-remote-requests-fourth-20261113-r1.xcresult",
+        "passed": 1,
+        "failed": 0,
+        "duration_seconds": 58.924,
+        "scope": "Chinese/light",
+        "coverage": "Full supplementary/secret input, deny, identity receipts, restart and normal composer return"
+      },
+      {
+        "path": "ios-remote-requests-fourth-20261113-r2.xcresult",
+        "passed": 1,
+        "failed": 0,
+        "duration_seconds": 24.576,
+        "scope": "Chinese/light",
+        "coverage": "After correcting detail parent: title/subtitle/detail/command order, explicit approve, composer and list return"
+      }
+    ],
+    "source_parent_correction": "r1 full flow passed; complete root tree then placed detailReason inside header spacing4 rather than Banner spacing16. Only changed header/approve path rerun in r2.",
+    "image_viewed": "ios-remote-requests-fourth-20261113-r2-attachments/367F0665-B449-4E5F-9021-41E577B40A3E.png",
+    "device_build": {
+      "exit_code": 0,
+      "log": "/tmp/rea-remote-requests-fourth-20261113-device-build.log",
+      "strict_signature_verified": true,
+      "app": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app"
+    }
+  },
+  "runtime": {
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture",
+      "--remote-command-message-fixture",
+      "--remote-search-message-fixture",
+      "--remote-search-action-fixture",
+      "--remote-file-message-fixture",
+      "--remote-review-message-fixture",
+      "--remote-rich-message-fixture",
+      "--remote-linked-file-fixture",
+      "--remote-file-citation-fixture",
+      "--browser-preview-fixture",
+      "--chat-browser-fixture",
+      "--remote-model-slider-fixture",
+      "--remote-permission-fixture",
+      "--remote-context-usage-fixture",
+      "--remote-thinking-group-fixture",
+      "--remote-history-group-fixture",
+      "--remote-latest-group-fixture",
+      "--remote-project-sort-menu-fixture",
+      "--remote-task-controls-fixture",
+      "--remote-approval-header-title-fixture",
+      "--chat-state-profile=4C3A33CA-6694-4A09-86D6-2F8EEFDC8ADC",
+      "--remote-draft-profile=4C3A33CA-6694-4A09-86D6-2F8EEFDC8ADC",
+      "--auth-state-profile=4C3A33CA-6694-4A09-86D6-2F8EEFDC8ADC",
+      "-AppleLanguages",
+      "(zh-Hans)",
+      "-AppleLocale",
+      "zh_CN",
+      "-rea.preview.appearance",
+      "light"
+    ],
+    "launch": "local.rea.chatgpt.ioshost: 63562",
+    "installed_app": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/FD8773A0-FF60-4D3B-A2A2-740C3FD9750C/REAChatGPTHost.app",
+    "built_executable_sha256": "580029239ad779e649842e7ec1239979cffcdada43ef51ff545edc6da659f571",
+    "installed_executable_sha256": "580029239ad779e649842e7ec1239979cffcdada43ef51ff545edc6da659f571",
+    "pid": 63562,
+    "process_verified": "63562 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/FD8773A0-FF60-4D3B-A2A2-740C3FD9750C/REAChatGPTHost.app/REAChatGPTHost",
+    "observed_gui": "Ordinary home -> sidebar -> Codex -> pending task. Title/subtitle/detail approval card visible with Goal/agent row; left running unapproved.",
+    "screenshot": "ios-remote-requests-fourth-20261113-live.png",
+    "external_display_position": "not verified this pass"
+  },
+  "physical_device": {
+    "preflight": "/tmp/rea-remote-requests-fourth-20261113-devices.json",
+    "name": "iPhone Air",
+    "state": "unavailable",
+    "installed_this_pass": false
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+      "sha256": "a52624a579a6667631218dc5911fda45f66ed8dd963f06c4243eb5b1c82a070c"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "065b533fd3caf2e8f029b98bb00d33d881dbc2b6ec7add5c60e3f5f2266b8531"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "cc4022ee2e315abae83ed539f10a1e74c88ee252a68a59e7cdaa8759e2a6601e"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "a9aecf2c40ea323baa444af68daddfedf4d2a268f6bf3a2af1c8a6833191dbeb"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "5bef16074e62bce9d232f606cd9b2dfb09046b07b678a879da6167de0d4e7ae3"
+    }
+  ],
+  "next_major_module": 7,
+  "next_name": "Chat/Work lists and conversations",
+  "git_mutations": "no commit/push/release"
+}

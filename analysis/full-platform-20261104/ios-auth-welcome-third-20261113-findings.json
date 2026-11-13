@@ -1,0 +1,173 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two bounded candidates: welcome LoginButtonListStyle producer discovery using existing style/owner evidence; original sign-out confirmation title/action payload compared with current host. No broad provider/service recovery.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_evidence": [
+    "ios-auth-welcome-parent-20261113-findings.json",
+    "ios-auth-welcome-parent-20261113/style-field-map.json",
+    "ios-auth-welcome-parent-20261113/style.asm",
+    "ios-auth-welcome-parent-20261113/controls-parent.asm",
+    "ios-settings-signout-detail-20261112-findings.json",
+    "ios-settings-signout-detail-20261112-confirmation.asm",
+    "ios-settings-signout-detail-20261112-save-login.asm"
+  ],
+  "findings": [
+    {
+      "id": "metrics-remain-unknown",
+      "type": "official_artifact_observation_and_bounded_negative_probe",
+      "conclusion": "No new source-backed welcome buttonHeight/corner metric producer was recovered. Existing source proves the explicit style fields and their consumption, while the current56/28 remain explicit fixture values.",
+      "source": [
+        "LoginButtonListStyle descriptor0x9635b74/accessor0x3f837f0/metadata0xa6eda30",
+        "buttonHeight field0;buttonCornerRadius field24",
+        "ordinaryconsumer0xe07318 radiusload/0xe07324 heightload",
+        "0xe0732c allocationargument56",
+        "0x3f83628..0x3f8373c nearby value-copy/assignment routines, not numericalstylefactory"
+      ],
+      "evidence": [
+        "style-accessor-references.json",
+        "../ios-auth-welcome-parent-20261113-findings.json",
+        "../ios-auth-welcome-parent-20261113/style.asm"
+      ],
+      "limit": "The direct accessor reference scan is incomplete (adjacent ADRP/ADD and B/BL only) and returned nohits. This does not establish no producer exists; constant metadata references, inlining and owner-injected config remain possible. No radius derived from height/2."
+    },
+    {
+      "id": "original-confirmation-title",
+      "type": "official_artifact_observation",
+      "conclusion": "The original sign-out confirmation prepares an optional user String before selecting generic or personalized localized title; current generic title is a valid source branch.",
+      "source": [
+        "0x10e7074..0x10e70d0 owner/payloadload",
+        "0x10e70a4 optionaltagcomparison",
+        "0x10e70ac..0x10e70cc optional String candidates",
+        "0x10e70d4 ->0x75dac04",
+        "0x75dac20 nil Stringwordtest",
+        "0x75dac38 literal0x8a5b030 presentbranch",
+        "0x75dacfc nilbranch recordedpreviouspass"
+      ],
+      "evidence": [
+        "signout-confirmation-payload.asm",
+        "signout-confirmation-title.asm",
+        "../ios-settings-signout-detail-20261112-findings.json"
+      ],
+      "limit": "The source fields supplying optional String have not been positively named here; do not replace with the preview displayName/accountID, infer email fallback or copy a personal reference name. Generic and personalized localized forms are declared resources, not proof every screen should show a name."
+    },
+    {
+      "id": "original-confirmation-actions",
+      "type": "official_artifact_observation",
+      "conclusion": "Original sign-out confirmation has Log out and Cancel actions and a destructive confirmation role; confirmation callback reaches the busy-guarded owner operation.",
+      "source": [
+        "0x10e70e8 ->0x75daa94 Log out",
+        "0x10e7124 ->0x11a64dc Cancel",
+        "0x10e7140..0x10e7144 callback0x1149d60",
+        "0x10e715c w6=1 ->0x62a7d80 AlertPresentation",
+        "0x1149d84 ->0x10e7f04",
+        "0x10e7fe8 ->0x108c120 existingbusy",
+        "0x10e7ff0 returnifbusy",
+        "0x10e8010/18 busytrue ->0x10efab4"
+      ],
+      "evidence": [
+        "signout-confirmation-payload.asm",
+        "signout-confirmation-callback.asm",
+        "../ios-settings-signout-detail-20261112-findings.json",
+        "../ios-settings-signout-detail-20261112-save-login.asm"
+      ],
+      "limit": "Service task continuation, remember-login choice/default, full failure presenter and post-logout account cleanup are not recovered by this UI callback. Logged save_login_option_presented is not visible-choice evidence."
+    }
+  ],
+  "current_host_review": {
+    "evidence": "current-host-source-snapshot.json",
+    "welcome": "SignedOutWelcomePreview has explicit owner buttonStyle and separate customApple regular18 scaled vs ordinary medium. referencePreview uses height56/corner28/secondarySystemBackground, labeled independent. No proved exact producer value available to replace them.",
+    "signout_already_implemented": [
+      "Source generic localized confirmation title, Log out/Cancel roles, destructive list entry with original icon/Red500.",
+      "Local busy overlay/disabled repeated submit and SettingsSignOutOperation identity.",
+      "Normal disconnected service returns unavailable and does not pretend logout; synthetic fixture success is isolated.",
+      "FrontendAuthenticationModel accepts only matching active request and updates session after receipt; this is an independent adapter contract, not recovered official account persistence."
+    ],
+    "signout_remaining": "Personalized title provider/source field binding, remember-login UI, exact original async failure/return/cleanup semantics remain unclosed."
+  },
+  "implementation_decision": {
+    "product_change_recommended": false,
+    "reason": "No new deterministic missing metric or confirmation action was found. Existing sign-out generic branch and busy contract already cover the proved front-end behavior. Replacing fixture dimensions or adding personalized/remember-account controls would invent configuration.",
+    "safe_boundary": "Keep source-named style slots explicit and keep current fixture geometry labeled. Keep generic signout title until an optional original identity/title provider is mapped; do not fabricate personalized title from accountID."
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "LoginAuthenticationActions.authButtons ->LoginControlsViewBuilderProviding /LoginControlsViewTemplate.buttons",
+      "missing": "Exact selected welcome LoginButtonListConfiguration.style producer and its live branch values."
+    },
+    {
+      "boundary": "style metadataaccessor0x3f837f0 directrefprobe",
+      "missing": "Inlining/constantmetadata path to constructor not resolved; no exact numeric default asserted."
+    },
+    {
+      "boundary": "0x10e7094..0x10e70cc optionaluserString",
+      "missing": "Named source fields/account visibility branch for personalized confirmation."
+    },
+    {
+      "boundary": "0x10e83e8 asynchronous signout task",
+      "missing": "Original save-login and success/error lifecycle; outside requested cloud-service scope."
+    },
+    {
+      "boundary": "haptics",
+      "missing": "No new explicit auth/signout haptic caller established."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 2,
+    "static_only": true,
+    "product_modified": false,
+    "tests_executed": false,
+    "build_or_device": false,
+    "official_target_execution": false,
+    "network": false
+  },
+  "evidence_directory": "ios-auth-welcome-third-20261113",
+  "evidence_files": [
+    {
+      "path": "ios-auth-welcome-third-20261113/current-host-source-snapshot.json",
+      "bytes": 7967,
+      "sha256": "e23e61bb061148326da37dd2a0f7ee24fa9a6849c3241b509b39f4febf024c34"
+    },
+    {
+      "path": "ios-auth-welcome-third-20261113/signout-confirmation-callback.asm",
+      "bytes": 987,
+      "sha256": "7f8bb4bb9a3e64269453c4255b7f2afc04c93e745f102a62fc6d848b71395020"
+    },
+    {
+      "path": "ios-auth-welcome-third-20261113/signout-confirmation-callback.json",
+      "bytes": 1620,
+      "sha256": "ac85679a6b88ef67aa8fc73dcc86ee94408239a35250c5d8be1889ba51fca0ce"
+    },
+    {
+      "path": "ios-auth-welcome-third-20261113/signout-confirmation-payload.asm",
+      "bytes": 3391,
+      "sha256": "5b9c0b2516b6c69759adcb603cbdfab2dde7909d2f18f0b35180e27b4c68f544"
+    },
+    {
+      "path": "ios-auth-welcome-third-20261113/signout-confirmation-payload.json",
+      "bytes": 4256,
+      "sha256": "ccf8547e77e13edb02c7adab6b71aedb0bd7843e8dc3cd865a02fd41c1cc7a93"
+    },
+    {
+      "path": "ios-auth-welcome-third-20261113/signout-confirmation-title.asm",
+      "bytes": 2127,
+      "sha256": "71198e735e2634d0daa3d36e88c2e7d70c42318335409350109492d44c266cc8"
+    },
+    {
+      "path": "ios-auth-welcome-third-20261113/signout-confirmation-title.json",
+      "bytes": 2811,
+      "sha256": "89c8591fb4f5e1223bc2229e2fab1195ed279a6b4d9d47cac1d2a16bed178c09"
+    },
+    {
+      "path": "ios-auth-welcome-third-20261113/style-accessor-references.json",
+      "bytes": 338,
+      "sha256": "683aa4dbcdd54583e917d44fb8db1629a94bca6e08d4bfaed988e8200127c2ee"
+    }
+  ]
+}

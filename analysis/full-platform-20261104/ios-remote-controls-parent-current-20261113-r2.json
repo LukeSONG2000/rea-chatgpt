@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "module": "5 Remote composer and task controls, third pass",
+  "date": "2026-11-13T04:58:26.811337+08:00",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core front-end loops implemented; explicit official and service gaps retained",
+  "previous_snapshot": "ios-remote-controls-parent-current-20261113.json",
+  "source_reports": [
+    "ios-remote-controls-config-owner-20261113-findings.json",
+    "ios-remote-composer-surface-parent-20261113-findings.json",
+    "ios-remote-pending-owner-20261113-findings.json"
+  ],
+  "implemented_this_pass": [
+    "Versioned current model/effort/speed/permission UI choice persistence by account/profile/host/destination; failed read preserves original bytes, failed write preserves published selection and presents explicit error",
+    "Accepted queue/steer intent snapshot remains immutable and independent from current unsent choice; Start/FIFO preserves same intent identity",
+    "Goal/Subagent StatusSurface old-system fallback reads recovered shared MessageInputStyle inner background instead of handwritten secondary background; original interactive glass branch retained"
+  ],
+  "corrections_to_previous_snapshot": [
+    "Queue/steer already recorded configurationByIntent, persisted history and reused pending.id as turn intent; missing a new Start argument did not establish configuration loss",
+    "Shared Body witness resolved; dynamic input background producer closed for the proved StatusSurface keypath. Nonnil stroke conversion remains unknown"
+  ],
+  "retained_core": [
+    "Input, isolated drafts, synthetic send/stop/retry",
+    "Queue/steer conversion, pending cancel and FIFO Start",
+    "Model, permission and context controls",
+    "Goal and agent summary/detail presentation and existing scoped frontend actions"
+  ],
+  "independent_adaptations": [
+    "Current-choice cache uses explicit offline replay profile and fixture model catalog; not a general provider decoder, actual permission grant, service preference or official queued-settings RPC",
+    "Existing native host sampling, action admission and hit geometry stay attributed separately"
+  ],
+  "not_implemented": [
+    "Pending Edit full admission, original draft cancel restoration, structured commit/resend; canEdit=false and callback=nil retained",
+    "Original queued-settings RPC receiver/schema and exact pending update scope",
+    "Goal cross-process persistence and original live duration owner/formatter",
+    "Real agent child-task navigation",
+    "Nonnil AnyShapeStyle stroke width/conversion and MinimumTapTargetShape geometry",
+    "Additional unproved gesture/longpress/row-swipe/approval feedback and physical tactile verification",
+    "Business backend, real remote executor and online service"
+  ],
+  "haptics_report": "ios-gesture-haptics-settings-current-20261113-final.json",
+  "verification": {
+    "pure": {
+      "result": "passed",
+      "log": "/tmp/rea-remote-controls-third-text-20261113-r2.log",
+      "vectors": [
+        "restart/account/host isolation",
+        "deterministic codec",
+        "unsupported/corrupt snapshot preservation",
+        "failed writes",
+        "current choice vs immutable accepted intent",
+        "queue/steer/cancel/FIFO/history"
+      ]
+    },
+    "haptics": "passed common preference/hardware/activity, ended/interior/change, cancellation and duplicate vectors",
+    "ui": [
+      {
+        "artifact": "ios-remote-controls-third-20261113-r1.xcresult",
+        "result": "failed",
+        "cause": "Helper assumed shared composer identity proved task entry; screenshot showed home"
+      },
+      {
+        "artifact": "ios-remote-controls-third-20261113-r2.xcresult",
+        "result": "failed",
+        "cause": "Actual task destination assertion exposed target row hidden behind pinned section header; test reveal geometry corrected"
+      },
+      {
+        "artifact": "ios-remote-controls-third-20261113-r3.xcresult",
+        "result": "interrupted, not passed",
+        "cause": "Corrected task entry succeeded but repeated XCTest animation quiescence waits; exact owned xcodebuild stopped after idle main-thread sampling and responsive live UI"
+      }
+    ],
+    "finite_manual_ui": {
+      "result": "observed model High and fullAccess choice with retained draft after actual process restart through ordinary sidebar/task path",
+      "preview_report": "ios-remote-controls-third-20261113-preview.json",
+      "before_cache": "ios-remote-controls-third-20261113-before-restart.json",
+      "after_cache": "ios-remote-controls-third-20261113-after-restart.json",
+      "screenshot": "ios-remote-controls-third-20261113-restart-high.png",
+      "limits": [
+        "Not a full XCTest pass",
+        "Old-system fallback and actual tactile playback not observed"
+      ]
+    },
+    "routine_matrix": "Chinese/light only"
+  },
+  "runtime": {
+    "simulator": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "launch": "local.rea.chatgpt.ioshost:26038",
+      "hash_match": true,
+      "executable_sha256": "8b5d94b2c2677a6707d4263e745badf814c222da6de706e828e26cf4633e49ff",
+      "preview": "core manifest plus isolated synthetic profile and Chinese/light process overrides",
+      "profile_arguments": [
+        "--chat-state-profile=16F4FF66-B3C6-41D5-B9EF-D2DD5998DCC9",
+        "--remote-draft-profile=16F4FF66-B3C6-41D5-B9EF-D2DD5998DCC9"
+      ],
+      "manifest_sha256": "3a3532497d53d7b46d0cda950185e6bad0cec07c36b202e952b671482420ef36",
+      "manual_observed": [
+        "normal sidebar→Codex→fixture-a completed-thread",
+        "existing draft Quick model draft retained",
+        "High model effort selected and committed",
+        "restart through ordinary root and same task shows Fixture A High again",
+        "orange full-access presentation restored; local snapshot permission fullAccess",
+        "original cache unchanged across process reconstruction"
+      ],
+      "not_observed": [
+        "Full XCTest journey; r3 interrupted after repeated quiescence waits",
+        "Old-system fallback material and actual physical haptics",
+        "Other task current selection via manual UI; pure host-isolation vectors passed"
+      ],
+      "left_running": true,
+      "left_surface": "model quick slider showing Fixture A 高",
+      "screenshot": "ios-remote-controls-third-20261113-restart-high.png"
+    },
+    "physical": {
+      "build": "signed succeeded",
+      "codesign": "strict deep verification passed",
+      "build_log": "/tmp/rea-remote-controls-third-20261113-device-build.log",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "executable_sha256": "0cc4d1ca4afd14a9da4b17c29e07e741031ddcbdd134d92338f003455c41ad9f",
+      "device": "00008150-001E34E93A12401C",
+      "pairing": "paired",
+      "tunnel": "unavailable",
+      "ddi_services_available": false,
+      "installed_current_candidate": false
+    }
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RemoteAdvancedConfiguration.swift",
+      "sha256": "69afa5c756bbf9bbb7770a1cc36b513a71240bcdd787c58905b2a56b05d4d146"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "4fa3a61e7d3cdfdb46fb1dadc23ae8e6908789f512535ae7bd7ac0036936578d"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteGoalPresentation.swift",
+      "sha256": "feaf1ff03b61c0bdabb41f458a3408219b0d89e8cc87541ae9decc8739a12d56"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "05fb659ca1d9a9fa5296b14acc6fb1a1c747f974ffe64b9468fff5b678a9259a"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "e4c64dc5fd7f5d82d66d5a13eea7f79bfc5c5bc72fac8a98e1e030a17096960d"
+    }
+  ],
+  "next_major_module": "6 Remote approvals and user input",
+  "git_mutations": "No commit/push/release"
+}

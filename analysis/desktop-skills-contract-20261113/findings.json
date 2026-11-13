@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-13T16:28:22.824167+08:00",
+  "scope": "Official desktop artifact and upstream skill selection only. No mobile changes, no other product implementation reads/changes, no target-app/model/skill execution.",
+  "status": "source-supported normal text-link path; exact installed backend branch remains unproven",
+  "desktop": {
+    "product": "Codex",
+    "package_version": "26.1021.31345",
+    "package_json_sha256": "448219c3cc052f2c0bed32caf8aa5858106b50b8074a9d4b542118bda813008b",
+    "snippets": "artifact-snippets.json",
+    "runtime_capture_performed": false
+  },
+  "upstream": {
+    "repository": "https://github.com/openai/codex",
+    "commit": "6905ecede7816e91373e9eabda3f6b0368fc747b",
+    "release": "0.164.0-alpha.11.1",
+    "inspected_files_clean": true,
+    "sha256": {
+      "codex-rs/skills/src/selection.rs": "506bc732789ffa40ad03882f2dc81e4b7f6194e1eb5b0854c5d6513f40185f91",
+      "codex-rs/skills/src/selection_tests.rs": "d40a453f31aa1f0dfdeaeea8b7812d829ddafcdd4f2256c9bb74639f15a5fbf9",
+      "codex-rs/skills/src/mentions.rs": "c0b4a9cb20805d0e4bc9084418704c4fac77eca46fb815b67c73680569d749bd",
+      "codex-rs/ext/skills/src/selection.rs": "e28ed013dd5263710e97c6219226755c0db16fe250a81cf6ceeceadb98a335da",
+      "codex-rs/ext/skills/src/extension.rs": "0f77c01c6fd0c80499516f29dabcb12c552542aceb325fa0e0408ff85c732017",
+      "codex-rs/ext/skills/src/catalog.rs": "fbde79877a531b982f1fd2c264ca718f536282e8a214fa078dbca91e9495e6ea",
+      "codex-rs/app-server/src/request_processors/catalog_processor.rs": "26474fd7cc6bb7682a97ac6166f718dcbcc6a415735b0db5aeb4f5f8e9b6d5fc",
+      "codex-rs/app-server-protocol/src/protocol/v2/plugin.rs": "9e4686a275660635aa8328e54162bdced484ffb3ec059e372f6e272bc7430436",
+      "codex-rs/protocol/src/user_input.rs": "6aa0d37706bbaf803653c29282f8b67197c42435b5a2b9b442a80a3c493b601d"
+    }
+  },
+  "confirmed": [
+    "Desktop insertSkillMentionAtSelection->tMn/Zjn creates skillMention node carrying name/path. bZ returns dollar label and href; yZ serializes as escaped Markdown link. akn+Y4 official helper controlled replay passes three cases.",
+    "Normal jdn->RTe projection produces UserInput Text with text_elements empty when no untrusted/review context; Aln appends images/comment attachments, not a skill item. Zfn sends the prepared request to turn/start or versioned admission branch. This supports the reported text-only observation, not a universal rule that Skill input is forbidden.",
+    "UserInput schema independently permits structured skill{name,path}; text_elements are UI UTF8 spans, not the skill selector identity. Both text-link and structured inputs are supported source contracts.",
+    "skills/src/selection.rs selects structured Skill paths first, blocks matching plain names even if structured target invalid, then for each Text resolves linked canonical/discovery paths before bare names. Disabled paths skipped; bare name requires exactly one enabled skill name and zero connector-slug conflicts. Linked text does not become a plain-name fallback.",
+    "ext/skills/src/selection.rs differs: structured Skill or skill-path Mention first, then each Text skill paths before plain names; enabled entry selected by main_prompt/package/display_path, bare names pick first enabled exact-name catalog entry, dedup authority+package. extension.rs370 actually calls this selector. Do not generalize the legacy ambiguity/connector guard to this route.",
+    "Host skills/list accepts cwds and forceReload. Empty cwds uses config.cwd; desktop t8r/r8r uses explicit cwd/list or workspace roots, and durable hosted branch forwards environmentId/cwd to hostedThreadFiles.listSkills. Host metadata.path is copied from path_to_skills_md, not its parent directory.",
+    "wZr generates Skills slash group dynamically from enabled/model-admitted catalog. Row id skill:path; onSelect inserts skill mention; inline slash selection uses insertMention. It is not evidence that every skill is a backend slash command."
+  ],
+  "limits": [
+    "Inspected desktop package and upstream commit are independent baselines; not claimed to match the current installed app-server binary. Source main was not fetched/replaced.",
+    "Other thread runtime observation is consistent with source but was not independently recaptured here. No actual SKILL.md content loaded or executed.",
+    "Full user-history renderer, dollar versus at trigger routing and every menu origin not closed. Do not infer all entry points from the shared insertion API.",
+    "Rich label/icon query variants, escaped parentheses/Windows path conversion and other provider URI forms not covered by the three helper replays.",
+    "REA selected three small modules; app-initial/shared/primary evidence is direct scoped source inspection. REA graph unknown/alias ceilings are retained and not interpreted as absence.",
+    "No modifications, builds, deployments or API calls for other products; mobile goal remains paused."
+  ],
+  "validation": {
+    "status": "passed",
+    "scope": "three pure official mention-format cases only; no bundle bootstrap, RPC, network or skill instruction execution",
+    "values": [
+      "[$demo](/synthetic/skills/demo/SKILL.md)",
+      "$demo",
+      "[$namespace:demo](/synthetic/skills/demo/SKILL.md)"
+    ]
+  },
+  "references": [
+    "https://github.com/openai/codex/blob/6905ecede7816e91373e9eabda3f6b0368fc747b/codex-rs/skills/src/selection.rs",
+    "https://github.com/openai/codex/blob/6905ecede7816e91373e9eabda3f6b0368fc747b/codex-rs/ext/skills/src/selection.rs",
+    "https://github.com/openai/codex/blob/6905ecede7816e91373e9eabda3f6b0368fc747b/codex-rs/protocol/src/user_input.rs",
+    "https://learn.chatgpt.com/docs/build-skills"
+  ]
+}

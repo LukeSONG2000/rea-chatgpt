@@ -1,0 +1,33 @@
+{
+  "module": "4 Remote message area",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core_available_archived_for_later_user_review",
+  "product_changes_this_pass": false,
+  "implemented": [
+    "ordinary list to transcript parent and scoped native collection",
+    "history/current/replay rows with stable identity and per-task reading/disclosure owner",
+    "body, basic Markdown, code, table, reasoning status, tool groups, command/search/diff/review and file links",
+    "text/code copy and native code selection; whole-response copy only after completion",
+    "command output expansion, follow/scroll, task return; user jump-to-bottom control",
+    "error/retry and completed/cancelled synthetic lifecycle"
+  ],
+  "current_source_checks": [
+    "RecoveredRemoteTranscriptCollection.swift: independent UICollectionView owner, reading/disclosure persistence and distance >32 publication",
+    "NativeConversationHost.swift: transcript row projection, ReplayMarkdown and separate parent/bottom controls",
+    "RemoteThreadReplay.swift: scope/sequence/intent terminal and retry admission"
+  ],
+  "existing_runtime_evidence": [
+    "ios-remote-message-20261112-audit.json",
+    "ios-remote-message-controls-20261112-audit.json",
+    "ios-remote-scroll-bottom-20261112-implementation.json"
+  ],
+  "not_implemented": [
+    "complete native original renderer/projection and reasoning/DIL",
+    "complete original font/material/spacing and initial-bottom protection/animation",
+    "true service revision/reconnect replay and pagination",
+    "additional source-proven generic gesture haptics; see ios-haptics-gesture-audit-20261112-findings.json",
+    "message attachments expansion deferred per user; file links retain minimal preview"
+  ],
+  "next": "5 Remote composer/task controls: close obvious new-task configuration ownership gap, retain real-service gaps"
+}

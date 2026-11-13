@@ -1,0 +1,1322 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "list",
+      "devices",
+      "--json-output",
+      "analysis/full-platform-20261104/ios-settings-entry-20261112-current-device-state.json"
+    ],
+    "commandType" : "devicectl.list.devices",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "devices" : [
+      {
+        "_deprecationNotice" : {
+          "deprecatedFields" : [
+            "hardwareProperties",
+            "deviceProperties",
+            "connectionProperties"
+          ],
+          "message" : "The 'hardwareProperties', 'deviceProperties', 'connectionProperties' fields are deprecated and will be removed in a future release. Use the 'properties' dictionary instead.",
+          "replacement" : "properties"
+        },
+        "capabilities" : [
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.default.user.credentials",
+            "name" : "Modify Credentials for Default Users for a Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.tags",
+            "name" : "Modify Tags"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.unpairdevice",
+            "name" : "Unpair Device"
+          }
+        ],
+        "connectionProperties" : {
+          "authenticationType" : "manualPairing",
+          "isMobileDeviceOnly" : false,
+          "lastConnectionDate" : "2026-11-02T08:28:00.000Z",
+          "pairingState" : "paired",
+          "potentialHostnames" : [
+            "Lukes-AppleWatch.coredevice.local",
+            "A1C8CF0E-D673-5143-B069-3F5F8B16FBB6.coredevice.local",
+            "00008301-809B119222D8202E.coredevice.local"
+          ],
+          "tunnelState" : "unavailable"
+        },
+        "deviceProperties" : {
+          "ddiServicesAvailable" : false,
+          "developerModeStatus" : "disabled",
+          "hasInternalOSBuild" : false,
+          "name" : "Luke's Apple Watch",
+          "osBuildUpdate" : "23U67",
+          "osVersionNumber" : "26.6"
+        },
+        "hardwareProperties" : {
+          "cpuType" : {
+            "name" : "arm64_32",
+            "subType" : 1,
+            "type" : 33554444
+          },
+          "deviceType" : "appleWatch",
+          "ecid" : 9267019977592414254,
+          "hardwareModel" : "N143sAP",
+          "isProductionFused" : true,
+          "marketingName" : "Apple Watch SE",
+          "platform" : "watchOS",
+          "productType" : "Watch6,10",
+          "reality" : "physical",
+          "serialNumber" : "K30L9HV2FF",
+          "supportedCPUTypes" : [
+            {
+              "name" : "arm64_32",
+              "subType" : 1,
+              "type" : 33554444
+            }
+          ],
+          "supportedDeviceFamilies" : [
+            4
+          ],
+          "thinningProductType" : "Watch6,10",
+          "udid" : "00008301-809B119222D8202E"
+        },
+        "identifier" : "A1C8CF0E-D673-5143-B069-3F5F8B16FBB6",
+        "properties" : {
+          "connection" : {
+            "authenticationType" : "manualPairing",
+            "lastConnectionDate" : 815300880,
+            "pairingState" : "paired",
+            "state" : "unavailable"
+          },
+          "hardware" : {
+            "cpuType" : {
+              "subtype" : 1,
+              "type" : 33554444
+            },
+            "deviceType" : "appleWatch",
+            "ecid" : 9267019977592414254,
+            "marketingName" : "Apple Watch SE",
+            "platform" : "watchOS",
+            "productType" : "Watch6,10",
+            "reality" : "physical",
+            "serialNumber" : "K30L9HV2FF",
+            "supportedCPUTypes" : [
+              {
+                "subtype" : 1,
+                "type" : 33554444
+              }
+            ],
+            "supportedDeviceFamilies" : [
+              4
+            ],
+            "thinningProductType" : "Watch6,10",
+            "udid" : "00008301-809B119222D8202E"
+          },
+          "software" : {
+            "osBuildVersions" : {
+              "buildVersion" : {
+                "majorLetterComponent" : "U",
+                "majorNumberComponent" : 23,
+                "name" : "23U67",
+                "revisionVersion" : {
+                  "components" : [
+                    23,
+                    21,
+                    67,
+                    0,
+                    0
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "23.21.67.0.0"
+                },
+                "trainProgram" : "watchOS",
+                "updateNumberComponent" : 67
+              },
+              "supplementalBuildVersion" : {
+                "majorLetterComponent" : "U",
+                "majorNumberComponent" : 23,
+                "name" : "23U67",
+                "revisionVersion" : {
+                  "components" : [
+                    23,
+                    21,
+                    67,
+                    0,
+                    0
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "23.21.67.0.0"
+                },
+                "trainProgram" : "watchOS",
+                "updateNumberComponent" : 67
+              }
+            },
+            "osVersionNumber" : {
+              "components" : [
+                26,
+                6,
+                0,
+                0,
+                0
+              ],
+              "originalComponentsCount" : 2,
+              "stringValue" : "26.6"
+            }
+          },
+          "state" : {
+            "developerModeStatus" : {
+              "disabled" : {
+
+              }
+            },
+            "name" : "Luke's Apple Watch"
+          }
+        },
+        "propertyDisplayNames" : null,
+        "visibilityClass" : "default"
+      },
+      {
+        "_deprecationNotice" : {
+          "deprecatedFields" : [
+            "hardwareProperties",
+            "deviceProperties",
+            "connectionProperties"
+          ],
+          "message" : "The 'hardwareProperties', 'deviceProperties', 'connectionProperties' fields are deprecated and will be removed in a future release. Use the 'properties' dictionary instead.",
+          "replacement" : "properties"
+        },
+        "capabilities" : [
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.default.user.credentials",
+            "name" : "Modify Credentials for Default Users for a Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.tags",
+            "name" : "Modify Tags"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.unpairdevice",
+            "name" : "Unpair Device"
+          }
+        ],
+        "connectionProperties" : {
+          "authenticationType" : "manualPairing",
+          "isMobileDeviceOnly" : false,
+          "lastConnectionDate" : "2026-11-12T10:29:00.000Z",
+          "pairingState" : "paired",
+          "potentialHostnames" : [
+            "Lukes-iPhone-Air.coredevice.local",
+            "5998651F-A691-5FB2-A351-40FBCBA8081B.coredevice.local",
+            "00008150-001E34E93A12401C.coredevice.local"
+          ],
+          "tunnelState" : "unavailable"
+        },
+        "deviceProperties" : {
+          "bootedFromSnapshot" : true,
+          "bootedSnapshotName" : "com.apple.os.update-39D1565684490F910589950389DFFDA363AC7FF2F82C4DE68CF3315F12CEC4DA",
+          "ddiServicesAvailable" : false,
+          "developerModeStatus" : "enabled",
+          "hasInternalOSBuild" : false,
+          "name" : "Luke's iPhone Air",
+          "osBuildUpdate" : "24C5037i",
+          "osVersionNumber" : "27.3",
+          "releaseType" : "Beta",
+          "rootFileSystemIsWritable" : false,
+          "supportsCheckedAllocations" : true
+        },
+        "hardwareProperties" : {
+          "cpuType" : {
+            "name" : "arm64e",
+            "subType" : -2147483646,
+            "type" : 16777228
+          },
+          "deviceType" : "iPhone",
+          "ecid" : 8502425607618588,
+          "hardwareModel" : "D23AP",
+          "internalStorageCapacity" : 256000000000,
+          "isProductionFused" : true,
+          "marketingName" : "iPhone Air",
+          "platform" : "iOS",
+          "productType" : "iPhone18,4",
+          "reality" : "physical",
+          "serialNumber" : "GL6RCYJRXK",
+          "supportedCPUTypes" : [
+            {
+              "name" : "arm64e",
+              "subType" : -2147483646,
+              "type" : 16777228
+            },
+            {
+              "name" : "arm64",
+              "subType" : 0,
+              "type" : 16777228
+            },
+            {
+              "name" : "arm64",
+              "subType" : 1,
+              "type" : 16777228
+            }
+          ],
+          "supportedDeviceFamilies" : [
+            1
+          ],
+          "thinningProductType" : "iPhone18,4",
+          "udid" : "00008150-001E34E93A12401C"
+        },
+        "identifier" : "5998651F-A691-5FB2-A351-40FBCBA8081B",
+        "properties" : {
+          "connection" : {
+            "authenticationType" : "manualPairing",
+            "lastConnectionDate" : 816172140,
+            "pairingState" : "paired",
+            "state" : "unavailable"
+          },
+          "hardware" : {
+            "cpuCount" : {
+              "logicalCores" : 6,
+              "packages" : 1,
+              "physicalCores" : 6
+            },
+            "cpuType" : {
+              "subtype" : 18446744071562067970,
+              "type" : 16777228
+            },
+            "deviceType" : "iPhone",
+            "ecid" : 8502425607618588,
+            "hasActionButton" : true,
+            "internalStorageCapacity" : 256000000000,
+            "marketingName" : "iPhone Air",
+            "platform" : "iOS",
+            "productType" : "iPhone18,4",
+            "reality" : "physical",
+            "serialNumber" : "GL6RCYJRXK",
+            "supportedBiometrics" : [
+              "faceID"
+            ],
+            "supportedCPUTypes" : [
+              {
+                "subtype" : 18446744071562067970,
+                "type" : 16777228
+              },
+              {
+                "subtype" : 0,
+                "type" : 16777228
+              },
+              {
+                "subtype" : 1,
+                "type" : 16777228
+              }
+            ],
+            "supportedDeviceFamilies" : [
+              1
+            ],
+            "supportsSiri" : true,
+            "thinningProductType" : "iPhone18,4",
+            "udid" : "00008150-001E34E93A12401C"
+          },
+          "software" : {
+            "osBuildVersions" : {
+              "buildVersion" : {
+                "majorLetterComponent" : "C",
+                "majorNumberComponent" : 24,
+                "name" : "24C5037i",
+                "revisionVersion" : {
+                  "components" : [
+                    24,
+                    3,
+                    37,
+                    5,
+                    9
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "24.3.37.5.9"
+                },
+                "trainProgram" : "iOS",
+                "updateLetterComponent" : "i",
+                "updateNumberComponent" : 5037
+              },
+              "supplementalBuildVersion" : {
+                "majorLetterComponent" : "C",
+                "majorNumberComponent" : 24,
+                "name" : "24C5037i",
+                "revisionVersion" : {
+                  "components" : [
+                    24,
+                    3,
+                    37,
+                    5,
+                    9
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "24.3.37.5.9"
+                },
+                "trainProgram" : "iOS",
+                "updateLetterComponent" : "i",
+                "updateNumberComponent" : 5037
+              }
+            },
+            "osVersionNumber" : {
+              "components" : [
+                27,
+                3,
+                0,
+                0,
+                0
+              ],
+              "originalComponentsCount" : 2,
+              "stringValue" : "27.3"
+            },
+            "supportsCheckedAllocations" : true
+          },
+          "state" : {
+            "developerModeStatus" : {
+              "enabled" : {
+                "mode" : 1
+              }
+            },
+            "name" : "Luke's iPhone Air"
+          }
+        },
+        "propertyDisplayNames" : null,
+        "visibilityClass" : "default"
+      },
+      {
+        "_deprecationNotice" : {
+          "deprecatedFields" : [
+            "hardwareProperties",
+            "deviceProperties",
+            "connectionProperties"
+          ],
+          "message" : "The 'hardwareProperties', 'deviceProperties', 'connectionProperties' fields are deprecated and will be removed in a future release. Use the 'properties' dictionary instead.",
+          "replacement" : "properties"
+        },
+        "capabilities" : [
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.default.user.credentials",
+            "name" : "Modify Credentials for Default Users for a Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.tags",
+            "name" : "Modify Tags"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.unpairdevice",
+            "name" : "Unpair Device"
+          }
+        ],
+        "connectionProperties" : {
+          "authenticationType" : "manualPairing",
+          "isMobileDeviceOnly" : false,
+          "pairingState" : "paired",
+          "potentialHostnames" : [
+            "LukedeAppleVisionPro.coredevice.local",
+            "DD733BED-DF21-5CA2-BFF3-9C5E70692679.coredevice.local",
+            "00008142-0016459A1AF3801C.coredevice.local"
+          ],
+          "tunnelState" : "unavailable"
+        },
+        "deviceProperties" : {
+          "ddiServicesAvailable" : false,
+          "name" : "Luke的Apple Vision Pro",
+          "osBuildUpdate" : "24N5286r",
+          "osVersionNumber" : "27.3"
+        },
+        "hardwareProperties" : {
+          "cpuType" : {
+            "name" : "arm64e",
+            "subType" : -2147483646,
+            "type" : 16777228
+          },
+          "deviceType" : "realityDevice",
+          "ecid" : 6268977667080220,
+          "hardwareModel" : "N301aAP",
+          "platform" : "visionOS",
+          "productType" : "RealityDevice17,1",
+          "supportedCPUTypes" : [
+            {
+              "name" : "arm64e",
+              "subType" : -2147483646,
+              "type" : 16777228
+            },
+            {
+              "name" : "arm64",
+              "subType" : 0,
+              "type" : 16777228
+            }
+          ],
+          "supportedDeviceFamilies" : [
+            1,
+            2,
+            7
+          ],
+          "udid" : "00008142-0016459A1AF3801C"
+        },
+        "identifier" : "DD733BED-DF21-5CA2-BFF3-9C5E70692679",
+        "properties" : {
+          "connection" : {
+            "authenticationType" : "manualPairing",
+            "pairingState" : "paired",
+            "state" : "unavailable"
+          },
+          "hardware" : {
+            "cpuType" : {
+              "subtype" : 18446744071562067970,
+              "type" : 16777228
+            },
+            "deviceType" : "realityDevice",
+            "ecid" : 6268977667080220,
+            "platform" : "visionOS",
+            "productType" : "RealityDevice17,1",
+            "supportedCPUTypes" : [
+              {
+                "subtype" : 18446744071562067970,
+                "type" : 16777228
+              },
+              {
+                "subtype" : 0,
+                "type" : 16777228
+              }
+            ],
+            "supportedDeviceFamilies" : [
+              1,
+              2,
+              7
+            ],
+            "udid" : "00008142-0016459A1AF3801C"
+          },
+          "software" : {
+            "osBuildVersions" : {
+              "buildVersion" : {
+                "majorLetterComponent" : "N",
+                "majorNumberComponent" : 24,
+                "name" : "24N5286r",
+                "revisionVersion" : {
+                  "components" : [
+                    24,
+                    14,
+                    286,
+                    5,
+                    18
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "24.14.286.5.18"
+                },
+                "trainProgram" : "xrOS",
+                "updateLetterComponent" : "r",
+                "updateNumberComponent" : 5286
+              },
+              "supplementalBuildVersion" : {
+                "majorLetterComponent" : "N",
+                "majorNumberComponent" : 24,
+                "name" : "24N5286r",
+                "revisionVersion" : {
+                  "components" : [
+                    24,
+                    14,
+                    286,
+                    5,
+                    18
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "24.14.286.5.18"
+                },
+                "trainProgram" : "xrOS",
+                "updateLetterComponent" : "r",
+                "updateNumberComponent" : 5286
+              }
+            },
+            "osVersionNumber" : {
+              "components" : [
+                27,
+                3,
+                0,
+                0,
+                0
+              ],
+              "originalComponentsCount" : 2,
+              "stringValue" : "27.3"
+            }
+          },
+          "state" : {
+            "name" : "Luke的Apple Vision Pro"
+          }
+        },
+        "propertyDisplayNames" : null,
+        "visibilityClass" : "default"
+      },
+      {
+        "_deprecationNotice" : {
+          "deprecatedFields" : [
+            "hardwareProperties",
+            "deviceProperties",
+            "connectionProperties"
+          ],
+          "message" : "The 'hardwareProperties', 'deviceProperties', 'connectionProperties' fields are deprecated and will be removed in a future release. Use the 'properties' dictionary instead.",
+          "replacement" : "properties"
+        },
+        "capabilities" : [
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.applicationcontrol",
+            "name" : "Application Control"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.audioinput",
+            "name" : "Audio Input Device Selection"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.audiooutput",
+            "name" : "Audio Output Device Selection"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.capturescreenshot",
+            "name" : "Capture Screenshot"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.companiondevicepairing",
+            "name" : "Companion Device Pairing"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.configurationprofiles",
+            "name" : "Configuration Profile Management"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.customizeappearancesettings",
+            "name" : "Customize Appearance Settings"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.customizeliquidglass",
+            "name" : "Customize Liquid Glass"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.customizeuistyle",
+            "name" : "Customize User Interface Style"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.devicecontrol.orientation",
+            "name" : "Device Orientation"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.faceid",
+            "name" : "Face ID"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.fetchappicons",
+            "name" : "Fetch Application Icons"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.getdisplayinfo",
+            "name" : "Get Display Information"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.button",
+            "name" : "HID Button"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.digitizer",
+            "name" : "HID Digitizer"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.keyboard",
+            "name" : "HID Keyboard"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.scroll",
+            "name" : "HID Scroll"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.vendordefined",
+            "name" : "HID Vendor Defined"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.installapp",
+            "name" : "Install Application"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.default.user.credentials",
+            "name" : "Modify Credentials for Default Users for a Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.tags",
+            "name" : "Modify Tags"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.monitormotion",
+            "name" : "Monitor Motion"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.monitorprocesstermination",
+            "name" : "Monitor Process for Termination"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.pasteboard",
+            "name" : "Pasteboard"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.processcontrol",
+            "name" : "Process Control"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.rebootdevice",
+            "name" : "Reboot Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.dt.coredevice.plugin.removedevice",
+            "name" : "Remove Provisioned Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.renamedevice",
+            "name" : "Rename Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.resetContentAndSettings",
+            "name" : "Reset Settings and Content"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.resizableappmanagement",
+            "name" : "Resizable App Management"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.screenrecording",
+            "name" : "Screen Recording"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.sendmemorywarningtoprocess",
+            "name" : "Send Memory Warning to Process"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.sendsignaltoprocess",
+            "name" : "Send Signal to Process"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.servicexpcpeerconnection",
+            "name" : "Service XPC Peer Connection"
+          },
+          {
+            "featureIdentifier" : "com.apple.dt.coredevice.device.shutdown",
+            "name" : "Shutdown Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.simulatelocation",
+            "name" : "Simulate Device Location"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.simulatefaceid",
+            "name" : "Simulate Face ID"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.simulateStatusBar",
+            "name" : "Simulate Status Bar"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.standby",
+            "name" : "StandBy"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.streamapplist",
+            "name" : "Stream Application List"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.streamprocesslist",
+            "name" : "Stream Process List"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.uninstallapp",
+            "name" : "Uninstall Application"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.universalhidservice",
+            "name" : "UniversalHIDService"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.voiceover",
+            "name" : "VoiceOver"
+          }
+        ],
+        "connectionProperties" : {
+          "authenticationType" : "implicit",
+          "isMobileDeviceOnly" : false,
+          "lastConnectionDate" : "2026-11-09T02:15:34.000Z",
+          "pairingState" : "paired",
+          "potentialHostnames" : [
+
+          ],
+          "transportType" : "sameMachine",
+          "tunnelState" : "connected"
+        },
+        "deviceProperties" : {
+          "bootState" : "booted",
+          "ddiServicesAvailable" : true,
+          "hasInternalOSBuild" : false,
+          "name" : "REA ChatGPT Offline",
+          "osBuildUpdate" : "24A434",
+          "osVersionNumber" : "27.0",
+          "provider" : "com.apple.CoreSimulator.SimulatorCoreDevicePlugin"
+        },
+        "hardwareProperties" : {
+          "cpuType" : {
+            "name" : "arm64",
+            "subType" : 0,
+            "type" : 16777228
+          },
+          "deviceType" : "iPhone",
+          "hardwareModel" : "V53",
+          "marketingName" : "iPhone 17 Pro",
+          "platform" : "iOS",
+          "productType" : "iPhone18,1",
+          "reality" : "simulated",
+          "supportedCPUTypes" : [
+            {
+              "name" : "arm64",
+              "subType" : 0,
+              "type" : 16777228
+            }
+          ],
+          "udid" : "71BCC1D2-0ABD-4F11-BB67-37818435B176"
+        },
+        "identifier" : "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+        "properties" : {
+          "connection" : {
+            "authenticationType" : "implicit",
+            "lastConnectionDate" : 815883334,
+            "pairingState" : "paired",
+            "state" : "connected",
+            "transportType" : "sameMachine"
+          },
+          "hardware" : {
+            "cpuType" : {
+              "subtype" : 0,
+              "type" : 16777228
+            },
+            "deviceType" : "iPhone",
+            "hasActionButton" : true,
+            "marketingName" : "iPhone 17 Pro",
+            "platform" : "iOS",
+            "productType" : "iPhone18,1",
+            "reality" : "simulated",
+            "supportedBiometrics" : [
+              "faceID"
+            ],
+            "supportedCPUTypes" : [
+              {
+                "subtype" : 0,
+                "type" : 16777228
+              }
+            ],
+            "supportsSiri" : true,
+            "udid" : "71BCC1D2-0ABD-4F11-BB67-37818435B176"
+          },
+          "software" : {
+            "osBuildVersions" : {
+              "buildVersion" : {
+                "majorLetterComponent" : "A",
+                "majorNumberComponent" : 24,
+                "name" : "24A434",
+                "revisionVersion" : {
+                  "components" : [
+                    24,
+                    1,
+                    434,
+                    0,
+                    0
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "24.1.434.0.0"
+                },
+                "updateNumberComponent" : 434
+              }
+            },
+            "osVersionNumber" : {
+              "components" : [
+                27,
+                0,
+                0,
+                0,
+                0
+              ],
+              "originalComponentsCount" : 2,
+              "stringValue" : "27.0"
+            }
+          },
+          "state" : {
+            "bootState" : "booted",
+            "name" : "REA ChatGPT Offline",
+            "preparednessState" : 15,
+            "visibilityClass" : "simulators"
+          }
+        },
+        "propertyDisplayNames" : null,
+        "visibilityClass" : "simulators"
+      },
+      {
+        "_deprecationNotice" : {
+          "deprecatedFields" : [
+            "hardwareProperties",
+            "deviceProperties",
+            "connectionProperties"
+          ],
+          "message" : "The 'hardwareProperties', 'deviceProperties', 'connectionProperties' fields are deprecated and will be removed in a future release. Use the 'properties' dictionary instead.",
+          "replacement" : "properties"
+        },
+        "capabilities" : [
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.applicationcontrol",
+            "name" : "Application Control"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.audioinput",
+            "name" : "Audio Input Device Selection"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.audiooutput",
+            "name" : "Audio Output Device Selection"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.capturescreenshot",
+            "name" : "Capture Screenshot"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.companiondevicepairing",
+            "name" : "Companion Device Pairing"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.configurationprofiles",
+            "name" : "Configuration Profile Management"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.customizeappearancesettings",
+            "name" : "Customize Appearance Settings"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.customizeliquidglass",
+            "name" : "Customize Liquid Glass"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.customizeuistyle",
+            "name" : "Customize User Interface Style"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.devicecontrol.orientation",
+            "name" : "Device Orientation"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.faceid",
+            "name" : "Face ID"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.fetchappicons",
+            "name" : "Fetch Application Icons"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.getdisplayinfo",
+            "name" : "Get Display Information"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.button",
+            "name" : "HID Button"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.digitizer",
+            "name" : "HID Digitizer"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.keyboard",
+            "name" : "HID Keyboard"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.scroll",
+            "name" : "HID Scroll"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.hid.vendordefined",
+            "name" : "HID Vendor Defined"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.installapp",
+            "name" : "Install Application"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.default.user.credentials",
+            "name" : "Modify Credentials for Default Users for a Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.tags",
+            "name" : "Modify Tags"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.monitormotion",
+            "name" : "Monitor Motion"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.monitorprocesstermination",
+            "name" : "Monitor Process for Termination"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.pasteboard",
+            "name" : "Pasteboard"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.processcontrol",
+            "name" : "Process Control"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.rebootdevice",
+            "name" : "Reboot Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.dt.coredevice.plugin.removedevice",
+            "name" : "Remove Provisioned Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.renamedevice",
+            "name" : "Rename Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.resetContentAndSettings",
+            "name" : "Reset Settings and Content"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.resizableappmanagement",
+            "name" : "Resizable App Management"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.screenrecording",
+            "name" : "Screen Recording"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.sendmemorywarningtoprocess",
+            "name" : "Send Memory Warning to Process"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.sendsignaltoprocess",
+            "name" : "Send Signal to Process"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.servicexpcpeerconnection",
+            "name" : "Service XPC Peer Connection"
+          },
+          {
+            "featureIdentifier" : "com.apple.dt.coredevice.device.shutdown",
+            "name" : "Shutdown Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.simulatelocation",
+            "name" : "Simulate Device Location"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.simulatefaceid",
+            "name" : "Simulate Face ID"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.simulateStatusBar",
+            "name" : "Simulate Status Bar"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.standby",
+            "name" : "StandBy"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.streamapplist",
+            "name" : "Stream Application List"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.streamprocesslist",
+            "name" : "Stream Process List"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.uninstallapp",
+            "name" : "Uninstall Application"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.remote.universalhidservice",
+            "name" : "UniversalHIDService"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.voiceover",
+            "name" : "VoiceOver"
+          }
+        ],
+        "connectionProperties" : {
+          "authenticationType" : "implicit",
+          "isMobileDeviceOnly" : false,
+          "lastConnectionDate" : "2026-11-12T15:55:48.000Z",
+          "pairingState" : "paired",
+          "potentialHostnames" : [
+
+          ],
+          "transportType" : "sameMachine",
+          "tunnelState" : "connected"
+        },
+        "deviceProperties" : {
+          "bootState" : "booted",
+          "ddiServicesAvailable" : true,
+          "hasInternalOSBuild" : false,
+          "name" : "Soul Next",
+          "osBuildUpdate" : "24A434",
+          "osVersionNumber" : "27.0",
+          "provider" : "com.apple.CoreSimulator.SimulatorCoreDevicePlugin"
+        },
+        "hardwareProperties" : {
+          "cpuType" : {
+            "name" : "arm64",
+            "subType" : 0,
+            "type" : 16777228
+          },
+          "deviceType" : "iPhone",
+          "hardwareModel" : "D23",
+          "marketingName" : "iPhone Air",
+          "platform" : "iOS",
+          "productType" : "iPhone18,4",
+          "reality" : "simulated",
+          "supportedCPUTypes" : [
+            {
+              "name" : "arm64",
+              "subType" : 0,
+              "type" : 16777228
+            }
+          ],
+          "udid" : "F31F98F7-ED7F-452E-ADDA-D7CB7EF7E590"
+        },
+        "identifier" : "F31F98F7-ED7F-452E-ADDA-D7CB7EF7E590",
+        "properties" : {
+          "connection" : {
+            "authenticationType" : "implicit",
+            "lastConnectionDate" : 816191748,
+            "pairingState" : "paired",
+            "state" : "connected",
+            "transportType" : "sameMachine"
+          },
+          "hardware" : {
+            "cpuType" : {
+              "subtype" : 0,
+              "type" : 16777228
+            },
+            "deviceType" : "iPhone",
+            "hasActionButton" : true,
+            "marketingName" : "iPhone Air",
+            "platform" : "iOS",
+            "productType" : "iPhone18,4",
+            "reality" : "simulated",
+            "supportedBiometrics" : [
+              "faceID"
+            ],
+            "supportedCPUTypes" : [
+              {
+                "subtype" : 0,
+                "type" : 16777228
+              }
+            ],
+            "supportsSiri" : true,
+            "udid" : "F31F98F7-ED7F-452E-ADDA-D7CB7EF7E590"
+          },
+          "software" : {
+            "osBuildVersions" : {
+              "buildVersion" : {
+                "majorLetterComponent" : "A",
+                "majorNumberComponent" : 24,
+                "name" : "24A434",
+                "revisionVersion" : {
+                  "components" : [
+                    24,
+                    1,
+                    434,
+                    0,
+                    0
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "24.1.434.0.0"
+                },
+                "updateNumberComponent" : 434
+              }
+            },
+            "osVersionNumber" : {
+              "components" : [
+                27,
+                0,
+                0,
+                0,
+                0
+              ],
+              "originalComponentsCount" : 2,
+              "stringValue" : "27.0"
+            }
+          },
+          "state" : {
+            "bootState" : "booted",
+            "name" : "Soul Next",
+            "preparednessState" : 15,
+            "visibilityClass" : "simulators"
+          }
+        },
+        "propertyDisplayNames" : null,
+        "visibilityClass" : "simulators"
+      },
+      {
+        "_deprecationNotice" : {
+          "deprecatedFields" : [
+            "hardwareProperties",
+            "deviceProperties",
+            "connectionProperties"
+          ],
+          "message" : "The 'hardwareProperties', 'deviceProperties', 'connectionProperties' fields are deprecated and will be removed in a future release. Use the 'properties' dictionary instead.",
+          "replacement" : "properties"
+        },
+        "capabilities" : [
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.default.user.credentials",
+            "name" : "Modify Credentials for Default Users for a Device"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.tags",
+            "name" : "Modify Tags"
+          },
+          {
+            "featureIdentifier" : "com.apple.coredevice.feature.unpairdevice",
+            "name" : "Unpair Device"
+          }
+        ],
+        "connectionProperties" : {
+          "authenticationType" : "manualPairing",
+          "isMobileDeviceOnly" : false,
+          "pairingState" : "paired",
+          "potentialHostnames" : [
+            "iPhone.coredevice.local",
+            "18224DE6-E6E1-52D6-920A-8E8F9CA5B0B8.coredevice.local",
+            "00008030-000E2CE21A63802E.coredevice.local"
+          ],
+          "tunnelState" : "unavailable"
+        },
+        "deviceProperties" : {
+          "ddiServicesAvailable" : false,
+          "name" : "iPhone",
+          "osBuildUpdate" : "22B91",
+          "osVersionNumber" : "18.1.1"
+        },
+        "hardwareProperties" : {
+          "cpuType" : {
+            "name" : "arm64e",
+            "subType" : -2147483646,
+            "type" : 16777228
+          },
+          "deviceType" : "iPhone",
+          "ecid" : 3989999290908718,
+          "hardwareModel" : "D79AP",
+          "platform" : "iOS",
+          "productType" : "iPhone12,8",
+          "supportedCPUTypes" : [
+            {
+              "name" : "arm64e",
+              "subType" : -2147483646,
+              "type" : 16777228
+            },
+            {
+              "name" : "arm64",
+              "subType" : 0,
+              "type" : 16777228
+            }
+          ],
+          "supportedDeviceFamilies" : [
+            1
+          ],
+          "udid" : "00008030-000E2CE21A63802E"
+        },
+        "identifier" : "18224DE6-E6E1-52D6-920A-8E8F9CA5B0B8",
+        "properties" : {
+          "connection" : {
+            "authenticationType" : "manualPairing",
+            "pairingState" : "paired",
+            "state" : "unavailable"
+          },
+          "hardware" : {
+            "cpuType" : {
+              "subtype" : 18446744071562067970,
+              "type" : 16777228
+            },
+            "deviceType" : "iPhone",
+            "ecid" : 3989999290908718,
+            "platform" : "iOS",
+            "productType" : "iPhone12,8",
+            "supportedCPUTypes" : [
+              {
+                "subtype" : 18446744071562067970,
+                "type" : 16777228
+              },
+              {
+                "subtype" : 0,
+                "type" : 16777228
+              }
+            ],
+            "supportedDeviceFamilies" : [
+              1
+            ],
+            "udid" : "00008030-000E2CE21A63802E"
+          },
+          "software" : {
+            "osBuildVersions" : {
+              "buildVersion" : {
+                "majorLetterComponent" : "B",
+                "majorNumberComponent" : 22,
+                "name" : "22B91",
+                "revisionVersion" : {
+                  "components" : [
+                    22,
+                    2,
+                    91,
+                    0,
+                    0
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "22.2.91.0.0"
+                },
+                "trainProgram" : "iOS",
+                "updateNumberComponent" : 91
+              },
+              "supplementalBuildVersion" : {
+                "majorLetterComponent" : "B",
+                "majorNumberComponent" : 22,
+                "name" : "22B91",
+                "revisionVersion" : {
+                  "components" : [
+                    22,
+                    2,
+                    91,
+                    0,
+                    0
+                  ],
+                  "originalComponentsCount" : 5,
+                  "stringValue" : "22.2.91.0.0"
+                },
+                "trainProgram" : "iOS",
+                "updateNumberComponent" : 91
+              }
+            },
+            "osVersionNumber" : {
+              "components" : [
+                18,
+                1,
+                1,
+                0,
+                0
+              ],
+              "originalComponentsCount" : 3,
+              "stringValue" : "18.1.1"
+            }
+          },
+          "state" : {
+            "name" : "iPhone"
+          }
+        },
+        "propertyDisplayNames" : null,
+        "visibilityClass" : "default"
+      }
+    ]
+  }
+}

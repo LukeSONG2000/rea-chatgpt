@@ -1,0 +1,168 @@
+{
+  "status": "partial",
+  "scope": "iOS293 Remote list filter producer, indicator consumer and parent placement. Evidence-only; not a host change.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "findings": [
+    {
+      "id": "filter-status-omitted",
+      "classification": "official-artifact-observation plus current-host-source",
+      "conclusion": "Current Choice(id/title/icon) and icon+title label omit a real original optional status-indicator child. The original label consumes status and an explicit showsStatusIndicator Boolean.",
+      "producer": [
+        "CodexRemoteHostListItem descriptor0x95d1074 field availability",
+        "host chip0x389d10:0x389ddc..0x389df4 copies availability.state into temporary;0x38a004..0x38a018 writes Button.hostStatusState bytes+18..38",
+        "0x389e00→0x464a14→0x24242fc constructs HostIdentity;zero sentinel built0x454a90;0x389e10→0x458914→0x2441910 compares identity;0x38a020 bitwise invert and0x38a024 stores showsStatusIndicator at+39"
+      ],
+      "consumer": [
+        "label38ac24→38adc8",
+        "0x38ae58..60 requires showsStatusIndicator byte+39==1",
+        "0x38ae64→464fc4 checks optional state byte+38!=ff",
+        "0x38ae6c→466438 copies state;0x38ae80→38afc4 constructs indicator subtree before icon/text",
+        "complete label tree7cf5e38 has HStack<TupleView<EmptyConditionalContent<(StatusIndicator.progressViewStyle(Circular).scaleEffect,optionalImage)>,...Text>>"
+      ],
+      "limits": [
+        "Do not interpret the all-zero HostIdentity sentinel as Cloud until its enum construction is separately proved. Keep showsStatusIndicator as explicit producer input.",
+        "Server availability projection is separate from rendering; no live online state was read."
+      ]
+    },
+    {
+      "id": "status-colors-and-size",
+      "classification": "official-artifact-observation",
+      "conclusion": "The filter supplies original green/error colors and a body-scaled base6 indicator dimension. Connecting states use the original status component with its progress presentation; a universal green dot is insufficient.",
+      "source": [
+        "host chip0x38a0a0..0x38a0bc initializes _hostStatusDotSize through ScaledMetric initializer using IEEE7546.0 (0x4018000000000000);icon base18 at0x38a050 and spacing base6 at0x38a0c4 are separate fields",
+        "0x38afc4..0x38b118 builds CodexRemoteHostStatusIndicator;0x38b06c copies state;0x38b07c reads scaled dot size;0x38b080 invokes74ed794 error color;0x38b084→464820 saves first color inx20 then calls74f06d8 green color;0x38b098 writes green availableColor then error unavailableColor",
+        "74f06d8 literal8a52300=OneOff/BrandGreen;74ed794 literal8a51530=ChatGPT/icon/status/error",
+        "StatusIndicator conformance7e85458 witness24034dc→2403174;0x24031d0 reads size+38;0x24031f0 applies width=height=size centered frame",
+        "status tree7e83238 proves conditional Circle<Color> / scaled OAIProgressView / EmptyView;dynamicTypeSize also appears in progress subtree",
+        "0x38b018 and0x38b044 compare state with concrete enum payload constants and choose0.8 or1 scale from7cdb418;CircularProgressViewStyle applied0x38b0a0"
+      ],
+      "limits": [
+        "State declaration inventory saved separately. Raw branch conditions preserved in status-body.asm; full enum payload semantic mapping and reasons are not invented from declaration order.",
+        "Exact spinner animation timing is internal OAIProgressView, not closed here; no additional timer introduced."
+      ]
+    },
+    {
+      "id": "real-filter-caller-insets",
+      "classification": "official-artifact-observation",
+      "conclusion": "The ordinary task-list filter producer initializes horizontalContentInset16 and bottomPadding12. Current fixture still passes20 and0. This is a directly proved caller mismatch, unlike unknown optical effects.",
+      "source": [
+        "CodexTaskListContent body397af8..397b10 builds ordinary rows through39b948",
+        "39bad4 calls399784 filter producer",
+        "0x399878 loads q0 from7cfc8d0;0x399880 stores it at constructed filter+80/+88",
+        "literal7cfc8d0 two doubles=[16,12]",
+        "0x3889e4 horizontal edge,0x3889ec reads constructed filter+80 horizontal inset;0x38860c reads+88 bottom padding",
+        "0x39bb48..0x39bb64 adds separate top padding12 when owner byte+170 !=0,otherwise0;semantic owner field not re-proven"
+      ],
+      "limits": [
+        "The extra top12 is conditional and should remain an explicit adapter input until owner byte+170 is named. Do not apply it unconditionally."
+      ]
+    },
+    {
+      "id": "filter-parent-and-no-custom-edge-proof",
+      "classification": "official-artifact-observation",
+      "conclusion": "Filter is the first optional content row inside native task-list container, wrapped by CodexHomeContentWidth, padding, measurement and hidden row separator. Its inner scrolling is a horizontal ScrollView without indicators. No custom side fade or blur is established by the resolved filter tree/body.",
+      "source": [
+        "type7cf7528 full tree saved;rows39b948 filter branch39bab4..39bc68 precedes ordinary sections",
+        "filter body388580 sets Axis.horizontal3885c8;showsIndicators=false3885f8→ScrollView constructor388600",
+        "filter full tree7cf4af8 has HStack plus padding and three AnimationModifier values(SourceFilter/Bool/HostIdentity array),outerbottom padding",
+        "source39bb1c..39bc1c wraps filter with width/top padding/measurement/listRowSeparator;39bc34 semantic MainSurfacePrimary background",
+        "Remote list system vertical soft/nil mapping separately proven in ios-remote-v540-edge-findings.json"
+      ],
+      "limits": [
+        "Opaque segmented-style modifiers are retained in trees; exact inherited private indicator/material pipeline remains unknown.",
+        "Do not apply sidebar custom top/bottom backgrounds to Remote list."
+      ]
+    },
+    {
+      "id": "title-and-composer-parent-reused",
+      "classification": "official-artifact-observation-reused",
+      "conclusion": "Existing title menu evidence already proves principal Menu in standard/taskList when Remote available and not composing; search replaces this title. Menu is grouping/management/usage, not Chat/Work switching. Ordinary list/composer parent still uses existing shared navigation and bottom-bar adapter. No new source-backed relocation proved in this pass.",
+      "source": [
+        "ios-remote-v506-title-menu-findings.json:3065fc..306624,308600..30862c,4294a4→308a5c",
+        "Organize conditional308a98..308b24,Manage309100 optional archive/add/settings callbacks,Usage optional309798..3098a4",
+        "ios-remote-v539-header-parent-findings.json:bottom-only contentMargins397bc0..397cc0",
+        "ios-remote-list-module-20261112.json retained implementation scope"
+      ],
+      "limits": [
+        "Complete bottom composer/list viewport safe-area geometry not re-parsed here.",
+        "No screenshot numeric layout assumptions."
+      ]
+    }
+  ],
+  "implementation_priority": [
+    "Add explicit original status fields to source choices and render optional base6 indicator before icon/title; preserve nonnil/state gates.",
+    "Restore actual filter caller horizontal16/bottom12, keeping extra top12 separately conditional.",
+    "Keep existing system vertical list edge wrapper; investigate opaque segmented indicator style only if a remaining visual difference requires it."
+  ],
+  "unknowns": [
+    "HostIdentity zero sentinel semantic and upstream status visibility policy",
+    "Full status reason/connection-state semantic-to-raw mapping and spinner animation internals",
+    "Opaque segmented selection indicator/material preference implementation",
+    "Conditional top padding owner field+170",
+    "Exact list/composer parent viewport geometry beyond already recovered reports"
+  ],
+  "evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-tree.tree.txt": "47a905fed6ca991b008d8d47ad9d14713369abb4ad576177368c9510c8e0e02c",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-label-tree.tree.txt": "cb5fbe9c3283b00856e3aadb36c8d1c269ab44795609ca10a669bf4b264c49a4",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/list-rows-builder.json": "5bd87cd4807075312c8ac6ae100dc9744967837b87a406cb80a06975cd5f9b81",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/list-rows-builder.asm": "37075fd6a4d2dfb43685783efa152e2a31f8135eeb054c199ea5dfbe607e3e43",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/list-parent-tree.tree.txt": "81d9b4be55acc1a6d6d8f7688a6250da64cbfbc7c5d25cee2e5ead6c8807987b",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/producer-status-map.json": "09aad7cf6a2b5a6582a700bd9ed7f234d575c4cde23d626cd1ac40613aab4cc7",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-copy.asm": "d3809bdc5e1e49606d853474d783787fffa6445567152a6c56447cbb4c7fa83c",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-tree.raw": "5853c049dad3fc48391c686c74449e975071247006171086840b32138ad48bda",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-inner-tree.raw": "2250459302eda0dd1610ee653b3254edd4e6c3dc5db3e0e1c64b33670e71348b",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-admission.asm": "1a28ef2bff53d826d62096018c263a6785f50d4378a4de4ef6c7a82fe3f77829",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-suppression-identity.json": "0cbfd758a57c78519c0229aa61c1c51867e32bb293d0f56ff990bde7479a9153",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-inner-tree.json": "b49fa1bc65da634e2faf20e9bc5fead2323d2e81afc6c303d9b78df05bb6f458",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-enum-helper.asm": "fb3efe5abcae8d07b603f4958ac7521affbfec002614b5efc4025941bcb844b3",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-tree.json": "9e9db1e2bafed9bb5f94d41ab07bc9baf2b0ef23ac0fd2b6fe8fff6d5681e08d",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-style-helper.json": "d7ecd5bfcae11e57f847011af77ea52c848657faf7634636a0eeed73b846daca",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/list-parent-tree.refs.tsv": "43f65bf1b064add78e5cc65f5b4753e33a2df9ce236c3b7cb6609758b1d318d0",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-available-color.asm": "c9f89813f4bde473abc483cbb2423938d57d383bf7d9983b734a37f3bc922ea3",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-label-tree.json": "d61892a360f927919577fec1642ba568680934a5002153f1470a23056973e64a",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-metadata.json": "ddb94e7052b775c3ab1879dfe389ae0443c4d76428f1f206d1ce347b073dec2c",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-constructor.json": "ad1ddf6b96fb8bf511782bc603631026ce0cfa83ff33a2af189a75a0df5f5440",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-tree.refs.tsv": "b97a5444f1ee62048bb427c87711817f7ef17736ef0433d49e0827fc813be44a",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-label-tree.refs.tsv": "7b5026427b205acceaaaae894df84d447074baa8a48f0df2cae5f10f5d3e8f27",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-inner-tree.tree.txt": "edff84dcdaa7deb717239827eacb4ba3c18279da740dd8df28000505bef09636",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-producer.json": "2064b32427866191da1f8cb6f2df747cf098d1d1690e70b74988128176d92bd4",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-constructor.asm": "6567943834745f390bc8f2a6ed18af6807a54ca1fe3774330f98a83cf052e25f",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-suppression-identity.asm": "f3fb9f3f640f8764e4224c8db73ca047261b88f509400dbc0ed8bc96424eaf8b",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-copy.json": "cc8bfc7e931a74ce53ad4f6946be17390a6f18d77e1d583b435e6185e7b33436",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/host-chip-producer.asm": "8049ae38e853b5f785e07a015e5a50ec76397065fe9355ff2498808fbc3142b9",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-frame-helper.json": "ec7de4e71f1979ef60a2409b90002419991353b067d4e0a34cbaa4b95688192a",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/producer-status-map.asm": "028300b0fb71c5003dcc1f1ab860edb4f3e0aa2913e9934cd7cfafe0e21c4759",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/identity-equality.json": "1050c8cf8cb54d07354b9532b0d19ebe6c108385e243ae94e47de669bfbba8a5",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-inner-tree.refs.tsv": "678b5ed7aca0e95b2a1bfc0f50a96f767713685eb06a67d80d5d6ee8f02533de",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/host-chip-producer.json": "458a36a89562ce11a4fa6f2b467ebefd30b38987049e313c7544c548086cc2d1",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-enum-inventory.json": "63881a12ef4b4611070d3be48e7cac0105ab7e9fdb704dfd32810edb1dfe351e",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/list-parent-tree.raw": "068d9593df1323af332b69aa5ff460a768eec5cc65a913a9c4b286e240a1c64b",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-style-helper.asm": "70dc5913959e48a5922f0f9840d51b52c515e156af804c5a4c6909468ad9252b",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-available-color.json": "d0ec6641c8565f30a2b08149bcc0a64a3383294918a73c77fe98e1cf050fca5e",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/raw-8f2f060.json": "63f392582eec1b4944a04c895bf35e5d85837ec3567fc8a0b392024b2ec2bc4d",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-witness.json": "acdbcfdcb9445be9f4685517994ead85e31f6dc576105fb15a271f7be5041a99",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-enum-helper.json": "ec5f061a79d57d5912fa7e85270e78e8d1c4124d407cd6b0ffdef36971a37148",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-label-tree.raw": "3b0ebfec53b518035a398afa8fd2af7ce5776a0360e9df82860dc62a91bdea7a",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/identity-equality.asm": "6522f64093ec11c108e519a5a64d3989451f98ca1dd9f001cb3a9c1836ddbd66",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-body.asm": "77312f96bf763f1aaede5818dc944376568a45a76ddf8e1fb7d433fdb84d6a65",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/list-parent-tree.json": "82044ad0ed53bd03b387e78eda8f50c4419cc49092310e967d41f196f28aadbf",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/raw-8f2f02c.json": "75a14b5fe8f7a428e42ba9885af106afd7c5fa3d7f6f156ac795990297d7c11f",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-frame-helper.asm": "29d240e6789860b5a79bb2f71269089d6d4843c89957859c48edd83a76ca68b9",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/raw-8df83ce.json": "97b2d7ee39ce483a4652c741aa031c01e41dede9193188157cb19148e934a279",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/raw-8bde2c0.json": "d4979b47337d056491d18312a9ddef0d6942dbd8905d2d7a27866fd3a70fbbc2",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/raw-8f2f032.json": "c116096b1579cb08803a350556e4e5df7a56205a568f8c5e3777ae741db5f54f",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-body.json": "c660775068697dbde6fcfa9f24d79a063acdffad0faaa658036720a5c7770faf",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/filter-producer.asm": "2345119cadb238e7f5337c94d87dfcb7f4a4a3bb31c8129bc2a07f14cf3704af",
+    "analysis/full-platform-20261104/ios-remote-list-parent-20261112/status-admission.json": "4f4e67ac126df3a470e4c5a7efd0f8cda6c5f79cf66480cf0941abb96af850c3"
+  },
+  "validation": {
+    "host_changed": false,
+    "built": false,
+    "device_used": false,
+    "official_app_executed": false
+  }
+}

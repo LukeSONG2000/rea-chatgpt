@@ -1,0 +1,134 @@
+{
+  "batch": 616,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "type": "official_artifact_static",
+      "owner": "0x1950720",
+      "evidence": [
+        "ios-remote-v615-reasoning-caller-b.asm",
+        "ios-remote-v615-reasoning-caller-b.json"
+      ],
+      "conclusion": "Visits CodexRenderedItem array in reverse and reads optional summary arrays using0x24694e4. Each summary array is joined with newline. Lines are visited in reverse; each candidate is whitespace-trimmed, parsed as Markdown to characters, and trimmed again. First nonempty result is returned. Missing/empty items permit earlier candidates."
+    },
+    {
+      "type": "official_artifact_static",
+      "locations": [
+        "0x1950780..0x1950788",
+        "0x45cf0c",
+        "0x1d96a50",
+        "0x1950834..0x1950878",
+        "0x88b5e70"
+      ],
+      "conclusion": "Replacement uses the21-byte literal <!--[\\s\\S]*?(?:-->|$), empty replacement, and regularExpression option0x400. Closed and trailing unclosed HTML comments are removed before line selection.",
+      "evidence": [
+        "ios-remote-v616-summary-literals.json",
+        "ios-remote-v616-pattern-registers.asm",
+        "ios-remote-v616-summary-pattern.asm"
+      ]
+    },
+    {
+      "type": "official_artifact_static",
+      "locations": [
+        "0x1d91918",
+        "0x195081c"
+      ],
+      "conclusion": "Small Swift string representation supplies newline as the join separator.",
+      "evidence": [
+        "ios-remote-v616-summary-separator.asm"
+      ]
+    },
+    {
+      "type": "official_artifact_static",
+      "locations": [
+        "0x1950790..0x1950798",
+        "0x1950930..0x195096c",
+        "0x68babac..0x68bad84"
+      ],
+      "conclusion": "Markdown options use fully interpreted syntax, false allowsExtendedAttributes, returnPartiallyParsedIfPossible failure policy, absent languageCode/baseURL. Result uses AttributedString.characters to construct plain String. Caller preserves the original trimmed line if the throwing helper fails.",
+      "evidence": [
+        "ios-remote-v616-summary-parse.asm",
+        "ios-remote-v616-summary-parse.json",
+        "ios-remote-v616-summary-literals.json",
+        "ios-remote-v616-summary-parse-result.asm",
+        "ios-remote-v616-summary-options.asm",
+        "ios-remote-v616-summary-parse-arguments.asm"
+      ]
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "0x18fe180",
+      "conclusion": "The selected current-turn path iterates pre-existing rendered items, tests item fields, filters/modifies and appends them. It does not close original ReasoningThreadItem.content-to-rendered-item production. The filename rendered-turn-producer is a probe label, not recovered symbol identity.",
+      "evidence": [
+        "ios-remote-v616-rendered-turn-producer.asm",
+        "ios-remote-v616-rendered-turn-producer.json"
+      ]
+    }
+  ],
+  "implementation": {
+    "files": [
+      "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "implementation/ios/TextTests/main.swift"
+    ],
+    "implemented": [
+      "Shared summary projection with source-observed ordering, comment removal, Markdown parsing and fallback.",
+      "Raw-summary constructors for transient thinking and persistent activity group snapshots.",
+      "Existing synthetic providers now feed Markdown/comment-bearing input into those constructors; original display text constructors remain supported."
+    ],
+    "independent_adaptations": [
+      "Provider hands the adapter ordered optional summary arrays, not a decoded official ThreadItem.",
+      "Fixture input/timing and native display/storage belong to the existing independent host.",
+      "The Foundation implementation executes on the installed SDK/runtime, not within the official binary."
+    ],
+    "unimplemented": [
+      "Original full reasoning content producer and consumer.",
+      "Raw official ThreadItem decoder and complete item visibility filtering integration.",
+      "Reasoning full-body disclosure and Android consumers."
+    ]
+  },
+  "validation": {
+    "foundation": "r2 passed;12 new vectors and existing suite",
+    "r1_failure": "Test expected --- to become empty. Foundation full Markdown parsing returns U+2E3B; expectation corrected to retain parser output. Product code was not changed to force empty output.",
+    "runtime_ui": "5 passed, 0 failed, 0 skipped; ios-remote-v616-r1-summary.json",
+    "official_app_executed": false,
+    "installation": "version616; executable hash matches; ios-remote-v616-runtime.json"
+  },
+  "next_action": "Full reasoning content still requires its own producer/consumer trace. Continue page-level gaps with file citation consumers.",
+  "raw_evidence_sha256": {
+    "ios-remote-v616-item-text-getter.asm": "6a87a1ddc5c6760cd9523ceedf65257de550fbac2653a91780c516f6fea4be87",
+    "ios-remote-v616-pattern-address.asm": "da07c3359d9439c4ca92e0bab5f4556c1e47a1f5eec278a2a30bf5c7e54a8666",
+    "ios-remote-v616-pattern-registers.asm": "832bd76790f4c152f009849176a06956a17e3662b7b6c999a5cda4131a877875",
+    "ios-remote-v616-rendered-item-accessor.asm": "2cd1acb0d7fc896097cd8afa741741546a3e4550c62cca728e7667759bbcaad7",
+    "ios-remote-v616-rendered-turn-producer.asm": "231b1603138487c6c8ba7a82009dabb77b76746aec7b5f07ce3069bda02092ba",
+    "ios-remote-v616-summary-empty-array.asm": "e1324f5a8bf8608d63a4cb55ff29656aa9dd605aa62c8e7b3cb8de2b044b00af",
+    "ios-remote-v616-summary-error-cleanup.asm": "8490409b68c4358e30d629b7449d348ceaca1104d335d53026a8af1c54a18712",
+    "ios-remote-v616-summary-options.asm": "e39d871e2c17918dceda8cf294c45aa06a5ef9a4cdf13f343aba56df925b3bc3",
+    "ios-remote-v616-summary-parse-arguments.asm": "343fc56a2122e148a010d628a49596bce4e512ff3ca2794cfe5ee9d18f4037cb",
+    "ios-remote-v616-summary-parse-result.asm": "48132c5ea5f7871d8d630d31d278e13ae2dc521751bb229bba398aa5061607b5",
+    "ios-remote-v616-summary-parse.asm": "c2a6305a60e2862242aaac00507e9b11d1d9d1889ba9a7ce01d896fbe9351b7d",
+    "ios-remote-v616-summary-pattern.asm": "fa3e83a2413280be197aa86fd872b2915c92aef33f9ff06886f9bd45afa8276b",
+    "ios-remote-v616-summary-separator.asm": "d602a4221ca58b4902088623991f15c7febbce8a231a081d6a6cb9c8674a5bd6",
+    "ios-remote-v616-turn-items.asm": "73e739023d41a50afe9bba1265ed5694dc87e6f839d44c0b16aae50913131f65",
+    "ios-remote-v616-item-text-getter.json": "d43e396f6011ec76c1a4a666e6bccf81c68efe937196f1f0767312df41ab4be6",
+    "ios-remote-v616-pattern-address.json": "28108ce47580b0d9053dcedecde7e8aa6b234daf5e22bb70d715e2ef608319d2",
+    "ios-remote-v616-pattern-registers.json": "575639c024f7ea44db79dfcdc91329b6c41238fc08269c84ac044c7717456a2e",
+    "ios-remote-v616-rendered-item-accessor.json": "73f03dd681469d984ee9610b6c6ef905415bce4f1b49b3e57bbb284f6fd4bd7b",
+    "ios-remote-v616-rendered-turn-producer.json": "492b5d1114d8bc827b4f78a26a7c8e01d55a9e74586bd5b80e23106f6f0e1893",
+    "ios-remote-v616-summary-empty-array.json": "a15556ac50f4466450b0cae365393eb7de1e96fa13a8699c1a7741dbbfd5d90b",
+    "ios-remote-v616-summary-error-cleanup.json": "048da544e155ad4d3600dceb6ffce83861594849d537e86b7729130bfc5a3013",
+    "ios-remote-v616-summary-literals.json": "e2c6c680b1966e555e0230eeb2d5020072c8a0ba1f2dc9b33c321b0e2ae4298f",
+    "ios-remote-v616-summary-options.json": "7448d73115656c5cfeaa3803a2a6c582bd106c50631e03e2f1ab86f02b6b7df8",
+    "ios-remote-v616-summary-parse-arguments.json": "753ba43cd33c776305fe4d5a43bed903cbf7497deec90e085daa4bfdded821b3",
+    "ios-remote-v616-summary-parse-result.json": "d8c8c6a081398291a116e06288e156110e7c71f64b50b2771f86e2d6c800efe7",
+    "ios-remote-v616-summary-parse.json": "dac84c6dfc81bec581ee81082b2ecc1d7d990e37fbfb4c6f76919b9382614a91",
+    "ios-remote-v616-summary-pattern.json": "721ea4cd145c8884ca7572d530f9fd0f7492bf3f49c4300b63be1b6ec6817895",
+    "ios-remote-v616-summary-separator.json": "0682ec8d683c9bbfe6b7f47f7b7f1c2b6b743e1a74b3fed8a3480bed1d577fcb",
+    "ios-remote-v616-turn-items.json": "4cc2cbba3d9a2c67b74005de466f30218386b4fd23eca16be0f835e9ad9f3c24",
+    "ios-remote-v616-summary-neighbors.json": "3787054575386420ffa8911031f19c604d7cf490f54b58e92334ca244bf8f507",
+    "ios-remote-v616-summary-neighbors.asm": "ee9633d9f51f100e2afcbac7bcb6a41306717da27c8470d7bdf93e8724126859",
+    "ios-remote-v616-rendered-type-names.json": "c952a84e81811a793778c9e830d985095bc64b0381e5b184179e2ca2eb7e8f32"
+  }
+}

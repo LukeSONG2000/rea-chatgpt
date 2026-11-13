@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "implemented_contract_simulator_and_signed_build_passed_physical_unavailable",
+  "source": [
+    "ios-sidebar-gesture-haptic-20261112-followup.json",
+    "ios-haptics-gesture-audit-20261112-findings.json",
+    "ios-haptics-v596-findings.json",
+    "ios-haptics-v597-findings.json"
+  ],
+  "implemented": [
+    "Sidebar ended drag captures initial open state, consumes it once, and requests selection only at live interior progress with changed final state",
+    "Cancelled drag, unchanged destination, endpoint progress and duplicate settle do not request this feedback",
+    "Sidebar, model slider and accepted prepared file feedback share the persisted Settings > General > Haptic feedback preference",
+    "Preference is read at UIKit dispatch; slider uses the same AppStorage key; hardware/activity gates remain enforced"
+  ],
+  "independent_adaptation": [
+    "Preference key rea.preview.hapticsEnabled and default true are host policy, not recovered original storage schema",
+    "Original live progress is mapped to host animator fractionComplete; complete original gesture arbitration remains unresolved",
+    "Finite-value admission and host reset on superseding transition prevent stale/invalid callbacks",
+    "UIKit generator lifetime is host integration, not original engine dependency injection"
+  ],
+  "not_implemented": [
+    "Tap-only sidebar transitions, generic list and message gestures have no source-proven new trigger",
+    "Original physical waveform/timing and runtime engine dependency injection not observed",
+    "Application preference does not purport to suppress OS-native implicit feedback"
+  ],
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "d65e70c5c8c6cdff1be92e2b74afd032e0198a6fabb916d88131f4305095eb2a"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "5e59801c9e1f657261bb0124ad3b6d0ef5bba336266842b443523b5d9f7b8bec"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "4345b2d2305a6653e6322ab027648389e4a6140e529cf0c4535e4020d16da0bc"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift",
+      "sha256": "3719e8b3e6bbd9f7715cd45bfc922de1d71737a681b2378df0c1ec3c0054b631"
+    }
+  ],
+  "verification": {
+    "contract": "passed rebuilt text-tests/check; /tmp/rea-gesture-haptics-contract-r2-20261112.log",
+    "settings_ui": {
+      "result": "passed",
+      "test": "testHapticsPreferenceChinese",
+      "seconds": 55.775,
+      "artifact": "ios-gesture-haptics-setting-20261112.xcresult",
+      "scope": "Settings > General toggle, restart persistence, restored original preference; no physical playback claim"
+    },
+    "sidebar_ui": {
+      "result": "passed",
+      "test": "testSidebarEdgeGestureChinese",
+      "seconds": 26.861,
+      "artifact": "ios-sidebar-haptics-20261112.xcresult",
+      "scope": "Short reverse settles, edge open/close and keyboard draft restoration; simulator cannot prove tactile playback"
+    },
+    "physical": {
+      "latest_preflight": "ios-sidebar-haptics-20261112-device-state.json",
+      "connection": "unavailable",
+      "last_installed": "Settings fixed-close candidate",
+      "this_change_installed": false,
+      "build": "succeeded",
+      "binary_sha256": "f1bed37f39e94cb0857b1679eaeb4509a42c0acefde0035c160a68ecaea3a03b"
+    },
+    "simulator": {
+      "report": "ios-sidebar-haptics-20261112-preview.json",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 31084",
+      "screenshot": "ios-sidebar-haptics-20261112-ordinary.png",
+      "observed": "Visible ordinary core chat and composer after normal launch; preview left running"
+    }
+  }
+}

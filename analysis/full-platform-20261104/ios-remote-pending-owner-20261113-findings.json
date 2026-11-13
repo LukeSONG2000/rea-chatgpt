@@ -1,0 +1,496 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Three bounded candidate groups: PendingPromptRow parent/captured callback; concrete ViewAction dispatch witness; tag23 draft restoration branch and near consumers. Evidence only.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_evidence": [
+    "ios-remote-pending-edit-20261113-findings.json",
+    "ios-remote-v544-pending-prompt-metadata.json",
+    "ios-remote-v410-owner-actions.json",
+    "ios-remote-v516-new-thread-vm-fields.json",
+    "ios-remote-v531-dictation-owner-classes.json"
+  ],
+  "answered": [
+    {
+      "id": "pending-parent",
+      "type": "official_artifact_observation",
+      "conclusion": "A concrete parent constructs CodexRemotePendingPromptRow and supplies its optional Edit callback, rather than deriving an action from menu displayText.",
+      "source": [
+        "0x1a4e814..0x1a4ecec",
+        "0x1a4e8bc..0x1a4e8d8 identity String compare",
+        "0x1a4e904..0x1a4e918 absent lookup branch",
+        "0x1a4ea1c captured owner/context",
+        "0x1a4ea30..0x1a4ea34 prompt copy witness",
+        "0x1a4ea58..0x1a4ea60 callback0x1c30f50",
+        "0x1a4ec18..0x1a4ec24 Row+0x70/+0x78"
+      ],
+      "evidence": [
+        "pending-row-parent.asm",
+        "pending-parent-callbacks.asm"
+      ],
+      "limit": "The visible callback is still optional. Null assignment branch0x1a4e9a4..0x1a4e9b8 is preserved; full source-named predicate not recovered."
+    },
+    {
+      "id": "edit-action",
+      "type": "official_artifact_observation",
+      "conclusion": "Captured Edit callback reaches a producer which constructs local ViewAction enum tag23 and dispatches through its generic model witness. The metadata payload case is editPendingPrompt.",
+      "source": [
+        "0x1c30f50..0x1c30f80 ->0x1a4ecec",
+        "0x1a4ed50 w2=0x17",
+        "0x1a4ed54 _swift_storeEnumTagMultiPayload",
+        "0x1a4ed58..0x1a4ed70 generic witness+0x78",
+        "ViewAction descriptor0x95aa444 field0x9a32c34 typeref0x8e12ada"
+      ],
+      "evidence": [
+        "pending-parent-callbacks.asm",
+        "pending-edit-action-owner.asm",
+        "owner-types.json"
+      ],
+      "limit": "Tag23 is a local binary enum tag, not a wire/API field. No account/session scope may be inferred from its numeric value. The subsequent0x1a44e14 call is not labeled focus or haptic without its caller contract."
+    },
+    {
+      "id": "concrete-dispatch",
+      "type": "official_artifact_observation",
+      "conclusion": "CodexRemoteThreadViewModel has a CodexRemoteThreadViewModeling conformance whose +0x78 witness tails to a handle(_:) dispatcher; its local tag23 table entry reaches0x18b9cbc.",
+      "source": [
+        "class descriptor0x95aa8a4",
+        "conformance0x7e0b714 protocol0x95aa488 pattern0xa504d18",
+        "pattern+0x78 ->0x19433b0 ->0x18b8ff4",
+        "0x18b9114..0x18b911c switch table0x18bad50",
+        "tag23 ->0x18b9cbc"
+      ],
+      "evidence": [
+        "thread-vm-conformances.json",
+        "thread-action-witness-candidate.asm",
+        "thread-model-slot78.asm",
+        "action-tag-window.json"
+      ],
+      "limit": "The exact generic parent constraint assignment remains a link boundary; matching concrete witness and action handler are strong static corroboration. Adjacent CodexRemoteThreadContentViewModeling+0x78 tails0x18e3fc4 and is a getter family; it must not be substituted as action dispatch."
+    },
+    {
+      "id": "edit-admission",
+      "type": "official_artifact_observation",
+      "conclusion": "The concrete Edit handler checks several owner/current-state gates before touching the composer; it does not unconditionally copy text.",
+      "source": [
+        "0x18b9ccc ->0x18e4638",
+        "0x18b9cd4 ->0x18e6eac",
+        "0x18b9cdc raw3 /0x18b9ce4 ->0x1897be0",
+        "0x18b9cf4 local payload+0x48",
+        "0x18b9d00 ->0x18e6010",
+        "0x18ba774 ->0x18e5f88",
+        "0x18ba778..0x18ba780 optional-state branch"
+      ],
+      "evidence": [
+        "pending-edit-handler-case.asm",
+        "pending-edit-handler-tail.asm",
+        "pending-edit-capability.asm",
+        "current-message-edit-state.asm",
+        "message-edit-owner-getter.asm"
+      ],
+      "limit": "Do not name metadata slots+0x4b0/+0x4b8 solely from positions, and do not equate every false gate with a user-visible error. Complete source-named predicate mappings are unclosed."
+    },
+    {
+      "id": "restore-branch",
+      "type": "official_artifact_observation",
+      "conclusion": "A restoration branch copies six words from the captured pending payload into a bundle and passes it to0x1903b30; there is also a separate queue-match branch which snapshots another draft and constructs edit state before calling that consumer.",
+      "source": [
+        "0x18bab1c..0x18bad50",
+        "0x18bab34..0x18babb8 exact ID search in pending collection",
+        "0x18babbc payload byte+0x49 gate",
+        "0x18babc8 ->0x192b1cc",
+        "0x18babd0..0x18babf0 payload+0x18..+0x40 copied",
+        "0x18bac0c ->0x1903b30",
+        "0x18bacc8..0x18bad10 draft snapshot0x19038e4 /state commit0x18dc0d8",
+        "0x18bad40 ->0x1903b30 alternate bundle"
+      ],
+      "evidence": [
+        "pending-edit-draft-next.asm",
+        "draft-restoration-consumer.asm"
+      ],
+      "limit": "Field names canEdit/canRestoreComposerDraft and text/userInputs/attachments/selectedTextAttachments/reviewFindingComments are declared in prompt metadata. Exact local struct byte-field correspondence is corroborated by layout/order but not independently field-offset-vector-bound in this pass; keep raw offsets. The queue branch is not semantically interchangeable with the restore branch."
+    },
+    {
+      "id": "composer-consumers",
+      "type": "official_artifact_observation",
+      "conclusion": "Restoration has multiple consumers: first String pair, an array at bundle+0x18, converted entries from bundle+0x20, and a final array at bundle+0x28. It also invokes a later owner callback and a final state update.",
+      "source": [
+        "0x1903b6c first String pair",
+        "0x1903bbc ->0x188eb24",
+        "0x1903bc4..0x1903bd4 bundle+0x18 ->0x188c01c",
+        "0x1903bdc..0x1903c88 bundle+0x20 conversion ->0x188c0ac",
+        "0x1903c94 ->0x18f5630",
+        "0x1903c98..0x1903c9c bundle+0x28 ->0x1925b70",
+        "0x1903ca0 ->0x18baeb4",
+        "0x1903cb4 ->0x1d96484"
+      ],
+      "evidence": [
+        "draft-restoration-consumer.asm",
+        "composer-restore-text-setter.asm",
+        "composer-restore-attachments-setter.asm",
+        "composer-restore-selection-setter.asm",
+        "composer-restore-review-consumer.asm",
+        "composer-ivar-offset-values.json"
+      ],
+      "corroboration": "Near consumers access object offsets0x78,0x68,0x70. Original CodexRemoteComposerState ivar offset storage values0x7e0c2d8/2c8/2d0 are0x78/68/70 for promptText/attachments/selectedTextAttachments respectively. This corroborates the composer assignment family but is not by itself a proof that every generic receiver is that class.",
+      "limit": "Do not reduce restoration to String. Text normalization fallback, review comment conversion, later draft/save callbacks and full receiver binding remain partial."
+    },
+    {
+      "id": "guard-effects",
+      "type": "official_artifact_observation",
+      "conclusion": "The0x192b1cc guard is effectful: observed Observation access/willSet calls and mutation preparation occur before its bool result is used.",
+      "source": [
+        "0x192b1f4/0x192b204 ->0x18e8b94",
+        "0x192b200 ->0x1929c3c",
+        "0x192b254 ObservationRegistrar.access",
+        "0x192b278 ObservationRegistrar.willSet"
+      ],
+      "evidence": [
+        "pending-restoration-predicate.asm",
+        "pending-restoration-predicate.json"
+      ],
+      "limit": "Only0x192b1cc..0x192b2a0 captured; function continues to next start0x192b494. No pure isRestorable function, queue removal contract or network acknowledgement is claimed."
+    }
+  ],
+  "reference_contract": {
+    "authority": "independent frontend adapter guidance derived from the observed identity/capture/state requirements, not official wire schema",
+    "edit_target": "Keep exact pending item identity and owning thread/controller; never select by text or list index.",
+    "admission": "Require owner-supplied edit capability, nonnil edit action, actions enabled and no conflicting current editor. Do not use menu presence to set capability.",
+    "capture": "Preserve complete pending payload and current composer draft separately: text, structured user inputs, attachments, selected text attachments and review comments; preserve target/originalDraft relationship.",
+    "lifecycle": "Start edit only after the owner transaction accepts it. Restore original draft on cancel; commit/resend remains a separate scoped operation. These cancel/commit details are required adapter design, not claimed recovered semantics.",
+    "async_scope": "Existing host scope/session/promptID/revision checks remain independent safeguards; no official service identity schema recovered here."
+  },
+  "minimum_implementation_decision": {
+    "source_backed_change": "The parent/capture/action identity path is recovered far enough to model an owner-provided Edit capability and exact-target request. Preserve all payload fields in any future owner transaction.",
+    "not_safe_to_enable_as_official": "A complete original Edit lifecycle is not closed. Keep production replay canEdit=false unless implementing a separately labeled scoped synthetic editor transaction with complete draft and cancel/commit invariants. Opening a text-only editor would omit real restored content and owner side effects.",
+    "host_observation": "NativeConversationHost pendingReplayRow currently explicitly supplies canEdit:false/edit:nil; unchanged by this evidence-only pass."
+  },
+  "unknowns": [
+    {
+      "boundary": "0x1a4e9a4..0x1a4e9b8",
+      "missing": "source-named parent capability predicate and model generic constraint binding"
+    },
+    {
+      "boundary": "0x18e4638 /0x1897be0 /0x18e6010 /0x18e5f88",
+      "missing": "complete source-named edit admission and current-edit-state relationship"
+    },
+    {
+      "boundary": "0x192b1cc..0x192b494",
+      "missing": "full effectful restoration/queue mutation transaction and failure behavior"
+    },
+    {
+      "boundary": "0x19038e4 ->0x18dc0d8 and ViewAction cancelMessageEdit",
+      "missing": "originalDraft capture schema, edit target discriminant, cancel/commit consumer and resend ownership"
+    },
+    {
+      "boundary": "0x1903b30 payload/consumer pipeline",
+      "missing": "exact struct field offset proof, review-comment transformation, draft persistence and terminal reset semantics"
+    },
+    {
+      "boundary": "haptics",
+      "missing": "no direct recovered feedback caller in this chain; none recommended"
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "replay_executed": false,
+    "target_executed": false,
+    "network_access": false,
+    "product_files_modified": false,
+    "candidate_groups_used": 3,
+    "stopping_reason": "Candidate bound reached; true parent and restoration consumers found, but complete original edit/cancel/commit mailbox loop not proved."
+  },
+  "evidence_directory": "ios-remote-pending-owner-20261113",
+  "evidence_files": [
+    {
+      "path": "ios-remote-pending-owner-20261113/action-tag-window.json",
+      "bytes": 620,
+      "sha256": "4de67ffbcdf1e7c12040faa3e4aa55197e0460c3f385500effe0fd2e6d7b0c61"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/action-witness-candidates.asm",
+      "bytes": 878,
+      "sha256": "23f558656197acb812394226759b8185208cdf9b4732ae537dd7afbd4d50f52b"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/action-witness-candidates.json",
+      "bytes": 1100,
+      "sha256": "0a3993fe81867f043658b41cffb870f9671e438b1d1bb6577109cdabb663bc69"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-ivar-offset-values.json",
+      "bytes": 628,
+      "sha256": "2c861ce12154fefc9001300eb3159caa6b44623fbd9b50b2b6e259732daa3e51"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-restore-attachments-setter.asm",
+      "bytes": 2023,
+      "sha256": "bb0922bc8b77ca566d9fd3eecad2514b26a127ec9a06ac7797a8b0b7ea39cf8e"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-restore-attachments-setter.json",
+      "bytes": 2325,
+      "sha256": "22a9494eb4a2838f83b31eaeddd5d2bc3bc6d673f70c1f5c325b832713195113"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-restore-review-consumer.asm",
+      "bytes": 2651,
+      "sha256": "f8731431b9fd173bc681a158177c27cafb01da661ae5638dccf62c18497e7189"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-restore-review-consumer.json",
+      "bytes": 2273,
+      "sha256": "5e78c47777e51ac40a5b44fe719240b913206fd0905022238af8e22339dbd295"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-restore-selection-setter.asm",
+      "bytes": 2438,
+      "sha256": "7aafec68327b373df1e9a165461bd7b7c9ca8ac7897b796729a69c0f66a7a51f"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-restore-selection-setter.json",
+      "bytes": 2341,
+      "sha256": "2c4957aa3378a07203e0000b0dafbac6e593461fa3595bd892f9c3b9ff04bb35"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-restore-text-setter.asm",
+      "bytes": 3047,
+      "sha256": "2b20b4c837374e0236e98750df327467192df654994dbbff7640bce063ee038b"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/composer-restore-text-setter.json",
+      "bytes": 3325,
+      "sha256": "b96c88f75ca7c08b02368d8521042b6b58ca2018999fdf0c515d3937b979047c"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/content-model-slot78.asm",
+      "bytes": 14118,
+      "sha256": "9f76a034bb52213df12c5bd5c5a969e26297bb47f01483f1acb8d8e9cbeea92e"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/content-model-slot78.json",
+      "bytes": 7936,
+      "sha256": "98e72cc2bb52f80d744c34dd874b19faac0326c20134fc9d437d6be39e500064"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/current-message-edit-state.asm",
+      "bytes": 2185,
+      "sha256": "d95d90b1297f5edecac18cde7cbc262692e6950fa8eec935aff5429b2af274cc"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/current-message-edit-state.json",
+      "bytes": 2014,
+      "sha256": "f28c470651725c7566c278fc7da946703b9cbb21d84e91446d64626ecbf96bd4"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/draft-restoration-consumer.asm",
+      "bytes": 8999,
+      "sha256": "179c3f310eb2bc109a674eca1025c555ea85d6f73f6db7903d4d56569eddd082"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/draft-restoration-consumer.json",
+      "bytes": 9606,
+      "sha256": "8d14415b1cdae9d4341190883960bd02b8e79e48f9898700e172408113c12137"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/edit-tail-state-input.asm",
+      "bytes": 631,
+      "sha256": "14e5cb6bfed84cb7a89657ca331eb3ada4852a50afeb810ce46ec30c7eeab1b7"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/edit-tail-state-input.json",
+      "bytes": 913,
+      "sha256": "a80ef81951117f14ee15ff099776326e0ced8efa1985db6619f375f0bd225972"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/message-edit-owner-getter.asm",
+      "bytes": 1846,
+      "sha256": "4ad96aee2736a4adc41f8f7f5b6e1fd8dfaffd2a452cbbd2c59111f09e5da031"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/message-edit-owner-getter.json",
+      "bytes": 1916,
+      "sha256": "ba526567c95704ddf510d40479cdb5cee203703bb460bd5b34ba684fd79fbfcb"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/owner-selected-xrefs.json",
+      "bytes": 1239,
+      "sha256": "559bfc169eb5f1eccb56f22f144fade9b82ae2248e06ff2417ede83fc6fd63b8"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/owner-types.json",
+      "bytes": 2691,
+      "sha256": "962e2b7d0c1bd3573611049f9a5be05a680aef2665331dcc0d454458b734910e"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-capture-helpers.asm",
+      "bytes": 615,
+      "sha256": "2bea562b3de47d1146d5b0b7e17881e28dd74a7596ca72e25bf55ca33aa6f924"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-capture-helpers.json",
+      "bytes": 940,
+      "sha256": "2e428d5115f04ab45213395be337311163ee217e24ac248f5fd0047bf8982517"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-action-owner.asm",
+      "bytes": 6146,
+      "sha256": "957c2d5c59f6e5eac2b4609d4629f6779419127bef88cb02b9224f9b24a4b1da"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-action-owner.json",
+      "bytes": 5620,
+      "sha256": "802887d43704d941d46139bffd0b6224d0b4b32320d807566bc2d639fe3bc1de"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-capability.asm",
+      "bytes": 1490,
+      "sha256": "b49e53a352a807da26a7cb5931ab8de3e575b25fbef27c8efed40888698562bf"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-capability.json",
+      "bytes": 1982,
+      "sha256": "1f7ffaf703e8579d660fee6a483b4dc7d06742788e82b419d5205171cc4c5b71"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-composer-owner.asm",
+      "bytes": 1855,
+      "sha256": "61a723e077d993b88e8840abc18aca9b3f5b0cba7d716922d9b8b0522bcf6933"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-composer-owner.json",
+      "bytes": 2033,
+      "sha256": "3e7406127819c39666317898ff2cb2fda5a85f21de0c8b06f08e28fc5c60b47a"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-draft-next.asm",
+      "bytes": 7210,
+      "sha256": "6e8bdf7705328a9f45084319f47a174dd75b175488739d975b2b955f2836b1c5"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-draft-next.json",
+      "bytes": 5010,
+      "sha256": "3437c74ab714278a71d32e78433b61309e687ca3cec0eac9da4334bdd3bf51ea"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-handler-case.asm",
+      "bytes": 2216,
+      "sha256": "f8450994b11aeb17c1bade0e5729c9e52a1520940424b2a556ae516161532109"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-handler-case.json",
+      "bytes": 2374,
+      "sha256": "dfc388eda23a3c99c512c10fb4b79bcfa7ed91b97ceb43d96b46daec83feb159"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-handler-tail.asm",
+      "bytes": 2851,
+      "sha256": "1dde54970a07ad7e3740bd7f63001df78948ac2e2e68ffe06d29adfd124a6e7f"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-edit-handler-tail.json",
+      "bytes": 2819,
+      "sha256": "abdf1e827c95ea41d0bc52013419c9a30b99ef527c7a47b87e11e228651a906a"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-owner-vm-binding.asm",
+      "bytes": 579,
+      "sha256": "bd1d9382f1274eeeb347a05045d931b4e010e8484d5bdc2f845a8b662d59b187"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-owner-vm-binding.json",
+      "bytes": 947,
+      "sha256": "dbe60468a2dee4f9dd35a85a88ceea1370b1fbc9f5b464a44e1e36f8fcc609dd"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-owner-vm-resolvers.asm",
+      "bytes": 676,
+      "sha256": "6cd2dcd4dfbe77402d6c97961ee35ac401ddf6aa71ff35e94fad810c73369ba7"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-owner-vm-resolvers.json",
+      "bytes": 913,
+      "sha256": "a34b7272fb92ca1f2566131a3b42365fb4be89b286ca41aa3018f250e77d6630"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-parent-callbacks.asm",
+      "bytes": 12320,
+      "sha256": "694700752b5f69af138c1e8211d25d39f38bb990b7da0e453b75350f6885c980"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-parent-callbacks.json",
+      "bytes": 13265,
+      "sha256": "4546bff4e66fddca1ebfa5be35f39670d896c679d6b891c875caedc78b8d7299"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-restoration-predicate.asm",
+      "bytes": 2748,
+      "sha256": "facc995e1e6699239cc8fae338f75712929ab00f84f626b40f0d9a2d04836826"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-restoration-predicate.json",
+      "bytes": 3821,
+      "sha256": "4e48c7988f9ac9c763810674c7b4c8032b50262557fece2aba9982038c4b81c5"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-row-parent.asm",
+      "bytes": 15522,
+      "sha256": "5f188f9e30a17dfbf3e60fde97ee0cf25d9ea2e78c5fc78be85f309549d641e6"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-row-parent.json",
+      "bytes": 13806,
+      "sha256": "d7f7314690d38bcfabd7883db9825287ea226ca56578c35cc19e12127e3aef17"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-state-metadata-resolver.asm",
+      "bytes": 748,
+      "sha256": "f08d3fda21565e75bf2365859ee0f70ebfdf509a69f195613b662a3228bd61bc"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/pending-state-metadata-resolver.json",
+      "bytes": 913,
+      "sha256": "c8090b2dc9e6958c80a888ddc28556b4d7c61bd01a138d0aa23960b68479aebb"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/thread-action-witness-candidate.asm",
+      "bytes": 687,
+      "sha256": "d6c9ef5370ad7e2fdbc3147ed655b15d7614759f08c9297f1bb2a273f46832a4"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/thread-action-witness-candidate.json",
+      "bytes": 1115,
+      "sha256": "96504f73d4ec8cd60ff5bd876b93f673ba11d30556a54f99ccf1603927273f0c"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/thread-generic-bindable.asm",
+      "bytes": 1104,
+      "sha256": "60776b5890e4f45185baf9c640a765adc972ae499d6c8865db9b1b4486e05f40"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/thread-generic-bindable.json",
+      "bytes": 1031,
+      "sha256": "803c1bed3cbcca1de7ef4de63f9eee78272315aec6b4ba5a3433271e114fc413"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/thread-model-slot78.asm",
+      "bytes": 8745,
+      "sha256": "be5803e6e5182b80ab328067aafb7285832904e9270261ad3acad4a1272e88d8"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/thread-model-slot78.json",
+      "bytes": 7771,
+      "sha256": "c83b5c2e847e66cd6e103e8bb14f9eabf7ea544a05ac49e58d9f03999f8c9686"
+    },
+    {
+      "path": "ios-remote-pending-owner-20261113/thread-vm-conformances.json",
+      "bytes": 2394,
+      "sha256": "e23e08f16e3c1d6f164049f5b322404fb4a4b0d0609494ef6f9d44b8b3b5f03f"
+    }
+  ]
+}

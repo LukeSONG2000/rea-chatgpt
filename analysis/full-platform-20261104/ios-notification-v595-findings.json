@@ -1,0 +1,121 @@
+{
+  "batch": 595,
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "metadata": "ios-notification-v595-types.json",
+  "official_observations": [
+    {
+      "type": "DeviceTokenRegistrationTask",
+      "descriptor": "0x96a5188",
+      "fields": [
+        {
+          "name": "identifier",
+          "record": "0x9b661f4"
+        },
+        {
+          "name": "identity",
+          "record": "0x9b66200"
+        },
+        {
+          "name": "isStillValid",
+          "record": "0x9b6620c"
+        },
+        {
+          "name": "task",
+          "record": "0x9b66218"
+        }
+      ]
+    },
+    {
+      "type": "RegisterPushNotificationTokenRequest",
+      "descriptor": "0x96a5654",
+      "fields": [
+        {
+          "name": "token",
+          "record": "0x9b66808"
+        },
+        {
+          "name": "platform",
+          "record": "0x9b66814"
+        },
+        {
+          "name": "app",
+          "record": "0x9b66820"
+        },
+        {
+          "name": "build",
+          "record": "0x9b6682c"
+        },
+        {
+          "name": "deregisterIfUnchanged",
+          "record": "0x9b66838"
+        }
+      ]
+    },
+    {
+      "type": "RegistrationIdentity",
+      "descriptor": "0x96a56b0",
+      "fields": [
+        {
+          "name": "userID",
+          "record": "0x9b66790"
+        },
+        {
+          "name": "authSessionLoggingID",
+          "record": "0x9b6679c"
+        }
+      ]
+    }
+  ],
+  "owner_seed": {
+    "path": "analysis/ios293-native/swift-types-full.txt",
+    "line": 19754,
+    "type": "DefaultNotificationService",
+    "fields": [
+      "deviceTokenRegistration",
+      "pendingAddedAccountRegistrations",
+      "logoutDeregistrationTasks",
+      "registeredPushUserIDs",
+      "loggingOutSessionID",
+      "deviceTokenContinuation",
+      "notificationRegistrationConfiguration"
+    ]
+  },
+  "integration_gap": "Notification service subpage only listed pending token registration, with no provider, request identity or result consumer",
+  "independent_adaptation": [
+    "Memory-only registration request and exact scoped receipt",
+    "Permission/service/token gates, duplicate suppression, cancellation and token/session replacement fencing",
+    "Replaceable registration provider with explicit synthetic success/failure/slow replay",
+    "Settings consumer for register/retry/cancel/result and return",
+    "AppDelegate device-token callback forwards token to adapter memory"
+  ],
+  "limits": [
+    "Metadata proves registration inputs and identities, not official wire encoding or retry policy",
+    "Default provider is absent and shown as pending service; no platform token request or network registration is initiated",
+    "APNs token acquisition failure/timeout, remote deregistration and service preference sync remain separate integration boundaries",
+    "No token is displayed, logged, Codable or written to disk",
+    "No real push sender/delivery or Android runtime acceptance"
+  ],
+  "cross_platform": {
+    "reference": "ios-notification-v593-cross-platform.json",
+    "shared_candidate": "Identity/receipt state machine and lifecycle test vectors",
+    "ios": "UIApplication token callback and settings ownership",
+    "android": "FCM onNewToken and NotificationRegisterWorker remain independent provider integration"
+  },
+  "lifecycle_followup": "Registration child observes permission model and refreshes on scene activation; permission changes invalidate in-flight registration.",
+  "regression_probes": [
+    {
+      "run": "r1",
+      "result": "UI test compile failed",
+      "cause": "XCUIElement value key path resolved to method; replaced generic wait with an explicit value predicate."
+    },
+    {
+      "run": "r2",
+      "result": "4 UI tests passed",
+      "followup": "Added child permission refresh on foreground activation and explicit background/foreground test before final r3."
+    }
+  ]
+}

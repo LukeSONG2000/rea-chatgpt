@@ -1,0 +1,62 @@
+{
+  "batch": "v570",
+  "status": "partial",
+  "source_evidence": "ios-chat-v570-findings.json",
+  "implementation": [
+    "Chat/Work user rows use explicit user role and raw text without a role prefix",
+    "native selectable text surface bound to measured default style; short and wrapped text measured at proportional width",
+    "retry controls included in collection height",
+    "message action labels follow Chinese/English locale"
+  ],
+  "validation": {
+    "state": "PASS",
+    "ui": {
+      "r1": "2 core-flow passes,2 user-bubble test failures because tail-follow virtualized the queried row while keyboard was visible",
+      "r2": "2 passes,0 failures; reveal target through real collection, then check short/multiline geometry, native selection, menu and conversation return",
+      "r3": "2 passes,0 failures; raw copy/paste, edit confirmation/cancellation, scoped draft and process restart, Chat/Work mode restoration"
+    },
+    "visual": "Inspected Chinese/light and English/dark multiline captures. User bubble wraps and contrasts correctly. Assistant debug statuses, large block gaps, untranslated fixture text and overlaid latest button remain visible gaps.",
+    "runtime": "v570 signed and installed; executable hash matches; PID17805 alive; Chinese/light clean Chat home visually verified, system-following settings",
+    "distinctPassingUITests": 6
+  },
+  "decisions": [
+    "Explicitly select measured default MessageRowStyle for this preview. Actual parent environment overrides remain unknown.",
+    "Preserve existing independent outer row padding and UIKit selection/menu implementation."
+  ],
+  "open_items": [
+    {
+      "page": "Chat/Work",
+      "priority": "P1",
+      "missing": "assistant state row and block spacing, latest-button presentation",
+      "evidence_break": "MessageRowContent/Chrome body -> native block rendering owner",
+      "next": "trace assistant state/footer and parent spacing with current native measurement",
+      "acceptance": "normal Chinese/light and English/dark content, states, actions and scroll without debug presentation"
+    },
+    {
+      "page": "Chat/Work",
+      "priority": "P1",
+      "missing": "attachment submit/preview return",
+      "evidence_break": "composer resource projection to stored user turn",
+      "next": "connect scoped attachment references to resource preview adapter",
+      "acceptance": "add/remove, synthetic send, preview and close preserve draft/history"
+    },
+    {
+      "page": "Chat user message",
+      "priority": "P2",
+      "missing": "parent style overrides, temporary variants and user Markdown",
+      "evidence_break": "MessageRowStyle environment provider and TextPart rich content owner",
+      "next": "trace parent style injection and ordinary text parser consumer",
+      "acceptance": "source-bound actual style variants and selection behavior"
+    },
+    {
+      "page": "Work",
+      "priority": "P1",
+      "missing": "mode-specific controls and presentation gates",
+      "evidence_break": "modeSelected owner and forcesDoubleLineComposer consumer",
+      "next": "continue v569 owner path",
+      "acceptance": "capability states and scoped configuration drive UI"
+    }
+  ],
+  "shared_boundary": "Shared test vectors and frontend row roles remain design candidates. Native Chat and Remote style consumers are independently observed; Android layout remains unverified.",
+  "delivery": "simulator preview left running; built-in display only"
+}

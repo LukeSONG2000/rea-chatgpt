@@ -1,0 +1,537 @@
+{
+  "batch": "v534",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Actual ordinary Remote active FieldRow shared WhisperPart nonzero mode content, transcribing label, trailing reservation and active circle font source",
+  "evidence_type": "official-artifact-static-instructions-metadata-resources",
+  "runtime_verified": false,
+  "corrections": [
+    "pushToTalkMode is a three-case enum, not Bool. Display mode1 releaseToSend and mode2 tapToSend select the same nonzero content branch.",
+    "Nonzero waveform outer height subtracts MessageInputStyle.input.insets.top and bottom. It does not subtract whisper.padding.",
+    "showsTrailingControl is presentation witness+0x70. Actual requesting/starting/listening/transcribing values are false. A true literal would introduce an extra reserved trailing width.",
+    "Active cancel and mic circle fonts use MessageInputStyle.primaryButton.fontSize, whose base is30. The32pt active minimumHeight cannot substitute for this font metric."
+  ],
+  "findings": [
+    {
+      "id": "mode-content-selection",
+      "status": "verified_static",
+      "evidence": [
+        "6073b9c readsPart+28",
+        "6073bd4 calls60748f4 fornonzero",
+        "6073c2c calls6073ff0 forzero"
+      ],
+      "conclusion": "Both nonzero modes use the same content producer60748f4. Waveform leaf6074400 is shared withzero branch but enclosing geometry/state selection differs. Retain typed mode and recover its actual branch instead of assembling a zero-mode container with unrelated controls."
+    },
+    {
+      "id": "nonzero-content-state-table",
+      "status": "verified_static",
+      "function": "0x60748f4",
+      "state_field": "Part+0x2b",
+      "states": {
+        "0,4,5": "Spacer.frame(height:resolvedElementSize-inputInsets.top-inputInsets.bottom, alignment:leading)",
+        "1 starting,2 listening": "AudioWaveformView via6074400, innerframeheight28, outerframeheight:resolvedElementSize-inputInsets.top-inputInsets.bottom, maxWidth:infinity alignment:leading",
+        "3 transcribing,6,7,8,9": "status Text6074594"
+      },
+      "evidence": [
+        "607491c..6074974 mask0x3c8 status",
+        "607498c..60749fc mask0x31 spacer",
+        "6074a18 waveform constructor",
+        "6074a20..6074ab0 metric,insets,height andmaxWidth frames",
+        "6074aec..6074b70 leading/trailing conditional padding"
+      ],
+      "horizontal_padding": "usesTextInputInsets ? inputInsets.leading/trailing :0. Ordinary ViewParams.content(false) suppliesfalse, so both horizontal paddings0. Height subtraction is independent ofthis Bool.",
+      "metric_sources": {
+        "elementSize": "keypath823bcb8 -> messageInputStyle.whisper(metadata+64).elementSize(physical+48), ScaledEnvironmentMetric getter7560ae4; Remote basestyle19a09c4..19a09c8 writes44",
+        "inputInsets": "keypath823bc78 -> messageInputStyle.input(metadata+68).insets(physical+0); resolver4fe040 returns topd0/leadingd1/bottomd2/trailingd3"
+      },
+      "limits": [
+        "The current task does not reclose the complete effective inputInsets numeric values or dynamic type scale. Reuse the recovered style inputs rather than guessing a fixed outerheight."
+      ]
+    },
+    {
+      "id": "shared-waveform",
+      "status": "verified_static",
+      "producer": "0x6074400",
+      "reference_report": "ios-remote-v533-waveform-findings.json",
+      "parameters": {
+        "velocity": 30,
+        "lineWidth": 3,
+        "lineCap": "round",
+        "spacing": 3,
+        "minimumHeight": 0,
+        "innerHeight": 28,
+        "edgeMaskWidth": 6,
+        "sampleNormalizer": "Float sample*16"
+      },
+      "conclusion": "starting/listening ofnonzero modes reaches exactly the same configured leaf aszero. This supports reuse ofwaveform drawing while preserving nonzero wrapper geometry. Parent controls remain separately projected."
+    },
+    {
+      "id": "transcribing-text",
+      "status": "verified_static",
+      "function": "0x6074594",
+      "evidence": [
+        "60745e8..6074614 raw3 branch",
+        "6113230..611324c inlineSwiftString bytes formTranscribing",
+        "6074618..6074630 localization chain",
+        "60746ac Text<String>",
+        "60746c8 ->74e2728 ->74e2714 loadsfontTextStyle.body symbol ataad38d8",
+        "60746e4 ->45d770 ->6ec6b0c appliesfont",
+        "60746f8..6074708 raw3 selects74ee448",
+        "74ee474..74ee484 resource8a51c40 ChatGPT/text/tertiary",
+        "6074748..607475c centeredmaxWidthinfinity frame"
+      ],
+      "localization": {
+        "key": "Transcribing",
+        "en": "Transcribing",
+        "zh": "正在转录",
+        "resource_index_source": "ios-remote-v531-dictation-text-candidates.json; nowconsumer-bound"
+      },
+      "font": "Official font provider parameter SwiftUI.Font.TextStyle.body. Applytheexisting recovered body typography adapter; nofixed pointsize or spinner is established.",
+      "color": "ChatGPT/text/tertiary",
+      "alignment": "maxWidth:infinity, center",
+      "other_states": "raw6 uses61128b8;raw9 uses75d5850;remainingstatusstates take otherlocalizederror path. Nonraw3 foreground readswhisper.foregroundColorError(+60). Fullerrorstrings outside thisslice.",
+      "limits": [
+        "No progress spinner in this recoveredcontent branch. Parent controls mayhaveindependentprogress visuals."
+      ]
+    },
+    {
+      "id": "trailing-reserve-structure",
+      "status": "verified_static",
+      "function": "0x6074c78",
+      "gate": "Part+2a showsTrailingControl appended after precedingcontent at6074b78..6074c30",
+      "states": {
+        "0..5": "Spacer.frame(width:2*resolvedElementSize+whisper.horizontalSpacing,height:resolvedElementSize,alignment:center)",
+        "6,7,9": "EmptyView",
+        "8": "Spacer.frame(width:resolvedElementSize,height:resolvedElementSize)"
+      },
+      "evidence": [
+        "6074cb4..6074cc0 mask0x3f",
+        "6074cd4..6074d18 sizes",
+        "6074d30..6074d3c mask0x2c0",
+        "symbolictype823a400 optionalConditionalContent ofSpacer_FrameLayout andEmptyView"
+      ],
+      "conclusion": "This reserves width and contains no actualstop/sendbutton. It neither changes the precedingcontent leadingframe nor supplies a leadingcancelbutton. The FieldRow controls are ownedoutside."
+    },
+    {
+      "id": "ordinary-trailing-reserve-gate",
+      "status": "verified_static",
+      "chain": [
+        "consumer16f6494..16f64a4 invokespresentationwitness+70",
+        "DefaultComposerWhisperPresentation conformance7df2eb0 witnessbasea4fb4e8",
+        "slot a4fb558 ->16f7550",
+        "16f7550 reconstructsflags/sourceState andcalls16f70f0",
+        "16f70f8 ->179eb9c setsgestureBoolfalse ->16f7110",
+        "16f70fc..16f7104 returns(packedMicrophoneProjection &0xff00)==0x200"
+      ],
+      "decoded_rules": {
+        "requestingPermission": "false; nonnilprojectionhighbyte1",
+        "active starting(source0)": "false; nonnilprojectionhighbyte1",
+        "active listening(source1)": "false; nonnilprojectionhighbyte1",
+        "active transcribing(source3)": "false; nonnilprojectionhighbyte0",
+        "active done4/cancelled5": "true; nil packed0x200, butFieldRowparent alreadyexcludes these",
+        "active noInternet6": "trueonlywhenmodebyte==0, elsefalse",
+        "active recoverableError7": "false",
+        "active error8": "true",
+        "active settingsError9": "false"
+      },
+      "jump_table": "0x7decd1b state2..9 -> 16f717c,16f7184,16f7154,16f7154,16f71ac,16f71b4,16f7154,16f71a4",
+      "implementation": "Foractualordinary starting/listening/transcribing, passfalse. Do notadd96pt hiddenreserve merelybecause nonzero mode supportsit."
+    },
+    {
+      "id": "cancel-and-mic-circle-font",
+      "status": "verified_static",
+      "effective_base_font": 30,
+      "dynamic_metric": true,
+      "cancel_chain": [
+        "6071c8c reads Labelmetadata+2c",
+        "6071c90 keypath823b868+350=823bbb8",
+        "823bbe8 metadatafieldslot+a8 ->MessageInputStyle.field38 primaryButton",
+        "823bbec symbolic9241dd0 ->MessageInputPrimaryButtonPartStyle96cab04",
+        "823bbf0 storedproperty+38 ->fontSize",
+        "6071cac constructsScaledEnvironmentMetric",
+        "6070fc0..6070ff8 resolvesmetric andusesregular weight"
+      ],
+      "mic_chain": [
+        "16ea304 readsWhisperButtonPartmetadata+50",
+        "16ea308 ->179e678",
+        "179a83c setskeypathbase7df4930",
+        "179e678 adds2a8 ->keypath7df4bd8",
+        "7df4c10 metadatafield+a8 ->primaryButton",
+        "7df4c18 storedproperty+38 ->fontSize",
+        "16ea320 constructsScaledEnvironmentMetric",
+        "v532micactive consumerresolvesprimaryButtonFontSize forcircle"
+      ],
+      "default_chain": [
+        "608142c readsStylemetadata+a8",
+        "6081434 calls606bf5c",
+        "606bf90..606bf98 reads16bytes80c4c60 ->primaryStyle+38",
+        "80c4c60 doublepair=(30,5), firstfontSize secondcapsuleHorizontalPadding",
+        "Remotebase19a0860 doesnotrewritefontSize;activeaccessorytransform1991db4 changesminHeight32/background/glass butnotfontSize"
+      ],
+      "limits": [
+        "Glyphfont remains independent attachmentsfont18.808777429467085 base. DynamicType metric resolution can alterpointsize.30is font size, not independentlymeasured circlepixel diameter."
+      ]
+    }
+  ],
+  "safe_native_mapping": [
+    "Useactualtypednonzero branch for tapToSendfixture,shared6074400 waveformleaf,withresolvedelementSize/inputInsets wrapper.",
+    "UsebodylocalizedTranscribing/正在转录 andtertiarytext colorfortranscribing.",
+    "Keep outerFieldRowcancel/stop/send stateprojectionindependent; noinnertrailingreserve forordinary listening/transcribing.",
+    "Sizecancel/miccirclebackground fromresolvedprimaryButton.fontSize baseline30; retainattachmentglyphfontindependently."
+  ],
+  "unknowns": [
+    "Originalaudio/provideranddraft lifecycle remain separatelytracked; thisslice doesnotverify liveaudio.",
+    "Precisecompletefontproviderimplementation beyondbodyTextStyleparameter remains existingtypographyadapterboundary.",
+    "Exactnumericinputinsetsatallstate/theme/dynamic-type contexts not newlyclosed.",
+    "v533fallback sampleprediction763b2bc genericindexprecision not expanded here."
+  ],
+  "validation": {
+    "static": true,
+    "official_runtime": false,
+    "network": false,
+    "microphone": false,
+    "production_edits": false
+  },
+  "references": [
+    "ios-remote-v533-waveform-findings.json",
+    "ios-remote-v533-field-spacing-findings.json",
+    "ios-remote-v533-dictation-mode-findings.json",
+    "ios-remote-v532-whisper-parent-findings.json",
+    "ios-remote-v532-dictation-style-findings.json",
+    "ios-remote-v533-dictation-accessory-findings.json",
+    "ios-remote-v508-primary-style-metadata.json",
+    "ios-remote-v508-style-metadata.json",
+    "ios-remote-v531-dictation-text-candidates.json"
+  ],
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-accessory-label-init.asm",
+      "sha256": "dcf3f32bcb555b83ae2b1295f030ca7e5c40fabc1ddace4d832ecb20ee635957"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-accessory-label-init.json",
+      "sha256": "02cd4679cbebba1e9496382fc412214de1678851ffb4c8dcdd76045c567c86ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-data-proof.json",
+      "sha256": "d06cffabc0c65a6db0b5c4f538b9c12b757648d8acb56294a3d5b6c070364a61"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-fixed-frame.asm",
+      "sha256": "ce5a09c0c59391463d9549a8a37dfbb0cfdbdfab2a49f286d83a6478620a9ac9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-fixed-frame.json",
+      "sha256": "b24b76472afab3ef7683f6c9a16427c55bf0e3d93d273da4c3b18d0e24f02296"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-flexible-frame.asm",
+      "sha256": "09cd94e071c6f55ecebce9f41542f8980b040c74ee02c5a7c77f7d5f746851d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-flexible-frame.json",
+      "sha256": "71a29b37eed5fd281378fa4446cf5ea4a5cc540cf9a3163cca4af219ba42c7f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-font-body-maker.asm",
+      "sha256": "6051677230eb57916f892e3059e333fa046cfdb65f6b50b6310b2ef2d324d358"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-font-body-maker.json",
+      "sha256": "6aefa320f126aba939acab5cfbdf7218f07336ba90a2c336af009235740cfe5d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-font-create.asm",
+      "sha256": "ff62d6a2579fb28bd5fa14e0c4ba9f12940b37b886197f4154833710f9ca67f0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-font-create.json",
+      "sha256": "355e3abfa88366660ef427c680cc1b5bdf96697ba0aebe9d8f85ad158ec531dd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-font-modifier.asm",
+      "sha256": "0c503011dbd234ebd17242df5fe92d77330aa388e9525557c6e7fcd22203dda8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-font-modifier.json",
+      "sha256": "73487d7ffab83e9329014288109629d899e016448ffc75c20224b8a1b863da26"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-font-shared.asm",
+      "sha256": "a08a5ef89a1b38e55cc07bb6359fa29a7466f5fdf056d70590a5db06e0523512"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-font-shared.json",
+      "sha256": "5edfc7d237ce1bf68dd54c464e4cf6d377255fc3ca60b89540e11358d566aaab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-frame-args.asm",
+      "sha256": "4d46e2a5af672dfe522f89d452780172aebce25e97eb14befe2e24204d3231b7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-frame-args.json",
+      "sha256": "fac5b7df9cf774d11bc77712854b72f886c11d6ded802e72061fe606e9998ad1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-height.asm",
+      "sha256": "84d41936eb0852093baf4be00b8d0905d052b189a9949bf582e265045baa2bad"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-height.json",
+      "sha256": "a09bdb6fbf9295c7de8c94854215764629fc86ac920fa6754aab5aa323da9b69"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-insets1.asm",
+      "sha256": "74da58cbc77b5714279953a6595fc59454757d10512259bf8f8ab35fe9f73d04"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-insets1.json",
+      "sha256": "fff6d673372c9bf8fa530d16b67321f87704673fa0623a57ff9b92c0bd01cd8d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-insets2.asm",
+      "sha256": "3ed4e02a70d2f10b033ac109fb6d5129d07955ed6debbf6c26578b6e1188e152"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-insets2.json",
+      "sha256": "a8d6ec04db2e91582687431b39b4950d412e130b838d8316531df521a79c22ec"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-metric-keypaths.json",
+      "sha256": "8d0da1af02527f198f2805416c256f8e671c74dad33c7640984c73e30e513a5d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-base2.asm",
+      "sha256": "17e7e143878b860683973755d618d0e808feb02900da8d7a3ae8480642e40d8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-base2.json",
+      "sha256": "9eac74b8b0a633b17b944dbfc30f6e9ffae51d5ad2bef28f4ad905e27912ab2e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-base3.asm",
+      "sha256": "9cbe513a4d1d04bd557790c7d9877b7efb7d6c21975bca94568dfdc7fc4e055f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-base3.json",
+      "sha256": "9d71e418ff9c82a0e9a29f608ef2cd73c6389b59109f390e362aeb90cb326b2c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-construct.asm",
+      "sha256": "8f29b74fdd718ac33b4986e2ac4406566ff4fc08aeadb65a1269352be79a8e04"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-construct.json",
+      "sha256": "acc37febf5301545097526d832b80ca68919fb63453b38d3c0e3c111114abf35"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-env-base.asm",
+      "sha256": "0b81f4d56a6236223550f219f9e0ab4fc5415b4dc887fc2b10a0696e2800c479"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-env-base.json",
+      "sha256": "48c1e16b3d1b4562fb23cf2bed63d736509f0262274781b55d9c037cd3d917ed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-keypath-base.asm",
+      "sha256": "50d63fd55ffaaaf5db92d4395599f28c31c3d7c333fcf5875831ca3bf47b649f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-keypath-base.json",
+      "sha256": "10091fc8c379882c3bed4e79430a4dd01d8b4d564d4420c4636954b41f55137f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-keypath-init.asm",
+      "sha256": "79c92818c697069528bf1f3fc0748061a53fdd9b241339ce87283f4010ea1f1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-keypath-init.json",
+      "sha256": "23f76afd4c25f9cffb62c054d830ca0a2e4301b486b8687f737eab6e2b7f1fdb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-mic-primary-metric-keypath.json",
+      "sha256": "e356c8b0a05b8838a65fc14c901202a5b793a2addbd7663b236b37245165cf4a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-microphone-packed-init.asm",
+      "sha256": "b538e4ac78d031dccf383de63dd3161b02893e04a929bf3f97b90bf615081dc7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-microphone-packed-init.json",
+      "sha256": "16d360452b1a59cef5cc6ffa47a49ff51a6db06436bace37994123719e75f9f6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-normal.asm",
+      "sha256": "2de7d1d5cac6b50f31b7e218a1ea07d65184b061aefaa731591262d3995f3736"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-normal.json",
+      "sha256": "62bee1aa9ac8c3914981c07f113d7dd68a47f41647a12f6e2d8ad3ccba4eedd4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-presentation-trailing-witness.asm",
+      "sha256": "735a0f6cae90d1bee99983cbb820cf9bd7c9007d9df59666cf3485ff9bb80289"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-presentation-trailing-witness.json",
+      "sha256": "7f54cf88ea4f44d003f0b373d1cd2cd5ca091665c5d08fc9f4d0ef796edfa8cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-primary-style-default.asm",
+      "sha256": "d9b38ed74fcf5a209c0295e8890ea537074c7663a588958f0fe4c8d7a2f87842"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-primary-style-default.json",
+      "sha256": "523f375eed7543add009161d0223dd4e4f63c19804c45b6113990f390a8306e6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-align.asm",
+      "sha256": "41df184e269448a49428a9b4aa1a0046a090080898b7340342d601949b0cb9eb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-align.json",
+      "sha256": "3fc185c65a7a42d2fafa5261595aa5c37324371abd9817777e902cb37be46779"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-color.asm",
+      "sha256": "ddcff1ff793e3d98ce4dfdea8e2b9377fb9a676f905aaa336ab8f02beba5723b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-color.json",
+      "sha256": "4db9996d6f63149cf021a21a3927dc9173a1a8993d0c088d9e1cfa6ec433393d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-error-key.asm",
+      "sha256": "ebe45281e0a0cda8b111e2d90d2f1e6daa3fe8090bbc316e9293bdfc99e1c5ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-error-key.json",
+      "sha256": "b2cfe879375adbbe9963a5d83e28b33b94c7e9e27657cb5e7b1fd81c87e3a132"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-font-apply.asm",
+      "sha256": "67e5c885597925d7dda5b4bd545611e1372c4c1ac55db4b5ef8eddf267acfb00"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-font-apply.json",
+      "sha256": "30c90878120c3cd1adb6f7382edea233c20be24cf82360b2d9225b3a524d7251"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-font.asm",
+      "sha256": "91b9fd4127b90d2bb537f0d2d1187a7cea0a6868eccf3d0760767f624239ef06"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-font.json",
+      "sha256": "043ea6e3744d0c71df70c7b2b35dac1553c438847120586cc7f71c7f56d7576d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-resources.json",
+      "sha256": "189d70e76de240b475be211836699836a0fb8ce5e4d8db30fa3ecb31df16f7ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status.asm",
+      "sha256": "e48fa20e5e8b54b3591a8f005be8816781c19c601a9675461a501b325fc44305"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status.json",
+      "sha256": "54ac72959b5354a2fe0435ba0143bd9c4b220dc462d1b00e23108296faa74502"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-style-helper.asm",
+      "sha256": "360a15b9cb001c0effe253ceac661a7b2790578a92f3e256125103e77060fc7b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-style-helper.json",
+      "sha256": "a2ac459197a33d898458fef6558c5a73f906002d66c890500ed11c4b45e8e41a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-decode.asm",
+      "sha256": "d3b5d458786fd47e7138a92d4313b931f218707f67f962b57929f7531b6b913f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-decode.json",
+      "sha256": "cafbf8f02eaa3a0faa847b725d083d25838ce31919a60b872371f5cebb0b3712"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-load1.asm",
+      "sha256": "d929a126893ae54f2b918e61bb335429cc24a72ef219d75a32ac1e7ea1b450db"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-load1.json",
+      "sha256": "9206aeae42e161ce3b09b8ebdf6e72c884749cdccbdbfd0e461eb70d5a647262"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-load2.asm",
+      "sha256": "7403e7b9d0f9ac6876ecdd8e57ba3ada66d24a8a2ac65ae91a6cef8f3ce73e27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-load2.json",
+      "sha256": "c22b79a3087bf46b42e900f561cc6af6db6fe03602a387f74adfad9346dee06f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-projection.asm",
+      "sha256": "96291cc7c1b50b385bf83e9a893220f75007e5a4d6107b008dde32816d08bce1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-projection.json",
+      "sha256": "de660d12d5fa9c99a312cfac146d0b1076ea0ada499b8aec9cc4d87043c85088"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-source-mode.asm",
+      "sha256": "408e498333ae995866b4fdd85f931f650d0d9194ee146f33083c7b88ace46cd4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-source-mode.json",
+      "sha256": "48766cd0360068dc0b1e4ee25bbcaa6bc04f778fcf8e6e73a3f153fa0eed0199"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-state-helper.asm",
+      "sha256": "af08bdd7edf358868a2dce217aa0674702e4bb602ed795f2e868ed5ff852c8c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing-state-helper.json",
+      "sha256": "ffca50b7a5b80220806ae775dd6c2292543805dce820fde766ee8f1aed8b506f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing.asm",
+      "sha256": "4518ca1b65ad8cd1a1f316e96dce542bed52d9a90a32f265f0784d7cdb3c04d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing.json",
+      "sha256": "e350499cf85f68351d20ab2d6e69643c3b83d54c253f6de4e13ea741aedc4e37"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-transcribing-key.asm",
+      "sha256": "888f34a0a89a8a3a24175290b2721dd4156175d24717134829fbfcc441fc6464"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-transcribing-key.json",
+      "sha256": "fb51a89ae46e60b9a583e10b7d2817a09f03d38c54a2df52c832fa105cd5246d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-type-823a3f0.json",
+      "sha256": "a51c0b62953a5d8fb5ac9e954a9ff2f754a6bb25186182fb6d2aa23d7cba4198"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-type-823a3f8.json",
+      "sha256": "6c37c0fd4dd182f7ada851cd5bd3eadf599d836f5fb4865c1ca1de66bf2a6b0b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-type-823a400.json",
+      "sha256": "b63cd18bf5576c31e1f3ec6fd772b3b40fa78ec46448ce86229063b880af3275"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-type-823a408.json",
+      "sha256": "357600b57c47221fa30e7245fe9d5a3e7b7f3756542d48c6d633ad3933f87bea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-type-823a418.json",
+      "sha256": "c940ff586199ebca43d3a5ff1e3d75442600e0b815015395455ba22063c0e6b5"
+    }
+  ]
+}

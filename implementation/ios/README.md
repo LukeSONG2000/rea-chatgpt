@@ -1,6 +1,386 @@
 # iOS native host
 
-## Current state
+## 文件／浏览器父级与资源边界（2026-11-13）
+
+Remote 文件目录的头部、上级按钮与图标使用 293 已确认的父级配置。目录 `id` 仅用于路由；`displayPath` 是 provider 显式提供的呈现数据，不解析成设备路径。离线 provider 使用 `/synthetic/workspace`，不读取真实工作目录。根页没有上级动作，嵌套页通过已有导航路径返回。
+
+源文件引用预览可以接收可选 `shareFileURL`。当前独立资源适配器为已知 plain/source 类型保存临时文件，保持到预览关闭；原生 ShareLink 分享 URL，不以正文字符串代替文件。原始 URL 生产者、完整格式分派与 Markdown Raw／Markdown 菜单仍未恢复。图片、PDF 等沿用已有 QuickLook 宿主。
+
+浏览器仍是无网络、无脚本／原生桥接的 WK 本地资源预览。原版 Safari 包装与策略分支已定位，但 Remote 链接到该策略的实际接线尚未闭合；不能把当前 WK 控件称为官方浏览器恢复。加载／错误／重试、前后退、关闭及会话恢复保持现有接口。
+
+本轮原始取证见 `ios-files-directory-parent-20261113-findings.json` 与 `ios-files-preview-parent-20261113-findings.json`。页面专用触觉没有明确调用证据，未额外添加；已有显式反馈继续服从设置 → 常规 → 触觉反馈。
+
+## Chat／Work 前端事件投影（2026-11-13）
+
+`ChatFrontendStreamCursor` 是独立前端合同，不是官方协议解析器。每个请求固定账户／会话／请求与订阅身份，序号连续；重复、旧订阅和终态后的结果不改变页面，格式或序号不合法时保留正文并呈现可重试失败。`delta`追加当前修订，`replace`以递增一代的revision替换完整正文；完成／取消回执与传输确认分开。重连订阅及历史合并仍未实现，旧LocalHarness保留原有revision0限制，不能据此声称任意后端已兼容。
+
+```sh
+sh implementation/ios/test-chat-service.sh
+sh implementation/ios/test-state.sh
+```
+
+仅离线测试启动时加入`--chat-revision-fixture`可在第一段增量后注入替换正文；普通core预览不启用此场景，不读取供应商配置或连接网络。Chat／Work仍通过同一前端接口传递各自mode，不把相同合成输出视为官方模式能力相同。
+
+## 侧栏父级补核 · 2026-11-13
+
+侧栏父级补核（2026-11-13）：顶部现按293 TopBarFadeBackground接入可变模糊与表面色渐变，和模型滑杆共享同一原生leaf适配器但保留各自mask/radius；原背景边界/安全区与遮罩尺寸仍独立登记。功能目录使用原自适应verticalGroup，历史保持原生侧滑list适配。常规触觉开关继续统一控制已有反馈。当前完整事实见 `analysis/full-platform-20261104/ios-shell-parent-current-20261113.json`，不要用启动成功推导全量视觉等价。
+
+## 未登录欢迎页与原生认证前端 · 2026-11-12
+
+```sh
+python3 implementation/ios/run-simulator.py --preview welcome --restart --report analysis/full-platform-20261104/welcome-launch-new.json
+```
+
+先运行既有 `implementation/ios/build.sh`。此入口进入独立的 `SignedOutWelcomePreview`；Apple/Google进入独立认证请求接口，默认显示未接服务；“登录或注册”进入原生邮箱页，支持提交失败、重试、取消及返回。普通入口继续使用已有合成账户的对话宿主。
+
+293 原始证据确认新版 LoginHeader 的 48pt 图标、22pt 字标、32pt 间距，页面水平边距24pt，AuthenticationActions 的间距12pt。预览复用官方资源，显式选择品牌开启、hero none、无历史账户及无合并披露。Apple／Google／登录或注册为制品定义的按钮类型，中英文来自压缩字符串表。
+
+**仍未恢复**正式默认实验分配、Root.loggedOut 完整父链、注入按钮组的默认排列及完整样式。第二轮已按原样式消费者分离高度/圆角/背景/边框配置，并区分自定义Apple与普通按钮字体；当前56pt高度/28pt圆角、目录分支赋值、图标框、中性底色和整页纵向分配仍为明确的离线预览输入。没有把反汇编中的56字节分配当成按钮高度。完整官方首屏仍有上述缺项。
+
+证据见 `analysis/full-platform-20261104/ios-login-v1-native-evidence.json`，宿主参数及翻译摘要见 `ios-welcome-20261110-integration.json`。Android 独立证据为 `android-signed-out-20261110-findings.json`。
+
+### 认证前端与合成回放
+
+直接打开独立的人工体验入口（语言/外观仍跟随系统）：
+
+```sh
+python3 implementation/ios/run-simulator.py --preview authentication --restart --report analysis/full-platform-20261104/auth-review-new.json
+```
+
+此入口使用单独的固定UUID资料目录，不改写普通core预览；输入任意合成邮箱、密码和验证码即可查看步骤和返回。页面明确显示合成认证提示。关闭后用 `--preview core` 切回普通预览。
+
+- `FrontendAuthentication.swift` 定义独立请求、flow、会话代次与路由快照；不是官方wire schema。
+- `NativeFrontendAuthentication.swift` 提供欢迎/原生字段/错误/取消/返回适配。原版外层为ChatGPTPresentation自定义槽；本宿主全屏呈现是明确的替代策略，原始模态样式仍未闭合。内部用户名/密码/验证码沿独立原生导航栈。
+- 第二轮按NativeAuthScreenStyle恢复左右独立导航槽：左侧返回、右侧关闭，隐藏默认系统Back和滚动指示。返回/关闭的可见文字是原fallback标签的宿主呈现，原Styleguide图标与尺寸仍缺；边缘滑回使用独立、仅限认证栈的UIKit桥。没有猜加登录按钮或返回震动。
+- 设置头像铅笔已按实际editProfile消费者打开独立资料编辑弹层入口，关闭后返回原设置。原表单字段/保存动作仍未恢复，当前弹层明确说明缺失能力，不提供虚假的保存成功。
+- 默认没有认证后端，任何真实认证、OAuth和退出操作均不会被伪装成功。仅同时提供 `--offline-fixture --auth-journey-fixture` 时，确定性夹具才驱动用户名→密码→验证码→合成前端会话及退出；页面明确标注回放。
+- `--auth-state-profile=<UUID>` 隔离测试用的退出路由；`--auth-failure-fixture` 注入一次失败；`--auth-web-entry-fixture` 将“登录或注册”显式路由到未接的外部认证接口。
+- 路由快照只有version/signedOut，不保存密码、验证码、token或账户数据，不能据此恢复真正云端认证。真实服务接入时必须替换合成bootstrap并验证服务会话，为每个账户提供独立页面/数据宿主。默认预览不会把固定测试账户的数据展示给其他账户。
+
+本批中文浅色检查包括欢迎页→原生输入→失败/重试/取消，和退出→重启→合成原生步骤→屏幕边缘返回→恢复会话草稿。服务、完整手机号/国家/域名建议、Passkey/MFA/Workspace/新账户资料和完整官方样式仍未实现。legacy设置根按293关闭账户切换器，不添加截图推测的保存登录选项。
+
+## v600 · 核心页面预览入口与状态更正
+
+**已实现**
+
+- 启动器 `--preview core` 复用同一份离线能力配置，组合 Remote 合成任务、附件、消息活动、模型、权限、上下文数据与 Chat／Work 本地网页。
+- 快捷模型配置缺失时说明当前能力状态，高级设置仍可操作。
+- 稳定 preview 草稿继续保留，语言和外观跟随系统／用户偏好。上下文用量仍受设置开关控制。
+
+**更正此前进展说明**
+
+模型滑杆与高级设置的双向返回已经实现，v596 已有测试。v599 手动启动参数遗漏模型、权限与上下文能力，独立高级检查入口的旧提示又把配置缺失写成“转场未接”。本批统一预览参数并改正提示。
+
+**验证结果**
+
+中英文组合预览两项、独立高级配置两项，共四项 UI 测试通过。覆盖权限选择、模型往返、草稿、跨任务配置和后台恢复。中文深色 v600 留在 Remote 任务的展开输入框，模型与权限控件可直接操作。当前仅有内置屏幕。启动器核对构建与安装摘要，运行参数与共享配置一致。
+
+**未实现**
+
+部分 Remote 列表模式、菜单目标页及服务动作的本地回放，剩余特殊审批／输入／消息分支、完整官方视觉和动画、跨页面选区范围恢复。预览配置与原生宿主属于独立实现，官方证据沿用 293 记录。
+
+[v600 实现与验证记录](../../analysis/full-platform-20261104/ios-preview-v600-integration.json)
+
+## 统一核心页面预览
+
+```sh
+python3 implementation/ios/run-simulator.py --preview core --restart --report analysis/full-platform-20261104/preview-launch-new.json
+```
+
+先通过 `implementation/ios/build.sh` 构建，报告路径每次使用新名称。`--restart` 在本次修复后替换当前预览进程，运行结束保留应用。省略 `--preview core` 沿用基础启动行为。
+
+`Tools/core-preview.json` 同时供启动器和组合 UI 回归读取，提供 Remote 合成任务、消息活动、附件、模型滑杆、权限、上下文用量，以及 Chat／Work 本地网页示例。上下文用量控件仍受 Codex 设置开关控制。稳定 preview 草稿配置沿用已有数据，语言与外观使用系统／用户偏好。
+
+模型滑杆 → 高级设置 → 滑杆已有双向交互。独立高级检查入口缺少快捷配置时会提示配置不可用。此前将这个条件分支概括为“转场未实现”的进展说明已纠正。
+
+## v599 · 长消息浏览器返回
+
+Chat／Work 的长消息浏览器返回已实现阅读位置、草稿和输入焦点保留，关闭后可以直接继续输入。中文浅色和英文深色两项回归均通过，每项覆盖 Chat 与 Work。新增合成内容和原生链接节点测试，现有宿主已能完成恢复。
+
+未实现项包括跨页面文字选区范围恢复、官方浏览器容器的完整恢复和精确视觉。前三轮测试的滚动定位及链接父子节点问题保留在报告中。
+
+[v599 实现与验证记录](../../analysis/full-platform-20261104/ios-chat-v599-integration.json)
+
+## v598 · Chat／Work 浏览器闭环
+
+消息链接回调已补齐当前会话与订阅代次校验，浏览器呈现前保存草稿和阅读状态。Chat／Work 的本地网页打开、详情／后退、失败重试、关闭返回、跨会话返回及进程重启草稿恢复已完成中英文浅深色验收。最终4项UI通过，其中2项覆盖Chat／Work、2项回归Remote浏览器，Foundation通过。首轮测试误将链接查询为文本框，已按实际Link无障碍节点修正，失败记录保留。
+
+293证据已确认链接与来源引用的不同触觉分支，并定位 `chatgpt-ios-chat-link-haptics` 功能配置。有效值、默认值及完整URL／widget路由仍待核对，链接触觉消费者继续待接。浏览器与身份保护为独立前端适配，官方Safari宿主父级、精确外观、长消息阅读锚点和选区／焦点恢复继续登记。页面整体仍为部分实现。
+
+v598已签名安装并核对摘要，中文Remote列表保留运行，普通字号、跟随系统深色。当前仅检测到内置屏幕。下一步验证长消息打开预览后的阅读位置、选区和输入焦点，再收口对应页面的最小可用清单。
+
+[v598 证据与验收](../../analysis/full-platform-20261104/ios-chat-v598-integration.json)
+
+## v597 · Remote 附件触觉调用闭合
+
+293文件选择器按附件传入触觉标志，照片选择器传入关闭标志。已继续追到动作处理、HapticEngine见证表和UIKit生成器，确认使用轻量冲击及默认强度。宿主在当前导入结果被接受后逐个请求反馈，并复用触觉偏好、硬件与前台状态检查。
+
+Foundation的32种条件组合通过，中英文浅深色两项UI回归通过，覆盖失败、重试、加载、附件预览及草稿保留。当前v597已构建、签名、安装并核对摘要，中文Remote列表保留运行。模拟器验证导入流程和条件逻辑，实际触感及多文件触觉时序待真机验收。
+
+本地导入身份、偏好与生成器生命周期属于独立宿主适配。Chat／Work链接触觉函数已定位到同类轻量冲击分支，具体页面调用及启用条件继续待核对。发送、流式输出和其他菜单触觉保持开放，Android须独立取证。页面整体继续为部分实现。
+
+[v597 证据与验收](../../analysis/full-platform-20261104/ios-haptics-v597-integration.json)
+
+## 触觉偏好与模型滑杆（v596）
+
+设置中的“触觉反馈”保存独立偏好，应用于已接入的Remote模型滑杆选择与越界反馈。硬件不支持时显示说明，模拟器仅验收偏好／状态门槛。开启模型交互夹具可使用 `--offline-fixture --codex-home-fixture=tasks --remote-model-slider-fixture`。普通预览保留原能力配置。
+
+官方设置位置、默认值与所有触发点继续追踪。当前入口位置、默认开启及平台门槛为独立适配。见 `analysis/full-platform-20261104/ios-haptics-v596-integration.json`。
+
+## 通知注册前端回放（v595）
+
+使用 `--offline-fixture --notification-permission-fixture=authorized --notification-registration-fixture=success`，注册场景可选 `success`、`failure`、`slow`。失败场景首次失败后可重试，慢场景用于取消及迟到回执验证。UI测试使用独立profile。普通预览省略注册参数，保留待接服务状态。
+
+令牌仅在适配器内存中传递。当前完成前端合同与合成验收，实际APNs令牌获取、网络注册、注销及推送送达保持待接状态。
+
+## 通知未读与重启回放（v594）
+
+独立通知日志保存到应用支持目录的 `REAOffline/notification-profiles/<chat-profile>/journal-v1.json`。普通预览使用 `preview`，测试使用显式UUID。省略profile使用legacy目录。版本、事件身份、重复记录和文件大小经过校验，写入采用原子替换。读取失败时保留文件并在通知设置显示错误／重试。
+
+`--offline-fixture --notification-unread-fixture` 向Chat会话B和Remote设备A的idle-thread注入稳定ID事件。重启后重复注入可验证未读保持与已读去重。配合 `--codex-home-fixture=tasks`、独立 `--chat-state-profile=<UUID>` 和 `--remote-draft-profile=<UUID>` 运行。正常预览省略未读注入参数。冷响应路由fixture每次启动生成新事件ID，同次启动重复该事件以验证重复响应。
+
+两项中英文浅深色UI旅程验证标记显示、进入清除和进程重启，两项既有通知路由回归通过。Foundation覆盖存储校验、损坏保护、写入失败与跨身份恢复。Chat圆点使用独立尺寸／颜色，Remote沿用已恢复组件。后台服务未读、活动页清除策略、容量恢复、注册接口及错误UI注入验收保持开放。见 `analysis/full-platform-20261104/ios-notification-v594-integration.json`。
+
+## 通知事件与系统点击回放（v593）
+
+应用以 `--offline-fixture` 启动时启用合成账户身份。系统通知仅接受独立 `rea_frontend_v1` 载荷，字段定义见 `Sources/FrontendNotificationEvents.swift`。官方293元数据与未知映射见 `analysis/full-platform-20261104/ios-notification-v593-findings.json`。
+
+从仓库根目录向当前测试模拟器注入，先通过应用设置授予通知权限。使用 `remote-b.apns` 和 `chat.apns` 可分别检查跨设备任务与Chat会话入口。
+
+```sh
+xcrun simctl push 71BCC1D2-0ABD-4F11-BB67-37818435B176 local.rea.chatgpt.ioshost implementation/ios/Tests/Notifications/remote-a.apns
+```
+
+显式冷响应回放支持 `--notification-route-fixture=remote-a`、`remote-b`、`missing` 或 `chat`，同时要求 `--offline-fixture`。Remote场景使用 `--codex-home-fixture=tasks`。普通预览省略路由回放参数。UI测试使用独立UUID草稿profile，重复注入用于校验客户端响应去重。
+
+最终4项UI回归与Foundation通过。系统通知中心点击实测可依次进入设备A、设备B及Chat会话。日志当前保存在内存，Remote未读投影已接线但视觉待验收，Chat未读和持久化待补。系统后台重复呈现、token注册、服务映射、真实APNs及真机送达保留独立状态。候选v593中文Remote列表保持运行。
+
+## 通知权限前端（v592）
+
+设置 → 通知读取当前模拟器／设备的系统权限，提供显式请求、跳转系统通知设置和返回刷新。默认使用原生权限适配器。页面分组与状态文案含独立宿主实现，293来源与未知项见 `analysis/full-platform-20261104/ios-settings-v592-findings.json`。
+
+离线回放可同时传入 `--offline-fixture` 和 `--notification-permission-fixture=notDetermined`。可选场景为 `denied`、`authorized`、`provisional`、`ephemeral`、`unsupported`、`readFailure`、`requestFailure`、`slow`。合成页面明确显示回放状态，正常预览不传此参数。
+
+通知服务说明页登记偏好同步、设备令牌注册和推送送达待接项。前台通知呈现、未读和点击路由仍在后续前端范围内。
+
+
+## v574 · Resource-preview recovery
+
+Unavailable Chat attachments now expose scoped retry and close while preserving the reference, draft and saved anchor. Unsupported QuickLook formats show file information and a returnable capability state, and remain sendable. The error UI is an independent UIKit fallback. Official Chat error-owner/layout evidence remains open.
+
+Six distinct UI cases pass across r1-r3. Final r3 extends recovery through persisted message attachments in Chinese/light and English/dark. State/library checks pass, including actual byte removal and restoration without losing references. Generated PDF content and return were manually inspected on candidate574. Chinese normal preview remains running.
+
+`--offline-fixture --chat-preview-failure-fixture` injects one unavailable preview per host lifetime. With `--chat-attachment-fixture`, `--chat-unsupported-file-fixture` supplies an unknown extension and `--chat-pdf-file-fixture` supplies a real one-page PDF. Normal preview omits these overrides. Multi-page PDF gestures, additional document formats and exact official presentation remain pending. See `analysis/full-platform-20261104/ios-chat-v574-integration.json`.
+
+## v573 · Chat photos and isolated acceptance profiles
+
+The plus menu now exposes Photos and Files. PHPicker results use bounded NSItemProvider file copying, scoped operation identities and the existing attachment contract. Drafts and user rows display bounded ImageIO thumbnails. Import loading, provider errors, cancellation and late callbacks have explicit handling. A single generated PNG was selected through the ordinary simulator Photos UI and verified through QuickLook return.
+
+State/service checks pass. Seven r4 UI cases pass, followed by two final r5 Chinese/light and English/dark photo journeys. Final screenshots confirm the filled action glyph is visible after moving that control outside the Glass content layer. This is an independent UIKit adapter. Official Chat grid geometry, parent style, camera/video, multi-selection and HEIC/device acceptance remain open.
+
+Offline launch supports `--chat-state-profile=preview` or a UUID. New attachment tests generate a UUID once per case and retain it across process relaunch. Preview uses the stable preview profile. Omitted profiles preserve legacy paths and records. Earlier unprofiled tests still need migration after a retained 128-entry capacity failure. Photo test flags are `--chat-photo-fixture`, `--chat-photo-error-fixture` and `--chat-photo-delay-fixture`. Ordinary previews omit these provider overrides.
+
+Candidate573 is signed and installed with matching executable hash. The Chinese system-following preview remains running with a synthetic image draft. See `analysis/full-platform-20261104/ios-chat-v573-integration.json` for verification boundaries and retained failures.
+
+## v572 · Chat file attachment flow
+
+Chat/Work now carry scoped attachment references through draft persistence, request submission, retry and user-row projection. The ordinary plus entry opens the system Files picker. Imported files use the existing bounded account-scoped store. Draft controls support remove and QuickLook preview, and attachment-only sends participate in the same fixture service contract. Legacy adapters explicitly reject attachments. Local history must commit before the composer clears.
+
+`--chat-attachment-fixture` injects a synthetic file at the picker-result boundary for UI tests. Ordinary preview launches use the real system picker. The file chip/card geometry, native picker and resource storage are independent adapters. Official293 evidence establishes separate attachmentItems and MessageRowAttachmentGrid.Item, while exact composer/grid branches remain open. Photo selection, thumbnails, additional preview formats and missing-resource recovery remain pending. State/service checks and all four final UI cases pass. Both appearance captures were inspected. Candidate572 is signed and installed with matching executable hash. The Chinese system-following preview remains running, with only the built-in display available. See `analysis/full-platform-20261104/ios-chat-v572-integration.json`.
+
+## v571 · Chat response footer
+
+Raw transport phases are separated from assistant content. The independent frontend footer localizes progress, failure, cancellation, interruption and empty-response feedback. Nonempty completed responses omit the footer. Pending cancellation requires exact scope and an active phase. Raw copying retains response content and retry stays bound to the latest failed request. The 293 content/footer/action slots and role-aware container geometry are separately indexed in `ios-chat-v571-findings.json`. Status labels and native measurements remain independent adaptations. Exact official status mapping and surrounding-context spacing remain open.
+
+State checks and three focused UI cases pass. Candidate571 is signed/installed with matching executable hash, and the Chinese system-following Work replay remains running. Both appearance captures were inspected. Large content gaps and full official action/status presentation remain partial. See `analysis/full-platform-20261104/ios-chat-v571-integration.json`.
+
+## v570 · Chat user-message surface
+
+The Chat user row now consumes a native adapter of the measured iOS293 default MessageRowStyle, with trailing proportional containment, inner padding, rounded background and native text selection. Raw copy/edit identities are preserved. Retry buttons contribute to collection measurement. The actual Chat parent style overrides, temporary-chat variants, user Markdown and outer margins remain separate evidence gaps. Assistant status/block presentation remains partial.
+
+State checks and six distinct UI cases pass, covering Chinese/light and English/dark core flows, short/wrapped bubbles, native selection, raw copy, edit recovery and mode restoration. Candidate570 is signed and installed with matching executable hash. The system-following Chinese/light Chat home remains running with an empty composer on the built-in display. See `analysis/full-platform-20261104/ios-chat-v570-integration.json` for results and retained first-round virtualized-row test failures.
+
+
+## v569 · Scoped Chat/Work configuration
+
+The local catalog now persists mode per conversation. Sends snapshot it in history and pass it to the replaceable service interface, and retries retain the original mode. Legacy snapshots and new local conversations default to Chat as an independent compatibility policy. Offline replay accepts both modes, while a legacy adapter reports unsupported Work explicitly. Official mode controller metadata is recorded separately from this implementation.
+
+State/service checks and three UI cases pass, including Chinese/light and English/dark core flows, mode/draft isolation and process restart. First-round empty-home test assumptions were corrected through the normal sidebar entry. Candidate569 is installed with Chinese preview running. Work presentation gates, complete message visuals and attachment flow remain partial. See `analysis/full-platform-20261104/ios-chat-v569-integration.json`.
+
+
+## v568 · Ordinary offline Chat input and failure recovery
+
+The independent `ChatMessageService.requiresSyntheticPromptPrefix` separates the retained loopback test requirement from the offline adapter. Offline replay accepts ordinary Chinese/English input. `--chat-failure-fixture` injects partial output followed by the first request failure per account/conversation; a fresh retry completes. Cancellation takes precedence over the pending fixture failure. Normal previews omit the failure flag.
+
+Service/state checks and three UI cases pass, including both presentation modes in Chinese/light and English/dark, retry draft preservation, conversation return, cancellation and restart. Candidate568 remains running on a Chinese new-chat home. Work still changes only the placeholder; per-conversation mode and service configuration are the next integration gap. Provisional row/status layout and localization remain partial. See `analysis/full-platform-20261104/ios-chat-v568-integration.json`.
+
+## v567 · Shared frontend browser preview
+
+UIKit message links, Remote Markdown and error-card links now share a scoped native preview entry. `--browser-preview-fixture` maps the explicit `https://example.invalid/preview` and `/replay-error` fixture URLs to in-memory HTML through an injectable resource provider. Other URLs display a returnable pending-service state. Native navigation, current title/address, load failure/retry and close preserve the originating page.
+
+The WebKit host and controls are independent adapters. The iOS293 Safari wrapper is confirmed in the artifact, while the concrete Remote owner/policy and exact visual remain partial. Eight distinct UI cases have passing results across r4/r5. The final rebuilt r5 passes four browser/error cases; combined and rich-message cases ran on the preceding build. Foundation checks pass. Chinese/light and English/dark screenshots were inspected. A manual Markdown link opened and returned to the same content. Candidate567 remains running in Chinese on the built-in display.
+
+See `analysis/full-platform-20261104/ios-remote-v567-integration.json` and the mobile development plan for retained failures, service boundaries and open page items.
+
+## v566 · Ordinary user-message accent background
+
+The iOS293 palette branch tables now resolve the ordinary user background from a local preview selection. Green maps to mint. The known enum cases are explicit fixture capabilities, and storage, labels and selector placement are independent host adapters. Account capability/update callbacks, default replacement policy and text accent remain open.
+
+Six distinct UI cases passed across ten executions, together with Foundation checks. Passing r1 action tests missed one-line English truncation. The native Text adapter now exposes its wrapped height; r2 adds the height assertion and r3 replays the combined journeys on the final binary. Candidate566 is signed, installed and left running in Chinese. Only the built-in display is available. Full page, physical-device and Android gates remain partial. See `analysis/full-platform-20261104/ios-remote-v566-integration.json`.
+
+## v565 · Remote ordinary user message container
+
+The iOS293 ordinary bubble path now supplies trailing alignment, 0.78 width, spacing6, text insets9/15 and radius20 to current and replayed user messages. The default official background asset adapts to light/dark. The single-child layout bridge, plain Text renderer and attachment list are independent host adapters. Accent overrides, rich user content and special branches remain partial.
+
+Four distinct UI cases and Foundation checks passed. Both first-run creation tests queried a departed parent screen and failed. Capturing geometry before navigation resolves the tests in r2. Failure evidence is retained. Candidate565 is signed, installed and left running on a Chinese Remote conversation, following system language/appearance. Full page fidelity and device gates remain open. See `analysis/full-platform-20261104/ios-remote-v565-integration.json`.
+
+## v564 · Remote synthetic task creation
+
+Interactive replay connects Home, project and thread-toolbar new-task entries. Home opens the accepted task through its parent, while project NewThread replaces its content in place. Stable task identity, initial turn and draft receipt commit together through the existing frontend history adapter. Created tasks return to list/search and survive process restart. Destinations outside the explicit fixture catalog remain visible in Recents with their routing identity retained.
+
+Official creation, title generation and service idempotency remain separate integration work. Full project composer attachment/configuration slots and page-level visual fidelity remain partial. Six distinct UI cases have passing results across eleven executions. A retained legacy keyboard transition assertion failed once; the existing bounded visible-position wait resolves it in r3. Foundation checks pass. Candidate564 is installed and running on the Chinese Remote list, following system language/appearance. Only the built-in display is present. Validation is recorded in `analysis/full-platform-20261104/ios-remote-v564-integration.json`.
+
+## v563 · Remote persisted frontend replay
+
+`--remote-draft-profile=<name>` now also binds local replay history, immutable attachment blobs and scoped reading/disclosure caches. Preview uses `preview`; restart tests use isolated UUID profiles. Official history storage and viewport algorithms remain unresolved. This is an independent frontend adapter.
+
+Interrupted synthetic replay retains received content and queued prompts with an explicit interruption state. Source-observed submission-only retry eligibility is preserved. Accepted draft reconciliation uses generation/revision and attachment identity; approval resolution and its response commit together.
+
+Nine distinct simulator UI cases pass across eleven executions, together with Foundation checks. Coverage includes both language/appearance pairs, history/attachment/disclosure recovery, middle-history anchor restart, host isolation, interrupted replay continuation and existing approval journeys. Candidate563 is signed, installed and left running on the Chinese Remote list. System language and appearance apply. Only the built-in display is present. Whole-page fidelity remains partial. See `analysis/full-platform-20261104/ios-remote-v563-integration.json`.
+
+## v562 · Remote 草稿跨进程恢复
+
+本批为独立宿主补充按离线账户／测试配置、设备及任务隔离的草稿磁盘适配器。首页、线程、新建目标保持各自身份，空路径与未指定路径分别保存。附件提交前写入独立文件，清单原子提交后清理已失去草稿引用的文件；发送后清空状态进入磁盘。读取失败时保留原快照，当前编辑继续存于内存并显示说明。
+
+官方293草稿归属和异步身份守卫沿用v509证据，`messageDraftStore`的磁盘格式与生命周期仍未确认。本批磁盘格式、配置隔离及文件保留策略属于独立实现。合成回归默认使用内存状态，重启测试与可见候选通过`--remote-draft-profile=<名称>`启用固定配置。
+
+草稿恢复子项核心验收通过。Foundation检查通过；r3两项中英浅深色重启UI测试通过，覆盖附件恢复预览、发送清空、二次重启和双主机同ID草稿隔离；r2两项既有组合流程通过。版本562已签名安装并保留中文Remote列表，固定preview配置启用磁盘草稿。当前仅检测到内置屏幕。r1／r2重启测试误选等待补充输入的fixture-b/shared-thread，普通编写器被该状态占用。最初归因为输入框已展开不准确，已按夹具状态纠正，并改用两台设备上同ID的pinned-thread。r2已有两项组合流程通过，失败记录继续保留。
+
+未完成项仍包括进程恢复后的消息历史与阅读锚点。当前动态回放turn身份和正文为进程内状态，需要先闭合历史恢复，再验证稳定行锚点；完整页面视觉、真实服务、真机及Android独立验收继续待处理。源码与适配边界见`analysis/full-platform-20261104/ios-remote-v562-findings.json`。
+
+## v561 · Combined Remote page journey
+
+Chinese/light and English/dark combined UI journeys pass through approval, two review disclosures, search/diff expansion, attachment send, queued follow-up, cancel/start, native QuickLook and cross-host task/draft restoration. Foundation checks pass. Application behavior uses the v560 implementation. The picker-result boundary injects a synthetic text file.
+
+The first run retained two failures caused by downward test gestures starting beneath the navigation overlay. Bounding the test drag to visible history resolves both. Candidate561 is signed, installed and left on the Chinese Remote list, following system language/appearance. Whole-page appearance, process restart and device acceptance remain partial. See `analysis/full-platform-20261104/ios-remote-v561-integration.json`.
+
+## v560 · Dynamic Remote automatic review
+
+Normal synthetic send now projects review snapshots into the matching command before its Shell. Existing recovered status, risk, rationale fallback and disclosure consumers are reused. Replay scheduling, terminal lifecycle and scoped in-memory retention are independent host adaptations.
+
+Five focused simulator UI tests and Foundation checks pass. Chinese/light, English/dark, cancellation, unknown status and existing command output are covered. Candidate560 is signed and installed, with the Chinese Remote list left running. Language and appearance follow the system. Use `--remote-review-message-fixture` with `--remote-interactive-replay`; add `--remote-review-unknown-fixture` for unknown status/risk coverage.
+
+Whole-page fidelity, process restoration, exact review styling and the standalone network-review branch remain partial. The next gate is a combined page journey. See `analysis/full-platform-20261104/ios-remote-v560-integration.json`.
+
+## v559 · Dynamic Remote file differences
+
+Normal synthetic replay supports revised file snapshots with optional counts, scoped disclosure restoration and current-revision copying. The recovered nonempty-diff gate and caption summary layout are reused. File payloads, in-memory retention and the native selectable code/copy host are independent adaptations.
+
+Four focused simulator UI tests and Foundation checks pass. Coverage includes Chinese/light completion, English/dark failure, cancellation/late callbacks, task round trips, exact copy/paste and the existing empty/whitespace availability test. Candidate559 is signed, installed and left on the Chinese expanded file preview. Language/appearance follow the system. Add `--remote-file-message-fixture` alongside `--remote-interactive-replay` for the new dynamic fixture. Preview text is synthetic.
+
+Title formatting, original syntax styling, resource navigation and whole-page geometry remain partial. The next batch connects the existing automatic-review component to dynamic command identities. See `analysis/full-platform-20261104/ios-remote-v559-integration.json`.
+
+## v558 · Dynamic Remote search activity
+
+The normal synthetic replay now supports search status/detail snapshots, item-scoped disclosure retention, cancellation and failure. Original search labels, globe, shimmer and tool-group disclosure are reused. The event contract, failure/cancel labels and plain detail text are independent host adaptation.
+
+Four focused simulator UI tests and Foundation checks pass. Chinese/light and English/dark screenshots were inspected. Candidate558 is installed and left on the Chinese Remote list, following system language/appearance. Launch with `--remote-search-message-fixture` alongside `--remote-interactive-replay` to exercise the new activity. Search result links/previews, reasoning history production and dynamic file differences remain partial. Evidence and acceptance are in `analysis/full-platform-20261104/ios-remote-v558-integration.json`.
+
+## v557 simulator candidate
+
+Remote owner updates now synchronize accepted-send clearing during marked composition. Equal native text echoes preserve the current editor selection. The source chain is CodexRemoteComposerTextView.updateUIView → attributed prompt application, with native-edit normalization separately guarded by markedTextRange. Plain-text assignment and selection clamping remain independent host adaptations.
+
+The new unselected Pinyin test failed before the fix and six input cases pass afterward. Three related cases pass, and two plugin cases pass after correcting their nine-key keyboard selectors. Eleven distinct UI cases have passing results across the retained runs. Foundation passes. English autocorrection, full attributed references and device IME remain open. See `analysis/full-platform-20261104/ios-remote-v557-integration.json` for failures, corrections and acceptance scope.
+
+Signed557 is installed with a Chinese system-language Remote list left running. Language and appearance follow the system. The Remote page remains partial.
+
+## v556 input verification
+
+Four focused UI tests pass, covering committed system Pinyin and exact multiword submission for ordinary Send and follow-up. Two English-content cases were added. XCTest inserted those strings while the simulator retained its Chinese keyboard, so English autocorrection remains separately unverified.
+
+Manual marked composition reproduces a P1 residual after submission. The draft is cleared but the UIKit update skips its value while markedTextRange exists. The earlier comment claiming transient text could never be sent was corrected. The293 editor has separate composition-state paths. Its on-screen submit/commit owner remains unresolved, and this batch retains the existing behavior. See `analysis/full-platform-20261104/ios-remote-v556-findings.json` and `ios-remote-v556-integration.json`.
+
+## v555 simulator candidate
+
+Submission failures now expose the package-derived Retry label and error translation. The frontend replay retains the prompt/attachments, shows pending loading, and supports success, repeated failure and cancellation with per-attempt identity checks. Four distinct UI cases pass. The two retry cases pass again with loading and disabled-button checks. Foundation and type checking pass with existing warnings.
+
+Add `--remote-submission-failure-fixture` to the interactive replay arguments. The initial submission fails and Retry resumes a synthetic response. Add `--remote-retry-failure-fixture` to keep retries failing with an observable pending interval. The sequential adapter supports retry on the latest failed submission. Native button styling and attempt envelopes are independent adaptations. Full service callback ownership and exact style payload remain partial.
+
+Signed555 is installed on the dedicated simulator with Chinese system-language preview left running. Manual composing input still has a P1 submission discrepancy. Source evidence, test results and remaining actions are recorded in `analysis/full-platform-20261104/ios-remote-v555-integration.json`.
+
+## v554 simulator candidate
+
+Remote terminal failures now retain reply content and show a separate error card. The iOS293 HistoryFragment → ErrorRow → ErrorCard chain provides visibility/retry gates, warning semantic color, callout medium typography, padding, radius and stroke layers. Error messages, event envelopes, link detection and local pending-browser alerts are independent frontend adapters.
+
+Four distinct focused UI cases pass across r1/r3. The final error-card pair passes2/failed0, covering Chinese light and English dark, retained reply, link opening/closing, task isolation/return and subsequent cancellation. Foundation and type checking pass. Earlier wrong-element-class test failures remain recorded.
+
+Signed554 is installed and left on a Chinese failure preview. Add `--remote-error-message-fixture` to interactive replay arguments to produce the supplied synthetic error and local link. The running preview also enables command and thinking fixtures. Default language and appearance follow the system. Source retry callback execution, retry/loading variants, fallback localization, full reasoning, exact title/body geometry and process restoration remain partial.
+
+See `analysis/full-platform-20261104/ios-remote-v554-integration.json` and `ios-remote-v554-findings.json` for evidence and acceptance boundaries.
+
+## v553 simulator candidate
+
+Normal Remote sends now display a transient thinking status and updated summaries. The iOS293 evidence supplies the optional-summary fallback, body font, secondary color, tail truncation and ShimmeringTextView consumer. The existing recovered shine is reused. The independent replay envelope preserves omitted snapshots, supports explicit clearing and clears transient state at every terminal outcome behind the shared identity/sequence gate.
+
+Four focused UI cases pass, including Chinese/light, English/dark failure, cancellation with late-event rejection, task return and dynamic command regression. Foundation/type checking pass. Signed553 is installed and left on the Chinese Remote task list, following system language and appearance. Add `--remote-thinking-message-fixture` to the existing interactive replay launch arguments to observe the three-stage status after normal send.
+
+Full reasoning history/disclosure and message error-card rendering/actions remain open. Header alignment, body spacing and whole-page visual parity remain partial. Evidence and remaining actions are in `analysis/full-platform-20261104/ios-remote-v553-integration.json` and `ios-remote-v553-findings.json`.
+
+## v552 simulator candidate
+
+Dynamic command snapshots now reuse the recovered summary, timer, disclosure, shell and original icon resolver. Expansion persists under host/destination/turn/command across navigation. Cancellation closes active command state while retaining received output. The envelope and scheduling are independent frontend fixtures.
+
+Seven distinct UI cases pass across the final two rounds. The final round passes4/failed0. Chinese/light and English/dark cover output expansion, failure and task return; existing cancellation, cached summary, long-line output, gesture follow and reading restoration regressions pass. Foundation and type checking pass. A reproduced expanded-return layout loop was fixed by measuring intrinsic lines before applying the viewport minimum. Earlier failed probes remain in the v552 reports.
+
+Signed build552 is installed and left on Chinese rich content with expanded command output. Add `--remote-command-message-fixture` alongside `--remote-rich-message-fixture` and the interactive replay arguments below. Ordinary send produces three synthetic snapshots without executing the displayed command. `--remote-replay-failure` produces a failed command with exit1. Default language and appearance follow the system.
+
+Reasoning, official message error-card rendering/actions, dynamic file changes/search/reviews, precise nested scroll restoration, multiaccount and process restoration remain partial. See `analysis/full-platform-20261104/ios-remote-v552-integration.json` and `ios-remote-v552-findings.json`.
+
+## v551 simulator candidate
+
+Dynamic Remote replies now use the packaged iOS293 JS parser and existing native text/code/table views. The independently implemented projection caches response identity and text, retains original copyable text and exposes parsing failure. Table position is retained under host/destination and response/table identity in the single offline account. The original OAIMarkdown parser, styles, streaming/fade policy and full block construction remain open.
+
+Four distinct focused UI cases pass across two rounds. Chinese/light and English/dark cover rich replies, horizontal table scrolling, task return and code copy/paste. Attachment preview and Chinese reading restoration regressions pass. Foundation and type checking pass with existing warnings. Failed selectors and subsequent results are recorded in `analysis/full-platform-20261104/ios-remote-v551-integration.json`.
+
+Signed build551 is installed and left on a Chinese completed rich reply. System language and appearance remain the default. Add `--remote-rich-message-fixture` to the v549 launch arguments below to obtain deterministic heading, inline formatting, code and table snapshots after normal submission. Links currently show a returnable pending-browser state. Full dynamic tool/reasoning/error components, exact selection during arbitrary revisions and process restoration remain partial.
+
+## v550 simulator candidate
+
+Remote reading positions now survive task navigation in the existing host/destination scope within the single offline account. The independent native adapter stores stable row identity, row-relative offset, absolute fallback and tail-follow intent above navigation. Chinese/light and English/dark tests cover A→B→A, keyboard expansion and retained drafts. Five distinct focused UI cases have passing results across two rounds, including attachment and queue regressions. The final round passed4/failed0. Foundation and type checking pass with existing compiler warnings.
+
+Signed build550 is installed and the Chinese Remote task list remains open, following system language and appearance. Launch arguments match v549 below. See `analysis/full-platform-20261104/ios-remote-v550-integration.json` for results, retained failed probes and executable verification.
+
+Original293 metadata exposes anchor and pinned-distance restoration inputs. Their runtime algorithm and activation conditions remain unresolved. This batch uses independent row-point recovery. Exact-character recovery during reflow, dynamic insertion/history-expansion runtime coverage, process persistence and full visual acceptance remain open.
+
+## v549 simulator candidate
+
+Remote local images and files now enter normal submission, queued follow-up and steering through the scoped synthetic adapter. Accepted draft snapshots clear text and attachments together. Replay records retain the local file objects and expose native QuickLook previews. Eight distinct focused UI cases have passing latest results, including Chinese image-only submission, English dark text-file preview with an existing draft, failure retention, queued attachments, deletion and approval regression. Foundation checks pass.
+
+Build549 is signed, installed and left on the Chinese Remote task list. Language and appearance follow the system. The preview uses `--offline-fixture --codex-home-fixture=tasks --remote-interactive-replay --remote-attachment-all-capabilities-fixture`; normal photo/file pickers are active. Choose a completed synthetic task to send local attachments. Resource upload and authentication remain service adapter boundaries.
+
+The transcript currently reuses source-backed composer previews as an independent read-only projection. Official message attachment geometry and preview dispatch remain open. Reading anchors, process-restart resource recovery, multi-file/PDF/error coverage and the complete dynamic message surface remain partial. See `analysis/full-platform-20261104/ios-remote-v549-integration.json` for failed probes, later passing results and installed binary verification.
+
+## v548 simulator candidate
+
+Remote approval feedback now reaches the independent deterministic replay adapter. It preserves the recovered trim/empty-action behavior and request identity. Synthetic feedback continuation does not grant permission or execute a command. Eight distinct focused UI cases pass, including Chinese/light and English/dark feedback, queue/steer regression and native Pinyin candidate submission. Foundation checks pass.
+
+The dedicated simulator has signed build548 installed and is left on the Chinese approval page, following system language and appearance. Enter synthetic text in the approval card to exercise feedback. The earlier manual autocorrection/stale-draft observation remains open. Remote attachments, complete dynamic message projection, reading anchors, persistence and full visual acceptance remain partial. See `analysis/full-platform-20261104/ios-remote-v548-integration.json`.
+
+## Active mobile frontend slice · v547
+
+The current scope follows [the mobile minimum-usable plan](../../docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md). Remote replay uses synthetic frontend events through the existing scoped action entry points.
+
+```sh
+xcrun simctl launch --terminate-running-process 71BCC1D2-0ABD-4F11-BB67-37818435B176 local.rea.chatgpt.ioshost --offline-fixture --codex-home-fixture=tasks --remote-interactive-replay
+```
+
+Open the sidebar, select Codex and a synthetic task. A completed task accepts text and produces three timed updates. A pending-approval task supports approval and stopping. Add `--remote-replay-failure` for failure. Language and appearance follow the system by default.
+
+Choose fixture-b's running pinned task to exercise follow-ups. Send queues text. Its message menu offers steering and cancellation. Stop the running task to expose queued-message start. Completed synthetic turns drain the queue in order. Failed or cancelled turns retain pending text. A steering acknowledgement is tied to its original turn and revision. A steer whose turn ended can return to the queue.
+
+This scheduling policy and pending-row layout are independent frontend implementations. Four menu labels and available callback branches have 293 artifact evidence. Exact official menu/bubble geometry, owner availability policy, message editing, attachment submission, feedback approval, full message projection, process-restart replay storage and reading-anchor restoration remain open. The page retains partial status. Tools and attachments in older rows are static fixtures. See the [v547 report](../../analysis/full-platform-20261104/ios-remote-v547-integration.json) for test results and source boundaries.
+
+## Earlier host architecture snapshot
 
 The current host uses UICollectionView and UIHostingConfiguration with SwiftUI
 wrapping independent native text/table views. Packaged-JS Markdown projection
@@ -805,3 +1185,98 @@ Expanded synthetic history now ends with the original293 separator primitive: Re
 ### v432 Response separator label
 
 The completed synthetic Remote task now includes a source-bound response separator: paired semantic lines, optional caption-category secondary label, single-line/fixed-width text,10/4 padding, continuous capsule using the official secondary background. Original Response translations are included in65 locale tables. Placement is explicitly synthetic; private font conversion and official insertion gates remain partial. Typecheck/localization regression pass; expanded geometry UI test is parse-only. No device update while Xcode authorization is pending.
+
+
+### 2026-11-13 文件／浏览器第三轮（当前独立宿主）
+
+普通Core预览：侧栏→Codex→任务→右上菜单→文件→README.md。文件页支持实际原文／Markdown切换、代码／表格／链接及可选URL分享；目录空状态和行布局恢复了已确认的293配置。provider显式提供能力及初始模式，扩展名不自行启用；基本原生正文及离线WK浏览器仍是独立适配，不宣称完整官方格式分类／高亮／Safari接线。关闭预览返回原任务。
+
+构建／启动入口沿用本文已有命令；纯检查 `sh test-official-text.sh` 与 `sh test-haptics.sh`。针对本页的UI用例为 `REAHostUITests/HostInteractionTests/testRemoteFileCitationChinese` 和 `REAHostUITests/HostInteractionTests/testRemoteMarkdownFileModesChinese`。当前证据见仓库 `analysis/full-platform-20261104/ios-files-browser-parent-current-20261113-r2.json`；新签名候选构建成功，Air本次不可用未安装。触觉实际接线统一设置→常规，未确认的文件／分享手势不猜加反馈。
+
+
+### 2026-11-13 侧栏功能包第三轮（当前独立宿主）
+
+侧栏→探索／更多原位展开→定时任务／资料空间／自定义／插件／项目／站点／图片／助手。八类root与返回已有核心通路，功能细项及缺口见仓库`analysis/full-platform-20261104/ios-sidebar-features-third-20261113-checklist.json`。
+
+个性编辑接受成功后按293完成observer返回，失败保留修改；插件已有结果刷新失败使用原title／message并支持重试。`--plugins-refresh-failure-fixture`显式从合成service入口注入一次刷新失败，不代表原刷新手势／生产轮询；原ScrollView刷新手势仍未恢复。新中文浅色UI检查为`testNativeCustomizeCoreChinese`和`testNativePluginsCachedRefreshChinese`，八root检查`testSidebarFeatureCatalogRoutesChinese`；已有构建／启动命令不变。
+
+当前报告`analysis/full-platform-20261104/ios-sidebar-features-parent-current-20261113-r2.json`。未实现原助手专用会话、项目完整菜单与会话宿主、图片画布等部分仍明确登记；无真实业务后端。
+
+
+### 2026-11-13 登录／账户第三轮（当前独立宿主）
+
+普通Chat→侧栏→设置→头像编辑可打开293源码确认的名字／用户名表单、原说明及保存／取消。`FrontendProfileEditingServing`是独立前端接口；离线夹具提供失败／重试／成功回执，普通未接服务返回明确不可用。同一账户会话内的资料快照保存在内存，退出／切换会话清除，不承诺跨进程资料同步。原保存后自动关闭条件未知，当前保存后留页显示合成状态。
+
+`--auth-journey-fixture`启用合成认证旅程，`--profile-save-failure-fixture`额外注入首次资料保存失败；不保存凭据、不连接业务后端。资料状态检查：`xcrun swiftc Sources/FrontendProfileEditing.swift Tests/ProfileEditing/main.swift -o .build/profile-edit-contract`，然后运行`.build/profile-edit-contract`。定向UI检查为`testAccountProfileEditChinese`、`testAuthenticationSessionRoundTripChinese`和`testAuthenticationNativeUnavailableChinese`，无需重复四组合全矩阵。
+
+证据与当前实现／缺口见仓库`analysis/full-platform-20261104/ios-auth-parent-current-20261113-r2.json`。已接手势触觉统一受设置→常规→触觉反馈控制；相关逻辑检查`sh test-haptics.sh`，模拟器不能验证触感。
+
+
+### 2026-11-13 主框架／侧栏第四轮（当前独立宿主）
+
+本轮只补主框架的已证父级遗漏：两个侧栏背景hosting恢复原safeAreaRegions空集合；顶部／底部各自使用原渐变、负padding和减少透明度条件；底部背景锚实际聊天按钮top-8。聊天按钮左／下边距恢复共用输入，完整场景圆角inset公式仍是缺口，保留显式宿主近似；不是从截图手调值。头像／齿轮源构造链已确认，账号赋值未闭合，普通默认不凭截图切头像。
+
+普通core启动与既有构建命令不变。当前汇总`analysis/full-platform-20261104/ios-shell-parent-current-20261113-r2.json`区分源结构、独立父容器、UI和装机事实。已接触觉仍统一设置→常规开关，本轮背景变更不添加触觉事件。原顶部背景完整UIView frame、蒙版raster配置、recent fitter和原始完整手势仲裁仍未实现。
+
+
+### 2026-11-13 Remote列表第四轮
+
+普通列表行已接来源明确的置顶／重命名／复制ID／归档菜单、禁止全滑自动提交的行尾侧滑，以及360×520惰性只读真实消息组件预览。搜索结果排除归档侧滑和线程预览；独立TapGesture按钮适配修复横拖结束误入任务。预览不执行普通任务初始化、不写阅读缓存。能力供给与本地修订操作是离线适配，非官方服务恢复；已读／Live Activity操作和原始VM生命周期仍缺。中文浅色两项UI、文本／身份合同和触觉门控检查通过。交付事实见 `analysis/full-platform-20261104/ios-remote-list-parent-current-20261113-r3.json`。
+
+
+### 2026-11-13 Remote消息区第四轮核对
+
+本轮无产品代码改动，无同代码重建。已定位普通用户气泡缺少专门PromptMarkdownBlocks／渲染器截断状态，不能把40／2行推为全局默认；“显示完整消息”原动作是单向设true。reasoning完整正文生产者／消费者仍缺；Remote初始anchor实际由多状态计算，不补猜测的默认滚底。核心消息交互保留，具体source断点见三份fourth findings和 `ios-remote-message-parent-current-20261113-r3.json`。下一整项为输入／任务控制，不在不闭合分支上穷尽回归。
+
+
+### 2026-11-13 Remote输入／任务控制第四轮
+
+已补独立离线Goal缓存与进程重启恢复，包含清除空状态、修订与任务隔离；读坏文件保留、保存失败不发布成功，编辑原文保留。仅显式合成profile启用，不是官方磁盘／服务协议。状态合同运行 `sh implementation/ios/test-goal-state.sh`；中文浅色Goal／智能体／任务往返／重启／保存失败旅程116.129秒通过。输入、队列、模型／权限／上下文的现有合同保留，pending Edit等原事务继续缺失；交付见 `ios-remote-controls-parent-current-20261113-r3.json`。
+
+
+### 2026-11-13 Remote审批／问题表单第四轮
+
+审批标题父级现恢复body／medium／primary、title→reason→owner fallback、普通main→subtitle及同标题组内detailReason自适应行。未知raw4不推断排序，Reason标签中文资源仍缺，保留来源英文回退。header进入完整request比较，旧载荷事件拒绝。两个中文浅色检查分别58.924秒／24.576秒通过，保留问题答案／重启回执和普通输入返回核心。真实async task UUID／单在途／清理owner已取证，pending／disable／错误UI尚未证明，不按日志造界面。最终边界与运行见 `ios-remote-requests-parent-current-20261113-r3.json`。
+
+### 2026-11-13 Chat／Work第四轮核心复核
+
+已有双模式目录／草稿／消息／停止／重试／重启核心保留，本轮未新增产品行为。事件与状态合同通过，单条中文浅色双模式整页旅程140.101秒通过；未闭合的原FlowLayout、完整消息投影／reasoning／DIL和精确父级布局仍明确记录。模拟器已恢复普通Chat首页并保持运行，Air不可用所以未装机；沿用已有严格签名候选。当前结果与下一项文件／浏览器见 `analysis/full-platform-20261104/ios-chat-work-parent-current-20261113-r3.json`。
+
+### 2026-11-13 文件／浏览器第四轮
+
+目录失败页恢复原“无法加载文件”、警告图标和Retry，去掉无证据的本地按钮样式。Markdown可用正文与ReadingState选择已分离：默认Markdown，有效native引用行进入Raw，nil正文不因模式／扩展名而启用菜单，空正文仍算可用。原lines／缓存仍未闭合，NSString校验与基础renderer明确为适配。两条中文浅色目录／预览／返回和双模式／网页／分享旅程通过；状态合同、真机签名构建与严格签名检查通过。模拟器保留文件目录供操作，Air不可用，未装机。详见 `analysis/full-platform-20261104/ios-files-browser-parent-current-20261113-r3.json`；下一整项其他侧栏功能包。
+
+
+### 2026-11-13 登录／账户前端第四轮
+
+`--preview core` 的共享验收配置现包含显式 `--auth-journey-fixture`。保持初始聊天入口；用户可从设置退出，经过欢迎页→原生邮箱／密码／验证码→回到原会话草稿，整个旅程由合成服务驱动，页面标注合成回放。普通不带此夹具的认证适配器仍返回未连接；这不是账户认证能力恢复。
+
+输入框恢复293实际父容器的10/12内边距、16圆角、浮动标签、焦点对齐及原密码图标。最小高度54、供给字体／颜色及默认弹簧仍是明确的宿主适配，不代表全部原样式参数。密码显示切换共享同一草稿，不持久化凭据。
+
+异步关闭错误必须匹配失败请求ID；相同枚举文本与流程代次不足以识别同一次错误。当前Foundation覆盖连续同错误、迟到关闭和取消。全模块状态、UI检查及模拟器与真机安装事实见 `analysis/full-platform-20261104/ios-auth-parent-current-20261113-r3.json`。
+
+
+## 2026-11-13 插件第五轮交付
+
+补293描述三行／单向展开／无障碍大字号全显及原标签、语义色；字体、测量、渐变paint是宿主适配。目录／来源／已安装／分页／搜索／详情与失败返回保留。显式合成连接／断开回执同步已安装，旧列表不复活已断开项。原生搜索栏实际取消事件清query/focus/搜索自身锚点，目录锚点不清，最终pop仍为宿主适配。原设置连接列表及完整详情其他区域未恢复。
+
+当前合同检查通过；连接／描述27.077秒、搜索往返48.229秒中文浅色通过。签名构建、严格codesign、Air安装与新容器启动成功（PID19759）；手机原profile／语言／外观保留。模拟器core PID63160保留运行。未自动操作真机页面。搜索截图未显示屏幕键盘，不用AX keyboard存在证明屏幕键盘几何。未提交／推送／发布。
+
+当前归档`analysis/full-platform-20261104/ios-plugins-parent-current-20261113.json`，明细`docs/full-platform/PROGRESS-20261113-PLUGINS.md`。下一整项为主框架普通图标启动／配置作用域／进程重启恢复，不扩其它侧栏包。
+
+`./test-plugins.sh`检查插件合同。核心预览显式启用`--plugins-operation-success-fixture`；连接／断开仅改变合成目录，默认服务仍unavailable。没有真实安装／授权／工具执行，重启重建插件测试数据。
+
+
+## 2026-11-13 主框架普通启动与恢复
+
+已接应用内core目录、单一资料指针、27个源码消费者和一级页面checkpoint；无参数启动恢复既有资料，默认不构造LocalHarness。临时offline-fixture测试不污染日常选择，语言／外观／失败参数不落盘。任务／文件／弹层深层重建、原起始页面设置和真实多账户仍未做。
+
+签名构建、严格签名及Air安装成功；最终无参数进程PID20200，原phone profile／语言／主题保留。模拟器最终无参数PID70014，摘要匹配，均保留运行。合同通过，长旅程核心恢复断言完成、末尾错误页AX检查失败；修复后36.055秒错误／重试／无参数返回原草稿的定向检查通过，不重标原失败case。真机只做安装／配置指针／进程核实。记录`analysis/full-platform-20261104/ios-startup-parent-current-20261113.json`。全部剩余见`docs/full-platform/MOBILE-REMAINING-20261113.md`。
+
+日常运行：`python3 run-simulator.py --restart --report <新的记录路径>`，不指定preview时沿用已保存的演示资料。显式选择：`python3 run-simulator.py --preview core --profile <原UUID或preview> --restart --report <新的记录路径>`；只更新资料选择指针，不搬移或删除数据。`./test-launch.sh`检查启动合同。
+
+### 2026-11-13 账户前端第六轮
+
+当前资料Name/Username接受后保存到独立离线journal，进程重启与当前账户返回可恢复。旧文档“只保存在本次会话内”属于历史；本地保存失败会保留草稿，不虚报成功。不会存密码、验证码、token或头像字节；实际账号服务仍未接入。
+
+合同入口：`sh test-account.sh`。定向UI为`testAccountProfileJournalChinese`和`testAuthenticationSessionRoundTripChinese`。源恢复与独立适配、全部未做项见`docs/full-platform/PROGRESS-20261113-AUTH-SIXTH.md`及`ios-auth-parent-current-20261113-r4.json`。不将其解释为完整官方登录／账户复原。

@@ -1,0 +1,38 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "user_priority": "Restore settings topology and lists before child functionality",
+  "official_observations": [
+    {
+      "source": "ios-settings-topology-20261112-types.json",
+      "symbol": "SettingsConsumerIdentityGeneralAndSafetySectionContent",
+      "conclusion": "Separate availability inputs for usage limits, remote control, cloud browser, passwords, file storage, ad data; supplied notification/voice, security and family rows."
+    },
+    {
+      "source": "ios-settings-topology-20261112-witnesses.json",
+      "symbol": "SettingsConsumerIdentityGeneralAndSafetySectionContent.body",
+      "offset": "0x10883c8",
+      "conclusion": "Witness jumps to 0x1087440."
+    },
+    {
+      "source": "ios-settings-topology-20261112-general-literals.json",
+      "conclusion": "Body window references usage and limits, safety entry, passwords, storage, history and data; these are literal references, not proof all are visible or of exact sibling order."
+    }
+  ],
+  "runtime_reference": [
+    {
+      "source": "user correction in this chat",
+      "conclusion": "Haptics belongs in Settings > General. Current native host moved the existing toggle there; exact reference version unknown."
+    }
+  ],
+  "remaining": [
+    "Resolve root consumer identity branch selection and General destination owner",
+    "Resolve conditional child ordering including notifications/voice/security/family/Codex/cloud browser",
+    "Trace help/account and General child lists before declaring full topology restored"
+  ],
+  "decoder_limits": [
+    "Two attempts treating associated-type witness addresses as generic type records failed; no type-tree claim made.",
+    "Three valid body type records resolve generic NavigationLink/Label/disclosure wrappers only."
+  ]
+}

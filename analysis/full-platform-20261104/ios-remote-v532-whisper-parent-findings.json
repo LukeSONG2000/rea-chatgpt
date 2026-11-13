@@ -1,0 +1,53 @@
+{
+  "batch": "v532",
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "version": "iOS1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Remote1987900 active dictation row parent",
+  "gate": {
+    "caller": "198797c loads presentation witness+b0,1987984 invokes;1987994 branches false to1987ac4/1987ae8 ordinaryeditor",
+    "protocol": "ComposerWhisperPresentation96b1af4",
+    "conformance": "DefaultComposerWhisperPresentation95a7520 conformance7df2eb0;witnessa4fb4e8",
+    "witness": "a4fb598 ->16f7744 ->16f733c",
+    "name": "unknown exact property name; protocol requirement records do not encode names",
+    "value_source": "sourceState atDefaultPresentation+8; unlike first6 fields this is computed from sourceState",
+    "raw_formula": "let tag=stateWord>>62; return tag==2 ? ((stateWord&0xfe)!=4) : tag==1",
+    "named_projection": "idle=false; requestingMicrophonePermission=true; active=true except state.done/state.cancelled; inserting=false",
+    "name_binding": "DefaultStateVWT13dea4 returns top2bits, declarationcases idle/requesting/active/inserting. Session firstfieldstate atoffset0 isMessageInputWhisperPartState. Its getEnumTag48548->162a20 readsfirstbyte, cases4=done,5=cancelled.",
+    "limitation": "Upstream state event transitions and the concrete live owner value remain separate. No exact Swift property identifier recovered."
+  },
+  "content": {
+    "call": "19879a8..79c0 initializesViewParams zeros,tagbyte1 atoffset18 and calls7656724",
+    "enum": "ViewParams96b1e08 metadataa83b028,VWTbeda48 givesordinal1",
+    "case": "content(usesTextInputInsets:false)",
+    "consumer": "Shared dispatch16ea400, leaf tracked by style agent"
+  },
+  "row_spacing": {
+    "type": "SwiftUI.Environment<CGFloat> pertyperef8d1b570",
+    "consumer": "1991870 fieldvector+2c;1991878/7c resolvesenvironment then HStack19918b8",
+    "initialization": "19879d8..79e4 createsEnvironment keypath7e2a2d8 andtag0; composite keypathusesEnvironmentValues.messageInputStyle getter2e5fcc→60612ac thennestedoffsetcomponents",
+    "base_value": "unknown; do not reinterpret it as independent fixed orScaledMetric gap",
+    "nearby_padding": "19879e8 Edge.Set.leading;19879f0→460490 buildsEdgeInsets(_all:2), stored+50..78 aroundrow. This is leading2 padding, not HStackgap"
+  },
+  "corrections": [
+    "v531 style finding described resolved scaled horizontalSpacing. Metadata proves Environment<CGFloat>; any scaling occurs upstream through supplied style and needs separate evidence."
+  ],
+  "evidence": [
+    "ios-remote-v532-whisper-parent.asm",
+    "ios-remote-v532-whisper-parent-bindings.json",
+    "ios-remote-v532-parent-bool.asm",
+    "ios-remote-v532-parent-witness.asm",
+    "ios-remote-v532-parent-spacing.asm",
+    "ios-remote-v532-state-tag.asm",
+    "ios-remote-v532-content-tag.asm",
+    "ios-remote-v532-part-state-tag.asm"
+  ],
+  "validation": {
+    "static_type_and_witness_binding": "passed",
+    "original_runtime": "not executed",
+    "production_changes": "none"
+  }
+}

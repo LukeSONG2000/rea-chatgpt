@@ -3,7 +3,7 @@ import Foundation
 // Independent presentation input for reviews attached to a rendered command.
 // Official 293 has separate id / targetItemID / reviewID and GuardianReview
 // fields. This is not its wire schema or an authorization decision API.
-struct RemoteAutomaticReviewInput: Identifiable, Hashable {
+struct RemoteAutomaticReviewInput: Identifiable, Hashable, Codable {
     let id: String
     let targetItemID: String
     let reviewID: String?
@@ -48,4 +48,11 @@ struct RemoteAutomaticReviewInput: Identifiable, Hashable {
         default: return .localized(.autoReviewDetailReviewing, [])
         }
     }
+}
+
+// Independent UI identity keeps identical review IDs on different target items
+// isolated through snapshot replacement and command reordering.
+struct RemoteReviewDisclosureIdentity: Hashable, Codable {
+    let targetItemID: String
+    let reviewID: String
 }

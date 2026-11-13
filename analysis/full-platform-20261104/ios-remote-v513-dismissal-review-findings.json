@@ -1,0 +1,81 @@
+{
+  "status": "partial",
+  "scope": "Read-only review of v513 Chinese interactive keyboard dismissal failure. Root owns runtime probes and production changes.",
+  "official_artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "confirmed": [
+    {
+      "evidence_type": "official_artifact_static_analysis",
+      "id": "missing_destination_scroll_configuration",
+      "offsets": [
+        "0x19f37b8",
+        "0x19f37bc",
+        "0x19f37d4",
+        "0x19f3858",
+        "0x19f3884",
+        "0x19f3900",
+        "0x19f3930"
+      ],
+      "conclusion": "Destination ScrollView selects scrollBounceBehavior(focusesComposerOnAppear ? basedOnSize : always), and hides scroll indicators. The Home fixture has focusesComposerOnAppear=false. At review start its destinationControls lacked both explicit bounceBehavior and hidden indicators. Always-bounce is source-backed and relevant to the short two-row content; causality for the Chinese failure still requires runtime comparison."
+    },
+    {
+      "evidence_type": "official_artifact_static_analysis",
+      "id": "phase_end_does_not_force_resign",
+      "offsets": [
+        "0x1c3e910",
+        "0x1c3e944",
+        "0x1c3e95c",
+        "0x1c3e9c0",
+        "0x1c3dbe8",
+        "0x1c3dc80"
+      ],
+      "conclusion": "Verified phase callback only changes dismissalScrollActive. Decelerating preserves it; interacting computes it from !focusesComposerOnAppear && external focus; other phases clear it. Awaiting flag is set by keyboardWillHide while active. Focusfalse guarded by awaiting ends composing. No direct resign or composingfalse operation exists in this phase callback. Do not add a forced blur at every drag end as if recovered."
+    },
+    {
+      "evidence_type": "host_source_observation",
+      "id": "bridge_focus_update",
+      "location": "RecoveredRemoteComposerField.swift NativeRemoteComposerEditor.updateUIView and Coordinator",
+      "conclusion": "Every update increments focusRevision and schedules asynchronous focus reconciliation. A surviving update requests becomeFirstResponder only if owner focused=true, accessibilityEnabled=true, window exists and native firstResponder=false. Synchronous owner updates suppress delegate focus writes via isApplyingOwnerState. This has a possible stale-owner re-focus boundary if native resignation occurs inside a suppressed callback, but no observed trace yet proves that path caused failure."
+    },
+    {
+      "evidence_type": "host_runtime_ax_snapshot",
+      "id": "failure_boundary",
+      "location": "/tmp/rea-v513-chinese-attachments/B532BBF2-1CA0-426B-B81A-DBFB33A6D684.txt",
+      "conclusion": "Snapshot shows remote-composer-editor Keyboard Focused at y630.7 height52.3 and Keyboard at y826 height233 on a402x874 screen. This captures an unresolved partial keyboard transition. It does not prove whether editor focus was restored, never lost, or system interaction remained active."
+    },
+    {
+      "evidence_type": "official_artifact_static_analysis",
+      "id": "separate_tap_callback",
+      "offsets": [
+        "0x2ff368",
+        "0x2ff3d0",
+        "0x2ff3e4",
+        "0x2ff46c",
+        "0x3fbc08",
+        "0x300a38"
+      ],
+      "conclusion": "CodexContentView also contains gated single TapGesture onEnded→3fbc08, checking300a38 before clearing State field at metadata+0x30. Predicate includes owner state and draft getter18efcd0; complete semantic field mapping not pursued in this bounded review. This is a distinct tap path and supplies no justification for a drag-end workaround."
+    }
+  ],
+  "next_runtime_checks": [
+    "Restore source-backed always bounce on Home destination ScrollView, then repeat same Chinese and English flows.",
+    "Capture bool-only native firstResponder, owner focused, isApplyingOwnerState, and actual become/resign calls alongside existing phase/keyboard notifications. Distinguish a native failed dismissal from rejected composing transition.",
+    "Do not add delay or phase-end forced resignation unless the native event trace identifies that boundary."
+  ],
+  "evidence_sha256": {
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "61e0d22594b25632da08c23c216b9da51c813ad5eb6022fa7633cfc6bc4e68cf",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "fb6267dfd47643676d085738575d6b65b42ba84cee038e60f50622be746ebc2a",
+    "implementation/ios/Sources/NativeConversationHost.swift": "a86aaa3eb23bbb2a7395689e2bda21121a0d11dc2e0f5f269a0dd4360cb3be3f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "d3990ee6b3576ad43b837f364f8b70d27bc8d62983b25869d6708dccdb3dca0d",
+    "/tmp/rea-v513-chinese-attachments/B532BBF2-1CA0-426B-B81A-DBFB33A6D684.txt": "580a3dfda09ed2ac1e3c280819f81518b9f2381b2d99fb286b16c09a5c757538",
+    "analysis/full-platform-20261104/ios-remote-v509-destination-host-calls.json": "d25a1f68d01c9cc46443d9e1355aef782c3e4f40b1ea96cb4353879a0ed0fcf2",
+    "analysis/full-platform-20261104/ios-remote-v509-destination-host.asm": "a6614d3e3c0bd0170ecd424a5afc757eb526282fbace22563f0bdbc8e6251184",
+    "analysis/full-platform-20261104/ios-remote-v513-scroll-phase-callback.asm": "422477f939b7e752a4e5aed2cebf2f6f6a207eba9bed61b7b45d0364a50f31d1",
+    "analysis/full-platform-20261104/ios-remote-v513-keyboard-notification-callbacks.asm": "639dca29d622570b2790d9ddf9391c181923f58f89f1464c6b9725ee1abd6ce4",
+    "analysis/full-platform-20261104/ios-remote-v513-home-tap-callback.asm": "a64aee134d0f909370d9a05f617ef72308c18f582060dbe1a7484840ecd88b77",
+    "analysis/full-platform-20261104/ios-remote-v513-home-tap-enabled.asm": "648c24a8ee5420ca32f953c096e2d430cafec6107afa93b17589052b5419a00f"
+  },
+  "limitations": [
+    "No production edits by this child. No new app execution or device inspection by this child.",
+    "Original binary and local source review do not establish locale-specific cause. Root runtime probes remain required."
+  ]
+}

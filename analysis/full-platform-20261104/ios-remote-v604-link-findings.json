@@ -1,0 +1,101 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifactSHA256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "officialObservations": [
+    {
+      "symbol": "CodexRemoteFileLinkDestination",
+      "descriptor": "0x95acbd8",
+      "cases": [
+        "file(CodexRemoteLinkedFileReference)",
+        "external(URL)",
+        "unsupported"
+      ],
+      "evidence": "ios-remote-v604-link-destination-cases.json"
+    },
+    {
+      "symbol": "CodexRemoteLinkedFileReference",
+      "descriptor": "0x95ac2b0",
+      "fields": [
+        "path",
+        "lineNumber",
+        "displayName"
+      ],
+      "evidence": "ios-remote-v604-linked-file-metadata.json"
+    },
+    {
+      "symbol": "CodexRemoteHistoryFragment",
+      "descriptor": "0x95acb58",
+      "fieldVectorWordOffset": 2,
+      "previewLinkedFileMetadataSlot": "0x5c",
+      "openURLMetadataSlot": "0xd8",
+      "consumer": "0x1a33ad8",
+      "reads": [
+        "0x1a33b44",
+        "0x1a33b4c"
+      ],
+      "closureCapture": "0x1a33b8c..0x1a33b98",
+      "actionChain": [
+        "0x1d3a10c",
+        "0x1aa626c",
+        "0x1c20204",
+        "0x1a69c5c"
+      ],
+      "branch": "destination discriminator at 0x1a69cb4; external branch at 0x1a69ccc; captured file callback at 0x1a69cf0",
+      "limits": "Exact unsupported behavior and all classifier predicates remain unresolved.",
+      "metadataRegister": "0x1a33af8 accessor result -> helper0x155124 mov x24,x0"
+    },
+    {
+      "symbol": "CodexRemoteFileCitation URL construction",
+      "window": "0x19c5be4..0x19c5f44",
+      "observed": "URLComponents scheme=file, normalized slash path, optional L-prefixed fragment; URL returned by Foundation",
+      "evidence": "ios-remote-v604-file-url-construction.json"
+    }
+  ],
+  "hostGap": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbol": "RemoteReplayMarkdown",
+    "observed": "onLink assigns every URL to FrontendBrowserRequest; scoped file preview loader already exists for directory/diff."
+  },
+  "implementationDecision": "Dispatch explicit absolute file URLs to the scoped injected full-file loader. Dispatch HTTP(S) to existing browser adapter. Report unsupported links explicitly. Never read a referenced path from the local filesystem. Fixture provider maps paths as opaque scoped resource IDs. Route policy, error presentation and provider are independent frontend adapters.",
+  "notImplemented": [
+    "Official inline file citation attachment/card rendering",
+    "Line number/range scrolling",
+    "Relative-path and sandbox URL classification",
+    "Full source-result URL schema and producer",
+    "Exact official URL normalizer and unsupported branch",
+    "Official preview owner and full visual layout"
+  ],
+  "publicSource": "analysis/upstream-codex-20261105/reuse-map.json, pinned c90354172c5c49535b122443e9a8ed52c2233b80, no published frozen mobile UI proved",
+  "probes": [
+    "Struct-only metadata tool returned missing for enum; raw enum descriptor/field records then inspected without changing tool.",
+    "Class field probe unsupported kind1 preserved; raw sole rendersAttachments field read separately.",
+    "Foundation URL.path preserved encoded NUL rather than decoding it; first regression rejected assumption. Adapter now decodes URLComponents.percentEncodedPath once and rejects NUL before resource dispatch; r2 Foundation passed.",
+    "First UI run exposed NativeInlineRenderer filtering file URLs. File attributes now enabled explicitly for Remote Markdown and table consumers; Chat default remains HTTP(S).",
+    "r3 retained screenshot and hierarchy show injected resource failure after clicking Example file. The route is reached. Initial tests failed observing a short loading phase through a ProgressIndicator-only query. r4 uses any accessibility type and a five-second test-provider delay.",
+    "r4 English reached QuickLook with scoped file content, returned and showed missing-resource error. Browser address assertion ran before navigation completed. Chinese used the full-width UITextView accessibility Link container and hit blank space. r5 selects the actual label-only child link and waits for local page content."
+  ],
+  "crossPlatform": "iOS source only; Android route requires independent artifact verification. Shareable candidate is scoped resource request contract, not the UIKit preview owner.",
+  "implementationProgress": {
+    "implemented": [
+      "Explicit file URL dispatch from Remote replay Markdown into existing scoped resource loader",
+      "Per-request loading/cancel/failure/retry and unavailable resource presentation",
+      "HTTP(S) uses existing browser adapter",
+      "Deterministic linked-file content and isolated provider; no local path reads"
+    ],
+    "open": [
+      "Official file citation attachment/card styling",
+      "File line/range positioning",
+      "Relative and sandbox URL classification",
+      "Search result/source citation complete URL producer and consumer",
+      "Complete official preview owner and layout",
+      "Remaining reasoning, title alignment and page-level visual feedback"
+    ]
+  },
+  "verification": {
+    "foundation": "passed",
+    "finalUI": "r5 four passed, zero failed",
+    "runtime": "v604 signed and installed, executable hash matches",
+    "integration": "ios-remote-v604-integration.json"
+  }
+}

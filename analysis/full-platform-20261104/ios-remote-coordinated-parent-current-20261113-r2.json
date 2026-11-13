@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-13T14:21:34.429211+08:00",
+  "scope": "iOS whole Remote/Chat core gap pass; source293 observations and independent offline transaction separated",
+  "previous": "ios-remote-coordinated-parent-current-20261113.json",
+  "files_reconciliation": "ios-files-browser-core-reconciliation-20261113.json",
+  "implemented": [
+    "Queue-only replay edit in existing composer, full host draft/attachments preserved by transient overlay",
+    "Cancel/navigation restores original durable draft; no text-only replacement of structured inputs",
+    "Exact task/session/pending ID/revision at menu admission and submission; no fallback append for stale target",
+    "Independent atomic same-row replacement; old queue/edit preserved on failure; original draft and committed queue survive restart",
+    "Existing list/messages/tools/approvals/ChatWork retained; no separate editor/backend introduced"
+  ],
+  "official_source": [
+    "ios-remote-pending-edit-sixth-20261113-findings.json",
+    "ios-remote-reasoning-sixth-20261113-findings.json"
+  ],
+  "independent_policy": [
+    "Only synthetic queue targets with complete known local text+attachments payload supported",
+    "Same identity/order with next revision, atomic frontend journal commit, failure retains edit",
+    "Transient overlay never overwrites original disk draft; unsubmitted editing changes are discarded on process termination",
+    "Visible inline Cancel carrier is an independent native adapter"
+  ],
+  "not_implemented": [
+    "Official sentPrompt/appServerQueuedPrompt discriminant mapping and original async replacement/receipt/failure recovery",
+    "Editing already-sent prompts or unknown selected-text/review context",
+    "Full reasoning.content projection and DIL widget->Valdi lifecycle/actions",
+    "Original list cross-process reading/paging/Live Activity and full complex approval/visual variants",
+    "Android/backend/message-attachment expansion"
+  ],
+  "verification": {
+    "contracts": "ios-remote-sixth-20261113-contract-r2.log passed",
+    "ui": {
+      "result": "passed",
+      "test": "testRemotePendingEditTransactionChinese",
+      "seconds": 148.76,
+      "bundle": "ios-remote-sixth-20261113-r1.xcresult",
+      "scope": [
+        "Cancel restores full original editor",
+        "Success replaces existing queue item",
+        "Failure retains editor and old queue",
+        "Process termination preserves durable original draft and accepted queue",
+        "Other host scope has no copied queue/draft"
+      ]
+    },
+    "after_ui_change": "Added menu scope/session/current-target admission guard; final simulator and signed device builds passed. No repeated identical long journey. Submission exact-target validation exercised in UI/contracts.",
+    "screenshot_viewed": "ios-remote-sixth-20261113-r1-attachments/D3551B71-69AA-4507-95CD-8DC0338D9A49.png",
+    "final_builds": [
+      "ios-remote-sixth-20261113-final-simulator-build.log",
+      "ios-remote-sixth-20261113-device-build.log"
+    ]
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "418ce4e339dcb53828dcaf61b668816a7d833470e84a40c6fb9d2bc93b511dc1",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "8047ddcc57dc8ae8569e3509178c04541c0b8c50be6964c42d86f39ab9c475eb",
+    "implementation/ios/Sources/NativeConversationHost.swift": "d225c1e0612c4625b223d86fd11ab9fefa614ae23bfbfd64d46d432cc1986f1d",
+    "implementation/ios/TextTests/main.swift": "98759d40cb029780d23f7f6affd384c29863746452242594baf810aa7d105f26",
+    "implementation/ios/UITests/HostInteractionTests.swift": "87b62f02caff89a5d247d89c5f3726404ff15a10a0d857edbb45d2896e50fbb3"
+  },
+  "runtime": {
+    "simulator": "ios-remote-sixth-20261113-simulator.json",
+    "physical": "ios-remote-sixth-20261113-device-review.json"
+  },
+  "next_major_module": "2 selected settings integration; only concrete source-backed core gaps, then10account and9plugins. Retain broader exact source gaps, no perpetual detail loop.",
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "module": 1,
+  "pass": "fifth",
+  "status": "partial",
+  "delivery": "Current major-module clear gaps repaired and archived; next priority is module8. Not full original parity.",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_snapshot": "ios-shell-parent-current-20261113-r2.json",
+  "priority": "1 gestures/margins/haptics ->8 ->3-7 ->2 named settings ->10 frontend only ->9 plugins only",
+  "source_reports": [
+    "ios-shell-haptics-fifth-20261113-findings.json",
+    "ios-shell-footer-fifth-20261113-findings.json",
+    "ios-shell-gesture-fifth-20261113-findings.json",
+    "ios-shell-fifth-root-gesture-20261113-findings.json"
+  ],
+  "implemented_this_pass": [
+    {
+      "area": "Haptic generator lifecycle",
+      "official": "selection6fe11e8 cached atengine+0x28; impact6fe106c cached per-style at+0x18; exact class bindings retained",
+      "change": "Lazily reuse selection generator for existing sidebar/status-pill consumers and separate light file-success generator after common preference/hardware/activity gates.",
+      "limits": "Shared host adapter lifetime is independent from original DI. No intensity/prepare/new trigger added; cannot attribute weak physical feel to cache difference."
+    },
+    {
+      "area": "Sidebar footer margins",
+      "official": "129d908 uses window safe bottom and compact vertical class; regular phone max(bottom-left,bottom-right) through76103b0. Same result supplies positive leading and negative bottom. Provider writes four-corner state then recalculates.",
+      "change": "Pure resolver covers actual source finite branches. Current admitted iOS26 full-window host samples both bottom corners, preserving window config; feed them independently rather than using compact formula universally or four-corner min.",
+      "limits": "Public corner sampling/window-bounds cache is an adapter. Missing or unsupported scene inputs remain nil and retain explicit old fallback, not source zero-radius assignment. Original provider flags/edge correction/cold-start/old-OS are unclosed."
+    },
+    {
+      "area": "Steady open closing direction",
+      "official": "629f04..24 close capability + mirrored velocity<0; related raw1/2 gate and separate associated-state branch retained",
+      "change": "Reject wrong-way closePan only while host animator=nil; retain current interrupted-animation policy, header/exposed-region and nested Back arbitration.",
+      "limits": "Not full source gesture recognizer or global simultaneous recognition."
+    },
+    {
+      "area": "All existing feature-root edge opening",
+      "official": "Root pane captures openMenu bound to root Bindable6df808 ->53d05c; independent canDragOpen && !LazyState(swipeDisabled) admission",
+      "host_defect": "showContent detaches retained initial UINavigationController; requestOpenMenu callback called original Chat openConversationSidebar, which only resolved navigationController.parent and returned nil. Toolbar closures used explicit root and still worked.",
+      "change": "openConversationSidebar reuses existing weak notificationShell before parent lookup. No child navigation guard or per-page swipe-disable behavior relaxed.",
+      "limits": "Nine current host roots verified by actual edge interaction; exact original per-Pane canDrag assignments and complete preference consumers remain unknown."
+    }
+  ],
+  "retained_core": [
+    "Home Chat/Work, keyboard and drafts",
+    "Sidebar tap/edge/header drag, partial cancel and interruption",
+    "Feature expansion, conversation selection/pin and reading retention",
+    "Search/settings/feature return through actual shell"
+  ],
+  "not_implemented": [
+    "Top background UIView complete frame anchors, separate from header guide56/-6",
+    "Original ImageRenderer proposedSize/scale, exact CurvedGradient sampling/orientation and optical equivalence",
+    "Live avatar/gear assigned flag and complete AccountAvatar/switcher resource pipeline",
+    "Original history action carriers, chatRequests/fetch sections, full catalog availability/order, recent fitter and pinned truncation",
+    "Complete original scroll/selection/pop/keyboard arbitration and physical tactile waveform",
+    "Original footer corner provider flags/edge correction/cold-start and old-OS sampling; remaining action metrics",
+    "Exact original per-pane drag permissions/disabled preference emitters, full-area pan competition and every nested Back variant",
+    "Actual physical haptic strength/timing comparison on this candidate"
+  ],
+  "verification": {
+    "pure": [
+      {
+        "command": "sh implementation/ios/test-haptics.sh",
+        "result": "passed",
+        "log": "ios-shell-fifth-20261113-haptics-contract.log",
+        "scope": "Ended/live-progress/changed endpoint, cancel/reset/supersession/duplicates and common preference/hardware/activity gates. UIKit cache/playback not claimed covered by Foundation test."
+      },
+      {
+        "command": "sh implementation/ios/test-sidebar-geometry.sh",
+        "result": "passed",
+        "log": "ios-shell-fifth-20261113-geometry-contract.log",
+        "scope": "Existing7 geometry vectors/RTL/insets/invalids, drag projection and12 independent footer vectors including asymmetric corners and unknown rejection."
+      }
+    ],
+    "ui": [
+      {
+        "bundle": "ios-shell-fifth-20261113-r1.xcresult",
+        "test": "testHapticsPreferenceChinese",
+        "result": "passed",
+        "seconds": 49.711,
+        "scope": "General route, setting change/process restart/restoration, no physical playback assertion"
+      },
+      {
+        "bundle": "ios-shell-fifth-20261113-r1.xcresult",
+        "test": "testSidebarEdgeGestureChinese",
+        "result": "passed",
+        "seconds": 23.086,
+        "scope": "Short open cancellation, full open, common footer leading/bottom inset equality, short/full close, header close, keyboard draft resume"
+      },
+      {
+        "bundle": "ios-shell-fifth-20261113-r1.xcresult",
+        "test": "testSidebarInterruptedTransitions",
+        "result": "passed",
+        "seconds": 12.28,
+        "scope": "Real animator with explicit reversal fixture, close/reopen/draft resume; fixture interruption separate from finger timing"
+      },
+      {
+        "bundle": "ios-shell-fifth-20261113-r2.xcresult",
+        "test": "testSidebarFeatureRootEdgeGesturesChinese",
+        "result": "passed",
+        "seconds": 74.836,
+        "scope": "Nine roots edge opening: Codex/tasks/library/customize/plugins/projects/sites/images/assistant. Plugins detail edge Back without opening sidebar, root edge then opens sidebar."
+      }
+    ],
+    "snapshot_boundary": "r1 passed cache/footer/steady-direction changes before later single shared-root lookup repair; r2 passed that later repair with unchanged cache/footer code. No unnecessary repeat of r1 after single root lookup fix. Final signed build includes all current changes.",
+    "images_viewed": [
+      "ios-shell-fifth-20261113-r1-attachments/A9A049C8-141C-4BEB-8DD3-390EBE3E5908.png",
+      "ios-shell-fifth-20261113-r2-attachments/EAFAA906-5684-458C-98A1-5DDFD4D8D402.png"
+    ],
+    "not_rerun": "Other languages/themes/large type, all other module feature operations, every nested navigation variant, actual tactile strength."
+  },
+  "haptics": {
+    "route": "Settings > General > Haptic feedback",
+    "new_trigger_added": false,
+    "strength_changed": false,
+    "prepare_on_gesture_added": false,
+    "physical_strength_verified": false
+  },
+  "runtime": {
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "profile": "20ea7f9b-3e12-4af2-8fe2-9a95ffe16080",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture",
+      "--remote-command-message-fixture",
+      "--remote-search-message-fixture",
+      "--remote-search-action-fixture",
+      "--remote-file-message-fixture",
+      "--remote-review-message-fixture",
+      "--remote-rich-message-fixture",
+      "--remote-linked-file-fixture",
+      "--remote-file-citation-fixture",
+      "--browser-preview-fixture",
+      "--chat-browser-fixture",
+      "--remote-model-slider-fixture",
+      "--remote-permission-fixture",
+      "--remote-context-usage-fixture",
+      "--remote-thinking-group-fixture",
+      "--remote-history-group-fixture",
+      "--remote-latest-group-fixture",
+      "--remote-project-sort-menu-fixture",
+      "--remote-task-controls-fixture",
+      "--chat-state-profile=20ea7f9b-3e12-4af2-8fe2-9a95ffe16080",
+      "--remote-draft-profile=20ea7f9b-3e12-4af2-8fe2-9a95ffe16080",
+      "--auth-state-profile=20ea7f9b-3e12-4af2-8fe2-9a95ffe16080",
+      "-AppleLanguages",
+      "(zh-Hans)",
+      "-AppleLocale",
+      "zh_CN",
+      "-rea.preview.appearance",
+      "light"
+    ],
+    "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/031B4D98-D3CE-4667-8B6B-620CD4061EDE/REAChatGPTHost.app",
+    "executable_sha256": "305bcc9fcc2c405b692d1ab354d86e4c61d86c8a77db15bb3789b4d46f5f2a3f",
+    "installed_hash_match": true,
+    "launch": "local.rea.chatgpt.ioshost: 12210",
+    "process": "12210 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/031B4D98-D3CE-4667-8B6B-620CD4061EDE/REAChatGPTHost.app/REAChatGPTHost",
+    "kept_running": true,
+    "physical_device": {
+      "installed_this_batch": false,
+      "reason": "Preserve current running phone review; this turn promised simulator-only operation.",
+      "existing_record": "ios-user-device-review-20261113-091302.json"
+    },
+    "signed_device_candidate": {
+      "path": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "build": "succeeded",
+      "codesign_strict": "passed",
+      "executable_sha256": "f2b112d41eba76a748000dabd2d1582ef07bdab76f801c21ce0661d9772d3958"
+    },
+    "limits": [
+      "CLI launch/hash/process proof, not a new UI acceptance claim",
+      "No physical tactile strength comparison or exact official visual-equivalence test"
+    ]
+  },
+  "cross_platform": {
+    "iOS": "current focus",
+    "Android": "paused; no new expansion or claimed equality"
+  },
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "a3a3e28529d9ee35aa1d1a4145b62b5a46ecb3c8a25cef2a0ab4751363746a2e"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredSidebarGeometry.swift",
+      "sha256": "129972262f11e3003ee8540ae6de0194471624b4d129ecc87a383f51d55dc28a"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "49c082d5ed1449fc005c934db187378b08102095c0525096ea0cd904c619706f"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "60f1a30d71f9105b5c63ae9a2ab8cb57a969be7d47423ba1e2d4da71acdb9243"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "9bf77bb71b58128619117ed845c39efb9634acac78beaa565a139570a917cfde"
+    },
+    {
+      "path": "implementation/ios/Tests/SidebarGeometryTests.swift",
+      "sha256": "d11712e3985d7fedb28dd013b98c446aa1e3d42f2c94b172b3184ef5063a4926"
+    }
+  ],
+  "user_review_path": [
+    "Chat/Work > edge-open sidebar > short/full/header closing; keyboard draft retained",
+    "Sidebar > Codex or any existing first-level feature root > left-edge opening; Plugins detail keeps Back priority",
+    "Settings > General > Haptic feedback switch; actual force/timing requires physical comparison when this candidate is installed"
+  ],
+  "next_major_module": "8 Files/browser gap pass; do not advance module9 non-plugins or real auth.",
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "released": false
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "status": "partial",
+  "scope": "iOS293 ChatGPTImageGen home native parent/content trees, library cohost and composer/toolbar boundaries; source-only",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "direct SwiftUI.View conformance witnesses, bounded ARM64 constructors and complete symbolic type trees; no target execution",
+  "home": {
+    "descriptor": "0x960cf3c",
+    "accessor": "0x31ff708",
+    "body_witness": "0x3226e74",
+    "actual_body": "0x3221a8c",
+    "branch_builder": "0x3222114",
+    "core_tree_record": "0x7fdbd00",
+    "core_tree": "analysis/full-platform-20261104/ios-native-images-home-20261112/home-tree.json",
+    "outer_tree_record": "0x7fdbd20",
+    "outer_tree": "analysis/full-platform-20261104/ios-native-images-home-20261112/home-parent-tree.json",
+    "actual_structure": [
+      "ConditionalContent of ImageGenContentWithLibraryView vs suggestions/standard-content branches",
+      "standard branch: refreshable ScrollView<VStack<TupleView<Optional<ImageGenHeroHeaderView with appearance hook>,ImageGenContentView>>>",
+      "suggestions branch has VStack<ChatGPTMedia.ImageSuggestionsView>",
+      "root uses ImageLoadingPreferenceKey overlayPreferenceValue/GeometryReader/onChange and hit-testing/accessibility modifiers",
+      "outer shape includes navigationTitle/displayMode, TemplateScreen, conversation modal, ImageGalleryScreenTemplate, subscription presentation, date environment, BannerBar/BannerView overlay, content shape and MessageInputStyle environment"
+    ],
+    "direct_calls": [
+      "ScrollView.init0x3222460",
+      "refreshable0x32224d4",
+      "navigationTitle0x3221d34",
+      "navigationBarTitleDisplayMode0x3221dac"
+    ],
+    "branch_limit": "Tree proves alternatives, not active account assignment. createTabEnabled/mediaGenerationEnabled/imageSuggestionsOnlyEnabled/imageLibraryBelowSuggestionsEnabled are model inputs; exact selector-to-input mapping remains partial."
+  },
+  "content": {
+    "descriptor": "0x960d668",
+    "body_witness": "0x3227f68",
+    "actual_body": "0x3226e78",
+    "group_builder": "0x3226f40",
+    "tree_record": "0x7fde9e0",
+    "tree": "analysis/full-platform-20261104/ios-native-images-home-20261112/content-tree.json",
+    "actual_structure": [
+      "VStack<ForEach<ResilientDecodableArray<ImageGenHomeResponse.Group>,Tagged<...>,...>>",
+      "each group has title and conditional ImageGenStylesCarousel / ImageGenStackedPromptCarousel / ImageGenPromptList / EmptyView",
+      "group content has redacted placeholder branch, overlay/compositing/blend/accessibility/safeAreaPadding modifiers",
+      "failure/unavailable alternative ContentUnavailableView<Text,...Button<Text>.buttonStyle(CapsuleButtonStyle)>",
+      "RequestState<ImageGenHomeResponse,Error> drives animation modifier"
+    ],
+    "limit": "Server groups and layout shape are source supplied. Do not always render all three layouts, derive order from enum declaration, or invent template fields from screenshots."
+  },
+  "children": [
+    {
+      "name": "ImageGenHeroHeaderView",
+      "descriptor": "0x960d690",
+      "body_witness": "0x3221a88",
+      "fields": "experience,action,topBarHeight,buttonHeight,headerFrame,topFadeOutHeight,bottomFadeOutHeight",
+      "limit": "Hero optionality from source tree; actual experience, fade/geometry values and body callback not traced."
+    },
+    {
+      "name": "ImageGenStylesCarousel",
+      "descriptor": "0x960db08",
+      "body_witness": "0x32510e0",
+      "fields": "group,items,actionHandler,itemSpacing"
+    },
+    {
+      "name": "ImageGenStackedPromptCarousel",
+      "descriptor": "0x960dae0",
+      "body_witness": "0x324ff3c",
+      "fields": "group,items,actionHandler,measuredContainerWidth,columnSpacing,columnPeekWidth,rowSpacing,rowContentSpacing,imageDimension,imageCornerRadius,itemsPerColumn"
+    },
+    {
+      "name": "ImageGenPromptList",
+      "descriptor": "0x960dab8",
+      "body_witness": "0x324e698",
+      "fields": "group,items,actionHandler,showShuffleButton,interItemSpacing,buttonSpacing,promptButtonDelayStep,promptButtonTransition"
+    }
+  ],
+  "library_cohost": {
+    "status": "direct native cohost proven; separate Library push button in standard branch not proven",
+    "descriptor": "0x960d6d8",
+    "body_witness": "0x3228640",
+    "actual_body": "0x3227f6c",
+    "direct_grid_connection": "0x3228034 calls0x53d87ac; that accessor loads descriptor0x9691c08 ImageLibraryGridView and forwards swift_getGenericMetadata",
+    "data_type_record": "0x7fde4d8 CachedPagedRequestState<ChatGPTImageLibrary.ImageLibraryImages,Error>",
+    "animation_type_record": "0x7fde4d0 AnimationModifier<that request state>",
+    "heading": {
+      "consumer": "0x322850c",
+      "literal_address": "0x8912b40",
+      "literal": "My images and videos"
+    },
+    "evidence": "analysis/full-platform-20261104/ios-native-images-home-20261112/library-content.asm",
+    "limits": [
+      "This is an embedded grid branch, not proof of a standalone Library navigation button.",
+      "library-content-tree.json (record7de77b0) is specifically heading Text shape; library-host-tree.json (record7fde4d8) is data-state type, not a complete library body tree.",
+      "Actual grid is generically instantiated with inherited content; full erased/generic parent body shape not fully resolved in this bounded pass."
+    ]
+  },
+  "composer_toolbar_boundary": {
+    "observed": "No MessageInputView/Composer child or Library button appears in the standard refreshable ScrollView subtree. Outer home tree carries MessageInputStyle environment; it has navigation title/displayMode but no decoded toolbar child.",
+    "conclusion": "Cannot claim an original bottom composer is absent from the final page: it could be cohosted by an unclosed ConversationRoot parent. Do not add an input or standalone Library button and mark it recovered from this subtree.",
+    "exact_missing": "ConversationRoot / sidebar imageGen constructor that hosts ImageGenView, then its bottom/composer and toolbar wrapper; opaque context0x975695c and caller not identified here.",
+    "offline_adapter": "Independent gallery action and composer may be exposed only as explicitly reconstructed adapter behavior until parent wiring is closed."
+  },
+  "resources": [
+    {
+      "role": "Create navigation title branch",
+      "key": "image_gen_create_navigation_title",
+      "literal": "0x8899e80",
+      "consumer": "0x3223854..0x3223878",
+      "fallback": "Create",
+      "selector": "0x3223850 branch; exact eligibility not attributed"
+    },
+    {
+      "role": "other navigation title branch",
+      "factory": "0x75d6748",
+      "consumer": "0x32238a4",
+      "literal": "Images",
+      "limit": "packed English literal confirmed; exact resource key not yet extracted"
+    },
+    {
+      "role": "embedded library heading",
+      "consumer": "0x322850c",
+      "literal_address": "0x8912b40",
+      "literal": "My images and videos"
+    }
+  ],
+  "actions_state_owner": {
+    "owner": "ImageGenViewModel; ImageGenContentView receives actionHandler/requestState/shuffledItems/showShuffleButton",
+    "inventory_only": [
+      "item.chooseImageInput",
+      "item.chooseFromGallery",
+      "item.takePhoto",
+      "item.tapped",
+      "shuffle",
+      "dismissBanner",
+      "heroEntrypointShown",
+      "heroEntrypointTapped",
+      "refresh",
+      "sceneEnteredBackground",
+      "attachmentsButtonTapped"
+    ],
+    "actual_consumer_limit": "Original group constructors are present, but per-card callback case mapping and subsequent model submission have not been independently closed. Action enum existence does not prove availability or wire contract.",
+    "service_boundary": "Repository supplies ImageGenHomeResponse groups; generation/auth/upload/subscription are service owners, not frontend successes. Existing Valdi gallery client is not evidence that this native home calls it."
+  },
+  "haptics_gestures": {
+    "status": "unresolved",
+    "observation": "Refreshable ScrollView and carousel/list UI types are proven. No exact haptic consumer or custom gesture threshold was closed. Do not add tap/scroll haptics from type names or unrelated app behavior.",
+    "next": "Trace actual child Button action and any HapticEngine consumer before restoring feedback; do not inspect Lightbox loading-game gesture shield as homepage evidence."
+  },
+  "minimum_native_page": [
+    "Explicitly choose source-proven standard refreshable ScrollView/VStack branch with optional fixture Hero experience and actual group layout discriminants",
+    "Render synthetic request loading/success/failure/retry, retain server group order and stable IDs; taps emit scoped intents",
+    "Keep original navigation title choice configurable; label custom Gallery/Composer adapter separately",
+    "Open independent original image-library grid/provider without claiming the standard branch had that navigation button"
+  ],
+  "unknowns": [
+    "Original ConversationRoot host with bottom input and toolbar controls",
+    "Exact branch predicate mapping and current-account feature values",
+    "Per-card child layout details/metrics/fonts/icons and callback routing",
+    "Source-backed carousel scrolling/haptic/gesture behavior",
+    "Full ImageLibraryGridView generic parent shape and action arguments",
+    "Generation/template/photo/service execution and actual outcomes"
+  ],
+  "next_minimum_evidence": [
+    "Trace incoming construction of ImageGenView accessor0x3264098 from ConversationRoot imageGen route; root bottom composer is the highest-value missing parent",
+    "Standard branch builder0x3222114 selectors and library branch decision; source fields only are not enough",
+    "Library body0x3227f6c→ImageLibraryGridView descriptor9691c08 generic factory53d87ac, content arguments at3228084..32280b8",
+    "StyleCarousel witness32510e0/StackedCarousel324ff3c/PromptList324e698 thunks then exact card action closure; avoid full-gallery expansion"
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-native-images-home-20261112",
+  "host_changes": "none",
+  "limits": [
+    "No original App execution, build/device/network/tool install.",
+    "Full generic trees preserve opaque symbolic contexts by address and cannot prove runtime branch selection.",
+    "Core, outer, content trees complete for selected records; library heading/data trees explicitly not mislabeled as full UI tree."
+  ]
+}

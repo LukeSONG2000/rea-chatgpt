@@ -1,0 +1,105 @@
+{
+  "batch": 590,
+  "status": "partial",
+  "scope": "Remote Files binary resources and native multi-format preview",
+  "evidence": "ios-files-v590-findings.json",
+  "implemented": [
+    "Scoped complete-byte resource provider shared by directory and diff entry points",
+    "Directory metadata separated from content and diff models",
+    "PNG, two-page PDF and RTF fixture resources",
+    "Unsupported format shows filename/byte count/capability state; unavailable resource returns a distinct error",
+    "Native zoom, PDF scroll, close and return"
+  ],
+  "independent_adaptations": [
+    "Binary resource contract and synthetic provider",
+    "Generated offline resources",
+    "QuickLook host and capability check",
+    "System directory icons, default row metrics and diagnostic text"
+  ],
+  "validation": {
+    "foundation": {
+      "status": "passed",
+      "report": "ios-files-v590-text.log",
+      "coverage": [
+        "Exact binary bytes and temporary ownership cleanup",
+        "Scope, missing/duplicate file identity, cancellation",
+        "Existing directory and preview lifecycle regressions"
+      ]
+    },
+    "ui": {
+      "r1": {
+        "passed": 0,
+        "failed": 2,
+        "report": "ios-files-v590-r1-summary.json",
+        "cause": "Image content loads after overlay controls appear. Native QuickLook then hides the toolbar. Test waited for the toolbar only. Reused the established native canvas wait and tap-to-reveal interaction."
+      },
+      "r2": {
+        "passed": 2,
+        "failed": 0,
+        "report": "ios-files-v590-r2-summary.json",
+        "scope": "Chinese/light and English/dark PNG zoom, PDF scroll, RTF, unsupported, missing and return to the pending task approval"
+      },
+      "r3": {
+        "passed": 5,
+        "failed": 0,
+        "report": "ios-files-v590-r3-summary.json",
+        "scope": "Directory load/retry/empty, text preview, task draft/reading restoration, cross-host isolation, diff wrapping/copy, resource load/retry/cancel/unavailable, dismissal and restart"
+      },
+      "distinct_passed": 7
+    },
+    "visual": {
+      "status": "inspected",
+      "manifest": "ios-files-v590-r2-attachments/manifest.json",
+      "coverage": [
+        "Image before/after pinch visibly enlarged",
+        "Two-page PDF scroll shifts page 2 into view",
+        "RTF readable in light/dark",
+        "Unsupported and missing resource feedback readable"
+      ],
+      "limits": "Resource rendering follows system QuickLook; official Remote host visual parity remains unverified."
+    },
+    "runtime": "ios-files-v590-runtime.json",
+    "retention": "ios-files-v590-retention-final.json"
+  },
+  "unfinished": [
+    {
+      "page": "File preview",
+      "priority": "P1",
+      "missing": "Official Remote preview owner and precise presentation",
+      "evidence_gap": "FileDirectoryViewModel openFileHandler producer and preview destination",
+      "next": "Trace owner only when needed for the current visual/interaction gap",
+      "acceptance": "Version-bound owner evidence and same-entry runtime comparison"
+    },
+    {
+      "page": "File preview",
+      "priority": "P2",
+      "missing": "PDF text selection/zoom, Office, HEIC orientation and large-resource behavior",
+      "next": "Use bounded synthetic format vectors when these become a core page requirement",
+      "acceptance": "Native preview, interaction and return per format"
+    },
+    {
+      "page": "Remote Files",
+      "priority": "P2",
+      "missing": "Exact icons/metrics, long directory and wide-screen navigation",
+      "evidence_gap": "Row/header payloads and NavigationSplitView predicate",
+      "next": "Retain v589 precise evidence gaps",
+      "acceptance": "Per-entry source and target-device validation"
+    },
+    {
+      "page": "Services",
+      "priority": "future",
+      "missing": "Resource retrieval, authorization and download service",
+      "next": "Replace injected provider when backend becomes in scope",
+      "acceptance": "Scoped provider preserves existing frontend states"
+    },
+    {
+      "page": "Platforms",
+      "priority": "P2",
+      "missing": "Physical device, Android, external display, tactile feedback and actual notification delivery",
+      "next": "Follow device availability and stage gates",
+      "acceptance": "Independent device/runtime evidence"
+    }
+  ],
+  "cross_platform": "Candidate sharing boundary is resource/event contracts and fixture vectors. QuickLook, keyboard, file ownership and navigation stay platform-specific. Android has no new acceptance evidence in this batch.",
+  "next_minimum_action": "Review remaining Stage1 settings consumers and in-session appearance changes across already adapted pages and presented previews; keep peripheral file formats on the unfinished ledger."
+}

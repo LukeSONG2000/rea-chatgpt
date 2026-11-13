@@ -1,0 +1,71 @@
+{
+  "batch": 564,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence": [
+    {
+      "type": "artifact_observation",
+      "source": "ios-remote-v508-findings.json",
+      "offsets": [
+        "0x19ebb20",
+        "0x19ebd58",
+        "0x19eb4ac",
+        "0x3e4910",
+        "0x32bcec"
+      ],
+      "conclusion": "Home inline starts unfocused and delegates submitted-thread navigation to owner. Project new screen focuses on appear and presents submitted thread in place."
+    },
+    {
+      "type": "artifact_observation",
+      "source": "ios-remote-v509-destination-findings.json / ios-remote-v511-destination-findings.json",
+      "conclusion": "Destination retains host/workspaceDirectory/projectID. Absent selected host remains nil."
+    },
+    {
+      "type": "artifact_observation",
+      "source": "ios-remote-v516-toolbar-menu-findings.json",
+      "offsets": [
+        "0x1ce9408",
+        "0x19433b4",
+        "0x1901af0"
+      ],
+      "conclusion": "Thread new action dispatches through parent callback with context; full availability/transition policy remains partial."
+    },
+    {
+      "type": "public_source",
+      "source": "analysis/upstream-codex-20261105/app-server-README.md",
+      "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+      "conclusion": "thread/start, turn/start and returned thread identity are distinct API operations. Public API is independent of frozen iOS UI version."
+    }
+  ],
+  "host_gap": "Home and new-thread page always dispatch to DisconnectedRemoteComposerAdapter, so no accepted task is projected into list or conversation.",
+  "implementation_plan": "Independent synthetic creation transaction using existing draft validation, durable replay store, stable task identity and first turn. Home pushes from parent; new-thread page replaces its content in place. Retain disconnected behavior outside replay mode.",
+  "unknown": [
+    "Official server task creation, title generation and idempotency",
+    "Official local persistence and process recovery",
+    "Full project/host eligibility and navigation reuse",
+    "Android independent implementation"
+  ],
+  "validation": "Foundation r5 passed; six distinct UI cases have passing results; r1 2/2, r2 5/6, r3 4/4. Retained keyboard transition failure and test-only compile failure.",
+  "validation_notes": [
+    {
+      "record": "ios-remote-v564-r1-creation.xcresult",
+      "result": "Chinese/light and English/dark creation journeys passed"
+    },
+    {
+      "record": "ios-remote-v564-r2-creation.xcresult",
+      "result": "5 passed, legacy Home keyboard geometry assertion failed during software keyboard entry",
+      "evidence": "ios-remote-v564-r2-keyboard-failure.png",
+      "action": "Reuse v546 bounded visible-keyboard predicate before existing geometry assertions; product keyboard layout unchanged"
+    },
+    {
+      "record": "ios-remote-v564-contract-tests-r3.log",
+      "result": "New attachment test referenced a helper scoped to a different test block; replaced with direct throwing read and precondition in r4/r5"
+    },
+    {
+      "record": "ios-remote-v564-r3-creation.xcresult",
+      "result": "4/4 passed on final candidate source, including both language/appearance creation journeys, uncatalogued target visibility and legacy keyboard/search/draft return"
+    }
+  ]
+}

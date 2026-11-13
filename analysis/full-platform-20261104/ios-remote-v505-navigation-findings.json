@@ -1,0 +1,174 @@
+{
+  "batch": "v505",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static",
+  "question": "Find actual task-list header owner and action routes before adding top controls",
+  "confirmed": [
+    {
+      "topic": "Unified content owner",
+      "evidence": [
+        "CodexContentView descriptor0x955fbe8",
+        "accessor0x4240b4",
+        "body witness0x30b218 ->0x3048f8"
+      ],
+      "observation": "41-field generic CodexContentView owns taskList, presentedTaskList, openMenu, dismiss, isCodexRemoteAvailable, layout, isComposing, canSearch, isSearching, homeSearchQuery, homeComposerActionHandler and menu configuration. Header reconstruction should be driven by these capabilities/state inputs."
+    },
+    {
+      "topic": "Reliable field-slot interpretation",
+      "evidence": [
+        "descriptor0x955fbe8 +20 count41 +24 field-vector-word-offset6"
+      ],
+      "observation": "Metadata field-vector starts0x30. Slot0x4c=openMenu(index7),0x90=isCodexRemoteAvailable(24),0x94=layout(25),0x98=isComposing(26),0x9c=canSearch(27),0xa0=isSearching(28),0xa4=homeSearchQuery(29),0xa8=homeComposerActionHandler(30),0xbc=dismiss(35). These are metadata slots pointing to instance offsets, not fixed instance offsets."
+    },
+    {
+      "topic": "Sidebar menu and dismiss are separate owners",
+      "evidence": [
+        "0x305b3c..0x305b74",
+        "0x305bec..0x305c08",
+        "0x307550..0x3075e8"
+      ],
+      "observation": "Main body computes openMenu !=nil && !isComposing && !isSearching and passes it into shared navigation helper0x6f22180. Separate optional dismiss creates topBarLeading DismissToolbarItem.",
+      "limit": "Shared navigation helper callback/icon internals and parent openMenu capture remain unclosed. Do not equate sheet dismiss with sidebar open."
+    },
+    {
+      "topic": "Principal menu/search toolbar gate",
+      "evidence": [
+        "0x3065fc..0x306624",
+        "0x306690",
+        "0x3066c8..0x3066e4",
+        "0x4296c0 ->0x3099f8",
+        "0x309c18 ->0x4296cc ->0x309d50",
+        "layout descriptor0x95ecf54"
+      ],
+      "observation": "Principal item constructed when isCodexRemoteAvailable && !isComposing && layout != detail(raw2). It delegates to3099f8 then309d50, which creates menu content and switches to CodexHomeSearchBar according to isSearching. Layout enum cases standard/taskList/detail."
+    },
+    {
+      "topic": "Search icon/action capability",
+      "evidence": [
+        "0x30722c..0x307254",
+        "0x3072b8..0x307304",
+        "0x4292f8 ->0x30a554",
+        "0x30a670 ->0x42944c",
+        "0x429474..0x429498"
+      ],
+      "observation": "Within the eligible toolbar branch, canSearch && !isSearching produces a trailing search button. Action42944c calls homeComposerActionHandler with beginSearching. That event has no payload, encoded empty-case payload4/tag1 in this single-payload enum.",
+      "limit": "Toolbar has additional isCodexRemoteAvailable/isComposing/layout branching above this local gate; do not apply the local predicate universally to detail/composing states."
+    },
+    {
+      "topic": "Official search resource",
+      "evidence": [
+        "0x30a73c ->0x74f86d8",
+        "0x74f8704..0x74f870c",
+        "string0x8a55c20"
+      ],
+      "observation": "The search label uses OpenAI/Symbols/magnifying-glass-lg."
+    },
+    {
+      "topic": "Search cancel route",
+      "evidence": [
+        "0x30a208..0x30a248",
+        "0x4296ec..0x429764",
+        "CodexHomeComposerAction descriptor0x955ee5c",
+        "constant0x7cd9580"
+      ],
+      "observation": "Search bar receives homeSearchQuery Binding and cancel closure4296ec. Cancel reaches homeComposerActionHandler with endSearching(empty-case payload5/tag1).",
+      "limit": "Resolved hosting window receives endEditing(true) before endSearching. See searchinput-findings for native focus and IME behavior."
+    },
+    {
+      "topic": "Title menu constructor",
+      "evidence": [
+        "0x308600..0x30862c",
+        "0x4294a4 ->0x308a5c",
+        "0x4294b0..0x429558"
+      ],
+      "observation": "SwiftUI.Menu uses content closure308a5c and CodexHomeMenuLabel produced by4294b0. Label fallback literal Codex at429518..429524. Title can branch by state.",
+      "limit": "Menu content actions/options and full title-state table remain unclosed. Screenshot cannot justify a generic Chat/Work mode picker."
+    },
+    {
+      "topic": "Search reducer and cancellation query lifetime",
+      "evidence": [
+        "CodexNavigationView0x301b84..0x301c34 ->0x2dd4f4 lazyhomeComposer ->Handlerwitness0xad43e40",
+        "0x301ed0..0x301f0c writes isSearching/queryBinding/homeComposerActionHandler",
+        "witness0x2db490 ->dispatch0x2db340",
+        "jumptable0x7ceb537 base0x2db380 scale4",
+        "Mode descriptor0x955e6b8 browsing0/composing1/searching2",
+        "beginSearching0x2db46c..0x2db48c",
+        "endSearching0x2db424..0x2db44c",
+        "constructor0x2da13c clearSearch callback+0x58; producer0x2dd4f4 binds0x3e48dc",
+        "clearSearch0x3e48dc..0x3e4900 ->querysetter0x3032e8"
+      ],
+      "observation": "beginSearching sets mode searching(raw2) and chatFieldIsFocused=false. endSearching is guarded by current mode==searching, invokes clearSearch callback then changes mode to browsing(raw0). clearSearch sends the empty Swift String to3032e8. Repeated endSearching outside searching returns without clearing. Search state is owned by HomeComposerViewModel, query by CodexViewModel.",
+      "limit": "Search result matching, source aggregation and scroll position restoration are separate boundaries. Chat-field focus=false does not establish search-field first-responder behavior."
+    }
+  ],
+  "minimum_next_integration": {
+    "classification": "independent_design_recommendation_based_on_confirmed_owner_boundaries",
+    "items": [
+      "Introduce a list-header presentation input with separate sidebar-open and dismiss callbacks plus canSearch/isSearching/query state. Keep sheet dismissal available where the host is actually a sheet.",
+      "Implement beginSearching → visible query binding → endSearching through one list owner. begin clears chat-field focus; end in searching clears query then restores browsing. Any synthetic local title matching remains independently designed until official result projection is recovered.",
+      "Use the official search resource. Expose mode/menu options only after closure308a5c is traced."
+    ],
+    "verification": [
+      "Open search, type, cancel, re-open. Record keyboard/query behavior independently.",
+      "Opening sidebar must route to root navigation and return to same source/list position. Closing a modal must keep distinct semantics.",
+      "Exercise canSearch=false, composing, detail layout, and optional dismiss independently."
+    ]
+  },
+  "remaining_boundaries": [
+    {
+      "entry": "0x6f22180 and callback0x428cb4 from0x305bd8",
+      "purpose": "Close shared navigation/openMenu actual button and action, including icon and parent capture."
+    },
+    {
+      "entry": "CodexNavigationView body0x301468; CodexScreen measured body0x2fe7cc; generic CodexContentView producer",
+      "purpose": "Close actual outer page instantiation and override values before replacing independent host shell."
+    },
+    {
+      "entry": "0x308a5c",
+      "purpose": "Trace title-menu contents and destinations."
+    },
+    {
+      "entry": "querysetter0x3032e8 ->0x2d3c2c",
+      "purpose": "Query-to-results projection/aggregation. Native field/focus/cancel chain is now in ios-remote-v505-searchinput-findings.json."
+    }
+  ],
+  "validation": {
+    "runtime": "not_run",
+    "production_edits": false,
+    "visual": "not_accepted"
+  },
+  "files": [
+    "ios-remote-v505-content-metadata.json",
+    "ios-remote-v505-content-witness.json",
+    "ios-remote-v505-navigation-metadata.json",
+    "ios-remote-v505-navigation-witnesses.json",
+    "ios-remote-v505-home-witnesses.json",
+    "ios-remote-v505-navigation-actions.json",
+    "ios-remote-v505-navigation-chain.asm",
+    "ios-remote-v505-home-imports.json",
+    "ios-remote-v505-content-body-imports.json",
+    "ios-remote-v505-navigation-xrefs.json",
+    "ios-remote-v505-home-builder-xrefs.json",
+    "ios-remote-v505-toolbar-owner-xrefs.json",
+    "ios-remote-v505-parent-xrefs.json",
+    "ios-remote-v505-search-state.asm",
+    "ios-remote-v505-search-state-metadata.json",
+    "ios-remote-v505-searchbar.asm",
+    "ios-remote-v505-searchbar-imports.json",
+    "ios-remote-v505-searchbar-types.json",
+    "ios-remote-v505-searchinput-metadata.json",
+    "ios-remote-v505-searchinput-witnesses.json",
+    "ios-remote-v505-searchinput.asm",
+    "ios-remote-v505-searchinput-calls.json",
+    "ios-remote-v505-searchinput-findings.json",
+    "ios-remote-v505-searchinput-helpers.asm",
+    "ios-remote-v505-searchinput-class.json"
+  ],
+  "search_consumer_followup": "ios-remote-v505-search-results-findings.json",
+  "search_close_surface_followup": "ios-remote-v505-searchinput-findings.json"
+}

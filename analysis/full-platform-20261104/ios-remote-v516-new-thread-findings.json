@@ -1,0 +1,73 @@
+{
+  "status": "partial",
+  "evidence_type": "official-artifact-static-analysis",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "confirmed": [
+    {
+      "claim": "Standalone button exists conditional on showsNewThreadButton bit0; false bypasses construction. Parent producer remains unresolved.",
+      "offsets": [
+        "0x1a30480",
+        "0x1a30484",
+        "0x1a30638"
+      ]
+    },
+    {
+      "claim": "Button label uses square-and-pencil asset already resolved in v481. Action dispatch is CodexRemoteThreadViewModeling witness+0x80. Concrete VM conformance maps to 19433b4 then 1901af0.",
+      "offsets": [
+        "0x1a30848",
+        "0x1ce9408",
+        "0x95aa488",
+        "0x7e0b714",
+        "0xa504d98",
+        "0x19433b4",
+        "0x1901af0"
+      ]
+    },
+    {
+      "claim": "Concrete action loads closure from runtime field-offset slot b1e7ff0, obtains Optional String from 1902f08, invokes closure forwarding that argument.",
+      "offsets": [
+        "0x1901b00",
+        "0x1901b10",
+        "0x1da9e20"
+      ]
+    },
+    {
+      "claim": "1902f08 consumes Optional Generated.Components.Schemas.Thread, examines field at metadata-relative offset+0x24, converts empty String to nil via2a670; absent/empty source falls back18efe58 and then runtime slotb1e7f90. Field semantics not yet bound.",
+      "offsets": [
+        "0x7cefc80",
+        "0x95f8f7c",
+        "0x1902f3c",
+        "0x1902f5c",
+        "0x2a670",
+        "0x1902f8c"
+      ]
+    },
+    {
+      "claim": "VM fieldmetadata contains showNewThreadAction with mangled type ySSSgYbScMYcc, an optional String callback. Mapping namedfield to b1e7ff0 remains inference until initializer binding.",
+      "offsets": [
+        "0x95aa8a4",
+        "0x9a32f08",
+        "0x8dfc4e2"
+      ]
+    }
+  ],
+  "inference": [
+    "Resolved Optional String likely working-directory context, but no host selection is passed at toolbar dispatch. Captured callback context determines remaining routing."
+  ],
+  "unknown": [
+    "showsNewThreadButton outer caller value and environmental toolbar visibility",
+    "exact Thread field name at metadata+0x24",
+    "mapping runtime slotb1e7ff0 to showNewThreadAction and closure producer/destination",
+    "host/account ownership captured by parent closure",
+    "b1e7f90 final fallback field name"
+  ],
+  "next_minimal_actions": [
+    "Inspect initializer write of b1e7ff0 at18ba338 and trace supplied callback argument",
+    "Bind Thread fieldmetadata+0x24 and fallback getter18efe58 field globalb1e7cf0",
+    "Find modifier1aa5b30 generic construction to establish outer showsNewThreadButton producer"
+  ],
+  "integration_boundary": "Keep button action adapter explicit until owner captures proven. Do not derive target host from task-list source filter. No source-backed destination routing claim yet."
+}

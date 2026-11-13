@@ -1,0 +1,163 @@
+{
+  "batch": "v507",
+  "status": "verified-static-date-header-consumer",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static",
+  "scope": "Chronological producer outputs TaskSection.ID.title localized date buckets. Shared V2 header and compact rows only.",
+  "findings": [
+    {
+      "claim": "Date buckets have ID.title raw0, which maps to header kind0. This is proved from the ID classifier and consumer, independently of the Pinned title special case.",
+      "locations": [
+        "v487 enum case order",
+        "v507 chronological producer",
+        "0x39cf18..0x39cf38",
+        "0x45c6f0..0x45c700 mask0x25 includes raw0",
+        "0x39d0b4..0x39d0b8 stores kind",
+        "0x32c370..0x32c3d8 independent classifier"
+      ]
+    },
+    {
+      "claim": "Ordinary date headers are collapsible through the same per-section callback. The callback is installed unconditionally in the active V2 header constructor; date identity scopes it to that title bucket.",
+      "locations": [
+        "0x39cf78..0x39cf84 reads collapsed value for descriptor ID",
+        "0x39d0c4..0x39d0cc installs0x44adf0",
+        "v505 callback0x439144..0x43915c reads/negates/sets saved state"
+      ]
+    },
+    {
+      "claim": "Date kind0 has a visible disclosure chevron because callback exists and kind !=1. It rotates according to expansion but does not use fade-when-expanded. Only kind2 sets that flag.",
+      "locations": [
+        "0x3a2240..0x3a2260 callback/kind gate",
+        "0x3a2260..0x3a2278 expanded=!isCollapsed; fadesWhenExpanded=kind==2",
+        "v499 shared chevron body0x6ee7cf0"
+      ],
+      "values": {
+        "kind": 0,
+        "hasDisclosure": true,
+        "fadesWhenExpanded": false,
+        "collapsedRotationRadians": 0,
+        "expandedRotationRadians": "pi/2",
+        "rotationAnimation": "easeInOut 0.2, existing helper/environment gate applies"
+      }
+    },
+    {
+      "claim": "Shared V2 kind0 title is body semibold with ChatGPT/text/primary. Chevron is caption regular, small image scale, ChatGPT/icon/tertiary, leading padding -2.",
+      "locations": [
+        "0x3a1744..0x3a1768 font application",
+        "0x3a1d0c..0x3a1d5c font kind switch",
+        "0x39d09c primary color factory",
+        "0x39d0dc field0x58",
+        "0x3a227c..0x3a238c chevron formatting"
+      ],
+      "limitation": "Official custom font wrapper conversion is statically identified; native SwiftUI semantic font adapter is independent implementation."
+    },
+    {
+      "claim": "Header outer HStack center spacing8, title/subtitle HStack firstTextBaseline spacing8, then chevron then Spacer(minLength:0). Entire header uses horizontal20 and shared scaled minHeight44 then vertical2.",
+      "locations": [
+        "0x3a1c28..0x3a1c2c",
+        "0x3a2214..0x3a2218",
+        "0x3a2464..0x3a2468",
+        "0x39d0d8..0x39d0dc horizontalPadding20",
+        "0x3a1838..0x3a1870 constructs RowMetrics",
+        "0x39fc88..0x39fde8 RowMetrics body"
+      ],
+      "values": {
+        "horizontalPadding": 20,
+        "scaledMinHeightBase": 44,
+        "verticalPadding": 2
+      }
+    },
+    {
+      "claim": "For current ID.title, header extra topSpacing is always0. The consumer does inspect the preceding descriptor for other section types, but the current raw0 case returns0 before adjacency logic.",
+      "locations": [
+        "0x39d024..0x39d088 prepares previous descriptor and passes current descriptor as x20",
+        "0x39c40c load currentID tagword+0x38",
+        "0x39c410 shift62",
+        "0x39c414..0x39c41c raw0 falls through to Double0",
+        "0x39c420 return"
+      ],
+      "values": {
+        "topSpacing": 0
+      }
+    },
+    {
+      "claim": "Date task rows are not inProject. ID.raw0 maps kind0, so the project extraction fails. Compact rows omit the hidden folder placeholder and project spacing. The additional last-row bottom12 also stays0 because it requires successful project-kind extraction.",
+      "locations": [
+        "0x39ad60..0x39adb8 isInProject derivation",
+        "0x45daf8..0x45db18 mask0x1a excludesraw0",
+        "0x45c6f0 mask0x25 includesraw0 ->kind0",
+        "0x45362c keypath0x7cf9d90",
+        "0x338d44->0x338d1c->0x3a1580 extracts only kind1",
+        "0x39b34c initializes bottom0",
+        "0x39b36c..0x39b3ac same kind extraction; nil jumps39b3d0",
+        "0x39b3b0..0x39b3cc only successful project extraction tests last row and writes12"
+      ],
+      "values": {
+        "isInProject": false,
+        "projectPlaceholder": false,
+        "additionalLastRowBottomPadding": 0,
+        "compactHorizontalPadding": 20,
+        "compactScaledMinHeightBase": 44,
+        "compactVerticalPadding": 2
+      }
+    },
+    {
+      "claim": "Nonempty trimmed search preserves supplied date headers and descriptor order. Header suppression returnsfalse and effectivecollapsed becomesfalse; rows bypass saved collapse. Callback remains installed and can change saved collapse state for later empty search. This proves consumer behavior for supplied date descriptors, not which descriptors search producer emits.",
+      "locations": [
+        "0x398dd8..0x398e60 trimmed search predicate",
+        "0x399084..0x399088->0x399270 suppressionfalse",
+        "0x39ce98..0x39ceb8 header retained",
+        "0x39cf50..0x39cf58 effectivecollapsedfalse",
+        "0x39c0f4..0x39c278 rowcollapse bypass",
+        "0x39d0c4..0x39d0cc callback remains"
+      ],
+      "limitation": "Search-result bucket production and backend return set are outside this consumer-only audit."
+    }
+  ],
+  "minimum_integration": {
+    "dateHeaderKind": 0,
+    "collapsible": true,
+    "chevronFadesWhenExpanded": false,
+    "topSpacing": 0,
+    "titleFont": "body.semibold",
+    "titleColor": "ChatGPT/text/primary",
+    "rowIsInProject": false,
+    "additionalLastRowBottomPadding": 0,
+    "search": "retain supplied headers; effective expansion true; preserve saved collapsed state and toggle callback"
+  },
+  "validation": {
+    "static": "direct arm64 branch/register dataflow with reused SHA-bound reports",
+    "runtime": "not executed",
+    "production_changes": false
+  },
+  "limits": [
+    "No official app runtime or device geometry validation.",
+    "Date localization and chronological section ordering reuse parent v507 producer investigation.",
+    "No claim that legacy/sidebar renderers use these V2 metrics.",
+    "Whole-list custom section placement, search upstream grouping and list-composer consumers remain separate investigations."
+  ],
+  "evidence_files": {
+    "ios-remote-v507-date-header.asm": "f29148fd84f59435a4a4b3eeddfb6570e296ae1ec68104686988f94184638e34",
+    "ios-remote-v487-identity-cases.json": "361937082a5caa35f92ba80d33a99ae4f9c44fd5b0856fdc0db1a37c77ef9bc6",
+    "ios-remote-v487-header-callers.asm": "d9d9dfdf978322f0b5c218a4dd0d5267136fa56a755a5093eb44d9bda6b1acb1",
+    "ios-remote-v393-integration.json": "f170ca8b731369feb3b46fe8f27d8007b4b6afd2cd03fa48a1487f973c67e601",
+    "ios-remote-v394-integration.json": "cb5f10576f5558cc6ae0dbeafa821938656491beb315584aea9b7513ca5d41df",
+    "ios-remote-v491-project-icon-findings.json": "a4a2c312f3878bacca46d498dd577802d7ef19ca6fe7b298d15a44d3ec62e8dc",
+    "ios-remote-v492-integration.json": "d69c77b771c0afa9295bbe5902a7d0eb8c8d52adf6da474b6d1690b98b392ec3",
+    "ios-remote-v492-top-spacing.asm": "1010afa2f61575963273425ec85d190cec156aa741abec0540153b5a4c8c518c",
+    "ios-remote-v499-disclosure-findings.json": "42d6bed0117d8c119dcb71cac43816f92ffcfa1d8d941d0be5ad12304b14ff75",
+    "ios-remote-v501-projects-collapse-findings.json": "ffb02b95752a983f8c9b34bbd10f699a03233a7b49c9d1c623cd74eaa158a78d",
+    "ios-remote-v501-projects-collapse-kind-extraction.asm": "16041538e5fee96eeb9e930e0d5da3c2270de083897fffd64e1674be6c319a40",
+    "ios-remote-v503-header-minimum-findings.json": "4939993c7ceb25cc8873ecf01b240069874934f0d8a5ff72c12777647bb3cd97",
+    "ios-remote-v505-search-results-findings.json": "a13ab7163f94d9db8b79c90e8adfa5c36b9cd0cffb428c78fc0d9a633de27f45",
+    "ios-remote-v505-search-consumer-39ce80.asm": "4d32b301fce0f376e0c9875627084582ccd19cd4726776cc685de13df1b7f4ea",
+    "ios-remote-v505-search-consumer-39ac30.asm": "50cfb9aa3460dbea3a4547b423adce18b782f91ede5137b305f1f3af15c55fb3",
+    "ios-remote-v505-search-consumer-39b34c.asm": "526495d73355a055c636d57c526ec84e939dc6eb3b2cb3ba0b832c07d298b178",
+    "ios-remote-v507-chronological-findings.json": "4cb62edbc0d41043e582e19746b9831d65f455cce3a53b49e822e32a4b591507"
+  }
+}

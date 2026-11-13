@@ -1,0 +1,183 @@
+{
+  "batch": "v605",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Is the Remote transcript top progressive effect missing, and is a source-supported host mechanism still omitted?",
+  "findings": [
+    {
+      "id": "existing-top-effect",
+      "evidence_type": "official-artifact-static plus current-host-source",
+      "conclusion": "Remote transcript top-only UIKit soft scroll-edge configuration and iOS26 top safe-area underlap are already implemented. Calling the entire Remote top effect unimplemented contradicts current source and retained v483 runtime evidence.",
+      "source": [
+        "1a4ccc4..1a4ceb0 controller-observer callback",
+        "1a4ce44 topEdgeEffect",
+        "1a4ce60 softStyle",
+        "1a4ce74 setStyle:",
+        "1a4c634..1a4c66c top ignore-safe-area availability"
+      ],
+      "current_host": [
+        "RecoveredRemoteTranscriptCollection.swift viewDidLoad sets collectionView.topEdgeEffect.style=.soft after iOS26 and build exclusion checks",
+        "NativeConversationHost.swift RemoteThreadFixturePage body ignoresSafeArea(.all,edges:ignoredTranscriptTopEdge)"
+      ],
+      "runtime_scope": "v483 r3 retained report says content progressively blurred behind status/title/back/options. This batch did not rerun UI or claim current pixel equivalence."
+    },
+    {
+      "id": "separate-effect-owners",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Task list uses SwiftUI vertical soft/nil style with V2 selection. Transcript uses UIKit top-only soft style. Model slider separately uses SwiftUIStyleguide.VariableBlur and dynamic private UIKit effect factory. The slider mask/radius is not evidence for a transcript-title blur overlay.",
+      "source": [
+        "v540-edge-findings",
+        "v529-slider-material-findings"
+      ]
+    },
+    {
+      "id": "explicit-inset-owner",
+      "evidence_type": "official-artifact-static plus current-host-source",
+      "conclusion": "The ordinary Remote collection disables UIKit automatic content inset adjustment. Current reconstructed collection uses UIKit default automatic adjustment. Follow-up closes the official contentPadding and explicit inset producers. Integration must preserve the whole outer geometry/bottom-bars ownership to avoid double-counting SwiftUI safe-area reduction.",
+      "chain": [
+        "1a4c560 sets w4=1 before 1a4c56c ->3f84474",
+        "3f844a4 saves x4 to x22;3f844f4 stores byte at ChatCollectionView+0x88",
+        "ChatCollectionView field order identifies disablesAutomaticContentInsetAdjustment after keyboardDismissPadding, with constructor storage matching+0x88",
+        "3f859a0 reads+0x88;3f859dc forwards as x4 to3f85a3c",
+        "3f87490 saves w4 at sp+0x10;3f877d4..3f877e0 stores byte through controller metadata field slot+0x178",
+        "3f88140..3f88148 reads same controller slot through helper207748",
+        "207748 loads byte;20774c compares exactly1",
+        "3f8814c skips setter if not1;3f88154 sets w2=2;3f88158 calls setContentInsetAdjustmentBehavior:",
+        "local iPhoneSimulator SDK UIScrollView.h enum raw2=UIScrollViewContentInsetAdjustmentNever"
+      ],
+      "limits": [
+        "No runtime proof this owner difference causes a visible mismatch in the current host.",
+        "Controller inset application and preservation logic must be integrated with the existing reading-anchor/keyboard behavior. A lone .never assignment would remove current compensation."
+      ]
+    },
+    {
+      "id": "scroll-resolved-callback",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Collection onScrollViewResolved is forwarded from CodexRemoteThreadViewContent.onTranscriptScrollViewResolved; it is an independent optional owner callback, not the same callback that sets topEdgeEffect.",
+      "chain": [
+        "CodexRemoteThreadViewContent descriptor95ac4bc field index12 onTranscriptScrollViewResolved, field-offset vector4 machine words => metadata slot0x50",
+        "1a4c4e0..4e8 reads owner pair through slot0x50",
+        "1a4c508 passes pair at caller stack+0x48",
+        "3f844b0 reads frame+0x58, equivalent incoming stack+0x48",
+        "3f84524 stores pair at ChatCollectionView+0x100/+0x108",
+        "existing v482 update3f85da4..3f85dc0 invokes optional pair after collection updates"
+      ],
+      "limits": [
+        "The outer producer may supply nil or nonnil by embedding. This batch does not establish a missing nonnil callback in ordinary phone context."
+      ]
+    },
+    {
+      "id": "explicit-inset-formula",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Remote contentPadding is NSDirectionalEdgeInsetsZero. Explicit content scroll insets use outer safe-area top/bottom and measured whole BottomBars height. Indicator addition is UIEdgeInsetsZero.",
+      "formula": {
+        "contentPadding": "zero",
+        "top": "iOS26+ ? outerGeometry.safeAreaInsets.top : 0",
+        "left": 0,
+        "bottom": "(bottomBarsHeight > 0 ? bottomBarsHeight : initialBottomBarsHeight) + outerGeometry.safeAreaInsets.bottom + additionalTranscriptBottomInset + (iOS26+ ? 48 : 10)",
+        "right": 0,
+        "indicatorInsetAddition": "zero"
+      },
+      "chain": [
+        "1a4c358 ->1d86da4 reads d8..d11 from aac5ed0 chained binding _NSDirectionalEdgeInsetsZero;1a4c554->1bee60 forwards d0..d3 into constructor. This closes the previously unresolved contentPadding producer.",
+        "1a4c3b4..410 builds top,left,bottom,right. Top getter1a4c164 uses safeAreaVerticalInsets first value on iOS26+, otherwise0. Bottom combines1a483fc, second safeAreaVerticalInsets value, metadata+44 additionalTranscriptBottomInset,48/10.",
+        "1a483fc uses positive __bottomBarsHeight via1a4830c, otherwise initialBottomBarsHeight(metadata+2c).",
+        "1a4c410..41c loads indicator addition from aac6650 chained binding _UIEdgeInsetsZero.",
+        "3f89760..70 applies first four arguments through setContentInset:.3f89780..98 adds next four arguments componentwise then setVerticalScrollIndicatorInsets:."
+      ],
+      "limits": [
+        "Current NSCollectionLayoutSection.contentInsets and interGroupSpacing are independent row layout values and cannot be removed solely because source collection contentPadding is zero.",
+        "Global index/table identity does not imply all legacy keyboard or restoration branches have been ported."
+      ]
+    },
+    {
+      "id": "geometry-producers",
+      "evidence_type": "official-artifact-static",
+      "conclusion": "Both vertical safe-area values and bottom-bars height are geometry-derived through bindings. The current conversation host does not forward either into its collection inset owner.",
+      "chain": [
+        "1a4a338 reads __safeAreaVerticalInsets metadata slot+ac, projected binding is supplied to7542db0 at1a4a390 with transform1c2fdfc.",
+        "1c2fe10/18 call imported GeometryProxy.safeAreaInsets.1c2fe1c stores first call d0(top) and second call d2(bottom).",
+        "BottomBars descriptor95ae740 has field-offset vector4 words; field6 _bottomBarsHeight =>metadata+38.1a20da4 reads this Binding.",
+        "Normal BottomBars body1a21448 gets that Binding,1a21460 supplies153fb24 transform;1a21488->1d9e918 tails7542db0.",
+        "153fb24->18a434->1c0cec->7c471dc reads GeometryProxy.size,18a444 stores d1(height).",
+        "Thread1a4b5e0 forwards its __bottomBarsHeight binding into CodexRemoteThreadBottomBars constructor1a28c78. Alternate noncomposer branch1a4b880 uses the same binding with height transform and7542db0."
+      ],
+      "limits": [
+        "Geometry observation is established statically, current UI geometry was not captured.",
+        "Current adapter safeAreaBar changes child safe area. Adding bar height to a post-bar child inset risks double counting. Capture the corresponding outer coordinate context and pair it with underlap/explicit-inset ownership."
+      ]
+    }
+  ],
+  "next_action": {
+    "primary": "Keep existing top-only soft edge implementation. Parent is independently closing toolbarRole/title behavior first. Integrate explicit collection insets as a separate coherent change with outer safe-area and measured BottomBars inputs.",
+    "integration": [
+      "Measure outer geometry safeAreaInsets at Thread content before BottomBars safe-area modification.",
+      "Measure whole BottomBars height across normal composer, approval and user-input branches.",
+      "Pass an explicit scoped inset model to collection controller, set contentInsetAdjustmentBehavior=.never and apply the recovered top/bottom formula without duplicate safe-area or bar compensation.",
+      "Preserve existing offset/anchor during geometry, keyboard and approval transitions.",
+      "Probe viewport/frame/safeAreaInsets/contentInset/adjustedContentInset and top edge style while text scrolls behind title."
+    ],
+    "avoid": "No arbitrary top overlay, slider blur radius, hardcoded title/status sum or lone automatic-adjustment switch.",
+    "remaining": "InitialBottomBarsHeight/additionalTranscriptBottomInset outer embedding defaults and full legacy controller restoration branches remain separate boundaries. These may be explicit adapter inputs, with independent defaults labeled."
+  },
+  "cross_platform": "Only iOS293 owner chain proved. Android effect and inset ownership need independent evidence. Layout/test contracts are potential shared abstractions; native materials and scroll behavior remain platform-owned.",
+  "validation": {
+    "new_ui": false,
+    "production_edits": false,
+    "shared_rea_target_mutated": false,
+    "new_raw_evidence": "bounded ARM64 instruction windows and struct metadata, via existing local tools"
+  },
+  "evidence_sha256": {
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "80061cb500d96ebbb1d6d6c3b2ce7091c99ec32c203df8fe07108aebf4cd79b0",
+    "implementation/ios/Sources/NativeConversationHost.swift": "87da6c5cd79a915c3550b9d3a774b955c7ca65712b5959f1c47bf60da1a380e6",
+    "analysis/full-platform-20261104/ios-remote-v483-integration.json": "fa0a4d6bd3ddb0d19850c66bfe8748e7a746e32169618a53b8dd809e3d757865",
+    "analysis/full-platform-20261104/ios-remote-v540-edge-findings.json": "ae97d49f2ef166243e75ab6e9e5e6fbeb24c3e9dda972c8db3e4339ed352acf2",
+    "analysis/full-platform-20261104/ios-remote-v529-slider-material-findings.json": "44b5609f18b17374ef806a83a21d16fcde17a56b0dd5c6b38795078de32dc5d4",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-collection-constructor.asm": "28b673c53d05674164d254042bf463f2b0296416018add69ea5ebe3204816441",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-padding-argument-helper.asm": "8ae958813fb46f666f967e880f8467f8304414c600a6b6b66024ce00d89a22dc",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-container-metadata.json": "b58863a22f86ce2415f46c3d148140de38cbce31659fe7b96d7a8d881bfc2bd7",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-controller-initializer.json": "987e835701f55a6bc1b9c3abff9242c9de08b6eb2c141f7f8b42fb2b769fba00",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-controller-adjustment.json": "4762d98c6b24e3e960205e4c759a4a36e6c9584a58247ecbd0f0404d50cc8276",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-safearea-getter.asm": "172f8bd0f0b98becf452fb16656cb42fef109f4d9b15c34a6f92b2872e82985e",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-controller-adjustment.asm": "731d2e5301c5c61e4c9367f86eafc6b377cec91f3a3b3c182309f53d2a89ed81",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-top-scroll-inset.asm": "ce7f0bf65fd4379b5a0296fe05d8b14af8b899021ba4e968bdc93111f0c6048b",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-collection-constructor.json": "3495fc367c154f9ccf91c85bed6aa512ce46fad1280c13d82b74a3f84982d7d6",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-adjustment-gate.asm": "59d4ae697d13932a237046f4496c4555d5dd587f09f600afb11cb1511b74e249",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-collection-make.asm": "c4efdfea204746c596be63d66d106ac69bd14b4ec928e6dc17cdeb61b0529694",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-controller-initializer.asm": "5f69fda8c1a53f7a0dd2f9b449a544d6e051eb46dfd7d9aa3f28f74588688f14",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-collection-make.json": "aafbc891943e798a1fc631be2236982aa5172aea78e9bf832ab22e26c1586aa5",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-type.asm": "e015caf27cf7e7f541385bac3811dff6bbb8ad6ddd9551b52224e3953f29fe58",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-bottom-geometry-forwarder.asm": "fcf5b76ff4309fc7f7854808eb8cdb141fc81c81df970e26849f789e0b0e0f12",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-state-callback.asm": "7eaf3457bc31ae752a781a5d4771447716cd79e0a311338b63ec27dd7ccbead2",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-safearea-transform.asm": "d7031da87fd328234c5d31113921dffe151848e4104cc312456c158e13ee1e21",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-collection-inset-owner.asm": "30958554fdb51e5b05b332ea73c0afcb75e0f843a65843760bb5e6059414deac",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-bottom-measurement-binding.asm": "1704649915c60dc1a1a8e6c0e7b3b8f992a41d79ccc5b8b87230773e01fb339b",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-binding-update.asm": "54596bbe6c6a431344ac087f08ff78cbf202de98436aa3f099cfdac74d553610",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-padding-zero-helper.asm": "6509e0e484636bafc18c25cc44a75d86ee72e6cb8fe7b1990708f0efc336fd7b",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-state-wiring.asm": "16c7ae3388e151529d395498111bb73591507056a9fea6956fd86540ab67c47e",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-height-transform.asm": "80fe43871a7aa56e05f4d863606341edee90a8c5625941e176e5d85b305a4104",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-safearea-peer-callback.asm": "8f43c8082387cbe14f1b0c62c6f5c6298356360170eeca82451505ed4e670346",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-inset-capture.asm": "e7984d1db1d662abaf1ca9ed0959151f3102b82dd440e72c3ff804c1ea1c5a35",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-padding-caller.json": "71b6536c7939ba000e417e741dd0b081f12d36f4813ebd733217f0b54228ae44",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-padding-prolog.asm": "8fb974506548117cee862bd8272c949477ee947cc223643a97ea8c51bd35ce14",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-binding-update.json": "a1a4c81a5db7656d6da5c668639f383991a71bcce2b38f58261746da009886b5",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-bottom-state-setter.asm": "9582610a4a8b394bac4d4a74a4005e5655096f4bf9acfc99b985ccf54f3a4519",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-padding-caller.asm": "7159c313bcedd20df64b7ca91d24ee7e0f51367a3f72830d47559652dcef6909",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-inset-update-owner.asm": "faea554fd095915ed303d9bc2c3ee0a4b3fe546ccc9c3821c24a8958d364bc63",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-root.asm": "927e694dd331c5b461432553882c0c7e0cf00c5b6830d4c81048a03524c37c58",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-inset-application.asm": "d04b22bf383015adf88e3f4c5694b31369fd6b04a0542cd8476513112ac43dca",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-root-owner.json": "e851a002d5b05c5ebd571350dc302a06d1924221c2c5926b46dd5507564e4794",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-size-forwarder.asm": "d26104a68283b12e5c72dd86566e8998cf01a43226b0e40904b0b8d9a1586912",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-constant-bindings.json": "40ecc7684d800fcbe838b9f9af662ba43c973eff6838b8a1d1fa94959964d1fe",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-bottom-getters.asm": "8450f9ecd6bf67410d947c8c7152e309e504a1572b87a1d92657fcb069154bb7",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-bottom-geometry.asm": "d284fb75158103262a86d88ddbecccaac62150ef61854f57c2b22f4663bf4f2b",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-safearea-transform.json": "193842443c111025f101e8ba00eef20b1d70e8ac660bf7a97b842ae2a7fa6aea",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-bottom-size-transform.asm": "fba3daf14ef2b5322fef65228dd0381ebeac5ea0cc2f4e3a87285e325646c795",
+    "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-adapter.asm": "0ae82d64451ff2ff555b956452ad8ec6dc26bcad6a5d0a4c51d757f774ef9c5a"
+  }
+}

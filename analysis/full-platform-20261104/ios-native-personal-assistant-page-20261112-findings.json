@@ -1,0 +1,359 @@
+{
+  "status": "partial",
+  "scope": "iOS293 default personal assistant native Orbit contents, onboarding, created conversation content and core actions; root routing independently investigated by symbolic_tree",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "boundaries": [
+    "No host app edits, build, device actions, network or full official application.",
+    "Personal R2-D2 name/avatar is not a product default. Default Orbit is distinct from Settings AssistantSettingsScreen, sidebar Customize and ordinary assistant-role message rendering.",
+    "Metadata state/action inventories are not silently treated as visible controls or active feature gates."
+  ],
+  "source_observations": [
+    {
+      "id": "sidebar-conversation-parent",
+      "owner": "TibroCore.OrbitSidebarConversationView",
+      "descriptor": "0x95bd4d8",
+      "view_body": "0x1fc0388→0x1fbfef4",
+      "conclusion": "Actual parent composition full record0x7e3fc48 is OrbitSidebarOnboardingPresentation<OrbitSidebarChatContent,Optional<SubscriptionView<Publishers.RemoveDuplicates<AnyPublisher<Bool,Never>>,OrbitSidebarOnboardingScreen>>>. Thus onboarding is parent-owned alongside conversation content, rather than a static standalone welcome mock.",
+      "evidence": [
+        "ios-native-personal-assistant-page-20261112/conversation-root.json",
+        "ios-native-personal-assistant-page-20261112/page-witnesses.json",
+        "ios-native-personal-assistant-page-20261112/sidebarcontent.asm"
+      ],
+      "limits": [
+        "Whole nominal anonymous context kept as TypeSymbolicReference in tree; inner OrbitSidebarChatContent identity is correlated with metadata and witness.",
+        "ConversationRootOrbitPane→OrbitConversationScreenTemplate is independently proved by sibling worker, but DI registration of this concrete view is still unclosed."
+      ]
+    },
+    {
+      "id": "introduction-parent",
+      "owner": "TibroCore.OrbitIntroductionScreen",
+      "descriptor": "0x95c162c",
+      "view_body": "0x1f1d384→0x1f1c2d0",
+      "conclusion": "Full generic tree0x7e579f0 has GeometryReader→ScrollView→VStack of OrbitIntroductionHeader, OrbitIntroductionDetails and Spacer, with lower inset containing RoundedRectangleButtonStyle Button, loading progress alternative, and independent leading image button. Parent carries learnMoreURL, showsTrainingDisclosure, sideMenuBadge, actionHandler, isContinuing, animationAnchor and usesSystemToolbar environment.",
+      "evidence": [
+        "ios-native-personal-assistant-page-20261112/introduction-root.json",
+        "ios-native-personal-assistant-page-20261112/intro.asm"
+      ],
+      "limits": [
+        "Button/action exact raw enum mapping remains partial; imported/opaque style modifiers retained, not fabricated."
+      ]
+    },
+    {
+      "id": "introduction-header",
+      "owner": "OrbitIntroductionHeader",
+      "descriptor": "0x95c24b8",
+      "view_body": "0x1f1dabc→0x1f1d388",
+      "conclusion": "Full tree0x7e5a890 is VStack of an OrbitOnboardingAnimationSlot (frame/accessibility) and title/subtitle stack with OrbitIntroductionText; ordinary label text is recovered, but animation slot resource/character consumer is not closed.",
+      "labels": [
+        {
+          "key": "orbit_introduction_hello_dot",
+          "fallback": "Say hello to your dot",
+          "key_literal": "0x88cf820",
+          "fallback_literal": "0x88cf840",
+          "consumer": "0x1f1d6d8/0x1f1d6f4"
+        },
+        {
+          "key": "orbit_introduction_subtitle",
+          "fallback": "Your remarkably capable intelligence, built for work and life.",
+          "key_literal": "0x88cf860",
+          "fallback_literal": "0x88cf880",
+          "consumer": "0x1f1d824/0x1f1d848"
+        },
+        {
+          "key": "orbit_introduction_subtitle_with_link",
+          "fallback_prefix": "Your remarkably capable intelligence, built for work and life. [Learn more](",
+          "consumer": "0x1f1d86c/0x1f1d8a4"
+        }
+      ],
+      "evidence": [
+        "ios-native-personal-assistant-page-20261112/introduction-header.json",
+        "ios-native-personal-assistant-page-20261112/labels.json"
+      ],
+      "limits": [
+        "Do not pick arbitrary OrbitCharacters studio render or assume reference-characters.json establishes default character. learnMoreURL is owner supplied."
+      ]
+    },
+    {
+      "id": "capability-introduction",
+      "owner": "OrbitIntroductionDetails / OrbitIntroductionDetail",
+      "descriptors": [
+        "0x95c2494",
+        "0x95c375c"
+      ],
+      "view_bodies": [
+        "0x1f1e158→0x1f1dac0",
+        "0x1f1e964→0x1f1e160"
+      ],
+      "conclusion": "Native stacked detail rows each render icon beside title/body. First two rows constructed before conditional third data-use row; source-proven showsTrainingDisclosure false path skips third at0x1f1df20→0x1f1e08c.",
+      "rows": [
+        {
+          "title_key": "orbit_introduction_complex_work_title",
+          "fallback": "Built to take on complex work",
+          "body_key": "orbit_introduction_projects_and_responsibilities_body",
+          "body_partial_literal": ", your dot can work through projects and ongoing responsibilities on your behalf.",
+          "icon": "OpenAI/Symbols/bolt",
+          "icon_factory": "0x74f50b0",
+          "icon_consumer": "0x1f1dc80"
+        },
+        {
+          "title_key": "orbit_introduction_proactive_title",
+          "fallback": "Proactively helpful",
+          "body_key": "orbit_introduction_your_dot_proactive_body",
+          "body_prefix": "Your dot will suggest how it can be helpful based on information in your [connected apps](",
+          "link_literal": "https://chatgpt.com/settings/Plugins",
+          "icon": "OpenAI/Symbols/personalization",
+          "icon_factory": "0x74f9f00",
+          "icon_consumer": "0x1f1ddac"
+        },
+        {
+          "title_key": "orbit_introduction_data_controls_title",
+          "fallback": "Respects your choices",
+          "body_key": "orbit_introduction_data_controls_body",
+          "body_prefix": "Depending on your settings, we may use conversations with your dot to improve our models. [Manage data controls](",
+          "link_literal": "https://chatgpt.com/data-controls",
+          "icon": "OpenAI/Symbols/shield-checkmark",
+          "icon_factory": "0x74faa40",
+          "icon_consumer": "0x1f1df28",
+          "gate": "showsTrainingDisclosure"
+        }
+      ],
+      "evidence": [
+        "ios-native-personal-assistant-page-20261112/introduction-details.json",
+        "ios-native-personal-assistant-page-20261112/introduction-detail-row.json",
+        "ios-native-personal-assistant-page-20261112/intro-icons.json",
+        "ios-native-personal-assistant-page-20261112/intro.asm"
+      ],
+      "limits": [
+        "Complete first body string includes runtime composition; suffix alone is not full localized body. URLs are static evidence only; they were not opened."
+      ]
+    },
+    {
+      "id": "continue-action",
+      "owner": "OrbitIntroductionScreen.actionHandler",
+      "conclusion": "Continue text factory0x75d2324→0x75e1c2c; AX identifier orbit.introduction.continue literal0x88ce450 consumed0x1f1cfc0. IntroductionScreen descriptor fieldOffsetVectorOffset2words means slot0x1c is actionHandler;0x1f1ce20..50 copies its handler payload into lower button construction. isContinuing supplies progress/interaction presentation, not backend success.",
+      "limits": [
+        "Concrete continueIntroduction enum payload mapping through action trampoline remains unclosed; enum case presence alone does not prove dispatch.",
+        "No task-specific haptic consumer proved in these bounded page windows."
+      ]
+    },
+    {
+      "id": "onboarding-steps",
+      "owner": "OrbitSidebarOnboardingContent",
+      "descriptor": "0x95c0ab4",
+      "view_body": "0x1fc46ac→0x1fc2ae0",
+      "conclusion": "Full parent tree0x7e543d0 has navigation-stack and toolbar-visibility alternative, plus ZStack of IntroductionScreen, OnboardingConnectionsContent and SidebarCreationScreen. Each step has animation-body/opacity/allowsHitTesting/accessibility wrappers. Parent includes matched geometry, creation transition frame, animation namespace, progress and reduceMotion. Do not replace with three independent root pages losing parent transition/interaction state.",
+      "state_descriptor": "0x95c0adc",
+      "state_case_inventory": [
+        "introduction",
+        "connections",
+        "creation(OrbitSidebarCreationScreen.State)"
+      ],
+      "evidence": [
+        "ios-native-personal-assistant-page-20261112/onboarding-root.json",
+        "ios-native-personal-assistant-page-20261112/onboarding.asm",
+        "ios-native-personal-assistant-page-20261112/state-fields.json"
+      ],
+      "limits": [
+        "Declaration inventory describes candidates; exact current-step selection predicates and transitions are not fully recovered.",
+        "Connections provider rows/action dispatch are outside current bounded minimum intro/conversation scope."
+      ]
+    },
+    {
+      "id": "created-conversation-content",
+      "owner": "OrbitSidebarChatContent",
+      "descriptor": "0x95beaf4",
+      "view_body": "0x1fc086c→0x1fc038c",
+      "conclusion": "Full record0x7e4c660 is ZStack with conditional AnyView/OrbitConversationLoadingView plus conditional Color/onChange branch. Owner.model raw type resolves to OrbitSidebarConversation class0x95bae58. Its _state loaded payload raw type0x8e85efc is (BaseAnyViewModel<TibroConversationScreenTemplate,AnyView>,OrbitSidebarNavigation), not an ordinary ChatGPT conversation screen assumed equivalent.",
+      "evidence": [
+        "ios-native-personal-assistant-page-20261112/chat-body.json",
+        "ios-native-personal-assistant-page-20261112/loaded-conversation-payload.json",
+        "ios-native-personal-assistant-page-20261112/sidebarcontent.asm"
+      ],
+      "identity_inventory": [
+        "selectedSavedRootRoomID",
+        "pendingRoomID",
+        "selectionRevision",
+        "persistedRoomID",
+        "visitedConversations",
+        "makeConversation",
+        "makeComposerRooms",
+        "composerRooms"
+      ],
+      "limits": [
+        "Exact load/selection reducer and TibroConversationScreenTemplate builder to its native message/composer implementation remain unclosed.",
+        "Identity fields are model inventory; no invented server wire schema."
+      ]
+    },
+    {
+      "id": "creation-state-feedback",
+      "owner": "OrbitSidebarCreationScreen",
+      "descriptor": "0x95bf520",
+      "view_witness": "0x1fc1fec",
+      "conclusion": "Existing creation content directly consumes distinct failed/progress/waitlisted labels and retry/menu AX identifiers. These are real alternatives to retain in offline frontend adapter, not fake successful assistant provisioning.",
+      "labels": [
+        {
+          "key": "orbit_creation_failed_dot",
+          "fallback": "We couldn’t set up your dot",
+          "consumer": "0x1fc17f0/0x1fc1808"
+        },
+        {
+          "key": "orbit_creating_dot",
+          "fallback": "Setting up your dot",
+          "consumer": "0x1fc1b54/0x1fc1b74"
+        },
+        {
+          "fallback": "This may take a few moments",
+          "literal": "0x88cdf40",
+          "consumer": "0x1fc1c80"
+        },
+        {
+          "fallback": "We’re at capacity",
+          "literal": "0x88cdf60",
+          "consumer": "0x1fc1db8"
+        }
+      ],
+      "action_identifiers": [
+        "orbit.creation.error",
+        "orbit.creation.retry",
+        "orbit.creation.progress",
+        "orbit.creation.waitlisted",
+        "orbit.creation.menu"
+      ],
+      "limits": [
+        "Retry service transition not executed; waitlist admission/backend behavior unknown."
+      ]
+    },
+    {
+      "id": "connections-page-composition",
+      "owner": "OrbitOnboardingConnectionsContent",
+      "descriptor": "0x95c1610",
+      "view_witness": "0x1f23c0c",
+      "conclusion": "Full record0x7e57af8 has GeometryReader/ScrollView/VStack<OrbitOnboardingConnectionsHeader,Spacer,VStack<ForEach<Array<Tagged<Connector,String>>,OrbitOnboardingConnectionRow>>>; bottom inset contains rounded rectangle button/progress, overlay OrbitOnboardingConnectionsNavigation. Row source is provider/owner list, not all known connector enums.",
+      "evidence": [
+        "ios-native-personal-assistant-page-20261112/connections-root.json",
+        "ios-native-personal-assistant-page-20261112/connections.asm"
+      ],
+      "labels": [
+        {
+          "key": "orbit_onboarding_connect_provider",
+          "consumer": "0x1f23a80",
+          "description": "provider-formatted connect label; construction branches to Google/Microsoft labels at0x1f23abc..af4, no claim of always-visible provider inventory"
+        },
+        {
+          "key": "orbit_onboarding_connections_description",
+          "consumer": "0x1f24054",
+          "partial_fallback_suffix": " to help your dot understand your day, the people you know, and the work you do."
+        },
+        {
+          "identifier": "orbit.onboarding.connect",
+          "consumer": "0x1f2386c"
+        },
+        {
+          "identifier": "orbit.onboarding.skip",
+          "consumer": "0x1f2491c"
+        },
+        {
+          "key": "orbit_profile_app_connected",
+          "consumer": "0x1f25570"
+        }
+      ],
+      "row_fallback_candidates": [
+        "Stay on top of important emails",
+        "Get ready for what’s next",
+        "Add context about people you know",
+        "Find and work with your files",
+        "Get updates across your workplace"
+      ],
+      "button_condition": {
+        "consumer": "0x1f23a60..a80",
+        "predicate": "0x1f216c8(status.provider,status.payload)",
+        "true_label": "Continue factory0x75d2324",
+        "false_label_key": "orbit_onboarding_connect_provider",
+        "limits": "Predicate iterates provider-dependent connector collection and status dictionary. Exact every-connected/allowed semantics not fully proved; do not simplify as always Continue."
+      },
+      "navigation_limits": [
+        "Navigation owner contains actionHandler and navigationHandler with isConnecting, and actual Menu label factory0x75d69bc at0x1f24774 is Menu (not Back). Do not mislabel that factory as a back button.",
+        "Exact Back visibility/step transition predicate remains unresolved; original usesSystemToolbar branch affects placement. Host back is independent adapter if required."
+      ]
+    },
+    {
+      "id": "tibro-native-conversation-parent",
+      "owner": "TibroConversationView",
+      "descriptor": "0x95be7f0",
+      "view_body": "0x203dc4c→0x2038c58",
+      "conclusion": "Full record0x7e4bc58 includes NavigationStack<NavigationPath,...> with typed navigationDestination and Group conditional. Main content is IDView<ChatGPTCalpicoRoomView modified by OrbitConversationTasks and environment Tagged<CalpicoRoom,String>>, versus readiness alternatives; layered OrbitConversationReadiness, OrbitConversationMenuPresentation, OrbitPauseErrorAlert, OrbitUserVerificationPresentation, OrbitNotificationRequestPresentation, OrbitElicitationsObserver, OrbitVoiceCallPresentation. Toolbar slots include OrbitVoiceResizeToolbarItem, SideMenuToolbarItem, optional DismissToolbarItem and independent button. Room identity is explicit in the parent structure.",
+      "evidence": [
+        "ios-native-personal-assistant-page-20261112/tibro-conversation-root.json",
+        "ios-native-personal-assistant-page-20261112/tibro-conversation.asm",
+        "ios-native-personal-assistant-page-20261112/tibro-conversation-types.json"
+      ],
+      "limits": [
+        "Does not yet close DI registration from TibroConversationScreenTemplate to this view, nor concrete CalpicoRoomView message/composer implementation.",
+        "Do not interpret parent structural equivalence as ordinary Chat conversation reuse or backend capability recovery."
+      ]
+    }
+  ],
+  "admitted_frontend_reconstruction": [
+    "Source-backed introduction layout, original localized keys/fallbacks and exact three original icons.",
+    "Conditional data-use third row, supplied learn-more link and returnable unavailable service route.",
+    "Continue/loading/failure/retry/waitlist UI driven by independent deterministic adapter, no real provisioning.",
+    "Existing-assistant conversation destination through explicit independent adapter retaining separate room/conversation scopes; reuse native Chat host only as independent substitution.",
+    "Parent-owned onboarding state/animation boundary rather than unrelated screenshot pages."
+  ],
+  "not_admitted": [
+    "Personal R2/avatar copied as default",
+    "Settings AssistantSettingsScreen substituted as default assistant homepage",
+    "Complete original Tibro conversation composer/message reuse",
+    "Arbitrary default Orbit character sprite",
+    "Default haptic or every-step haptic invented"
+  ],
+  "precise_unknowns": [
+    {
+      "id": "root-factory",
+      "next_action": "Close ConversationRoot OrbitConversationScreenTemplate DI registration to OrbitSidebarConversationView; sibling symbolic_tree owns root evidence."
+    },
+    {
+      "id": "continue-dispatch",
+      "next_action": "Trace copied Handler through lower button action factory0x6f46af0 and trampoline0x212553c/0x1f1d0e8 to enum consumer; never infer tag from case order."
+    },
+    {
+      "id": "animation-resource",
+      "next_action": "Trace OrbitOnboardingAnimationSlot selected child and OrbitCreationAnimation loader; bundle assets presence does not pick consumer."
+    },
+    {
+      "id": "created-room-ui",
+      "next_action": "Outer TibroConversationView→CalpicoRoomView parent now decoded at7e4bc58; still close Template DI registration and roomID action owner, then trace CalpicoRoomView concrete messages/composer only as next scoped task."
+    },
+    {
+      "id": "connections-step",
+      "next_action": "On owning feature expansion, close OrbitOnboardingConnectionsContent form rows/provider source and connect/disconnect action gates."
+    },
+    {
+      "id": "haptics",
+      "next_action": "No confirmed haptic callsite in bounded current page windows; audit action target once dispatch closes."
+    },
+    {
+      "id": "connections-back",
+      "next_action": "Resolve OrbitOnboardingConnectionsNavigation0x1f24d44→1f243a4 toolbar/system branch and navigationHandler dispatcher. Factory75d69bc is Menu, not Back. No exact Back visible gate admitted."
+    }
+  ],
+  "validation": {
+    "performed": [
+      "static protocol/metadata/witness inspection",
+      "bounded ARM64 reads",
+      "full symbolic generic trees with anonymous contexts retained",
+      "exact original label/icon construction"
+    ],
+    "not_performed": [
+      "host edits",
+      "build",
+      "runtime/device interaction",
+      "network/service"
+    ]
+  }
+}

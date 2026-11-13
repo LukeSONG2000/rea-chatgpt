@@ -1,0 +1,58 @@
+{
+  "batch": 597,
+  "status": "partial",
+  "scope": "Remote attachment feedback and bounded Chat/Work link investigation",
+  "official_evidence": "ios-haptics-v597-findings.json",
+  "implemented": [
+    "Accepted Remote file imports request light impact once per file",
+    "Photos retain playsSuccessHaptic=false",
+    "Current import-token consumption precedes feedback; local preference, hardware and active-app gates apply",
+    "Touched UI journeys now use isolated UUID Chat and Remote draft profiles"
+  ],
+  "validation": {
+    "foundation": "passed",
+    "log": "ios-haptics-v597-foundation-r1.log",
+    "attachment_policy_combinations": 32,
+    "ui_summary": "ios-haptics-v597-r1-summary.json",
+    "ui_passed": 2,
+    "ui_failed": 0,
+    "coverage": [
+      "Chinese light and English dark attachment import failure",
+      "Localized inline errors, search return, retry loading, successful file preview and draft retention"
+    ],
+    "visual": [
+      "Chinese light inline error",
+      "English dark inline error",
+      "Chinese dark final Remote list"
+    ],
+    "limits": [
+      "Simulator does not validate physical haptic playback",
+      "Policy matrix verifies admission logic; UI tests verify import flow and do not observe hardware emission",
+      "Physical multi-file feedback timing remains unverified"
+    ]
+  },
+  "provenance": {
+    "official": "Picker flag, accepted action path, style0, absent intensity and concrete UIImpactFeedbackGenerator dispatch",
+    "independent": "Local scoped copy/import admission, preference storage/default, hardware/activity gate and UIKit generator lifetime",
+    "unknown": "Runtime dependency selection, original global preference policy, Chat/Work UI callers and feature gate"
+  },
+  "runtime": "ios-haptics-v597-runtime.json",
+  "open": [
+    {
+      "page": "Remote composer",
+      "missing": "Physical feedback and multi-file timing",
+      "priority": "P2",
+      "next": "When phone testing resumes, import single/multiple files with preference on/off",
+      "acceptance": "Only accepted file paths play the expected light feedback; disabled and cancelled cases remain quiet"
+    },
+    {
+      "page": "Chat/Work conversation",
+      "missing": "Link UI caller and feature gating",
+      "priority": "P2",
+      "next": "Trace callers of3760bf8 and373bb5c and feature configuration",
+      "acceptance": "Version-bound action-to-engine chain before integration"
+    }
+  ],
+  "cross_platform": "iOS UIKit adapter only. Android caller/hardware mapping requires independent artifact evidence. Policy vectors are possible shared test inputs.",
+  "next": "Continue Chat/Work action ownership and source-backed triggers within page minimum-usable ledger"
+}

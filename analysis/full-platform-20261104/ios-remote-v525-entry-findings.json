@@ -1,0 +1,196 @@
+{
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "scope": "Permission entry scaled metrics, layout, glyph projection and actual ordinary expanded/compact input consumption",
+  "findings": [
+    {
+      "id": "entry_metrics",
+      "status": "verified-static-bounded",
+      "conclusion": "Icon centered frame uses ScaledMetric24 relativeTo body. Icon Font.system size uses separate ScaledMetric18.808777429467085 relativeTo body, Design.default and Image.Scale.medium. Preserve dynamic scaling for both independently.",
+      "proof": [
+        "Controls descriptor95ac868 field vectorword4: field3_configurationIconSize=metadata+2c; field4_configurationIconFontSize=+30",
+        "1970cac→45fc00 selects+2c;1970cb0 d0=24;1970cb4→1965dd4",
+        "1970cb8 selects+30;1970cc0 loads Double7dfdab0;1970cc8→1965dd4",
+        "1965e0c→26c05c reads aad38d8 Font.TextStyle.body;1965e2c calls ScaledMetric.init(wrappedValue:relativeTo:)",
+        "196c5c4/+30→196c5d8 wrappedValue→font;196c6a4/+2c→196c6b4 and196c6c4 wrappedValue→196c6d8 centered FrameLayout",
+        "aad3810 Design.default;aad4f00 Image.Scale.medium"
+      ]
+    },
+    {
+      "id": "entry_tap_target",
+      "status": "verified-static-bounded",
+      "conclusion": "approvalTapTargetSize constant48 supplies minWidth48,minHeight48, centered. Ideal/max dimensions are nil. iconLabelSpacing constant6 is used by the label HStack. Button uses PlainButtonStyle.",
+      "proof": [
+        "1970d58..60 stores48 atmetadata+40 field8;1970d64..6c stores6 at+44 field9",
+        "1966190 loads+40→d8;196619c Alignment.center;19661d0→1da4218 copiesd8tox0 andsavesalignment",
+        "19661d8..e4 storesnilflagsforidealHeight/maxHeight;19661e8→1c053c setsminWidthsome,ideal/maxWidthnil;19661ec x6=x0;19661f0→457e94 setsminHeightsome→_FlexFrameLayout.init",
+        "1966298 loads+44;19662c0 stores HStackalignment/spacing;19662c4 explicitspacingflag",
+        "1965808→c9440c loads aad1630 PlainButtonStyle conformance andaad1640 metadata;1965834 buttonStyle primitive"
+      ]
+    },
+    {
+      "id": "parent_sections",
+      "status": "verified-static-bounded",
+      "conclusion": "Thread builder supplies the same Controls factory to two slots with distinct section arguments. permissionsControl receives raw0 permissions. configurationControls receives raw1 model.",
+      "proof": [
+        "1a23b9c..ba4 forms1cea1e0 closure;callerSP+168 holds callback at1a23ba4;1a23d0c calls197bfe4",
+        "197c030 loads initializerFP+178 (=callerSP+168) tolocal+1c0;197c870 loads callback/context;197c884 reuses callback",
+        "197c864 selects MessageInputmetadata+bc;197c86c w0=0;197c874 blrcallback",
+        "197c878 selectsmetadata+c0;197c880 w0=1;197c884 blrcallback",
+        "1cea1e0 preserves sectionargument;1cea244 forwardsx1 into1970c78;1970d74 storessectionbyte+8",
+        "Controls.body1965538..5584 comparessection1;raw0 branches1965624Button;raw1closure1c2157c→19659ac"
+      ]
+    },
+    {
+      "id": "expanded_slot_order",
+      "status": "verified-static-bounded",
+      "conclusion": "Expanded toolbar six-item tuple order is attachment, permissionsControl, optional PlanModePill, Spacer, configurationControls, trailing buttons. Permissions is after attachment and before Spacer. Plan pill can appear between permissions and Spacer.",
+      "proof": [
+        "1985d3c..48 calls six-item tuple metadata withtypesatFP-e0..b8",
+        "1985f04 constructs attachment19863cc;1985f80 selectsfield39permissionsControl metadata+bc;1985f98 applieslayoutPriority1",
+        "1985f9c selectsfield21isPlanModeEnabled metadata+74, branching optionalPlanModePill;typerecord7e12d60 resolves PlanModePill FixedSize optional",
+        "1985d04→1dab118 loadsSwiftUI.Spacer metadatafromaad51d8;1985d08 storesit atFP-c8 (tupleindex3)",
+        "19862e4 reads tupleelement3offset+50;179a6cc writeszero;19862ec writesflag0, constituting Spacer(minLength:0)",
+        "1986048 selectsfield40configurationControls metadata+c0,1986074 frameheight48,19860ac layoutPriority1",
+        "19860b8field28preventsPromptSubmission gates trailingbuttons;19860d8field29allowsSupplementaryWhisperButton passedtobuilder"
+      ],
+      "limit": "Only selected ordinary expanded path. Spatial coordinates still need runtime validation."
+    },
+    {
+      "id": "compact_slots",
+      "status": "verified-static-bounded",
+      "conclusion": "Selected ordinary compact assembly does not consume permissionsControl or configurationControls. Keep permission entry in expanded toolbar.",
+      "proof": [
+        "1987d30..19880c8 selectedcompactbuilder;1987e04 attachment19863cc;trailing198a620;nofield+bc/+c0consumption",
+        "Retainedv523 compact-controls-prefix andcompact-input-assembly contain branch assembly"
+      ],
+      "limit": "Does not establish all alternate/fullscreen presentations or all state gates selecting compact."
+    },
+    {
+      "id": "entry_glyph",
+      "status": "verified-static-bounded",
+      "conclusion": "Entry consumes independently projected display preset and directly invokes shared icon factory. raw0 hand,raw1 terminal-shield,raw2 lock,raw3 exclamationmark-shield,raw4 gear.",
+      "proof": [
+        "196c470 calls196647c displaypreset;196c478→196c4f0;196c574→196c328",
+        "196c328 jump table7dfde4c bytes[0,4,2,3,1] from196c344 yieldsfactories74f7b44,74fba2c,74f85f0,74f710c,74f78dc",
+        "Factory resource strings independentlyretained inv524 options-symbol*.asm andoptions-findings.json"
+      ],
+      "limit": "Resource names OpenAI/Symbols/*, do not substitute SF Symbols based only on similar names."
+    },
+    {
+      "id": "entry_projection",
+      "status": "verified-static-bounded",
+      "conclusion": "Compute entry display independently of selected picker row. Required-auto-review→raw4 gear; normal custom/permissionProfile→raw4; normal readOnly→raw0 only if allowed presets containsask0.",
+      "proof": [
+        "196649c genericVMwitness+b0 configuration;19664b0→244e158 autoReviewRequired guard",
+        "guardtrue19664bc synth+19664c8 tag2;guardfalse19664d8 copiesconfiguration.approvalSelection+160",
+        "196650c→244cd90 returns4fortags2/3,associatedpresetfortags0/1",
+        "1966524→1966548 VMwitness+c0 returnsallowed;contains0 helper;1966528..38 remapsraw2to0iffcontains0",
+        "Glyph call196c470 uses this helper; colorcall1966444 also usesit"
+      ],
+      "limit": "Underlying model-name normalization and owner capability rules remain bounded byv524 options report."
+    },
+    {
+      "id": "entry_color",
+      "status": "verified-static-bounded",
+      "conclusion": "Entry color chooses ChatGPT/text/status/warning for displayPreset3, and ChatGPT/icon/primary otherwise.",
+      "proof": [
+        "1966444 callsentrydisplayhelper196647c;1966448→45a7f0 comparesraw3;1966450 calls74ee3fc warning;1966458 calls74ed6f4 primary"
+      ],
+      "limit": "Exact dynamic color tokens resolved in retainedstyleevidence. No screenshot color sampling used."
+    }
+  ],
+  "entry_display_pseudocode": [
+    "selection = autoReviewRequired(configuration) ? synthesizedSelectionTag2 : configuration.approvalSelection",
+    "raw = classifySelection(selection) // tag0/1 associated preset; tag2/3 => 4",
+    "return raw == 2 && allowedPresets.contains(0) ? 0 : raw"
+  ],
+  "unknowns": [
+    "SelfSizingSheet presentation context/default and runtime detent behavior are outside this entry slice; retain v524 boundaries.",
+    "No dynamic type, device, visual or interaction runtime acceptance in this read-only analysis.",
+    "Compact absence is scoped to named ordinary path, not a universal feature prohibition.",
+    "Native glyph font rendering weight and RTL offset behavior need isolated acceptance; no inferred replacement assets."
+  ],
+  "validation": {
+    "production_edits": false,
+    "tests_run": false,
+    "official_app_started": false,
+    "network": false
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v525-entry-metadata.json",
+      "sha256": "9c76b67fbaf66201a427f3b4b974733f116f388b8d8d9798bed378944c0948b2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v525-entry-input-init.asm",
+      "sha256": "6ae17582e4568627791fc9017adf75ceca5ad04c2cf5909534e2121cab47761c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v525-entry-helpers.asm",
+      "sha256": "52ed1f1180c490ca9f762ef45c44a5b3f630af9a4b62d241cf94f4aa50d5c25d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v525-entry-parent.asm",
+      "sha256": "b232ae4d94fffeb4ead749daee430388c654fb0d872a858d170a781f42625fb1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v525-entry-bindings.json",
+      "sha256": "bfd91e96099fa9ad782c8f3272cf84a2987eafdbd52f9a1c97dbc1dd29ae650e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-controls-init.asm",
+      "sha256": "33a1132017a5010b22e67e1fb987d3c65fd14e1f737b6714cafaad447d5418f2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-controls-body.asm",
+      "sha256": "b278e0f0221887c776e88d1a9f57a1e966daad7cf9fa8de75d8f7557cc7672c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-controls-layout-owner.asm",
+      "sha256": "a14118212d10557695166495d5db948d2f1b7d930b22655f87e2c6bb656b99b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-expanded-controls-tail.asm",
+      "sha256": "6c7ff1fb66008343c6c70fe5292c6b85b57038fd1910f0ca1081ea8020627cf2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-compact-controls-prefix.asm",
+      "sha256": "0d5649c3d34f64212b1da1bd0b2a1ec33c46faf9b5103f44994f87d4611d01aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-compact-input-assembly.asm",
+      "sha256": "9b2b4a324043d151d8f337b19e96220bb1a70d824f24b977afe9aad8e83d1d9d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-entry-icon.asm",
+      "sha256": "ce826b10de27a63ae1988275c522f2ae31bf4058c010834cddae620a720dbecb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-entry-icon-helpers.asm",
+      "sha256": "5cec261c73791d960d35527347c33ceabe0f901534ab3ba658476aac07c2ff09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-entry-icon-bindings.json",
+      "sha256": "1bc54eabf595fc8bca6a684b260571b025da7c7df27b8abc16b43e931f54daa2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-options-configuration.asm",
+      "sha256": "788289f9e1fe9db6bec4bb655ab4caf95c561e0a80a30647fb850d353a4bb2cb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-options-icons.asm",
+      "sha256": "c3ab3e704448d8be720ae4316ff7691a0b37739e0d093faf066a4cb9a6d5f359"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-options-findings.json",
+      "sha256": "7d37711fceea46727560d3c9b01f5a66df6a6f172b0f186f6de1df34f52e0648"
+    }
+  ]
+}

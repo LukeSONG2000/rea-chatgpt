@@ -1,0 +1,109 @@
+{
+  "batch": 584,
+  "status": "partial",
+  "scope": "Codex connection settings frontend and existing Remote consumers",
+  "official_evidence": "ios-settings-v584-findings.json",
+  "implemented": [
+    "Connection section before Composer with per-host enable switches",
+    "Native edit/reorder and stored order consumed by Remote source filters",
+    "Bulk enable/disable preserves task and draft stores",
+    "Disabled-host sending is unavailable while its draft remains editable",
+    "Add connection retains a returnable service-unavailable entry",
+    "Account/profile-scoped local preference serialization with invalid/version rejection"
+  ],
+  "independent_adaptations": [
+    "Native List Toggle/onMove and local preference serialization",
+    "Synthetic host availability and enabled-status captions",
+    "Any enabled visible host chooses bulk-disable; original predicate remains partial",
+    "Submission eligibility projection into existing frontend replay contracts"
+  ],
+  "validation": {
+    "state_log": "ios-settings-v584-state.log",
+    "state_groups": 22,
+    "text_and_model_log": "ios-settings-v584-r2-text-test.log",
+    "r1": {
+      "result_bundle": "ios-settings-v584-r1.xcresult",
+      "result": "build failed",
+      "reason": "Cross-file private image helper; corrected to public officialVisualSymbol asset API"
+    },
+    "r2": {
+      "result_bundle": "ios-settings-v584-r2.xcresult",
+      "passed": 3,
+      "failed": 1,
+      "reason": "English/dark native reorder lifted row but default-speed gesture did not commit; retained recording"
+    },
+    "r3": {
+      "result_bundle": "ios-settings-v584-r3.xcresult",
+      "passed": 2,
+      "failed": 0,
+      "change": "UI test targets handle center with slow drag and landing hold; production reorder implementation unchanged"
+    },
+    "distinct_ui_cases_passed": 4,
+    "cases": [
+      "testRemoteConnectionsChinese",
+      "testRemoteConnectionsEnglishDark",
+      "testRemoteComposerSettingsChinese",
+      "testRemoteContextUsageChinese"
+    ],
+    "visually_reviewed": [
+      "ios-settings-v584-r2-attachments/2F6B73B1-3D8D-432B-9DBB-B564DE90AE0F.png",
+      "ios-settings-v584-r3-attachments/DF7AF519-A145-47A8-92DD-E78BF00B4BF1.png",
+      "ios-settings-v584-r3-attachments/508F09F9-3F74-42CF-8172-13963643D832.png",
+      "ios-settings-v584-preview.png"
+    ],
+    "visual_observation": "Rows, edit handles and scoped draft are visible. Dark enabled switches have weak thumb/track separation under current inherited monochrome tint. Add-connection leading glyph is absent in final List rendering. Full style parity remains open.",
+    "runtime": "ios-settings-v584-runtime.json",
+    "retention": "ios-settings-v584-retention-final.json",
+    "display": "Only Color LCD detected; external display remains pending"
+  },
+  "cross_platform": {
+    "ios": "Native SwiftUI List and onMove adapter with Foundation preference model",
+    "android": "Not implemented or verified by this batch; independent Android evidence required"
+  },
+  "unfinished": [
+    {
+      "page": "Codex settings",
+      "priority": "P1",
+      "missing": "Behavior rows, profile entry and complete root visibility",
+      "evidence_gap": "Remaining Settings body branches and destination owners",
+      "next": "Trace applicable behavior controls and connect existing frontend consumers",
+      "acceptance": "Applicable rows affect their frontend behavior, preserve return and restart state"
+    },
+    {
+      "page": "Codex settings appearance",
+      "priority": "P1",
+      "missing": "Dark switch thumb contrast, add-connection glyph, exact toolbar/row styling",
+      "evidence_gap": "Parent tint and LabelStyle environment plus original row/toolbar branch selection",
+      "next": "Trace inherited style before changing current List adapter",
+      "acceptance": "Light/dark switches have distinguishable states, action icon and toolbar match verified source configuration"
+    },
+    {
+      "page": "Codex connection settings",
+      "priority": "service",
+      "missing": "Enrollment, availability transient state, receipt failure rollback and bulk predicate owner",
+      "evidence_gap": "Predicate17c0830 and host connection owner action implementation",
+      "next": "Specify service adapter receipt and independent frontend failure fixtures",
+      "acceptance": "Host-scoped responses preserve unrelated connections and drafts"
+    },
+    {
+      "page": "Remote thread",
+      "priority": "P2",
+      "missing": "Disabled-host approval/stop behavior and error-alert automatic focus restoration",
+      "evidence_gap": "Official action availability and error presentation owner",
+      "next": "Trace action owner guards and focus cleanup",
+      "acceptance": "Unavailable actions and scoped drafts behave predictably across failure and return"
+    },
+    {
+      "page": "Settings/system",
+      "priority": "device",
+      "missing": "Physical haptics, notification delivery and external-display placement",
+      "next": "Run independent acceptance when devices/display are available",
+      "acceptance": "Observed real device interaction and routing"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteContextUsage.swift": "70d359903b9b840aedf59739e5d86c8e78a1478a7dfbac5a5f4e860ceea3f623",
+    "implementation/ios/Sources/NativeConversationHost.swift": "01fe1b83e0750d4bcdc1acfc8087e0a0b7875dde1c7f65164ac4bf58802eac88",
+    "implementation/ios/UITests/HostInteractionTests.swift": "eaf70f6533a47369d08d74e7c5a31c1e0a65da88b43be1c6ff7ca4046ec90136"
+  }
+}

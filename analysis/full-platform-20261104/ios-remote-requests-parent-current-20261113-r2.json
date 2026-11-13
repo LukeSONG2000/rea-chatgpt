@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "module": "6 Remote approvals and supplementary user input, third pass",
+  "date": "2026-11-13T05:12:31.183211+08:00",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core front-end implemented; explicit source/service/device gaps retained",
+  "previous_goal_turn": "progress: module5 and current haptic wiring archived; current turn advances module6",
+  "previous_snapshot": "ios-remote-requests-parent-current-20261113.json",
+  "source_reports": [
+    "ios-remote-approval-third-20261113-findings.json",
+    "ios-remote-user-input-third-20261113-findings.json",
+    "ios-remote-request-submission-third-20261113-findings.json"
+  ],
+  "implemented_this_pass": [
+    {
+      "component": "ApprovalCard outer width",
+      "evidence_type": "official_artifact_static + native reconstruction",
+      "source": [
+        "1a2ab4c/1a2ae74..1a2aee0",
+        "effective ordinary ancestor3040c0→2de24c→6081e84"
+      ],
+      "change": "After existing card padding, consume effective MessageInputStyle.maxWidth with center alignment; preserve inner Banner infinity frame. Shared appearance projection now carries default608 and explicit ordinary728; taskBottomBars injects actual ordinary branch. Composer/home use same ordinary width constant."
+    },
+    {
+      "component": "Approval feedback failed admission",
+      "evidence_type": "independent_frontend_contract",
+      "source": [
+        "RemoteApprovalFeedbackDraft.submit retains original clear-before-forward",
+        "RecoveredRemoteApprovalActionButtons.onAction now returns actual synchronous owner admission"
+      ],
+      "change": "Stage original mutation in a copy; rejected event leaves raw draft and Send available for deliberate retry; accepted event clears. Whitespace keyboard remains no-op, blank button remains scoped Deny."
+    },
+    {
+      "component": "Supplementary input failed admission",
+      "evidence_type": "independent_frontend_contract",
+      "source": [
+        "RemoteUserInputDraft.perform wraps original select/submit methods",
+        "RecoveredRemoteUserInputForm onAction Bool"
+      ],
+      "change": "Intermediate question progression stays local; terminal rejected custom/secret/choice operation leaves pre-submit state for retry; accepted operation commits original clearing. No answer persistence or logging."
+    },
+    {
+      "component": "Replay store boundary",
+      "evidence_type": "independent_frontend_contract",
+      "change": "approve now rejects when replay disabled, consistent with answer; current UI outer guard preserved."
+    }
+  ],
+  "corrections_to_previous_snapshot": [
+    "Outer ApprovalCard IDView<Banner,ApprovalRequestKey> is proved: banner-only upstream-identity uncertainty did not cover the actual parent",
+    "Selected ordinary Thread MessageInputStyle is proved; alternate/runtime writers remain unknown, not the whole ordinary parent",
+    "Question ScrollView uses maxHeight, not fixed height; current flexible geometry retained without screenshot-based tuning"
+  ],
+  "retained_core": [
+    "ordinary list entry to fixed bottom approval/question cards; history scroll stays independent",
+    "availability-bound once/session/policy decision, deny and supplementary feedback",
+    "question choices, other/custom and secret fields, previous/next, skip and empty request auto-event",
+    "synthetic accepted receipt retires pending card and restores ordinary composer/response",
+    "host/connection/thread/request/call identity, duplicate rejection and identity-only receipt persistence",
+    "new request clears local answers/drafts/index; same-key current payload updates retain unsent state"
+  ],
+  "feature_chain": "list→host/thread scope→pending request/key→BottomBars→ApprovalCard or QuestionCards→scoped decision/answer→owner admission→identity-only local receipt and synthetic response→ordinary input→return/restart",
+  "independent_adaptations": [
+    "Synchronous copy/admission/rollback is independent frontend failure handling, not recovered official asynchronous behavior. Original low-level draft callbacks still clear before forwarding.",
+    "Original input owner18e73e0 gates existing userInputSubmissionTask at18e7474..80; full remote async operation and late-failure policy are not reproduced.",
+    "host/connection envelope, synthetic request catalogs and response generation remain explicit offline adapters; no real executor/network/backend.",
+    "Card env projection and simulator/host viewport producer are typed native adapters; alternate platform caller assignments remain unproved."
+  ],
+  "not_implemented": [
+    {
+      "gap": "OpenAIForm/MCP/network policy/full permission preview and full reason formatting",
+      "next": "Trace corresponding banner branch and concrete request payload projection before exposing missing actions."
+    },
+    {
+      "gap": "Real asynchronous approval/answer transport, pending progress, reconnect, server policy enforcement",
+      "next": "Future service adapter needs scoped attempt and revision receipts; sending must not be accepted. No backend is in current scope."
+    },
+    {
+      "gap": "Original async failure restoration and arbitrary same-key question removal/reorder reconciliation",
+      "next": "Trace18e73e0 continuation and actual updated-question owner; current failed sync admission is explicit host policy."
+    },
+    {
+      "gap": "Original viewport source, full keyboard/focus lifecycle, runtime glass/elevation overrides and wide-device geometry execution",
+      "next": "Follow actual QuestionCards viewport capture; preserve maxHeight and chosen ordinary style without inventing height."
+    },
+    {
+      "gap": "Approval/question-specific explicit haptics, physical touch feel and actual notification delivery",
+      "next": "No caller proved in bounded source pass. Recover actual owner before adding feedback; physical work needs available device."
+    }
+  ],
+  "haptics": {
+    "new_trigger_added": false,
+    "existing_consumers": "sidebar drag, slider selection/boundary, accepted-file feedback and shared Goal/Agent carrier remain gated by Settings→General→Haptic feedback",
+    "setting_key": "rea.preview.hapticsEnabled",
+    "preference_dispatch_source_sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490",
+    "prior_current_audit": "ios-gesture-haptics-settings-current-20261113-final.json",
+    "source_boundary": "No new explicit approval or input navigation/optiontap haptic caller proved; do not transplant shared-pill feedback."
+  },
+  "verification": {
+    "pure": {
+      "result": "passed",
+      "log": "/tmp/rea-remote-requests-third-text-20261113-r2.log",
+      "vectors": [
+        "failed feedback retry preserves text/button",
+        "failed final custom/secret answer retains full payload and current draft",
+        "failed final choice remains reselectable",
+        "intermediate progression and accepted clearing",
+        "new-key state reset, redacted debug, existing exact receipts/no-secret persistence"
+      ]
+    },
+    "ui": {
+      "result": "passed",
+      "xcresult": "ios-remote-requests-third-20261113-r1.xcresult",
+      "summary": "ios-remote-requests-third-20261113-r1-summary.json",
+      "cases": [
+        {
+          "name": "testRemoteRequestAdmissionFailureChinese",
+          "seconds": 49.062,
+          "covered": "twice rejected feedback and secret final answer, retained Send, question navigation, cross-host separation"
+        },
+        {
+          "name": "testRemoteRequestsModuleChinese",
+          "seconds": 52.276,
+          "covered": "answer/secret success, approve/deny cross-host core paths, normal composer restoration, actual process restart and receipt retention"
+        }
+      ]
+    },
+    "screenshots_reviewed": [
+      "ios-remote-requests-third-20261113-r1-attachments/75BCEFB6-C775-40E4-A462-E8E7AE9C780A.png",
+      "ios-remote-requests-third-20261113-r1-attachments/5F267556-DD6A-4D5B-ADC5-BB2C79FA4B4A.png",
+      "ios-remote-requests-third-20261113-ordinary.png",
+      "current Device Hub approval-ready screenshot"
+    ],
+    "routine_matrix": "Chinese/light only",
+    "not_rerun": [
+      "all policy/form variants",
+      "wide-device maxWidth geometry",
+      "four appearance/language matrix",
+      "unchanged haptic settings UI"
+    ]
+  },
+  "runtime": {
+    "simulator": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "preview": "core manifest + isolated module6 synthetic profile + Chinese/light process override",
+      "profile": "6BDA7254-E1FD-49FB-B492-E5CCCE8C3437",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--chat-state-profile=6BDA7254-E1FD-49FB-B492-E5CCCE8C3437",
+        "--remote-draft-profile=6BDA7254-E1FD-49FB-B492-E5CCCE8C3437",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light"
+      ],
+      "manifest_sha256": "3a3532497d53d7b46d0cda950185e6bad0cec07c36b202e952b671482420ef36",
+      "executable_sha256": "27d007ce8c9e8914bc29fee77b9f7326b8a56589d1636dc6c5a13a44c864cadc",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 29294",
+      "left_running": true,
+      "ui_launch_observed": true,
+      "profile_isolation": "valid explicit UUID",
+      "left_surface": "ordinary sidebar -> Codex -> fixture-a/shared-thread, approval card with scoped actions and feedback, no approval submitted",
+      "screenshot": "ios-remote-requests-third-20261113-approval-ready.png",
+      "external_display_placement": "not verified"
+    },
+    "physical": {
+      "build": "signed succeeded",
+      "codesign": "strict deep verification passed",
+      "build_log": "/tmp/rea-remote-requests-third-20261113-device-build.log",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "executable_sha256": "4bd3c4ac20e50489b3abcdf5891b8712e1bf561f0fee6744e8335d12885eeb82",
+      "device": "00008150-001E34E93A12401C",
+      "pairing": "paired",
+      "tunnel": "unavailable",
+      "ddi_services_available": false,
+      "installed_current_candidate": false
+    },
+    "preview_launch_correction": "First non-UUID profile name was rejected by current parser; no UI input performed. Preserved original report, relaunched valid UUID, then visibly reached pending approval through ordinary sidebar/Codex path."
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "566536f83a8497a5926ec90996516085c496489d1a60febc8a5355d8279d1ac8"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+      "sha256": "2f250134a60430450b7a88956f915ef6b368389d24c43a326b6e601da0155040"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteUserInputInteraction.swift",
+      "sha256": "0fb234dd2d440c1f63198475cd2d40d965cb6f346d3cd4290742e29ebc7603e4"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "sha256": "d3759fe8eeb5f3108efc2f9be259a6a696e38b1b02c7106f63729f442b82ed32"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerGeometry.swift",
+      "sha256": "b43678a0d3db5f5e1644d43a0f552887854ca8ceb00ad7910096d52b79006ffe"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "ad7052030549157ec3a24e514ef27c597ccc85d50a6abe1e3849d9187dd5f827"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "3c7ecc1505f7bca12fe7d3bf17b019e443d011a77bb28b64bd09490462f97d8e"
+    }
+  ],
+  "next_major_module": "7 Chat/Work lists and conversations",
+  "git_mutations": "No commit/push/release"
+}

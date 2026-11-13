@@ -1,0 +1,39 @@
+{
+  "batch": 593,
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "public_source": "ios-settings-v592-public-source.json (pinned commit, no Swift UI source)",
+  "metadata": "ios-notification-v593-types.json",
+  "official_observations": [
+    "PushNotification descriptor0x96a48fc has metadata/content/action/serverNotificationID",
+    "ChatMessage0x96a4968 has conversationId",
+    "CodexFinished0x96a49bc has taskId/taskSource/remoteEnvironmentId/remoteThreadId/remoteTurnId",
+    "NotificationResponseContext0x96a6180 has appEntry/messagingTarget",
+    "AppEntry0x96a61a8 has url/notificationID/notificationChannelID",
+    "RegisterPushNotificationTokenRequest0x96a5654 has token/platform/app/build/deregisterIfUnchanged"
+  ],
+  "independent_adaptation": [
+    "Versioned frontend envelope, session fencing, duplicate journal, bounded pending response queue",
+    "Native system notification presentation and response delivery",
+    "Routing to current catalog and scoped Remote fixtures, explicit unavailable response"
+  ],
+  "limits": [
+    "Metadata proves fields, not wire encoding or official route behavior",
+    "Official target/account resolver, foreground suppression policy and unread policy remain untraced",
+    "No registration, APNs sender, official service or real user data",
+    "No Android parity established"
+  ],
+  "missing_integration_before_batch": [
+    "AppDelegate has no UNUserNotificationCenterDelegate",
+    "Chat and Remote navigate through independent owners without notification ingress"
+  ],
+  "host_findings": [
+    {
+      "run": "r1",
+      "failure": "Missing-target alert had no presenter after sidebar switched the original Chat navigation out of its parent.",
+      "repair": "Keep a weak reference to the stable sidebar shell, reuse it for route presentation, and retain generation checks across modal dismissal.",
+      "verification": "r2 missing-target close returns to Remote list; native Remote A -> Remote B -> Chat routing verified in one process."
+    }
+  ],
+  "validation": "ios-notification-v593-integration.json"
+}

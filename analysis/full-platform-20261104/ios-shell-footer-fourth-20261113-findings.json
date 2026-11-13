@@ -1,0 +1,207 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "History sidebar footer actual background Body and receiver-tracked parent anchors; two bounded groups",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_budget": {
+    "limit": 2,
+    "groups": [
+      "BottomActionItemsBackgroundView actual Body and reduceTransparency consumer",
+      "HistoryViewController bottom background/newChat named constraint receiver/argument chain"
+    ],
+    "stopped": true
+  },
+  "official_observations": [
+    {
+      "conclusion": "Footer background is unconditionally CurvedGradient with two padding wrappers and allowsHitTesting(false); no local Color/Glass/VariableBlur replacement branch. reduceTransparency only changes the first wrapper top padding from-10 to0. Bottom wrapper padding is-24 for both states.",
+      "source": [
+        "HistoryBottomActionItemsBackgroundView descriptor9592790/conformance7dad324",
+        "bodywitness127c1e4→127c0a0",
+        "corrected Body associatedtype8d8b7c6",
+        "127c148 Edge.top;127c154..158 Environment reduceTransparency;127c160 -10;127c164 choose0 when true",
+        "127c190 Edge.bottom;127c198 -24",
+        "127c1c8 allowsHitTestingfalse"
+      ],
+      "evidence": [
+        "bottom-background-witness.json",
+        "bottom-full-body.tree.txt",
+        "bottom-background-body.asm",
+        "bottom-background-body-calls.json"
+      ],
+      "limit": "This is this owner behavior, not a global statement that accessibility never affects color factories or native renderer. Current opaque-footer fallback is an independent host adaptation, not this recovered branch."
+    },
+    {
+      "conclusion": "Gradient config remains original MainSurfacePrimary opacity0→0.85, UnitCurve.easeIn, steps10. The complete footer tree has no blur layer. Header TopBarFadeBackground radius2 must not be transplanted to footer.",
+      "source": [
+        "127c0e8/127c104→74f0f48 OneOff/MainSurfacePrimary",
+        "127c0f0..f8 opacity0;127c10c/110 double7cdb408=.85",
+        "127c124 CurvedGradient metadata;127c134 UnitCurve.easeIn;127c140/144 steps10"
+      ],
+      "reuse": [
+        "ios-shell-scroll-background-parent-20261113-findings.json",
+        "ios-sidebar-scroll-edges-20261112-followup.json"
+      ],
+      "limit": "CurvedGradient is ShapeView<Rectangle,Gradient>, not explicit LinearGradient direction. Inclusive sampling/current0...10 and exact ShapeStyle orientation remain host adapter choices."
+    },
+    {
+      "conclusion": "Original footer background top is bound to actual newChatButton controller view.top minus8; leading/trailing/bottom equal contentContainer edges. This is not a fixed56 header height and not simply footer.top→root.bottom.",
+      "source": [
+        "1296660→1394af0 writes x22=adb95d0 navigationHeaderBackground offset storage base",
+        "1296738 reads[x22+0x80]=adb9650 newChatButton offset;1296788 saves sp+0x20",
+        "12966e0/e4 reads bottomBg offset adb95e0;1296874 moves it into x26;12969a0 retains x28",
+        "12969a4..69a8 self.bottomActionItemsBackground.topAnchor",
+        "12969b8 restores newChat offsetx25;12969bc→139959c gets newChatButton.view;12969d0 topAnchor",
+        "12969e0 fmov-8;12969ec constraintEqualToAnchor:constant:",
+        "1296a04/08 bottomBg.leading;1296a18→1399590 restores contentContainer offset fromsp+0x48 and gets leading;1296a38 equal",
+        "1296a40..6a78 trailing equality",
+        "1296a80..6ab8 bottom equality"
+      ],
+      "evidence": [
+        "background-storage-base.asm",
+        "footer-receiver-provenance.asm",
+        "bottom-host-constraints.asm",
+        "bottom-host-constraints-calls.json",
+        "footer-anchor-helpers.asm",
+        "view-anchor-helper.asm"
+      ],
+      "parent_identity": "contentContainer storage adb9628 is loaded at1296600 as adb95f0+0x38, saved sp+0x48 at1296868;1399590 restores it. Storage globals are ivar offset addresses, not runtime object byte offsets.",
+      "limit": "ContentContainer-to-whole-root absolute frame relation is not retraced. Mapping current root UIView to this owner remains an explicit host correspondence."
+    },
+    {
+      "conclusion": "Named newChat bottom and leading constraints both consume the same dynamic footer inset getter129d908; bottom negates it and anchors to contentContainer.bottom; leading anchors to contentContainer.safeAreaLayoutGuide.leading with positive inset.",
+      "source": [
+        "1296adc→139959c newChatButton.view;1296af4 bottomAnchor",
+        "1296b04/08 contentContainer.bottomAnchor",
+        "1296b18→129d908;1296b20 negates;1296b28 equality;1296b40 stores propertyslotadb9658 via1399918",
+        "1296b84→139959c newChatButton.view;1296b98 leadingAnchor",
+        "1296ba8 contentContainer.safeAreaLayoutGuide;1296bbc leadingAnchor",
+        "1296bd0→129d908 positive;1296bd8 equality;1296bf0 stores propertyslotadb9660 via1399918"
+      ],
+      "evidence": [
+        "bottom-host-constraints.asm",
+        "bottom-host-constraints-calls.json",
+        "footer-constraint-store.asm",
+        "footer-constraint-args.asm"
+      ],
+      "limit": "Dynamic source inset is not one universal16/24/38/40. Its actual scene-corner branch remains partly unresolved; reuse previous bounded inset report without inventing a global constant."
+    },
+    {
+      "conclusion": "A separate named inter-item spacing constraint is created with constant-8 and stored atslotadb9668, but complete optional action-item receiver/active gating remains unclosed.",
+      "source": [
+        "1296e64 fmov-8;1296e6c constraintEqualToAnchor:constant:",
+        "1296e88..e90 stores adb9668",
+        "1296e9c..ea0 computes active Bool predicate"
+      ],
+      "reuse": [
+        "ios-sidebar-layout-20261112-load.asm"
+      ],
+      "limit": "Do not replace current host lessThan spacing or profile visibility policy from the constant alone."
+    }
+  ],
+  "current_host": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256": "49262b70065d13f1db496a6f25295e17d4b0594f6a80d97dcd1f9b3a3f3e8e82",
+    "inspected_symbols": [
+      "NativeConversationList.installSourceChrome",
+      "RecoveredHistoryEdgeBackground",
+      "NativeConversationList.viewDidLayoutSubviews"
+    ],
+    "clear_difference": "RecoveredHistoryEdgeBackground starts if reduceTransparency{surface}, so bottom gradient is replaced by solid source-color; original bottom owner keeps gradient and changes top padding only.",
+    "parent_difference": "Current bottom background top=abstractfooter.top andbottom=rootview.bottom. Original top=newChatButton.view.top-8 andleft/right/bottom=contentContainer. Current48 footercenter does not by itself prove newChat.top equivalence.",
+    "independent_geometry": "Current footerleading16/trailing24, heightscaled48, bottom=max(safearea,16) are host policy; do not claim exact original scene-corner layout."
+  },
+  "can_restore_now": [
+    {
+      "change": "Separate bottom reduceTransparency handling from the current unconditional opaque replacement; retain original gradient for this owner.",
+      "basis": "Complete Body and actual Bool consumer."
+    },
+    {
+      "change": "If restoring padding, restore its actual parent anchor group coherently: background.top=newChatView.top-8; left/right/bottom=contentContainer; then inner top=-10 or0 andbottom=-24, hitfalse.",
+      "basis": "Receiver-tracked source constraints plus Body wrapper values.",
+      "adapter_boundary": "Explicit rootview-as-contentContainer correspondence and intrinsic newChat dimensions; do not move -10/-24 alone onto arbitrary bounds."
+    },
+    {
+      "change": "Keep leading/bottom inset as one supplied dynamic input when adapting original footer.",
+      "basis": "Same129d908 getter feeds both named original constraints.",
+      "adapter_boundary": "Do not invent unclosed scene-corner configuration fields/formula."
+    }
+  ],
+  "unknowns": [
+    {
+      "gap": "ContentContainer full absolute boundary and default current scene corner config",
+      "next": "Already source-specific owner identified; next bounded task only if whole-root equivalence or exact device margin is required."
+    },
+    {
+      "gap": "Profile avatar-versus-cog content producer and footer inter-item activation",
+      "next": "Keep separate supplied content/capabilities, no screenshot-derived selector."
+    },
+    {
+      "gap": "CurvedGradient exact sampling/orientation",
+      "next": "Retain current explicit gradient adapter; no unsupported LinearGradient/blur claim."
+    }
+  ],
+  "haptics": {
+    "status": "no_new_trigger_proved",
+    "scope": "Background and constraints only; no gesture or explicit haptic emission proved, not a global absence claim."
+  },
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "shared_tools_modified": false,
+    "built": false,
+    "device_accessed": false,
+    "target_executed": false
+  },
+  "reused_reports": [
+    "ios-shell-bottom-actions-parent-20261113-findings.json",
+    "ios-shell-scroll-background-parent-20261113-findings.json",
+    "ios-sidebar-layout-20261112-findings.json"
+  ],
+  "raw_evidence": {
+    "ios-shell-footer-fourth-20261113/background-anchor-helper-calls.json": "ae6535909f01b2619bceea960e26d691778d7b5424b68112b8bfd976b94fd6fa",
+    "ios-shell-footer-fourth-20261113/background-anchor-helper.asm": "0c369d6c444457bd954cd8928d90a990c5acf1703f732c3cf0c5f36806dd6102",
+    "ios-shell-footer-fourth-20261113/background-config-helper-calls.json": "786e4b01f93d8adf54ae565086657086d248da7c5c6db29d8ccddd24f85b2c5c",
+    "ios-shell-footer-fourth-20261113/background-config-helper.asm": "3a292cae18d49c85798bbf2c9a68e8291d8ff7a7e60d5291089a17a86df0aea9",
+    "ios-shell-footer-fourth-20261113/background-storage-base-calls.json": "31c20bde44290230b127280f36e8de68e5f9b7eb1bfa814398b59753fb38b730",
+    "ios-shell-footer-fourth-20261113/background-storage-base.asm": "909857d556eea0b1bd8eaae770141ce383e55c7426261b1349cc4faf5b2aa38e",
+    "ios-shell-footer-fourth-20261113/bottom-background-body-calls.json": "df0ae1bd552959996029a062b9994cafab112265275ead41d06c953fdaf27718",
+    "ios-shell-footer-fourth-20261113/bottom-background-body.asm": "86589a5b864a5c2d43c350ee6ee6abbc0dac52cd1c41fb2241f77c2ccfdc182e",
+    "ios-shell-footer-fourth-20261113/bottom-background-witness.json": "e30f11a3b585494a2d8eeadcf1a6a152c0e1021ca11baae2204a735013ead678",
+    "ios-shell-footer-fourth-20261113/bottom-full-body.json": "76e31cc0f9fb4ca1b0bb4fd6022d6188c2003d65dda39aea27fa253f3568ecc7",
+    "ios-shell-footer-fourth-20261113/bottom-full-body.raw": "7f0d1f9d8f3f6b47e30a97dcc56347a4fd4c20a98a6722f20774091ef9ccc533",
+    "ios-shell-footer-fourth-20261113/bottom-full-body.refs.tsv": "32c82d04c8d1258b943c1dd148960645b6e673dff02ed7e0988e1ab586390c0a",
+    "ios-shell-footer-fourth-20261113/bottom-full-body.tree.txt": "edfee8be3d56ec29236f643fd8b1be86b39564d326a6f92e2c6ec81c43dc858a",
+    "ios-shell-footer-fourth-20261113/bottom-host-constraints-calls.json": "d6d02d9ee003718e7136f5b87ff50ffba90a907953e80a5f5e9fae793dc1efa5",
+    "ios-shell-footer-fourth-20261113/bottom-host-constraints.asm": "52d24f2d23766755d2ff6fb9cde1fc399c59c1caf43e9b188dc703904907e432",
+    "ios-shell-footer-fourth-20261113/bottom-parent-helper-calls.json": "302798d9bc316d1b12599af08f4c4bdce167f6a2733982c073b4241aeeda8945",
+    "ios-shell-footer-fourth-20261113/bottom-parent-helper.asm": "cf3616b24a0ada8897da0e3c3be2697d72126f55c1a4b0b0c3ce8cf4ae04fded",
+    "ios-shell-footer-fourth-20261113/controller-layout-field-base.asm": "9a8c75119ddc8e037fe1a84e3f1f4522509bda0c3df3c4a91028594513b849ab",
+    "ios-shell-footer-fourth-20261113/footer-anchor-args-calls.json": "46947666a0718af8421ab28ff8adfcb7cf7abf08fd810a55ee32b60afaf106f7",
+    "ios-shell-footer-fourth-20261113/footer-anchor-args.asm": "6b8d50363791bd664acd340d78b06b90455768cae39a8c0a6623c7a58a09e761",
+    "ios-shell-footer-fourth-20261113/footer-anchor-helpers-calls.json": "8324e1a0ad9f956bbe24afe374b4ba0a49a1ec4d191b37d1dbac43fde43932b1",
+    "ios-shell-footer-fourth-20261113/footer-anchor-helpers.asm": "99e0222e55480986f8028f991c02699bc23aa2f93783d8399853508d8aa7a5e1",
+    "ios-shell-footer-fourth-20261113/footer-background-constraints-calls.json": "e55a16df16f53ff74ae3510317f0804a618777c12e97c06b71efebc8fdf3c842",
+    "ios-shell-footer-fourth-20261113/footer-background-constraints.asm": "62193e1eabc04c9fcd2c123e39e0b65d9d846adc442d5a57692d3cf37c4253be",
+    "ios-shell-footer-fourth-20261113/footer-constraint-args-calls.json": "c24d656724a1031b4ea88fe65a6b9c1d0be6c3fb7ee60eaae7cde1d22d718106",
+    "ios-shell-footer-fourth-20261113/footer-constraint-args.asm": "322aafb001cb26e3bebb12a335d5299367d4592a36ddcb63794b5e7e4f68dc9e",
+    "ios-shell-footer-fourth-20261113/footer-constraint-store-calls.json": "68520f8cbfd001fc3bd007b6a91b9d2b1ea522d0c362ed1f6cbdc041cb4e2368",
+    "ios-shell-footer-fourth-20261113/footer-constraint-store.asm": "282293cf05764642dfa50863875e35192058b5770fd4325e13ec56489692161c",
+    "ios-shell-footer-fourth-20261113/footer-layout-helper-calls.json": "e8028f2eadc94d7b0fbbafdf3fcb3d82c28751bb916e45b20fc31f7b8627573b",
+    "ios-shell-footer-fourth-20261113/footer-layout-helper.asm": "e36ba10c9e8bafcb1d668281965f0ae6d7785e2bae4969b9f3adfd11c8ab5e37",
+    "ios-shell-footer-fourth-20261113/footer-receiver-provenance-calls.json": "6acc853afb49a42da4e0283e5aaaf5526bfb1fcf8b58d4641674bf96994d31f0",
+    "ios-shell-footer-fourth-20261113/footer-receiver-provenance.asm": "88c2fc02cdb1cb1c219426c8672d2544691dd00f727bb46d10a49cb4952a9f5b",
+    "ios-shell-footer-fourth-20261113/header-component-getter-calls.json": "778877c1a73fb6a12ef6439474304fcd74bb80e52ddeb31ccbd966b4fe05de20",
+    "ios-shell-footer-fourth-20261113/header-component-getter.asm": "481c4144b29d6889588cc856c5a48b390f723008f3c8f43d02d5a7a84d33c8fd",
+    "ios-shell-footer-fourth-20261113/prepare_raw.py": "7a84c91fed35bbbb2db0b0a09f239990dbbf1bed6deba4da7d533660f2125bbc",
+    "ios-shell-footer-fourth-20261113/view-anchor-helper-calls.json": "0fe8fe8faf9887b68b5bcf24007e454d21940289dafb0a912467a49e9fc5c7a4",
+    "ios-shell-footer-fourth-20261113/view-anchor-helper.asm": "c12601b653c543b08e67208ee801f1a0a7d9bcb5deea9766e3aba80561c8e4a2",
+    "ios-shell-footer-fourth-20261113/view-getter-helper-calls.json": "048bba6d8b1efe134bbb33e83b5c8d1b1614d47b1efaac4b0247612b79c41511",
+    "ios-shell-footer-fourth-20261113/view-getter-helper.asm": "17f795a7ef66123e8275184cd579f8fe7ce51563bec53c0cf7184f3d0af79740"
+  }
+}

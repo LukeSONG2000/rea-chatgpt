@@ -1,0 +1,108 @@
+{
+  "status": "partial",
+  "scope": "iOS 1.2026.293 sidebar Explore / seeMoreFeatures, bounded static investigation; no target execution",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "shipped-artifact metadata and narrow ARM64 disassembly",
+  "observations": [
+    {
+      "conclusion": "seeMoreFeatures is a feature-catalog / sidebar item, not a distinct HistorySelection destination case. This establishes a control/destination distinction but does not by itself prove inline expansion versus menu presentation.",
+      "source": [
+        "HistoryFeatureCatalog.Item descriptor0x959306c field seeMoreFeatures",
+        "HistoryViewController.Item descriptor0x95927d0 field seeMoreFeatures",
+        "HistorySelection descriptor0x9592308 complete field list lacks Explore/More/seeMoreFeatures"
+      ],
+      "validation": "direct enum metadata"
+    },
+    {
+      "conclusion": "Catalog availability and presentation are data dependent; enumerating Item cannot define the visible directory or display order.",
+      "source": [
+        "HistoryFeatureCatalog descriptor0x9593050 accessor0x1365328",
+        "availableItems record0x9a17b6c Set typeref0x8d93610",
+        "usesTboSidebarLayout0x9a17b78",
+        "usesFreeSidebarLayout0x9a17b84",
+        "promotesImages0x9a17b90",
+        "promotesHealth0x9a17b9c",
+        "promotesCodex0x9a17ba8",
+        "isExpanded0x9a17bb4"
+      ],
+      "validation": "direct struct metadata; values not recovered"
+    },
+    {
+      "conclusion": "Actual tap dispatch belongs to HistoryViewController, not a standalone MoreView inferred by name.",
+      "source": [
+        "collectionView:didSelectItemAtIndexPath: implementation0x12a70c8",
+        "wrapper calls0x12a7038 at0x12a711c",
+        "0x12a7038 calls0x12a8b08 at0x12a70a8",
+        "0x12a8b54 reads Item tag byte+0x39",
+        "0x12a8cc8 admission helper0x12a13c0",
+        "dispatch tables0x12a9d9c and0x12a9dc0 use signed32 offsets (not byte offsets)"
+      ],
+      "validation": "direct calls and instruction window"
+    },
+    {
+      "conclusion": "HistoryViewModel carries additional visibility flags including _useExploreButton; their names are not evidence of active experiment assignment.",
+      "source": [
+        "HistoryViewModel descriptor0x95923ac",
+        "_useExploreButton field record0x9a157fc typeref0x8bc9000 Optional<Bool>",
+        "enableFileLibrary,showsScheduledAutomations,_customizeEnabled,showSitesRow,codexEnabled,orbitAvailable in existing selected metadata"
+      ],
+      "validation": "existing metadata reused"
+    }
+  ],
+  "catalog_enum_inventory": [
+    "sites",
+    "projects",
+    "collegePlan",
+    "appDirectory",
+    "codex",
+    "imageLibrary",
+    "potion",
+    "finance",
+    "imageGen",
+    "scheduledAutomations",
+    "places",
+    "shoppingHome",
+    "cart",
+    "fileLibrary",
+    "orbit",
+    "customize",
+    "upgrade",
+    "noPaymentTrialCountdown",
+    "seeMoreFeatures"
+  ],
+  "implementation_boundary": {
+    "allowed": "An explicit offline provider may expose a documented synthetic directory of already supported feature routes and label the independent adapter. It must not claim this is the original default visible Explore page.",
+    "not_proven": [
+      "whether the active 293 useExploreButton branch opens a menu, expands inline, or invokes another presentation",
+      "source-derived visible child order and capability predicates",
+      "actual seeMoreFeatures empty-case mapping through the multi-payload enum dispatcher",
+      "exact Explore vs More localization and icon consumer for each layout branch"
+    ],
+    "do_not_do": [
+      "do not populate every catalog enum case as visible",
+      "do not route Explore to unrelated ChatGPTExploreFeed by name",
+      "do not equate isExpanded metadata with proven toggle behavior",
+      "do not treat enum declaration index as runtime discriminator"
+    ]
+  },
+  "next_minimum_evidence": {
+    "owner": "HistoryViewController Item dispatcher0x12a8b08",
+    "action": "Resolve empty-case representation for seeMoreFeatures (8 payload /26 empty cases descriptor0x95927d0) via original value-witness enum tag projection or a confirmed case constructor, then trace only that resulting branch. Resolve HistoryViewModel _useExploreButton getter and catalog isExpanded producer to choose the correct layout branch.",
+    "exact_unclosed_call": "0x12a8b08 multi-payload discriminator and empty-case discriminator; resulting seeMoreFeatures branch not yet attributed"
+  },
+  "evidence_files": [
+    "analysis/full-platform-20261104/ios-sidebar-explore-20261112/catalog-metadata.json",
+    "analysis/full-platform-20261104/ios-sidebar-explore-20261112/enum-metadata.json",
+    "analysis/full-platform-20261104/ios-sidebar-explore-20261112/item-dispatch.asm",
+    "analysis/full-platform-20261104/ios-sidebar-explore-20261112/item-dispatch.json",
+    "analysis/full-platform-20261104/ios-sidebar-explore-20261112/catalog.asm"
+  ],
+  "limits": [
+    "No target application execution, live account configuration, runtime reachability or UI visual equivalence established.",
+    "No host modification, build, device interaction or complete binary disassembly.",
+    "Investigation stopped at bounded task limit rather than inventing a navigation behavior."
+  ]
+}

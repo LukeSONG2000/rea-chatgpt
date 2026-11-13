@@ -1,0 +1,90 @@
+{
+  "platform": "Android",
+  "version": "1.2026.293",
+  "status": "partial",
+  "scope": "Bounded ordinary Chat null-selector composer correction after v624",
+  "observations": [
+    {
+      "id": "null_slot_default",
+      "evidence_type": "official_artifact_static_smali",
+      "source": [
+        "u0e0.smali:2698-2973 f()Z",
+        "lzr.smali:9547-9597 slot filter",
+        "android-home-v624-composer-predicate.json"
+      ],
+      "conditions": [
+        "no voice recording",
+        "no attachment",
+        "no qy50 content",
+        "selector slot absent"
+      ],
+      "conclusion": "expanded = measuredOverflow || forcedExpanded. Focus and nonempty short text do not independently expand this branch."
+    },
+    {
+      "id": "inline_is_not_permanent_compact",
+      "evidence_type": "official_artifact_static_smali",
+      "source": [
+        "u0e0.smali:2790-2958",
+        "yvz0.java:16-23",
+        "w7o.smali:11279-11349"
+      ],
+      "conclusion": "Inline ordinal2 also reaches measuredOverflow || forcedExpanded. Its selection is restricted to ldo selector with v45; null selector remains Default. No evidence supports mapping all Chat to Inline or globally suppressing overflow."
+    },
+    {
+      "id": "slot_availability",
+      "evidence_type": "official_artifact_static_smali",
+      "source": [
+        "w7o.smali:10927-11013"
+      ],
+      "conclusion": "mdo, ldo and ndo slots each have conditions. Null is a valid result. v624 host unconditional modelLabel for Chat and Work was an independent synthetic fixture choice, and supplied the exact condition that expands focused or nonempty Chat."
+    },
+    {
+      "id": "text_growth",
+      "evidence_type": "official_artifact_static",
+      "source": [
+        "u0e0.java:475-479",
+        "u0e0.smali:3069 onward",
+        "android-home-v624-composer-predicate.json forced_expanded_r"
+      ],
+      "conclusion": "Overflow checks measured width and height, with height threshold1.1 times single line. Empty Enter/newline can set forcedExpanded via m0e0.b/w4o. This is text editing behavior distinct from availability of model controls."
+    }
+  ],
+  "recommendation": {
+    "minimal_change": "Supply null optional model slot for ordinary Chat. Retain explicit Work model fixture. Keep Default overflow/newline semantics rather than invent an always-compact mode.",
+    "user_reference": "User reports ordinary Chat one layer with no additional configuration; screenshot/runtime reference version remains unspecified. This selects the ordinary null-slot host fixture, not a proof that every293 Chat capability set has no slot.",
+    "regression": [
+      "Chat empty focused with visible IME remains compact and has no model control",
+      "Chat short nonempty text remains compact with keyboard open or closed",
+      "Work explicit slot still expands with focus/nonempty text",
+      "Long Chat text preserves existing measured-overflow path and no model control",
+      "Mode switch clears forced-expansion state and preserves per-mode text"
+    ]
+  },
+  "unknown": [
+    "Exact high-level account/experiment/model data mapping to all selector gates is not closed",
+    "Universal all-state Chat no-expansion claim is unsupported by recovered293 conditional state machine",
+    "Original latest-reference application version unknown"
+  ],
+  "sources": [
+    {
+      "file": "recovered/android-1.2026.293/apktool-src/smali/u0e0.smali",
+      "sha256": "1b2c060910d17ad21aac77779909e7bba17733adc5a87f105b2d0b44cf8c8e40"
+    },
+    {
+      "file": "recovered/android-1.2026.293/apktool-src/smali/w7o.smali",
+      "sha256": "faf16b6280f8980eef17ca17d11276e5522d1345c1f0a2c91194b9ba019c5005"
+    },
+    {
+      "file": "recovered/android-1.2026.293/apktool-src/smali/lzr.smali",
+      "sha256": "1c590a513bdf1c2bee278114b450083338b99ed6f696c542bb5d53e6bc59dd1b"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/u0e0.java",
+      "sha256": "0e12af1b92a80eb74494583cf26824c5034e0994362863bf28f5d6b996ae3b9e"
+    },
+    {
+      "file": "recovered/android-1.2026.293/jadx-src/sources/defpackage/yvz0.java",
+      "sha256": "7b7a2f4d8489ced5cf87d6f42644d00a9188a1fe34c4535d778057ed88303013"
+    }
+  ]
+}

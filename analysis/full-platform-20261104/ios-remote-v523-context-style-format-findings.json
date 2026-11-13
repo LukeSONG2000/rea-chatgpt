@@ -1,0 +1,245 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "official_artifact_static_analysis",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "ContextUsage indicator styling, localized formatting, popover layout and compact/expanded configuration slot. No production, tests or runtime changes.",
+  "findings": [
+    {
+      "id": "configuration_slot",
+      "status": "verified-static-bounded",
+      "conclusion": "Indicator is in Controls.model section (raw1), distinct from permissions(raw0). Expanded MessageInput toolbar reads configurationControls field40 at metadata+0xc0 and wraps it in48-high frame. Compact ordinary path assembles attachment and trailing primary/Whisper, without loading configurationControls.",
+      "proof": [
+        "enum descriptor0x95aeaa4 field kind2 records permissions,model in order",
+        "Controls.body0x1965538 readssection byte+8;0x196553c compares1; equal branchclosure0x1c2157c→0x19659ac→usagegate0x1965ab0",
+        "MessageInput descriptor0x95ac77c77fields, vectoroffsetword4. field39permissionsControl→metadata+0xbc;field40configurationControls→metadata+0xc0",
+        "Expanded0x1985f80 readspermissionsControl;0x1986048 readsconfigurationControls,0x1986060 formsfieldaddress,0x1986074frameheight48",
+        "Compact selected assembly0x1987d30..0x19880c8 callsattachment0x19863cc andtrailing0x198a620. Supplied0x1985c94→0x1c27f6c→0x198f378 is expanded PRIMARY path, independent ofconfigurationControls."
+      ],
+      "limit": "Bounded to ordinary compact/expanded paths under analysis. No claim about every fullscreen or alternate presentation. Keep upstream Controls.section constructor identity from companion findings."
+    },
+    {
+      "id": "ring_geometry",
+      "status": "verified-static",
+      "conclusion": "ScaledMetric24 outer size. Stroke width2, round cap, miter join,miterLimit10,dashPhase0. Both Circle background and foreground inset halflinewidth; determinateforeground trims0...clampedfraction and rotates−π/2 aroundcenter. Preserve24 outer diameter byinsetting1 beforestroke2.",
+      "proof": [
+        "0x1971310..0x197133c ScaledMetric24",
+        "0x1971700 d0=2→0xc5d9e4→0x7c46da4 StrokeStyle.init;w0=1,w1=0,d1=10,d2=0",
+        "0x6f0b0e0..0x6f0b0e8 halfstroke inset",
+        "0x6f0b138..0x6f0b148 fractionclamp0..1;0x6f0b198from0,0x6f0b19ctoFraction",
+        "typeref0x807cb00 StrokeShapeView<_TrimmedShape<Circle._Inset>,Color,EmptyView>;0x838c7b0 adds_RotationEffect",
+        "0x6f0b238..0x6f0b248 anglebits0xbff921fb54442d18=-pi/2;0x6f0b18c UnitPoint.center"
+      ],
+      "direction": "Top start follows from−90degree rotation. Clockwise in default iOS Circle coordinate system is platform-semantic inference; native Circle positive trim is the recovered instruction, nocustompathreconstruction."
+    },
+    {
+      "id": "ring_color_and_animation",
+      "status": "verified-static",
+      "conclusion": "Foreground ChatGPT/text/primary; track samecolor opacity0.14. Fraction change animates easeOut0.22.",
+      "proof": [
+        "0x1971728 and0x1971738→0x74ee2c0 resourceChatGPT/text/primary at0x8a51ba0",
+        "0x1971744 constant0x7ce21d8=0.14;0x1971748Color.opacity",
+        "0x1971834 constant0x7ce2198=.22;0x197183cAnimation.easeOut"
+      ]
+    },
+    {
+      "id": "indicator_interaction",
+      "status": "verified-static",
+      "conclusion": "Button with PlainButtonStyle, centered48x48 labelframe and Rectangle contentShape; actionopenspopover. Earlier interim message calling this onTapGesture is corrected by symbolictypes.",
+      "proof": [
+        "0x7e1e650 Button<ModifiedContent<ModifiedContent<IndicatorLabel,_FrameLayout>,_ContentShapeModifier<Rectangle>>>",
+        "0x7e1e648 and0x7e1e640 bindbuttonStyle+PlainButtonStyle",
+        "actionclosure0x1cf2df8→0x1cedba8→0xc1aa84 setsBooltrue→LazyState setter",
+        "0x1971340→0x7c4b994 importsAlignment.center;0x15c828 savesalignment inx26/x27",
+        "0x1971364 x0=48bits,w1=0(some).0x155df4 setsx2/x3=alignment.0x757d918 movesalignment tox4/x5 andduplicatesx0/x1 tox2/x3, preservingoriginalx0/x1",
+        "0x757d930 tailcalls0x7c4aca4. Chainedslot0xaad4970 importsView.frame(width:CGFloat?,height:CGFloat?,alignment:).Thereforewidth48,height48,center"
+      ]
+    },
+    {
+      "id": "popover_layout_font",
+      "status": "verified-static",
+      "conclusion": "Leading VStack spacing4. Horizontalpadding12,verticalpadding10. Titlecaptionsemibold withprimarycolor; statuscaptionbase withsecondarycolor,monospacedDigit,numericTexttransition. Caption is a font token, fixedpointsize is notasserted.",
+      "proof": [
+        "0x19718f8HorizontalAlignment.leading;0x19718fc4.0;0x1971900VStackinithelper;typeref0x7e22eb0VStack",
+        "0x1971924Edge.Set.horizontal;0x197192c→0xace5f8sets12→EdgeInsets.init(_all:)",
+        "0x1971950→0x119e794returnsEdge.Set.vertical;0x1971958→0xf514ccsets10→EdgeInsets.init(_all:)",
+        "0x1971aa0→0x1d90864→0x74e27b8/0x74e27a4 importsFont.TextStyle.caption throughslot0xaad3900",
+        "0x1971aa4 retainsbasefontx22;0x1971aacsemibold→0xace170/0x74e2940 createsweightedtitle;0x1971ad0 appliesfontvia0x6ec6b0c",
+        "0x1971b40→0x14d430 restoresbasefontx22;0x1971b44→0xfac40 copies;0x1971b58 appliesfontvia0x6ec6b0c",
+        "0x1971ae4primary0x74ee2c0;0x1971b68secondary0x74ee310;0x1971ba8monospacedDigit;0x1971bdcnumericText"
+      ]
+    },
+    {
+      "id": "popover_attachment",
+      "status": "verified-static-with-availability-branch",
+      "conclusion": "rect(bounds)anchor; newerpopoverCore usesbottomarrowedge and isDetachablefalse; fallbackusesnativepopover API withdefaultarrow behavior. Compactadaptationpopover. Nativepresentationownsitsmaterial.",
+      "proof": [
+        "0x197113cAnchor<CGRect>.Source.bounds",
+        "0x1971144→0x1d89420 binds0xaad2c50 PopoverAttachmentAnchor.rect",
+        "0x1971158Edge raw2→0x197115cEdge.Set.init;SDK frozen Edge caseorder top,leading,bottom,trailing",
+        "0x19711b8popoverCore;0x1971200fallbackpopover",
+        "0x1971970PresentationAdaptation.popover;0x1971984presentationCompactAdaptation"
+      ],
+      "limit": "ExactOSavailabilitythreshold at0xccab64 notnamed; nativearrowplacementandmaterialremainruntimeacceptance."
+    },
+    {
+      "id": "percentage_format",
+      "status": "verified-static",
+      "conclusion": "Remaining percent100−roundedUsedPercent isconvertedtoDouble/100 thenformatted asFoundation percent withfractionLength0 andLocale.autoupdatingCurrent.",
+      "proof": [
+        "0x1971474→0x244800cusedpercentage;0x1971478..0x1971488subtract100minusused",
+        "0x19729fc..0x1972ae4formatter",
+        "0x1972a74→0x1d95ad8 convertsintegerDouble/divides100/callsLocale.autoupdatingCurrent",
+        "0x1972a7c→0x1d9511c→FloatingPointFormatStyle.Percent.init(locale:)",
+        "0x1972a80→0x1d951f8x0=0;0x1972a84Precision.fractionLength;0x1972a94.Percent.precision"
+      ],
+      "limit": "Guardsemantics andinvalidtotals coveredbyprimarycontextusagefindings; noinventedzero-denominatorresult."
+    },
+    {
+      "id": "count_format",
+      "status": "verified-static",
+      "conclusion": "Used/maxcounts useFoundation IntegerFormatStyle<Int>(locale:autoupdatingCurrent).notation(.compactName). Letlocale determineK/万/etc androunding.",
+      "proof": [
+        "0x1971498Locale.autoupdatingCurrent",
+        "0x19714b4IntegerFormatStyle.init(locale:)",
+        "0x19714bcNotation.compactName",
+        "0x19714c8IntegerFormatStyle.notation",
+        "0x19714e0statuskey0x88bc0c0"
+      ],
+      "limit": "ExactFoundationOSlocaleoutputstrings acrossboundaryvalues notexecuted; donothandcodeabbreviationrules."
+    }
+  ],
+  "localization": {
+    "resources": [
+      {
+        "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/SharedKeys/keys.json.lzfse",
+        "sha256": "02c051431cfc9f5c4b54d1459688bd95c5cd7c864fc8645c1db48652412182a8"
+      },
+      {
+        "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+        "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5"
+      },
+      {
+        "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+        "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac"
+      }
+    ],
+    "method": "Eachcompressedfile has8-bytelittleendiandecompressedlengthprefix. libcompression decodepayloadfromoffset8,algorithm0x801LZFSEor0x306LZMA;8536sharedkeysparallelvaluearrays.",
+    "selected_strings_file": "ios-remote-v523-context-official-strings.json",
+    "negative_search": "ios-remote-v523-context-localizations.json recordsunrelatedmainappAppIntentscatalog,notfullUILocalization."
+  },
+  "unknowns": [
+    "RuntimeDynamicType,exactnativepopovermaterial/arrowadaptationandvisualparityremainunaccepted.",
+    "Compactabsenceisbasedonspecifiedordinaryassembly;alternatepresentationseparate.",
+    "Foundationcompactformatboundaryoutputsneedisolatedlocalechecksifexactexpectedstringsaretested."
+  ],
+  "validation": {
+    "production_changes": "none",
+    "tests": "none",
+    "runtime": "none",
+    "network": "none"
+  },
+  "related_reports": [
+    "ios-remote-v523-context-usage-findings.json",
+    "ios-remote-v523-context-preference-findings.json",
+    "ios-remote-v523-context-producer-findings.json"
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-number-formatter.asm",
+      "sha256": "5d2104c716d9acf0b7502f3c2957d06cc7504f395b483acb7e5147e7f0de99e3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-number-formatter-calls.json",
+      "sha256": "1a2438eb65c0803d641abf595b87d6c53f506612605b70cdf7de3712d1932869"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-progress-style-init.asm",
+      "sha256": "8603d417e02fe7e8069c6b829325c925bebfb4e14276e1eb2c0df3d97855f8d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-progress-style-metadata.json",
+      "sha256": "8305d19693abe182107a5998046119e873e6a6c116c217839b2fd448c208b331"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-progress-witness.json",
+      "sha256": "1b075e96c33c7b4b4bd6424aced409508dc08a5959869c008319876e423489e4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-progress-body.asm",
+      "sha256": "f0d1f247307c958746c58d3786a4fa32cca35813b4549635e64a44449fe4fa22"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-popover-layout.asm",
+      "sha256": "e8586d5ec907c645584a1a2e5d17ddc0161a76980fd753b7b23a4d6c226a04bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-popover-text-calls.json",
+      "sha256": "6e7485dc65109a750d9ed3b4922eb1f8a8a5a78370bbe302d4b40089a2167234"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-style-format-helpers.asm",
+      "sha256": "ab6f4fb4fa91a30fba5e72f0bcf30ed3e43262226c0d278d5c8d0b3d5200d844"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-style-format-bindings.json",
+      "sha256": "8da681de10729c2c61e1e1b06d8c450c50c8ba8ae07fae2bd4b7c1cb4e8a71ac"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-indicator-interaction-types.json",
+      "sha256": "de5e40264a71d30ffa3a4208aea3fdcd13abf4b60efee164b7190d489ae146a7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-expanded-controls-tail.asm",
+      "sha256": "6c7ff1fb66008343c6c70fe5292c6b85b57038fd1910f0ca1081ea8020627cf2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-compact-input-assembly.asm",
+      "sha256": "9b2b4a324043d151d8f337b19e96220bb1a70d824f24b977afe9aad8e83d1d9d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-compact-controls-prefix.asm",
+      "sha256": "0d5649c3d34f64212b1da1bd0b2a1ec33c46faf9b5103f44994f87d4611d01aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-popover-font-dataflow.asm",
+      "sha256": "2f6c7a05dc8808545079973f7020ef80a945170c71f9f4edaa10472680cfa654"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-official-strings.json",
+      "sha256": "387d5ef853a6174fb0fb24da9c84d6d17843ef84e3cae0b47cc0c3500271576e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-indicator.asm",
+      "sha256": "8a45e66a0394c6497d65915ab7cfb1b8057e717d7bfc8213e753ccb6c6755071"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-context-witnesses.asm",
+      "sha256": "36d25a7b6255607a9e77353bf0a258e3eb6329d92194c876b118779a9638c852"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-controls-body.asm",
+      "sha256": "b278e0f0221887c776e88d1a9f57a1e966daad7cf9fa8de75d8f7557cc7672c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-style-type-807cb00.json",
+      "sha256": "6d4d3023d28139163a6258f543eb254665b18eab50e61024fbb0052baaff0bdb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-style-type-838c7b0.json",
+      "sha256": "cf44b332d33237e92e4593e6a6fd35e2a61d36cdc470899cad40818edeedc6c2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-indicator-frame48.asm",
+      "sha256": "2b6c4a83a825b8a0754be9b736719c4dc3bf39caa69f987ea8583d17143068de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v523-indicator-frame48-bindings.json",
+      "sha256": "69d08250d0f511fa6960a66940bd0939777570c8cbc786be59639c68b9926c95"
+    }
+  ]
+}

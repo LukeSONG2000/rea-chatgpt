@@ -1,0 +1,227 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Bounded static PendingPromptMenu Edit branch, menu parent and dispatch, without independent editor inventions",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "official_observations": [
+    {
+      "conclusion": "CodexRemotePendingPromptRow constructs the actual PendingPromptMenu from the supplied prompt and owner callbacks; body is 19ffa1c, inner constructor19ffac8.",
+      "source": [
+        "0x19ffb44..0x19ffb90"
+      ],
+      "details": "kind,displayText,canEdit,areActionsEnabled,and edit/toggle/start/cancel closure captures are copied into the menu capture. In particular row+0x70/+0x78 callback pair is copied to menu+0x20/+0x28.",
+      "evidence": [
+        "ios-remote-pending-edit-20261113-row.asm",
+        "ios-remote-v544-pending-prompt-metadata.json"
+      ],
+      "limit": "The direct copy proves capture preservation. Parent production of this row callback and its service action remains unclosed."
+    },
+    {
+      "conclusion": "The original menu is native SwiftUI Menu with a Section<Text, TupleView<Optional Edit,Optional Toggle,Optional Start,Cancel>,EmptyView>, plain button style and enabled environment transform.",
+      "source": [
+        "0x1a00250",
+        "type0x7e231f0",
+        "type0x7e23220"
+      ],
+      "evidence": [
+        "ios-remote-pending-edit-20261113-menu-tree.tree.txt",
+        "ios-remote-pending-edit-20261113-content-tree.tree.txt",
+        "ios-remote-pending-edit-20261113-root.asm"
+      ],
+      "limit": "Do not replace its real Section header with a second standalone row or infer additional menu entries from action enums."
+    },
+    {
+      "conclusion": "Edit is visible only when canEdit byte+0x18 is1 AND editPrompt function pointer+0x20 is nonnil. The whole menu independently preserves existing enabled AND areActionsEnabled.",
+      "source": [
+        "0x1a00604..0x1a0061c",
+        "0x1a002a0 reads +0x19",
+        "0x1d9ad40 builds !(areActionsEnabled)",
+        "0x44ab38 ->0x1225d0 existingEnabled AND NOT capturedDisabled"
+      ],
+      "evidence": [
+        "ios-remote-v546-pending-menu-content.asm",
+        "ios-remote-pending-edit-20261113-root.asm",
+        "ios-remote-pending-edit-20261113-bindings.json"
+      ],
+      "limit": "canEdit visibility and areActionsEnabled interaction admission are distinct. Parent capability assignment is not proved; do not automatically set canEdit=true for every pending item."
+    },
+    {
+      "conclusion": "Edit uses original localized key codex_remote_pending_prompt_menu_edit_message and original pencil icon.",
+      "source": [
+        "0x1a00624 ->literal0x88bedc0",
+        "0x1a0068c ->factory0x74f9ac0"
+      ],
+      "resource": {
+        "key": "codex_remote_pending_prompt_menu_edit_message",
+        "icon": "OpenAI/Symbols/pencil"
+      },
+      "evidence": [
+        "ios-remote-v546-pending-menu-content.asm",
+        "ios-remote-pending-edit-20261113-bindings.json"
+      ]
+    },
+    {
+      "conclusion": "Edit callback signature is Optional<() -> ()>; the menu does not synthesize an ID or pass display text as action payload.",
+      "source": [
+        "typeref0x8f57ab0 raw yycSg",
+        "0x1a00618/+0x20 loads function",
+        "0x1a00620/+0x28 loads context",
+        "0x1a006ac captures pair at closure+0x10",
+        "0x1a006c0 ->0x6def40 ->0x669634 ->0x15f6bc",
+        "0x15f6bc loads function/context from closure+0x10 and branches to function"
+      ],
+      "evidence": [
+        "ios-remote-pending-edit-20261113-bindings.json",
+        "ios-remote-pending-edit-20261113-dispatch.asm",
+        "ios-remote-v546-pending-menu-content.asm"
+      ],
+      "limit": "Identity is already captured upstream. The exact parent callback capturing the prompt/thread/account and the resulting editor transition were not recovered by this bounded pass."
+    },
+    {
+      "conclusion": "Menu Section title preview uses supplied displayText, distinct from its visible queue/steer+ellipsis trigger label.",
+      "source": [
+        "0x1a00378 reads String pair at menu+0x8",
+        "0x1a0040c corresponding alternate Section construction",
+        "0x7e231f0 Section header Text",
+        "0x1d1b930 ->0x1a00ad8 trigger HStack",
+        "0x1a00cb4 ->0x1a00e44 kind-dependent label",
+        "0x1a00d00 icon factory0x74f6dc8"
+      ],
+      "evidence": [
+        "ios-remote-v546-pending-menu-content.asm",
+        "ios-remote-pending-edit-20261113-menu-tree.tree.txt",
+        "ios-remote-pending-edit-20261113-label.asm"
+      ],
+      "limit": "No arbitrary character count/truncation formula inferred. Generic tree proves an unmodified Text header type, not exact system popup rendering."
+    },
+    {
+      "conclusion": "CodexRemoteThreadViewAction declares editPendingPrompt payload with typeref0x8e12ada, the same pending-prompt type carried by the row.",
+      "source": [
+        "descriptor0x95aa444",
+        "field0x9a32c34"
+      ],
+      "evidence": [
+        "ios-remote-v410-owner-actions.json",
+        "ios-remote-v544-pending-prompt-metadata.json"
+      ],
+      "limit": "Inventory only. A concrete producer connecting this menu callback to that enum case has NOT been proved; do not assign a wire tag from declaration order."
+    },
+    {
+      "conclusion": "Toggle/Start/Cancel and current-kind trigger use the following exact original resources; Toggle icons represent the target mode, while trigger icon represents current mode.",
+      "evidence": [
+        "ios-remote-v546-pending-menu-content.asm",
+        "ios-remote-pending-edit-20261113-icon-factories.asm",
+        "ios-remote-pending-edit-20261113-status-label.asm"
+      ],
+      "menu_icons": [
+        {
+          "role": "menu Toggle when current kind raw0 (target steer)",
+          "consumer": "0x1a007a0/0x1a007b4",
+          "factory": "0x74f3f40",
+          "literal": "0x8a539d0",
+          "resource": "OpenAI/Symbols/arrow-curved-right-large-typographic",
+          "key": "codex_remote_pending_prompt_menu_steer_instead"
+        },
+        {
+          "role": "menu Toggle when current kind nonzero (target queue)",
+          "consumer": "0x1a007a0/0x1a007a4",
+          "factory": "0x74f7754",
+          "literal": "0x8a55510",
+          "resource": "OpenAI/Symbols/follow-up",
+          "key": "codex_remote_pending_prompt_menu_queue_instead"
+        },
+        {
+          "role": "menu Start",
+          "consumer": "0x1a00894",
+          "factory": "0x74fa2d0",
+          "literal": "0x8a56950",
+          "resource": "OpenAI/Symbols/play-fill",
+          "key": "codex_remote_pending_prompt_menu_start_message"
+        },
+        {
+          "role": "menu Cancel",
+          "consumer": "0x1a00940",
+          "factory": "0x74fc178",
+          "literal": "0x8a576c0",
+          "resource": "OpenAI/Symbols/trash",
+          "key": "codex_remote_pending_prompt_menu_cancel_message"
+        },
+        {
+          "role": "trigger trailing icon",
+          "consumer": "0x1a00d00",
+          "factory": "0x74f6dc8",
+          "literal": "0x8a55080",
+          "resource": "OpenAI/Symbols/ellipsis-horizontal"
+        }
+      ],
+      "current_kind_labels": [
+        {
+          "condition": "current kind raw0",
+          "consumer": "0x1a00efc..0x1a00f20",
+          "key_literal": "0x88bece0",
+          "key": "codex_remote_pending_prompt_queued_status",
+          "fallback": "Queued",
+          "leading_icon": "OpenAI/Symbols/follow-up",
+          "icon_consumer": "0x1a00ea0 ->0x74f7754"
+        },
+        {
+          "condition": "current kind nonzero",
+          "consumer": "0x1a00ecc..0x1a00ef8",
+          "key_literal": "0x88bed10",
+          "key": "codex_remote_pending_prompt_steering_status",
+          "fallback_literal": "0x88bed40",
+          "fallback": "Steering conversation",
+          "leading_icon": "OpenAI/Symbols/arrow-curved-right-large-typographic",
+          "icon_consumer": "0x1a00e98 ->0x74f3f40"
+        }
+      ],
+      "limit": "raw kind mapping is a local binary presentation observation, not a wire ordinal. Actual translations should be loaded by these official keys; no handwritten Chinese text is promoted as recovered translation."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "observation": "No explicit haptic invocation appears in the bounded native menu content/label/closure dispatch calls. Edit action directly forwards supplied closure.",
+    "limits": [
+      "Upstream owner callback may have effects not traced here.",
+      "Do not add or claim official Edit haptics from this negative bounded search."
+    ]
+  },
+  "can_restore_now": [
+    "Add the source-backed Edit menu entry with pencil and official localization only when explicit canEdit and owner callback are supplied; honor global actions-enabled and parent disabled state.",
+    "Preserve Section displayText preview and the actual Edit/Toggle/Start/Cancel order with independent visibility gates.",
+    "Expose a no-argument Edit callback bound by the adapter to exact account/host/thread/session/prompt identity/revision; never look up the target by displayed text."
+  ],
+  "not_recovered": [
+    {
+      "item": "Official parent edit callback producer and editor host",
+      "breakpoint": "CodexRemotePendingPromptRow.editPrompt supplied at value+0x70/+0x78 -> original Thread parent closure; must prove consumer before selecting composer restoration, sheet, navigation or TextEditor."
+    },
+    {
+      "item": "Official mutation/save/cancel/back mechanics",
+      "breakpoint": "Parent edit action handler and its state transition; enum editPendingPrompt inventory does not prove dispatch or a particular destination."
+    },
+    {
+      "item": "Full restored composer draft payload behavior",
+      "breakpoint": "CodexRemotePendingPrompt.canRestoreComposerDraft + clientPendingPromptID/userInputs/attachments/reviewFindingComments consumers; fields alone do not establish which are restored."
+    },
+    {
+      "item": "Explicit Edit haptic",
+      "breakpoint": "Concrete upstream callback or shared button trigger not found in this bounded pass."
+    }
+  ],
+  "independent_adapter_boundary": "A minimum offline adapter can bind Edit to exact pending identity and a returnable edit-intent state; actual editor presentation and draft-replacement policy must be documented as independent until the parent consumer is closed. Do not call a custom TextEditor the recovered official editor.",
+  "validation": {
+    "static_only": true,
+    "host_modified": false,
+    "build": false,
+    "runtime_or_tests": false,
+    "scope": "Reused existing293 evidence plus new bounded ARM64/full symbolic generic trees; no full extraction."
+  },
+  "menu_resource_followup": "2026-11-13 bounded five factories and one current-kind label helper; no new feature search."
+}

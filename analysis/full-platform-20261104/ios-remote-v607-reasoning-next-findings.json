@@ -1,0 +1,181 @@
+{
+  "batch": "v607",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Smallest source-backed missing Remote thinking/history expansion integration, preserving the unresolved full reasoning-content consumer.",
+  "conclusion": "A thinking label is a proven summary variant of an expandable tool activity group. The current transient replay thinking label has no group disclosure. Full reasoning text/history remains a separate unresolved projection.",
+  "official_artifact_observations": [
+    {
+      "owner": "CodexRemoteToolActivityGroup",
+      "descriptor": "0x95acab8",
+      "accessor": "0x1adc5b0",
+      "fields": [
+        "id",
+        "items",
+        "activities",
+        "activityRows",
+        "summaryStyle",
+        "latestActivity",
+        "historyPresentation"
+      ],
+      "evidence": "ios-remote-v607-reasoning-group-metadata.json"
+    },
+    {
+      "owner": "CodexRemoteToolActivityGroup.SummaryStyle",
+      "descriptor": "0x95aeca0",
+      "accessor": "0x1ce0568",
+      "cases": [
+        "latestItem(CodexRenderedItem.ID)",
+        "thinking(String?)",
+        "history"
+      ],
+      "evidence": [
+        "ios-remote-v607-reasoning-group-metadata.json",
+        "ios-remote-v607-reasoning-summary-helper.asm"
+      ],
+      "detail": "Retain helper0x1adc590 isolates two tag bits at bit6. Thinking dispatch uses the tag class1, encoded0x40 in observed constructors."
+    },
+    {
+      "owner": "presentation constructor candidate0x18d24a4",
+      "call": "0x18d292c ->0x1946df4",
+      "argument": "w3=0x40 at0x18d2928",
+      "detail": "Summary payload is loaded from local slots+0x208/+0x220. A preceding predicate0x1947314 at0x18d2904 gates this constructor. The semantic names of upstream predicates and original summary producer remain unresolved.",
+      "evidence": "ios-remote-v607-reasoning-fragment-group.asm"
+    },
+    {
+      "owner": "helper0x194a6f0",
+      "call": "0x194a73c ->0x1946df4",
+      "argument": "w3=0x40 at0x194a738",
+      "evidence": "ios-remote-v607-reasoning-summary-group.asm"
+    },
+    {
+      "owner": "group initializer0x1946df4",
+      "detail": "Converts items through0x1948700 at0x1946f4c, filtering absent activity results. Stores activityRows at+0x28, summary payload at+0x30/+0x38 and summary tag at+0x40 in0x1947088..0x194709c.",
+      "evidence": "ios-remote-v607-reasoning-group-initializer.asm"
+    },
+    {
+      "owner": "HistoryFragment render-unit toolActivityGroup branch",
+      "chain": [
+        "0x1a35da0 render-unit dispatch",
+        "0x1a35e60 toolActivityGroup branch",
+        "0x1a35e6c ->0x1a392d8 expansion binding",
+        "0x1a35e84 ->0x1d9e6ac ->0x7e11e20 ExpandableAssistantSummaryItem type",
+        "0x1a35e9c ->0x1a393bc label",
+        "0x1a35ea8 onward leading VStack<ForEach<ActivityRow>> content"
+      ],
+      "detail": "0x1a393d4 reads group+0x40;0x1a393d8 shifts tag right6; tagclass1 selects ThinkingStatus from group+0x30 payload.",
+      "evidence": [
+        "ios-remote-v397-integration.json",
+        "ios-remote-v553-thinking-consumer.asm",
+        "ios-remote-v553-thinking-parent.asm"
+      ]
+    },
+    {
+      "owner": "CodexRemoteThinkingStatus",
+      "chain": [
+        "0x1a1bb70 witness ->0x1a1ba60 body",
+        "0x1a1ba98..0x1a1baac optional-summary choice",
+        "0x75d9480 localized Thinking fallback",
+        "0x74e2728 ->0x74e2714 body font",
+        "0x1d83b80 tail truncation",
+        "0x5814e4c ->0x5814ed0 ->0x74ee310 secondary color"
+      ],
+      "detail": "Empty summary differs from absent summary. ShimmeringTextView is part of the text path.",
+      "evidence": "ios-remote-v553-findings.json"
+    },
+    {
+      "owner": "CodexRemoteToolActivityGroup.Activity",
+      "descriptor": "0x95aca90",
+      "cases": [
+        "commandExecution",
+        "fileChange",
+        "webSearch",
+        "automaticApprovalReview",
+        "mcpToolCall",
+        "dynamicToolCall",
+        "functionCall",
+        "externalEvent"
+      ],
+      "detail": "This enum has no reasoning case. This constrains this group content type and does not exclude a separate reasoning consumer.",
+      "evidence": "ios-remote-v607-reasoning-group-metadata.json"
+    },
+    {
+      "owner": "CodexRenderedItem.ID / CodexRenderedItemKind",
+      "detail": "ID contains reasoning. Kind has markdown,commandExecution,automaticApprovalReview,contextCompaction,collaborationToolCall,userMessage,externalEvent,functionCall,dynamicToolCall,mcpToolCall,hook. The ID.reasoning-to-kind/content/visibility projection has not been closed.",
+      "evidence": [
+        "ios-remote-v558-kind-dispatch.json",
+        "ios-remote-v558-rendered-item-metadata.json",
+        "ios-remote-v558-findings.json"
+      ]
+    }
+  ],
+  "current_host": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "dynamic_turn_path": "Replay turn appends plain transient Thinking Text after separately rendered commands/searches/file changes. It has secondary color/body font/tail truncation/shine but no thinking-group expansion binding or activityRows owner.",
+    "contract": "implementation/ios/Sources/RemoteThreadReplay.swift RemoteReplayThinking is idle / thinking(summary:String?). No reasoning-content history payload is defined.",
+    "existing_reuse": [
+      "RecoveredRemoteSummaryDisclosure and RecoveredRemoteSummaryDisclosureStyle",
+      "officialVisualIcon(chevron-right-md)",
+      "ChatGPT/text/secondary",
+      "RecoveredRemoteTextShine",
+      "OfficialText.remoteThinking",
+      "existing command/search/file-change child views"
+    ],
+    "reuse_limits": "Exact ExpandableAssistantSummaryItem configuration must follow this group caller. File-change-specific fading and eligibility cannot be assumed for thinking. Existing independent replay scheduling and terminal clear behavior do not establish official lifetime."
+  },
+  "next_implementable_slice": {
+    "name": "Expandable tool activity group with Thinking summary",
+    "evidence_level": "official group/consumer layout; independent replay grouping adapter",
+    "steps": [
+      "Add an explicit scoped group snapshot in the independent frontend replay contract with stable group ID, summary variant, and ordered child identities. Preserve the old ungrouped snapshots.",
+      "Feed the explicit thinking variant to the recovered ThinkingStatus label and use the proven tool-group ExpandableAssistantSummaryItem wrapper. Keep a distinct expansion binding per task/turn/group.",
+      "Render only child activities provided by that group. Do not infer group membership from a transient thinking flag or from all activities in the turn.",
+      "Exercise summary nil, empty and custom text, collapse/expand, child updates, same-name task isolation and terminal-state preservation under existing identity gates."
+    ],
+    "visible_result": "A thinking-labelled activity group can expand into its associated tool activity history.",
+    "remaining_boundary": "Does not supply full reasoning text/history. Official automatic grouping, summary selection and thinking lifetime remain partial."
+  },
+  "precise_remaining_reasoning_gap": {
+    "missing": "CodexRenderedItem.ID.reasoning producer -> CodexRenderedItem.kind/_content -> RenderUnit/HistoryFragment selection and visibility.",
+    "known_consumer": "0x1a36a60 reads kindtag+0x11 and dispatches via table0x7dfdf4e, base0x1a36a7c. Markdown target0x1a36e14.",
+    "next_bounded_action": "Inspect item-to-Activity converter0x1948700, called by group initializer0x1946f4c, to establish its exclusion/projected-kind behavior. Independently resolve ID.reasoning through a concrete CodexRenderedItem constructor before attaching reasoning text to markdown or group history.",
+    "avoid_misidentification": "The optional field at+0x28/+0x30 previously examined is PresentedPlan. Current generic HostMessage.reasoning fixture is not a recovered Remote reasoning consumer."
+  },
+  "validation": {
+    "method": "bounded static disassembly and Swift metadata; current host source inspection",
+    "production_edits": false,
+    "build_or_ui_execution": false,
+    "official_runtime_execution": false
+  },
+  "limits": [
+    "Function0x18d24a4 is named as a presentation constructor candidate from existing references; its full original symbol is not recovered.",
+    "No full reasoning-history recovery or official behavior-equivalence claim.",
+    "Summary-tag construction is closed; complete automatic group selection and semantic upstream predicate names remain unresolved."
+  ],
+  "new_raw_evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-fragment-group.asm": "61ebae3a9254329af78d3e91a21464b1611f1f8713d97266798f5d0a11f98a91",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-fragment-group.json": "09e5d9ff1e941b1492be950764ce4b4876806656b3daa999dbfb7c690dec5038",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-group-callers.json": "0ad11e5ec6810d327f4cfd673d483bcb8d1daa60a7d4dc23fbd7325cd1a41f5b",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-group-initializer.asm": "4417ec895f04a7b6947efd6f4f0b4d9611264be1b7705484d295e48b6c60d5ce",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-group-metadata.json": "56f7dacfb2a7c93fd6859104806c29d9c863f20817221596ba619607737e77bf",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-group-producer.asm": "a282f33f74e5e982ffcc3fe1b64c21ad7c5565f354706ee0c75dac186c704532",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-group-producer.json": "84917ce275a9ab222806903327c1f8866455119894fcc1c86fb891b4ffae0f84",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-item-helpers.asm": "4890b902ca91c747071601a94fd103b57ef7e2b994880f84031d6a123e4707d4",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-item-helpers.json": "552c56dd096d4835abbf23b7c0f74cd6c359b59810ac168e423c60efa2892206",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-summary-group.asm": "6067421b38fcd1ca5e327a60fc6b74471cb9b4ab3edc3246703cf0ae56e32db2",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-summary-group.json": "468435382e6cb76667a6aeaf85cd5c8702ea22284cb5aa732024087a2e9952b6",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-summary-helper.asm": "3dacb6d12cf23a2f395ef20a24c2a2e17051e21247dacca542d433ff0aadf44b",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-summary-helper.json": "768fd99ebf4dd77876453ec91c7ecf27c0cbca18f879529f14609337acc6541f",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-summary-selection.asm": "316f6661418cf69e21116d7bd3237a18c6d3a679e01cde4c6ef08346a05240c6",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-summary-selection.json": "1b4b33c0fa421a00049e3292c8fe436373f2e1b1709771bb76374ba0f27b1606",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-tail-group.asm": "514c30d1a88e83abb42f4dbd637b36e2b3a61831361eace381f7d352da72c8cd",
+    "analysis/full-platform-20261104/ios-remote-v607-reasoning-tail-group.json": "1803f36490ff7d870e0ca6ecc5c4b9efa953b490adf5c53ae5c6415c3125680e"
+  },
+  "inspected_host_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "f70a2e48055b2d9351f4418c71baec7bcb6ab19254f2360515a05af027cf2179",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "c582177986a18992f32e239e9ba61d6c53c9f08992d24381d48091b82afc619c"
+  }
+}

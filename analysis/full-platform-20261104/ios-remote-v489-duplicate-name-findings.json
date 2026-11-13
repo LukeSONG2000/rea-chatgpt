@@ -1,0 +1,64 @@
+{
+  "batch": "v489",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Only show device name when project/workspace display title collides across hosts",
+  "answer_scope": "Verified static policy in CodexRemoteWorkspaceDirectory.DisplayName disambiguation; complete TaskSection consumer and other remoteProject variants remain partial",
+  "evidence_type": "official-artifact-static",
+  "chain": [
+    {
+      "location": "0x2cf010; 0x7cf08b8",
+      "observation": "Builds array of (title: String, hostIdentity: CodexRemoteHostIdentity) from workspace display-name map. Tuple emission at0x2cf24c..0x2cf268."
+    },
+    {
+      "location": "0x331384..0x3313a4; 0x34f060 ->0x1790a0",
+      "observation": "Grouping key closure copies tuple first String (title)."
+    },
+    {
+      "location": "0x7cf08c0; 0x331530..0x331570",
+      "observation": "Result dictionary type is String -> Set<CodexRemoteHostIdentity>; host array conversion helper0x45b5d8 tails0x31f7dc, then dictionary stores result."
+    },
+    {
+      "location": "0x331598..0x3315a4",
+      "observation": "Pass display-name map, grouped-host map and host-name map to0x2cf390."
+    },
+    {
+      "location": "0x2cf578..0x2cf5a4",
+      "observation": "Look up current title; absent key goes unchanged branch0x2cf734. Load host set count; cmp count,2 followed by b.lo0x2cf734."
+    },
+    {
+      "location": "0x2cf5dc..0x2cf5e8; helper0x2c75f8",
+      "observation": "Look up host identity in host->String map; absent string goes unchanged branch."
+    },
+    {
+      "location": "0x2cf5f0..0x2cf700",
+      "observation": "If original optional subtitle absent, use host string. Otherwise format host string then prior subtitle via codex_remote_workspace_subtitle_with_host."
+    },
+    {
+      "location": "0x2cf734..0x2cf774; 0x2cf824..0x2cf82c",
+      "observation": "Fallback preserves prior title/subtitle. Common output stores original title and chosen subtitle in resulting display-name record."
+    }
+  ],
+  "verified_behavior": [
+    "Unique display title does not add a host suffix",
+    "Duplicate title across at least two distinct host identities may add host name",
+    "Repeated title on only one host does not alone satisfy the distinct-host threshold",
+    "Missing host-name lookup preserves original subtitle",
+    "Existing subtitle is preserved in composed host-name + subtitle format"
+  ],
+  "format": {
+    "key": "codex_remote_workspace_subtitle_with_host",
+    "en": "%1$@ · %2$@",
+    "zh": "%1$@ · %2$@"
+  },
+  "excluded_false_lead": "hasDuplicateName field belongs to PluginAccountWorkspace0x96868f4; excluded from Remote evidence",
+  "limits": [
+    "Grouping input scope relative to selected source remains under investigation",
+    "No original binary execution or runtime screenshot equivalence claimed",
+    "Complete map-to-TaskSection.Descriptor wiring and separate remoteProject display paths remain unresolved",
+    "No blanket claim that all unique rows have nil subtitles; an existing directory subtitle can remain"
+  ],
+  "next_action": "Trace resulting display-name map to Descriptor.subtitle, then integrate cross-host collision logic at projection owner with scoped fixtures; preserve subtitle fallback."
+}

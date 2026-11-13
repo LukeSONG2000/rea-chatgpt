@@ -1,0 +1,308 @@
+{
+  "status": "verified-static-for-plugin-suppression-predicate",
+  "evidence_type": "official-shipped-artifact-static-observation",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Plugin attachment entry suppress/dismiss-only predicate; no whole autocomplete recovery, production edits, official application execution or services",
+  "confirmed": [
+    {
+      "id": "owner-inputs",
+      "sites": [
+        "0x1981640",
+        "0x1981654",
+        "0x1daa44c",
+        "0x197cefc",
+        "0x198165c",
+        "0x1981668"
+      ],
+      "conclusion": "Predicate gets current prompt from composerPromptText Binding through1daa44c/197cefc, passes commands field35(metadata+0xac) and false fourth argument to2418720."
+    },
+    {
+      "id": "result-is-goal",
+      "sites": [
+        "0x198166c",
+        "0x2c4740",
+        "0x1981670..0x1981694",
+        "0x1da26d4",
+        "0x95d0dcc"
+      ],
+      "conclusion": "Parsed optional command tagff yields false. Otherwise1da26d4 compares saved result tag to1; metadata CodexRemoteComposerCommand payload case1 is goal. Return true precisely when parser result is goal."
+    },
+    {
+      "id": "trim-input",
+      "sites": [
+        "0x241875c",
+        "0x2418760",
+        "0xad24ec",
+        "0x7c3f79c",
+        "0xaac7970",
+        "0x2418774"
+      ],
+      "conclusion": "Prompt is trimmed with Foundation CharacterSet.whitespacesAndNewlines. Binding name independently resolved at0xaac7970. Original prompt remains unchanged by predicate."
+    },
+    {
+      "id": "availability-and-prefix",
+      "sites": [
+        "0x241878c..0x24187fc",
+        "0x1da6288",
+        "0x265c504",
+        "0x2418888..0x2418904",
+        "0x2418b4c"
+      ],
+      "conclusion": "First pass iterates supplied commands (24-byte elements). Tags0 side and1 goal take prefix-with-argument branch; tags2/3 skip it. Goal candidate tests String.hasPrefix(\"/goal\") on trimmed prompt. Missing goal candidate cannot return goal. Exact prefix is case-sensitive."
+    },
+    {
+      "id": "boundary",
+      "sites": [
+        "0x24188a4",
+        "0x24188b4",
+        "0x24188d0",
+        "0x24188e0",
+        "0x24188f8",
+        "0x1588fc",
+        "0x14ebac",
+        "0x2418904",
+        "0x2418adc",
+        "0x2418ae8",
+        "0x2418b4c"
+      ],
+      "conclusion": "After the five-Character /goal prefix, remainder must be empty or its first Character must satisfy Character.isWhitespace. Empty remainder and whitespace-only remainder both return goal with nil prompt payload; nonempty remainder is trimmed and becomes goal prompt payload. Goal case identity remains tag1."
+    },
+    {
+      "id": "effect",
+      "sites": [
+        "0x198ef64..0x198efa0",
+        "0x198f0a4"
+      ],
+      "conclusion": "When predicate true, plugin action requests attachment-menu dismissal, writes queue and returns. It bypasses plugin menu-selected action, prompt mutation and focus=true path. When false, the v514 append-space-if-needed + @ + selection/focus path remains active."
+    }
+  ],
+  "minimal_classifier": {
+    "language": "Swift",
+    "code": "func suppressPluginEntry(prompt: String, commandsContainGoal: Bool) -> Bool {\n    guard commandsContainGoal else { return false }\n    let trimmed = prompt.trimmingCharacters(in: .whitespacesAndNewlines)\n    guard trimmed.hasPrefix(\"/goal\") else { return false }\n    let remainder = trimmed.dropFirst(5)\n    return remainder.first.map { $0.isWhitespace } ?? true\n}",
+    "scope": "Goal suppression only; commandsContainGoal must derive from actual supplied enum candidates, not a provider connectivity flag. This is independent source-derived pseudocode, not recovered Swift source."
+  },
+  "static_expected_cases": [
+    {
+      "prompt": "/goal",
+      "goal_available": true,
+      "suppress": true
+    },
+    {
+      "prompt": " \n/goal\t做测试 \n",
+      "goal_available": true,
+      "suppress": true
+    },
+    {
+      "prompt": "/goal 测试",
+      "goal_available": true,
+      "suppress": true
+    },
+    {
+      "prompt": "/goal\n测试",
+      "goal_available": true,
+      "suppress": true
+    },
+    {
+      "prompt": "/goals",
+      "goal_available": true,
+      "suppress": false
+    },
+    {
+      "prompt": "/goal测试",
+      "goal_available": true,
+      "suppress": false
+    },
+    {
+      "prompt": "/GOAL 测试",
+      "goal_available": true,
+      "suppress": false
+    },
+    {
+      "prompt": "正文 /goal 测试",
+      "goal_available": true,
+      "suppress": false
+    },
+    {
+      "prompt": "/side 测试",
+      "goal_available": true,
+      "suppress": false
+    },
+    {
+      "prompt": "/goal 测试",
+      "goal_available": false,
+      "suppress": false
+    },
+    {
+      "prompt": "",
+      "goal_available": true,
+      "suppress": false
+    }
+  ],
+  "correction_to_v514": "The previously unnamed1981640 gate can now be identified as the current-prompt parsed Goal-command predicate. No capability/network lookup occurs in this predicate; command availability comes from its supplied commands array.",
+  "unknowns": [
+    "Producer determining which commands are supplied remains a separate capability boundary",
+    "Foundation/Swift Unicode whitespace tables depend on OS/runtime; use native Character.isWhitespace and whitespacesAndNewlines rather than an ASCII-only approximation",
+    "Exact Goal menu selection replacement range in18c82d4 remains partial from v514 and was not expanded in this narrow task",
+    "No real-device behavior or official binary replay performed"
+  ],
+  "validation": {
+    "static_crosscheck": true,
+    "independent_replay": false,
+    "production_edited": false
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-command-release-calls.json",
+      "sha256": "33cc6bb65850e5e4115c0f054f707b5bfa367401cbe855670bcb54e1c6a631ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-command-release.asm",
+      "sha256": "3a555a42621a03206ce4f2f19a18ccffac2fc1ec8f26d83aa2f27689a93527fe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-exact-return-calls.json",
+      "sha256": "3e4809628002f7a91e35ebc77e63257698dbdb0f2b2d6af63da62886354cd02b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-exact-return.asm",
+      "sha256": "5eee67388904296cf1443cb6cbd9c4fc1142b8bf65135370975485a8ad3e3227"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-optional-return-calls.json",
+      "sha256": "dff52f9cb55a0b05844a016ca3811eebd0100d7eefcec1188bca679c306e48a6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-optional-return.asm",
+      "sha256": "862c17c15d9f43c7635050d0b54296404332e163136f4bed478c627f2f0d546b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-payload-kind-calls.json",
+      "sha256": "d9f92cbc9f5b3bc8f193744c05d0e5cbce93b36d394f912d1cb4a3335eb8f084"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-payload-kind.asm",
+      "sha256": "c668c390e85807244a9bb8c73331df96a434fc9f89d9f07592515b86f57a459d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-prefix-copy-calls.json",
+      "sha256": "b319d7f0235e769260ac1c710f9528cd4584f62aafb9a6f629fa11209a53b9d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-prefix-copy.asm",
+      "sha256": "e70e452e693beac09889d80cbeef4465f598cf61aefc737f9898800c6a679bfd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-prefix-literals-calls.json",
+      "sha256": "b65481f77e4204c3698131322aacaa47565d26b2707772d5a1b3dd996e36caf8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-prefix-literals.asm",
+      "sha256": "4c535e1da012aa9543fa6d5e8faad513d55d6dc035224349864b9dfe0f7beecf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-save-whitespace-calls.json",
+      "sha256": "3e9bb2d63c1b1028084504af03d997aa1c58ba9385dd65f82b0c0fa09e5cdba4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-save-whitespace.asm",
+      "sha256": "a61804ab999032ab7d9d7132e81f8e5656f23992182d52690859eddececa121c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-cleanup-calls.json",
+      "sha256": "05c2dab8a696fed64f270386a7ce746cff52d87976be504bb4a85fec01d87331"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-cleanup.asm",
+      "sha256": "8aed56f1a028e975d7f11bc12300693acea2a72b6f8f8e12ba99a1b9c63a885e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-result-calls.json",
+      "sha256": "05c2dab8a696fed64f270386a7ce746cff52d87976be504bb4a85fec01d87331"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-result.asm",
+      "sha256": "8aed56f1a028e975d7f11bc12300693acea2a72b6f8f8e12ba99a1b9c63a885e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-set-calls.json",
+      "sha256": "4bee1736999b01e8a927bb7476c887a27756916e4943762d5bab7bb7d1d95cc1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-set.asm",
+      "sha256": "1bc18ceaa52347796f787e30db1041af5b6f021410fb365ccda3112a13c3f1fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-type-calls.json",
+      "sha256": "9721a0b044f5d684e2da8ce4da36f71605eeb86bed30ed0a8e13ad476be19ecd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-type.asm",
+      "sha256": "af64df88f61942e01f384de4515245928737134f80923f31030e5863be155212"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-whitespace-check-calls.json",
+      "sha256": "13ad26adcfacdd225d0cdf7a528258571f8f3f3d0663b18d31c33a67361c139b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-whitespace-check.asm",
+      "sha256": "42a44009670c579852be81a4db5d109f1b66ae04adcfeff19ada161a2af6ecc1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-whitespace-set-calls.json",
+      "sha256": "5c9f9d06ae736d1bea9c8e7d95d7f718b843f5e5c59127ece11514a792126731"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-whitespace-set.asm",
+      "sha256": "56d7cc83c466b4651be85a702975e0a647551eaef35fe115974bc1a7be02883d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-command-destroy-calls.json",
+      "sha256": "f5eb0b258fb25b81765935d0b700208bbc5ecd91c5d91c0ad0dd5585238a9a13"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-command-destroy.asm",
+      "sha256": "df684b54c84d8a46a3235054d4bb0dcdd96bc1eb7794bf043616b87fa69652ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-command-parser-calls.json",
+      "sha256": "66cd01cb2aca11b018cb939fb1c92ce58244b74e2e36f98b6c1563e22f240d3b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-command-parser.asm",
+      "sha256": "d16c3ccf30e42cd3273c06ff253b52834ecc41773534472df53cbc96e65b26f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-gate-helpers-calls.json",
+      "sha256": "3a12b1145fd06226dc3e19c8c286a7cfa260e1d07dfeda7aa7058caaf936a23e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-gate-helpers.asm",
+      "sha256": "763fbbddc295a2520be58e64d9ea136b5a1efa7ab0d91d62f811d3945b86def9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-parser-result-helper-calls.json",
+      "sha256": "46eae262a76656edfd98df86331d6a2eb36de88f9b97dd25ed2d33e56d631b60"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-parser-result-helper.asm",
+      "sha256": "8a7a443043e28f4455cc222474e58a9579fde5a13f68e9b76ebad1ed21aa6bc7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-trim-binding.json",
+      "sha256": "2d368c9db892f5d2747cf3be48291c4584af9fa8ba5748c14f7acd477647fb5c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-trim-whitespace-getter-calls.json",
+      "sha256": "855de57dab5b6b878087e6ead1e499e6ba2544b61d5c6f5aa2d8c9bbd88809c3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-trim-whitespace-getter.asm",
+      "sha256": "0849f941496783c365de50ccf31c762face516caf05d62cb89a84118342677da"
+    }
+  ]
+}

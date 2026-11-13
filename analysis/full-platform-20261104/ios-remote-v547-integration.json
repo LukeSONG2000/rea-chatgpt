@@ -1,0 +1,154 @@
+{
+  "batch": "v547",
+  "date": "2026-11-07",
+  "status": "partial",
+  "scope": "Remote pending queue/steer frontend replay",
+  "changes": [
+    "Identity- and revision-bound enqueue, toggle, cancel, manual start and steering acknowledgement.",
+    "Completed synthetic turns drain FIFO. Cancellation/failure retain pending input.",
+    "Accepted steering rows follow their original turn. Cancelled intent identities remain deduplicated.",
+    "Extracted four context-checked menu labels from iOS293 resources.",
+    "Native pending-row and menu adapter with current-session rejection and returnable error notice."
+  ],
+  "official_evidence": "ios-remote-v547-pending-findings.json",
+  "official_artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "independent_choices": [
+    "Synthetic scheduler and acknowledgements",
+    "Idle-only queued start policy",
+    "Pending bubble geometry and native menu hosting"
+  ],
+  "tests": {
+    "r1-pending": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "r2-regression": {
+      "passedTests": 6,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "r3-ordering": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    }
+  },
+  "latest_distinct_cases": {
+    "passed": 6,
+    "failed": 0,
+    "cases": [
+      "testRemotePendingReplayChinese",
+      "testRemotePendingReplayEnglishDark",
+      "testRemoteInteractiveReplayChinese",
+      "testRemoteInteractiveReplayEnglishDark",
+      "testRemoteInteractiveReplayApprovalAndStop",
+      "testRemoteInteractiveReplayFailure"
+    ]
+  },
+  "foundation": {
+    "status": "passed",
+    "log": "ios-remote-v547-foundation.log",
+    "coverage": [
+      "cross-host isolation",
+      "stale UI session",
+      "stale revisions",
+      "duplicate intent after cancel/consume",
+      "cancel then late steer acknowledgement",
+      "mode change then stale acknowledgement",
+      "terminal turn recovery",
+      "FIFO and manual start",
+      "Chinese/English official menu labels"
+    ]
+  },
+  "visual": {
+    "inspected": [
+      "r1 Chinese light and English dark menus",
+      "r1 completed queue projections",
+      "r3 reordered Chinese light and English dark projections",
+      "current Chinese queue preview"
+    ],
+    "remaining": [
+      "Exact official pending bubble and menu layout",
+      "Title left alignment",
+      "Other-page theme and reading-state restoration"
+    ]
+  },
+  "manual_probe": {
+    "status": "partial",
+    "observation": "CUA native Chinese text injection did not yield the requested text. Subsequent ASCII injection showed transient selection/composition changes; first submit displayed the existing state-changed notice. Draft remained, compact stable-draft retry queued successfully.",
+    "cause": "Unconfirmed: distinguish simulator input injection, marked text/autocorrection and immutable draft callback timing.",
+    "next_action": "Reproduce controlled marked-text/autocorrection -> follow-up submission while logging only synthetic draft revision and current action/session identity. Preserve stale-scope rejection."
+  },
+  "preview": {
+    "build": "547",
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle_id": "local.rea.chatgpt.ioshost",
+    "pid": 10200,
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture"
+    ],
+    "binary_sha256": "45e79525c145772f8d9aa0ad1f99c4571e5539b083ab2a05afd815e3c6b67cf9",
+    "signing": "ad-hoc verified",
+    "left_running": true,
+    "language": "system",
+    "appearance": "system",
+    "observed_language": "Chinese",
+    "observed_appearance": "light",
+    "screen": "fixture-b running pinned task with one queued synthetic message",
+    "screenshot": "ios-remote-v547-preview.png"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "e9add5752c535a6cb0de2ef9df4c412cce2b8c24c056d3f4d44e6c85aa9e3f4a",
+    "implementation/ios/Sources/NativeConversationHost.swift": "e8f6e706c627d052a3c0d865552b819cf67deae0b5cd62721f2ee491e906b723",
+    "implementation/ios/Sources/OfficialText.swift": "5292cea93a001a1f6f9fc1231605d21f60637332eb579edfd38cd53e20c2f81d",
+    "implementation/ios/Resources/OfficialTranslations.json": "63bdd5b6f6afb832905a7e44ebdd5db58c425f82c3745706a1555fd28d9c132e",
+    "implementation/ios/Tools/prepare-official-text.py": "c333caa491267703dc3087e559b4ce01ed786608f9b1d9fd01205c7501a44541",
+    "implementation/ios/TextTests/main.swift": "1db330750a6e2fcd634bdc6e25d4e4af128468dd2a03cb195f0e4b3fe02f2289",
+    "implementation/ios/UITests/HostInteractionTests.swift": "aa56770589b02650303c7d7f2c6df58b99ad9bfa3bf48013a6941f61f5ba0369"
+  },
+  "remaining": [
+    {
+      "priority": "P1",
+      "page": "Remote composer",
+      "behavior": "Marked-text/autocorrection submit lifecycle",
+      "next": "Reproduce manual probe with deterministic editor state and preserve exact committed text"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "behavior": "Attachment submission and feedback approval",
+      "next": "Bind existing imported attachment and question state to the synthetic submission adapter"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation/list",
+      "behavior": "Complete dynamic content projection, reading anchors and new task",
+      "next": "Close a full task page acceptance fixture with scoped return state"
+    },
+    {
+      "priority": "P2",
+      "page": "Remote pending prompt",
+      "behavior": "Edit action, exact bubble geometry and full official callback availability",
+      "next": "Trace PendingPromptRow/Bubble and owner callback producers"
+    },
+    {
+      "priority": "P1",
+      "page": "Chat/Work, previews, Settings",
+      "behavior": "Page-level MVP gates",
+      "next": "Continue current MOBILE-DEVELOPMENT-PLAN order after Remote core gates"
+    }
+  ],
+  "quota": {
+    "used_percent": 98,
+    "available_reset_cards": 1,
+    "reset_used": false,
+    "blocker": "CUA rejects access to com.openai.codex for safety; no reset action tool exposed."
+  },
+  "retention": "ios-remote-v547-retention.json",
+  "display_inventory": "ios-remote-v547-displays.json",
+  "device_acceptance": "simulator only; physical haptics, notification delivery and Android independent acceptance pending"
+}

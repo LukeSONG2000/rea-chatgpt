@@ -1,0 +1,104 @@
+{
+  "batch": 591,
+  "status": "partial",
+  "scope": "Runtime appearance acceptance and test reliability",
+  "candidate_version": 590,
+  "product_source_changed_in_batch": false,
+  "changes": [
+    "HostInteractionTests appearance regressions",
+    "Scoped rendered-theme validation rule",
+    "Evidence and page ledgers"
+  ],
+  "official_evidence": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "record": "ios-settings-v308-binding.json",
+    "symbols": [
+      "SettingsAppearanceSection picker 0x1084c7c",
+      "SettingsViewModel binding 0x1084ba8",
+      "ColorSchemeSetting setter 0x1085178"
+    ],
+    "observation": "SettingsViewModel binds the system/dark/light appearance selection.",
+    "limits": "Official storage scope, lifecycle timing and all presentation owners remain independently scoped."
+  },
+  "independent_adaptation": "XCTest changes simulator appearance while existing surfaces remain open. This validates the reconstructed host; it does not establish official visual parity.",
+  "validation": {
+    "foundation": "passed",
+    "foundation_log": "ios-appearance-v591-text.log",
+    "distinct_ui_tests_passed": 5,
+    "tests": [
+      {
+        "name": "testAppearancePersistence",
+        "run": "r4",
+        "status": "passed",
+        "report": "ios-appearance-v591-r4-summary.json"
+      },
+      {
+        "name": "testChatWorkRuntimeAppearance",
+        "run": "r4",
+        "status": "passed",
+        "report": "ios-appearance-v591-r4-summary.json"
+      },
+      {
+        "name": "testRemoteBrowserRuntimeAppearance",
+        "run": "r4",
+        "status": "passed",
+        "report": "ios-appearance-v591-r4-summary.json"
+      },
+      {
+        "name": "testRemoteRuntimeAppearanceChinese",
+        "run": "r6",
+        "status": "passed",
+        "report": "ios-appearance-v591-r6-summary.json"
+      },
+      {
+        "name": "testRemoteRuntimeAppearanceEnglish",
+        "run": "r6",
+        "status": "passed",
+        "report": "ios-appearance-v591-r6-summary.json"
+      }
+    ],
+    "visual": "Menu/keyboard, Chat/Work text preview, local browser and Chinese/English loaded PDF light-dark pairs inspected",
+    "limits": "Only the listed surfaces and synthetic flows are accepted; component-wide contrast, exact official parity and remaining floating surfaces remain open"
+  },
+  "failed_and_superseded_runs": {
+    "r1": "Compile failed on Objective-C API type name; corrected to Swift XCUIDevice.Appearance.",
+    "r2": "Four action tests passed; runtime dark visual acceptance invalidated by retained screenshots.",
+    "r3": "One browser action test passed; system appearance environmental discrepancy also applies.",
+    "r4": "Five tests passed and system/menu/browser/text-preview theme changes visibly verified. Chinese PDF dark capture occurred before document content was ready; added loaded-document gate.",
+    "r5": "Chinese passed; English PDF margin threshold failed at 0.4719. Screenshot shows dark white glyphs over gray translucent chrome backed by a white PDF page. Scoped the brightness assertion to clear host margins; native PDF remains separately inspected.",
+    "r6": "Both Chinese and English Remote appearance tests passed after loaded-PDF gating and correctly scoped host brightness checks; loaded PDF theme pairs visually inspected."
+  },
+  "environment_finding": {
+    "observed": "XCTest r2/r3 actions passed but dark-named screenshots stayed light. Device Hub and simctl reported dark while LLDB observed app preference system, window override 0, UIScreen and UIWindowScene style 1.",
+    "recovery": "Restarted only the owned simulator. Same unchanged app then rendered dark and changed live to light.",
+    "cause_limit": "Underlying simulator service failure was not isolated; recovery does not establish a host implementation defect.",
+    "evidence": [
+      "ios-appearance-v591-r2-attachments/manifest.json",
+      "ios-appearance-v591-r3-attachments/manifest.json",
+      "ios-appearance-v591-window-traits.log",
+      "ios-appearance-v591-system-traits.log",
+      "ios-appearance-v591-system-dark-before.png",
+      "ios-appearance-v591-system-dark-after.png",
+      "ios-appearance-v591-system-light-after.png",
+      "ios-appearance-v591-simulator-restart.log"
+    ]
+  },
+  "unknown": [
+    "Official Remote file/browser preview owner",
+    "All other floating surfaces during theme changes",
+    "Physical device appearance/keyboard and tactile behavior",
+    "Android platform-specific theme propagation"
+  ],
+  "runtime": "ios-appearance-v591-runtime.json",
+  "retention": "ios-appearance-v591-retention-final.json",
+  "source_hashes": {
+    "implementation/ios/Sources/AppDelegate.swift": "bfc103f9e3a23fdcd9e5acebac8f788e521f1932475ac3e466a98f5a54a1a6c3",
+    "implementation/ios/Sources/RecoveredRemoteAttachmentMenu.swift": "bb7c178452a3a280b0c7a7bf449af6d67a03472100c83fb9a200537576686068",
+    "implementation/ios/Sources/RecoveredRemoteModelSlider.swift": "cad3943192ec0d8a75b2dd2095c0e3ee30af5c3dd06db193d4e531dc4cbee7ed",
+    "implementation/ios/Sources/FrontendBrowserPreview.swift": "6ae8fac51b6603fbcda460fecd675b2ec417b84f92caa2d99c9210155dffc5cd",
+    "implementation/ios/UITests/HostInteractionTests.swift": "f4165fb98e4cd6eb1492d3cf30436c25141d6af7a482ee8ee73b7e4142dfbd44"
+  },
+  "next_minimum_action": "Audit remaining applicable settings consumers and return behavior, then add scoped notification/haptic frontend acceptance with explicit device gates."
+}

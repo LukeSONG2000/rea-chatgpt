@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS293 Remote permission choice presentation, row/header/group geometry and theme; read-only artifact analysis",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "findings": [
+    {
+      "id": "identity",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x95adb48",
+        "0x95ae354",
+        "0x95afb78",
+        "0x95afba8"
+      ],
+      "conclusion": "View/Sheet/Row/Header body witnesses resolve respectively to 195d708/195deb8/195fe20/195e0f4. Metadata and symbolic type records retained separately."
+    },
+    {
+      "id": "picker-layout",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195d7a0",
+        "0x195d7a4",
+        "0x195d820",
+        "0x195d828",
+        "0x195d84c",
+        "0x195d854",
+        "0x195d860",
+        "0x195d864"
+      ],
+      "conclusion": "Outer VStack center alignment spacing16. Padding horizontal24, top24, bottom16. Header then row group."
+    },
+    {
+      "id": "row-group",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195d920",
+        "0x195d9f8",
+        "0x195da04",
+        "0x195da08",
+        "0x195da44",
+        "0x195da58",
+        "0x195da60"
+      ],
+      "conclusion": "Row group VStack spacing0. RoundedRectangle radius28; ChatGPT/text/primary opacity0.03 background. Theme token is preserved, RGB and material appearance are not inferred."
+    },
+    {
+      "id": "separators",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195dbb8",
+        "0x195dbc4",
+        "0x195dbf4",
+        "0x195dbfc",
+        "0x195dc04"
+      ],
+      "conclusion": "Rows with index>=1 receive ChatGPT/border/light separator with leading52 padding."
+    },
+    {
+      "id": "row-layout",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195fe84",
+        "0x195fe88",
+        "0x195feb0",
+        "0x195feb8",
+        "0x195fedc",
+        "0x195fee4",
+        "0x195ff0c",
+        "0x195ff18",
+        "0x195ff20"
+      ],
+      "conclusion": "HStack vertical center spacing12, horizontal padding16 and vertical14. Disabled rows opacity0.4; enabled1. Rectangle contentShape and accessibility combine appear in row body."
+    },
+    {
+      "id": "icons",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195de6c",
+        "0x195de9c",
+        "0x196011c",
+        "0x1960128",
+        "0x1960130",
+        "0x1960140",
+        "0x19603a8",
+        "0x19603e4",
+        "0x19603f0",
+        "0x19603f8",
+        "0x19603bc",
+        "0x19604bc",
+        "0x19604c8"
+      ],
+      "conclusion": "Leading icon uses ScaledMetric initial24 for width and height with center alignment. Trailing OpenAI/Symbols/checkmark-md likewise uses metric24 square. Trailing opacity selected1/unselected0 preserves its slot. Leading icon normal ChatGPT/icon/primary; raw selection discriminator3 uses ChatGPT/text/status/warning. Specific selection mapping belongs options analysis."
+    },
+    {
+      "id": "row-text",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1960258",
+        "0x1960260",
+        "0x1960264",
+        "0x19606d4",
+        "0x74e2728",
+        "0xaad38d8",
+        "0x1960754",
+        "0x74e26f8",
+        "0xaad38c8",
+        "0x196070c",
+        "0x19607a4"
+      ],
+      "conclusion": "Text VStack leading spacing0. Title uses body text style, detail subheadline. Title ChatGPT/text/primary; detail ChatGPT/text/tertiary. Both use text/status/warning for selection discriminator3. Title/detail nil and enabled semantics are delegated to options report."
+    },
+    {
+      "id": "header",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195e140",
+        "0x195e144",
+        "0x195e348",
+        "0x195e354",
+        "0x195e408",
+        "0x195e504",
+        "0x195e7a4",
+        "0x195e7ac",
+        "0x195e7d0"
+      ],
+      "conclusion": "Header VStack center spacing0. BalancedText heading and LearnMore Button. Both subheadline.medium. Heading ChatGPT/text/primary with isHeader accessibility trait; LearnMore ChatGPT/text/accent."
+    },
+    {
+      "id": "learn-more",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195e6f4",
+        "0x195e6f8",
+        "0x195e70c",
+        "0x88bef40"
+      ],
+      "conclusion": "Header action constructs https://learn.chatgpt.com/docs/sandboxing?surface=app#how-you-control-it and uses environment OpenURL. URL observed only; no network request performed."
+    },
+    {
+      "id": "sheet-assembly",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195df68",
+        "0x195dfe8",
+        "0x7545ef0",
+        "0xaa5a540",
+        "0x9758bf4",
+        "0x195e010",
+        "0x6f4ae4c",
+        "0x195e020",
+        "0x1d93234",
+        "0x195e02c"
+      ],
+      "conclusion": "Vertical ScrollView wraps content. ScrollViewBounceIfNeeded modifier identity established. Conditional presentationBackground uses OneOff/AppBackgroundWithGray. presentationDragIndicator visible raw1 agrees with frozen SwiftUI Visibility enum order in local SDK. No hand-built close button in these four bodies."
+    },
+    {
+      "id": "self-sizing-input",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x195e0a4",
+        "0x195e0bc",
+        "0x1d951f8",
+        "0x195e0c0",
+        "0x1532a0",
+        "0x195e0c8",
+        "0x7560f04",
+        "0x7560f6c",
+        "0x7560f70",
+        "0x7560f74",
+        "0x9758890"
+      ],
+      "conclusion": "SelfSizingSheetModifier has additionalContentHeight optional CGFloat, isEnabled Bool, initialDetent PresentationDetent, __contentHeight, _selfSizingSheetPresentationContext. Caller supplies nil additionalContentHeight, true enabled, medium initialDetent. Actual measured height/clamp/detent update remains follow-up; medium alone does not establish fixed medium sheet."
+    },
+    {
+      "id": "self-sizing-measurement",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x75610cc",
+        "0x75610e8",
+        "0x75610f0",
+        "0x7561130",
+        "0x7561180",
+        "0x756118c",
+        "0x231b7d8",
+        "0x2249238",
+        "0x1c0cec",
+        "0x7c471dc",
+        "0x75abff4",
+        "0x75871b8",
+        "0x7573414",
+        "0x7c4b610"
+      ],
+      "conclusion": "Content receives FixedSizeLayout horizontal=false, vertical=isEnabled. GeometryActionModifier<CGFloat?> transforms GeometryProxy.size.height into some(height); callback writes that value through the binding captured from __contentHeight. No threshold or clamp exists in these bounded transform/setter functions."
+    },
+    {
+      "id": "self-sizing-detents",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x7561384",
+        "0x75613a4",
+        "0x75613b0",
+        "0x75613e0",
+        "0x7561408",
+        "0x756144c",
+        "0x7561498",
+        "0x75614a4",
+        "0x75614ac",
+        "0x75614b8",
+        "0x75614f8",
+        "0x756152c"
+      ],
+      "conclusion": "Within the presentation-context branch selecting 75612fc: enabled + height absent => presentationDetents {initialDetent,large}; disabled => {large}; enabled + height present => single height(contentHeight + (additionalContentHeight ?? 0)). This picker starts {medium,large} and later uses measured height. No explicit max/clamp in this body. Native sheet limits remain runtime behavior."
+    },
+    {
+      "id": "self-sizing-context-boundary",
+      "status": "partial",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x75611cc",
+        "0x75611dc",
+        "0x75bd654",
+        "0x5860e3c",
+        "0x75611f0",
+        "0x7561248",
+        "0x7561260",
+        "0x75612bc"
+      ],
+      "conclusion": "Environment _selfSizingSheetPresentationContext controls whether presentation-detent path75612fc or alternate frame path is active. Exact environment key/default and parent writer remain unbound. Alternate path frame height comes from __contentHeight only if enabled; no detent API invoked there."
+    },
+    {
+      "id": "self-sizing-corner-radius",
+      "status": "partial",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x7561340",
+        "0x1bdeac",
+        "0x756134c",
+        "0x7561350",
+        "0x756137c"
+      ],
+      "conclusion": "presentationCornerRadius receives optional28 on false branch of availability-like helper1bdeac(platform2,version26.0.0), nil on true branch. Helper tail7c34368 has not been followed in this slice; do not override modern native sheet corner geometry with28 globally."
+    },
+    {
+      "id": "entry-icon-font-frame",
+      "status": "partial",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1965fa0",
+        "0x1966244",
+        "0x19662ec",
+        "0x196c408",
+        "0x196c478",
+        "0x196c4f0",
+        "0x196c5c4",
+        "0x196c5d8",
+        "0x196c5ec",
+        "0xaad3810",
+        "0x196c674",
+        "0xaad4f00",
+        "0x196c6a4",
+        "0x196c6b4",
+        "0x196c6c4",
+        "0x196c6cc",
+        "0x196c6d8",
+        "0x1966444",
+        "0x1966450",
+        "0x1966458"
+      ],
+      "conclusion": "Entry label1965fa0→1966244→196c408→196c4f0. Symbol font size reads ScaledMetric at self field via metadata+0x30, uses Font.Design.default and Image.Scale.medium. Centered image frame reads same metric field via metadata+0x2c twice for width/height. Label color is warning or icon/primary according to196647c-derived discriminator. Outer1965fa0 also reads metadata+0x40 scalar. Actual constructor values, outer field semantics and per-entry PlainButtonStyle application remain unresolved. Do not reuse picker-row24 as this entry size."
+    }
+  ],
+  "unknowns": [
+    "SelfSizing measurement and detent transition established within75612fc branch; _selfSizingSheetPresentationContext default/parent writer and actual runtime sheet limits remain unknown.",
+    "ScrollViewBounceIfNeeded implementation and version gate not yet decoded; identity alone is not behavior proof.",
+    "Sheet selection dismissal/parent presentation state is owned by separate permission-owner analysis.",
+    "No explicit per-row buttonStyle recovered in this slice; environment default not inferred.",
+    "Theme resource token identity established, exact RGBA and runtime Liquid Glass material/version behavior unverified.",
+    "No device or simulator visual/behavior acceptance from this report.",
+    "Entry component constructor writing metrics metadata+0x2c/+0x30 and outer scalar+0x40 is the next minimal size producer lookup. Entry PlainButtonStyle was not confirmed by this slice; no claim is made.",
+    "SelfSizing context branch default lookup remains75611cc→75bd654→5860e3c and its key-path/default producer. Stop at evidence checkpoint; UI not restored by this report."
+  ],
+  "validation": {
+    "binary_execution": false,
+    "official_app_launched": false,
+    "network_access": false,
+    "production_edits": false,
+    "source": "retained metadata, symbolic types, bounded llvm-objdump, chained import bindings"
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-style-metadata.json",
+      "sha256": "044622d4c823a52df8d6ea66f349300d25330958a3096523d23cd5c8e6ea391e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-style-witnesses.json",
+      "sha256": "0246fe6c2989018223ba853c9100e9d924e3a55a318e1b7cfb2f7232bcca2a32"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-style-types.json",
+      "sha256": "566b2214d51bd18cca68260a854f2d0e93b56a337b815526127732b7b96a3bb4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-view.asm",
+      "sha256": "3747f8d7695d0bbbe90394f43618ab774202fe792191e4040a898164170cb5fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-row.asm",
+      "sha256": "9d7e2c0dadf698e8958808313744ab22b95bd45469decccad9c626e043061f70"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-header.asm",
+      "sha256": "5d00de1dcbfe0e41ea600da1b90d89863136c009eab3a9b541023aca63f7080b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-sheet.asm",
+      "sha256": "2ba490ecfec9d8bd12dcaec1006fd4817e9f4f84b8df87608d4f11d17de99a3c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-style-helpers.asm",
+      "sha256": "9a9f1f4a19a965935dbcf1ee9ccd7f4dc4e11a52627642ac6edbbd4ac62a41f0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-style-final-helpers.asm",
+      "sha256": "0242eb5ba4c948552b1854cf45bd51b66fc76ff846c8863d5d2e7ca33a74ad7e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-style-bindings.json",
+      "sha256": "0eb82a7145c0597f88328cb56d43c7c2140fe8669be47273f5c22ed28bf1490b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-selfsizing-metadata.json",
+      "sha256": "d424e64e9981b358113e42497c4a0c0ce23c65411a8b038fa9c9003d21a07fc5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-selfsizing-witnesses.json",
+      "sha256": "cce6a9ae2fda9aacf8bcb568b8fe17262ee57b2957d8cd04ada614261bb2952f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-selfsizing-body.asm",
+      "sha256": "18f13671ae2b5e550ebc704ac7b0a3da5d59cbce5608ee668fe1c2b77273aa14"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-selfsizing-bindings.json",
+      "sha256": "c7cfb4be2d4a0939f22b498ebc102471f20b065b39e4fb39e276bc83f9fc80fa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-selfsizing-measurement.asm",
+      "sha256": "0ee8f2fe121d18baf635a00476e44b902a1c59120ed48fca42910b2f0d88c5bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-selfsizing-types.json",
+      "sha256": "3763b4d4af2a1011a8dee8e09b66d743c95bbd26443b03066f30c61a622c4557"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-entry-icon.asm",
+      "sha256": "ce826b10de27a63ae1988275c522f2ae31bf4058c010834cddae620a720dbecb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-entry-icon-helpers.asm",
+      "sha256": "5cec261c73791d960d35527347c33ceabe0f901534ab3ba658476aac07c2ff09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-entry-icon-bindings.json",
+      "sha256": "1bc54eabf595fc8bca6a684b260571b025da7c7df27b8abc16b43e931f54daa2"
+    }
+  ]
+}

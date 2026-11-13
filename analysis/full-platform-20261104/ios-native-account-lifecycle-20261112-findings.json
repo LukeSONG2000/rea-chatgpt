@@ -1,0 +1,430 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "status": "partial-static-account-lifecycle",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_types": [
+    "official-artifact-static-observation",
+    "source-bound-inference",
+    "unknown"
+  ],
+  "decisions_supported": [
+    "Account switcher is a separate native component in 293, but legacy SettingsAccountSection root explicitly passes includesAccountSwitcher=false at1146cd8. Do not add a universal root row simply because switcher metadata exists.",
+    "Account removal from a switcher and Log out of the selected settings account are separate entry paths. Keep their identity and in-flight state separate.",
+    "Save-login option visibility is NOT proven; save_login_option_presented and save_login_info_behavior are insufficient to reconstruct a visible option.",
+    "Settings profile header has an injected editProfile callback; it is not proof of a complete generic profile-editing page."
+  ],
+  "account_switcher": {
+    "view": {
+      "descriptor": "0x95a9194",
+      "accessor": "0x1866784",
+      "body_witness": "0x18528f0",
+      "body": "0x18509ec",
+      "state": [
+        "__pendingDismissal",
+        "_dismiss",
+        "_viewModel"
+      ]
+    },
+    "content": {
+      "descriptor": "0x95a9564",
+      "accessor": "0x18668dc",
+      "body_witness": "0x1854228",
+      "body": "0x1852c00",
+      "inputs": [
+        "userEmail",
+        "userAccountModels",
+        "isMultiAccountEnabled",
+        "disableAccountSwitcherPresentationFixes",
+        "canAddAccount",
+        "selectedUserID",
+        "switchingDestination",
+        "removingUserID",
+        "selectAccount",
+        "selectUser",
+        "removeAccount",
+        "addAccount"
+      ],
+      "proof": "body18509ec constructs type record7dfb620: ModifiedContent<AccountSwitcherContentView,EnvironmentKeyTransformModifier> and7dfb628 SubscriptionView + AppearanceActionModifier. Native parent, not a Web entry."
+    },
+    "view_model": {
+      "descriptor": "0x95a9250",
+      "accessor": "0x1866c4c",
+      "state": [
+        "accountID",
+        "isMultiAccountEnabled",
+        "_canShowAccountSwitcher",
+        "_isShowingWorkspaceTokenError",
+        "_presentationQueue",
+        "_removalRequestState",
+        "_removingUserID",
+        "_canAddAccount",
+        "_switchState",
+        "switchAccountTask",
+        "_displayState"
+      ],
+      "callbacks": [
+        "onAddAccount",
+        "onSelectAccount",
+        "onRemoveAccount"
+      ],
+      "limit": "These state/callback names are official metadata observations, not independently traced method semantics."
+    },
+    "action_dispatch": {
+      "entry": "0x18516d4",
+      "table": "0x7dfb55c",
+      "enum_metadata_order": [
+        "removeAccountTapped",
+        "removeAccountConfirmed",
+        "userSelected",
+        "workspaceSelected",
+        "addAccountTapped",
+        "switchErrorDismissed"
+      ],
+      "table_offsets": [
+        0,
+        99,
+        85,
+        92,
+        7,
+        106
+      ],
+      "branch_entry_by_tag": [
+        "0x185173c",
+        "0x18518c8",
+        "0x1851890",
+        "0x18518ac",
+        "0x1851758",
+        "0x18518e4"
+      ],
+      "tails": [
+        "0x185c338",
+        "0x185c778",
+        "0x185bce8",
+        "0x185a8ec",
+        "guarded callback at1851884..1888",
+        "state-clear branch18518e4..1928"
+      ],
+      "classification": "source-bound-inference: enum field declaration order plus emitted enum-tag dispatch table; asynchronous outcomes remain unclosed"
+    },
+    "add_label": {
+      "descriptor": "0x95a96d0",
+      "body_witness": "0x1856c08",
+      "body": "0x18565ec",
+      "title_call": "0x1856a2c ->0x75da864",
+      "title": "Add account",
+      "zh": "添加账户",
+      "title_factory_complete_tail": "75da864..878 constructs Add account;75da87c ->75e1c44 sets x1 high byte eb (11 byte small string)",
+      "icon_call": "0x18568b0 ->0x74fa4f4",
+      "icon_literal": "0x8a56a60",
+      "icon": "OpenAI/Symbols/plus-lg",
+      "geometry": "ScaledMetric rowHeight/avatarSize/plusSymbolSize; exact runtime scaled values not recovered"
+    },
+    "removal_confirmation": {
+      "presentation_builder_region": "0x18523c4..0x1852564",
+      "title_call": "0x18523e0 ->0x75dac04",
+      "title": "Log out of ChatGPT? (optional named account variant from shared factory)",
+      "cancel_call": "0x1852438 ->0x75d21c4",
+      "cancel": "Cancel",
+      "confirm_call": "0x185247c ->0x75daa94",
+      "confirm": "Log out",
+      "destructive_role": "0x185248c ->SwiftUI.ButtonRole.destructive",
+      "confirm_callback": "0x1874c78 ->0x1852574 ->0x18516d4",
+      "analytics_literals": {
+        "0x88b1550": "accounts.remove.confirm",
+        "0x88b1530": "Confirm account removal",
+        "0x88b1590": "accounts.removal.inProgress",
+        "0x88b1570": "Account removal in progress"
+      },
+      "limit": "Concrete destination-to-this-branch mapping and removal completion/error callbacks are not fully traced. Do not claim all remove confirmations have identical visible body."
+    },
+    "gate_limits": [
+      "Root/settings/sidebar entry capable of presenting AccountSwitcherView not fully closed in this task.",
+      "isMultiAccountEnabled/canAddAccount/canShowAccountSwitcher values must remain capability inputs; no unconditional enabled default proved.",
+      "AccountSwitcherView.PendingDismissal enum none/accountSwitch/addAccount exists; exact dismissal-before-callback order not fully traced."
+    ]
+  },
+  "settings_log_out": {
+    "reused_report": "ios-settings-signout-detail-20261112-findings.json",
+    "entry": "0x108c158",
+    "confirmation_dispatch": "0x10e7074",
+    "confirmation_type": "ChatGPTPresentation.AlertPresentation descriptor0x96dc434",
+    "title": "Log out of ChatGPT? / optional account-name variant",
+    "title_factory": "0x75dac04 ->0x75dac20 literals8a5b010/8a5b030",
+    "confirm": "Log out (0x75daa94), destructive",
+    "cancel": "Cancel (0x75d21c4)",
+    "confirm_callback": "0x1149d60 ->0x10e7f04",
+    "duplicate_guard": "0x10e7fe8 ->0x108c120; busy ends at10e7ff0",
+    "busy_write": "0x10e8010 w0=1;10e8018 ->10efab4",
+    "service_boundary": "task creation10e83e8..83f0; concrete completion/error cleanup unclosed",
+    "save_login_evidence": {
+      "0x8888640": "save_login_option_presented (log literal only)",
+      "0x8888e60": "save_login_info_behavior (read by10e80e4)"
+    },
+    "save_login_visible_option": "unknown; do not implement as recovered fact",
+    "success_failure": "English/Chinese failure strings exist in frozen string tables, but exact throw/retry/cancel binding not closed. Cannot use their presence alone to build an exact error dialog."
+  },
+  "profile_entry": {
+    "section_descriptor": "0x958bb80",
+    "section_body_witness": "0x108a920",
+    "section_body": "0x108a5f8",
+    "header_descriptor": "0x958d008",
+    "header_accessor": "0x1172e84",
+    "header_body_witness": "0x108b62c",
+    "header_body": "0x108a924",
+    "fields": [
+      "viewModel",
+      "displayName",
+      "profileImageURL",
+      "usesRefreshedDesign",
+      "editProfile"
+    ],
+    "parent": "SettingsProfileSection constructs HStack<Spacer,CompactSettingsProfileHeader,Spacer> via7d96e08/7d96e18 and native List row separator/background/insets/section-spacing modifiers. 108a810 copies injected editProfile function/context into header.",
+    "unknown": [
+      "Exact external editor type, its fields, save/cancel service callbacks and return path are not established.",
+      "Do not repurpose CalpicoRichProfileEditingViewModel solely from similar name."
+    ]
+  },
+  "lifecycle_parent_inventory": {
+    "LoggedInViewModel": {
+      "descriptor": "0x95595f0",
+      "accessor": "0x1f36bc",
+      "state": [
+        "userID",
+        "_activeAccount",
+        "_screen",
+        "retireUserScope",
+        "activeAccountSyncTask",
+        "accountRemovalTasks",
+        "presentedWorkspaceID",
+        "accountRootViewModels",
+        "logoutTask"
+      ]
+    },
+    "DefaultWorkspaceLogoutCoordinator": {
+      "descriptor": "0x955999c",
+      "accessor": "0x1f40d0",
+      "dependencies": [
+        "notificationBadgeService",
+        "injectedDependencies"
+      ]
+    },
+    "cleanup_scope": "WorkspaceLogoutCleanupRegistry/plugins + DefaultWorkspaceLogoutCoordinatorInjectedDependencies are metadata leads only. Actual per-account cache/notification cleanup execution order not traced."
+  },
+  "minimum_frontend_contract": {
+    "classification": "independent-adapter-guidance constrained by observed native boundaries; not official schema",
+    "identity": [
+      "selected user ID",
+      "selected workspace/account ID",
+      "operation ID/generation for add/switch/remove/logOut"
+    ],
+    "actions": [
+      "request add account",
+      "select user/workspace",
+      "request removal confirmation",
+      "confirm/cancel removal",
+      "confirm/cancel settings logOut",
+      "dismiss switch error"
+    ],
+    "state": [
+      "idle",
+      "switching destination",
+      "removing user",
+      "logging out selected account",
+      "explicit failure"
+    ],
+    "completion_rule": "Keep selected identity and account-scoped UI until a matching success result. Failure or cancel returns to previous scope without clearing other users. This is a recommended safe frontend contract; exact official success/failure cleanup not recovered.",
+    "profile": "Expose only source-confirmed edit entry; route to clearly bounded unsupported capability if no editor contract is available."
+  },
+  "precise_remaining_breakpoints": [
+    "AccountSwitcherView actual Settings/sidebar presentation caller and capability values.",
+    "18516d4 action tails185a8ec/185bce8/185c778 async completion -> select/remove callbacks.",
+    "AccountSwitcher PendingDismissal onDisappear/onChange consumers and callback ordering.",
+    "Settings logOut async function referenced at7d9f228; completion/error -> isLoggingOut reset and LoggedInViewModel scope retirement.",
+    "SettingsProfileSection editProfile owner-supplied callback -> actual editor builder and save/cancel contract.",
+    "save_login_info_behavior full gate and possible sheet/confirmation branches beyond logged analytics."
+  ],
+  "limits": [
+    "Static only; no online requests or full official app run.",
+    "No host implementation/build/device changes.",
+    "No screenshots used as293 truth.",
+    "No other product source read.",
+    "Bounded task intentionally stops at exact unresolved callers; metadata is not runtime behavior."
+  ],
+  "evidence_files": [
+    {
+      "path": "ios-native-account-lifecycle-20261112-add-body.asm",
+      "sha256": "01462c53e1985486d41b4b4f02839b9995cbd6e0374ec05f3bf53df0452607b3"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-add-icon.asm",
+      "sha256": "aa18eef8012425c9a87dac1eaabb8d2a41f61f1b950223f6a8e947b2cfab4a5c"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-add-label-root.asm",
+      "sha256": "30fcf40e9ca6d7d008aefced8fffdf4a1e921d3643d938929fcde325b0701396"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-add-label-root.json",
+      "sha256": "27bd06cc83497ca9266244705b2fde9fe787535873dce781c11025c1b4c1cfa7"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-add-label.json",
+      "sha256": "d5d31485d1c27500a0843841a9f40dff7c82de057ea90764eec1eae492dc1cb4"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-content-root.asm",
+      "sha256": "5090367ea16d6fd64079e8e22301c488fb428dfaed1ffa4afc9f31df5dd5f841"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-content.json",
+      "sha256": "c1163dc23a5ba38a9fae1ef1c0dcfc35ccf95336f840c8764823f8957c6a65e7"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-label-tail.asm",
+      "sha256": "7f10b1f5938f7b3c7afae92c9f44e5c20108281cee9733404a5fd36050d23711"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-labels.asm",
+      "sha256": "826224c19766f20456d8311e1c3d26bc3950c57e6139c65ceba64dbdcdc048fc"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-logout-task.asm",
+      "sha256": "6cdf8ac2bb09286e4da29f9694f5c164612254d3e92a6959872d0a7df94df84e"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-metadata.json",
+      "sha256": "9d51a37971f289c020ac3a9734680e7cd12ae15eaa9546b412ca016581ef8ccf"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-owners.json",
+      "sha256": "993f82012727d2ebec8f3db94fd064bc003e02a633e934ac5f769ae95e6d993c"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-plus-asset.asm",
+      "sha256": "24c15b87408e32c85fff6f05ef1ec3990dd16c85478c6c5a071bb14c2991bb2e"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile-body.asm",
+      "sha256": "3d553a1046b743781f6819fff410a94a08c2403ececde27b44769a6c5042a03c"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile-header-body-full.asm",
+      "sha256": "158deb414ab18e0eb55a36bcc51e3d4f084ed19961abd9d7d1eebb36e8750d4b"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile-header-body.asm",
+      "sha256": "e4713b41b0e6bfaf64909389c650311da048103ed8581e5c1087f54f38e56acf"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile-header-metadata.json",
+      "sha256": "51c4d451ea3bf4af2d8f4eaed47e60fc92374282529462fa85aaa9f6ef6d7e6b"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile-header-witness.asm",
+      "sha256": "e8ab6dc9e94c69c64e2a46f70adb2a3587aac17ee92f56f7b94f4d9c7f67678a"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile-header.asm",
+      "sha256": "0601e795de9564aebd57fd38c3e9a8929024a7899d45eb2908702da003c0aca9"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile-root.asm",
+      "sha256": "e9f36e4bfd6c59ca675d4d9e13c0589273c8145fd54c4269ba5040837310fc02"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile-root.json",
+      "sha256": "4384bb8157084fa6e255849f66e847154234593874dc37db144bb67f545daf0a"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-profile.json",
+      "sha256": "baf63ec04ae7fc8fcccb6e910e1f667eb107c364429b7d2d392d45b1d5527589"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-remove-action.asm",
+      "sha256": "a980e80be8fc4af6aa6b7db5990298a2495d9d92af66af35c8a353c0fda71d0a"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-remove-confirm-thunk.asm",
+      "sha256": "ce7057eb3b19d6c31be1b6455b76205e8109f268bd1ca6ac68680dc3a57ba40b"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-strings.json",
+      "sha256": "96c9696f22ab9a626103dc9c05d1d1033e7a525b4c2ccaafed39a77028016796"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher-actions.asm",
+      "sha256": "0f7e5144644226698e96f056e0a130842772f46140b71a42256686045e1389ce"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher-body.asm",
+      "sha256": "c225e903cf8573d10a1f6d72e3cb248dc8f58bec899e53b1a1fd19440d881bee"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher-content-full.asm",
+      "sha256": "5abc2bc25872a6742875bf937a9c6e015adc898c4c0a9c6e0701ccc4eebbecf3"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher-content-thunk.asm",
+      "sha256": "8d928cea13d6d7c436505df62ae961f0b3681b348edc37bda893e50ae19bcf6a"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher-remove-confirm.asm",
+      "sha256": "5c0b5733d08b0b296c66acaf91368cc4cc472249de276c76c144c759065bf5af"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher-root.asm",
+      "sha256": "fc7df8dd9c9615837181f46d05c5402dfd6e1ebb83403a49d4ae73a2f30d661d"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher-root.json",
+      "sha256": "90cfa6cc0eab75c47b307f95ba4277ef7aa869d3800ffe4882e4904d441ff66b"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher-thunks.asm",
+      "sha256": "66f4c3c0a225ec878de3e8414d1e3add2d1c415e836186373045188100510a7a"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-switcher.json",
+      "sha256": "760e4dc04026dd023303b89d233311f2f0feb2d88cf6902ebe0af6d757973a7f"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-type-7d96e00.json",
+      "sha256": "f7e79c6d05b70a1541ac41a21d133e4cece6fcd521934249e69100e1c7df7aff"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-type-7d96e08.json",
+      "sha256": "fb3a7643a9f288db7d29cd34db7d87b39b6e88e477fcde7720b1a264bcd831c5"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-type-7d96e10.json",
+      "sha256": "7b8181a3386da91b1dc0f08cb6ee63643ac4ca4bd737e238b45d2ee92b4b58d5"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-type-7d96e18.json",
+      "sha256": "c603b5507a88337c46513c52e7ccc78b51e68c0bd010bed9259a41182c49c5d1"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-type-7d96e28.json",
+      "sha256": "609af04c8ab02a82ef9bf8c6fd38dc1c778a3ac9e242110ea518c5fe9b3f2548"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-type-7d96e30.json",
+      "sha256": "06fa54d982756fc06fcb030e28afaec5f3133f33229b8c096bb1adb3da826fce"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-type-7dfb620.json",
+      "sha256": "c9ebefc14dbf900aa4ac46d90a73b8919784593720404ec275fd5d762637fe3b"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-type-7dfb628.json",
+      "sha256": "8e13ed5075089087474dd85119043c86a701df619892e69a91536565aa8cff82"
+    },
+    {
+      "path": "ios-native-account-lifecycle-20261112-witnesses.json",
+      "sha256": "ae516c67030b98ff313e0966ae46816c7ee33bb91d2c406b84e3dca9b334251d"
+    }
+  ]
+}

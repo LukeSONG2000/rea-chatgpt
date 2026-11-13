@@ -1,0 +1,193 @@
+{
+  "batch": "v508",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "scope": "Home/task-list MessageInputStyle overrides and visibility gates. No production changes or original-app execution.",
+  "confirmed": [
+    {
+      "offsets": [
+        "0x2de24c..0x2de330",
+        "0x19a0a38",
+        "0x19a0860"
+      ],
+      "conclusion": "Home copies shared Remote style. theme raw0/raw11 bypass theme transform. Other themes call6081f4c(theme,false,false,flag32caf0). The transform writes theme/color fields, preserving the geometry recovered below."
+    },
+    {
+      "offsets": [
+        "0x19a08fc..0x19a0930",
+        "0x60823b0",
+        "0x6082134",
+        "0x1531b4",
+        "0x1da3a80"
+      ],
+      "conclusion": "Remote base starts from defaultMessageInputStyle60810f8. Legacy modifier60823b0 is called withfalse and copies unchanged. Glass modifier6082134 receives adjustInsets=false, shadow=false, gradient=true, gradientOpacity0.05, gradientPercentage0.3. Its geometry rewrite is conditional on adjustInsets and therefore does not run for this caller. Glass activation additionally depends on77107f8 and availability1bdeac."
+    },
+    {
+      "offsets": [
+        "0x19a0984..0x19a099c",
+        "0x19a09a0..0x19a09dc"
+      ],
+      "values": {
+        "attachments.attachmentsButtonFontSize": 18.808777429467085,
+        "trailingButtonsSpacing": 8,
+        "input.insets.trailing": "input.insets.leading (default16)",
+        "whisper.elementSize": 44,
+        "whisper.padding.first": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "whisper.padding.second": [
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "conclusion": "These are explicit Remote caller overrides. Whisper elementSize is stored at part-relative0x48. Attachment font literal is0x4032cf0c09a14dd8. Fields are bound by Swift metadata. These are configuration values, not runtime glyph bounds."
+    },
+    {
+      "offsets": [
+        "0x6081554..0x60815dc",
+        "0x6081bd8..0x6081cb4",
+        "0x77123ec..0x7712468",
+        "0x1e3a6dc",
+        "0xaac60f0"
+      ],
+      "values": {
+        "innerCornerRadius": 22,
+        "topAccessoryCornerRadius": 22,
+        "scalesMetricsForDynamicType": false,
+        "focusedOuterInsets": null,
+        "outerHorizontalPadding": null,
+        "outerBottomPadding": null,
+        "outerInsets.nonIPad": [
+          8,
+          12,
+          12,
+          12
+        ],
+        "outerInsets.iPad": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      "conclusion": "Tuple order top/leading/bottom/trailing. DeviceDependent chooses its second value iff UIDevice.current.userInterfaceIdiom==1. Helper6081bd8 uses focused override only when present, then device selection, then optional horizontal override. Home does not rewrite these default outer values. This closes style-local insets, not all parent safe-area/max-width behavior. scalesMetricsForDynamicType=false is a style field and does not prove all fonts ignore Dynamic Type."
+    },
+    {
+      "offsets": [
+        "0x2de308..0x2de324",
+        "0x60c3328",
+        "0xa87f7a0",
+        "0x9b95f90"
+      ],
+      "conclusion": "Home writes flag32cb28 into primaryButton.usesCapsule (part offset0x31). Do not hardcode a capsule true/false based on screenshot. Flag producer/default is outside this closure."
+    },
+    {
+      "offsets": [
+        "0x2dda20..0x2dda70",
+        "0x19f51c8..0x19f52a4"
+      ],
+      "conclusion": "At inline-home consumer, showsComposer = !showsTaskList || homeComposer.mode != searching(raw2). Shared NewThreadScreen retains constructed composer while changing frame/opacity/hit testing. Search hides and deactivates composer while retaining draft state."
+    },
+    {
+      "offsets": [
+        "0x2dd464..0x2dd4dc"
+      ],
+      "predicate": "!get32c070() && get32208c() && !get300b78() && get300bb8()==4 && get303170()==2 && owner2dbd7c(selectedHostIdentity)",
+      "conclusion": "All six conditions are required by the parent availability predicate. Raw predicate is confirmed. Named meanings of all property/enum tags are not fully closed, so this does not justify invented user-facing update/auth/onboarding states."
+    },
+    {
+      "offsets": [
+        "0x2dcd74..0x2dcdbc",
+        "0x2dce74..0x2dcec4",
+        "0x2dd458..0x2dd460"
+      ],
+      "conclusion": "Capability/availability choose branch eligibility. Once eligible, nonempty navigation array does not itself turn eligibility off. With empty navigation and no current draft,2dd458 sets both eligibility=true and a separate transition/init flag=true. Content then selects current draft, otherwise retainedSubmittedDraft, otherwise bare task-list/start fallback. Therefore neither navigationCount>0 nor missing current draft is independently a proven hide predicate."
+    }
+  ],
+  "inferred_flag_names": [
+    {
+      "getter": "0x32c070",
+      "candidate": "isConnectingComputer",
+      "basis": "Field metadata and property cache neighborhood, cache-to-field binding incomplete."
+    },
+    {
+      "getter": "0x300b78",
+      "candidate": "requiresClientUpdate",
+      "basis": "Fixed object byte and class field metadata, final direct offset binding incomplete."
+    },
+    {
+      "getter": "0x300bb8",
+      "candidate": "codexRemoteLocalAuthenticationLock",
+      "basis": "Field metadata and property cache neighborhood; raw4 semantic unresolved."
+    },
+    {
+      "getter": "0x32cb28",
+      "candidate": "usesWiderMessageInputPrimaryButton",
+      "basis": "Lazy field metadata and cache neighborhood. Consumer usesCapsule binding confirmed."
+    },
+    {
+      "getter": "0x32caf0",
+      "candidate": "composerPluginAccentColorEnabled",
+      "basis": "Lazy field metadata and cache neighborhood. Theme accent consumer binding confirmed."
+    }
+  ],
+  "minimal_reuse": [
+    "Reuse shared Remote persistent editor/compact overlay fromv445, with home-specific configuration instead of a second demo text field. Inline focus-on-appear=false and presentsSubmittedThreadInPlace=false remain essential.",
+    "Apply the explicit spacing/input/whisper overrides above. Keep compact height48 fromv445 separate from outer insets and expanded mode.",
+    "Use home presentation Ask Codex + showsDestinationControls + allowsAttachments. Host selection and submit remain owner callbacks.",
+    "Preserve draft on search, apply visibility/hit-testing at container level. Ordinary synthetic availability may be explicitly injected while unresolved auth/onboarding gates remain marked independent.",
+    "Style-local outer insets may be reused with safe-area ownership; do not add them twice if the common input container already consumes6081bd8-equivalent values."
+  ],
+  "unknown": [
+    {
+      "boundary": "0x19a095c..0x19a0980 and0x19a09e0..0x19a0a18",
+      "detail": "Complete Glass enum payload transform and fallback color semantic names; raw control flow saved."
+    },
+    {
+      "boundary": "0x32cb28,0x32caf0 and parent metadata cache initialization",
+      "detail": "Feature producers/defaults and all availability getter names. Do not claim a specific live rollout configuration."
+    },
+    {
+      "boundary": "0x303170,0x2dbd7c,0x2dcfe0 callbacks,prepareSubmissionTransition",
+      "detail": "All unavailable/onboarding/navigation states and retention completion. Concrete raw availability predicate is known."
+    },
+    {
+      "boundary": "SafeAreaBarIfAvailable0x757a2cc and MessageInputView consumers",
+      "detail": "Full effective task-list outer width and keyboard-safe-area composition. No hardcoded screenshot-derived max width is justified."
+    },
+    {
+      "boundary": "0x19872a8..0x19873c8",
+      "detail": "Complete compact-mode selector including attachment/voice/plan/holding states remains partial."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "runtime_visual_verified": false,
+    "production_modified": false
+  },
+  "evidence_files": {
+    "ios-remote-v508-style-base.asm": "99b84f0526fb75eeabc057c4ec250f21a7ddf1924ecacef709ac11e6887276f7",
+    "ios-remote-v508-style-modifiers.asm": "e0ec7c2577f73583d67c4eb4d73bc93fe7ee89e128c6914bbe183c8c0310d221",
+    "ios-remote-v508-style-values.json": "59f45d29bc3c7580aa9fb9512a2e00e50be199e0aac2ab43a00956142f4bba6a",
+    "ios-remote-v508-style-gates.asm": "5834f92fdc71929023ca0c838ae92d24e355de2c406935177791c2bfc3ab81ba",
+    "ios-remote-v508-style-default-tail.asm": "922b4cd69d07b4cc68ff114a04eff8e88c53973d119d958066cb336347a8e8f1",
+    "ios-remote-v508-style-default-helpers.asm": "c6e0dee0fb6476ee22e68fdb2166694bfe7606bf85d244670d25a97134cc3a96",
+    "ios-remote-v508-primary-style-metadata.json": "d5171aced98b77ad7ce47936f9cfda83dc55d28ddd227573a2454ab5e66dcd65",
+    "ios-remote-v508-home-predicate-helpers.asm": "34ce97d839842315729c7efd89a06f772920ecdccc4fc1c68a34805784e918d4",
+    "ios-remote-v508-device-style-helpers.asm": "1fafcfc336a7f75d834793a804db313f432806d6450413d78b5010f9a85f5c22",
+    "ios-remote-v508-style-part-metadata.json": "cead35b35850683e617257154881b731b906ed7bc3baafa67267e5909a139dea",
+    "ios-remote-v508-draft-content.asm": "973116df4f92cde0d2b54821a322a8192633fe3e95f78aded1c59bffeeaf90f7",
+    "ios-remote-v508-style-layout-bindings.json": "84cf1f1b5e9bb6910100184ccb28ced28cc2ece865ed53cce9086e851f31cd40",
+    "ios-remote-v508-style-metadata.json": "0d6baebbc3001f07eb55c10bdd695ec4c01b2561ac99ffe92841607dbad7c6eb",
+    "ios-remote-v508-style-flags.asm": "7fffeae3e16a3f159ea483b0603ee0f63e2ed0146488f5087b2e056c350a3d78",
+    "ios-remote-v508-home-tasklist.asm": "82a89ebe65b1374deac5d1883d909ad24fe56c1f6e30f777fe61f125e2de1a5f"
+  }
+}

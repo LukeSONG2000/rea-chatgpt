@@ -1,0 +1,330 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "official shipped artifact static instructions and Swift metadata; no original app execution; no screenshot measurements",
+  "scope": "HistoryNavigationCell/Content, HomeMenuLabelStyle, HistoryCellContent, HistoryHeaderCell, SideMenuBackgroundModifier",
+  "layout": {
+    "type": "ChatGPTHistory.HistorySideMenuStyle.Layout",
+    "descriptor": "0x9593b60",
+    "cases": [
+      "legacy",
+      "refreshed"
+    ],
+    "raw_branch_mapping": "two no-payload cases, comparisons to raw byte 1 select refreshed",
+    "not_established": "which app account/config chooses a specific branch at runtime"
+  },
+  "owners": [
+    {
+      "name": "HistoryNavigationCell",
+      "descriptor": "0x9593410",
+      "body_witness": "0x123f448",
+      "limit": "primitive wrapper; do not assign row geometry here"
+    },
+    {
+      "name": "HistoryNavigationCellContent",
+      "descriptor": "0x9593340",
+      "body_witness": "0x1240718",
+      "actual_body": "0x123f484",
+      "child_style": "HomeMenuLabelStyle"
+    },
+    {
+      "name": "HomeMenuLabelStyle",
+      "descriptor": "0x9593460",
+      "conformance": "0x7db2270",
+      "makeBody_witness": "0x1245ad0",
+      "actual_body": "0x12454fc"
+    },
+    {
+      "name": "HistoryCellContent",
+      "descriptor": "0x9594118",
+      "body_witness": "0x123accc",
+      "actual_body": "0x1238e00"
+    },
+    {
+      "name": "HistoryHeaderCell",
+      "descriptor": "0x95931ec",
+      "body_witness": "0x123ddd4",
+      "actual_body": "0x123d9f0",
+      "limit": "section header, not top ChatGPT sidebar title"
+    },
+    {
+      "name": "SideMenuBackgroundModifier",
+      "descriptor": "0x95940c4",
+      "body_witness": "0x12e5074",
+      "actual_body": "0x12e4fa0",
+      "draw_closure": "0x1380090"
+    }
+  ],
+  "navigation_feature_rows": {
+    "padding": {
+      "unit": "SwiftUI points",
+      "order": [
+        "top",
+        "leading",
+        "bottom",
+        "trailing"
+      ],
+      "legacy": [
+        10,
+        14,
+        10,
+        14
+      ],
+      "refreshed": [
+        10,
+        22,
+        10,
+        14
+      ],
+      "evidence": [
+        "0x12455bc layout read",
+        "0x12455c4 14",
+        "0x12455c8 22",
+        "0x12455cc conditional select",
+        "0x12455e4 top10",
+        "0x12455ec pair 0x7da8c40=(10,14) bottom/trailing"
+      ]
+    },
+    "scaled_defaults": {
+      "minHeight": {
+        "value": 44,
+        "evidence": [
+          "0x123f91c field1 offset slot",
+          "0x123f920 literal44",
+          "0x123f94c ScaledMetric.init"
+        ]
+      },
+      "iconSize": {
+        "value": 24,
+        "evidence": [
+          "0x123f978 literal24",
+          "0x123f9a8 helper0x139465c relativeTo ScaledMetric construction"
+        ]
+      },
+      "symbolFontSize": {
+        "value": 18,
+        "evidence": [
+          "0x123f950 field2 offset slot",
+          "0x123f954 literal18",
+          "0x123f974 ScaledMetric.init"
+        ],
+        "limit": "SF symbol size; not text title size"
+      }
+    },
+    "text_font": {
+      "regular": {
+        "semantic_style": "body",
+        "weight": "regular",
+        "token": "0xb07ce30",
+        "initializer": "0x1287630",
+        "style_producer": [
+          "0x74e2728",
+          "0x74e2714"
+        ],
+        "style_binding": "0xaad38d8",
+        "weight_binding": "0xaad3870"
+      },
+      "prominent": {
+        "semantic_style": "headline",
+        "weight": "medium",
+        "token": "0xb07ce48",
+        "initializer": "0x1287614",
+        "style_producer": [
+          "0x74e26c8",
+          "0x74e26b4"
+        ],
+        "style_binding": "0xaad3918",
+        "weight_binding": "0xaad3868"
+      },
+      "selection": [
+        "0x1245998 style field",
+        "0x12459a0 compares prominent byte1",
+        "0x12459ec resulting token consumed"
+      ],
+      "limit": "semantic fonts, do not replace with title3 or fixed screenshot pixel size"
+    },
+    "icon_text_spacing": {
+      "kind": "parent injected, scaled",
+      "path": [
+        "0x123e098 reads parent state+0x8 into d9",
+        "0x123e160/0x123e164 writes NavigationCellContent.itemSpacing",
+        "0x123f9ac takes content.itemSpacing",
+        "0x123f9e8 ScaledMetric relativeTo init",
+        "0x1245554 spacing read",
+        "0x1245568 HStack center alignment"
+      ],
+      "default_value": null,
+      "limit": "caller state producer not recovered; no universal spacing constant established"
+    },
+    "enabled_opacity": {
+      "enabled": 1,
+      "disabled": 0.4,
+      "evidence": [
+        "0x123f890 isEnabled field6 metadata slot0x48",
+        "0x123f8a0 constant0x7ce2048",
+        "0x123f8a8 select",
+        "0x123f8bc opacity apply"
+      ]
+    }
+  },
+  "history_conversation_rows": {
+    "padding": {
+      "vertical": 10,
+      "refreshed_leading": 22,
+      "refreshed_trailing_default": 22,
+      "legacy_base_horizontal": "14 or12 depending BusinessAgentFaviconContent enum tag",
+      "evidence": [
+        "0x1238eb0 BusinessAgentFaviconContent metadata accessor",
+        "0x1238ec0-0x1238f10 favicon-variant selects spacing8/12 and base padding14/12",
+        "0x1238f5c-0x1238f80 refreshed overrides horizontal padding22",
+        "0x1238fac-0x1238fb8 EdgeInsets stores"
+      ],
+      "limit": "trailing status variants can select caller supplied optional padding; do not force22 over them; 8/12 branch is not legacy/refreshed"
+    },
+    "scaled_defaults": {
+      "minHeight": {
+        "value": 44,
+        "site": "0x123899c"
+      },
+      "avatarSize": {
+        "value": 24,
+        "site": "0x12389c4"
+      },
+      "goalSymbolFontSize": {
+        "value": 18,
+        "site": "0x12389d8",
+        "relativeTo": "body",
+        "style_binding": "0xaad38d8"
+      },
+      "businessAgentFaviconSize": {
+        "value": 20,
+        "site": "0x1238a20"
+      },
+      "statusIndicatorSlotSize": {
+        "value": 28,
+        "site": "0x1238a34"
+      }
+    },
+    "title_font": {
+      "status": "unknown",
+      "limit": "GeneratedTextView/AttributableTextView styleguide path not fully closed in this scope; goal symbol18 is not titlefont"
+    }
+  },
+  "section_headers": {
+    "padding_legacy": [
+      10,
+      14,
+      10,
+      14
+    ],
+    "padding_refreshed": [
+      10,
+      22,
+      10,
+      14
+    ],
+    "padding_evidence": [
+      "0x123db90 layout field",
+      "0x123dba8/0x1398ef4 compare legacy/refreshed",
+      "0x123dbac22",
+      "0x123dbb0 select",
+      "0x123dc54-0x123dc60 EdgeInsets"
+    ],
+    "text_font": {
+      "semantic_style": "body",
+      "weight": "semibold",
+      "evidence": [
+        "0x123db14 regular token lazy init",
+        "0x123db28 token consumed",
+        "0x123db38 Font.Weight.semibold"
+      ]
+    },
+    "minimumRowHeight": {
+      "conditional": "usesMinimumRowHeight",
+      "evidence": [
+        "0x123dc04-0x123dc10 gate",
+        "0x123dc20 ScaledMetric read"
+      ],
+      "default": null
+    }
+  },
+  "selection_background": {
+    "modifier": "ChatGPTHistory.SideMenuBackgroundModifier",
+    "navigation_binding": [
+      "0x123faac call0x1236910",
+      "0x1236930 metadata0xa4c8fc0 through helper0x1390f4c",
+      "0x123695c View.modifier"
+    ],
+    "color_resource": "ChatGPT/bg/elevated/secondary",
+    "color_evidence": [
+      "0x13800ac call0x74ecca4",
+      "0x74eccd0 resource name0x8a50f20",
+      "0x74ecce0 ColorResource.init"
+    ],
+    "opacity": {
+      "selected": 1,
+      "unselected": 0,
+      "evidence": [
+        "0x13800a8 isSelected byte",
+        "0x13800b4-0x13800c4 select opacity"
+      ]
+    },
+    "shape": "SwiftUI.RoundedRectangle",
+    "cornerSize": [
+      12,
+      12
+    ],
+    "shape_evidence": [
+      "0x1380100 RoundedRectangle metadata",
+      "0x1380124 literal vector12",
+      "0x1380128 cornerSize store"
+    ],
+    "animation_gate": "_isAnimatedSideMenuBackgroundHighlightEnabled",
+    "animation_evidence": [
+      "0x1380048-0x138005c gate and isSelected",
+      "0x1380068 Animation.easeInOut",
+      "0x1380078 Animation.delay",
+      "0x1380084 Transaction.animation"
+    ],
+    "limit": "resource name and shape recovered; exact dynamic light/dark RGBA and gate configuration not inferred"
+  },
+  "unknowns": [
+    {
+      "question": "refreshed outer leading inset10",
+      "status": "not established",
+      "reason": "row padding values do not prove parent container inset; do not reuse vertical10 as horizontal outer inset",
+      "next_evidence": "HistoryViewController/HistoryNavigationHeaderLayout collection layout configuration, not row body"
+    },
+    {
+      "question": "vertical gap between rows",
+      "status": "not established",
+      "reason": "row minHeight and content padding are known; UIKit hosting collection/list section inter-item geometry not in these witnesses"
+    },
+    {
+      "question": "top sidebar ChatGPT title metrics",
+      "status": "outside current owner scope",
+      "reason": "HistoryHeaderCell is section heading, not screen title"
+    },
+    {
+      "question": "parent itemSpacing producer",
+      "status": "not established",
+      "next_evidence": "exact caller creating HistoryNavigationCell state+0x8"
+    },
+    {
+      "question": "active legacy/refreshed runtime branch",
+      "status": "not established",
+      "reason": "the binary implements both; reference screenshot alone is not authority"
+    }
+  ],
+  "limits": [
+    "Static recovery establishes code paths and configuration constants, not device visual equality.",
+    "No host/build/device changes made.",
+    "All values refer to293 only.",
+    "No new user data copied into fixtures."
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "authority": "shipped-artifact-static-inference",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "V2 task-list visual header occupies native Section header slot or ordinary content row",
+  "answer": {
+    "ordinary_task_section": "Native Section header slot, conditional V2 or legacy header, optional for suppression",
+    "catalog_status_section": "Empty native header and footer. V2 super-section visual header is first optional content row before catalog request rows",
+    "empty_header_task_section": "Separate branch has EmptyView header and optional task rows content",
+    "decision": "Do not generalize catalog header placement to project/workspace/pinned/dated headings"
+  },
+  "type_records": {
+    "0x7cf7820": {
+      "normalized_outer_tree": "Section<Optional<ConditionalContent<onChange<ModifiedContent<CodexTaskListSectionHeaderV2,CodexHomeContentWidth>, Array<RemoteProjectThreadPage.ID>>,CodexTaskListSectionHeader>>,Optional<TupleView<(ForEachWithIndex<TaskSection.Item,...>,Optional<ModifiedPagination>)>>,EmptyView>",
+      "limits": [
+        "Deep task row wrappers abbreviated, full symbolic bytes and references retained in neighbor-types"
+      ]
+    },
+    "0x7cf7828": {
+      "normalized_outer_tree": "ModifiedContent<ordinary-task-Section,_TraitWritingModifier<ListRowBackgroundTraitKey>>"
+    },
+    "0x7cf7868": {
+      "normalized_outer_tree": "Section<EmptyView,TupleView<(Optional<listRowSeparator<ModifiedContent<ModifiedContent<CodexTaskListSectionHeaderV2,CodexHomeContentWidth>,InsetsTrait>>>,ForEach<Array<RemoteProjectCatalogRequest>,CodexRemoteHostIdentity,ModifiedRequestStatus>)>,EmptyView>"
+    },
+    "0x7cf7870": {
+      "normalized_outer_tree": "ModifiedContent<catalog-status-Section,_TraitWritingModifier<ListRowBackgroundTraitKey>>"
+    },
+    "0x7cf7848": {
+      "normalized_outer_tree": "ModifiedContent<Section<EmptyView,Optional<TupleView<(ForEachWithIndex<TaskSection.Item,...>,Optional<ModifiedPagination>)>>,EmptyView>,_TraitWritingModifier<ListRowBackgroundTraitKey>>"
+    }
+  },
+  "constructor": {
+    "function": "0x399ebc..0x39a464",
+    "ordinary_iOS26_path": [
+      "0x399ef0 calls availability gate0x1bdeac (platform2,major26,minor0,patch0)",
+      "0x399f30 calls0x39ca98 for task content",
+      "0x399f70 calls0x39cdec for header",
+      "0x399f98 calls0x463fd0, tail to imported Section.create at0x7c4b754"
+    ],
+    "ordinary_older_path": [
+      "0x39a160..168 constructs header",
+      "0x39a16c..174 constructs content",
+      "0x39a17c..180 writes nil expanded binding",
+      "0x39a1e8 reads Section typeref0x7cf7820"
+    ],
+    "header_V2_gate": "0x39ceb8 reads content owner+0x20; ==1 takes V2 branch, else legacy at0x39cf60",
+    "catalog_path": "0x39a0e4 or0x39a29c invokes0x39bfe4 which constructs optional V2 visual heading + catalog ForEach; uses typeref0x7cf7868",
+    "limits": [
+      "Descriptor case numeric tags not given semantic names beyond proven content family",
+      "0x399c40 prior early loading Section.create is a different branch and cannot establish V2 workspace wiring"
+    ]
+  },
+  "section_background": {
+    "confirmed": true,
+    "asset": "OneOff/MainSurfacePrimary",
+    "flow": [
+      "0x39a230 calls0x4645b8 tail0x74f0f48 asset factory",
+      "0x39a234 calls0x450970",
+      "0x450974..980 loads Color metadata and Color View witness from0xaad4db0/0xaad4da0",
+      "0x450988 tails0x7c4b5ec AnyView.init",
+      "0x39a248 reads0x7cf7828 metadata",
+      "0x39a254 writes AnyView into outer ListRowBackgroundTrait modifier field",
+      "0x39a434..448 builds conditional wrapper after individual Section modified value"
+    ],
+    "other_sections": [
+      "catalog section0x39a324..344 with0x7cf7870",
+      "empty-header task section0x39a404..424 with0x7cf7848"
+    ],
+    "supported_integration": "Apply listRowBackground(MainSurfacePrimary) to corresponding native Sections",
+    "limits": [
+      "ListRowBackgroundTrait propagation to pinned header rendering has not been independently runtime-proven",
+      "This source omission alone does not prove the overlap root cause",
+      "No explicit standalone header background or headerProminence modifier found in resolved outer header type"
+    ]
+  },
+  "header_parent": {
+    "builder": "0x39cdec..0x39d538",
+    "V2_wrapper": [
+      "CodexHomeContentWidth",
+      "onChange of Array<RemoteProjectThreadPage.ID> at0x39d46c",
+      "optional suppression via0x39902c"
+    ],
+    "fields": [
+      "0x39d0d4 stores computed top spacing atheader+0x50",
+      "0x39d0d8..dc sets horizontal padding20 atheader+0x60",
+      "0x39d0ec initializes scaled metric44"
+    ],
+    "limits": [
+      "No new claims about internal LoadingShape overlay or complete width modifier behavior",
+      "Runtime XXXL overlap needs parent regression and source-backed subsequent trace"
+    ]
+  },
+  "raw_evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-v537-list-callback-thunks.asm": "fa98555077b38a357b74666bbaa86bb9ecf834e1a4c02190a573ff8d06b507dc",
+    "analysis/full-platform-20261104/ios-remote-v537-list-focused-types.json": "f9ae3cbc549d0c124ee499aeed2c8d8063972b70374315d349440ced7ff65156",
+    "analysis/full-platform-20261104/ios-remote-v537-list-more-types.json": "ef2a35f2d0c7643bad037cf5148e6fbdc8641a6a641a769ff47547f3eecf480f",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-background-thunk.asm": "bd9f174cf749f3002b13f4eb6e81f0caef557b59b847cb6138196b2578f9fbb5",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-builder.json": "7f68348728da63517e82ad28fb43386af96101c4af760ca35bf808ed2afc2217",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-color-symbol.json": "87f2c9bfb249b94cfe5bc78616aef7af8b51bb82471f488838c2582093dabe7f",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-create-thunk.asm": "6f18de2c92979d897e2a039067b2f021f75e56f40c07823253ed0c0ebba528ec",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-header-builder.json": "77fd5a0d0c1aeca035e5cce21c241400f3ad0147bb637115ee533c33791cf41a",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-import-bindings.json": "90e7d1eab668400a182bd315d300ac2e371fafb99e6493db748075510c371c4f",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-neighbor-types.json": "c29688113454f57041957bd3a9bbeecc3d08ae62caf33c54acdf7dd43f28340b",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-runtime-gate.asm": "c171ab5a65a040d53083a65ae210b91e0bd9c84e70af16d5ff90f1e2f0c252fd",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-sdk-corroboration.json": "9ddf36d4e19816e9d60dbb076edfe0f9be5ac4d4dee20c6de41ab4a93c4a3156",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-style-thunk.asm": "c321624319bbcb494fd3c42b8931766221c2264011e6469c546cfdac8a4d10f3",
+    "analysis/full-platform-20261104/ios-remote-v537-section-constructor.asm": "d9729b96cf1dbe2a4ac0a2b1901bcacaef1ca17f4788fcd929e7961cf11f999d",
+    "analysis/full-platform-20261104/ios-remote-v537-section-content.asm": "2037e93da494870f0e2ea71d7bb273531818afc63994fe55ba6780fa5751d53b",
+    "analysis/full-platform-20261104/ios-remote-v537-section-wrapper.asm": "7fe80701b449fdc54de4c3dddb0428cc5c13aa04702891232bf3341413b282f4",
+    "analysis/full-platform-20261104/ios-remote-v386-container-findings.json": "ee1bcbf5542cf98aebcfccfe5863677d7796e217974be14e6cde2bad0001edf8",
+    "analysis/full-platform-20261104/ios-remote-v491-header-body.asm": "348e0164df45bf8fd197de317311d164f9ed14f48907d4638f0e6b059fe75cbe"
+  },
+  "validation": {
+    "binary_execution": "none",
+    "app_edits": "none",
+    "new_evidence_only": true,
+    "shared_rea_target": "untouched"
+  }
+}

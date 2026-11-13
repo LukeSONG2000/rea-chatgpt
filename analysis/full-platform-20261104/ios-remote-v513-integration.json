@@ -1,0 +1,241 @@
+{
+  "batch": "v513",
+  "date": "2026-11-07",
+  "status": "partial",
+  "previous_goal_turn": "v512 focus repair and terminal test verification established progress; v513 integrates the newly closed destination page slice",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Composing keeps the browsing List mounted with opacity0, disabled hit testing and accessibilityHidden; destination content uses a bottom-anchored vertical ScrollView above the existing bottom bar.",
+    "Host inline Picker and workspace single-selection Toggles use fixed menu order, button menu style and plain button style. Selection is separate from source filtering and draft identity.",
+    "Eligible selected device shows projectless, directory/project and Add new folder entries. Nil eligible host and Cloud omit the workspace menu.",
+    "Destination labels inherit body and text/secondary, reuse original assets, scaled24/18 dimensions, minHeight48, row horizontal12 and outer horizontal12.",
+    "Home MessageInputStyle maxWidth728 limits destination content after its padding and composer content before outer padding. Outer full-width wrappers remain.",
+    "Ordinary focus loss retains composing. On iOS18+, interacting scroll plus keyboardWillHide arms dismissal, and subsequent focusfalse returns to browsing. Deceleration preserves the flag; keyboard show and inactive phases reset their respective flags.",
+    "Home submission independently snapshots host/project/directory target and rejects stale target intents.",
+    "Five official destination labels added;102 selected keys across65 locales.",
+    "v512 native editor owner-state echo guard prevents synchronous focus writes during updateUIView.",
+    "Home destination ScrollView uses source-backed always bounce for short content and hidden scroll indicators (19f3858/19f3884 and19f3900/19f3930)."
+  ],
+  "independent_adaptations": [
+    "Synthetic host eligibility, option catalog, gate selection, explicit projectless fallback on host switch and disconnected service outcomes are frontend fixtures.",
+    "Native UIImage fitting, SwiftUI semantic-font bridge and Reduce Motion handling remain host adapters.",
+    "Destination animation enables the observed nominal easeInOut0.2 under the preview configuration; original runtime gate is still unknown.",
+    "Add new folder presents disconnected remote-directory status carrying selected host identity. No local file picker or service execution.",
+    "Legacy host deployment target17 remains buildable. Its pre18 scroll-phase adapter is unverified; explicit search/back navigation remains available."
+  ],
+  "validation": {
+    "focus_v512": {
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+            "deviceName": "REA ChatGPT Offline",
+            "modelName": "iPhone 17 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 4,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "environmentDescription": "REAChatGPTHost · Built with macOS 27.3",
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "finishTime": 1793982579.93,
+      "passedTests": 4,
+      "result": "Passed",
+      "runtimeWarnings": [],
+      "skippedTests": 0,
+      "startTime": 1793982395.336,
+      "statistics": [],
+      "testFailures": [],
+      "title": "Test - REAChatGPTHost",
+      "topInsights": [],
+      "totalTestCount": 4
+    },
+    "ui_r5": {
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+            "deviceName": "REA ChatGPT Offline",
+            "modelName": "iPhone 17 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 5,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "environmentDescription": "REAChatGPTHost · Built with macOS 27.3",
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "finishTime": 1793984018.085,
+      "passedTests": 5,
+      "result": "Passed",
+      "runtimeWarnings": [],
+      "skippedTests": 0,
+      "startTime": 1793983794.936,
+      "statistics": [],
+      "testFailures": [],
+      "title": "Test - REAChatGPTHost",
+      "topInsights": [],
+      "totalTestCount": 5
+    },
+    "chinese_flow": "first run failed; after source-backed bounce/indicator restoration, Chinese retry and final Chinese flow passed; original failure retained",
+    "model": "passed; /tmp/rea-v513-model-language.log; includes27 locale/fallback/malformed-data checks",
+    "visual": "Final Chinese XXXL screenshot inspected. Live v513 default launch without language override visibly displayed Chinese Remote list through CUA. English and Chinese exact layout parity remain unaccepted.",
+    "diagnostics": [
+      "r1 had two passing cases and one ambiguous app-wide fixture-a query against the retained List and menu.",
+      "r2 proved native Picker drops SwiftUI row AX identifiers. Scoped native-menu collection query passed r3.",
+      "r4 failed compilation because onScrollPhaseChange requires iOS18. Availability adapter added; r5 five tests passed with no runtime warnings.",
+      "Python hashlib.file_digest unavailable in local Python. Read-only shasum verified the original artifact digest.",
+      "Chinese full flow first run failed with keyboard partially lowered and editor focused. Retained xcresult and AX evidence. Read-only source review found omitted always-bounce for short Home destination content; causality remains under verification.",
+      "Chinese retry passed57.206s. Final Chinese59.930s, English56.147s and ChineseXXXL18.825s all passed with runtimeWarnings[]. Temporary probe removed before final run. No forced blur or delay workaround added. Repeated prior animation waits were absent in retries, but not independently root-caused."
+    ],
+    "ui_language_final": {
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+            "deviceName": "REA ChatGPT Offline",
+            "modelName": "iPhone 17 Pro",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 3,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "environmentDescription": "REAChatGPTHost · Built with macOS 27.3",
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "finishTime": 1793985623.549,
+      "passedTests": 3,
+      "result": "Passed",
+      "runtimeWarnings": [],
+      "skippedTests": 0,
+      "startTime": 1793985454.802,
+      "statistics": [],
+      "testFailures": [],
+      "title": "Test - REAChatGPTHost",
+      "topInsights": [],
+      "totalTestCount": 3
+    },
+    "final_preview": {
+      "pid": 39444,
+      "build": "513",
+      "device_id": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "language_launch_override": false,
+      "system_preferred_languages": [
+        "zh-Hans-CN",
+        "en-GB"
+      ],
+      "observed_surface": "Chinese Remote task list",
+      "left_running": true,
+      "display": "Only built-in Color LCD available; external display placement not accepted"
+    },
+    "retention": {
+      "path": "/tmp/rea-v513-retention-final.json",
+      "targets": [],
+      "free_space": "31GiB"
+    }
+  },
+  "acceptance": {
+    "channel": "simulator only per user update",
+    "language": "system-following default; visible Chinese priority; Chinese/English primary test pair",
+    "phone": "user explicitly offline; no further device build/install attempted",
+    "full_official_visual": "unaccepted"
+  },
+  "remaining": [
+    "Actual attachment menu presentation, anchor/material/transition/queue owner integration; v513 row layout source evidence is ready.",
+    "Original host disable/chevron predicates and complete automatic destination resolution; injected fixture capabilities remain explicit.",
+    "Dynamic outer inset calculation1981560, composer background composition and full voice/microphone theme inheritance.",
+    "VoiceOver, real IME, old OS and iPad geometry, physical-device visual/tactile validation.",
+    "Remote transcript completeness, Chat/Work, haptics, prior feedback and independently evidenced Android alignment."
+  ],
+  "evidence_reports": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v512-destination-layout-findings.json",
+      "sha256": "73a8b2274622fd5f63d01dfef94c3dc029f62845bfb5451fe5a83ea7d301f07e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-width-target-focus-findings.json",
+      "sha256": "6bc1578a3d76c5677cf2fbe420cdfeb419bd4ac0e14705016faee7d72cf24027"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-attachment-layout-findings.json",
+      "sha256": "de09b96e6f39da9ed40db77cf03a56b8d64b8b1a2cfd4c119bbd8025bec4b104"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-evidence-verification.json",
+      "sha256": "621caf9cb8cd09bbf6cee18dc062aa430d4282c9cc0c40b8963ca1d3f5581065"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v513-dismissal-review-findings.json",
+      "sha256": "c774859e54a1bc8995fa825061d7c4531e651222b3a64a069e43e3ca136bd03c"
+    }
+  ],
+  "production_snapshot": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "b6e042157c1e52084da33d749161c72dcba971528c0e3b4b5df4c97708d543e1"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteComposerInteraction.swift",
+      "sha256": "fb6267dfd47643676d085738575d6b65b42ba84cee038e60f50622be746ebc2a"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "61e0d22594b25632da08c23c216b9da51c813ad5eb6022fa7633cfc6bc4e68cf"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "78a5929674c54a15a01cc0fa602c5920a6c740f01d3c84e87b28a27d992edb6a"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "256688b882dc8d4e2d7af4393619736cefdb3d8c06728d655dccb0a389f7a33f"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "d3990ee6b3576ad43b837f364f8b70d27bc8d62983b25869d6708dccdb3dca0d"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "190ccf76035ce4a58d31e471d9ebd4425623c9f0cd3cc0c037daf8832ee24ddc"
+    }
+  ],
+  "git": {
+    "commit": false,
+    "push": false
+  }
+}

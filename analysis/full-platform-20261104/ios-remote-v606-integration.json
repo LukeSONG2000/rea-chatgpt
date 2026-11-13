@@ -1,0 +1,65 @@
+{
+  "batch": "v606",
+  "implementation": "implemented",
+  "scope": "Remote transcript explicit insets and parent geometry integration",
+  "official_evidence": [
+    "ios-remote-v606-blur-findings.json",
+    "ios-remote-v606-keyboard-findings.json",
+    "ios-remote-v606-inset-integration-findings.json"
+  ],
+  "implemented": [
+    "Source-driven explicit content/vertical-indicator insets and all-regions bottom underlap, conditional modern top underlap.",
+    "Bottom-aligned stack and zero-opacity color sibling for the visible transcript route.",
+    "Geometry-only updates retain the independent logical reading anchor rather than checkpointing unfinished layout."
+  ],
+  "independent_adaptations": [
+    "SwiftUI onGeometryChange and UIKit inset application bridge",
+    "Synthetic row spacing and padding remain separate from scroll insets",
+    "Existing scoped reading-position store and restoration, including the initialization overwrite fix",
+    "Bounded UI drags and explicit keyboard-layout readiness checks"
+  ],
+  "unimplemented": [
+    "Full official row padding and anchor restoration algorithm",
+    "Optional transcript-hiding and MessageInputGlassGradientPart branches",
+    "Legacy OS runtime, other embeddings and Android integration"
+  ],
+  "validation": {
+    "foundation": "ios-remote-v606-foundation-final.log",
+    "distinct_passing_ui_cases": 9,
+    "runs": {
+      "r5": {
+        "passed": 4,
+        "failed": 2
+      },
+      "r6": {
+        "passed": 4,
+        "failed": 1
+      },
+      "r7": {
+        "passed": 1,
+        "failed": 0
+      }
+    },
+    "failure_history": "All r1-r7 xcresults/logs retained. r3 caught overwritten saved anchors, fixed before final passes. r5 stale identifiers/visibility assertions corrected. r6 English animation-idle timeout reproduced delayed clicks, unchanged r7 passed.",
+    "visual": "Inspected Chinese/light approval and English/dark keyboard, title/approval and combined-journey screenshots. Final CUA confirmed Chinese/dark normal-size core task with leading title and full approval card."
+  },
+  "runtime": "ios-remote-v606-runtime.json",
+  "files": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "f70a2e48055b2d9351f4418c71baec7bcb6ab19254f2360515a05af027cf2179",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "0461550c0108ad617b8c1b3ef90e0d6f4d2fc7ec4232deb680235d4be6cc12e3",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "d2f6638a4d3a59ca0b53dc771c18d6fde9534de6f7c1c9abc8a8ff6dec99582b",
+    "implementation/ios/UITests/HostInteractionTests.swift": "2605d72a8885d50865b0c26fd335c842eab8cae9083a15557d30381064e77a16",
+    "implementation/ios/TextTests/main.swift": "b5ceb92f78eb2c0a107799bcf337c934c22fd7e4277167da755fb3a0a7065548",
+    "analysis/full-platform-20261104/ios-remote-v606-inset-integration-findings.json": "561b0daa8e2bf218e5f38ff3994dd540d9d8a3aaeb543984d1432e38aea61c4f"
+  },
+  "handoff": {
+    "version": "606",
+    "installed_hash_match": true,
+    "process": "local.rea.chatgpt.ioshost: 58617",
+    "page": "Chinese dark Remote fixture-a/shared-thread approval; preview left running",
+    "display": "Only online Color LCD; no external display available",
+    "retention": "ios-remote-v606-retention-final.json",
+    "free_disk": "11GiB"
+  },
+  "next": "Connect the source-backed thinking tool-activity-group summary and explicit ordered child identities. Full reasoning content remains unresolved; v607 bounded evidence hashes verified."
+}

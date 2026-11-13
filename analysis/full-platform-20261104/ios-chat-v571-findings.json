@@ -1,0 +1,47 @@
+{
+  "batch": 571,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "source": "ios-chat-v570-row-metadata.json; MessageRowContent descriptor0x96206b8",
+      "finding": "Separate assistantMessageContent, contentFooter, inlineActions and inlineActionsFooter fields. Metadata establishes ownership slots, not active visibility or exact service mapping."
+    },
+    {
+      "source": "ios-chat-v571-content-entry.asm, content-body.asm",
+      "finding": "View body witness0x38da098 branches to0x38d77b4. Body calls0x38d9a34 at0x38d7afc and applies a View modifier at0x38d7b6c."
+    },
+    {
+      "source": "ios-chat-v571-content-stack.asm and content-layout-metadata.json",
+      "finding": "Helper0x38d9a34 constructs MessageRowContainer metadata0x961e028 via0x399c648. It initializes two fields from12 and32 through0x38ddc2c. Metadata names them defaultVerticalPadding and userAssistantRoleTransitionSpacing."
+    },
+    {
+      "source": "ios-chat-v571-scaled-metric.json; container-witness.json and container-body.asm/json",
+      "finding": "0x38ddc2c calls ScaledMetric.init(wrappedValue:). Container witness0x38ddff0 branches to0x38ddc54. Body separately applies conditional top padding and computed EdgeInsets; helper0x38ddf28 reads style and calls0x38dda6c. Their complete predicate/mapping remains open."
+    },
+    {
+      "source": "ios-chat-v571-chrome-type.json and chrome-body.asm",
+      "finding": "Chrome modifier composition contains MessageRowAccessibilityActionsModifier, MessageRowViewActionsModifier and MessageRowDisappearanceModifier."
+    },
+    {
+      "source": "ios-chat-v571-container-insets.asm;0x38dda6c..0x38ddc2c",
+      "finding": "Inset helper computes top/bottom separately, gates supplied paddingEdges, inspects surrounding context, and includes a role-dependent residual gap using scaled transition spacing minus adjacent padding. Horizontal components return zero here. Context enum fields and jump-table mapping remain unresolved; this is not sufficient to substitute universal paragraph spacing."
+    }
+  ],
+  "host_gap": "loadConversation appended raw request phase to assistant content and used raw bracketed phase as empty response text. These are independently introduced debug content, not recovered official messages.",
+  "integration": [
+    "Project frontend request phase into a separate optional response footer; completed nonempty replies have no status text.",
+    "Sending/waiting/generating/stopping/failure/cancellation/interruption/empty/unknown remain explicit localized frontend states. Pending cancellation matches full scope and only overrides active phases.",
+    "Native footer participates in collection height. Raw copying/editing retains model content. Retry remains bound to the latest retryable request.",
+    "Localize existing jump-to-latest label without changing its independent geometry."
+  ],
+  "limitations": [
+    "Status-to-label mapping, caption size, semantic error color, footer geometry and retry label are independent frontend adapters. Official lifecycle/state consumers and exact visual presentation remain unclosed.",
+    "12/32 are observed ScaledMetric initialization inputs, not universal paragraph gaps. No new spacing constants applied until0x38dda6c and surrounding-context producers are proved.",
+    "Raw typeref probe0x904f0df rejected with not file-backed -0x7b80da4. No returned type interpretation claimed; container-result probe was not run after this error.",
+    "User/assistant outer spacing, Markdown block spacing, Work-specific controls, attachment submit, complete actions, haptics and physical-device acceptance remain open.",
+    "No Android equivalence established. Shared independent status tests are possible reuse only."
+  ]
+}

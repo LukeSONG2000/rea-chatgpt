@@ -1,0 +1,61 @@
+{
+  "batch": 614,
+  "implemented": [
+    "Open-page URL and find-in-page pattern/URL summaries through the shared Remote activity label.",
+    "Empty detail falls back to the top-level query; open/find actions suppress query-list disclosure.",
+    "Optional replay fields persist with scoped task history and preserve legacy snapshots.",
+    "Core preview includes synthetic page actions."
+  ],
+  "official_evidence": "ios-remote-v614-search-action-findings.json",
+  "independent_adaptations": [
+    "Replay ActionDetail and fallbackQuery contract fields.",
+    "Synthetic timing, failure/cancellation labels and existing native row host."
+  ],
+  "unimplemented": [
+    "Official raw WebSearchAction decoder.",
+    "Web source-result cards and citation producer.",
+    "Exact parent styling and Android consumers."
+  ],
+  "validation": {
+    "foundation": "passed initial and r2",
+    "r1": {
+      "passed": 3,
+      "failed": 1,
+      "failure": "English test selected an Image inheriting the summary identifier. Visible summary was correct; corrected test to StaticText."
+    },
+    "r2": {
+      "passed": 3,
+      "failed": 0,
+      "cases": [
+        "Chinese page actions",
+        "English dark failure page actions",
+        "Chinese combined journey"
+      ]
+    },
+    "coverage": [
+      "URL/pattern/fallback projection",
+      "legacy snapshots",
+      "scope and cancellation",
+      "task switching and process restart",
+      "existing query and combined approval/attachment flow"
+    ],
+    "visual": [
+      "Inspected Chinese light and English dark r2 captures.",
+      "Manual Chinese dark task replay shows all three new summaries; preview left running."
+    ],
+    "manual_input": "Two CUA typeText calls resulted in Inspect Inspect after keyboard transition; this run validates action rendering, not exact manual text fidelity.",
+    "runtime": "ios-remote-v614-runtime.json"
+  },
+  "handoff": {
+    "version": 614,
+    "language": "Chinese",
+    "appearance": "dark via existing system/user preference",
+    "page": "Remote fixture-a/completed-thread",
+    "left_running": true,
+    "process": 78326
+  },
+  "retention": "ios-remote-v614-retention-final.json",
+  "displays": "ios-remote-v614-displays.json",
+  "disk_available": "12 GiB",
+  "next_action": "Prioritize the remaining page-level message interaction gaps; complete reasoning content producer/consumer evidence before implementing that branch."
+}

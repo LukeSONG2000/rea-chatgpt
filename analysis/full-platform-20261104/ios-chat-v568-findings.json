@@ -1,0 +1,48 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifactSHA256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "publicSource": "analysis/upstream-codex-20261105/reuse-map.json",
+  "evidence": [
+    {
+      "type": "host-source",
+      "symbol": "NativeConversationHost.sendEntry",
+      "observation": "All message services inherited a mandatory REA synthetic prefix in the presentation action. FixtureChatService is a deterministic in-process adapter and reads no pairing or network. The UI gate prevented ordinary Chinese/English frontend acceptance."
+    },
+    {
+      "type": "host-source",
+      "symbol": "FixtureChatService.advance",
+      "observation": "Existing adapter emitted accepted/delta/completed/cancelled, so retry UI required a separately paired legacy harness. Retained StoredTurn and MessageHistory already implement failed-attempt retry lineage and fresh request identity."
+    },
+    {
+      "type": "static-artifact-reference",
+      "source": "docs/full-platform/IOS-MESSAGE-HOSTING.md",
+      "scope": "Existing native collection to UIHostingConfiguration/MessageRow boundary reused. No new claim about official retry, input-prefix, service or Work semantics."
+    },
+    {
+      "type": "host-source",
+      "symbol": "NativeConversationHost.changeVisualMode",
+      "observation": "Current Chat/Work switch changes placeholder and accessibility value only. Mode is absent from service request/history identity and is not restored per conversation."
+    }
+  ],
+  "implementation": [
+    "An explicit service prompt-prefix requirement preserves the legacy loopback constraint and permits ordinary offline frontend input",
+    "First-request failure is an opt-in in-process fixture, scoped by account/conversation; emits partial text then terminal failure, retries use fresh request and complete",
+    "Cancel wins over the scheduled fixture failure; stale ticks after terminal produce no events",
+    "Existing draft/history limit of16384 UTF8 bytes is checked before submission; rejected input remains in the editor",
+    "Send/Stop and Retry local request accessibility/action labels cover Chinese and English"
+  ],
+  "independentBoundary": [
+    "All new service policy, failure timing and tests are independent frontend adapter behavior",
+    "Official Chat/Work configuration, retry presentation, row styling, error typography and action ownership remain separately partial",
+    "Historical source v275 sketch clear and v276 focus notifications do not prove ordinary send cleanup and were not transplanted"
+  ],
+  "validation": {
+    "serviceTests": "passed; manual advance tests cover failure, retry, account isolation and cancellation",
+    "stateTests": "passed; persistence and retry lineage",
+    "uiR1": "Chinese/light and English/dark, both presentation modes: ordinary input, partial failure, retry preserving draft, A-B-A, stop and process restart. Two cases passed.",
+    "visual": "Inspected r1 Chinese Chat and English Work. Native core controls usable; debug status text, user-row styling, excessive spacing and incomplete English presentation remain visible and unaccepted.",
+    "uiR2": "One existing Chat/Work title/sidebar navigation regression passed"
+  },
+  "next": "Connect mode/configuration to per-conversation state and the service contract after checking its original owner, then remove remaining provisional message/status presentation using source-backed components."
+}

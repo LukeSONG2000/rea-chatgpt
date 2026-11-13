@@ -3,7 +3,7 @@ import Foundation
 // iOS293 evidence: v409 request metadata; v410 card callbacks and action payloads.
 // Field names below are observed. String IDs and the enclosing host/connection
 // envelope are independent frontend adapters, not the official wire schema.
-struct RemoteApprovalRequestKey: Hashable {
+struct RemoteApprovalRequestKey: Hashable, Codable {
     let requestID: String
     let threadID: String?
     let turnID: String?
@@ -11,7 +11,7 @@ struct RemoteApprovalRequestKey: Hashable {
     let callID: String?
 }
 
-struct RemoteApprovalScope: Hashable {
+struct RemoteApprovalScope: Hashable, Codable {
     let hostID: String
     let connectionID: String
     let key: RemoteApprovalRequestKey
@@ -104,16 +104,49 @@ struct RemoteApprovalActionInput: Hashable {
     let decision: RemoteApprovalDecision
 }
 
+// Source field names from293 ApprovalRequest. This nested frontend projection
+// is not the original flat request layout or a wire DTO. Header1a1e340 selects
+// a nonempty title, then nonempty reason, then the request-kind owner's fallback.
+// Whitespace is not trimmed by that presence test. Subtitle/detailReason keep
+// their separate consumers; mere metadata presence does not define placement.
+struct RemoteApprovalHeaderInput: Hashable {
+    // Explicit frontend layout admission, not the original kind discriminator.
+    // Raw4 ordering is unresolved; never infer this from enum declaration order.
+    enum Layout: Hashable { case ordinary, unresolved }
+    var title: String? = nil
+    var subtitle: String? = nil
+    var reason: String? = nil
+    var detailReason: String? = nil
+    var layout: Layout = .unresolved
+
+    func mainText(fallback: String) -> String {
+        if let title, !title.isEmpty { return title }
+        if let reason, !reason.isEmpty { return reason }
+        return fallback
+    }
+    var displayedSubtitle: String? {
+        guard layout == .ordinary, let subtitle, !subtitle.isEmpty else { return nil }
+        return subtitle
+    }
+    var displayedDetailReason: String? {
+        guard layout == .ordinary, let detailReason, !detailReason.isEmpty else { return nil }
+        return detailReason
+    }
+}
+
 struct RemoteApprovalRequestInput: Hashable {
     let scope: RemoteApprovalScope
     let actions: [RemoteApprovalActionInput]
     let availability: RemoteApprovalAvailability?
+    let header: RemoteApprovalHeaderInput?
 
     init(scope: RemoteApprovalScope, actions: [RemoteApprovalActionInput],
-         availability: RemoteApprovalAvailability? = nil) {
+         availability: RemoteApprovalAvailability? = nil,
+         header: RemoteApprovalHeaderInput? = nil) {
         self.scope = scope
         self.actions = actions
         self.availability = availability
+        self.header = header
     }
 }
 
@@ -161,17 +194,35 @@ struct RemoteApprovalFeedbackDraft: CustomStringConvertible, CustomDebugStringCo
         text = ""
         return .feedback(request: request, text: .init(value))
     }
+
+    // Independent synchronous host admission. Keep the recovered mutation above
+    // intact, but publish it only after the owner actually accepts the event.
+    // A disconnected/failed write must not turn unsent feedback into Deny.
+    // Future asynchronous service admission needs a scoped attempt, not a Bool
+    // that merely means a request was enqueued.
+    @discardableResult
+    mutating func submit(request: RemoteApprovalRequestInput, trigger: Trigger,
+                         accepting: (RemoteApprovalEvent) -> Bool) -> Bool {
+        var next = self
+        if let event = next.submit(request: request, trigger: trigger), !accepting(event) { return false }
+        self = next
+        return true
+    }
 }
 
 // Independent disconnected adapter: a tap is neither permission nor a receipt.
 // Complete input comparison also rejects controls captured before actions changed.
 enum RemoteApprovalSubmissionFailure: Equatable {
-    case staleRequest, unsupportedDecision, serviceUnavailable
+    case staleRequest, unsupportedDecision, serviceUnavailable, localStorage
 }
 
-struct DisconnectedRemoteApprovalAdapter {
-    func submit(_ event: RemoteApprovalEvent, current: RemoteApprovalRequestInput?) -> RemoteApprovalSubmissionFailure {
+struct RemoteApprovalIntentValidation {
+    func submit(_ event: RemoteApprovalEvent, current: RemoteApprovalRequestInput?) -> RemoteApprovalSubmissionFailure? {
         guard event.request == current else { return .staleRequest }
+        if case .feedback(_, let text) = event,
+           text.withServiceValue({ $0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }) {
+            return .unsupportedDecision
+        }
         if case .approve(_, let decision) = event,
            !event.request.actions.contains(where: { $0.decision == decision }) {
             return .unsupportedDecision
@@ -183,6 +234,12 @@ struct DisconnectedRemoteApprovalAdapter {
                 return .unsupportedDecision
             }
         }
-        return .serviceUnavailable
+        return nil
+    }
+}
+
+struct DisconnectedRemoteApprovalAdapter {
+    func submit(_ event: RemoteApprovalEvent, current: RemoteApprovalRequestInput?) -> RemoteApprovalSubmissionFailure {
+        RemoteApprovalIntentValidation().submit(event, current: current) ?? .serviceUnavailable
     }
 }

@@ -1,0 +1,123 @@
+{
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Chronological grouping descriptor and date formatter. Source package only, no target execution or production edits.",
+  "confirmed": {
+    "grouping_route": {
+      "entry": "0x3372f4",
+      "table": "0x7ceb610",
+      "bytes": [
+        0,
+        50,
+        0,
+        128
+      ],
+      "result": "raw0 priority and raw2 chronological enter0x3373cc; byWorkspaces and byRemoteHost use separate paths. Sharing this descriptor subpath does not prove priority-mode whole-list semantics."
+    },
+    "date_field": {
+      "thread_call": "0x337414 ->0x31d92c",
+      "algorithm": "date = item.sortDate == Date.distantFuture ? item.updatedAt : item.sortDate",
+      "offsets": [
+        "31d960 ->455f18 ->25d3ea0 CodexRemoteTaskListItem metadata",
+        "31d968 metadata+0x28 sortDate",
+        "31d974 Date.distantFuture;31d97c Date.==",
+        "31d990 metadata+0x24 updatedAt"
+      ],
+      "fields_source": "ios-remote-v498-thread-fields.json",
+      "searchResult_boundary": "case1 at3373e0..337404 copies its own metadata+0x24; semantic field name not resolved here."
+    },
+    "descriptor": "337420 invokes74e3714;337434..337484 uses resulting localized string as title-based section identity. Date buckets must be represented as sections.",
+    "calendar_delta": {
+      "function": "0x74e3714",
+      "steps": [
+        "74e3a48 startOfDay(inputDate)",
+        "74e3a64..74e3a88 invokes receiver+0x18 existential provider to obtain reference Date",
+        "74e3aa4 startOfDay(referenceDate)",
+        "74e3b18 Calendar.Component.day import0xaac95e0",
+        "74e3b5c dateComponents from input-day start to reference-day start",
+        "74e3b88 DateComponents.day Optional<Int>"
+      ],
+      "note": "Calendar initializer74e433c uses Calendar.autoupdatingCurrent. If helper7710c94 byte0 true OR7710c7c byte0==1, it overrides timeZone to secondsFromGMT0 at74e43b4..74e43e0. Helper meaning is unresolved."
+    },
+    "buckets": [
+      {
+        "delta_days": "2...7",
+        "branch": "74e3be4..74e3bec",
+        "label_function": "75d4d74",
+        "key": "history_date_previous_seven_days",
+        "key_address": "0x8a59a30"
+      },
+      {
+        "delta_days": "8...30",
+        "branch": "74e3ddc..74e3de4",
+        "label_function": "75d4df4",
+        "key": "history_date_previous_thirty_days",
+        "key_address": "0x8a59a60",
+        "fallback": "Previous 30 days"
+      },
+      {
+        "delta_days": ">=31",
+        "branch": "74e3e4c..74e40d8",
+        "label": "Date.FormatStyle month(.wide), append year(.defaultDigits) only when Calendar.component(.year,inputDate) differs from referenceDate year",
+        "evidence": [
+          "74e3f38 month(.wide)",
+          "74e3fc4 and74e401c year components(import0xaac95f8)",
+          "74e4038 comparison",
+          "74e409c year(.defaultDigits)"
+        ]
+      },
+      {
+        "delta_days": "nil, <=1 including negative/future",
+        "branch": "74e3bb4..74e3dd8",
+        "label": "relative date formatter branch, not hard-coded Today/Yesterday strings"
+      }
+    ],
+    "relative_formatter": {
+      "input_adjustment": "At74e3bb4 receiver byte+0x10 true copies original date. False computes startOfDay(inputDate).addingTimeInterval(Date.now.timeIntervalSince(startOfDay(referenceDate))) at74e3c00..74e3c3c.",
+      "primary": "NSDateFormatter atglobal0xbb45860 initialized74e4134 ->74e4158(true)",
+      "comparison": "NSDateFormatter atglobal0xbb45870 initialized74e4288 ->74e4158(false)",
+      "shared_configuration": "timeStyle=0 at74e41d0;dateStyle=2 at74e41dc;doesRelativeDateFormatting=arg&1 at74e41e4;formattingContext=4 at74e41f4. Conditional GMT0 override uses same environment helper gates74e41fc..74e4270.",
+      "comparison_rule": "74e3d08..74e3d34 compares relative and nonrelative strings. If different, return relative string. If equal, call NSRelativeDateTimeFormatter.localizedStringForDate:relativeToDate: at74e3d90.",
+      "fallback": "NSRelativeDateTimeFormatter, boundclass0xaaca5c8,global0xbb45880,initializer74e42ac,dateTimeStyle=1,formattingContext=4. Former exploratory DateIntervalFormatter guess is corrected."
+    },
+    "final_materialization": "332ddc calls3d0060.3d00b8 calls3c5f4c which copies sequential source elements0..count-1 in256-byte stride; it contains no date comparison.332de4 gates later rank pass to groupingRaw1, so chronological keeps the already-produced section sequence at this final stage."
+  },
+  "unknowns": [
+    {
+      "question": "Exact reference date provider type and receiver+0x10 flag meaning",
+      "boundary": "74e3a64..74e3a88 existential witness+8;formatter construction/capture before337420"
+    },
+    {
+      "question": "Environment helpers gating UTC override",
+      "boundary": "7710c94 and7710c7c byte0;must not hardcode GMT0 for ordinary user build"
+    },
+    {
+      "question": "Overall chronological section order and within-bucket row order, including pinned/custom sections and ties",
+      "boundary": "32ff44 upstream aggregation before332444;3372f4 descriptor invokedat332548;final3d0060 only materializes existing sequence. Inputcollectionand earlier insertion/update policy need closure."
+    },
+    {
+      "question": "SearchResult date field semantics",
+      "boundary": "3373ec..337404 metadata+0x24"
+    }
+  ],
+  "integration_decision": "ByWorkspaces Recents-first is supported by the separate chatsfirst-findings report. Chronological should remain explicitly unavailable in the reconstruction until ordering and ordinary formatter construction are proven, unless a separately labeled independent approximation is intentionally selected. Do not expose a flat chronological list as official restoration.",
+  "validation": "Static instructions/import bindings only. No controlled date replay yet; no on-device visual equivalence claim.",
+  "evidence_files": [
+    "ios-remote-v500-no-workspace-projection.asm",
+    "ios-remote-v506-chronological-date-getter.asm",
+    "ios-remote-v506-chronological-date-getter-calls.json",
+    "ios-remote-v506-date-grouping.asm",
+    "ios-remote-v506-date-grouping-decisions.asm",
+    "ios-remote-v506-date-grouping-calls.json",
+    "ios-remote-v506-date-bucket-labels.asm",
+    "ios-remote-v506-date-formatter-config.asm",
+    "ios-remote-v506-date-bucket-resolved.json",
+    "ios-remote-v506-section-order-entry.asm",
+    "ios-remote-v506-section-materialization.asm"
+  ]
+}

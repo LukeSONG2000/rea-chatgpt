@@ -1,0 +1,806 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two bounded candidate groups: History feature row label/layout subtree; actual Navigation/FileLibrary row input constructors. Static only, no product edit/build/device/runtime.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "reused_evidence": [
+    "ios-sidebar-row-metrics-20261112-findings.json",
+    "ios-sidebar-layout-20261112-findings.json",
+    "ios-sidebar-content-icon-20261112-findings.json",
+    "ios-sidebar-layout-20261112-view-types.json",
+    "ios-sidebar-content-icon-20261112-types.json",
+    "ios-sidebar-spacing-sixth-20261113/cell-registration-handlers.asm",
+    "ios-sidebar-spacing-sixth-20261113/cell-registration-owner.asm"
+  ],
+  "candidate_groups": [
+    {
+      "id": "label-subtree",
+      "evidence_type": "official-artifact-static-observation",
+      "status": "closed-for-explicit-child-metrics",
+      "conclusions": [
+        {
+          "id": "padding-order",
+          "value": "HStack center-aligned -> foreground style -> EdgeInsets padding -> flexible minHeight leading frame",
+          "source": [
+            "1245554..124556c scaled item spacing and VerticalAlignment.center",
+            "12455bc..12455f4 refreshed EdgeInsets10,22,10,14; legacy10,14,10,14",
+            "12455fc..1245668 scaled minHeight read and outer FlexFrameLayout",
+            "type records7db4068/7db4080"
+          ],
+          "limits": "44 is outer minimum including padding; not44+20. No fixed row48 or section spacing derived here. Current host modifier order matches this point."
+        },
+        {
+          "id": "icon-slot-and-render",
+          "value": {
+            "slot": "scaled24 x scaled24",
+            "font_size": "scaled18",
+            "font_weight": "regular default transformed by row iconWeight",
+            "dynamic_scaling": "Separate ScaledMetric producers"
+          },
+          "source": [
+            "123f920..123f94c minHeight44",
+            "123f954..123f974 symbolFontSize18",
+            "123f978..123f9a8 iconSize24",
+            "124584c..124588c reads _symbolFontSize field2 and constructs Font data",
+            "1245894..12458e8 iconWeight field6 routed through6ee7688 ->6fdded8 ->74e2940; Font environment",
+            "124591c _iconSize field0 read",
+            "1245940->457ac0 sets width present(value,flag0)",
+            "1245954->757d918 leaves x0/x1(width) and copies x0/x1 into x2/x3(height), then tail7c4aca4 frame",
+            "type7db40a0 Icon->Font environment->FrameLayout"
+          ],
+          "limits": "Font18 and layout24 do not establish optical glyph bounds18. Host fits a UIImage into24 and then resizes; that bypasses native symbol font environment. Restore source sizing mechanism using supported symbol configuration/SwiftUI image where available; do not assert bitmap pixel equivalence or blindly shrink drawable to18."
+        },
+        {
+          "id": "font-branches",
+          "value": {
+            "regular": "semantic body + regular",
+            "prominent": "semantic headline + medium"
+          },
+          "source": [
+            "1245998..12459e8 style byte1 selects tokenb07ce48",
+            "1287614 ->74e26c8/headline +weightmedium bindingaad3868",
+            "1287630 ->74e2728/body +weightregular bindingaad3870"
+          ],
+          "limits": "Actual per-feature labelStyle0/1 provider not closed. Current .body uniform cannot be declared official for every row, but do not change every row to headline from branch presence alone."
+        }
+      ]
+    },
+    {
+      "id": "actual-row-inputs",
+      "evidence_type": "official-artifact-static-observation",
+      "status": "spacing-closed-style-unknown",
+      "conclusions": [
+        {
+          "id": "navigation-spacing",
+          "value": 12,
+          "source": [
+            "1357724 common NavigationCell construction",
+            "135776c->1397210->1356b98 establishes exact metadata",
+            "descriptor9593410 has fieldOffsetVector2 pointerwords; field4 itemSpacing slot20, field5 labelStyle slot24, field6 iconWeight slot28",
+            "13577a0 loads field4 slot20;13577a4 calls1394ef4",
+            "1394ef4 literal0x4028000000000000=12.0;1394ef8 writes to constructed row",
+            "123e098 row itemSpacing read fromself+8;123e160..164 writes NavigationCellContent.itemSpacing",
+            "123f8d8..8dc reads Content field15 slot6c;123f9ac..9e8 uses scaledspacing;1245554 consumes"
+          ],
+          "implementation": "Use body-relative scaled spacing12 for ordinary feature NavigationCell branch; current hardcoded16 is definite host mismatch."
+        },
+        {
+          "id": "library-spacing",
+          "value": 12,
+          "source": [
+            "135818c selects original provider12a169c and metadata13582ec via x2",
+            "13581a4 generic FileLibrary construction carries metadataaccessor through x22",
+            "1358208 ->461900 performs x0=0,br x22 to exact metadata",
+            "descriptor9593264 fields4=itemSpacing,5=labelStyle and pointerwordvector2",
+            "1358230 loads field4 offsetslot20;1358234 calls1394ef4(write12)",
+            "123d278 loads itemSpacing offset frommetadata13582ec slot20;123d27c reads into d9;123d3ac..3b0 writes NavigationCellContent.itemSpacing"
+          ],
+          "implementation": "The Space/Library feature row also uses scaled12; no independent16 exception is supported."
+        },
+        {
+          "id": "labelstyle-capture",
+          "value": "unknown effective0/1",
+          "source": [
+            "1357740 reads capture+20 byte ->w24;13577a8..7ac writes NavigationCell.labelStyle(slot24)",
+            "13581c4 reads capture+20 byte ->w26;1358238..823c writes HistoryFileLibraryCell.labelStyle(slot24)",
+            "12a5534 captures inputx2,UIHostingConfiguration builder12a5588;originaldequeue input not yet resolved"
+          ],
+          "limits": "Consumer and field transfer are closed, but caller flag value is not. Do not confuse titleState tag1 at123d394..398 with labelStyle."
+        },
+        {
+          "id": "outermargin-boundary",
+          "value": "unknown in these row subtrees",
+          "source": [
+            "NavigationCellContent123fa60 applies label style ->123faac selection background ->remaining accessibility/tap/disabled wrappers",
+            "root collection pin0 is independent from rowhosting margins",
+            "peer raw129c378..384 literal2,10 identifies metadata1320480 descriptor9592a70 namedGizmoItem"
+          ],
+          "limits": "This agent does not conclude Navigation/FileLibrary or all history outermargin0. Gizmo margin is a different registration; parent spacing worker traces actual matching carriers."
+        }
+      ]
+    }
+  ],
+  "host_snapshot": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256": "d52c6358ee5ceac555b742d20f341e7caeb16e3f834fe00d979b4856e8e318d4",
+    "row_excerpt": "ios-sidebar-row-sixth-20261113-raw/host-row-snapshot.swift.txt",
+    "observed": {
+      "hardcodedSpacing16": false,
+      "allTitlesBody": true,
+      "UIImageFittedThenResizable": false
+    },
+    "limits": "Concurrent parent may edit after this snapshot. No host change by this child."
+  },
+  "admissible_changes": [
+    "Replace feature and Library icon-to-text gap16 with body-relative scaled12; keep conversation-row policy independent.",
+    "Preserve source font18 + slot24 distinction; use original asset in symbol-aware renderer if supported and retain explicit host fallback.",
+    "Retain padding-before-minHeight; no extra20 added to44."
+  ],
+  "unknowns": [
+    "Original per-row labelStyle0/1 selection; no blanket prominentfont recommendation.",
+    "Original active legacy/refreshed experiment assignment.",
+    "Precise symbol asset optical bounds after native font, rendering and animation environment.",
+    "Matching outer hosting margins handled by parent spacing investigation; no screenshot-derived10 admission here."
+  ],
+  "rejected_diagnostics": [
+    "raw/row-descriptor-field-offset-vector.json initially used4-byte word unit; superseded by admitted-field-vectors.json (descriptor pointerword is8bytes; entries4bytes).",
+    "labeltype.demangle.txt,label-return.demangle.txt,icon-font-frame.demangle.txt are unsuccessful NULL demangle attempts because naïve substitutions change Swift backreference table; only original symbolic refs and original nesting admitted."
+  ],
+  "validation": {
+    "static_only": true,
+    "product_edited": false,
+    "built": false,
+    "devices_operated": false,
+    "official_app_executed": false,
+    "screenshot_metrics_used": false,
+    "source_report_json_validated": true
+  },
+  "evidence_manifest": [
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/admitted-field-vectors.json",
+      "bytes": 1055,
+      "sha256": "6d1031e73f3711fccf65f57d981c3a40b57597e9e66b72cf5648b10777a4f1d8"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/bounded-history-row-references.json",
+      "bytes": 940,
+      "sha256": "00750b42565f852dfe90c4ced5b2a54b2b3248434daaa0af3fe5437751b99a46"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/content-style-field.asm",
+      "bytes": 4143,
+      "sha256": "1f34be839524cb836c05fb655609c46c60d91efda33243822b94183e51f5b4d1"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/content-style-field.json",
+      "bytes": 3316,
+      "sha256": "dc5c388f32c164d975865e737eb2ea948dd5bc425de17f31a2ddae641d42ce32"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/controller-preface-inputs.asm",
+      "bytes": 2738,
+      "sha256": "f7a1a17987e3ccbc4f4deb890beb363746b216a094d72a58e450f8e7dde81d6b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/controller-preface-inputs.json",
+      "bytes": 2281,
+      "sha256": "73b378e27fd410c43b15606d6f016851cad8cb98e207c0c74503b282dbbad53c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/controller-registration-tail.asm",
+      "bytes": 9354,
+      "sha256": "b26d6a02bb5badbc632449f1c59a254322937236143987c7db8864e32703c021"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/controller-registration-tail.json",
+      "bytes": 7359,
+      "sha256": "62b8c375c2961e9af05434c085eb8cfaffeeb3137fa0dc251f3fa25cac3b0be7"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/feature-registration.asm",
+      "bytes": 12820,
+      "sha256": "4c800cab8d94f9a48b7a12efb20f7b067fc1cf0573974fc15d78f528b97e68b4"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/feature-registration.json",
+      "bytes": 9218,
+      "sha256": "e51daa3ad33406838966878be869d88ffa3082fe8c230818701cabc846c4d552"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-cell-parent.asm",
+      "bytes": 3632,
+      "sha256": "a753e132d78318aca40b3f2f268aa91ada8cc92891e3867c7b606ca5465607c3"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-cell-parent.json",
+      "bytes": 2797,
+      "sha256": "5a34418df8fe74b57d6fb76476571805e9c650736d98e4d014a4e76f8255108b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-cell-prefix.asm",
+      "bytes": 3758,
+      "sha256": "ab0eba3bf749be12818ff7632c5a0c7e36b016a67a3a500358791578d4102478"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-cell-prefix.json",
+      "bytes": 4288,
+      "sha256": "d4ed22bc375b010bf15c7604d9d281428e16501e69b603bbb5d7aa96f5dd7519"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-meta-tail.asm",
+      "bytes": 431,
+      "sha256": "672fc229d1b056f6fa8af996781a2096bfedaf4d389d5f763a42d85e759cd62b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-meta-tail.json",
+      "bytes": 923,
+      "sha256": "27c18d849f8097e16eb1e552fffbc46963e046bd3b2a8a613cd71abc9ea11f6d"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-register-lead.asm",
+      "bytes": 6204,
+      "sha256": "d90530a213f05853d42a998aeb9a8fb13662a0afb364bf7a99175f275b5910b7"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-register-lead.json",
+      "bytes": 4202,
+      "sha256": "cf0f306edc4bcebc8afb232746df3fd2c6c7a23597d2ce98274de30e33409e7b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-registration-type.json",
+      "bytes": 1284,
+      "sha256": "42b7ab7304bba72f339e278bd9d02a6af2d232ca3e1b603583f7e95e15beb921"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-row-construct-complete.asm",
+      "bytes": 5018,
+      "sha256": "76654d6f590cf11edaef2160138767712816a15fd2a73add339c5485a7b653f6"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-row-construct-complete.json",
+      "bytes": 3341,
+      "sha256": "ce57182104b18abf5ff74eee634a561f32246c787879516ba774ff76316b1688"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-row-constructor.asm",
+      "bytes": 799,
+      "sha256": "9484a75c070076ee83857a0e2e2cc8b1d3e9a586346a7789e4c60793217f3dbc"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-row-constructor.json",
+      "bytes": 1172,
+      "sha256": "d7bd00483b8340db80df4eb4b94cd89721a222db3cc6c1bab0f447f46b926343"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-row-registration-content.asm",
+      "bytes": 7350,
+      "sha256": "e769e2e4ffb15681fb107d18e50538483796abffcc3d59ade4b4a1cb641e68f9"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-row-registration-content.json",
+      "bytes": 4870,
+      "sha256": "e97c117381887bdcd6540430a6f73c4fb381d9abe974c135579e6531394cd7f6"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/file-row-type.json",
+      "bytes": 744,
+      "sha256": "7e3b456ac37be21c9274a95ade2aee6fe2ba77a7031b14269d5ab52c40ccab4b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/frame-argument-copy.asm",
+      "bytes": 495,
+      "sha256": "283f57a761e54c974c4935a32b227cf15ddeeded884c3aa70bdead06a2a2f63f"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/frame-argument-copy.json",
+      "bytes": 923,
+      "sha256": "52c463ffe10740ffda1c831e8cf40b2a1340528d6618ac80d1c6297841ceda13"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/host-row-snapshot.swift.txt",
+      "bytes": 1300,
+      "sha256": "18961af483950d9f1926676497a551ef6a619721862c02c1d6f7d2b0dcb6d5ee"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/icon-font-frame.demangle.txt",
+      "bytes": 499,
+      "sha256": "5797d679c0f64e83eaf4fd2619b72a5ed24a6254a87ae12e0a743b6769b88691"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/label-font-size-set.asm",
+      "bytes": 2597,
+      "sha256": "a2dfddf6a4b6e32ee63ca5f7ef43972ff29bb84c1ec7c0d8eb315dde1abdf012"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/label-font-size-set.json",
+      "bytes": 2529,
+      "sha256": "53de9126a5fca2566c70c2eedfc826e818d1321fd40ff96a35063e0e43ad7355"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/label-frame-helpers.asm",
+      "bytes": 3876,
+      "sha256": "e3bda07e6e89346deec380d61eee547be4c3784133a16fa847e31f826d10297c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/label-frame-helpers.json",
+      "bytes": 2916,
+      "sha256": "f83bc703ecae5e8bde206b38305dc29e6d1d13898b1b8da44b96c3c6ba8a1431"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/label-frame-setup.asm",
+      "bytes": 1566,
+      "sha256": "ba8278bcc8f86b0a7a9436d3ce822d445d84628364a8093f3162ea5178809b7a"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/label-frame-setup.json",
+      "bytes": 1031,
+      "sha256": "f3489a4c0e4982cd4a388216999b920d43b8e6a8682892a599f4628b6902ede4"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/label-return.demangle.txt",
+      "bytes": 1147,
+      "sha256": "3a69f1b3e06bc61e4dee934d92d975d1a907c1432063fe093eef17f66c06bf10"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/labeltype-wrapper.asm",
+      "bytes": 914,
+      "sha256": "b5ffbcbeaf5bd2a7f3688349b33a1322d977d5a82c352f8db65ce43989cb2afc"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/labeltype-wrapper.json",
+      "bytes": 946,
+      "sha256": "e1e6cec1096de779b8eb5c8fb28d5bc8afbeac50e34c19c34cc80cbde540a804"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/labeltype.demangle.txt",
+      "bytes": 1054,
+      "sha256": "0b22c51d68556a895d5a2d6918c0f85e80f85c983acd19e1d71750e781f1677f"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/nav-constructor.asm",
+      "bytes": 12523,
+      "sha256": "cbeeaf0e65eb43770f3ba377d6166b7de9182386751356eaa0da1f659feb98af"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/nav-constructor.json",
+      "bytes": 7715,
+      "sha256": "80e5fb40e7e65bcf138dda0f333c80a487dd2640fc32346974d0520160f6b301"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/nav-labelstyle.json",
+      "bytes": 752,
+      "sha256": "e0c79589c3988652968fa4e52eff19c6621118dc533d359f93e466052620f05c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-cell-style-capture.asm",
+      "bytes": 588,
+      "sha256": "74e98922324275782292f35d6faf4f085dda5ad41285647c8349dc86b641c179"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-cell-style-capture.json",
+      "bytes": 912,
+      "sha256": "e27ff76989881213303ec06f04a7280254347187461817ea38f9a86ede1b4746"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-content-config.asm",
+      "bytes": 7716,
+      "sha256": "a5f4b519b2ea440c3a67b9e6904865f4acaa199c430695dd68bbc89f225bffc1"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-content-config.json",
+      "bytes": 8100,
+      "sha256": "8fe5771e4c075dca4351ff4122b9510915cbeb360d3f3a87f0047a213c3e6e08"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-feature-config.asm",
+      "bytes": 6376,
+      "sha256": "1834ac3ab45b8295e679df4beb80d120cb70afbdde888b79e08aab4276615f1c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-feature-config.json",
+      "bytes": 5833,
+      "sha256": "f2547d56cc1a2863b26501ff6ebeeb40c66ef64a118e07f40fd1edc37688331c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-handler-args.asm",
+      "bytes": 671,
+      "sha256": "979d2f4b4cebde40bec0bdf40dfcd1f312bb30924ed8d27fdd8b3aa9b90da680"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-handler-args.json",
+      "bytes": 912,
+      "sha256": "43a577bb966e6dd1e05279deb2e556aa01c2e151471d351dba1c0b71160a85cf"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-handler-args2.asm",
+      "bytes": 654,
+      "sha256": "29e2d3ed4adbe956a7dc0b3421a4d7506bec715079fc76c967ab43b80a552f26"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-handler-args2.json",
+      "bytes": 912,
+      "sha256": "d3bbc65301a0562be782c8cc8131a8803e6961aa4e5a6cd848a68cd1e2001ed7"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-style-read.asm",
+      "bytes": 1586,
+      "sha256": "9695543d5b137bb98ce209bda66b1aee28f8077146795440a7493a642f084328"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navigation-style-read.json",
+      "bytes": 997,
+      "sha256": "af4647a5ab5b43592299e921b22812fbc90c9aa93ed262c6faa7113e3c2ee2b8"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/navrow-registration-type.json",
+      "bytes": 1104,
+      "sha256": "dbd6d7c21b8e5c0da25732cfe58c5d20806aa65f19a8531e0fa76ff5ed105d72"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registered-feature-labelstyle.asm",
+      "bytes": 4234,
+      "sha256": "8a692fd0e4fe6cea7940305d669b8d0f2fb8975e2e0bd92345d462a2985b8138"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registered-feature-labelstyle.json",
+      "bytes": 4175,
+      "sha256": "b0db84527993254f4a5c78eb1adc61ad496307e3a6801ce5a61aa1d846155fde"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registered-file-prefix.asm",
+      "bytes": 4133,
+      "sha256": "8efcc60dab02fe7efdbdcc1ee00824e1cc85109801f000840153ccc5a6e48ad5"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registered-file-prefix.json",
+      "bytes": 1887,
+      "sha256": "9f42a3d64e9bab5eaf5fde07222065d50811fca8b452a620098c3abfd11afda8"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-context-bind.asm",
+      "bytes": 595,
+      "sha256": "f39e510cacf3bda00a5a03ec6bfb231162c8ff0bab047cf6b0e3d216077dd366"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-context-bind.json",
+      "bytes": 929,
+      "sha256": "891e829317d66c70189fb249df60e9e63ca15f1eb56967b1d6d59e2a67a693fc"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-context-capture.asm",
+      "bytes": 692,
+      "sha256": "262650efc147a290971c53a3fec898d2efff0b85b3b649b8f55bdb12f480edbe"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-context-capture.json",
+      "bytes": 946,
+      "sha256": "88c26bac11b8c925260d65fb5ccda2aec128a87a087b282c2d271b727f61877c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-handler-wrapper.asm",
+      "bytes": 5689,
+      "sha256": "f519a85e092ee25b5f520c337632d4e49e65753b168c441d0f1f62d636cf8ae5"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-handler-wrapper.json",
+      "bytes": 4106,
+      "sha256": "9e41993a0ea19dbd95854cf202fbb523f2c2e43d36f80320e9ba71fd65f010fc"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-initial-style.asm",
+      "bytes": 828,
+      "sha256": "f2f2ad88ed8d3c0c3b5335321e6d235fc7b8cb7bf35ebb20a989f6b84055f89c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-initial-style.json",
+      "bytes": 929,
+      "sha256": "d6598f38f29bada6695bcea10ff498950a9f3a1e084d45765ca7709c724740bf"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-owner-type.json",
+      "bytes": 1011,
+      "sha256": "6341e0c6494d8e26c442b933cd9b6b3efaa8b5e9338e1e90a2940641b8d019ba"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-root-unbox.asm",
+      "bytes": 546,
+      "sha256": "26cd0bdb611c6518ee0f2daf432c888327856ed1ad7f4e65242a0de72745ec3d"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-root-unbox.json",
+      "bytes": 895,
+      "sha256": "0602ab29a66b35af686c2eb7e314befa6dfcb15c95e0b9ce9a0ae1c9b0f4de21"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-rootpair-prepare.asm",
+      "bytes": 1278,
+      "sha256": "2cfaab1caa13dcfbf02c107d209950be8bbfeb88fde37b8f2a2f0051a70c326e"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/registration-rootpair-prepare.json",
+      "bytes": 971,
+      "sha256": "d792df23c8250a8da35d98dfb749e759caecc0bc4e9ca449fceb88edf14d78bc"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/rootstyle-read-helper.asm",
+      "bytes": 527,
+      "sha256": "37e0512d4438f3c79bf8bae90d8ba7befdc96eeacaaa12bf1e65485ca41d199e"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/rootstyle-read-helper.json",
+      "bytes": 912,
+      "sha256": "8f2cbffeaea229372364b721f88c9e79d760d60da86221046d50f7c17607b1c3"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-cellstate-copy.asm",
+      "bytes": 476,
+      "sha256": "d51ab6296f50369acfb715f62794f144ba6008e2cf19361fe6e48140f8be7c9e"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-cellstate-copy.json",
+      "bytes": 912,
+      "sha256": "09d89177fa329922c72ece211665e2f5f7f200989e86254051688dd3ff5f3697"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-descriptor-field-offset-vector-corrected.json",
+      "bytes": 1462,
+      "sha256": "84517bf7c03f1b50038e0aae14a631d3ae056b1a24880d779acbb23439513dae"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-descriptor-field-offset-vector.json",
+      "bytes": 1265,
+      "sha256": "8163ec79e658752c09e3ea88a90bc6e456f29f5797464df5d21b36aae5b1d3a2"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-entryprefix.asm",
+      "bytes": 3030,
+      "sha256": "e4208cfb28dafb863c4d35afc80d9000e2c2953f5603da405d5d8b98f42e7d86"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-entryprefix.json",
+      "bytes": 3309,
+      "sha256": "256e141f8fd0f2ddebeca1b4699a311d39af7763912f2c05d5fb1e2081a88f2b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-meta-forward.asm",
+      "bytes": 625,
+      "sha256": "5c84c44db87ea31ce577331a5b6503752781e4b57924e03f210c9fa3dcfe0698"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-meta-forward.json",
+      "bytes": 946,
+      "sha256": "eb54a422d2499fdfe11730d0f68f13106b18949a1b9131e2b9cc515e227eb71f"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-meta-style-key.asm",
+      "bytes": 716,
+      "sha256": "6b47766c9f696c10d0f2916b12b2f157028621b1cf46b56ba6066a0146837606"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-meta-style-key.json",
+      "bytes": 912,
+      "sha256": "91f12ac7fd0faaa452812f17f7bb73bb66d8beb923089a6b548d0b018cbd10a7"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-outerfont-helpers.asm",
+      "bytes": 869,
+      "sha256": "96f8d8066a23f47775ab7dfe1d70e021cf2942238075f4065fe19aab7b003816"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-outerfont-helpers.json",
+      "bytes": 946,
+      "sha256": "013ee8c85369909d1329703eff28d85b93d59a573b39b6f74cbfeb8548a9da58"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-parent-builder.asm",
+      "bytes": 9129,
+      "sha256": "a56db713e357ef24ad91144ccb058761534d7c384f24b73aa16e56df6d19d425"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-parent-builder.json",
+      "bytes": 7478,
+      "sha256": "8939ee54508b6fc97907848eb6e83de4caffc48efe6176bea3943871211ccdc2"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-registration-builder.asm",
+      "bytes": 8176,
+      "sha256": "dd4a8bb97360731f1264ed019be0443cfe5039942b575ed89ad9274ef48cce2f"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-registration-builder.json",
+      "bytes": 4931,
+      "sha256": "a4fe9d32d6204a91a705e1ed3aeb3ffac4a8e38b00b944b4575fa226ff8fb6eb"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-section-builder.asm",
+      "bytes": 9808,
+      "sha256": "b41cf15917e241108ff4f767e957a2b1623b30206afc45c3c524f92cf540bf3f"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-section-builder.json",
+      "bytes": 8968,
+      "sha256": "51a8302956fd6304a2c6aa872fc8a03e234024476a233ebc7799dd52e0f975b4"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-spacing-arg.asm",
+      "bytes": 653,
+      "sha256": "2572a9f19fd5b81636b7bb680bc1f3733292fb03391df96c25935f4f1b54c4bc"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-spacing-arg.json",
+      "bytes": 929,
+      "sha256": "bd8a91a8f4b6a573a25004cbb6ae3e85d30e123f4cf120d9b0505d0c17f5636b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-spacing-font-helper.asm",
+      "bytes": 1497,
+      "sha256": "d9d153ba428c314e32c876e400942817166c3a0d19980afbffb799def3bf3c19"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-spacing-font-helper.json",
+      "bytes": 997,
+      "sha256": "570ecbd950a511e31db5315ad9fdda8165c1a5475894b02012d1cd2ba487316c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-state-copy.asm",
+      "bytes": 876,
+      "sha256": "9c313672c7f42740cc65da2742d96599e882812e3bfa7e31331f4ef18bd52ef1"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/row-state-copy.json",
+      "bytes": 939,
+      "sha256": "fc0e59546bc35d161841bf2f7b9612920a09d34f766f24d597813590ccf0c26a"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/rowfont-forward.asm",
+      "bytes": 486,
+      "sha256": "7835f3055309461571803b8d671f9ddcffa741b4455093654b75773cf41d19d7"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/rowfont-forward.json",
+      "bytes": 1093,
+      "sha256": "e152223e43337492c6a9b5ca43ffef6817bf14db79ddce04cb561e05bfee510a"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/rowfont-relativeto.asm",
+      "bytes": 624,
+      "sha256": "d823604cefcb6851dc5867634cbdadf8899a6ef085c5b0dd9a750487f3965e8a"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/rowfont-relativeto.json",
+      "bytes": 946,
+      "sha256": "f7499917cdf65a224a43a3c1a9b07e242543576d2f8432f9131a16ee920ee493"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/rowtitle-font-apply.asm",
+      "bytes": 663,
+      "sha256": "f6055cdbc006e88f55c2d46b68a715bd00f014b31604009cc22f6d8ee2431752"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/rowtitle-font-apply.json",
+      "bytes": 923,
+      "sha256": "2716f5bc27195c07a5c40a124afca5109b4e4252d1fae3ecb2d02b63726c1c1b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-capture-parent.asm",
+      "bytes": 6093,
+      "sha256": "61726bc7dc909615f3d0ae1d58cf22c13fbc85e8d39908fab800bbbecec6acfa"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-capture-parent.json",
+      "bytes": 6161,
+      "sha256": "490ccdf32ece68c01186c904f5988ac3ccb87008ac4ca047c0ff5836e24c9eb6"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-content-builder.asm",
+      "bytes": 4150,
+      "sha256": "636921eb98838682563f664cf2557cb2ea44335f9e491eceba9539a01d814e05"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-content-builder.json",
+      "bytes": 3619,
+      "sha256": "248132a9ef58374fec81e696404db0feeec34c853ae6604a21b5760ced3881da"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-icon-metric-reader.asm",
+      "bytes": 862,
+      "sha256": "8a393a26473071ddaa03e4d7e998bb6bfb509c6de5a1c3ca74ae756ae0ba3990"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-icon-metric-reader.json",
+      "bytes": 923,
+      "sha256": "c142498b2b0b5facd5bd462694cc4337ed7a22c1a093cfa4fb64017fa3c8f21a"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-iconfont-frame.asm",
+      "bytes": 2533,
+      "sha256": "15dd9fe4b1665bdbc6c11ce3c031fd828873f213c3ce2bfe6bf934724cbd1960"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-iconfont-frame.json",
+      "bytes": 2202,
+      "sha256": "c66793c483c750300e8e0e0c555189801dff56923f17ba1ae14faa825b946d1d"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-producer-root.asm",
+      "bytes": 746,
+      "sha256": "7107e7671c43c135b8368cccb01b3a49fa173a38cb2d09362bd00781578d0b13"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-producer-root.json",
+      "bytes": 929,
+      "sha256": "4ed5c2aa29b2b0a2d7958d74149d461bfdad90ddc8739f300c6d4b82cdfef162"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-producer-root2.asm",
+      "bytes": 608,
+      "sha256": "58c0b9f3e5244f1b5917c9b9a18501e9ac2363c0c03492271f9653119b97f85b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/style-producer-root2.json",
+      "bytes": 929,
+      "sha256": "62a32c429581d762d153e5e1fab86f58a6d472abb44ec030f226cf2772b3acc0"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/styleenum-type.json",
+      "bytes": 752,
+      "sha256": "e0c79589c3988652968fa4e52eff19c6621118dc533d359f93e466052620f05c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/symbol-font-owner.asm",
+      "bytes": 3638,
+      "sha256": "0933ec2cfec22085d104322306b6b9ddc6c87af113cbac23c17d6df0d51493d1"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/symbol-font-owner.json",
+      "bytes": 1371,
+      "sha256": "b975057b5f4d5a17bdd7d4bcfd02f89cb03225e88f1b386868805ed83629072c"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/text-style-wrapper.asm",
+      "bytes": 5997,
+      "sha256": "f143a9f9070ea5ce6157380d59d083126e268696be5caea3c9b7f63c07ce1293"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/text-style-wrapper.json",
+      "bytes": 2858,
+      "sha256": "42ad5504d9f4334137e8593624d149a1ac8fc755c76e3be3fe6700bff62f793f"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/tree-7db4068.json",
+      "bytes": 2541,
+      "sha256": "f30c9d62d824476f35a05fc236fed79a48816f91e61737a851f5c9875b09c5f8"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/tree-7db4080.json",
+      "bytes": 2723,
+      "sha256": "fd0dbb436b960979479727475bc7f8912027335b299c36d01df262939fa111ba"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/tree-7db4088.json",
+      "bytes": 1130,
+      "sha256": "0a46ce9f32acf295c8803ccf38dedd3d82b70e7200a2711d4d3ace733ca75ae4"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/tree-7db4090.json",
+      "bytes": 1308,
+      "sha256": "9882958987158151edfb525708a9d68025f503e0f577a300788c932004b29f2b"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/tree-7db40a0.json",
+      "bytes": 1458,
+      "sha256": "81cb1c152d00120b9394b2bc085aee1907f4bf81628a83ff0745784259fee203"
+    },
+    {
+      "path": "ios-sidebar-row-sixth-20261113-raw/tree-7e240d0.json",
+      "bytes": 1283,
+      "sha256": "e5ab1b66a45717bb5b211f6e22df586d0255cd95ac6635a0e1116ec331467c9d"
+    }
+  ]
+}

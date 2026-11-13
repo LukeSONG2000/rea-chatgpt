@@ -1,0 +1,45 @@
+{
+  "batch": "v503",
+  "status": "verified-static",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "question": "Does a V2 plain section header keep scaled minimum44 when the trailing new-thread callback is absent?",
+  "answer": "Yes. The shared header body constructs CodexTaskListRowMetrics before building the optional new-thread overlay, independently of header kind and callback presence.",
+  "evidence": [
+    {
+      "offset": "0x39c6d8..0x39c6f4",
+      "fact": "Projects constructor sets headerkind2 and zeroes trailing new-thread callback+40/context+48. It still instantiates the shared V2 header."
+    },
+    {
+      "offset": "0x3a1838..0x3a1870",
+      "fact": "Loads header horizontalPadding+60. Constructs RowMetrics accessor3fa9b4 through45a6f0, sets horizontal padding, takes _minHeight field offset at metadata+14. Helper46398c writes Double44 (0x4046000000000000). Calls ScaledMetric.init(wrappedValue:) at3a1870."
+    },
+    {
+      "offset": "0x3a189c ->0x3a1d80;0x3a1e1c..0x3a1e20",
+      "fact": "Optional new-thread overlay is built afterwards. Its callback-nil branch is at3a1e20 and cannot skip prior RowMetrics construction."
+    },
+    {
+      "offset": "0x39fc88..0x39fde8",
+      "fact": "RowMetrics body applies horizontal padding, reads ScaledMetric.wrappedValue at39fd38, uses it as minHeight via45dd58 ->44b2e0 ->457e94 frame assembly. Adds unscaled vertical2 padding at39fd9c ->460490 afterwards."
+    },
+    {
+      "offset": "0x3a18bc..0x3a18dc",
+      "fact": "Header-specific extra topSpacing is applied outside RowMetrics and new-thread overlay."
+    }
+  ],
+  "minimum_reconstruction": "Apply shared horizontal padding + frame(maxWidth:infinity,minHeight:scaled44) + vertical2 to the complete header base, regardless of whether the new-thread button exists. Overlay trailing button separately. Apply additional topSpacing0/10 outside. Match existing modifier order; avoid applying horizontal padding twice in the host.",
+  "scope": "All kinds using3a1644 V2 header body, including Projects kind2 with nil new-thread callback. Does not establish legacy/sidebar header branch metrics.",
+  "runtime_boundary": "Native static code verified. An AX label bounds of26 measures text/accessibility node, not necessarily the padded header hit region. Parent must measure actual whole-row geometry after integration.",
+  "files": {
+    "ios-remote-v503-header-minimum.asm": "ba42b27e8917d9ec66100bfb0ba329a0ddfaf9661a653bbf6694a651fdc4f1dd",
+    "ios-remote-v503-header-minimum-types.json": "07b4c1ab1d4cdf891846f8a4376b02ee350047856f8adf18a6edef6b8670aff9"
+  },
+  "reused": [
+    "ios-remote-v438-row-metrics.json",
+    "ios-remote-v438-row-metrics-body.json",
+    "ios-remote-v491-header-body.asm",
+    "ios-remote-v500-projects-header.asm"
+  ]
+}

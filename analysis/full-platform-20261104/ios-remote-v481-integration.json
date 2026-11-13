@@ -1,0 +1,129 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v481",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Reconnect the official Remote thread action menu to its toolbar, with scoped offline action handling and page-level layout regression.",
+  "observations": [
+    {
+      "type": "official_artifact_static",
+      "source": "ToolbarContent0x1a2ffd4,0x1a30718,0x1ce9198 ->0x1a30980; closure0x1ce9428 ->0x1aa5b5c",
+      "conclusion": "Trailing native toolbar content invokes the thread action content. The label routes0x1d3a6b4 ->0x1a145b0 ->0x1a30cd8. Label uses Options through0x75d6bc0 and ellipsis-horizontal through0x74f6dc8, IconOnlyLabelStyle. Outer visibility predicates remain partially unresolved."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "CodexRemoteThreadActionButtonsContent descriptor0x95ac65c; witness0x1a1d1c0 ->0x1a1c414 ->0x1a1c4dc",
+      "conclusion": "Base action construction orders pin/unpin, rename, copy-thread-ID and archive. Pin state dispatches getter witness+0x70. Archive uses destructive ButtonRole at0x1a1caa0. Extra conditional sections beginning0x1a1cd78 remain unintegrated."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "0x1a1c730/738/750/758,0x1a1c8a4/8ac,0x1a1c9d0/ca28,0x1a1ca90/ca98",
+      "conclusion": "Proven localized keys Pin,Unpin,Rename,codex_remote_copy_thread_id,Archive; icons pin,pin-slash,pencil,square-on-square,archive. Original values extracted into65 locale tables."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "callbacks0x1c2b930,950,970,990 and0x1a1d080",
+      "conclusion": "Actions dispatch to owner witness entries +0xa0,+0x98,+0x78,+0x88. Copy wrapper also uses context code54. These are client dispatch observations, not a recovered service schema."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": "0x1a30484/0x1a3052c/0x1ce926c ->0x1a30848; label0x2f6134 ->0x74fb220, literal0x88467c0; callback0x1ce9408",
+      "conclusion": "Separate new-thread button has official square-and-pencil asset and owner callback+0x80. It is not integrated until its destination/context and visibility conditions are closed."
+    }
+  ],
+  "implementation": {
+    "component": "RecoveredRemoteThreadMenu",
+    "parent": "RemoteThreadFixturePage native ToolbarItem(topBarTrailing)",
+    "inputs": "Explicit synthetic isPinned snapshot; onAction callback; immutable page task carries host/thread scope",
+    "actions": "Local copy uses only synthetic thread ID. Server-owned pin,rename,archive return disconnected feedback with host/thread/action; no success state or task removal.",
+    "independent_adaptations": [
+      "Menu visibility and base-action availability selected explicitly by synthetic fixture, not inferred official authorization",
+      "UIPasteboard clipboard adapter; official copy feedback/haptics still unknown",
+      "Disconnected mutation failure UI and wording; server request adapter and rename editor not recovered",
+      "System native toolbar material; full trailing new-thread/menu grouping remains partial"
+    ]
+  },
+  "unknowns": [
+    "Full outer isContentToolbarHidden and view-model predicates",
+    "New-thread destination and owner navigation",
+    "Conditional menu sections and keyboard shortcut combinations",
+    "Archive environment modifier at0x7e13348 and effective permissions",
+    "Official post-copy feedback/haptics",
+    "Full ordinary transcript scroll-edge configuration and cross-page equivalence",
+    "Device and Android acceptance"
+  ],
+  "tool_limits": [
+    "0x7e29298 was initially passed as a type record and rejected for invalid length. Its caller is swift_getKeyPath; raw reader empty output is not type evidence. 0x8d09970 resolves generic placeholder x, not a view-model name. Preserve these records as non-evidence for concrete type recovery.",
+    "A menu witness command used an incomplete binary path and failed before analysis. Corrected invocation used the bound framework and succeeded."
+  ],
+  "validation": {
+    "ui_status": "passed",
+    "result": "ios-remote-v481-r3-ui.xcresult",
+    "selected_tests": [
+      "testRemoteThreadMenuScopeAndFailure",
+      "testRemoteThreadLocationAndScroll",
+      "testRemoteApprovalStaysOutsideHistoryScroll"
+    ],
+    "model_command": "bash implementation/ios/test-official-text.sh",
+    "model_status": "passed including8 additional menu locale/fallback assertions",
+    "visual_status": "simulator screenshots inspected; complete official visual parity remains partial",
+    "device": "not installed; previous v474",
+    "passed_tests": 3,
+    "failed_tests": 0,
+    "runtime_warnings": [],
+    "clipboard_readback": "shared-thread verified via simctl pbpaste after r2 and r3",
+    "runs": [
+      {
+        "result": "ios-remote-v481-ui.xcresult",
+        "passed": 1,
+        "failed": 2,
+        "notes": [
+          "Menu English assertion encountered system Chinese; test launch now explicitly English.",
+          "Approval became non-hittable once after failure alert dismissal; root cause unresolved, original failure preserved."
+        ]
+      },
+      {
+        "result": "ios-remote-v481-r2-ui.xcresult",
+        "passed": 2,
+        "failed": 0
+      },
+      {
+        "result": "ios-remote-v481-r3-ui.xcresult",
+        "passed": 3,
+        "failed": 0
+      }
+    ],
+    "preview": {
+      "pid": 39723,
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "route": "fixture-a / shared-thread; Chinese menu open above fixed approval card",
+      "observed": "CUA screenshot after normal offline relaunch",
+      "display": "Existing Device Hub window left in its prior position; display identity not independently re-established in v481"
+    },
+    "git": "not committed or pushed",
+    "screenshots": [
+      {
+        "path": "/tmp/rea-v481-r3-screens/2C1759E4-4E9F-4452-A3BB-3AF0809E8A6E.png",
+        "sha256": "3159c307f9686a52de69a4273c7d20bf4729e008c80379ba86a02367def32bd1",
+        "source": "final r3 xcresult export",
+        "reviewed": true
+      },
+      {
+        "path": "/tmp/rea-v481-r3-screens/2807EADA-6146-4C1A-B8BE-08B9189AB584.png",
+        "sha256": "03a5cac6de5a580fac03627efd3d35d3060941df18e63e71c8871296b69f65b6",
+        "source": "final r3 xcresult export",
+        "reviewed": true
+      }
+    ]
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "3e60b4493e0058e080c499c75572bc5b419ae6d8001b44dd1a419086f10bb7db",
+    "implementation/ios/Sources/OfficialText.swift": "0019231c538b8594e880cb4c82d4d213257506f332b372d15b4e7e81544b7bca",
+    "implementation/ios/Resources/OfficialTranslations.json": "0c0854139f3c44f785d0f3384a12f3d95bf871c01cdb78a03e4a02a4bfd45eac"
+  }
+}

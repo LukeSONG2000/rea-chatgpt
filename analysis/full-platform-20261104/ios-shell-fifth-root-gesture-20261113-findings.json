@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "module": 1,
+  "scope": "Two bounded questions: root-owned menu callback independent of active pane containment; source canDrag/LazyState disabled admission and exact unknown page assignments. Read-only; no product/build/device actions.",
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "Official iOS293 static instructions/metadata and current independent host source",
+  "reused_reports": [
+    "ios-remote-v540-title-findings.json",
+    "ios-remote-v540-pane-integration-decision.json",
+    "ios-sidebar-v260-container.json",
+    "ios-sidebar-v263-offset-binding.json",
+    "ios-shell-gesture-20261112-findings.json"
+  ],
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "Does opening the sidebar belong to the root or the detached original Chat pane?",
+      "result": "root_owner_confirmed",
+      "observations": [
+        {
+          "source": "ios-remote-v540-title-findings.json ROOT540-01",
+          "chain": "ConversationRoot measurable body5253a0 ->526920 ->529a6c ->529b28 ->52a15c ->52af5c pane switch; actual Codex branch52c1e4..52c4b8 captures root Bindable and supplies openMenu6df808/context separately from optional didReturnToTaskList."
+        },
+        {
+          "sites": [
+            "0x693ba0..0x693bac",
+            "0x693f78..0x693fb4"
+          ],
+          "meaning": "6df808 forwards693ba0.693ba0 supplies function53d05c and argument0 to693f78.693f78 resolves captured optional owner via147940/1540f4, passes that returned object as Swift self x20 and invokes captured function x19. It does not retrieve a Chat navigationController.parent."
+        },
+        {
+          "sites": [
+            "0x53d078",
+            "0x53d184..0x53d18c"
+          ],
+          "meaning": "Root action reads root menu state via6ff0b0/5237b4 and calls root transition524494. Existing proved setter chain68998c ->6899f4 ->689a10 ->523884 changes ConversationRootViewModel.SideMenuState, independent of active pane hosting view."
+        },
+        {
+          "source": "ios-remote-v540-title-findings.json ROOT540-03/04",
+          "meaning": "Codex ContentView shared sidebar toolbar gets isRoot=true and availability openMenu!=nil && !isComposing && !isSearching. This is not the full canDragOpen assignment and cannot be used to force-enable nested pop."
+        }
+      ],
+      "current_host_gap": "Before the parent fix, openConversationSidebar only guarded navigationController?.parent as? NativeSidebarContainer. showContent removes the initial navigation controller from its parent but retains it. requestOpenMenu still calls original ConversationHost.openConversationSidebar; that lost its shell while active pane button callbacks captured one.",
+      "safe_product_decision": "Route the existing gesture callback through its retained explicit root shell (existing notificationShell or direct root-shell callback), preserving current menu/catalog/active-feature state. Do not recover shell by walking the detached original Chat pane parent. This is independent UIKit containment integration supported by the original root-owner design, not verbatim restored UIKit structure."
+    },
+    {
+      "id": 2,
+      "question": "Do official flags justify universally enabling swipes on every pane/subpage?",
+      "result": "separate_admission_and_local_disabled_state_confirmed_page_specific_assignment_unknown",
+      "observations": [
+        {
+          "site": "ModernSideMenuContainer descriptor9565b1c",
+          "meaning": "Actual field count14, vectorword6 ->metadata+0x30; index1 __isSideMenuSwipeDisabled slot0x34, index6 canDragOpenSideMenu slot0x48, index7 canDragCloseSideMenu slot0x4c. Field names and slots are decoded, not guessed from declaration proximity."
+        },
+        {
+          "site": "0x625c34..0x625c68",
+          "meaning": "Read canDragOpen via slot0x48.701d4c loads Bool and compares1. False yields0; true reads LazyState<Bool> __isSideMenuSwipeDisabled via slot0x34 and wrappedValue getter7c4bb2c, then XOR1. Effective open flag is configured canDragOpen && !current swipeDisabled."
+        },
+        {
+          "site": "0x625e2c..0x625e40",
+          "meaning": "Computed open Bool and separate close Bool are written to the actual produced ModernSideMenuContainerRepresentable value. Descriptor9566480 independently lists these two distinct fields; not a single global root/depth Bool."
+        },
+        {
+          "site": "ModernSideMenuContainer Body typeref8c23678 and callback665710",
+          "meaning": "Complete symbolic Body contains _PreferenceActionModifier<SideMenuSwipeDisabledPreferenceKey>.625d7c supplies callback665710;665710 reads incoming Bool and writes the original container LazyState field atmetadata+0x34 through7c4bb38 wrappedValue setter. This is actual owner-side preference consumption; not just a type/name string."
+        },
+        {
+          "site": "0x629e70..0x629f70; original ivar storagesad5cbc0/ad5cbc8",
+          "meaning": "Own recognizer still checks horizontal velocity dominance and signed open/close direction using configured fields. A known-field adjacent ADRP/LDR search found consumers, not the full initializer/update writer; the scan is incomplete."
+        },
+        {
+          "site": "0x62a398..0x62a43c, fieldad5cc18",
+          "meaning": "Separate swipe-action precedence arbitration remains active and calls navigation/view/scroll helpers. Header/exposed-surface host admission plus nested-nav heuristic is an independent policy; no unconditional simultaneous recognition or generic nested-page opening is authorized by this evidence."
+        }
+      ],
+      "unknowns": [
+        "Concrete ConversationRoot/pane producer assignment of canDragOpenSideMenu and canDragCloseSideMenu, per-pane capability/configuration values and runtime experiment selection",
+        "Complete ModernSideMenuContainerRepresentable make/update assignment to UIKit ivars; actual delegate root bool consumption is known",
+        "Which descendant pages emit SideMenuSwipeDisabledPreferenceKey and their navigation/pop/selection predicates",
+        "Full original interactivePop and nested-scroll precedence; toolbar isRoot/availability does not prove swipe permission"
+      ],
+      "safe_product_decision": "Repair the detached owner callback first without broadening gestureRecognizerShouldBegin or removing existing nested-back checks. A root page not opening due missing callback is a host integration defect. If a separate page still fails after repair, inspect its active navigation/presentation and explicit swipe-admission scope; do not blindly force all roots/subpages true."
+    }
+  ],
+  "correction": "Routine62b300 is a derived admission predicate, not a setter: it reads canDragOpen and additional geometry, contains no proven field write. New raw files and caller labels were corrected before delivery. No assignment claim rests on it.",
+  "tool_limits": [
+    "Known-field scan covers adjacent ADRP/LDR64 and known caller scan covers adjacent ADRP/ADD plus immediate B/BL; neither proves exhaustive xrefs or absence of writers",
+    "One raw typeref reader invocation used unsupported address keyword; corrected to inspect_raw_type without repeating prior disassembly.",
+    "Read-only metadata/instructions do not prove observed runtime behavior or exact official visual/gesture parity"
+  ],
+  "current_host_sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "60f1a30d71f9105b5c63ae9a2ab8cb57a969be7d47423ba1e2d4da71acdb9243"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "49c082d5ed1449fc005c934db187378b08102095c0525096ea0cd904c619706f"
+    }
+  ],
+  "bounded_stop": {
+    "groups_used": 2,
+    "product_changed": false,
+    "builds_or_devices": false,
+    "additional_feature_packages_expanded": false
+  },
+  "evidence_manifest": [
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/container-field-slots.json",
+      "sha256": "e4079e79b9064b37445658db079a1cf33dfd15dd0507f4201a764104ca7e78d4",
+      "bytes": 4112
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/disabled-preference-read-helper.asm",
+      "sha256": "484cdfb56c65d989d4f72b99db60a45ba7b6527abe0097277186b062025684ea",
+      "bytes": 517
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/disabled-preference-read-helper.json",
+      "sha256": "9928f0ee6ec38e109d41367610a473439296092897e7b18a2720b917f1645128",
+      "bytes": 908
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/disabled-state-getter-setter-bindings.json",
+      "sha256": "6e040c9ee83e3e51f8933165d7ea4dc30a60b7589bedbe13fd883ebe69f1cbcd",
+      "bytes": 647
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/known-field-references.json",
+      "sha256": "3e06a891421e7ab7157482828e9e39930417d3568a0eaaa7fdd3a4e1cb37bbeb",
+      "bytes": 1076
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/modern-container-body-type.json",
+      "sha256": "2312f364070b2ff21413914e30747011b4b58ca9859f8c27ad27c0ca43e710d4",
+      "bytes": 2081
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/modern-container-body.asm",
+      "sha256": "163de63151f74016ea5129c2d3328f6ae644ad7864dc6a8b340ec731f0c45358",
+      "bytes": 5289
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/modern-container-body.json",
+      "sha256": "f07468b59d9818cf8957c1b724d7fff0977e7c26e1a85e2269c72649379172b3",
+      "bytes": 3542
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/modern-container-content.asm",
+      "sha256": "3d62aa95496aa4d01ab794d5982b251989422a9793ac51ec28ab134e98db0a87",
+      "bytes": 16843
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/modern-container-content.json",
+      "sha256": "4186bcd7351b3b28ade77ca010ccc429756cae74da8b7bb3b1847586c1358be1",
+      "bytes": 12658
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/modern-container-witnesses.json",
+      "sha256": "76c3b4046fc94bd4d6ab65a062ba7515301bd94fd3b0ba769b7f4cbeb79b6c3b",
+      "bytes": 4612
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/open-admission-predicate.asm",
+      "sha256": "043b96ed9b2a3b8c582e42466b5058fba03d2062270b64282b76226435ef286d",
+      "bytes": 1310
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/open-admission-predicate.json",
+      "sha256": "aa371e3692413044b8dfcbdebefb777862fc7acbee641d817e2a96a284e8ec37",
+      "bytes": 1282
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/open-capability-read-helper.asm",
+      "sha256": "7ec737cfe22b635ad3ebc56ae88968581064f3a3a6513669f20bb237b437daea",
+      "bytes": 391
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/open-capability-read-helper.json",
+      "sha256": "375f61850330b32a47a9a37266517e90e478516eb731f110f17714b60ae2b8c0",
+      "bytes": 908
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/open-value-forward-helper.asm",
+      "sha256": "e8ef4099639767a6176e78148e163653630da8ad452aecd93a36bdbf27da383c",
+      "bytes": 409
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/open-value-forward-helper.json",
+      "sha256": "07fbbd5e0d84b761ce0773a551e8dac73a482854755e6ff3ab06490f0c1ac03e",
+      "bytes": 908
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/predicate-root-callers.json",
+      "sha256": "448473244abed099a20f4b6fd943d166b3c79ef1b90cbf288b3e891ff4015f95",
+      "bytes": 2629
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/root-openmenu.asm",
+      "sha256": "ec8d3d4a034eb3094e5828014a021b82c3e38acb2631c18b549f3843dee3965e",
+      "bytes": 4259
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/root-openmenu.json",
+      "sha256": "e02c444a5f75e9384dedfbb0a56a35b5c702a97b32b077196c4b51fa92054aee",
+      "bytes": 4428
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/root-owner-callback-unpack.asm",
+      "sha256": "11aefaf2490afb477b654f82b1e73e097edc9fe42409d9af025401e337a21eaf",
+      "bytes": 1487
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/root-owner-callback-unpack.json",
+      "sha256": "7dad7eec39e930d157d8b9eb9b86a3f3702ad9d34ee769e5481c9218b540a041",
+      "bytes": 1961
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/swipe-disabled-preference-observer.asm",
+      "sha256": "fed7911d70146b21c73b1d3e92f5d48922afca722fea55ffcd1774318d1cd363",
+      "bytes": 1310
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/swipe-disabled-preference-observer.json",
+      "sha256": "5133bb71d0b6c2b959a0702efa192ffbee802df4090fbe83d877311f5d09c051",
+      "bytes": 2124
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/swipe-disabled-state-getter.asm",
+      "sha256": "2f6cdddc3e282e7bd7904c5552b672394729333de2b0120b1713be31eceafd09",
+      "bytes": 1737
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/swipe-disabled-state-getter.json",
+      "sha256": "7d9c1bc168cf3455a35925e5391e1ffdb53c8ad49cdbdc7244bc4b083ac5104f",
+      "bytes": 972
+    },
+    {
+      "path": "ios-shell-fifth-root-gesture-20261113-raw/swipe-disabled-state-type.json",
+      "sha256": "60464748d6aaeff3116731f40a3a7e5c86ab7c89721dc7ab848555eda9d3ba98",
+      "bytes": 739
+    }
+  ],
+  "current_host_recheck": {
+    "observed": "Parent source now uses existing notificationShell ?? navigationController?.parent fallback in openConversationSidebar; this agent made no product edits.",
+    "excerpt": "@objc private func openConversationSidebar() {\n        //A selected feature replaces (but retains) the initial navigation\n        //controller, so its parent is nil. The293 pane openMenu action retains\n        //the root owner independently of the active pane (6df808 ->53d05c).\n        //Reuse the mounted shell binding, as the feature toolbar actions do.\n        guard let shell = notificationShell ?? navigationController?.parent as? NativeSidebarContainer else { return }\n        toggleConversationSidebar(in: shell)\n    }",
+    "verification_scope": "Source recheck only; root edge/Back UI result supplied by parent must be cited from its actual bundle in module archive, not inferred here."
+  }
+}

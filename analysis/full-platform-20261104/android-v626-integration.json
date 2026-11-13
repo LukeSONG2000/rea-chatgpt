@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "build": 626,
+  "date": "2026-11-09",
+  "scope": "Android Remote home header and host selector",
+  "official_baseline": {
+    "version": "1.2026.293",
+    "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630"
+  },
+  "evidence": [
+    "analysis/full-platform-20261104/android-remote-v626-header-source.json",
+    "analysis/full-platform-20261104/android-remote-v626-selector-source.json",
+    "analysis/full-platform-20261104/android-v626-assets.json"
+  ],
+  "implemented": [
+    "Centered clickable Codex title, source typography, chevron and five localized menu entries",
+    "Browsing right search only; Searching replaces center with query and right action with close",
+    "Project grouping continues; unsupported menu operations show a localized returnable explanation",
+    "Source-backed host chips, distinct All content metrics, selection fill/foreground, horizontal row, glyph/text sizing",
+    "Cloud without status dot; explicitly synthetic connected hosts with independent connection dot; connecting/error renderer branches",
+    "Popup and dialog labels resolved in configured page locale"
+  ],
+  "root_causes": [
+    "Independent old header used weighted left text and separate Refresh/About overflow rather than qx81 Browsing configuration",
+    "Default Material FilterChip omitted dol custom container, semantic tokens, typography and connection identity",
+    "Popup labels read activity-language resources despite scoped page locale; caught by visual review and now asserted"
+  ],
+  "independent_adaptations": [
+    "Compose DropdownMenu presentation and unsupported-action AlertDialog",
+    "44dp toolbar native button footprint with source circle color; full private ElevatedContent material is unresolved",
+    "Activity finish remains the left navigation owner until shell slot is integrated",
+    "No business backend implementation; SyntheticRemoteListProvider supplies all device/task data"
+  ],
+  "unimplemented": [
+    "Priority collection membership and complete comparator",
+    "Chronological list/date grouping",
+    "Add-connection flow and Codex settings controls",
+    "Original left shell sidebar slot",
+    "Device long-press menu, optional connect-computer selector branch and complete capability gates",
+    "Exact menu material/transition, toolbar shadow, ripple timing and scroll-edge effects",
+    "Unknown host-availability fallback glyph/state branches",
+    "Real service delivery and real connectivity"
+  ],
+  "validation": [
+    {
+      "report": "analysis/full-platform-20261104/android-v626-oneplus-zh-r5.json",
+      "status": "passed",
+      "steps": [
+        {
+          "apk": "app/build/outputs/apk/debug/app-debug.apk",
+          "sha256": "c6f3ff536e6db758ef651b052f22fc764a1f6b49e496bac95583ea5b57030815"
+        },
+        {
+          "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+          "sha256": "3c2c3293a7b62169279091b355ab5afcf4a54240db2f9b850415a83ab0b4e64c"
+        },
+        {
+          "test": "modelRules",
+          "passed": true
+        },
+        {
+          "test": "listJourney",
+          "passed": true
+        },
+        {
+          "test": "verifyRestart",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "report": "analysis/full-platform-20261104/android-v626-oneplus-en-dark-r2.json",
+      "status": "passed",
+      "steps": [
+        {
+          "apk": "app/build/outputs/apk/debug/app-debug.apk",
+          "sha256": "c6f3ff536e6db758ef651b052f22fc764a1f6b49e496bac95583ea5b57030815"
+        },
+        {
+          "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+          "sha256": "3c2c3293a7b62169279091b355ab5afcf4a54240db2f9b850415a83ab0b4e64c"
+        },
+        {
+          "test": "modelRules",
+          "passed": true
+        },
+        {
+          "test": "listJourney",
+          "passed": true
+        },
+        {
+          "test": "verifyRestart",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "report": "analysis/full-platform-20261104/android-v626-shell-regression.json",
+      "status": "passed",
+      "steps": [
+        {
+          "apk": "app/build/outputs/apk/debug/app-debug.apk",
+          "sha256": "6e0cf9f6591ddd0cea6390b0716f75c312ff3fa89e74fdb21340f96786395395"
+        },
+        {
+          "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+          "sha256": "291142ff3c7e11be299a34e200c82dca815ba1884852b56d8077f678f019ce3c"
+        },
+        {
+          "test": "preferences",
+          "passed": true
+        },
+        {
+          "test": "composer",
+          "passed": true
+        },
+        {
+          "test": "journey",
+          "passed": true
+        },
+        {
+          "test": "verifyRestart",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "validation_limit": "Shell four-case regression used the pre-popup-localization v626 APK. Both final Remote three-case runs use the final APK and include explicit popup-language assertions. Connected status is exercised on device; transient/error connection rendering branches are compiled but not separately replayed.",
+  "retained_failures": {
+    "android-v626-oneplus-zh.json": "Popup testTagsAsResourceId was absent in the separate window",
+    "android-v626-oneplus-zh-r2.json": "Menu selected semantics export checked, not selected, to UiAutomator",
+    "android-v626-oneplus-zh-r3.json": "Immediate disappearance assertion raced popup exit animation",
+    "android-v626-oneplus-en-dark.json": "Actions passed but visual review found Chinese menu on English page"
+  },
+  "visual_review": {
+    "before": "analysis/full-platform-20261104/android-v626-before.png",
+    "after_chinese_light": "analysis/full-platform-20261104/android-v626-oneplus-zh-r5/list-initial.png",
+    "after_english_dark_menu": "analysis/full-platform-20261104/android-v626-oneplus-en-dark-r2/title-menu.png",
+    "final_preview": "analysis/full-platform-20261104/android-v626-final-preview.png",
+    "comparison": "Same synthetic default project list inspected before/after; source-faithful subset only, not full official page parity"
+  },
+  "preview": {
+    "device": "OnePlus ONEPLUS_A6003",
+    "transport": "172.16.197.16:5555",
+    "pid": 12407,
+    "screen": "Chinese Remote project list",
+    "kept_running": true
+  },
+  "apk": {
+    "path": "implementation/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "c6f3ff536e6db758ef651b052f22fc764a1f6b49e496bac95583ea5b57030815"
+  },
+  "implementation_files": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RecoveredRemoteListChrome.kt",
+      "sha256": "9df5389616056119b31c13aec27b07a96f7e3f3fbf9bd572e55054cfd4523e8e"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListActivity.kt",
+      "sha256": "eda0cd225d996ef02a197b6f866798b44df6c37c881eb4f68802fa116303c2ff"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListModel.kt",
+      "sha256": "76679229efd2d45d2293318162db7db3c43b0b1cb5bf5bd2dc569690c07299a2"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/RemoteListTest.kt",
+      "sha256": "abad75662d35be8e6d769e2f5184c23f7b5bf2957df212e2383d1416dcda0525"
+    },
+    {
+      "path": "implementation/android/app/src/main/res/values/remote_strings.xml",
+      "sha256": "5b4e2f62aecba77db702f62225619524de22bc080903bbdabdbf761c98ce63cc"
+    },
+    {
+      "path": "implementation/android/app/src/main/res/values-zh/remote_strings.xml",
+      "sha256": "9d8c03c0b97f8a0f3c0175b9262421cde0c9454157dbcfd57998b8e8dd4b3a03"
+    },
+    {
+      "path": "implementation/android/app/build.gradle.kts",
+      "sha256": "6f116cb1531fbd93d1f3f4307bd9a1102e214373c8336e27e6a73a0a24e28541"
+    }
+  ],
+  "cross_platform": "Android KMP design resources and Compose owners are independent evidence. iOS renderer/material assumptions were not used."
+}

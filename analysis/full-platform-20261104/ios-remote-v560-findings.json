@@ -1,0 +1,59 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "existing artifact traces reviewed for dynamic consumer integration",
+  "official_observations": [
+    {
+      "symbol": "CodexRemoteAutomaticApprovalReviewView",
+      "offset": "0x19aa374 / body witness0x19aab64",
+      "conclusion": "ExpandableAssistantSummaryItem with selectable plain rationale and status/risk label",
+      "source": "ios-remote-v408-integration.json"
+    },
+    {
+      "symbol": "Command detail review construction",
+      "offset": "0x1a3b054;0x1bfc81c ->0x1c0543c ->0x1a3bd5c",
+      "conclusion": "Review rows precede command Shell with owner expansion binding",
+      "source": "ios-remote-v408-integration.json"
+    },
+    {
+      "symbol": "Review status consumer",
+      "offset": "0x19aa574..0x19aa58c; label0x240fab8",
+      "conclusion": "Known inProgress comparison independently selects shimmer; unknown status uses Reviewing label",
+      "source": "ios-remote-v408-approval-body.asm"
+    },
+    {
+      "symbol": "Review rationale",
+      "offset": "0x240fd04..0x240fd30 ->0xf87cc",
+      "conclusion": "Preserves non-whitespace rationale, otherwise uses status/action fallback",
+      "source": "ios-remote-v408-review-full-detail.asm"
+    },
+    {
+      "symbol": "Review identity fields",
+      "offset": "metadata0xa571208/0xa5fcac0",
+      "conclusion": "id, targetItemID and reviewID are distinct fields",
+      "source": "ios-remote-v408-integration.json"
+    }
+  ],
+  "independent_adaptation": [
+    "Full review snapshots carried in current scoped replay envelope",
+    "Consumer matches targetItemID to actual command ID; unmatched records remain in snapshot without a fabricated command",
+    "Review disclosure identity includes target item and review ID inside account/host/thread/turn scope",
+    "Duplicate IDs and empty item/target IDs reject whole event atomically",
+    "nil preserves snapshot; [] clears; cancellation marks known active synthetic reviews aborted; completion/failure requires known inProgress records settled",
+    "Unknown status/risk retained, original fallback wording reused and known-state-only shimmer preserved",
+    "Synthetic status schedule and rationale revisions model UI behavior only"
+  ],
+  "limitations": [
+    "Standalone network review branch remains separate",
+    "Exact original symbol, palette and optional risk punctuation remain unresolved",
+    "Transport schema and server authorization are future interfaces",
+    "Process-local retention only",
+    "Android and physical-device acceptance pending"
+  ],
+  "source_report_sha256": {
+    "ios-remote-v408-integration.json": "e82e9d48a6ed65c112a807b12d0c2b01618c58581a3842f41beb1b6f1161c815"
+  }
+}

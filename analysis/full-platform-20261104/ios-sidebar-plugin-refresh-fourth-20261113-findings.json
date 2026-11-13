@@ -1,0 +1,424 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "iOS293 original plugin directory refresh carrier and captured owner; two bounded candidate groups, evidence only",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "official shipped-artifact static instructions plus selected Swift metadata, no original target execution",
+  "prior_reports": [
+    "ios-sidebar-plugins-projects-third-20261113-findings.json",
+    "ios-sidebar-plugins-projects-third-20261113-refresh-followup.json",
+    "ios-native-plugins-20261112-findings.json",
+    "ios-native-plugins-20261112-models.json"
+  ],
+  "correction": {
+    "previous": "refresh-followup only covered DirectoryContent and left original pull carrier unknown",
+    "new": "The enclosing DirectoryScreen does call SwiftUI.View.refreshable(action:) directly. Its Content-level opaque modifier is the search-affordance carrier, not evidence of the refresh action. Preserve previous snapshot; this followup closes its specific missing parent."
+  },
+  "candidate_groups": [
+    {
+      "group": 1,
+      "question": "Where does the actual original refreshable attach?",
+      "status": "verified_static",
+      "screen": {
+        "name": "ChatGPTPluginsDirectoryScreen",
+        "descriptor": "0x95837b4",
+        "conformance": "0x7d7892c",
+        "body_witness": "0xe82b6c",
+        "body_implementation": "0xe82270",
+        "body_associated_type": "0x8cf4e60"
+      },
+      "observations": [
+        {
+          "site": "0xe824bc",
+          "target": "0x7c4a344",
+          "import": "_$s7SwiftUI4ViewPAAE11refreshable6actionQryyYaYbc_tF",
+          "meaning": "Actual original refreshable constructor, not enum/name inference."
+        },
+        {
+          "site": "0xe82424",
+          "target": "0xe713ec",
+          "meaning": "Builds conditional page content consumed by refreshable. Symbolic Body references correlate the near content to ConditionalContent<AnyView, DirectoryContent.navigationTitle.toolbar.navigationBarTitleDisplayMode>. No NavigationStack is established inside this Screen Body; do not move refreshable to an external NavigationStack."
+        },
+        {
+          "site": "0xe82c90",
+          "meaning": "DirectoryContent constructs ScrollView with Axis.vertical and showsIndicators=true; scrollPosition added at e82d10."
+        },
+        {
+          "site": "0xe82d88",
+          "target": "0x6f380f8",
+          "callback": "0xf2f134 -> 0xe837d4",
+          "meaning": "Opaque Content modifier callback constructs SearchAffordance. Its two supplied bytes1/2 are not proved bounce/refresh configuration."
+        }
+      ],
+      "limits": [
+        "The outer opaque context0x9549ab8 remains unknown; exact modifier generic tree should preserve it.",
+        "No original bounce, alwaysBounceVertical, UIRefreshControl, threshold or gesture recognizer configuration established.",
+        "Physical activation must be tested in current host; static refreshable presence does not prove current integration triggers."
+      ]
+    },
+    {
+      "group": 2,
+      "question": "Which owner does the original async refresh call, and what does it await?",
+      "status": "partial",
+      "capture": {
+        "screen_field": "_viewModel",
+        "record": "0x9a05598",
+        "type_reference": "0x8cf48fc",
+        "resolved_type": "SwiftUI.Bindable<ChatGPTPluginsDirectory.ChatGPTPluginsDirectoryViewModel>",
+        "vm_descriptor": "0x958159c"
+      },
+      "closure_chain": [
+        {
+          "at": "0xe8233c..0xe82340",
+          "value": "x27=0x7d7dfd0"
+        },
+        {
+          "at": "0xe82484..0xe824a0",
+          "value": "allocates closure context0xa49c410 and copies captured Screen value using15c70c"
+        },
+        {
+          "at": "0xe824b0 -> 0x156428",
+          "value": "x0=x27=async record7d7dfd0; x1=x21=allocated context"
+        },
+        {
+          "at": "0x7d7dfd0",
+          "value": "signed relative function target0xf27de4; context size32"
+        },
+        {
+          "at": "0xf27de4 -> 0xe8289c -> 0xe828dc -> 0xe8292c -> 0xe82968",
+          "value": "async trampoline/resume chain"
+        },
+        {
+          "at": "0xe8297c -> 0xf539a8",
+          "value": "loads x20 owner from async capture+0x10; sets w0=1"
+        },
+        {
+          "at": "0xe82980..0xe82984",
+          "value": "w1=0; invokes owner method0xe8bcf0"
+        },
+        {
+          "at": "0xe82988 -> 0xf54328",
+          "value": "reads owner task using offset slot0xb143440; nil task returns, nonnil task retained and handed to async continuation viaf50008 ->76398f4"
+        }
+      ],
+      "owner_observations": [
+        {
+          "at": "0xe8bda0..0xe8bdb4",
+          "meaning": "refresh path branches on w0; w1 gates possible same-kind early return; exact source parameter names are not available."
+        },
+        {
+          "at": "0xe8bdb8..0xe8bdd4",
+          "meaning": "If prior owner task is nonnil, invokes cancellation before replacement. f55654 -> import7c4e010; chained slot0xaada3f8 resolves Swift.Task.cancel()."
+        },
+        {
+          "at": "0xe8bddc",
+          "meaning": "Creates Foundation.UUID; owner metadata has loadGeneration. Concrete generation field offset slot0xb143448 is written nearby; fixed runtime offset cannot be read because global storage is zero-fill."
+        },
+        {
+          "at": "0xe8be38..0xe8be78",
+          "meaning": "w0=1 selects load-state raw3 (refreshing, already enum-proved in prior report)."
+        },
+        {
+          "at": "0xe8bec8/0xe8bf00/0xe8bf34/0xe8bf68",
+          "meaning": "Writes refreshing into the four source-state load-state bytes at owner+0x40/0x60/0x80/0xa0, under Observation registrar willSet/didSet. Labels _openAIState/_workspaceState/_personalState/_browseState are inventory-correlated, not a complete fixed object-offset recovery."
+        },
+        {
+          "at": "0xe8bf9c..0xe8c060",
+          "meaning": "Clears paired optional data fields at each source-state +8/+16; do not infer this clears cached visible sections. SourceContent cached-items failure branch was separately proved."
+        },
+        {
+          "at": "0xe8c1f4..0xe8c20c",
+          "meaning": "Creates and stores replacement task via swift_task_create; capture includes owner and raw refresh flag."
+        }
+      ],
+      "limits": [
+        "Repository request graph, precise installed-items refresh timing, search-source reload, full task result/error writeback and late-generation admission remain unclosed.",
+        "Do not claim the original refresh simply performs selected list then installed list; current frontend adapter uses that independent behavior.",
+        "refreshRequested enum is not relied on as the actual pull producer. The captured Screen/VM method is directly observed.",
+        "No feature-specific haptic caller found in these selected windows; global Settings/General preference remains required for any separately proved future caller."
+      ]
+    }
+  ],
+  "host_boundary": {
+    "paths": [
+      "implementation/ios/Sources/NativePluginsPage.swift",
+      "implementation/ios/Sources/FrontendPlugins.swift"
+    ],
+    "observed_before_parent_edits": "ScrollView.refreshable invoked selected directory force-load then installed force-load; exact request/scoped cache/error state is an independent frontend contract. Parent reports physical pull failed while deterministic refresh/model vectors passed. No device interaction performed by this agent.",
+    "safe_product_decision": [
+      "Move the existing refreshable to the directory page root corresponding to original Screen conditional content, after page navigation modifiers and inside any independent external NavigationStack.",
+      "Retain current request identity/account/workspace/query admission and cached error rendering as independent adapter. Do not expand original service claims or alter catalog membership.",
+      "Try current native ScrollView consumer after parent move first. If physical pull still fails, a public UIScrollView/UIRefreshControl bridge consuming the same RefreshAction is permitted only as explicitly independent host adaptation; no guessed original always-bounce values or haptics.",
+      "Any host bridge needs single in-flight refresh, scope/lifecycle cancellation and scoped stale-result handling; these are frontend implementation requirements, not fully recovered original owner behavior."
+    ]
+  },
+  "bounded_stop": {
+    "groups_used": 2,
+    "not_attempted": [
+      "network/repository requests",
+      "new product code",
+      "builds",
+      "device tests",
+      "haptic expansion",
+      "unrelated pages"
+    ],
+    "tool_limits": [
+      "Swift class field-vector helper rejected this descriptor kind as unsupported; existing verified metadata inventory retained, no vector guessed.",
+      "Reading0xb143400 runtime field-offset globals failed because storage is not file-backed; values are not silently fabricated.",
+      "f27e30 is a conformance/type helper, not itself the refresh closure; actual callback comes from preserved x27 async record and156428 argument helper."
+    ]
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-action-other.asm",
+      "bytes": 3208,
+      "sha256": "c5462966f14758d344b02bf45d973b80dc81b71eb862b0bacb7031a798ea8a6e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-action-other.json",
+      "bytes": 2473,
+      "sha256": "d22618e8cf572d7516edaf607cc1672b17d8d7f756927f669ccfb803bc613290"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-content-parent.asm",
+      "bytes": 50042,
+      "sha256": "097eebacf2f8345919ad4acdf7534212f45a2818fd30991de07433449c582c2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-content-parent.json",
+      "bytes": 42292,
+      "sha256": "3a0782bf6c4d562ba0e8f9523a9f3f676152c802f644b649446f937859da8499"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-modifier-action.asm",
+      "bytes": 1000,
+      "sha256": "942e6f1fdd4e8ee199dd8be61445a939e66cbf60cd8fbe0f231cb6cb8300a332"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-modifier-action.json",
+      "bytes": 1006,
+      "sha256": "1b1ad54db4ada80a50688688836fec7eb77221d0e24829a301da936073e964aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-modifier.asm",
+      "bytes": 7503,
+      "sha256": "7268863b34e10c24c2ad362b176d92af682ef4365bd2ebf3bda98273fb5e450b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-modifier.json",
+      "bytes": 5203,
+      "sha256": "172ee97182d36b20414a39d9ad78e0af47bfcd47252d60ddc47812bfbb0e6b91"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-screen-body-type.json",
+      "bytes": 4107,
+      "sha256": "7b5d2fa08c652197356f3bd5911a655cc49fd3de6c7e2bdc16546fbc1db7986b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-screen-content-metadata.json",
+      "bytes": 1865,
+      "sha256": "940562a1cf83254c76336aecdb05e5ba9cd43b962008c40a9aaf08848a4d758c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-screen-parent.asm",
+      "bytes": 28230,
+      "sha256": "ffb78058984884f6860df10568e2b0a330a9824ec046a75b69ea51e1b52b2427"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-screen-parent.json",
+      "bytes": 19742,
+      "sha256": "b3adc5fe50e598ee6d177f02b3ab4595e854ac478c68b34775ca1704220e4631"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-search-header.asm",
+      "bytes": 5491,
+      "sha256": "6054b387f459045be6890e2dae2d39bcfc6f9a32ae5b46dfacdd364da495bafe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-search-header.json",
+      "bytes": 5190,
+      "sha256": "7c508e5c42d5b1aae26db29fe9c16a1be3db0aa052c70da0a9b18de2718e39fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-witness-7d7892c.json",
+      "bytes": 4612,
+      "sha256": "3a2ca443b443c6a5ae9f290f39dd99fba4beefb7e52d0a32fc46d3bed23ef20e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/directory-witness-7d79668.json",
+      "bytes": 4612,
+      "sha256": "57474f9f1fbb00ae1267a96e0c1eecc11052fd7cd2298ebbf50c9f968ebe2c85"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/opaque-modifier-headers.json",
+      "bytes": 405,
+      "sha256": "efc7511ddb8b19daa5831fc95bfcddc3444ecb6eb093f574d065f6af72eea8c0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-async-records.json",
+      "bytes": 905,
+      "sha256": "65448f363f59cc8ec103c00a5f6c8544d1d5c34f84d3b4e10bd0bdacb5977be2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-cancel-task-helper.asm",
+      "bytes": 617,
+      "sha256": "fff66cb3c56dfb41204adea4dfec7c9ca6bf9a0ad897ce1b3a7ef8a7e0840691"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-cancel-task-helper.json",
+      "bytes": 940,
+      "sha256": "150dc2ab6cf63c506b63cd37ef4a93639b84cf54fbab321e660eaef681a1ebf8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-captured-object.asm",
+      "bytes": 508,
+      "sha256": "f0f7c76923a4cfdce6882d37f4fec82a6a74401931b30bcb62dfa457f35b6e58"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-captured-object.json",
+      "bytes": 924,
+      "sha256": "5f88fa202f51286e30feb53abcccb984f3dd6902c4cae0de8cb74e9e2f2a3c10"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-closure-arguments.asm",
+      "bytes": 595,
+      "sha256": "a1f5b51f50c5c3b539081303ddf0de930b100a86749df8dea58297ff1c3c092d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-closure-arguments.json",
+      "bytes": 940,
+      "sha256": "da861b66de7648f580714baeb00f42b0a6d82b76a4812763c195a6f27fc8c8d9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-closure-setup.asm",
+      "bytes": 704,
+      "sha256": "cc8865557ca9e146de99b6b06fa037c9934abb3e12c5fba1fb48d9e7668f4287"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-closure-setup.json",
+      "bytes": 892,
+      "sha256": "357874ffd0c15bc2099e1a2d687cdfb431f2fb1b77ce31005e5b4dd0541a1e56"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-direct-closure.asm",
+      "bytes": 1148,
+      "sha256": "a4ed2f60a34add367eb03b0ef0aac0bdd1c7e5a8cdaefbc172e8a5fbcb3af0e9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-direct-closure.json",
+      "bytes": 1395,
+      "sha256": "ac39ccb594f3597e1bac6f4f25f2fb7283e74943aa76f9681a762dd2a2fd6362"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-load-owner.asm",
+      "bytes": 20730,
+      "sha256": "315c6a114aa2df72ca817d0d8a0eea5cfb672dd7b4b99ef1fc72ff7d2eb644b2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-load-owner.json",
+      "bytes": 18804,
+      "sha256": "bbd2d1b11e9190ce7d0636fdb01b60a16e634f382fd592b352437a8837c2fe3c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-owner-helper.asm",
+      "bytes": 708,
+      "sha256": "0437b559e90fdcc9cf9ade62ddf3ab7f82502e087234e4a5dba122635e3816c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-owner-helper.json",
+      "bytes": 940,
+      "sha256": "4c4f03b392dc27bfe9feb5e265f1093988b2805d62754cd2270f692d7193b879"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-parent-builder.asm",
+      "bytes": 15701,
+      "sha256": "20e7a78c64231248e7b4f8386d8f979f1cc291bdcf4922d5a0ec6900e92e2c3a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-parent-builder.json",
+      "bytes": 5467,
+      "sha256": "1e23e53beeca796f861f13dfb6fcdd29d404994e90a371a67a1109613de5b792"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-task-await-helper.asm",
+      "bytes": 1312,
+      "sha256": "c8b7e74f52c6ed44bba7321af99dc9b8abafa87b8676d3166e16dcdf2d87e727"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-task-await-helper.json",
+      "bytes": 988,
+      "sha256": "be9f44ba88fbc3f3f1ea20edbe44d962d32a5f7ef13b4701241183495b29449e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-task-imports.json",
+      "bytes": 766,
+      "sha256": "94b351d94f8db202362367d9713b095a415e9ca374b369907bc490b1e30978e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-type-and-owner.asm",
+      "bytes": 7838,
+      "sha256": "acdda6c44920005fcebc69287cf314f1af0bcb4296f1bf1fcf5d18d985babd2e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-type-and-owner.json",
+      "bytes": 2861,
+      "sha256": "5c03b660869c6bc92cffd5ae840ecb170eabfffc21dcbb9eaf3f91fde7ff88a4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-vm-load-branch.asm",
+      "bytes": 17631,
+      "sha256": "7911f6098fc8e734a70101dcdc458eb19a1c30d8ea6e5815a3088fb9b38567b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-vm-load-branch.json",
+      "bytes": 24765,
+      "sha256": "1a8dff5f9921ef6af878fdeddceeeda3d4109d09a3061b6f6db0127dfe1f8821"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-vm-owner-metadata.asm",
+      "bytes": 1246,
+      "sha256": "5150738ed4ebf8ae9dab6e3368274d56a2b1f380bf983c5541199cf1bbe53f88"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-vm-owner-metadata.json",
+      "bytes": 1007,
+      "sha256": "972903d5072c3008ca753d9d5a746cec343e895c258277559bb6656740e1e2b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-vm-task-getter.asm",
+      "bytes": 514,
+      "sha256": "91e3eb0d570dcc26d6c44d4837e16c442fb48941140ac1681162a437e9c14f1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/refresh-vm-task-getter.json",
+      "bytes": 908,
+      "sha256": "6eb0f3056f22554a044b8cfe4aacde47043ba5a757238d543caba99a637a5f2e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/screen-bindable-type.json",
+      "bytes": 936,
+      "sha256": "f0f47deaf1778e732edeff5bf74b95b9754fff65b7d7b3208c61f332d044a7a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/screen-capture-type.asm",
+      "bytes": 2212,
+      "sha256": "c96c9773c76f154b328cd24c0917f50d8805b594c12f6c11017789b923d7ec75"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/screen-capture-type.json",
+      "bytes": 1237,
+      "sha256": "cb190b04d6d0cd4fc30a022462a54ee57911e0cbdc0154f1b907a5a6adad0e3d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-plugin-refresh-fourth-20261113-raw/vm-account-type.json",
+      "bytes": 775,
+      "sha256": "8dcc21c2dbc64111335c0b837563c540ea681a1232cc59a33d5181402d89469a"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "batch": "v494",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "question": "Close project new-thread action ownership and locate its actual destination before UI integration",
+  "findings": [
+    {
+      "location": "0x396b20..0x396b2c",
+      "observation": "CodexTaskListContent.startRemoteThread +0x248 receives callback0x42e194 and context+0x250."
+    },
+    {
+      "location": "0x42e194 ->0x396f04 ->0x42e208 ->0x339ab4",
+      "observation": "Callback carries target and custom-section map, obtains CodexViewModel through Bindable and dispatches creation. Transaction key path semantics remain unresolved."
+    },
+    {
+      "location": "0x339ab4 ->0x32b3ac; 0x32b948; 0x32bc14",
+      "observation": "Gated builder obtains CodexRemoteNewThreadViewModel metadata via0x45d828 ->0x1aa2608 and constructs model through0x18a3c08. Initial gate may return nil."
+    },
+    {
+      "location": "0x339c10..0x339c58; 0x32bcec",
+      "observation": "Sidebar-dependent branch uses replacement-array path or existing-array processing/appending. Exact destination reuse policy is unresolved."
+    },
+    {
+      "location": "0x3a1e1c; 0x3a1fd0; 0x3a2028",
+      "observation": "Header new button depends on optional callback. Label factories resolve square-and-pencil and ChatGPT/icon/tertiary; PlainButtonStyle is present."
+    },
+    {
+      "location": "0x19eb4ac ->0x1d883ac ->0x1aa581c",
+      "observation": "Initializer resolves CodexRemoteNewThreadScreen metadata. Descriptor0x95ab510 has23 fields, field-vector word offset6. It writes true to focusesComposerOnAppear, presentsSubmittedThreadInPlace and showsComposer. Later caller mutations remain unverified."
+    },
+    {
+      "location": "0x19f8c3c ->0x50d39ec; 0xaddf730 ->0x19f8c38 ->0x19ebdc0",
+      "observation": "SwiftUI body forwards through MeasurableBodyView witness. Actual body identified; its centered ZStack content closure is0x1aa5b10 ->0x19ecab4."
+    }
+  ],
+  "integration": {
+    "changed": false,
+    "latest_installed_batch": "v493",
+    "reason": "Destination content and composer ownership need source binding before exposing the project action. No replacement blank page or executor demo introduced."
+  },
+  "validation": {
+    "static": "Metadata field-vector offset, chained witness pointers and direct/tail branches cross-checked against artifact",
+    "runtime": "not run for this batch",
+    "visual": "not accepted",
+    "tool_limits": [
+      "Raw symbolic decoder rejects opaque symbolic kind7 at0x8e13105; error preserved in screen-body-types.json",
+      "0x8e12c15 is not successfully parsed by raw type decoder; no type-tree conclusion drawn"
+    ]
+  },
+  "next_actions": [
+    {
+      "entry": "0x19ecab4",
+      "purpose": "Resolve screen content branches, composer placement and loaded/new-submitted state."
+    },
+    {
+      "entry": "0x2f3070 and0x303aec calling0x19eb4ac",
+      "purpose": "Bind parent navigation case, toolbar and caller overrides."
+    },
+    {
+      "entry": "0x32bcec and0x3013cc",
+      "purpose": "Bind navigation array property and existing-draft reuse semantics."
+    }
+  ],
+  "remaining": [
+    "Actual project-new-thread host integration and return-state regression",
+    "Pinned/recent/cloud groups, top search and mode menu, bottom list composer",
+    "Official duplicate-name candidate scope relative to source filter",
+    "Physical visual/touch acceptance and independent Android recovery"
+  ],
+  "evidence_files": {
+    "ios-remote-v494-button-types.json": "3117185126ebd631af8be9d2e18eb6a5c68325f07466d41895c57782c0b66453",
+    "ios-remote-v494-navigation-candidates.asm": "8cbc23f5ee46bfb458bf4babba4db0c8ae69d857c67ddb55dce03dddb6133f08",
+    "ios-remote-v494-new-button-window.json": "909e57fd88c90216c93b74cbc9baebd5a1aeeff27c42400e758865e9ba3032b0",
+    "ios-remote-v494-new-button.asm": "9e7eec31419e450466bf04a0de987da24e065d93c21bfafad1a274f2f841ff71",
+    "ios-remote-v494-new-thread-dispatch.asm": "3c31d76306412c64aa3a7a0085697308859b6928bfc0fede900ded09b8211b7e",
+    "ios-remote-v494-new-thread-dispatch.json": "4f29b09e1614bf3be7ddee6908fb0411daf97f0db10e713a079883ace425c0d8",
+    "ios-remote-v494-new-thread-model.asm": "e7ab75533e6ebc36bf95cc7353c4327949669151676a1ca035445db414df3d81",
+    "ios-remote-v494-new-thread-model.json": "2f541e688afeaddb7d159020803a8e3762c81e42b28f66e66ca56dc685318f5c",
+    "ios-remote-v494-new-thread-navigation.asm": "32493c8327ea2d2cef7e4c89abcea0dc81f463fc84c5e3157484e8f06d1e8d32",
+    "ios-remote-v494-new-thread-navigation.json": "5b4eb3d808fd2d6c81fc44e6c015ae996e205bcce50f524f2af86d0ffece1f57",
+    "ios-remote-v494-new-thread-owner.asm": "d0d65ba1dbfc0150201384d763adcfcbedf5ccf4d2f7b240d62b81198aca0196",
+    "ios-remote-v494-new-thread-owner.json": "12c64d98e16573231f3288a3a342a0367b547052eb392518bec4b766abb06d97",
+    "ios-remote-v494-new-thread-types.json": "0cfa4bd733aabb18053d8fbbe5d4ec3e582e9af3a651d3e8d75b37a0724c879f",
+    "ios-remote-v494-new-thread-view-metadata.json": "a1bcb5778810ca9d8983bbcdb6aa75f39e6363d26b3360603a4014754cfefbaf",
+    "ios-remote-v494-new-thread-xrefs.json": "bafbaaa7c49825260299c02d8a721b885f751f97a601555d61cd0934788fcf72",
+    "ios-remote-v494-screen-body-types.json": "259447290cc1588cb7b6ba1cf4aaff20abfd485b32fe5e7718493e3839b406a0",
+    "ios-remote-v494-screen-body-witness.asm": "ffdd32bd155c81f07e3247e069ef435981818e1aad246143a4714b8502d59f53",
+    "ios-remote-v494-screen-body-witness.json": "9ce28b7f6d390270dda630eca50dc80c754731f23a861649a36391700406df18",
+    "ios-remote-v494-screen-body.asm": "03efda0340b4189f72d5923dcb7d48d3698d129dfb36e0012f468f7b69ad527a",
+    "ios-remote-v494-screen-body.json": "2284df7a29c9c0bd4223a466e99cc7238a9ef413745c93409d0923199d3629af",
+    "ios-remote-v494-screen-constructor.asm": "b37004bc77fec700461054196990eb4edcfdc7bdae0cdfbcc9e4f378decd76ca",
+    "ios-remote-v494-screen-dispatch-chain.asm": "61a148600f81b9be31b00a20b5853c581d5291059572906082d16f7d2d1a9893",
+    "ios-remote-v494-screen-dispatch-chain.json": "fe9cee98440b0540ba6b572dbad2a42ae7daffe4d75e9b8d504d8ec668693656",
+    "ios-remote-v494-screen-init-helper.asm": "b83020e6353482f000435de93f35bd7c05ca599d8f836d2d131e063f4d535dce",
+    "ios-remote-v494-screen-init-helper.json": "8526852f4c7f277fafdbaa87fc9a9d07b9616771935ed1879d50ec07a355f585",
+    "ios-remote-v494-screen-initializer.asm": "aace96f9307a469f016d8d22707f1f6d913dc67a99d0651a9b7a9e9921ef2b63",
+    "ios-remote-v494-screen-initializer.json": "4c9edfa0deb61626ab697ac626d307e637191127b6423b05e80c551a68880d29",
+    "ios-remote-v494-screen-metadata.json": "d20bcb4b8a92ee322cb735250dea2863b0d86d659fa7bcedbebc1232ede98db7",
+    "ios-remote-v494-screen-witness.json": "8a428c4cc56819fbedc587055becb28cc4941e3e26cf73c4eae239d688da12c8",
+    "ios-remote-v494-screen-xrefs.json": "10c575478d1197e4f5b34c14f0a087a4739e39751e5b57bfd7324260582cad44",
+    "ios-remote-v494-transaction.asm": "dd3cbfd65da7b61d87510f901b07d4e712a3a9ca12edb5d6b8f758efc2eae36a",
+    "ios-remote-v494-transaction.json": "ee2a96b5f90960edbd006746593873ab04a20efd62ad6d3b6dbef4e461e8c6bf",
+    "ios-remote-v494-view-wrapper.asm": "2a0f10f33c39f77102b26e04ae221d2f5c263057e681d0d91e0e586c5e58dc31",
+    "ios-remote-v494-view-wrapper.json": "f1c58daaf7ee6262d791f98b3c0db1522f666c7ae10976034bfb342eee12e63e",
+    "ios-remote-v494-viewmodel-fields.json": "ef4fa75f639bf6e8fa760de6380bace4c9c3e2afed254900dd53bef631e30934"
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T12:55:57.300259+08:00",
+  "module": 10,
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "previous_snapshot": "ios-auth-parent-current-20261113-r2.json",
+  "status": "frontend-core-archived-with-specific-source-gaps",
+  "scope": "Welcome/native login/profile/sign-out as one major frontend item. No real authentication or account services; Android expansion paused.",
+  "implemented_this_pass": [
+    "Replaced the simple padded input background with actual293 content/optional-password-button parent: vertical10, horizontal12, spacing10, minimum-frame alignment, radius16 and separate floating placeholder.",
+    "Focus/has-input selects bottomLeading vs leading and floated top10/leading12 label. Original default minimum, fonts/colors and animation parameters remain explicitly supplied host estimates.",
+    "Password visibility shares the existing draft Binding and reuses exact eye/eye-slash resources and original Show/Hide password localized consumers; password remains transient.",
+    "Deferred error dismissal now matches exact failure request ID. Equal failure enum/generation from successive attempts cannot erase a newer error or pending operation.",
+    "Shared core preview manifest explicitly enables synthetic auth journey without forcing logout, so users can operate Settings logout→welcome→native fields→return to preserved chat draft. Normal unconfigured authentication still returns unavailable.",
+    "Updated original text extraction to316 context-checked labels across65locale tables; no user identity copied."
+  ],
+  "retained_major_chains": [
+    "Welcome resource brand→Apple/Google/native entry→busy/error/retry/cancel; external providers remain unconnected.",
+    "Native email→password→OTP→matched synthetic session root; Back/edge pop retire prior request and clear secrets.",
+    "Settings immutable account-session modal→source Name/Username→save error/retry/accepted in-memory baseline→same-session parent profile update; avatar capability page returns to draft.",
+    "Source sign-out confirmation/cancel/busy→matched receipt→root retirement→welcome; offline route checkpoint contains only signedOut, not credentials.",
+    "Exact request/flow/session/generation fences, account A-B-A retirement, corrupt persistence retention and explicit unsupported account-root boundary."
+  ],
+  "verification": {
+    "foundation": {
+      "log": "ios-auth-fourth-20261113-contract.log",
+      "result": "passed",
+      "scope": "Existing auth state/flow/back/receipts/logout/isolation/persistence plus same-generation identical-error stale-dismissal regression."
+    },
+    "ui": [
+      {
+        "name": "testAuthenticationNativeUnavailableChinese",
+        "bundle": "ios-auth-fourth-20261113-r2.xcresult",
+        "result": "passed",
+        "seconds": 28.247,
+        "scope": "ordinary unavailable provider, repeated welcome error, source input parent, username retention, close/reopen"
+      },
+      {
+        "name": "testAuthenticationSessionRoundTripChinese",
+        "bundle": "ios-auth-fourth-20261113-r2.xcresult",
+        "result": "passed",
+        "seconds": 49.705,
+        "scope": "logout/cancel/restart, email/password/OTP, actual show/hide Binding and labels, number-pad/Continue, edge Back and cleared secret, old chat draft/root restart"
+      }
+    ],
+    "aggregate": "r2 passed2/2; r1 compile failure was frame argument ordering, corrected without changing intended geometry",
+    "reuse": "Profile state/editor and Welcome source hashes match prior r2 archive; its profile save failure/retry/cancel/parent update journey retained rather than repeated. Existing source plans claiming the profile is only a boundary are historical.",
+    "screenshots_viewed": [
+      "ios-auth-fourth-20261113-r2-attachments/40F649B5-EF83-402A-BE2A-4128AE61EDD5.png"
+    ],
+    "source_snapshot": "ios-auth-fourth-20261113-source.json",
+    "matrix": "Chinese/light only; no real service or physical UI automation"
+  },
+  "source_reports": [
+    "ios-auth-input-fourth-20261113-findings.json",
+    "ios-auth-welcome-fourth-20261113-findings.json",
+    "ios-auth-native-third-20261113-findings.json",
+    "ios-auth-account-third-20261113-findings.json",
+    "ios-auth-welcome-third-20261113-findings.json"
+  ],
+  "independent_adaptations": [
+    "Input minimum54 scaled relative to body, caption/body fonts, semantic colors and public default spring/reduce-motion gate are independent inputs; not original recovered defaults.",
+    "Only idle unfocused border1 supplied; full fieldCheck enum/color/state assignment unclosed. Original callback assignment unclosed; host supplies focus callback only when unfocused to preserve native selection.",
+    "Private info-row/error composition, minimum tap-target sizing, bottom action style and authentication presentation metrics remain partial.",
+    "Core preview auth service and request/presentation identities are independent frontend contracts, not recovered official API or account authorization."
+  ],
+  "not_implemented": [
+    "Actual authentication/OAuth/Apple/Google/ASWebAuthenticationSession, credential storage/refresh or profile backend; outside frontend-only implementation",
+    "Phone/country/domain suggestions, recovery/resend, Passkey/MFA/Workspace/new-account and multi-account/workspace frontend roots",
+    "Remaining AuthInputFieldStyle default height/font/color/fieldCheck/info-row/callback values, original NavigationButton/DismissButton glyph/disabled producer and ChatGPTPresentation underlying style",
+    "Welcome full style producer, actual height/corner/color mapping, remembered-account/hero/disclosure/provider predicates;56/28 remain explicit preview values",
+    "Full profile avatar camera/library/file/image editor/upload flow and error consumer, original input validation/disabled gates, exact LabeledTextInput/CapsuleButtonStyle/bottom metrics/scroll modes/save-dismiss",
+    "Personalized logout title field mapping/save-login visibility assignment, original auth-specific haptic callers and physical playback"
+  ],
+  "source_gap_updates": {
+    "input_parent": "Geometry/placeholder/binding/resources now partially closed; original min-height/font/color defaults, full validation/info-row and callback assignments remain unknown.",
+    "welcome": "Selected51byte style copied from ViewParams raw0 payload+0x70 to LoginButtonListView; nearby38/20/16 belong elsewhere.56/28 remain explicitly fixture values, not recovered geometry.",
+    "profile": "Actual Name/Username/actions and scoped save remain implemented from previous pass; avatar/upload and exact original save-dismiss/validation not added.",
+    "haptics": "No new direct login/profile haptic caller proved or invented; existing General setting remains owner of known feedback."
+  },
+  "runtime": {
+    "simulator": {
+      "date": "2026-11-13T12:52:50.461247+08:00",
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "profile": "c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--chat-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "--remote-draft-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "--auth-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light",
+        "--auth-journey-fixture"
+      ],
+      "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/62313AA5-029E-48D3-BF79-E1E3B4E87891/REAChatGPTHost.app",
+      "executable_sha256": "a994c4cfc81d66d54782f9e4fa4dbd380eb816c81a3ed1814e75d7fe516119ff",
+      "installed_hash_match": true,
+      "pid": 57684,
+      "process": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/62313AA5-029E-48D3-BF79-E1E3B4E87891/REAChatGPTHost.app/REAChatGPTHost --offline-fixture --codex-home-fixture=tasks --remote-interactive-replay --remote-attachment-all-capabilities-fixture --remote-command-message-fixture --remote-search-message-fixture --remote-search-action-fixture --remote-file-message-fixture --remote-review-message-fixture --remote-rich-message-fixture --remote-linked-file-fixture --remote-file-citation-fixture --browser-preview-fixture --chat-browser-fixture --remote-model-slider-fixture --remote-permission-fixture --remote-context-usage-fixture --remote-thinking-group-fixture --remote-history-group-fixture --remote-latest-group-fixture --remote-project-sort-menu-fixture --remote-task-controls-fixture --chat-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf --remote-draft-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf --auth-state-profile=c3df541b-8fda-4d91-99a5-ff3b5687fbaf -AppleLanguages (zh-Hans) -AppleLocale zh_CN -rea.preview.appearance light --auth-journey-fixture",
+      "kept_running": true,
+      "manifest_sha256": "a467208986cf965a20450db258a067424cc0951fa52029dd25de210b7d59e33c",
+      "scope": "Ordinary core preview with explicit synthetic auth journey; no forced logout, no real account authentication. Existing preview profile retained."
+    },
+    "device": {
+      "date": "2026-11-13T12:53:11.872065+08:00",
+      "device": "00008150-001E34E93A12401C",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "candidate_executable_sha256": "188b5c236e0c69bfdefd4183a5d72de1a8ecec1ecc7f426ae0acef4a393f0efc",
+      "codesign_strict": "passed",
+      "build_log": "ios-auth-fourth-20261113-device-build.log",
+      "profile": "5E169943-333A-4273-A553-F4D1BD4BE46D",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--chat-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+        "--remote-draft-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+        "--auth-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+        "--auth-journey-fixture"
+      ],
+      "preferences": "Existing phone profile, language, theme and data retained",
+      "preview": "Adds explicit synthetic auth journey from shared core manifest. No forced logout or real authentication; user can choose frontend logout/sign-in journey.",
+      "device_ui_automated_after_launch": false,
+      "install": {
+        "info": {
+          "arguments": [
+            "devicectl",
+            "device",
+            "install",
+            "app",
+            "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+            "--device",
+            "00008150-001E34E93A12401C",
+            "--timeout",
+            "45",
+            "--json-output",
+            "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-auth-fourth-device-install-20261113.json"
+          ],
+          "commandType": "devicectl.device.install.app",
+          "environment": {
+            "TERM": "dumb"
+          },
+          "jsonVersion": 5,
+          "outcome": "success",
+          "version": "651.32"
+        },
+        "result": {
+          "deviceIdentifier": "5998651F-A691-5FB2-A351-40FBCBA8081B",
+          "installedApplications": [
+            {
+              "bundleID": "local.rea.chatgpt.ioshost",
+              "databaseSequenceNumber": 3172,
+              "databaseUUID": "838351CC-76C5-4ED6-A84F-DC45E99601BE",
+              "installationURL": "file:///private/var/containers/Bundle/Application/AAA8E08E-3BAD-4467-9FD6-FDF37BBBBCD7/REAChatGPTHost.app/",
+              "launchServicesIdentifier": "unknown",
+              "options": {}
+            }
+          ]
+        }
+      },
+      "launch": {
+        "info": {
+          "arguments": [
+            "devicectl",
+            "device",
+            "process",
+            "launch",
+            "--device",
+            "00008150-001E34E93A12401C",
+            "--terminate-existing",
+            "--timeout",
+            "25",
+            "--json-output",
+            "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-auth-fourth-device-launch-20261113.json",
+            "local.rea.chatgpt.ioshost",
+            "--",
+            "--offline-fixture",
+            "--codex-home-fixture=tasks",
+            "--remote-interactive-replay",
+            "--remote-attachment-all-capabilities-fixture",
+            "--remote-command-message-fixture",
+            "--remote-search-message-fixture",
+            "--remote-search-action-fixture",
+            "--remote-file-message-fixture",
+            "--remote-review-message-fixture",
+            "--remote-rich-message-fixture",
+            "--remote-linked-file-fixture",
+            "--remote-file-citation-fixture",
+            "--browser-preview-fixture",
+            "--chat-browser-fixture",
+            "--remote-model-slider-fixture",
+            "--remote-permission-fixture",
+            "--remote-context-usage-fixture",
+            "--remote-thinking-group-fixture",
+            "--remote-history-group-fixture",
+            "--remote-latest-group-fixture",
+            "--remote-project-sort-menu-fixture",
+            "--remote-task-controls-fixture",
+            "--chat-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+            "--remote-draft-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+            "--auth-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+            "--auth-journey-fixture"
+          ],
+          "commandType": "devicectl.device.process.launch",
+          "environment": {
+            "TERM": "dumb"
+          },
+          "jsonVersion": 5,
+          "outcome": "success",
+          "version": "651.32"
+        },
+        "result": {
+          "deviceIdentifier": "5998651F-A691-5FB2-A351-40FBCBA8081B",
+          "launchOptions": {
+            "activatedWhenStarted": true,
+            "arguments": [
+              "--offline-fixture",
+              "--codex-home-fixture=tasks",
+              "--remote-interactive-replay",
+              "--remote-attachment-all-capabilities-fixture",
+              "--remote-command-message-fixture",
+              "--remote-search-message-fixture",
+              "--remote-search-action-fixture",
+              "--remote-file-message-fixture",
+              "--remote-review-message-fixture",
+              "--remote-rich-message-fixture",
+              "--remote-linked-file-fixture",
+              "--remote-file-citation-fixture",
+              "--browser-preview-fixture",
+              "--chat-browser-fixture",
+              "--remote-model-slider-fixture",
+              "--remote-permission-fixture",
+              "--remote-context-usage-fixture",
+              "--remote-thinking-group-fixture",
+              "--remote-history-group-fixture",
+              "--remote-latest-group-fixture",
+              "--remote-project-sort-menu-fixture",
+              "--remote-task-controls-fixture",
+              "--chat-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+              "--remote-draft-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+              "--auth-state-profile=5E169943-333A-4273-A553-F4D1BD4BE46D",
+              "--auth-journey-fixture"
+            ],
+            "environmentVariables": {
+              "TERM": "dumb"
+            },
+            "platformSpecificOptions": {},
+            "startStopped": false,
+            "terminateExistingInstances": true,
+            "user": {
+              "active": true
+            }
+          },
+          "process": {
+            "auditToken": [
+              4294967295,
+              501,
+              501,
+              501,
+              501,
+              19397,
+              0,
+              343031
+            ],
+            "executable": "file:///private/var/containers/Bundle/Application/AAA8E08E-3BAD-4467-9FD6-FDF37BBBBCD7/REAChatGPTHost.app/REAChatGPTHost",
+            "processIdentifier": 19397
+          }
+        }
+      },
+      "running_processes": [
+        {
+          "executable": "file:///private/var/containers/Bundle/Application/AAA8E08E-3BAD-4467-9FD6-FDF37BBBBCD7/REAChatGPTHost.app/REAChatGPTHost",
+          "processIdentifier": 19397
+        }
+      ],
+      "pid": 19397,
+      "process_container_matches_new_install": true,
+      "kept_running": true,
+      "processes_record": "ios-auth-fourth-device-processes-20261113.json"
+    },
+    "build_logs": [
+      "ios-auth-fourth-20261113-final-simulator-build.log",
+      "ios-auth-fourth-20261113-device-build.log"
+    ],
+    "device_ui_automated": false,
+    "display": "Existing dedicated REA Device Hub external-window selection preserved; no move or other simulator startup this batch.",
+    "core_manifest": {
+      "consumed_by": "Repository run-simulator.py launcher; UITest resource is bundled into REAHostUITests target, not into the host app.",
+      "launch_arguments_match_current_manifest": true,
+      "host_app_resource_expected": false,
+      "test_note": "Current authentication UI tests explicitly supply journey/unavailable flags and do not depend on bundled core manifest; manifest changed only in final preview config/build."
+    }
+  },
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  },
+  "next_major_module": "9 Plugins only; no expansion of other sidebar packages or real services",
+  "user_review_path": "Core preview: Settings→profile pencil→edit/save/cancel; Settings→Log out→synthetic welcome→email/password/code→return to old chat draft. Use synthetic values; no official account.",
+  "remaining_delivery_boundaries": [
+    {
+      "item": "OS cold icon launch preview configuration",
+      "evidence": "Host reads ProcessInfo/CommandLine flags and profile inputs; core manifest belongs to launcher/test target, not app resource.",
+      "status": "Static startup audit; not exercised by killing the physical user preview.",
+      "limit": "Current installed/launch-verified preview has full explicit configuration. An OS icon cold launch without arguments is not proved to restore this selected fixture/profile configuration. Keep separate from tested app relaunch with same arguments.",
+      "next_owner": "App startup/shell preview configuration owner, not authentication service."
+    }
+  ]
+}

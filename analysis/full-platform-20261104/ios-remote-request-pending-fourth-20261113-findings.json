@@ -1,0 +1,204 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "userInputSubmissionTask admission, async continuation/cleanup, frontend pending/error/disable boundary. Two bounded candidate groups; no service implementation.",
+  "candidate_groups": [
+    {
+      "id": 1,
+      "decision": "Trace actual userInputSubmissionTask construction/async continuation and cleanup from18e73e0.",
+      "stop": "Stop after constructor plus one concrete async body/continuation owner; no whole RPC implementation."
+    },
+    {
+      "id": 2,
+      "decision": "Bind task/result state to actual frontend disable/pending/error consumer if a concrete state write appears.",
+      "stop": "No guessing from task field names; if UI producer unclosed record exact pending/result boundary and stop."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "single-inflight-owner",
+      "status": "verified",
+      "chain": [
+        "18e7474..7480 loads _cancelsPreviousStorage_userInputSubmissionTask via original ivar storageb1e7e00; nonnil branches directly18e7768 return.",
+        "After request snapshot/identity checks,18e765c→7c414ac invokes Foundation.UUID.init();18e7680..76a4 writes it to userInputSubmissionID via ivar storageb1e7d88.",
+        "18e7740→76250cc constructs task;18e7758→88d79c writes it to userInputSubmissionTask.88d79c replaces field and cancels/releases previous value through its admitted helper path."
+      ],
+      "evidence": [
+        "submission-owner-tail.asm",
+        "selected-ivar-identities.json",
+        "selected-imports.json",
+        "task-storage-setter.asm",
+        "task-create-generic.asm"
+      ],
+      "reuse": "ios-remote-request-submission-third-20261113/input-submission-owner.asm",
+      "limits": [
+        "Task storage admission is not an observable spinner/disabled binding. Enqueue/task construction is not remote acceptance.",
+        "Precise generic cancellation helper inner task-state predicate not exhaustively resolved."
+      ]
+    },
+    {
+      "id": "concrete-async-owner",
+      "status": "verified-dispatch-partial-result",
+      "chain": [
+        "Async function record7e16550 first relative word points to1c427d0; second word0x20 is retained raw context size, not a protocol field.",
+        "1c427d0 tailcalls1922fb4, capturing original action/request/answer inputs and weak VM owner.",
+        "1923008 weak-loads VM, if available awaits18fbbd4 via continuation19231c0.",
+        "Continuation19231c0 routes error via1923470 and success via1923220.1923220 invokes original returned service-owner virtual method at vtable+430, with original captured input; await continuation1923284.",
+        "1923284 routes success19232e0 versus error1923530. Every inspected terminal continuation calls1d99370 to reload captured args and then19235f8."
+      ],
+      "evidence": [
+        "async-function-record.json",
+        "submission-async-entry.asm",
+        "submission-async-owner.asm",
+        "submission-current-arguments.asm"
+      ],
+      "limits": [
+        "Dynamic virtual method owner+430 is concrete service dispatch but exact API/schema/acceptance contract remains unclosed.",
+        "Success continuation means the invoked async operation returned without throwing; not proof of model generation or authoritative request removal."
+      ]
+    },
+    {
+      "id": "attempt-aware-cleanup",
+      "status": "partial-owner-and-clear-proved",
+      "chain": [
+        "19235f8 weak-loads owner, reads current userInputSubmissionID throughb1e7d88 (19236b8..36d0), then performs optional/Equatable comparisons against captured attempt identity before proceeding to clear branch19237e4.",
+        "1923800..3818 sets userInputSubmissionID to nil.1923834..383c callsad0778 with original task storageb1e7e00. ad0778 is movx0,#0;tail88d79c, clearing/cancelling task storage.",
+        "192384c..38bc rereads current request via18e7368 and compares it with captured request via24f0958. Under additional unanswered/array-count predicates19238c0..38c8, it may re-enter18e73e0 at19238ec."
+      ],
+      "evidence": [
+        "submission-final-cleanup.asm",
+        "submission-final-cleanup-tail.asm",
+        "submission-task-clear.asm",
+        "submission-current-arguments.asm",
+        "selected-ivar-identities.json"
+      ],
+      "limits": [
+        "The cleanup is not merely unconditional task=nil: attempt identity and current request are checked.",
+        "The exact case/optional equality mapping and request-change retry/pending-answers predicate are not all normalized. Do not copy a guessed automatic-retry algorithm or claim per-question revision semantics.",
+        "Current request re-entry is not user-visible retry UI proof."
+      ]
+    },
+    {
+      "id": "error-boundary",
+      "status": "partial-not-ui",
+      "chain": [
+        "Error continuations1923470 and1923530 branch through generic error/cancellation classification76401e0; one branch bypasses error handling, other branch invokes diagnostic/error handlers.",
+        "19234c8..34ec and1923590..35b4 supply source literal88b8420 and message factory1923904 to18f1e18 (diagnostic logging carrier750a8cc), separately invoke18dab38 via1d89df8, then terminal cleanup.",
+        "1923904 supplies error-message literal88b8450."
+      ],
+      "evidence": [
+        "submission-async-owner.asm",
+        "submission-result-helpers.asm",
+        "submission-error-presentation.asm",
+        "submission-error-closure.asm",
+        "submission-error-owner-helper.asm",
+        "submission-result-owner-branch.asm",
+        "submission-error-literals.json"
+      ],
+      "limits": [
+        "No verified QuestionCards Alert/Banner/progress/disabled consumer was established from these error handlers.18dab38 dispatches through owner/dependency and is not itself proved a displayed error card.",
+        "Do not label generic error classifier as a particular CancellationError case until its concrete witness/case extractor is closed."
+      ]
+    }
+  ],
+  "current_host": {
+    "authority": "current-source-observation",
+    "paths": [
+      "implementation/ios/Sources/RemoteUserInputInteraction.swift",
+      "implementation/ios/Sources/NativeConversationHost.swift"
+    ],
+    "observations": [
+      "RemoteUserInputDraft.perform already copies draft to next and publishes terminal mutation only when synchronous accepting callback returns true; rejected final text/option preserves draft. Earlier third-pass draft-loss finding has been fixed in current source.",
+      "RecoveredRemoteUserInputForm has synchronous(RemoteUserInputEvent)->Bool onAction; no asynchronous pending-attempt task or spinner binding. Form owner uses explicit failure alert and retains request when replay/disconnected adapter rejects.",
+      "Current local replay returns a frontend transaction result synchronously; lack of async pending spinner is not by itself a bug in this contract."
+    ],
+    "limit": "No build/device/test executed; concurrent parent edits may move line numbers. See current-host-identity.json for inspected snapshot."
+  },
+  "can_restore_now": [
+    {
+      "classification": "source-backed-lifecycle-principle-with-independent-adapter",
+      "item": "Keep one in-flight owner attempt, separate attemptID from requestID, and ignore stale attempt completion before clearing current pending state; original task admission and userInputSubmissionID corroborate this separation."
+    },
+    {
+      "classification": "current-frontend-contract",
+      "item": "Retain current synchronous rejection rollback. If an async frontend adapter is introduced later, pending, failure, completed and cancellation must be explicit attempt-scoped states, and UI must not remove request at enqueue time."
+    }
+  ],
+  "cannot_claim_recovered_now": [
+    "Original submission spinner, exact disabled controls, cancel button or text/selection lock policy.",
+    "Original error banner/alert/label or automatic request dismissal after service completion.",
+    "Original user-visible retry presentation and original cancellation classification.",
+    "Success meaning model generation completed or the request was authoritatively accepted by a server."
+  ],
+  "unknowns": [
+    {
+      "id": "pending-ui-producer",
+      "breakpoint": "userInputSubmissionTaskb1e7e00 and userInputSubmissionIDb1e7d88 to concrete Observable state/QuestionCards constructor; current captured local View only proves submit/dismiss callbacks.",
+      "next_minimum": "Bind one actual state getter from task owner to QuestionCards/UserInputRequestView argument or modifier before adding recovered spinner/disable UI."
+    },
+    {
+      "id": "error-display-consumer",
+      "breakpoint": "18dab38→188a1f0 /1aa453c; diagnostic18f1e18 not itself UI.",
+      "next_minimum": "Resolve error/presentation model writer and actual native view consumer, including request identity, before claiming error UI."
+    },
+    {
+      "id": "cleanup-reentry-policy",
+      "breakpoint": "19236e4..37e0 optional Equatable gates;19238c0/38c8 pending payload-count checks before18e73e0 re-entry.",
+      "next_minimum": "Normalize exact UUID/current-request/answer owner type and equality witnesses; do not infer auto-retry based on branch shape."
+    }
+  ],
+  "haptics": {
+    "new_explicit_caller": false,
+    "result": "No explicit feedback caller established in bounded task creation/async/error/cleanup windows. No new haptics recommended."
+  },
+  "stop_condition": "Two bounded candidate groups used. Actual task/attempt ownership now traced; pending UI and error presentation still unclosed, so no source-claimed visual patch proposed.",
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "old_reports_modified": false,
+    "tests_executed": false,
+    "builds": false,
+    "devices": false,
+    "official_runtime": false,
+    "network": false
+  },
+  "raw_directory": "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw",
+  "evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/task-factory-helpers.asm": "f4271855d243a25300d646b9bf861d747d3893aff0dd44bb62c92f594551ab29",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-error-literals.json": "1b4a6a4acd88f3afffacc1baf4f1f08922ad58c5c7b8fe9c77ca34d3d7f82431",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-request-snapshot.asm": "5d1da006154120b5060dbf9b792fad8dc77e76d0399f712a04320b5be2de67f6",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/task-storage-setter.asm": "ee62be2ff141b5bfcd7eaa6ed88df24c3defa146d27ce8e8a89594598cb9f787",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-capture-helper.asm": "3ee831173c7057dee709f1374b9a8794a84dd72d8e6735975127fe4a8a32e5fb",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-error-closure.asm": "aaa27756070690f204818699812038b14ab1e39524312b9862663fcb25f84829",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-final-cleanup-tail.asm": "28dbc559109be086b49e3bc86218d3a58a88751fa52b690ea5091723d4cd0369",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-owner-tail.asm": "0643456d026e659cc7a078801ce730e61b139a71b31da467b17f504e1bc5cccd",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-result-owner-branch.asm": "3c334451addd4e275ebe730d9bd80818e7fe2405d3a4d3f4132d70568ac25580",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-async-entry.asm": "6546f5f803b5bab54c61ca62833119827593439f003f1f05b1f0b8c1e29f90cd",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/async-function-record.json": "8988c2ae5efd4e4c52431d680303cb985d2d8bbcf412f5dec1a5a14643e61982",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/scope.json": "cdd2ab32751cf27d968ba5e0deac2ccedd7b8264b21504cf954c6bffe2c566f6",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/current-host-identity.json": "3b42da9e914af0352770467a2acd6c4629a8ce732193a22e33da00b6668de68a",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-final-cleanup.asm": "1e5b5ca1db6fa16e07d8101dbbf1177c52478483d31f18715d9113b5db09fca7",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-result-helpers.asm": "814b332b3673ed449c57ed91007dce5a4776be164143a44414eeb02c397c9608",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-snapshot-current-helper.asm": "e5e8042895f1201f265eec161fda775caebc12f9840ca2cf45f30e4f785c2f59",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-error-owner-helper.asm": "ef027619bac167333d823f9601c9c9cdaac1fda9f426029ee11b89115178b0ab",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/task-create-generic.asm": "2ede2787ca3d04ac451cc12e49e340f175d8fff30a1330a036dd18e3f7b1518b",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/input-owner-dispatch.asm": "d7c9d8d71e524df80fb25fa6d643bc6266d72e7fc2197913441514dcb16a1be8",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-log-closure.asm": "7ff5b1fd96f133d57dcc81e57abe2119526a3edd3a85dc0759e7cb77bfd75c8e",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-error-presentation.asm": "c083700ae3c60be0e9aebaef189fca3d0ce5a8dc31bce0c536e94a247e247e2c",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-cancellation-helper.asm": "8a6938b845abc6c28e0f5bf8b49fddf7b1c54c8fc2b0811e1a6fd8481282b667",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-current-arguments.asm": "410cdd5bb7112c4336c0c49daa0bcd2bc9fe8a160060971e71333c54829d8151",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-task-clear.asm": "5d3e55f9b38c596e2b0fe1de91f61c9229cb855d7771a952fde95dd83e84aa63",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/selected-imports.json": "31d0f4ab7154fc309794948e032aba460fa33181449959c038cbfe08daa044e1",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/task-create-helper.asm": "1b4641fcafeaec88a58d5a44ef4609268f28c14443d24c6f53e3a2a34701b83b",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-async-owner.asm": "c69f6adf9755df1f67ded4a40a145bc4a711b1da8959a642fc02ed7de12c94fd",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/selected-ivar-identities.json": "392f58fcd4663d3b1ba0a19c3a6c88740d3bded03467bf6fa4ec9467f5daa13d",
+    "analysis/full-platform-20261104/ios-remote-request-pending-fourth-20261113-raw/submission-error-owner-call.asm": "39e80904a68572eeffbe45933b1cb44ec4757179bb32c4ddf54ce15212f96933"
+  }
+}

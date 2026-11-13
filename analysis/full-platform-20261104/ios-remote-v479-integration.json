@@ -1,0 +1,170 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v479",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Why did source-backed leaf controls fail to reproduce the official Remote page composition, and which recovery practice prevents the same omission?",
+  "references": [
+    {
+      "name": "1-照片-1.jpg",
+      "sha256": "0bb1e55220f31edff7fd2b9c107b28af118f9431ea1a0e0b0ef093d92be2e23f",
+      "evidence_type": "user_supplied_official_ui_reference",
+      "exact_version": "unknown",
+      "privacy": "Personal content is not copied into fixtures"
+    },
+    {
+      "name": "2-照片-2.jpg",
+      "sha256": "09ff642401798cf862019dfa7d5591363b86a4a31627e7cbdad198c779dc9d77",
+      "evidence_type": "user_supplied_official_ui_reference",
+      "exact_version": "unknown",
+      "privacy": "Personal content is not copied into fixtures"
+    },
+    {
+      "name": "3-照片-3.jpg",
+      "sha256": "3acc22533bfec4cdb4049bfa6b046a22754c6f5d4ec6aade2c0b6c7ffd828e3e",
+      "evidence_type": "user_supplied_official_ui_reference",
+      "exact_version": "unknown",
+      "privacy": "Personal content is not copied into fixtures"
+    }
+  ],
+  "observed_root_causes": [
+    {
+      "source": "implementation/ios/Sources/NativeConversationHost.swift RemoteThreadFixturePage.body (pre-v479)",
+      "finding": "Approval actions were children of transcript VStack. User-input requests alone used the dedicated safe-area bottom bar."
+    },
+    {
+      "source": "implementation/ios/UITests/HostInteractionTests.swift testRemoteApprovalButtonLayout/testRemoteApprovalFeedbackAndScope",
+      "finding": "Prior tests scrolled until controls were hittable, validating actions while concealing wrong attachment. No stationary-card assertion existed for approval."
+    },
+    {
+      "source": "implementation/ios/Sources/NativeConversationHost.swift RemoteTaskFixturePage / CodexHome",
+      "finding": "Task-row implementation is carried by an independent host-grouped fixture and generic modal NavigationStack. It lacks the official project hierarchy, source chips and page composer."
+    },
+    {
+      "source": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md v410/v411/v414/v421",
+      "finding": "Partial parent/geometry states were recorded but subsequent delivery continued at leaf-component granularity without closing the full page."
+    }
+  ],
+  "official_observations": [
+    {
+      "source": "0x1a1dfec; ios-remote-v479-approval-surface.asm and surface-tail.asm",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Approval background has rounded rectangle24, bg/primary opacity0.82, regular Material, border/default width0.5 and black0.12 shadow radius18/x0/y8. It differs from the question-card Glass style."
+    },
+    {
+      "source": "0x1a1d1d4;0xafd4dc;0x45b4d0;0x1a2ab4c;0x4640f8;0x1c02d0",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Banner stack spacing16; inner top12/horizontal20/bottom20; outer card horizontal20/top4/bottom8. Effective wide-screen maxWidth is environment-owned and unresolved."
+    },
+    {
+      "source": "0x1a1d8b4..0x1a1d91c;0x7e0aaa8;0x1a29084->0x1a291b0",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Optional horizontal command preview and native approval-card composition exist. Full parent branch selection and reason/command formatting remain partial."
+    }
+  ],
+  "page_regions": [
+    {
+      "region": "task-list",
+      "implementation": "partial",
+      "runtime": "historical leaf tests only",
+      "visual_acceptance": "not_accepted",
+      "missing": [
+        "project grouping projection",
+        "source chip strip",
+        "page-level search and navigation",
+        "list composer"
+      ]
+    },
+    {
+      "region": "conversation",
+      "implementation": "partial",
+      "runtime": "historical selected components",
+      "visual_acceptance": "not_accepted",
+      "missing": [
+        "title/context/action group",
+        "status pill owner",
+        "native Markdown integration",
+        "full user-message and assistant action presentation"
+      ]
+    },
+    {
+      "region": "approval",
+      "implementation": "partial",
+      "runtime": "v479 selected regression passed",
+      "visual_acceptance": "partial simulator observation",
+      "missing": [
+        "complete parent branch predicates",
+        "reason fallback and command typography",
+        "deny capsule styling",
+        "effective maxWidth and status-pill measurement",
+        "device acceptance"
+      ]
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Move scoped approval actions out of transcript into the existing bottom bar",
+      "Add distinct source-bound approval surface",
+      "Show explicit synthetic reason and command preview",
+      "Add stationary-card regression with real transcript movement and cross-host cleanup",
+      "Record project-wide proven integration practices"
+    ],
+    "independent_adaptations": [
+      "SwiftUI reconstruction, not complete official source reuse",
+      "Bottom attachment is corroborated by supplied UI and native composition; full branch producer remains partial",
+      "Reason and command are explicit synthetic presentation inputs; their full official formatting is pending",
+      "Using callout/semibold for reason and monospaced callout for command remains a provisional host presentation, not a verified official typography claim",
+      "Private safe-area availability and maxWidth overrides are not recovered"
+    ]
+  },
+  "validation": {
+    "build": "passed as part of xcodebuild test",
+    "ui": {
+      "receipt": "ios-remote-v479-ui.xcresult",
+      "summary": "ios-remote-v479-ui.summary.json",
+      "passed": 3,
+      "failed": 0,
+      "tests": [
+        "testRemoteApprovalButtonLayout",
+        "testRemoteApprovalFeedbackAndScope",
+        "testRemoteApprovalStaysOutsideHistoryScroll"
+      ],
+      "variants": [
+        "default and XXXL text",
+        "safeAreaBar and safeAreaInset"
+      ]
+    },
+    "visual": "Observed simulator bottom approval surface after normal task-list navigation; whole-page comparison remains partial",
+    "preview": {
+      "pid": 28389,
+      "state": "approval task visible; left running",
+      "display": "Window menu offered Move to Built-in Retina Display, consistent with external-display placement"
+    },
+    "device": "not_updated",
+    "whole_page_parity": "not_accepted",
+    "retention": "dryrun targets empty"
+  },
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "c0bce9e4a0bdc048116693c265e2300a849ec78172d3cf937d1348fb0aebd533"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "ac01e8748938ea9868a2f7be9a764ac5d1ff645b9e326cd388fd11c81f1ae11e"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "0d4e233c985272f673291b30ab4d9006f63e8fdf1af4c80f5931c964edec3349"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "cfb1b965b4b2ca5b049f13cd79f3c52f68498d936dd41ce304e169713cf13e47"
+    }
+  ]
+}

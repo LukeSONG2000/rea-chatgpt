@@ -1,0 +1,99 @@
+{
+  "batch": "v506",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "no progress: status report only; live worktree and completed test results were revalidated before this implementation",
+  "current_goal_turn": "progress: finalized v505 records; restored title Menu and Recents-first consumer; completed v507 date-grouping evidence and independent replay",
+  "integration": [
+    "CodexContentView principal Menu with original title/chevrons, label typography/colors/spacing and parent PlainButtonStyle",
+    "Organize inline grouping Picker, byWorkspaces Recents-first binding and optional project-sort action; independent optional management callbacks",
+    "ByWorkspaces Recents-first moves Recents between pinned and project groups while retaining per-section collapse/source/navigation state",
+    "Standard principal uses actual content width minus40; taskList retains nil width, with official0.2s search-state animation",
+    "13 context-proven labels added;92 selected keys across65 locale tables"
+  ],
+  "independent_adaptations": [
+    "Current preview explicitly chooses taskList, cloud/name-change defaults and nil single-host/usage-summary inputs",
+    "Chronological/priority choices currently return an explicit recovery-unavailable alert and preserve grouping; initial attempt to disable Picker labels was replaced with guarded owner Binding",
+    "Management destinations and service-driven project sorting return explicit unavailable states; they do not alter list or drafts",
+    "Project sorting is an opt-in fixture with lastUpdated getter and exact selected enum payload retained in its response",
+    "Existing synthetic membership/filter ordering and modal dismissal remain independent host adapters",
+    "Reduce Motion bypasses the animation as a native host adaptation"
+  ],
+  "validation": {
+    "ui_final": {
+      "distinct_passed_cases": 6,
+      "cases": [
+        "home menu management/optional callback/sort request boundaries (r4)",
+        "Chinese XXXL menu/organize capability gate (r4)",
+        "search cancel/capability (r4)",
+        "Recents-first order/collapse/search/new-draft return (r5)",
+        "large-text search (r5)",
+        "fixed approval outside scrolling history (r5)"
+      ],
+      "production_revision": "r4 and r5 share production sources; r5 corrects only adjacent-section test assertion"
+    },
+    "failures_preserved": [
+      "Initial command named nonexistent REAChatGPTHostUITests instead of scheme REAHostUITests; no tests executed",
+      "r2 menu AX height36 was compared to recovered label minHeight44;3passed1failed",
+      "r3 repeats AX-height mismatch at standard/XXXL; fixed approval passed",
+      "r4 direct geometry proves label44 while AX36; Recents test incorrectly required positive gap despite official zero section spacing;3passed1failed",
+      "r5 allows adjacent boundaries to touch and all3tests pass"
+    ],
+    "model_text": "passed /tmp/rea-v506-model-final.log",
+    "visual": [
+      "Default Chinese title/menu and manual Recents-first toggle reviewed",
+      "Chinese XXXL title/menu screenshots reviewed; wrapping preserved",
+      "Direct SwiftUI label geometry44 and Menu AXheight36 recorded separately; physical hit target remains unaccepted"
+    ],
+    "device_build": "Final r4 production signed506 and codesign verification passed; CFBundleVersion506 checked",
+    "physical_device": "iPhone Air unavailable at22:32 final inventory; latest successful install496",
+    "preview": {
+      "version": 506,
+      "pid": 8229,
+      "state": "system-following Chinese All task list, cloud enabled, Recents-first enabled manually; left running",
+      "screenshot": "ios-remote-v506-list-preview.png",
+      "display": "only built-in Color LCD available"
+    },
+    "retention": "fixed build directories reused; retention audit has no stale targets; approximately34GiB free"
+  },
+  "limits": [
+    "Whole page fidelity remains partial, including parent modal-vs-sidebar entry, single-host subtitle, alternate titles, usage summary and list composer",
+    "Standard measured-width branch has model coverage; runtime parent-toolbar/rotation acceptance remains open",
+    "Management destination pages and actual service capabilities/persistence are unconnected",
+    "Chronological producer now has v507 evidence/replay but is not integrated in506; priority producer remains unresolved",
+    "Full visual equivalence, actual IME and physical touch/haptics remain unaccepted",
+    "No commit or push"
+  ],
+  "next_minimum_actions": [
+    "Integrate ordinary chronological date buckets using v507 sortDate/updatedAt rules and independent fixture vectors",
+    "Continue list composer and owner/menu destination boundaries",
+    "Resume Remote transcript, Chat/Work, haptics and earlier feedback in priority order; Android independently evidenced"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "95bc15c433c79c426c9d988a09ff415c429f6229438d52bbf02530052b3550db",
+    "implementation/ios/Sources/OfficialText.swift": "0fe9cf020c0be9ef0cb92dbe1b27e225fda0f6b85b967f812d7e08182f1d39df",
+    "implementation/ios/Sources/RemoteWorkspacePresentation.swift": "6e190d2a50f10f503128513a8ffafb64e7708de2011cb2d5009b7e4c839e5267",
+    "implementation/ios/Resources/OfficialTranslations.json": "6059082d57c75715b810331ffb06d9d6f9e280fff3fa438fd9f1a0be2bf70f40",
+    "implementation/ios/UITests/HostInteractionTests.swift": "9e8ed06d7eb168ed5a3e922b36ac163362f00abb401890661fe281ea5b661546",
+    "implementation/ios/TextTests/main.swift": "4238d056bbe924d32f893dd88e432cf5f9eb0fde881ddec4f7d0f409e3b4c81f",
+    "implementation/ios/Tools/prepare-official-text.py": "8cfb757c03a3290547b7b8f91c170a6f6ec79fb52e4328d7f48ffd995f024fa3",
+    "implementation/ios/test-official-text.sh": "612dbf68ad409a5eb727e42296dad7400ab109a4b041bf9c8bff7289e83e61c9",
+    "AGENTS.md": "eb1d8033d83c1f70fe848d90d7807bc91c7d96b8817471651a973c3e35c4ac57"
+  },
+  "evidence_hashes": {
+    "ios-remote-v506-title-menu-findings.json": "a7832b8178c063200e19c184d86c736bff5ad2a2e2211817eb618dc797048c9f",
+    "ios-remote-v506-title-label-layout-findings.json": "5de83b08ca34b230c50006911df1bc2a7bfc402d7585a05d6f494ebaba016893",
+    "ios-remote-v506-search-width-findings.json": "28efa9ceaeb0b3a42b5a0d4efaf2c8236a8533362fb9692907c2af48a28b405d",
+    "ios-remote-v506-chatsfirst-findings.json": "60b2a04a2e92b49233900b140283dbe54c79e12d4ab44f1dd80d540a1a7281c0",
+    "ios-remote-v506-text-extraction.json": "685cc3953531af2d0f0ecec12caeb76fd0d162dc6707acd9ccbf70b31cff8166",
+    "ios-remote-v506-label-measurements.json": "cf22e21110ff865e11deeec9a3e09261a5037443f1905445f27033e9c359b548",
+    "ios-remote-v506-r2-ui.summary.json": "ea8b7ffd706311bfba0aa37ee95471e3b5c794680c0cbb0e9cce44ca19641eef",
+    "ios-remote-v506-r3-ui.summary.json": "a8824c3776e960ef85a3556b668a6d4ef84c5ffe99cb0bc9c4445eac4057e0a1",
+    "ios-remote-v506-r4-ui.summary.json": "95430cf4f2b5e84974c8f6f300e94f5da0db92913895012db93ebe0da6bfdd81",
+    "ios-remote-v506-r5-ui.summary.json": "02900ab073878fd6329b1929a70559a667ef03acae10a06068231721a97ddf37",
+    "ios-remote-v507-chronological-findings.json": "4cb62edbc0d41043e582e19746b9831d65f455cce3a53b49e822e32a4b591507",
+    "ios-remote-v507-foundation-replay.json": "de608b8ebacf08be8f214adc0e25bc60f6a7e2b1d97124cad6ed3c163b4a519a"
+  }
+}

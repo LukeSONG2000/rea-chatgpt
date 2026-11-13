@@ -1,0 +1,121 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static",
+  "confirmed": [
+    {
+      "claim": "Projects title is an independent TaskSection in flat section array. Constructor sets .projectsTitle ID, empty items and request list in +0xf8. It is not a nested container of every folder section.",
+      "locations": [
+        "0x3332b4..0x3332f4",
+        "0x33330c inserts at index x21 through0x3c369c"
+      ]
+    },
+    {
+      "claim": "Processing for Projects insertion runs only for raw grouping value1, same value passed to descriptor constructor by-workspaces branch.",
+      "locations": [
+        "0x332de4..0x332dec",
+        "0x332538..0x332548"
+      ]
+    },
+    {
+      "claim": "Scans section array for first remoteWorkspace or remoteProject. Finds raw3 using keypath7cf9fe8/getter32956c/extract329b1c, raw4 using keypath7cfa010/getter329654/extract329b8c. If found, insertion index is that first matching index regardless of request list emptiness.",
+      "locations": [
+        "0x333094..0x33317c",
+        "0x33310c",
+        "0x333168",
+        "0x333228..0x333230"
+      ]
+    },
+    {
+      "claim": "If no workspace/project section exists and catalogRequests is empty, skips title insertion.",
+      "locations": [
+        "0x333180..0x333188",
+        "0x333234..0x33323c"
+      ]
+    },
+    {
+      "claim": "If only catalogRequests exist, insertion defaults to end. When input Bool at local+0x1c is false and array nonempty, scans for first remoteProjectlessThreads and inserts there, otherwise end.",
+      "locations": [
+        "0x33318c..0x333224",
+        "0x333240",
+        "0x329460->0x329a44 tests no-payload discriminator2 of raw6"
+      ]
+    },
+    {
+      "claim": "Title comes from shared getter0x75d92dc. It starts with literal Projects, passes through common lookup0x75db078->0x75dd3a4 and stores returned String in descriptor title. Localization table identity is not fully bound in this batch.",
+      "locations": [
+        "0x333248..0x33324c",
+        "0x3332d4..0x3332d8"
+      ]
+    },
+    {
+      "claim": "Header variant constructs common kind2 with no icon, subtitle, or new-thread callback; retains collapse callback and common title metrics.",
+      "locations": [
+        "0x39c628",
+        "0x39c6cc..0x39c700"
+      ]
+    },
+    {
+      "claim": "Direct contents rendered beneath this title come from projectCatalogRequests, not the items/folder array. Collapse uses empty request array while expanded uses section+0xf8, unless shared suppression/search overrides collapse.",
+      "locations": [
+        "0x39c240..0x39c280",
+        "0x39c2cc..0x39c2d4"
+      ]
+    },
+    {
+      "claim": "Request row closure438e1c invokes39c854. Request metadata contains id:HostIdentity, hostDisplayName:String, requestState:SwiftToolbelt.RequestState<Void, Error>. Error presentation contains codex_remote_project_catalog_loading_error with fallback beginning Couldn't load projects from .",
+      "locations": [
+        "0x438e48",
+        "0x39c8e0..0x39c964",
+        "descriptor0x955f1bc"
+      ]
+    },
+    {
+      "claim": "List visible-sections selector independently asks collapsed getter for .projectsTitle. If true under relevant owner/query branches, switches to owner+0x18 array. Thus full Projects collapse behavior also depends on an alternate precomputed section projection.",
+      "locations": [
+        "0x398fb4..0x398fdc",
+        "0x461f30 zero-initializes ID",
+        "0x398fbc writes raw6 with emptycase0"
+      ]
+    }
+  ],
+  "insertion_algorithm_after_upstream_projection": [
+    "If groupingRaw != 1, return original sections.",
+    "Apply existing upstream sorting/filtering to sections and derive catalogRequests (their complete policies remain outside this result).",
+    "If sections.firstIndex(id.isRemoteWorkspace || id.isRemoteProject) exists, use that index.",
+    "Else if catalogRequests.isEmpty, return sections.",
+    "Else default insertionIndex=sections.endIndex; if inputFlagAtLocal1c==false, use first remoteProjectlessThreads index if present.",
+    "Insert standalone projectsTitle descriptor with empty items and projectCatalogRequests=catalogRequests."
+  ],
+  "unknown": [
+    "Semantic name and owner binding of input Bool stored at producer local+0x1c. Its control-flow effect above is confirmed.",
+    "Full selection policy that converts host snapshot entries of stride0x88 into catalogRequests. Bounded raw eligibility at332f24..332f78 observed; state case names not safely bound.",
+    "Alternate _taskSectionsWithProjectsCollapsed producer and exact membership exclusions. Metadata presence alone cannot prove how owner+0x18 is populated.",
+    "Upstream sort comparator3b93cc and final sorting behavior; no generic folder reordering recommendation.",
+    "Official runtime visuals/touch/animation and cross-platform equivalence."
+  ],
+  "next_integration": [
+    "Continue treating actual workspace/project sections as peers with their own identities.",
+    "An independently staged fixture may exercise standalone Projects descriptor, request loading/error rows, and insertion before first proven workspace/project. Keep unbound input policies explicitly fixture-owned.",
+    "Before enabling full Projects collapse, bind owner+0x18 initializer and _taskSectionsWithProjectsCollapsed producer. Do not infer membership by visual containment or blanket folder filtering."
+  ],
+  "new_files_sha256": {
+    "ios-remote-v500-projects-producer.asm": "2d2c640bac5c51eeda6d732a3e92c6d26a10d33438ff5b770486846aa9291c23",
+    "ios-remote-v500-projects-predicate-helpers.asm": "75c299683cc8b0a1ce54a4f21008720595af3a5e62f1a874be15fcccef0b5a01",
+    "ios-remote-v500-projects-contents.asm": "b301b1225adf533944cc9da93eceb4fcaf88dd49c236d4295060e724fdfdde0c",
+    "ios-remote-v500-projects-constructor-helpers.asm": "adf7101b0b263c8114153b5f89b3d15dba741be15010043ef4452990fc6cf1aa",
+    "ios-remote-v500-projects-constants.json": "1b2ee779bc7b1f2bcf57bef7a43391e79d74f289c899fc523fa893bae803a6c7",
+    "ios-remote-v500-projects-request-metadata.json": "d1fcaed41f8b4a51e3c4a6e9b07b8bf0d3402e105233d3e95173f664016cc6ed"
+  },
+  "prior_evidence": [
+    "ios-remote-v487-section-model.json",
+    "ios-remote-v487-identity-cases.json",
+    "ios-remote-v488-section-offsets.json",
+    "ios-remote-v488-viewmodel-fields.json",
+    "ios-remote-v500-projects-header.asm"
+  ],
+  "production_edits": false,
+  "official_app_executed": false
+}

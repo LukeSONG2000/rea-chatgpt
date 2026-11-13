@@ -1,0 +1,631 @@
+{
+  "schema_version": 1,
+  "slice": "v532 ordinary Remote dictation content and compact microphone visuals",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": "Read-only bounded arm64 disassembly, Swift metadata and localized shipped resources; no official app, microphone, network or runtime original execution.",
+  "findings": [
+    {
+      "id": "V532-S01",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1cece60",
+        "0x1cece7c"
+      ],
+      "conclusion": "Correction to v531 next-action note: 1cece7c is a metadata access inside capture destructor 1cece60, not a waveform producer. Do not follow it as construction proof.",
+      "limits": []
+    },
+    {
+      "id": "V532-S02",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x1987900",
+        "0x7e2a2d8"
+      ],
+      "conclusion": "Correction to v531 S01: FieldRow horizontalSpacing is Environment<CGFloat>, not ScaledMetric. Parent gate and original environment key path are closed by companion ios-remote-v532-whisper-parent-findings.json. Neighboring 2pt is leading padding, not row spacing.",
+      "limits": [
+        "The effective horizontalSpacing value remains unknown here; do not substitute 2 or a guessed value."
+      ]
+    },
+    {
+      "id": "V532-S03",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x7decccb",
+        "0x16ea400",
+        "0x7defba8",
+        "0x7defba0",
+        "0x7defb88",
+        "0x95a7648",
+        "0x7df1a64",
+        "0x16f65a0",
+        "0x16f630c",
+        "0x16f64f4"
+      ],
+      "conclusion": "ViewParams raw1/content routes to 16ea400, stores viewModel and usesTextInputInsets Bool. Conditional symbolic types identify ComposerWhisperContent, whose View body 16f65a0 forwards to 16f630c. On visible/nonempty branch 16f64f4 constructs MessageInputWhisperPart at6073888, then applies OpacityTransition. This closes actual generic FieldRow content type rather than substituting a similarly named waveform.",
+      "limits": [
+        "See companion parent report for raw1 usesTextInputInsets=false and host gate. Content additionally consults presentation state and visibility before emitting its part."
+      ]
+    },
+    {
+      "id": "V532-S04",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6073888",
+        "0x6073954",
+        "0x6073958",
+        "0x607395c",
+        "0x6073960",
+        "0x6073968",
+        "0x6073980",
+        "0x6073b9c",
+        "0x6073c2c",
+        "0x6074084",
+        "0x6074090",
+        "0x607409c",
+        "0x6074138"
+      ],
+      "conclusion": "WhisperPart physical fields: pushToTalkMode+28, usesTextInputInsets+29, showsTrailingControl+2a, state+2b, samples+30, cancel+38/+40. When pushToTalkMode=false, body6073980 selects6073ff0. State bitmask0x71 (0,4,5,6) yields empty branch; bitmask0x388 (3,7,8,9) yields status/error content6074594; remaining states1/2 call waveform6074400.",
+      "limits": [
+        "Parent .content(false) sets usesTextInputInsets only. pushToTalkMode originates16de388 owner object+8 through16f648c/16f64ec; no default=false assertion. Nonzero pushToTalkMode selects60748f4; exact runtime mode needs owner proof."
+      ]
+    },
+    {
+      "id": "V532-S05",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6074400",
+        "0x6074464",
+        "0x60744f4",
+        "0x6074518",
+        "0x6074528",
+        "0x6074550",
+        "0x6074564",
+        "0x1bedb4",
+        "0x6ecdbf8",
+        "0x971bb10",
+        "0xc5d9e4",
+        "0x6074da8"
+      ],
+      "conclusion": "Actual normal-content waveform is AudioWaveformView. Constructor receives Part.samples+30, sampling=(state==1||state==2), velocity30, spacing3, minHeight0, maskWidth6, strokeStyle(lineWidth3,lineCap round,lineJoin miter,miterLimit10,dashPhase0), normalizeSample(s)=s*16 and nil normalization closure context. Final centered frame has width=nil,height=28. Metadata binds ctor physical fields: samples+0, sampling+8, velocity+10, spacing+18,minHeight+20,maskWidth+28,colors+30/+38,stroke+40,normalizer+68/+70.",
+      "limits": [
+        "Constants at candidate ComposerDictationWaveform16e8024 (lineWidth2,minHeight2) are not this path and must not be copied. Internal sample scrolling, mask application and draw algorithm are not reconstructed by this slice; synthetic samples must be labeled synthetic. No arbitrary fixed dot count is evidenced."
+      ]
+    },
+    {
+      "id": "V532-S06",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x6074484",
+        "0x6074490",
+        "0x6074384",
+        "0x60743d0",
+        "0x60744c0",
+        "0x60744d0",
+        "0x60744e0"
+      ],
+      "conclusion": "Waveform present color uses style.waveformPresentSampleColor(+78) when nonnil; otherwise6074384 chooses foregroundColor(+58), or foregroundColorError(+60) for rawstate6..9. Missing color uses waveformMissingSampleColor(+80), else secondaryForegroundColorIdleTranscribingListening(+68). These are actual consumers, not inferred color approximations.",
+      "limits": [
+        "Effective per-host theme resource/RGBA and normal/disabled contrast remain inherited environment inputs; do not hard-code black/gray from screenshots."
+      ]
+    },
+    {
+      "id": "V532-S07",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x16ea44c",
+        "0x16ea62c",
+        "0x16ea744",
+        "0x16ea884",
+        "0x16ea88c",
+        "0x16f979c",
+        "0x16f98e0",
+        "0x16f98f0"
+      ],
+      "conclusion": "CodexCollapsed ViewParams raw5 with nil associated payload selects16ea62c, obtains microphone state from presentation+88, omits it when raw8, otherwise builds MessageInputWhisperButtonPart at16ea744. It explicitly writes compactControlState raw10. Thus selected label follows16f98f0 ordinary SwiftUI Label, not the non10 streaming control6072440.",
+      "limits": [
+        "Do not treat a compactControlState name match or raw5 view variant as proof of the alternate streaming control."
+      ]
+    },
+    {
+      "id": "V532-S08",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x178d738",
+        "0x179ba9c",
+        "0x75d3040",
+        "0x75d3150"
+      ],
+      "conclusion": "Ordinary button label checks (microphoneState & 0xfc)==4. States4..7 use localized Stop; other states use Dictation. Resource indexes2551 and1004 map Simplified Chinese to 停止 and 听写; English resources are null and use source keys.",
+      "limits": [
+        "Label refers to accessibility/title semantics, not a visible text label beside the icon. Other resources such as Stop dictation are not substituted."
+      ]
+    },
+    {
+      "id": "V532-S09",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x178d790",
+        "0x16f9d98",
+        "0x16f9e50",
+        "0x179d13c",
+        "0x16f9ee4",
+        "0x16f9fc4"
+      ],
+      "conclusion": "Icon composition overlays microphone resource with active status view. For states4..7 microphone opacity0/accessibilityHiddentrue and active overlay opacity1; inverse elsewhere. Active background uses OpenAI/Symbols/circle-fill (factory74f611c/string8a54ac0) colored by OneOff/UserMessageBackground6071160. Foreground uses OpenAI/Symbols/stop-sm-fill (74fb6d8/string8a57250), except raw5/6 and enabled dictation_stop_button_checkmark_enabled switches to OpenAI/Symbols/checkmark-md (74f5b98/string8a54800). State7 uses ProgressView with606ba54 style.",
+      "limits": [
+        "Runtime feature value unknown; fallback passed to gate16fa2e4 is false. Do not always render checkmark from newer screenshot. Microphone and active composition must preserve active-state accessibility hiding."
+      ]
+    },
+    {
+      "id": "V532-S10",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x16f996c",
+        "0x16f9a04",
+        "0x16fa090",
+        "0x16fa098"
+      ],
+      "conclusion": "Ordinary label glyph font/frame uses resolved attachmentsButtonFontSize via metadata+4c; active circle background reads resolved primaryButtonFontSize via+50 with regular weight. Existing v511 default attachments font18.808777429467085 and padding13 are defaults, not newly proven effective row overrides. Padding follows optional whisperButtonPadding else attachments padding.",
+      "limits": [
+        "Do not conflate outer glyph frame, active circle symbol font size and final minimum hit area. Effective environment/font values must use existing recovered theme adapter."
+      ]
+    },
+    {
+      "id": "V532-S11",
+      "validation": "verified_static",
+      "evidence_type": "official_artifact_observation",
+      "offsets": [
+        "0x16f4f5c",
+        "0x16eaa54",
+        "0x1cecee4",
+        "0x1ced21c"
+      ],
+      "conclusion": "Selected nil-payload microphone callback16f4f5c tail-calls shared action dispatcher16eaa54. Companion v531 owner report proves row accessory cancelRecording and primary retryRecording/finishRecording(autoSend:true) event payloads. This report does not relabel these from icons.",
+      "limits": [
+        "Dispatcher argument enum and full mic tap/hold lifecycle remain separate owner work; label Stop is not enough to prove autoSend behavior."
+      ]
+    }
+  ],
+  "implementation_boundary": {
+    "safe": "Use explicit synthetic fixture with parent presentation, pushToTalkMode and feature inputs. Restore the proven content/leaf branch, official glyph resources, localized accessibility labels and theme fields. Preserve original components and state distinctions.",
+    "not_proven": [
+      "Audio permission/session/live recording/transcription behavior",
+      "Remote actual pushToTalkMode transfer/default",
+      "AudioWaveformView internal drawing/scrolling/mask execution",
+      "Effective row spacing and complete active button environment dimensions",
+      "All live retry/cancel/draft restore transitions"
+    ]
+  },
+  "next_minimal_actions": [
+    {
+      "entry": "16de388 owner object+8 →16f648c→16f64ec",
+      "question": "Bind pushToTalkMode for actual ordinary Remote host without equating usesTextInputInsets=false."
+    },
+    {
+      "entry": "AudioWaveformView descriptor971bb10 conformance8381810 body witness",
+      "question": "Only if synthetic UI requires source-equivalent drawing, close sample bar rendering and mask, not another candidate waveform."
+    },
+    {
+      "entry": "16f81f0 button event closure→16f4f5c→16eaa54",
+      "question": "Resolve exact tap event/state semantics separately from visual glyph."
+    }
+  ],
+  "validation": {
+    "json": "parsed",
+    "runtime": "not_run",
+    "original_app": "not_run",
+    "ui": "not_claimed"
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-active-background-glyph.asm",
+      "sha256": "92e7cef20b829db1ffc37beb5b07f8e264ff09d6f76d82f264eb3b36f2c645e1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-active-background-glyph.json",
+      "sha256": "971c6a6c0e1bf26767e45986f94cfa15bf7329d6f19749e03f2d371d93bfac9b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-active-special-glyph.asm",
+      "sha256": "127188208e1a109d59d427a350ef14b2bfe7cd18b61265ab848edd49fa9ec956"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-active-special-glyph.json",
+      "sha256": "cda0e91a1d44a309b919eb6c0a3402c47c7d4d4c2f06f4ab7f0ba6186f79ae53"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-active-special-predicate.asm",
+      "sha256": "e26add72eb99719ff9ce8d49768fce9f1dbc347a349486ca54c693c10b807674"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-active-special-predicate.json",
+      "sha256": "d9643e7343322b8ee6a657b2e9a426196c158246f397a6aa58b3cbab3424cbb2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-active-stop-glyph.asm",
+      "sha256": "3ce576257d092daf4ff13d067718ccea12883eed9b582a9f53ab798075eb823c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-active-stop-glyph.json",
+      "sha256": "aec554a49b22db55b9ee78032f3b1b7ec576541f668c29f65b7cfc2a0b3468aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-actual-waveform.asm",
+      "sha256": "2c4e1f257e3be66896ffc785d76486fe7cde3f73f13f9cb85ed327507c041f51"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-actual-waveform.json",
+      "sha256": "73ec116c895f409529dd6c57f3178217bdb91c15668200c6a29e7fdc9e397e42"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-audio-waveform-init.asm",
+      "sha256": "4c730170a981c18688712642454c2939e25cc5a246fb10e7ad9d10f7c5c3dc9a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-audio-waveform-init.json",
+      "sha256": "cd2b5287ac1104653b36172c6ed9ba3d2e80ef22ed1b6b43975a436ee2714b9a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-audiowaveform-metadata.json",
+      "sha256": "135519d116ce3193def23b79ee1f672d07289fa87c0ee4239721a6214f4085c6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-audiowaveformview-metadata.json",
+      "sha256": "89757fee0112f5b0992c0141b0adeecba92febe25fce249baafddde5974863e7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-button-label.asm",
+      "sha256": "4c6aed3aaa426758bc836c7499e5f28959b288427cf1821d873871e6cb2907af"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-button-label.json",
+      "sha256": "de965e0f132446a314936d63f6eb52f1441eb660b5bcf208209220ae686bc081"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-collapsed-on-start.asm",
+      "sha256": "0cd7988b303a22e459b2c74b73892df9cf4622ba57a5b971de36f24c273aa57c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-collapsed-on-start.json",
+      "sha256": "8a7282d1113764d19cfba590bce57cc52cd793a90e0bf33fb41f184e76e8a457"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-collapsed-tap.asm",
+      "sha256": "0d80dbcbf5099f302033adecb6db88c42ef23d67e15baf89189f46ef14249ceb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-collapsed-tap.json",
+      "sha256": "a5bb6ee8466cfa90d02454e5dbf082c9cdfe091aa673a1fa1d8ee120dc4d3dc2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-compact-default-init.asm",
+      "sha256": "0174fdb07317e5d26a26b748635e6057e3d59a43d59ff5cc701cd706cdb7c80e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-compact-default-init.json",
+      "sha256": "c7c60463d618eceb0d6606cffdd126f79bfba06eb15f41bc4176dd0cc9926128"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-compact-meter-type.asm",
+      "sha256": "2858f561e3d6b6ec0544e7aa72e70e26aa044be9bb8392172685ea6a5689805a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-compact-meter-type.json",
+      "sha256": "a250b803bb2741d4b3dc3409104ee14de60503c2e18735f1e795e82bfdaa457c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-body-impl.asm",
+      "sha256": "6c1b91944e25350a978143b223e663d84a2e98fe1c6b9c1671af470e0c86ad7e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-body-impl.json",
+      "sha256": "2ff7aca775615f93f96a11c9e6c7b00b0aba2edd967208168b9b2f9f873f9184"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-body.asm",
+      "sha256": "3f36583f071bcf9462b200481f67629e29915c4f69eded75b1436fa9723f552c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-body.json",
+      "sha256": "ad0f982ddbc93643098a4579718cd704373253622463de2f9ab742316f242873"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-enum-types.json",
+      "sha256": "a24c13baafd710defa37eb488396075d86cda702349165d95b8246cf47b7025a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-metadata.json",
+      "sha256": "a7ccf01fecc094fae9b028a7626c0d3008aadcae7110d7e1d1ce079070dd472f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-waveform-callback.asm",
+      "sha256": "0e6a78e0093a5d76b314a6531f5c4d8cd44015214666646ee011ff1771c6429a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-waveform-callback.json",
+      "sha256": "aea458726406cd00c2a5ad97e11e82f191b4326030be7fb98c82968b1669af60"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-content-witness.json",
+      "sha256": "884e7956ca65441703c922013bf600fe7fb3ce606116434c5b1e56deb6ac96f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-dictation-title.asm",
+      "sha256": "13cdf7e4fd77d7de97c2c615452e659a313416f765179e4a4f096871eebaa3f5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-dictation-title.json",
+      "sha256": "bf9bc4a7e28c3a82b32767aeb47ed79d4573120d53363e6d71306149dcd569ad"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-frame-args.asm",
+      "sha256": "13106da493928231621bb8bb41b1f521ae83ea97b62e49a5ccda3334e6332d99"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-frame-args.json",
+      "sha256": "4043225d337520a63a4958d5e4a97d54b7e2f1fb6f2dfda0a9976c2765528f9c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-frame-args2.asm",
+      "sha256": "9c25504e1e8bfdcb7fa18c70dbb5fc2fd2f438d971ff2876853aa856414860a0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-frame-args2.json",
+      "sha256": "6a13d166e279d1651167158e034f49fc080b64ded6c368bb64e30b5dbd8e5e3d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-frame-helper.asm",
+      "sha256": "9c829b092269106579e23504ade0c507dce8c9abad72740bd53e45a1398e26ca"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-frame-helper.json",
+      "sha256": "20407a2afc71b5f2d6cb62972077a7093575d29a47a5643dd23caa74be8569a7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-leaf-body-builder.asm",
+      "sha256": "fcf40633f7faf6c8829c73bf6b2deedee3d79a823790cef862981915e0af787e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-leaf-body-builder.json",
+      "sha256": "be5358ab04f1b3aecc802010ca7114af5aef20d28d0f5da46c92bedacf43b6d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-localized-labels.json",
+      "sha256": "04de42592f29a143258aeda5387e9b2135771faac418f5612493a40786c38856"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-mic-active-compare.asm",
+      "sha256": "d623ed43e6f04aa20761827551d90644fe6f707d29293a4cfb3d0cee2cb84721"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-mic-active-compare.json",
+      "sha256": "bb8f6ad661a09e6401dd5bbd4a48980cc6831657cca9de9b5414e25d1fa873d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-mic-active-shape.asm",
+      "sha256": "8cd5cd948b9e9c720caf9efe7c5132a6a5a70850d14bf5eae713683d95b1a62f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-mic-active-shape.json",
+      "sha256": "2e66440b53faf0e8dc6e43343151a484a0f0e37a56ebd0558855700b56822a95"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-mic-state-glyph.asm",
+      "sha256": "bf39991a60e709599ae4e919b82a424f39e13c0a4d653435c62ca2d00acaf47a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-mic-state-glyph.json",
+      "sha256": "80f322c6d7db8aae2de4ee72eed73e2bf774f5f932ac39bb86dd4d9cd24d7288"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-part-content-helper.asm",
+      "sha256": "fd82f7b3c953b568616d6121cdd903166efe54ba288cb3903a37404513cb0bbc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-part-content-helper.json",
+      "sha256": "1a1a11ad3071e24989eb0c9db781eb0832fb28cc24622642cb751c309f3d52e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-part-normal-content.asm",
+      "sha256": "2de7d1d5cac6b50f31b7e218a1ea07d65184b061aefaa731591262d3995f3736"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-part-normal-content.json",
+      "sha256": "62bee1aa9ac8c3914981c07f113d7dd68a47f41647a12f6e2d8ad3ccba4eedd4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-part-waveform-content.asm",
+      "sha256": "55195b3fd57c603a072f84e236c6e4b120c1de3e914b7048a3f4ee95a5fe4112"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-part-waveform-content.json",
+      "sha256": "cec40b4baa70fe4f59eb8bfba8d9df76345251877ee6e083095de3f9928c35d4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-row-capture-destroy.asm",
+      "sha256": "f72cf4ff972a8aaa647a37ccbc268492549ffcbf975951f52d23b030b635f1d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-row-capture-destroy.json",
+      "sha256": "824c6224343fe301884416e30114b12625abaf16ab2d14a588f4c89c5d0135c2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-row-generic-type.asm",
+      "sha256": "177ed4f6994e1487006ebbaa88a3e45720289d30d57e19c24f4d7ddc5aa3ffd9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-row-generic-type.json",
+      "sha256": "90dbb3223ba9a44a340ff9ffee55219b191d743854d0da8089c9fadcadb92743"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-state-active-helper.asm",
+      "sha256": "5193289e7f29f129ba346aac0352a6a383cb8bbe62a3e5b693ad2d5ca14ba2bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-state-active-helper.json",
+      "sha256": "775bae7f9bf0c6c007d98b53900e79a4ff90a67f46898567f885c34844134509"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-stop-label-condition.asm",
+      "sha256": "5193289e7f29f129ba346aac0352a6a383cb8bbe62a3e5b693ad2d5ca14ba2bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-stop-label-condition.json",
+      "sha256": "775bae7f9bf0c6c007d98b53900e79a4ff90a67f46898567f885c34844134509"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-stop-title.asm",
+      "sha256": "65780644e51272a129c26694875c0fd3b21f4ef535e468441b205bad5947769a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-stop-title.json",
+      "sha256": "2936bb6cadb712f2106c7f2f98bc6d520c74cada1c7eb024b5f63bd7a50edebd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-control-content.asm",
+      "sha256": "04a85fa51df2416beda3525849d39533d4ddbf425c58bf08432545675d118ef1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-control-content.json",
+      "sha256": "75078165349b74c8ad501b13bf73567830deba142e4704fbe69fd88017953d6c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-control.asm",
+      "sha256": "9c7f6771b6c471bda9f2a2a53dcccf5c69ccbb800d5edb060b15a5fc953cd7f0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-control.json",
+      "sha256": "a626dc03cb3700d8178cbd909e176b279588a85380e02a71a728e9caf6d5f87d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-enum-type.asm",
+      "sha256": "2a22b025d3437bd4edfda66bf859cfc3cc96efe854c0c012513121a06a94168f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-enum-type.json",
+      "sha256": "591c9195ece1383f975dfdc5cc1a83a0b2e5da272c6acba875dce8b884555ba7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-enum-type2.asm",
+      "sha256": "ba4177f6a7f8a44637608b667cc1b114d03b6edb0e7c3c90bc101c58784532dd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-enum-type2.json",
+      "sha256": "b7851803a51f7d0b28b2894ad4f44ec355fa2f88ac0a78ba14fe4f3b1ad6781b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-enum-type3.asm",
+      "sha256": "e5a82d2381472b6f11e5c0afe7fda7d90f8ed82707e48dae8b1bd10db4dab5c6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-enum-type3.json",
+      "sha256": "2070cdbea1e27022376ceb9bf606a9d181525356323633696f76059a6b7520c1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-input-args.asm",
+      "sha256": "56b45c503abae8882298522514db3925d04f1d2553528184f107a480a51bc5be"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-input-args.json",
+      "sha256": "4e29f20f18bfb2016fa3fe72c69d2bb03cc13abc3e98070c7a6ce4eb07e2c14d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-normalizer.asm",
+      "sha256": "4518ca1b65ad8cd1a1f316e96dce542bed52d9a90a32f265f0784d7cdb3c04d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-normalizer.json",
+      "sha256": "e350499cf85f68351d20ab2d6e69643c3b83d54c253f6de4e13ea741aedc4e37"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-present-fallback.asm",
+      "sha256": "afc7b8a832f49cfbc55d164a3535f7ee750557558a6c316c9e4d1f81cd40c00a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-present-fallback.json",
+      "sha256": "3170da625c1b502f66ea96108250cf7550e6b2ae6f2409e8550822bbad55dcfd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-registers.asm",
+      "sha256": "d562ef4bbff24f7a7d2f1e9903e192a518a520d4d0011d5d5451c55ba0e189e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-registers.json",
+      "sha256": "b41e31f0a6a42fd543768a0ac21575b4d453edc9446f28e8a779cd93552e8124"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-registers2.asm",
+      "sha256": "69f56fe9980aa89336b89c0e94ea9c16d5a2d282e646080347c1deb2cef8990b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-registers2.json",
+      "sha256": "815407aadb4db2b52b3debdc8316f76431f7d371f7c49288f00b8498aa28253b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-registers3.asm",
+      "sha256": "dce3482304cc29eb27f98337e5ccba195aef17dfcb38a0a5b89ef71de5071d70"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-registers3.json",
+      "sha256": "35d2b435321eaa77e1c67aeb48e0706ecd77c188c0b16b9191d220e9cac64834"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-registers4.asm",
+      "sha256": "8d6ea87719e2172139fd9e966d81c15cf277e6d4d90c3df5a52db92654f1d4c0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-registers4.json",
+      "sha256": "eb955e27601028903753114c81811d25317d2092a6e844d746761f8c407d7eac"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-sample-transform.asm",
+      "sha256": "6b2e45c8ba5a896126ba459fdf69900d33b15c4a438787cda23313cd5070782f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-sample-transform.json",
+      "sha256": "782594e65131c8a4fc7c65fdb75879a54201256fb536b10ad282a77703894c9f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-stroke.asm",
+      "sha256": "0a7180e9c282851b93c8d4fdc33f305e03656e38f51d515bc55ae75a0be1844a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-waveform-stroke.json",
+      "sha256": "b3bd2b14f79a5aef4bd49c053176a30986e99d8c0b5fa41b642297332a0c78d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-whisper-part-init.asm",
+      "sha256": "12f771e48b9670313aad6e596bea5383ab89624d577e40b75513c5345fd97c95"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-dictation-style-whisper-part-init.json",
+      "sha256": "69319e158c76301b9bb37b9a760e89363110669aa7afaf16c63b06c9c11e3eb3"
+    }
+  ],
+  "retained_evidence": [
+    "ios-remote-v510-whisper-consumer.asm",
+    "ios-remote-v509-whisper-button.asm",
+    "ios-remote-v511-home-controls-findings.json",
+    "ios-remote-v531-dictation-style-findings.json",
+    "ios-remote-v531-dictation-style-part-body.asm",
+    "ios-remote-v531-dictation-style-leaf-metadata.json",
+    "ios-remote-v531-dictation-owner-findings.json",
+    "ios-remote-v532-whisper-parent-findings.json"
+  ]
+}

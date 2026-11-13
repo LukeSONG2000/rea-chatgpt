@@ -1,0 +1,81 @@
+{
+  "version": "557",
+  "status": "partial",
+  "page": "Remote conversation/composer",
+  "changes": [
+    "Apply changed owner text during marked composition and preserve equal native echoes",
+    "Add uncommitted Pinyin Send/follow-up regression tests",
+    "Support observed nine-key number-plane labels in plugin keyboard regression",
+    "Correct source ownership from supplemental Chat witness to Remote bridge"
+  ],
+  "validation": {
+    "baseline": {
+      "result": "ios-remote-v557-r1-marked.xcresult",
+      "failed": 1,
+      "expected_regression": "Accepted-send owner clear left native ni\\u2006hao"
+    },
+    "input": {
+      "result": "ios-remote-v557-r2-input.xcresult",
+      "passed": 6,
+      "failed": 0
+    },
+    "related": {
+      "result": "ios-remote-v557-r3-related.xcresult",
+      "passed": 3,
+      "failed": 1
+    },
+    "plugin_first_retry": {
+      "result": "ios-remote-v557-r4-plugin.xcresult",
+      "passed": 0,
+      "failed": 2
+    },
+    "plugin_final": {
+      "result": "ios-remote-v557-r5-plugin.xcresult",
+      "passed": 2,
+      "failed": 0
+    },
+    "distinct_ui_cases_passed": 11,
+    "foundation": "passed; ios-remote-v557-contract-tests.log",
+    "visual_inspection": [
+      "Chinese/light unselected Pinyin before/after Send and next edit",
+      "English/dark exact multiword submit",
+      "Chinese plugin insertion and search return with real nine-key digit",
+      "Chinese Remote list handoff"
+    ],
+    "limits": [
+      "Focused suites only",
+      "English strings entered through XCTest with Chinese keyboard; English autocorrection unverified",
+      "Device IME unverified"
+    ]
+  },
+  "source": "ios-remote-v557-findings.json",
+  "adaptation": "Plain UITextView owner replacement with UTF-16 selection clamp; official attributed prompt and inline-reference transaction remains partial",
+  "open_items": [
+    {
+      "priority": "P1",
+      "page": "Remote composer",
+      "state": "部分实现",
+      "missing_behavior": "Complete official onscreen-submit policy and English autocorrection parity",
+      "evidence": "Remote owner update/delegate chain located; submit-owner branch remains open",
+      "next_action": "Trace Send acceptance into attributed prompt projection and separately reproduce English autocorrection",
+      "acceptance": "Exact accepted text, native editor and subsequent input agree across marked text, corrections and task switches"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Full reasoning history/expansion, dynamic search/file-diff consumers, exact title/body geometry and process restoration",
+      "evidence": "Existing thinking summary, command, error and reading-anchor records",
+      "next_action": "Trace reasoning history consumer and reuse native disclosure/message host for minimum usable loop",
+      "acceptance": "Expand/collapse, terminal state and task return preserve content and reading state"
+    }
+  ],
+  "rules": "Narrow Remote owner-update/composition regression rule added to AGENTS.md",
+  "runtime": "ios-remote-v557-runtime.json",
+  "retention": {
+    "report": "ios-remote-v557-retention.json",
+    "stale_targets": 0
+  },
+  "service": "Frontend synthetic adapters",
+  "cross_platform": "iOS simulator acceptance only"
+}

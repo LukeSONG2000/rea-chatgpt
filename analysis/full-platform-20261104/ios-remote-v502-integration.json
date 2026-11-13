@@ -1,0 +1,79 @@
+{
+  "batch": "v502",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": [
+    "official-artifact-static",
+    "independent-native-host-integration",
+    "simulator-runtime"
+  ],
+  "source_evidence": [
+    "ios-remote-v502-catalog-findings.json",
+    "ios-remote-v502-catalog-reuse-and-spacing.json",
+    "ios-remote-v501-projects-collapse-findings.json"
+  ],
+  "integration": [
+    "Per-host initial/loading, failure/Retry, loaded/empty catalog presentation under Projects",
+    "Recovered subheadline, tertiary labels, common row metrics and host-scoped retry action boundary",
+    "Catalog fixed16 tertiary independent0.8sec keyframe spinner; shared arc primitive with existing scaled/synchronized task spinner",
+    "Recents topPadding10 after project/noWorkspace/Projects in current visible fixture projection",
+    "78 context-bound localized keys across65 locale tables"
+  ],
+  "independent_adaptations": [
+    "Explicit --remote-catalog-fixture=mixed seeds failed hostA and loading hostB; normal fixture has no catalog request records",
+    "Provider collection ordering/filtering and local3sec successful retry replay are independent, with no service call",
+    "Independent host/generation retry token guards duplicates, stale and cross-host completions",
+    "Existing horizontal parent inset and navigation/fixture-state adapters; Reduce Motion freezes catalog rotation"
+  ],
+  "validation": {
+    "text_models": "passed; catalog localization and host/generation retry fences included",
+    "ui_initial": {
+      "passed": 4,
+      "failed": 0,
+      "cases": [
+        "catalog error/loading/host filter/fold/retry isolation",
+        "global Projects collapse preserves group states",
+        "Recents and host-only drafts",
+        "fixed approval while history scrolls"
+      ]
+    },
+    "ui_r2": {
+      "passed": 3,
+      "failed": 0,
+      "cases": [
+        "Chinese XXXL catalog error/retry geometry",
+        "XXXL horizontal source filter",
+        "NoWorkspace isolation/filter/return"
+      ]
+    },
+    "visual": [
+      "English/default and Chinese/XXXL screenshots reviewed; failure label/Retry separated and existing project rows remain visible",
+      "Manual Chinese preview opened and pinned folded; catalog error and other-host loading state remain visible",
+      "Full official pixel/animation/device parity remains unaccepted"
+    ],
+    "signed_device_build": "502 build/codesign passed; version502 verified",
+    "device_install": "unavailable; latest installed496",
+    "preview": "502 manually observed and left running; then replaced during source-backed503 header-minimum repair",
+    "screenshots": [
+      "ios-remote-v502-catalog-states.png",
+      "ios-remote-v502-catalog-chinese-large.png",
+      "ios-remote-v502-list-preview.png"
+    ]
+  },
+  "new_gap_found": "V2 header common ScaledMetric44+vertical2 was omitted without accessory; source confirmation and repair tracked separately in v503",
+  "next_boundaries": [
+    "Cloud allocation and environment gates",
+    "Top search/mode and list composer",
+    "Real provider and service retry",
+    "Remaining Remote transcript, Chat/Work, haptics and feedback",
+    "Android independent source/runtime validation"
+  ],
+  "git": "not committed or pushed",
+  "evidence_hashes": {
+    "ios-remote-v502-catalog-findings.json": "09c3ca2f641a192cf2313610b2aace3a5f2bb323d97a5fc7a9f8ad58eb4a5b77",
+    "ios-remote-v502-catalog-reuse-and-spacing.json": "b140e2061eef4e9fba353b216a225d5126a0174dd1e065524a3023e776122abf",
+    "ios-remote-v501-projects-collapse-findings.json": "ffb02b95752a983f8c9b34bbd10f699a03233a7b49c9d1c623cd74eaa158a78d"
+  }
+}

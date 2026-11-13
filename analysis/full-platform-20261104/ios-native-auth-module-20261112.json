@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "module": "10 Login and account frontend",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "source_reports": [
+    {
+      "path": "analysis/full-platform-20261104/ios-native-auth-welcome-20261112-findings.json",
+      "sha256": "4a2c1bbf3ae30c65be2fe00095ec4bb0936910775e55cf59c43741c49b8fc4c7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-native-auth-welcome-20261112-presentation-followup.json",
+      "sha256": "ff6aef6f083462ff68457a755ba3bb88ad1f32f4ec2fda8c646e9562810546ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-native-account-lifecycle-20261112-findings.json",
+      "sha256": "c1028390b94cf26a0b6cfc7b9bc48269635072bcc6bf4266e26251aa1f9f43b3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-signout-detail-20261112-findings.json",
+      "sha256": "fd4cb43cc569b99a630604e98fc47149c2d70fbfe9f4566e6f07bdcd64c94779"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-login-v1-native-evidence.json",
+      "sha256": "53a4e1206a5a633cda9f0ee98197e6a00581ddd8fca13ada48898fce7116d183"
+    }
+  ],
+  "official_observations": [
+    "LoginView contains a configured welcome branch, optional branding/hero/disclosure and provider button catalog; actual account experiment assignment remains unknown.",
+    "Login root presents NativeSignupView through opaque ChatGPTPresentation modifiers. Root NavigationStack does not prove a nested navigation push. NativeSignupView owns a separate typed step stack.",
+    "Native username has email/phone alternatives, field checks, Continue, social slot, focus/submit and domain suggestions. Source labels and Continue AX identifier are bound to actual consumers.",
+    "Password has SecureField/TextField alternatives and conditional recovery/code/passkey/social actions; verification is a real typed step with code field and Continue.",
+    "OAuthASWebAuthenticationSession has native start/cancel/completion identity handling; no original session is executed here.",
+    "AccountSwitcher is a real independent user/workspace component; selected legacy Settings root explicitly disables it. Settings log-out has confirmation/destructive/cancel and busy state; save-login visibility and profile-editor destination remain unknown."
+  ],
+  "implemented": [
+    "Welcome Apple/Google/external-entry requests with busy, cancel and unavailable/error handling; native entry selects an isolated native flow.",
+    "Native email/required input, password visibility and code fields; keyboard focus/submission, Continue progress/disable, error/retry, cancel, typed step Back/edge gesture with restored flow checkpoint.",
+    "Independent account/session/request/generation/flow receipt fencing, duplicate rejection, A-B-A and cancel/late receipt handling. Secrets are transient input, cleared after submit and disappearance.",
+    "Existing Settings log-out bound to foreground account identity, confirmation and busy state. Failure preserves account; matching success changes root. Old Chat callbacks and notification routing retire with the root.",
+    "Only version/signedOut route snapshot, bounded input and preserved invalid files. Local persistence failure does not roll back a matching server/projection receipt; separate retryable error root.",
+    "Explicit opt-in synthetic journey for state replay only; ordinary provider returns unavailable and never sends credentials or authorizes a real account.",
+    "Source-backed six new localized labels across existing65 locale tables; Chinese/light ordinary journeys checked. System locale/appearance remain supported.",
+    "Standalone welcome preview retires notification memory scope without rewriting the signed-in journal; confirmed root-session changes retain the explicit cleanup policy. Isolated authentication review launch manifest added."
+  ],
+  "independent_adaptations": [
+    "Full-screen presenter is replaceable host policy; original ChatGPTPresentation bottom-level style is unknown, not claimed restored.",
+    "Welcome button order/style and selected gate/native-email configuration are explicit preview inputs, not official production defaults.",
+    "Required/byte-limit validation, geometry/fonts/field fills/secret-eye icon, OTP header value, Cancel placement and retry/error wording are host adapters pending exact style/consumer evidence.",
+    "Single fixture-account bootstrap and route-only persistence are not cloud authentication. Default canPresentSession rejects identities lacking a scoped root/data adapter.",
+    "Frontend cleanup order and notification fixture-scope mapping are independent integration, not the original logout coordinator algorithm."
+  ],
+  "not_implemented": [
+    "Actual authentication/registration backend, credential store/refresh/revocation, Apple/Google authorization or ASWebAuthenticationSession host.",
+    "Phone/country and domain-suggestion branches, original validation/disable formulas, recovery/resend, passkey/MFA/workspace/new-account profile branches.",
+    "Multiple account/workspace page/data roots, switch/add/remove frontend component integration and its ordinary presentation caller. Current legacy root keeps the source false gate.",
+    "Actual profile editor and save/cancel consumers; save-login option visibility; complete original LoginButtonListStyle and presenter/material/metrics/animation.",
+    "Source-proven login-specific haptics, physical device interactions and tactile playback; no guessed feedback added."
+  ],
+  "precise_frontier": [
+    {
+      "scope": "welcome dispatch",
+      "missing": "owner-supplied login closure to LoginViewModel.loginSelected and native/browser capability assignment"
+    },
+    {
+      "scope": "presentation",
+      "sites": [
+        "0x96dbb7c",
+        "0x96dbb2c",
+        "0x96dad88",
+        "0x96dac50",
+        "0xd1c818",
+        "0x62aa364",
+        "0x62d0be0"
+      ],
+      "missing": "custom ChatGPTPresentation modifier slot to bottom-level UIKit sheet/full-screen style; last candidate body is not proved the NativeAuth slot"
+    },
+    {
+      "scope": "native fields",
+      "sites": [
+        "0xd77e54",
+        "0xd7468c",
+        "0xd69208",
+        "0xd7b9e4"
+      ],
+      "missing": "usernameKind/phone/config/validation producers and NativeAuthScreenStyle back/exit consumers"
+    },
+    {
+      "scope": "external auth",
+      "sites": [
+        "0x5282d48",
+        "0x5282df0",
+        "0x5284020",
+        "0x5283134"
+      ],
+      "missing": "completion into LoginSession/LoginViewModel parent dismissal; no live authorization attempted"
+    },
+    {
+      "scope": "account lifecycle",
+      "sites": [
+        "0x18509ec",
+        "0x1852c00",
+        "0x10e83e8",
+        "0x108a810"
+      ],
+      "missing": "switcher presentation/async cleanup, log-out async completion order, profile edit builder; see linked report"
+    }
+  ],
+  "verification": {
+    "contract": {
+      "result": "passed",
+      "log": "/tmp/rea-native-auth-contract-r3-20261112.log",
+      "scope": "steps/flow, duplicate/wrong receipts, cancellation/back, logout failure, session A-B-A, snapshot-only keys/version/error preservation"
+    },
+    "ordinary_ui": [
+      {
+        "result": "passed",
+        "test": "testAuthenticationNativeUnavailableChinese",
+        "seconds": 31.661,
+        "artifact": "ios-native-auth-20261112-r4.xcresult",
+        "scope": "welcome external failure/unavailable, native keyboard/input/disable/error/retry/cancel/reentry; no authenticated cloud claim"
+      },
+      {
+        "result": "passed",
+        "test": "testAuthenticationSessionRoundTripChinese",
+        "seconds": 56.066,
+        "artifact": "ios-native-auth-20261112-r4.xcresult",
+        "scope": "synthetic logout/cancel, restart on welcome, native email/password/code, edge Back with empty secret, synthetic completion, original draft and next restart restoration"
+      },
+      {
+        "result": "passed",
+        "test": "testSettingsSignOutChinese",
+        "seconds": 34.03,
+        "artifact": "ios-native-auth-20261112-r2.xcresult",
+        "scope": "ordinary unconnected logout keeps current account, busy/confirm/cancel and return"
+      },
+      {
+        "result": "passed",
+        "test": "testWelcomePreviewPreservesNotificationJournalChinese",
+        "seconds": 26.332,
+        "artifact": "ios-native-auth-20261112-r5.xcresult",
+        "scope": "persist unread; open/close standalone welcome; restore ordinary account without re-injecting event; unread preserved"
+      }
+    ],
+    "failures_preserved": [
+      {
+        "artifact": "ios-native-auth-20261112-r1.xcresult",
+        "reason": "extra brace in new welcome wrapper; syntax corrected"
+      },
+      {
+        "artifact": "ios-native-auth-20261112-r2.xcresult",
+        "reason": "native entry did not present; hierarchy stayed welcome. Initial interpretation of parent routing was incorrect; an alert-dismiss publishing warning also observed"
+      },
+      {
+        "artifact": "ios-native-auth-20261112-r3.xcresult",
+        "reason": "changing nested navigation ownership alone did not solve entry. Full source-context follow-up proved custom presentation boundary; final isolated native presenter passed r4"
+      }
+    ],
+    "not_executed": [
+      "Real disk-write failure UI injection",
+      "Physical phone journeys",
+      "Real authentication or native OAuth session",
+      "Complete English/dark/large-font matrix"
+    ],
+    "screenshots_viewed": [
+      "ios-native-auth-20261112-r4-attachments/9682D351-12A0-4A6A-B9E9-C513C88505A7.png",
+      "ios-native-auth-20261112-ordinary.png",
+      "ios-native-auth-20261112-review.png"
+    ],
+    "simulator": {
+      "report": "ios-native-auth-20261112-final-preview.json",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 68789",
+      "binary_sha256": "206b3f3873915739a448c3217c4a2bf10192583ee03e080b417e2629798114e0",
+      "observed": "Normal core launch succeeded with installed hash match; final foreground moved to isolated authentication review below.",
+      "review": {
+        "report": "ios-native-auth-20261112-review-preview.json",
+        "hash_match": true,
+        "launch": "local.rea.chatgpt.ioshost: 69154",
+        "binary_sha256": "206b3f3873915739a448c3217c4a2bf10192583ee03e080b417e2629798114e0",
+        "screenshot": "ios-native-auth-20261112-review.png",
+        "observed": "System-language Chinese welcome with explicit synthetic replay disclosure visible; isolated preview left running."
+      }
+    },
+    "physical": {
+      "signed_build": "succeeded",
+      "build_log": "/tmp/rea-native-auth-device-build-final-20261112.log",
+      "binary_sha256": "82ad19c17f762659961cbc48ba95c3f9f2cd255f13e6a1e1b4d2731ffe1b6bd7",
+      "availability": "unavailable",
+      "device_state": "ios-native-auth-20261112-device-final-r2.json",
+      "installed_this_candidate": false,
+      "last_recorded_installed": "Settings fixed-close candidate; offline device contents not read"
+    }
+  },
+  "implementation": [
+    {
+      "path": "implementation/ios/Sources/FrontendAuthentication.swift",
+      "sha256": "bb39dae34942981f3bd5979149233a09b8bd4b04dff7fb4f871b8a25e694af26"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeFrontendAuthentication.swift",
+      "sha256": "3f3b9db52db0fdca11b94582d8ac992c319f4f7cf88711ad7138eb4d4332dc9c"
+    },
+    {
+      "path": "implementation/ios/Sources/SignedOutWelcomePreview.swift",
+      "sha256": "a7fd1fa678da3cb0248d6679e92b73ae4d5a80a154ab8c2999d1e78e1da4bde4"
+    },
+    {
+      "path": "implementation/ios/Sources/AppDelegate.swift",
+      "sha256": "7450be5357b37cd0de42a90a1b7a45516f8b51c021df74ae2ce3d8b2875d298b"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "7b83ffe8dbdf82ea795128248cc745550211735f829ae217139f712e71ad5ceb"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendSettingsTopology.swift",
+      "sha256": "072228451576bda246f6af0aa2e8f9e7d41b3ce88b430f7756505a918d3ce115"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "338374d8660220d5abc20a2a540ee2599b7436e674c75dd5dc73717c63a41417"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "3455ef8919add25131acbc2ba56d618e2bd98f1106c927438a53ae301abd2204"
+    },
+    {
+      "path": "implementation/ios/Tests/Authentication/main.swift",
+      "sha256": "66e7c0f84f69b28d1df0ab3463a221ba9f2406c7d9902435b342c24f795cc2b6"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendNotificationEvents.swift",
+      "sha256": "20414355373321f38001feacc071201fdcd234e10c7680e7c619e9bb7a6e57c2"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "8df2d67ef26d5a67c13fb9d89209af927df496bc2000ee4f7766d7a838c9f60a"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "778350628435fef4f4dc4e9e48bd5a43664ddd58d3d084b59b8e3c010aee6e92"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj",
+      "sha256": "e48cb2c104c2445d6147076eda629b53f290d16b2dc57bb7a35617ab9cbcb7d7"
+    },
+    {
+      "path": "implementation/ios/run-simulator.py",
+      "sha256": "1719605b78c347bfb61f15aaaf78a94ff5ccb5f13c6f2981b9a5463b87c0ac7b"
+    },
+    {
+      "path": "implementation/ios/Tools/authentication-preview.json",
+      "sha256": "d8681aa930bbccc0236ca64238f998a24f1e23e4ec8fbc9245a4e9ba9b725020"
+    }
+  ],
+  "review_path": "Welcome preview > Log in or sign up > email > submit unavailable > retry/cancel. Synthetic root round-trip only with explicit --offline-fixture --auth-journey-fixture and isolated auth/chat profiles.",
+  "next_major_module": "Return to shell/sidebar as one major visual/interaction package: source-backed list/group parent layout, progressive scroll-edge composition and retained gestures; preserve remaining authentication/source gates."
+}

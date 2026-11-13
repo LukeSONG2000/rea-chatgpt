@@ -1,0 +1,585 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x7d7ae20",
+  "mangled_address": "0x8cfc8be",
+  "raw_sha256": "34e42de0d984b5eadd229bf8a68cc9ec92d06501d0352bf2905e55b5cdfb2202",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaad0a98",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI13_VariadicViewO4TreeVMn"
+    },
+    {
+      "offset": 7,
+      "kind": 2,
+      "target": "0xaad0a88",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI13_VStackLayoutVMn"
+    },
+    {
+      "offset": 12,
+      "kind": 2,
+      "target": "0xaad23a8",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI19_ConditionalContentVMn"
+    },
+    {
+      "offset": 21,
+      "kind": 1,
+      "target": "0x95847f8",
+      "resolved_context": "0x95847f8",
+      "label": "<unresolved-context@0x95847f0>.ChatGPTPluginsDirectoryLoadingContent"
+    },
+    {
+      "offset": 26,
+      "kind": 1,
+      "target": "0x9584010",
+      "resolved_context": "0x9584010",
+      "label": "ChatGPTPluginsDirectory.PluginDirectoryRecoverableErrorView"
+    },
+    {
+      "offset": 32,
+      "kind": 2,
+      "target": "0xaad5a10",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI9TupleViewVMn"
+    },
+    {
+      "offset": 46,
+      "kind": 2,
+      "target": "0xaad5400",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI7ForEachVMn"
+    },
+    {
+      "offset": 55,
+      "kind": 1,
+      "target": "0x9583530",
+      "resolved_context": "0x9583530",
+      "label": "ChatGPTPluginsDirectory.ChatGPTPluginsDirectorySectionContent"
+    },
+    {
+      "offset": 61,
+      "kind": 1,
+      "target": "0x95833b4",
+      "resolved_context": "0x95833b4",
+      "label": "ChatGPTPluginsDirectory.PluginDirectorySectionIdentifier"
+    },
+    {
+      "offset": 66,
+      "kind": 1,
+      "target": "0x95847c8",
+      "resolved_context": "0x95847c8",
+      "label": "<unresolved-context@0x95847c0>.ChatGPTPluginsDirectorySection"
+    },
+    {
+      "offset": 72,
+      "kind": 1,
+      "target": "0x9583fc4",
+      "resolved_context": "0x9583fc4",
+      "label": "ChatGPTPluginsDirectory.PluginDirectoryEmptyStateView"
+    },
+    {
+      "offset": 78,
+      "kind": 1,
+      "target": "0x95847a4",
+      "resolved_context": "0x95847a4",
+      "label": "<unresolved-context@0x958479c>.ChatGPTPluginsDirectoryPaginationContent"
+    }
+  ],
+  "opaque_contexts_retained_by_address": [
+    {
+      "address": "0x95847f0",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x95847c0",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x958479c",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "tree": {
+    "kind": "Type",
+    "children": [
+      {
+        "kind": "BoundGenericStructure",
+        "children": [
+          {
+            "kind": "Type",
+            "children": [
+              {
+                "kind": "Structure",
+                "children": [
+                  {
+                    "kind": "Enum",
+                    "children": [
+                      {
+                        "kind": "Module",
+                        "text": "SwiftUI",
+                        "children": []
+                      },
+                      {
+                        "kind": "Identifier",
+                        "text": "_VariadicView",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Identifier",
+                    "text": "Tree",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "TypeList",
+            "children": [
+              {
+                "kind": "Type",
+                "children": [
+                  {
+                    "kind": "Structure",
+                    "children": [
+                      {
+                        "kind": "Module",
+                        "text": "SwiftUI",
+                        "children": []
+                      },
+                      {
+                        "kind": "Identifier",
+                        "text": "_VStackLayout",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Type",
+                "children": [
+                  {
+                    "kind": "BoundGenericStructure",
+                    "children": [
+                      {
+                        "kind": "Type",
+                        "children": [
+                          {
+                            "kind": "Structure",
+                            "children": [
+                              {
+                                "kind": "Module",
+                                "text": "SwiftUI",
+                                "children": []
+                              },
+                              {
+                                "kind": "Identifier",
+                                "text": "_ConditionalContent",
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeList",
+                        "children": [
+                          {
+                            "kind": "Type",
+                            "children": [
+                              {
+                                "kind": "BoundGenericStructure",
+                                "children": [
+                                  {
+                                    "kind": "Type",
+                                    "children": [
+                                      {
+                                        "kind": "Structure",
+                                        "children": [
+                                          {
+                                            "kind": "Module",
+                                            "text": "SwiftUI",
+                                            "children": []
+                                          },
+                                          {
+                                            "kind": "Identifier",
+                                            "text": "_ConditionalContent",
+                                            "children": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "TypeList",
+                                    "children": [
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "TypeSymbolicReference",
+                                            "index": 156780536,
+                                            "children": []
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "Structure",
+                                            "children": [
+                                              {
+                                                "kind": "Module",
+                                                "text": "ChatGPTPluginsDirectory",
+                                                "children": []
+                                              },
+                                              {
+                                                "kind": "Identifier",
+                                                "text": "PluginDirectoryRecoverableErrorView",
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Type",
+                            "children": [
+                              {
+                                "kind": "BoundGenericStructure",
+                                "children": [
+                                  {
+                                    "kind": "Type",
+                                    "children": [
+                                      {
+                                        "kind": "Structure",
+                                        "children": [
+                                          {
+                                            "kind": "Module",
+                                            "text": "SwiftUI",
+                                            "children": []
+                                          },
+                                          {
+                                            "kind": "Identifier",
+                                            "text": "TupleView",
+                                            "children": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "TypeList",
+                                    "children": [
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "Tuple",
+                                            "children": [
+                                              {
+                                                "kind": "TupleElement",
+                                                "children": [
+                                                  {
+                                                    "kind": "Type",
+                                                    "children": [
+                                                      {
+                                                        "kind": "BoundGenericEnum",
+                                                        "children": [
+                                                          {
+                                                            "kind": "Type",
+                                                            "children": [
+                                                              {
+                                                                "kind": "Enum",
+                                                                "children": [
+                                                                  {
+                                                                    "kind": "Module",
+                                                                    "text": "Swift",
+                                                                    "children": []
+                                                                  },
+                                                                  {
+                                                                    "kind": "Identifier",
+                                                                    "text": "Optional",
+                                                                    "children": []
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "kind": "TypeList",
+                                                            "children": [
+                                                              {
+                                                                "kind": "Type",
+                                                                "children": [
+                                                                  {
+                                                                    "kind": "Structure",
+                                                                    "children": [
+                                                                      {
+                                                                        "kind": "Module",
+                                                                        "text": "ChatGPTPluginsDirectory",
+                                                                        "children": []
+                                                                      },
+                                                                      {
+                                                                        "kind": "Identifier",
+                                                                        "text": "PluginDirectoryRecoverableErrorView",
+                                                                        "children": []
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "kind": "TupleElement",
+                                                "children": [
+                                                  {
+                                                    "kind": "Type",
+                                                    "children": [
+                                                      {
+                                                        "kind": "BoundGenericStructure",
+                                                        "children": [
+                                                          {
+                                                            "kind": "Type",
+                                                            "children": [
+                                                              {
+                                                                "kind": "Structure",
+                                                                "children": [
+                                                                  {
+                                                                    "kind": "Module",
+                                                                    "text": "SwiftUI",
+                                                                    "children": []
+                                                                  },
+                                                                  {
+                                                                    "kind": "Identifier",
+                                                                    "text": "_ConditionalContent",
+                                                                    "children": []
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "kind": "TypeList",
+                                                            "children": [
+                                                              {
+                                                                "kind": "Type",
+                                                                "children": [
+                                                                  {
+                                                                    "kind": "BoundGenericStructure",
+                                                                    "children": [
+                                                                      {
+                                                                        "kind": "Type",
+                                                                        "children": [
+                                                                          {
+                                                                            "kind": "Structure",
+                                                                            "children": [
+                                                                              {
+                                                                                "kind": "Module",
+                                                                                "text": "SwiftUI",
+                                                                                "children": []
+                                                                              },
+                                                                              {
+                                                                                "kind": "Identifier",
+                                                                                "text": "ForEach",
+                                                                                "children": []
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      },
+                                                                      {
+                                                                        "kind": "TypeList",
+                                                                        "children": [
+                                                                          {
+                                                                            "kind": "Type",
+                                                                            "children": [
+                                                                              {
+                                                                                "kind": "BoundGenericStructure",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "kind": "Type",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "kind": "Structure",
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "kind": "Module",
+                                                                                            "text": "Swift",
+                                                                                            "children": []
+                                                                                          },
+                                                                                          {
+                                                                                            "kind": "Identifier",
+                                                                                            "text": "Array",
+                                                                                            "children": []
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  },
+                                                                                  {
+                                                                                    "kind": "TypeList",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "kind": "Type",
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "kind": "Structure",
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "kind": "Module",
+                                                                                                "text": "ChatGPTPluginsDirectory",
+                                                                                                "children": []
+                                                                                              },
+                                                                                              {
+                                                                                                "kind": "Identifier",
+                                                                                                "text": "ChatGPTPluginsDirectorySectionContent",
+                                                                                                "children": []
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          {
+                                                                            "kind": "Type",
+                                                                            "children": [
+                                                                              {
+                                                                                "kind": "Structure",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "kind": "Module",
+                                                                                    "text": "ChatGPTPluginsDirectory",
+                                                                                    "children": []
+                                                                                  },
+                                                                                  {
+                                                                                    "kind": "Identifier",
+                                                                                    "text": "PluginDirectorySectionIdentifier",
+                                                                                    "children": []
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          {
+                                                                            "kind": "Type",
+                                                                            "children": [
+                                                                              {
+                                                                                "kind": "TypeSymbolicReference",
+                                                                                "index": 156780488,
+                                                                                "children": []
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              },
+                                                              {
+                                                                "kind": "Type",
+                                                                "children": [
+                                                                  {
+                                                                    "kind": "Structure",
+                                                                    "children": [
+                                                                      {
+                                                                        "kind": "Module",
+                                                                        "text": "ChatGPTPluginsDirectory",
+                                                                        "children": []
+                                                                      },
+                                                                      {
+                                                                        "kind": "Identifier",
+                                                                        "text": "PluginDirectoryEmptyStateView",
+                                                                        "children": []
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "kind": "TupleElement",
+                                                "children": [
+                                                  {
+                                                    "kind": "Type",
+                                                    "children": [
+                                                      {
+                                                        "kind": "TypeSymbolicReference",
+                                                        "index": 156780452,
+                                                        "children": []
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "Generic type shape does not prove runtime branch selection or behavior",
+    "Unknown local opaque contexts remain address identities, not reconstructed implementations",
+    "Private host demangler ABI bridge pinned to exact inspected library SHA256; no target artifact code executed"
+  ]
+}

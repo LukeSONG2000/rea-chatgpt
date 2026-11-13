@@ -1,0 +1,246 @@
+{
+  "batch": "v508",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "scope": "Remote home/task-list composer parent and state/action ownership. No original application execution or network.",
+  "confirmed": [
+    {
+      "offsets": [
+        "0x303450",
+        "0x3034b8..0x303554",
+        "0x7cf6598",
+        "0x7cf64f8"
+      ],
+      "conclusion": "CodexHomeNavigationRoot builds CodexHomeTaskList with showsTaskList=false for layout.detail(raw2), and true otherwise. Non-detail branch additionally wraps it with CodexHomeCloudTooltipHost. Thus standard(raw0) and taskList(raw1) both choose task-list browsing content at this layer; their broader navigation/chrome behavior still differs."
+    },
+    {
+      "offsets": [
+        "0x2dd7e0",
+        "0x2dcd4c",
+        "0x2dce74..0x2dcec0",
+        "0x2de3c0",
+        "0x2dd7ec"
+      ],
+      "conclusion": "HomeTaskList selects CodexHomeDraftContent when capability/availability/draft gates allow it. It passes viewModel, draft, showsTaskList. Other branches retain bare task list or start content. Do not mount a draft unconditionally."
+    },
+    {
+      "offsets": [
+        "0x2ddb58",
+        "0x19ebb20",
+        "0x19ebd58..0x19ebdb4",
+        "0x44437c..0x444484",
+        "0x7cf8ba8"
+      ],
+      "conclusion": "Inline home draft uses alternate CodexRemoteNewThreadScreen initializer, with ConditionalContent<CodexTaskList,CodexHomeStartContent> as browsingContent. showsTaskList true chooses task list. Inline initializer sets focusesComposerOnAppear=false and presentsSubmittedThreadInPlace=false, and accepts caller showsComposer. Project-new constructor19eb4ac instead sets both flags and showsComposer true."
+    },
+    {
+      "offsets": [
+        "0x2dda20..0x2dda70",
+        "0x2ddb58"
+      ],
+      "conclusion": "Inline showsComposer = !showsTaskList || HomeComposerViewModel.mode != searching(raw2). Hiding composer on list search follows home mode; it is independent from compact/expanded editor state."
+    },
+    {
+      "offsets": [
+        "0x2ddbcc..0x2ddc3c",
+        "0x8857400",
+        "0x46720c",
+        "0x7cf8bb8"
+      ],
+      "conclusion": "Home draft writes CodexRemoteComposerPresentation environment with showsDestinationControls=true, placeholder localized key codex_remote_home_composer_placeholder / fallback Ask Codex, allowsAttachments=true. It also writes MessageInputStyle via2de24c and6081e84. Explicit caller-specific spacing/input/whisper/outer style values are closed in ios-remote-v508-home-style-findings.json; feature rollout and parent final width remain partial."
+    },
+    {
+      "offsets": [
+        "0x19f11f0..0x19f1234",
+        "0x1c3ddb8",
+        "0x19f45b0",
+        "0x19f5180",
+        "0x757a2cc"
+      ],
+      "conclusion": "Reuse v495 shared NewThreadScreen bottom placement. SafeAreaBarIfAvailable owns composer factory constructing CodexRemoteMessageInputView197bfe4. List is browsingContent in this screen, not a separate sibling floating demo bar. Autocomplete overlay19f5a70 is separate."
+    },
+    {
+      "offsets": [
+        "0x19f51c8..0x19f52a4"
+      ],
+      "conclusion": "Composer is constructed before showsComposer-dependent frame/opacity/hit-testing modifiers. Preserve its state when searching; simple conditional destruction does not mirror this consumer."
+    },
+    {
+      "offsets": [
+        "0x4442d0",
+        "0x444334",
+        "0x2db340",
+        "0x2db380..0x2db47c"
+      ],
+      "conclusion": "Parent isComposing Binding reads home mode==composing(raw1). Writing true sends composerActivated; false sends endComposing. beginComposing/composerActivated share availability check, ensure draft, destination synchronization and switch mode1. Explicit beginComposing additionally sets focus true. endComposing resets mode/focus only from composing. Search actions are the v505 state reducer."
+    },
+    {
+      "offsets": [
+        "0x2dd4f4",
+        "0x2dd58c..0x2dd5cc",
+        "0x2da614"
+      ],
+      "conclusion": "CodexViewModel lazily owns HomeComposerViewModel. Its injected callbacks are isAvailable3e4740, selectedHostIdentity3e4790, makeDraft3e480c, clearSearch3e48dc, showSubmittedDraft3e4910. appear ensures draft through makeDraft and retains existing draft when present."
+    },
+    {
+      "offsets": [
+        "0x3e480c..0x3e48a4",
+        "0x32b3ac",
+        "0x32b500..0x32b51c",
+        "0x339c68"
+      ],
+      "conclusion": "Home makeDraft invokes the same gated CodexRemoteNewThreadViewModel builder as project-new, passing absent explicit target. Builder32b500..51c resolves absent target through339c68. That resolver returns nil immediately when selectedHostIdentity is nil, and can return nil if no eligible matching host is found. Do not pick a first host or cloud from screenshots."
+    },
+    {
+      "offsets": [
+        "0x3e4790",
+        "0x32b358",
+        "0x2dd758",
+        "0x45c750",
+        "0x339cdc..0x339cec",
+        "0x339ec0..0x339ef0"
+      ],
+      "conclusion": "selectedHostIdentity callback reads CodexViewModel stored optional identity. Missing tag0xff remains0xff, with payload cleared by45c750. Resolver339c68 also returns zero payload/tag0xff at339ec0..ef0 when selected identity is absent. Neither getter nor resolver substitutes Cloud/first host."
+    },
+    {
+      "offsets": [
+        "0x444374",
+        "0x2de1b4..0x2de22c",
+        "0x2db35c..0x2db3f8",
+        "0x3e4910..0x3e4994",
+        "0x32bcec",
+        "0x3013cc"
+      ],
+      "conclusion": "Inline onSubmit dispatches prepareSubmissionTransition payload to HomeComposerViewModel. showSubmittedDraft callback resolves weak CodexViewModel and reaches navigation-array processing32bcec through3e4980. Inline screen does not present submitted thread in place. Transition retention and navigation reuse policy remain partial."
+    }
+  ],
+  "reused_editor_mechanism": {
+    "sources": [
+      "ios-remote-v444-findings.json",
+      "ios-remote-v445-findings.json"
+    ],
+    "rules": [
+      "Expanded native editor remains mounted; compact overlay is conditional, compactHeight48.",
+      "Expanded opacity0 in compact; hit-testing !isCompact || isFocused; accessibility hidden in compact.",
+      "Compact tap sets focus Binding true. Mode selector has several state inputs; parent composing is not an equivalent full mode selector."
+    ],
+    "boundary": "Home style geometry is available in v508 home-style supplement. Full field-mode selector and parent final width remain partial."
+  },
+  "minimal_integration": {
+    "evidence_reconstruction": [
+      "Use one home composer owner with browsing/composing/searching states and persistent draft/focus binding.",
+      "Place task list as browsing content under shared new-thread/composer container, retaining bottom-safe-area placement and persistent editor.",
+      "Home-inline starts unfocused, does not replace itself with submitted thread; owner handles navigation.",
+      "Hide and deactivate composer during list search while retaining draft. Restore prior list state on cancel.",
+      "Use official Ask Codex localization key and destination/attachment presentation flags."
+    ],
+    "independent_adapter_limits": [
+      "Explicit synthetic target selection may be supplied for preview while matching-host eligibility/model-level destination defaults remain partial. Absent selected identity is confirmed to remain nil.",
+      "Frontend-only submission must represent unconnected or synthetic service state, preserving owner-scoped draft identity and returned-thread transition.",
+      "Physical appearance/keyboard/scroll acceptance requires simulator/device tests beyond this static evidence."
+    ]
+  },
+  "unresolved_gates": [
+    {
+      "boundary": "0x2dcd4c capability32208c + availability2dd464 + navigation-array2dd4e0 + draft/retainedDraft2da37c/2da490",
+      "unknown": "Raw availability predicate and current/retained-draft selection are closed in home-style supplement. Semantic bindings of auth/onboarding/other availability tags and transition completion remain partial. Navigation count alone is not a hide predicate."
+    },
+    {
+      "boundary": "0x2de24c ->0x6081f4c/0x19a0a38; 0x6081e84",
+      "unknown": "Explicit style geometry is closed in home-style supplement. Remaining boundaries are full Glass payload semantics, feature defaults, and parent final width/safe-area consumption."
+    },
+    {
+      "boundary": "0x339d30..0x339ebc eligibility matching; 0x32b3ac ->0x18a3c08 with nil resolved host",
+      "unknown": "Eligibility rules for matching selected host and model-level destination picker/default behavior when target remains nil. Absent selectedHostIdentity itself is confirmed to remain nil."
+    },
+    {
+      "boundary": "0x2dabd0; subscriptions in0x2da614; prepare transition branch0x2db3d8;0x3e4910->0x32bcec",
+      "unknown": "Destination changes, retained submitted draft and exact transition completion/navigation reuse."
+    },
+    {
+      "boundary": "0x19872a8..0x19873c8 and existing v444/v445 gates",
+      "unknown": "Full field compact/expanded predicate for attachment/voice/plan/holding-after-send states."
+    }
+  ],
+  "new_evidence": {
+    "ios-remote-v508-composer-create-draft-calls.json": "ade6ba808ba3586b053979d06c603574f7f85ca454b63f581144b9cb38c1cdc5",
+    "ios-remote-v508-composer-create-draft.asm": "1e1e3e7caa6c74a75a8820edebd5877295bc0dce3f4ec11aa978f325ec9e6efd",
+    "ios-remote-v508-composer-factory-closures-calls.json": "b9e2f2be9c9e196f564c227642b835ed18936c423499ec93b6c203b1ea634ffe",
+    "ios-remote-v508-composer-factory-closures.asm": "87a68174071fc2e263de70d9d4f0af3ca8b87d8beeabaac67ed5690fd04596f7",
+    "ios-remote-v508-composer-mode-change-calls.json": "fce0ef85a90363ae66b4c0bde74410d2d960a10308736953c06152b2f882c6d7",
+    "ios-remote-v508-composer-mode-change.asm": "5705a545a0516fb8c47fbc83b4d42570cedc07fee8eb9050a6c64783f187dbd2",
+    "ios-remote-v508-composer-reducer-calls.json": "4595d2130e88278252511f2c0791fd6cc3b6f0d03a4413c54ffb679235e9e4fa",
+    "ios-remote-v508-composer-reducer.asm": "f98af8a7ce5da2493259f87c31049dae782f5d133d1fbd0452b4e3341c90a89b",
+    "ios-remote-v508-composer-selected-types.json": "9ad0e2a59bd7e6c62a471af58a44a214cb9fe12e387d493158655bf6f69f2106",
+    "ios-remote-v508-device-style-helpers.asm": "1fafcfc336a7f75d834793a804db313f432806d6450413d78b5010f9a85f5c22",
+    "ios-remote-v508-draft-binding-closures.asm": "5829855adf77b614b1197a2619a42da9524476d14db2182e299531334cd556dd",
+    "ios-remote-v508-draft-content-calls.json": "20c2da6f1427cb13e106844ad2cda95dc2542146f355957b7586c5832885bbe6",
+    "ios-remote-v508-draft-content.asm": "973116df4f92cde0d2b54821a322a8192633fe3e95f78aded1c59bffeeaf90f7",
+    "ios-remote-v508-draft-presentation-calls.json": "521b56773869943aa739111f9f16996d0f04c01674708b282acf7a75bc432303",
+    "ios-remote-v508-draft-presentation.asm": "60b1796f5ccc9be968ebfe345a1392e31bebd64dcb308c6c716d4f7ba9e86106",
+    "ios-remote-v508-draft-selection-helpers.asm": "418c62ef3f2095ebbfb9da2b1f5b568e6a5d4a58cdeb7414672d43fcb8fbc018",
+    "ios-remote-v508-draft-witnesses.json": "5b954324550d301661c0e6d0fc0a8e34c616396826ccbb100828c8c273d0af61",
+    "ios-remote-v508-factory-closures.asm": "7043edd3a33813035bb56382cd3e298b93da4c4b623deaea860c068635b3868e",
+    "ios-remote-v508-gate-offset-refs.json": "ce929f74eac8956009fc8cb79ebc068563d83d65730478b4541892169fbb5c69",
+    "ios-remote-v508-home-draft-factory-calls.json": "f5c2521e9624670bc2b72059e485af9e209782b4ec38ddba455539a9607dc40f",
+    "ios-remote-v508-home-draft-factory.asm": "d17bdc8da9b9eca5daee1a96a44a54741663dda45cdf9feb286d878d467ebd97",
+    "ios-remote-v508-home-metadata.json": "0150a214dd4ed8f3c8bc7d258f96c0d580fc56ede2d7732309ec0a808f636099",
+    "ios-remote-v508-home-predicate-helpers-calls.json": "47c761e7bb57dd5684091d2b28a106625fe0d10907568577dfdcde24e9fd472e",
+    "ios-remote-v508-home-predicate-helpers.asm": "34ce97d839842315729c7efd89a06f772920ecdccc4fc1c68a34805784e918d4",
+    "ios-remote-v508-home-references.json": "2c1d410074d7df04e299c93e0fb23eb6e81cd62b2afb1929f7fe9b49002cd747",
+    "ios-remote-v508-home-root-calls.json": "5d7d59bf5f0cdeab6c06800c2ba4e63a0b1a6590bce602f5d105851559fcb4c8",
+    "ios-remote-v508-home-root.asm": "52d02ef2af494d9780b47a7241338f1860edaf76b8d1ee4678e86302f2dad650",
+    "ios-remote-v508-home-style-findings.json": "7f353ec5882b87dd217b9cf2ee0d592a13e76dc7715dc1b96e894acf2564b9af",
+    "ios-remote-v508-home-tasklist-calls.json": "38a4657aac97e8cc5a579c1f5f118c5f718412f4836e9e493c97c02252caf111",
+    "ios-remote-v508-home-tasklist.asm": "82a89ebe65b1374deac5d1883d909ad24fe56c1f6e30f777fe61f125e2de1a5f",
+    "ios-remote-v508-mode-helper-two.asm": "4da8c39088aebdd6bf90e62aaf387bd3c1f665ff10e9a99163786045b728c3fd",
+    "ios-remote-v508-mode-helpers.asm": "34658cd53cbdb0b09ce24f7ba6bc3a4f292cea15905baa56c630f231a24056d1",
+    "ios-remote-v508-newthread-constructors-calls.json": "1ff3bf3a92361f191b1e1d6b6b21b2e2c71f4f84a0afff33178adf0686b1631d",
+    "ios-remote-v508-newthread-constructors.asm": "5d743afd327c9a99892a1835ed150406acd1de29c9ed427f2ecebe7d71dc08d2",
+    "ios-remote-v508-newthread-metadata.json": "015197d50ce7e3d3e374ed95f906f02debf7049ab682015e9ac0c99bef65a756",
+    "ios-remote-v508-newthread-witness.json": "8a428c4cc56819fbedc587055becb28cc4941e3e26cf73c4eae239d688da12c8",
+    "ios-remote-v508-owner-helpers.asm": "c6e65a032aaaa807ebf63eef664659b7cf7b1e2f71201bbfccd150f8c9a3328e",
+    "ios-remote-v508-presentation-field-helpers.asm": "a539f8d378e6ea18b385f5c6fe76e09062f245b1ad3073165118aa2d7bcc525d",
+    "ios-remote-v508-presentation-types.json": "95b554ea9ebf5eb018c155798308a7359e967c5fbad39590f4beeab43bebdf39",
+    "ios-remote-v508-presentation-value-helpers.asm": "21c78f80011a94be6d7e646b2ffb4e710bcdd0bff1d099fdfbe2952364af1aaf",
+    "ios-remote-v508-primary-style-metadata.json": "d5171aced98b77ad7ce47936f9cfda83dc55d28ddd227573a2454ab5e66dcd65",
+    "ios-remote-v508-root-content-types.json": "49c755da27aca978c2d541d02d8c7559ef9624a609ba4ec5a5c4682060aaf5ff",
+    "ios-remote-v508-screen-body-calls.json": "6ec2496c245b45a9a9bb02b231564e040edabbb8cfa64561542263bbb7f75b97",
+    "ios-remote-v508-screen-body.asm": "73b61f85476dba89725b3f5b63743917bc20aa9fb3b3b75cf5c0e4ad655568f8",
+    "ios-remote-v508-selected-target-getter.asm": "88ff60ba003f3c2ec5ab7a85d018b5dd89b8f7541944f7bf431945b71fd7a31e",
+    "ios-remote-v508-start-content-calls.json": "c95abb208ac02c56f19e4807ec82ec841eee9aabc031cf4a9e260a2f04e3e5d4",
+    "ios-remote-v508-start-content.asm": "d9479937b2d74e313877389df0570b528a1d4ce3c270ea59a6ed95b8a4a3d822",
+    "ios-remote-v508-style-base.asm": "99b84f0526fb75eeabc057c4ec250f21a7ddf1924ecacef709ac11e6887276f7",
+    "ios-remote-v508-style-default-helpers.asm": "c6e0dee0fb6476ee22e68fdb2166694bfe7606bf85d244670d25a97134cc3a96",
+    "ios-remote-v508-style-default-tail.asm": "922b4cd69d07b4cc68ff114a04eff8e88c53973d119d958066cb336347a8e8f1",
+    "ios-remote-v508-style-flags.asm": "7fffeae3e16a3f159ea483b0603ee0f63e2ed0146488f5087b2e056c350a3d78",
+    "ios-remote-v508-style-gates.asm": "5834f92fdc71929023ca0c838ae92d24e355de2c406935177791c2bfc3ab81ba",
+    "ios-remote-v508-style-layout-bindings.json": "84cf1f1b5e9bb6910100184ccb28ced28cc2ece865ed53cce9086e851f31cd40",
+    "ios-remote-v508-style-metadata.json": "0d6baebbc3001f07eb55c10bdd695ec4c01b2561ac99ffe92841607dbad7c6eb",
+    "ios-remote-v508-style-modifiers.asm": "e0ec7c2577f73583d67c4eb4d73bc93fe7ee89e128c6914bbe183c8c0310d221",
+    "ios-remote-v508-style-part-metadata.json": "cead35b35850683e617257154881b731b906ed7bc3baafa67267e5909a139dea",
+    "ios-remote-v508-style-values.json": "59f45d29bc3c7580aa9fb9512a2e00e50be199e0aac2ab43a00956142f4bba6a",
+    "ios-remote-v508-target-fallback.asm": "008050a0aee1d882c2edcee720329d3a6fdec9b7880f9691b94e2ef9597d553a",
+    "ios-remote-v508-viewmodel-layout-init.asm": "65db1c8b8eb6a8346bc10fddc806e1f91fd9bc539b0ae17fad68a1f6ab17c113",
+    "ios-remote-v508-viewmodel-layout.asm": "691c1443f470c901766ebfa405b3c05407809234fb7e10f3363ef08bd59e9982"
+  },
+  "reuse": [
+    "ios-remote-v505-navigation-findings.json",
+    "ios-remote-v505-search-state-metadata.json",
+    "ios-remote-v494-findings.json",
+    "ios-remote-v495-findings.json",
+    "ios-remote-v496-composer-bindings.asm",
+    "ios-remote-v444-findings.json",
+    "ios-remote-v445-findings.json"
+  ],
+  "validation": {
+    "production_modified": false,
+    "original_application_executed": false,
+    "network_accessed": false,
+    "ui_acceptance": "not_run",
+    "classification": "partial static evidence, no parity claim"
+  }
+}

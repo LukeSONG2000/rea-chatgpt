@@ -1,0 +1,116 @@
+{
+  "batch": "v500",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "no progress: user-requested status report; this continuation integrates the source-backed NoWorkspace group and validates page interactions",
+  "evidence_type": [
+    "official-artifact-static",
+    "independent-native-host-integration",
+    "simulator-runtime"
+  ],
+  "source_evidence": [
+    "ios-remote-v500-no-workspace-findings.json",
+    "ios-remote-v500-projects-findings.json"
+  ],
+  "integration": [
+    "Explicit eligible no-workspace fixture membership after upstream item/host/path projection; separated from Recents and pinned membership",
+    "Per-host no-workspace collapse identity independent from workspace keys and localized title",
+    "Shared kind1 header with official folder-open/folder icon, nil subtitle and no new-thread target",
+    "Reused V2 compact project indentation and last-row bottom12 on NoWorkspace raw tag1",
+    "Official localized No workspace label extracted into65 locale tables; zh-Hans is 无工作空间"
+  ],
+  "independent_adaptations": [
+    "Synthetic membership, ordering, host IDs and task data; upstream production projection remains partial",
+    "SwiftUI navigation/state ownership and source filter integration",
+    "Existing Reduce Motion and fixture parent inset adaptations"
+  ],
+  "validation": {
+    "text_models": "sh implementation/ios/test-official-text.sh passed",
+    "evidence_hashes": "9 NoWorkspace supporting files verified against finding manifest",
+    "ui_initial": {
+      "passed": 3,
+      "failed": 1,
+      "failure": "NoWorkspace test asserted both rows existed while second row was below viewport; retained video confirms boundary",
+      "test_source_sha256": "98f659cb8d42822fb72dbba174a3061512fff6f35fbc942f37ef6bf522e63d59",
+      "passing_cases": [
+        "fixed approval while transcript scrolls",
+        "Recents drafts/filter/return",
+        "workspace fold/filter/return"
+      ]
+    },
+    "ui_r2": {
+      "passed": 3,
+      "failed": 0,
+      "change": "Reveal the second host task before asserting both virtualized rows. No product change for this failure.",
+      "cases": [
+        "NoWorkspace host isolation/fold/filter/detail-return and separate Recents",
+        "large-text horizontal source filter",
+        "pinned fold/filter/return"
+      ]
+    },
+    "coverage": "6 distinct targeted UI cases passed across final applicable runs; seven executions including one retained initial failure. Full suite and official visual equivalence remain unaccepted.",
+    "visual": {
+      "screenshot": "ios-remote-v500-list-preview.png",
+      "observations": [
+        "Chinese label from official catalog",
+        "Two NoWorkspace sections with independent collapse",
+        "Folder changes between open/closed while second host remains expanded",
+        "No per-section new-thread action; Recents retains separate new-thread button",
+        "Shared project headers and Recents rows visible together"
+      ],
+      "limits": [
+        "CUA drag/wheel attempts did not visibly move this preview; final view obtained by folding pinned and first workspace. Automated UI swipes did cover offscreen row reachability.",
+        "Full official pixel/animation parity and physical touch remain unaccepted"
+      ]
+    },
+    "preview": {
+      "simulator_build": 500,
+      "pid_observed": 93972,
+      "page": "Remote list, Pinned and first workspace folded, both NoWorkspace groups expanded, Recents visible",
+      "kept_running": true,
+      "display": "Only built-in Color LCD online; external display unavailable"
+    },
+    "device": {
+      "build": 500,
+      "signed_build": "passed",
+      "codesign_verify": "passed",
+      "inventory": "paired iPhone Air unavailable",
+      "install": "not attempted while unavailable",
+      "latest_successful_install": 496
+    },
+    "retention": {
+      "stale_package_candidates": 0,
+      "available_disk": "36 GiB"
+    }
+  },
+  "next": [
+    "Close Projects collapsed-section projection and integrate heading/catalog state together",
+    "Cloud grouping and source gates",
+    "Top search/mode and fixed list composer",
+    "Remote full transcript, Chat/Work, haptics and outstanding feedback; Android independently evidenced"
+  ],
+  "remaining": [
+    "Official item/host guards and complete upstream grouping/order integration",
+    "NoWorkspace shared suppression/search gate meanings",
+    "Projects header projection and per-host catalog request states",
+    "Official overall visual acceptance and physical-device verification"
+  ],
+  "source_files": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "f30a66ef839345d6b270487ceb5ef8ec47d1907d8157a4dfa43055a999c35adb",
+    "implementation/ios/Sources/OfficialText.swift": "a84143e20f03a6471fe3bd034ab7609d42a0e41747342d6082fc84b269e3dc5a",
+    "implementation/ios/Resources/OfficialTranslations.json": "d08efdd12c4aa8b3ba2cfad4e0913f8db90625467c3d6ef69df3ec19f54b9e73",
+    "implementation/ios/Tools/prepare-official-text.py": "dc20184d9237ac0db071da0e022688dd0edd39a061f80db2e8ed3af132d76e1a",
+    "implementation/ios/TextTests/main.swift": "30845a8dde9afeaa3e417b7c035841fcd8d8138e6c1a5514f5093c7f0a050be4",
+    "implementation/ios/UITests/HostInteractionTests.swift": "8875dbff9f4e67b5ddf2aee533592a3b0213cd97c079c95f96261103e3464be8"
+  },
+  "evidence_files": {
+    "ios-remote-v500-no-workspace-findings.json": "610b6fd53aca5dee198a197a376f83164f1aac8e156d44325cca8d0e8ac6c465",
+    "ios-remote-v500-projects-findings.json": "77583069427c059318acb3a397006844b67d03e004b79f4d1b6c5d5aa77fa0e5",
+    "ios-remote-v500-ui.summary.json": "53468f2b0c6e73a90db179eb19e2f2b9f15196b6b1ca022202dad9c6b3827bc9",
+    "ios-remote-v500-r2-ui.summary.json": "8ced808c11538c9182dab60f15d32c96717d413711dfad845549a134f5d06b31",
+    "ios-remote-v500-list-preview.png": "2a4d8f8f8aa364cf6e085c0933f131458a3c4c7a22d9a4d9adb98a9bae001497"
+  },
+  "git": "No commit or push performed"
+}

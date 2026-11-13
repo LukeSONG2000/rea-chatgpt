@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "implemented_frontend_physical_playback_not_verified",
+  "correction": {
+    "prior_report": "ios-haptics-settings-wiring-20261112.json",
+    "observed_defect": "Current NativeSidebarContainer and FrontendHaptics no longer contained the sidebar selection integration claimed by the historical hash snapshot. Report preserved; integration restored in this batch.",
+    "pre_fix_sha256": {
+      "implementation/ios/Sources/FrontendHaptics.swift": "d41e4ec5ed35139d228a5703cb9ccba4d675f89e3aece0763d010efc434218cb",
+      "implementation/ios/Sources/NativeSidebarContainer.swift": "e929e0ca9b9f007dbf3a214daa75c08532d4637eb978fee12bf4e4d900ee417c"
+    }
+  },
+  "source_reports": [
+    "ios-sidebar-gesture-haptic-20261112-followup.json",
+    "ios-haptics-gesture-audit-20261112-findings.json",
+    "ios-haptics-v596-findings.json",
+    "ios-haptics-v597-findings.json"
+  ],
+  "implemented": [
+    {
+      "gesture": "sidebar drag",
+      "trigger": "normal ended, captured initial Bool, strict interior live progress, final endpoint differs from initial",
+      "feedback": "selectionChanged; one-shot consumption before dispatch",
+      "source_sites": [
+        "0x62be50",
+        "0x62bb88",
+        "0x62bd9c",
+        "0x62be00",
+        "0x6fe1344"
+      ]
+    },
+    {
+      "gesture": "model slider",
+      "trigger": "actual selection index change",
+      "feedback": "selection"
+    },
+    {
+      "gesture": "model slider boundary",
+      "trigger": "first transition from zero overscroll to nonzero",
+      "feedback": "soft impact intensity0.4, no repeat while outside"
+    },
+    {
+      "gesture": "accepted prepared file",
+      "trigger": "accepted result and source playsSuccessHaptic flag true; Photos passes false",
+      "feedback": "light impact"
+    }
+  ],
+  "settings": {
+    "path": [
+      "Settings",
+      "General",
+      "Haptic feedback"
+    ],
+    "storage_key": "rea.preview.hapticsEnabled",
+    "default_enabled": true,
+    "adapter_policy": "Storage key/default, UIKit lifetime and active/hardware checks are host integration, not recovered official schema.",
+    "gates": [
+      "persistent enabled read at dispatch",
+      "supported hardware",
+      "active application"
+    ]
+  },
+  "repeat_and_cancellation": [
+    "cancelled/failed drag",
+    "reversed to initial state",
+    "live progress at endpoint",
+    "duplicate settle",
+    "new transition",
+    "content navigation",
+    "application resign-active",
+    "view disappears",
+    "invalid finite-value admission"
+  ],
+  "not_implemented": [
+    "Exact original physical waveform/timing and runtime engine DI delivery verification.",
+    "No guessed generic list/message longpress, row swipe, tap-only sidebar or assistant-specific gesture trigger.",
+    "OS-native implicit feedback is not claimed controlled by the application preference."
+  ],
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "8f2c6cc4e7ad78813334d9dd8fc33db048d46107fee2c2374e72003ee09ae52b"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "cb9253827331e4f7f4d972117954185d3b589028b6ae7cbcba4c2cc951a3335d"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "4345b2d2305a6653e6322ab027648389e4a6140e529cf0c4535e4020d16da0bc"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift",
+      "sha256": "3719e8b3e6bbd9f7715cd45bfc922de1d71737a681b2378df0c1ec3c0054b631"
+    },
+    {
+      "path": "implementation/ios/Tests/Haptics/main.swift",
+      "sha256": "962c86756334898b27a5f4bb32d19a31644e5cb1344d20fc4391fcd8e6e73240"
+    }
+  ],
+  "verification": {
+    "contract": {
+      "result": "passed",
+      "log": "/tmp/rea-gesture-haptics-restored-20261112.log",
+      "scope": "source end-state vectors, cancellation/reset/supersession/duplicate suppression and common enable/support/activity combinations"
+    },
+    "settings": {
+      "result": "passed",
+      "test": "testHapticsPreferenceChinese",
+      "seconds": 54.349,
+      "artifact": "ios-native-personal-assistant-haptics-20261112-r3.xcresult",
+      "scope": "General toggle, process-restart persistence and restoration; no physical playback"
+    },
+    "physical_playback_verified": false,
+    "sidebar": {
+      "result": "passed",
+      "test": "testSidebarEdgeGestureChinese",
+      "seconds": 26.151,
+      "artifact": "ios-native-personal-assistant-haptics-20261112-r3.xcresult",
+      "scope": "screen-edge open, short reversed settle, close and keyboard/draft return; simulator is not tactile evidence"
+    },
+    "device": {
+      "signed_build": "succeeded",
+      "build_log": "/tmp/rea-assistant-haptics-device-build-20261112.log",
+      "app_path": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "33a16deb9255c69bd86cb02fe7c43ccbe2cc85a25d1db6edbd8e642d878c8d1a",
+      "preflight": "ios-assistant-haptics-20261112-device-final-state.json",
+      "connection": "unavailable",
+      "installed_this_candidate": false,
+      "last_recorded_installed_candidate": "Settings fixed-close candidate; current contents cannot be read while device unavailable",
+      "physical_playback_verified": false
+    },
+    "simulator": {
+      "report": "ios-assistant-haptics-20261112-preview.json",
+      "installed_hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 61293",
+      "executable_sha256": "b46c4fa8aa74e03438d1af0ba82ba666549a67d43519d776a14dfe31398b1e08",
+      "screenshot": "ios-assistant-haptics-20261112-ordinary.png",
+      "observed": "Chinese/light ordinary core chat and composer visible, preview left running. Assistant creation-unavailable screenshot reviewed separately."
+    }
+  },
+  "rule": "AGENTS.md Page gesture scope already requires per-page source trigger audit and General preference wiring; no speculative universal feedback rule added."
+}

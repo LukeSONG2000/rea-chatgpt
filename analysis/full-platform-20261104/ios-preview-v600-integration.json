@@ -1,0 +1,54 @@
+{
+  "batch": 600,
+  "implemented": [
+    "Shared core offline capability manifest consumed by launcher and UI tests",
+    "Ordinary preview enables existing model, permission and supplied context snapshot",
+    "Quick model unavailable message describes missing configuration",
+    "Explicit preview restart with executable hash verification and stable draft profiles"
+  ],
+  "correction": "Advanced-to-slider return was already implemented and covered by v596. Prior progress report incorrectly treated an isolated fixture fallback as a global missing feature.",
+  "validation": {
+    "combined_preview": {
+      "summary": "ios-preview-v600-r1.summary.json",
+      "passed": 2,
+      "failed": 0,
+      "covers": [
+        "Chinese light and English dark",
+        "Permission selection with retained draft",
+        "Context setting enabled consumer",
+        "Slider selection and advanced roundtrip",
+        "Cross-task configuration and draft isolation",
+        "Background dismissal and continued typing"
+      ]
+    },
+    "advanced_only": {
+      "summary": "ios-preview-v600-r2.summary.json",
+      "passed": 2,
+      "failed": 0,
+      "covers": [
+        "Missing quick configuration message",
+        "Model/effort/speed changes",
+        "Draft and task return"
+      ]
+    },
+    "visual": [
+      "Chinese light combined controls",
+      "English dark returned slider",
+      "Chinese dark current preview composer"
+    ],
+    "fresh_foundation_run": false,
+    "diff_check": "passed"
+  },
+  "official_evidence": "ios-preview-v600-findings.json",
+  "independent": "Launch capability manifest, synthetic models/permissions, scoped host adapter and unavailable-message wording",
+  "runtime": "ios-preview-v600-runtime.json",
+  "live_process": "local.rea.chatgpt.ioshost: 16885",
+  "retention": "ios-preview-v600-retention.json",
+  "not_implemented": [
+    "Complete official material/animation/title geometry",
+    "Remaining unsupported approval, input and message branches",
+    "Some Remote list modes and menu destination pages",
+    "Explicit cross-page selection-range restoration"
+  ],
+  "next_action": "Restore a remaining Remote list/menu frontend operation through its scoped action contract, beginning with thread pin/rename actions currently returning disconnected notices."
+}

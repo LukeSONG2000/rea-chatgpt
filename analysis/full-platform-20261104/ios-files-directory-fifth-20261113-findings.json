@@ -1,0 +1,370 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Current module8 directory loading and parent environment gap triage, two bounded candidate groups. Read-only official artifact/current source; no Library or other sidebar-package expansion.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_reports": [
+    "ios-files-directory-fourth-20261113-findings.json",
+    "ios-files-directory-parent-20261113-findings.json",
+    "ios-files-browser-parent-current-20261113-r3.json"
+  ],
+  "candidate_groups": [
+    {
+      "group": 1,
+      "question": "Resolve concrete RequestStateView default loading child/config for actual directory Entries call",
+      "result": "Concrete child, no-visible-label and centering/maxframe resolved; default OAI style payload remains partial.",
+      "chain": [
+        "Directory Entries19cba38..70 calls755f518 with success1d2ca38, error19cbdb8, retry1d2ca40. Caller does not supply another loading child.",
+        "755f580..584 supplies loading builder2eacc;3=0context755f598;15482c sets onlyx0/x1 without overwritingx2;755f5a4 calls generic constructor755f25c",
+        "2eacc simply ret because RequestStateDefaultLoadingPart is zero-sized; not proof it renders EmptyView",
+        "755f560->6ce2dc supplies View conformance witness table;6ce2f4..304 resolves conformance84b8914 for metadataaa57558; conformance type descriptor9754f20 decodes SwiftUIToolbelt.RequestStateDefaultLoadingPart",
+        "84b8914 associatedBody9148318 complete references establish ModifiedContent<OAIProgressView<EmptyView>,_FlexFrameLayout>; body witness755f80c forwards755f760",
+        "755f7c0 imports _$s7SwiftUI12ProgressViewVA2A05EmptyD0VRs_rlEACyA2EGycAERszrlufC (unlabelled ProgressView<EmptyView,EmptyView>.init())",
+        "755f7c4 center;afccb8 stores maxHeight+infinity tag0 and alignment;1bfbc4 idealHeight nil;266c10..30 sets minWidth nil,idealWidth nil,maxWidth+infinity,minHeight nil;755f7d8 calls FlexFrameLayout initializer"
+      ],
+      "concrete_restorable": [
+        "Loading has no visible text label. Remove independent localized \"Loading directory\" from current host. An accessibility-only loading label can remain a host accessibility adaptation.",
+        "Place spinner at center of full available width and height; not merely guessed fixed dimensions.",
+        "Keep loading independent from successful empty folder and failed ContentUnavailableView; no error retry or empty-folder copy reused."
+      ],
+      "not_proven": [
+        "Full OAIProgressView default style environment and native renderer are not fully recovered by this group. Do not borrow known16/18pt catalog/composer dimensions or assume plain UIKit spinner optical parity.",
+        "RequestStateView request-state bit layout and exact active loader subscription timing were not newly decoded. Existing independent scoped state/cancellation remains separate."
+      ],
+      "current_host": {
+        "path": "implementation/ios/Sources/FrontendFilePreview.swift",
+        "symbol": "RemoteWorkspaceDirectoryPage.directoryStatus",
+        "difference": "ProgressView(visualText(\"正在加载目录\",\"Loading directory\")) adds visible copy absent from actual default child; parent List.overlay already supplies an available-area owner."
+      }
+    },
+    {
+      "group": 2,
+      "question": "Check actual directory root parent environment/lifecycle rather than only row components",
+      "result": "Missing source-backed parent background surface/edge policy found; original full lifecycle/scroll cache remains explicit unknown.",
+      "chain": [
+        "Current corrected View associatedBody witness for DirectoryContent conformance7e20d30 points8e558d4 (old retained raw8e558d5 preserved).",
+        "Complete symbolic type contains Header+Entries VStack, _BackgroundStyleModifier<Color>, navigationTitle, navigationBarTitleDisplayMode and outer _AppearanceActionModifier.",
+        "19cb1bc calls74ecd44; factory74ecd70..78 materializes8a50f60=ChatGPT/bg/primary.162d60 moves returnedColorx0 intox20 before root storage.",
+        "19cb210/214 store Color and Edge.Set.all into _BackgroundStyleModifier.162d60 preserves Color in x20 then tails7c49b1c, strictly bound Edge.Set.all getter. Current Apple SDK inlinable declaration maps this modifier to background(style,ignoresSafeAreaEdges), distinct from backgroundStyle environment.",
+        "19cb334..3e4 builds lifecycle owner after navigation modifiers. Helpers1da5c34/764096c are generic forwarding/storage; they do not establish a direct directory reload/cancellation or reading-cache strategy by names alone."
+      ],
+      "concrete_restorable": [
+        "Restore .background(Color(uiColor:officialVisualColor(\"ChatGPT/bg/primary\")), ignoresSafeAreaEdges: .all) on actual Header+Entries parent before navigation modifiers.",
+        "Keep row listRowBackground separately; this parent modifier paints the ShapeStyle background across all safe-area edges. It is not the backgroundStyle environment setter. Do not add guessed padding/geometry."
+      ],
+      "current_host": {
+        "path": "implementation/ios/Sources/FrontendFilePreview.swift",
+        "symbols": [
+          "RemoteWorkspaceDirectoryPage.body",
+          "RemoteWorkspaceFilesPreview"
+        ],
+        "observed": "Header+Entries VStack lacks the source background Color/edge policy; listRowBackground already present. Per-directory NavigationStack, explicit parent button and close/cancel adapter already implemented; do not rebuild them.",
+        "scope_boundary": "Ordinary Files caller now lives in FrontendFilePreview.swift; NativeConversationHost.swift9312 supplies sheet and scoped synthetic loaders. Old approx7211 location is historical."
+      },
+      "not_proven": [
+        "Full DirectoryContent appear/disappear action callbacks/VM reload policy and original reading/scroll-cache lifetime. Native source contains no selected evidence proving a new persistent directory reading position or .id reset requirement.",
+        "Host per-directory @State remains ready across disappearance; contract cancel preserves ready entries. Current .task loadGeneration, request identity, late rejection and read-restoration policy are independent frontend safeguards, not original implementation.",
+        "Any source VM sharing between navigation levels, wide-screen master/detail selection or full format dispatch remains outside these two groups."
+      ]
+    }
+  ],
+  "priority_decision": {
+    "implement_now": "Two coherent source-backed directory presentation gaps: loading child without text/centered available frame, and actual background(Color,ignoresSafeAreaEdges:.all) on the correct root.",
+    "do_not": "Do not invent directory cache schema, forced reloads, constant spinner size or haptic on file/Retry actions to fill unclosed evidence.",
+    "service_scope": "No actual filesystem, network directory service, authorization or backend."
+  },
+  "haptics": {
+    "new_trigger_proven": false,
+    "new_feedback_added": false,
+    "limits": "These selected loading/parent factories prove no explicit haptic. Eventual VM/control/system feedback remains separate."
+  },
+  "validation": {
+    "product_modified": false,
+    "tests_run": false,
+    "builds": false,
+    "device_actions": false,
+    "official_target_execution": false,
+    "candidate_groups": 2,
+    "static_metadata_and_instructions": true
+  },
+  "probe_corrections": [
+    "No-op constructor2eacc initially appeared compatible with EmptyView, but actual conformance+metadata9754f20 proves RequestStateDefaultLoadingPart. Its View Body is non-empty OAIProgressView. No product decision made from no-op alone.",
+    "Reading descriptor9754f20 with Reader.pointer rejected non-pointer descriptor bytes. Corrected to strict descriptor fields and name; rejected probe not treated as missing metadata.",
+    "Old approximate NativeConversationHost location checked and actual moved host found via exact symbol; no old file edited.",
+    "Initial local description called _BackgroundStyleModifier a backgroundStyle environment. Strict tail binding to Edge.Set.all and official SDK inlinable background(style,ignoresSafeAreaEdges) mapping corrected this before handoff/product edits. backgroundStyle uses a different environment-writing path."
+  ],
+  "bounded_stop": "Two requested groups answered with implementable child/parent changes and precise original lifecycle/default-style unknowns. No third generic OAI style or full VM investigation.",
+  "current_sources": [
+    {
+      "path": "implementation/ios/Sources/FrontendFilePreview.swift",
+      "sha256": "81c671e7f565b15cc2baff16b28828901dfd67dddc860586b8172cb3a5da8005"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteWorkspacePresentation.swift",
+      "sha256": "1f57c5d1be291cd5532326290c3384f571b678530b0c7db86583dc97871e4b9a"
+    }
+  ],
+  "evidence_manifest": [
+    {
+      "path": "ios-files-directory-fifth-20261113/appearance-action-helper.asm",
+      "bytes": 1169,
+      "sha256": "97c109de67ef3ff617aa9c8423ee8fa0cb8b2c4895ff9b187cbf7cf916c4c3cb"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/appearance-action-helper.json",
+      "bytes": 1292,
+      "sha256": "5f159db79ec178ad777304444193f14db0dc9ce2a5dc388d6c6ea54e72f6cd0b"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/background-color-result-helper.asm",
+      "bytes": 391,
+      "sha256": "3ff5d057c0d5265b7c408233aae9a1f403a9a6fdb414fae6c396aea96bd15a90"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/background-color-result-helper.json",
+      "bytes": 908,
+      "sha256": "747394ddcbfdfbfa3a668d4584b9e5bad737ba397b2fb9b6c20531eb5651a543"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/background-constructor-binding.json",
+      "bytes": 286,
+      "sha256": "96611edc0ccf41b8fd69c27d749612e2ffa47873bcc4171ea84cb393663f9fb9"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/background-modifier-sdk-binding.json",
+      "bytes": 1505,
+      "sha256": "2b276222ce23e70991ab61a9954604da58ad7535a0895a19274b776b58fc62e9"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/default-loading-arg-helper.asm",
+      "bytes": 510,
+      "sha256": "23ba5f731713165b4ebc1c931059e6f1d2b6548fa5b7630a38b31633712c013a"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/default-loading-arg-helper.json",
+      "bytes": 924,
+      "sha256": "355183062708ea965d3720abcf6f73db3e09bb9c597bed5022fa9fd945db9298"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/default-loading-body-type.json",
+      "bytes": 1261,
+      "sha256": "2bf5cbeac3ee9f295d554b472587f5fcaa00d7017281e4095e7b12501e14d0cb"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/default-loading-body.asm",
+      "bytes": 3929,
+      "sha256": "d3b9f35e9d96122ec39f02453cf6ae9ca36d1d45a78e1548300bbfb78333b1d5"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/default-loading-body.json",
+      "bytes": 3889,
+      "sha256": "70deac7fc300df7d8d99cdd7c20963510a3171151fd915664a68304f1c93bd13"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/default-loading-closure.asm",
+      "bytes": 2294,
+      "sha256": "a92e0c113265225bcbc5e9e0ff224dfd78ececfac0add767e1a3ac6ccfa4bc8a"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/default-loading-closure.json",
+      "bytes": 1975,
+      "sha256": "8e7071ab8fce9105718ea373717be9eec7c37e6ac5c2f56d597f1867d96efaa3"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/default-loading-view-witness.json",
+      "bytes": 4613,
+      "sha256": "9be8caba37bb716a56fd146bcc7ca30e43fb35b848e0bc152a98bb466b52804f"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-appear-actions.asm",
+      "bytes": 960,
+      "sha256": "a3866d38e6c78d71c0d7e2bf342c7993d8a0ebd8e103a606e24e6b5098c95ecd"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-appear-actions.json",
+      "bytes": 981,
+      "sha256": "3cf155215ca5c795993626bec8659e90ae39c5a064594a681a8d5a0b6d88c323"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-appearance-final.asm",
+      "bytes": 2804,
+      "sha256": "79abed3f60061d40e7c7b2cc731a070870a52e6b000a0f98346200ec9cbe5709"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-appearance-final.json",
+      "bytes": 1665,
+      "sha256": "76c0e6288e5c32bc842884763af7301e566cd6be34faa750cd03e43742cbd950"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-background-color.asm",
+      "bytes": 1315,
+      "sha256": "f486d5da81beb69f78d62fb8e1cfeab5b8463878458e2679b69d284138023e23"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-background-color.json",
+      "bytes": 2133,
+      "sha256": "3750d759c5a4d99b7ad2221a70e40938f609fe3f07c1c7cadda2a01babde89e9"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-background-resource.json",
+      "bytes": 226,
+      "sha256": "411ab652275485960133d359074e195e524c583c40f262b5748b3dfdf356bd04"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-background-supply.asm",
+      "bytes": 2885,
+      "sha256": "cdcbd214bb117b7c19c7aa75db14a211e2911729b4ac4c3f0282afc1d83ce970"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-background-supply.json",
+      "bytes": 2190,
+      "sha256": "eb594850b67141b73fad5e0effcdd71a41d4645db31f13574726b8d479fa9fa8"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-complete-body.json",
+      "bytes": 2811,
+      "sha256": "a02bbb5ab2f92c543b7a99c6be29387c1c017a5529fe7c6c5c22d44978a69ef0"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-displaymode-helper.asm",
+      "bytes": 319,
+      "sha256": "80bc11147566ee8b6cbc67ed2fd0d4472602c4042b5751b2501b1ffd7ca2d2a3"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-displaymode-helper.json",
+      "bytes": 892,
+      "sha256": "d7306fd799f47ea6f54ddc446920b448063c612826606e5be7a7d5c7e8c731f9"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/directory-view-witness.json",
+      "bytes": 4614,
+      "sha256": "36c21f41ad6062915833ea1bddf5153df5cc81a71f1164c6e36c92c8c081cad1"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-caller-type.asm",
+      "bytes": 2072,
+      "sha256": "e98a3ac4b928b2cd4fd2a3f373036f5c5f5ef12e36a23286cfe2fdb6ce21f4a2"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-caller-type.json",
+      "bytes": 2111,
+      "sha256": "ccc219161706781a6c440c622396dac37cb9bb7c7c41a8d164e7a7ce00977c49"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-concrete-identity.json",
+      "bytes": 643,
+      "sha256": "596709f4aa279a350ace52059593f7b696678e4fdd706f070f9c46919585129d"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-flexargs-a.asm",
+      "bytes": 686,
+      "sha256": "a5d5133b6c4262b3091cf953dac219da2171f3e8d73f8cb6bf1bf3dcedb0d138"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-flexargs-a.json",
+      "bytes": 908,
+      "sha256": "9ef38f5cf3091d0486707f3c750afb65d4e607fc9fc89770467ec9eeea66874e"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-flexargs-b.asm",
+      "bytes": 413,
+      "sha256": "3b932af033a50c120476aee2ee0333250bbc621cd3827232075d9f8e6b1799ff"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-flexargs-b.json",
+      "bytes": 908,
+      "sha256": "03167bdb6324a682d79ed0534783dec110ba2148752e9bb665535323d7a17594"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-flexargs-c-complete.asm",
+      "bytes": 893,
+      "sha256": "1942e6412bf7470fe4abf35a5d0297216fb9570e022691a01ddd1efcabc37bc4"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-flexargs-c-complete.json",
+      "bytes": 908,
+      "sha256": "636fb88812b68bb356f44f71300a85da875eac10847c627b7a76a33d79912f42"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-flexargs-c.asm",
+      "bytes": 390,
+      "sha256": "bda84d944386cbd936e1aa37d9b8b4056113a131e0146b60b1d7fe4d02ad473f"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-flexargs-c.json",
+      "bytes": 892,
+      "sha256": "be98df22fba4fb396708bde39535d5b20b67053117a4427fffa9ba6c32734db7"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-helper-type.asm",
+      "bytes": 507,
+      "sha256": "e725e9170ef17b5728bca6a2d64e895d89ec7830110ade5605d3a0a19c4d4b75"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-helper-type.json",
+      "bytes": 892,
+      "sha256": "6e08bfbd9b9b7a38859afec3dd6906983cd5a9ef0c8103aa8f0981354f72cedb"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-metadata-lazy.asm",
+      "bytes": 1702,
+      "sha256": "2749ba7f90863bdf82632193ace38dd0110642972a7e04fb747f651e81abd7bf"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-metadata-lazy.json",
+      "bytes": 1610,
+      "sha256": "a3efdea4e45a5407ba6b5a55cfec6d9d045d60446b848e128235b3c3a1299dec"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-style-default.asm",
+      "bytes": 618,
+      "sha256": "27d875c255f2bb9bb08870d71d63ee8512748e09f72cb8f04afca53d197ba82a"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/loading-style-default.json",
+      "bytes": 913,
+      "sha256": "0539535e04f4f4a3a2d5dd1cd1bd68f845504937428538d137946aa3c5540088"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/request-body-generic-type.json",
+      "bytes": 773,
+      "sha256": "5536e1fabbb185fe3b4b358087c62e9771af4ed73194fcbdcfb0eca8db41f606"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/request-state-body-type-source.asm",
+      "bytes": 916,
+      "sha256": "e65bb52dfaea1584cf5b023ee6b96da1704ed0852317007de3f42305961af8ad"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/request-state-body-type-source.json",
+      "bytes": 930,
+      "sha256": "eb48acfa881d7c557282b40cad3e9907dd391f794b2c84e7542ead4c478c09a6"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/request-state-body.asm",
+      "bytes": 6802,
+      "sha256": "bff9768d9ff0a7cbc200c13a78da241f6538513066a31e2f432ab9f4242999e4"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/request-state-body.json",
+      "bytes": 5996,
+      "sha256": "e330912559abd72065e94206ca93c1101b4a6e165b825e76f6203799fd578484"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/request-state-default-supply.asm",
+      "bytes": 2351,
+      "sha256": "3796b705ad5229b45e1f86236ab329224baaf2ef5b0a8d87aa0f4d76112d711c"
+    },
+    {
+      "path": "ios-files-directory-fifth-20261113/request-state-default-supply.json",
+      "bytes": 1389,
+      "sha256": "62279b11fee52ad6092d6cca77dfa61753644d75dfee88c96567bd6abceeaab0"
+    }
+  ]
+}

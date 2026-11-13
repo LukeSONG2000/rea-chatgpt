@@ -1,0 +1,72 @@
+{
+  "status": "partial",
+  "batch": "v484",
+  "priority": "Remote task list before further transcript expansion",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-instructions",
+  "findings": [
+    {
+      "symbol": "CodexRemoteHostFilterRow",
+      "descriptor": "0x955f5f4",
+      "body_witness": "0x38a16c",
+      "body": "0x388580",
+      "observation": "Body constructs horizontal ScrollView with showsIndicators=false, then applies caller-supplied bottom padding. Content includes source choices and host items.",
+      "sites": [
+        "0x3885c8",
+        "0x3885f8",
+        "0x388600",
+        "0x388604",
+        "0x38860c"
+      ],
+      "implementation_gap": "RemoteTaskFixturePage currently uses a generic Picker."
+    },
+    {
+      "symbol": "CodexRemoteHostFilterButton",
+      "descriptor": "0x955fac0",
+      "body_witness": "0x38b2c4",
+      "body": "0x38a1a0",
+      "observation": "Uses Menu with primaryAction, plain style, accessibility label and conditional selected trait. Label preserves host status, optional icon and title.",
+      "sites": [
+        "0x38a3d8",
+        "0x38a430",
+        "0x38a4dc",
+        "0x38a508",
+        "0x38a57c"
+      ],
+      "implementation_gap": "Filter item action/menu, selection presentation and status are absent from the generic picker."
+    },
+    {
+      "symbol": "CodexRemoteHostFilterButton label",
+      "body": "0x38a98c",
+      "observation": "Horizontal label padding is 16 via helper0x45abd0. Selection chooses primary/tertiary text color factories. Fixed-size and capsule content-shape types are present. Complete effective font, selection background, dynamic metrics and menu capability gates require caller closure.",
+      "sites": [
+        "0x38aaf8",
+        "0x38ab00",
+        "0x38ab34",
+        "0x38ab3c",
+        "0x38ab44"
+      ],
+      "limits": [
+        "Do not invent remaining metrics or assume screenshot values.",
+        "Opaque modifier context references remain unresolved."
+      ]
+    }
+  ],
+  "source_chain_status": "partial",
+  "implementation_status": "pending",
+  "runtime_status": "not-run-for-v484",
+  "visual_status": "not-accepted-for-v484",
+  "next_actions": [
+    "Close host-filter constructor values, item selection writeback and source capability gates, then replace the generic picker as one integrated row.",
+    "Trace project section descriptor through header and task projection, including new-thread action and last-row insets.",
+    "Verify task selection/return, A-B-A filtering, per-section collapse and stable host/thread identity.",
+    "Integrate list composer from its own owner after the filter/project list slice."
+  ],
+  "boundaries": [
+    "Synthetic host/project data only.",
+    "Latest simulator runtime is v483; physical-device runtime is v474.",
+    "Static results do not establish restored appearance."
+  ]
+}

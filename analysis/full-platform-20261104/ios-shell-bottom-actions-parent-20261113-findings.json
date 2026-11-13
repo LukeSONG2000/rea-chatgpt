@@ -1,0 +1,292 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "scope": "iOS 1.2026.293 History sidebar bottom-action parent; bounded follow-up. Evidence only; no runtime, product edits or account data access.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": {
+    "candidate_groups": [
+      {
+        "id": 1,
+        "scope": "Existing container/projection and view-model publisher getters",
+        "windows": [
+          "0x13559fc..0x1355b00",
+          "0x129fb34..0x129fe48",
+          "0x1282d00..0x1282df0"
+        ]
+      },
+      {
+        "id": 2,
+        "scope": "Action-components configuration and profile item body",
+        "windows": [
+          "0x129d700..0x129d908",
+          "0x12a0138..0x12a0544",
+          "0x1283b18..0x12843e0"
+        ]
+      },
+      {
+        "id": 3,
+        "scope": "Callback wrappers/value helpers and controller constraint receiver check",
+        "windows": [
+          "0x1373934..0x13739dc",
+          "0x12832d0..0x1283b18",
+          "0x1297080..0x1297368"
+        ]
+      }
+    ],
+    "stop_reason": "Three bounded candidate groups reached. No verified avatar-versus-cog selector or complete footer geometry recovered; do not broaden task to force an implementation."
+  },
+  "observations": [
+    {
+      "id": "profile-content-is-separate-input",
+      "classification": "official-artifact-observation",
+      "conclusion": "The footer profile content enum has avatar(payload) and settingsCog cases. Its content input is separate from account-switcher capability, presentation binding, settings action, and account-switcher action. The account-switcher capability is insufficient to choose the visible avatar/cog case.",
+      "source": [
+        "HistoryProfileButtonContent descriptor 0x9593e84",
+        "HistorySettingsActionItemContainerView descriptor 0x9593a84, body 0x1282990",
+        "HistorySettingsActionItemViewContent descriptor 0x9594a18, body 0x1283b18"
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-components-meta.json",
+        "ios-sidebar-layout-20261112-settings-container.asm",
+        "ios-shell-bottom-actions-parent-20261113/profile-callbacks.asm"
+      ],
+      "limits": [
+        "Enum inventory proves supported content branches, not the default or current account-visible case. Actual enum construction/assignment upstream remains unclosed."
+      ]
+    },
+    {
+      "id": "container-injects-footer-metrics-and-actions",
+      "classification": "official-artifact-observation",
+      "conclusion": "The original settings action container passes its stored metric inputs and separate action/binding inputs to its child. A replacement should preserve these inputs instead of deriving all state from one boolean.",
+      "evidence_points": [
+        {
+          "offset": "0x1282a50..0x1282a74",
+          "detail": "Container field-offset loads copy two metric value/optional-tag pairs. Metadata names the fields avatarSize and minimumHitTargetSize; this window does not establish their caller-supplied numeric values."
+        },
+        {
+          "offset": "0x1282b00..0x1282b58",
+          "detail": "presentsAccountSwitcherPopover field participates in selecting the presentation binding versus constant false."
+        },
+        {
+          "offset": "0x1282bd4..0x1282be0",
+          "detail": "settingsAction callback reference 0x1373988 is supplied separately."
+        },
+        {
+          "offset": "0x1282be4..0x1282c00",
+          "detail": "Capability boolean and accountSwitcherAction callback reference 0x13739c4 are separate child inputs."
+        },
+        {
+          "offset": "0x1373988..0x13739b4",
+          "detail": "Callback obtains VM/context and sends action numeric tag 4 through 0x700ae4; the action enum tag is not independently named in this follow-up."
+        },
+        {
+          "offset": "0x13739c4",
+          "detail": "Separate callback forwards into 0x1282d28 with w1=1."
+        }
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-settings-container.asm",
+        "ios-shell-bottom-actions-parent-20261113/profile-callbacks.asm"
+      ],
+      "limits": [
+        "Numeric avatar size, hit-target size and account/content capability mapping are not resolved."
+      ]
+    },
+    {
+      "id": "metadata-accessor-is-not-selector",
+      "classification": "official-artifact-observation",
+      "conclusion": "0x13559fc referenced by the container is a type metadata accessor, and 0x1373934 is the HistoryProfileButtonContent metadata accessor. Neither proves an avatar/cog branch decision.",
+      "evidence_points": [
+        {
+          "offset": "0x1282a80",
+          "detail": "Reference to 0x13559fc appears in bound/generic container setup."
+        },
+        {
+          "offset": "0x1373934",
+          "detail": "Metadata accessor uses descriptor 0x9593e84 and runtime metadata cache 0xb17ad48."
+        }
+      ],
+      "evidence": [
+        "ios-shell-bottom-actions-parent-20261113/content-projection.asm",
+        "ios-shell-bottom-actions-parent-20261113/profile-callbacks.asm"
+      ]
+    },
+    {
+      "id": "footer-background-and-parent-storage",
+      "classification": "official-artifact-observation",
+      "conclusion": "HistoryViewController owns a distinct bottom action background and distinct stored constraints for the new-chat button bottom, leading and inter-item spacing. Footer geometry must be traced independently of the header and independent child button chrome.",
+      "source_storage_addresses": {
+        "bottomActionItemsBackground": "0xadb95e0",
+        "bottomActionItemsBackgroundController": "0xadb95e8",
+        "actionItemComponents": "0xadb9648",
+        "newChatButton": "0xadb9650",
+        "newChatButtonBottomConstraint": "0xadb9658",
+        "newChatButtonLeadingConstraint": "0xadb9660",
+        "bottomActionItemsSpacingConstraint": "0xadb9668"
+      },
+      "evidence": [
+        "ios-sidebar-layout-20261112-objc.json",
+        "ios-sidebar-layout-20261112-load.asm"
+      ],
+      "limits": [
+        "Storage addresses identify metadata/global ivar-offset slots, not runtime object byte offsets. HistoryBottomActionItemsBackgroundView has a _reduceTransparency field in metadata; this alone does not prove material/color or a specific blur implementation."
+      ]
+    },
+    {
+      "id": "footer-inset-reuses-verified-dynamic-source",
+      "classification": "official-artifact-observation",
+      "conclusion": "The source footer inset getter is dynamic: compact vertical size class uses max(safeArea.bottom,16); another branch reads scene corner configuration with literal bounds24/40; legacy/no-scene chooses24 for zero bottom safe area otherwise38, and no-window fallback38.",
+      "source": [
+        "0x129d908",
+        "0x76103b0"
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-bottom-insets.asm",
+        "ios-sidebar-layout-20261112-findings.json"
+      ],
+      "limits": [
+        "Full scene-corner field mapping/formula remains partial. This is reused existing evidence, not a new universal bottom margin. Do not set16/24/38/40 globally."
+      ]
+    }
+  ],
+  "excluded_probes": [
+    {
+      "evidence": "ios-shell-bottom-actions-parent-20261113/controller-bottom-constraints.asm",
+      "actual_scope": "Header, despite filename: 0x129708c..0x1297090 loads navigationHeaderLayoutGuide via slot0xadb9618; following top/leading/trailing/height constraints belong to that receiver.",
+      "do_not_claim": "The -6 top offset and56 height in this probe are not bottom footer geometry and provide no footer patch value."
+    }
+  ],
+  "implementation_decision": {
+    "classification": "independent-host-adaptation-recommendation",
+    "safe_now": [
+      "Preserve the already recovered new-chat component chrome/label as a distinct child.",
+      "Keep explicit profile-content input separate from canShowAccountSwitcher and presentation state in the host contract.",
+      "If preview needs both avatar and cog for inspection, choose them only through an explicitly synthetic capability fixture, not a claimed293 account-default rule."
+    ],
+    "not_supported_now": [
+      "Replacing fixed gear with avatar automatically based on canShowAccountSwitcher or screenshots.",
+      "Applying header height56/top-6 to bottom controls.",
+      "A global fixed bottom margin or arbitrary new footer material."
+    ]
+  },
+  "unknowns": [
+    {
+      "id": "profile-content-producer",
+      "breakpoint": "Actual assignment/constructor of HistoryProfileButtonContent passed into HistorySettingsActionItemViewContent; publisher0x1282c1c and boolean getter0x1282ce0 do not close it.",
+      "next_minimal_action": "Trace the parent content-enum storage write into child construction and prove the controlling source field before choosing the default avatar/cog."
+    },
+    {
+      "id": "footer-constraint-arguments",
+      "breakpoint": "HistoryViewController newChatButtonBottomConstraint/newChatButtonLeadingConstraint/bottomActionItemsSpacingConstraint producer and update calls (slots0xadb9658/660/668); original viewDidLoad region0x129684c..0x1296904 belongs to child new-chat constraints and must be receiver-tracked.",
+      "next_minimal_action": "Resolve objc anchor selectors plus constraint constants at those stored-constraint writes and update sites; include source configuration branch."
+    },
+    {
+      "id": "footer-background-material",
+      "breakpoint": "HistoryBottomActionItemsBackgroundView _reduceTransparency content consumer and parent background frame/mask.",
+      "next_minimal_action": "Resolve its body and actual background-controller hosting frame before introducing any footer background or blur claim."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "host_changed": false,
+    "built": false,
+    "device_accessed": false,
+    "real_account_read": false,
+    "screenshots_used_for_numeric_values": false
+  },
+  "raw_inventory": [
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/action-components.asm",
+      "bytes": 13296,
+      "sha256": "f6cc1ec260673b6f97aada3ea6b133b9bc26edf9663e2e164e07571cfc86e804"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/action-components.json",
+      "bytes": 15003,
+      "sha256": "be3ca939ff90dd32ee0a5bb2a1339636301c3296ffebaeba1ae34663441ad522"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/bottom-layout.asm",
+      "bytes": 6634,
+      "sha256": "5b3be24b9aad18c143634013c027485a8bec6c53071de655f1e962c2bcafe1ac"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/bottom-layout.json",
+      "bytes": 5515,
+      "sha256": "112b96498bc9de379f82b21d5e4abd3c69d4152d4f445122e28725a25a4c6d8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/content-projection.asm",
+      "bytes": 3334,
+      "sha256": "8b260954a028db947c8963ba4cdc31b16bb94126f1d69e15cb30dc07e6618033"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/content-projection.json",
+      "bytes": 1646,
+      "sha256": "0c2ae02a2da2cf7e6a0b9c1b8b8dc471f84ff040a263606eb9a28d043196693b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/content-value.asm",
+      "bytes": 26359,
+      "sha256": "43fe8f9c8362887cbed1d8fea680e705fefdbdafc73634c16c6b818390f7645b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/content-value.json",
+      "bytes": 21104,
+      "sha256": "df0b56a5a2b6becc844fe3fdcf8b2894c83762484370c71590c29ae4843b4131"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/controller-bottom-constraints.asm",
+      "bytes": 9223,
+      "sha256": "076dd81e72ceb44129f304d6b015f15829bd280e8daa2a9c75acde085bf1a7cc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/controller-bottom-constraints.json",
+      "bytes": 11761,
+      "sha256": "bcd2b4ef872f9472bd54f7b5f7badcd78cb23bb0c6842bf336a647683979139c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/profile-callbacks.asm",
+      "bytes": 2341,
+      "sha256": "f03617e7881b8c74334e9a383434801e34d486aa8db9b054b52544f0550ade65"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/profile-callbacks.json",
+      "bytes": 2064,
+      "sha256": "8feca5a20e3b6baf33c0373063d5fdb0e3e39f8ca88a6ad1cd441f5a0bf6b15c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/profile-item-view.asm",
+      "bytes": 27665,
+      "sha256": "1cf3fab6512d5fca8928e44884ba00d3e4a642ebef7442363beed7bad6a35871"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/profile-item-view.json",
+      "bytes": 24070,
+      "sha256": "2b89ae1db36fc43734a7f6a9b25f9e58c78df025860c16bcd49b864e1c67c046"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/settings-content-body.asm",
+      "bytes": 3094,
+      "sha256": "5fbf91e1fdb05fea4e241187b7eff17838c11ff950d06e4cd69add358011919c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/settings-content-body.json",
+      "bytes": 2358,
+      "sha256": "6cac7542effe07def790b806b4a480d0b4c1d531acf3272bd3857a2b2648a7ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/vm-profile.asm",
+      "bytes": 10215,
+      "sha256": "787d36e87fe4e631d973950b3ac34a4a863877479a96689c69bf49fc82adbee8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-bottom-actions-parent-20261113/vm-profile.json",
+      "bytes": 10227,
+      "sha256": "020e062e25be438141f36c7e76b42f5f11bbb500c5bffc639f0134daf299efd9"
+    }
+  ]
+}

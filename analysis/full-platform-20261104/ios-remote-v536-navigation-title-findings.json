@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "revision": "v536",
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope_corrections": [
+    {
+      "prior_reports": [
+        "ios-remote-v531-thread-title-findings.json",
+        "ios-remote-v535-navigation-title-findings.json"
+      ],
+      "correction": "303aec is the destination-content builder registered by CodexHomeNavigationRoot. It is reached by its navigationDestination(for: NavigationDestination.self) closure. It is not an unconstrained universal thread screen owner and is not merely the home page body.",
+      "registration_offsets": [
+        "0x3048f4 ->0x303450",
+        "0x30361c..0x303644 ->42d2e4",
+        "0x42d2e4 ->0x303670",
+        "0x303848..0x303850 ->0x303aec"
+      ]
+    },
+    {
+      "prior_report": "v522 ordinary thread style at3040c4",
+      "correction": "The existing environment/style application remains proved for the codexRemoteThread destination branch inside this registration. It must not be generalized to every independently instantiated thread view or every list route without producer correspondence. No visual scalar or environment finding is revoked; the proven scope is tightened."
+    }
+  ],
+  "verified": [
+    {
+      "id": "registered-destination-owner",
+      "conclusion": "HomeNavigationRoot descriptor955fb6c, accessor40b9b8, View.body witness3048f4 tails303450.303644 imports SwiftUI.View.navigationDestination(for:destination:). Type metadataa42a0e8 resolves enum descriptor955e4fc NavigationDestination. Its two cases are codexRemoteNewThread with Reference<CodexRemoteNewThreadViewModel> and codexRemoteThread with Reference<CodexRemoteThreadViewModel>. Closure42d2e4 captures a copied HomeNavigationRoot and invokes303670.303670 passes the destination word and same captured root to303aec.",
+      "offsets": [
+        "0x303558..0x30358c Self copy",
+        "0x30361c..0x303644 destination registration",
+        "0x42d2f8..0x42d328 aligned capture access",
+        "0x30368c capturedRoot=x1",
+        "0x303758 destinationWord=[x20]",
+        "0x155ee4 x0=x26,x1=x24",
+        "0x303850 destination builder",
+        "0x303bf8 high-bit destination branch"
+      ]
+    },
+    {
+      "id": "new-thread-visibility-condition",
+      "conclusion": "Within the registered remote-thread destination branch, showsNewThreadButton is true when captured CodexHomeNavigationRoot.dismiss is nil. It is derived from the optional closure function word at capturedRoot+0x20, rather than a list-local new-thread target.",
+      "offsets": [
+        "0x99d8ca0 metadata field dismiss index4",
+        "0x955fb84 fieldOffsetVectorOffset=2",
+        "0xad486b8 fixed template field4 offset32",
+        "0x41ef24 initializer prefix field layouts",
+        "0x303e20 loads root+20",
+        "0x303fac..0x303fb8 bool=(word==0)",
+        "0x30409c passesbool",
+        "0x3040ac calls1a0e63c"
+      ],
+      "proof_limits": "The specific caller values of dismiss for each TaskList route remain unbound. Template dynamic trailing fields are not treated as initialized runtime values. Prefix layout agrees with imported native object/empty tuple value witnesses, one-byte layout and16-byte closure records."
+    },
+    {
+      "id": "navigation-width-is-home-search",
+      "conclusion": "CodexContentView metadata field vector starts at6 words; index36 is __navigationBarContentWidth atmetadata+c0 and index37 __hostingWindow at+c4.309c78 reads width and309cc4 applies frame(width:) under layout !=taskList && (canSearch || isSearching). This exact producer and gate were already recovered in v506. It is the root principal search/title wrapper. No connection to the thread location principal label1a2d760 is proved.",
+      "reuse_report": "ios-remote-v506-search-width-findings.json",
+      "offsets": [
+        "0x955fc00 fieldOffsetVectorOffset6",
+        "0x309c48..0x309c90",
+        "0x309cc4",
+        "0x428c48 measured width setter",
+        "0x428890..0x4288a8 hostingWindow LazyState setter"
+      ]
+    },
+    {
+      "id": "final-wrapper-not-navigation-policy",
+      "conclusion": "75b9070 ->756b878 ->75bc70c simply invokes the supplied transform closure with the view. Its callback4288b4 forwards307784. That function branches on CodexContentView.settingsViewModel(metadata+b8) and constructs conditional settings-related content. This helper itself establishes no title position policy.",
+      "offsets": [
+        "0x756b878..0x756b88c",
+        "0x75bc70c..0x75bc718",
+        "0x307e70..0x307e98"
+      ]
+    }
+  ],
+  "integration": {
+    "ready": [
+      "Represent this registered destination parent dismissal availability separately from new-thread action capability. Its source visibility expression is dismiss == nil.",
+      "Keep source principal/topBarLeading availability branch fromv531 until a source-backed outer title placement override is proved.",
+      "Continue using recovered ordinary style only for the matched registered codexRemoteThread destination."
+    ],
+    "defer": [
+      "Changing production newThreadTarget predicate before current native host route is mapped to the official registration and dismiss ownership.",
+      "Applying home-search measured width to ordinary thread title.",
+      "Claiming the newer screenshot left alignment matches293 via a forced leading override."
+    ]
+  },
+  "remaining": [
+    {
+      "boundary": "TaskList selection action -> NavigationDestination.codexRemoteThread -> registered path",
+      "next_minimum_offsets": [
+        "0x301e08..0x301e20 assigns taskListActionHandler atmetadata+70",
+        "0x44a980 ->0x42e12c ->0x302794",
+        "0x303644 destination registration",
+        "0x303670 destination callback"
+      ],
+      "action": "Trace only selected-thread action case of302794 and its navigation path mutation/NavigationDestination constructor. Verify this reaches the registration before matching current native hostroute."
+    },
+    {
+      "boundary": "Captured dismiss values on list-push route",
+      "next_minimum_offsets": [
+        "0x301468 shared content builder",
+        "0x303450 HomeNavigationRoot value/capture",
+        "0x303e20 consumer"
+      ],
+      "action": "Bind root construction dismiss input for that selected-thread route. A present platform back button alone is not proof that captured dismiss closure is nonnil."
+    },
+    {
+      "boundary": "Thread title source position vs newer screenshot",
+      "next_minimum_offsets": [
+        "0x1a3007c..0x1a30094 principal availability",
+        "0x1a2d760 label",
+        "0x3039a4 navigationBarBackButtonHidden",
+        "0x303a0c parent toolbar"
+      ],
+      "action": "Inspect this actual destination parent toolbar conditions and compare matching title/trailing/back state. The source presently proves principal, not forced leading."
+    }
+  ],
+  "validation": {
+    "production_changes": false,
+    "docs_changes": false,
+    "target_execution": false,
+    "preview_changes": false,
+    "scope": "bounded raw windows plus two exact-target xref searches"
+  },
+  "reused_evidence": [
+    "ios-remote-v531-thread-title-findings.json",
+    "ios-remote-v535-navigation-title-findings.json",
+    "ios-remote-v522-screen-thread-style-writer.asm",
+    "ios-remote-v508-home-root-calls.json",
+    "ios-remote-v506-search-width-findings.json"
+  ],
+  "evidence_files": [
+    {
+      "path": "ios-remote-v536-body-witness-self-1.asm",
+      "sha256": "352b091fd1b7b47744c0ccd7b4c2c5999fb9a17d1ec038de50e579a7cf5bae0d"
+    },
+    {
+      "path": "ios-remote-v536-body-witness-self-2.asm",
+      "sha256": "b8c946bfa16b2055006e5c662c96e140a048bc024302a0a5bf6bb44153e827d8"
+    },
+    {
+      "path": "ios-remote-v536-body-witness-self-3.asm",
+      "sha256": "342d99bc668785abc8aed12bc62316442cef9e0069364177f0fa761803e0bef8"
+    },
+    {
+      "path": "ios-remote-v536-capture-value-offset.asm",
+      "sha256": "736284926c51ba3ca7e37bdde2ce4b96fabb4876f2d0926158390afbaa053665"
+    },
+    {
+      "path": "ios-remote-v536-content-accessor.asm",
+      "sha256": "67de5e353354125b894c6424cf2f0f7dab79f809e8887c38ede28d81c3e324f4"
+    },
+    {
+      "path": "ios-remote-v536-content-accessor.json",
+      "sha256": "598ddb5e01edaf6eee2729a79921cc017d265b443dffbcaa954f50bfc7867151"
+    },
+    {
+      "path": "ios-remote-v536-content-bounded-owners.asm",
+      "sha256": "876ced8578baa63a5c74366605bd1426cf8c12a2be070022c06d204c4d6e5369"
+    },
+    {
+      "path": "ios-remote-v536-destination-case-types.json",
+      "sha256": "f428553c58554ad8fcbc9830ed44ad6cdb12d8f9eed09b7d439f06e6cdffb36c"
+    },
+    {
+      "path": "ios-remote-v536-destination-enum.json",
+      "sha256": "ee0e9ba6393b47ddff0db08e895c493385d40ae762c459461b2346b38dc8dc48"
+    },
+    {
+      "path": "ios-remote-v536-field-offset-evidence.json",
+      "sha256": "7faa93feb25e636dc51e7126270c9b1b3c709ae93e954faf29ba0e09c9f5ccd4"
+    },
+    {
+      "path": "ios-remote-v536-home-body-witness.asm",
+      "sha256": "c44f560f07199e8ff9e08b186ffe80575348cbe630453041f4b19e5df7e0e8ae"
+    },
+    {
+      "path": "ios-remote-v536-home-field-types.json",
+      "sha256": "d7ac8d60aede2b4d097a32689603c886f2927de5afaeb93cdab83ffa2b4981a5"
+    },
+    {
+      "path": "ios-remote-v536-home-layout-completion.asm",
+      "sha256": "fade346f4cbc494b5674c668469396cc45c8c170700296e9d39492aaf37cd977"
+    },
+    {
+      "path": "ios-remote-v536-home-layout-helper1.asm",
+      "sha256": "814feb447166c40159af1d7ae276c17eadb993a9eef093d03dfe643a07cff86a"
+    },
+    {
+      "path": "ios-remote-v536-home-layout-helper2.asm",
+      "sha256": "b72dc8e7c4675363d26cac3418a50edd2c8cc856cbe0f04c3edb91658a1d1a1b"
+    },
+    {
+      "path": "ios-remote-v536-home-layout-helper3.asm",
+      "sha256": "4c7d6cfa240522668ea81af99b117e16b73f18a42b387d29e307d344772589b6"
+    },
+    {
+      "path": "ios-remote-v536-home-layout-init.asm",
+      "sha256": "f5b39d94ee51390c8bc45e66f830b3dc0149f3e4ed4c98421529d5813ad8ff7e"
+    },
+    {
+      "path": "ios-remote-v536-home-navigation-metadata.json",
+      "sha256": "386499190799168e24e738e4fc9c951345298e5c8cdbc38eec886df63aa51325"
+    },
+    {
+      "path": "ios-remote-v536-home-root-body.asm",
+      "sha256": "2b33c5ec0614e4f57a84aa24acc61ac5877b9d2e3da1dc93ad10b8d558708973"
+    },
+    {
+      "path": "ios-remote-v536-home-root-witnesses.json",
+      "sha256": "5c374db0f7225fee28fa7229f371291026d6d9901b95b7558e30b0377b6bff2d"
+    },
+    {
+      "path": "ios-remote-v536-navigation-content-tail.asm",
+      "sha256": "cae7dbb1321596cc69b1062619b5a503f483e671ad1ae034c9778dc24b080152"
+    },
+    {
+      "path": "ios-remote-v536-navigation-content-tail.json",
+      "sha256": "b35a5ced43d265593c57ea5ad83367b98c76e742d6ae5e7b26d36063ce975327"
+    },
+    {
+      "path": "ios-remote-v536-navigation-content.asm",
+      "sha256": "7c8c52c1eac77ce4b0ecaabc472e56408a1a0a93b6316a4b22f9bcfd3edb2205"
+    },
+    {
+      "path": "ios-remote-v536-navigation-content.json",
+      "sha256": "158884aa28b97c5d32045aaa198b755db98764fe2893c9e995dc93e387a883e2"
+    },
+    {
+      "path": "ios-remote-v536-navigation-final-leaf.asm",
+      "sha256": "e6059318d6c880aaa43d77a684e3373d3fdcca12b18190ee32d5dbab07a1e46c"
+    },
+    {
+      "path": "ios-remote-v536-navigation-final-leaf.json",
+      "sha256": "85c48cc4907b8474ba7ce31cabcc656c150e3973d0e2580e0cd33145364a5d7d"
+    },
+    {
+      "path": "ios-remote-v536-navigation-final.asm",
+      "sha256": "c572a137504ad80c0475c8d81bf0b14cb02d6c22e0661aec33a7bcfd07ecf838"
+    },
+    {
+      "path": "ios-remote-v536-navigation-final.json",
+      "sha256": "6ec3a3fc21c5513e0e179e8c53a4cfc0d7878fa9a9138a2327816003856f16c5"
+    },
+    {
+      "path": "ios-remote-v536-navigation-hosting-window.asm",
+      "sha256": "17e20b790022f1cd3496ab500fe15a77993e6df7f73ca5910331ee2e389d80a9"
+    },
+    {
+      "path": "ios-remote-v536-navigation-hosting-window.json",
+      "sha256": "856f4b60ddf7cf1a137b18892ec3d47777671fa777481742bcd8a18dfab1f894"
+    },
+    {
+      "path": "ios-remote-v536-navigation-width.asm",
+      "sha256": "23441d33eacdc723ebe2a86c9beffde46c53f5b02e1637036c345f5dd9baf0bd"
+    },
+    {
+      "path": "ios-remote-v536-navigation-width.json",
+      "sha256": "19fda9f0ebc53683e3790f9e39ab2ef2303e8e04e15433a194ecb83260c53c39"
+    },
+    {
+      "path": "ios-remote-v536-parent-xrefs.json",
+      "sha256": "0901a3c0a0c74094134f4200bd2a6c9cd34018746c87608bf5834e8484f6d46d"
+    },
+    {
+      "path": "ios-remote-v536-screen-arg-helper.asm",
+      "sha256": "b77d182f8a5e6b8ef36ab44e689eab157969f6dcd1fec65ec9c70c5afa39246f"
+    },
+    {
+      "path": "ios-remote-v536-screen-body-thunk.asm",
+      "sha256": "0abeb7fe8e4bfc5534fbfda7c2a5abcbed69945d578c75d68727b306ebd2d84c"
+    },
+    {
+      "path": "ios-remote-v536-screen-caller-xrefs.json",
+      "sha256": "e2ed5db87cc324b52cae42aed70a398745dfef7139b9dad9fd9351ade109c9f3"
+    },
+    {
+      "path": "ios-remote-v536-screen-capture-helpers.asm",
+      "sha256": "1b49545e7319974ef7c3a1abece89990071968689cfa010d4bced4f099e8f955"
+    },
+    {
+      "path": "ios-remote-v536-screen-capture-invoke.asm",
+      "sha256": "4ac24fd8e28ef66f275fc26c0a8def487fae388b1cb87a4bc996d45fab3a8ff4"
+    },
+    {
+      "path": "ios-remote-v536-screen-capture-metadata.asm",
+      "sha256": "30e959db54d52c9c8f7803648b23aeb38c21d15f3077fdc5743a19638a23dd13"
+    },
+    {
+      "path": "ios-remote-v536-screen-capture-thunk.asm",
+      "sha256": "ad940679b7bae26e65584053ab4047da63ea20de154efde87b3d77a538297a79"
+    },
+    {
+      "path": "ios-remote-v536-screen-entryhelpers.asm",
+      "sha256": "0f6a47df8691ea27cdcb088beed00b0b828717ffb804f93e5adbc06d4e1a26fe"
+    },
+    {
+      "path": "ios-remote-v536-screen-entryhelpers.json",
+      "sha256": "a8902c58179c57662618cb52256a5863079e7c60394e1402a34211372a2f4384"
+    },
+    {
+      "path": "ios-remote-v536-screen-parent.asm",
+      "sha256": "6a9d2c9beae11aabafd767d21cb468ff7401bf2e0292d323ff377f7a8217ce59"
+    },
+    {
+      "path": "ios-remote-v536-screen-parent.json",
+      "sha256": "3780d326fbd54a7c3f4be1481c7460810b28af8af5d184a816c7ef60075fca02"
+    },
+    {
+      "path": "ios-remote-v536-task-list-handler-forward.asm",
+      "sha256": "b9d3a66bae69353d90b91aecdaaa242afba13fd744346b1ba6cda260d16693d0"
+    },
+    {
+      "path": "ios-remote-v536-task-list-handler-thunk.asm",
+      "sha256": "4e1f7b73ea85bc46e3bee7d69b2b68b323e1c898f50c4fa5c5bc126fca8df3b1"
+    }
+  ]
+}

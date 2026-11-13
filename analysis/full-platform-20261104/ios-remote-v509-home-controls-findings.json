@@ -1,0 +1,265 @@
+{
+  "batch": "v509",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static-metadata-and-instructions",
+  "scope": "Ordinary empty Remote home composer controls in compact and expanded layouts, inherited from v445 persistent composer and v508 Home style. No production edits or official runtime execution.",
+  "parent_chain": [
+    {
+      "offsets": [
+        "0x1985380..0x19853e8",
+        "0x19876f4",
+        "0x1987900"
+      ],
+      "conclusion": "The persistent composer selects expanded and compact content while retaining editable-field identity. The compact ordinary branch is1987ae8. Whisper model state can select a separate branch in1987900; that state predicate remains unnamed."
+    },
+    {
+      "offsets": [
+        "0x1987cac",
+        "0x1987e04",
+        "0x19880c8"
+      ],
+      "conclusion": "Compact ordinary content constructs attachment button19863cc and trailing controls198a620."
+    },
+    {
+      "offsets": [
+        "0x1985c94",
+        "0x1985f04",
+        "0x19860b8..0x19861ac"
+      ],
+      "conclusion": "Expanded toolbar constructs the same attachment button19863cc. Its trailing constructor606e088 is omitted when preventsPromptSubmission is true. allowsSupplementaryWhisperButton is passed to that constructor, with Whisper closure1c27f18 and primary closure1c27f6c."
+    }
+  ],
+  "controls": {
+    "attachment_menu": {
+      "status": "partial",
+      "construction": "Both ordinary compact and expanded branches call19863cc. Attachment construction is independent of prompt emptiness at these callers.",
+      "label": {
+        "offsets": [
+          "0x1986570..0x1986590",
+          "0x1c28788",
+          "0x198e884",
+          "0x60709ac",
+          "0x96cacec"
+        ],
+        "conclusion": "SwiftUI Button action1c286d4 and label1c28788. The label constructs MessageInputAccessoryButtonLabel with accessoryType raw1=attachmentMenu. Its displayed attachments/cancel icon is animated and comes from inherited style."
+      },
+      "default_symbol": {
+        "name": "OpenAI/Symbols/plus-lg",
+        "status": "verified-static-default",
+        "offsets": [
+          "0x607f9d0",
+          "0x607fa18",
+          "0x607fb78..0x607fb80",
+          "0x74fa4f4",
+          "0x74fa520..0x74fa528",
+          "0x8a56a60"
+        ],
+        "conclusion": "Default MessageInputAttachmentsPartStyle factory stores plus-lg Image as attachIcon. v508 Home inherits Remote/default attachment style and overrides attachment font. The label reads its attachment image via style environment rather than hardcoding a system SF symbol."
+      },
+      "owner": {
+        "offsets": [
+          "0x1c286d4..0x1c2877c",
+          "0x1d7eef8",
+          "0x1980dc4",
+          "0x1d7eeac",
+          "0x1980e0c",
+          "0x1980e24"
+        ],
+        "conclusion": "Action modifies CodexRemoteMessageInputView.__attachmentPresentation, confirmed by field vector f0 in getter/setter. It first consumes/clears __suppressNextAttachmentAction (fc), or returns when recentPhotosController exists and predicate18c9c64 is true. Otherwise it writes the new presentation state. Exact presentation enum payload is not decoded here."
+      },
+      "limits": [
+        "The full permits-attachments/disabled-popover gating outside these ordinary callers is not closed. Construction alone does not prove tappability in every capability state.",
+        "Recent-photos predicate18c9c64 is kept unnamed."
+      ]
+    },
+    "whisper_microphone": {
+      "status": "partial",
+      "gates": {
+        "compact": [
+          "preventsPromptSubmission == false",
+          "allowsSupplementaryWhisperButton == true"
+        ],
+        "expanded": [
+          "preventsPromptSubmission == false",
+          "allowsSupplementaryWhisperButton passed to shared trailing-control constructor606e088"
+        ],
+        "offsets": [
+          "0x198a620",
+          "0x198a7dc",
+          "0x19860b8..0x19861ac",
+          "0x1c27f18"
+        ]
+      },
+      "owner": {
+        "offsets": [
+          "0x198a810..0x198a878",
+          "0x1c28660..0x1c28690",
+          "0x95aea7c",
+          "0x19903f8",
+          "0x1990444..0x199044c"
+        ],
+        "conclusion": "Supplementary control renders the injected whisperComponent with request tag4 and a callback1c28660. Callback sends CodexRemoteMessageInputAction.startWhisper (raw26) through view.handle, field vector c4. Shared Whisper view-model state governs actual microphone presentation. Exact tag4 dispatch to the concrete leaf remains open."
+      },
+      "symbol": {
+        "name": "OpenAI/Symbols/microphone",
+        "status": "verified-resource-and-shared-leaf-helper; partial-remote-consumer",
+        "offsets": [
+          "0x95a51c8",
+          "0x7ded2a0",
+          "0x16fa3e4",
+          "0x16f81f0",
+          "0x16f9d98",
+          "0x16f9e44",
+          "0x74f894c",
+          "0x74f8978..0x74f8980",
+          "0x8846780"
+        ],
+        "conclusion": "ComposerWhisperMicrophoneButton builds MessageInputWhisperButtonPart. Its rendering family includes microphone helper16f9d98 and original microphone factory74f894c. Additional helpers use checkmark-md and stop-sm-fill. Do not make all Whisper states display the idle microphone."
+      },
+      "limits": [
+        "Remote request tag4 and concrete shared microphone state selection are not fully resolved. Empty prompt alone does not establish that microphone is always visible.",
+        "Microphone permission, transcription execution and push-to-talk gesture acceptance are outside this static closure."
+      ]
+    },
+    "voice_primary": {
+      "status": "verified-static-selector",
+      "predicate": [
+        "realtimeVoiceAction != nil",
+        "canStartRealtimeVoice == true",
+        "composerPromptText.isEmpty",
+        "attachment/context predicate19874b8 == false",
+        "isLoadingAttachments == false",
+        "isSending == false",
+        "isRunningTurn == false",
+        "isReconnecting == false"
+      ],
+      "offsets": [
+        "0x198a980..0x198aa88",
+        "0x198a99c..0x198a9b8",
+        "0x198a9cc..0x198a9d4",
+        "0x198aa38..0x198aa58"
+      ],
+      "owner": "Success constructs MessageInputPrimaryButtonPart with icon raw5=voice and the injected realtimeVoiceAction function/context. Failure falls back to197ff34 primary send/stop selector.",
+      "symbol": {
+        "name": "OpenAI/Symbols/voice-button",
+        "offsets": [
+          "0x96caac0",
+          "0x606b61c..0x606b66c",
+          "0x8233c88",
+          "0x74fc394",
+          "0x8a577b0"
+        ],
+        "conclusion": "Primary icon enum index5=voice selects original voice-button factory74fc394."
+      },
+      "parent_gates": [
+        "Compact trailing branch first rejects preventsPromptSubmission. It selects compact running-turn stop when that capability and state allow, otherwise constructs198a980 only if realtimeVoiceAction is present.",
+        "Expanded primary closure1c27f6c→198f378→198a980 is under the expanded toolbar preventsPromptSubmission gate."
+      ],
+      "limits": [
+        "canStartRealtimeVoice and realtimeVoiceAction must come from the appropriate owner/capability. No fixture availability is inferred from screenshot appearance.",
+        "Attachment predicate includes attachments, recentPhotosController selected context, selectedTextAttachments and helper19817cc. Two subpredicate names remain partial.",
+        "Button capsule style is separately controlled by Home usesCapsule flag, as established in v508."
+      ]
+    }
+  },
+  "minimum_integration_guidance": [
+    {
+      "kind": "independent-integration-recommendation",
+      "recommendation": "Reuse the existing extracted official plus-lg and voice-button resources with the v508 inherited style. Keep attachment, dictation and realtime voice as separate action owners."
+    },
+    {
+      "kind": "independent-integration-recommendation",
+      "recommendation": "A deterministic frontend fixture may explicitly supply attachment capability, Whisper idle state and realtime-voice capability, while recording fixture provenance. Unconnected actions should use the existing unavailable-capability presentation."
+    },
+    {
+      "kind": "independent-integration-recommendation",
+      "recommendation": "Preserve compact/expanded shared state. Do not add three unconditional decorative buttons based on the reference screenshot."
+    }
+  ],
+  "next_minimum_evidence": [
+    "Resolve whisperComponent render request tag4 to concrete presentation and idle microphone state before declaring end-to-end microphone display verified.",
+    "Close attachment availability/disabled state at19863cc modifiers and parent ComposerPresentation.allowsAttachments for non-home variants."
+  ],
+  "validation": {
+    "static": "source offsets and artifact identity verified",
+    "runtime": "not run",
+    "visual": "not accepted",
+    "service_execution": "not exercised"
+  },
+  "supporting_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-controls-calls.json",
+      "sha256": "c2b64fc6771fbacb10215625a79bbc68d0304712accecba5b907f8af4949414a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-controls-metadata.json",
+      "sha256": "90e187081bdc139f6ea7c833808bf38712590fd4ed64606f6d52ce24392b592b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-controls-enums.json",
+      "sha256": "3ef983a34e500cc1299d4ec1e21ac15802a57211aa47c12f88c8d8a3ec2686e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-leaf-controls-calls.json",
+      "sha256": "b56a3a38548dc8eedd29f5974d72b00fe10d14260d76ff85055cfa332037d385"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-controls-extra-calls.json",
+      "sha256": "a2b85afdd26ae46ef90e09263659167c18753200104270af01a4633efb15d95e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-symbol-bindings.json",
+      "sha256": "e6f7ef04b8323d1d39bcdce8e2a59a6c5f1f36f64a8d12bfd7b85f6dc557d7de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-symbol-bindings.asm",
+      "sha256": "34cc786dc1f112bbad7d3459f7bffdfc66b56c54a55d754bdfc22c7805de8bf5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-actions.asm",
+      "sha256": "dba69723e8311b94aeef46b98f96bee3dd05687000fb3b2d754457d31bdeff62"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-attachmentsetter.asm",
+      "sha256": "09149d23f437bd4aacdf990c5bbe34d52c9abec7fdd0fc150c2113e0a04e8cbe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-attachmentstate.asm",
+      "sha256": "7187bdcc49319baa4b66d87aa6eca8abbbc7a05a857bdaf1bc8ba60d56ee452e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-handle-dispatch.asm",
+      "sha256": "7792b4ec5725762ee07c0f07d8e488471cf456df57cd2a6e50ea3ef52f8f2cbe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-whisper-leaf-metadata.json",
+      "sha256": "4d03f96f02e656604010097752aa5ad0e6618a9ff817a1c7a3bcb04f148b7832"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-whisper-leaf-witness.json",
+      "sha256": "1feefecf24d823f01533607b07c383ab86d2f6e7e431d11483b9dd28d6ae20fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-whisper-button-calls.json",
+      "sha256": "f6b1622a4adae44746d7dd032a3b0bb396ecbddbe1237e89836a5b6772198280"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-whisper-button.asm",
+      "sha256": "b9ee4db3ab78bfee01aa82c4539491e03f2c31e308106826d0bd1111d963c29e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-home-style-findings.json",
+      "sha256": "7f353ec5882b87dd217b9cf2ee0d592a13e76dc7715dc1b96e894acf2564b9af"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v445-findings.json",
+      "sha256": "e0fb5f932f41036cfda1c707f2ab0304a4a9e8e3a75e0555f96216ad630a3346"
+    }
+  ]
+}

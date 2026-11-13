@@ -1,0 +1,244 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two bounded candidate groups: real catalog input/ordered specialization; final expanded-state projector and exact More mapping. No full enum inventory or arbitrary visible list inferred.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_evidence": [
+    "ios-sidebar-feature-catalog-parent-20261113-findings.json",
+    "ios-sidebar-feature-catalog-parent-20261113/reproject.asm",
+    "ios-sidebar-feature-catalog-parent-20261113/enum-case-proof.json",
+    "ios-sidebar-layout-20261112-objc.json",
+    "ios-sidebar-explore-20261112/catalog-metadata.json"
+  ],
+  "new_official_observations": [
+    {
+      "id": "owner-expanded-input",
+      "type": "official_artifact_observation",
+      "conclusion": "The actual sidebar snapshot producer passes featureCatalogExpanded into the ordered catalog projection. The previously missing owner→projection connection is now closed.",
+      "source": [
+        "0x12985d0 available candidate array→Set helper0x1257068",
+        "0x12985fc base0xb17da20",
+        "0x1298614 loadbase+0x20 ->offsetstorage0xb17da40",
+        "0x1298618 ldrb w10,[controller,dynamicOffset]",
+        "0x1298658..0x1298664 packs w10 boolean into x10 bit40",
+        "0x1298668..0x129867c callback0x129e298,Set x2,flags x3 ->0x12755f4",
+        "ObjC ivarentry0xab1bbe8 namefeatureCatalogExpanded offsetstorage0xb17da40"
+      ],
+      "evidence": [
+        "catalog-input-bindings.asm",
+        "catalog-ordered-map.asm",
+        "../ios-sidebar-layout-20261112-objc.json"
+      ],
+      "limit": "Original live capability assignments for other flag getters and full visible feature order remain separate. The argument is a packed specialization, not a new wire DTO."
+    },
+    {
+      "id": "ordered-specialization",
+      "type": "official_artifact_observation",
+      "conclusion": "0x12755f4 is a real ordered projection using capability-dependent intermediate arrays filtered against available item membership, not unordered Set iteration or enum declaration order.",
+      "source": [
+        "0x1275614 flagsx3→x28",
+        "0x1275618 availableSetx2→x23",
+        "0x1275620 callbackx0→x19",
+        "0x1275640 bit16 branch",
+        "0x1275658 bit0 branch",
+        "0x127581c bit8 branch",
+        "0x1275c3c bit32 branch",
+        "0x1275a88..0x1275b64 and0x12761e0..0x12762c8 membership loops",
+        "0x1276554..0x1276558 extractisExpandedbit40",
+        "0x1276588 ->0x12753c4"
+      ],
+      "evidence": [
+        "catalog-ordered-map.asm",
+        "catalog-ordered-map-tail.asm"
+      ],
+      "limit": "This pass does not publish complete ordered feature names, branch flags→all descriptor fields or UI visibility for all19 candidates. Literal raw-case values remain local internal values until mapped, not default product inventory."
+    },
+    {
+      "id": "exact-more-mapping",
+      "type": "official_artifact_observation",
+      "conclusion": "The ordered projection creates the real seeMoreFeatures item, positively correlated to the already-proven HistoryViewController.Item representation.",
+      "source": [
+        "0x1276560 suppliescatalogbyte18",
+        "0x1276568 calls captured0x129e298",
+        "0x129e298..0x129e2a8 table0x7db63b8 index18",
+        "tableentry0x7db6448=UInt64(8)",
+        "0x129e2ac..0x129e2c0 zeroes payload and stores halfword0x800 at+0x38 (byte+0x39=8)",
+        "priorItemcaseproof firstWord8/enumbyte8→seeMoreFeatures"
+      ],
+      "evidence": [
+        "catalog-input-closure.asm",
+        "more-mapping.json",
+        "../ios-sidebar-feature-catalog-parent-20261113/enum-case-proof.json"
+      ],
+      "limit": "No More label/icon/cell-style inferred from this identity mapping. User custom assistant name/avatar remains irrelevant."
+    },
+    {
+      "id": "source-removes-more",
+      "type": "official_artifact_observation",
+      "conclusion": "Expanded state bypasses the More insertion branch in the final projector. Collapsed state creates a More row only when its intermediate remaining-candidate array has more than one element.",
+      "source": [
+        "0x1276558 isExpandedbit40→x22",
+        "0x1276584 x4=x22",
+        "0x1276588 ->0x12753c4",
+        "0x12753e8 x4→x25",
+        "0x12754f0 helper0x1257968 producesintermediatearray",
+        "0x12754f4 tbnz w25,#0 ->0x1275580",
+        "0x12754f8..0x1275500 count<=1 ->0x1275580",
+        "0x1275508..0x127554c allocatesoneelementarrayandcopiesMorepayload",
+        "0x1275550..0x1275578 combinesfirstgroup+More+trailinggroup",
+        "0x1275580..0x1275598 expanded/smallremaining combineswholeintermediategroupinstead"
+      ],
+      "evidence": [
+        "catalog-final-expansion-projector.asm",
+        "catalog-ordered-map-tail.asm"
+      ],
+      "limit": "The count comparison is for a specific already-processed remaining group, not all visible/available features. Do not implement a universal fixed threshold of one or two total catalog rows. Exact preprocessing/unique filtering and all array group semantics remain partial."
+    }
+  ],
+  "current_host_comparison": {
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "evidence": "current-host-source-snapshot.json",
+    "already_correct": [
+      "More tap is sidebar-owned idempotent expansion admission and updates existing collection in place.",
+      "Expanded fixture projection omits the More row; this omission now has original-source support."
+    ],
+    "independent_remaining": [
+      "primaryFeatureCatalog fixedclock/library/customize/codex order.",
+      "Additional Plugins/Projects/Sites/Images/Assistant registry order and live callback availability.",
+      "Current prefix/append split and always-show-More-whenadditionalnonempty policy.",
+      "UIKit insertion animation and replacement-feature reading anchor."
+    ],
+    "comment_correction": "The host comment grouping Hiding consumed More with fully independent fixture projection can be refined: hiding consumed More when expanded is source-backed; exact registry ordering, threshold, animation and anchor behavior remain adapters. No behavior change required for that recovered fact."
+  },
+  "minimum_implementation_decision": {
+    "behavior_change_required": false,
+    "safe_new_source_binding": "Retain current expansion behavior; source provenance for omission of the More control can be upgraded. Keep ordered entries supplied by explicit provider rather than claiming the four-item prefix or appended registry is recovered.",
+    "do_not_apply": [
+      "Do not copy raw19 candidate inventory into always-visible rows.",
+      "Do not treat Set iteration as final order.",
+      "Do not infer a collapse toggle or collapse-on-dismiss from the unrelated false setter callback.",
+      "Do not use a generic hidden-count threshold from the intermediatearraycount>1.",
+      "Do not invent More label/icon or personal assistant identity."
+    ]
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "0x12755f4 completecapabilitydependentorderedgroups",
+      "missing": "Named mapping for each array component, all rawcatalogcases and actual live owner flags; only expanded bit40 was closed."
+    },
+    {
+      "boundary": "0x12754e4 ->0x2e0fc4 ->0x1257968",
+      "missing": "Exact preprocessing/uniquing semantics defining the collapsed remaining-candidate count."
+    },
+    {
+      "boundary": "HistoryItem.seeMoreFeatures→registeredcelllabel/configuration",
+      "missing": "Actual More/Explore localized key, icon and appearance by layout branch."
+    },
+    {
+      "boundary": "0x1355e80 callback",
+      "missing": "Event semantic which resets expansion false; no universal collapse policy proved."
+    },
+    {
+      "boundary": "haptics",
+      "missing": "No new direct feedback caller in this projector; no proposed additional event."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 2,
+    "static_only": true,
+    "product_modified": false,
+    "tests_or_builds": false,
+    "device_or_target_execution": false,
+    "network": false,
+    "stopping_reason": "Requested parent input and More omission branch proved; remaining full order/label/runtime capability catalog would expand scope."
+  },
+  "evidence_directory": "ios-sidebar-feature-catalog-third-20261113",
+  "evidence_files": [
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-final-expansion-projector.asm",
+      "bytes": 6888,
+      "sha256": "59988688fb851cf0a9ddaff2840f900294436eafc51f16b18118268e1ca4c050"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-final-expansion-projector.json",
+      "bytes": 4505,
+      "sha256": "7b8cac8362ec822168615bf734e557391cf9f1a3cff707784c33b4b29023384e"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-input-bindings.asm",
+      "bytes": 2292,
+      "sha256": "b45fcff25bf7d5fb24ac2005c68db470cefb05555853528955185cabd8055876"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-input-bindings.json",
+      "bytes": 1274,
+      "sha256": "fcb3129166c741a64dc584993d75750a77625f1945046a13ab25967cd93cc163"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-input-closure.asm",
+      "bytes": 5739,
+      "sha256": "f6b23616a95b4a014ce817440618f58512439b54ae333b4c321b97eb89919517"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-input-closure.json",
+      "bytes": 4373,
+      "sha256": "9d5b88694067538bf543950283534d8fe22ffcc23bd8941051b3a0236fb98bd6"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-order-accessor.asm",
+      "bytes": 4763,
+      "sha256": "b2dcd424f8df7020ddf78680435f5092dd317d1c0f681abea269ab3536aac5f0"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-order-accessor.json",
+      "bytes": 3211,
+      "sha256": "14bce566b01820b304069aa9bf1524a72d2673782d7a5222882b98c330884fe5"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-ordered-map-tail.asm",
+      "bytes": 37444,
+      "sha256": "2a91e1747fad32a2692a6cafa810f6c3bd3e2fccaeb52cc6008730c1f373a8bc"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-ordered-map-tail.json",
+      "bytes": 19071,
+      "sha256": "fdca1d600a0f24530ba4e1aa5ef4bd881008d70a46735f8e95e408b3554fb08e"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-ordered-map.asm",
+      "bytes": 11906,
+      "sha256": "c2f6bcf96f2154189a3d2552fbe7771163c41968a37d2bdfce2d0f1de42b21e4"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-ordered-map.json",
+      "bytes": 6467,
+      "sha256": "0cd662390a08bc73176f3f53af4fa39dda52284d1df82313753f318413970c41"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-set-and-getters.asm",
+      "bytes": 30649,
+      "sha256": "dc7085fc70bb9c850ab52113528eac9e68a726bae66c3a0248170e648405fb57"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/catalog-set-and-getters.json",
+      "bytes": 14303,
+      "sha256": "ec90be5fa9a4f5c970a733462960a2c8da119cea86d706b1d118360817b0f240"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/current-host-source-snapshot.json",
+      "bytes": 3790,
+      "sha256": "9585be80284ed0d265090fdd83fa692c20cf52caf03c76111556df4029028687"
+    },
+    {
+      "path": "ios-sidebar-feature-catalog-third-20261113/more-mapping.json",
+      "bytes": 297,
+      "sha256": "e51f910b9c9c966896df1c2e2941eb2f7ec9d883e7aa55ab0c1de315fcdb32d5"
+    }
+  ]
+}

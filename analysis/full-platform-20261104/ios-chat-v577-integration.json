@@ -1,0 +1,67 @@
+{
+  "batch": 577,
+  "status": "partial",
+  "evidence": "ios-chat-v577-findings.json",
+  "runtime": "ios-chat-v577-runtime.json",
+  "retention": "ios-chat-v577-retention.json",
+  "implementation": "Applied artifact-confirmed default textContainerInset.zero to shared independent NativeMessageBlock. Page-specific overrides remain unresolved.",
+  "decision_without_page_override_proof": "Use confirmed zero default for text/code in this independent UIKit adapter, pending ordinary caller configuration closure.",
+  "tests": {
+    "state": "ios-chat-v577-state.log",
+    "ui": [
+      "ios-chat-v577-r1.summary.json",
+      "ios-chat-v577-r2.summary.json"
+    ],
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "coverage": [
+      "Chat/Work Chinese/light and English/dark failure retry, cancellation, A-B-A and cold restore",
+      "Remote Chinese/light and English/dark table horizontal position restoration and whole-code copy/paste",
+      "Remote Chinese/light and English/dark actual native word selection, Copy menu and paste of selected let token"
+    ]
+  },
+  "visual": {
+    "checked": [
+      "Chat Chinese/light",
+      "Chat English/dark",
+      "Remote Chinese/light",
+      "Remote English/dark",
+      "Remote native selection Chinese/light and English/dark",
+      "Installed Chinese/light home with retained synthetic attachment draft"
+    ],
+    "limits": [
+      "Outer block padding, row spacing and fixed action footer still leave visible gaps",
+      "Native host is UITextView; official custom TextKit2 rendering is separately scoped",
+      "English Chat synthetic reply content remains Chinese",
+      "Remote table screenshots retain the intentional horizontal offset after return",
+      "No exact same-content pixel metric or physical-device acceptance"
+    ]
+  },
+  "pending": [
+    {
+      "page": "Chat/Work and shared Markdown",
+      "behavior": "Effective outer text/code insets and paragraph/block spacing",
+      "priority": "P1",
+      "evidence_break": "Ordinary caller selection and overrides of MarkdownOptions defaults",
+      "next": "Trace caller-selected styles and boundary action visibility before adjusting remaining geometry",
+      "acceptance": "Measurement and rendering agree for short/long content, code, tables and native selections across returns"
+    },
+    {
+      "page": "Chat/Work",
+      "behavior": "Role-context row spacing and response action visibility",
+      "priority": "P1",
+      "evidence_break": "Ordinary list parent and inline/context action consumer",
+      "next": "Resolve parent conditions, then replace independent fixed action/footer layout",
+      "acceptance": "Actions appear for applicable rows and retain stable identity through retries, updates and navigation"
+    },
+    {
+      "page": "Mobile",
+      "behavior": "Device haptics, notification delivery, external display and Android",
+      "priority": "follow-up",
+      "evidence_break": "Only simulator and internal Color LCD available in current acceptance",
+      "next": "Follow page-level plan with separate device/platform gates",
+      "acceptance": "Recorded independent device/platform runs"
+    }
+  ]
+}

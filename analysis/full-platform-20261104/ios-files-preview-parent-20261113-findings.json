@@ -1,0 +1,195 @@
+{
+  "schema": "rea-ios-files-preview-parent-v1",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Bounded read-only native single-file preview and browser parent consumers. No original application/network/device execution, no host edits, no wholesale format-owner inference.",
+  "official_file_preview": {
+    "directory_entry_chain": {
+      "source": "ios-files-v589-findings-evidence.json",
+      "proved": "FileBrowserSheet→FileNavigationStack→FileDirectoryContent→Header+plain List→DirectoryEntryRow Button, with VM openFileHandler. WorkspaceBrowserContent is a separate disclosure tree.",
+      "unknown": "Concrete openFileHandler producer selecting final resource format/controller remains unresolved; QLPreviewController is an independent current adapter."
+    },
+    "source_page": {
+      "type": "CodexRemoteSourceCodeFilePreview",
+      "descriptor": "0x95b2ff4",
+      "accessor": "0x1d35458",
+      "view_conformance": "0x7e26b88",
+      "view_witness": "0x1a13128",
+      "actual_body": "0x1a11028",
+      "proved": [
+        "navigationTitle (1a11298) and inline title display (1a112ec).",
+        "ToolbarItemGroup at primaryAction (1a113b4 /1a113f4).",
+        "Two concrete toolbar branches: Markdown menu construction1a11568→1d36968, or optional URL ShareLink constructor1a1166c.",
+        "ReadingState/displayMode/linkedLineScrollPosition are separate source owners; line onChange has initial=true and uses center or top policy as recorded in v617."
+      ],
+      "unknown": [
+        "Final plain/source/Markdown/PDF/image/unknown format classifier and actual ordinary preview producer.",
+        "Complete native source body/highlighter/gutter/comment/Markdown display owner beyond the proven toolbar.",
+        "Original service resource and reading-state persistence."
+      ]
+    },
+    "share_payload": {
+      "source": [
+        "0x7e26500",
+        "0x1a115bc..0x1a115ec",
+        "0x1a11630",
+        "0x1a1166c"
+      ],
+      "exact_type": "ShareLink<CollectionOfOne<Foundation.URL>,Never,Never,SwiftUI.Image>",
+      "producer": "View-model protocol witness+0x30 called at1a115c4; optionalURL absence check1a115d0/d4 gates the share branch. Concrete getter and fileURL generation/lifetime unresolved.",
+      "not_proved": [
+        "Not a String share payload.",
+        "Not proven to be local fileURL versus remoteURL by URL generic alone.",
+        "No proved UTType/MIME/payload envelope in this consumer."
+      ],
+      "integration_decision": "Current RemoteSourceFilePreview only carries name/contents/lineNumber. Do not claim original file sharing by sharing its String. Optional explicit resourceURL can be added through an independent scoped resource adapter; source producer is still missing.",
+      "label": {
+        "type": "SwiftUI.Image",
+        "closure": "0x1a11650..0x1a11658 supplies1d39e08",
+        "chain": "0x1d39e08→0x37b8e8→0x74f45ec",
+        "asset": "OpenAI/Symbols/arrow-up-open-base",
+        "string_address": "0x8a53dc0",
+        "limits": "No fixed image dimensions proved by this closure; toolbar source carrier sizes it."
+      },
+      "nil_condition": "Optional URL enum-tag witness call6ef8c4→fab38; rawtag1 at1a115d4 skips creation (absence). Present branch usesURL witness copy at1a115ec..1a11600 thenShareLink. Original branch also requires the prior viewModel+0x20 getter to take non-Markdown path; exact language predicate unknown."
+    },
+    "markdown_actions": {
+      "type": "CodexRemoteMarkdownFilePreviewActionsMenu",
+      "descriptor": "0x95b32b4",
+      "conformance": "0x7e26ff0",
+      "view_witness": "0x1a145b4",
+      "actual_body": "0x1a13cb0",
+      "declared_fields": [
+        "_displayMode",
+        "shareFileURL",
+        "displayName"
+      ],
+      "field_binding": "Descriptor NumFields3, FieldOffsetVectorOffset2(pointer words): vector starts metadata+16; metadata+0x14 is second field shareFileURL. Its raw typeref8c59150 encodes Optional<Foundation.URL>.",
+      "proved_structure": [
+        "Menu display picker with InlinePickerStyle (1a141a4→Picker;1a141b8/1a141ec→inlineStyle).",
+        "Raw and Markdown label producers are real constructors, not inferred enum order.",
+        "Optional share URL gates ShareLink1a13fdc through metadata+0x14 presence test1a13f34..1a13f40."
+      ],
+      "labels": [
+        {
+          "key": "codex_remote_markdown_file_preview_display_menu_title",
+          "string": "0x88c0f70",
+          "consumer": "0x1a14530..0x1a14550",
+          "fallback": "Display"
+        },
+        {
+          "key": "codex_remote_markdown_file_preview_raw_mode_title",
+          "string": "0x88c0fb0",
+          "consumer": "0x1a14280..0x1a1429c",
+          "fallback": "Raw"
+        },
+        {
+          "key": "codex_remote_markdown_file_preview_markdown_mode_title",
+          "string": "0x88c0ff0",
+          "consumer": "0x1a14378..0x1a1439c",
+          "fallback": "Markdown"
+        },
+        {
+          "fallback": "Share",
+          "factory": "0x75d29e0",
+          "consumer": "0x1a14594"
+        }
+      ],
+      "limits": "DisplayMode raw tag mapping, picker currently selected value and exact rendered-Markdown component integration remain unclosed. Do not implement mode names from enum field order."
+    }
+  },
+  "official_browser": {
+    "actual_native_creation": {
+      "type": "SwiftUIStyleguide.SafariView",
+      "descriptor": "0x97550c8",
+      "accessor": "0x758596c",
+      "make_witness": "0x7560940",
+      "actual_make": "0x75607e8",
+      "calls": [
+        {
+          "site": "0x7560820..0x7560838",
+          "target": "SFSafariViewControllerConfiguration + setBarCollapsingEnabled:",
+          "argument": false
+        },
+        {
+          "site": "0x7560848..0x7560864",
+          "target": "SFSafariViewController initWithURL:configuration:",
+          "url": "input SafariView.url; exact upstream policy input unresolved"
+        },
+        {
+          "site": "0x756086c..0x7560870",
+          "target": "setModalPresentationStyle:",
+          "raw_argument": 3
+        },
+        {
+          "site": "0x7560880..0x7560888",
+          "target": "setPreferredControlTintColor:",
+          "argument": "input optional preferredControlTintColor"
+        },
+        {
+          "site": "0x75608bc..0x75608d4",
+          "target": "optional configureViewController callback",
+          "argument": "constructed SFSafariViewController"
+        }
+      ],
+      "limit": "Raw modalPresentationStyle3 is recorded without guessing its enum semantic from a neighboring UI. Exact coordinator delegate/dismiss policy remains separate."
+    },
+    "browser_parent": {
+      "type": "OpenURLBrowserContent",
+      "descriptor": "0x96dcad4",
+      "conformance": "0x8263a20",
+      "view_witness": "0x62a7518",
+      "actual_body": "0x62a7358",
+      "full_tree_record": "0x8263f00",
+      "full_tree": "_ConditionalContent<ManagedSafariView,AnyView>",
+      "actual_branch": "Policy check62a73a8/cmp1 plus optional supplied builder at62a73c4 chooses a concrete alternate AnyView route; fallback path constructs ManagedSafari content. The named policy semantic and upstream assignment remain unclosed.",
+      "unknown": "Remote Markdown/error/link owner→OpenURLHandlingViewModifier→this presentation binding remains unclosed. The generic conditional does not authorize forcing all URLs into Safari."
+    },
+    "integration_decision": "Keep current isolated WK custom-scheme local fixture clearly independent. Safari native carrier can be source-backed only when a URL/policy provider is explicitly supplied; no official online browsing is enabled or tested in this task. Do not label WK navigation/address/error controls as recovered official browser."
+  },
+  "current_host": {
+    "files": {
+      "implementation/ios/Sources/FrontendFilePreview.swift": "4f7f7f9df4d7cf25a40b2349b8471b09436d3552576a4a24caa02d4c5e96c307",
+      "implementation/ios/Sources/FrontendBrowserPreview.swift": "6ae8fac51b6603fbcda460fecd675b2ec417b84f92caa2d99c9210155dffc5cd"
+    },
+    "already_present": [
+      "Scoped directory/preview load cancellation and full resource lifetime.",
+      "QuickLook ordinary format fallback and UTF8 linked-line UITextView.",
+      "Independent WK local navigation/loading/error/retry/close with no network provider."
+    ],
+    "gaps": [
+      "Original per-format preview owner and full source/Markdown UI.",
+      "Optional original URL share resource producer.",
+      "Original browser route/policy presentation chain.",
+      "Current source viewer font/insets/Done/modal chrome are independent."
+    ]
+  },
+  "gestures_and_haptics": {
+    "proved": "Linked-line scrolling responds separately to saved reading position and user scrolling, as v617 documents. System QuickLook gestures are independently supplied by the host.",
+    "unknown": "No direct file-preview/Markdown menu/Safari consumer haptic emission proved in these bounded bodies. No general haptic behavior inferred from type presence."
+  },
+  "evidence_files": [
+    "ios-files-preview-parent-20261113/metadata.json",
+    "ios-files-preview-parent-20261113/markdown-menu-witness.json",
+    "ios-files-preview-parent-20261113/markdown-menu.asm",
+    "ios-files-preview-parent-20261113/markdown-menu-calls.json",
+    "ios-files-preview-parent-20261113/share-payload.asm",
+    "ios-files-preview-parent-20261113/share-link-tree.json",
+    "ios-files-preview-parent-20261113/type-7e26500.json",
+    "ios-files-preview-parent-20261113/browser-content.asm",
+    "ios-files-preview-parent-20261113/browser-content-tree.json",
+    "ios-remote-v567-browser-bindings.json",
+    "ios-remote-v567-safari-make.asm",
+    "ios-remote-v617-line-preview-findings.json",
+    "ios-files-preview-parent-20261113/share-image-label.asm",
+    "ios-files-preview-parent-20261113/share-image-factory.asm",
+    "ios-files-preview-parent-20261113/optional-url-tag-witness.asm"
+  ],
+  "validation": "Static-only source consumers/full generic trees and bound selector/resource/URL type checks. Current host runtime behavior and device/visual equivalence not evaluated.",
+  "stop_boundary": "Source toolbar types, optional URL share gate and Safari carrier configuration are sufficient to decide this batch. Missing concrete resourceURL producer and Remote browser owner remain exact breaks; no further broad sweep."
+}

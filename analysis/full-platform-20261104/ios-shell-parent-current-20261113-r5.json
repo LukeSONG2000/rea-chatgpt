@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T11:36:18.195344+08:00",
+  "module": 1,
+  "pass": "assistant-entry-and-shared-history-reveal",
+  "previous_snapshot": "ios-shell-parent-current-20261113-r4.json",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "implemented": [
+    "Available assistant entry in first catalog group; source localized Meet dot / 认识 Dot; existing assistant page route and sidebar reopen; no duplicate entry under More.",
+    "Account-scoped independent capability/title/symbol/unread input; false availability hides entry; live action rechecks admission.",
+    "One collection-owned one-touch timestamp reveal pan for all mapped history records, independent of edit permission; logical direction and abs(vx)>3abs(vy).",
+    "Shared footnote-scaled60 rubberband0.55, unbounded-to1.5 progress; leading ZStack time/content offsets, clipping, opacity and source reset animations.",
+    "Optional timestamps persisted for newly created local entries; explicit synthetic fixture timestamps; old missing dates remain nil.",
+    "Native trailing rename/delete remains limited to editable local records; right drag no longer selects new row/closes sidebar in controlled reproduction."
+  ],
+  "verification": {
+    "foundation": "ios-sidebar-row-drag-state-20261113.log passed",
+    "ui": "ios-sidebar-assistant-20261113-r3.xcresult passed 1/1,68.913sec",
+    "covered": [
+      "entry order/translation",
+      "route and edge reopen",
+      "More no duplicate",
+      "new row plus fixtureA right drag reset without false navigation",
+      "native trailing rename/delete present",
+      "other selection/reopen removes actions",
+      "unavailable entry absent"
+    ],
+    "tested_source_followup": "ios-sidebar-assistant-20261113-r3-source-followup.json",
+    "not_tested": [
+      "physical gesture parity",
+      "all relative-date format branches",
+      "mid-drag visual against official runtime"
+    ]
+  },
+  "source_reports": [
+    "ios-sidebar-assistant-entry-20261113-findings.json",
+    "ios-sidebar-assistant-placement-20261113-findings.json",
+    "ios-sidebar-history-gesture-20261113-findings.json",
+    "ios-sidebar-history-gesture-20261113-r2-findings.json"
+  ],
+  "diagnosis": "ios-sidebar-row-drag-20261113-diagnosis.json",
+  "independent_adaptations": [
+    "UICollectionViewListCell remains host trailing-action carrier; official original superclass is plain UICollectionViewCell.",
+    "Assistant capability snapshot and local route are independent frontend contracts; default own-avatar producer is unresolved, existing circle fallback retained.",
+    "Locale/calendar/timeZone aware Foundation date formatting; Today/time flag and conditional compact year not completely recovered.",
+    "Optional sidebarTimestamp is an independent local presentation input, not recovered wire schema.",
+    "Existing protected fixture policy remains; no permission is inferred from title."
+  ],
+  "not_implemented": [
+    "Official injected default assistant avatar and complete upstream account eligibility.",
+    "Full original collection versus root sidebar gesture failure priority.",
+    "Complete today/time and year format mapping.",
+    "Earlier r4 catalog availability/prominence and spacing(.pinned) exact height unknowns."
+  ],
+  "source_files": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "3b1bd289f1cc599b3a37442e15fabcadd218a0c14a2dcb29f61fc653641d3998",
+    "implementation/ios/Sources/FrontendPersonalAssistant.swift": "38ea50c9072f7e6f57a8de739ec5208417f8209b5dcd0b02568dc27c135800c0",
+    "implementation/ios/Sources/NativePersonalAssistantPage.swift": "f9fd58291c68ccbaa2725bfb90e0859c82c9ab1afcc32731fb14c53d787edcb5",
+    "implementation/ios/Sources/DraftStore.swift": "65496cd2b3da1f3defbcf31570006e5545cc9ae1194bdc6541bd587fd39c091f",
+    "implementation/ios/Sources/OfficialText.swift": "7158abc02e6dff5e62daa41dbf48ff537ddcc94d2eba5a3f4daf9fa91dc5a602",
+    "implementation/ios/Tools/prepare-official-text.py": "dec00d7b5ae1ff9d44c8e8d429b19ec81141738f7a33a179a07a55ca412a5f58",
+    "implementation/ios/UITests/HostInteractionTests.swift": "66797961d3778732d3f00935f4cf9df5f6ed376d91b6a431803f3ddb295c21c4",
+    "implementation/ios/Resources/OfficialTranslations.json": "60b470cdaec3381044a188b133c0703c536d9123398927c08564db90998f9f28"
+  },
+  "runtime": {
+    "simulator": {
+      "record": "ios-sidebar-assistant-simulator-20261113.json",
+      "pid": 39459,
+      "executable_sha256": "06df289417e44bc03de437ff1b9ec26cd155fa8602442f577e6539223c713128",
+      "installed_hash_match": true,
+      "kept_running": true
+    },
+    "device": {
+      "record": "ios-sidebar-assistant-device-review-20261113.json",
+      "candidate_executable_sha256": "d9fd22f7cf18cab585d65307f5bc31d2d4122ec64c5980a489298deb7404cc7f",
+      "strict_codesign": "passed",
+      "install": "success",
+      "pid": 18043,
+      "process_container_matches_new_install": true,
+      "kept_running": true,
+      "physical_gestures_automated": false,
+      "preferences": "Existing user profile retained; no language/theme override"
+    },
+    "build_logs": [
+      "ios-sidebar-assistant-20261113-final-simulator-build.log",
+      "ios-sidebar-assistant-20261113-final-device-build.log"
+    ]
+  },
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  },
+  "next": "Deliver this candidate for user review; preserve module8 work until current sidebar requests are closed.",
+  "status": "implemented-entry-and-shared-reveal-with-explicit-source-gaps",
+  "screenshots_viewed": [
+    "ios-sidebar-assistant-20261113-r3-attachments/623BD352-E816-4B88-A068-2CDA24154D4F.png",
+    "ios-sidebar-assistant-20261113-r3-attachments/9E572471-BD28-4CF6-A220-64E1157D8E1C.png"
+  ]
+}

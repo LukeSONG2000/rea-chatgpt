@@ -1,0 +1,289 @@
+{
+  "status": "partial",
+  "scope": "iOS 1.2026.293 Remote new-thread destination selectors used by the home composer",
+  "evidence_type": "official_artifact_static_analysis",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "confirmed": [
+    {
+      "id": "separate_host_and_workspace_menus",
+      "offsets": [
+        "0x19f3cc8",
+        "0x19f3cd0",
+        "0x19f3d14",
+        "0x19f3f54",
+        "0x19f44a8",
+        "0x19f8094"
+      ],
+      "conclusion": "The composing screen builds a host selector and, for an eligible selected host branch, a separate workspace/project selector. Their contents have different types and different owner methods. The host picker does not contain nested workspace rows.",
+      "limits": "The selected-host eligibility path 19f4224 checks availability and parent enum cases 0/1 before constructing19f44a8. Full source type case naming and cloud alternative remain partial."
+    },
+    {
+      "id": "host_picker_contents",
+      "offsets": [
+        "0x19f5d4c",
+        "0x19f5e6c",
+        "0x19f5e80",
+        "0x19f6058",
+        "0x19f60cc",
+        "0x7e15a08",
+        "0x7e15a40",
+        "0x95aa2ac"
+      ],
+      "conclusion": "CodexRemoteMenu contains an InlinePickerStyle Picker<EmptyView,Optional<CodexRemoteHostIdentity>,ForEach<[HostWorkspaceSection],CodexRemoteHostIdentity,...>>. Each row is a Label<Text,Image> tagged with its nonnil optional host identity and receives a selection-enabled trait. ForEach obtains sections from ViewModel witness+0x70, concrete18c76d0->18afa40, which reads the _hostWorkspaceSections array at instance+0x2c8. Section metadata names hostItem, workspaceOptions and displayNamesByDirectory."
+    },
+    {
+      "id": "host_picker_labels_icons",
+      "offsets": [
+        "0x19f62a8",
+        "0x19f62bc",
+        "0x2424368",
+        "0x2440afc",
+        "0x241a584"
+      ],
+      "conclusion": "Rows use the Host title getter2424368 and stored HostListItem icon through241a584. The cloud title branch uses codex_remote_connection_mode_name_hosted_cloud. Icon dispatcher is shared with source chips, already resolved in v504; cloud icon case4 maps to OpenAI/Symbols/cloud. Labels are dynamic host information, not hardcoded personal device names.",
+      "limits": "Other device icon enum cases and all host-title fallback branches are not fully resolved in this batch."
+    },
+    {
+      "id": "host_selection_enabled",
+      "offsets": [
+        "0x19f6110",
+        "0x19f6464",
+        "0x19f64a0",
+        "0x18c76dc",
+        "0x18b0a80",
+        "0x18b0b60",
+        "0x18a938c"
+      ],
+      "conclusion": "Menu rows iterate all hostWorkspaceSections but are selection-enabled only if their host identity is present in the array returned by witness+0x88. Concrete18b0a80 derives that eligible array by filtering hostWorkspaceSections against an identity Set returned by18a938c. Presence in the menu alone does not imply selectability.",
+      "limits": "The Set getter is bound to runtime field-offset global0xb1e78e0. Metadata contains _readyHostIdentities; direct offset-to-name proof remains unresolved, so this report calls the Set eligibility identities."
+    },
+    {
+      "id": "host_picker_binding_owner",
+      "offsets": [
+        "0x19f5ed4",
+        "0x1c3f960",
+        "0x19f7f80",
+        "0x1c3faf4",
+        "0x1c3fb78",
+        "0x18c7880",
+        "0x18b3410",
+        "0x18b3600",
+        "0x18b3960"
+      ],
+      "conclusion": "Binding getter reads NewThreadViewModeling witness+0x98 and converts the selected destination host to Optional<HostIdentity>. Setter ignores nil, then dispatches present identity through witness+0x148. Concrete witness18c7880 branches to selectHost(_:),18b3410, which selects a host workspace option and calls shared destination coordinator18b3960. List source selection is a different owner path.",
+      "limits": "All automatic workspace/project fallback and configuration refresh branches inside18b3410/18b3960 are not reconstructed. Implementing this callback as a source-filter write would lose proven destination ownership."
+    },
+    {
+      "id": "workspace_menu_content",
+      "offsets": [
+        "0x19f44a8",
+        "0x19f8094",
+        "0x7e159b0",
+        "0x7e159c8",
+        "0x19f81d8",
+        "0x19f823c",
+        "0x19f8268",
+        "0x19f8288"
+      ],
+      "conclusion": "The second CodexRemoteMenu has tuple content consisting of one projectless Toggle, Divider, ForEach<HostWorkspaceOption> of Toggle<TupleView<Image,Text>>, and a Button<Label<Text,Image>>. HostWorkspaceOption fields are hostItem, workspaceDirectory, projectID and projectName. This is single destination selection represented using menu toggles, not independent multi-select state.",
+      "limits": "Exact getter comparison is preserved at19f8984. Full option ordering/producer selection and all cloud branches remain partial."
+    },
+    {
+      "id": "projectless_label",
+      "offsets": [
+        "0x1c3f508",
+        "0x1c3f520",
+        "0x1c3f52c",
+        "0x1c3f540",
+        "0x88b6ea0",
+        "0x88b6ed0",
+        "0x74f5778",
+        "0x8a54600"
+      ],
+      "conclusion": "First workspace option uses codex_remote_projectless_workspace_option, fallback Don't work in a project, and OpenAI/Symbols/chat-bubble-on-chat-bubble. Its same shared binding factory19f8704 is also used by option rows."
+    },
+    {
+      "id": "workspace_option_display_name",
+      "offsets": [
+        "0x1c3eea8",
+        "0x1c3ef00",
+        "0x1c3ef24",
+        "0x1c3ef48",
+        "0x1c3efa4"
+      ],
+      "conclusion": "Workspace row label first reads HostWorkspaceOption.projectName. If absent and workspaceDirectory exists, it looks up displayNamesByDirectory through188d1f0, retaining title/subtitle results. If no projectName and no directory, that row path has an empty title payload. Source naming should be reused instead of raw path/basename labels."
+    },
+    {
+      "id": "workspace_toggle_action_owner",
+      "offsets": [
+        "0x19f8704",
+        "0x1c3f42c",
+        "0x1c3f480",
+        "0x1c3f4b0",
+        "0x1c3f4e8",
+        "0x18c7884",
+        "0x18c7888",
+        "0x18b3f74",
+        "0x18b3f88"
+      ],
+      "conclusion": "Shared setter only performs a selection when turning an item on, except the nil-directory/nil-project projectless case is accepted on the alternate branch too. If projectID is present it calls witness+0x158 ->18b3f88. Otherwise it calls witness+0x150 ->18b3f74, which passes explicit flag1 to shared coordinator18b3960. It carries captured HostIdentity plus workspace/project identity; it does not navigate by display label.",
+      "limits": "No production reducer for directory/project fallback is supplied. Server-side capabilities/configuration semantics behind these methods remain out of scope."
+    },
+    {
+      "id": "add_folder_action_owner",
+      "offsets": [
+        "0x19f8614",
+        "0x19f86dc",
+        "0x19f8bc8",
+        "0x88b6e70",
+        "0x1c3eba0",
+        "0x1c3ebec",
+        "0x18c78c8",
+        "0x18b5538"
+      ],
+      "conclusion": "Final workspace menu action uses codex_remote_add_workspace_menu_item, fallback Add new folder. Captured host identity is sent to ViewModel witness+0x198 ->18b5538. The new-thread model metadata includes workspaceDirectoryPickerViewModelFactory and a workspace-directory-picker load task.",
+      "limits": "The full18b5538 presentation/load consumer has not been traced. A local handset file chooser is not justified by this evidence."
+    }
+  ],
+  "integration": [
+    "Use two independent selector controls within the v509 composing-screen gate. Keep source filtering and draft destination state separate.",
+    "Populate the host picker with HostWorkspaceSection.hostItem, stable Optional<HostIdentity> tags, and eligibility filtering. Keep nil selection explicit and ignore a nil setter update, as the original binding does.",
+    "Route selection through a dedicated draft-destination operation that can update host/workspace/project together. Any simplified fixture policy must be marked independent; source chip mutation is insufficient.",
+    "The workspace menu should preserve the projectless option, existing project/directory options and Add new folder action. Gate unfinished picker/side effects explicitly until their capability owner is wired.",
+    "Continue using fixture data; these static observations do not authorize or prove official service behavior."
+  ],
+  "unknowns": [
+    "Full showsChevron19f6b50 predicate and whole-menu disabled/loading condition19f41cc. Do not equate it to hosts.count>1.",
+    "All automatic workspace selection/fallback behavior18b3410->18b36a0->18b3960, especially switching host with an existing selected project or directory.",
+    "Concrete eligible-identity Set name requires offset-to-field proof; _readyHostIdentities is a strong metadata candidate only.",
+    "Full selected-host enum case mapping at19f4224 and separate cloud destination/environment controls in sibling19f45b0.",
+    "Exact composing destination content padding and width remain inherited partial fromv509.",
+    "Full Add new folder18b5538 picker presentation, cancellation, loading and returned-directory mutation."
+  ],
+  "validation": "Static disassembly, Swift metadata/witness resolution and local string reads only. No official app execution or services. Production sources untouched.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v504-cloud-filter-findings.json",
+      "sha256": "c91ea2ff772157d629b72353212bac2ea893ea5391489824cb6758e76b5b78a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-findings.json",
+      "sha256": "a184515dfd989eb62c1808bb9d27250db3ae70e9c7ea46f94ad7cb5ac4dde568"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-destination-gate.asm",
+      "sha256": "017fe9a436e5a1ec8bf6500e9b0dc3f45a329e990413dd7a13065f3e521529fa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-home-state-findings.json",
+      "sha256": "591dc3be410f24c190a7135ecedc8227dd5ef4d9613db29bb9f6646867cb4bc7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-destination-closures-calls.json",
+      "sha256": "9d693fb20c65d76545ed3959a597543f7d37abc9f9b75a30eb48571fcf016d97"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-destination-closures.asm",
+      "sha256": "894397531eb75155a2afb5ca26f7e04e4174cbc928e6f2409bf90e8c365d10d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-destination-extra-calls.json",
+      "sha256": "ee9f07d2fc46aa0c63ac1b2128817248d54675fd09ab23e49d73ca17542aa117"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-destination-extra.asm",
+      "sha256": "7bac2549a73341fe7bbc68238dc93ccabbfae68cc942abd2274e4fd8f5b853d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-destination-menu-calls.json",
+      "sha256": "e28321f53bbe0734c68830805fe2e2b400fe4bcfc6b708550cf09b82240f64cf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-destination-menu.asm",
+      "sha256": "3ac011a9cbdd60ff68fd89bc6586611555ec29c560ada9157122b1996a155fb1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-host-owner-calls.json",
+      "sha256": "419dc098f8c14daf24d5f335c401ffcdf2a79daa100d13485558020b8d82c5f9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-host-owner.asm",
+      "sha256": "60d6a184528e461c3a2997c0fa87a7ac1c58d22afa732d5af76c37d7a21bc842"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-host-selection-calls.json",
+      "sha256": "f659f642b6ffa9a1a6e94a35dc1863da11e36775ebcb4217ef12408777f1b1a6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-host-selection.asm",
+      "sha256": "000668a1ae7f6312444f93794d5c9bc188481dd587af6dcee1b4447bf993626c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-menu-types.json",
+      "sha256": "ebbd6e001d1e40103c978354482ef3bdfb10ef499813959c9a51170e866c5628"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-owner-field-lifetime-calls.json",
+      "sha256": "4c704068672a200a3ebba36cb03aaabf4a0197897399e7b0b2aae88acc94c851"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-owner-field-lifetime.asm",
+      "sha256": "198e2495703c9045e75393712488a27f53dd852bece1b8a4137fd69c6a3b637a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-owner-field-refs.json",
+      "sha256": "2ca62f8ba012a2e66c9560d23480785d7a02cd05d40c3e0f62e4e5115560ef34"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-selection-helpers-calls.json",
+      "sha256": "63f769050eb05282301c0ad3ca0f18825a0775acc23d304682e6d021eb23caee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-selection-helpers.asm",
+      "sha256": "13dbd0802b962991fd5b3c9d036a7931dc632ab47d19535bf594f6b0f32aaea0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-vm-conformances.json",
+      "sha256": "cd38f1cfeea1a0a93163b6c1214b8aae5bedeb52562775900dd435b0d0bced72"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-vm-fields.json",
+      "sha256": "8481add57475c508d75eb3168c512e1b187d544846efdadaf1c81a8c5142c93c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-vm-witness-slots.json",
+      "sha256": "592bb5fd7a5f571627b482cb989748bec617ab3b28dbd011f482a054cdc0d97f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-vm-witness-targets.asm",
+      "sha256": "9fcc7b22baa899c549f89c9e4e2ef377b38febd4de34fbb2e65f23befed3c839"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-workspace-actions-calls.json",
+      "sha256": "4913c21bdb47a39ea1faae1447c2afd85a149d214b604064694dfe74a7760f2f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-workspace-actions.asm",
+      "sha256": "57684f0f90bf56c95ce0c2ccf7e4d9cb9c1dac37e58087b0265dbd2195847d09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-workspace-menu-types.json",
+      "sha256": "e9c4686835dde2cc878be9ad73cd2d3d43d4d9888f67cd1c21b0d9407cb408fd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-workspace-option.json",
+      "sha256": "e6f10b885ec83f708e8de7ebced74be8c6c7f2d8ecc934d2851e4751905363b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-workspace-owner-calls.json",
+      "sha256": "4c36db3c9f37e588a50555e34569d6fc2aff33f55cb645242cbfcffc06c488b9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v511-workspace-owner.asm",
+      "sha256": "0e78a4a54f99a861ddc48b518e5988a10084771038f7362ab0b0c43591ea680f"
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary nonpriority chronological grouping raw2, sort key, bucket order, date fields and default formatter. Independent reconstruction may consume explicit synthetic task inputs. Official target not executed.",
+  "supersedes": "ios-remote-v506-chronological-findings.json unknowns about default clock, UTC gate, SearchResult date fields and ordinary date-bucket ordering",
+  "confirmed": {
+    "global_sort": {
+      "entry": "32ff44",
+      "keypath": "3306fc keypath7cf9fc0 getter333b24 ->327f7c",
+      "root": "CodexViewModel.TaskSection.Item",
+      "key": "Both thread and searchResult use raw sortDate, metadata+0x28",
+      "order": "KeyPathComparator order raw1 (.reverse) supplied1540d4 at330714, initializer330718; Sequence.sorted(using:)330788",
+      "important": "The distantFuture fallback belongs only to bucket date selection. It does not alter sorting. No explicit secondary comparator was found at this call."
+    },
+    "partition": {
+      "call": "3307cc ->7624a94",
+      "predicate": "3e6308 ->333b44",
+      "semantics": "Predicate false immediately in priority raw0. Otherwise thread identity membership check333c30 ->2d1bac. Stable sequential iteration7624bfc, predicate7624c20, append7624c44..54. Returns true array x0 and false array x1 at7624c84.",
+      "ordinary_input": "false array stored3307d4 local140, iterated330828 onward, filtered/projected into local158 consumed332444. Existing filtering and custom assignment remain upstream scope.",
+      "pinned_boundary": "true array later forms Pinned section3317a0..331a50. Complete owner identity set and pinned-specific ordering are not newly proved in this batch."
+    },
+    "date_fields": {
+      "thread": {
+        "algorithm": "bucketDate = sortDate == Date.distantFuture ? updatedAt : sortDate",
+        "entry": "337414 ->31d92c",
+        "metadata_fields": "sortDate+0x28, updatedAt+0x24",
+        "source": "ios-remote-v498-thread-fields.json"
+      },
+      "searchResult": {
+        "algorithm": "bucketDate = updatedAt",
+        "entry": "3373ec..337404",
+        "metadata_fields": "updatedAt+0x24, sortDate+0x28",
+        "source": "ios-remote-v507-searchresult-fields.json"
+      },
+      "excluded": "createdAt and recencyDate are not selected by these paths."
+    },
+    "bucket_membership": [
+      {
+        "delta_days": "2...7",
+        "branch": "74e3be4..74e3bec",
+        "label_function": "75d4d74",
+        "key": "history_date_previous_seven_days",
+        "key_address": "0x8a59a30"
+      },
+      {
+        "delta_days": "8...30",
+        "branch": "74e3ddc..74e3de4",
+        "label_function": "75d4df4",
+        "key": "history_date_previous_thirty_days",
+        "key_address": "0x8a59a60",
+        "fallback": "Previous 30 days"
+      },
+      {
+        "delta_days": ">=31",
+        "branch": "74e3e4c..74e40d8",
+        "label": "Date.FormatStyle month(.wide), append year(.defaultDigits) only when Calendar.component(.year,inputDate) differs from referenceDate year",
+        "evidence": [
+          "74e3f38 month(.wide)",
+          "74e3fc4 and74e401c year components(import0xaac95f8)",
+          "74e4038 comparison",
+          "74e409c year(.defaultDigits)"
+        ]
+      },
+      {
+        "delta_days": "nil, <=1 including negative/future",
+        "branch": "74e3bb4..74e3dd8",
+        "label": "relative date formatter branch, not hard-coded Today/Yesterday strings"
+      }
+    ],
+    "bucket_identity": "337420 invokes74e3714;337434..337484 uses resulting localized string as title-based section identity. Date buckets must be represented as sections.",
+    "ordered_upsert": {
+      "loop": "332444..332964",
+      "descriptor": "3372f4 called332548",
+      "lookup": "3325a4..3325b8 ->3c4a2c/3c3fb8",
+      "new_bucket": "332664 onward builds single-item section;332714 ->461330 ->335970; absent/present335ab8..335b80 inserts key and appends section at array tail",
+      "existing_bucket": "332860..3328c8 appends item at section.items(+0xe0) tail;335b84..335c28 replaces value at same existing index",
+      "result": "Date sections use first-encounter order in the sorted and retained input. Items within each date bucket preserve that input order. Prefix sections created before this loop remain ahead. Do not sort resulting labels or date buckets again.",
+      "final": "332ddc ->3d0060 ->3c5f4c copies section sequence.332de4 gates rank and Projects insertion to raw1, so raw2 skips it."
+    },
+    "default_clock": {
+      "type": "PlatformSupportStyleguide.CurrentDateProvider / DefaultCurrentDateProvider",
+      "formatter": "PlatformSupportStyleguide.HistoryDateFormatter",
+      "initializer": "3d3a9c constructs DefaultCurrentDateProvider metadataaa62d00/witnessaa62ca8 at3d4008..18, calls74e36a8 at3d4038, stores3d403c",
+      "owner_offset": "x27=0xb0c8cc8 at3d3d60;slot+0x1d0 loaded3d4004 is global runtime field-offset storage0xb0c8e98; consumer31ffb0 captures this field3202e4..2f4",
+      "flag": "74e36f8 dynamicCast provider to DefaultCurrentDateProvider;74e36fc stores success bool at formatter+0x10",
+      "default_witness": "aa62ca8+8 ->455fb4c ->3223f68 ->7c413c8;stub binding0xaac9170 Foundation.Date.now",
+      "default_vs_injected": "74e3bb4 default flag true uses actual inputDate. Otherwise relative-label branch shifts startOfDay(inputDate) by Date.now minus startOfDay(providerDate)."
+    },
+    "calendar": {
+      "algorithm": [
+        "74e3a48 startOfDay(inputDate)",
+        "74e3a64..74e3a88 invokes receiver+0x18 existential provider to obtain reference Date",
+        "74e3aa4 startOfDay(referenceDate)",
+        "74e3b18 Calendar.Component.day import0xaac95e0",
+        "74e3b5c dateComponents from input-day start to reference-day start",
+        "74e3b88 DateComponents.day Optional<Int>"
+      ],
+      "normal_configuration": "Calendar.autoupdatingCurrent; formatter retains default time zone. Both UTC-override helper bytes are immutable zero in this frozen binary.",
+      "gates": "7710c7c ->84d40ec=0;7710c94 ->84d40f0=0, both __TEXT.__const",
+      "boundary": "This proves this artifact configuration; helper conceptual environment names were not recovered."
+    },
+    "relative_formatter": {
+      "input_adjustment": "At74e3bb4 receiver byte+0x10 true copies original date. False computes startOfDay(inputDate).addingTimeInterval(Date.now.timeIntervalSince(startOfDay(referenceDate))) at74e3c00..74e3c3c.",
+      "primary": "NSDateFormatter atglobal0xbb45860 initialized74e4134 ->74e4158(true)",
+      "comparison": "NSDateFormatter atglobal0xbb45870 initialized74e4288 ->74e4158(false)",
+      "shared_configuration": "timeStyle=0 at74e41d0;dateStyle=2 at74e41dc;doesRelativeDateFormatting=arg&1 at74e41e4;formattingContext=4 at74e41f4. Conditional GMT0 override uses same environment helper gates74e41fc..74e4270.",
+      "comparison_rule": "74e3d08..74e3d34 compares relative and nonrelative strings. If different, return relative string. If equal, call NSRelativeDateTimeFormatter.localizedStringForDate:relativeToDate: at74e3d90.",
+      "fallback": "NSRelativeDateTimeFormatter, boundclass0xaaca5c8,global0xbb45880,initializer74e42ac,dateTimeStyle=1,formattingContext=4. Former exploratory DateIntervalFormatter guess is corrected.",
+      "fallback_arguments": "NSRelativeDateTimeFormatter receives original inputStartOfDay(x25) and original referenceStartOfDay(x28) at74e3d70..3d90. Date.now adjustment only feeds DateFormatter comparison."
+    },
+    "sort_order_corroboration": {
+      "evidence_type": "local_sdk_declaration",
+      "note": "Current macOS Foundation frozen SortOrder declares forward then reverse. The package binds Foundation KeyPathComparator initializer and supplies discriminator1. SDK corroborates case name, separate from package instructions."
+    }
+  },
+  "minimum_integration": {
+    "decision": "Ordinary raw2 date grouping can now be integrated for an explicitly selected synthetic task set with separate sortDate and updatedAt fields, preserving existing known identity/pinned state. Enable only the closed ordinary grouping path. Priority mode remains out of scope.",
+    "algorithm": [
+      "Obtain selected eligible tasks using separately documented selection/filter logic.",
+      "Sort items by raw sortDate using Foundation KeyPathComparator(.reverse).",
+      "Preserve official existing pinned/custom handling where already established. A fixture may explicitly provide these sets and label their provenance.",
+      "For each retained ordinary item in that order, select bucketDate by item case.",
+      "Compute day delta using Calendar.autoupdatingCurrent day starts and provider current date.",
+      "Return localized previous-seven-days for2...7, previous-thirty-days for8...30, month-wide and year if different for>=31, otherwise use relative formatter path.",
+      "Use the localized returned title as section identity. Create unseen sections at tail, append items to existing sections.",
+      "Keep this section order. Raw2 has no byWorkspaces rank or Projects superheader insertion."
+    ],
+    "example_hazard": "A thread with sortDate=distantFuture and old updatedAt sorts first but belongs to an older date bucket. That older bucket can precede Today; calendar-sorting buckets would change observed static behavior."
+  },
+  "unknowns": [
+    {
+      "question": "Full upstream candidate collection, custom-section exclusion/assignment and pinned-set provenance",
+      "boundary": "32ff44..3306d0;330828..330a7c;3317a0..331a50;333b44->2d1bac",
+      "impact": "Explicit synthetic input membership is required for initial ordinary-path validation; do not label whole service-fed pipeline recovered."
+    },
+    {
+      "question": "Exact equal-sortDate tie behavior across runtime/library versions",
+      "boundary": "Imported Foundation.Sequence.sorted(using:) at330788; no explicit secondary key here",
+      "impact": "Use same API where practical. Do not invent title/ID sorting and attribute it to official."
+    },
+    {
+      "question": "Server/adapter semantics that populate sortDate, updatedAt and distantFuture sentinel",
+      "boundary": "Upstream task model creation not traced here",
+      "impact": "Data fields are declared synthetic in fixtures. No claim about service algorithm."
+    },
+    {
+      "question": "Pinned-specific comparator and priority raw0 complete ordering",
+      "boundary": "334ec0 comparator is separate;raw0 affects partition and other producer paths",
+      "impact": "This evidence does not enable priority mode."
+    },
+    {
+      "question": "Device/date-label visual equivalence and multilingual Foundation strings",
+      "boundary": "No official runtime or device replay in this evidence batch",
+      "impact": "Host replay and device acceptance remain separate gates."
+    }
+  ],
+  "validation": "Static ARM64, metadata, import bindings, immutable constants, plus separately labeled independent host-Foundation replay. No official binary or application execution.",
+  "evidence_notes": [
+    "ios-remote-v507-pinned-partition.asm begins333c60 and is a neighboring helper, not the333b44 predicate. Cite ios-remote-v507-pinned-predicate.asm for actual predicate.",
+    "ios-remote-v507-item-comparator.asm is pinned-specific and does not establish general chronological sort.",
+    "Older v506 reports are preserved; resolved unknowns are superseded here."
+  ],
+  "evidence_files": [
+    {
+      "file": "ios-remote-v507-bucket-producer.asm",
+      "sha256": "7175eae9d6793afa86253d92855e9990c55b2ed4b590f22be1c5e61eaf2ee4dd"
+    },
+    {
+      "file": "ios-remote-v507-clock-gates.asm",
+      "sha256": "a66eeafc344f1f73b0519051aeba2b66ff9573dd7db4ed438a5ce11ae267e4b7"
+    },
+    {
+      "file": "ios-remote-v507-date-capture.asm",
+      "sha256": "9691d5787af11794bbac6439dd89dfd0f52b0d0aefedf31466cc129c5d1146c7"
+    },
+    {
+      "file": "ios-remote-v507-date-constructor-calls.json",
+      "sha256": "bf8bcfa9fc5ab8731ad8e7a3794eee2bc8d20dc36b5d35b0041c91b7c80c3636"
+    },
+    {
+      "file": "ios-remote-v507-date-constructor-candidates.asm",
+      "sha256": "e248c94c91faf2c726bce18b6591404463b5958ade96520df2a82cc0b5bb56a0"
+    },
+    {
+      "file": "ios-remote-v507-date-constructor-xrefs.json",
+      "sha256": "07136f6f888a2f8b696783a9923ec59becfc71eeaa9374f2062d60ed524902b9"
+    },
+    {
+      "file": "ios-remote-v507-date-default-constructor.asm",
+      "sha256": "23a8a37a2a64d4af5c12ffb1eb904162056782db6bedfa49b6fe2a7ade42a76f"
+    },
+    {
+      "file": "ios-remote-v507-date-field-xrefs.json",
+      "sha256": "8f3e21b3b2873fa741a97e07b8d5976d38ec2e5a13be25239987edc9bcc2ad6d"
+    },
+    {
+      "file": "ios-remote-v507-date-init-offset-base.asm",
+      "sha256": "d88ba7d4291fcef54b130aaf9f5ec109fb1597828445c83ec83a1df9601c3593"
+    },
+    {
+      "file": "ios-remote-v507-date-owner-init.asm",
+      "sha256": "d6e6ef984bad6969d53b9b742c4adcaa0d530e2664435212a23c9845105e20eb"
+    },
+    {
+      "file": "ios-remote-v507-date-replay-addendum.json",
+      "sha256": "2fd481957cfe6378cbf401cd8c55c15a3ea9658eecaa4e6834ffd3f30e2c1744"
+    },
+    {
+      "file": "ios-remote-v507-date-resolved.json",
+      "sha256": "de43d6b98d819280ea699c7c9c84b3a3cbbb9f107a20c6e96c0a69f23362d608"
+    },
+    {
+      "file": "ios-remote-v507-default-now-calls.json",
+      "sha256": "794a24b000053cebe7d15952c91e4643e293287a094cbece36ec3e048309d20e"
+    },
+    {
+      "file": "ios-remote-v507-default-now.asm",
+      "sha256": "79d930cfea0d197dc84fa53345e5c6e7a109035ca2f9eda4a3d5ec2a27894ba1"
+    },
+    {
+      "file": "ios-remote-v507-foundation-replay.json",
+      "sha256": "de608b8ebacf08be8f214adc0e25bc60f6a7e2b1d97124cad6ed3c163b4a519a"
+    },
+    {
+      "file": "ios-remote-v507-foundation-replay.swift",
+      "sha256": "ddaed8d1f75d4d589222c01b7c1d43a309b47907bebb35d9abb0e7d2312d9015"
+    },
+    {
+      "file": "ios-remote-v507-input-collection-calls.json",
+      "sha256": "8dba76d640e5bd47b26b0beeb05b4b288cfd1fd8f55df61a6e10804cab60aa94"
+    },
+    {
+      "file": "ios-remote-v507-input-sort.asm",
+      "sha256": "123e0439397f45a1bf7204c8055f78d53024ef965ecc477e3f01670a7ad2b4fb"
+    },
+    {
+      "file": "ios-remote-v507-item-comparator.asm",
+      "sha256": "91a37fb6cf523d37207c37c072626642b0d9b1153658750ea047cb50f8b051f9"
+    },
+    {
+      "file": "ios-remote-v507-partition.asm",
+      "sha256": "15a63e8618ed9f6cda8690b69c71e3b65b1accbdc728ffa8f390323d3d539900"
+    },
+    {
+      "file": "ios-remote-v507-pinned-partition.asm",
+      "sha256": "68814fc3fd4e5bcd492a0741e7c8024c8d62086957e6ef965299ad11fd928770"
+    },
+    {
+      "file": "ios-remote-v507-pinned-predicate.asm",
+      "sha256": "da96cf0984c61185c9ec08f5cc5b7fa2861fe9a720c979a61b3bccbfbc0ad1ba"
+    },
+    {
+      "file": "ios-remote-v507-searchresult-fields.json",
+      "sha256": "e128b25bddc85b168824c83b022974731bb84f412043bffe636f4978af6c8f24"
+    },
+    {
+      "file": "ios-remote-v507-section-lookup.asm",
+      "sha256": "8bda9dcdc18e5502678c6074b3901b20c6b5359cf73452c5b26c014dd258f090"
+    },
+    {
+      "file": "ios-remote-v507-section-upsert.asm",
+      "sha256": "4a102a32b13b302a52b2253ec852171b0ccdfbc585a6a82b0c125d849183efe5"
+    },
+    {
+      "file": "ios-remote-v507-sort-keypath-getter.asm",
+      "sha256": "93e4374bce1288d7a48ec04c4b8fdfddba3675d207ee1f2e4fddd467c88db4a2"
+    },
+    {
+      "file": "ios-remote-v507-sort-order.asm",
+      "sha256": "740361fb56458a980d014082928f221c6119f9d16547e5bf64d72519985e5141"
+    },
+    {
+      "file": "ios-remote-v507-viewmodel-date-init.asm",
+      "sha256": "7b2338a279170a6a439bcc88392b8fb61621818c29dc594a1f6163beb3311026"
+    }
+  ],
+  "reused_evidence_files": [
+    "ios-remote-v500-no-workspace-projection.asm",
+    "ios-remote-v506-chronological-date-getter.asm",
+    "ios-remote-v506-chronological-date-getter-calls.json",
+    "ios-remote-v506-date-grouping.asm",
+    "ios-remote-v506-date-grouping-decisions.asm",
+    "ios-remote-v506-date-grouping-calls.json",
+    "ios-remote-v506-date-bucket-labels.asm",
+    "ios-remote-v506-date-formatter-config.asm",
+    "ios-remote-v506-date-bucket-resolved.json",
+    "ios-remote-v506-section-order-entry.asm",
+    "ios-remote-v506-section-materialization.asm",
+    "ios-remote-v498-thread-fields.json",
+    "ios-remote-v494-viewmodel-fields.json"
+  ],
+  "independent_replay": {
+    "status": "passed",
+    "check_count": 15,
+    "script": "ios-remote-v507-foundation-replay.swift",
+    "script_sha256": "ddaed8d1f75d4d589222c01b7c1d43a309b47907bebb35d9abb0e7d2312d9015",
+    "report": "ios-remote-v507-foundation-replay.json",
+    "boundary": "Synthetic host Foundation replay. Calendar/timeZone/locale explicitly configured. No original binary or device parity validation."
+  }
+}

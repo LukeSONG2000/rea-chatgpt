@@ -1,0 +1,66 @@
+{
+  "batch": 612,
+  "implemented": [
+    "Preserve raw independent query snapshots; filter empty strings for presentation.",
+    "Enable query disclosure only for multiple displayed queries; retain legacy details behavior for old histories.",
+    "Include query detail in shared label used by individual activity and latest-activity group summary.",
+    "Use source-backed localized completed search count and detail templates.",
+    "Add isolated single-query fixture and targeted Foundation/UI regressions."
+  ],
+  "official_evidence": "ios-remote-v612-search-integration-findings.json",
+  "independent_adaptations": [
+    "Replay queries is an already-projected snapshot, not a decoder for official WebSearchAction. Raw action.query priority and top-level query fallback are not added to the independent contract in this batch.",
+    "Phase.running/completed selection, failed/cancelled wording, count formatting with Swift String and single-line concatenated Text belong to the host. Official cached-preview and approval-state inputs remain separately unresolved.",
+    "Query-summary ellipsis derives from projected nonempty count. Original raw action array can contain empty entries and has a separately observed raw-count condition.",
+    "Legacy histories with absent queries retain existing details disclosure.",
+    "Text and disclosure parent styling remain partial."
+  ],
+  "unimplemented": [
+    "Search-result and citation source cards with resource routing.",
+    "Official WebSearchAction decoder, open-page/find-in-page/other action summary consumers.",
+    "Full query-provider chain and precise ToolActivitySummaryRow layout.",
+    "Android counterpart."
+  ],
+  "validation": {
+    "foundation": "passed; ios-remote-v612-foundation.log",
+    "ui": {
+      "r1": {
+        "passed": 5,
+        "failed": 0
+      },
+      "r2": {
+        "passed": 2,
+        "failed": 0
+      }
+    },
+    "coverage": [
+      "single/multiple query labels and disclosure",
+      "Chinese light and English dark",
+      "failure and cancellation",
+      "cross-host isolation and restart",
+      "shared latest activity label",
+      "combined task journey"
+    ],
+    "visual": [
+      "inspected Chinese light multi-query and English dark single-query captures",
+      "manually opened existing core-preview history in Chinese dark and expanded search group and query list"
+    ],
+    "runtime": "ios-remote-v612-runtime.json",
+    "limitations": [
+      "official source cards and action decoder unimplemented",
+      "query ellipsis uses projected nonempty count; official raw-array condition differs for empty entries",
+      "precise parent layout and source-provider inputs unresolved"
+    ]
+  },
+  "handoff": {
+    "version": 612,
+    "language": "Chinese",
+    "appearance": "dark, existing preference/system",
+    "page": "Remote fixture-a completed-thread",
+    "state": "existing synthetic history, search group and three-query list expanded",
+    "left_running": true,
+    "display": "built-in Color LCD only"
+  },
+  "retention": "ios-remote-v612-retention.json",
+  "next_action": "Trace official Remote source/citation action owner and rendered-item input before adding source-card consumers."
+}

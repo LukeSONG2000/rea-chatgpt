@@ -1,0 +1,58 @@
+{
+  "batch": 577,
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "type": "artifact-metadata",
+      "evidence": [
+        "ios-chat-v576-markdown-options.json",
+        "ios-chat-v576-options-storage-type.json",
+        "ios-chat-v577-options-fields-type.json",
+        "ios-chat-v577-options-fields.json",
+        "ios-chat-v577-default-insets-check.json"
+      ],
+      "conclusion": "MarkdownOptions -> _Storage.fields -> _Fields links are resolved. Storage payload base16 plus concrete field offsets identifies consumer loads0x298 and0x2d8 as textInsets and textContainerInset."
+    },
+    {
+      "type": "artifact-static-instructions",
+      "evidence": [
+        "ios-chat-v577-fields-init.asm",
+        "ios-chat-v577-default-insets-check.json"
+      ],
+      "offset": "0x68e49dc; 0x68e4bf0/0x68e4c24/0x68e4c28/0x68e4d78",
+      "conclusion": "Default field initializer zeroes textPadding, textContainerInset and codeTextContainerInset. Outer textInsets/codeInsets are distinct initialized values."
+    },
+    {
+      "type": "artifact-static-instructions",
+      "evidence": [
+        "ios-chat-v577-options-defaults.asm",
+        "ios-chat-v577-options-configuration.asm"
+      ],
+      "conclusion": "Options construction and copy-on-write style configuration have additional field overrides. Ordinary page caller selection remains partial."
+    }
+  ],
+  "implementation": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbol": "NativeMessageBlock.init(frame:)",
+    "change": "Use source-observed default textContainerInset.zero in independent shared text/code adapter. Horizontal fragment padding was integrated in v576.",
+    "decision": "Use confirmed default configuration while tracking page-specific parent overrides. Outer block padding, row spacing and action footer remain unresolved."
+  },
+  "cross_platform": "Official iOS Chat and Remote both reach OAIMarkdown by existing independent evidence. No Android equivalence is inferred.",
+  "validation": {
+    "state": "passed; ios-chat-v577-state.log",
+    "ui_passed": 6,
+    "ui_failed": 0,
+    "ui_skipped": 0,
+    "reports": [
+      "ios-chat-v577-r1.summary.json",
+      "ios-chat-v577-r2.summary.json"
+    ],
+    "visual": "Chat and Remote light/dark captures inspected. Native code selection handles/menu visible in both languages. Installed Chinese/light preview inspected."
+  },
+  "next_action": "Determine ordinary caller style overrides, paragraph/block spacing and action-footer conditions before further geometry integration."
+}

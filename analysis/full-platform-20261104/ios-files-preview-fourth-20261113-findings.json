@@ -1,0 +1,239 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Remote source/Markdown file preview: concrete markdownContents capability, ReadingState binding/default and validated linked-line override. Two candidate groups; read-only static evidence only.",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_budget": {
+    "limit": 2,
+    "groups": [
+      {
+        "id": 1,
+        "question": "Actual VM witness+0x20 requirement/getter and presence/classification semantics",
+        "result": "Closed Optional<String> markdownContents concrete getter and constructor classifier; exact CodeLanguage aliases and full resource routing remain unknown."
+      },
+      {
+        "id": 2,
+        "question": "Concrete keypath owner, setter and new-state initializer",
+        "result": "Closed ReadingState keypath/getter/setter/new-state Markdown default and validated linked-line Raw override. Per-resource cache identity/lifetime unclosed."
+      }
+    ],
+    "stopped": true
+  },
+  "official_observations": [
+    {
+      "id": "markdown-capability-is-data-presence",
+      "type": "official-artifact-observation",
+      "conclusion": "Toolbar witness+0x20 is the concrete Optional<String> markdownContents getter, not Bool or initial mode. Source toolbar gates mode menu on Optional presence; there is no empty/trim/count check in this consumer.",
+      "source": [
+        "Protocol CodexRemoteSourceCodeFilePreviewViewModeling descriptor0x95ab6f8; conformance0x7e11038 for class0x95ab74c; table0xa508e00 slot+0x20→0x1a15b64",
+        "Field markdownContents record0x9a35268 typeref0x8bc9970=SSSg; concrete getter0x1a15b70 loadsVM+0x38 pair",
+        "Actual toolbar0x1a114ec/0x1a114fc calls+0x20;0x1a11500 cbz x1 selects non-Markdown toolbar"
+      ],
+      "evidence": [
+        "selected-protocol-conformances.json",
+        "witness-fields.json",
+        "vm-concrete-getters.asm"
+      ],
+      "reused_evidence": [
+        "ios-files-preview-third-20261113/source-toolbar-branch.asm"
+      ],
+      "implication": "nil omits Display capability; present empty string remains eligible. Optional source data must not be replaced with an initialMode optional sentinel."
+    },
+    {
+      "id": "original-markdown-source-producer",
+      "type": "official-artifact-observation",
+      "conclusion": "Concrete VM constructor keeps original source.contents as markdownContents only for a present language whose CodeLanguage classifier resolves Markdown; otherwise writes nil.",
+      "source": [
+        "0x1a15a08 constructor; source displayName+0,contents+0x10,language+0x20",
+        "0x1a15ab0/ab4 checks language presence;0x1a15abc→0x7522178;0x1a15acc tests Bool",
+        "Accepted branch retains original contents; rejected/nil language branch0x1a15af0/f4 zeros both words;0x1a15af8 stores VM+0x38",
+        "CodeLanguage optional typeref0x8f3a628→Optional<Toolbelt.CodeLanguage> nominal0x9752800",
+        "0x7522178 normalization/registry lookup then0x75221e8..0x7522204 canonical Markdown comparison"
+      ],
+      "evidence": [
+        "vm-concrete-getters.asm",
+        "selected-typerefs.json",
+        "language-markdown-classifier.asm",
+        "classifier-completion.asm"
+      ],
+      "limit": "No complete filename-extension/MIME/resource classifier or CodeLanguage alias registry proven. Do not invent .md/.markdown allowlist as original routing."
+    },
+    {
+      "id": "reading-state-owner",
+      "type": "official-artifact-observation",
+      "conclusion": "Display Binding belongs to CodexRemoteFilePreviewReadingState, independently of source VM markdownContents.",
+      "source": [
+        "Keypath0x7e13558 root tagged relative typeref0x8e14ce0→nominal0x95ab6b0 CodexRemoteFilePreviewReadingState; value0x8e14ce6→nominal0x95abca0 CodexRemoteMarkdownFilePreviewDisplayMode",
+        "Root/value relative pointer low tag is masked before resolving. Unmasked0x8e14ce1/7 readings are rejected.",
+        "Getter0x1a11710 performs Observation access then reads byte object+0x10; keypath thunk0x1a11754",
+        "Setter thunk0x1a1177c→0x1a117a0 compares current byte via0x1dadcc4, returns if unchanged, otherwise Observation mutation via0x1d6eaf8→0x1a56920; closure0x12f2d8 writes captured mode to object+0x10"
+      ],
+      "evidence": [
+        "mode-keypath-pattern.json",
+        "keypath-type-8e14ce0.json",
+        "keypath-type-8e14ce6.json",
+        "keypath-accessors.asm",
+        "keypath-setter-tail.asm",
+        "reading-mode-mutation-helpers.asm",
+        "reading-mode-notify-helper.asm",
+        "reading-mode-store-closure.asm"
+      ],
+      "limit": "No service/global preference persistence proved. Observation-backed mutation is not proof of disk persistence. ReadingState declares separate raw/rendered scroll position/offset and linked-line fields; complete behavior is not recovered."
+    },
+    {
+      "id": "new-reading-state-default",
+      "type": "official-artifact-observation",
+      "conclusion": "The actual new ReadingState initializer sets Markdown mode (tag1). This is a new-object default, not an unconditional reset of existing per-file reading state.",
+      "source": [
+        "0x18a0754→0x1da3b8c ReadingState metadata;0x18a0758 allocation;0x18a0764→0x1a135b8 initializer",
+        "0x1a135e8 mov w23,#1;0x1a135ec strb w23,[x20,+0x10]",
+        "Raw0 and Markdown1 are independently proven actual picker tag constructors in previous third report; enum declaration order is not used",
+        "0x18a07bc stride56;0x18a07e4 stp x23,x25,[x8,#0x48] stores new ReadingState x25 at second word x8+0x50"
+      ],
+      "evidence": [
+        "reading-state-constructor.asm",
+        "reading-state-initializer.asm",
+        "reading-state-initializer-command.json"
+      ],
+      "limit": "Parent array key matching, eviction, account/file scope, reuse conditions and process restoration are not closed. The new-state default must not overwrite recovered/existing mode during rerenders."
+    },
+    {
+      "id": "linked-line-validates-before-raw",
+      "type": "official-artifact-observation",
+      "conclusion": "The observed parent forces Raw only after concrete lineNumber getter returns a valid 1-based line within source lines.count, not simply because optional lineNumber is present.",
+      "source": [
+        "0x18a0800 calls0x18a0998;0x18a0804→0x26ac38 tests returned optional tag;nil skips0x18a0810",
+        "0x18a0998 gets lineNumber from VM field offset b1e83e0;0xadb0bc checks optional tag byte+8",
+        "0x18a09c0/c4 reads VM.lines.count;0x18a09cc..0x18a09e4 validates line>0 && lines.count>=line, otherwise returns nil",
+        "Empty lines branch0x18a09ec is brk #1; do not reproduce this as a frontend error strategy",
+        "Valid line branch0x18a0810→0x18a09f0;0x18a0a08 mov w0,#0;0x18a0a0c→0x1a117a0 sets Raw"
+      ],
+      "evidence": [
+        "reading-state-constructor.asm",
+        "linked-line-validation.asm",
+        "optional-line-tag-helper.asm",
+        "returned-line-presence-helper.asm"
+      ],
+      "implication": "For independent adapter, use explicit validatedLinkedLine input with positive within-line-count validation; do not equate arbitrary targetRange validity with original VM getter semantics."
+    }
+  ],
+  "current_host_gap": {
+    "path": "implementation/ios/Sources/FrontendFilePreview.swift",
+    "observed_before_parent_integration": "RemoteFilePreviewResource.initialMarkdownDisplayMode optional currently doubles as capability; two if nonnil gates and rendered view consumes source.contents. This collapses original independent optional Markdown data and reading-state value. Parent may be editing this file concurrently; this is a scoped pre-integration observation, not current runtime verification."
+  },
+  "safe_product_decision": {
+    "source_backed": [
+      "Separate optional markdownContents from reading mode; gate Display menu on markdownContents != nil (not !isEmpty).",
+      "Render Markdown from supplied markdownContents instead of assuming it always equals raw source contents in the public adapter. The original concrete producer uses same source contents only after its CodeLanguage classifier accepts.",
+      "Use Markdown as new ReadingState default; validated linked-line entry may override to Raw. Preserve existing state rather than resetting during body reconstruction.",
+      "Retain source-backed two-level Display/InlinePicker plus independent optional URL ShareLink already proven."
+    ],
+    "independent_adapter": [
+      "Explicit provider supplies markdownContents; no inferred filename classifier needed.",
+      "Provider may supply explicit initial mode as a separate override; label it host input, not original upstream preference.",
+      "Per-resource/account/request reading-state identity and persistence policy remain explicit host contract.",
+      "Safe empty-file linked-line handling returns no validated line instead of copying original trap.",
+      "Current NSString logical line validation may protect valid native-line navigation; its trailing-empty/splitting semantics are not claimed equal to original lines producer."
+    ],
+    "do_not_claim": [
+      "Complete official Markdown renderer/highlighter/comments restored",
+      "Exact original file classification aliases or directory openFileHandler routing",
+      "Original reading-state cache key/lifetime/disk persistence",
+      "Raw override on mere line presence or negative/out-of-bounds line",
+      "Source-specific haptic emission recovered"
+    ]
+  },
+  "precise_unknowns": [
+    {
+      "gap": "Complete resource routing and CodeLanguage normalization aliases",
+      "breakpoint": "Directory openFileHandler concrete producer; classifier0x7522178 normalization0x7521fdc/0x75237d4 and registry0x17c5b64 not fully expanded"
+    },
+    {
+      "gap": "Existing state cache identity/reuse/lifetime",
+      "breakpoint": "Parent before0x18a0750 array search and captured identities at0x18a0688; only new ReadingState allocation/store closed"
+    },
+    {
+      "gap": "Original Markdown rendered Body and full scroll linkage",
+      "breakpoint": "Nominal0x95b3350 concrete View body still outside this two-group scope"
+    },
+    {
+      "gap": "Per-file mode persistence/service writeback",
+      "breakpoint": "Setter0x1a117a0 closes Observation mutation only; outer lifecycle storage not traced"
+    },
+    {
+      "gap": "Original source lines production and exact line-count semantics",
+      "breakpoint": "0x1a15aa8→0x1a15418 constructs VM.lines; complete splitting/trailing-empty semantics not recovered. NSString logical line validation is an independent host adapter, not equivalent by assertion."
+    }
+  ],
+  "rejected_or_partial_attempts": [
+    {
+      "file": "reading-state-vtable.json",
+      "reason": "Guessed fixed class-tail parser returned implausible count25393392 and no entries; not interpreted or used as initializer proof."
+    },
+    {
+      "file": "reading-state-local-init.asm",
+      "reason": "Initial narrow 0x1a10d20 window did not establish initializer ownership; superseded by direct new-object call0x18a0764→0x1a135b8."
+    },
+    {
+      "file": "selected-typerefs.json",
+      "reason": "Contains raw unmasked keypath target attempts; only corrected low-tag-masked keypath-type-8e14ce0/8e14ce6 files establish root/value."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "result": "No explicit haptic emission proven in bounded VM constructor/getter, keypath setter, ReadingState initializer or linked-line override. No trigger added from naming or adjacent code."
+  },
+  "reused_reports": [
+    "ios-files-preview-parent-20261113-findings.json",
+    "ios-files-preview-third-20261113-findings.json",
+    "ios-remote-v617-line-preview-findings.json"
+  ],
+  "validation": {
+    "static_only": true,
+    "host_modified": false,
+    "shared_tools_modified": false,
+    "built": false,
+    "tests_run": false,
+    "device_or_original_runtime": false
+  },
+  "raw_evidence": {
+    "ios-files-preview-fourth-20261113-raw/classifier-completion.asm": "979ba43c965ffbd8f5db5f69c67591364bfe9559348fd869a82eaf4a9f7b0145",
+    "ios-files-preview-fourth-20261113-raw/keypath-accessors.asm": "667f927947306ce68c726f223589a5097dd8f7e83f1a331faea339848daa8241",
+    "ios-files-preview-fourth-20261113-raw/keypath-setter-tail.asm": "5287ef375c3b0fe4c346392215fb30f5b7b5d1193c89228648cfdbfd7cc6f49b",
+    "ios-files-preview-fourth-20261113-raw/keypath-type-8e14ce0.json": "7f4a95013d980a9fe09fb2eff9cd46455bbbfb25a7d240e578a387435e39d447",
+    "ios-files-preview-fourth-20261113-raw/keypath-type-8e14ce6.json": "71af3423523ddf6677d21f00ad29be2903b872c8674cd535554eeb2458f5befa",
+    "ios-files-preview-fourth-20261113-raw/language-markdown-classifier.asm": "8f388de6da5cf622e3c3337e2ba5508717e819c1c34eef45b6e42672eb06e8d5",
+    "ios-files-preview-fourth-20261113-raw/linked-line-validation.asm": "46933f61611c3c4ef471565092fd8cae7bdb5279743a2c8cac02f96b7357eb38",
+    "ios-files-preview-fourth-20261113-raw/mode-keypath-pattern.json": "a63e4136568756a442836b59a75a32ba22f939ceef8b19c7b0e96f4f0a5f6381",
+    "ios-files-preview-fourth-20261113-raw/optional-line-tag-helper.asm": "18560e71555858e16a49d47b2901a1dc460074bd0fe3024182659d182e905d44",
+    "ios-files-preview-fourth-20261113-raw/reading-mode-action-witness.asm": "f00248b0a4f199d71cd09477e2647a155a4909d23c6e7a42b8a00fae3ada0000",
+    "ios-files-preview-fourth-20261113-raw/reading-mode-mutation-helpers.asm": "33baa1465979c0e2a824825e3c106582a61ef1d548637acb1da7e03a9f59bb56",
+    "ios-files-preview-fourth-20261113-raw/reading-mode-notify-helper.asm": "f77675283ad6586d7f1a75486d383411b16d756404d82444327291c67a05659b",
+    "ios-files-preview-fourth-20261113-raw/reading-mode-store-closure.asm": "d0f8eadbb1655d05d1f68964afb405e0680d25b1f92b724e2b61efff5344ec3b",
+    "ios-files-preview-fourth-20261113-raw/reading-state-allocation-metadata.asm": "fd2c734d932cfd3d9c65c2454207ed22f119222dc0b128b03dc175decd0e9a8e",
+    "ios-files-preview-fourth-20261113-raw/reading-state-constructor.asm": "e3613710d2d415fdaa480eacbfd21bebe86f218a464eeb10e74ea1cb97b93295",
+    "ios-files-preview-fourth-20261113-raw/reading-state-init-helper.asm": "826116805eb3561aa9ce9fef1b34867a17d8b1e7dab3a518c2d4f60e05035453",
+    "ios-files-preview-fourth-20261113-raw/reading-state-initializer-command.json": "107988ab05be74c65f4bba33995f1894510d4e3c291933396e76292441ec8a45",
+    "ios-files-preview-fourth-20261113-raw/reading-state-initializer.asm": "709a279d2701f90863343e6343d611d8d1fa22ae7f55a43a201fc98fcc76f140",
+    "ios-files-preview-fourth-20261113-raw/reading-state-local-init.asm": "807d4260778c6e2a36ad587ca4c613d09c1a97afe1d6917a4e448e79a37935b9",
+    "ios-files-preview-fourth-20261113-raw/reading-state-metadata-helper.asm": "43e1bdb4239e3da80011f523867fe4fd9fec8712e4fe6f966a4bd2f6fab3d6b5",
+    "ios-files-preview-fourth-20261113-raw/reading-state-metadata.json": "91dabfe9a47d719d983a7330d49e2a641b26d010f211b85ae5ae591b5878300d",
+    "ios-files-preview-fourth-20261113-raw/reading-state-selected-constructor-references.json": "96d901234c69e1e6353f82ba519ea0b7bae442e15f23d854519cf1b4d6e383d3",
+    "ios-files-preview-fourth-20261113-raw/reading-state-vtable.json": "91363deba7a7a63dd40e5d44828d14405b5945704499f418fcae440e44704439",
+    "ios-files-preview-fourth-20261113-raw/returned-line-presence-helper.asm": "345b5127d08c8369b6b3e58420020842bc3ea804b5a58f42897d50266aca27fd",
+    "ios-files-preview-fourth-20261113-raw/scope.json": "c476dd215d01a1da4fdea31a05785a86c315b8b663baca31b1b7e0f59712853f",
+    "ios-files-preview-fourth-20261113-raw/selected-call-references.json": "bd180f73d26433ed66eb9d7f98906d55493594e5eb4761ecfeea81ae0fe26736",
+    "ios-files-preview-fourth-20261113-raw/selected-protocol-conformances.json": "5c156db27e4e2f8b887298340ad7af7935516e721f1687f3434541f6a3b1ce33",
+    "ios-files-preview-fourth-20261113-raw/selected-typerefs.json": "cf7d014d27e1897e487d63ecb050e6654a41ad1bf1aecd58a5e68d7710252600",
+    "ios-files-preview-fourth-20261113-raw/vm-concrete-getters.asm": "21b44260d18c5db0a4034584811e3ce0ff5ba9e0b35eeb53afda6db159488009",
+    "ios-files-preview-fourth-20261113-raw/vm-contents-branch-helper.asm": "2f814e62a08d889025c8595f158f7379a673c156b6155afa893ed83884eebc67",
+    "ios-files-preview-fourth-20261113-raw/witness-fields.json": "d4830dd43860d2781f45ec282b59d85cc166775019b97ec1cdfdefa6c3426199"
+  },
+  "stop_boundary": "Two groups complete. Concrete capability/data, reading-mode owner and new-state default/validated linked-line override suffice for a safe split. Exact cache/routing/renderer remain precise unknowns; no further candidates."
+}

@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "binary": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions-and-original-readable-member",
+  "scope": {
+    "target_executed": false,
+    "services_accessed": false,
+    "host_modified": false,
+    "build_or_device_actions": false,
+    "screenshots_used_as_schema": false
+  },
+  "method": [
+    "Resilient View conformance resolves exact body witness, then direct thunk/call target",
+    "Actual code loads a symbolic type record into native generic metadata factory; its referenced types establish generated view structure, not branch selection",
+    "Metadata fields and enum cases are separately marked inventory only",
+    "Readable gallery JS compared byte-for-byte with original valdimodule member; source filenames alone are insufficient"
+  ],
+  "modules": [
+    {
+      "id": "plugins",
+      "status": "partial",
+      "official_label": {
+        "key": "gpt_plugins_directory_title",
+        "consumer": "0xe823d8",
+        "literal": "0x887df70",
+        "en": "Plugins",
+        "zh": "插件"
+      },
+      "verified_native_chain": [
+        {
+          "symbol": "ChatGPTPluginsDirectoryRootScreen",
+          "descriptor": "0x9582ea8",
+          "body_witness": "0xe7d7a4",
+          "actual_body": "0xe7aea4",
+          "inner_builder": "0xe7b044",
+          "native_type_record": "0x7d77f60",
+          "type_factory_call": "0xe7aed8",
+          "structure": [
+            "ZStack",
+            "conditional direct setup screen",
+            "NavigationStack",
+            "ChatGPTPluginsDirectoryRootToolbar",
+            "navigationDestination(ChatGPTPluginsDirectoryRoute)",
+            "SearchScreen",
+            "DirectoryScreen",
+            "category/workspace/personal lists",
+            "ChatGPTPluginActionPresentationModifier"
+          ]
+        },
+        {
+          "symbol": "ChatGPTPluginsDirectoryScreen",
+          "body_witness": "0xe82b6c",
+          "actual_body": "0xe82270",
+          "appearance_task_literal_site": "0xe825a4",
+          "appearance_task_literal": "View.task @ ChatGPTPluginsDirectory/ChatGPTPluginsDirectoryScreen.swift:"
+        },
+        {
+          "symbol": "ChatGPTPluginsDirectoryContent",
+          "body_witness": "0xe8397c",
+          "actual_body": "0xe82b70",
+          "type_records": [
+            "0x7d79730",
+            "0x7d79738",
+            "0x7d79740"
+          ],
+          "type_factory_sites": [
+            "0xe82b9c",
+            "0xe82bd0",
+            "0xe82c04"
+          ],
+          "structure": [
+            "ScrollView",
+            "LazyVStack",
+            "InstalledPluginsRail",
+            "SourceContent",
+            "scrollPosition Binding<Tagged<Plugin>?>",
+            "SearchAffordance with typed DirectoryAction"
+          ]
+        }
+      ],
+      "state_inventory_only": {
+        "owner": "ChatGPTPluginsDirectoryViewModel",
+        "fields": [
+          "_scrollPositionID",
+          "_installedItems",
+          "_visibleSources",
+          "_selectedSource",
+          "_openAIState",
+          "_workspaceState",
+          "_personalState",
+          "_browseState",
+          "loadTask",
+          "loadGeneration",
+          "pendingRemovalPluginIDs"
+        ],
+        "scope_fields": [
+          "accountContext",
+          "pluginsEnabledForWorkspace"
+        ],
+        "root_capability_fields": [
+          "isGPTsAvailable",
+          "_isSkillsAvailable",
+          "isAccountCurrent",
+          "isAccountReady",
+          "canOpenGlobalEntrypoints",
+          "isSkillsAuthorizationDenied"
+        ]
+      },
+      "action_inventory_only": {
+        "owner": "ChatGPTPluginsDirectoryAction",
+        "cases": [
+          "sourceSelected",
+          "homeCardBecameVisible",
+          "component",
+          "viewAppeared",
+          "refreshRequested",
+          "loadNextPage",
+          "searchTapped"
+        ],
+        "toolbar_closures": [
+          "backAction",
+          "showSideMenu",
+          "selectDirectorySection"
+        ],
+        "detail": "GPTPluginDetailScreen body 0xeaffb8 ->0xeaefc0; view-model contains accountID/pluginID, request generation, pending operations and request state",
+        "settings": "ChatGPTPluginActionHooks.openSettings and root opensPluginSettingsInHost/settingsReturnDetailID exist; exact openSettings dispatch not followed"
+      },
+      "visual_resources": [
+        {
+          "kind": "background_color",
+          "consumer": "0xe82dcc",
+          "factory": "0x74f0f48",
+          "literal_load": "0x74f0f74..0x74f0f78",
+          "literal_address": "0x8a526c0",
+          "exact_name": "OneOff/MainSurfacePrimary",
+          "status": "verified-string-not-rendered",
+          "asset_catalog": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/Assets.car",
+          "asset_match_count": 2,
+          "asset_evidence": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-assets.json"
+        }
+      ],
+      "service_boundary": "Repository/apps/connector authorization/install/try-in-chat coordinators are native dependencies in metadata. No backend install or authorization was executed, and no single generic WebView can substitute the directory/list/detail structure.",
+      "unknowns": [
+        "Sidebar item creation, exact sidebar icon factory and entry dispatch to this root builder",
+        "Runtime eligibility values and precedence of account/workspace/skills gates",
+        "Exact DirectoryAction component routing and detail buttons/confirmation callbacks",
+        "Root navigation return lifecycle, search debounce/cancellation and stale-generation rejection not statically closed",
+        "Full settings-host presentation connection"
+      ],
+      "minimum_frontend_loop_recommendation": [
+        "Native directory with installed rail and selected source",
+        "Synthetic loading/empty/error/list states through one account-scoped adapter",
+        "Search and plugin detail with return restoring source/query/scroll",
+        "Connection/install/try-in-chat actions emit explicit service intents and unsupported results",
+        "Settings returns to originating plugin detail; preserve capability gates rather than always exposing all actions"
+      ]
+    },
+    {
+      "id": "sites",
+      "status": "partial",
+      "official_label": {
+        "key": "sites_display_name",
+        "consumer": "0x14a30bc",
+        "literal": "0x88984a0",
+        "en": "Sites",
+        "zh": "站点"
+      },
+      "verified_native_chain": [
+        {
+          "symbol": "SitesScreen",
+          "descriptor": "0x959a230",
+          "body_witness": "0x14a26bc",
+          "actual_body": "0x149d304",
+          "type_records": [
+            "0x7dcc540",
+            "0x7dcc548"
+          ],
+          "type_factory_calls": [
+            "0x149d41c",
+            "0x149d44c"
+          ],
+          "structure": [
+            "NavigationStack<NavigationPath>",
+            "SitesScreenRootContent",
+            "navigationDestination(SitesNavigationDestination)",
+            "analytics screen",
+            "project preview screen",
+            "site settings screen",
+            "missing-project conditional",
+            "copy-link banner overlay with FixedBarStack background"
+          ]
+        },
+        {
+          "symbol": "SitesScreenRootContent",
+          "body_witness": "0x14a36f8",
+          "body_builder_call": "0x14a3718",
+          "actual_builder": "0x14a2ed8"
+        },
+        {
+          "symbol": "SitesScreenContent",
+          "body_witness": "0x14a4d80",
+          "body_builder_call": "0x14a4d9c",
+          "actual_builder": "0x14a3a58",
+          "native_type_records": [
+            "0x7dce470",
+            "0x7dce498",
+            "0x7dce4a0",
+            "0x7dce4b0"
+          ],
+          "factory_calls": [
+            "0x14a3b20",
+            "0x14a3bf0",
+            "0x14a3cb0",
+            "0x14a3d00"
+          ],
+          "structure": [
+            "SwiftUI.List",
+            "root header",
+            "SitesProjectsListPicker",
+            "conditional SitesLoadingView/SitesLoadErrorView/SitesEmptyView",
+            "ForEach<SitesProjectRowValue, Tagged<SitesProjectIDTag>>",
+            "Button<SitesProjectRow> with PlainButtonStyle",
+            "SitesPaginationFooter",
+            "PlainListStyle",
+            "row insets/background/separator modifiers"
+          ]
+        }
+      ],
+      "state_inventory_only": {
+        "owner": "SitesScreenViewModel",
+        "fields": [
+          "_searchText",
+          "_projectsRequest",
+          "_sharedProjectsRequest",
+          "_selectedProjectsList",
+          "_accessConfiguration",
+          "_displayedProjectRows",
+          "_presentationQueue",
+          "_navigationPath",
+          "projectsLoadTask",
+          "sharedProjectsLoadGeneration",
+          "selectedProjectID",
+          "_selectedProjectPreview",
+          "_isAnalyticsAvailable",
+          "isVisible"
+        ],
+        "content_fields": [
+          "phase",
+          "isSearching",
+          "canCreateSite",
+          "selectedProjectsList",
+          "showsProjectsListPicker",
+          "paginationFooterState",
+          "_isSearchFocused"
+        ],
+        "availability_owner": "DefaultSitesFeatureAvailabilityProvider",
+        "availability_fields": [
+          "_state",
+          "isNativeExperienceEnabledResolver",
+          "resolvedNativeExperienceEnabled",
+          "cachedAccess",
+          "accessRefreshTask"
+        ]
+      },
+      "action_inventory_only": {
+        "owner": "SitesScreenAction",
+        "cases": [
+          "searchTextChanged",
+          "selectProjectsList",
+          "selectProject",
+          "createSite",
+          "createSiteFromEmptyState",
+          "projectActionSelected",
+          "loadNextPage",
+          "retryFirstPage",
+          "retryNextPage",
+          "previewAction",
+          "dismissSettings",
+          "viewAppeared",
+          "viewDisappeared"
+        ],
+        "project_action_cases": [
+          "copyLink",
+          "edit",
+          "manageSharing",
+          "openInBrowser",
+          "publish",
+          "viewAnalytics",
+          "viewSettings"
+        ],
+        "preview_leading_controls": [
+          "back",
+          "close"
+        ]
+      },
+      "preview_boundary": {
+        "kind": "native-list-plus-web-project-preview",
+        "native_preview_descriptor": "0x959a5b0",
+        "native_preview_body": "0x1478a60 ->0x1478028",
+        "observed_metadata": [
+          "SitesProjectWebPreview has URL/authenticatedSession/browserPolicy/loadTrigger/loadAttemptIdentifier/state/pageBackgroundColor",
+          "Coordinator owns WKWebView loading observations, navigation generation and origin policy",
+          "SitesProjectPreviewLoadingState cases loaded/failed/loading/unavailable"
+        ],
+        "limit": "Coordinator metadata establishes a Web preview implementation exists; exact root-row selection to authenticated renderer callback still needs static closure. It is not evidence for a Web-based Sites listing."
+      },
+      "unknowns": [
+        "Sidebar active route, exact icon and visibility policy",
+        "Native experience eligibility branches and concrete canCreateSite calculation",
+        "Project row select closure and ownership-specific action availability",
+        "Authenticated preview/session bootstrap logic and navigation policy full details",
+        "Source-backed exact row dimensions, empty/error labels and icons"
+      ],
+      "minimum_frontend_loop_recommendation": [
+        "Native owned/shared projects list with loading/empty/error/retry and pagination states",
+        "Search, stable project identity, list selection and return scroll restoration",
+        "Project row opens a dedicated preview host; loading/failure/close remain native",
+        "Copy link/edit/share/publish/settings/analytics exposed according to capability data; backend intents stay explicit",
+        "Reuse local browser adapter only as an offline preview provider, not as proof of official auth/session behavior"
+      ]
+    },
+    {
+      "id": "images",
+      "status": "partial",
+      "verified_native_chain": [
+        {
+          "symbol": "ImageGenView",
+          "descriptor": "0x960cf3c",
+          "body_witness": "0x3226e74",
+          "actual_body": "0x3221a8c"
+        },
+        {
+          "symbol": "ImageGenContentView",
+          "descriptor": "0x960d668",
+          "body_witness": "0x3227f68",
+          "actual_body": "0x3226e78",
+          "group_builder_call": "0x3226ec0",
+          "group_builder": "0x3226f40",
+          "type_records": [
+            "0x7fde9d8",
+            "0x7fde9e0"
+          ],
+          "structure": [
+            "ConditionalContent",
+            "ForEach<ResilientDecodableArray<ImageGenHomeResponse.Group>>",
+            "StyleCarousel",
+            "StackedPromptCarousel",
+            "PromptList",
+            "redacted loading branch",
+            "ContentUnavailableView",
+            "Button<CapsuleButtonStyle>",
+            "AnimationModifier<RequestState<ImageGenHomeResponse,Error>>"
+          ]
+        },
+        {
+          "symbol": "ImageLibraryScreen",
+          "descriptor": "0x9691cfc",
+          "body_witness": "0x53d1378",
+          "actual_body": "0x53d042c"
+        },
+        {
+          "symbol": "ImageLibraryGridPart",
+          "descriptor": "0x9691f50",
+          "body_witness": "0x53ca580",
+          "actual_body": "0x53c7d98"
+        },
+        {
+          "symbol": "ImageLibraryEmptyStatePart",
+          "descriptor": "0x9692030",
+          "body_witness": "0x53c4210",
+          "actual_body": "0x53c3890",
+          "label_builder": "0x53c3a18",
+          "builder_call": "0x53c3924",
+          "type_records": [
+            "0x817d558",
+            "0x817d560"
+          ],
+          "structure": [
+            "VStack<Text,BalancedText,Button<SheetButtonStyle>>"
+          ]
+        }
+      ],
+      "verified_labels": [
+        {
+          "text": "Make image",
+          "zh": "生成图像",
+          "consumer": "0x53c3b7c",
+          "factory": "0x75d2fc4",
+          "shared_tail": "0x75e1df0 ->0x75db078",
+          "packed_x0_le_hex": "4d616b6520696d61",
+          "packed_x1_le_hex": "67650000000000ea",
+          "count": 10
+        },
+        {
+          "text": "Library",
+          "zh": "资料库",
+          "consumer": "0x53c3dcc",
+          "factory": "0x75d6c44",
+          "shared_tail": "0x75e1c14 ->0x75db078",
+          "packed_x0_le_hex": "4c69627261727900",
+          "packed_x1_le_hex": "00000000000000e7",
+          "count": 7,
+          "limit": "This exact Library consumer is the image-library helper; do not use it as proof of the sidebar Images homepage title."
+        }
+      ],
+      "state_inventory_only": {
+        "owner": "ImageGenViewModel",
+        "identity": [
+          "accountID",
+          "conversation",
+          "conversationContext",
+          "conversationCoordinator"
+        ],
+        "state_fields": [
+          "_requestState",
+          "_shuffledItems",
+          "_presentation",
+          "_currentBanner",
+          "imageLibraryViewModel"
+        ],
+        "capability_fields": [
+          "mediaGenerationEnabled",
+          "createTabEnabled",
+          "imageSuggestionsOnlyEnabled",
+          "imageLibraryBelowSuggestionsEnabled",
+          "imageTemplatesEnabled",
+          "_imageGenBlockedFeature",
+          "_fileUploadBlockedFeature",
+          "_fileUploadRateLimitRemaining"
+        ],
+        "action_cases": [
+          "item",
+          "track",
+          "shuffle",
+          "dismissBanner",
+          "heroEntrypointShown",
+          "heroEntrypointTapped",
+          "refresh",
+          "sceneEnteredBackground",
+          "attachmentsButtonTapped"
+        ],
+        "item_action_cases": [
+          "chooseImageInput",
+          "chooseFromGallery",
+          "takePhoto",
+          "tapped"
+        ],
+        "presentations": [
+          "conversation",
+          "lightboxEditor",
+          "subscriptionPurchase"
+        ],
+        "grid_closures": [
+          "refresh",
+          "userInitiatedRefresh",
+          "loadMoreImages",
+          "selectImage",
+          "editImage",
+          "saveImageToPhotos",
+          "permalinkForImage",
+          "archiveImage"
+        ]
+      },
+      "verified_readable_service": {
+        "provenance_file": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-gallery-service.json",
+        "original_container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_services.valdimodule",
+        "container_sha256": "4af23fd69ec97186092b7f5a0cc5402c59977741756b45bb6edd92e79a728b1a",
+        "member": "src/images/ChatGPTImageGalleryClient.js",
+        "member_sha256": "e24a2a668545958a59f3fb4262ef3aa8ecdb87a49ec35815d62a0943610b0f67",
+        "derived_byte_identical": true,
+        "observations": [
+          "GET /backend-api/my/recent/image_gen and optional /backend-api/images/bootstrap",
+          "account authentication required; cancellation/disposal and bounded cursor handling",
+          "First-page unsupported endpoint responses can fall back to recent account conversations",
+          "Image input normalization/dedup and blocked/archived filtering exist"
+        ],
+        "limit": "Does not prove native ImageGenView/ImageLibraryScreen invokes this Valdi client. It is a version-bound service client contract, not server internals."
+      },
+      "unknowns": [
+        "Sidebar Images item label/icon/gate and dispatch into ImageGenView",
+        "Exact home RequestState tag mapping in group builder and eligibility-to-view branching",
+        "Native grid repository protocol implementation and whether it uses readable Valdi service",
+        "Selection -> gallery/lightbox return, save/archive/error callbacks need source tracing",
+        "Any image-specific settings route was not established"
+      ],
+      "minimum_frontend_loop_recommendation": [
+        "Keep image discovery homepage and image library as distinct native surfaces",
+        "Synthetic groups/grid/feed through scoped adapter; native loading/error/empty handling",
+        "Open generated image with metadata and return restoring grid scroll",
+        "Prompt/template selection emits a conversation intent; generation and purchase remain service intents",
+        "Reuse existing image/file preview for resource viewing; a generic preview is not equivalent to official editor/lightbox"
+      ]
+    }
+  ],
+  "reuse_assessment": {
+    "kind": "independent-design-recommendation",
+    "can_reuse": [
+      "FrontendBrowserPreview resource provider and browser controls for offline Sites preview after adding Sites-specific state/navigation adapter",
+      "FrontendFilePreview bounded image/document previews as a lower-level resource viewer",
+      "Common navigation, semantic colors, localization, error surfaces, synthetic adapter contracts and account-scoped restoration"
+    ],
+    "cannot_claim_reuse": [
+      "An existing generic preview implements the official Plugins marketplace",
+      "Sites native list is a Web page",
+      "Library grid is the ImageGen discovery homepage",
+      "Remote composer plugins mention panel is the Plugins directory",
+      "Readable gallery JS proves native UI wiring"
+    ],
+    "host_snapshot": {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "symbol": "NativeConversationList.viewDidLoad",
+      "line": 2887,
+      "observed": "Five feature buttons: Tasks/Library/Customize/Codex/Explore; only Codex routes to an actual feature. Apps/Sites/Images absent from that array at inspection time. Parent may be modifying concurrently."
+    }
+  },
+  "global_open_boundaries": [
+    "Original sidebar item generation/dispatch/gates/icons need common-root evidence",
+    "Type parser leaves opaque context-kind4 unresolved; labels under unresolved parents are retained as limited context references",
+    "Native SwiftUI body statically proven does not establish pixel equivalence, live service success, runtime branch selection, animation or device behavior",
+    "Original resource colors/icons must be loaded by exact name; no guessed assets added",
+    "No implementation completion is implied by this evidence report"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-apps_content.asm",
+      "sha256": "6492d8c98bf6106f68ef98b1afce05ded8f1c945b8afc6a0a37e0e7d2612abfb",
+      "bytes": 8710
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-apps_directory_rows.asm",
+      "sha256": "597d9bc4f6390d9e9fbdae46cc1c70fc19371d9cbff3092c6512d1108def9c86",
+      "bytes": 30700
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-apps_list.asm",
+      "sha256": "1ebe9af84730c2ec2724f721ab667902bc70edda7b835d6da331406dcf67289f",
+      "bytes": 14381
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-apps_root.asm",
+      "sha256": "78bde1aa33bbe918f469395e0e55a0ba8458b2a6e613029c961e592bf7456ec6",
+      "bytes": 5392
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-apps_root_inner.asm",
+      "sha256": "13b01f7f8a3021ce0c629cbe605e6b3dc9d71cfd5bd72a74f51ee9b3343686b8",
+      "bytes": 20327
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-assets.json",
+      "sha256": "dc72e073308a41d5c6a1ab833017da991facb0756a6af2c812b1d14c86f00785",
+      "bytes": 1178
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-bodies.json",
+      "sha256": "5774646bd8770f0fe0ebee52d1de2cc09e39261c3393e41d3a187608fdc63b7f",
+      "bytes": 51541
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-body-thunks.asm",
+      "sha256": "343a65a300fc97ac59318198f05553a880c4eb8a88f64a483741549ecdea5ca4",
+      "bytes": 6158
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-gallery-service.json",
+      "sha256": "42979cb5b4f76e738ba16423359b1df60da6e3ee8440a329e3eb79ea8a664853",
+      "bytes": 2700
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-image-empty-labels.asm",
+      "sha256": "7ab119d4a19abdff1c477b473e3b2798ca62c224506a21332cdc14cb61e83811",
+      "bytes": 25522
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-image_content.asm",
+      "sha256": "1399599f54106a36c4e91df8804b886de8a330b2ff63cbc2a794c62ef67c8c24",
+      "bytes": 2872
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-image_empty.asm",
+      "sha256": "a94abf1fec3302a54b194a1a2a601e493a35e33cbc1694dab8873f08e5cd73a2",
+      "bytes": 5188
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-image_home.asm",
+      "sha256": "c927a6e1f502602e14e4857313b2ce8af132478eca7f1783d124c4414804b6a7",
+      "bytes": 21320
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-image_home_groups.asm",
+      "sha256": "6c77e773c4aa18b9452a7c01a86cc729e01cca75f2bd97c8b78a89e3070ccaee",
+      "bytes": 14492
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-image_library.asm",
+      "sha256": "9cec5ecb1cf791dc35a06e3dba168cd130a1e599b1eaad27b29e01fb893e3f12",
+      "bytes": 33930
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-label-leads.json",
+      "sha256": "376b49582482cb8c3a5cc498f1209355cf55fa7d976819f394359a39b21da378",
+      "bytes": 1711
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-layout-types.json",
+      "sha256": "d05f2ef55a8216317f8c834c66a55d2b566d237aaafb43dd1eaf696cfa8d0b8a",
+      "bytes": 37528
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-resource-factories.asm",
+      "sha256": "d50476aad86253d937eb2600bb40b7625b99addd0b97fc4b0653379e91844ebb",
+      "bytes": 12842
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-sites-types.json",
+      "sha256": "2ed08e4a9ed5d65292ea92fb5b6f4cbdbbb000a83b0c8e852bc52b569d81a497",
+      "bytes": 46989
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-sites_content.asm",
+      "sha256": "7e135ccc1a724dee7c915954f597028b7ed101ebcf8b08038b6744e42fad68dc",
+      "bytes": 732
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-sites_list_content.asm",
+      "sha256": "7e8e8637fc420449b9f18819acf0985f1e17862086d630d18a9711e48541f414",
+      "bytes": 14546
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-sites_root.asm",
+      "sha256": "14e404b79e7580db0df871ecbaa16d8881ba9de90bf8bd25b6b50a67bc6a939c",
+      "bytes": 41410
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-sites_root_container.asm",
+      "sha256": "009f30f07a677b747b47089ac2924b4655ae14ea268768e84979aae0c0c8f84e",
+      "bytes": 15792
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-sites_rootcontent.asm",
+      "sha256": "33e1a59a266be9bb02773022f975e0f7afea96456fa883bcbe61f0e917993360",
+      "bytes": 750
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-titles.json",
+      "sha256": "a76dd3dd61127c7071180017226897940c68a5fdba01da590a65d2c10b518651",
+      "bytes": 1038
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-types.json",
+      "sha256": "801ae4c6ecf73685dcaacaaae75ad3ea89dfb6486d1973155180688bc2ea19d8",
+      "bytes": 21187
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-viewmodels.json",
+      "sha256": "8e32d250eb7eb2219947144ad53ee5ada97fc62216bcaa878e4d6e11a5ac6aa7",
+      "bytes": 7172
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-apps-sites-images-20261112-windows.json",
+      "sha256": "b0574ca789618f4668516ab95f4aa93f51151d8dc25c86f7791077701c1007fb",
+      "bytes": 1874
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "status": "partial",
+  "scope": "iOS293 ChatGPTProjects home and editor; excludes Remote workspaces, Sites and separately delegated ProjectDetail",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "static original Swift metadata + bounded ARM64 calls + original symbolic generic trees; no target execution",
+  "home": {
+    "descriptor": "0x966abcc",
+    "accessor": "0x4af51b4",
+    "body_witness": "0x4ac499c",
+    "body": "0x4abd88c",
+    "tree_record": "0x81102e0",
+    "tree_file": "analysis/full-platform-20261104/ios-native-projects-home-editor-20261112/home-tree.json",
+    "actual_construction": [
+      "NavigationStack<NavigationPath,...> with navigationDestination<ProjectsHomeViewModel.NavigationDestination> and ProjectDetailScreen destination",
+      "VStack<TupleView> begins ProjectsSegmentedTabBar<ProjectsHomeDirectoryFilter>; body includes conditional empty-state VStack, plain List, loading and RequestStateDefaultErrorPart",
+      "List<Never,...> with ForEach<Array<ConversationsCore.GizmoResource>,Tagged<APICore.GizmoIDTag,String>,...Button<ProjectsHomeRow>>; PlainButtonStyle, content shapes, row background/insets/separator traits and contextMenu",
+      "List branch includes AsyncButton pagination/error controls and ProjectsHomeLoadingRow",
+      "List refreshable / scrollBounceBehavior / scrollDismissesKeyboard / contentMargins / animation modifiers",
+      "ToolbarItem generic in root and title display mode/background modifier; exact control closure and order partial",
+      "Root body direct alert calls0x4abe66c and0x4abe85c, destination0x4abee4c, title0x4abef98"
+    ],
+    "source_title": {
+      "consumer": "0x4abef60",
+      "factory": "0x75d92dc",
+      "literal": "Projects",
+      "key_status": "packed English literal confirmed; exact resource key not recovered"
+    },
+    "filter_inventory": [
+      "all",
+      "createdByYou",
+      "sharedWithYou"
+    ],
+    "filter_limit": "Typed ProjectsSegmentedTabBar is actual construction. Displayed labels, selectedDirectoryFilter projection and per-account capabilities not closed; do not turn declaration order into visible order.",
+    "search_limit": "searchText,hasActiveSearch,__isSearchFocused are source fields. No searchable import in inspected root tree; specific source search field/presentation consumer not yet closed. Preliminary suggestion of searchable is withdrawn."
+  },
+  "editor": {
+    "descriptor": "0x9669e18",
+    "body_witness": "0x4a87f90",
+    "body": "0x4a86020",
+    "outer_tree_record": "0x810c128",
+    "outer_tree_file": "analysis/full-platform-20261104/ios-native-projects-home-editor-20261112/editor-tree.json",
+    "content_descriptor": "0x966b008",
+    "content_body_witness": "0x4a8b944",
+    "content_body": "0x4a87f94",
+    "content_tree_record": "0x810fb28",
+    "content_tree_file": "analysis/full-platform-20261104/ios-native-projects-home-editor-20261112/editor-content-parent-tree.json",
+    "scroll_tree_record": "0x810faf8",
+    "scroll_tree_file": "analysis/full-platform-20261104/ios-native-projects-home-editor-20261112/editor-scroll-tree.json",
+    "actual_construction": [
+      "NavigationStack<NavigationPath,ProjectEditorContentView>",
+      "interactiveDismissDisabled + presentationDetents + presentationCornerRadius + alert(item:)",
+      "Presentation typed destinations ProjectEmojiScreen and ProjectMemoryScreen; DisclosurePopoverPresentation environment",
+      "ScrollView<VStack<TupleView>> content, NOT Form",
+      "Tuple contains optional explanatory Text + Spacer, HStack with Button<ProjectGizmoAvatar> and PlainTextField bound/focused/onSubmit, optional horizontal ScrollView<LazyHStack<ForEach<SuggestedProject,SuggestedProjectButton>>>, optional memory button and ProjectMemorySelectionSection",
+      "Content navigationTitle0x4a883ac; title display mode0x4a88418; toolbar0x4a88530 independent of scrolling content",
+      "Toolbar closure0x4b2fd5c forwards0x4a8a2d4; topBarTrailing at0x4a8a370 and conditionally topBarLeading at0x4a8a39c. Leading inclusion predicate0x4a89148. Source edit/create/saving branch control labels not fully decoded."
+    ],
+    "labels": [
+      {
+        "consumer": "0x4a88354",
+        "factory": "0x75d2f5c",
+        "literal": "New project",
+        "limit": "actual branch title; edit-title condition unresolved"
+      },
+      {
+        "consumer": "0x4a895f8",
+        "factory": "0x75d6768",
+        "literal": "Memory"
+      },
+      {
+        "consumer": "0x4a87ab4",
+        "factory": "0x75d1de0",
+        "literal": "Error"
+      }
+    ],
+    "state_owner": "ProjectEditorViewModel original fields: context,projectName,selectedMemoryScope,projectDisplay,suggestedProjects,showEmojiOptions,showMemoryOptions,canSaveChanges,canEditProjectAppearance,actionHandler,saveChanges,__isSaving; fields are inventory except where tied to constructors above"
+  },
+  "action_boundary": {
+    "actual_observation": "Home actual row Button+contextMenu and actual editor fixed ToolbarItems are proven. Exact action callback case mapping still partial. Existing ProjectsHomeAction enum and Presentation enum remain inventory, not claim that all menu items visible.",
+    "inventory_actions": [
+      "projectTapped",
+      "newProjectChatTapped",
+      "setProjectPinned",
+      "shareProjectTapped",
+      "editProjectTapped",
+      "deleteProjectTapped",
+      "deleteProjectConfirmed",
+      "viewAppeared",
+      "retryProjectsLoadTapped",
+      "createProjectTapped",
+      "lockNowTapped"
+    ],
+    "required_independent_adapter": "Can support synthetic list→explicit create/edit→local saving/failure→return; original service successes, exact menu capability predicates and order cannot be declared recovered."
+  },
+  "haptics": {
+    "status": "unresolved",
+    "observation": "ProjectsHomeViewModel hapticEngine field exists (record0x9b24948); no specific trigger or feedback consumer was closed in this bounded home/editor window. Do not invent tap/save/pin feedback from field presence."
+  },
+  "unknowns": [
+    "Exact root toolbar create/search consumer closure, icon and title placement",
+    "Context-menu callback mapping, original pin/edit/delete/share localization keys and capability gates",
+    "Source filter display labels and fixed visible ordering",
+    "Editor submit/save/cancel callback and unsaved/error branches including final dismissal",
+    "Precise geometry/material/font tokens; symbolic shape does not prove values",
+    "Actual account feature assignment and History→ProjectsHome admission remain separate",
+    "No backend behavior or runtime visual equivalence established"
+  ],
+  "next_minimum_evidence": [
+    "Home toolbar closure passed by opaque wrapper0x971e694 and actual contextMenu closure around row constructor; trace only these consumers for create/search/menu",
+    "Editor toolbar actualbody0x4a8a2d4 (not conformance getter4b2fd64); selection predicate4a89148 and callback4afe8c. Source factory75d6a68 referenced at4a8a4cc is next label to decode",
+    "Filter typed body witness4ad22b8; follow its thunk then exact label callback; do not derive labels from enum"
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-native-projects-home-editor-20261112",
+  "host_changes": "none",
+  "limits": [
+    "Stopped at bounded investigation limit.",
+    "Original symbolic trees preserve opaque/anonymous contexts by address; shapes do not establish branch selection.",
+    "No source implementation edits, builds, device work, target execution or full binary sweep."
+  ]
+}

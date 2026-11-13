@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T06:56:13.223031+08:00",
+  "module": 1,
+  "pass": "fourth",
+  "status": "partial",
+  "previous_goal_turn": "progress: current gesture gates verified and module10 progress archived",
+  "scope": "Whole shell/home/sidebar core loop retained; source-proven background/footer parent omissions restored with bounded regression",
+  "reference_version": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_snapshot": "ios-shell-parent-current-20261113.json",
+  "source_reports": [
+    {
+      "path": "ios-shell-top-host-fourth-20261113-findings.json",
+      "sha256": "112b403299be2142a6e029694f0f8943e26b7caad3e87608b65e8fe84343fcd4"
+    },
+    {
+      "path": "ios-shell-footer-fourth-20261113-findings.json",
+      "sha256": "024d1f9e2d88bd96832a6219dfff9844d4bd31f56d392b260a3170dc0d1bc114"
+    },
+    {
+      "path": "ios-shell-profile-fourth-20261113-findings.json",
+      "sha256": "1c4d9e7e01a70a2e29d30d5a3cbd9d358a41c53e08fc216d93749f80405ff003"
+    }
+  ],
+  "implemented_this_pass": [
+    {
+      "area": "Background hosts",
+      "change": "Only the two dedicated sidebar backgrounds now use safeAreaRegions=[]",
+      "source": "12a0304 stores x22;26b834 sets x20;12a035c ->1397220 raw0 ->aad22d0 imported setter",
+      "limit": "Not a global hosting policy or proof of top UIView frame"
+    },
+    {
+      "area": "Top wrapper",
+      "change": "Existing VariableBlur radius2 + color gradient; bottom padding -10/0 for reduceTransparency, top -24, no hit testing; remove unproved solid-fill replacement",
+      "source": "127c094 ->127c004;6f34f38 ->6f34d20 ->6f34d58",
+      "limit": "Original raster sizing and full UIKit frame remain open"
+    },
+    {
+      "area": "Bottom wrapper",
+      "change": "Keep CurvedGradient in both reduction branches; top padding -10/0, bottom -24, no hit testing; no added blur",
+      "source": "7dad324 ->127c1e4 ->127c0a0;127c148..1c8",
+      "limit": "Inclusive sampling and exact ShapeStyle orientation remain adapter choices"
+    },
+    {
+      "area": "Footer anchor",
+      "change": "Background.top=newChatButton.view.top-8; other edges bind current content-container counterpart",
+      "source": "12969a4..69ec;1296a04..6ab8",
+      "limit": "Current root UIView corresponds to original contentContainer, not a fully recovered absolute frame"
+    },
+    {
+      "area": "Shared footer inset",
+      "change": "Leading and bottom consume the same environment input; unrelated fixed leading16 removed",
+      "source": "1296b18 and1296bd0 call129d908",
+      "limit": "max(safeArea.bottom,16) remains independent approximation of unresolved scene-corner branch"
+    }
+  ],
+  "retained_core": [
+    "Home Chat/Work, keyboard and drafts",
+    "Sidebar tap/edge/header drag, partial cancel and interruption",
+    "Feature expansion, conversation selection/pin and reading retention",
+    "Search/settings/feature return through actual shell"
+  ],
+  "profile_content_evidence": {
+    "direct_producer_closed": true,
+    "source": "1282c1c ->account model ->184a00c;1282ca0 flag ->tag0/tag1;1282b98 child.content;12844e8 leaf",
+    "live_account_assignment_closed": false,
+    "breakpoint": "VM dynamic field-offset cache b17d4a0 and account/experiment assignment",
+    "product_change": false,
+    "decision": "Keep ordinary gear; screenshots/name/image URL cannot establish avatar availability"
+  },
+  "not_implemented": [
+    "Top background UIView complete frame anchors, separate from header guide56/-6",
+    "Original ImageRenderer proposedSize/scale, exact CurvedGradient sampling/orientation and optical equivalence",
+    "Complete dynamic footer scene-corner inset formula and remaining action metrics",
+    "Live avatar/gear assigned flag and complete AccountAvatar/switcher resource pipeline",
+    "Original history action carriers, chatRequests/fetch sections, full catalog availability/order, recent fitter and pinned truncation",
+    "Complete original scroll/selection/pop/keyboard arbitration and physical tactile waveform"
+  ],
+  "haptics": {
+    "route": [
+      "Settings",
+      "General",
+      "Haptic feedback"
+    ],
+    "consumer_hashes_match_previous": true,
+    "new_unproved_triggers": false,
+    "command": "sh implementation/ios/test-haptics.sh",
+    "result": "passed",
+    "log": "/tmp/rea-shell-fourth-haptics.log",
+    "physical_verified": false,
+    "limits": "Background/constraint code proves no new trigger; row longpress/swipe and OS implicit feedback remain unknown"
+  },
+  "verification": {
+    "r1": {
+      "bundle": "ios-shell-fourth-20261113-r1.xcresult",
+      "passed": 2,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "testPrimaryVisualSurfaces",
+          "seconds": 45.749
+        },
+        {
+          "name": "testSidebarEdgeGestureChinese",
+          "seconds": 32.004
+        }
+      ],
+      "scope": "Background changes, before shared-leading-inset adjustment"
+    },
+    "r2": {
+      "bundle": "ios-shell-fourth-20261113-r2.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "testPrimaryVisualSurfaces",
+          "seconds": 59.148
+        }
+      ],
+      "scope": "Final product source; ordinary home/sidebar/feature/settings/profile return and original draft"
+    },
+    "runtime_blur": {
+      "sidebarHeader": {
+        "backend": "variableBlur",
+        "bottomToTop": true,
+        "factoryAvailable": true,
+        "height": 146,
+        "imageGenerated": true,
+        "radius": 2,
+        "rasterScale": 1,
+        "stops": [
+          {
+            "location": 0,
+            "opacity": 0
+          },
+          {
+            "location": 1,
+            "opacity": 1
+          }
+        ],
+        "width": 310
+      }
+    },
+    "runtime_geometry": "Prior leaf310x50; current310x146, native variableBlur radius2. Host observation, not optical equivalence.",
+    "screenshots_viewed": [
+      "ios-shell-fourth-20261113-r1-attachments/BAC58AF0-159B-412C-96D2-84D20BD2A0E7.png",
+      "Current final ordinary home/sidebar via Device Hub, saved ios-shell-fourth-20261113-ready.png"
+    ],
+    "limits": [
+      "Chinese/light only",
+      "Unchanged pin/restart paths not rerun",
+      "No physical runtime/tactile verification"
+    ]
+  },
+  "runtime": {
+    "preview": {
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "bundle": "local.rea.chatgpt.ioshost",
+      "pid": 48815,
+      "launch": "local.rea.chatgpt.ioshost: 48815",
+      "profile": "a8f241e3-ed53-46ba-9629-5ec647dafdd4",
+      "arguments": [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks",
+        "--remote-interactive-replay",
+        "--remote-attachment-all-capabilities-fixture",
+        "--remote-command-message-fixture",
+        "--remote-search-message-fixture",
+        "--remote-search-action-fixture",
+        "--remote-file-message-fixture",
+        "--remote-review-message-fixture",
+        "--remote-rich-message-fixture",
+        "--remote-linked-file-fixture",
+        "--remote-file-citation-fixture",
+        "--browser-preview-fixture",
+        "--chat-browser-fixture",
+        "--remote-model-slider-fixture",
+        "--remote-permission-fixture",
+        "--remote-context-usage-fixture",
+        "--remote-thinking-group-fixture",
+        "--remote-history-group-fixture",
+        "--remote-latest-group-fixture",
+        "--remote-project-sort-menu-fixture",
+        "--remote-task-controls-fixture",
+        "--auth-journey-fixture",
+        "--auth-state-profile=a8f241e3-ed53-46ba-9629-5ec647dafdd4",
+        "--chat-state-profile=a8f241e3-ed53-46ba-9629-5ec647dafdd4",
+        "--remote-draft-profile=a8f241e3-ed53-46ba-9629-5ec647dafdd4",
+        "-AppleLanguages",
+        "(zh-Hans)",
+        "-AppleLocale",
+        "zh_CN",
+        "-rea.preview.appearance",
+        "light"
+      ],
+      "manifest_sha256": "3a3532497d53d7b46d0cda950185e6bad0cec07c36b202e952b671482420ef36",
+      "executable_sha256": "1a13c28abaa12cdd07cb5f7c264b261c12f946b3928b8fff1da02c6d07e24c8a",
+      "hash_match": true,
+      "left_running": true,
+      "ui_launch_observed": true,
+      "left_surface": "Ordinary Chat home > sidebar; current chat button and separate header/footer visible",
+      "fixture": "Isolated core and synthetic auth; no actual services",
+      "screenshot": "ios-shell-fourth-20261113-ready.png"
+    },
+    "signed_device_build": "succeeded",
+    "strict_signature": "passed",
+    "device_executable_sha256": "663f149b60fe4c93a3f7534c72610ea583b8f0d3dba978fc34f01a3f20601a43",
+    "air_state_report": "/tmp/rea-shell-fourth-20261113-devices.json",
+    "air_paired": true,
+    "air_tunnel": "unavailable",
+    "air_ddi_services": false,
+    "installed_to_air_this_batch": false,
+    "system_preferences_or_other_devices_modified": false
+  },
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "178a90946c8d317d09968d72ecdf74c1f573eb872b805f31b8bdb566b6bce51d"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "9234767d76a2d2be392cc93cf011a2241cbb5048e582089868c856ae434da0d5"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredSidebarGeometry.swift",
+      "sha256": "7a6719d5c99e6a12cd7a8980e25d1a1ea223921c1b95a51311153a4c0a53bf3d"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "a27bc3e817767a415402e21d0b0a397b3b0f785b348204871bfbe0cb6b3ebb31"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "39ae926110a7b2817f19e782ed6364a5106c4755e602ecd7bda2f827a7148c98"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "fe9ef036955952c39d574c1839b1eadb3b32933a0e5068512ff53a18021404e9"
+    }
+  ],
+  "next_major_module": "2 Settings topology/entries: bounded current audit; if no clear core gap, advance to3 Remote list without full retest",
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false,
+    "backend_or_production_api_modified": false
+  },
+  "cross_platform": "Android paused under iOS-first instruction; native iOS hosting is not presumed Android-equivalent."
+}

@@ -1,0 +1,81 @@
+{
+  "batch": 581,
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "evidence": "ios-chat-v581-action-types.json; ios-chat-v581-model-witnesses.json",
+      "offset": "type0x8024bb0; conformance0x801be48; pattern0xa6ac778",
+      "conclusion": "InlineActionsPart is concretely parameterized by MessageRowViewModel. MessageRowModeling witness slots +0x30 and +0x38 reach primary-display-item and overflow getters."
+    },
+    {
+      "evidence": "ios-chat-v581-model-getters.asm; ios-chat-v581-actions-producer.asm; ios-chat-v581-layout-verification.json",
+      "offset": "0x38cb7d0;0x38e3ad8;0x3aa0bfc",
+      "conclusion": "Getters load ivar-offset storage 0xb4f67e0 (_visiblePrimaryActionDisplayItems) and 0xb4f67e8 (_visibleOverflowActions). The model separately stores _visiblePrimaryActions and _contextMenuActions."
+    },
+    {
+      "evidence": "ios-chat-v581-presence.asm",
+      "offset": "0x38a0938;0x38a0978",
+      "conclusion": "Presence helper accepts a nonempty overflow collection or state getter +0x40 whose returned low byte differs from2. The state semantic cases remain unresolved."
+    },
+    {
+      "evidence": "ios-chat-v581-actions-producer.asm; ios-chat-v581-layout-verification.json",
+      "offset": "0x38cb898; ivar storage0xb4f69f8",
+      "conclusion": "Another action-part construction gate reads _hasPendingResponseFavoriteAvailability. This is separate from nonempty primary/overflow collections."
+    },
+    {
+      "evidence": "ios-chat-v581-actions-update.asm",
+      "offset": "0x3946bfc;0x3946c34;0x3946c40..0x3946ddc",
+      "conclusion": "Update function invokes arrangement0x395bf3c and display projection0x395c950, then separately compares/updates primary, primary-display, overflow and context-menu arrays. Complete producer predicates remain partial."
+    },
+    {
+      "evidence": "ios-chat-v581-action-cases.json; ios-chat-v581-button-action-cases.json",
+      "offset": "descriptors0x96ed944/0x96ed96c/0x96ed9e8/0x961fa38",
+      "conclusion": "MessageCellAction metadata includes copy, buttonAction, asyncButtonAction and categorySelection. Display-item cases include action and combinedFeedback. Metadata indices alone do not prove raw enum tags or eligibility."
+    }
+  ],
+  "host_gap": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbol": "NativeHostedRow",
+    "finding": "A single trailing Menu currently combines copy/edit. Primary/overflow/context separation, role policy and composed geometry remain unresolved host work."
+  },
+  "implementation": {
+    "authority": "independent deterministic frontend fixture",
+    "file": "implementation/ios/Sources/LocalHarness.swift",
+    "symbol": "FixtureChatService.init",
+    "change": "Default synthetic prose, heading, table and connection description select Chinese/English through Foundation language negotiation. Explicit replay chunks, including an empty list, retain their contents. Existing service/history content is outside this fixture selection."
+  },
+  "validation": {
+    "artifact": "21 layout plus9 collection instruction guards,5 layout fields,5 model ivars,3 witness targets and3 imports; repeat identical",
+    "runtime": "v581 signed and installed; executable SHA-256 matches; live Chinese/light preview verified in Device Hub",
+    "state": "22 existing state groups passed",
+    "service": "7 service groups passed, including added locale ordering/fallback and explicit-payload checks",
+    "ui": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "report": "ios-chat-v581-r1.summary.json"
+    },
+    "visual": "Reviewed Chinese/light and English/dark copied-reply captures. English synthetic table/prose are localized. Existing large block gaps, trailing menu and composer geometry remain visible differences. The simulator retained its selected Chinese input method during English UI tests."
+  },
+  "limits": [
+    "No original target execution or official server access.",
+    "The raw singleton display-item byte4 and raw button-action bytes are not named from metadata order.",
+    "Projection disassembly retained0x395c950..0x395d700; linker function ends0x395dedc. Whole-function policy is not recovered.",
+    "First action-part availability/style gate0x38bbaf4 and ordinary parent overrides remain open.",
+    "English fixture localization is independent test-data behavior."
+  ],
+  "next_actions": [
+    {
+      "priority": "P1",
+      "page": "Chat/Work conversation",
+      "gap": "Full action projection and footer layout",
+      "evidence_break": "0x395bf3c arrangement inputs;0x395c950..0x395dedc projection;0x38bbaf4 availability",
+      "action": "Bind producer input fields and ordinary role branch, then integrate primary/overflow rendering and measure final composed content in the same change.",
+      "acceptance": "User/assistant active/terminal actions, copy/edit and A-B-A anchors in Chinese/light and English/dark."
+    }
+  ]
+}

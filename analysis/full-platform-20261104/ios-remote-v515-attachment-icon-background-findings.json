@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "293 first-level attachment ActionIconButton circle background and Plan current-state presentation",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_observation",
+  "findings": [
+    {
+      "id": "actual-circle-background",
+      "status": "verified-static",
+      "source": [
+        "0x607f8f8..0x607f924",
+        "0xa9879c0",
+        "0x971f980",
+        "0x6ec82cc..0x6ec8304",
+        "0x6ec8318",
+        "0x6ec8470..0x6ec856c",
+        "0x838d118",
+        "0x6ec837c"
+      ],
+      "conclusion": "ActionIconStyle override installs a nonnil AdaptiveTertiaryStyle ShapeStyle existential in iconBackgroundColor. Icon consumer applies iconPadding10, obtains the optional ShapeStyle, type-erases into AnyShapeStyle and builds Optional<_ShapeView<Circle,AnyShapeStyle>>. View.background(_:alignment:) attaches that Circle to the padded glyph. The base icon frame is24, therefore ordinary base-scale circle diameter is44; icon/font metrics can scale. No independent fixed circle radius or material blur is created by this icon-background branch.",
+      "reconstructed_order": [
+        "SVGOrImagePart with iconSize24/iconFontSize18 regular and iconForegroundStyle",
+        "padding(10)",
+        "background(Circle filled with AnyShapeStyle(AdaptiveTertiaryStyle), alignment:center)"
+      ],
+      "limits": [
+        "Dynamic type adjusts iconSize/font via existing scaled-metric consumers. Do not force total44 when these metrics scale.",
+        "Exact platform runtime blending and appearance remain visually unverified."
+      ]
+    },
+    {
+      "id": "adaptive-tertiary-resolver",
+      "status": "verified-static",
+      "source": [
+        "0x8384c20",
+        "0x6f44388 ->0x6f44154",
+        "0x6f4419c",
+        "0x6f441a0..0x6f441cc",
+        "0x6f441d4..0x6f44268",
+        "0x6f4426c",
+        "0x6f4427c..0x6f44370",
+        "0x1bdeac",
+        "0x74f0420",
+        "0x74ecf70"
+      ],
+      "conclusion": "AdaptiveTertiaryStyle resolves using SwiftUI EnvironmentValues.backgroundMaterial and colorScheme plus iOS26 availability. It returns a color with an explicit blend mode. Material is an environment input, not a blur effect generated for the icon itself.",
+      "branches": [
+        {
+          "condition": "iOS>=26 and backgroundMaterial == nil",
+          "color": "OneOff/AppForeground",
+          "opacity": 0.02,
+          "blendMode": "normal",
+          "literals": [
+            "0x7d49700",
+            "0x45aadc→0xaad5818"
+          ]
+        },
+        {
+          "condition": "iOS>=26 and backgroundMaterial != nil and colorScheme == light",
+          "color": "OneOff/AppForeground",
+          "opacity": 0.04,
+          "blendMode": "plusDarker",
+          "literals": [
+            "0x7d3e0d8",
+            "0xaad57f0"
+          ]
+        },
+        {
+          "condition": "iOS>=26 and backgroundMaterial != nil and colorScheme == dark",
+          "color": "OneOff/AppForeground",
+          "opacity": 0.07,
+          "blendMode": "plusLighter",
+          "literals": [
+            "0x7d49650",
+            "0xaad5800"
+          ]
+        },
+        {
+          "condition": "iOS<26",
+          "color": "ChatGPT/bg/tertiary",
+          "opacity": 1,
+          "blendMode": "normal",
+          "source": "0x6f442ec→0x74ecf70;0x6f442fc→0x45aadc"
+        }
+      ],
+      "asset_reuse": [
+        "OneOff/AppForeground official catalog light black, dark white already captured v448-assets.json",
+        "ChatGPT/bg/tertiary light/dark official catalog already captured v439-presentation-bindings.json"
+      ],
+      "limits": [
+        "The effective SwiftUI backgroundMaterial value inherited by the official attachment hosting subtree has not been closed. UIKit UIGlassEffect presence alone does not establish that SwiftUI EnvironmentValues.backgroundMaterial is nonnil.",
+        "Normal enabled background does not depend on Plan selected state, enabled state or isPressed in this resolver.",
+        "Future/unknown colorScheme fallback flows through the light opacity default and normal blend; only current light/dark branches are listed for implementation."
+      ]
+    },
+    {
+      "id": "pressed-disabled-layers",
+      "status": "verified-static-reused",
+      "source": [
+        "0x607f974..0x607f9c0",
+        "0x6ec88a0..0x6ec8964",
+        "0x837f680",
+        "0x6f48530",
+        "0x6f48624..0x6f486ac"
+      ],
+      "conclusion": "The ordinary row style creates ScaleButtonStyle(scale:1,opacity:0.4,disabledOpacity:0.6,animation:nil). Pressing affects the entire styled label including the new circle. iconBackgroundColor itself is unchanged. The style factory independently multiplies glyph/title foreground by enabled?1:0.6.",
+      "formula": "label.scaleEffect(isPressed ? 1 : 1).opacity(isPressed ? 0.4 : 1).opacity(isEnabled ? 1 : 0.6).animation(nil,value:isPressed)",
+      "limits": [
+        "When both factory enabled=false and SwiftUI environment isEnabled=false apply, glyph/title alpha factors multiply while the background receives the outer disabled modifier only. Preserve actual caller conditions.",
+        "This reuses the already closed v514-outside-dismiss-pressed-findings consumer and reads the v513 override. It adds no new universal ButtonStyle rule."
+      ]
+    },
+    {
+      "id": "plan-on-off-first-level-row",
+      "status": "verified-static",
+      "source": [
+        "0x1961694..0x19618dc",
+        "0x19616e8..0x19616fc",
+        "0x1961728→0x74f8474",
+        "0x1961730",
+        "0x196183c..0x1961848",
+        "0x457ac0",
+        "0x1d2e324"
+      ],
+      "conclusion": "This 293 first-level Plan row keeps literal title Plan mode and OpenAI/Symbols/list-circle. Style variant raw0 is always passed via457ac0. Factory enabled is the inverse of isPlanModeActionDisabled. There is no current-plan-state-dependent title/icon/style branch in this row builder. The action captures isPlanModeEnabled and passes its logical inverse to the setter.",
+      "limits": [
+        "No claim about Plan indicators outside the attachment menu or behavior in the newer user screenshot.",
+        "Row presence still depends on supportsPlanMode from v512."
+      ]
+    }
+  ],
+  "why_omitted": {
+    "classification": "static_inference_from_existing_evidence_gap",
+    "conclusion": "v513 explicitly left field16 iconBackgroundColor unresolved. Only glyph/foreground/padding were connected, omitting the independently consumed optional Circle background. The complete style application must retain or explicitly track every consumed field across factory and consumer; image matching alone would not have identified the environment-dependent blend behavior."
+  },
+  "integration_boundary": {
+    "ready": [
+      "Shared circle background on each first-level ActionIconButton",
+      "Adaptive color/blend resolver reading actual SwiftUI backgroundMaterial and colorScheme",
+      "Whole-label pressed0.4 and outer disabled0.6 layers using existing source-backed style",
+      "Plan fixed title/icon/style across on/off with inverse-state action"
+    ],
+    "partial": [
+      "Effective official attachment-host backgroundMaterial environment",
+      "Runtime comparison with new-version dark-mode reference",
+      "No camera/photos/files service execution"
+    ]
+  },
+  "validation": {
+    "production_edited": false,
+    "official_app_executed": false,
+    "online_services_called": false,
+    "visual_runtime_verified": false
+  },
+  "reused_evidence": [
+    "ios-remote-v513-attachment-layout-findings.json",
+    "ios-remote-v513-action-style-override.asm",
+    "ios-remote-v513-action-icon.asm",
+    "ios-remote-v513-row-buttonstyle.asm",
+    "ios-remote-v514-outside-dismiss-pressed-findings.json",
+    "ios-remote-v514-scale-body-consumer.asm",
+    "ios-remote-v448-assets.json",
+    "ios-remote-v439-presentation-bindings.json"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-type.asm",
+      "sha256": "af64df88f61942e01f384de4515245928737134f80923f31030e5863be155212"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-payload-kind.asm",
+      "sha256": "c668c390e85807244a9bb8c73331df96a434fc9f89d9f07592515b86f57a459d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-background-material-tag.asm",
+      "sha256": "985138ec14494b148e0d8e593f178098e81ee8f7305ca5ee07229e71c4b2e4e6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plan-plain-style-args.asm",
+      "sha256": "7c4665518f853a50b9c833cd73883ae1d3df966369467c9f02bfcfffd968113b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-opacity.asm",
+      "sha256": "45cd4c1b66e958d67db0e76d75bb67c2e28b36339ba53f76be143d0c9b65c083"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-fallback-color.asm",
+      "sha256": "e0372cb2c22666e36b5cc92287cf3697447718767b276db2d6bb37b992a72489"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-prefix-literals.asm",
+      "sha256": "4c535e1da012aa9543fa6d5e8faad513d55d6dc035224349864b9dfe0f7beecf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-whitespace-set.asm",
+      "sha256": "56d7cc83c466b4651be85a702975e0a647551eaef35fe115974bc1a7be02883d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-trim-whitespace-getter.asm",
+      "sha256": "0849f941496783c365de50ccf31c762face516caf05d62cb89a84118342677da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-exact-return.asm",
+      "sha256": "5eee67388904296cf1443cb6cbd9c4fc1142b8bf65135370975485a8ad3e3227"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plan-toggle.asm",
+      "sha256": "0f08e62069b9a24cffc7e6c9516c803ad1214f248e3943a90e9865775c2c2b53"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-icon-background-consumer.asm",
+      "sha256": "fcdfd68dde9638dd81fb329862ed3dc1af47339b1ba17a7b2d36bac0557efa8c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plan-row.asm",
+      "sha256": "54fe4e792a66e2dceb774964c07a65f194f04edd5a39fd71bc48f34ab0403abe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-save-whitespace.asm",
+      "sha256": "a61804ab999032ab7d9d7132e81f8e5656f23992182d52690859eddececa121c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-background-normal-blend.asm",
+      "sha256": "cd02c4146f9e98d9066e372ddc5d2b9d49be86ef93dc23d0d61bb63fd08c0b84"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-availability-ios26.asm",
+      "sha256": "808554e5f93569080316d4547795925a3b9f00d1ed11d2e7e960f85f9ea4f6cc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-whitespace-check.asm",
+      "sha256": "42a44009670c579852be81a4db5d109f1b66ae04adcfeff19ada161a2af6ecc1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-prefix-copy.asm",
+      "sha256": "e70e452e693beac09889d80cbeef4465f598cf61aefc737f9898800c6a679bfd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-gate-helpers.asm",
+      "sha256": "763fbbddc295a2520be58e64d9ea136b5a1efa7ab0d91d62f811d3945b86def9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-witness.asm",
+      "sha256": "a368fb4c58d937502a9e395358c691e934d044d69b6b8aca69aeb0106e417b2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-command-destroy.asm",
+      "sha256": "df684b54c84d8a46a3235054d4bb0dcdd96bc1eb7794bf043616b87fa69652ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-result.asm",
+      "sha256": "8aed56f1a028e975d7f11bc12300693acea2a72b6f8f8e12ba99a1b9c63a885e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-resolve-body.asm",
+      "sha256": "f5ce54ac5a65712502d6d912c54afeb6ae0ebeb3cff8b50e34188a190d23f02c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-parser-result-helper.asm",
+      "sha256": "8a7a443043e28f4455cc222474e58a9579fde5a13f68e9b76ebad1ed21aa6bc7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-cleanup.asm",
+      "sha256": "8aed56f1a028e975d7f11bc12300693acea2a72b6f8f8e12ba99a1b9c63a885e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-optional-return.asm",
+      "sha256": "862c17c15d9f43c7635050d0b54296404332e163136f4bed478c627f2f0d546b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-base-color.asm",
+      "sha256": "a22a3e6af94b3e5c6cf049d359d3dffbeaacfa90cf705381503082495c1f14ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-trim-set.asm",
+      "sha256": "1bc18ceaa52347796f787e30db1041af5b6f021410fb365ccda3112a13c3f1fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-material-optional-type.asm",
+      "sha256": "255d346d6ec4b6c04222b7288c404f20fddc0b8b6e2f8c9181bb53a3d88e08f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plugin-command-parser.asm",
+      "sha256": "d16c3ccf30e42cd3273c06ff253b52834ecc41773534472df53cbc96e65b26f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-icon-parent-background.asm",
+      "sha256": "408150c719c65777aa88b39e9f61479965041a6cb6c3d30f50f57cb50820ff95"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-adaptive-tertiary-resolver.asm",
+      "sha256": "87051e59c6474f574d794b1510db812296f3cd8192ecf40716216b328b3cb4d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-parser-command-release.asm",
+      "sha256": "3a555a42621a03206ce4f2f19a18ccffac2fc1ec8f26d83aa2f27689a93527fe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-base-color.calls.json",
+      "sha256": "ee5fd204f3bc40d21f598ae920c09ade1dcd8ac6eb00ab90cebb9e55ccb90d15"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plan-plain-style-args.calls.json",
+      "sha256": "5e0598c4f1d7dfbe3c2a46793938500fb4ab7716d9196d7ef9eae2352e252d62"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-background-normal-blend.calls.json",
+      "sha256": "55baa21134d2601002dcbe2d2f2d779aa739aa9a4f6c0546f3d137ecacea16da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-icon-background-consumer.calls.json",
+      "sha256": "8ef11b042c7d68d4b14696455bac9a10cecb23d6c81e7f42af63724cffecfda0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-adaptive-tertiary-resolver.calls.json",
+      "sha256": "a9d97ad83e8219d9da53c5f83095de531a60058df6060666443cd6e9b55be545"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-availability-ios26.calls.json",
+      "sha256": "d3a23a96ddb812a86c4c2c633dd4f19b9ea7c304cb1aafdb1754a83576fb7d44"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-material-optional-type.calls.json",
+      "sha256": "faf997fc06fb2a9a240fe9ca8180dc2a51db159d545f6ded16574a53dc3a1a43"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-background-material-tag.calls.json",
+      "sha256": "85b77d82520f93404b0369700796bcc0c1bf3118171ec1783500c217b40e1a69"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-fallback-color.calls.json",
+      "sha256": "a61807b8ed09d37db7302b522f3b319b3b32f61eaef559a7a2e366c357aaf0c3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plan-row.calls.json",
+      "sha256": "0ed379154eb9a633b437f9b6e78d2442c67129a6f17da16e270ab64aeddb7240"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-icon-parent-background.calls.json",
+      "sha256": "1f3ec0835d6bcc8bfb52d0e85c430e563d5b53609274ab832175957a1db97da4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-opacity.calls.json",
+      "sha256": "3926635312722e9ad9e4c2c7ed5eb6a33f22ddbb9e0f0c784c80d949bb61774c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-witness.calls.json",
+      "sha256": "fe337735de4f4144fc6679c5109b37e3a5894e143f6d740ba6789ae700a26857"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-plan-toggle.calls.json",
+      "sha256": "c5cc59403aeb7175a4e01ae19d61a97910cc26bbffe28bc47cba8afdee7951ce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-tertiary-resolve-body.calls.json",
+      "sha256": "fbb858764ce9d243be96121855f82a99d5ac17cd9ec2d0c85a44b0e0b047dc0f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-action-background-metadata.json",
+      "sha256": "56317ff763c2d92daa0e127bcc572570ebb705b95c72f0d5447feacad818598d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-adaptive-tertiary-witnesses.json",
+      "sha256": "6611b4da6b937c64dbbcdb7d64e021738465330d9b3b5af612ab43ced17f41f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-background-resolved-values.json",
+      "sha256": "fc7b027d6dde9dcee6eb739da1ce4b29371d4d58f08df84be52b64b828acc916"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-icon-background-type.json",
+      "sha256": "81d12bbd7b15f371dda2be998950ffe496f0c6178597d22add046d3a1ad60d44"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-opacity-buttonstyle-metadata.json",
+      "sha256": "25d203764e63a6a4a8d79bc763bb9ba8737b56d535683858da01f262e8bc6334"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-scale-buttonstyle-witness.json",
+      "sha256": "c4394aaeb9898c4757b545a3c4e5451866c612136edc368460006111ff8c4cb7"
+    }
+  ]
+}

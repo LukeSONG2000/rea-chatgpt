@@ -1,0 +1,144 @@
+{
+  "status": "partial-source-chain-with-actionable-parent-adapter",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static-and-independent-host-inspection",
+  "runtime_executed": false,
+  "host_changed": false,
+  "conclusion": "Sidebar keyboard ownership belongs to ConversationRoot/side-menu transition owner, not the main chat editor. Snapshot-success and capture-failure fallback are distinct original branches. Existing Remote slider provider can be shared as an explicitly independent scoped adapter; do not merely delete resign or broadcast endEditing across all scenes.",
+  "source_chain": [
+    {
+      "owner": "ChatGPTConversationRoot.SideMenuKeyboardSnapshotCoordinator",
+      "descriptor": "9564b94",
+      "metadata": "ad54e38",
+      "fields": {
+        "delegate": "10",
+        "resolveIsEnabled": "20",
+        "eventSubject": "30",
+        "keyboardSnapshotSession": "38",
+        "keyboardIsVisible": "40",
+        "restorationState": "41",
+        "keyboardObserver": "48",
+        "lazy_isEnabled": "50",
+        "injectedDependencies": "58"
+      },
+      "source": "ios-sidebar-v294-keyboard-fields.json"
+    },
+    {
+      "caller": "ConversationRoot handler53d05c",
+      "capture_call": "53d14c ->584368",
+      "gate": "53d140 checks root helper6f5ca4 before capture; exact root helper name and w21 argument semantic remain unresolved"
+    },
+    {
+      "capture": "584368..58449c",
+      "gates": [
+        "delegate weak load26a878 nonnil",
+        "delegate capability call58439c true",
+        "no existing coordinator.session at+38",
+        "KeyboardSnapshotSession eligibility629f9e8->62da26c true",
+        "coordinator lazy enabled62e87c true",
+        "session creation629f9ec->62da28c returns nonnil"
+      ],
+      "success": "584454 STRH1 to+40 => keyboardIsVisible=true, restorationState=idle;58445c store session+38;58446c creates observer if needed;58447c publishes event throughCombine.PassthroughSubject.send"
+    },
+    {
+      "enablement": "62e87c..62e8b4",
+      "rule": "lazy Bool? byte+50 tag2 invokes resolveIsEnabled closure at+20/+28, caches Boolean and returns lowbit; current account/config closure value not proven"
+    },
+    {
+      "snapshot": "KeyboardSnapshotSession descriptor96db258 owns KeyboardFacadeSession descriptor96ddad4",
+      "capture_impl": "62da860; KeyboardFacadeSession(snapshot,frame,onDeinit) at62daaac..ae0",
+      "provider": "later same293 report ios-remote-v530-keyboard-findings.json closes UIKeyboard dynamic provider: phone idiom, activeKeyboard/usesInputSystemUI/setKeyboardAlpha availability, usesInputSystemUI false; captures selected ancestor only, frame in keyboard window; alpha0 only after snapshot created"
+    },
+    {
+      "fallback": "53d150..53d17c",
+      "rule": "If w21 lowbyte==0 and capture returnsfalse, UIApplication.sharedApplication sendAction:resignFirstResponder to:nil from:nil forEvent:nil",
+      "selector": "acb0608 ->resignFirstResponder",
+      "call": "53d17c->7c726e0 sendAction:to:from:forEvent:",
+      "limit": "Meaning of w21 not yet closed, so do not claim this fallback unconditional. It proves a fallback exists."
+    },
+    {
+      "surface_policy": "629af8..629b08 and62bc28..62bc58",
+      "rule": "usesBlurringOverlayPresentation branch bypasses session-null test; otherwise coordinator.session presence changes raw surface flags. Raw0x80 flags not semantically renamed."
+    },
+    {
+      "restore": "62eb2c..62eb40",
+      "rule": "If session exists, zero two statebytes+40/+41, clear retainedsession+38 and swift_release. KeyboardFacadeSession deinit62e42e4..62e4608 removesnapshot then onDeinit; captured62f1d74 callback alpha1."
+    }
+  ],
+  "restoration_enum": {
+    "descriptor": "9564d30",
+    "fields": [
+      {
+        "record": "99dfd40",
+        "name": "idle"
+      },
+      {
+        "record": "99dfd4c",
+        "name": "awaitingFocus"
+      },
+      {
+        "record": "99dfd58",
+        "name": "awaitingTransitionCompletion"
+      },
+      {
+        "record": "99dfd64",
+        "name": "showing"
+      },
+      {
+        "record": "99dfd70",
+        "name": "shown"
+      },
+      {
+        "record": "99dfd7c",
+        "name": "dismissing"
+      }
+    ],
+    "consumer": "62c998..62ca4c requires session; eventraw2 clears; eventraw0+stateawaitingTransitionCompletion clears; another raw0 branch masks1/3/5 as retained states and clears others",
+    "limit": "Event enum identity not closed; no reconstructed full state-machine claim."
+  },
+  "current_host": {
+    "sidebar": "implementation/ios/Sources/NativeSidebarContainer.swift openMenu/transition handles all mounted panes but owns no keyboard token",
+    "wrong_scope": "implementation/ios/Sources/NativeConversationHost.swift toggleConversationSidebar andmakeConversationList callmain.editor.resignFirstResponder even when mounted pane is remote/scheduled TaskTextField; this cannot dismiss or snapshot the actual activepane input",
+    "reuse_candidate": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift RemoteSliderKeyboardSubstitution.capture/restore at632..733 already implements provider, snapshot, alpha0 and pairedalpha1 forslider; class isprivate andpresentation-owner scoped",
+    "current_observed_symptom": "Parent runtime report: new TaskTextField active whileopening sidebar leaves livekeyboard covering sidebar-new-chat; hitpoint(-1,-1). This agent didnotrun device and doesnot independently re-prove it."
+  },
+  "minimum_fix_as_independent_adapter": [
+    "Move sidebar-specific keyboard handling to NativeSidebarContainer. Identify actual firstResponder recursively onlyinside currentcontent.view/currentwindow; snapshot its paneidentity, responder identity andtransitiongeneration. No reference to fixedmain.editor.",
+    "Expose common KeyboardSurfaceProvider/session fromexisting slider implementation instead of duplicating dynamicresolver. Gate on currentactivepane input, owningwindow, visible finitekeyboardrect and provideravailability; rejectmissing/invalidsnapshot before alpha0.",
+    "Onopening, capturebeforeanimation andbeforeanyresign. Keep firstresponder on success; attach inert/accessibility-hidden keyboardsnapshot totranslatedclippedcontent surface, so menu receives fullheight andsnapshot moveswithcontent. Exact original placement unresolved, label independentadaptation.",
+    "Ifcapture fails, preserve scoped draft then resignonlycapturedactualresponder as explicitfallback. Do notsendglobalUIApplication action in the independenthost anddonotmistakefallback as visualparity.",
+    "Onclose completion in unchangedpane/transitiongeneration, disposetoken idempotently. Snapshot-success path restoresalpha1 andremovesnapshot without recreatingeditor; fallback canrestorefocus onlyifno sidebar action changedroute andsameinput remainsmounted.",
+    "Dispose on panechange, sourcewindowteardown/background, or interruptedtransition supersession. Guard oldcompletions fromrestoringanotherpane keyboard; shareexclusiveproviderlease withslider soalpha0/alpha1 tokens cannotrace.",
+    "Remove the two sidebar-only main.editor.resign calls afterparent capture iswired; retain genuine conversation-switch/notification-navigation focuscleanup as separateoperations."
+  ],
+  "targeted_tests": [
+    "Chat,Remote task,andScheduled composer: focusactualinput, draft/selection, openmenu; new-chat/settings accessible andkeyboardonlyappears ontranslatedcontentsurface.",
+    "Closewithoutnavigation retainsdraft,selection/composingstate andkeyboard; panechange/newchat doesnotrefocusoldinput.",
+    "Capturefailure andhardwarekeyboard/usesInputSystemUI paths areexplicitfallback; menu coreactions remainaccessible.",
+    "Rapidopen-close-open, menuitemselection beforecompletion, background/resume andslider→sidebar avoidstuckalpha0 orstale tokenrestore."
+  ],
+  "unknowns": [
+    "Exactsource resolveIsEnabled closure configuration androotw21flagsemantic",
+    "Exact sidebar snapshot insertionparent/constraints vsElevation insertionowner; coexistingcaptureprovider doesnot prove identicalplacement",
+    "All restoration eventenum labels andfocus/transitioncompletion callbacks",
+    "Runtimeprivateprovideravailability oncurrentdevice; reuse doesnotestablishpublicAPIportability"
+  ],
+  "evidence_files": [
+    "ios-sidebar-v294-keyboard-gap.json",
+    "ios-sidebar-v294-keyboard-fields.json",
+    "ios-sidebar-v296-capture-findings.json",
+    "ios-remote-v530-keyboard-findings.json",
+    "ios-shell-keyboard-20261112-session-constructor.asm",
+    "ios-shell-keyboard-20261112-lazy-enabled.asm",
+    "ios-shell-keyboard-20261112-root-owner.asm",
+    "ios-shell-keyboard-20261112-root-calls.json",
+    "ios-shell-keyboard-20261112-coordinator-transition.asm",
+    "ios-shell-keyboard-20261112-restoration-policy.asm",
+    "ios-shell-keyboard-20261112-restoration.asm",
+    "ios-shell-keyboard-20261112-session-api.asm",
+    "ios-shell-keyboard-20261112-refs.json"
+  ]
+}

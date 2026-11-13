@@ -1,0 +1,262 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static-instructions",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "How ordinary Remote model slider Elevation includes keyboard in blurred backdrop and restores it",
+  "conclusions": [
+    {
+      "id": "shared_owner",
+      "status": "verified-static",
+      "sites": [
+        "0x60a1cd0",
+        "0x62e37bc",
+        "0x62ea4b4",
+        "0x62ea844-0x62ea8f0"
+      ],
+      "claim": "Ordinary slider routes through shared ElevatedPresentation. Capture is driven by service keyboard-visible state and absence of an already borrowed facade. No separate slider-versus-attachment keyboard flag is observed at these callers. Attachment has different sourceRepresentation; that is not proof of different keyboard substitution policy."
+    },
+    {
+      "id": "layout_fields",
+      "status": "verified-static",
+      "sites": [
+        "0x62eaa60-0x62eaa8c",
+        "0x62da7fc-0x62da858"
+      ],
+      "claim": "service+0x60 is active-presentation presence discriminator. +0x88 holds KeyboardFacadeSession. +0x90 is weak external facade. +0x98 lazy optional ElevatedPresentationKeyboardSubstitutionController, sentinel1 before resolution. +0x38 keyboard-visible bool."
+    },
+    {
+      "id": "accessors",
+      "status": "verified-static",
+      "sites": [
+        "0x62e4b68-0x62e4d48",
+        "0x4f41cc",
+        "0x89ef410",
+        "0x89ef430",
+        "0x89ef450",
+        "0x89ef470"
+      ],
+      "claim": "Phone idiom raw0 only. Resolves UIKeyboard class and class methods activeKeyboard, usesInputSystemUI, setKeyboardAlpha:. All three methods must exist and usesInputSystemUI() must return false. Pointers stored in resolvedAccessors. Literals are base64 of reversed identifiers, retained in identities JSON."
+    },
+    {
+      "id": "capture_target",
+      "status": "verified-static",
+      "sites": [
+        "0x62da898-0x62da928",
+        "0x62e4d4c-0x62e4e08",
+        "0x1da3aa8",
+        "0x62f4014"
+      ],
+      "claim": "activeKeyboard is dynamically cast to UIView. Choose source by walking superview while it differs from its window and its frame(in:window).minY > 0. Stop otherwise. Capture selected ancestor using snapshotViewAfterScreenUpdates(true). No scan of unrelated windows is present."
+    },
+    {
+      "id": "primary_snapshot",
+      "status": "verified-static",
+      "sites": [
+        "0x62da8e8-0x62da968",
+        "0x700ff4",
+        "0x217f6c",
+        "0x2a9e7f8"
+      ],
+      "claim": "Convert selected bounds to its UIWindow coordinate space as keyboardRect. Create UIView(origin0,size keyboardRect.size), clipsToBounds=true. Snapshot frame origin0,size keyboardRect.size, add as child."
+    },
+    {
+      "id": "screen_fallback",
+      "status": "verified-static",
+      "sites": [
+        "0x62da99c-0x62daa78",
+        "0x62f3e78",
+        "0x2a9cb4c",
+        "0xc5c134",
+        "0xc5d72c"
+      ],
+      "claim": "If primary snapshot nil, get selected.window K and K.screen.snapshotViewAfterScreenUpdates(true). Make same clipped keyboard-sized container. Set screen snapshot frame to K.convert(K.bounds,to:K.screen.coordinateSpace), then subtract keyboardRect.minX/minY from origin. Add to container. Raw fallback has no observed explicit nil check for screenSnapshot; independent adapter should reject nil before hiding keyboard."
+    },
+    {
+      "id": "hide",
+      "status": "verified-static",
+      "sites": [
+        "0x62daa88-0x62daae0",
+        "0x62daaec-0x62dab24",
+        "0x62ea880-0x62ea8d0"
+      ],
+      "claim": "Present caller passes hideKeyboard=true. After snapshot container exists invoke class setKeyboardAlpha: with CGFloat0. Capture returns retained KeyboardFacadeSession with snapshot, keyboardRect and restore closure. Shared presenter sets translatesAutoresizingMaskIntoConstraints=true, interaction=false, frame=keyboardRect and attaches snapshot to source-resolved parent view (x19+0x1f0). Exact parent field semantic name remains unclosed."
+    },
+    {
+      "id": "restore",
+      "status": "verified-static",
+      "sites": [
+        "0xafd2bd8",
+        "0x62e42e4-0x62e4384",
+        "0x62e43b4-0x62e4608",
+        "0x62f1d74-0x62f1da4"
+      ],
+      "claim": "KeyboardFacadeSession deinit is MainActor isolated. It calls snapshot.removeFromSuperview then onDeinit. The captured callback calls UIKeyboard.setKeyboardAlpha(1). Core restoration is ownership driven. Full presenter dismissal/replacement release ordering remains partial."
+    },
+    {
+      "id": "window_level",
+      "status": "verified-static",
+      "sites": [
+        "0x62ea9f0-0x62eaa44",
+        "0xaac69d0",
+        "0x7c44e78"
+      ],
+      "claim": "ElevatedPresentationWindow.windowLevel = UIWindow.Level.statusBar - 1. NumericRawRepresentable operator symbol demangles to subtraction. This is a level policy, not evidence of making overlay key."
+    },
+    {
+      "id": "notifications",
+      "status": "verified-static",
+      "sites": [
+        "0x62da550-0x62da720",
+        "0x62f1e64-0x62f1f70"
+      ],
+      "claim": "WillShow sets service keyboardVisible=true and reapplies alpha0 if active/borrowed facade exists. WillHide clears stored frame/visible flag and invokes update when previously visible. WillChangeFrame updates stored frame only while visible. Notification identifiers retained in identities report."
+    }
+  ],
+  "actionable_native_adapter": [
+    "MainActor presentation owner retains one facade token. Gate on current owner scene, phone idiom, visible keyboard and all required selectors. Resolve current activeKeyboard only.",
+    "Require selected source UIWindow to belong to owning scene. This added scene guard is an independent adapter safety check; not claimed as recovered original condition.",
+    "Compute original ancestor/keyboardRect and primary snapshot. Optional current-source-screen fallback must be cropped exactly; reject absent or invalid snapshot before alpha0.",
+    "Insert keyboard facade behind variable-blur/picker surface in the presentation composition. Keep original editor first responder; no resignFirstResponder call was found in captured path.",
+    "Use source-backed statusBar-1 window level. Original no-substitution window flag remains unclosed and must not be guessed.",
+    "Release/restore facade on normal dismissal, task replacement, scene teardown and background interruption. Make cleanup idempotent in local adapter; original guaranteed deinit restoration is proven, each event-to-deinit route remains partial.",
+    "Validate keyboard pixels blur, keyboard geometry stability, draft/IME retention, close/return alpha restoration, nil snapshot failure, scope switching and background. Static report supplies no runtime acceptance."
+  ],
+  "unknowns": [
+    "Exact identity and coordinate transforms of source-resolved parent x19+0x1f0 receiving snapshot at62ea8d0.",
+    "DefaultElevatedPresentationWindow flag forwarded false on successful facade versus keyboardVisible on failure, and full canBecomeKeyWindow behavior.",
+    "Full active-presentation token release order on dismissal and source replacement; deinit restoration closure itself is proven.",
+    "ApplicationStateObserver raw3 event at62f1f74 leads dismissal62e06c8; exact enum case name and complete background path unclosed.",
+    "Runtime private-selector availability and behavior on current simulator/device, including nil-screenSnapshot fallback robustness, require independent host validation."
+  ],
+  "evidence_files": [
+    "ios-remote-v530-keyboard-accessor-names.asm",
+    "ios-remote-v530-keyboard-accessor-names.json",
+    "ios-remote-v530-keyboard-accessors.asm",
+    "ios-remote-v530-keyboard-accessors.json",
+    "ios-remote-v530-keyboard-capture-metadata.asm",
+    "ios-remote-v530-keyboard-capture-metadata.json",
+    "ios-remote-v530-keyboard-capture.asm",
+    "ios-remote-v530-keyboard-capture.json",
+    "ios-remote-v530-keyboard-class-helpers.asm",
+    "ios-remote-v530-keyboard-class-helpers.json",
+    "ios-remote-v530-keyboard-cleanup.asm",
+    "ios-remote-v530-keyboard-cleanup.json",
+    "ios-remote-v530-keyboard-facade-deinit.asm",
+    "ios-remote-v530-keyboard-facade-deinit.json",
+    "ios-remote-v530-keyboard-facade-release.asm",
+    "ios-remote-v530-keyboard-facade-release.json",
+    "ios-remote-v530-keyboard-finish.asm",
+    "ios-remote-v530-keyboard-finish.json",
+    "ios-remote-v530-keyboard-get-parent.asm",
+    "ios-remote-v530-keyboard-get-parent.json",
+    "ios-remote-v530-keyboard-identities.json",
+    "ios-remote-v530-keyboard-idiom.asm",
+    "ios-remote-v530-keyboard-idiom.json",
+    "ios-remote-v530-keyboard-keyboard-change.asm",
+    "ios-remote-v530-keyboard-keyboard-change.json",
+    "ios-remote-v530-keyboard-level.asm",
+    "ios-remote-v530-keyboard-level.json",
+    "ios-remote-v530-keyboard-notification-callbacks.asm",
+    "ios-remote-v530-keyboard-notification-callbacks.json",
+    "ios-remote-v530-keyboard-notifications.asm",
+    "ios-remote-v530-keyboard-notifications.json",
+    "ios-remote-v530-keyboard-policy.asm",
+    "ios-remote-v530-keyboard-policy.json",
+    "ios-remote-v530-keyboard-present.asm",
+    "ios-remote-v530-keyboard-present.json",
+    "ios-remote-v530-keyboard-restorer.asm",
+    "ios-remote-v530-keyboard-restorer.json",
+    "ios-remote-v530-keyboard-smallhelpers.asm",
+    "ios-remote-v530-keyboard-smallhelpers.json",
+    "ios-remote-v530-keyboard-snapshot-bounds.asm",
+    "ios-remote-v530-keyboard-snapshot-bounds.json",
+    "ios-remote-v530-keyboard-snapshot-clips.asm",
+    "ios-remote-v530-keyboard-snapshot-clips.json",
+    "ios-remote-v530-keyboard-snapshot-frame-transfer.asm",
+    "ios-remote-v530-keyboard-snapshot-frame-transfer.json",
+    "ios-remote-v530-keyboard-snapshot-frame-zero.asm",
+    "ios-remote-v530-keyboard-snapshot-frame-zero.json",
+    "ios-remote-v530-keyboard-snapshot-framehelpers.asm",
+    "ios-remote-v530-keyboard-snapshot-framehelpers.json",
+    "ios-remote-v530-keyboard-snapshot-size-copy.asm",
+    "ios-remote-v530-keyboard-snapshot-size-copy.json",
+    "ios-remote-v530-keyboard-source-window.asm",
+    "ios-remote-v530-keyboard-source-window.json"
+  ],
+  "execution": "Static inspection only. No official app execution, network or production changes.",
+  "capture_order_followup": {
+    "question": "Runtime host snapshot view exists but renders blank after alpha0; is official ordering different?",
+    "status": "verified-static-order-runtime-cause-unknown",
+    "direct_present_order": [
+      {
+        "site": "0x62ea880-0x62ea888",
+        "operation": "call capture with hideKeyboard=true"
+      },
+      {
+        "site": "0x62da918-0x62da928",
+        "operation": "selected keyboard ancestor snapshotViewAfterScreenUpdates(true)"
+      },
+      {
+        "site": "0x62da930-0x62da964",
+        "operation": "create clipped container, size child snapshot, add child snapshot to container; container is not yet mounted"
+      },
+      {
+        "site": "0x62daa88-0x62daa94",
+        "operation": "container nonnil and hideKeyboard true => setKeyboardAlpha(0)"
+      },
+      {
+        "site": "0x62daac8-0x62daae0",
+        "operation": "return KeyboardFacadeSession(container, keyboardRect, restore closure)"
+      },
+      {
+        "site": "0x62ea898-0x62ea8d0",
+        "operation": "translates mask=true, interaction=false, container.frame=keyboardRect, resolved source parent.addSubview(container)"
+      },
+      {
+        "site": "0x62ea908-0x62ea9dc",
+        "operation": "construct ElevatedPresentationWindow after attaching facade"
+      },
+      {
+        "site": "0x62eaae4",
+        "operation": "set presentation window hidden=false"
+      }
+    ],
+    "borrowed_facade_api_order": [
+      {
+        "site": "0x62da764-0x62da768",
+        "operation": "call same capture with hideKeyboard=false"
+      },
+      {
+        "site": "0x62da778-0x62da780",
+        "operation": "store facade weakly at service+0x90"
+      },
+      {
+        "site": "0x62da784-0x62da7a4",
+        "operation": "invoke external callback with snapshot and rect"
+      },
+      {
+        "site": "0x62da7b4",
+        "operation": "CATransaction.flush()"
+      },
+      {
+        "site": "0x62da7c8",
+        "operation": "setKeyboardAlpha(0)"
+      }
+    ],
+    "coordinate_and_transform": [
+      "keyboardRect is selected ancestor bounds converted to its UIWindow coordinate space (62da8e8..62da90c).",
+      "snapshot primary child frame is zero-origin keyboardRect.size; parent container clipsToBounds.",
+      "shared presenter attaches container to resolved source record+0x58 (copied record at local0x198, read local0x1f0). Exact semantic identity of that UIView remains partial.",
+      "No transform setter or capture-side rasterize/opacity modifier occurs between primary snapshot creation and alpha0. No CATransaction.flush in direct-present path.",
+      "screen fallback coordinates retained in main report. Separate UIKit screen/scene object wrappers on simulator cannot be treated as proof of unrelated ownership or official equivalence."
+    ],
+    "conclusion": "Original direct-present source also hides live keyboard before mounting facade. Therefore blank snapshot cannot be attributed to a demonstrated ordering mismatch solely from this evidence. There is a separately source-proven callback+flush-before-hide API, but ordinary slider calling that API has not been proved.",
+    "local_diagnostic_suggestion": "If testing mounted snapshot plus CATransaction.flush before alpha0, label it native lifecycle adaptation using the alternate facade sequence. Verify actual snapshot pixels before hiding and successful restore. A nonnil snapshot object does not establish nonblank rendered content.",
+    "no_production_changes": true
+  }
+}

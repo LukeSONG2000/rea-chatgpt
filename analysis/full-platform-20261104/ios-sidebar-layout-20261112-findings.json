@@ -1,0 +1,269 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "scope": "iOS 1.2026.293 History sidebar native parent/header geometry; no host edit, build or runtime claim",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "id": "sidebar-parent",
+      "classification": "official-artifact-observation",
+      "conclusion": "HistoryViewController owns a UIKit content container, collection view, separate navigation header layout guide, logo hosting controller and action item components. Default UINavigationBar title geometry is not the recovered parent.",
+      "symbols": [
+        "HistoryViewController class 0xacc47a8, descriptor 0x9592184",
+        "viewDidLoad implementation 0x1296464",
+        "contentContainer getter 0x1297368",
+        "navigationHeaderLayout getter 0x129d678"
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-objc.json",
+        "ios-sidebar-layout-20261112-load.asm"
+      ]
+    },
+    {
+      "id": "header-height",
+      "classification": "official-artifact-observation",
+      "conclusion": "HistoryNavigationHeaderLayout is initialized with height 56.0 and preferred safe-area top offset -6.0. The original guide has an active height equal to 56.0. Other top placement policies remain dynamic.",
+      "evidence_points": [
+        {
+          "offset": "0x129d6cc..0x129d6e0",
+          "detail": "d0=56.0, d1=-6.0, call 0x127c1f0"
+        },
+        {
+          "offset": "0x127c208,0x127c234",
+          "detail": "d0 -> v8 -> self+0x20; height ivar offset storage 0x7daad78 contains 32"
+        },
+        {
+          "offset": "0x127c3f8..0x127c410",
+          "detail": "guide.heightAnchor, v8 -> d0, constraintEqualToConstant:"
+        }
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-bottom-components.asm",
+        "ios-sidebar-layout-20261112-header-constructor.asm",
+        "ios-sidebar-layout-20261112-header-constructor.json"
+      ]
+    },
+    {
+      "id": "wordmark-resource",
+      "classification": "official-artifact-observation",
+      "conclusion": "The logo label uses the exact image asset OpenAI/Icons/WordmarkStandalone, resizable with aspect/frame modifiers, rather than text rendered in a guessed font.",
+      "evidence_points": [
+        {
+          "offset": "0x127aba0",
+          "detail": "label calls image factory 0x74f3b08"
+        },
+        {
+          "offset": "0x74f3b34..0x74f3b38",
+          "detail": "factory literal address 0x8a53820 = OpenAI/Icons/WordmarkStandalone"
+        },
+        {
+          "offset": "0x127abbc",
+          "detail": "Image.resizable(capInsets:resizingMode:)"
+        },
+        {
+          "offset": "0x127a7ac..0x127a7ec",
+          "detail": "HistoryLogoContent _logoHeight ScaledMetric<Double> initialized with base16.0"
+        },
+        {
+          "offset": "type record 0x7db3c88",
+          "detail": "Image -> AspectRatioLayout -> FrameLayout -> PaddingLayout -> contentShape Rectangle"
+        }
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-logo-body.asm",
+        "ios-sidebar-layout-20261112-logo-full-tree.json",
+        "ios-sidebar-layout-20261112-logo-full-tree.tree.txt",
+        "ios-sidebar-layout-20261112-wordmark-assets.json"
+      ],
+      "limits": [
+        "The ScaledMetric relative text-style enum has not been independently named. Natural asset size92x16 is ancillary confirmation; factory call is the resource identity proof."
+      ]
+    },
+    {
+      "id": "wordmark-leading",
+      "classification": "official-artifact-observation",
+      "conclusion": "Logo hosting view leading is root safe-area leading+10. Inside the label, padding is top10, leading22 for refreshed layout /14 for legacy, bottom10, trailing14. Thus effective glyph leading is32 for refreshed or24 for legacy relative to the root safe area.",
+      "evidence_points": [
+        {
+          "offset": "0x1296cc8..0x1296d18",
+          "detail": "logo.leading == root.safeArea.leading +10"
+        },
+        {
+          "offset": "0x127ac24..0x127ac54",
+          "detail": "layout==1 selects22; else14; Edge.Set.all"
+        },
+        {
+          "offset": "0x127acc0..0x127acc4",
+          "detail": "top10 and selected leading"
+        },
+        {
+          "offset": "literal 0x7da8c40",
+          "detail": "bottom10/trailing14 pair"
+        },
+        {
+          "offset": "descriptor 0x9593b60",
+          "detail": "HistorySideMenuStyle.Layout cases legacy=0, refreshed=1"
+        }
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-load.asm",
+        "ios-sidebar-layout-20261112-logo-body.asm",
+        "ios-sidebar-layout-20261112-logo-padding-tree.json"
+      ],
+      "limits": [
+        "This proves logo geometry only. It does not establish collection section or row outer margins."
+      ]
+    },
+    {
+      "id": "search-parent",
+      "classification": "official-artifact-observation",
+      "conclusion": "HistoryNavigationActionsContent contains an optional search Button whose label is the shared ConversationNavigationBarButtonLabel. Its exact icon resource is OpenAI/Symbols/magnifying-glass-lg. Parent action-font metric has base20. The native root action container is centered on navigationHeaderLayoutGuide and trailing-aligned to safe-area trailing-24.",
+      "evidence_points": [
+        {
+          "offset": "0x127b874..0x127b898",
+          "detail": "search label calls factory0x74f86d8 and shared label constructor0x2f9681c"
+        },
+        {
+          "offset": "0x74f8704..0x74f870c",
+          "detail": "literal0x8a55c20 = OpenAI/Symbols/magnifying-glass-lg"
+        },
+        {
+          "offset": "type record0x7db5638",
+          "detail": "HStack with optional Button<ConversationNavigationBarButtonLabel>, separate other optional actions"
+        },
+        {
+          "offset": "0x127af4c..0x127af7c",
+          "detail": "_actionFontSize ScaledMetric<Double> base20"
+        },
+        {
+          "offset": "0x1296fa8..0x1296fd8",
+          "detail": "action container centerY == navigationHeaderLayoutGuide centerY"
+        },
+        {
+          "offset": "0x1296fe4..0x129701c ->0x1397610",
+          "detail": "action container trailing == root safe-area trailing-24"
+        }
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-navigation-actions.asm",
+        "ios-sidebar-layout-20261112-navigation-content.asm",
+        "ios-sidebar-layout-20261112-navigation-tree.json",
+        "ios-sidebar-layout-20261112-search-icon.asm",
+        "ios-sidebar-layout-20261112-trailing-helper.asm",
+        "ios-sidebar-layout-20261112-load.asm"
+      ],
+      "limits": [
+        "20 is action-font base size, not search button diameter. Shared label glass/background/frame is not closed here. If other navigation actions are visible, -24 applies to their overall container, not independently to each child."
+      ]
+    },
+    {
+      "id": "footer-dynamic",
+      "classification": "official-artifact-observation",
+      "conclusion": "Bottom item inset is dynamic, not a fixed margin copied from the header. Compact vertical size class uses max(safeArea.bottom,16). Another branch uses scene corner configuration with literal bounds24 and40. Older/no-scene branch selects24 when safe-area bottom==0, otherwise38, with no-window fallback38.",
+      "symbols": [
+        "0x129d908",
+        "0x76103b0"
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-bottom-insets.asm"
+      ],
+      "limits": [
+        "Exact scene corner field mapping and complete formula remain partial. Do not apply16 or38 globally."
+      ]
+    },
+    {
+      "id": "footer-profile-kind",
+      "classification": "official-artifact-observation",
+      "conclusion": "HistoryProfileButtonContent has avatar payload and settingsCog cases, and is supplied via HistorySettingsActionItemContainerView / ViewContent. Exact predicate selecting avatar versus cog has not been closed.",
+      "symbols": [
+        "HistoryProfileButtonContent descriptor0x9593e84",
+        "HistorySettingsActionItemContainerView descriptor0x9593a84, body0x1282990",
+        "HistorySettingsActionItemViewContent descriptor0x9594a18, body0x1283b18"
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-components-meta.json",
+        "ios-sidebar-layout-20261112-settings-container.asm",
+        "ios-sidebar-layout-20261112-profile-body.asm"
+      ],
+      "limits": [
+        "canShowAccountSwitcher publisher at0x1282c1c is not sufficient evidence for selecting avatar versus settingsCog. Type existence does not prove actual visible case."
+      ]
+    },
+    {
+      "id": "root-collection-pin-zero",
+      "classification": "official-artifact-observation",
+      "conclusion": "Both contentContainer-to-root and collectionView-to-contentContainer use zero directional insets. This source window does not justify an additional10-point horizontal collection parent inset.",
+      "evidence_points": [
+        {
+          "offset": "0x1296594..0x12965a0",
+          "detail": "Chained import binding0xaac5ed0=_NSDirectionalEdgeInsetsZero; four doubles loaded to d8,d9,d10,d11"
+        },
+        {
+          "offset": "0x12965a4..0x12965a8",
+          "detail": "0x1bee60 copies v8..v11 to v0..v3;0x760e938 pins contentContainer (x20) to root view (x0)"
+        },
+        {
+          "offset": "0x12965f0..0x129661c",
+          "detail": "collectionView from ivar0xadb95f0; contentContainer from0xadb9628. Helper0x700b08 preserves root target in x21 and calls objc_retain_x20 to retain collection;0x153740 sets receiver x20=collection and x0=contentContainer. Reuses four zero values through0x1bee60 and0x760e938."
+        },
+        {
+          "offset": "0x760e938→0x760eaf0→0x760e93c",
+          "detail": "Wrapper obtains target anchors; pin implementation uses supplied d1 for leading and negative d3 for trailing, d0 top and negative d2 bottom; all are0 for these two callers."
+        },
+        {
+          "offset": "0x129684c..0x1296904",
+          "detail": "These later explicit leading/trailing constraints belong to newChatButton rather than collectionView; do not misattribute their constants."
+        }
+      ],
+      "evidence": [
+        "ios-sidebar-layout-20261112-load.asm",
+        "ios-sidebar-layout-20261112-pin-edges-helper.asm",
+        "ios-sidebar-layout-20261112-pin-edges-helper.json"
+      ],
+      "limits": [
+        "Section/cell-specific horizontal inset remains a separate unknown. No assertion of a10-point outer row inset."
+      ]
+    }
+  ],
+  "admission": {
+    "classification": "independent-host-adaptation-recommendation",
+    "can_restore_now": [
+      "Use a dedicated native header layout guide with source height56; preserve dynamic safe-area/system-bar placement boundaries.",
+      "Load exact WordmarkStandalone as a template/resizable image, aspect-fit with source ScaledMetric baseheight16.",
+      "For explicit refreshed preview branch, outer logo leading10 plus label leading22 gives32. Preserve separate container and internal padding rather than a single arbitrary title inset.",
+      "Use original magnifying-glass-lg via shared navigation label; root action container trailing24."
+    ],
+    "do_not_guess": [
+      "Search overall circle diameter/glass material/frame before shared label recovery.",
+      "Collection outer/section inset10 solely because logo has outer10.",
+      "Avatar versus cog visibility from screenshots or enum existence."
+    ]
+  },
+  "unknowns": [
+    {
+      "id": "collection-section-outer-insets",
+      "breakpoint": "Root/contentContainer and collectionView parent pins are now proven zero. Section provider0x1356798→0x1294114 remains separate; section/cell configured spacing and hosting configuration require their own proof.",
+      "next_action": "Trace section object builder/configuration and its contentInsets setter with receiver/argument tracking. Root logo inset alone is inadmissible."
+    },
+    {
+      "id": "search-shared-label",
+      "breakpoint": "ConversationNavigationBarButtonLabel constructor0x2f9681c, referenced by search label0x127b874.",
+      "next_action": "Trace label body and parent style environment for circle/frame/material/hit target."
+    },
+    {
+      "id": "footer-kind-gate",
+      "breakpoint": "HistorySettingsActionItemContainerView body0x1282990 content assignment; avatar/settingsCog provider upstream unclosed.",
+      "next_action": "Identify exact content enum constructor and VM field gate, not merely account-switcher capability."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "host_changed": false,
+    "built": false,
+    "runtime_tested": false,
+    "screenshots_used_for_numeric_values": false
+  }
+}

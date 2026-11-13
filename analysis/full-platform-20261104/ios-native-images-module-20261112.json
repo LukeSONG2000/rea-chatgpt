@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "module": "9.6 Images discovery and image library",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "minimum_images_discovery_gallery_prompt_and_viewer_loop_implemented_builds_passed",
+  "scope": "Native frontend and deterministic synthetic provider only; no generation, publishing, photo-library mutation or business backend.",
+  "source_reports": [
+    {
+      "path": "ios-native-images-home-20261112-findings.json",
+      "sha256": "e59271e7189b7e5e7f4b7f73ae867bc8e844020916285922b662318e70701d31"
+    },
+    {
+      "path": "ios-native-images-library-20261112-findings.json",
+      "sha256": "818d3643d257561dfc61d6784b1b07ec59b6b723f8fb755a1c82b6dd1d5f671b"
+    }
+  ],
+  "source_observations": [
+    "Separate ImageGen discovery variants and ImageLibrary native grid; complete home/outer/group trees recovered. Standard home uses refreshable ScrollView/VStack and supplied Styles/StackedPrompts/PromptList groups.",
+    "Library GridPart uses ScrollView/LazyVGrid, stable image identity, interactive keyboard dismissal. Columns=max(1,trunc(width/(rawClass==1?110:160))); raw class meaning, owner spacing and outer padding unclosed.",
+    "Cell Button invokes supplied selectImage using descriptor field-offset vector; final parent destination remains unclosed.",
+    "Removal requires hideEnabled and not isArchived, then confirmation Remove/Cancel and supplied archiveImage callback. This does not prove backend deletion.",
+    "CopyButton requires a decoded image, full-sized result first then thumbnail. Full menu projection/media-type conditions remain partial.",
+    "Selected source-backed labels extracted from compressed resources;255 keys across65 locales after this module."
+  ],
+  "implemented": [
+    "Registered retained Images page in explicit host available-features directory.",
+    "Discovery groups/loading/empty/error/refresh and native prompt drafts separated by new/suggestion/image identities.",
+    "Independent generation operation snapshot, failure/retry/cancel/token fencing and explicit unconnected-service status; no fake generated-image success.",
+    "Native gallery stable-ID dynamic grid, paging/loading/empty/error/retry and resource loading/failure/retry.",
+    "Bounded PNG metadata/decode and independent UIScrollView zoom/pan/double-tap viewer, Close, and gallery return.",
+    "Source-proven removal capability gate and native confirmation, scoped archive request without deleting local or server data on unavailable receipt.",
+    "Native image copy writes decoded full resource or cached thumbnail to UIPasteboard; no copy-link substitution.",
+    "Explicit provider actions for edit prompt/save/remove; separate prompt drafts survive detail/modal return.",
+    "Known shared sidebar haptics remain wired through Settings > General. No unproven image-specific feedback added.",
+    "Resource and image operation envelopes retain the current image revision; refreshed/revoked revisions cannot supply an old full-size image to preview or copy. Thumbnail cache lookup includes record revision."
+  ],
+  "independent_adaptation": [
+    "Explicit selection of Create-title and standard discovery branch; actual account experiment assignment is not known.",
+    "Home-to-library/new-prompt toolbar, prompt form and detail viewer are host adapters; full original conversation parent/composer and lightbox/editor are not restored.",
+    "Fixture groups/artwork/actions and menu labels/order, semantic styles, sizes/materials/transitions are independent.",
+    "Host maps compact to rawClass1 and supplies gutter16/spacing8. These assignments are not claimed original.",
+    "Account/request/revision/draft contracts, PNG/pixel budgets and fixture services are independent frontend design."
+  ],
+  "not_implemented": [
+    "Actual image generation/history/resource authentication, real native-to-Valdi gallery service invocation, Photos save/share/real archive and business backend.",
+    "Original home parent/composer/toolbars and variant selector, embedded-library branch and complete Hero/template/conversation flow.",
+    "Original gallery/lightbox/editor producer and full cell menu media-type/visibility/order mapping.",
+    "Video content, image editing canvas/selection tools, upload/photo/camera/attachment workflow, purchase and image-specific settings.",
+    "Exact official art, fonts/sizes/materials/glass/gradients/animations, gallery spacing and raw size-class semantics.",
+    "Cross-process image drafts/navigation/gallery restoration, device visual/tactile behavior and clipboard readback."
+  ],
+  "verification": {
+    "contract": "passed rebuilt final including resource revision fencing; /tmp/rea-images-contract-r3-20261112.log",
+    "r1": {
+      "result": "build failed before UI",
+      "reason": "Global view builder needed MainActor; corrected."
+    },
+    "r2": {
+      "artifact": "ios-native-images-20261112-r2.xcresult",
+      "result": "partial journey then native presentation locator mismatch",
+      "passed": [
+        "home failure/retry",
+        "suggestion and retained prompt",
+        "generation failure/retry/unavailable without clearing text",
+        "gallery failure/retry and paging",
+        "resource failure/retry",
+        "actual zoom ratio increased above1.1 and pan",
+        "copy action invocation",
+        "edit prompt reopen retaining separate image draft",
+        "remove confirmation"
+      ],
+      "failure": "iOS27 confirmationDialog is a native popover with PopoverDismissRegion, not a visible Cancel button. AX snapshot confirms Remove and outside dismiss; follow-up uses actual native cancellation, not an invented cancel UI."
+    },
+    "r3": {
+      "artifact": "ios-native-images-20261112-r3.xcresult",
+      "removal_return": "passed41.171s",
+      "empty": "failed leaf identifier covered by parent VStack identifier",
+      "warning": "Native outside-dismiss synchronously published during view updates; retired confirmation now has UUID scope and deferred owner-only cleanup."
+    },
+    "r4": {
+      "artifact": "ios-native-images-20261112-r4.xcresult",
+      "result": "passed",
+      "tests": {
+        "testNativeImagesEmptyChinese": 27.832,
+        "testNativeImagesRemovalReturnChinese": 45.174
+      },
+      "scope": "Chinese/light targeted empty and confirmation/cancel/return plus retained home draft. Earlier generation/zoom/edit journey not repeated. No publishing-during-view-update warning in final log."
+    },
+    "visual": {
+      "inspected": true,
+      "screenshot": "ios-native-images-20261112-r4-attachments/17925AB2-99D6-417B-A1CF-449AB10C0440.png",
+      "scope": "Native dynamic three-column grid using seven clearly synthetic fixture images; not pixel fidelity evidence."
+    },
+    "physical": {
+      "build": "succeeded",
+      "preflight": "ios-native-images-20261112-device-final-state.json",
+      "connection": "unavailable",
+      "installed": false,
+      "install": "not_attempted_preflight_unavailable",
+      "last_installed": "Settings fixed-close candidate",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "b758a218674efbe7c3ecf7fb869986f9a07434407263a0a061efa6360eba4886"
+    },
+    "simulator": {
+      "report": "ios-native-images-20261112-preview.json",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 54062",
+      "binary_sha256": "4593f90f6800ae9f7c0c51d8f1fdb33b1fc2b1605d72f9ac78e87b1344fb3fdb",
+      "ordinary_screenshot": "ios-native-images-20261112-ordinary.png",
+      "observed": "Visible ordinary core Chat and composer; left running."
+    },
+    "limits": [
+      "No OS clipboard readback.",
+      "Gallery row long-press menu not separately exercised; detail menu actions were.",
+      "No physical tactile, visual or performance equivalence."
+    ]
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendImages.swift",
+      "sha256": "ea35050b8155884f317e43a8d05b9a20a7d94ff91896e6be648c99742f778717"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeImagesPage.swift",
+      "sha256": "c88a1ed2c8a3a452852bd8894647e6cbc1ce24255fd486faf1a6853065c4146a"
+    },
+    {
+      "path": "implementation/ios/Tests/Images/main.swift",
+      "sha256": "0de506914d756d6fb72162c8bf25f530390d45e7d6c0abfe7aa46301695af589"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "9b5fc346bf70830d845da09958d1820a9fd25be14bd38832b0ddfc72970d5ef0"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "20eae3b4a34cba9b45745bdda428228324211febb750b279041a56bf44cc881c"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "648608be1c712829afa6f01c49afb12059b749ea57351ec5fabee83bd7e06266"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "c24590776952d35d936dcea97e1d7633e1e38ec999623f8385a6582051e131f9"
+    }
+  ],
+  "review_route": "Sidebar > available features > Images > suggestion/prompt > library > synthetic image > zoom/actions/Close > Back; operations show explicit service availability.",
+  "next_package": "Default assistant sidebar route and its source-backed minimum native page; do not reuse user-custom R2 name/avatar."
+}

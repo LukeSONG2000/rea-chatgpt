@@ -1,0 +1,84 @@
+{
+  "batch": "v558",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Does a reasoning history item use the existing tool disclosure, and which already evidenced dynamic message consumer can be integrated now?",
+  "evidence": [
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v558-rendered-item-metadata.json",
+      "conclusion": "CodexRenderedItem contains kind, content and summary alongside attachments and specialized payloads. Metadata alone supplies no values or active presentation."
+    },
+    {
+      "type": "static_inference",
+      "file": "ios-remote-v558-kind-dispatch.json",
+      "offsets": [
+        "0x1a35fb0",
+        "0x1a35fec",
+        "0x1a367c0",
+        "0x1a36a60",
+        "0x1a36e14",
+        "0x1a3732c",
+        "0x1a37fb0"
+      ],
+      "conclusion": "RenderUnit.item reaches kind dispatch, where markdown reaches a dedicated content builder. ID has a reasoning case, while kind has no named reasoning case. Its producer-to-kind mapping remains unclosed."
+    },
+    {
+      "type": "official_artifact_static",
+      "files": [
+        "ios-remote-v558-plan-symbolic.json",
+        "ios-remote-v558-summary-symbolic.json"
+      ],
+      "offsets": [
+        "0x1a369ac",
+        "0x1a37d9c",
+        "0x1a37ec4",
+        "0x1bf06ac"
+      ],
+      "conclusion": "The preliminary optional +0x28/+0x30 candidate uses Tagged<CodexRemotePresentedPlan.ID> and matched-transition configuration. Do not label it a reasoning summary from its position or function filename."
+    },
+    {
+      "type": "existing_official_artifact_evidence",
+      "files": [
+        "ios-remote-v397-integration.json",
+        "ios-remote-v401-integration.json",
+        "ios-remote-v325-search-state.asm"
+      ],
+      "offsets": [
+        "0x1a35e60",
+        "0x1a393bc",
+        "0x1a3a154"
+      ],
+      "conclusion": "Proven tool group disclosure and webSearch summary support globe, item-specific in-progress presentation, body/tertiary status and original localized labels."
+    }
+  ],
+  "integration": {
+    "feature": "Dynamic synthetic search snapshots in Remote transcript",
+    "source_reuse": [
+      "Tool disclosure",
+      "Original globe and localized searching/searched labels",
+      "Existing running shimmer"
+    ],
+    "independent_adaptation": [
+      "Snapshot envelope and lifecycle rejection",
+      "Per-scope/turn/search expansion retention",
+      "Plain synthetic detail text",
+      "Explicit failed/cancelled titles",
+      "Replay ordering after commands"
+    ]
+  },
+  "limits": [
+    "Reasoning projection to rendered kind and historical expansion remains open",
+    "Search result/link/preview consumer is not recovered by plain fixture details",
+    "No actual search or official service invoked",
+    "Official multi-item grouping and search retry producer remain partial",
+    "No Android or physical-device equivalence"
+  ],
+  "next_minimal_actions": [
+    "Trace CodexRenderedItem.ID.reasoning producer into content/kind and history visibility",
+    "Integrate existing file-change component with scoped snapshots after search validation",
+    "Continue page-level title/body geometry and process-restoration acceptance"
+  ]
+}

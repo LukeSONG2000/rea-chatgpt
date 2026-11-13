@@ -1,0 +1,94 @@
+{
+  "batch": "v551",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "question": "Connect dynamic Remote text snapshots to selectable native Markdown blocks and existing copy/table interactions.",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence": [
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v477-findings.json",
+      "offsets": [
+        "0x1a35fec",
+        "0x1a367c0",
+        "0x7e12050"
+      ],
+      "conclusion": "Remote rendered-item content reaches a body containing CodexRemoteCachedMarkdownBlockStack and other content branches. Exact construction predicates remain partial."
+    },
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v476-findings.json",
+      "offsets": [
+        "0x95adf68",
+        "0x19ae274",
+        "0x19ae660",
+        "0x693a300"
+      ],
+      "conclusion": "Remote cached stack reaches native OAIMarkdown. Content identity, streaming, trait context and interaction handlers have distinct inputs. This does not establish JS/native parser equivalence."
+    },
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v477-text-metadata.json",
+      "offsets": [
+        "0x96fe004",
+        "0x9bdae80",
+        "0x9bdae8c",
+        "0x9bdaea4",
+        "0x9bdaeb0"
+      ],
+      "conclusion": "Text block separates identity, streaming, selection and link handlers; effective native styles remain unresolved."
+    },
+    {
+      "type": "official_readable_source",
+      "manifest": {
+        "version": "iOS 1.2026.293",
+        "sources": [
+          {
+            "path": "derived/valdimodules-293/ios/markdown/src/Markdown.js",
+            "sha256": "0564e365dd2833b60b2a58a34e7c1a208a6b74bc55422cba335612d4f7039476"
+          },
+          {
+            "path": "derived/valdimodules-293/ios/markdown/src/MarkdownEntityUtils.js",
+            "sha256": "c38419fc4e52d971cf2ce3e581ab28aa0b2ee063db8fd2ce01a98a6e45d1d1ba"
+          },
+          {
+            "path": "derived/valdimodules-293/ios/markdown/src/TextParser.js",
+            "sha256": "2c76ba869f6fbcceda887b7d9f1f60639152bae2641595d37da884ebde12201f"
+          },
+          {
+            "path": "derived/valdimodules-293/ios/markdown/src/MarkdownReferenceUtils.js",
+            "sha256": "1a7e0b5eb233724162a7a15f62ae26a8253b494e7d7a10f929032ad7ea98840b"
+          },
+          {
+            "path": "derived/valdimodules-293/ios/markdown/src/MarkdownNamedEntities.js",
+            "sha256": "3ab9190e4ae107260e93abc5e5af84a16fe6d3391a4a8aa40d5577f9079e4e85"
+          }
+        ],
+        "bundle_sha256": "df321c0d4ab9151ccaae57cbe6f161158c184d3c429b0fc119f8ce6eab68c88b"
+      },
+      "conclusion": "Existing packaged iOS293 JS parser provides a reusable parser behind the independent native adapter."
+    }
+  ],
+  "changes": [
+    "Route all dynamic Remote response text snapshots through cached typed projection, preserving original text for copy and parse failures.",
+    "Reuse native text/code/table views and selection, code-copy and link-dispatch callbacks.",
+    "Retain table horizontal positions under existing host/destination and response/table identity in the single offline account.",
+    "Provide a deterministic rich-content response fixture through normal send and timed snapshot updates."
+  ],
+  "attribution": "Independent native UI projection reusing packaged JS and existing local views. OAIMarkdown parser, styles, fade policy and complete original Remote block construction remain separate recovery work.",
+  "limits": [
+    "Native block spacing and 180pt table column widths are existing independent host geometry.",
+    "Block IDs use parser positions; arbitrary insertion before a block can change identity.",
+    "Only one offline account exists; multi-account isolation is unimplemented. Earlier v550 account-scope wording corrected.",
+    "Link action exposes URL and a returnable pending-browser status; browser integration remains pending.",
+    "Copyable text currently equals synthetic source; original copyableMarkdown transformations unresolved.",
+    "Dynamic reasoning, tool/file-diff events and full semantic content pipeline remain pending.",
+    "Exact character selection through arbitrary revision/reflow and process restart recovery remain pending."
+  ],
+  "validation": {
+    "status": "partial",
+    "latest_distinct_ui_cases_passed": 4,
+    "report": "ios-remote-v551-integration.json"
+  }
+}

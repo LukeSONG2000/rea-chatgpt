@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "task": "v529 official slider gesture routing, end/escape and haptic bindings",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static_observation",
+  "validation": {
+    "binary_executed": false,
+    "services_accessed": false,
+    "implementation_edited": false,
+    "device_haptic_tested": false
+  },
+  "findings": [
+    {
+      "id": "internal-gesture-source",
+      "status": "verified",
+      "offsets": [
+        "0x6098a5c..0x6098c14",
+        "0x60fd87c..0x60fd910",
+        "0x6098550"
+      ],
+      "conclusion": "Picker content installs DragGesture with minimumDistance 0 in global coordinates. onChanged uses callback 60fd87c and phase 0; onEnded uses 60fd884 and phase 1. Shared callback writes current/start window locations and dismissesAfterSelection=false at 60fd8e8 before updating Binding<DragInteraction?>. DragInteraction phase metadata declares dragging, ended. Optional nil is encoded as 2 in the handler.",
+      "limits": "Zero-distance drag supports tap-like input, but this does not identify the external meter source opening gesture or establish a separate TapGesture/LongPressGesture."
+    },
+    {
+      "id": "index-selection",
+      "status": "verified",
+      "offsets": [
+        "0x609f774..0x609f880",
+        "0x609e6fc",
+        "0x609e758",
+        "0x60998e8",
+        "0x6099abc"
+      ],
+      "conclusion": "No options returns nil, one option returns index 0. For multiple options, clamp x to lower/upper interaction bounds, compare absolute distance to each actual option center, and retain the closest. Strictly smaller distance replaces the earlier best index, so exact ties retain the earlier index.",
+      "limits": "Do not replace this with rounding an equally-spaced normalized index without also proving the center layout. Center geometry remains in the layout evidence track."
+    },
+    {
+      "id": "drag-end-decision",
+      "status": "verified",
+      "offsets": [
+        "0x60fa010..0x60fa408",
+        "0x60fb718..0x60fb7a0",
+        "0x609fd38..0x609fed0"
+      ],
+      "conclusion": "The ended event selects a valid nearest preset via local selectedPresetID setter, reconciles selection, then branches on isLocked and dismissesAfterSelection. Unlocked internal events with the flag false clean up dragging while retaining the open picker. Locked selection finishes with true. Unlocked events with flag true schedule a delayed finish(false). Rejected end containment reconciles then finishes(false).",
+      "limits": "The dismissesAfterSelection=true producer is now closed by source-longpress-drag-producer. OS interruption remains unknown."
+    },
+    {
+      "id": "delayed-finish-continuations",
+      "status": "verified",
+      "offsets": [
+        "0x609f880..0x609f9d0",
+        "0x823b1e0",
+        "0x60fd1d8..0x60fd230",
+        "0x609fed0..0x60a006c"
+      ],
+      "conclusion": "The async descriptor at 823b1e0 resolves to 60fd1d8, which enters 609fed0. Both success continuation 609fff0 and error continuation 60a0020 call 6111fe4, the finish(false) wrapper.",
+      "limits": "A task cancellation/error continuation is distinct from an OS gesture-cancel mapping. Delay duration has not been normalized to wall time in this report."
+    },
+    {
+      "id": "accessibility-complete-and-escape",
+      "status": "verified",
+      "offsets": [
+        "0x609cce8..0x609cd84",
+        "0x60fe63c..0x60fe64c"
+      ],
+      "conclusion": "SwiftUI AccessibilityActionKind.default is bound to 60fe63c, which passes true to finish. AccessibilityActionKind.escape is bound to 60fe644, which passes false. Per the v528 finish implementation, false restores initial selection only when the selected preset is locked. An unlocked changed selection can still commit on escape.",
+      "limits": "The raw finish Bool is intentionally unnamed. It must not become a universal cancelled/rollback flag."
+    },
+    {
+      "id": "accessibility-adjustment",
+      "status": "verified",
+      "offsets": [
+        "0x609ccb0",
+        "0x60fe470..0x60fe63c"
+      ],
+      "conclusion": "Accessibility adjustment changes the index by one, clamps to 0...count-1, then on an actual index change toggles the selection trigger and writes local selectedPresetID. It does not directly call the external model configuration action."
+    },
+    {
+      "id": "drag-mode-cleanup",
+      "status": "verified",
+      "offsets": [
+        "0x60fa160..0x60fa164",
+        "0x609f44c",
+        "0x609f9d0..0x609fab4",
+        "0x609fd38..0x609fe28"
+      ],
+      "conclusion": "DragMode cases are inactive=0, pending=1, capturing=2, direct=3. Begin path moves inactive to pending. Capture path stores 2. The token-guarded promotion continuation compares active/latest x and moves capturing to direct when their absolute difference is at most 1, otherwise updating the capture position. End cleanup clears optional drag input, resets dragMode to inactive, and clears latest drag position and promotion task state."
+    },
+    {
+      "id": "selection-haptic",
+      "status": "verified",
+      "offsets": [
+        "0x609831c..0x6098368",
+        "0x609ef6c..0x609eff4",
+        "0x60fe5bc..0x60fe5d4"
+      ],
+      "conclusion": "View body binds SensoryFeedback.selection to __selectionHapticTrigger. Displayed-label-index changes toggle this trigger; accessibility index changes also toggle it.",
+      "field_mapping": {
+        "view_descriptor": "0x96cc3fc",
+        "field_index": 16,
+        "field_name": "__selectionHapticTrigger",
+        "metadata_field_offset_entry": "0x50"
+      },
+      "limits": "Static binding only. Physical haptic amplitude and device delivery remain unverified."
+    },
+    {
+      "id": "edge-haptic",
+      "status": "verified",
+      "offsets": [
+        "0x60983a0..0x6098428",
+        "0x7ce2048",
+        "0x60fa360..0x60fa39c"
+      ],
+      "conclusion": "View body binds SensoryFeedback.impact(flexibility:soft,intensity:0.4) to __rubberBandHapticTrigger. During drag the trigger toggles when prior overscroll is exactly zero and new overscroll is nonzero.",
+      "field_mapping": {
+        "field_index": 17,
+        "field_name": "__rubberBandHapticTrigger",
+        "metadata_field_offset_entry": "0x54"
+      },
+      "limits": "Static binding only. This proves the boundary-crossing trigger, not repeated physical vibration while held beyond the boundary."
+    },
+    {
+      "id": "source-tap",
+      "status": "verified",
+      "offsets": [
+        "0x60a2044..0x60a2070",
+        "0x60b70c8",
+        "0x60b727c..0x60b72e8"
+      ],
+      "conclusion": "Source modifier registers onTapGesture(count:1). Callback checks isEnabled, invokes presentPicker, and only if presentation returns true invokes the optional hapticEngine callback with raw event tag 3.",
+      "field_mapping": {
+        "descriptor": "0x96cbce0",
+        "isEnabled_metadata_entry": "0x28",
+        "hapticEngine_metadata_entry": "0x2c",
+        "presentPicker_metadata_entry": "0x30"
+      },
+      "limits": "Haptic engine raw event tag 3 semantic name is unproven. This callback does not synthesize an ended drag event."
+    },
+    {
+      "id": "source-longpress-sequence",
+      "status": "verified",
+      "offsets": [
+        "0x60a2420..0x60a264c",
+        "0x7cd9658",
+        "0x812dd60",
+        "0x812dd68",
+        "0x812dd70",
+        "0x60a2184..0x60a21e0"
+      ],
+      "conclusion": "The modifier simultaneously installs a SequenceGesture<LongPressGesture, DragGesture>, wrapped by onChanged and onEnded. LongPressGesture minimumDuration is 0.2 and maximumDistance is 10. DragGesture minimumDistance is 0. GestureMask.all is used. Symbolic generic records independently establish long-press-before-drag ordering.",
+      "limits": "External drag coordinate-space exact value has not been normalized here. The callback forwards window-labeled DragInteraction coordinates."
+    },
+    {
+      "id": "source-longpress-drag-producer",
+      "status": "verified",
+      "offsets": [
+        "0x6102634..0x6102804",
+        "0x6102804..0x610291c"
+      ],
+      "conclusion": "OnChanged recognizes the second sequence phase with successful long press. If no picker is currently bound, it resets drag interaction and didDragDuringLongPress, calls the guarded presentPicker, and optionally emits raw haptic event 3. Once a drag value exists, it uses hypot(translation.width,translation.height)>=6 or an already-set didDragDuringLongPress to start forwarding. It sets didDragDuringLongPress=true and writes DragInteraction(phase:dragging,location,startLocation,dismissesAfterSelection:false). OnEnded forwards phase:ended with dismissesAfterSelection:true only when the successful sequence includes a drag and didDragDuringLongPress was set, then resets that flag. Otherwise it only clears the flag.",
+      "field_mapping": {
+        "didDragDuringLongPress_metadata_entry": "0x14",
+        "presentedPicker_metadata_entry": "0x20",
+        "isEnabled_metadata_entry": "0x28",
+        "presentPicker_metadata_entry": "0x30"
+      },
+      "limits": "Cancellation by OS/system interruption remains unmapped. Failed sequence end does not by itself prove universal rollback or dismissal."
+    }
+  ],
+  "end_decision_table": [
+    {
+      "input": "picker internally generated ended event, valid unlocked preset",
+      "dismissesAfterSelection": false,
+      "action_order": [
+        "update displayed label/haptic if changed",
+        "write selectedPresetID preview",
+        "reconcile selected preset",
+        "clear drag input and cleanup"
+      ],
+      "closes_picker": false,
+      "external_commit": "none at this end branch"
+    },
+    {
+      "input": "accepted ended event, valid unlocked preset",
+      "dismissesAfterSelection": true,
+      "action_order": [
+        "update displayed label/haptic if changed",
+        "write selectedPresetID preview",
+        "reconcile selected preset",
+        "schedule finish(false)",
+        "clear drag input and cleanup"
+      ],
+      "closes_picker": true,
+      "external_commit": "v528 guarded finish/drain lifecycle"
+    },
+    {
+      "input": "accepted ended event, valid locked preset",
+      "dismissesAfterSelection": "either",
+      "action_order": [
+        "update selected preview",
+        "reconcile selected preset",
+        "finish(true)",
+        "clear drag input and cleanup"
+      ],
+      "closes_picker": true,
+      "external_commit": "v528 guarded finish/drain lifecycle"
+    },
+    {
+      "input": "end event rejected by containment/mode acceptance",
+      "action_order": [
+        "reconcile selected preset",
+        "finish(false)",
+        "clear drag input and cleanup"
+      ],
+      "closes_picker": true,
+      "external_commit": "v528 guarded lifecycle, with locked restoration"
+    },
+    {
+      "input": "accessibility default",
+      "action_order": [
+        "finish(true)"
+      ],
+      "external_commit": "v528 guarded lifecycle"
+    },
+    {
+      "input": "accessibility escape",
+      "action_order": [
+        "finish(false)"
+      ],
+      "external_commit": "v528 guarded lifecycle, with locked restoration"
+    },
+    {
+      "input": "system touch cancellation",
+      "status": "unknown",
+      "reason": "No distinct cancellation callback or mapping established in this bounded trace"
+    },
+    {
+      "input": "source long press without forwarded drag, or unsuccessful sequence end",
+      "action_order": [
+        "clear didDragDuringLongPress"
+      ],
+      "closes_picker": "no explicit finish in this callback",
+      "external_commit": "none in this callback"
+    }
+  ],
+  "commit_owner_reused_evidence": {
+    "reports": [
+      "ios-remote-v528-slider-interaction-findings.json",
+      "ios-remote-v526-model-options-findings.json"
+    ],
+    "conclusion": "selectedPresetID setter is a local preview. commit helper 609ed64 requires selected != initial and an absent selectedPresetIDProvider or provider()==initial. Pending modelTitleTapped runs before deferred commit during drain, while footer action runs afterwards. Parent Codex callback 1ce59f4 resolves commitSelection by preset ID against fresh configuration, compares effort and invokes the VM effort setter when changed. The prior producer report records local configuration update before asynchronous settings propagation.",
+    "limits": "No runtime service acceptance or failure behavior is established by this gesture report."
+  },
+  "unresolved": [
+    {
+      "boundary": "OS touch interruption -> DragInteraction or finish",
+      "question": "Does gesture cancellation emit ended, nil, or another owner-level finish?",
+      "minimum_next_action": "Find the source recognizer cancellation callback and identify its exact finish argument."
+    },
+    {
+      "boundary": "device runtime",
+      "question": "Actual tactile feedback and transition timing",
+      "minimum_next_action": "Independent reconstruction device test after source wiring, labelled separately from artifact observations."
+    }
+  ],
+  "independent_host_guidance": [
+    "Keep preview state separate from external model commit.",
+    "Implement explicit accessibility default and escape paths with the observed finish argument, preserving locked-only rollback.",
+    "Use nearest proven option centers and strict-distance tie handling.",
+    "A one-shot finalize must consume pending state and deferred-commit flag once and preserve the v528 action order.",
+    "Ordinary tap-to-open and the long-press-then-drag source are statically supported. A simplified host gesture bridge or omitted source drag still needs an independent adaptation label. OS cancellation must not be assigned universal rollback semantics."
+  ],
+  "evidence_files": [
+    "ios-remote-v529-slider-gesture-xrefs.json",
+    "ios-remote-v529-slider-gesture-paths.asm",
+    "ios-remote-v529-slider-accessibility-calls.json",
+    "ios-remote-v529-slider-view-gesture-source.asm",
+    "ios-remote-v529-slider-gesture-end-task.asm",
+    "ios-remote-v529-slider-view-calls.json",
+    "ios-remote-v529-slider-view-metadata.json",
+    "ios-remote-v529-slider-drag-binding-type.json",
+    "ios-remote-v529-slider-internal-gesture.asm",
+    "ios-remote-v529-slider-internal-gesture-calls.json",
+    "ios-remote-v529-slider-drag-enum.json",
+    "ios-remote-v529-slider-phase.json",
+    "ios-remote-v529-slider-drag-callbacks.asm",
+    "ios-remote-v529-slider-index-and-submit.asm",
+    "ios-remote-v528-slider-gesture.asm",
+    "ios-remote-v529-meter-body.asm",
+    "ios-remote-v529-meter-body.json",
+    "ios-remote-v529-slider-source-callbacks.asm",
+    "ios-remote-v529-slider-source-callbacks.json",
+    "ios-remote-v529-slider-source-tap.asm",
+    "ios-remote-v529-slider-source-gesture-types.json",
+    "ios-remote-v528-slider-exact-metadata.json"
+  ]
+}

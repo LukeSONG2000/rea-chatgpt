@@ -1,0 +1,283 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial; native root Form and actual personality screen caller closed; registry and detailed row projection remain incomplete",
+  "evidence_type": "shipped artifact Swift descriptors, bounded native instructions and full generic type trees, no original app execution",
+  "do_not_substitute": "Sidebar customize is OrbitCustomizeScreenTemplate/TibroCore OrbitProfileCustomize composition. Settings Personalization and similarly named Valdi AccountCustomizations are not automatically equivalent.",
+  "native_chain": [
+    {
+      "owner": "ConversationRootView.CustomizePane",
+      "descriptor": "0x9565a40",
+      "accessor": "0x637630",
+      "body_witness": "0x508b8c",
+      "body": "0x5088a8",
+      "shape_record": "0x7d0cc20",
+      "shape": "NavigationStack<NavigationPath, toolbar-modified AnyView branch>",
+      "input": "BaseAnyViewModel<OrbitCustomizeScreenTemplate,AnyView> via existing pane viewModel; type-erased actual builder invocation not closed here."
+    },
+    {
+      "owner": "TibroCore.OrbitCustomizeScreen",
+      "descriptor": "0x95bd464",
+      "accessor": "0x208ff80",
+      "body_witness": "0x1f0b6f0",
+      "body": "0x1f0b024",
+      "shape_record": "0x7e40000",
+      "shape": "OrbitProfileCustomizeView + refreshable + always scrollBounce + appearance modifier + background + navigationTitle + inline toolbarTitleDisplayMode; OrbitProfileCustomizeNavigation supplied as view modifier",
+      "proof": [
+        "screen-shape.tree.txt",
+        "0x1f0b0c4-0x1f0b0c8 uses OrbitProfileCustomizeView accessor20b7e04",
+        "0x1f0b324 always bounce",
+        "0x1f0b430 inline",
+        "0x1f0b45c toolbarTitleDisplayMode"
+      ]
+    },
+    {
+      "owner": "OrbitProfileCustomizeView",
+      "descriptor": "0x95beb8c",
+      "accessor": "0x20b7e04",
+      "body_witness": "0x1f59ed4",
+      "body": "0x1f58234",
+      "shape_record": "0x7e4baf8",
+      "shape": "SwiftUI Form<ForEach<Array<OrbitCustomizeSection>,OrbitCustomizeSection,ObservedSection wrappers>> with styleguide formStyle, accessibility and alert modifiers",
+      "proof": [
+        "profile-shape.tree.txt",
+        "0x1f583c8 Form.init",
+        "0x1f58418 View.formStyle",
+        "section closure0x20ed77c→0x1f59230"
+      ]
+    },
+    {
+      "owner": "OrbitProfileCustomizeNavigation",
+      "descriptor": "0x95beb64",
+      "accessor": "0x20b7df0",
+      "body_witness": "0x1f5be2c",
+      "body": "0x1f59ed8",
+      "responsibility": "destination projection, navigation path, lifecycle and wallet error presentation; not root rows themselves"
+    }
+  ],
+  "root_model": {
+    "type": "OrbitProfileCustomizeViewModel",
+    "descriptor": "0x95ba780",
+    "accessor": "0x208e308",
+    "relevant_fields": [
+      "defaultName",
+      "analyticsSource",
+      "orbitName",
+      "memory",
+      "location",
+      "browser",
+      "isBrowserAvailable",
+      "email",
+      "calendar",
+      "apps",
+      "passwords",
+      "chatGPTPlugins",
+      "health",
+      "finances",
+      "rules",
+      "destination",
+      "walletSetup",
+      "alert",
+      "characterEditor",
+      "isPasswordsAvailable",
+      "isMemoryAvailable",
+      "rulesEnabled",
+      "hasUndeletedOrbit",
+      "personalityItem",
+      "items",
+      "refreshAvailability",
+      "isCustomizeVisible",
+      "isAccountCurrent"
+    ],
+    "row_model": "OrbitCustomizeItem(setting,isVisible,status,isEnabled,refresh,observe,open)",
+    "sections": {
+      "type": "OrbitCustomizeSection",
+      "descriptor": "0x95c036c",
+      "declaration": [
+        "preferences",
+        "connections",
+        "permissions"
+      ],
+      "limit": "ForEach over section array proved; visible section order/row membership requires array producer and isVisible projection, not declaration order alone."
+    },
+    "settings_declaration": [
+      "personality",
+      "memory",
+      "contacts",
+      "slack",
+      "phone",
+      "botmail",
+      "wallet",
+      "passwords",
+      "location",
+      "browser",
+      "rules",
+      "email",
+      "calendar",
+      "health",
+      "finances",
+      "plugins",
+      "skills"
+    ],
+    "settings_limit": "Available/gated candidates, not unconditional visible root list.",
+    "states": [
+      "value",
+      "updatedAt",
+      "none",
+      "loading",
+      "opening",
+      "unavailable",
+      "failed"
+    ],
+    "actions": [
+      "select",
+      "appeared",
+      "disappeared",
+      "editAvatar",
+      "dismissWalletSetup"
+    ],
+    "root_save": "No root save action in original OrbitProfileCustomizeAction. Do not add a generic root Save button. Individual child pages have their own save contracts."
+  },
+  "row": {
+    "owner": "OrbitCustomizeRowContent",
+    "descriptor": "0x95c1748",
+    "accessor": "0x211ca70",
+    "body": "0x1f5c908",
+    "body_witness": "0x1f5da1c",
+    "inputs": [
+      "title",
+      "status",
+      "isEnabled",
+      "icon"
+    ],
+    "environment": [
+      "dynamicTypeSize"
+    ],
+    "scaled_metric": "iconSize",
+    "provenance": "title/icon/state supplied by original setting projection; glyph assets/spacing not fully traced in bounded task."
+  },
+  "personality_child": {
+    "typed_make_screen": {
+      "owner": "OrbitCustomizePersonalityViewModel",
+      "descriptor": "0x95b9ea0",
+      "accessor": "0x209b568",
+      "field_record": "0x9a43ed8",
+      "type_reference": "0x8e82c10",
+      "return_type": "ChatGPTCustomInstructions.AssistantSettingsViewModel",
+      "evidence": "personality-make-screen.json",
+      "not_return_type": "SettingsCustomizeScreenTemplate or Valdi AccountCustomizations"
+    },
+    "actual_consumer": {
+      "parent": "OrbitProfileCustomizeNavigation body0x1f59ed8",
+      "site": "0x1f5a6e8",
+      "target": "0x4260a5c",
+      "target_type": "ChatGPTCustomInstructions.AssistantSettingsScreen",
+      "source": "personality-navigation-case.asm"
+    },
+    "screen": {
+      "descriptor": "0x9640a18",
+      "accessor": "0x4260a5c",
+      "body_witness": "0x42629e4",
+      "body": "0x4260ae8",
+      "fields": [
+        "dismiss",
+        "isShowingUnsavedChangesConfirmation",
+        "viewModel",
+        "isPushed"
+      ],
+      "toolbar_site": "0x4260f04",
+      "native_back_hidden_site": "0x4261218"
+    },
+    "viewmodel": [
+      "draft",
+      "availablePersonalities",
+      "availableTraits",
+      "isSaving",
+      "didSave",
+      "saveError",
+      "assistantName",
+      "availableColors",
+      "initialDraft",
+      "customInstructionsCharacterLimit",
+      "accountSettingsService",
+      "customizationsService"
+    ],
+    "draft": [
+      "color",
+      "personality",
+      "traits",
+      "customInstructions"
+    ],
+    "actions": [
+      "colorSelected",
+      "personalitySelected",
+      "traitSelected",
+      "customInstructionsChanged",
+      "viewAppeared",
+      "saveButtonTapped",
+      "saveErrorDismissed"
+    ],
+    "minimal_frontend_contract": "Select personality row→native AssistantSettingsScreen-shaped child; edit draft using declared option data; save command enters adapter, emits isSaving/didSave/saveError; close/back consult dirty draft and unsaved confirmation. Synthetic adapter success must be labeled local fixture, not official service.",
+    "unknown": "Root select callback→personalityItem.open and actual makeScreen invocation body not yet closed, though typed factory and actual destination screen construction are both independently proved. Detailed child layout, choice labels, default values and confirm-save callbacks remain partial."
+  },
+  "strings": {
+    "root_title": {
+      "consumer": "0x1f0b3d0→0x75d4bd8",
+      "key_address": "0x8a599d0",
+      "key": "chatgpt_customize_title"
+    },
+    "unavailable": {
+      "consumer": "0x1f58694",
+      "key_address": "0x88cba00",
+      "key": "orbit_customize_not_available_yet",
+      "fallback_consumer": "0x1f586b8",
+      "fallback": "Not available yet"
+    },
+    "setting_unavailable": {
+      "consumer": "0x1f5988c",
+      "key_address": "0x88cba90",
+      "key": "customize_setting_unavailable"
+    },
+    "other_proven_child_introduction_keys": [
+      "orbit_customize_location",
+      "orbit_customize_location_introduction",
+      "orbit_customize_email_introduction",
+      "orbit_customize_browser",
+      "orbit_customize_browser_introduction",
+      "orbit_customize_calendar_introduction"
+    ],
+    "source": "scoped-string-consumers.json",
+    "limit": "Chinese/English rendered values require existing CompressedStrings decoder and keytable; do not invent translations or borrow nearby wording."
+  },
+  "minimum_package_now": [
+    "Explicit independent standalone native Customize Form + capability-projected sections/row states + fixed parent navigation controls.",
+    "One original-typed personality destination, with adapter-driven draft/save/dirty-close/error contracts.",
+    "Remaining declared entries may expose returnable unsupported destinations when fixture capability deliberately enables them; do not pretend service-backed changes persisted."
+  ],
+  "unknowns": [
+    {
+      "boundary": "Root builder registry",
+      "next": "OrbitCustomizeScreenTemplate0x95c576c builder provider consumer to OrbitCustomizeScreen factory; CustomizePane AnyView already identified but concrete registry call not decoded."
+    },
+    {
+      "boundary": "Root exact section/row membership/order and titles/icons",
+      "next": "OrbitCustomizeObservedSection descriptor0x95c0350/body witness0x1f5c1ec→actual observed-section body; OrbitProfileCustomizeView closure0x1f59230→0x1ea055c plus model items filtering. Do not display enum list wholesale."
+    },
+    {
+      "boundary": "Personality actual open callback",
+      "next": "OrbitCustomizePersonalityViewModel0x95b9ea0 fields makeScreen/open readiness; RootProfile select dispatch→personalityItem."
+    },
+    {
+      "boundary": "Personality child exact UI and save/error dispatch",
+      "next": "AssistantSettingsScreen0x4260ae8 toolbar/content children plus AssistantSettingsViewModel save action owner; keep separate from root module."
+    }
+  ],
+  "limits": [
+    "8-minute bounded static evidence task; no host edits, build, device or global setup.",
+    "No target app executed.",
+    "No other product source read.",
+    "Presence of class/enum does not prove all capabilities enabled."
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-sidebar-customize-20261112"
+}

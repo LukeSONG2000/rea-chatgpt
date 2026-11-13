@@ -1,0 +1,47 @@
+{
+  "batch": 599,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-metadata",
+  "source": "ios-remote-v567-browser-types.json",
+  "observed": [
+    {
+      "type": "OpenURLHandlingViewModifier",
+      "descriptor": "0x96dc6d4",
+      "fields": [
+        "__presentedSheetURL",
+        "__presentedFullScreenURL",
+        "__inAppBrowserPresentation",
+        "onRoutingFinished",
+        "externalReturnContextTracker"
+      ]
+    },
+    {
+      "type": "ManagedSafariView",
+      "descriptor": "0x96db294",
+      "fields": [
+        "_dismiss",
+        "_loadTracker",
+        "url",
+        "policyURL"
+      ]
+    }
+  ],
+  "conclusion": "The official browser routing owner records separate presentation routes and return-context tracking. Metadata alone does not establish editor focus, selection or scrolling restoration.",
+  "host_observation": "NativeConversationHost already has scope-bound draft and viewport persistence, reading anchors and native keyboard layout. v598 adds admission checks and snapshots before modal browser presentation.",
+  "next_action": "Exercise long content and a focused draft through the existing browser entry before changing the independent host. Retain any source-policy gaps separately.",
+  "limits": [
+    "No original controller executed",
+    "Return-context tracker may concern external URL return; its name does not prove in-app editor restoration",
+    "Exact official transition/first-responder policy remains unresolved"
+  ],
+  "test_diagnosis": {
+    "r1": "Fixed-direction scroll could pass the target without locating it. Browser return not exercised.",
+    "r2": "Offscreen link container exposes infinite frame; adaptive geometry could not navigate to it. Browser return not exercised.",
+    "r3": "A visible outer Link container has a 370pt row width, while its native text link child is 89.3pt or 105pt wide. Tapping the outer center missed the text. Retained AX hierarchies establish the distinction. Browser return not exercised.",
+    "r4": "Chinese/light and English/dark passed, each covering Chat and Work with the native link leaf."
+  },
+  "host_outcome": "Both language/appearance journeys retain the measured reading link, draft and input focus through browser dismissal in Chat and Work. Existing native presentation handles these cases; no production restoration override was introduced."
+}

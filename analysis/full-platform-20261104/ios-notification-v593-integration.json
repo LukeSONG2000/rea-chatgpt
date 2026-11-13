@@ -1,0 +1,96 @@
+{
+  "batch": 593,
+  "status": "partial",
+  "candidate_version": 593,
+  "scope": "Notification frontend admission, system presentation and scoped Chat/Remote click routing",
+  "official_evidence": "ios-notification-v593-findings.json",
+  "cross_platform": "ios-notification-v593-cross-platform.json",
+  "chain": "UN response or explicit replay -> independent versioned envelope -> account/session admission -> deduplicated response queue -> stable navigation shell -> host/thread or Chat catalog target -> read acknowledgement or returnable unavailable state",
+  "provenance": {
+    "official": "iOS293 notification metadata, ChatMessage and CodexFinished identities, response context and registration request field observations",
+    "independent": "rea_frontend_v1 envelope, journal, budgets, queue, routing adapters, unavailable alert and synthetic fixtures",
+    "unknown": "Official wire mapping, account resolver, foreground suppression and unread policy"
+  },
+  "validation": {
+    "foundation": "passed",
+    "foundation_log": "ios-notification-v593-foundation-r2.log",
+    "ui_summary": "ios-notification-v593-r2-summary.json",
+    "ui_passed": 4,
+    "ui_failed": 0,
+    "ui_cases": [
+      "testNotificationRemoteRoutingChinese",
+      "testNotificationRemoteRoutingEnglishDark",
+      "testNotificationMissingTargetAndChat",
+      "testNotificationPermissionChinese"
+    ],
+    "coverage": [
+      "Remote A-B-A with exact host identity and independent draft restoration",
+      "Duplicate response injection does not stack navigation",
+      "Unavailable target dismisses to reachable list",
+      "Chat target and sidebar remain reachable",
+      "Chinese/light and English/dark routing journeys"
+    ],
+    "native_runtime": "ios-notification-v593-runtime.json",
+    "native_result": "System notification UI click routed to Remote A, Remote B and Chat B in one live simulator process",
+    "visual": "r1 Chinese/light and English/dark captures inspected, native target screenshots and final Chinese dark list inspected"
+  },
+  "failed_probes": [
+    {
+      "run": "foundation-r1",
+      "cause": "Throwing decode expression in precondition autoclosure; decoded before assertion in r2"
+    },
+    {
+      "run": "ui-r1",
+      "result": "3 passed, 1 failed",
+      "cause": "Missing-target alert presenter lost after replacing Chat navigation",
+      "fix": "Stable weak sidebar-shell ownership; r2 4 passed"
+    }
+  ],
+  "page_status": {
+    "notification_click_routing": "核心验收通过",
+    "foreground_native_presentation": "核心验收通过",
+    "remote_unread_projection": "已实现待验收",
+    "chat_unread_projection": "未实现",
+    "notification_page": "部分实现",
+    "token_registration_interface": "未实现",
+    "service_mapping_preferences": "待接服务",
+    "physical_delivery": "待设备验证"
+  },
+  "open_items": [
+    {
+      "page": "Remote/Chat notifications",
+      "priority": "P1",
+      "gap": "Journal and read state live only in memory; Chat list unread indicator absent",
+      "evidence_boundary": "Official read/suppression policy unresolved",
+      "next_action": "Define persisted frontend admission/read state and connect Chat list consumer, preserving account/session isolation",
+      "acceptance": "Pre-click unread shown and cleared only for the exact target; restart and old-session replay cannot affect another scope"
+    },
+    {
+      "page": "Settings/Notifications",
+      "priority": "P1",
+      "gap": "Device token registration frontend interface and service preference acknowledgement",
+      "evidence_boundary": "293 request fields known, owner lifecycle not closed",
+      "next_action": "Trace registration owner inputs; implement replaceable frontend provider with pending/failure/retry states",
+      "acceptance": "Synthetic registration success/failure/cancel and session replacement pass without a backend"
+    },
+    {
+      "page": "Settings/Notifications",
+      "priority": "P2",
+      "gap": "System management link destination and full official category layout",
+      "evidence_boundary": "v592 simulator opens Settings root",
+      "next_action": "Keep destination acceptance separate and map applicable source categories",
+      "acceptance": "Return and refresh remain usable, categories have source-backed gates"
+    },
+    {
+      "page": "Platform experience",
+      "priority": "P2",
+      "gap": "Foreground suppression policy, capacity/backfill behavior, background duplicate presentation, multiscene routing, real device/APNs and Android runtime",
+      "evidence_boundary": "Metadata and simulator click tests cannot establish these behaviors",
+      "next_action": "Continue targeted source checks and bounded frontend tests; retain device/service gates",
+      "acceptance": "Each lifecycle path has independent evidence and explicit failure behavior"
+    }
+  ],
+  "retention": "ios-notification-v593-retention.json",
+  "preview": "Chinese Remote task list, system-following dark, PID96420, only built-in display",
+  "next_action": "Complete notification registration frontend interface and unread/restart consumer checks, then source-backed haptic preferences and consumers"
+}

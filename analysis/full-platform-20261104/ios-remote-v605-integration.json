@@ -1,0 +1,32 @@
+{
+  "batch": "v605",
+  "implementation": "implemented",
+  "scope": "Remote thread navigation toolbar role",
+  "official_evidence": "ios-remote-v605-title-findings.json",
+  "related_layout_evidence": "ios-remote-v605-blur-findings.json",
+  "tests": {
+    "foundation": "ios-remote-v605-foundation.log",
+    "ui": "ios-remote-v605-r1-summary.json",
+    "passed": 3,
+    "failed": 0,
+    "screenshots": "ios-remote-v605-r1-attachments/manifest.json"
+  },
+  "runtime": "ios-remote-v605-runtime.json",
+  "independent_decision": "Apply recovered editor default to the ordinary host page; private environment override producers are not reimplemented.",
+  "unimplemented": [
+    "Explicit transcript insets and outer safe-area/BottomBars geometry ownership",
+    "Remaining page visual and interaction gaps in mobile ledger"
+  ],
+  "process_note": "Concurrent first xcresult reads collided while initializing its cached database; sequential attachment export succeeded.",
+  "files": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "316a125a534c8628e768074cea67dd13caa4ef300ca86e56d5c3f5b53d552698",
+    "implementation/ios/UITests/HostInteractionTests.swift": "5884a4d8e5eda4f644ada9dd20acb2ddfecf5b26e78e1bcaded2dff934c486a9",
+    "analysis/full-platform-20261104/ios-remote-v605-title-findings.json": "e28680b1d88bdb44c7f3397ec1136f210df62a841c3da1b306cabec1027bc77c"
+  },
+  "handoff": {
+    "version": "605",
+    "installed_hash_match": true,
+    "visible": "CUA confirmed Chinese dark Remote fixture-a/shared-thread, leading title and approval card. Preview remains running.",
+    "display": "Last inventory only built-in; external display placement unavailable."
+  }
+}

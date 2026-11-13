@@ -1,0 +1,74 @@
+{
+  "version": "561",
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "scope": "Remote page-level combined journey through existing frontend adapters",
+  "source_evidence": [
+    {
+      "report": "ios-remote-v547-integration.json",
+      "role": "queue and steer actions"
+    },
+    {
+      "report": "ios-remote-v548-integration.json",
+      "role": "approval callback ownership"
+    },
+    {
+      "report": "ios-remote-v549-integration.json",
+      "role": "attachment handoff and native preview"
+    },
+    {
+      "report": "ios-remote-v550-integration.json",
+      "role": "task-scoped reading retention"
+    },
+    {
+      "report": "ios-remote-v552-integration.json",
+      "role": "command disclosure and output lifecycle"
+    },
+    {
+      "report": "ios-remote-v558-integration.json",
+      "role": "search activity"
+    },
+    {
+      "report": "ios-remote-v559-integration.json",
+      "role": "file difference disclosure"
+    },
+    {
+      "report": "ios-remote-v560-integration.json",
+      "role": "automatic review attachment and rationale"
+    }
+  ],
+  "new_official_claims": [],
+  "r1_observation": {
+    "ui_passed": 0,
+    "ui_failed": 2,
+    "failure": "Earlier message attachment could not be reached by collection.swipeDown",
+    "evidence": "ios-remote-v561-r1-journey.xcresult",
+    "event": "ios-remote-v561-r1-journey-attachments/2E08BBA7-A276-4AAB-BA73-610883A72FA3",
+    "gesture_points": [
+      [
+        201,
+        89.8333333333
+      ],
+      [
+        201,
+        289.8333333333
+      ]
+    ],
+    "screens": [
+      "ios-remote-v561-r1-before-scroll.png",
+      "ios-remote-v561-r1-after-scroll.png"
+    ],
+    "interpretation": "Default swipe begins within the overlaid navigation area; screenshots retain the same message region"
+  },
+  "test_adaptation": "Bound earlier-history drag to the measured area below navigation and above the current composer editor",
+  "limitations": [
+    "Independent synthetic replay only",
+    "System picker result is injected; QuickLook is exercised through normal message entry",
+    "Source-level appearance, real service callbacks, persistence across process restart and device behavior require separate gates"
+  ],
+  "validation": "r2 two combined UI journeys passed; Foundation passed",
+  "test_sha256": "b25e4e9739df5b907075a8d6f15f1b99d0c6ca6b6e2b12cf7933eea2a53296a3",
+  "product_changes": "This batch adds combined page regression coverage. Product UI and replay behavior use the existing v560 implementation.",
+  "rule_scope": "Independent collection-host UI testing with translucent navigation and keyboard-visible composer"
+}

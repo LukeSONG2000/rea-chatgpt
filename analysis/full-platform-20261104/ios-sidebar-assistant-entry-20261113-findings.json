@@ -1,0 +1,104 @@
+{
+  "status": "partial",
+  "scope": "iOS293 sidebar assistant title and icon, read-only two bounded candidate groups",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official metadata plus bounded ARM64 static inspection; no official runtime/services",
+  "title": {
+    "status": "verified",
+    "registration": "12a44b0 uses7daea98 UIHostingConfiguration<PersonalAssistantHistoryNavigationCell,EmptyView>;7daeaa0 selected cell type",
+    "factory": "12a4550 ->12a46b0 ->1240a78 HistoryNavigationCellViewModel initializer",
+    "localization_consumer": "12a4730/34 loads0x8862a50 C string orbit_sidebar_meet_dot;12a474c..4758 builds Swift small string Meet dot;12a476c localization helper",
+    "key": "orbit_sidebar_meet_dot",
+    "english_fallback": "Meet dot",
+    "localizations": "Parent independently decoded CompressedStrings index7426 en Meet dot and zh-Hans localized Meet Dot. Child proves actual key/English fallback consumer only.",
+    "dynamic": "12a48d4 passes localized initial String x0/x1 to1240a78.12a478c..47a0 loads owner inputs and12a48d8/48dc forwards them. Metadata independently identifies orbitTitlePublisher/orbitIcon/orbitProfileImagePublisher/orbitAvatarPublisher; full runtime fieldslot-to-name mapping and upstream profile-to-title map are unresolved.",
+    "decision": "Use exact sidebar key for absent profile. Existing explicit profile.displayName can be represented as independent provider mapping; do not claim recovered official empty/loading/failure policy or use intro/R2-D2."
+  },
+  "icon": {
+    "status": "partial",
+    "accent_asset": "12a4628 ->74f5934 ->8a546e0 with7502cd8 length26 = OpenAI/Symbols/chat-bubble, shared Image asset initializer7c44a58. This is accentIcon, NOT final default portrait.",
+    "actual_image_input": "1240a78 receives x2 and stores at navigationVM+0x28 in1240bf0; body128f878 consumes that Image when usesOwnIcon true. Factory12a462c..4634 setsusesOwnIcon true separately from accentIcon. Image input comes from owner field12a4798 forwarded12a48d8. Exactdefault Image factory unresolved.",
+    "alternatives": "Existing body128f3c0 first checksoptional suppliedAnyView via12413bc;12414ecprofile state selects RemoteImagePart/CalpicoProfileImagePart/Image alternatives.",
+    "decision": "Do not claim accent chat-bubble or generic circle is original default avatar. Keep independent fallback explicit, profile avatar separate, no user screenshot identity seeded."
+  },
+  "layout": {
+    "hosting_margins": "12a4538..453c ->138ba68 all edges2/10/2/10",
+    "avatar_metric": "12a4668 literal24 into scaled metric factorybb6658",
+    "itemSpacing": "12a4648 ->1394ef4 sets12"
+  },
+  "host": {
+    "file": "implementation/ios/Sources/FrontendPersonalAssistant.swift",
+    "observed": "Profile id/displayName/roomID only, no avatar; synthetic default configuration has no profile.",
+    "implementable_now": [
+      "Use actual sidebar key orbit_sidebar_meet_dot for absent profile.",
+      "Dynamic explicit displayName from configuration.profile as independent provider mapping.",
+      "Route into existing NativePersonalAssistantPage.",
+      "Placement/availability peer handles separately.",
+      "Do not fabricate unread badge, avatar or service."
+    ]
+  },
+  "rejected_candidate": {
+    "files": "assistant-provider*,title-present*,title-default*,icon-default*,icon-alternate* and earlier registration/builder correct filenames are retained exploratory windows, not trusted assistant identity findings.",
+    "reason": "12a25e0/12a26b8 are generic HistoryNavigationCellContent<HistorySidebarIcon,...> from7daeb28/7daeb30. Its More/Explore title/icon factories cannot be borrowed. Exact assistant is12a44b0/12a4550.",
+    "proof": "selected-cell-type-bindings.json",
+    "class_offset_limit": "class-parser-boundary.json records strict class parser rejecting kind1; runtime b17d728 offsets are not file-backed. Do not infer fields from raw declaration index."
+  },
+  "unknown": [
+    "Default orbitIcon producer and profile absent/loading/failure alternatives.",
+    "Actual titlepublisher map for profile nil/empty/failure and its source service lifecycle.",
+    "Profile avatar DTO/template/fetch/failure policy.",
+    "Availability assignment and assistant services outside this entry-only task."
+  ],
+  "evidence_files": [
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/actual-assistant-factory.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/actual-assistant-factory.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/actual-navigation-vm-init.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/actual-navigation-vm-init.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-builder-correct.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-builder-correct.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-default-icon-exact.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-default-icon-exact.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-icon-tail.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-icon-tail.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-loading-state-map.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-loading-state-map.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-provider-tail.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-provider-tail.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-provider.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-provider.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-registration-correct.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-registration-correct.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-resource-length-tail.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-resource-length-tail.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-slot-offsets.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-slot-offsets.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-string-construction-tail.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-string-construction-tail.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/assistant-title-localizations.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/class-parser-boundary.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/exact-assistant-registration.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/exact-assistant-registration.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/history-vm-metadata-accessor.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/history-vm-metadata-accessor.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/icon-alternate.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/icon-alternate.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/icon-default.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/icon-default.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/navigation-viewmodel-title.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/navigation-viewmodel-title.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/navigation-vm-init.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/navigation-vm-init.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/orbit-icon-getter.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/orbit-icon-getter.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/selected-cell-type-bindings.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/title-default.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/title-default.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/title-present.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/title-present.json",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/type-helpers.asm",
+    "analysis/full-platform-20261104/ios-sidebar-assistant-entry-20261113/type-helpers2.asm"
+  ]
+}

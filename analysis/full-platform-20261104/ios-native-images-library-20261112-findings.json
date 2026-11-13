@@ -1,0 +1,214 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static-observation",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "ImageGen native home versus ImageLibrary native grid, cells, empty state and action admission; no host changes/build/device/network",
+  "prior_evidence": "ios-sidebar-apps-sites-images-20261112-findings.json",
+  "findings": [
+    {
+      "id": "different-native-pages",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "ImageGenView/ImageGenContentView is the image creation landing surface, not ImageLibraryScreen. Home content renders service-supplied ImageGenHomeResponse.Group through StylesCarousel/StackedPromptCarousel/PromptList. ImageLibrary is a separate grid/empty/error composition. Do not substitute a plain gallery for the complete Images entry.",
+      "symbols": [
+        "ImageGenView descriptor0x960cf3c body0x3226e74→0x3221a8c",
+        "ImageGenContentView descriptor0x960d668 body0x3227f68→0x3226e78",
+        "ImageLibraryScreen descriptor0x9691cfc View conformance0x817c30c body0x53d1378→0x53d042c"
+      ],
+      "limits": [
+        "Actual home→library route producer and its capability assignment remain unclosed; imageLibraryBelowSuggestionsEnabled field existence is not route proof."
+      ]
+    },
+    {
+      "id": "library-root-parent",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "Full generic tree0x817d700: native ImageLibraryGridPart<EmptyView,EmptyView,ConditionalContent<RequestStateDefaultErrorPart,ImageLibraryEmptyStatePart>>; flex frame, optional LinearGradient overlay with hit testing disabled, safe-area ignoring and opacity; navigationTitle/navigationBarTitleDisplayMode; an opaque outer modifier retains ZStack<TupleView<BannerBar,FloatingButton>> and BannerView; animation value is ImageLibraryFeed.",
+      "evidence": [
+        "ios-native-images-library-20261112/library-root.json",
+        "ios-sidebar-apps-sites-images-20261112-image_library.asm"
+      ],
+      "limits": [
+        "Opaque outer modifier identity retained by descriptor; no claim that exact presentation route or floating button action was recovered."
+      ]
+    },
+    {
+      "id": "native-grid",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "GridPart View conformance0x817d324 body0x53ca580→0x53c7d98; implementation creates ScrollView and LazyVGrid. LazyVGrid uses ForEachWithIndex<Array<ImageLibraryImage>,Tagged<ImageLibraryAttachment,String>,ImageLibraryImagePart>, plus optional loading placeholders. Scroll dismisses keyboard interactively, and scroll clipping is explicitly modified.",
+      "calls": {
+        "ScrollView": "0x53c7ecc",
+        "interactiveKeyboard": "0x53c844c/0x53c8468",
+        "scrollClipDisabled": "0x53c84a8",
+        "LazyVGrid": "0x53c9028"
+      },
+      "evidence": [
+        "ios-native-images-library-20261112/grid-inner.json",
+        "ios-native-images-library-20261112/grid-calls.json",
+        "ios-native-images-library-20261112/grid-columns.asm"
+      ]
+    },
+    {
+      "id": "columns-policy",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "0x53c96f4 computes max(1,trunc(width/(rawClass==1 ?110:160))). 110 is double at0x7d49648;160 immediate0x4064000000000000. Caller0x53c8ed0, item width at0x53c8ee0..f00 is (width-(columns-1)*spacing)/columns, with spacing read from owner+0x18, followed by GridItem and array factory; grid is not fixed two-column.",
+      "limits": [
+        "Meaning/source of rawClass (compact/regular/device class) not independently proved. Spacing is owner-supplied; exact value and outer padding remain unclosed.",
+        "Width is the supplied geometry input, not proved full-screen width."
+      ],
+      "evidence": [
+        "ios-native-images-library-20261112/grid-columns.asm",
+        "ios-native-images-library-20261112/columns-policy.asm"
+      ]
+    },
+    {
+      "id": "cell-composition",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "ImageLibraryImagePart View conformance0x817df78 body0x53d0428→0x53cd5c4. Actual Button0x53cd844, PlainButtonStyle0x53cd8b4, contextMenu(menuItems:preview:)0x53cdb20, alert0x53cde20, confirmationDialog0x53cdf74. Cell tree includes RemoteImagePart, Rectangle clip, conditional circular/video overlay, aspect ratio, accessibility/content shape. Menu full tree0x817e038 is Tuple<Conditional<Tuple<Optional<CopyButton.labelStyle(TitleAndIcon)>,Optional<Button<Label>>,Button<Label>,Optional<AsyncButton<AnyView>>>,EmptyView>, Optional<Button<Label>>>.",
+      "evidence": [
+        "ios-native-images-library-20261112/cell-root.json",
+        "ios-native-images-library-20261112/cell-menu.json",
+        "ios-native-images-library-20261112/image-cell.asm"
+      ],
+      "limits": [
+        "Do not flatten every menu candidate into always-visible actions. First conditional tests image._mediaType via0x53cebcc..bd4; exact enum case mapping remains unknown."
+      ]
+    },
+    {
+      "id": "select-action-owner",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "Button takes closure pair via ImageLibraryImagePart metadata fieldoffset slot+0x20 at0x53cd7d8..e0. Descriptor0x96921dc has17fields and fieldOffsetVectorOffset2words, so index4 maps to selectImage. Button therefore invokes supplied selectImage; it is not a NavigationLink inferred from a name.",
+      "limits": [
+        "Parent ImageLibraryViewModel producer for selectImage and final gallery/editor/conversation presentation were not closed. ViewModel.Presentation.Gallery inventory alone does not prove this click route."
+      ]
+    },
+    {
+      "id": "hide-confirmation",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "Cell0x53cee9c..ceed0 gates destructive removal on imageLibraryHideEnabled==1 and !image.isArchived. ImagePart fieldoffset vector begins at16, index3slot0x1c is imageLibraryHideEnabled; Image descriptor0x9691928 index12slot0x40 is isArchived. Action0x53e866c sets __isConfirmingHide=true (index9slot0x34); confirmationDialog supplies destructive Remove and cancel Cancel; confirm action thunk0x53e83b8 invokes supplied archiveImage closure (index8slot0x30).",
+      "original_labels": [
+        {
+          "text": "Remove from library",
+          "source_literal": "0x89b3410",
+          "label_helper": "0x53eae48",
+          "consumer": "0x53e8714"
+        },
+        {
+          "text": "Are you sure you want to remove this image?",
+          "source_literal": "0x89b3430",
+          "consumer": "0x53cf2d8"
+        },
+        {
+          "text": "Remove",
+          "factory": "0x75d2b74→0x75e1c38",
+          "consumer": "0x53cf158"
+        },
+        {
+          "text": "Cancel",
+          "factory": "0x75d21c4",
+          "consumer": "0x53cf1ec"
+        }
+      ],
+      "limits": [
+        "Archive is original action name; service/API persistence not restored. This is hide/remove-from-library, not proof of deleting conversation or image backend asset."
+      ]
+    },
+    {
+      "id": "other-cell-actions",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "CopyButton exists and creation0x53cf4c0 requires nonnil image result from0x53cf340 (full-sized result first, fallback thumbnail). Save action0x53e8768..87fc invokes supplied saveImageToPhotos closure (index6slot0x28), with source analytics string saveToPhotosButton0x89b34e0. Share preparation/error handling exists with shareErrorReason and literal Failed to prepare share sheet for image0x89b34b0.",
+      "limits": [
+        "Exact menu row order-to-function projection for share/edit/save remains partial; do not claim fully recovered native lightbox/editor. OS Photos/share actions require explicit frontend capability adapter, not simulated success.",
+        "No task-specific haptic trigger was closed in bounded windows."
+      ]
+    },
+    {
+      "id": "empty-state-labels",
+      "evidence_type": "official_artifact_observation",
+      "conclusion": "EmptyStatePart View conformance0x817d374 body0x53c4210→0x53c3890; full tree0x817d558 is modified VStack containing title/body substack and SheetButtonStyle Button.",
+      "original_labels": [
+        {
+          "text": "Make image",
+          "factory": "0x75d2fc4",
+          "consumer": "0x53c3b7c"
+        },
+        {
+          "text": "Library",
+          "factory": "0x75d6c44",
+          "consumer": "0x53c3dcc"
+        },
+        {
+          "text": "Images you create with ChatGPT will appear here.",
+          "literal": "0x89b2a50",
+          "consumer": "0x53c3e50"
+        }
+      ],
+      "evidence": [
+        "ios-native-images-library-20261112/empty-root.json",
+        "ios-sidebar-apps-sites-images-20261112-image_empty.asm"
+      ],
+      "limits": [
+        "Library is established in the empty-state helper; do not infer all home/root titles from it."
+      ]
+    }
+  ],
+  "implementation_admission": {
+    "can_reconstruct_now": [
+      "Distinct creation-home groups and separate library destination, each source-backed and with independent offline input fixture.",
+      "Native scroll/grid with stable image identity; width-adaptive column formula with explicitly independent raw-class mapping.",
+      "Empty/error/loading branches; resource-backed Make image/Library text.",
+      "Cell selection via supplied scoped image identity; independent native zoom/detail adapter labelled as such.",
+      "Source-gated remove-from-library confirmation and cancel, with synthetic adapter/persistence."
+    ],
+    "must_label_independent": [
+      "Home→library entry while original route producer unclosed.",
+      "UIScrollView zoom/detail dismissal/prompt editor until original gallery/lightbox route and controls are closed.",
+      "All mock network/resource acquisition and image generation actions."
+    ],
+    "do_not_claim": [
+      "Complete original lightbox/editor",
+      "Always-visible edit/save/share/copy menu across all media types",
+      "Original haptics",
+      "Native client invoking the same-named Valdi gallery client"
+    ]
+  },
+  "precise_gaps": [
+    {
+      "id": "home-library-route",
+      "next_action": "Trace ImageGenView presentation/sidebar parent and imageLibraryViewModel consumer into ImageLibraryScreen constructor; retain media/createTab/imageLibraryBelowSuggestions owner flags separately."
+    },
+    {
+      "id": "selected-presentation",
+      "next_action": "Trace ImageLibraryScreen supplied selectImage closure projection into ImageLibraryViewModel action reducer/presentation setter; gallery enum alone is insufficient."
+    },
+    {
+      "id": "raw-width-class",
+      "next_action": "Trace caller argument x0 to0x53c96f4 through Grid content builder0x53c8e34 to environment or explicit owner source."
+    },
+    {
+      "id": "menu-media-gate",
+      "next_action": "Decode image._mediaType enum consumer0x53cebcc/0x53eaa60 and match full menuTuple element closures0x53cf4c0/0x53cf618/0x53e8768/0x53cf758; keep exact conditional tree."
+    },
+    {
+      "id": "spacing-insets",
+      "next_action": "Trace owner-supplied spacing initialization and ScrollView content parent padding, do not derive from screenshots."
+    },
+    {
+      "id": "haptics-gestures",
+      "next_action": "Resolve original gallery/lightbox route before enumerating paging/pinch/dismiss gesture arbitration and haptic owner."
+    }
+  ],
+  "validation": {
+    "performed": "static binary reads, bounded ARM64 windows, protocol/witness and symbolic generic tree decode",
+    "not_performed": [
+      "official runtime",
+      "host UI edits",
+      "build",
+      "device interaction",
+      "online API"
+    ]
+  }
+}

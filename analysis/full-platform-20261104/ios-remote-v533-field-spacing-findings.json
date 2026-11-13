@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "slice": "v533 selected ordinary Remote FieldRow horizontal spacing",
+  "status": "verified_static",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "conclusion": {
+    "key_path": "EnvironmentValues.messageInputStyle.whisper.horizontalSpacing",
+    "value": 8,
+    "unit": "point",
+    "consumer": "CodexRemoteWhisperComposerFieldRow HStack",
+    "evidence_type": "official_artifact_observation",
+    "original_runtime_verified": false
+  },
+  "chain": [
+    {
+      "offsets": [
+        "0x19879d8..0x19879e4",
+        "0x7e2a2d8"
+      ],
+      "proof": "Parent supplies Environment<CGFloat> using composite keypath7e2a2d8."
+    },
+    {
+      "offsets": [
+        "0x7e2a300",
+        "0x7e2a308",
+        "0x7e2a310",
+        "0x7e2a314",
+        "0x7e2a318"
+      ],
+      "proof": "Getter2e5fcc reads messageInputStyle. Symbolic context binds MessageInputStyle then MessageInputWhisperPartStyle. Metadata vector slot0x64 selects whisper. Final fixed stored-property offset0 selects horizontalSpacing."
+    },
+    {
+      "offsets": [
+        "0x6081294",
+        "0x6081298",
+        "0x608129c",
+        "0x6081698",
+        "0x60816a0"
+      ],
+      "proof": "MessageInputStyle default calls6081680 for whisper. v0 contains two8.0 doubles and stp q0,q1 writes offset0 horizontalSpacing=8."
+    },
+    {
+      "offsets": [
+        "0x19a0900",
+        "0x19a0930",
+        "0x19a09bc..0x19a09dc"
+      ],
+      "proof": "Remote base starts from default. Glass transform6082134 changes outer/glass fields. Whisper override writes padding+08..40=2 and elementSize+48=44, preserving horizontalSpacing+0."
+    },
+    {
+      "offsets": [
+        "0x3040c4",
+        "0x30410c",
+        "0x2de24c",
+        "0x2de2ec",
+        "0x6081f4c..0x6082130"
+      ],
+      "proof": "Previously proven selected CodexScreen ordinary ThreadView receives builder2de24c. Theme transform changes colors/primary/input settings and preserves whisper.horizontalSpacing. Final builder primaryButton capsule flag does not target whisper."
+    },
+    {
+      "offsets": [
+        "0x1991870",
+        "0x1991878",
+        "0x199187c",
+        "0x1991884",
+        "0x19918b8"
+      ],
+      "proof": "FieldRow environment resolver returns CGFloat, moved to x19 and supplied to centered HStack as present spacing."
+    }
+  ],
+  "corrections": [
+    "v531 phrase scaled horizontalSpacing is superseded by Environment<CGFloat>.",
+    "v532 unknown base spacing is now closed for the selected ordinary Remote ancestor chain.",
+    "Top-level MessageInputStyle.horizontalSpacing also has an8pt default, but it is a distinct field and is not the FieldRow keypath target.",
+    "Nearby2pt is leading outer padding and internal whispered content padding, separate from HStack8pt gap."
+  ],
+  "limits": [
+    "Static ancestry is limited to the selected CodexScreen ordinary Remote route and retained source chain. Alternate embeddings can inject another MessageInputStyle.",
+    "No original runtime/device measurement was performed.",
+    "Other inherited style dimensions and visual acceptance remain separate."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-field-spacing-keypath-data.json",
+      "sha256": "408fba9f34d233ffa7f75a19b66fe5c6d065a67bb90bca4ee876dc1ff584b025"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-spacing-type-8c20e20.json",
+      "sha256": "25055ed4746c1c78dd862e18ac740625f5d31b4f94db687036b8bb5ac4cd11c0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-spacing-type-8d0c1da.json",
+      "sha256": "000a9cc42df55e40eb08b7880c84906a2fe21ec980f71b4a4bc3f8531f538029"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-field-spacing-keypath.asm",
+      "sha256": "fa65634380de5b60d8f454f87ac060ff871eff787f85c32a8d2bb6b44fb974b3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-whisper-style-init.asm",
+      "sha256": "f8dec658d1806b69cc695c892f591fa9aed718f3326a22d14f1edaa37c906cc8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-whisper-style-init.json",
+      "sha256": "59122ed5fa89066334adfd832cc4edad587b2e9cbec8926a46966b33c9507f5e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-style-metadata.json",
+      "sha256": "0d6baebbc3001f07eb55c10bdd695ec4c01b2561ac99ffe92841607dbad7c6eb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-style-part-metadata.json",
+      "sha256": "cead35b35850683e617257154881b731b906ed7bc3baafa67267e5909a139dea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-style-base.asm",
+      "sha256": "99b84f0526fb75eeabc057c4ec250f21a7ddf1924ecacef709ac11e6887276f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-style-default-helpers.asm",
+      "sha256": "c6e0dee0fb6476ee22e68fdb2166694bfe7606bf85d244670d25a97134cc3a96"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-style-gates.asm",
+      "sha256": "5834f92fdc71929023ca0c838ae92d24e355de2c406935177791c2bfc3ab81ba"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-draft-presentation.asm",
+      "sha256": "60b1796f5ccc9be968ebfe345a1392e31bebd64dcb308c6c716d4f7ba9e86106"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v522-thread-style-findings.json",
+      "sha256": "1acefeba1c13595e9ee1030e5fdf792ced0eca181a793f5569478cd2df4e2188"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v532-whisper-parent-findings.json",
+      "sha256": "2615d79eaf0a44b5f28700551045888c791cedac0af0d832d7d00a565983a162"
+    }
+  ]
+}

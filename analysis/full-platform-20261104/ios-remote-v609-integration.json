@@ -1,0 +1,42 @@
+{
+  "batch": 609,
+  "implemented": [
+    "Optional history summary in independently defined group snapshot; older missing field keeps thinking label.",
+    "History summary renders explicit text and original static icon inside existing group disclosure; child order, expansion identity and content survive label changes.",
+    "Core synthetic preview supplies history summaries at completion/failure. Provider choice and aggregate wording are independent fixture values."
+  ],
+  "official_evidence": "ios-remote-v609-integration-findings.json",
+  "independent_adaptations": [
+    "historySummary optional envelope and strict icon decoding",
+    "No automatic aggregation: supplied text and icon are consumed directly",
+    "Native HStack spacing8, body/tertiary style reuse current host; final original parent styling remains incomplete",
+    "Core fixture switches at terminal; official upstream timing and count aggregation remain unresolved"
+  ],
+  "unimplemented": [
+    "latestItem summary and automatic grouping/aggregation",
+    "Payload-bearing computerUse/mcpToolCall summary icons",
+    "Full reasoning content",
+    "Exact history label typography/color/layout and remaining activity types",
+    "Android corresponding consumer"
+  ],
+  "validation": {
+    "foundation": "passed",
+    "ui": {
+      "report": "ios-remote-v609-r1-summary.json",
+      "passed": 3,
+      "failed": 0
+    },
+    "visual": [
+      "Chinese light history summary and expanded command",
+      "English dark failed turn retains history summary"
+    ],
+    "runtime": "ios-remote-v609-runtime.json",
+    "manual_handoff": "Chinese dark core preview, completed-thread; submitted History summary and expanded command group; left running"
+  },
+  "screenshots": [
+    "ios-remote-v609-r1-attachments/D651D50F-DB05-4F8B-ABA8-335233214EC7.png",
+    "ios-remote-v609-r1-attachments/DEDDCD71-1F76-408F-9647-840228881185.png"
+  ],
+  "runtime": "ios-remote-v609-runtime.json",
+  "next_action": "Trace latestItem consumer at0x1a39b48 and its per-activity branch mapping before implementing remaining summary mode."
+}

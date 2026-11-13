@@ -1,0 +1,47 @@
+{
+  "batch": "v607",
+  "source": "ios-remote-v607-reasoning-next-findings.json",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "official_mechanism": "HistoryFragment toolActivityGroup -> ExpandableAssistantSummaryItem, thinking summary -> ThinkingStatus, expanded ordered ActivityRows.",
+  "host_gap": "Replay has only a transient plain thinking label and ungrouped command/search/file arrays. No group identity or expansion owner.",
+  "implementation_plan": [
+    "Explicit scoped group snapshots with ordered typed child references and stable IDs. Validate atomically with the corresponding turn snapshot.",
+    "Reuse existing disclosure and child components, persist expansion by task/turn/group, preserve legacy ungrouped histories.",
+    "Deterministic fixture updates, terminal preservation, cancellation, cross-host/task and restart regression."
+  ],
+  "independent_adaptations": [
+    "Group envelope, child-reference validation and replay generation",
+    "Native grouping placement and persisted expansion",
+    "Disable shimmer for terminal synthetic turns; source upstream lifetime remains unresolved",
+    "Empty group renders noninteractive summary"
+  ],
+  "unimplemented": [
+    "Full reasoning content/history",
+    "Automatic official grouping, latestItem/history summary variants and unsupported activity kinds",
+    "Exact original parent spacing/fading and Android consumer"
+  ],
+  "validation": "Foundation r2 passed. UI r1 4/4, r2 2/4, r3 2/2. Six distinct cases have passes. r3 proves same-named groups on separate hosts do not share expansion, and task/restart draft and expansion recovery.",
+  "implemented": [
+    "Typed ordered group snapshots validated atomically against the corresponding turn activities. Invalid/missing/duplicate child references reject the event without changing state.",
+    "Recovered thinking label and summary disclosure reuse existing command/search/file components, preserving legacy ungrouped snapshots.",
+    "Task/turn/group expansion cache with backward-compatible optional history/cache fields.",
+    "Explicit two-group synthetic fixture and core preview capability."
+  ],
+  "test_note": "r2 second-host pinned-thread is a running fixture, exposing remote-composer-follow-up rather than remote-composer-send. r3 uses existing idle recent-thread on fixture-b, preserving identical group IDs and all isolation/restart assertions. Production source unchanged.",
+  "files_before_ui": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "7e97c9ef56b1e0fd10911f72b72d1cf89aa6fa789708736576fbbf761d6c690e",
+    "implementation/ios/Sources/NativeConversationHost.swift": "fe438e747c9c7a65fa2c0a1f41d7abf9c2efb5e6199392d010becfdea2ef8373",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "0276182c8dec2def3f895e4574a2abf685e4b51d4446f043389c34cde608b948",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "19ab8b3c7085d04e2ee92190693ab38cc60bbb03d39da9952eac797a012129a5"
+  },
+  "reasoning_boundary": "v608 confirms ThreadItem reasoning tag5 is excluded from the converter markdown branch that produces fileChange/webSearch activities. Full reasoning consumer remains missing.",
+  "files_final": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "7e97c9ef56b1e0fd10911f72b72d1cf89aa6fa789708736576fbbf761d6c690e",
+    "implementation/ios/Sources/NativeConversationHost.swift": "fe438e747c9c7a65fa2c0a1f41d7abf9c2efb5e6199392d010becfdea2ef8373",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "0276182c8dec2def3f895e4574a2abf685e4b51d4446f043389c34cde608b948",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "19ab8b3c7085d04e2ee92190693ab38cc60bbb03d39da9952eac797a012129a5",
+    "implementation/ios/UITests/HostInteractionTests.swift": "64a322f7e421c3229bfcc821e26cfda36508c19ccb5da85789366ed0ca3a9935",
+    "implementation/ios/TextTests/main.swift": "b1030790292d5025a6b8eaa0b816224716ec56eaf0372d831165e1e75921b995",
+    "implementation/ios/Tools/core-preview.json": "2a09ca3712305418fdcbc9b5a999275c32a56ae707e81eaa3a876e297cf3a1ae"
+  }
+}

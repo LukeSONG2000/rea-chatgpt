@@ -1,0 +1,104 @@
+{
+  "batch": "v540",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static with independent host adapter plan",
+  "confirmed": [
+    "ContentView305b3c..305c08 passes isRoot true and openMenu nonnil && !isComposing && !isSearching into shared SideMenuNavigationStackToolbarModifier; no local layout exclusion",
+    "6f25ae8 resolves topBarLeading. Ordinary glyph6f26828 ->74fac0c is OpenAI/Symbols/sidebar-menu",
+    "428cb4 loads ContentView.openMenu(metadata4c), 46406c invokes callback; this is distinct from dismiss",
+    "Ordinary Pane producer53dab8 supplies nil dismiss and actual root openMenu closure perv539/v540"
+  ],
+  "host_repair": [
+    "Replace fullScreen per-entry modal with a retained pane inside existing NativeSidebarContainer",
+    "Inject menu callback and apply source visibility predicate in task-list root; preserve native back in task destinations",
+    "Restore original chat surface on sidebar conversation/new-chat/search actions",
+    "Reuse existing corner/shadow/menu animation adapter; preserve Remote filter/collapse/draft store identity across sidebar reopen"
+  ],
+  "adaptation_limits": [
+    "UIViewController child replacement and retained hosting-controller cache are independent host lifecycle adapters",
+    "Exact official layout environment, preservesPaneHostingControllers gate and transition policies remain partial",
+    "Non-task empty-state presentation remains existing independently reconstructed host",
+    "No title-leading forced override or arbitrary pinned-header opaque background"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-content-sidebar-call.asm",
+      "sha256": "4d46905216cc98e5c01be3f3ed8bd969557f076afa3060cf1f90be6e91d40e79"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-shared-sidebar-navigation.asm",
+      "sha256": "b45d8a04f475dbbf21934692ce963df649117b96474d4a3438ec365727812670"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-item-implementation.asm",
+      "sha256": "c7d6d54db3667e8e81d088618d1c23362ed08685cbda2faacba7c94abecb2cc1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-placement.asm",
+      "sha256": "359b92f37ebe4d832e99bdf7e2fed132efb414710f2080fc00a53336a41caa45"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-symbol.asm",
+      "sha256": "b16a4dbaa1de216863dd90d654b6d4d595ffd9559505893fd74a1b21c8a0a174"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-primary-toolbar.asm",
+      "sha256": "56261bd4d3beb633e1903da1104ca34b2525d62e489215add70ae8556bc6b342"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-root-sidebar-writer.asm",
+      "sha256": "1a992d2483094ea1e3c220f2bc7d63f4317ad2c990d90d87bf1ab7536137934f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-toolbar-closure.asm",
+      "sha256": "d21f168109a602db4b0239d724030b4c147634be70eb2ff5f45f668fce7a00b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-label-forward.asm",
+      "sha256": "ab166b1d612a353083a0dfa63594104431e02c08c1108817e7285fa880c25a09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-state-helpers.asm",
+      "sha256": "7c158311a70c8a13cecd7abb475d4d08cbf46e3e758b8f5f81d98c1da94d636a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-regular-helper.asm",
+      "sha256": "96408feea5ebf9223cd24c0439b3c9ed9c821cc1534d56547d7930df7b933727"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-modifier-implementation.asm",
+      "sha256": "08a5cd57d3c875f9dd6c7843c82285f8b551ae875eb7e8d8271ff6d1a52abb4a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-split-helper.asm",
+      "sha256": "bd1a0b6babf08c0b2f31d48c055b00bcdd0e5ec57a6957ca78bd82696b7ed980"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-toolbar-forward.asm",
+      "sha256": "3047f7676999fa9d2b7bc42f0bbd3499de62a85448c24e1dd291207b0c28ea39"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-item-body.asm",
+      "sha256": "9729572b6acec932a3b8a09384fca8b9a1cf738a33842e59c8b21a292556cb01"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-keypath-helper.asm",
+      "sha256": "d620f27be96fc2c15936698dbed463e9b973e667645772d5000cdc70000abeb9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-sidebar-modifier-body.asm",
+      "sha256": "132bae98b5d7ac654e51ea07f0a3d8027a33f9ebf55ec50bc1db7d3496430a1f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-content-menu-callback.asm",
+      "sha256": "f18b5d77977347a6ff014ca3257ff75118c454948fa0e764d6fb0b016bd155f4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v540-title-openmenu-root-action.asm",
+      "sha256": "f83748345f5334af9e82492f6d8d42b8f9c414f1526d72f003f7dd901ab09535"
+    }
+  ]
+}

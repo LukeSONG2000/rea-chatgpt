@@ -1,0 +1,343 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Shared Whisper state event dispatch, cancellation and finish routing, pure phase reducer, active-row phase gate. Static analysis only.",
+  "entry": {
+    "protocol": "ChatGPTSharedWhisper.ComposerWhisperModel",
+    "protocol_descriptor": "0x96b1c84",
+    "conformance": "0x7def738",
+    "witness": "0xa4f65b8",
+    "state_event_requirement": "+0x108",
+    "witness_function": "0x16f4f5c",
+    "concrete_dispatch": "0x16eaa54"
+  },
+  "type_identity": {
+    "event_descriptor": "0x96b1c68",
+    "default_state_descriptor": "0x95a6dd4",
+    "session_descriptor": "0x95a77ec",
+    "part_state_descriptor": "0x96cae88",
+    "part_state_raw_order": [
+      "idle",
+      "starting",
+      "listening",
+      "transcribing",
+      "done",
+      "cancelled",
+      "noInternet",
+      "recoverableError",
+      "error",
+      "settingsError"
+    ],
+    "default_state_encoding": "top two bits of UInt64: 0 idle, 1 requestingMicrophonePermission, 2 active(Session), 3 inserting",
+    "session_encoding": "low byte part state; bits8..15 pushToTalkMode; bits16..23 completionAction; bit24 isTouchingInsideButton",
+    "event_encoding": "tag at +0x50; payload cases0..6 use tag; tag7 encodes empty case in first UInt64 plus7"
+  },
+  "event_routing": [
+    {
+      "event": "finishRecording",
+      "evidence": [
+        "0x16eab74..0x16eab80"
+      ],
+      "destination": "0x16f0ba4",
+      "arguments": "auto-send Boolean in w0, second payload word in x1, optional finish trigger in w2"
+    },
+    {
+      "event": "cancelRecording",
+      "evidence": [
+        "0x16eacfc..0x16ead10"
+      ],
+      "destination": "0x16f0ae8",
+      "arguments": "reason raw0"
+    },
+    {
+      "event": "retryRecording",
+      "evidence": [
+        "0x16ead18..0x16ead58"
+      ],
+      "destination": "0x16f0e44",
+      "guard": "current session must exist; preceding Bool gate and side effects at0x16ead24..40 not semantically resolved"
+    },
+    {
+      "event": "intentToFinishRecording",
+      "evidence": [
+        "0x16eacec..0x16eacf4"
+      ],
+      "destination": "0x16f0924",
+      "arguments": "true"
+    },
+    {
+      "event": "intentToCancelRecording",
+      "evidence": [
+        "0x16eabe0..0x16eabf0"
+      ],
+      "destination": "0x16f0924",
+      "arguments": "false"
+    }
+  ],
+  "pure_reducer": {
+    "function": "0x16f4888",
+    "caller": "0x16f10c4",
+    "old_state_getter": "0x16ec8fc",
+    "compare": "0x16f78a8",
+    "changed_state_setter": "0x16eb8a8",
+    "jump_table": {
+      "address": "0x7decd07",
+      "raw_bytes": [
+        99,
+        99,
+        0,
+        18,
+        7,
+        62,
+        73,
+        31
+      ],
+      "targets": [
+        "0x16f4a4c",
+        "0x16f4a4c",
+        "0x16f48c0",
+        "0x16f4908",
+        "0x16f48dc",
+        "0x16f49b8",
+        "0x16f49e4",
+        "0x16f493c"
+      ]
+    },
+    "rules": [
+      {
+        "event": "startRecording / finishRecording",
+        "result": "no direct phase mutation in pure reducer",
+        "evidence": "tags0/1 go straight0x16f4a4c; effectful dispatcher handles recording work separately"
+      },
+      {
+        "event": "microphonePermissionRequested",
+        "result": "requestingMicrophonePermission, with payload mode and touching flag",
+        "evidence": "0x16f48c0..0x16f48d8"
+      },
+      {
+        "event": "sessionStarted",
+        "result": "active Session, payload first16bits; completionAction raw2; preserves touching only from requesting/active",
+        "evidence": "0x16f4908..0x16f4938;0x16f4a1c..0x16f4a48; jump0x7decd13 [67,0,61,66]"
+      },
+      {
+        "event": "sessionUpdated",
+        "result": "updates part state and completionAction only when previous outer state is active; preserves mode and touching",
+        "evidence": "0x16f48dc..0x16f4904 signed comparison accepts only topbits2; payload lowbyte tostate and payload secondbyte tocompletionAction"
+      },
+      {
+        "event": "touchChanged",
+        "result": "updates touching in requesting/active; idle/inserting unchanged",
+        "evidence": "0x16f49b8..0x16f49e0 and0x16f4a5c..0x16f4a74; jump0x7decd0f [29,0,33,29]"
+      },
+      {
+        "event": "resultPending",
+        "result": "sets inserting with retained result payload",
+        "evidence": "0x16f49e4..0x16f4a18"
+      },
+      {
+        "event": "intentToFinishRecording / intentToCancelRecording / cancelRecording / retryRecording",
+        "result": "no direct phase mutation in pure reducer",
+        "evidence": "0x16f493c..0x16f4994 validates empty payloads0..3 and returns"
+      },
+      {
+        "event": "microphonePermissionCancelled",
+        "result": "returns requesting permission to idle availability payload, leaves other phases unchanged",
+        "evidence": "0x16f4998..0x16f49b4,0x16f4a94..0x16f4aa0"
+      },
+      {
+        "event": "pendingResultCleared",
+        "result": "guarded return to idle availability; helper0x179fac0 classification remains unexpanded",
+        "evidence": "0x16f4a78..0x16f4a94"
+      },
+      {
+        "event": "reset",
+        "result": "idle with availability payload",
+        "evidence": "0x16f4a98..0x16f4aa0"
+      }
+    ]
+  },
+  "cancel": {
+    "evidence": [
+      "0x16f0ae8..0x16f0ba4",
+      "0x16f15b0..0x16f16c8"
+    ],
+    "ordered_effects": [
+      "If session exists call0x16f1050 (session behavior subfields not fully named).",
+      "Clear additional composer state via0x179ab64/0x17972f4/0x179f10c; exact property semantics remain unknown.",
+      "Send touchChanged(false).",
+      "Cancel and clear activationTask; clear activationTaskIdentifier; dispatch microphonePermissionCancelled.",
+      "If session still exists call0x16f2274 with first flagtrue and mapped cancel reason."
+    ],
+    "task_cancel_import": {
+      "site": "0x16f1640",
+      "symbol": "_$sScT6cancelyyF",
+      "verified_in": "ios-remote-v533-activation-cancel.json"
+    },
+    "field_bindings": {
+      "session": "0xb07da00",
+      "activationTask": "0xb1c51c8",
+      "activationTaskIdentifier": "0xb1c51d0",
+      "isMicrophoneGestureActive": "0xb1c51d8"
+    },
+    "limit": "Cancellation request itself does not directly set done/cancelled phase in pure reducer. Final inner-session event/async cleanup remains partially traced."
+  },
+  "finish": {
+    "evidence": [
+      "0x16f0ba4..0x16f0e44"
+    ],
+    "ordered_effects": [
+      "Cancels activation task with rawreason5 before requiring current session.",
+      "Returns if session missing or predicate0x16f16c8 is true.",
+      "Branches on auto-send capability, streaming transcript and pending-send acceptance.",
+      "With underlying WhisperViewModel.State listening (case5) calls0x16f21d4 then0x175aaa4. Otherwise calls0x16f2274 with first flagfalse and rawreason5."
+    ],
+    "limit": "Stop request and completed transcription are separate events. These branches cannot support treating every stop as immediate successful transcript insertion."
+  },
+  "presentation": {
+    "evidence": [
+      "ios-remote-v532-whisper-parent-findings.json",
+      "ios-remote-v533-control-projection.asm"
+    ],
+    "ordinary_row_gate": {
+      "remote_consumer": "0x1987900",
+      "presentation_requirement": "+0xb0",
+      "getter": "0x16f7744 -> 0x16f733c",
+      "rule": "requesting permission true; active true except partState done(4) and cancelled(5); idle and inserting false"
+    },
+    "interpretation": "Listening, transcribing, noInternet, recoverableError, error and settingsError remain distinct active-session states. A single recording Boolean loses this distinction. Control projections separately choose accessory/microphone/primary representations.",
+    "projection_slots": {
+      "accessory": "+0x78 -> 0x16f75ac -> 0x16f71c0",
+      "microphone": "+0x88 -> 0x16f765c -> 0x16f6f58",
+      "primary": "+0x98 -> 0x16f76c4 -> 0x16f7110",
+      "other": "+0xc0 -> 0x16f775c -> 0x16f737c"
+    },
+    "disabled_mode_projection": {
+      "scope": "Explicit fixture pushToTalkMode raw0 only. Actual ordinary Remote default mode remains unknown.",
+      "primary_function": "0x16f7110",
+      "primary_packed_layout": "action lowbyte, prioritizesSendWhileStreaming bit8, showsProgress bit16. Optional nil sentinel0x200. Constructor0x5c30cb4.",
+      "primary_jump": {
+        "address": "0x7decd1b",
+        "for_part_states": "2 through9",
+        "bytes": [
+          10,
+          12,
+          0,
+          0,
+          22,
+          24,
+          0,
+          20
+        ]
+      },
+      "primary_table": [
+        {
+          "part": "idle/starting",
+          "raw": "0x101",
+          "state": "loading, prioritizesSendWhileStreaming true, showsProgress false"
+        },
+        {
+          "part": "listening",
+          "raw": "0x100",
+          "state": "send, prioritizesSendWhileStreaming true, showsProgress false"
+        },
+        {
+          "part": "transcribing",
+          "raw": "0 or0x10000",
+          "state": "send, prioritizesSendWhileStreaming false, showsProgress when completionAction raw1; false for default raw2"
+        },
+        {
+          "part": "done/cancelled/noInternet/error",
+          "raw": "0x200",
+          "state": "nil in disabled-mode fixture"
+        },
+        {
+          "part": "recoverableError",
+          "raw": "0x2",
+          "state": "retry, both flags false"
+        },
+        {
+          "part": "settingsError",
+          "raw": "0x3",
+          "state": "settings, both flags false"
+        }
+      ],
+      "microphone": "active session + mode0 returns raw0 via0x16f7004..18. This is hidden(false) in payload-first microphone enum; explicit mode and other environment inputs remain necessary.",
+      "limitations": [
+        "No synthetic timer duration comes from these instructions. Controlled 0.4s completion is fixture timing.",
+        "Phase transcribing does not force primary loading. Preserve the official projection and completionAction inputs."
+      ]
+    },
+    "microphone_explicit_parameters": {
+      "type_proof": {
+        "metadata": "0xa83ac00",
+        "value_witness_table": "0xa83ab80",
+        "get_enum_tag": "+0x58 ->0x44a6cc ->0x4419d4",
+        "tag_rule": "raw0/1 ->enum case0 hidden(Bool); raw>=2 ->raw-1; metadata case order yields raw2 idle,3 disabled,4 starting,5 active,6 stopped,7 loading"
+      },
+      "mode0": "active listening with mode0 yields returned lowbyte0 hidden(false), independent of w2/settingsbit32. Full x0 register may retain upperbits at16f7004; consumer uses one-byte enum.",
+      "stop_visible_example": {
+        "x1": "0x8000000000020102",
+        "decoded": "active,partState listening2,pushToTalkMode1,completionAction2,touchfalse",
+        "combination_a": {
+          "x0": "0x100000000",
+          "w2": 0,
+          "result_raw": 5
+        },
+        "combination_b": {
+          "x0": "0x0",
+          "w2": 1,
+          "result_raw": 5
+        },
+        "branch": "16f6fdc..16f6ff4 ->16f7020 ->16f7040..16f7054; (settingsbit32 OR w2bit0) selectsraw5; bothfalse selectsraw0"
+      },
+      "raw4_limit": "For listening2 this function selectsraw5 orraw0 on mode1. Raw4 is starting, reachable for requestingPermission/mode1 or active idle/starting with the applicable gate.",
+      "scope": "Explicit fixture input combination. Does not establish actual Remote mode1 producer/default."
+    }
+  },
+  "late_completion_boundary": {
+    "proved": "sessionUpdated cannot change the pure phase outside active. Cancellation clears activation task identity. Activation callback0x16efa00 compares optional activationTaskIdentifier with captured argument before clearing task and issuing reset.",
+    "candidate_evidence": "0x16efab4..0x16efbb4 optional compare; matching branch0x16efbb8 clears task/id and0x16efbf4..0x16efc1c sendsreset. Optional payload equality implementation still needs type/witness binding.",
+    "not_proved": [
+      "This activation callback is not proved to be the guard for late transcription completed events.",
+      "sessionStarted and resultPending have no stale-session identity test inside the pure reducer. Upstream producer scope must be established.",
+      "No session/attempt ownership guard before Remote0x1883820 -> merge0x188321c has been established.",
+      "Cancellation of old owner during thread switching and late async completion delivery remain unknown."
+    ],
+    "next_minimal": "Trace the concrete session completion observer to ComposerWhisper handleEvent storage0xb1c51b0 (outlined getter0x179f374) and its captured session identity, before1883820. Avoid replacing this with pending bookkeeping guards."
+  },
+  "implementation_guidance": {
+    "type": "independent-design-advice",
+    "items": [
+      "A synthetic active-row provider can replay explicit listening, transcribing, recoverableError and terminal events while preserving concrete cancel/finish/retry request identities.",
+      "Keep fixture completion separate from actual sampling and service success. A stop action may enter a controlled processing fixture state, labeled fixture transition until underlying observer mapping is closed.",
+      "Use fixture owner/attempt generation to ignore cancelled or stale completion; label this guard as independent until official completion producer is proven."
+    ]
+  },
+  "limits": [
+    "No audio recording, application execution, runtime behavior equivalence or server confirmation tested.",
+    "No direct haptic call identified in the bounded reducer/action paths; absence of direct calls does not establish absence of haptics.",
+    "0x16f2274 async session cleanup expanded only for bounded routing; backend completion/cancellation outcome remains partial."
+  ],
+  "raw_files": [
+    "ios-remote-v533-composer-conformances.json",
+    "ios-remote-v533-composer-class-fields.json",
+    "ios-remote-v533-state-event-witness.asm",
+    "ios-remote-v533-state-event-dispatch.asm",
+    "ios-remote-v533-pure-state-reducer.asm",
+    "ios-remote-v533-cancel-finish-retry.asm",
+    "ios-remote-v533-cleanup-session.asm",
+    "ios-remote-v533-session-cleanup-tail.asm",
+    "ios-remote-v533-activation-cancel.json",
+    "ios-remote-v533-session-guard-xrefs.json",
+    "ios-remote-v533-activation-identity.asm",
+    "ios-remote-v533-projection-small-helpers.asm",
+    "ios-remote-v533-microphone-enum.asm",
+    "ios-remote-v533-microphone-tag-proof.asm"
+  ]
+}

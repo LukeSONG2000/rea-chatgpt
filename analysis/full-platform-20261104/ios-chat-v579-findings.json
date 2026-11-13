@@ -1,0 +1,77 @@
+{
+  "batch": 579,
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "source_observations": [
+    {
+      "evidence": "ios-chat-v579-policy-fields.json",
+      "conclusion": "ConversationsInterface.Message extension _Fields metadata slot0x34 is isComplete. Slot0x28 is role,0x1f0 is _hideInlineActions,0x1f8 is hidesActionsForIntermediateFinalAnswer,0x210 is isVoiceSpokenResponse."
+    },
+    {
+      "evidence": "ios-chat-v579-completion-chain.json; ios-chat-v578-state-producer.asm",
+      "offset": "0x3971054..0x397106c",
+      "conclusion": "Enabled-state return reads Message.isComplete through0x382f9b0 ->0x65a53e4 ->0x67d99d0. Getter payload x1 is moved to x19 at0x30c0980 and copied into return bit0. Return bit8 is set. Thus canShow=isComplete for this producer enabled branch."
+    },
+    {
+      "evidence": "ios-chat-v578-actions-calls.json",
+      "conclusion": "Consumer applies canShow to opacity and hit testing with0.2 second easeInOut animation; enabled invisible branch remains composed."
+    }
+  ],
+  "host_gap": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbol": "NativeHostedRow / performMessageAction",
+    "finding": "Every nonnil originalText exposes a tappable menu during generating updates. Existing sizing reserves36pt for the same text-presence condition.",
+    "runtime_baseline": "v577 Chat/Work offline-core captures and runnable build; current source retains unconditional action menu."
+  },
+  "pending": [
+    "Actual ordinary-row parent wiring and complete eligibility predicates",
+    "Official error/cancel transport mapping to Message.isComplete",
+    "Full action glyphs, geometry and transition visual parity",
+    "Android, device haptics and notification delivery",
+    "VoiceOver traversal for the invisible action and exact official animation suppression policy"
+  ],
+  "integration": {
+    "mechanism": "Keep menu presence and visibility distinct; opacity/hit-testing/accessibility and execution guard follow the same projection.",
+    "independent_decisions": [
+      "Local sending/accepted/streaming/cancelling remain incomplete; completed, stopped, failed and interrupted retained text allows copying under this frontend contract. Official terminal-to-isComplete transport mapping is not recovered.",
+      "The existing copy/edit menu and36pt slot stay independent. Full action eligibility, user vs assistant placement and footer metrics remain pending.",
+      "Use system Reduce Motion to suppress the new host fade. Official animation suppression byte semantic name remains unknown.",
+      "Unknown/unavailable local states retain prior copy access when original text exists. This compatibility choice is independent of official isComplete semantics."
+    ],
+    "validation": "State truth table plus Chinese/light and English/dark real streaming-to-terminal UI, existing failure/retry/cancel/restore and user edit regressions."
+  },
+  "test_probes": [
+    {
+      "run": "r1",
+      "result": "3 passed, 2 failed",
+      "cause": "Both new tests asserted menu absence in XCTest query while opacity was zero."
+    },
+    {
+      "run": "r2",
+      "result": "1 failed",
+      "evidence": "ios-chat-v579-r2-attachments/manifest.json",
+      "finding": "Streaming screenshot has no assistant menu; isHittable=false passes, exists=false fails. Query existence is not used as visibility or VoiceOver acceptance."
+    },
+    {
+      "run": "r3",
+      "status": "passed: 5 tests, 0 failures, 0 skipped",
+      "scope": "Chat/Work Chinese light and English dark visibility/copy/return, user edit, offline core failure/retry/cancel/restart"
+    }
+  ],
+  "implementation_status": "implemented and simulator regression passed; page remains partial",
+  "validation_results": {
+    "state_groups": 22,
+    "ui_report": "ios-chat-v579-r3.summary.json",
+    "artifact_model_repeat": "identical",
+    "visual_review": [
+      "chat streaming Chinese/light",
+      "chat completed copy/paste Chinese/light",
+      "work streaming English/dark",
+      "work completed copy/paste English/dark"
+    ],
+    "preview": "ios-chat-v579-runtime.json"
+  }
+}

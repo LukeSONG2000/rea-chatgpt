@@ -1,0 +1,523 @@
+{
+  "batch": "v536",
+  "status": "partial",
+  "authority": "official-shipped-artifact-static",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Remote active dictation, explicit owner mode raw1 tapToSend. Presentation mode uses another enum encoding and must not be substituted.",
+  "projection": {
+    "source": "ios-remote-v533-control-projection.asm",
+    "functions": {
+      "primary": "0x16f7110",
+      "microphone": "0x16f6f58",
+      "accessory": "0x16f71c0"
+    },
+    "encoding": "sourceState UInt64 top2bits active=2; lowbyte innerState; bits8..15 owner pushToTalkMode1; bits16..23 completionAction; bit24 touching",
+    "primary_jump": {
+      "address": "0x7decd1b",
+      "base": "0x16f7154",
+      "bytes": [
+        10,
+        12,
+        0,
+        0,
+        22,
+        24,
+        0,
+        20
+      ]
+    },
+    "rows": [
+      {
+        "state": "noInternet",
+        "inner_raw": 6,
+        "primary_action": 2,
+        "primary": "retry",
+        "primary_icon": 8,
+        "microphone_raw": 0,
+        "microphone": "hidden(false)",
+        "showsProgress": false,
+        "prioritizesSendWhileStreaming": false,
+        "primary_hit_testing": true,
+        "primary_disabled_modifier": false,
+        "jump_target": "0x16f71ac; nonzero mode falls through0x16f71b4"
+      },
+      {
+        "state": "recoverableError",
+        "inner_raw": 7,
+        "primary_action": 2,
+        "primary": "retry",
+        "primary_icon": 8,
+        "microphone_raw": 0,
+        "microphone": "hidden(false)",
+        "showsProgress": false,
+        "prioritizesSendWhileStreaming": false,
+        "primary_hit_testing": true,
+        "primary_disabled_modifier": false,
+        "jump_target": "0x16f71b4"
+      },
+      {
+        "state": "error",
+        "inner_raw": 8,
+        "primary": null,
+        "primary_raw": "0x200 optionalnil",
+        "microphone_raw": 0,
+        "microphone": "hidden(false)",
+        "jump_target": "0x16f7154"
+      },
+      {
+        "state": "settingsError",
+        "inner_raw": 9,
+        "primary_action": 3,
+        "primary": "settings",
+        "primary_icon": 9,
+        "microphone_raw": 0,
+        "microphone": "hidden(false)",
+        "showsProgress": false,
+        "prioritizesSendWhileStreaming": false,
+        "primary_hit_testing": true,
+        "primary_disabled_modifier": false,
+        "jump_target": "0x16f71a4"
+      }
+    ],
+    "mode_sensitive_warning": "noInternet mode0 returnsnil but mode1 returnsretry. recoverableError returnsretry for both. This report preserves mode1 through every projection.",
+    "microphone_evidence": "0x16f6fdc..0x16f7030 for mode1 and states6..9 ->0x16f6fd4 lowbyte0",
+    "accessory": {
+      "same_for_all_four_error_states": true,
+      "raw3": "present cancel accessory",
+      "raw4": "optionalnil; consumer0x458028 compares4",
+      "rule": "If settings byte1 showsExpandableControls !=0, raw3 iff byte2 showsCancellableControls !=0, otherwise4. If byte1==0, byte3 showsStreamingTranscript==0 gives3; byte3!=0 gives4 for mode1 error states. usesExpandableControls byte0 is not tested in this getter.",
+      "evidence": "0x16f71c0..0x16f7224; retained DefaultComposerWhisperPresentation field order",
+      "action": "1cecee4 dispatches cancelRecording; concrete16eaa54\u219216f0ae8. Cancellation effects/async outcome documented v533/v534.",
+      "glyph": "OpenAI/Symbols/plus-lg rotated -pi/4 atcenter, confirmedv533-dictation-accessory-findings.",
+      "limit": "A row-wide unconditional cancel override would lose presentation settings. Effective ordinary configuration remains upstream input."
+    },
+    "visibility": "All four states satisfy existing active-row gate16f733c. Error8 primarynil is an omitted primary component, not a disabled send arrow.",
+    "enablement": "For actions2/3 16f72b0 returnsallowsHitTestingtrue,16f7308 returnsdisablefalse. Nonnil callback passes shared nil-action disabling gate. Ancestor isEnabled still applies."
+  },
+  "primary_rendering": {
+    "constructor": "1991fb0..199205c selects retry icon8/settings9 and calls606955c with elevatedPresentation3, showsProgressfalse, nonnilaction",
+    "glyphs": {
+      "retry": {
+        "factory": "0x74f4370",
+        "resource_address": "0x8a53c50",
+        "resource": "OpenAI/Symbols/arrow-rotate-clockwise"
+      },
+      "settings": {
+        "factory": "0x74f78dc",
+        "resource_address": "0x8a555c0",
+        "resource": "OpenAI/Symbols/gear"
+      }
+    },
+    "glyph_size": "Both8/9 take606b6d8..606b7ec. At606b6e0 metadata+0x48 is _attachmentsButtonFontSize, resolved via6111cbc\u21927560ae4, regular weight via6111ec4. At606b740 the same metric is resolved again and6111cb4/15aed0/457ac0/abfeac/757d918 callSwiftUI.View.frame(width:height:alignment:) with width=height=metric,center. Remote base19a0984..19a099c value18.808777429467085. Metric resolution remains environment-dependent.",
+    "background": "606a47c is a color projection consumed in multiple places. For elevated3/icon>1 it returnsstyle.primaryColor. The specific noncapsule retry/settings background is separately established by606b2d8\u2192606b8b0\u219274f611c, which createsOpenAI/Symbols/circle-fill then applies606a47c at606b90c. Do not infer the background shape solely fromthis colorprojection.",
+    "foreground": "606b984\u2192606bc28 selects explicit style.iconColor or theme/primaryColor contrast. This function does not branch on icon/action, so same inherited foreground rule as send.",
+    "disabled_opacity": "6069a3c icon>1 branches6069a50; showsProgressfalse uses inherited PrimaryButtonPartStyle.disabledOpacity. Enabled shared style yields1. Transcribing nil-send explicit opacity1 override must not leak into these states.",
+    "outer_style": "Retains shared MessageInputButtonStyle enabled/opacity/press pipeline and parameterizedhitminimum. Retry/settings have a distinct noncapsule layeredlabel; do not reuse the send-arrow leaf frame orscale.",
+    "limits": [
+      "Effective environment/theme overrides remain inherited",
+      "Pixel geometry and runtime behavior untested"
+    ],
+    "noncapsule_composition": {
+      "validation": "verified-static",
+      "parent_gate": "606ab84 loadsprimaryStyle.usesCapsule(+0x31), true\u2192606afe4 capsule path, false\u2192606b1f0. The noncapsule path606b2bc checks showsProgress and606b2c8..2d4 additionally forces icons8/9 into606b2d8 ZStack regardlessofprogressfalse.",
+      "tree": "ZStack(center){Image(OpenAI/Symbols/circle-fill).foregroundStyle(primaryColor); genericRetryOrSettingsImage.font(attachmentsMetric,regular).frame(width:attachmentsMetric,height:attachmentsMetric,alignment:center).foregroundStyle(projectedGlyphColor)}.font(primaryFontMetric,regular).padding(iconOnlyPadding)",
+      "circle_font": {
+        "source": "606b300 calls606b8b0,606b304\u219261129a8 resolvesprimary.fontSize,606b308\u21926111ec4 regular,606b334 storesfontmodifier",
+        "base": 30,
+        "resource": "OpenAI/Symbols/circle-fill",
+        "resource_address": "0x8a54ac0",
+        "factory": "0x74f611c",
+        "limit": "30 is the inherited circle resource font size; no fixed30 or32 pixel circle diameter asserted."
+      },
+      "padding": {
+        "source": "606b394..3cc readsstyle.iconOnlyPadding atpart+48 andwrites all-edgePaddingLayout",
+        "default_top_leading_bottom_trailing": [
+          0,
+          -3,
+          0,
+          -3
+        ],
+        "default_evidence": "606bf9c..bfa8 readsdoublepair(0,-3) at823bf10 andcopiesit to+48 and+58"
+      },
+      "outer_frame": {
+        "source": "6069e3c and6069e4c bothcall606a31c;6069eb0..6069ee0 builds_FlexFrameLayout withminWidth/minHeightfromthose values,ideal/maxnil,center",
+        "default_min_width": 44,
+        "default_min_height": 44,
+        "fixed_width": false,
+        "fixed_height": false,
+        "rule": "noncapsule606a31c\u2192606a570. If trailingButtonMinimumInteractionSize absent, returnstyle.minHeight; otherwise returnmax(explicitMinimum,style.minHeight??0). Defaultstyle606bfac..bfb4 minHeight=.some(44). Extraenvironmentoverrides remaininputs."
+      },
+      "button_style_shape": "6069a24..34 createsAnyShape(Rectangle), confirmedboundRectanglemetadataaad5988/conformanceaad5978. Shape is a buttonstyle input. ItsforegroundOverride/background/border arezeroed at6069b34..58. Actual circle fill is in thelabeltree above.",
+      "capsule_limit": "usesCapsule true follows606afe4 which framesglyph andaddsCapsulebackground at606b0e4..128; thispass doesnot finish all capsule geometry. Current host mayexplicitly selectfalse as documentedfixture."
+    },
+    "prior_findings_impact": "v535 nil-action send conclusions are preserved. Noncapsule sendicon0/showsProgressfalse takes606b448 andtype823a748 contains _InsettableBackgroundShapeModifier<Color,Circle>. Its606a47c tertiary color is consumed there. Retry/settings8/9 take the separate circle-fill image layer branch; their glyphmetric18.8088 and circlefont30 differ fromsendglyphfont30*16/15. The earlier v536 background wording was under-specified and is narrowed by this follow-up.",
+    "safe_fixture_projection": {
+      "usesCapsule": false,
+      "glyphMetricBase": 18.808777429467085,
+      "circleFontBase": 30,
+      "fontWeight": "regular",
+      "glyphFrame": "square resolvedattachmentsmetric",
+      "iconOnlyPadding": [
+        0,
+        -3,
+        0,
+        -3
+      ],
+      "minimumInteraction": "44x44 default minima,center, no fixedframe",
+      "backgroundColor": "inheritedprimaryColor",
+      "glyphColor": "existing606b984\u2192606bc28 independentcontrast/iconColorprojection",
+      "enabled": "nonnil retry/settingscallback and inheritedisEnabled",
+      "limits": "Only explicitnoncapsulefixture. Parentoverrides andruntimevisualacceptance remain."
+    }
+  },
+  "retry_owner": {
+    "button_callback": "1ced21c capturesBooltrue at+0x51;1ced248..264 emits emptycasepayload3/tag7 retryRecording; dispatchthroughprotocol+108 at1ced288..298",
+    "dispatcher": "a4f65b8+108\u219216f4f5c\u219216eaa54; retrycase16ead18..58",
+    "current_session_guard": "16ead44\u2192179b020 then16ead48 loads current session,16ead4c returnsifnil. Existing session receives16f0e44.",
+    "pure_reducer": "retryRecording is a no-op on phase at16f4888; effectful session updates drive further state.",
+    "session_retry": "16f0e44 reads underlying WhisperViewModel.State. Raw7(noInternet) at16f0f14 branches175bcfc. Other values cancel/replace stateTask and spawn record7df4018\u21921784990\u2192175c944, storing task atfieldoffsetglobalb1c55b8.",
+    "limits": [
+      "Bounded trace does not close whether every branch retranscribes retained audio or starts capture. It does not justify immediately assigninglistening onretry.",
+      "Network/error resolution, reusedaudio ownership, newattemptidentity and observer-to-phase update after retry are not fullyclosed.",
+      "No real recording or networkretries were executed."
+    ],
+    "next_minimal": "Bind175bcfc\u2192175c0a4 protocoloperation and175c944 async continuation to WhisperSession requirement/currentRequest, including audioassetargument, before labeling restart-vs-retranscribe.",
+    "fixture_guidance": {
+      "authority": "independent-design-advice",
+      "text": "Fixture retry can dispatch same scoped retry intent to a controlled provider and await explicit transcribing/result events. Mark those provider transitions synthetic; avoid makingretry mean newrecording bydefault."
+    }
+  },
+  "settings_owner": {
+    "callback": "1ced1c4\u219219921d8",
+    "url_chain": [
+      "1992218\u219276134ec\u21927611e58\u21927611d3c",
+      "7611d70..78 loads aac6570 bound_UIApplicationOpenSettingsURLString",
+      "7611d84 Foundation.URL.init(string:)",
+      "1992220\u2192757b1b8",
+      "757b218 SwiftUI.OpenURLAction.callAsFunction(URL), no-completion overload"
+    ],
+    "conclusion": "Settings action requests platform app settings through the inherited OpenURLAction environment.",
+    "limits": [
+      "No completion callback in selected overload proves permission changed or launchsuccess",
+      "No immediate retry/reset phase mutation identified inselectedcallback",
+      "Inherited OpenURL handler can be overridden byhost"
+    ]
+  },
+  "related_guard": "Retainv534 captured-session identity before completedforwarding. Retry intent does not itself prove cancellation or completion delivery safety.",
+  "validation": {
+    "static": true,
+    "target_runtime": false,
+    "audio": false,
+    "network": false,
+    "production_changes": false
+  },
+  "reused_evidence": [
+    "ios-remote-v533-control-projection.asm",
+    "ios-remote-v533-dictation-lifecycle-findings.json",
+    "ios-remote-v533-dictation-mode-findings.json",
+    "ios-remote-v533-dictation-accessory-findings.json",
+    "ios-remote-v534-result-guard-findings.json",
+    "ios-remote-v535-primary-enabled-findings.json",
+    "ios-remote-v531-dictation-style-primary-body.asm",
+    "ios-remote-v531-dictation-style-primary-action-send.asm",
+    "ios-remote-v531-whisper-nested-metadata.json",
+    "ios-remote-v511-primary-full.asm",
+    "ios-remote-v511-primary-metadata.json",
+    "ios-remote-v508-home-style-findings.json",
+    "ios-remote-v508-primary-style-metadata.json",
+    "ios-remote-v534-mode-content-findings.json",
+    "ios-remote-v534-mode-content-primary-style-default.asm",
+    "ios-remote-v535-dictation-insets-findings.json"
+  ],
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-owner.asm",
+      "sha256": "e326bc1554d761538afe21f5fa1f1178dd31d1b6b38d57e7c8ec00acbde85a94"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-settings-action.asm",
+      "sha256": "8340b6ff9d91a05dfb0db5f8d46c3ac87256c8ade80d8bc67666911c32ffffab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-error-glyphs.asm",
+      "sha256": "054321e395371724d86fd9e6778f9fea11c3934c77e51b38f8f8ba2af39ddee8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-settings-glyph-factory.asm",
+      "sha256": "e0f77c89c828bac297029f999afd85856bb7af162ec809057590b3581999119d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-branch.asm",
+      "sha256": "818eacd57e26847f7b37a00ac120c0f84258fe1e51d0b98e6730e3f24eccdc1c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-branch.json",
+      "sha256": "67e85223b021252e2aa9e976c0e8d5914e75833e81da44a33560c70878331ee5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-settings-destination.asm",
+      "sha256": "b7b82e024aa6d8690cd7c1f1da2edf8ffcaf1b7eb182f740090bd478a54f970c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-settings-destination.json",
+      "sha256": "c06122ba6e2c9faa9d30d730a94e568cfba38485dafa0ff3f0d05850efc7c7cc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-glyph-factory.asm",
+      "sha256": "cdec30f3f8d237592fc8fd3b27d966753987fb3d269bad248a8b9cc5a81bbc34"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-glyph-factory.json",
+      "sha256": "86d791d2c3cec2a310315cacc041653f854e50b67b58836f4fa0dff0ec7c1a55"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-settings-url.asm",
+      "sha256": "7404d8aec8a1e68bdee4536fdd8f8d927de5f00900b9a0e0474197f4d4ddf3c1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-settings-url.json",
+      "sha256": "6bd76cc68c443597c90fc863e07c2ed39a06868cab3a2dc6e64d3836c3a38d09"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-dispatch.asm",
+      "sha256": "12169019433c70ce56b2f9fd9df0548f86b0e77a53ab10bfb80435bc106e90ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-dispatch.json",
+      "sha256": "ff78002e75fa8cf18cb7411035e56ab41d02857d95b1f5f29cf19f6586a81b2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-session-state.asm",
+      "sha256": "dd5dd9b3d08af2d2d6e605e9aa94e95a4483a0def713f5172f69310e10989ea1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-session-state.json",
+      "sha256": "67d8e9dd165ff6514329350df7e2f8604c5c8ec73eaf4c3294ae9717d7842c4e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-settings-url-core.asm",
+      "sha256": "123351aa28122c4a83dd4065231b698293569c0099f204ee675c71f64e1cd850"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-settings-url-core.json",
+      "sha256": "0a535810bb69801b1c8791f4c8a6e1f1ad68c08ddbda4b9a99af808a8ee5d9ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-task.asm",
+      "sha256": "4e9d5a35961c9f6d164ea8644d9029ea276de5362fb4038773cf2ae3800bf07d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-task.json",
+      "sha256": "4f5fb350587a9bc7cfed10df16cd0d6e2f62930277ba22324c2b0c476001e191"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-special-rest.asm",
+      "sha256": "a6be3904bf51ad989078e6f3d7444d9d87891164f13e09aabfa4cd414a262fcf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-special-rest.json",
+      "sha256": "72b23df18c507a4b30702d809f983b4ec69df862650aed0c320552aed3ab883b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-task-body.asm",
+      "sha256": "510adf53d4d92a7ed7375ac42704e2a55c49eceed3b2378653ad2bb634107c64"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-task-body.json",
+      "sha256": "224decf624d6ba3d8dcebb1d50ab7284489c09a86e230834fcd6aa88079161e6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-openurl-action.asm",
+      "sha256": "4453abcb02041efb68d78074c7ac5a0c3b770f23f89e10317557ec629ad7a1e5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-openurl-action.json",
+      "sha256": "c68fa615f6b770a15f42e29b73dbae72717cfd355b7d9be9f8340d3d5b77cfbc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-accessory-tag.asm",
+      "sha256": "1a0dcc0857097e516b3fe57fde0e1dba54e5dfff96150eba90d4d3faa5777629"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-accessory-tag.json",
+      "sha256": "e3c38c5f45d53d8dec816b5fd0811c5f372b05c0420093d4b9834849b98824f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-glyph-size-helpers.asm",
+      "sha256": "3db143307d98ff0363cd56c45a3ad665820e1255721088b04ce8437141400c3c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-glyph-size-helpers.json",
+      "sha256": "0f17db732aaf96aa88df5e9ea7ae30331779d7f17c5ef470012ee27a5179bfb0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-frame-size-helper.asm",
+      "sha256": "f4c62b1c39d98d5f5711e56c5b3552e330aeee0e30937b7ec4808ea49705fab0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-frame-size-helper.json",
+      "sha256": "a32848777505cdf043993246715dc0ecf7d2a4cb87d8642c31b66eb4d95c86c9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-foreground.asm",
+      "sha256": "81ec3147203d340aea5e71c3fd11f0f51ecdb4bfe3638f6b28f40371018acd87"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-foreground.json",
+      "sha256": "1df658264ce12a4d131f382dca4e13b16a2dadb015c01e5bef47d1bc5a73aa9d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-send-font-helper.asm",
+      "sha256": "68fcde5db5ba1e7b201c8754fa5b65c86cd7a80ce14c177cba97b591a0738038"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-error-raw-bindings.json",
+      "sha256": "c7792749704e9684f43cfbd93ed5eb2db3c1d3108da79920d5fa41f1f1a969a7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-image-frame-builder.asm",
+      "sha256": "c84754f9d7a7ec3d3ec10b78ea3e8c7c956ba3e7a00514c11180bd723f51fc77"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-image-frame-builder.json",
+      "sha256": "e6bbb8cb3a40254d5da859f8b7a56364f835633eaae55a40a91cc75947191601"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-frame-call-helpers.asm",
+      "sha256": "1045bc203077c8a75c38d42bff829ae1a5157f9f7a3657aedf2bb147bfdab32d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-frame-call-helpers.json",
+      "sha256": "a64eb006a781f9804c26393f8ff3f0e63773add61b4cf4218c1b83be3b9af102"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-background-closure.asm",
+      "sha256": "aa28b325b8dd0d4412a614f5da1a7fa24d830f87cd45678d1fb01484c90d86d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-background-closure.json",
+      "sha256": "c51332644c8e9cf97c045522632d6a8d9ca7b889cb39136c7b50b189c924c655"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-shape-builder.asm",
+      "sha256": "d766bf2f371fa1995b8b8dfc1699ee6f8688c3e994788c4b7910af62c81c6746"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-shape-builder.json",
+      "sha256": "3b06dc29a9b93d7838d6b7d158fd0ffecd0622a02616cca3f8196d2ef7216c9c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-label-builder.asm",
+      "sha256": "8ec61c65909b11bc312234043b81d875e34c68562bb97b99ff434cb8d1196c85"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-label-builder.json",
+      "sha256": "c9a8db104a8a0071a7f3ba3a219b6a3c5c3cb7e44c9dd89a56219f6fd601a4ce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-image-frame-args.asm",
+      "sha256": "6fe04df65a1268afcb555de17fef8ddb115e04bae9e85974a1f303c95c7337f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-image-frame-args.json",
+      "sha256": "63ec705003e7f4e89558b0ca62591d1c6e318b24516a45597c6a7bdaf05659d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-outer-frame.asm",
+      "sha256": "02283790f8a32a6c4b287bb4eb3640b33518bed5d663d59771b46cbd06adc2b9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-outer-frame.json",
+      "sha256": "b9da759ca2ea630b6797167dd5ae82ebb540a6afb76f8a6c222b410ca85bb3d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-view-types.json",
+      "sha256": "f280738a170b7aebb7fe589d8f7d0562eb7e0442980ada557ab07ba56374c740"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-base-label.asm",
+      "sha256": "84d8cdf998d00303a0fccb72042ba59997319397b5a9ee7439a7aaaa1c764a37"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-base-label.json",
+      "sha256": "6893ef4d16e95e8507e8cea8ddeba268d2a6a5c8f3221d19c240f10b35ea7d8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-style-shape.asm",
+      "sha256": "083cc4c9ca77db603a913dcbdf6497cee43c45a5c0e82508c16aebbe493f6d99"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-style-shape.json",
+      "sha256": "fc3034f2e89605c79d33d513971c14a8ede01cbb1b7d6db94044ee94a25f73a4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-height-source.asm",
+      "sha256": "4f2f5523234d1f58b9cf0f0787fff72da842d77153bc0756fe83794f2e4f1605"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-height-source.json",
+      "sha256": "069960c393a37ba38b0eee32bd4856ea58bc1aeee19fa5a12a5cb604ce31fa2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-background-glyph.asm",
+      "sha256": "ca69474e68f7946b5541186fff72d0f77b37b17c0e44920674162febb7c81c5c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-background-glyph.json",
+      "sha256": "362577186a662a274c8b1f188055f0d0f98edb58dca368aa6a9b0271bb95a0db"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-layered-label.asm",
+      "sha256": "c5fa49766cba0f45d20bbbb480b5db75043670f199b3e0543f467ee5ffd8d15d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-retry-layered-label.json",
+      "sha256": "e2aac3f0ec84257629a960de52ef69fee32402ce94e9e37b01f97dcd66885b31"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-style-content-shape.asm",
+      "sha256": "c7599d3c0edfdab6fce2f79ecf2cba59031a176da28ffc73ea72ab4e3f0a130f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-style-content-shape.json",
+      "sha256": "8203cc8d7dedb4ca39eb1c7e8a24092450edc84488bbe889fff9a97a3d1cbde0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-leaf-types.json",
+      "sha256": "38aacf0d2228de66a1157fcb1432b3f4347c33f928d46bf4e5dffd4c0240df26"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-primary-frame-bindings.json",
+      "sha256": "1313aa82ed25730ff42e88b6b6bfbfe9409d32eea5a968e96262a42964ec0db0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-outer-frame-args-a.asm",
+      "sha256": "51cb2bcbb2b2aa29c096fd4cf71dfcff9788a4341e7809c8736997d8076329cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-outer-frame-args-a.json",
+      "sha256": "fe694d7a5887d2b1e6883c239638ec2a7409348178ad605a4fb5773de8bc8757"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-outer-frame-args-b.asm",
+      "sha256": "a33610895268d100ff25908ab87219eeb49c73f8267ff285324bbbbc51293e5f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-outer-frame-args-b.json",
+      "sha256": "349f28aa38aa1461c16244e88dec1e4a93b53db314943a01d7ba432987b77257"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-outer-frame-args-c.asm",
+      "sha256": "fb69e50af014b9801b43046003e2a3b7856181f4e8b019f500746f05f5896a22"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-outer-frame-args-c.json",
+      "sha256": "2b9f72430ba57d9912d4f698f77ae6c66b7e4c777471a8df5b0018da5baceec0"
+    }
+  ]
+}

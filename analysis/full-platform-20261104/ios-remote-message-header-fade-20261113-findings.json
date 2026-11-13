@@ -1,0 +1,157 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Module4 Remote message header/scroll fade. Three bounded candidate groups: full ThreadViewContent body and parent configuration; actual toolbar/title carrier; actual collection callback. No sidebar/History implementation transplanted.",
+  "authority": "official artifact static metadata/witness/full generic tree and bounded ARM64; current independent host source inspected separately",
+  "prior_evidence": [
+    "ios-remote-v605-title-findings.json",
+    "ios-remote-v605-blur-findings.json",
+    "ios-remote-v606-blur-findings.json",
+    "ios-remote-v516-title-layout-findings.json",
+    "ios-shell-scroll-background-parent-20261113-findings.json"
+  ],
+  "findings": [
+    {
+      "id": "thread-body-exact-tree",
+      "classification": "official-artifact-observation",
+      "owner": {
+        "name": "CodexRemoteThreadViewContent",
+        "descriptor": "0x95ac4bc",
+        "View_conformance": "0x7e118d0",
+        "body_witness": "0x1a51d60",
+        "body_type": "0x8e15dea"
+      },
+      "conclusion": "Updated associated-type witness handling yields the complete root generic tree. It contains the actual toolbarRole wrapper, collection/BottomBars content and opaque helper wrappers. No direct TopBarFadeBackground or VariableBlur nominal is referenced by this root tree. That bounded observation does not establish their global absence inside opaque helpers.",
+      "source": [
+        "ios-remote-message-header-fade-20261113/thread-content-witness.json",
+        "ios-remote-message-header-fade-20261113/thread-content.tree.json",
+        "ios-remote-message-header-fade-20261113/thread-content-raw.json"
+      ],
+      "limits": [
+        "Root contains MessageInputGlassGradientPart as a different nominal; its name alone is not a header-fade owner or a reason to reuse sidebar configuration.",
+        "Opaque wrappers remain by address. Do not claim the entire optical hierarchy is fully restored from root type names."
+      ]
+    },
+    {
+      "id": "actual-native-title-parent",
+      "classification": "official-artifact-observation-reused-and-rechecked",
+      "owner": {
+        "modifier_descriptor": "0x95ac6b8",
+        "modifier_conformance": "0x7e10fcc",
+        "label_descriptor": "0x95af59c",
+        "label_conformance": "0x7e21f48"
+      },
+      "conclusion": "The actual Remote toolbar label remains native ToolbarContent with source placement principal on iOS26+, topBarLeading before26. The enclosing ThreadViewContent applies its environment toolbar role whose proved default is editor. The location label uses leading inner VStack but fixed44 whole-label height and xLarge DynamicType cap; title shared background is hidden on26+. These are independent from History background hosting.",
+      "source": [
+        "ios-remote-message-header-fade-20261113/toolbar-modifier.tree.json",
+        "ios-remote-message-header-fade-20261113/toolbar-location.tree.json",
+        "ios-remote-message-header-fade-20261113/thread-parent-config.asm",
+        "ios-remote-v605-title-findings.json",
+        "ios-remote-v516-title-layout-findings.json"
+      ],
+      "offsets": {
+        "toolbarRole": "1a48ea0 reads Content metadata+68;1a48eb0 reads role;1a48ed0 View.toolbarRole",
+        "defaultRole": "__Key_codexRemoteThreadToolbarRole witness1a43ddc→1a43dd8→7c46e34 bound editor",
+        "placement": "1a3007c..1a30094 principal/legacy leading",
+        "fixedHeight": "1a2d9c4..1a2d9d4→e1a0b0 explicit44",
+        "hiddenSharedBackground": "1a30124 raw2→756b500→756b624 sharedBackgroundVisibility"
+      },
+      "current_host": "NativeConversationHost.swift currently applies toolbarRole(.editor), same availability placement, hidden shared title background and recovered location-label component. These are source-inspection facts, not a new UI/runtime validation.",
+      "limits": [
+        "Full private role overrides under other embeddings remain owner-supplied.",
+        "Do not force horizontal pixel offsets from newer screenshots.",
+        "No actual Remote TopBarFadeBackground constructor was established by these toolbar consumers."
+      ]
+    },
+    {
+      "id": "actual-remote-scroll-effect",
+      "classification": "official-artifact-observation-rechecked",
+      "conclusion": "The original Remote thread observer resolves the transcript collection controller and configures its UIKit topEdgeEffect to softStyle after availability/build admission. This is a real call chain, distinct from the sidebar custom VariableBlur+surface-gradient background.",
+      "source": [
+        "ios-remote-message-header-fade-20261113/thread-scroll-edge.asm",
+        "ios-remote-message-header-fade-20261113/thread-scroll-edge-calls.json",
+        "ios-remote-v605-blur-findings.json"
+      ],
+      "offsets": {
+        "admission": "1a4ccdc..1a4ccec availability and separate byte from77106b4;nil callback guard1a4ccf0",
+        "collection_owner": "1a4ce30→3f86ca0 resolves collection",
+        "get_effect": "1a4ce44 topEdgeEffect",
+        "style": "1a4ce60 softStyle",
+        "set": "1a4ce74 setStyle:"
+      },
+      "current_host": "RecoveredRemoteTranscriptCollection.swift viewDidLoad configures collectionView.topEdgeEffect.style=.soft on26+ unless RecoveredScrollEdgeCompatibility bypasses current system. No copied sidebar blur radius is present.",
+      "limits": [
+        "System softStyle has no source-specified numeric blur radius/stops in this chain. Do not replace it with sidebar radius2 or slider radius10.",
+        "Private admission-key semantic and alternate branch behavior are not expanded here.",
+        "Current visual output was not tested in this read-only task."
+      ]
+    },
+    {
+      "id": "underlap-and-safe-area-source-boundary",
+      "classification": "official-artifact-observation-reused",
+      "conclusion": "The original collection ignores bottom safe area and additionally top on26+, while the page owns explicit insets and observes outer geometry after its bottom-bar modifier. Preserve that paired geometry so native top effect can act on content under the title. A synthetic header overlay alone is not a source fix.",
+      "source": [
+        "ios-remote-v606-blur-findings.json",
+        "ios-remote-v605-blur-findings.json"
+      ],
+      "offsets": [
+        "1a4c608..1a4c630 bottom ignore-safe-area",
+        "1a4c634..1a4c66c top availability",
+        "1a4a390 outer safe-area observer after BottomBars wrappers",
+        "1a4c3b4..410 content insets;1a483fc bars-height choice"
+      ],
+      "current_host": "Current page passes explicit insets, ignoresSafeArea on recovered edge set and .never collection adjustment. This task makes no stronger claim about measured safe-area equivalence.",
+      "limits": [
+        "InitialBottomBarsHeight/additional inset original ordinary-entry defaults and full opaque helper optics remain exact unknowns."
+      ]
+    },
+    {
+      "id": "source-page-background",
+      "classification": "official-artifact-observation-reused",
+      "conclusion": "Actual Thread root background consumer1a4a224 invokes74f0f48 (OneOff/MainSurfacePrimary) before background modifier1a4a274. A common semantic color factory does not establish common fade composition.",
+      "source": [
+        "ios-remote-v606-blur-observer-order.asm",
+        "ios-shell-scroll-background-parent-20261113-findings.json"
+      ],
+      "limits": [
+        "Do not equate shared MainSurfacePrimary color with sidebar TopBarFadeBackground ownership."
+      ]
+    }
+  ],
+  "integration_decision": {
+    "new_proved_missing_configuration": null,
+    "recommendation": "Retain the currently integrated native Remote toolbar role, title placement/background visibility, collection top soft effect and paired underlap/inset owner. This bounded pass does not justify adding the sidebar custom TopBarFadeBackground to Remote.",
+    "if_visible_difference_persists": "First observe current transcript collection frame/contentInset/adjustedContentInset/topEdgeEffect state while scrolling behind title. If a specific opaque fade helper remains implicated, inspect only its actual constructor/call from Thread content, not a same-name component elsewhere."
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "Opaque wrappers in root Body between native collection, BottomBars and toolbar-role environment",
+      "evidence": "thread-content.tree.json retains descriptor addresses, including9751d7c/96dbac4/9754d68/9754b4c/9756574/975677c",
+      "next_minimum": "Bind the actual constructor supplied by Thread content1a49bf8 only if runtime evidence identifies a missing optical layer."
+    },
+    {
+      "boundary": "MessageInputGlassGradientPart consumer and layout ownership",
+      "evidence": "root typeref8e15dea directly includes nominal96ca908",
+      "next_minimum": "Follow its actual parent construction in Thread measured content before assigning it to header, composer or overlay."
+    }
+  ],
+  "haptics": "No explicit haptic call in the inspected title/scroll-effect windows. No feedback added; not a global absence assertion.",
+  "current_host_source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "a64f7cd846598c5b0938a9c80fa0c986cf424cb79434739e8e33a131310d4757",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "f7ca6442208057b6864c1ff57333ce3ccfd54ec6f005f161cf2a4d9b7d0f8aec"
+  },
+  "stop_condition": "Three bounded candidate groups completed. No actual Remote custom sidebar-fade consumer proved; record precise opaque boundaries and stop rather than fabricate a visual fix.",
+  "validation": {
+    "product_changes": false,
+    "builds": false,
+    "devices": false,
+    "network": false,
+    "target_execution": false,
+    "static_only": true
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "batch": 611,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence": "ios-remote-v610-latest-findings.json",
+  "original_mechanism": "HistoryFragment latestItem consumes the group latestActivity, dispatching commandExecution to1a3a4e8/1a3a804 and webSearch to1a3a154/1a3ac48. Absent latestActivity falls back to historyPresentation1a39914.",
+  "missing_integration": "The group host previously exposed only thinking/history, although command/search labels existed in child disclosures.",
+  "implemented": [
+    "Shared command/search label components used by latest group summaries and child disclosures",
+    "Typed explicit selected activity reference and history fallback",
+    "Atomic rejection of dangling/out-of-group selection and missing fallback",
+    "Legacy optional decoding and persisted latest selection",
+    "Core preview fixture shows active latest summaries and terminal history fallback"
+  ],
+  "independent_adaptations": [
+    "Event schema and selection identity",
+    "Group membership/fallback validation",
+    "Synthetic scheduling and terminal fallback policy",
+    "Existing native HStack/body/tertiary outer style remains partially recovered"
+  ],
+  "unimplemented": [
+    "Other latest activity kinds including fileChange/MCP/dynamic/function/externalEvent",
+    "Automatic review latest input mapping to history fallback",
+    "Official upstream grouping/latest-selection producer",
+    "Full reasoning body and exact parent layout"
+  ],
+  "cross_platform": "Reusable candidate is the event contract and test vectors. Android UI and source path require independent recovery.",
+  "validation": {
+    "foundation": "passed",
+    "ui": "5 distinct cases passed across r1/r2",
+    "build": "signed and installed v611; executable hashes match",
+    "r1": {
+      "passed": 2,
+      "failed": 1,
+      "failure": "English dark running-label assertion occurred after repeated 60-second XCTest animation idle waits. Retained recording final frame shows terminal history summary and failed turn. Same test and source rerun in r2.",
+      "recording_frame": "ios-remote-v611-r1-failure.png"
+    },
+    "r2": {
+      "passed": 3,
+      "failed": 0,
+      "coverage": [
+        "English dark latest-summary failure, expansion, two-host isolation and restart",
+        "Chinese combined journey with approvals, outputs, search, files, attachments and follow-up",
+        "Chinese shared core-preview controls including model/permission/context"
+      ]
+    },
+    "visual": [
+      "Chinese light running latest command/search labels and terminal history summary",
+      "English dark running labels and failed terminal retention",
+      "Manual Chinese dark core preview with submitted Latest activity and expanded history command group"
+    ],
+    "runtime": "ios-remote-v611-runtime.json",
+    "limitations": [
+      "r1 English dark test missed running state after repeated XCTest idle waits; r2 identical source/test passed",
+      "Exact parent style, automatic aggregation and unsupported activity variants remain incomplete",
+      "Single offline account; no service backend or Android execution"
+    ]
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "0ad914a8083da21e50a0b7d40b59ac1f4217a8dbf2b14859c6c25aaa6a0da1db",
+    "implementation/ios/Sources/NativeConversationHost.swift": "aaf3388b7931d0d8e18d311c670bce4b82569536907b963be29d6f7a597e43c6",
+    "implementation/ios/UITests/HostInteractionTests.swift": "2ac429f2d2c874905b34edfdc6fd4dafefe81f4d15dc984a499a281f2df98d21",
+    "implementation/ios/TextTests/main.swift": "ada65b052efcb1b3050c56abea5dc1d6bec2b206f0502ccdbc0414bb042111bc",
+    "implementation/ios/Tools/core-preview.json": "3d92f46694198beedf86c17a9cf6625b5f783706752fc0e88c00054ba5354af0"
+  }
+}

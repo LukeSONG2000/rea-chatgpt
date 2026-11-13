@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "module": 1,
+  "platform": "iOS",
+  "reference_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "scope": "Bounded steady-state direction admission; source windows do not recover complete recognition precedence.",
+  "observations": [
+    {
+      "sites": [
+        "0x629ed4..0x629ee0"
+      ],
+      "conclusion": "Own pan requires abs(horizontal)>abs(vertical); equality rejects."
+    },
+    {
+      "sites": [
+        "0x629efc ->0x6f12ec",
+        "0x629f04..0x629f24",
+        "0x629f28..0x629f6c"
+      ],
+      "conclusion": "State tags1/2 (known open-valued states in retained state-isOpen evidence) take close capability plus direction-adjusted velocity<0; tag0 takes open capability plus velocity>0; other nonzero state branch accepts. Do not collapse all associated/interrupted states to an idle Bool.",
+      "limits": "Helper6f12ec subtracts1 and compares unsigned against2. Original state capabilities/assignment remain separate."
+    },
+    {
+      "sites": [
+        "0x62a398..0x62a5a0"
+      ],
+      "conclusion": "Separate recognition precedence exists beyond this dominant/direction gate; its complete view/scroll/selection/navigation mapping is not recovered here."
+    }
+  ],
+  "implementation": {
+    "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+    "change": "Only when current host is stably open (animator=nil), reject closePan whose mirrored velocity is nonnegative before region admission. Active animator reversal remains existing independent adapter.",
+    "retained": "Edge-only opening, exposed-surface/header-only closing, nested Back heuristic, original normalized/projection geometry and ended-only feedback remain separately labelled."
+  },
+  "not_implemented": [
+    "Full original UIPan area/admission and swipe/scroll/selection failure precedence",
+    "Original associated-state interruption map and spring velocity remaining-distance math",
+    "No fabricated global simultaneous recognition or additional gesture haptics"
+  ],
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/delegate-arbitration.asm",
+      "sha256": "5f4f92f4d6e97d25380f9ce8e963b0513f994fde8d4d871c6c03b6946c385ad0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/delegate-arbitration.json",
+      "sha256": "d6b4775d6b06cdd3073e85f20746798038dc4437b35c8bdebccaae7dbc63c1f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/direction-call.asm",
+      "sha256": "f9b5e177c357d25bcb4ddf05161cd4d731377880e704ff94b61e8cb0af79bae9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/direction-call.json",
+      "sha256": "7a2033acc0bdc78697ba9d4b1a44439ec257f947c2e0689cd8135d6f039c3a28"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/should-begin.asm",
+      "sha256": "36f397536a9139b8a7fb1e52d56c0134470b80570707070f81f97c403bc61212"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/should-begin.json",
+      "sha256": "db1d1baaadaeeff4404f203dc4f952b6572aeb7aa24710f4f64f9ba131b58439"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/state-copy.asm",
+      "sha256": "1f9ed5445bdb9c83ab93a2dcf00ae753381dceb9b86ab3c5cbf1849c8d4a0fbf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/state-copy.json",
+      "sha256": "04012ba31f48f74bb6922af0f18f4703af485bccbc37d9349a831897eac5bb33"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/state-extract.asm",
+      "sha256": "5cf808e2f34fcb0a23515b01e924465ac6ddd318b15373df6ffb49ab8da6bf53"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-shell-gesture-fifth-20261113/state-extract.json",
+      "sha256": "bd419000fb9a339b3ed86920bc90e898883f4d6acd95eb99a8ca65df147d7172"
+    }
+  ]
+}

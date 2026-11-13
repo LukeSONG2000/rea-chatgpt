@@ -1,0 +1,64 @@
+{
+  "batch": 611,
+  "implemented": [
+    "Shared command/search label components used by latest group summaries and child disclosures",
+    "Typed explicit selected activity reference and history fallback",
+    "Atomic rejection of dangling/out-of-group selection and missing fallback",
+    "Legacy optional decoding and persisted latest selection",
+    "Core preview fixture shows active latest summaries and terminal history fallback"
+  ],
+  "official_evidence": "ios-remote-v611-integration-findings.json",
+  "independent_adaptations": [
+    "Event schema and selection identity",
+    "Group membership/fallback validation",
+    "Synthetic scheduling and terminal fallback policy",
+    "Existing native HStack/body/tertiary outer style remains partially recovered"
+  ],
+  "unimplemented": [
+    "Other latest activity kinds including fileChange/MCP/dynamic/function/externalEvent",
+    "Automatic review latest input mapping to history fallback",
+    "Official upstream grouping/latest-selection producer",
+    "Full reasoning body and exact parent layout"
+  ],
+  "validation": {
+    "foundation": "passed",
+    "ui": "5 distinct cases passed across r1/r2",
+    "build": "signed and installed v611; executable hashes match",
+    "r1": {
+      "passed": 2,
+      "failed": 1,
+      "failure": "English dark running-label assertion occurred after repeated 60-second XCTest animation idle waits. Retained recording final frame shows terminal history summary and failed turn. Same test and source rerun in r2.",
+      "recording_frame": "ios-remote-v611-r1-failure.png"
+    },
+    "r2": {
+      "passed": 3,
+      "failed": 0,
+      "coverage": [
+        "English dark latest-summary failure, expansion, two-host isolation and restart",
+        "Chinese combined journey with approvals, outputs, search, files, attachments and follow-up",
+        "Chinese shared core-preview controls including model/permission/context"
+      ]
+    },
+    "visual": [
+      "Chinese light running latest command/search labels and terminal history summary",
+      "English dark running labels and failed terminal retention",
+      "Manual Chinese dark core preview with submitted Latest activity and expanded history command group"
+    ],
+    "runtime": "ios-remote-v611-runtime.json",
+    "limitations": [
+      "r1 English dark test missed running state after repeated XCTest idle waits; r2 identical source/test passed",
+      "Exact parent style, automatic aggregation and unsupported activity variants remain incomplete",
+      "Single offline account; no service backend or Android execution"
+    ]
+  },
+  "handoff": {
+    "language": "Chinese",
+    "appearance": "dark following existing preference/system",
+    "page": "Remote fixture-a completed-thread",
+    "prompt": "Latest activity",
+    "state": "completed, inspection group expanded",
+    "left_running": true,
+    "display": "built-in Color LCD only"
+  },
+  "retention": "ios-remote-v611-retention.json"
+}

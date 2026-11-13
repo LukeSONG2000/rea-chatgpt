@@ -1,0 +1,220 @@
+{
+  "batch": "v529",
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary effort slider visual surface and VariableBlur mask/implementation. No implementation edits or target execution.",
+  "gradient": {
+    "status": "verified_static",
+    "owner": "0x6099d14",
+    "builder": "0x6099db4..0x6099e98",
+    "startPoint": "top",
+    "endPoint": "bottom",
+    "stops": [
+      {
+        "location": 0,
+        "color": "clear",
+        "opacity": 0
+      },
+      {
+        "location": 0.18,
+        "color": "clear",
+        "opacity": 0
+      },
+      {
+        "location": 0.3,
+        "color": "black",
+        "opacity": 0.12
+      },
+      {
+        "location": 0.42,
+        "color": "black",
+        "opacity": 0.55
+      },
+      {
+        "location": 0.5,
+        "color": "black",
+        "opacity": 1
+      },
+      {
+        "location": 0.58,
+        "color": "black",
+        "opacity": 0.55
+      },
+      {
+        "location": 0.7,
+        "color": "black",
+        "opacity": 0.12
+      },
+      {
+        "location": 0.82,
+        "color": "clear",
+        "opacity": 0
+      },
+      {
+        "location": 1,
+        "color": "clear",
+        "opacity": 0
+      }
+    ],
+    "radius": 10,
+    "radius_store": "0x6099eac..0x6099eb0",
+    "frame": {
+      "width": "presentationSize.width",
+      "height": 520,
+      "position": "x = presentationSize.width / 2, y = source/current-expanded frame midY"
+    },
+    "frame_evidence": "ios-remote-v528-slider-style-findings.json",
+    "allowsHitTesting": false,
+    "opacity": "Outer state-dependent opacity retained from v528, effective transition value not independently closed in this scope.",
+    "evidence": [
+      "ios-remote-v528-slider-style-view-content.asm",
+      "ios-remote-v529-slider-gradient-helpers.asm",
+      "ios-remote-v529-slider-gradient-alpha-helper.asm",
+      "ios-remote-v529-slider-gradient-opacity-helper.asm",
+      "ios-remote-v529-slider-gradient-color-helper.asm",
+      "ios-remote-v529-slider-gradient-black-helper.asm"
+    ]
+  },
+  "variableBlur": {
+    "status": "verified_static_mechanism",
+    "type": "SwiftUIStyleguide.VariableBlur",
+    "descriptor": "0x971f0e8",
+    "protocol": "SwiftUI.UIViewRepresentable",
+    "conformance": "0x83846d0",
+    "fields": [
+      "radius",
+      "mask"
+    ],
+    "makeUIView": "0x6f375e0 ->0x6f374a4",
+    "updateUIView": "0x6f375f4 ->0x6f374f8",
+    "makeCoordinator": "0x6f375f8 ->0x6f3744c ->0x6f58c44 ->0x6f36ae4",
+    "uiView": "UIVisualEffectView",
+    "uiViewEvidence": [
+      "class binding0xaac63f0",
+      "initWithEffect: stub0x7c655c0",
+      "setEffect: stub0x7c75d40"
+    ],
+    "coordinatorEffectSlot": "+0x10",
+    "maskProducer": {
+      "owner": "0x6f36b30",
+      "type": "ImageRenderer<ConditionalContent<LinearGradient,SwiftUIToolbelt.CurvedGradient>>",
+      "sliderBranch": "LinearGradient",
+      "construction": [
+        "0x6f36bfc Gradient.init(stops:)",
+        "0x6f36c08 LinearGradient.init(gradient:startPoint:endPoint:)",
+        "0x6f36c48 ImageRenderer.init(content:)",
+        "0x6f36c50 ImageRenderer.uiImage"
+      ],
+      "maskDimensions": "No explicit frame, scale or proposedSize setter observed in this function. Runtime image dimensions unverified."
+    },
+    "factory": {
+      "owner": "0x6f36f28",
+      "receiver": "UIBlurEffect class, binding0xaac6058",
+      "selector": "effectWithVariableBlurRadius:imageMask:",
+      "selectorStorage": "0x8a31160 base64 encoded reversed selector",
+      "selectorConstruction": [
+        "0x6f36f78 base64 helper0x2a9968c",
+        "0x6f370bc UTF8 decode",
+        "0x6f371a0 helper0x6fdb9f8 loads ReversedCollection Sequence witness at0xaad8098",
+        "0x6f371b4 String.init(sequence:)",
+        "0x6f371cc NSSelectorFromString"
+      ],
+      "availabilityCheck": "0x6f371f4 respondsToSelector:",
+      "implementationLookup": "0x6f37204 methodForSelector:",
+      "call": "0x6f3721c indirect IMP call with class x0, selector x1, radius d0 and UIImage mask x2",
+      "classification": "Dynamically invoked private UIKit effect factory. No CAFilter or SwiftUI shader on the traced path.",
+      "signatureEvidence": {
+        "0x6f36d38": "radius loaded into d0",
+        "0x6f36d3c": "mask UIImage into x0",
+        "0x6fdecf0..0x6fdecf8": "preserves mask x19 and radius v8",
+        "0x6f3720c..0x6f3721c": "class x0, selector x1, radius d0, image x2, indirect IMP result x0",
+        "abi": "ObjC class method returning object, arguments double/CGFloat64 radius and UIImage object after self/_cmd"
+      }
+    },
+    "fallback": {
+      "ifMaskRenderFails": "0x6f36d20 cbz ->0x6f36d64..0x6f36d6c",
+      "ifSelectorUnsupported": "0x6f371f8 ->0x6f37224 log ->0x6f372c0..0x6f372c4",
+      "effect": "UIBlurEffect.effectWithStyle(raw8), systemMaterial",
+      "enumEvidence": "Local Xcode iPhoneSimulator.sdk UIKit.framework/Headers/UIBlurEffect.h sequential enum, systemMaterial=8",
+      "failureLog": "Variable blur effect is not supported"
+    },
+    "evidence": [
+      "ios-remote-v529-slider-variable-blur-metadata.json",
+      "ios-remote-v529-blur-witness-0x83846d0.json",
+      "ios-remote-v529-slider-variable-blur-owner.asm",
+      "ios-remote-v529-slider-variable-blur-coordinator.asm",
+      "ios-remote-v529-blur-selector-bindings.json",
+      "ios-remote-v529-slider-blur-mask-types.json",
+      "ios-remote-v529-slider-blur-reverse-helper.asm",
+      "ios-remote-v529-slider-blur-argument-helper.asm"
+    ]
+  },
+  "rail": {
+    "status": "verified_static",
+    "owner": "0x609bdd0",
+    "compositionInnerToOuter": [
+      "Capsule filled Color.clear",
+      "GlassEffectContent regular tint nil interactive false, shape Capsule",
+      "GlassFallbackBackgroundContent style ChatGPT/bg/primary, shape Capsule",
+      "state-dependent opacity"
+    ],
+    "evidence": [
+      "0x609bf68 Color.clear",
+      "0x609bfd0 x0=0, helper0x459840 setsx1=0,w2=0",
+      "0x609bff4 ->0x756d3ec GlassEffectContent",
+      "0x609c018 ->0x74ecd44 literal0x8a50f60 ChatGPT/bg/primary",
+      "0x609c028 AnyShapeStyle",
+      "0x609c070 ->0x756d520 GlassFallbackBackgroundContent",
+      "0x756dbf4..0x756dc24 raw0 mapsGlass.regular",
+      "0x756dc4c .tint(nil)",
+      "0x756dc5c .interactive(false)"
+    ],
+    "types": [
+      "GlassEffectContent descriptor0x97583e8 accessor0x758687c",
+      "GlassFallbackBackgroundContent descriptor0x9758374 accessor0x7586888"
+    ],
+    "fallbackDispatch": "VersionedViewContent wrapper uses enable-glass helper0x77107f8, per prior v505 evidence. Available branch preserves input content, fallback appends background(style,shape).",
+    "files": [
+      "ios-remote-v528-slider-style-rail-content.asm",
+      "ios-remote-v529-slider-material-wrapper-metadata.json",
+      "ios-remote-v529-slider-material-wrappers.asm",
+      "ios-remote-v529-slider-material-types.json",
+      "ios-remote-v529-slider-glass-body.json",
+      "ios-remote-v529-slider-glass-zero-helper.asm",
+      "ios-remote-v529-slider-rail-color.asm",
+      "ios-remote-v505-searchinput-findings.json"
+    ]
+  },
+  "implementationGuidance": {
+    "sourceBacked": [
+      "Use nine alpha stops as mask image for variable radius blur, not as visible black/clear paint.",
+      "Keep slider-wide blur radius10 and height520 distinct from title/sidebar scroll-edge blur.",
+      "Use regular glass with interactive false for outer Capsule, fallback bg/primary.",
+      "Preserve source unsupported-selector/mask-failure fallback if using original mechanism."
+    ],
+    "localAdaptationBoundary": [
+      "The private selector availability and behavior have not been exercised on the current simulator.",
+      "A public UIVisualEffectView with an alpha gradient mask is an independent compatibility approximation and does not reproduce the original variable-radius factory.",
+      "No pre-existing source-backed VariableBlur renderer was found in implementation. Existing RecoveredRemoteCardGlass has regular.interactive(true) and different shape, so only generic availability/resource plumbing is reusable."
+    ]
+  },
+  "unknowns": [
+    "Thumb style owner0x609c2bc branches on0x609dc40 selecting bg/primary vs token0x74ed654, and conditional black opacity fromliteral0x7ce2358. Branch meaning, secondary token and complete layered thumb style unclosed in this bounded scope.",
+    "Effective mask raster dimensions/scale under ImageRenderer defaults unverified.",
+    "Full opacity/animation transition state remains owned by v528/v529 gesture investigation.",
+    "No runtime/private-factory compatibility or visual parity claim."
+  ],
+  "validation": {
+    "originalAppRun": false,
+    "network": false,
+    "productionEdits": false,
+    "testExecution": false,
+    "staticReportJSON": "validated with json.tool"
+  }
+}

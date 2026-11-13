@@ -1,0 +1,80 @@
+{
+  "batch": 588,
+  "status": "partial",
+  "scope": "Remote diff file preview lifecycle",
+  "evidence": "ios-diff-v588-findings.json",
+  "implemented": [
+    "Scoped asynchronous file resource interface",
+    "Loading and cancellation",
+    "Failure and retry",
+    "Unavailable full-file state",
+    "Dismissal and changed-snapshot cancellation",
+    "Stale and duplicate result rejection"
+  ],
+  "independent_adaptations": [
+    "Resource request identity and lifecycle reducer",
+    "Snapshot loader and deterministic test failures/delays",
+    "Inline loading/error/retry presentation and visibility when resource absent",
+    "QuickLook presentation inherited from v587",
+    "Failure-once injection and delay are owned by the snapshot loader actor; the view receives only the asynchronous resource interface"
+  ],
+  "validation": {
+    "foundation": "passed; ios-diff-v588-text-r3.log",
+    "ui": {
+      "report": "ios-diff-v588-r3-summary.json",
+      "passed": 3,
+      "failed": 0,
+      "coverage": [
+        "Chinese light and English dark",
+        "failure then retry, cancel then reopen",
+        "complete file and native close return",
+        "unavailable resource",
+        "dismiss loading and switch host",
+        "draft, wrapping and restart"
+      ]
+    },
+    "visual": {
+      "status": "inspected",
+      "screenshots": "ios-diff-v588-r3-attachments/manifest.json",
+      "scope": "Chinese light and English dark failure UI, full file preview, unavailable resource; exact official parity remains partial"
+    },
+    "runtime": "ios-diff-v588-runtime.json",
+    "retention": "ios-diff-v588-retention-final.json"
+  },
+  "unfinished": [
+    {
+      "page": "Remote diff/file browser",
+      "priority": "P1",
+      "missing": "Official resource action owner, file browser entry/list and file-loading navigation",
+      "next": "Trace WorkspaceBrowser view action owner and connect returnable Files entry with synthetic scoped data",
+      "acceptance": "Files list, selection, loading/error and preview return preserve task identity and drafts"
+    },
+    {
+      "page": "Remote diff",
+      "priority": "P2",
+      "missing": "Exact loading/error placement, header layout, line gutters/colors/comments",
+      "next": "Recover relevant body/configuration branches",
+      "acceptance": "Source-backed layouts observed light/dark"
+    },
+    {
+      "page": "Device/platform",
+      "priority": "device",
+      "missing": "Physical device, haptics, notification delivery, external display and Android",
+      "next": "Separate device/platform validation",
+      "acceptance": "Observed platform behavior"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "c15ce74dba1a48160f5c34bafe12b14e5935a0204b57454b5f2c007adf633f04",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "bb709faec46b011f4a53f3e958498de746b4b3f33143311afd6689de6a29c7bf",
+    "implementation/ios/Sources/NativeConversationHost.swift": "35444a053ae35a606d66e06e06e9b21a449b8d985525562557e97b3ddf065456",
+    "implementation/ios/UITests/HostInteractionTests.swift": "e3c21f8a6ce502901a31e79068f0c9e796d30a961dc1545ba0c867ef03c489c8",
+    "implementation/ios/TextTests/main.swift": "a4e4173ec929cf59e65387a9e3870562631542d3e854e53d8179f8cbffc83e39"
+  },
+  "iteration_history": [
+    "r1 three UI cases passed with initial fixture injection",
+    "r2 three UI cases passed with injection moved to loader actor",
+    "r3 final provider cancellation handling and complete three-case regression"
+  ],
+  "cross_platform": "iOS293 evidence only. Resource request/state isolation is independent frontend logic; Android native file/browser owner and visual behavior require separate evidence and runtime acceptance."
+}

@@ -1,0 +1,92 @@
+{
+  "batch": "v518",
+  "date": "2026-11-07",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Remote home compact file chip: spacing6, padding6, bg/secondary, radius16, caption single line and middle truncation with maxWidth140. Separate preview and remove actions.",
+    "FileIconView kind/Office resources, scaled16 glyph/28 background and radius10, native ImageResource foregroundStyle/font construction.",
+    "Attachment strip fixedSize(horizontal:false,vertical:true), loading ProgressView frame32x32. Recent-photo provider absent in current host."
+  ],
+  "evidence": [
+    "ios-remote-v518-file-chip-findings.json",
+    "ios-remote-v518-file-icon-findings.json",
+    "ios-remote-v518-attachment-loading-error-findings.json"
+  ],
+  "validation": {
+    "model": "ios-remote-v518-model.log",
+    "ui": [
+      {
+        "summary": "ios-remote-v518-ui.summary.json",
+        "passedTests": 2,
+        "failedTests": 1,
+        "runtimeWarnings": []
+      },
+      {
+        "summary": "ios-remote-v518-r2-ui.summary.json",
+        "passedTests": 0,
+        "failedTests": 1,
+        "runtimeWarnings": []
+      },
+      {
+        "summary": "ios-remote-v518-r3-ui.summary.json",
+        "passedTests": 3,
+        "failedTests": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "summary": "ios-remote-v518-r4-ui.summary.json",
+        "passedTests": 2,
+        "failedTests": 1,
+        "runtimeWarnings": []
+      },
+      {
+        "summary": "ios-remote-v518-r5-ui.summary.json",
+        "passedTests": 1,
+        "failedTests": 0,
+        "runtimeWarnings": []
+      }
+    ],
+    "manual": "Native Files picker imported only REA-picker-fixture.txt into Chinese preview. White terms glyph visible on blue background.",
+    "visual": [
+      "ios-remote-v518-file-chip-chinese.png",
+      "ios-remote-v518-file-chip-english-xxxl.png",
+      "ios-remote-v518-default-language-preview.png"
+    ]
+  },
+  "failure_analysis": [
+    "Initial/r2 loading assertions queried progressIndicators; runtime AX is ActivityIndicator. Original failures retained; corrected query passed r3.",
+    "r4 file icon tests passed. Image draft navigation asserted absence immediately during transition and failed. r5 waits boundedly for actual absence and passes; production path unchanged."
+  ],
+  "independent_adaptations": [
+    "Local attachment materialization, scope/session/import-token state, QuickLook and thumbnail conversion.",
+    "UIImage delete-glyph fitting and local file-kind projection remain adapters. Eight-second import delay is confined to explicit file-chip fixture."
+  ],
+  "remaining": [
+    "Official error text owner/getter precedence located but not connected to current independent import alert.",
+    "Complete composer geometry/material and recent-photo provider conditions.",
+    "Video/camera, thread attachment wiring, upload/submit service, physical-device haptics and process-restart attachment restoration.",
+    "Identifier/MIME fallback classification and full FilePreviewInfo conversion.",
+    "Latest permission/context/model quick control/advanced/dictation screenshots reference-only; exact version unknown."
+  ],
+  "preview": {
+    "pid": 95649,
+    "default_system_language": "Chinese observed with no language override",
+    "scope": "Remote home synthetic task/all-capability fixture",
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "left_running": true,
+    "external_display": "Only built-in detected; placement unaccepted"
+  },
+  "git": "No commit or push in this batch",
+  "source_hashes": {
+    "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift": "2eb72526d23ade0b912806548d577d7a4bc5b0bcef6ad1264b8a4564c4481b00",
+    "implementation/ios/Sources/NativeConversationHost.swift": "f157d7d2ed4d96118fcc00ad7a5123992bc3dab84332a621865066236fb83c7c",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "9bdcba0082bc7428db859c9626f3133371be89f882663e42947e3bf29e9fd335",
+    "implementation/ios/UITests/HostInteractionTests.swift": "91b84d15e4ea764396f5c8aa897bca14ca9fdcd5a8d95db04d23aa340799a4e2"
+  },
+  "executable_sha256": "255d18067cf492909b94c58cf34efe20707403f854982bf4788bfcab70746204"
+}

@@ -1,0 +1,68 @@
+{
+  "batch": "v505",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "integration": [
+    "Official begin/endSearching transitions with native input focus and marked-text update guard",
+    "Search consumer bypasses saved section collapse only for trimmed nonempty query",
+    "Source row and catalog requests retained while searching; cancel clears query and restores saved collapse",
+    "Official field metrics, resources and close-button Glass/fallback branches integrated"
+  ],
+  "independent_adaptations": [
+    "Local title substring matching and fixture result membership; official matching/ranking/pagination unresolved",
+    "Chinese Search chats placeholder is an independent translation",
+    "Native host modal navigation, capability inputs and unsupported-service boundaries remain independent"
+  ],
+  "validation": {
+    "ui_final": {
+      "passed": 5,
+      "failed": 0,
+      "summaries": [
+        "ios-remote-v505-r2-ui.summary.json",
+        "ios-remote-v505-r3-ui.summary.json"
+      ]
+    },
+    "ui_earlier": "One passing initial search case before final result/Glass integration; separate from final count",
+    "model_text": "passed, /tmp/rea-v505-model-final.log",
+    "device_build": "signed505, codesign passed and CFBundleVersion verified",
+    "physical_device": "unavailable at22:02; latest successful install496",
+    "preview": {
+      "version": 505,
+      "pid": 4059,
+      "state": "Chinese All task list; search dismissed; kept running",
+      "screenshot": "ios-remote-v505-list-preview.png"
+    },
+    "visual": "Large-text search and return screenshots reviewed; manual focus/cancel observed. CUA text delivery did not populate query, so manual IME acceptance remains open. XCTest input passed.",
+    "retention": "fixed build directories reused; no stale packages on22:04 check"
+  },
+  "limits": [
+    "Full official pixel equivalence and physical-device touch unaccepted",
+    "Principal toolbar width follows intrinsic content in current taskList fixture; standard layout measured-width path under investigation",
+    "Close-button shadow effective parameters unresolved; fallback not runtime-tested",
+    "Actual IME composition, official empty-results styling, parent modal vs sidebar routing remain partial",
+    "No commit/push"
+  ],
+  "next_minimum_actions": [
+    "Recover title menu and source-bound grouping consumers",
+    "Close standard/taskList toolbar measurement distinction",
+    "Restore list composer before further Remote transcript, Chat/Work and haptic work"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "abc3111b066c1ff7d93587a80ed0a20e7caeaa61f3385fc3d601d4bf28697131",
+    "implementation/ios/Sources/OfficialText.swift": "120b96386419a0925389ade5aa108f8043e89724b42b7c0cc9a26e5853f8ae91",
+    "implementation/ios/Sources/RemoteWorkspacePresentation.swift": "67be8038d6ca333a227fa02d19a888d7e27833b66e52a6034ce667bac7fd0e0f",
+    "implementation/ios/Resources/OfficialTranslations.json": "eb8c92ab3e800573983147e7866b2933036baf99d583fb0bfa7afaf6538dcf5f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "80ac605f1e5dc756ea80d8c3691b8c553d611ef7c08258042503e7178a318008",
+    "implementation/ios/TextTests/main.swift": "eda1ae03e2a506e075419c71579c4092d933153995ac6abbcaa83099d3e13f39",
+    "implementation/ios/Tools/prepare-official-text.py": "57f90b1769c0081a62e1ffb76e3e21249d78d0f51ec3b83ea98fa1e13270eb27"
+  },
+  "evidence_hashes": {
+    "ios-remote-v505-navigation-findings.json": "606fa434c7d37ec571ca8a5a439cfe6df3bc4d5b1ca982c24285ab0972540a0b",
+    "ios-remote-v505-searchinput-findings.json": "6321639bd215d7cc161a375790cc8783c0f19d257f9c51ae46aabaf155c446c7",
+    "ios-remote-v505-search-results-findings.json": "a13ab7163f94d9db8b79c90e8adfa5c36b9cd0cffb428c78fc0d9a633de27f45",
+    "ios-remote-v505-r2-ui.summary.json": "ecc57c0fa2de6ff1b19b85288937d0971892a72a9811919740b01d616e823626",
+    "ios-remote-v505-r3-ui.summary.json": "61e693d9017937ea34bca6dc60b9ffe41c9ba88806156d74ab985303ff58a579"
+  }
+}

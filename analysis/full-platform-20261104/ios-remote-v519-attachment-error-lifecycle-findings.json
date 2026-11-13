@@ -1,0 +1,272 @@
+{
+  "batch": "v519",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static-instructions-and-import-bindings",
+  "scope": "Composer local attachment error owner and import lifecycle, bounded follow-up; original runtime, production, tests, docs and preview untouched.",
+  "confirmed": [
+    {
+      "offsets": [
+        "0x1980fd0",
+        "0x197ccc8",
+        "0x16b4508",
+        "0x7c4bb38",
+        "0x7c4bb2c"
+      ],
+      "conclusion": "__localAttachmentErrorMessage is field-vector slot0xf8 of CodexRemoteMessageInputView, read and written through SwiftUI LazyState.wrappedValue. Input field slot0x64 is named attachmentErrorMessage. They are separate storage/inputs."
+    },
+    {
+      "offsets": [
+        "0x197c338..0x197c364",
+        "0x1980f30..0x1980fd0"
+      ],
+      "conclusion": "Initial local error LazyState construction writes zero String words. This initialization does not prove a reused page is reset on thread/host switch."
+    },
+    {
+      "offsets": [
+        "0x198ac2c..0x198ac9c",
+        "0x1d9329c"
+      ],
+      "conclusion": "Photo selection task checks nonempty selection and Task.isCancelled before handling. On admitted processing start it dispatches setLoadingAttachments(true), then writes local error nil via x0=x1=0 and197ccc8. Opening the menu itself is not this clear boundary."
+    },
+    {
+      "offsets": [
+        "0x198be30..0x198be90",
+        "0x1d9329c"
+      ],
+      "conclusion": "File importer completion task checks Task.isCancelled then dispatches setLoadingAttachments(true) and writes local error nil before branching on the captured Result. Clear is tied to processing completion input, not simply presenting fileImporter."
+    },
+    {
+      "offsets": [
+        "0x198bfc4..0x198bfd0",
+        "0x198c18c..0x198c198",
+        "0x1da954c",
+        "0x1daa2d0",
+        "0x198b1ec..0x198b1f0",
+        "0x198b72c..0x198b730",
+        "0x198ba3c..0x198ba40",
+        "0x198bac4..0x198bac8",
+        "0x198bb4c..0x198bb50",
+        "0x1d8a674",
+        "0x1d8b400"
+      ],
+      "conclusion": "Accepted file/photo error branches obtain Foundation Error.localizedDescription and write that String to local error via197ccc8. These source branches support adapter-supplied localized error text; they do not establish a single generic unsupported-transfer error string."
+    },
+    {
+      "offsets": [
+        "0x198af74..0x198afc0",
+        "0x240e6a4..0x240e7c0"
+      ],
+      "conclusion": "Photo validation helper can return an optional error String which is written directly to local error at198afc0. Helper compares x0 against20971520 and remaining52428800-x0 againstx3, then uses total/single size localization keys. Complete argument production and all media cases remain partial."
+    },
+    {
+      "offsets": [
+        "0x198ea7c..0x198eae4"
+      ],
+      "conclusion": "validateDataTransferOpen callback at field-vector slot0xb4 is throwing. A thrown error is localized then written into local error at198ead0. Return Bool is true only when no error was thrown."
+    },
+    {
+      "offsets": [
+        "0x198bfc4..0x198bfe0",
+        "0x198c094..0x198c118",
+        "0x198c18c..0x198c1ac"
+      ],
+      "conclusion": "File success appends prepared attachments and sets loading false; error path writes local error then sets loading false. The examined success tail contains no further197ccc8 call, consistent with earlier start clearing."
+    }
+  ],
+  "cancellation": [
+    {
+      "path": "fileImporter captured Result.failure",
+      "offsets": [
+        "0x198be94..0x198bedc",
+        "0x198bf90..0x198bfd0"
+      ],
+      "finding": "The examined failure branch tests Task.isCancelled before displaying localized error. A dedicated NSUserCancelledError exclusion is not established here."
+    },
+    {
+      "path": "async file conversion catch",
+      "offsets": [
+        "0x198c164..0x198c180",
+        "0xae031c",
+        "0x76401e0",
+        "0x7640060..0x76401e0"
+      ],
+      "finding": "Separate error predicate76401e0 can suppress error, then Task.isCancelled can also suppress it. Predicate checks NSError domain/code(-999) in one branch and a dynamic-cast/protocol path in another. Domain and protocol names remain unbound. Do not collapse this to NSUserCancelledError or call it exclusively task cancellation."
+    }
+  ],
+  "localized_strings": [
+    {
+      "address": "0x88dd000",
+      "value": "codex_remote_attachments_total_size_error"
+    },
+    {
+      "address": "0x88dd030",
+      "value": "Attachments are too large to send together."
+    },
+    {
+      "address": "0x88f15b0",
+      "value": "codex_remote_attachment_single_size_error"
+    },
+    {
+      "address": "0x88f15e0",
+      "value": " is too large to send."
+    }
+  ],
+  "integration_ready": [
+    "Display locally owned import errors inline using v518 consumer styling and precedence; source getters/setters now bound.",
+    "Clear the local error when admitted noncancelled photo/file processing starts; preserve source distinction between presentation and processing.",
+    "Use independent import adapter error wording with explicit origin when official conversion-specific message is unavailable.",
+    "Preserve separate cancellation classifications. Do not label a locally chosen NSUserCancelledError filter as recovered from this bounded branch."
+  ],
+  "precise_gaps": [
+    {
+      "boundary": "CodexRemoteComposerState._attachmentErrorMessage descriptor0x95a9d20 and parent constructor that supplies field-vector0x64",
+      "status": "unclosed",
+      "next_minimal_action": "Resolve class ivar storage/read/write accessors and trace constructor argument through Home and Thread parents separately. Name in metadata is established; producer, reset and scope lifecycle are not."
+    },
+    {
+      "boundary": "removeAttachment owner and per-composer identity replacement",
+      "status": "unclosed",
+      "next_minimal_action": "Trace upstream handle(raw8) and parent composerID identity binding. No evidence here authorizes clearing error on remove, task switch, host filter switch, or arbitrary editor updates."
+    },
+    {
+      "boundary": "error predicate76401e0 dependencies17987e0 and7cdbda0 symbolic type",
+      "status": "unclosed",
+      "next_minimal_action": "Bind domain helper and dynamic-cast type before selecting error-code suppression behavior."
+    },
+    {
+      "boundary": "unsupported-transfer conversion callback763822c and Photos loadTransferable continuations",
+      "status": "unclosed",
+      "next_minimal_action": "Trace error enum/localization producer. Bounded search found localizedDescription and size keys only."
+    }
+  ],
+  "tool_boundary": "REA MCP binary_session reported no active target; analysis providers unavailable in that server configuration. Existing direct Mach-O/ARM64 tools were used without configuration changes. A candidate188e300..580 window is retained but unbound and supports no named-property claim.",
+  "validation": {
+    "static": "bounded findings above",
+    "runtime": "not performed",
+    "visual": "not performed"
+  },
+  "evidence": [
+    {
+      "path": "ios-remote-v519-cancellation-cases.asm",
+      "sha256": "1a058db9f79c02c1598dd6f54742bcd1a45a14d102beb164c757e2f668a90d97"
+    },
+    {
+      "path": "ios-remote-v519-cancellation-predicate.asm",
+      "sha256": "dec00ec669ead6bfc1ad43e406a967f11ebc5d94be3ac496029c2590a2603e95"
+    },
+    {
+      "path": "ios-remote-v519-composer-background-content.asm",
+      "sha256": "92cb63b4703bb86a164dc86e7c1f6a71be9d4ba992d95523e5d64cf448640819"
+    },
+    {
+      "path": "ios-remote-v519-composer-geometry-helpers.asm",
+      "sha256": "36e4f2410efab34155f4ce1571d16a8c0e01d87da0f787225200703f368e923a"
+    },
+    {
+      "path": "ios-remote-v519-error-action-a.asm",
+      "sha256": "fa2c2d0126a8ffdad1520892bd3404f74cb52d5f52812dd93381a27ee1db4097"
+    },
+    {
+      "path": "ios-remote-v519-error-action-b.asm",
+      "sha256": "2106882dc8fa77458648cdb112174c0988646a7d6e9e0eb68d27898de75dd302"
+    },
+    {
+      "path": "ios-remote-v519-error-action-c.asm",
+      "sha256": "3add09689a7f90d58a8e04518b14c6e16b2abff7ca4c5b689addce29d779857f"
+    },
+    {
+      "path": "ios-remote-v519-error-action-d.asm",
+      "sha256": "b1dc37b846a7860118e761c6b9a583743cea660231a679676132d1e4e91a40e6"
+    },
+    {
+      "path": "ios-remote-v519-error-cancel-check.asm",
+      "sha256": "c27c82606d75623559b740f45fff8ef9aaaa2be2b69e512f52fae5eb4c654190"
+    },
+    {
+      "path": "ios-remote-v519-error-init-default.asm",
+      "sha256": "b4e7830954b30276c42a17f6656686f7b0b92b2a3b146ba5ebb018356c325a25"
+    },
+    {
+      "path": "ios-remote-v519-error-lazy-set.asm",
+      "sha256": "49c7bbe36c6ec932329d491df53c3be4ea950cba67e80d020d947793b079a57a"
+    },
+    {
+      "path": "ios-remote-v519-error-nil-helper.asm",
+      "sha256": "cc21e607f5cc131d4cf7356fba9169a7504054320cd4f5cfaa7f8e6a90a32d14"
+    },
+    {
+      "path": "ios-remote-v519-error-setter-thunk-a.asm",
+      "sha256": "14f99a4e23622babecf67f9fd5cebbce101b6256301a4f3d101d63420e7269a3"
+    },
+    {
+      "path": "ios-remote-v519-error-setter-thunk-b.asm",
+      "sha256": "d36453bbd7900fb9cfc1a5f060a359d6c8585f619ebebf867752d457a8754632"
+    },
+    {
+      "path": "ios-remote-v519-error-string-helper.asm",
+      "sha256": "26625cc2e39eb2fa54c50ef8fac112ddfc71ff9b737eb3eede5b548ae4f747d4"
+    },
+    {
+      "path": "ios-remote-v519-file-error-handler.asm",
+      "sha256": "c09458b6e0487fb3d4d121eaabfbaac0db0265d28bd81826c35646af6f644b14"
+    },
+    {
+      "path": "ios-remote-v519-file-error-localize.asm",
+      "sha256": "54cedbffd24cb84d6c5182dead685b301f88316737523da4bcd4fd3519b9ead5"
+    },
+    {
+      "path": "ios-remote-v519-file-result-failure.asm",
+      "sha256": "31645ef1d5fe8e4ac0aff594fd57ff305ddf0aa540ce4b09624004c50df6f45a"
+    },
+    {
+      "path": "ios-remote-v519-local-error-helpers.asm",
+      "sha256": "06981d5980333638a80ed60cb198f00d03e583e2c42696afcd144462ed1954dd"
+    },
+    {
+      "path": "ios-remote-v519-local-error-init.asm",
+      "sha256": "feac5e3c4ce16a6fd880adf06ca89c2984ba8d99e833019cab3a59a2d7bedd81"
+    },
+    {
+      "path": "ios-remote-v519-local-error-read.asm",
+      "sha256": "abbdfc6775e2d961e782e7b28af130b59aa4bc42e27b1f5d65cafbbf37985913"
+    },
+    {
+      "path": "ios-remote-v519-local-error-setter.asm",
+      "sha256": "19a78e599e4b2938ee6269b8bfcb0075dd056f5e8c59d273ff2c694a1e3852f1"
+    },
+    {
+      "path": "ios-remote-v519-photo-limit-error.asm",
+      "sha256": "4f0b5435c217c2051b605d46a0907ea3dbca191cf6b60053217eb513bd980e55"
+    },
+    {
+      "path": "ios-remote-v519-state-error-accessors.asm",
+      "sha256": "ee222c5f0be54fc26faa286efb2ee76ab58114af07c9d0a5c662e978f1bfaa61"
+    },
+    {
+      "path": "ios-remote-v519-error-bindings.json",
+      "sha256": "2eafff80f176ea9c33e4cbf711acfe33cb2a5c1004353cb399e04751e2c4bb78"
+    },
+    {
+      "path": "ios-remote-v519-local-error-xrefs.json",
+      "sha256": "9089c45eac963b0987c84f513b15725079c11b16891af4dab6df976cac406730"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-findings.json",
+      "sha256": "1679caf73a396c4e8dc1e0d440d4579064209dc1fa4886c33d9d1b874abbcc8e"
+    },
+    {
+      "path": "ios-remote-v517-attachment-picker-photo-result-tail.asm",
+      "sha256": "3974de453df52301ef0cf3c1ac9d27e4b2fc87383edfec37b5e0f4b02b80a7fc"
+    },
+    {
+      "path": "ios-remote-v514-action-fields.json",
+      "sha256": "b12c84e68d5314f3b5dbc6b666adaa501fde57dd4225019e559e748aba70cc82"
+    }
+  ]
+}

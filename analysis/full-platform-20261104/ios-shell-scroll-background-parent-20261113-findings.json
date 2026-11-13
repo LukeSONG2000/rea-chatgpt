@@ -1,0 +1,194 @@
+{
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Module1 sidebar native scroll backgrounds. Three bounded candidate groups: corrected top Body reference, actual shared top-fade body, bottom CurvedGradient body. No host edits, devices, builds, network or target execution.",
+  "authority": "official shipped metadata, resolved protocol witnesses, full generic trees and bounded ARM64 constructors",
+  "prior_report": "ios-sidebar-scroll-edges-20261112-followup.json",
+  "correction": {
+    "old_conclusion": "Top inner Body unresolved/opaque at8d8b79d.",
+    "new_conclusion": "The old resilient witness helper did not distinguish the low-bit-marked associated-type reference. Its unadjusted target8d8b79d points one byte inside a symbolic pointer. The valid adjacent type starts8d8b79c and decodes completely as nested ModifiedContent around TopBarFadeBackground; no opaque node remains in this Body. Preserve historical report; do not globally mask all witness implementation addresses.",
+    "proof": "associated-type-tag-observations.json plus sidebar-top-raw.json and sidebar-top.tree.json",
+    "limits": [
+      "Only the selected Body associated-type witnesses are corroborated here. The implementation-field signed relative offsets have low bit1.",
+      "No local official Metadata.h was found during the bounded lookup, so generic ABI semantics for all witness kinds, indirectness or all signed values is not claimed.",
+      "Function body witnesses are called at their exact original addresses. Requirement descriptor indirection/tag interpretation is a separate field rule."
+    ]
+  },
+  "findings": [
+    {
+      "id": "original-sidebar-parent",
+      "evidence_type": "official-artifact-observation-reused",
+      "conclusion": "HistoryViewController independently hosts navigationHeaderBackground and bottomActionItemsBackground as siblings of content and controls; shared UIHostingController builder clears its view background. This is a source-specific owner, not UINavigationBar translucency or Remote topEdgeEffect.",
+      "offsets": [
+        "viewDidLoad1296464→1296648 invokes129b9cc top;1296688 invokes129ba2c bottom",
+        "top hosting type7daf848",
+        "bottom hosting type7dae8b0",
+        "shared builder12a02a4→12a0304 hosting init;12a0390 clear background"
+      ],
+      "source": [
+        "ios-sidebar-scroll-edges-20261112-followup.json"
+      ]
+    },
+    {
+      "id": "sidebar-top-full-body",
+      "evidence_type": "official-artifact-observation",
+      "owner": {
+        "descriptor": "0x95927ac",
+        "name": "HistoryNavigationHeaderBackgroundView",
+        "conformance": "0x7dad2d4",
+        "body": "0x127c094→0x127c004"
+      },
+      "tree": "ModifiedContent<ModifiedContent<ModifiedContent<TopBarFadeBackground,_PaddingLayout>,_PaddingLayout>,_AllowsHitTestingModifier>",
+      "source": [
+        "ios-shell-scroll-background-parent-20261113/sidebar-top.tree.json",
+        "ios-shell-scroll-background-parent-20261113/sidebar-top-raw.json",
+        "ios-sidebar-scroll-edges-20261112/background-bodies.asm"
+      ],
+      "parameters": {
+        "bottom_padding": "127c024 bottom edge;127c038 -10 unless reduceTransparency read127c030 is true, then0",
+        "top_padding": "127c04c top edge;127c064 -24",
+        "allowsHitTesting": false
+      },
+      "limits": [
+        "Padding values are wrapper inset inputs, not absolute blur heights. Original header controller frame constraints remain independently unresolved."
+      ]
+    },
+    {
+      "id": "top-fade-full-body",
+      "evidence_type": "official-artifact-observation",
+      "owner": {
+        "name": "SwiftUIStyleguide.TopBarFadeBackground",
+        "descriptor": "0x971ef5c",
+        "conformance": "0x83843f8",
+        "body": "0x6f34f38→0x6f34d20",
+        "actual_tuple_builder": "0x6f34d58"
+      },
+      "tree": "ZStack<TupleView<(SwiftUIStyleguide.VariableBlur, SwiftUI.LinearGradient)>>",
+      "source": [
+        "ios-shell-scroll-background-parent-20261113/top-fade.tree.json",
+        "ios-shell-scroll-background-parent-20261113/top-fade-body.asm",
+        "ios-shell-scroll-background-parent-20261113/top-fade-body-calls.json"
+      ],
+      "conclusion": "The sidebar top really layers a variable blur and a color fade. A color gradient alone omits a source layer; a fixed blur alone omits the source mask and fade.",
+      "parameters": {
+        "blur_radius": {
+          "value": 2.0,
+          "proof": "6f34df4 packed double0x4000000000000000,6f34df8 stores first VariableBlur field; mask payload follows metadata field offset at6f34dfc/e00"
+        },
+        "blur_mask": {
+          "type": "VariableBlur.Mask",
+          "descriptor": "0x971f110",
+          "gradient_stops": [
+            {
+              "color": "clear",
+              "location": 0
+            },
+            {
+              "color": "black",
+              "location": 1
+            }
+          ],
+          "startPoint": "bottom",
+          "endPoint": "top",
+          "proof": [
+            "6f34dcc UnitPoint.bottom;6f34dd4 UnitPoint.top;6f34ddc invokes13d6250",
+            "13d628c..6294 clear@0;13d62a0..62a8 black@1",
+            "6f34de0..de8 stores gradient mask data"
+          ]
+        },
+        "color_gradient": {
+          "asset": "OneOff/MainSurfacePrimary",
+          "stops": [
+            {
+              "opacity": 0.85,
+              "location": 0
+            },
+            {
+              "opacity": 0.75,
+              "location": 0.7
+            },
+            {
+              "color": "clear",
+              "location": 1
+            }
+          ],
+          "startPoint": "top",
+          "endPoint": "bottom",
+          "proof": [
+            "6f34e30/6f34e5c invoke74f0f48 original color factory",
+            "6f34e38..e50 opacity literal7cdb408=.85 atlocation0",
+            "6f34e64..e7c .75 atliteral7cdb410=.7",
+            "6f34e88..e90 clear@1",
+            "6f34e9c top;6f34ea4 bottom;6f34ebc LinearGradient init"
+          ]
+        }
+      },
+      "limits": [
+        "VariableBlur actual native renderer/filter implementation and platform admission were not traced here. Restoring its public host approximation must be labelled an independent optical adapter.",
+        "Radius2 is proven source configuration, not proof a fixed Gaussian blur with radius2 gives the same optical result.",
+        "TopBarFadeBackground has no own stored reduceTransparency field; surrounding sidebar padding changes with environment. Do not claim that this alone proves the renderer accessibility fallback."
+      ]
+    },
+    {
+      "id": "bottom-gradient-narrow-followup",
+      "evidence_type": "official-artifact-observation",
+      "owner": {
+        "name": "SwiftUIToolbelt.CurvedGradient",
+        "descriptor": "0x9753cb8",
+        "conformance": "0x84b7cf0",
+        "body": "0x75401e0→0x753fff0"
+      },
+      "tree": "_ShapeView<Rectangle,Gradient>",
+      "source": [
+        "ios-shell-scroll-background-parent-20261113/curved-gradient.tree.json",
+        "ios-shell-scroll-background-parent-20261113/curved-gradient-body.asm"
+      ],
+      "conclusion": "Bottom remains a color ShapeStyle gradient, distinct from top variable blur. Body computes UnitCurve values and Color.mix in perceptual color space for its generated color sequence. The original caller supplies start color opacity0,end opacity.85,easeIn,steps10.",
+      "limits": [
+        "This Body carries Gradient as ShapeStyle, not a LinearGradient with explicit UnitPoint direction. Actual rendered direction/default ShapeStyle mapping was not independently established; do not invent bottom→top from appearance.",
+        "Existing negative insets remain dependent on original bottom host bounds."
+      ]
+    }
+  ],
+  "integration": {
+    "can_restore": [
+      "Dedicated original sidebar top background owner composed of variable-blur mask layer plus semantic surface-color fade.",
+      "Exact top-fade stop positions and opacities, source blur radius2/mask orientation, original external padding and hit-testing configuration.",
+      "Keep bottom color-gradient owner separate.",
+      "Reuse same293 VariableBlur original leaf mechanism already evidenced by slider v529; expose explicit source-specific parameters while retaining independently sized mask rasterization."
+    ],
+    "must_remain_adapter": [
+      "Original top/bottom host bounds and mask raster dimensions/scale/proposedSize are not closed.",
+      "Dynamic factory compatibility is runtime-dependent; preserve original systemMaterial fallback.",
+      "Do not repurpose Remote list/transcript system scroll edge configuration as sidebar proof."
+    ]
+  },
+  "haptics": "No new gesture or explicit haptic consumer in these background-only bodies; not a global absence claim.",
+  "stop_condition": "Three selected candidate groups exhausted; exact optical backend, generic ABI universal parser fix and parent layout constraints not expanded.",
+  "validation": {
+    "product_changes": false,
+    "builds": false,
+    "device_actions": false,
+    "target_execution": false,
+    "network": false
+  },
+  "reuse_followup": {
+    "authority": "existing official293 evidence independently compared; no new renderer disassembly",
+    "same_leaf": true,
+    "source": [
+      "ios-remote-v529-slider-variable-blur-metadata.json",
+      "ios-remote-v529-slider-material-findings.json",
+      "ios-remote-v528-slider-style-types.json"
+    ],
+    "proof": "TopBar full tree and original slider record82395f0 both resolve SwiftUIStyleguide.VariableBlur descriptor971f0e8/accessor6f50d94, same fields radius/mask and UIViewRepresentable conformance83846d0. Its makeUIView6f375e0→6f374a4/updateUIView6f375f4→6f374f8/coordinator6f375f8 chain is already bound in v529. No per-consumer alternate native leaf is introduced here.",
+    "renderer": "Original shared coordinator6f36b30 rasterizes supplied mask using ImageRenderer;6f36f28 invokes UIBlurEffect effectWithVariableBlurRadius:imageMask: after runtime selector check. Missing mask/selector fallback is systemMaterial(raw8), per existing293 evidence.",
+    "can_share": "Parameterize current shared host compatibility adapter by explicit radius/stops/startPoint/endPoint: TopBar radius2 clear@0→black@1 bottom→top; preserve slider radius10 and its existing nine-stop top→bottom distribution.",
+    "adapter_boundary": "Raster image dimensions/scale/proposedSize in current host remain independent. Sharing this optical adapter does not prove native runtime availability or exact original raster size. Header bounds remain separate unknown.",
+    "correction_to_initial_limit": "The new bounded top pass did not retrace renderer internals; subsequent existing-evidence comparison closes shared original renderer identity/mechanism. The earlier per-finding untraced note describes this pass only, not absence of existing evidence."
+  }
+}

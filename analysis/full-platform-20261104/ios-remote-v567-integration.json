@@ -1,0 +1,90 @@
+{
+  "batch": 567,
+  "status": "local_browser_core_acceptance_passed_page_partial",
+  "pages": [
+    "Remote conversation",
+    "Shared browser preview"
+  ],
+  "evidence": "ios-remote-v567-findings.json",
+  "implementation": [
+    "Shared per-origin URL presentation for UIKit messages, Remote Markdown and error cards",
+    "Injectable resource provider with deterministic local HTML and explicit pending-service state",
+    "Back/forward/reload, title/current address, progress, failure/retry, close and originating-page preservation",
+    "Current WKNavigation identity guards completion/failure callbacks"
+  ],
+  "independentAdaptations": [
+    "WebKit browser host, controls/layout, local scheme and synthetic content",
+    "Resource-provider selection and pending-service presentation"
+  ],
+  "tests": {
+    "foundation": "passed; ios-remote-v567-contract-tests.log",
+    "r1": {
+      "passed": 2,
+      "failed": 2,
+      "issue": "Missing navigation title on details page"
+    },
+    "r2": {
+      "passed": 2,
+      "failed": 2,
+      "issue": "Test assumed compact composer after error"
+    },
+    "r3": {
+      "passed": 2,
+      "failed": 0
+    },
+    "r4": {
+      "passed": 6,
+      "failed": 0,
+      "scope": "Combined, rich-message and error-card CN/light + EN/dark; preceding r3 build"
+    },
+    "r5": {
+      "passed": 4,
+      "failed": 0,
+      "scope": "Final rebuilt browser and pending-service error-card CN/light + EN/dark"
+    },
+    "distinctPassedCases": 8,
+    "finalBuildPassedCases": 4,
+    "visual": "r5 retry-success Chinese and English screenshots inspected; manual normal Markdown entry and return confirmed",
+    "warnings": "Existing AppEnum to-0.0 display-representation warnings recorded in r2/r4; no new warning in r5 summary"
+  },
+  "runtime": "ios-remote-v567-runtime.json",
+  "remaining": [
+    {
+      "priority": 1,
+      "area": "Official browser routing",
+      "gap": "Remote URL consumer to OpenURLHandlingViewModifier and ManagedSafariView policy not connected by evidence",
+      "next": "Trace concrete Remote URL action parent and policy input when closing page fidelity",
+      "acceptance": "Version-bound entry/owner/policy trace and corresponding navigation test"
+    },
+    {
+      "priority": 1,
+      "area": "Browser visual and capabilities",
+      "gap": "Exact Safari visual, external opening/download/auth and live resource acquisition remain partial or pending service",
+      "next": "Compare official wrapper configuration and inject an authorized future resource provider",
+      "acceptance": "Separate visual and service acceptance"
+    },
+    {
+      "priority": 2,
+      "area": "Remote reasoning and search",
+      "gap": "ID.reasoning producer-to-rendered-content and search-result URL producer/consumer remain unresolved; PresentedPlan optional fields cannot close reasoning",
+      "next": "Trace exact producers and owners when these block the core page",
+      "acceptance": "History/disclosure or result link through normal entry with scoped return state"
+    },
+    {
+      "priority": 1,
+      "area": "Other Remote page feedback",
+      "gap": "Leading title placement, complete user-rich-content, project composer slots, visual and motion fidelity remain partial",
+      "next": "Keep source-bound feedback items in the page ledger",
+      "acceptance": "Normal CN/EN light/dark core operation and source-linked visual comparison"
+    },
+    {
+      "priority": 2,
+      "area": "Device and platform",
+      "gap": "Physical haptics, actual notification delivery, external display and Android remain unaccepted",
+      "next": "Separate device/platform validation when available",
+      "acceptance": "Actual runtime evidence"
+    }
+  ],
+  "nextBatch": "Chat/Work core page journey with existing shared preview entry; retain precise Remote gaps for follow-up",
+  "retention": "Fixed .build reused; cleanup preflight found no eligible desktop bundle targets; historical evidence retained"
+}

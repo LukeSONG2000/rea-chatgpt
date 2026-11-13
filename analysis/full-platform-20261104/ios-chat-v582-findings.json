@@ -1,0 +1,63 @@
+{
+  "batch": 582,
+  "status": "partial",
+  "authority": "official artifact observations with independent native integration",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "decision": "Expose the already supported assistant copy operation inline and apply the verified legacy action-label metrics. Preserve the user-message edit/copy menu and existing completion gate.",
+  "source": [
+    {
+      "symbol": "MessageRowModeling / MessageRowViewModel",
+      "offsets": [
+        "0x38e3ad0",
+        "0x38cb7d0",
+        "0x38e3ad4",
+        "0x38e3ad8"
+      ],
+      "observation": "Distinct primary display and overflow arrays are consumed by the action part. See v581 collection verifier."
+    },
+    {
+      "symbol": "MessageRowInlineActionsPart / LabelModifier",
+      "offsets": [
+        "0x38cb5c0",
+        "0x3d95d4c",
+        "0x3d95d60",
+        "0x3d95d78"
+      ],
+      "observation": "Legacy icon base14, padding6, rectangular content shape. Refreshed branch has separate16/20/8 metrics. Full parent geometry and selected runtime variant remain partial."
+    },
+    {
+      "symbol": "MessageCellAction",
+      "offsets": [
+        "0x96ed944",
+        "0x96ed9e8"
+      ],
+      "observation": "copy carries an array of CopyFormat, whose cases include default and markdown. The host copies its stored original payload."
+    },
+    {
+      "symbol": "action arrangement inputs",
+      "offsets": [
+        "0x3946bb8",
+        "0x3946bc0",
+        "0x3946bdc"
+      ],
+      "observation": "Inputs resolve to messageFeedbackActionTreatment, selectedFeedback and reactionMessageFeedbackMode through ivar offset storage0xb4f6888/0xb4f6510/0xb4f6560. Metadata declaration order does not establish enum raw encoding."
+    }
+  ],
+  "missing_integration": "The host routed all actions through a trailing44x36 menu and allocated a fixed36pt collection slot, discarding the separate inline surface and scaled label geometry.",
+  "host_adaptation": [
+    "Assistant direct-copy eligibility uses the existing originalText/completion contract. Ordinary official role-specific array population is still partial.",
+    "User-message menu remains available for copy and edit-as-draft. Its leading/trailing containment is host policy.",
+    "Legacy metrics are the verified default branch selected for this bounded integration. Ordinary official parent style overrides are unverified.",
+    "Native image fitting, semantic secondary tint and collection measurement are independent host adapters. Full FlowLayout, combined feedback, favorite and overflow operation policies remain open."
+  ],
+  "validation": "Static artifact guard passed;22 state groups passed;6 distinct UI cases passed across r1/r2; r1 retained one selector ambiguity, fixed and retested in r2. Source and visual parity remain separate.",
+  "next_source_break": [
+    "0x3945cf8 action producer ordinary role partition",
+    "0x395bf3c treatment and feedback enum encodings",
+    "0x395c950 display projection and style overrides"
+  ]
+}

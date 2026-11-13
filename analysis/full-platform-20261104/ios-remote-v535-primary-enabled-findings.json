@@ -1,0 +1,125 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "authority": "official-shipped-artifact-static",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary CodexRemoteWhisperPrimaryButton action1/loading, icon0/send, showsProgress=false. Nil closure, enabled state, hit testing, background, glyph and disabled opacity are independently traced.",
+  "input_projection": {
+    "prior_report": "ios-remote-v534-primary-loading-findings.json",
+    "conclusion": "action1 sets icon0; optional action function is nil except provider raw0xb uses no-op0x2eacc. showsProgress preserves input bit16."
+  },
+  "shared_enabled_gate": {
+    "validation": "verified-static",
+    "sites": [
+      "0x6069834 action pair at component+8",
+      "0x60699e8..0x6069a20 nil action -> captured bool",
+      "0x610fb0c keypath0x823b4f8",
+      "0x1225d0..0x1225e0 ->0x159678"
+    ],
+    "keypath_import": {
+      "slot": "0xaad1c20",
+      "symbol": "_$s7SwiftUI17EnvironmentValuesV9isEnabledSbvg"
+    },
+    "rule": "isEnabled := inherited isEnabled AND NOT(action == nil). The no-op nonnil closure and nil closure therefore differ for this gate."
+  },
+  "parent_modifiers": {
+    "validation": "verified-static",
+    "witness": "0xa4fb4e8",
+    "a0": {
+      "function": "0x16f76d0 ->0x16f72b0",
+      "consumer": "0x199214c..0x1992164",
+      "type_record": "0x7e1d850",
+      "type": "SwiftUI._AllowsHitTestingModifier",
+      "action1_result": false,
+      "rule": "For nonnil primary raw action1, 16f72ec assigns0 and16f72f4 retains0; stored bit0 is false. This prevents hits, without changing opacity."
+    },
+    "a8": {
+      "function": "0x16f76dc ->0x16f7308",
+      "consumer": "0x19920e8..0x199213c",
+      "type_record": "0x7e1d860",
+      "type": "SwiftUI._EnvironmentKeyTransformModifier<Bool>",
+      "action1_result": false,
+      "rule": "16f7330 returns0 when action lowbyte is nonzero. Captured value is used by44ab38 ->1225d0 as inheritedBool AND NOT(capturedBool), so no extra disabling from this parent for action1."
+    }
+  },
+  "background": {
+    "validation": "verified-static",
+    "function": "0x606a47c",
+    "sites": [
+      "0x606a494 fieldvector+0x38 elevatedPresentation",
+      "0x606a4b4 ->0x702194 tests icon<=1",
+      "0x606a4bc..0x606a4c0 tests action function nil",
+      "0x606a504 ->0x74ed87c",
+      "0x74ed8a8..0x74ed8b0 string0x8a51590"
+    ],
+    "rule": "For ordinary elevatedPresentation raw3, icon0 and nil action use ChatGPT/icon/tertiary. A nonnil no-op closure follows inherited style.primaryColor instead. Their distinction must be preserved."
+  },
+  "disabled_opacity": {
+    "validation": "verified-static",
+    "style": "MessageInputButtonStyle",
+    "field_vector_slot": "metadata+0x3c, field11 disabledOpacity",
+    "sites": [
+      "0x6069a3c..0x6069a70",
+      "0x6069b5c..0x6069b6c",
+      "0x608046c..0x6080498",
+      "0x60806c0..0x6080784"
+    ],
+    "nil_action_icon0": "6069a4c nil branch sets x25=x22=Double1 and tag0; stored as present disabledOpacity(light1,dark1).",
+    "style_consumer": "Reads style._isEnabled. Enabled picks1 directly, disabled invokes60806c0. Present override returns its light/dark double. Nil fallback0.12light/0.2dark is bypassed by this explicit1 override.",
+    "application": "6080498 writes chosen opacity into the outer ModifiedContent opacity field of the composed button label. Type0x82344d8 includes label foreground, clipping, background, compositing and outer opacity.",
+    "exception": "Nonnil action and showsProgress=false use inherited PrimaryButtonPartStyle.disabledOpacity. The raw0xb no-op-action exception therefore needs actual provider semantics before asserting the same override."
+  },
+  "glyph_foreground": {
+    "validation": "verified-static-rule; partial-effective-environment",
+    "sites": [
+      "0x606b984",
+      "0x606b9c4..0x606b9e4",
+      "0x606ba24..0x606ba2c",
+      "0x606bc64..0x606bc6c",
+      "0x606bd08..0x606bd94"
+    ],
+    "rule": "Ordinary elevatedPresentation raw3 calls606bc28. Explicit style.iconColor at+0x10 wins. Otherwise its contrast/theme path reads style.primaryColor, theme and ColorScheme. It does not derive foreground from606a47c tertiary-background fallback and does not read action here.",
+    "implementation_consequence": "Keep previously established primary glyph contrast/style projection. Do not recompute it from tertiary background. Fixed white/light and black/dark only follow the accepted default AppForeground configuration; effective arbitrary parent overrides remain partial."
+  },
+  "open_boundaries": [
+    {
+      "question": "What is provider raw0xb?",
+      "next": "1991f7c witness+0x30 source semantic mapping. Required only for distinguishing nil versus no-op-action exception."
+    },
+    {
+      "question": "Are further Remote style overrides effective?",
+      "next": "CodexRemotePrimaryButtonModifier descriptor0x95ae378 and ancestor primary style environment. This pass confirms shared consumer rules, not all inherited color values."
+    },
+    {
+      "question": "Does system runtime add other rendering effects?",
+      "next": "Independent simulator/device visual acceptance. No official app execution performed."
+    }
+  ],
+  "safe_integration": "For explicitly proven ordinary action-nil fixture: disabled interaction, allowsHitTesting=false, tertiary circle background, explicit disabledOpacity1, preserved independent glyph contrast path, showsProgress=false and send arrow. All are separate properties.",
+  "evidence": [
+    "ios-remote-v534-primary-loading-findings.json",
+    "ios-remote-v531-dictation-style-primary-body.asm",
+    "ios-remote-v511-primary-full.asm",
+    "ios-remote-v511-button-style-metadata.json",
+    "ios-remote-v533-control-projection.asm",
+    "ios-remote-v535-primary-enabled-helpers.asm",
+    "ios-remote-v535-enabled-transform.asm",
+    "ios-remote-v535-opacity-and-keypath.asm",
+    "ios-remote-v535-parent-modifier-types.json",
+    "ios-remote-v535-disabled-opacity-consumer.asm",
+    "ios-remote-v535-style-body.asm",
+    "ios-remote-v535-style-type-bindings.json"
+  ],
+  "validation": {
+    "production_edits": false,
+    "official_runtime": false,
+    "recording": false,
+    "network": false,
+    "method": "Bounded retained instruction windows, metadata type references and chained import bindings",
+    "limits": "No whole-state visual parity claim. Current provider gate raw0xb and inherited overrides remain named boundaries."
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial-static-topology",
+  "decisions_supported": [
+    "Do not merge legacy inline account section and consumer identity account-summary section into one root menu.",
+    "Legacy root account constructor explicitly disables account switcher and usage dashboard input.",
+    "Preserve optional email/phone and controlled age/status rows instead of hardcoding screenshot account data.",
+    "Use original settings_age_title for Age; Age verification is a separate conditional action.",
+    "AccountDetailsRows can expose source-confirmed Credits and Organization policy; not all predicates are named yet."
+  ],
+  "legacy_account": {
+    "descriptor": "0x958a170",
+    "body_witness": "0x1081824",
+    "body": "0x10809cc",
+    "constructor": "0x1080910",
+    "root_constructor_owner": "0x1146c5c..0x1146d00",
+    "constructor_call": "0x1146ce0",
+    "root_inputs": {
+      "includesAccountSwitcher": {
+        "value": false,
+        "instruction": "0x1146cd8 mov w6,0"
+      },
+      "includesUsageLimitsDashboard": {
+        "value": false,
+        "instruction": "0x1146cdc mov w7,0"
+      }
+    },
+    "content": {
+      "descriptor": "0x958ba18",
+      "body_witness": "0x108209c",
+      "body": "0x1081828",
+      "rows_closure": "0x1172b5c ->0x10818d0"
+    },
+    "construction_order": [
+      {
+        "slot": "accountSwitcher",
+        "source": "0x11488b4 ->0x1080e30; gated by includesAccountSwitcher and additional owner checks",
+        "root_effect": "disabled by root constructor input"
+      },
+      {
+        "slot": "email",
+        "source": "0x1081ab0 ldr email payload;0x1081ab4 skip nil;0x1081ac0 editable/read-only branch;label0x1081bcc ->75d66b8",
+        "limits": "read-only/editable branch flag from email model, not arbitrary account type"
+      },
+      {
+        "slot": "phoneNumber",
+        "source": "0x1081ca4..1ca8 nil gate;label0x1081cb8 ->75dab64"
+      },
+      {
+        "slot": "subscriptionButtons",
+        "source": "generic owner-supplied view after phone; constructor0x10813fc invokes supplied closure;root owner passes generic callback1146ed4",
+        "limits": "concrete supplied SubscriptionStatusRow/RestorePurchasesRow order must be reconciled with root rows; not established from flat generic type references"
+      },
+      {
+        "slot": "accountDetailsRows",
+        "source": "generic final slot instantiated by11488ec (viewModel plus includesUsageLimitsDashboard) ->SettingsAccountDetailsRows"
+      }
+    ],
+    "limits": "Construction sequence is static; rendering conditions and concrete root generic supply are not full runtime observations."
+  },
+  "account_details_rows": {
+    "descriptor": "0x958b9d4",
+    "fields": [
+      "viewModel",
+      "includesUsageLimitsDashboard"
+    ],
+    "body_thunk": "0x1082a98",
+    "body": "0x10820a0",
+    "tuple_type_record": "0x7d96978",
+    "tuple_evidence": "ios-settings-account-detail-20261112-type-7d96978.json",
+    "ordered_slots": [
+      {
+        "item": "SettingsAgeRow",
+        "kind": "conditional inside child",
+        "visible_input": "0x10821d8 ->1082728; stored at1082604",
+        "value_input": "0x10821e8 ->10828c4 ->11b1368; value is computed from AgeStatusRowSummary, not hardcoded",
+        "warning_input": "0x108220c ->10828c4 then discriminator checks1082214..2258",
+        "details_input": "0x1082264 ->10828c4 ->11b1478",
+        "limits": "showAgeStatusSetting literal88899b0 used by1082728; other account/capability checks and summary values remain source-bound predicates"
+      },
+      {
+        "item": "Age verification",
+        "kind": "optional action",
+        "gate": "1082280 BL108293c then1082284 false skips",
+        "label": "1082288 BL75d666c"
+      },
+      {
+        "item": "Usage and limits",
+        "kind": "optional action",
+        "gate": "1082314 requires includesUsageLimitsDashboard, then1082318 calls52b64b0 and108231c skip false",
+        "label": "1082320 literal888c5e0",
+        "root_effect": "legacy constructor input false suppresses it there"
+      },
+      {
+        "item": "Credits",
+        "kind": "optional action",
+        "gate": "10823e0 BL10829f0 then10823e4 false skip",
+        "label": "10823e8 literal888c5c0",
+        "limits": "10829f0 reads model field via runtime offset; exact metadata property name not mapped"
+      },
+      {
+        "item": "Organization policy",
+        "kind": "optional action",
+        "gate": "10824b8 BL1082a28 then10824bc false skip",
+        "label": "10824c0 literal8882140",
+        "limits": "1082a28 lazy state calls10dcf54; exact source property inferred from model field name shouldShowIntunePolicySetting but not proven global offset mapping"
+      }
+    ]
+  },
+  "age_row": {
+    "descriptor": "0x958cd5c",
+    "fields": [
+      "isVisible",
+      "value",
+      "showsWarning",
+      "canOpenDetails"
+    ],
+    "body_witness": "0x1082bb0",
+    "body": "0x1082aa4",
+    "visibility": "1082ae8 false -> empty branch1082b10",
+    "interaction": "1082bb8..2bcc packs showsWarning and canOpenDetails;1082af0 bit8 selects NavigationLink vs static labeled content",
+    "label": "1082e54 literal888e1c0; fallback Age at1082e7c..e84",
+    "icon_factory": "0x74f9eb4",
+    "summary_fields": [
+      "showsWarning",
+      "isVerified",
+      "isAgeVerificationEnabled",
+      "ageStatus",
+      "productAgeStatus",
+      "statusRequestState"
+    ],
+    "summary_value": "11b1368 computes localized Teen / 18 or older / nil based on summary state; not universally 18 or older"
+  },
+  "consumer_identity_account": {
+    "descriptor": "0x958baf0",
+    "body_witness": "0x1085ff4",
+    "body": "0x1085840",
+    "content_constructor": "0x1085f38",
+    "content_descriptor": "0x958cd78",
+    "content_fields": [
+      "profileImageURL",
+      "isWorkspace",
+      "accountDetail",
+      "showsVerifyAgePrompt",
+      "showsAccountAgeWarning",
+      "accountSwitcher",
+      "rootAccountButtons"
+    ],
+    "content_body_witness": "0x1086878",
+    "content_body": "0x1085ff8",
+    "rows_closure": "0x1184ad4 ->10861c0",
+    "observed_structure": "Account summary row uses avatar and optional detail, with generic accountSwitcher/rootAccountButtons provided by owner; explicit verify-age prompt path separate from legacy email/phone group.",
+    "calpico_gate": "1085938 BL1085d40; smallstring calpicoEnabled in1085d90..5dac; local entry data may differ by this flag",
+    "limits": "Exact rootAccountButtons supply and consumer account-screen fields must be followed separately. Do not transplant legacy account inline rows into root consumer summary."
+  },
+  "labels": {
+    "settings_age_title": {
+      "literal": "0x888e1c0",
+      "consumer": "1082e54..2ea4 SettingsAgeRow label",
+      "translations": {
+        "en": {
+          "value": "Age",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+          "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5",
+          "index": 7820
+        },
+        "zh": {
+          "value": "年龄",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+          "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+          "index": 7820
+        }
+      }
+    },
+    "Age verification": {
+      "literal": "0x8a5a290",
+      "consumer": "1082288 ->75d666c",
+      "translations": {
+        "en": {
+          "value": null,
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+          "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5",
+          "index": 267
+        },
+        "zh": {
+          "value": "年龄验证",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+          "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+          "index": 267
+        }
+      }
+    },
+    "Email": {
+      "literal": null,
+      "consumer": "1081bcc ->75d66b8",
+      "translations": {
+        "en": {
+          "value": null,
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+          "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5",
+          "index": 1068
+        },
+        "zh": {
+          "value": "电子邮件",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+          "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+          "index": 1068
+        }
+      }
+    },
+    "Phone number": {
+      "literal": null,
+      "consumer": "1081cb8 ->75dab64",
+      "translations": {
+        "en": {
+          "value": null,
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+          "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5",
+          "index": 1949
+        },
+        "zh": {
+          "value": "电话号码",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+          "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+          "index": 1949
+        }
+      }
+    },
+    "chatgpt-credits-usage-limits-title": {
+      "literal": "0x888c5e0",
+      "consumer": "1082320 after double gate",
+      "translations": {
+        "en": {
+          "value": "Usage and limits",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+          "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5",
+          "index": 4041
+        },
+        "zh": {
+          "value": "使用情况和限制",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+          "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+          "index": 4041
+        }
+      }
+    },
+    "credits_wallet_title": {
+      "literal": "0x888c5c0",
+      "consumer": "10823e8 after10829f0 gate",
+      "translations": {
+        "en": {
+          "value": "Credits",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+          "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5",
+          "index": 5653
+        },
+        "zh": {
+          "value": "额度",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+          "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+          "index": 5653
+        }
+      }
+    },
+    "intune_policy_title": {
+      "literal": "0x8882140",
+      "consumer": "10824c0 after1082a28 gate",
+      "translations": {
+        "en": {
+          "value": "Organization policy",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/en.json.lzfse",
+          "sha256": "cc7c9e40c8442402e45351d28abce7ba0b33b005a547e208fb576f7aa8509aa5",
+          "index": 6748
+        },
+        "zh": {
+          "value": "组织策略",
+          "table": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/CompressedStrings/zh.json.lzma",
+          "sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+          "index": 6748
+        }
+      }
+    }
+  },
+  "shared_keys_sha256": "02c051431cfc9f5c4b54d1459688bd95c5cd7c864fc8645c1db48652412182a8",
+  "assemblies": [
+    {
+      "path": "ios-settings-account-detail-20261112-section.asm",
+      "sha256": "b5291aff05800642a05e969832df4a7b62754ce53fe1c35642165076d7790ba9"
+    },
+    {
+      "path": "ios-settings-account-detail-20261112-consumer.asm",
+      "sha256": "14a23950f5aaea145f10994520d4e26dead1b68256092c67b28050b097f6448b"
+    },
+    {
+      "path": "ios-settings-account-detail-20261112-thunks.asm",
+      "sha256": "387a1323452f57666ccffc637e5a55f6952e957809d44182aa88ce8714fc5ce3"
+    },
+    {
+      "path": "ios-settings-account-detail-20261112-rows.asm",
+      "sha256": "c51e72393de11bbba197adf75f95883bd4237a9f3082bece7425b421619030d4"
+    },
+    {
+      "path": "ios-settings-account-detail-20261112-age.asm",
+      "sha256": "89b446e9a127f239481cbd3dd137b786fde583dcfeda924e3fa4f6f70aacff2a"
+    },
+    {
+      "path": "ios-settings-account-detail-20261112-consumer-content.asm",
+      "sha256": "1237b4343617c919a4beb6a0b73707bd8afbc4076a1e482eb2180bc402d099c1"
+    },
+    {
+      "path": "ios-settings-account-detail-20261112-consumer-thunks.asm",
+      "sha256": "ff4a0582d5bef104e5968acd98b269e17d35fcb7d8da26d631bcad7958189b39"
+    }
+  ],
+  "precise_remaining_breakpoints": [
+    "Concrete root subscriptionButtons generic supply carried by SettingsAccountSection and callback1146ed4; actual root composes optional SubscriptionStatusRow/RestorePurchasesRow.",
+    "Email model editable boolean semantics beyond original representation discriminator.",
+    "SettingsAgeRow visibility1082728 full account/user/flag intersection and AgeStatusRowSummary service values.",
+    "Credits gate10829f0 exact property identification; Organization policy1082a28 owner mapping.",
+    "Consumer rootAccountButtons generic owner and separate AccountScreen content."
+  ],
+  "limits": [
+    "Static Mach-O inspection only; no target application or online service executed.",
+    "Generic type presence does not prove an active branch.",
+    "No UI edits/build/device operations by this worker.",
+    "No screenshot used to establish version293 order or menu membership."
+  ]
+}

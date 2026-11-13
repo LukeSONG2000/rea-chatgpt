@@ -1,0 +1,194 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Remote RequestUserInput/QuestionCards actual parent, request replacement state, scrolling/footer surface, bounded explicit haptics",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "platform": "iOS",
+    "version": "1.2026.293"
+  },
+  "official_observations": [
+    {
+      "conclusion": "QuestionCards owns an optional request-bound IDView<CodexRemoteToolUserInputRequestView, CodexRemoteSession.ApprovalRequestKey>. It is a bottom-bar child, not a transcript cell.",
+      "source": [
+        "QuestionCards descriptor0x95ac604/conformance0x7e0fec8/View.body0x1a2ab48 ->0x1a2978c",
+        "0x1a29b48 ->0x1a2a1b8",
+        "fulltype0x7e142a8",
+        "BottomBars0x1a23dbc ->0x1a25600",
+        "SafeAreaBarIfAvailable parent0x1a49bf8/0x1a4a028..06c"
+      ],
+      "evidence": [
+        "ios-remote-user-input-parent-20261113-identity-tree.tree.txt",
+        "ios-remote-v421-input-owner.asm",
+        "ios-remote-v421-input-constructor.asm",
+        "ios-remote-v421-integration.json"
+      ]
+    },
+    {
+      "conclusion": "Request view has its own onChange<ApprovalRequestKey> reset, independently of the parent IDView identity. The next onChange observes Int currentQuestionIndex.",
+      "source": [
+        "UserInputRequestView descriptor0x95ae7f4/actualbody0x1a53564",
+        "complete final body type0x7e1e978",
+        "0x1a537d4 callback1cf4494 ->onChange0x1a537f8",
+        "0x1a538ac callback1cf4858 ->onChange0x1a538d4"
+      ],
+      "evidence": [
+        "ios-remote-user-input-parent-20261113-full-body.tree.txt",
+        "ios-remote-v418-input-body.asm"
+      ],
+      "correction": "Historical file ios-remote-v416-question-change.asm contains request-key reset callback1cf4494; its filename must not be interpreted as evidence that it observes the questions array."
+    },
+    {
+      "conclusion": "On request-key change, callback1cf4494 resets answers, customAnswersByQuestionID, customAnswer, and currentQuestionIndex=0. No explicit FocusState=false is proved in this reset body.",
+      "source": [
+        "0x1cf44dc metadata+0x20 answers",
+        "0x1cf44fc metadata+0x24 customAnswersByQuestionID",
+        "0x1cf4510 metadata+0x28 customAnswer",
+        "0x1cf4524 metadata+0x2c currentQuestionIndex",
+        "0x1cf4538 LazyState setter"
+      ],
+      "evidence": [
+        "ios-remote-v416-question-change.asm",
+        "ios-remote-user-input-parent-20261113-reset-calls.json",
+        "ios-remote-v415-integration.json"
+      ],
+      "limit": "Parent identity replacement naturally changes the SwiftUI subtree, but precise keyboard dismissal/first-responder timing has not been proved."
+    },
+    {
+      "conclusion": "ApprovalRequestKey fields are requestID/threadID/turnID/itemID/callID; it is not equality of the entire questions payload. The current question getter reads current view input questions then clamps the retained index.",
+      "source": [
+        "descriptor0x95d4610",
+        "fields0x9a63ba4..0x9a63bd4",
+        "getter0x1a54310 reads view+0x90 questions and clamps min(max(index,0),count-1)"
+      ],
+      "evidence": [
+        "ios-remote-v409-request-identity.json",
+        "ios-remote-v415-integration.json"
+      ],
+      "limit": "Host/account/connection separation comes from enclosing sessions, not fields in this Key. Current independent RemoteUserInputScope omits callID and adds host/connection/id; mapping is adapter-specific. No original same-key payload-filter algorithm proved."
+    },
+    {
+      "conclusion": "Question/options scrolling region is separate from question navigation and custom-answer footer. Its max height is focus140, else positive viewport clamp(viewport*0.45,180,360), else220; top aligned/basedOnSize bounce/easeInOut0.2.",
+      "source": [
+        "0x1a5442c",
+        "0x1a53e88..0x1a53f14",
+        "0x1a54568",
+        "type0x7e1ea00"
+      ],
+      "evidence": [
+        "ios-remote-v418-integration.json",
+        "ios-remote-user-input-parent-20261113-form-tree.tree.txt",
+        "ios-remote-v422-integration.json"
+      ],
+      "geometry": "Question content leading VStack spacing18; header/question fixedSize(false,true). Options VStack spacing0; each row text leading infinity/layoutPriority1, vertical14, Rectangle hitshape, Divider between options."
+    },
+    {
+      "conclusion": "Ordinary UserInputRequestView receives original viewport, not group maximumHeight minus sibling plan-decision height.",
+      "source": [
+        "0x1a2a280",
+        "0x1a2a414"
+      ],
+      "evidence": [
+        "ios-remote-v421-input-constructor.asm",
+        "ios-remote-v422-integration.json"
+      ],
+      "limit": "Group maximumHeight minus planDecisionHeight minus12 is another branch; do not apply it to ordinary input."
+    },
+    {
+      "conclusion": "Root/footer/surface already have source-backed distinct owners. Root leadingVStack spacing18, card all-edge16; outside card horizontal16/top4/bottom8. Custom answer footer centerHStack spacing8/top2, pencil caption/tertiary/square24, ordinary-or-secret field and dedicated pill.",
+      "source": [
+        "0x1a5360c..0x1a53760",
+        "0x1a53f90",
+        "0x1a55b5c",
+        "0x1a562ec"
+      ],
+      "evidence": [
+        "ios-remote-v420-integration.json",
+        "ios-remote-v419-integration.json",
+        "ios-remote-user-input-parent-20261113-full-body.tree.txt"
+      ],
+      "limit": "This is user-input custom-answer footer, not ApprovalCard feedback row. Separate approval feedback consumers must not be transplanted merely because they have similar field/button layout."
+    },
+    {
+      "conclusion": "ComposerAdjacentCardStyle reads MessageInputStyle contextual fields and uses padding -> leading infinity -> background/clip -> optionalGlass -> border/default0.5 -> shadow modifier -> colorScheme identity.",
+      "source": [
+        "0x19b67e0",
+        "MessageInputStyle key __Key_messageInputStyle descriptor0x96cc8ec",
+        "metadata f4/d8/f8 innerBackgroundColor/glass/innerCornerRadius",
+        "default0x6081df4 ->0x60810f8"
+      ],
+      "evidence": [
+        "ios-remote-v420-integration.json"
+      ],
+      "default_values": "innerCornerRadius22; admitted Glass regular/nil tint/interactive with clear background; fallback noGlass+OneOff/UserMessageBackground.",
+      "limit": "These are default values, not proof that current parent always supplies defaults. Complete effective overrides/shadow application remain partial; do not borrow ordinary composer surface radius24."
+    },
+    {
+      "conclusion": "Initial task only submits an empty dictionary when there are zero questions; it is not proved to request input focus.",
+      "source": [
+        "0x1cf49bc ->0x1a544d4 ->0x1a54514"
+      ],
+      "evidence": [
+        "ios-remote-v418-integration.json"
+      ]
+    }
+  ],
+  "current_host_gaps": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift:8128",
+      "observed": "Form uses .id(request), whose independent Hashable includes questions.",
+      "difference": "Original parent identity and explicit reset are ApprovalRequestKey-based. Current full-payload identity destroys drafts on same-key content updates.",
+      "minimum_fix": "Use documented request identity scope; update draft request input separately so retained state reads current questions. Keep external session scope and async callback admission."
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteUserInputInteraction.swift",
+      "observed": "RemoteUserInputDraft currently stores let request initialized once.",
+      "difference": "If identity becomes key-based without a draft input update, same-key content changes would keep stale questions.",
+      "minimum_fix": "Provide independent updateRequest(current) reconciliation. On key change reset maps/text/index; on same key use current questions while preserving scoped state. Any policy for invalidated options/removed questions must be labeled host reconciliation until original consumer is recovered."
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift:7151",
+      "observed": "Scroll/navigation/custom footer/surface largely implement the reused source-backed measurements.",
+      "difference": "No new proven geometry gap found in bounded pass; exact effective MessageInputStyle overrides and request replacement focus timing remain unknown.",
+      "minimum_fix": "Do not refactor working surface into generic card or force new focus/feedback/haptic behavior based on sibling styles."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "observation": "No explicit haptic/sensoryFeedback call was proved in the reused bounded request body, request-key reset, index-change and ordinary custom footer consumers.",
+    "limit": "Untraced action-owner effects and shared helper behavior remain possible; do not infer absence globally or add a claimed-official vibration."
+  },
+  "can_restore_now": [
+    "Key-based request identity/reset of answers/custom drafts/current text/index, while preserving enclosing account/host/session identity.",
+    "Separate live request input from retained draft maps so same-key updates render current questions.",
+    "Retain exact scrolling-vs-navigation/footer boundary and ordinary viewport argument; no sibling height clamp."
+  ],
+  "precise_unknowns": [
+    {
+      "gap": "Exact identity mapping to current independent scope",
+      "next": "Map original callID/requestID identity from service adapter; do not silently discard callID in claims of equality."
+    },
+    {
+      "gap": "Explicit focus clearing/autofocus on request replacement",
+      "next": "FocusState setter or parent first-responder consumer not found; use natural subtree lifecycle as host behavior without claiming recovered timing."
+    },
+    {
+      "gap": "Same-key question payload reconciliation",
+      "next": "Original getter uses current questions; mutation policy for stale selected options/removed question IDs is not proved."
+    },
+    {
+      "gap": "Effective parent MessageInputStyle/shadow",
+      "next": "Close current Thread parent environment injection; existing default is not effective configuration proof."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "artifact_hash_verified_by_reader": true,
+    "host_modified": false,
+    "tests_run": false,
+    "built": false,
+    "device_or_original_runtime": false
+  }
+}

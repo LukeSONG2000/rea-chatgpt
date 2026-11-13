@@ -1,0 +1,76 @@
+{
+  "version": 525,
+  "status": "partial",
+  "platform": "iOS Simulator 27.0",
+  "official_baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_reports": [
+    "ios-remote-v524-permission-options-findings.json",
+    "ios-remote-v524-permission-owner-findings.json",
+    "ios-remote-v524-permission-style-findings.json",
+    "ios-remote-v525-entry-findings.json",
+    "ios-remote-v525-sheet-context-findings.json"
+  ],
+  "recovered": [
+    "Expanded MessageInput permission slot and independent configuration slot",
+    "Entry classifier independent from selected sheet row",
+    "Scaled icon and font, minimum 48pt entry target, plain button",
+    "Ordered and filtered permission rows, required auto-review and disabled full access",
+    "Official localized labels, row metrics, colors, icons and reserved selection slot",
+    "SwiftUI sheet branch, default sizing environment and measured-height detent"
+  ],
+  "independent_adaptations": [
+    "Bool sheet binding instead of original item binding",
+    "Native Text instead of unresolved BalancedText line-breaking",
+    "Plain row button and UIImage bridge with incomplete original row-style trace",
+    "Synthetic capability inputs and task-scoped in-memory selection owner",
+    "Learn-more action presents an offline notice retaining the source URL"
+  ],
+  "validation": {
+    "ui_passed": 4,
+    "ui_failed": 0,
+    "runtime_warnings": [],
+    "ui_result": "ios-remote-v525-r3-ui.xcresult",
+    "model_log": "ios-remote-v525-model-final.log",
+    "build_log": "ios-remote-v525-build-r4.log",
+    "signing_log": "ios-remote-v525-signing.log",
+    "bundle_version": 525,
+    "signature_reverified": true,
+    "preview_pid": 21563,
+    "preview_language": "system-following Chinese",
+    "preview": "ios-remote-v525-preview.png",
+    "manual_observed": [
+      "Chinese four-row permission sheet",
+      "Offline help notice opened and closed"
+    ],
+    "manual_unverified": [
+      "Swipe-to-dismiss attempts did not produce an observed dismissal"
+    ],
+    "coverage": [
+      "Chinese light and English dark",
+      "Select, reopen and selected trait",
+      "Restricted and required branches",
+      "A to B to A task isolation and draft retention",
+      "Existing context-usage and approval layout regressions"
+    ]
+  },
+  "preserved_failures": [
+    "r1 UI navigation helper scrolled only upward when target was above viewport; original failures retained",
+    "r2 passed before final selected-trait and scope checks; r3 is final acceptance run"
+  ],
+  "remaining": [
+    "Actual service permission mapping, custom profile payload and queued-settings asynchronous propagation",
+    "Global ancestor sizing overrides and actual isolation experiment value",
+    "BalancedText and original row-button style",
+    "Extreme Dynamic Type, iPad and physical device acceptance",
+    "Full-page title alignment and other prior feedback",
+    "Quick model/intelligence, advanced configuration and dictation"
+  ],
+  "handoff": {
+    "preview_running": true,
+    "display": "built-in only",
+    "physical_device": "offline, simulator only per user",
+    "committed": false,
+    "pushed": false
+  }
+}

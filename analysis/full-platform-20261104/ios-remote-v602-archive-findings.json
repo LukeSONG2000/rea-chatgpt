@@ -1,0 +1,163 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "publicSource": {
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "evidence": "analysis/upstream-codex-20261105/reuse-map.json"
+  },
+  "observations": [
+    {
+      "claim": "Archive list is a separate optional home menu callback, and the task menu has its own archive owner callback.",
+      "evidence": [
+        "ios-remote-v506-title-menu-findings.json",
+        "ios-remote-v481-action-callbacks.asm"
+      ],
+      "sites": [
+        "0x1c2b990",
+        "0x1c2b9a0"
+      ]
+    },
+    {
+      "claim": "CodexArchivedTasksNavigation has a viewModel field referencing ChatGPTCodex.CodexViewModel. SwiftUI body witness loads it then branches to 0x30eb74.",
+      "evidence": [
+        "ios-remote-v602-archive-metadata.json",
+        "ios-remote-v602-archive-owner.json",
+        "ios-remote-v602-archive-witness.json",
+        "ios-remote-v602-archive-entry.asm"
+      ]
+    },
+    {
+      "claim": "The bounded body window contains NavigationStack, navigationTitle, title display mode and toolbar imports. Exact reachable body composition remains unresolved.",
+      "evidence": [
+        "ios-remote-v602-archive-body.json",
+        "ios-remote-v602-archive-body.asm"
+      ]
+    },
+    {
+      "claim": "Archive navigation generic records contain CodexArchivedThreadsList, a FixedBarStack/BannerBar overlay and DismissToolbarItem.",
+      "evidence": [
+        "ios-remote-v602-archive-type-a.json",
+        "ios-remote-v602-archive-type-b.json"
+      ]
+    },
+    {
+      "claim": "Archived list binds separate CodexArchivedThreadsListViewModel and shared CodexViewModel. Its body witness branches to0x2caa50.",
+      "evidence": [
+        "ios-remote-v602-archive-list-metadata.json",
+        "ios-remote-v602-archive-list-types.json",
+        "ios-remote-v602-archive-list-witness.json",
+        "ios-remote-v602-archive-list-entry.asm"
+      ]
+    },
+    {
+      "claim": "Archive list view model metadata includes threads, filteredThreadSections, per-host remoteLoadErrors, unarchivingThreadIDs, unarchiveError, sourceFilter, searchQuery, remoteHostLoader, sessionPool and unarchiveRemoteThread. These fields motivate separate loading/error/restore branches; implementation semantics still require code tracing.",
+      "evidence": [
+        "ios-remote-v602-archive-list-fields.json"
+      ]
+    },
+    {
+      "claim": "ArchivedThreadsList constructs CodexArchivedThreadsListContent through 0x457fec ->0x43622c; descriptor0x95607c0 exposes threads, hostItems, sourceFilter, displayedSections, showsLoadingState, loadError, unarchivingThreadIDs, searchQuery, reload, unarchive and collapsedSectionIDs.",
+      "evidence": [
+        "ios-remote-v602-archive-content-accessor.json",
+        "ios-remote-v602-archive-content-metadata.json"
+      ]
+    },
+    {
+      "claim": "Content body witness2d2a5c branches2cbc94. Returned composition includes List/PlainListStyle/searchable/refreshable and shared CodexRemoteHostFilterRow and CodexTaskListSectionHeaderV2 with ArchivedThreadRow.",
+      "evidence": [
+        "ios-remote-v602-archive-content-witness.json",
+        "ios-remote-v602-archive-content-body.json",
+        "ios-remote-v602-archive-content-body-tail.json",
+        "ios-remote-v602-archive-list-content-type.json"
+      ]
+    },
+    {
+      "claim": "ArchivedThreadRow descriptor9560d98 has thread,isUnarchiving,unarchive and four ScaledMetric fields. Body2c9c84 calls content2c9dcc, whose Button2ca030 takes action44855c. Thunk reads field offset at metadata+18 and calls its closure via4603c4. Label448580 ->2ca830 selects OAIProgressView or Image and accessibility Unarchive text75d2a14. Button uses PlainButtonStyle.",
+      "evidence": [
+        "ios-remote-v602-archive-row-metadata.json",
+        "ios-remote-v602-archive-row-body.json",
+        "ios-remote-v602-archive-restore-thunk.asm",
+        "ios-remote-v602-archive-restore-label.asm",
+        "ios-remote-v602-archive-row-content-type.json",
+        "ios-remote-v602-archive-restore-label-type.json",
+        "ios-remote-v602-archive-unarchive-text.asm"
+      ]
+    },
+    {
+      "claim": "Restore Image factory74f481c reads literal8a53f10 = OpenAI/Symbols/arrow-uturn-left; host uses the existing official icon resolver.",
+      "evidence": [
+        "ios-remote-v602-archive-restore-label.asm",
+        "ios-remote-v602-archive-restore-image-complete.asm"
+      ],
+      "sites": [
+        "0x2ca940",
+        "0x74f4848",
+        "0x74f484c",
+        "0x8a53f10"
+      ]
+    }
+  ],
+  "hostGap": "Closed frontend archive metadata projection, task-menu action and separate archive entry. Source-derived grouping/metric values and official async owner are still unresolved.",
+  "nextActions": [
+    "Complete remaining Remote list/menu capability paths and message-page gaps at minimum-usable scope.",
+    "Trace archived section production and row metric initializers before official layout parity claims."
+  ],
+  "limitations": [
+    "Official archived-section grouping and sorting, scaled metric initial values and service/async owner semantics remain unresolved. Restore image is confirmed as arrow-uturn-left.",
+    "Current callback trace proves row-to-owner unarchive dispatch; it does not prove server mutation semantics."
+  ],
+  "failedProbes": [
+    "inspect_swift_symbolic_type CLI expects a relative length record; direct typeref0x8bc9a40 rejected. Existing inspect_raw_type resolved the terminated reference without tool changes.",
+    "The associated Body witness typeref failed the raw symbolic-context decoder; retain it as unresolved.",
+    "Class field reader only accepts kind7; selected archive view model uses kind1. Bounded field-name/type-reference reader retained metadata without instance-offset claims.",
+    "Direct invocation of existing test-official-text.sh returned126 because the script is not executable. Invoked with sh; Foundation passed. No permission change made.",
+    "r1 both UI journeys reached archive rows, but HStack accessibilityIdentifier propagated to its button and replaced remote-unarchive-* identifiers. Retained UI tree79DF1FAD shows Cancel Archive buttons under parent row IDs; removed the unused parent identifier. Original unarchive button action/style unchanged.",
+    "r2 row identities fixed. Both tests then assumed a Cancel-labelled search control; retained XCTest snapshot lists Close/关闭 for iOS27 automatic bottom search. Test now uses the actual native control and selects the hittable archive-sheet host filter instead of the covered home filter.",
+    "r3 Chinese journey passed. English failed because the native search close AX label is lowercase close; the test queried Close. Retained snapshot identifies the exact label. r4 changes only this test query and adds existence waiting."
+  ],
+  "implementationPlan": {
+    "mechanism": "Shared host/thread metadata archive projection; separate native archive sheet reuses recovered source filter and section header; unarchive action shows per-row pending state and returns accepted metadata to the home list.",
+    "independentAdaptations": [
+      "Optional archive flag extends existing profile metadata with backward compatibility; no transcript or draft deletion.",
+      "Local synthetic accepted mutation, revision checks, cancellation and retry; service protocol remains replaceable and unconnected.",
+      "Single archive section pending official section-title/grouping producer; native default row spacing and reload/error layout explicitly independent. Restore symbol now resolved to official arrow-uturn-left.",
+      "After accepted archive the host dismisses its task destination. Exact official dismissal callback remains unresolved."
+    ],
+    "validation": [
+      "Existing legacy metadata, stale actions, host isolation, idempotence, archive/restore restart and persistence failure.",
+      "Chinese/light and English/dark archive from task menu, separate archive entry, search/filter, restore, close, original draft/title/pin preservation."
+    ]
+  },
+  "implementation": {
+    "files": [
+      "implementation/ios/Sources/NativeConversationHost.swift",
+      "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "implementation/ios/Sources/OfficialText.swift",
+      "implementation/ios/Tools/prepare-official-text.py"
+    ],
+    "implemented": [
+      "Archive action commits desired state before dismissing the selected task. Home list excludes archived metadata; drafts/history/pin and stable identities preserved.",
+      "Separate NavigationStack/plain List, shared device filter/header, search, collapse, pull-to-refresh, empty/load-failure/retry and per-row Unarchive pending/failure/retry.",
+      "Unarchive checks captured host/thread revision after bounded synthetic acknowledgement; view disappearance cancels before commit. Concurrent reload results use request identity.",
+      "Legacy v1 metadata without optional archive field remains supported. Archive/restore state is persisted atomically under existing account/profile scope."
+    ],
+    "independent": [
+      "Local metadata storage and synthetic acknowledgements, reload errors, cancellation and retry semantics.",
+      "Single-section projection, host subtitle, native default spacing and error layout; official grouping/ScaledMetric initializers remain unresolved.",
+      "Task destination dismissal after accepted local archive; official dismissal owner not fully traced."
+    ],
+    "tests": {
+      "foundation": "passed; ios-remote-v602-foundation-r2.log",
+      "build": "build-for-testing passed; ios-remote-v602-build-r1.log",
+      "ui": "r4 passed 2/2 Chinese/light and English/dark; search/filter, load/restore failure-retry, scope isolation, restart, draft and pin preservation"
+    },
+    "notImplemented": [
+      "Official archived-section grouping/sorting and exact row metrics",
+      "Remote service archive/list/unarchive integration",
+      "Android archive presentation"
+    ]
+  }
+}

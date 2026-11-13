@@ -1,0 +1,189 @@
+{
+  "batch": "v497",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped artifact static instructions; independent host integration",
+  "previous_goal_turn": "no progress: status report only; current batch traces section producers and integrates pinned list path",
+  "findings": [
+    {
+      "offset": "0x3317a4..0x331a5c",
+      "conclusion": "Pinned source collection count zero skips producer. Nonempty branch resolves codex_task_list_section_title_pinned at0x3318d0 with English fallback Pinned, constructs title-identity section. Input membership/pin merge remains unresolved."
+    },
+    {
+      "offset": "0x337d1c;0x7ceb614",
+      "conclusion": "Tag0 dispatches to0x337d68. It compares title against localized Pinned and returns rank0 for match. Other ranks and ordering mode are separate. This is static evidence; no official runtime replay."
+    },
+    {
+      "offset": "0x399ebc..0x399f70;0x39cf10..0x39cf3c;0x45c6f0",
+      "conclusion": "Title-ID tag0 reaches common section header constructor. 0x1a project mask excludes0; 0x25 ordinary mask includes0; header kind becomes0. It is not the kind2 projectsTitle constructor at0x39c628."
+    },
+    {
+      "offset": "0x32a5c4;table0x7ceb5fa",
+      "conclusion": "Tag0 table offset28 routes to0x32a664 with x0=0, so no project icon. Header kind0 uses body/semibold, center8, visible chevron when collapse callback exists; fadesWhenExpanded false. Existing v393/v394 traces establish typography/color/placement."
+    },
+    {
+      "offset": "0x6ee7d7c;0x74f5f28",
+      "conclusion": "Disclosure icon factory0x74f5efc references OpenAI/Symbols/chevron-right-md at0x8a549a0."
+    },
+    {
+      "offset": "0x337210..0x3372d8",
+      "conclusion": "Recent descriptor resolves codex_remote_recent_section_title, writes payload2 and tag6 at+0x38, and copies new-thread target from incoming owner to+0x80. Recent must retain a distinct descriptor/target path. New-target host availability and producer gates remain partial."
+    },
+    {
+      "offset": "0x3372f4..0x337ad8",
+      "conclusion": "No-workspace label and recent helper share a larger projection routine. String discovery does not establish which grouping mode activates either branch."
+    }
+  ],
+  "jump_tables": {
+    "0x7ceb5fa": {
+      "base": "0x32a5f4",
+      "targets": [
+        "0x32a664",
+        "0x32a5f4",
+        "0x32a5fc",
+        "0x32a5f4",
+        "0x32a5f4",
+        "0x32a664",
+        "0x32a614"
+      ]
+    },
+    "0x7ceb614": {
+      "base": "0x337d58",
+      "targets": [
+        "0x337d68",
+        "0x337d58",
+        "0x337d58",
+        "0x337d58",
+        "0x337d58",
+        "0x337d5c",
+        "0x337dcc"
+      ]
+    }
+  },
+  "integration": [
+    "Pinned header and two synthetic host-scoped tasks before project groups",
+    "Reuse existing task cell with isInProject=false, preventing folder indentation and project-only last-row12 leakage",
+    "Pinned collapse survives filter and detail return; stable slot does not depend on translated title",
+    "Official label across65 locale tables",
+    "Pinned snapshot drives thread Unpin menu; disconnected operation preserves pinned state",
+    "Removed independent diagnostic section footer that occupied space between source filters and pinned header"
+  ],
+  "independent_adaptations": [
+    "Fixture membership/order and pin/source filtering, no production pin service",
+    "SwiftUI navigation/state owner/font bridge and Reduce Motion behavior",
+    "Parent button style and default fixture capability configuration",
+    "Header complete geometry/actual physical feel remain unaccepted"
+  ],
+  "remaining": [
+    "Recent/no-workspace/cloud grouping gates and data projection",
+    "Projects super-section header and its grouping gate",
+    "List search/mode and fixed composer",
+    "Precise source-filter position upstream of duplicate-title disambiguation",
+    "Android independent implementation"
+  ],
+  "validation": {
+    "typecheck": "passed with existing deprecation warnings; final source also compiled by final simulator and signed-device builds",
+    "models": "passed; initial shell wrapper used readonly zsh status variable, rerun with task-specific variable exited0",
+    "ui": {
+      "initial": {
+        "passed": 3,
+        "failed": 1,
+        "reason": "Test incorrectly looked for a StaticText descendant of a combined accessible task button"
+      },
+      "r2": {
+        "passed": 2,
+        "failed": 0,
+        "scope": [
+          "pinned scope/return/Unpin failure",
+          "large text source filter"
+        ]
+      },
+      "final_r3": {
+        "passed": 3,
+        "failed": 0,
+        "scope": [
+          "pinned scope/return/Unpin failure",
+          "project new draft return",
+          "section scope restoration"
+        ]
+      },
+      "limits": "Targeted regressions, not a full-suite or official-runtime equivalence claim"
+    },
+    "device": {
+      "build": "497 signed build and codesign verification passed",
+      "install": "failed CoreDeviceError4016; paired iPhone unavailable",
+      "latest_successful_install": "496",
+      "user_reconnection_request": "pending"
+    },
+    "preview": {
+      "simulator_build": "497",
+      "pid_observed": 87730,
+      "page": "Remote list in system Chinese; settled screenshot checked",
+      "screenshot": "ios-remote-v497-list-preview.png",
+      "display": "Only built-in Color LCD available during delivery; external display unavailable",
+      "visual_acceptance": "partial; source-backed component presentation inspected, full official geometry and physical interaction not accepted"
+    },
+    "retention": "no stale package candidates"
+  },
+  "upstream_reference": {
+    "path": "analysis/upstream-codex-20261105/reuse-map.json",
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "limit": "Bounded public root/directory and README inspection has not established published native mobile UI source"
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-list-preview.png",
+      "sha256": "ae3257119805c8be466bfc7b46ecace101195bf0d8c5b945230566d59b85b005"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-pinned-helpers.asm",
+      "sha256": "7e96c0888419f6b1c2624c1f7fd311078a1f7fe6074bab23fd24c693d75b581e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-pinned-producer.asm",
+      "sha256": "8fa9b392c635d68c38b9e5c39790b34f5a9eb1a3ec9d39e3941086dd9bf76c5a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-r2-ui.summary.json",
+      "sha256": "509ee599c6ea692e2b62d84238365d798b8f3f5ff4a5725934043ef9b10cb099"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-r3-ui.summary.json",
+      "sha256": "7c10745ab0e680b99ccef9158c7dbe54cca7bc4b78f142ac3b86e22030cf5a91"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-section-callers.json",
+      "sha256": "401b3cdbf4f142478350ece320c71ac002362b3fcc9d79e0672f14c5785f7ccf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-section-constructors.asm",
+      "sha256": "361d4e7e93b860191f65e39889d4c6c3ce47d2ce0939a7953aa5dc005f40df01"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-section-dispatch.asm",
+      "sha256": "c249d22313221ded1ae6fbfd8fb06c9cbd315a45d5aae088660840ba0960de1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-section-renderer-xrefs.json",
+      "sha256": "b41ab55c2154113641a1c7bea3751fe1b3359433314bbaa59b4157c341f503c0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-section-string-seeds.json",
+      "sha256": "51ebe91ac06e29b0549d7c80315619f4ff22d417d5a38819432a36d96a606ec3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-section-string-xrefs.json",
+      "sha256": "1334e8051c98f31888cf7faf52a4cfdbbe67062ba8c2e48353201264421c2f7f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-text-extraction.json",
+      "sha256": "5687eb7a1f52db21216257607d6edec264a41f47de885291eaa6fe593b9cad1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v497-ui.summary.json",
+      "sha256": "fc2b4ac52ab95b2093fc564ec956339f9fa5955d9b1c280984b26f3b89729d20"
+    }
+  ]
+}

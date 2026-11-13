@@ -1,0 +1,159 @@
+{
+  "batch": "v606-keyboard-followup",
+  "status": "partial",
+  "authority": "official-iOS293-static-evidence",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "trigger": "Parent reported unshipped hostprobe:collectionfullwindow,outergeometrybottom0 whenkeyboardopen,explicitbottom~bar+48 lackskeyboardcompensation. This report isstatic followup; values areparentprobe report,notindependentmeasurement.",
+  "supersedes": [
+    {
+      "report": "ios-remote-v606-blur-findings.json",
+      "id": "embedding-inset-defaults",
+      "correction": "Ordinary HomeNavigationRoot codexRemoteThread destination defaults now provenzero. Genericotherembeddings remain separate."
+    }
+  ],
+  "findings": [
+    {
+      "id": "ordinary-defaults",
+      "status": "verified-static",
+      "claim": "The ordinary registered thread destination passes initialBottomBarsHeight=0,initialTranscriptEntranceOffset=0,additionalTranscriptBottomInset=0. Additional inset doesnot carry keyboardheight on thisroute.",
+      "evidence": [
+        "ThreadView valuebasefp-118 at303ff0/304084.",
+        "304034 stp xzr,xzr,[fp,-f0] writesvalue+28(initialheight)and+30(entrance).",
+        "304048 stp xzr,xzr,[fp,-c0] writesvalue+58(additionalinset)and+60(trailing).",
+        "ThreadViewmetadataa5061f8 selected30407c/80; existingv522fieldoffsets andv536routebinding."
+      ],
+      "limits": [
+        "Otherpresentations maypassnonzeroextra inset."
+      ]
+    },
+    {
+      "id": "geometry-helper",
+      "status": "verified-static",
+      "claim": "Geometry binding helper uses SwiftUI._GeometryActionModifier directly; noadditionalGeometryReader/background/ignoreSafeArea wrapper exists in this helper.",
+      "evidence": [
+        "7542db0->213ff8 at7542e7c.",
+        "21405c imports_GeometryActionModifier.init(value:action:).",
+        "21407c importsmodifiermetadata;214094 appliesView.modifier."
+      ],
+      "limits": [
+        "SDK internalgeometrysemantics areoutsideapplicationbinary."
+      ]
+    },
+    {
+      "id": "stack-layout-owner",
+      "status": "verified-static",
+      "claim": "The outerbar/geometryobserver wraps a bottom-alignedZStack withcollection,always-presentColorsibling,andoptionalMessageInputGlassGradientPart. Current directrepresentablehost omitted thiscontainer/sibling structure.",
+      "evidence": [
+        "1a49ea8 invokes1a4b0e4 before SafeAreaBar wrappers.",
+        "1a4b174 importsAlignment.bottom and1a4b178 stores it intoZStacklayout.",
+        "1a4b1a4 invokes1a4c198 toconstruct tuplecontent.",
+        "Type7e13e40 bindsZStack<TupleView<collectionmodifiers,Colormodifiers,optionalMessageInputGlassGradientPart>>. Type7e13f58 binds_VariadicView.Tree<_ZStackLayout,...>.",
+        "Siblingcolorconstructed1a4c758..784.1a4c760..768 opacity1 whenhidesTranscript(w21 fromContentmeta40),0otherwise;1a4c76c Color.opacity.",
+        "1a4c774 obtainsEdge.Set.all,1a4c778 SafeAreaRegions.all,1a4c77c..780 storesmask/edges,1a4c784 setsallowsHitTestingfalse. Type7e13fa0 confirmsColor+SafeAreaRegionsIgnoringLayout+AllowsHitTestingModifier."
+      ],
+      "integration": "Restore bottom-alignedZStack andalways-presentColor sibling withsourcehidesTranscriptopacity,ignoresSafeArea(.all,edges:.all),allowsHitTesting(false). Measureoutergeometryafterbarwrapperasalreadyproved. Keepcollectionignorebottom/top rules.",
+      "inference": "Theall-safe-areaColorsibling canaffectparentlayoutreportingandthereforegeometryinsets, makingitacandidatecauseofkeyboardheightmissinginthe directrepresentablehost.",
+      "limits": [
+        "Noofficialruntimeverified. Proposedhostprobe mustcheckgeometrybeforeclaimingthiscloseskeyboardbug.",
+        "Do nottreat1a4ceb0 as UI siblingconstructor. It suppliesgesture-relatedcallbackcapture;tuple UI constructionis1a4c198."
+      ]
+    },
+    {
+      "id": "outer-transform",
+      "status": "verified-static",
+      "claim": "The selected root transform beforegeometryobserver istoolbar-backgroundconfiguration,withclear/visibilitybranches.",
+      "evidence": [
+        "1c2fdf4 tails1a4b930.",
+        "Bounded1a4b930..1a4c164 importsToolbarPlacement.navigationBar,toolbarBackground color/visibility andColor.clear."
+      ],
+      "limits": [
+        "Noadditionalkeyboardheightproduceridentified inthistransform."
+      ]
+    }
+  ],
+  "next_probe": [
+    "Compare directrepresentablehostwithsourceZStack+transparentignore-allColorsibling using identicalkeyboardstate.",
+    "Captureparentgeometryframe/size/safeArea,collectionframe,barheightandfinalcontentInset.",
+    "Ifouterbottomstill0,traceancestorproposal/full-sizewrappersfromHomeNavigationRoot beforeintroducingkeyboardadditionalinset."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-type-7e13e40.json",
+      "sha256": "19bac0cd8b6da04b30f231cd5704ee17bb91c86754d3791295322a5c67f14592"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-stack-siblings.json",
+      "sha256": "6b4862abf10a77b7c5804a1ff45ab39ad00e2054affc89250cfea8ffacac5d12"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-stack-builder.asm",
+      "sha256": "b87b437d6574602920ecba057355c6e1ed2911b566d7fcd5ead8548b635052ad"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-geometry-method.json",
+      "sha256": "b5de9cfae1f89660c06619522165b29d039799088b53fe000e263198c156ba7a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-type-7e13fa0.json",
+      "sha256": "ca76eb0b596e053ff8869c103037baac698648043012203105cb59a41fdf57ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-type-7e13f58.json",
+      "sha256": "17765ce47d131df2146ba827b043faaa5c82a182487d392bdefb4799b26a4795"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-toolbar-transform.asm",
+      "sha256": "1767137bb1cc4eb7760f8a2755cde77066072ee1b72768278f582b584631dea5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-root-transform.asm",
+      "sha256": "260051faa6f8bb8525d75e5164e733240be6ffa475a52296474d4dc264a5177b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-ordinary-inset-defaults.asm",
+      "sha256": "9fd6261dc77240e529d9608e6ace28f358c12b70afc4742d7570a195646f89e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-geometry-method.asm",
+      "sha256": "3f2dfb831cba57bd56e43182f789e6a777f69a1014030737018482cae8b29790"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v606-keyboard-root-transform.json",
+      "sha256": "087b2666b97af2802bff60a168bb4cbd5779eb515d02f19cef9734182df88e5e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v522-trailing-producer-findings.json",
+      "sha256": "a854242c763c6aade5895eb19e7434e62ccc393dcf512d763468e64f3d511967"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v522-thread-field-offsets.json",
+      "sha256": "47be720648c37a2b181a7310166f3d3f9f7347c0552ce756f77f9f8f7f453483"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v522-thread-style-findings.json",
+      "sha256": "1acefeba1c13595e9ee1030e5fdf792ced0eca181a793f5569478cd2df4e2188"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-navigation-title-findings.json",
+      "sha256": "de274fca11f0cd76cd7d808da3a583009cbfd391214136134a7e7d185acb5cfb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v482-thread-edge-owner.asm",
+      "sha256": "69c5cebacb00117ceff63ab9104df488416e645d56e96b800a1d631d2532e76d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v482-thread-edge-owner.json",
+      "sha256": "d4b09e62fa8ee411806b1e799c5d6e29b5e8d50b52c6924b50f08cee855393d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v605-blur-geometry-adapter.asm",
+      "sha256": "0ae82d64451ff2ff555b956452ad8ec6dc26bcad6a5d0a4c51d757f774ef9c5a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v483-safe-area-arguments.asm",
+      "sha256": "da8ab1f977bfa332e1ffc19007518341db29ed7af33fd442908bbfa070751716"
+    }
+  ],
+  "production_edits": false,
+  "runtime_verified": false
+}

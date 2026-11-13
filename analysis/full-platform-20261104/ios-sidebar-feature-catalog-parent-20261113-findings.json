@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS293 sidebar feature catalog and seeMoreFeatures actual tap consumer; bounded read-only static analysis",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "official_artifact_observations": [
+    {
+      "id": "actual-case-identity",
+      "conclusion": "seeMoreFeatures selected Item branch is now positively mapped through original enum value witnesses, not guessed from raw declaration index.",
+      "sources": [
+        "ios-sidebar-explore-20261112/enum-metadata.json",
+        "ios-sidebar-feature-catalog-parent-20261113/enum-case-proof.json",
+        "ios-sidebar-feature-catalog-parent-20261113/item-enum-witness.asm"
+      ],
+      "facts": [
+        "HistoryViewController.Item descriptor95927d0 metadata accessor13440e8 supplies a4c2338; metadata[-1] is vwt a4c22b8.",
+        "VWT getEnumTag13440ac returns payload byte+39 for cases0..7; for empty storage byte>7 it returns first UInt32+8. InjectEnumTag13440c4 confirms inverse representation.",
+        "Metadata seeMoreFeatures is empty ordinal8 after eight payload cases (semantic tag16); actual stored representation is firstWord8, other payload bytes0, outer byte8. These native case ordinals are not wire fields."
+      ]
+    },
+    {
+      "id": "click-state-invalidation",
+      "conclusion": "Actual More tap mutates the sidebar controller expansion state and requests the current collection rebuild. No alert construction exists in this selected consumer.",
+      "sources": [
+        "ios-sidebar-explore-20261112/item-dispatch.asm",
+        "ios-sidebar-layout-20261112-objc.json",
+        "ios-sidebar-feature-catalog-parent-20261113/more-action.asm",
+        "ios-sidebar-feature-catalog-parent-20261113/expanded-setter.asm",
+        "ios-sidebar-feature-catalog-parent-20261113/invalidation.asm",
+        "ios-sidebar-feature-catalog-parent-20261113/reproject.asm"
+      ],
+      "facts": [
+        "collection didSelect wrapper12a70c8 ->12a7038 ->12a8b08 actual Item dispatcher.",
+        "Outer tag8 dispatch table12a9d9c base12a8cdc ->12a8d18; subsequent table12a9dc0 base12a8ddc ->12a9040; complete empty8 predicates eventually select12a9718..12a9744.",
+        "12a9730 loads b17da40, independently named featureCatalogExpanded by ObjC ivar metadata entryab1bbe8;12a9738 sets true,12a9740 calls1295f88.",
+        "1295f88 reads old Bool/stores new Bool; only changed values invoke1399958. 1399958 calls1293e64(true,true);1293e64 eventually calls1297f38 collection snapshot rebuilding, with an asynchronous admission branch preserved.",
+        "This is expansion admission (sets true), not a toggle. No source-backed collapse affordance for feature catalog was closed; do not copy pinned expand/collapse controls."
+      ]
+    },
+    {
+      "id": "available-items-producer",
+      "conclusion": "Visible catalog is projected from capabilities and owner state; original complete order/truncation still not closed.",
+      "sources": [
+        "ios-sidebar-explore-20261112/catalog-metadata.json",
+        "ios-sidebar-feature-catalog-parent-20261113/reproject.asm",
+        "ios-sidebar-feature-catalog-parent-20261113/reproject-calls.json"
+      ],
+      "facts": [
+        "HistoryFeatureCatalog descriptor9593050 has availableItems:Set<Item>, usesTboSidebarLayout, usesFreeSidebarLayout,promotesImages,promotesHealth,promotesCodex,isExpanded. The concrete field offset vector from metadata a4c7150 is0,8,9,10,11,12,13, respectively.",
+        "Current snapshot rebuild1297f38 creates native NSDiffableDataSourceSnapshot via imported initializer at12983a8.",
+        "12983d8..12985b0 iterates19 source candidates from original static storage a4c4ff0+20 and evaluates per-candidate owner getters/flags before including candidates. This iteration is not proof all19 are visible, nor does Set order prove final UI order.",
+        "Native snapshot has explicit featureCatalog section alongside pinned/recent/chatRequests/fetch (prior parent-groups evidence).",
+        "Final association from featureCatalogExpanded to HistoryFeatureCatalog.isExpanded and its ordered item projection remains unclosed in this pass."
+      ]
+    },
+    {
+      "id": "reset-lifecycle",
+      "conclusion": "There is also a proven false assignment to the same expansion state in another callback; full lifecycle meaning not named.",
+      "sources": [
+        "ios-sidebar-feature-catalog-parent-20261113/catalog-producer.asm"
+      ],
+      "facts": [
+        "1355e80 branch1355ec8 gets retained controller,1355edc loads b17da40,1355ee4 passes false into1295f88.",
+        "The enclosing callback event discriminator and lifecycle ownership were not positively mapped; do not call this automatic collapse-on-dismiss or route selection."
+      ]
+    }
+  ],
+  "static_inferences": [
+    {
+      "conclusion": "A native sidebar-owned expansion/reprojection is the supported replacement direction for current UIAlertController catalog.",
+      "confidence": "strong for action ownership; partial for final rendered catalog",
+      "limits": "The selected source consumer only proves state mutation plus current snapshot update. It does not yet prove full row sequence, threshold, animation parameters, collapse UI, or account assignment."
+    },
+    {
+      "conclusion": "Provider catalogs should keep stable feature identities, visible ordered entries and availability separate from selectedFeature routing.",
+      "classification": "independent frontend contract recommendation",
+      "limits": "Exact original availableItems->display order producer and all HistorySelection mappings remain per-feature evidence, not a recovered universal wire schema."
+    }
+  ],
+  "host_comparison": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "owner": "NativeConversationList",
+    "current_independent_adapter": "UIAlertController titled available features enumerating Plugins/Projects/Sites/Images",
+    "missing": [
+      "Source-owned featureCatalogExpanded state",
+      "Source selection effect updating current sidebar collection rather than presenting alert"
+    ],
+    "not_authorized_as_official": [
+      "Hardcoded list of four features as official catalog",
+      "Catalog enum declaration order as visible menu order",
+      "Inference that isExpanded field alone proves expansion",
+      "PinnedItems collapse affordance copied to feature catalog"
+    ]
+  },
+  "minimum_implementable_now": [
+    "Replace the independent alert with a sidebar-owned explicit provider catalog projection when the provider supplies source-documented branch/order. If the list is fixture supplied, label its producer and order independent.",
+    "SeeMoreFeatures tap is idempotent expansion admission: set true then update the existing feature section without navigating away or dismissing sidebar.",
+    "Keep available feature set separate from presentation order/visibility; preserve native stable identity through collection changes and existing reading-anchor restoration.",
+    "Continue to use separately proven per-feature selection routes; this More control has no HistorySelection destination case. Do not manufacture a generic Explore web feed.",
+    "Leave catalog collapse, exact truncation count and animation unknown until source consumers close; maintain ordinary sidebar return/close through its current owner."
+  ],
+  "precise_unknowns": [
+    {
+      "id": "ordered-projector",
+      "boundary": "1297f38 candidate filtering12983d8..12985b0 and Set construction1257068; full final featureCatalog projector and expanded13-byte input producer not followed.",
+      "next": "Find producer binding HistoryViewController.featureCatalogExpanded to HistoryFeatureCatalog.isExpanded and actual catalog ordered item getter. Do not reconstruct it from candidate declarations."
+    },
+    {
+      "id": "appearance-and-label",
+      "boundary": "Actual row cell registration/label consumer for Item.seeMoreFeatures not followed after new positive case mapping.",
+      "next": "Use now-proven raw representation to follow exact seeMore row configuration; close More vs Explore key, icon and layout branch before changing typography."
+    },
+    {
+      "id": "selectedFeature",
+      "boundary": "More has no HistorySelection destination; per-feature selection dispatch and catalog callback binding not completely closed.",
+      "next": "Do not use a same-named feed destination; retain established feature-specific routes and explicit fixture ordering."
+    },
+    {
+      "id": "collapse-and-reset",
+      "boundary": "1355e80 event invoking false assignment not named; no catalog collapse control proved.",
+      "next": "Map callback owner only if collapse lifecycle is needed; do not infer toggling from isExpanded."
+    },
+    {
+      "id": "haptics-gestures",
+      "boundary": "No explicit haptic call in selected More branch/setter/invalidation helpers; broad didSelect admission/common handling not completely inspected.",
+      "next": "Keep current proven shared sidebar haptic carrier if applicable; add no More-specific haptic or gesture based on field presence."
+    }
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-sidebar-feature-catalog-parent-20261113/",
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "tests_or_builds": false,
+    "target_execution": false,
+    "device_access": false,
+    "network": false
+  },
+  "supersedes": "Prior ios-sidebar-explore-20261112-findings.json open case-mapping question is now closed for seeMoreFeatures; visible catalog order/experiment assignment still partial.",
+  "followup_registry_mapping": {
+    "scope": "Supported registry Plugins/Projects/Sites/Images/Assistant; no expanded inventory assumed official",
+    "labels_icons": "No actual sidebar cell label/icon consumer for these five cases was positively closed in this bounded followup. Use explicit independent provider title/resource mapping, never feature ID as image name. Native page header/title consumers do not prove sidebar consumers.",
+    "reusable_but_separate": {
+      "FileLibrary": "HistoryFileLibraryCellViewModel123d5a0 -> cell123d224 original books versus document-on-document-tilted branding; not a substitute for Plugins or other feature glyphs",
+      "plugins_directory": "gpt_plugins_directory_title is native directory page key; not independently proven sidebar label",
+      "assistant": "Orbit user supplied name/avatar must not be replaced by user reference R2 label/icon"
+    },
+    "more_removed_after_expansion": "Unknown: current selected action proves source state true and snapshot invalidation, but final projection removing More has not been closed. If host hides consumed More, label that projection independently. Repeated source setter true is no-op, not toggle.",
+    "collapse_reset": "No new catalog collapse control proved. Existing false assignment1355ee4 remains unknown event-owner. Do not attach to every route or dismiss.",
+    "examined_existing_evidence": [
+      "ios-sidebar-content-icon-20261112-findings.json",
+      "ios-native-plugins-20261112-findings.json",
+      "ios-native-sites-list-20261112-findings.json",
+      "ios-native-images-library-20261112-findings.json",
+      "ios-native-personal-assistant-page-20261112-findings.json"
+    ]
+  }
+}

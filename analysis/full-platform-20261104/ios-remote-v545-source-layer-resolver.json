@@ -1,0 +1,442 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x62efb04",
+    "end_exclusive": "0x62eff00",
+    "sha256": "6210984ff6fce2adaddcddb027d61f53f33ee06104aae804d13bec94be381282"
+  },
+  "linker_function_starts_in_window": [
+    "0x62efb04",
+    "0x62efec0",
+    "0x62efed0"
+  ],
+  "next_linker_function_start": "0x62eff28",
+  "direct_calls": [
+    {
+      "site": "0x62efb48",
+      "target": "0x7c68b60",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacae438",
+        "register": "x1",
+        "selector": "isHidden"
+      }
+    },
+    {
+      "site": "0x62efb54",
+      "target": "0x7c6cd20",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacaf4a8",
+        "register": "x1",
+        "selector": "opacity"
+      }
+    },
+    {
+      "site": "0x62efb60",
+      "target": "0x21785c8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efb64",
+      "target": "0x1636e0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efb68",
+      "target": "0x760d700",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efb70",
+      "target": "0x1399ebc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efb78",
+      "target": "0x7c53b0c",
+      "imported_symbol": "_objc_retainAutoreleasedReturnValue"
+    },
+    {
+      "site": "0x62efb7c",
+      "target": "0x162d34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efb84",
+      "target": "0x1da3aa8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efb8c",
+      "target": "0x7c53b0c",
+      "imported_symbol": "_objc_retainAutoreleasedReturnValue"
+    },
+    {
+      "site": "0x62efb90",
+      "target": "0x4f426c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efb98",
+      "target": "0x2a9b400",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efba0",
+      "target": "0x7c53b0c",
+      "imported_symbol": "_objc_retainAutoreleasedReturnValue"
+    },
+    {
+      "site": "0x62efba4",
+      "target": "0x162d34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efbb4",
+      "target": "0x1bee60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efbbc",
+      "target": "0x7c5c780",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacab308",
+        "register": "x1",
+        "selector": "convertRect:toLayer:"
+      }
+    },
+    {
+      "site": "0x62efbc0",
+      "target": "0x1636e0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efbc4",
+      "target": "0x7c53a58",
+      "imported_symbol": "_objc_release_x20"
+    },
+    {
+      "site": "0x62efbc8",
+      "target": "0x1dab42c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efbcc",
+      "target": "0x1bee60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efbd0",
+      "target": "0x7c521c8",
+      "imported_symbol": "_CGRectEqualToRect"
+    },
+    {
+      "site": "0x62efbd8",
+      "target": "0x1bee60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efbec",
+      "target": "0x7c5224c",
+      "imported_symbol": "_CGRectIntersection"
+    },
+    {
+      "site": "0x62efbf0",
+      "target": "0x1dab42c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efbf4",
+      "target": "0x7c521c8",
+      "imported_symbol": "_CGRectEqualToRect"
+    },
+    {
+      "site": "0x62efc34",
+      "target": "0x7c545a4",
+      "imported_symbol": "_swift_getObjectType"
+    },
+    {
+      "site": "0x62efc4c",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efc58",
+      "target": "0x7c4d65c",
+      "imported_symbol": "_$sSS10describingSSx_tclufC",
+      "chained_binding": {
+        "slot": "0xaad66b0",
+        "symbol": "_$sSS10describingSSx_tclufC",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11145,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x62efc6c",
+      "target": "0x15ca3c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efc74",
+      "target": "0x2a94398",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efc78",
+      "target": "0x2a97868",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efd20",
+      "target": "0x265aa14",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efd30",
+      "target": "0x265cebc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efd40",
+      "target": "0x265aa1c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efd44",
+      "target": "0x62f4084",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efd50",
+      "target": "0x265aa14",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efd5c",
+      "target": "0x265cebc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efd70",
+      "target": "0x265aa1c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efd90",
+      "target": "0x7c4d728",
+      "imported_symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+      "chained_binding": {
+        "slot": "0xaad6768",
+        "symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11168,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x62efd94",
+      "target": "0x154510",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efda0",
+      "target": "0x15374c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efda4",
+      "target": "0x101028",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efda8",
+      "target": "0x235b544",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efdc0",
+      "target": "0x1565d4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efdd0",
+      "target": "0x166714",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efddc",
+      "target": "0x2a93010",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efde0",
+      "target": "0x2a9f8e4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efdf4",
+      "target": "0x26470cc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efdfc",
+      "target": "0x2a94e20",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe00",
+      "target": "0x15374c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe04",
+      "target": "0x10108c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe0c",
+      "target": "0x1379b4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe1c",
+      "target": "0x1379b4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe20",
+      "target": "0x15374c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe24",
+      "target": "0x1a9f2c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe28",
+      "target": "0x154510",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe2c",
+      "target": "0x15374c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe30",
+      "target": "0x10108c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe38",
+      "target": "0x2a914d0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe40",
+      "target": "0x62f3540",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe44",
+      "target": "0x62f37d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe54",
+      "target": "0x7c4da04",
+      "imported_symbol": "_$sSSySSxcSTRzSJ7ElementRtzlufC",
+      "chained_binding": {
+        "slot": "0xaad6a18",
+        "symbol": "_$sSSySSxcSTRzSJ7ElementRtzlufC",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11252,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x62efe6c",
+      "target": "0x154d60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe74",
+      "target": "0x15324c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe7c",
+      "target": "0x153184",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe80",
+      "target": "0x1532b4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe8c",
+      "target": "0x153184",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe90",
+      "target": "0x1532b4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe94",
+      "target": "0x1dab42c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe98",
+      "target": "0x1bee60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efe9c",
+      "target": "0x7c521c8",
+      "imported_symbol": "_CGRectEqualToRect"
+    },
+    {
+      "site": "0x62efed4",
+      "target": "0x1616c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efef0",
+      "target": "0x147940",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62efef4",
+      "target": "0x26a878",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

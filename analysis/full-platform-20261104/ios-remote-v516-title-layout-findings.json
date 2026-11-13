@@ -1,0 +1,116 @@
+{
+  "schema": "rea-static-layout-findings-v1",
+  "batch": "v516",
+  "status": "partial",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Does the official Remote thread title parent enforce leading placement after the back button, and what directly applicable label/ToolbarItem modifiers were previously omitted?",
+  "findings": [
+    {
+      "id": "placement",
+      "evidence_type": "official_artifact_static",
+      "status": "verified_static",
+      "offsets": [
+        "0x1a3007c",
+        "0x1a30088",
+        "0x1a30090",
+        "0x1a300f4",
+        "0x1da9ebc",
+        "0x1da9ec0"
+      ],
+      "conclusion": "CodexRemoteThreadToolbarContent chooses ToolbarItemPlacement.principal on iOS26+, topBarLeading otherwise. The content factory is1ce909c and concrete label metadata accessor1ce9184. Helper1da9ebc tail-calls ToolbarItem.init(placement:content:) at7c46e10, bound at aad02e8.",
+      "integration": "Preserve the recovered availability-specific placement. Leading VStack alignment describes the title/subtitle relative to each other and does not override principal ToolbarItem placement."
+    },
+    {
+      "id": "fixed-label-height",
+      "evidence_type": "official_artifact_static",
+      "status": "verified_static",
+      "offsets": [
+        "0x1a2d9c4",
+        "0x1a2d9c8",
+        "0x1a2d9d0",
+        "0x1a2d9d4",
+        "0x1bfd00",
+        "0x15c870",
+        "0xe1a0b0",
+        "0x7c47104",
+        "0xaad0638"
+      ],
+      "conclusion": "After the DynamicType cap, the LocationLabel receives _FrameLayout(width:nil,height:44,alignment:center). Alignment.center is copied to x4/x5 by1bfd00. 15c870 sets x0=0,w1=1 (width nil). e1a0b0 sets x2 to double44 bits4046000000000000,w3=0 (height present), then tail-calls _FrameLayout.init(width:height:alignment:).",
+      "integration": "Apply .frame(height:44) to the complete title/subtitle label after .dynamicTypeSize(...xLarge). This is fixed height, not minHeight, maxWidth infinity, or a screenshot-derived horizontal offset."
+    },
+    {
+      "id": "hidden-shared-background",
+      "evidence_type": "official_artifact_static_with_local_sdk_enum_correspondence",
+      "status": "verified_static",
+      "offsets": [
+        "0x1a30124",
+        "0x1a3012c",
+        "0x756b500",
+        "0x756b55c",
+        "0x756b59c",
+        "0x756b5c8",
+        "0x756b614",
+        "0x756b624"
+      ],
+      "conclusion": "The title ToolbarItem passes visibility raw2 to756b500. The wrapper stores the byte, then on iOS26+ calls ToolbarContent.sharedBackgroundVisibility with that byte. Apple SDK frozen Visibility cases are automatic,visible,hidden, so raw2 maps to hidden. Before26 wrapper returns original toolbar content.",
+      "integration": "Apply .sharedBackgroundVisibility(.hidden) to the title ToolbarItem on iOS26+. This has a direct source basis. Its actual impact on system title positioning must be measured separately."
+    },
+    {
+      "id": "bounded-parent-negative",
+      "evidence_type": "official_artifact_static",
+      "status": "partial",
+      "offsets": [
+        "0x1ce909c..0x1ce9184",
+        "0x1a2ff1c..0x1a2ffbc",
+        "0x1a2d760..0x1a2d9f0",
+        "0x1a3007c..0x1a3012c"
+      ],
+      "conclusion": "The inspected immediate label factory constructs data plus the xLarge cap. The immediate toolbar modifier attaches .toolbar(content:). Label body supplies leading VStack spacing3 and fixed44 height. These bounded windows contain no maxWidth infinity leading frame, horizontal leading spacer, titleView coordinate override, or leading-specific navigation-container sizing.",
+      "integration": "The newer screenshot alone does not establish a different293 placement. Restore the two concrete omissions first, then compare a long title and short title under the same platform/navigation host. Keep any forced leading adaptation explicitly separate until additional owner evidence is available."
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "Why does the newer official screenshot show the title immediately after back while reconstruction is centered?",
+      "boundary": "Native enclosing navigation integration and actual official screenshot build/OS are unbound. The inspected293 ToolbarItem explicitly selects principal on26+.",
+      "next_minimal_action": "Identify the UINavigationController/UIHostingController wrapper that owns CodexRemoteThreadViewContent and any title-specific navigation-item/titleView layout mutations, or obtain the exact newer shipped artifact and compare the same toolbar body."
+    },
+    {
+      "question": "Does hidden shared background change principal horizontal positioning?",
+      "boundary": "No official runtime observed. The SDK modifier is statically proven but does not itself prove the visual outcome.",
+      "next_minimal_action": "Measure the reconstruction before/after this modifier at identical title/subtitle/right-control widths and OS, and retain results as reconstruction validation."
+    }
+  ],
+  "limits": [
+    "No official application or service was run.",
+    "No production files modified.",
+    "The local SDK enum definition is a separately labelled ABI correspondence, not the newer screenshot version.",
+    "No claim that this fully resolves leading-placement parity."
+  ],
+  "evidence_files": {
+    "ios-remote-v480-toolbar.asm": "7b080aeb368208c1eb1a837fc2d5c217417cbb60d2eed63e97f0731eb505df0a",
+    "ios-remote-v480-toolbar-calls.json": "1666bcff86e7cc02ff71e98d710c4ff1dc615134cb88e544d4805dade3ee5c1e",
+    "ios-remote-v480-toolbar-metadata.json": "bf2833a7910a1fdf5f7661686a93534b966abaab44698f97d5c1a113a5ced3ad",
+    "ios-remote-v480-location-label.asm": "787ea1e310f7a6f9151ca702f4c7818df3148ee4a4754f5b596743e1b6e10553",
+    "ios-remote-v480-location-calls.json": "ac7cb289df1a6684151a841ecce08676964f88ce23cddcc8c4c18bcc816a3bee",
+    "ios-remote-v516-location-caller.asm": "e81870d4f18659518b246092fb32e4a7198e843d2ae5fe36928120fe550649f4",
+    "ios-remote-v516-location-caller.json": "99802e460820eab2a7ca97c56639d813217da7083185c63eab1311dd6da9681a",
+    "ios-remote-v516-title-alignment-argument-helper.asm": "9c25504e1e8bfdcb7fa18c70dbb5fc2fd2f438d971ff2876853aa856414860a0",
+    "ios-remote-v516-title-alignment-argument-helper.calls.json": "50806bb51ce4aff7e7caeab5e4931ba4e73d3f3b3a61173655c9daec4ab84bee",
+    "ios-remote-v516-title-background-modifier.asm": "bd3f1df0576e8f8130e8b22546dd4df1b1abcf1b2a37002479a446921f328115",
+    "ios-remote-v516-title-background-modifier.calls.json": "f3c5d9f39292a6662224e3c7b98c4f894a51a39fc1d8c6405c6d9c1a187d0244",
+    "ios-remote-v516-title-location-frame-helper.asm": "07b6b14ddf6f9d23a1ef6ca81e1ba7b05a95ee5be8b5109ea1516f2ff0fd02aa",
+    "ios-remote-v516-title-location-frame-helper.calls.json": "3ff96180b098853559475615a82a2cce6239d398525757f1e9c79e91c5f6ffbb",
+    "ios-remote-v516-title-location-frame-nil-width.asm": "13106da493928231621bb8bb41b1f521ae83ea97b62e49a5ccda3334e6332d99",
+    "ios-remote-v516-title-location-frame-nil-width.calls.json": "d7a55931c9e8d9c9f1515bdd07a3f63bfb29c665d72af9ddaaa332b4276581e9",
+    "ios-remote-v516-title-tail-bindings.json": "9e17899ce80751d707eca0f223fbca9b6cc5a3b56f4386e743b63d487ab5d566",
+    "ios-remote-v516-title-toolbaritem-helper.asm": "7bbe8f7cf08e3d7a097b34ba85b5293415e63e91204e69e9b02401903d55af09",
+    "ios-remote-v516-title-toolbaritem-helper.calls.json": "7251e72576c62fcf3bb852efbabc7545e647e6ccfa62a50b1432ba2aec618807",
+    "ios-remote-v516-title-visibility-sdk.json": "8c9890abbb9b4f2b36ba6d3f5c03926497d3f3cf27c6cbfc88bc8a540f93eb60"
+  }
+}

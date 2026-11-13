@@ -1,0 +1,97 @@
+{
+  "batch": "v555",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official shipped artifact static inspection",
+  "observations": [
+    {
+      "symbol": "HistoryFragment",
+      "offsets": [
+        "0x1a33ef0",
+        "0x75d28e0",
+        "0x75e1c5c"
+      ],
+      "conclusion": "Retry title factory produces the five-character Retry string. The existing catalog Retry localization is shared by this consumer.",
+      "evidence": [
+        "ios-remote-v555-retry-label.asm",
+        "ios-remote-v555-retry-string-helper.asm",
+        "ios-remote-v555-retry-label-calls.json"
+      ]
+    },
+    {
+      "symbol": "HistoryFragment failure fallback",
+      "offsets": [
+        "0x1a431ac",
+        "0x1a431ec",
+        "0x88b3070",
+        "0x88b3090",
+        "0x88b30b0"
+      ],
+      "conclusion": "Submission fallback uses codex_remote_failed_send_title / Error submitting message. Ordinary run failure uses Codex run failed.",
+      "evidence": [
+        "ios-remote-v555-error-fallbacks.asm",
+        "ios-remote-v555-text.json"
+      ]
+    },
+    {
+      "symbol": "ErrorRow retry action",
+      "offsets": [
+        "0x3dab654",
+        "0x3d8c8dc",
+        "0x3d8c950",
+        "0x3d8c964",
+        "0x3d8ca94",
+        "0x3d8caec",
+        "0x3d8cb8c",
+        "0x3d8cbbc"
+      ],
+      "conclusion": "The action sets SwiftUI state true, creates an async task, invokes the captured callback and clears state in its continuation.",
+      "evidence": [
+        "ios-remote-v555-retry-state.asm",
+        "ios-remote-v555-retry-state-calls.json"
+      ],
+      "limitation": "The ultimate service owner behind the captured callback remains unresolved."
+    },
+    {
+      "symbol": "ErrorCard retry body",
+      "offsets": [
+        "0x6ef0344",
+        "0x6ef0560",
+        "0x6ef05cc",
+        "0x6fc5d5c",
+        "0x838ca58"
+      ],
+      "conclusion": "The button branch has a callback and recovery-state gate, a LoadingOverlay/OAIProgressView label and RoundedRectangleButtonStyle.",
+      "evidence": [
+        "ios-remote-v554-card-body.asm",
+        "ios-remote-v555-card-retry-label.asm",
+        "ios-remote-v555-type-838ca58.json",
+        "ios-remote-v555-type-80f6d10.json"
+      ],
+      "limitation": "Exact rounded-button style payload, environment transform and full visual parity remain partial."
+    }
+  ],
+  "restored_integration": [
+    "Failed-submission card exposes the recovered Retry label",
+    "Retry click drives a loading overlay until its synthetic callback outcome",
+    "Original submission-failure translation is extracted from the frozen package"
+  ],
+  "independent_adaptation": [
+    "Synthetic attempt UUID and per-turn revision checks",
+    "Stable row/prompt/attachment retention through retry",
+    "Only the latest failed submission can retry in the sequential replay adapter",
+    "Native bordered button approximates the partially resolved original style",
+    "Synthetic failure/success/cancellation producer"
+  ],
+  "unknown": [
+    "Actual service retry request and idempotency schema",
+    "Automatic recovery branch",
+    "Exact original loading/error-row outer geometry"
+  ],
+  "verification_status": "Foundation and typecheck passed. Four distinct UI cases passed, with the two retry cases repeated including loading/disabled-state checks."
+}

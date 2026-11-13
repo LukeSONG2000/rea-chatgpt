@@ -1,0 +1,269 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Bounded SourceCodeFilePreview Markdown options menu, provider capability and native toolbar; no browser expansion",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_budget": {
+    "limit": 3,
+    "candidates": [
+      "SourceCodeFilePreview corrected complete Body/toolbar branch and binding",
+      "Markdown actions Menu full Body and actual tagged Raw/Markdown constructors",
+      "Outer and inner menu label resource factories"
+    ],
+    "stopped": true
+  },
+  "official_observations": [
+    {
+      "conclusion": "The Markdown toolbar is a two-level menu. Outer Menu contains Display submenu with InlinePicker plus an independent Optional ShareLink<URL,Label>. It is not a flat pair of mode Buttons or an unconditional share button.",
+      "source": [
+        "MarkdownActions descriptor95b32b4/conformance7e26ff0",
+        "Body associatedtype entry7e2700c normalizes to8e7ac54",
+        "actualbody1a13cb0",
+        "1a141a4 Picker constructor;1a141b8 InlinePickerStyle;1a141ec pickerStyle"
+      ],
+      "evidence": [
+        "markdown-menu-witness.json",
+        "menu-full-body.tree.txt",
+        "menu-full-body-compact.txt",
+        "markdown-picker.asm"
+      ],
+      "limits": "Outer label is opaque in full generic type; actual factory chain below supplies the label. Default menu sizing remains native carrier-owned."
+    },
+    {
+      "conclusion": "Raw and Markdown labels have directly constructed mode tags, not inferred enum field order. Legacy TagValueTraitKey<DisplayMode> stores0 for Raw and1 for Markdown. Modern branch uses _TagTraitWritingModifier<the same DisplayMode>.",
+      "source": [
+        "Raw label1a14280 key;1a1429c fallback Raw",
+        "Raw legacy1a14318->1d9c5c0 yieldsrecord7e271a8;1a1431c->1dadd8c stores0",
+        "Markdown label1a14378 key;1a1439c fallback Markdown",
+        "Markdown legacy1a1440c and1a14414/18 stores1",
+        "record7e271c0 modern _TagTraitWritingModifier<CodexRemoteMarkdownFilePreviewDisplayMode>"
+      ],
+      "evidence": [
+        "markdown-picker.asm",
+        "display-tag-helpers.asm",
+        "raw-tag-helper.asm",
+        "display-tag-legacy.tree.txt",
+        "display-tag-modern.tree.txt"
+      ],
+      "limit": "Modern trait payload bytes and original persisted/wire encoding are not independently decoded. Values0/1 are proved constructor selection identities in this control, not a claim of service schema."
+    },
+    {
+      "conclusion": "The source parent supplies a real Binding to the actions menu, not a local-only label toggle. It constructs Bindable.projectedValue and uses a ReferenceWritableKeyPath to derive the Binding. Concrete VM storage and persistence remain unresolved.",
+      "source": [
+        "1a11528 Bindable.projectedValue",
+        "1a11538->1d973c0->swift_getKeyPath(7e13558)",
+        "1a1154c Bindable.dynamicMember Binding",
+        "1a11568->1d36968 actions menu metadata;1a11570..1a1158c filling menu input"
+      ],
+      "evidence": [
+        "source-toolbar-branch.asm",
+        "source-toolbar-branch-calls.json",
+        "display-binding-keypath.asm"
+      ],
+      "limit": "Exact concrete property writer/side effects and initial mode are unknown. Independent source model mode/callback is acceptable only when labeled adapter; no official preference/storage claim."
+    },
+    {
+      "conclusion": "Prior language/format predicate is still not a proved filename-extension classifier. Parent calls VM witness+0x20 and branches on returned x1 at1a11500. This routes to Markdown menu or optional URL ShareLink, but returned type and exact predicate require actual protocol producer. Do not treat it as a boolean or assume all .md filenames qualify.",
+      "source": [
+        "1a114ec loadswitness+0x20",
+        "1a114fc indirectcall",
+        "1a11500 cbzx1→1a115a8",
+        "nonmenuURLgetterwitness+0x30 at1a115bc/c4"
+      ],
+      "evidence": [
+        "source-toolbar-branch.asm"
+      ],
+      "limit": "Return registerx1 presence check is observed. Semantic property identity and original file-format classification are unresolved."
+    },
+    {
+      "conclusion": "Source view complete corrected Body retains toolbar/navigation-title wrappers and both source/Markdown types in generic parameters; this supports native source/Markdown branches but does not reconstruct actual rendering/control semantics from type presence.",
+      "source": [
+        "SourcePreview conformance7e26b88",
+        "Body entry7e26ba4 normalizes8e77574",
+        "actualbody1a11028",
+        "referencesMarkdownPreview95b3350/SourceCodeFilePreviewLine95abc84/InlineDiffComments95b3030/scrollmodifier95b3308"
+      ],
+      "evidence": [
+        "source-view-witness.json",
+        "source-full-body.tree.txt"
+      ],
+      "limit": "Root opaque is SwiftUI toolbar opaque-return wrapper with retained generic arguments, not proof of absent underlying structure. Final dispatch/highlighter/renderer and comments owner remain unclosed."
+    }
+  ],
+  "menu_resources": {
+    "outer_options": {
+      "label_consumer": "1a145b0→1a30cd8",
+      "fallback": "Options",
+      "text_factory": "1a30d3c→75d6bc0",
+      "resource": "OpenAI/Symbols/ellipsis-horizontal",
+      "resource_consumer": "1a30d44→74f6dc8→8a55080",
+      "localization_key": "Shared generated key mapping not resolved in this pass"
+    },
+    "display": {
+      "key": "codex_remote_markdown_file_preview_display_menu_title",
+      "key_address": "88c0f70",
+      "consumer": "1a14530..1a14550",
+      "fallback": "Display",
+      "resource": "OpenAI/Symbols/text-document",
+      "resource_consumer": "1a1456c→74fbc28→8a57480"
+    },
+    "raw": {
+      "key": "codex_remote_markdown_file_preview_raw_mode_title",
+      "key_address": "88c0fb0",
+      "consumer": "1a14280..1a1429c",
+      "fallback": "Raw",
+      "resource": "OpenAI/Symbols/code",
+      "resource_consumer": "1a142cc→74f6508→8a54ca0"
+    },
+    "markdown": {
+      "key": "codex_remote_markdown_file_preview_markdown_mode_title",
+      "key_address": "88c0ff0",
+      "consumer": "1a14378..1a1439c",
+      "fallback": "Markdown",
+      "resource": "OpenAI/Symbols/text-document",
+      "resource_consumer": "1a143c8→74fbc28→8a57480"
+    },
+    "share": {
+      "text_factory": "75d29e0",
+      "fallback": "Share",
+      "resource": "OpenAI/Symbols/arrow-up-open-base",
+      "consumer": "1a14594..1a1459c→74f45ec",
+      "condition": "Optional<URL> present, independently of Display picker"
+    }
+  },
+  "current_host": {
+    "path": "implementation/ios/Sources/FrontendFilePreview.swift",
+    "sha256": "785a68747bb6a4899603bee27f271b4f6903bec44aa8e770ec32002d2a46224b",
+    "implemented": "Explicit scoped provider resources, ordinary QuickLook, linked plain/source UITextView, optional real URL ShareLink with retained attachment resource. No Markdown mode contract/rendered branch yet.",
+    "gaps": [
+      "Markdown two-level options menu and corresponding rendered-content mode",
+      "Original format classifier and source/Markdown native renderer/highlighter",
+      "Concrete original VM mode writeback/initial state and service persistence"
+    ]
+  },
+  "implementation_recommendation": {
+    "safe_minimum": "Provider explicitly supplies Markdown display capability and initial mode for a scoped immutable resource; install proved two-level Menu/InlinePicker and optional URL ShareLink. Bind current file mode to actual Raw/native rendered content; no dead toggle.",
+    "source_backed": [
+      "Two-level menu structure and order Display then optional Share",
+      "InlinePicker with Raw0/Markdown1 constructor identities",
+      "Exact label keys/icons above",
+      "URL ShareLink and absent-URL omission; title inline primaryAction toolbar from previous report"
+    ],
+    "independent_adapter": [
+      "Provider capability and initial mode selection; do not infer from filename alone",
+      "Current file scoped mode state/callback, preserving underlying resource and reading state",
+      "Raw existing native source text viewer",
+      "Bundled OfficialMarkdown parser plus current native basic blocks renderer is a separate implementation, not original complete CodexRemoteMarkdownFilePreview",
+      "Temporary local file URL generation and lifetime"
+    ],
+    "must_not_claim": [
+      "Original source format routing recovered",
+      "Official complete Markdown/source renderer restored",
+      "String payload equals file URL",
+      "Mode choice persisted to original service or concrete VM",
+      "Exact original Source/Markdown switch scroll-anchor behavior"
+    ]
+  },
+  "haptics": {
+    "status": "unknown",
+    "result": "No explicit haptic emission proved in bounded source toolbar, picker/tag and label bodies. Native system menu effects are not a recovered custom haptic trigger."
+  },
+  "precise_unknowns": [
+    {
+      "gap": "VM witness+0x20 predicate and resource format routing",
+      "next": "Resolve actual SourceCodeFilePreview VM protocol requirement and concrete getter, preserving return-type presence semantics."
+    },
+    {
+      "gap": "Original Markdown body/displayMode switching/highlighter/comments",
+      "next": "95b3350 real conformance/body and its selected mode consumer, separate from source header/menu."
+    },
+    {
+      "gap": "Mode initial value and side-effect owner",
+      "next": "Keypath7e13558 concrete getter/setter and request-scoped VM construction; do not supply guessed preference schema."
+    }
+  ],
+  "validation": {
+    "static_only": true,
+    "host_modified": false,
+    "shared_tools_modified": false,
+    "built": false,
+    "tests_run": false,
+    "device_or_original_runtime": false
+  },
+  "reused_reports": [
+    "ios-files-preview-parent-20261113-findings.json",
+    "ios-remote-v617-line-preview-findings.json"
+  ],
+  "raw_evidence": {
+    "ios-files-preview-third-20261113/display-binding-keypath-calls.json": "b6f9baddc3de093249cfb7d1e3cb2c8caba535382feee572e34af2c1ac9227d1",
+    "ios-files-preview-third-20261113/display-binding-keypath.asm": "fadb47890dbc1a1c834c3497b52169ccda6d2666f4cacec4c92f8d6499e3b1c4",
+    "ios-files-preview-third-20261113/display-markdown-icon-calls.json": "12f0971c04bea363ba8ae83108554c932dde582926815346c20dd629e4a69b1e",
+    "ios-files-preview-third-20261113/display-markdown-icon.asm": "546779d3854e2ef755fc5190ead4a1e734d9adb2f50638ff02cc55bb85a6d3db",
+    "ios-files-preview-third-20261113/display-tag-helpers-calls.json": "103667850679042c03f93f2dda7797799072e9443abc409bdf4688ba79d017d0",
+    "ios-files-preview-third-20261113/display-tag-helpers.asm": "25874a38d6197bd50701daaa858046a172eb7ea8690ea1d2bd246e903cb525ea",
+    "ios-files-preview-third-20261113/display-tag-legacy.json": "8882822838fdac5e2459fa1ac0c4298ca41d14fc8d03dc349a65ebea943b9438",
+    "ios-files-preview-third-20261113/display-tag-legacy.raw": "27327d80602775c00481aa7ff34d23d563827e5b1fea251914647bbd0ef78771",
+    "ios-files-preview-third-20261113/display-tag-legacy.refs.tsv": "4d6731c6ee394a35e43fcefa0ffcadf6085e636711b6aa9afd9b9924e05c8156",
+    "ios-files-preview-third-20261113/display-tag-legacy.tree.txt": "a6e0b731804ae26e81e41037d9d659fc1cf86052db30f3773cd9a6dc532f9d1a",
+    "ios-files-preview-third-20261113/display-tag-modern.json": "855f34b237bfd4668e75edc9bf25dda142ec75a246a277b002037f766222eba3",
+    "ios-files-preview-third-20261113/display-tag-modern.raw": "6089fc0073f491e84e4c5e9dca021d0138c422cf76c63feca088c513a2deb900",
+    "ios-files-preview-third-20261113/display-tag-modern.refs.tsv": "a88e12c88171ca3c63bba0fce760184b6a0bdfb640dec751323ff647433ec080",
+    "ios-files-preview-third-20261113/display-tag-modern.tree.txt": "1ea0190f0651fca7e886df66f28881edd1db9c55b9054741d78ded43f4e1c5f2",
+    "ios-files-preview-third-20261113/markdown-content-choice-calls.json": "f67d095fd670e387bd27d1b78de0d0bf5c20635ab568947649a36a0583376818",
+    "ios-files-preview-third-20261113/markdown-content-choice.asm": "eb74bc0b8081777c22a941a013942254427c43117a39605001fc9b1bae40e51b",
+    "ios-files-preview-third-20261113/markdown-label-tail-calls.json": "89976042e32fad8096d870335ba84dc28af40a2e1927f3fa12fd615d64c2fa85",
+    "ios-files-preview-third-20261113/markdown-label-tail.asm": "29539df8b0be249abda3019ed74ad3c71fda4780f7a18c236cf4a261724abdf2",
+    "ios-files-preview-third-20261113/markdown-menu-witness.json": "66e66ccbcba3fbf0d57049cac48bae0c8deb9fcb49c49ed4d4de837ea5640040",
+    "ios-files-preview-third-20261113/markdown-picker-calls.json": "ffd9a7543eb35e3b3b29989032d1e2bc93b8b3864d6db215f21646be13b0b5d2",
+    "ios-files-preview-third-20261113/markdown-picker.asm": "6384ff15080c8b911e6e55c4631aedad82c504ce28c50c37c118589a095e25ff",
+    "ios-files-preview-third-20261113/menu-full-body-compact.txt": "ddfff4be9cbb999b279879e0510bd0d4fa43bcd0f01f640c94d6d8bbcb8d48f2",
+    "ios-files-preview-third-20261113/menu-full-body.json": "c404e03895ee08203726aa88480c58d78032fc1d6a52783a2c7981a4be89e42a",
+    "ios-files-preview-third-20261113/menu-full-body.raw": "b7208be5ef1a4816b39ba3b7c377797ef4392ffdcb38107975d064a18071d0b6",
+    "ios-files-preview-third-20261113/menu-full-body.refs.tsv": "bf0b948665246ff7f8f3066fe56ecf62b91d6915d4865f0581c213798e03cd85",
+    "ios-files-preview-third-20261113/menu-full-body.tree.txt": "d70a32336bc19f2518b4aca26a5b45c153d698f6939a47fe7f7ad493707d7251",
+    "ios-files-preview-third-20261113/menu-label-calls.json": "eb4772052f777b7b2d311356675ac0217e90339eb55fb82a0c2d7ffe3351eaf2",
+    "ios-files-preview-third-20261113/menu-label.asm": "2950c7eee3b3ca86861ed6a6b77cb5b8fa29e7f23876ccf777c13a31d772c42a",
+    "ios-files-preview-third-20261113/menu-resources.json": "f20d00cb008877b8c25a8179bfd023a33d91f9bc17c0159ff7b425a29efe9a37",
+    "ios-files-preview-third-20261113/mode-type.json": "5103aa6bec4ea1f1c8cc95ab4e00cf32de6f0a5e90bde8fb059a7946a077c64c",
+    "ios-files-preview-third-20261113/outer-menu-icon-calls.json": "c53d4bbe950dd497a746473d8def2aec0e2a9bede80468727b41263fd0bc2c0e",
+    "ios-files-preview-third-20261113/outer-menu-icon.asm": "86a899bf3429845eba458611a8e99081a95b175746c4174aa41d875edd107e40",
+    "ios-files-preview-third-20261113/outer-menu-label-calls.json": "74c55cea32b96b2fad3b43c58020e4829344cf01c7c7cc13ff0313e19de828ba",
+    "ios-files-preview-third-20261113/outer-menu-label.asm": "9316230724cd88b5d2c026650365e5cb0d7db9959d398264097036581eb5e50b",
+    "ios-files-preview-third-20261113/outer-menu-text-calls.json": "4d29a53780ca7d6532d9783fa1b12938fe5d7d0bc059ed5a40f7b9828bd31a09",
+    "ios-files-preview-third-20261113/outer-menu-text.asm": "61d8e8cb88c4616e9a1f0a8a86ae252f48f4769063abd177369af79dd987d70b",
+    "ios-files-preview-third-20261113/prepare_raw.py": "7a84c91fed35bbbb2db0b0a09f239990dbbf1bed6deba4da7d533660f2125bbc",
+    "ios-files-preview-third-20261113/raw-mode-icon-calls.json": "2e781e82cebe6c5f415882916c848a17d5710e2a5826f00493965ef60f45a887",
+    "ios-files-preview-third-20261113/raw-mode-icon.asm": "ed8b49afc87f1c6c56e7e4d01e49f641af01a40b28db6d2a6b29456075451a8a",
+    "ios-files-preview-third-20261113/raw-tag-helper-calls.json": "dd74c4e9e4c078a5712190cebdc58728ff3ab8f11f656de081b07284f22d9204",
+    "ios-files-preview-third-20261113/raw-tag-helper.asm": "9d95b3c43e5abfdf271e8f6da7606b15b74d7622402992cb435a5b80ceed4b2c",
+    "ios-files-preview-third-20261113/source-full-body-compact.txt": "bd95eee057e5a7020f57fac001678d9285241ee223ca3bb416b620f82a2674fb",
+    "ios-files-preview-third-20261113/source-full-body.json": "ce6ef697d3c094d8afb27be377923cab8a5af62d3b2c4c1b3f7b6977700bdbc5",
+    "ios-files-preview-third-20261113/source-full-body.raw": "44cf040d07ef1be2d5573aa15730197cdc59eac4573de37bd4d680691d5e0398",
+    "ios-files-preview-third-20261113/source-full-body.refs.tsv": "090a9f838a6699bd52cf67a5897b35c570aa2e28a3b405183d58c3619c76e1e5",
+    "ios-files-preview-third-20261113/source-full-body.tree.txt": "a57b6ed7a136ecb8d7f79a356acae42f0e7e2f2f72d9e3c1edf197f354e72ab9",
+    "ios-files-preview-third-20261113/source-share-icon-calls.json": "8229734f21368dad00edf66e895a8f4a387961311c841cfc167d5c01ce108b1f",
+    "ios-files-preview-third-20261113/source-share-icon.asm": "64c475a930fca246231f0a78dbbf3f04a4a493fa6f0a5052aaa9b4b6f24ebb15",
+    "ios-files-preview-third-20261113/source-toolbar-branch-calls.json": "36d427cc46d23f5653e0da3fabab45909489fdc5bd41671f096fcef9b86c1881",
+    "ios-files-preview-third-20261113/source-toolbar-branch.asm": "75134967b671a9ffec1ff227be11348ba2c5e176f52e6696d1d74a75bb89fbf7",
+    "ios-files-preview-third-20261113/source-view-witness.json": "5e3f2a148108cf0538d44f7ccb980ca684f1ce7ffabe451c14b10e07b777f71b",
+    "ios-files-preview-third-20261113/bundled-assets-exact-names.json": "88a780be906b38c31e1276563209f1ef8f85d4a3367a8cd0849ce50d321d82ea"
+  },
+  "bundled_asset_validation": {
+    "path": "implementation/ios/Resources/OfficialVisualAssets.bundle/Assets.car",
+    "sha256": "716cc59b7593e6503e725a755c4b064b8d5644c3b3d894c4c4cee137037bb900",
+    "evidence": "analysis/full-platform-20261104/ios-files-preview-third-20261113/bundled-assets-exact-names.json",
+    "exact_name_presence": {
+      "OpenAI/Symbols/ellipsis-horizontal": true,
+      "OpenAI/Symbols/text-document": true,
+      "OpenAI/Symbols/code": true,
+      "OpenAI/Symbols/arrow-up-open-base": true
+    },
+    "limit": "Inventory confirms bundled names, not a rendered appearance or menu sizing test."
+  }
+}

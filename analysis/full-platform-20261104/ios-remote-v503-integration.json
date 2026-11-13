@@ -1,0 +1,78 @@
+{
+  "batch": "v503",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "no progress: status report; this continuation delivered v501 regression closure, v502 catalog states and v503 common header metrics",
+  "integration": [
+    "Common V2 header metrics applied to both plain and workspace labels, including those without new-thread controls",
+    "Scaled minimum44 + unscaled vertical2 reused from existing task-row modifier; parent horizontal20 retained without duplication",
+    "Existing extra topSpacing0/10 stays outside the complete header",
+    "Evidence-backed cross-scene row-metrics validation rule added to AGENTS.md"
+  ],
+  "independent_adaptations": [
+    "Existing sibling-button and parent List-inset host representation; exact optional-overlay hit-region equivalence remains partial",
+    "Synthetic collections, retry replay, navigation and Reduce Motion adaptation retained from v502"
+  ],
+  "validation": {
+    "ui": {
+      "passed": 4,
+      "failed": 0,
+      "cases": [
+        "Complete button/header frame minimum48 at standard size and growth at XXXL; pinned/Projects/NoWorkspace without accessories",
+        "Catalog state/retry/host isolation",
+        "NoWorkspace isolation/filter/return",
+        "Projects global collapse and individual state retention"
+      ]
+    },
+    "model_text": "v502 final model/text regression passed, model source unchanged in v503",
+    "visual": [
+      "Chinese default preview manually opened and pinned collapsed; title-row spacing observed",
+      "Exported XXXL screenshot inspected for NoWorkspace/Recents row spacing and top content underlap",
+      "Whole-page official pixel, original runtime and physical-device touch remain unaccepted"
+    ],
+    "device_build": "503 signed build and codesign passed; CFBundleVersion503 verified",
+    "physical_device": "iPhone Air unavailable at21:29; latest successful install496",
+    "preview": {
+      "version": 503,
+      "pid": 98627,
+      "location": "only built-in Color LCD online; external display unavailable",
+      "state": "Remote mixed catalog fixture, sourceAll, pinnedcollapsed, Projects expanded, remains running",
+      "screenshot": "ios-remote-v503-list-preview.png"
+    },
+    "retention": "no stale full-build candidates; fixed iOS derived-data directories reused; approximately34GiB free"
+  },
+  "source_evidence": [
+    "ios-remote-v503-header-minimum-findings.json",
+    "ios-remote-v503-cloud-findings.json",
+    "ios-remote-v502-catalog-findings.json",
+    "ios-remote-v502-catalog-reuse-and-spacing.json"
+  ],
+  "next_minimum_actions": [
+    "Integrate independently scoped cloud fixture through confirmed ordinary fallback Recents path, with explicit unresolved upstream assignment and environment-selection gates",
+    "Recover source filter cloud availability and top search/mode/list composer",
+    "Continue Remote messages, Chat/Work, haptics and remaining feedback, then Android using independent evidence"
+  ],
+  "limits": [
+    "No real project listing or retry service invoked",
+    "Cloud findings remain static; no cloud fixture integration claimed in503",
+    "No commit or push",
+    "Full objective remains incomplete"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "11abe16c9f5796acb70bf68d710a018e81e3cc5ad6366a84a4c5167feb531365",
+    "implementation/ios/Sources/RemoteWorkspacePresentation.swift": "4dc7d5ac4b195c2fced1e90df3450bbb8da14a55e399c2b2bf7400565d80731e",
+    "implementation/ios/Sources/OfficialText.swift": "60574af16d35b072db11370018e7d66c84ccff5c791abcd9b69ed8aeceac8226",
+    "implementation/ios/Resources/OfficialTranslations.json": "2befbd09e4229dfaab34a8ffede448664b0ba8deec443da406ba6c5583644c12",
+    "implementation/ios/UITests/HostInteractionTests.swift": "7397529f164350c1f8a2e8ddc0898c0c2d63d57b08a0e7e37919ad8ee269313b",
+    "implementation/ios/TextTests/main.swift": "c6a33c6392b95725e14f78a4baea6f75b33f1120f069eacf9891232b7e7a8e82",
+    "implementation/ios/Tools/prepare-official-text.py": "aff806e3f051878a12637d67f1b5e8a03f56bf60216edd2b8c8cda8dfbf2ec96"
+  },
+  "evidence_hashes": {
+    "ios-remote-v503-header-minimum-findings.json": "4939993c7ceb25cc8873ecf01b240069874934f0d8a5ff72c12777647bb3cd97",
+    "ios-remote-v503-cloud-findings.json": "e406d1f90c0df623f74bfed8f082fa65c52bd853d4dfd686d65802833e634711",
+    "ios-remote-v502-catalog-findings.json": "09c3ca2f641a192cf2313610b2aace3a5f2bb323d97a5fc7a9f8ad58eb4a5b77",
+    "ios-remote-v502-catalog-reuse-and-spacing.json": "b140e2061eef4e9fba353b216a225d5126a0174dd1e065524a3023e776122abf"
+  }
+}

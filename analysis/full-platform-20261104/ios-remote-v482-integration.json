@@ -1,0 +1,136 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v482",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Close the scroll-edge compatibility gate and locate Remote transcript effect ownership without assigning list style to unrelated pages.",
+  "observations": [
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x757d30c..0x757d348",
+        "0x77106b4",
+        "0x7713534",
+        "0x77105ac..0x7710684"
+      ],
+      "conclusion": "The modifier checks iOS26 availability then a once-cached Boolean. True skips the style modifier. The initializer tests exact system build membership, storing bit0 at0xb0a6ab8."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x7710e4c",
+        "0x7710d78",
+        "0x77135d4",
+        "0x7c54cdc",
+        "0x8a5cb4a",
+        "0xaa71bb0..0xaa71be0",
+        "0x28df4",
+        "0x151864"
+      ],
+      "conclusion": "kern.osversion is read using sysctlbyname, bound independently through the import stub. Four excluded builds are23A5260n,23A5260u,23A5276f,23A5287g. Lookup failure yields false. String membership is exact; case folding/trimming is absent."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "thread-content type0x7e13e40",
+        "ChatCollectionView descriptor0x9635ca0",
+        "conformance0x8072f78",
+        "make0x3f86ca4 ->0x3f858fc",
+        "update0x3f86ca8 ->0x3f85a9c"
+      ],
+      "conclusion": "Remote thread composite contains ChatGPTMessagesCollection.ChatCollectionView<CodexRemoteTranscriptItem> and a separate MessageInputGlassGradientPart. Collection uses UIViewControllerRepresentable. Current fixture ScrollView is still an independent host."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x3f85da4..0x3f85dc0",
+        "0x3f94afc ->0x3f8805c"
+      ],
+      "conclusion": "Collection update has an optional callback stored at+0x100/+0x108, following item/scroll updates, passed the collection getter result. Field metadata names onScrollViewResolved. This callback remains unresolved. A separate controller-observation callback now independently closes the Remote top-edge effect setup."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x1a4c56c ->0x3f84474",
+        "0x1a4c5a4..0x1a4c5bc ->0x7559ba0",
+        "callback0x1a4ccc4..0x1a4ceb0",
+        "type0x7e13fb8",
+        "0x1a4ce44",
+        "0x1a4ce60",
+        "0x1a4ce74"
+      ],
+      "conclusion": "The Remote collection constructor attaches callback0x1a4ccc4 through helper0x7559ba0. After iOS26 availability and the same system-build bypass check, it enumerates childViewControllers, casts to ChatCollectionViewController<CodexRemoteTranscriptItem>, obtains its collection, and assigns topEdgeEffect.style = UIScrollEdgeEffectStyle.softStyle. Only top is configured here. The observer helper and full outer visibility branches remain partial."
+    }
+  ],
+  "implementation": {
+    "paths": [
+      "implementation/ios/Sources/RecoveredScrollEdgeCompatibility.swift",
+      "implementation/ios/Sources/NativeConversationHost.swift"
+    ],
+    "change": "Replace unknown compatibility bypass in the existing V2 list edge modifier with the bound original build exclusion. Cache the system lookup once. Preserve soft/nil mapping and vertical edges.",
+    "independent_adaptations": [
+      "Swift sysctl buffer handling and UTF8 validation implemented locally.",
+      "Does not add the list modifier to the thread, Chat/Work or sidebar without caller evidence."
+    ],
+    "thread_edge_decision": "Source ownership/configuration resolved; thread effect not yet integrated. Current SwiftUI ScrollView differs from the recovered native collection host. Do not apply a hierarchy-wide modifier that may alter nested command/code scroll views; next integration must explicitly target the transcript owner."
+  },
+  "validation": {
+    "model": "passed with10 new compatibility vectors and existing text/model checks",
+    "r1": "UI one pass, one failure at search expansion after command expansion",
+    "r2": "Same failure reproduced, screenshot/tree retained",
+    "r3": "2 passed, 1 failed: title/location and fixed approval passed; scope test progressed to fixture-b then failed because the new helper only recognized approval attachments.",
+    "failure_diagnosis": "Screenshot and AX tree show search row underneath fixed approval. XCUITest tap opened the approval failure alert instead. Inline-action test now scrolls controls into the unoccluded transcript region, asserts no unrelated alert, retains original scope and expansion assertions. Fixed approval tests still forbid scrolling to find fixed controls.",
+    "r4": "1 passed, 0 failed: testRemoteTaskScopeAndReturn passed after helper recognized both approval and user-input attachments. Exit0. Production source unchanged from r3.",
+    "final_scope": "Three distinct focused tests passed across r3/r4 on identical production source. This is not one 3-test all-pass run or a full-suite claim.",
+    "reports": [
+      "analysis/full-platform-20261104/ios-remote-v482-ui.summary.json",
+      "analysis/full-platform-20261104/ios-remote-v482-r2-ui.summary.json",
+      "analysis/full-platform-20261104/ios-remote-v482-r3-ui.summary.json",
+      "analysis/full-platform-20261104/ios-remote-v482-r4-ui.summary.json"
+    ],
+    "failure_artifacts": [
+      {
+        "path": "/tmp/rea-v482-r2-screens/55834046-F9C6-4A4E-804C-224CFB5A6244.png",
+        "sha256": "cd038d5dd72cdf031482d36c74aaba4af23cfa82ae473b6b4b1db634398f06d9"
+      },
+      {
+        "path": "/tmp/rea-v482-r2-screens/6043C913-0D33-4830-A7C7-227FD3331D01.txt",
+        "sha256": "5385d553c55f7a1a75d03b821ef7d7f7a84a0299f7c6ea5df12d4ed5ca6e6ddb"
+      }
+    ]
+  },
+  "limits": [
+    "No new variable-blur curve or universal soft override",
+    "17 direct style-constructor callers found; B/BL and adjacent ADRP/ADD search is incomplete and not a full call graph",
+    "Bounded controller window0x3f86cd0..0x3f96cd0 revealed no direct edge-effect selector through supported patterns; indirect/external setup remains possible",
+    "Raw witness associated type0x90e3319 returned no references; not concrete class-name evidence",
+    "Simulator sysctl CLI absent; no runtime build string claimed from that failed command",
+    "Full project/task grouping, native message collection integration, top-edge runtime/visual acceptance, Chat/Work and physical haptics remain incomplete."
+  ],
+  "next_minimum_action": "Integrate the proven Remote top-only soft effect through an explicitly owned transcript scroll host, preserving nested output/code scroll behavior. Verify the controller observer and outer branch boundaries only as needed for that integration; then test scroll/title/fixed-accessory/nested-scroll relationships.",
+  "source_sha256": {
+    "implementation/ios/Sources/RecoveredScrollEdgeCompatibility.swift": "b42987d236581f92518d8a4ef21490d85b4f2ffc8d17b37f2318251aeaeed7e1",
+    "implementation/ios/Sources/NativeConversationHost.swift": "3695745d5895e72a84213675e2470c198f91ec19e53d45a90eb053b0f8636b5e",
+    "implementation/ios/UITests/HostInteractionTests.swift": "b82197548232fc24dbdd27a8cb82df74aaa86595ad105faec3881e459806d328",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "e460496ce307270f82f4d5723e1acb0b23db12f91b17eb02e1cd7ff4df1e711e"
+  },
+  "preview": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "build": "v482",
+    "pid": 44860,
+    "bundle": "local.rea.chatgpt.ioshost",
+    "launch_args": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks"
+    ],
+    "observed": "CUA observed Chinese fixture-a thread with title/context, collapsed command/search/file activities and fixed approval banner. Left running.",
+    "window": "Existing Device Hub window retained; display identity was not reverified.",
+    "physical_device": "v474 unchanged",
+    "commit_or_push": false
+  }
+}

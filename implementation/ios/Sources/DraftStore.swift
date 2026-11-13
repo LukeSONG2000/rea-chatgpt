@@ -6,16 +6,38 @@ struct MessageScope: Codable, Hashable {
     let request: String
 }
 
+// Independent frontend configuration. Official wire mapping remains unverified.
+enum FrontendAssistantMode: String, Codable { case chat, work }
+
+// Independent attachment reference. File bytes stay in the account-scoped local
+// store; a future service adapter resolves/uploads these references explicitly.
+struct ChatAttachment: Codable, Equatable, Identifiable {
+    let id: String
+    let name: String
+    let bytes: Int
+    static func valid(_ values: [Self]) -> Bool {
+        values.count <= 10 && Set(values.map(\.id)).count == values.count && values.allSatisfy {
+            UUID(uuidString: $0.id) != nil && !$0.name.isEmpty && $0.name.utf8.count <= 240 &&
+            !$0.name.contains("/") && !$0.name.contains("\\") &&
+            $0.bytes >= 0 && $0.bytes <= 16 * 1024 * 1024
+        }
+    }
+}
+
 struct StoredTurn: Codable {
     let scope: MessageScope
     let prompt: String
     var text = ""
     var phase = "sending"
+    var attachments: [ChatAttachment]? = nil
+    var effectiveAttachments: [ChatAttachment] { attachments ?? [] }
     var retryOf: String? = nil
+    var assistantMode: FrontendAssistantMode? = nil
+    var effectiveAssistantMode: FrontendAssistantMode { assistantMode ?? .chat }
     var isActive: Bool { ["sending", "accepted", "streaming"].contains(phase) }
     var canRetry: Bool { phase.hasPrefix("failed:") }
     static func safeFailure(_ error: String?, reason: String?) -> String {
-        let allowed = ["provider_http_error", "provider_content_type", "provider_terminal_failure", "missing_terminal", "provider_timeout", "provider_protocol_or_transport", "worker_closed", "transport"]
+        let allowed = ["provider_http_error", "provider_content_type", "provider_terminal_failure", "missing_terminal", "provider_timeout", "provider_protocol_or_transport", "worker_closed", "transport", "stream_protocol", "unsupported_mode", "unsupported_attachments"]
         let code = allowed.contains(error ?? "") ? error! : "model_failed"
         let detail = code == "provider_terminal_failure" && ["max_output_tokens", "content_filter", "unknown"].contains(reason ?? "") ? " (" + reason! + ")" : ""
         return "failed: " + code + detail
@@ -38,11 +60,14 @@ enum MessageHistory {
             for turn in turns {
                 if let parent = turn.retryOf {
                     guard let failed = preceding[parent], failed.canRetry, failed.prompt == turn.prompt,
+                          failed.effectiveAssistantMode == turn.effectiveAssistantMode,
+                          failed.effectiveAttachments == turn.effectiveAttachments,
                           failed.scope.conversation == turn.scope.conversation else { throw Failure.invalidSnapshot }
                 }
                 preceding[turn.scope.request] = turn
                 guard turn.scope.account == account, turn.scope.conversation == conversation,
                       !turn.scope.request.isEmpty, identities.insert(turn.scope.request).inserted,
+                      ChatAttachment.valid(turn.effectiveAttachments),
                       turn.prompt.utf8.count <= 16_384, turn.text.utf8.count <= 400_000,
                       ["sending", "accepted", "streaming", "completed", "cancelled", "interrupted"].contains(turn.phase) || turn.phase.hasPrefix("failed:") else { throw Failure.invalidSnapshot }
             }
@@ -82,11 +107,24 @@ struct DraftScope: Hashable, Codable {
 
 final class DraftStore {
     private var drafts: [DraftScope: String] = [:]
+    private var attachmentDrafts: [DraftScope: [ChatAttachment]] = [:]
     private(set) var scope: DraftScope
     private(set) var generation: UInt64 = 0
 
     init(scope: DraftScope) { self.scope = scope }
     var text: String { drafts[scope] ?? "" }
+    var attachments: [ChatAttachment] { attachmentDrafts[scope] ?? [] }
+    func attachmentIDs(account: String) -> Set<String> {
+        Set(attachmentDrafts.filter { $0.key.accountID == account }.values.flatMap { $0.map(\.id) })
+    }
+
+    @discardableResult
+    func saveAttachments(_ values: [ChatAttachment], for capturedScope: DraftScope,
+                         generation capturedGeneration: UInt64) -> Bool {
+        guard capturedScope == scope, capturedGeneration == generation, ChatAttachment.valid(values) else { return false }
+        attachmentDrafts[scope] = values.isEmpty ? nil : values
+        return true
+    }
 
     func save(_ text: String, for capturedScope: DraftScope, generation capturedGeneration: UInt64) -> Bool {
         guard capturedScope == scope, capturedGeneration == generation else { return false }
@@ -94,7 +132,7 @@ final class DraftStore {
         return true
     }
 
-    private struct Record: Codable { let scope: DraftScope; let text: String }
+    private struct Record: Codable { let scope: DraftScope; let text: String; var attachments: [ChatAttachment]? = nil }
     private struct Snapshot: Codable { let version: Int; let records: [Record]; let activeScope: DraftScope? }
     enum StorageFailure: Error { case invalidSnapshot }
 
@@ -103,18 +141,21 @@ final class DraftStore {
         let snapshot = try JSONDecoder().decode(Snapshot.self, from: Data(contentsOf: url))
         guard snapshot.version == 1 else { throw StorageFailure.invalidSnapshot }
         var loaded: [DraftScope: String] = [:]
+        var loadedAttachments: [DraftScope: [ChatAttachment]] = [:]
         for record in snapshot.records {
             guard !record.scope.accountID.isEmpty, !record.scope.conversationID.isEmpty,
-                  loaded[record.scope] == nil else { throw StorageFailure.invalidSnapshot }
+                  loaded[record.scope] == nil, ChatAttachment.valid(record.attachments ?? []) else { throw StorageFailure.invalidSnapshot }
             loaded[record.scope] = record.text
+            loadedAttachments[record.scope] = record.attachments
         }
         drafts = loaded
+        attachmentDrafts = loadedAttachments
         if restoreSelection, let active = snapshot.activeScope, active.accountID == scope.accountID, !active.conversationID.isEmpty { scope = active }
         generation &+= 1
     }
 
     func persist(to url: URL) throws {
-        let records = drafts.map { Record(scope: $0.key, text: $0.value) }.sorted {
+        let records = Set(drafts.keys).union(attachmentDrafts.keys).map { Record(scope: $0, text: drafts[$0] ?? "", attachments: attachmentDrafts[$0]) }.sorted {
             if $0.scope.accountID != $1.scope.accountID { return $0.scope.accountID < $1.scope.accountID }
             return $0.scope.conversationID < $1.scope.conversationID
         }
@@ -128,6 +169,7 @@ final class DraftStore {
     // catalog commit and draft-file cleanup without touching another account.
     func reconcile(allowed: Set<String>, fallback: String) {
         drafts = drafts.filter { $0.key.accountID != scope.accountID || allowed.contains($0.key.conversationID) }
+        attachmentDrafts = attachmentDrafts.filter { $0.key.accountID != scope.accountID || allowed.contains($0.key.conversationID) }
         if !allowed.contains(scope.conversationID) {
             scope = DraftScope(accountID: scope.accountID, conversationID: fallback)
         }
@@ -153,7 +195,44 @@ struct HostMessageRow: Equatable {
     let blocks: [HostMessage]
     var originalText: String? = nil
     var canEditAsDraft: Bool = false
+    var isUserMessage: Bool = false
+    var attachments: [ChatAttachment] = []
     var canRetry: Bool = false
+    var responseStatus: ChatResponseStatus? = nil
+
+    var hasMessageActions: Bool { originalText != nil }
+
+    // iOS293's enabled InlineActionsState uses Message.isComplete for canShow.
+    // This independent frontend maps its own active/terminal states here; the
+    // official transport mapping and full action eligibility remain separate.
+    var canShowMessageActions: Bool {
+        guard hasMessageActions else { return false }
+        switch responseStatus {
+        case .sending, .accepted, .streaming, .cancelling:
+            return false
+        case nil, .failed, .cancelled, .interrupted, .empty, .unavailable:
+            return true
+        }
+    }
+}
+
+// Independent frontend status projection. Official MessageRowContent separates
+// assistant content from footer/actions; private service-state mapping is unknown.
+enum ChatResponseStatus: String, Equatable {
+    case sending, accepted, streaming, cancelling, failed, cancelled, interrupted, empty, unavailable
+
+    static func make(turn: StoredTurn, pendingCancellation: MessageScope?) -> Self? {
+        if turn.isActive && pendingCancellation == turn.scope { return .cancelling }
+        switch turn.phase {
+        case "sending": return .sending
+        case "accepted": return .accepted
+        case "streaming": return .streaming
+        case "completed": return turn.text.isEmpty ? .empty : nil
+        case "cancelled": return .cancelled
+        case "interrupted": return .interrupted
+        default: return turn.canRetry ? .failed : .unavailable
+        }
+    }
 }
 
 // Independent restoration identity: ambiguous repeated headers deliberately opt out.
@@ -224,11 +303,23 @@ struct NativeInline: Hashable {
 struct LocalConversation: Codable, Equatable {
     let id: String
     let title: String
+    var assistantMode: FrontendAssistantMode? = nil
+    // Independent frontend membership, not a recovered service field.
+    var projectID: String? = nil
+    // Local frontend pin state, not an official backend field. Optional for v1 files.
+    var sidebarPinned: Bool? = nil
+    //Independent optional timestamp input for history presentation. Old local
+    //snapshots lacking it stay unknown; never infer a date from title or ID.
+    var sidebarTimestamp: Date? = nil
+    var effectiveAssistantMode: FrontendAssistantMode { assistantMode ?? .chat }
 }
 final class ConversationCatalog {
     enum Failure: Error { case invalidSnapshot, capacity }
     private struct Snapshot: Codable { let version: Int; let account: String; let entries: [LocalConversation] }
-    private(set) var entries = [LocalConversation(id: "fixture-a", title: "会话 A"), LocalConversation(id: "fixture-b", title: "会话 B")]
+    private(set) var entries = [LocalConversation(id: "fixture-a", title: "会话 A", sidebarTimestamp: Date(timeIntervalSince1970: 1_700_000_000)), LocalConversation(id: "fixture-b", title: "会话 B", sidebarTimestamp: Date(timeIntervalSince1970: 1_700_086_400))]
+    // Explicit host routing policy until official History/project integration is
+    // recovered. Project-bound aliases remain owned by the project entry path.
+    var ordinaryEntries: [LocalConversation] { entries.filter { $0.projectID == nil } }
     private let account: String
     private let url: URL
     init(account: String, url: URL) throws {
@@ -239,7 +330,8 @@ final class ConversationCatalog {
         guard snapshot.version == 1, snapshot.account == account, snapshot.entries.count <= 128,
               snapshot.entries.contains(where: { $0.id == "fixture-a" }), snapshot.entries.contains(where: { $0.id == "fixture-b" }),
               Set(snapshot.entries.map(\.id)).count == snapshot.entries.count,
-              snapshot.entries.allSatisfy({ Self.backendID($0.id) != nil && !$0.title.isEmpty && $0.title.utf8.count <= 512 }) else { throw Failure.invalidSnapshot }
+              snapshot.entries.allSatisfy({ Self.backendID($0.id) != nil && !$0.title.isEmpty && $0.title.utf8.count <= 512
+                && ($0.projectID.map { !$0.isEmpty && $0.utf8.count <= 512 } ?? true) }) else { throw Failure.invalidSnapshot }
         entries = snapshot.entries
     }
     static func backendID(_ id: String) -> String? {
@@ -253,23 +345,54 @@ final class ConversationCatalog {
     // fixture. Reuse a committed entry after interruption before draft selection
     // was persisted; do not accumulate a new conversation on every launch.
     func initialBlankConversation() throws -> LocalConversation {
-        if let existing = entries.first(where: { $0.id.hasPrefix("offline-local-") }) { return existing }
+        if let existing = entries.first(where: { $0.id.hasPrefix("offline-local-") && $0.projectID == nil }) { return existing }
         return try create()
     }
     func create() throws -> LocalConversation {
         guard entries.count < 128 else { throw Failure.capacity }
         let titles = Set(entries.map(\.title))
         let number = (1...129).first { !titles.contains("新会话 \($0)") }!
-        let entry = LocalConversation(id: "offline-local-" + UUID().uuidString.lowercased(), title: "新会话 \(number)")
+        let entry = LocalConversation(id: "offline-local-" + UUID().uuidString.lowercased(), title: "新会话 \(number)", sidebarTimestamp: Date())
         let candidate = [entry] + entries
         try commit(candidate)
+        return entry
+    }
+    @discardableResult
+    func ensureProjectConversation(id: String, title: String, projectID: String) throws -> LocalConversation {
+        let name = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard id.hasPrefix("offline-local-"), Self.backendID(id) != nil,
+              !projectID.isEmpty, projectID.utf8.count <= 512,
+              !name.isEmpty, name.utf8.count <= 512 else { throw Failure.invalidSnapshot }
+        if let old = entries.first(where: { $0.id == id }) {
+            guard old.projectID == projectID else { throw Failure.invalidSnapshot }
+            return old
+        }
+        guard entries.count < 128 else { throw Failure.capacity }
+        let entry = LocalConversation(id: id, title: name, projectID: projectID)
+        try commit([entry] + entries)
         return entry
     }
     func rename(_ id: String, title: String) throws {
         let normalized = title.trimmingCharacters(in: .whitespacesAndNewlines)
         guard id.hasPrefix("offline-local-"), entries.contains(where: { $0.id == id }),
               !normalized.isEmpty, normalized.utf8.count <= 512 else { throw Failure.invalidSnapshot }
-        try commit(entries.map { $0.id == id ? LocalConversation(id: id, title: normalized) : $0 })
+        try commit(entries.map { $0.id == id ? LocalConversation(id: id, title: normalized, assistantMode: $0.assistantMode, projectID: $0.projectID, sidebarPinned: $0.sidebarPinned) : $0 })
+    }
+    func setSidebarPinned(_ pinned: Bool, for id: String) throws {
+        guard entries.contains(where: { $0.id == id && $0.projectID == nil }) else { throw Failure.invalidSnapshot }
+        try commit(entries.map { entry in
+            guard entry.id == id else { return entry }
+            var value = entry; value.sidebarPinned = pinned; return value
+        })
+    }
+    func selectMode(_ mode: FrontendAssistantMode, for id: String) throws {
+        guard entries.contains(where: { $0.id == id }) else { throw Failure.invalidSnapshot }
+        try commit(entries.map { entry in
+            guard entry.id == id else { return entry }
+            var updated = entry
+            updated.assistantMode = mode
+            return updated
+        })
     }
     func remove(_ id: String) throws {
         guard id.hasPrefix("offline-local-"), Self.backendID(id) != nil else { throw Failure.invalidSnapshot }

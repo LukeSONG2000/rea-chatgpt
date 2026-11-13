@@ -1,0 +1,80 @@
+{
+  "batch": "v549",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    {
+      "type": "artifact_observation",
+      "source": "ios-remote-v404-rendered-item-metadata.json",
+      "symbol": "CodexRenderedItem",
+      "offset": "0x9a61874",
+      "conclusion": "attachments field exists alongside userInputs and content",
+      "limit": "Producer and transcript view dispatch remain open."
+    },
+    {
+      "type": "static_inference",
+      "source": "ios-remote-v517-attachment-picker-findings.json",
+      "offsets": [
+        "0x198ada8",
+        "0x198c094",
+        "0x198c104"
+      ],
+      "conclusion": "Prepared photo/file results dispatch addAttachment to the composer owner",
+      "limit": "Conversion, upload and server identity remain open."
+    },
+    {
+      "type": "static_inference",
+      "sources": [
+        "ios-remote-v517-attachment-preview-findings.json",
+        "ios-remote-v518-integration.json"
+      ],
+      "offsets": [
+        "0x1972ae4",
+        "0x197313c",
+        "0x6a6ebc0"
+      ],
+      "conclusion": "Composer image/file previews and native ImageResource file icons have existing evidence",
+      "limit": "Transcript card geometry and preview owner need independent evidence."
+    }
+  ],
+  "independent_implementation": [
+    "Separate local attachment content flag and explicit adapter acceptance; unresolved context and slash commands keep their dispatch guards.",
+    "Exact draft acceptance clears text and attachments in one revision; later edits survive stale acknowledgements.",
+    "Normal turns, queue and steer retain local resource objects. Queue start preserves resource identity; cancellation releases its pending references.",
+    "Read-only replay projection reuses composer previews; thread page owns QuickLook presentation across collection updates.",
+    "Existing temporary file lifetime follows object references. Replay remains in-memory."
+  ],
+  "open": [
+    {
+      "priority": "P1",
+      "boundary": "Official transcript attachment layout and preview dispatcher",
+      "next": "Trace attachments consumer to row/file card and preview owner",
+      "acceptance": "Version-bound root, predicates, metrics and actions plus visual checks"
+    },
+    {
+      "priority": "P1",
+      "boundary": "Process restart resource recovery",
+      "next": "Persist scoped references and missing-file state",
+      "acceptance": "Relaunch retains resources or shows recoverable missing state"
+    },
+    {
+      "priority": "P2",
+      "boundary": "Multiple files, PDF, unsupported formats and preview failure",
+      "next": "Extend deterministic resource vectors",
+      "acceptance": "Open/close and retry retain draft, task and read state"
+    },
+    {
+      "priority": "P2",
+      "boundary": "Service resource handles",
+      "next": "Future resource resolution adapter",
+      "acceptance": "Resource identity and errors remain task-scoped"
+    }
+  ],
+  "validation_report": "ios-remote-v549-integration.json",
+  "validation_status": "8 distinct UI cases have passing latest results; Foundation checks passed; page remains partial"
+}

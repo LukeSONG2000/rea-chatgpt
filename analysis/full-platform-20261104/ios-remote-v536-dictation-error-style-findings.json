@@ -1,0 +1,353 @@
+{
+  "batch": "v536",
+  "status": "verified_static_with_runtime_limits",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Remote tapToSend display mode2, actual shared WhisperPart error Text producer and parent geometry. Actions are separately investigated.",
+  "evidence_type": "official_artifact_static_instructions_and_resources",
+  "runtime_verified": false,
+  "findings": [
+    {
+      "id": "bound-consumer",
+      "status": "verified_static",
+      "chain": [
+        "Ordinary Remote tap activation uses source tapToSend raw1, projected to MessageInputWhisperPushToTalkMode.tapToSend raw2 by16e5534 (v534 dictation owner evidence)",
+        "1987900 active FieldRow constructs ViewParams.content(usesTextInputInsets:false)",
+        "ComposerWhisperContent16f630c ->16f64f4 constructs MessageInputWhisperPart6073888",
+        "Part.body6073980 reads mode+28 at6073b9c; nonzero6073bd4 calls60748f4",
+        "607491c..6074974 state mask0x3c8 includes3,6,7,8,9 and selects6074594"
+      ],
+      "limits": [
+        "Preserve enum layer distinction. Shared source state and displayed Part state have different numeric encodings."
+      ]
+    },
+    {
+      "id": "error-strings",
+      "status": "verified_static",
+      "state_field": "MessageInputWhisperPart+0x2b",
+      "states": [
+        {
+          "raw": 6,
+          "name": "noInternet",
+          "key": "No connection",
+          "en": "No connection",
+          "zh": "无网络连接",
+          "evidence": [
+            "60745f8..6074604 state6 calls61128b8",
+            "61128b8..61128d8 Swift small string encodes No connection",
+            "6074618..6074630 localization chain"
+          ]
+        },
+        {
+          "raw": 7,
+          "name": "recoverableError",
+          "key": "whisper_transcription_error_status",
+          "en": "Error transcribing",
+          "zh": "转录出错",
+          "evidence": [
+            "60745e8..60745fc branches only raw3/9/6 specially; other status states7/8 reach6074634",
+            "6074634..6074644 key89e8320",
+            "6074650..6074668 fallback89e8350 Error transcribing",
+            "6074680 ->159d2c ->75dbe64 shared localization"
+          ]
+        },
+        {
+          "raw": 8,
+          "name": "error",
+          "key": "whisper_transcription_error_status",
+          "en": "Error transcribing",
+          "zh": "转录出错",
+          "evidence": [
+            "Same consumer and localization path as raw7"
+          ]
+        },
+        {
+          "raw": 9,
+          "name": "settingsError",
+          "key": "Microphone access required",
+          "en": "Microphone access required",
+          "zh": "需要麦克风权限",
+          "evidence": [
+            "60745f0..607460c state9 calls75d5850",
+            "75d5870..75d589c resource8a59e70 and length26"
+          ]
+        }
+      ],
+      "resource_proof": "ios-remote-v536-dictation-error-style-resources.json contains original compressed resource hashes, row indices and raw English null fallback values"
+    },
+    {
+      "id": "actual-error-text-style",
+      "status": "verified_static",
+      "producer": "0x6074594",
+      "component": "SwiftUI Text<String> with official body typography provider, environment error foreground and centered flexible frame",
+      "font": {
+        "textStyle": "body",
+        "fixedPointSize": null,
+        "evidence": [
+          "60746ac Text<String> initialization",
+          "60746c8 ->74e2728 ->74e2714 loads SwiftUI.Font.TextStyle.body (aad38d8)",
+          "60746e4 ->45d770 ->6ec6b0c applies official font environment"
+        ]
+      },
+      "foreground": {
+        "field": "MessageInputStyle.whisper.foregroundColorError",
+        "physical_offset": "0x60",
+        "default_resource": "ChatGPT/text/status/error",
+        "evidence": [
+          "60746f8..607470c only transcribing raw3 selects tertiary, all errors enter environment branch",
+          "607470c..6074720 resolves Part metadata+2c whisper style Environment",
+          "6074724 reads resolvedStyle+60",
+          "60816c4 invokes74ee360 and60816c8 writes defaultStyle+60",
+          "74ee38c..74ee39c ColorResource name8a51be0 ChatGPT/text/status/error"
+        ],
+        "effective_route": "Remote base19a0860 and selected ordinary wrapper preserve this field. Glass transform6082134 and theme6081f4c have no writes to whisper.foregroundColorError. Keep the environment input for future overrides."
+      },
+      "layout": {
+        "maxWidth": "infinity",
+        "frameAlignment": "center",
+        "height": "intrinsic Text height",
+        "multilineTextAlignment": "inherited; no explicit center multiline modifier proven",
+        "lineLimit": "no local limit in bounded producer",
+        "evidence": [
+          "6074748 Alignment.center",
+          "607474c..607475c maxWidth infinity frame",
+          "6074594..607478c contains no local waveform-height frame, spinner, border or enclosing error-card background"
+        ]
+      },
+      "limits": [
+        "Use existing recovered body font and officialVisualColor adapters. Static TextStyle.body does not prove a fixed point size on every device or Dynamic Type category.",
+        "No claim about system accessibility adaptations or externally inherited multiline alignment."
+      ]
+    },
+    {
+      "id": "parent-error-layout",
+      "status": "verified_static",
+      "horizontalContentInsets": {
+        "leading": 0,
+        "trailing": 0,
+        "reason": "Actual ViewParams.content(false);6074aec..6074b70 condition usesTextInputInsets"
+      },
+      "row": {
+        "spacing": 8,
+        "alignment": "center",
+        "minHeight": 44,
+        "maxWidth": "infinity",
+        "leadingPadding": 2,
+        "trailingPadding": "CompactTrailingInsetModifier, circle branch8; capsule branch formula in v535",
+        "ancestorCompactHeight": 48
+      },
+      "innerTrailingReservation": {
+        "gate": "presentation witness+70 ->16f7550 ->16f70f0; consumer16f6494..16f64a4",
+        "noInternet6": "EmptyView regardless true/false gate; mode2 gate false",
+        "recoverableError7": "EmptyView; gate false",
+        "error8": "gate true,6074c78 square Spacer(width:scaledWhisperElementSize,height:scaledWhisperElementSize), standard44",
+        "settingsError9": "EmptyView; gate false",
+        "evidence": [
+          "v534 presentation trailing-state proof",
+          "6074d30..6074d3c mask0x2c0 states6/7/9 EmptyView",
+          "6074c78 remaining state8 elementSize square"
+        ]
+      },
+      "limits": [
+        "The inner state8 spacer belongs shared content and is separate from the outer FieldRow control slots. Preserve independently when merging root control-projection findings.",
+        "Text error states do not use waveform computed20pt wrapper."
+      ]
+    },
+    {
+      "id": "nonzero-content-inner-stack",
+      "status": "verified_static",
+      "value": {
+        "axis": "horizontal",
+        "alignment": "center",
+        "spacing": null,
+        "spacing_semantics": "SwiftUI default spacing (nil), with payload0 and optional discriminator1"
+      },
+      "evidence": [
+        "6073ba4 calls VerticalAlignment.center",
+        "6073ba8 stp x0,xzr stores alignment and spacing payload0",
+        "6073bac movw20,1;6073bb0 strb1 at stackLayout+10 means optionalCGFloat nil",
+        "6073bc4 type record823a3e0 resolves _VariadicView.Tree<_HStackLayout,TupleView<...Text...optional spacer...>>",
+        "6073bd4 constructs body60748f4 with main content and optional trailing reserve"
+      ],
+      "distinction": "The enclosing shared WhisperPart outer HStack6073b60..6073b7c has spacing.some(whisper.horizontalSpacing=8), and the outer CodexRemoteFieldRow19917ac also uses8. Neither proves inner default spacing8 or0.",
+      "implementation_mapping": "Use HStack(alignment:.center,spacing:nil) for status Text plus conditional error8 reservation. Keep outer row spacing8 separate."
+    },
+    {
+      "id": "error-accessory-inherited-flags",
+      "status": "verified_static_for_literal_projection",
+      "function": "0x16f71c0",
+      "projection": "If flags &0x10100 !=0, return flags.bit16 ? raw3 : raw4. Otherwise require requestingPermission(source discriminator1) or active(discriminator2 excludingdone4/cancelled5). With flags.bit24=false returnraw3. With bit24=true requireactive and low16ofstate==0x202,else raw4.",
+      "meaning": "Existingv533 accessory proof binds raw3 to cancel glyph (plus-lg rotated -pi/4) and raw4 optionalabsence. In the existing selected fixture with normalflags/bit24false, error6..9 retains the same cancel style and callback. Different inherited flags may remove the accessory.",
+      "evidence": [
+        "16f71c0..16f71d4 handles flags bits8/16",
+        "16f71d8..16f71ff active/requesting guard",
+        "16f71fc checks flags.bit24",
+        "16f7208..16f7210 requireslow16state0x202 whenbit24true",
+        "16f7214 raw3;16f721c raw4",
+        "v533 accessory raw3 glyph and FieldRow cancel callback1cecee4"
+      ],
+      "limits": [
+        "Do not name unknown presentation flags or assert their runtime rollout values. Preserve explicit fixture flags and separate upstream binding.",
+        "This is a control presence/style condition, not proof of full service cancellation outcome."
+      ]
+    }
+  ],
+  "implementation_mapping": [
+    "Map display raw6/7/8/9 to the consumer-bound OfficialText keys above.",
+    "Reuse recovered body font adapter and official ChatGPT/text/status/error token through style input.",
+    "Keep status Text intrinsic height, full available width and center frame.",
+    "Keep parent controls and error8 reservation driven by their own official state projection; this report does not assign retry/settings actions."
+  ],
+  "unknowns": [
+    "Runtime rendered typography, wrapping and clipping under the fixed compact ancestor need synthetic UI verification.",
+    "Actual accessory action/gesture projection is owned by the parallel state/action evidence task.",
+    "No full error transition or permission-service replay performed."
+  ],
+  "validation": {
+    "production_edits": false,
+    "official_app_execution": false,
+    "microphone": false,
+    "network": false
+  },
+  "references": [
+    "ios-remote-v532-dictation-style-findings.json",
+    "ios-remote-v534-mode-content-findings.json",
+    "ios-remote-v534-activation-mode-findings.json",
+    "ios-remote-v535-dictation-insets-findings.json",
+    "ios-remote-v533-dictation-accessory-findings.json"
+  ],
+  "raw_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-fallback-literal.json",
+      "sha256": "9e23003b4498434ddf8571e0ee4bfb7e7b777a094941896d3418ed3850ba0ae0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-shared-localize.asm",
+      "sha256": "bbf1f6117eb077de792f99da48f31d71ce9bc23482df7c39448755cb08a1849a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-error-style.asm",
+      "sha256": "cc8e1b13169a3dc1f7cda1600019788dd4c375c0961674816bfdd7e343da1b35"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-settings-key.asm",
+      "sha256": "49d64a3e3573cc01c6ebd79ca49e7b8278e4df4a48cdaac451917161fa9cf2be"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-color-error.json",
+      "sha256": "7448704a93b3226c9da9bb7a0cd6f5b2da39836372f8ede62606bed71c48a604"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-style-env.asm",
+      "sha256": "c5d8da8691c3ea9d8c0e870e384af8418de5fa32bbbf61468fa80bc7789783be"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-error-style.json",
+      "sha256": "1dbec29452c98358fb050ee20560dd2e418c7d07818f446870630dc6429bef9e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-style-env.json",
+      "sha256": "5a95097916e55360181ddd359216a77b314cb62db65aa81776ceabdd3f92c87b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-settings-key.json",
+      "sha256": "ee2525d3b70f28c8299134b1e4f1866aa1429e46571f76e2eeb48d6873275cb0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-fallback-literal.asm",
+      "sha256": "7fa11f38ab596ad3c2c8f668daeb240f803872d32c185aae1eeb613aa395ba06"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-resources.json",
+      "sha256": "86e6020c8cd11b8a8d9e5c3a7ff1727b51563bf990e57bb9ba811f77fc31101f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-shared-localize.json",
+      "sha256": "ca1edab3c94c1fed5f2574fb3f6bf64baf6096ca1f5e19df12a715ad9ad5834e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-color-error.asm",
+      "sha256": "a91ed5a487a2fe53d774b31f1f4bb95b719b3e52d969de5fd7d80c14e85cd02c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status.asm",
+      "sha256": "e48fa20e5e8b54b3591a8f005be8816781c19c601a9675461a501b325fc44305"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status.json",
+      "sha256": "54ac72959b5354a2fe0435ba0143bd9c4b220dc462d1b00e23108296faa74502"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-normal.asm",
+      "sha256": "2de7d1d5cac6b50f31b7e218a1ea07d65184b061aefaa731591262d3995f3736"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-trailing.asm",
+      "sha256": "4518ca1b65ad8cd1a1f316e96dce542bed52d9a90a32f265f0784d7cdb3c04d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-font.asm",
+      "sha256": "91b9fd4127b90d2bb537f0d2d1187a7cea0a6868eccf3d0760767f624239ef06"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-font-apply.asm",
+      "sha256": "67e5c885597925d7dda5b4bd545611e1372c4c1ac55db4b5ef8eddf267acfb00"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-error-key.asm",
+      "sha256": "ebe45281e0a0cda8b111e2d90d2f1e6daa3fe8090bbc316e9293bdfc99e1c5ef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v534-mode-content-status-resources.json",
+      "sha256": "189d70e76de240b475be211836699836a0fb8ce5e4d8db30fa3ecb31df16f7ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v533-waveform-whisper-style-init.asm",
+      "sha256": "f8dec658d1806b69cc695c892f591fa9aed718f3326a22d14f1edaa37c906cc8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-style-base.asm",
+      "sha256": "99b84f0526fb75eeabc057c4ec250f21a7ddf1924ecacef709ac11e6887276f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-input-theme.asm",
+      "sha256": "547a1d20411c206379dc8b1bbe721bb93a916832774cc6a61324dbc6746d7aae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v535-dictation-insets-glass-style.asm",
+      "sha256": "7c104b77686449d9d779c976192b3d233c47dd74d1d2e695fa2b35f68c8718b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-inner-stack-type.json",
+      "sha256": "4fce3052ba62a06b8b5386fdeab88118dd686896441d19dfa4cd98f274f8b5a9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-part-body.json",
+      "sha256": "abffcf2484fa58ef33e101e46cff9d5bcb75b428528f2b646fb4941cf7e300bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-accessory-projection.json",
+      "sha256": "4e6328469cf7a6497ce992f25450e392fda05bbcd0dab25e283eb6289e0db059"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-accessory-projection.asm",
+      "sha256": "5e58d5e3df617c967a07f24649625c667913538feb4937fa869d997abe4a4663"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-nonzero-content.json",
+      "sha256": "cec40b4baa70fe4f59eb8bfba8d9df76345251877ee6e083095de3f9928c35d4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-nonzero-content.asm",
+      "sha256": "55195b3fd57c603a072f84e236c6e4b120c1de3e914b7048a3f4ee95a5fe4112"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v536-dictation-error-style-part-body.asm",
+      "sha256": "7a7cf56e4fd14446c19e20fd40cf6883a3c501161ea55b66870b4913e3394bff"
+    }
+  ]
+}

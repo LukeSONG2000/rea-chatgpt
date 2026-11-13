@@ -1,0 +1,109 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "date": "2026-11-13",
+  "scope": "Current gesture consumers and Settings/General wiring; no new speculative triggers",
+  "implemented": [
+    {
+      "owner": "sidebar drag",
+      "trigger": "normal ended; live progress strictly interior; final endpoint differs from captured initial endpoint",
+      "feedback": "one selection"
+    },
+    {
+      "owner": "model slider",
+      "trigger": "changed selected index",
+      "feedback": "selection"
+    },
+    {
+      "owner": "model slider boundary",
+      "trigger": "first transition to overscroll",
+      "feedback": "soft impact intensity 0.4"
+    },
+    {
+      "owner": "accepted file import",
+      "trigger": "accepted token and explicit playsSuccessHaptic flag",
+      "feedback": "light impact; Photos flag false suppresses"
+    }
+  ],
+  "settings": {
+    "route": [
+      "Settings",
+      "General",
+      "Haptic feedback"
+    ],
+    "storage_key": "rea.preview.hapticsEnabled",
+    "persistent": true,
+    "explicit_consumers_gate": [
+      "enabled",
+      "hardware supported",
+      "application active"
+    ]
+  },
+  "current_audit": {
+    "explicit_dispatch_files": [
+      "implementation/ios/Sources/FrontendHaptics.swift",
+      "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift"
+    ],
+    "historical_hash_comparison": [
+      {
+        "path": "implementation/ios/Sources/FrontendHaptics.swift",
+        "matches_historical": true
+      },
+      {
+        "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+        "matches_historical": false
+      },
+      {
+        "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+        "matches_historical": true
+      },
+      {
+        "path": "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift",
+        "matches_historical": true
+      },
+      {
+        "path": "implementation/ios/Tests/Haptics/main.swift",
+        "matches_historical": true
+      }
+    ],
+    "sidebar_difference": "Header owner and grouped collection integration changed since r2. Current handleSidebarPan/updateDrag consumer and reset paths inspected directly; do not use older hash as current proof."
+  },
+  "verification": {
+    "command": "sh implementation/ios/test-haptics.sh",
+    "result": "passed",
+    "scope": "source-derived end/change/interior vectors; cancelled/reversed/reset/superseded/duplicate events; preference/hardware/activity gates",
+    "settings_runtime": "Historical Chinese preference/restart test passed in ios-sidebar-parent-haptics-20261112.json. Not rerun this turn; FrontendHaptics.swift hash matches that unchanged integration.",
+    "physical_playback_verified": false
+  },
+  "not_implemented": [
+    "Unclosed per-page longpress/row-swipe/list-specific feedback triggers",
+    "Original physical waveform/timing verification",
+    "Control over OS implicit feedback"
+  ],
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "8f2c6cc4e7ad78813334d9dd8fc33db048d46107fee2c2374e72003ee09ae52b"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "9234767d76a2d2be392cc93cf011a2241cbb5048e582089868c856ae434da0d5"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "4345b2d2305a6653e6322ab027648389e4a6140e529cf0c4535e4020d16da0bc"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift",
+      "sha256": "3719e8b3e6bbd9f7715cd45bfc922de1d71737a681b2378df0c1ec3c0054b631"
+    },
+    {
+      "path": "implementation/ios/Tests/Haptics/main.swift",
+      "sha256": "962c86756334898b27a5f4bb32d19a31644e5cb1344d20fc4391fcd8e6e73240"
+    }
+  ],
+  "rules": "Existing AGENTS.md Page gesture scope already requires owning-module audit and General preference wiring. No duplicate speculative rule added."
+}

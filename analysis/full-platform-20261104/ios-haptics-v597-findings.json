@@ -1,0 +1,97 @@
+{
+  "batch": 597,
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence": [
+    {
+      "type": "static_inference",
+      "source": "ios-remote-v517-attachment-picker-findings.json",
+      "offsets": [
+        "0x198ada8",
+        "0x198c094",
+        "0x198c104"
+      ],
+      "conclusion": "Photo preparation dispatches addAttachment with playsSuccessHaptic=false; prepared file loop dispatches true per item."
+    },
+    {
+      "type": "static_inference",
+      "sources": [
+        "ios-haptics-v597-action-admission.asm",
+        "ios-haptics-v597-attachment-owner.asm"
+      ],
+      "offsets": [
+        "0x18b93bc",
+        "0x18b93c4",
+        "0x187fb94",
+        "0x187fd90",
+        "0x187fdb4",
+        "0x187fdc4"
+      ],
+      "conclusion": "Action handler loads flag from payload+0x48; owner appends accepted attachment, then conditionally passes style0 to6fe0ffc. Earlier rejection branch bypasses feedback."
+    },
+    {
+      "type": "artifact_observation",
+      "source": "ios-haptics-v597-engine-witnesses.json",
+      "offsets": [
+        "0x83900dc",
+        "0xa98e210",
+        "0x6fe2120"
+      ],
+      "conclusion": "ActorBackedHapticEngine HapticEngine conformance witness+0x68 targets6fe2120."
+    },
+    {
+      "type": "static_inference",
+      "sources": [
+        "ios-haptics-v597-dispatch.asm",
+        "ios-haptics-v597-witness-impact.asm",
+        "ios-haptics-v597-impact-body.asm",
+        "ios-haptics-v597-style-raw.asm",
+        "ios-haptics-v597-generator.json"
+      ],
+      "offsets": [
+        "0x6fe0ffc",
+        "0x6fe1010",
+        "0x6fe2130",
+        "0x6fe123c",
+        "0x6fe10dc",
+        "0x53dce0",
+        "0x6fe10f8",
+        "0x6fe12b8"
+      ],
+      "conclusion": "Default dispatch supplies absent intensity to witness+0x68; concrete engine gates capability, converts style byte directly, initializes UIImpactFeedbackGenerator and calls impactOccurred(). Style0 corresponds to light in local UIKit SDK. Runtime DI selection and tactile pattern have not been observed."
+    },
+    {
+      "type": "static_inference",
+      "sources": [
+        "ios-haptics-v597-chat-link.asm",
+        "ios-haptics-v597-source-link.asm",
+        "ios-haptics-v597-chat-style-helper.asm",
+        "ios-haptics-v597-chat-dispatch-helper.asm"
+      ],
+      "offsets": [
+        "0x3760bf8",
+        "0x373bb5c",
+        "0x3832db0",
+        "0x26b8ac"
+      ],
+      "conclusion": "Named Chat and sources-link haptic functions have a conditional gate and reuse style0 impact dispatch. Active gate configuration and UI callers remain unresolved."
+    }
+  ],
+  "independent_implementation": [
+    "Use existing mounted/enabled/scope/import-token admission before file feedback. finishImport consumes token before delivery.",
+    "Reuse local persisted preference, hardware and active-app gate. File batch dispatch is per accepted item; photos request false.",
+    "UIKit generator lifecycle is native host adaptation. Official engine caching, full global gate and runtime injection remain separate."
+  ],
+  "unknown": [
+    "Actual tactile playback and multi-file perceptual timing on physical device",
+    "Chat/Work link UI callers and feature configuration; send/stream/menu trigger chains",
+    "Official preference default/placement and full application-state policy",
+    "Android haptic implementation"
+  ],
+  "next": "Trace Chat/Work link action ownership and feature gate before integrating link feedback; continue page-level pending interactions."
+}

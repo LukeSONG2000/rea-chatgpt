@@ -1,0 +1,204 @@
+{
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "scope": "Legacy model entry196657c, label, parentgate and suitability as advanced-sheet entry",
+  "findings": [
+    {
+      "id": "legacy_is_menu",
+      "status": "verified-static-bounded",
+      "conclusion": "Legacy196657c builds CodexRemoteMenu with content and label. It applies fixed menu order, ButtonMenuStyle and PlainButtonStyle. This evidence supports the menu entry. It supplies no direct advanced Form button.",
+      "proof": [
+        "1966654 calls1966878 content builder;1966664 calls1967148 label builder;196666c calls196787c modifiers",
+        "7e12810 symbolic type resolves CodexRemoteMenu, Section reasoning options, model Menu, speed Menu and MessageInputModelConfigurationLabel",
+        "7e12800 and7e12850 wrap menuOrder/menuStyle and PlainButtonStyle",
+        "19679dc MenuOrder.fixed;1967a30 View.menuOrder;1967a48 ButtonMenuStyle.init;1967aa8 View.menuStyle;1967adc PlainButtonStyle.init",
+        "CodexRemoteMenu descriptor95ac944 has only content,label fields; body witness197bb64\u2192197b898;body builds Menu metadata197ba48 and accessibilityRepresentation197baa0"
+      ],
+      "limitations": [
+        "Custom menu body includes overlay and accessibility representation. Gesture/presentation details of the wrapper were not fully reconstructed. Do not reuse legacy label with an advanced sheet action and call that an observed official path."
+      ]
+    },
+    {
+      "id": "fallback_gate",
+      "status": "verified-static-bounded",
+      "conclusion": "Legacy entry is selected if VM+a8 gate fails, slider configuration1969430 is nil or isModelSliderEnabled witness+110 is false. The same model slot otherwise constructs slider control with usesMeterSource from+118.",
+      "proof": [
+        "v526 model-entry-findings parent_dispatch",
+        "1965cb8..1965d30 branch sequence;failure calls196657c"
+      ],
+      "limitations": [
+        "Active runtime gates remain unknown. Legacy is not a universal replacement for the enabled slider."
+      ]
+    },
+    {
+      "id": "visible_label",
+      "status": "verified-static-bounded",
+      "conclusion": "Legacy visual label uses model title and effort title from current VM configuration and an optional speed glyph. HStack is centered and reads spacing6 from Controls iconLabelSpacing.",
+      "proof": [
+        "1967148..196730c labelbuilder;19671ec metadata+44 selects Controls.iconLabelSpacing, initialized6 perv525",
+        "19671f8 VerticalAlignment.center;19671fc stores alignment/spacing;1967220 builds196730c",
+        "1967574..19675a0 VM+b0 configuration\u2192244efb8 modelTitle",
+        "19675a4..19675c8 VM+b0 configuration\u2192244e588 effortTitle",
+        "19675cc..19675fc joins title values with separatorASCII32",
+        "MessageInputModelConfigurationLabel descriptor96ca9bc fields title,modelTitle,descriptor;type7e12810 includes thislabel"
+      ],
+      "limitations": [
+        "Exact text branch projection/default inherited font is not fully closed. Separate label body6068638..60688d0 has bold modelTitle and optional descriptor branches, but this report does not assign unproven effective font size."
+      ]
+    },
+    {
+      "id": "speed_glyph_and_dynamic_size",
+      "status": "verified-static-bounded",
+      "conclusion": "Speed standard has no glyph. fast uses official lightning-bolt. ultrafast uses official bolt-on-bolt. Glyph uses Controls ScaledMetric24 relativeTo body in a centered square, with primary icon color.",
+      "proof": [
+        "19673d4 gets speed1881bec;19673d8..1967408 mapsraw0none/raw1\u219274f2994/other\u219274f5014",
+        "v526 resources record8a52d30 OpenAI/Feature/TabGroup/lightning-bolt and8a542c0 OpenAI/Symbols/bolt-on-bolt",
+        "1967484..196749c selects Controls metadata+2c _configurationIconSize",
+        "19674a0 and19674b0 read ScaledMetric;19674b8 Alignment.center;19674c8 FrameLayout helper44f07c",
+        "19674e4 primary icon token74ed6f4",
+        "v525 entry_metrics verifies Controls+2c constructor24 relativeTo body"
+      ],
+      "limitations": [
+        "No separate model-gauge glyph belongs to this legacy path. Parent expanded model slot frameheight48 is proved inv525; label internal outer frame helper6fd4a4 was not decoded here."
+      ]
+    },
+    {
+      "id": "content_scope",
+      "status": "verified-static-bounded",
+      "conclusion": "Legacy content includes optional reasoning section, model-selection menu and speed-selection menu. Available model count gates one nested menu branch.",
+      "proof": [
+        "1966878..1966c14 content builder",
+        "7e128b8 resolves reasoning Section with reversed KnownReasoningEffort collection",
+        "7e128b0 resolves model options Menu;7e128a8 resolves Speed Menu",
+        "1966a54 configuration244e39c;1966a64 arraycount;1966a6c compares2;1966a70 branchbelow2"
+      ],
+      "limitations": [
+        "All row callbacks and conditional visibility are outside this minimal entry slice."
+      ]
+    },
+    {
+      "id": "accessibility_title",
+      "status": "verified-static-bounded",
+      "conclusion": "196c358 formats the accessibility description from model title, effort title and localized speed title. It is separate from visual-label assembly.",
+      "proof": [
+        "1966694 modelTitle244efb8;19666b8 effortTitle244e588;19666d0 speed1881bec;19666d4 localized speed2418190",
+        "19666f0 calls196c358;1966714 constructs Text;1966810 accessibilityLabel",
+        "196c3b8..196c3c4 constructs literal comma-space-speed-colon separator",
+        "2418190 branches speed0/1/2 toStandard/Fast/Ultrafast localization"
+      ]
+    }
+  ],
+  "implementation_decision": {
+    "observed_official_entry": "Legacy menu in expanded configurationControls slot when fallback gates select it.",
+    "advanced_form": "Use the separately traced slider advanced route. A direct legacy-label-to-advanced-sheet shortcut requires explicit independent-adaptation labeling.",
+    "no_production_edits": true,
+    "no_official_execution": true
+  },
+  "unknowns": [
+    "Legacy custom menu wrapper gesture/presentation lifecycle",
+    "Effective visual text font/padding inherited throughMessageInputModelConfigurationLabel",
+    "All nested option action callbacks",
+    "Runtime feature flags and actual device appearance"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-CodexRemoteMenu-witnesses.json",
+      "sha256": "86953a2e1e4bee72018dafa85458ea0036dda13391fd5af06e1e9c02ed9c341c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-MessageInputModelConfigurationLabel-witnesses.json",
+      "sha256": "db7f90274985d29a9d174b09542904ded145c91997b2f8399a621e8c3fdd67a7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-menu-body-witness.asm",
+      "sha256": "3d88cb1e6a65745f0b00381d39b787a02af33befa954e75aff8c2c27f9aff105"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-menu-body-witness.json",
+      "sha256": "64bfb6d49936938c0b45ed5ad0acb49492b3f8a1299fd25f33fdce7fcf72a2ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-menu-body.asm",
+      "sha256": "6df5249719cf14bb782fd7ba3fc694c2c133b32335ee7b48bc9864dc8124bf76"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-menu-body.json",
+      "sha256": "2457ecdda2185e81ec91ea81f9421c85c17999a474bcbfff8296552c17af5e1c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-entry.asm",
+      "sha256": "569d4ae82b6954c3073bec41852077a45edf6a1e9318cc8aa2e7d53b35bd7e08"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-entry.json",
+      "sha256": "7461712d0989d45d4c303e65a0f9947d492df9cf811780f9d482a7609871e8f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-label.asm",
+      "sha256": "c43c903ebf6969345a9a21fb6a9d6a4cb2f15d6ecb02930ce91024347d60ba96"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-label.json",
+      "sha256": "3d0d0d63be975adb0f9f61efd4ee8cddf9858194ea312fd149eb8e7a28ea657f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-menu-contents.asm",
+      "sha256": "ef8f84bfdfea6108054bef5f46cc093acab799611559baaa880618f0adc7c365"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-menu-contents.json",
+      "sha256": "d52f71a56d291fa15eb9beff11e5f864906beb50a5f5b4263bf58f831a5e87d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-metadata.json",
+      "sha256": "46dccd1e433e546740327bc09db63d2486f7e83ab43e66378aedf43dd91251a2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-speed-title.asm",
+      "sha256": "9e1fd439afd998e09ecd09d529c70d26e37cdae0ba758b928321bad3f500d468"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-speed-title.json",
+      "sha256": "a32dddf936c6319c3622aa6dff1a64ae2015de572dd98b2c221496a71a29aec6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-types.json",
+      "sha256": "0914533954accb326ce0fbcc0e21b99231c4a02f2c8c22ad4e08af160f3683a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-visual-label.asm",
+      "sha256": "3b6af19ce5f2467ee3ececaa5b841aee35ff463b248df2302680eacff1c03e02"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-model-legacy-visual-label.json",
+      "sha256": "a84b2db88b4eea36a5d188b5d09add1cd03bcd75dcf332c53ab7b241177fd96f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-text-body-witness.asm",
+      "sha256": "301592fc53338334881179ccc96279d8ca78c36c8ae151bb203b92ab017b9a2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-text-body-witness.json",
+      "sha256": "75acb3c93b00f79c6731101936526a2e0c8de52432950239c90c2115d61784a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-text-body.asm",
+      "sha256": "a879caae92b42a6278d8c0fdbdd92dbaf4cc0a3241015f027647ac49ebe99a83"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v527-text-body.json",
+      "sha256": "341fe8bd596cc2d8f2b45c7113ae3196307295704818d04d1c15647e3763755f"
+    }
+  ],
+  "references": [
+    "ios-remote-v526-model-entry-findings.json",
+    "ios-remote-v526-slider-lifecycle-findings.json",
+    "ios-remote-v525-entry-findings.json"
+  ]
+}

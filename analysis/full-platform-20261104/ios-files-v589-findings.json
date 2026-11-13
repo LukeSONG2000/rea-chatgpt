@@ -1,0 +1,44 @@
+{
+  "batch": 589,
+  "status": "partial",
+  "source_evidence": [
+    "ios-files-v589-findings-evidence.json",
+    "ios-files-v589-directory-body-evidence.json",
+    "ios-files-v589-directory-entries-body-evidence.json",
+    "ios-files-v589-directory-row-body-evidence.json",
+    "ios-files-v589-directory-actions-evidence.json"
+  ],
+  "decision": "Connect the existing independently gated Files menu to a scoped synthetic directory provider and existing full-file preview interface. Preserve native return behavior and source-supported file navigation/loading containers. Exact layout remains separate.",
+  "host_gap": "Files currently falls through to disconnected-service alert, although menu and source action already exist.",
+  "upstream": {
+    "commit": "6905ecede7816e91373e9eabda3f6b0368fc747b",
+    "source": "opensource/codex/codex-rs/app-server-protocol/src/protocol/v2/fs.rs",
+    "observation": "fs/readDirectory and fs/readFile expose file/directory data. iOS293 use and protocol compatibility remain unproved."
+  },
+  "scope": "Frontend and synthetic directory snapshots only",
+  "unknowns": [
+    "Official Files menu-to-service owner and capability predicates",
+    "Official file resource retrieval and preview presentation",
+    "Exact row icons, title generation, fonts, insets, colors, corner radius, presentation detents",
+    "Wide layout NavigationSplitView selection predicate",
+    "Physical device behavior and Android native host"
+  ],
+  "validation": "Foundation passed. Two directory journeys passed in r4. Three shared preview/diff regression cases passed in r1.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "restored_structure": "FileBrowserSheet -> FileNavigationStack -> DirectoryContent -> Header + plain List -> plain row Button with Label and opening progress",
+  "separate_branch": "WorkspaceBrowserContent uses ScrollView/LazyVStack/DisclosureGroup and does not prove the ordinary Files directory layout.",
+  "independent_adaptations": [
+    "Native phone NavigationStack, system folder/document glyphs and default spacing",
+    "Synthetic provider IDs and request lifecycle; isolated full-file QuickLook resource ownership",
+    "Synthetic path/provenance header and localized unavailable/empty/retry copy"
+  ],
+  "cross_platform": {
+    "shared_proposal": "Scoped directory/file contracts and deterministic test vectors",
+    "official_shared_evidence": "Not established by this iOS-only trace",
+    "platform_owned": "Navigation, scroll, QuickLook, material, Dynamic Type, keyboard and lifecycle"
+  }
+}

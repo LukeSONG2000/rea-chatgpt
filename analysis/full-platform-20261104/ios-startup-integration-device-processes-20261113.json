@@ -1,0 +1,34 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "info",
+      "processes",
+      "--device",
+      "00008150-001E34E93A12401C",
+      "--filter",
+      "processIdentifier == 20200",
+      "--timeout",
+      "15",
+      "--json-output",
+      "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/ios-startup-integration-device-processes-20261113.json"
+    ],
+    "commandType" : "devicectl.device.info.processes",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "deviceIdentifier" : "5998651F-A691-5FB2-A351-40FBCBA8081B",
+    "runningProcesses" : [
+      {
+        "executable" : "file:///private/var/containers/Bundle/Application/CC053CBC-8A1C-4B05-8C8E-A48A4385A054/REAChatGPTHost.app/REAChatGPTHost",
+        "processIdentifier" : 20200
+      }
+    ]
+  }
+}

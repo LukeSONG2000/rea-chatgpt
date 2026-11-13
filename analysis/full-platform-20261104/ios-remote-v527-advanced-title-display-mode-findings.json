@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "revision": "v527",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "finding": {
+    "status": "verified_static",
+    "owner": "CodexRemoteModelConfigurationSheet root Form builder0x1997d6c",
+    "modifier": "navigationBarTitleDisplayMode(.inline)",
+    "enum_binding": {
+      "symbol": "_$s7SwiftUI17NavigationBarItemV16TitleDisplayModeO6inlineyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 8811,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "flow": [
+      "0x19984a0 calls0x4dcff4",
+      "0x4dcff4 loads imported enum case address from0xaad1ca0 then ldrw1 enumtag",
+      "0x19984a4 loads enum value buffer x20 and VWT x21",
+      "0x19984a8 loads VWT+0x68 destructiveInjectEnumTag",
+      "0x19984b4 helper0x154afc forwards type metadata x19 inx2 and brx8 to initialize buffer x20 with inline tag",
+      "0x19984d4 helper0x1d9c2f0 setsx0=x20",
+      "0x19984e0 helper0x6f5264 setsx1=x23 genericView metadata andx20=x24 swiftself",
+      "0x19984e4 ->0x7c4ab60 imported View.navigationBarTitleDisplayMode"
+    ]
+  },
+  "drag_indicator": {
+    "status": "unknown",
+    "bounded_observation": "Direct sheet body0x19979e4..0x1997d68 applies one medium detent. No explicit presentationDragIndicator modifier was found in this retained body/call inventory. Parent presenter settings were not closed in this narrow followup.",
+    "restriction": "Do not infer visible/hidden from screenshot or from absence of a direct call in this body."
+  },
+  "evidence_files": [
+    "ios-remote-v527-advanced-title-display-mode.asm",
+    "ios-remote-v526-advanced-sheet-builder.asm",
+    "ios-remote-v526-advanced-builders-calls.json"
+  ],
+  "validation": {
+    "target_executed": false,
+    "implementation_modified": false,
+    "screenshot_used_as_proof": false
+  }
+}

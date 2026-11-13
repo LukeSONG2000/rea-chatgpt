@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "artifact_version": "1.2026.293",
+  "evidence_type": "official_artifact_static_analysis",
+  "scope": "Native signed-out login entry and landing-page branches",
+  "sources": [
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ckn.java",
+      "sha256": "1573124ba7179da5a86d4ec0dc8e09b0888f26f13d0c785bffc9d40a3ced5648",
+      "line_ranges": [
+        [
+          113,
+          122
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pu71.java",
+      "sha256": "6bd13cc10c1de92d520e5a6fa7df52c01961c3a2613432fc084afc3548145565",
+      "line_ranges": [
+        [
+          147,
+          153
+        ],
+        [
+          309,
+          355
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/xu71.java",
+      "sha256": "5e4a7a0b5770e30856419bd94f97a5a483d77af329ffa19ee768087984fa8b0b",
+      "line_ranges": [
+        [
+          79,
+          99
+        ],
+        [
+          125,
+          151
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/eqa0.java",
+      "sha256": "3e3820de0d646345bf806f84d24d23328408b5e8da8ffed2c37829c365d661ab",
+      "line_ranges": [
+        [
+          32,
+          55
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/eqa0.smali",
+      "sha256": "f3a03dd12d7d2544a1d0e25529f255cdba4e00b4ea5998c7eb8024f974634252",
+      "line_ranges": [
+        [
+          69,
+          218
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/rg7.java",
+      "sha256": "c5cda37eb802e442a25f038718bc40b0a7be747eb237325e6ef0f6897ed6f2d7",
+      "line_ranges": [
+        [
+          14,
+          23
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/z770.java",
+      "sha256": "4bac7333e7f31df3ea381f5b49bb0efe5bb62ef81e43e144032c2cefe4419dcb",
+      "line_ranges": [
+        [
+          58,
+          63
+        ],
+        [
+          89,
+          201
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ys71.java",
+      "sha256": "4e7eea730fa93f8720cfc6f9fe97873bfc37316ee8b085adb8aab26c8ee8fd5b",
+      "line_ranges": [
+        [
+          159,
+          198
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/g870.java",
+      "sha256": "ff4acc38178d3e6248488929f934efb900a3b6349ae5ca70389d7051e182abd3",
+      "line_ranges": [
+        [
+          82,
+          138
+        ],
+        [
+          169,
+          314
+        ],
+        [
+          334,
+          347
+        ],
+        [
+          391,
+          403
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/b870.smali",
+      "sha256": "00d7985a34e72e4962ae9f2da309283f16c23890028dc5b778e527a76526656c",
+      "line_ranges": [
+        [
+          488,
+          1010
+        ],
+        [
+          1028,
+          1397
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/tu71.java",
+      "sha256": "082cb0ae2c3664b662539a6bd64e44e738028ad943bf685a28fb7ecc6e8e67ae",
+      "line_ranges": [
+        [
+          157,
+          179
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ruw.java",
+      "sha256": "86f3ff1c7d2f58a336ea61b3c447449c468155d1c41f67386157485fff251d55",
+      "line_ranges": [
+        [
+          95,
+          103
+        ]
+      ]
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/resources/res/values/strings.xml",
+      "sha256": "738a5af95b1fa4997bbacad8756410f9ac6a27dd1c8974704275de7977fc5ea2",
+      "line_ranges": [
+        [
+          3648,
+          3650
+        ],
+        [
+          3761,
+          3773
+        ]
+      ]
+    }
+  ],
+  "entry_chain": [
+    "ckn.invoke → pu71.c LoginScreen",
+    "fqa0.a true → xu71.a content; false → xu71.c loading",
+    "fqa0.i=1 → c9 → s1f → pu71.b legacy rotating copy",
+    "fqa0.i=2 → r1f → sz81.a → z770 LandingPageContent"
+  ],
+  "smali_correction": {
+    "source": "apktool-src/smali_classes5/eqa0.smali",
+    "jadx_defect": "eqa0 constructor has potentially uninitialized i after incomplete decompilation",
+    "verified_logic": "Select fqa0.i=2 only when u3t0.a is kk7 and landing_page_redesign_enabled resolves true; otherwise select 1",
+    "flag_declaration": {
+      "landing_page_redesign_enabled": true,
+      "use_landing_page_login_buttons": true
+    },
+    "limitation": "Declared flag default is distinct from live remote assignment. The precise startup owner supplying kk7 remains unresolved."
+  },
+  "redesigned_layout": {
+    "source": "z770.java",
+    "container_inset_values": [
+      24,
+      32,
+      24,
+      32
+    ],
+    "brand_group_spacing_dp": 32,
+    "blossom_slot_dp": 64,
+    "wordmark_asset": "R.drawable.design_logo_chatgpt",
+    "wordmark_height_dp": 24,
+    "wordmark_aspect_ratio": 5.7272725,
+    "bottom_group_spacing_dp": 12,
+    "bottom_sequence": [
+      "conditional nt71.f language control",
+      "m191.q login buttons style 3 → ys71.a → g870.c",
+      "fqa0.h conditional Continue without logging in"
+    ],
+    "top_row": "tu71.c(false, ...) returns before LoginTopRow in ordinary non-preview mode",
+    "limitations": [
+      "Physical-device rendering and complete layout-helper semantics not replayed",
+      "Recorded dimensions are static call arguments"
+    ]
+  },
+  "login_buttons": {
+    "source": "g870.c and b870.smali",
+    "primary_candidates": [
+      "remembered account",
+      "Log in",
+      "Continue with Google"
+    ],
+    "secondary_candidates": [
+      "conditional Continue with Google",
+      "Log in another way"
+    ],
+    "google_icon": "R.drawable.design_logo_google",
+    "spacing_dp": 12,
+    "height_rule": "available width <=360dp chooses 48dp; otherwise 64dp",
+    "conditional_inputs": [
+      "fqa0.j remembered account",
+      "rg7.g gate 4207600520",
+      "w7g0.s additional remembered-account flag"
+    ],
+    "limitation": "JADX duplicates branches and has invalid final-variable assignment. Smali confirms ordered call sites, but every predicate combination is not yet resolved, so no universal default button order is claimed."
+  },
+  "legacy_copy": [
+    "Let’s create",
+    "Let’s brainstorm",
+    "Let’s go",
+    "ChatGPT",
+    "Let’s explore",
+    "Let’s collaborate",
+    "Let’s invent",
+    "ChatGPT",
+    "Let’s design",
+    "Let’s chit-chat",
+    "Let’s discover",
+    "ChatGPT"
+  ],
+  "disclosure_distinction": {
+    "source": "ruw.g",
+    "observation": "Welcome to ChatGPT constructs a cxw disclosure model containing explanatory rows and a continue action",
+    "limitation": "Not established as the launch/login first screen"
+  },
+  "unknowns": [
+    "Live or persisted experiment assignment and precise startup kk7 producer",
+    "Complete button predicates, all remembered-account combinations and authorization-page handoff",
+    "Exact visual parity, motion and runtime screenshots",
+    "Independent Android signed-out preview host is not implemented in this investigation"
+  ],
+  "runtime": {
+    "official_app_launched": false,
+    "account_changed": false,
+    "device_interaction": false,
+    "screenshots": []
+  },
+  "implementation_changes": []
+}

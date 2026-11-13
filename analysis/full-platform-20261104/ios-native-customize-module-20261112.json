@@ -1,0 +1,86 @@
+{
+  "module": "9 sidebar packages / Customize + native AssistantSettings child",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "minimum_personality_edit_chain_implemented_root_catalog_partial_archived",
+  "source_reports": [
+    "ios-sidebar-customize-20261112-findings.json",
+    "ios-sidebar-customize-20261112-label-icon-followup.json",
+    "ios-assistant-settings-child-20261112-findings.json"
+  ],
+  "official_observations": [
+    "CustomizePane > OrbitCustomizeScreen > OrbitProfileCustomizeView native Form of supplied sections",
+    "ObservedSection dictionary setting lookup and isVisible predicate, not enumeration-as-catalog",
+    "Root select action and OrbitProfileCustomizeNavigation > AssistantSettingsScreen real invocation1f5a6e8",
+    "AssistantSettingsContent grouped Form: optional Appearance, Personality, CustomInstructions order",
+    "isPushed/custom hidden native back and unsaved confirmation; Save/error consumers; full async action implementation partial",
+    "root and four row/status localization keys extracted from original compressed resources"
+  ],
+  "implemented": [
+    "retained native sidebar route to Customize root",
+    "supplied sections/entries visibility and enabled inputs; no root Save button",
+    "personality child load/retry, supplied color/personality choices and exact custom instructions editing",
+    "scoped revision/session save, error/retry, pending edits retained, duplicate/foreign/old result rejection",
+    "refresh checkpoint prevents stale load from overwriting new edits",
+    "unsaved Back confirmation, discard/reopen and saved-in-preview status",
+    "unimplemented plugin/location/browser destinations have explanation and native return"
+  ],
+  "independent_adaptations": [
+    "minimal four-entry/three-section provider fixture: membership/order/header translations are NOT recovered original defaults",
+    "synthetic options, profile identity and service; no real account save or permissions",
+    "semantic row fonts/native chevrons; original root leading icons not recovered",
+    "native field metrics, independent Chinese translations for child fallback literals",
+    "save-disabled/Back-busy policy and keeping page after save; original exact disabled/auto-dismiss predicate unclosed"
+  ],
+  "not_implemented": [
+    "actual full visible catalog/section membership/order and account/experiment assignments",
+    "root leading icons and exact styleguide form/row/inset/material geometry",
+    "trait SliderRow range/level/placement: empty supplied trait catalog, no invented slider",
+    "all other Customize children: Orbit memory/connections/apps/wallet/passwords/rules/health/finance/skills",
+    "real account/profile settings service, propagation to assistant appearance outside editor and process-restart profile persistence",
+    "original edge-pop/unsaved gesture arbitration and source-specific haptic triggers; visible Back works with preserved drafts",
+    "type-erased registry and full original History dispatcher; current host route remains independent"
+  ],
+  "verification": {
+    "contracts": "passed /tmp/rea-assistant-customization-contract-20261112-r2.log; async edit/save/refresh/discard and scope isolation",
+    "r1": "ios-native-customize-20261112.xcresult passed load retry and color/style/instructions edit/save failure; failed duplicate nested Alert retry Button query",
+    "r2": {
+      "result": "passed",
+      "test": "testNativeCustomizeCoreChinese",
+      "seconds": 57.187,
+      "artifact": "ios-native-customize-20261112-r2.xcresult",
+      "observed": [
+        "load failure/retry",
+        "supplied color/personality selection and instructions edit",
+        "save failure/retry with exact retained text",
+        "saved Back/reopen",
+        "dirty Back confirmation and discard/reopen",
+        "unsupported plugin entry/native return",
+        "sidebar and repeated Customize entry"
+      ],
+      "limits": "Chinese/light simulator only; no original visual equivalence or real service save"
+    },
+    "visual": "Inspected native AssistantSettings child screenshot with original group sequence and retained instructions; metrics remain host adaptations",
+    "physical": {
+      "build": "succeeded",
+      "connection": "unavailable",
+      "state_report": "ios-native-customize-20261112-device-state.json",
+      "install": "not_attempted_after_preflight_unavailable",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "8e5bad66c9aef0eb9c562db39961ab13e17079ca0511a54cd57a8d8223e95ab3",
+      "last_installed": "Settings fixed-close candidate; created-config/Library/Customize not installed"
+    },
+    "simulator": {
+      "launch_report": "ios-native-customize-20261112-preview.json",
+      "hash_match": true,
+      "running": true,
+      "ordinary_screenshot": "ios-native-customize-20261112-ordinary.png",
+      "ordinary_observation": "Visible ordinary core chat page with composer and shell after normal launch; inspected screenshot, no black frame."
+    }
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/FrontendAssistantCustomization.swift": "92500c43a04b98bd67301b349d2cf0c709dad75ab81d36e8e5fece88e6aebf0a",
+    "implementation/ios/Sources/NativeCustomizePage.swift": "ee14c8df9dcfd8d4a9b66791b8200d38ba850944cedc7ffdbdbdbf2adb849e2a",
+    "implementation/ios/Sources/NativeConversationHost.swift": "ade8e6a2ee632a99ce3e4334de0b69a975656bb52edbdd0403b4ca106d62905b"
+  }
+}

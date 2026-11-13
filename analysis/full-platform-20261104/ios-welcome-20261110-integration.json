@@ -1,0 +1,111 @@
+{
+  "status": "partial",
+  "platform": "ios",
+  "artifact_version": "1.2026.293",
+  "official_framework_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_evidence": "analysis/full-platform-20261104/ios-login-v1-native-evidence.json",
+  "fixture": {
+    "route": "--signed-out-welcome-preview",
+    "branding": true,
+    "hero": "none",
+    "combined_disclosure": false,
+    "remembered_account": null,
+    "button_cases": [
+      "apple",
+      "google",
+      "loginOrSignUp"
+    ],
+    "ordering": "explicit independent fixture; injected official default unresolved"
+  },
+  "verified_primitives": {
+    "logo": "OpenAI/Symbols/openai-logo-regular-lg",
+    "logo_frame": [
+      48,
+      48
+    ],
+    "wordmark": "OpenAI/Icons/WordmarkStandalone",
+    "wordmark_height": 22,
+    "brand_spacing": 32,
+    "horizontal_padding": 24,
+    "action_group_spacing": 12
+  },
+  "independent_estimates": {
+    "button_min_height": 56,
+    "icon_size": 20,
+    "button_shape": "capsule",
+    "button_font": "body semibold",
+    "button_surface": "secondarySystemBackground",
+    "bottom_padding": 24,
+    "vertical_layout": "two flexible spacers with bottom actions",
+    "apple_icon_mapping": "OpenAI/Symbols/apple-logo; source asset reused, button consumer mapping not closed"
+  },
+  "translations": {
+    "key_file_sha256": "02c051431cfc9f5c4b54d1459688bd95c5cd7c864fc8645c1db48652412182a8",
+    "zh_file_sha256": "3acbe37187be2945662d16dff29ec8a6b6cfe7dfee006206492c6652caae7bac",
+    "values": {
+      "Continue with Apple": "通过 Apple 继续",
+      "Continue with Google": "使用 Google 账号继续",
+      "Log in or sign up": "登录或注册"
+    }
+  },
+  "limits": [
+    "RootViewModelState.loggedOut constructor chain remains unresolved",
+    "Actual accessFlow owner and production experiment assignment unresolved",
+    "Button cases are source-backed; configured group order and styles remain independent fixture choices",
+    "Preview auth actions show a local unavailable-service alert",
+    "Android source chain recorded separately; no Android welcome host added"
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/SignedOutWelcomePreview.swift",
+      "sha256": "9ae820c25df538e61371d33fd07f14f8d3058e9421a01f44ba819decb4fd3e5c"
+    },
+    {
+      "path": "implementation/ios/Sources/AppDelegate.swift",
+      "sha256": "ce8494bc530306438ceece14de79668cdda226a2de14ccbb01b43a14766d82a6"
+    },
+    {
+      "path": "implementation/ios/run-simulator.py",
+      "sha256": "c96287446adb8ae434fa4ab95198be14e51ca3b417ea8bea5faaea6ef18fa2ed"
+    }
+  ],
+  "validation": {
+    "build": "passed",
+    "ui_test": {
+      "name": "REAHostUITests/HostInteractionTests/testSignedOutWelcomePreview",
+      "executed": 1,
+      "failures": 0,
+      "covers": [
+        "zh-Hans light",
+        "English dark",
+        "three auth actions open/dismiss local unavailable-service alert",
+        "restart stays on welcome",
+        "conversation entry absent"
+      ],
+      "initial_failures": [
+        "first command used wrong test target; corrected to REAHostUITests",
+        "first UI run found parent accessibility identifier overriding button identifiers; removed parent identifier and reran successfully"
+      ],
+      "final_visual_change": "Apple icon resource corrected after UI test; final build and both screenshots verified"
+    },
+    "final_preview_pid": 28620,
+    "final_preview_arguments": [
+      "--offline-fixture",
+      "--signed-out-welcome-preview"
+    ],
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "retention_targets": []
+  },
+  "screenshots": [
+    {
+      "path": "output/ios-welcome-20261110/zh-light-final.png",
+      "sha256": "1f80300c6991d257a51978b0d3a1947d1376077da9eff3b190c99bc8a2c5d737",
+      "evidence_type": "independent_host_runtime"
+    },
+    {
+      "path": "output/ios-welcome-20261110/en-dark-final.png",
+      "sha256": "27ccc57eb775cda1830ac903cf0c9509477760b6ac1eb206ae11c2030952f401",
+      "evidence_type": "independent_host_runtime"
+    }
+  ]
+}

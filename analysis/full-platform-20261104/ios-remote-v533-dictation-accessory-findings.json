@@ -1,0 +1,80 @@
+{
+  "batch": "v533",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary active Remote FieldRow first accessory raw3 cancellation glyph only",
+  "evidence_type": "official-artifact-static-metadata-instructions-and-resource",
+  "glyph": {
+    "status": "verified-static",
+    "resource": "OpenAI/Symbols/plus-lg",
+    "resource_address": "0x8a56a60",
+    "resource_factory": "0x74fa4f4",
+    "rotation_radians": -0.7853981633974483,
+    "rotation_anchor": "UnitPoint.center",
+    "initial_displayedIcon": true,
+    "chain": [
+      "0x1991b14..0x1991b28 constructs accessory part via0x60711b4 with raw3 (root caller evidence)",
+      "0x60719e4..0x60719e8 onlyraw1 takes alternate branch;raw3 normal Button label0x6071b70",
+      "0x6071ccc..0x6071cd4 initializes State displayedIcon using accessoryType>2",
+      "0x6070c94..0x6070cb8 Label title60b1118 and icon60b115c",
+      "0x60b115c icon builder calls0x6070f70",
+      "0x6071090..0x6071098 displayedIcon true selects0x74fa4f4",
+      "0x74fa520..0x74fa528 usesOpenAI/Symbols/plus-lg resource8a56a60",
+      "0x60710bc..0x60710d4 displayedIcon true selectsdouble7ec7e58=-pi/4 withUnitPoint.center"
+    ]
+  },
+  "sizing": {
+    "status": "partial",
+    "glyph_font": "resolved _attachmentsButtonFontSize, regular",
+    "glyph_font_evidence": [
+      "0x6070d80 reads Label metadata fieldvector+0x28",
+      "0x6070d84 ->0x6111f34 ->0x7560ae4 metric resolution",
+      "0x6070d8c importedSwiftUI.Font.Weight.regular",
+      "0x6070e88 sameattachmentsmetric;0x6070e8c helper0x765d30 supplies paired glyph sizing"
+    ],
+    "background_circle_font": "resolved _primaryButtonFontSize, regular",
+    "background_evidence": [
+      "0x6070fc0 readsmetadata+0x2c",
+      "0x6070fc4 ->0x4f6a404 ->0x7560ae4",
+      "0x6070fc8 ->0x6111ec4 preservesd0 intod8 thenFont.Weight.regular",
+      "0x6070ff8 stores font/weight tuple"
+    ],
+    "remote_base_attachment_font": 18.808777429467085,
+    "base_evidence": "Existingv508 sharedRemote style0x19a0984..0x19a099c writes0x4032cf0c09a14dd8. Current active transform1991db4 changesminHeight/background/glass only, no font rewrite inthattransform.",
+    "limits": [
+      "Complete resolved environment for active parent not reclosed inthisboundedtask. Do not derive fixed glyphsize from32pt minimumHeight.",
+      "Background glyph primary font and foreground attachment font are independent metrics."
+    ]
+  },
+  "presentation": {
+    "label_style": "IconOnlyLabelStyle",
+    "source": "0x6070e24 importsIconOnlyLabelStyle.init;0x6070e58 applieslabelStyle",
+    "state_update": "body0x6070cbc..0x6070ccc computesraw>2;0x6070d3c callback60b12c0 updatesdisplayedIcon throughState transaction. Animationenabled branch exists; exact timing outofscope."
+  },
+  "integration": "Use official plus-lg asset rotated -45degrees atcenter for raw3 steady state. Preserve existing resolved attachment font metric and independent circle primary metric. Keep cancellation action routing from existing FieldRow evidence.",
+  "unknowns": [
+    "Exact active resolved environment numeric font sizes beyond inherited sharedRemote style evidence",
+    "Complete stateanimation timing",
+    "Title localization resource consumer exact string not required foricon-only rendering andnotdecodedhere"
+  ],
+  "evidence_files": [
+    "ios-remote-v533-accessory-label.asm",
+    "ios-remote-v533-dictation-accessory-metadata.json",
+    "ios-remote-v533-dictation-accessory-label-body.asm",
+    "ios-remote-v533-dictation-accessory-helpers.asm",
+    "ios-remote-v533-dictation-accessory-glyph.asm",
+    "ios-remote-v531-dictation-style-cancel-label.asm",
+    "ios-remote-v508-home-style-findings.json"
+  ],
+  "validation": {
+    "target_runtime": false,
+    "network": false,
+    "audio": false,
+    "production_changes": false
+  }
+}

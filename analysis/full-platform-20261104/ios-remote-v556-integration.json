@@ -1,0 +1,57 @@
+{
+  "version": "556",
+  "status": "partial",
+  "page": "Remote conversation",
+  "changes": [
+    "Added testRemoteMultiwordSend and testRemoteMultiwordFollowUp with exact pre-send editor and post-send prompt assertions.",
+    "Corrected the independent editor comment about transient composition.",
+    "Retained a reproduced native composition residual and source-bound unresolved ownership."
+  ],
+  "validation": {
+    "r1": {
+      "result": "ios-remote-v556-r1-ime.xcresult",
+      "passed": 2,
+      "failed": 0
+    },
+    "r2": {
+      "result": "ios-remote-v556-r2-ime.xcresult",
+      "passed": 4,
+      "failed": 0,
+      "cases": [
+        "testRemoteCommittedPinyinSend",
+        "testRemoteCommittedPinyinFollowUp",
+        "testRemoteMultiwordSend",
+        "testRemoteMultiwordFollowUp"
+      ]
+    },
+    "visual_inspection": [
+      "Chinese/light committed Pinyin screenshot",
+      "English/dark multiword screenshot"
+    ],
+    "limits": [
+      "English strings were entered with XCTest typeText while the simulator retained its Chinese keyboard; this is a submission/binding regression, not English autocorrection acceptance.",
+      "Only selected UI tests and their build ran in this batch.",
+      "Marked/unselected composition remains a reproduced failure despite the four committed-input tests passing."
+    ]
+  },
+  "open_items": [
+    {
+      "priority": "P1",
+      "page": "Remote composer",
+      "state": "部分实现",
+      "missing_behavior": "Native marked text and accepted-draft clearing remain inconsistent",
+      "evidence": "ios-remote-v556-marked-residual.png",
+      "next_action": "Resolve the MessageInput view-model protocol Boolean composition witness and the submit action owner, then test marked input → submit → editor clear, candidate commit and cross-task switch together.",
+      "acceptance": "Composition submission must have an evidenced commit policy; accepted text and visible editor agree; no residual marked range or duplicate send; Chinese selection, English multiword and follow-up regressions pass."
+    }
+  ],
+  "rules": "No new general workspace rule promoted from this unresolved source boundary.",
+  "cross_platform": "Current evidence and tests are iOS-only. Android composition ownership remains independently unverified.",
+  "service": "Frontend synthetic adapters only",
+  "next": "Close the composition acceptance boundary, then resume full reasoning/history expansion and remaining Remote minimum-usable components.",
+  "runtime": "ios-remote-v556-runtime.json",
+  "retention": {
+    "report": "ios-remote-v556-retention.json",
+    "stale_targets": 0
+  }
+}

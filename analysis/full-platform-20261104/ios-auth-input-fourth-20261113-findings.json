@@ -1,0 +1,217 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "AuthInputFieldStyle shared authentication input carrier, geometry and focus/visibility actions. Two bounded candidate groups; no product changes.",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_budget": {
+    "limit": 2,
+    "groups": [
+      {
+        "id": 1,
+        "question": "Actual height/padding/shape producers",
+        "result": "Vertical10, horizontal12, HStack spacing10, ScaledMetric-driven minHeight and alignment, RoundedRectangle cornerSize16 closed. ScaledMetric initializer/default not found in bounded neighboring candidates."
+      },
+      {
+        "id": 2,
+        "question": "Placeholder focus/hasInput and optional password visibility button",
+        "result": "Actual supplied font/color selection, top10-or0/leading12, Binding gate/toggle, exact eye assets, accessibility labels and callback-driven hit testing closed. Default supplied fonts/colors and validation mapping remain unknown."
+      }
+    ],
+    "stopped": true
+  },
+  "official_observations": [
+    {
+      "id": "shared-owner",
+      "kind": "official-artifact-observation",
+      "conclusion": "The geometry belongs to the actual shared AuthInputFieldStyle modifier, not a separate guessed UIKit field. It wraps supplied field content and optional password visibility button in one HStack, then border overlay and placeholder background; optional field info is a separate sibling.",
+      "source": [
+        "AuthInputFieldStyle descriptor0x957dbb0, conformance0x7d67694, bodywitness0xd4e974→0xd4d9cc;actual tuple0xd4dad4",
+        "Complete associated Body retained in previous field-style-full.tree.txt: VStack→HStack(content padding/flexframe,optional Button)→padding/overlay/backgroundText;optional NativeAuthFieldInfoRowPart sibling;outer Bool animation",
+        "Actual helper0xd4db34 reads center VerticalAlignment;0xd4db38 loads Double10;0x4ddac8 stores HStack layout alignment/spacing/tag"
+      ],
+      "reused_evidence": [
+        "ios-auth-native-third-20261113/field-style-full.tree.txt",
+        "ios-auth-native-third-20261113/field-style-body.asm",
+        "ios-auth-native-third-20261113/field-style-body-calls.json"
+      ],
+      "evidence": [
+        "hstack-spacing-store.asm"
+      ],
+      "limit": "This does not prove the supplying field content or every account branch uses identical options; username/password/OTP actual shared consumer evidence remains in prior reports."
+    },
+    {
+      "id": "content-height-and-padding",
+      "kind": "official-artifact-observation",
+      "conclusion": "Supplied field content receives vertical padding10 and then a flexible frame with maxWidth infinity and minHeight from _textFieldMinimumHeight ScaledMetric. Frame alignment is bottomLeading when isFocused OR hasInput, otherwise leading. The HStack receives outer horizontal padding12.",
+      "source": [
+        "0xd4e06c imported Edge.Set.vertical;0xd4e074 Double10;0xd4e078 EdgeInsets.all(10) stores vertical PaddingLayout",
+        "0xd4e0bc/c4 actual ScaledMetric.wrappedValue; resultd8 feeds0xd4e138→x6",
+        "0xd4e0d4..f4 checks isFocused (metadata+0x1c) ORhasInput(+0x20), chooses imported bottomLeading/leading",
+        "0xd4e158→0x4da158 supplies minWidthnil/idealWidthnil/maxWidthinfinity, leavesx6 asminHeight;0xd4e15c→0x457e94→0x7c48058 actual _FlexFrameLayout initializer",
+        "0xd4db60 imported Edge.Set.horizontal;0xd4db68→0xace5f8 produces EdgeInsets.all(12) for outer HStack padding"
+      ],
+      "evidence": [
+        "layout-and-button.asm",
+        "vertical-frame-arguments.asm",
+        "frame-tail.asm",
+        "horizontal-padding-helper.asm",
+        "field-calls.json",
+        "owner-resources-and-tail-imports.json"
+      ],
+      "limit": "Minimum-height numeric default and relative scaling text style remain unclosed. The source uses minimum height, not fixed height. Padding10/12 must not be added indiscriminately to both layers."
+    },
+    {
+      "id": "border-shape",
+      "kind": "official-artifact-observation",
+      "conclusion": "The actual overlay constructs RoundedRectangle inset geometry with cornerSize16×16. Focused border width2 is definite; unfocused border width/color depend on fieldCheckResult.",
+      "source": [
+        "0xd4e4d4 imports RoundedRectangle._Inset metadata;0xd4e564 loads twoDouble16 values and0xd4e568 stores cornerSize",
+        "0xd4e56c..590 isFocused branch sets lineWidth2 and colorfactory0x74edcd0",
+        "Unfocused0xd4e594..5d8 calls0xdf0c08 fieldCheck predicate, chooses widths1/2 and colorfactory0x74edc80/0x74ed060",
+        "0xd4e5f8 calls original StrokeStyle initializer with computed width"
+      ],
+      "evidence": [
+        "overlay-and-placeholder.asm",
+        "field-calls.json"
+      ],
+      "limit": "fieldCheckResult semantic enum mapping, exact color assets and full overlay opaque shape generic/parent styling not closed. No arbitrary systemFill background is established by these observations."
+    },
+    {
+      "id": "floating-placeholder",
+      "kind": "official-artifact-observation",
+      "conclusion": "Placeholder is a real separately rendered background Text. isFocused ORhasInput selects supplied focused font/color, topLeading background alignment and top padding10; unfocused-empty selects supplied unfocused font/color, leading alignment and top padding0. Placeholder leading padding is12.",
+      "source": [
+        "AuthInputFieldPlaceholderStyle descriptor0x957d9b4 fields:unfocusedFont metadata+0x10,unfocusedForegroundColor+0x14,focusedFont+0x18,focusedForegroundColor+0x1c; vectorbase2words",
+        "0xd4e804..83c checks isFocused/hasInput and reads actual selected font;0xd4e888..8bc selects matching supplied color",
+        "0xd4dbe0..dc04 chooses topLeading versus leading for background based on same flags",
+        "0xd4e8f0..918 computes top10/0 and Edge.Set.top;helper0xdec8b8 forwards computed edgeinsets",
+        "0xd4e93c Edge.Set.leading;0xd4e944→0xace5f8 supplies12",
+        "0xd4da74..90 animation valueisFocused ORhasInput;source spring inprior report"
+      ],
+      "evidence": [
+        "overlay-and-placeholder.asm",
+        "placeholder-padding-helper.asm",
+        "owner-resources-and-tail-imports.json"
+      ],
+      "limit": "Actual unfocused/focused Font values and Color factories assigned by each parent are unclosed. Preserve explicit supplied style rather than inventing 12/16point font values or treating top padding as an offset animation."
+    },
+    {
+      "id": "password-visibility-control",
+      "kind": "official-artifact-observation",
+      "conclusion": "Password visibility button appears only when an optional Binding<Bool> is supplied. Its action toggles that same binding, with actual eye/eye-slash asset and matching Show/Hide password accessibility text.",
+      "source": [
+        "AuthInputFieldStyle.passwordVisibility metadata+0x28;0xd4e174..180 checks Binding storage presence before constructing optional Button",
+        "0xd4e1cc..ec Button actionclosure0xddfeec andlabel0xddff54→0xd4e38c",
+        "Action0xddff20 Binding.wrappedValue getter,0xddff30..34 Booleaninvert,0xddff48 actualBinding.wrappedValue setter",
+        "Label0xd4e3dc..f4 readsBinding;true→factory0x74f715c→literal0x8a55260 OpenAI/Symbols/eye-slash;false→0x74f71a8→0x8a55280 OpenAI/Symbols/eye",
+        "0xd4e210..254 true selects Hide password;false Show password;literal assembledinregisters,notinventedresourcekeys",
+        "Label fulltree includes Color foreground, optionalFont environment and MinimumTapTargetShape, thenaccessibilitymodifier"
+      ],
+      "evidence": [
+        "layout-and-button.asm",
+        "password-binding-toggle.asm",
+        "password-icons.asm",
+        "owner-resources-and-tail-imports.json"
+      ],
+      "limit": "Exact password icon font/foreground resource values and minimum-tap-target metrics not closed. Toggle behavior does not authorize field identity/focus changes; preserve same logical input."
+    },
+    {
+      "id": "callback-overlay-hit-testing",
+      "kind": "official-artifact-observation",
+      "conclusion": "The prior blanket description of a noninteractive overlay is too strong: actual overlay allows hits when onTap callback is present. Its tap closure forwards the supplied callback; it is not evidence of unconditional force-focus.",
+      "source": [
+        "0xd4e6a0..bc constructs onTapGesture(count1,perform:) withclosure0xddfd9c",
+        "0xd4e6d8..704 tests onTap function atmetadata+0x2c and writes AllowsHitTesting Bool",
+        "0xddfdb0..c8 resolves same onTap field and invokes exact function/context onlyifnonnull",
+        "Placeholder0xd4e7d0..f0 separately derives accessibilityHidden from optional passwordVisibility Binding presence"
+      ],
+      "evidence": [
+        "overlay-and-placeholder.asm",
+        "overlay-tap-forwarder.asm"
+      ],
+      "correction_of": "ios-auth-native-third-20261113-findings.json phrase noninteractive overlay: qualify as onTap=nil branch only.",
+      "limit": "Actual upstream onTap focus action, password field selection restoration and validators remain parent-owned. Do not infer custom haptic or focus state from tap presence."
+    }
+  ],
+  "current_host": {
+    "path": "implementation/ios/Sources/NativeFrontendAuthentication.swift",
+    "sha256_at_read": "cd2566c9dbbaab24ba0b66962debbf87766748663cf0a4950f13ee0cc031e61e",
+    "gap": "Existing padding16/corner12/systemFill is an independent simplified field surface; it does not implement the original floating-label/container geometry. Existing scoped authentication request/cancel/service boundary is not changed by this evidence."
+  },
+  "safe_product_decision": {
+    "can_restore": [
+      "Replace ad hoc shared padding/shape with the proven parent relationship: content vertical10→minHeight from explicit scaled metric, optional visibility control in HStack spacing10→horizontal12, radius16 border and supplied floating placeholder.",
+      "Preserve fields and error/action request identity; password visibility toggles same binding; expose optional onTap rather than globally forcing focus.",
+      "Use exact OpenAI eye/eye-slash resources and original Show/Hide password text keys/literals where selected translations exist."
+    ],
+    "must_remain_adapter": [
+      "Until original minimum-height initializer is recovered, expose a clearly explicit host metric rather than label a chosen number official.",
+      "Parent-supplied focused/unfocused fonts and colors, validation-state mapping, current local focus behavior and measurement/admission.",
+      "Any chosen border error color, exact transition/duration when animation-admission getter7710c7c unresolved."
+    ],
+    "not_admitted": [
+      "Claiming complete AuthInputFieldStyle fidelity or recovered default height",
+      "Usingfontvaluesasframeheight",
+      "Unconditional overlay hits/forcefocus or unconditional placeholder AX hiding",
+      "Applying remembered systemFill/rounded12 as original styling",
+      "OTPauto-submit/code-length/passwordvalidators/backendauthentication"
+    ]
+  },
+  "precise_unknowns": [
+    {
+      "gap": "_textFieldMinimumHeight initializer/default and scaling reference",
+      "breakpoint": "Actual consumer0xd4e0c4 reads ScaledMetric;two adjacent bounded candidate windows0xd4c000..0xd4d9cc and0xd4e974..0xd4f500 had no direct ScaledMetric initializer. Parent construction of fieldmetadataindex0 remains next exact question."
+    },
+    {
+      "gap": "Placeholder styles actual values",
+      "breakpoint": "AuthInputFieldPlaceholderStyle0x957d9b4 supplies four fields;actual fieldparent initializer not traced. Consumer picks them correctly but values not established."
+    },
+    {
+      "gap": "fieldCheckResult semantic state and border assets/info row action",
+      "breakpoint": "Predicate0xdf0c08/colorfactories0x74edcd0/74edc80/74ed060 and info helper0xd4dd0c. No enum ordinal-to-error mapping inferred."
+    },
+    {
+      "gap": "Animation admission and parent focus handling",
+      "breakpoint": "Sourceoutergetter0x7710c7c andAuthInputFieldStyle.onTap producer;source tap closure itself only forwards callback."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "direct_caller_proven": false,
+    "result": "No explicit haptic emission demonstrated in inspected AuthInputFieldStyle/carrier/toggle/tap consumers; no generic input feedback inferred."
+  },
+  "reused_reports": [
+    "ios-auth-native-third-20261113-findings.json",
+    "ios-native-auth-welcome-20261112-findings.json"
+  ],
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "tests_or_build": false,
+    "devices_or_target_runtime": false
+  },
+  "raw_evidence": {
+    "ios-auth-input-fourth-20261113-raw/field-calls.json": "0a724f3fe714edbe2074beae903612b6908ea9c9c45859d4671a2a7665b4d824",
+    "ios-auth-input-fourth-20261113-raw/frame-tail.asm": "23689b01fe9a1a179dc900d6ed119778f40b88c247b01c5c790de64f8ae57e6e",
+    "ios-auth-input-fourth-20261113-raw/horizontal-padding-helper.asm": "53f67fc6f87bc1aafecfa40b8a07a43dfc27a894fa8df2c828881e9374d8c329",
+    "ios-auth-input-fourth-20261113-raw/hstack-spacing-store.asm": "7da1d2c99a07a14b57c904c61adffae02a4a91cad94f36d49bedd34eff935b49",
+    "ios-auth-input-fourth-20261113-raw/layout-and-button.asm": "6347c5e02936aa826e32f945fadcd30f652f5c05c31ba01da92d0eb70809a0f9",
+    "ios-auth-input-fourth-20261113-raw/overlay-and-placeholder.asm": "5b3dc9d2fcefd48a313c5039266f9350e39da29ba237ca48f7cbb69fcc03cf64",
+    "ios-auth-input-fourth-20261113-raw/overlay-tap-forwarder.asm": "8be8ddddc4b78c301474602421123738ce20af29bdb0cb3ff662a63ca8fcc841",
+    "ios-auth-input-fourth-20261113-raw/owner-resources-and-tail-imports.json": "90e86d93b94db44bc2487a13c012546eb6e9dda88e6acae3a8bf5916765e7dd2",
+    "ios-auth-input-fourth-20261113-raw/password-binding-toggle.asm": "824451283181f57fbe6e7adee8ed08fd1862bbc51f04bacdbabfd85b3448c3a7",
+    "ios-auth-input-fourth-20261113-raw/password-icons.asm": "99f420030e843e2086cb7fbec0ab2d1baf2c8fd74ce4abe026062f51403addda",
+    "ios-auth-input-fourth-20261113-raw/placeholder-padding-helper.asm": "5f894ef6e40cb73dd34f99ad961b2f1902f3054e3a929259c4f3e9182b5ee6b4",
+    "ios-auth-input-fourth-20261113-raw/scope.json": "5c208798f79e533e26238680a4a11035ce12574c92ea2335d9f7d12c28b44262",
+    "ios-auth-input-fourth-20261113-raw/style-initializer-candidates.json": "b6d204180db5e51b97f5ff3a3df54eab75d5e815982df0d23fb25deb45f93df0",
+    "ios-auth-input-fourth-20261113-raw/style-post-body-candidates.json": "ab9a45621b34349f9c09ad5afcc34018ffc10920ff691bf992e3d38b7521630b",
+    "ios-auth-input-fourth-20261113-raw/vertical-frame-arguments.asm": "9d0bbc9a5e3c9a7e781424119bd4507446e97201ac1378a29b8d335e424ad4be"
+  },
+  "stop_boundary": "Two groups close the actual parent geometry, placeholder branch and optional visibility control. Numeric metric/default typography and validation/animation owner remain explicit unknowns; stop without further candidates."
+}

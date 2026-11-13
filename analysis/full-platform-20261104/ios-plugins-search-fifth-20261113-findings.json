@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "binary": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": {
+    "question": "Plugins Search FloatingSearchBar cancel action → SearchScreen/ViewModel consumer → root route",
+    "read_only_product": true,
+    "target_execution_build_devices_network": false,
+    "stop": "Actual cancel action state consumer closed. Final root output callback route mutation not closed; no further branch followed."
+  },
+  "reused": [
+    "ios-native-plugins-20261112-search-body.asm",
+    "ios-native-plugins-20261112-search-tree.json",
+    "ios-native-plugins-20261112-models.json"
+  ],
+  "official_observations": [
+    {
+      "finding": "The search frontend has an explicit cancel user action independent from focus/query updates.",
+      "owner": "ChatGPTPluginsSearchAction",
+      "descriptor": "0x95832c8",
+      "field_record": "0x9a0505c",
+      "case": "cancelTapped",
+      "other_cases": [
+        "queryChanged(String)",
+        "focusChanged(Bool)",
+        "browse(...)"
+      ],
+      "limit": "Names alone not used as raw enum case mapping."
+    },
+    {
+      "finding": "Actual SearchContent builds FloatingSearchBar with query/focus bindings and a separately captured cancel action.",
+      "owner": "ChatGPTPluginsSearchContent",
+      "body": "0xe96c2c",
+      "record": "0x7d79708",
+      "bar_builder": "0xf2e95c",
+      "action_handler_input": "0xf2ea90..0xf2ea9c copies SearchContent.actionHandler",
+      "cancel_value_constructor": "0xf2eaa4 →0xf2ee7c clears129 bytes then writes storage byte3 at+0x81",
+      "bound_callback_factory": "0xf2eadc..0xf2eae8→0x764096c; returns closure0x765c330 and captured context",
+      "limit": "FloatingSearchBar internal Cancel gesture/visual implementation not reconstructed; do not present UISearchBar as its original implementation.",
+      "evidence": [
+        "floating-builder.asm",
+        "cancel-callback.asm",
+        "bound-action.asm",
+        "floating-cancel-binding.asm"
+      ]
+    },
+    {
+      "finding": "SearchScreen action injection uses the actual SearchViewModel ActionHandling conformance and dispatcher.",
+      "screen_witness": "0xe96c28",
+      "screen_body": "0xe9678c",
+      "handler_injection_sites": "0xe96850..0xe96864",
+      "vm_descriptor": "0x958162c",
+      "vm_accessor": "0xef1918",
+      "conformance": "0x7d75278",
+      "conformance_direct_type": "0x958162c",
+      "conformance_flags": "0x0",
+      "witness_table": "0xad92028",
+      "consumer_entry": "0xad92040→0xe99dc4→0xe815fc",
+      "evidence": [
+        "search-screen-witness.json",
+        "search-screen.asm",
+        "search-action-consumer-binding.json",
+        "search-consumer.asm",
+        "handler-injection.asm",
+        "search-vm-handler.asm"
+      ],
+      "methodology_note": "Existing strict witness scripts reject flags0 because they target generic/resilient patterns. This non-generic table is retained with explicit pointers/type relative proof; no unsupported generic trailer invented."
+    },
+    {
+      "finding": "Actual value-witness discriminator maps the constructed empty cancel value to tag3 and to its concrete state handler.",
+      "get_tag": "0xf11760..0xf11774",
+      "algorithm": "Read byte+0x81. If <=2 return it; otherwise read leading payload index and add3. Cancel constructor clears leading payload bytes and stores3, yielding tag3.",
+      "dispatch_table": "0x7d70a02",
+      "table_bytes": [
+        0,
+        23,
+        7,
+        20
+      ],
+      "base": "0xe81648",
+      "destination_for_tag3": "0xe81698",
+      "handler_call": "0xe8169c→0xe99584",
+      "not_enum_ordinal_guess": true,
+      "evidence": [
+        "tag-witness-helpers.asm",
+        "search-switch-tag.asm",
+        "root-search-handler.asm",
+        "search-action-consumer-binding.json"
+      ]
+    },
+    {
+      "finding": "Cancel clears search-local query, focus and scroll ID, updates render state, then forwards an output through the current ViewModel owner. It is not just focus loss.",
+      "handler": "0xe99584..0xe9966c",
+      "effects": [
+        {
+          "site": "0xe995c0..0xe995cc",
+          "action": "Pass empty Swift String to query setter0xe970b0"
+        },
+        {
+          "site": "0xe995d0..0xe995d4",
+          "action": "Pass Bool false to focus setter0xe97114"
+        },
+        {
+          "site": "0xe995d8..0xe995dc",
+          "action": "Construct empty optional then invoke search scrollPosition setter0xe96b28"
+        },
+        {
+          "site": "0xe995e0..0xe9962c",
+          "action": "Construct render state and apply through0xe97160; exact named render-case mapping not closed here"
+        },
+        {
+          "site": "0xe99630..0xe99654",
+          "action": "Load outputHandler function/context from current VM+0x108/+0x110; construct output using current search context+0xb8 and dispatch"
+        }
+      ],
+      "evidence": [
+        "cancel-handler.asm",
+        "search-screen.asm",
+        "search-methods.asm"
+      ],
+      "limits": [
+        "Loader helper calls0xe98dd0/0xf525a4 exist before clearing; exact cancellation/debounce request semantics not assigned here.",
+        "This is search scrollPositionID. No evidence that directory viewport should be reset.",
+        "No final root pop/dismiss mutation proven at this output boundary."
+      ]
+    }
+  ],
+  "safe_product_decision": {
+    "source_backed": [
+      "Use an explicit cancel action/event, not isFocused=false or isSearching lifecycle inference as cancellation.",
+      "Clear query and search-local scroll anchor, release keyboard focus in the same cancel user-action path.",
+      "Forward cancellation to route owner; keep native view-model/state owner identity.",
+      "Do not clear the directory anchor or unrelated detail state as a global focus side effect."
+    ],
+    "independent_host_adapter": [
+      "UISearchBarDelegate.searchBarCancelButtonClicked is a valid explicitly independent platform adapter for the actual cancel event; it does not restore FloatingSearchBar internals.",
+      "Removing .search from the reconstruction NavigationStack after cancel remains host routing policy because final official root output consumer not closed."
+    ],
+    "avoid": [
+      "Do not pop search merely on detail navigation focus loss/onDisappear.",
+      "Do not call clearing query alone a recovered cancel route."
+    ]
+  },
+  "unknowns": [
+    {
+      "area": "Final route",
+      "precise_boundary": "0xe99630..0xe99654 indirect current SearchViewModel.outputHandler; original root registration/consumer and inlineSearchPresentation vs pushed path close not closed. Route enum retained from earlier report contains detail/category/personal/workspace, so do not fabricate a search enum case as official."
+    },
+    {
+      "area": "FloatingSearchBar",
+      "precise_boundary": "0xf2e95c construction and captured event visible; internal Cancel button label/layout/native gesture not traced."
+    },
+    {
+      "area": "Haptics",
+      "precise_boundary": "No direct haptic caller established in selected explicit cancel path; no new trigger inferred."
+    }
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-plugins-search-fifth-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "action-binding-helper.asm",
+      "sha256": "4ed9c95d1cfdae33e6e221ea56875de7e6cfe6503e0093d6087d0a97f7d8802e",
+      "bytes": 2359
+    },
+    {
+      "file": "action-handler-factory.asm",
+      "sha256": "fa7fdd104a3cb456846befb415018701dfe8a3005f86ca67e424dc6646241688",
+      "bytes": 2686
+    },
+    {
+      "file": "bound-action.asm",
+      "sha256": "d06d98f8bf31d70f5513000811b21e1a26a7613b94f6e32889522b30c0efcd0a",
+      "bytes": 1995
+    },
+    {
+      "file": "cancel-callback.asm",
+      "sha256": "6347733c0a7d9cc7c5792e60d5741fce8fbc71770135be2941456a5d5044ad10",
+      "bytes": 2304
+    },
+    {
+      "file": "cancel-handler.asm",
+      "sha256": "4b20cde2ba51f304cffa1d9e139d6096ad2879e6f5cd77dc1e9723da0f5cf808",
+      "bytes": 4792
+    },
+    {
+      "file": "cancel-in-floating-state.asm",
+      "sha256": "bd22de790f9748a8d7ab85c10303b62baa102f220098a79128d38c7de16a89ff",
+      "bytes": 533
+    },
+    {
+      "file": "floating-builder.asm",
+      "sha256": "bf8f7b6194a9c456861a77fa18aba7e2069daff65d6d10b2c2bc694c7deff39e",
+      "bytes": 8238
+    },
+    {
+      "file": "floating-cancel-binding.asm",
+      "sha256": "2313543ce07fdfa3105faff76fe92d6cfc15008f99d9428c746654b9c426c89d",
+      "bytes": 1202
+    },
+    {
+      "file": "handler-injection.asm",
+      "sha256": "c43980a471708b74be64ad74889c93c3e73aaebfa05d71b0852ccc7096e42d9b",
+      "bytes": 2341
+    },
+    {
+      "file": "root-search-handler.asm",
+      "sha256": "8874d7928675a0e367893439ba86b6ce6c5c66623ded03746bd580f93ce9fa29",
+      "bytes": 12883
+    },
+    {
+      "file": "search-action-consumer-binding.json",
+      "sha256": "0377507b3c430c533b69bd73e1e920da75ab2e1eef1387745473425378b8062f",
+      "bytes": 493
+    },
+    {
+      "file": "search-action-enum-witness.asm",
+      "sha256": "539fc85fd50553d3a4dc951208791a6ff3d09fbdb2fb8f310ee23959855f3fa3",
+      "bytes": 7317
+    },
+    {
+      "file": "search-action-switch.asm",
+      "sha256": "c31d1cafc672f8d9ed1df0de77dba1be8de276a15536f9615e42387d446b1461",
+      "bytes": 6851
+    },
+    {
+      "file": "search-actions.asm",
+      "sha256": "60c7b6f13aed3eaa4c6bd2b2746a54a4a4188f1b6fa71ff5248c7960741f1a62",
+      "bytes": 18780
+    },
+    {
+      "file": "search-bar-callbacks.asm",
+      "sha256": "5682b929935e095e97e0358801fec0be8e2227d38c9b9c6e5dc1ca98ad01f766",
+      "bytes": 3791
+    },
+    {
+      "file": "search-consumer.asm",
+      "sha256": "4c5ebeb58c9d6104deded2abd24a6184fa94ecbc67dbc1b15eaf08bd2780c636",
+      "bytes": 920
+    },
+    {
+      "file": "search-dispatch-candidate.asm",
+      "sha256": "c24df09fae2ef998fd7cc0e7b1458f797e4291099e0348f024648317d62c0777",
+      "bytes": 11696
+    },
+    {
+      "file": "search-dispatch.asm",
+      "sha256": "1c1a8431875c50a7326fc5c1350c3e9f24d1a1695bdc6c89477ec59a7e621642",
+      "bytes": 15811
+    },
+    {
+      "file": "search-handler-candidates.asm",
+      "sha256": "12c26d0740d520c22cc236ffa37a4ff305b19e7ee8c6a83e7cfb0a48d5e827af",
+      "bytes": 26213
+    },
+    {
+      "file": "search-input-copy-helpers.asm",
+      "sha256": "ff49362babcbb4b3fb32a37741633567c57ee98cb51cb185173bef99010917c1",
+      "bytes": 681
+    },
+    {
+      "file": "search-input-dispatch.asm",
+      "sha256": "d6eed87dd10b00e9769dcd02daf3c1cf65c53d01f4f636fc5779429c527e69c3",
+      "bytes": 4834
+    },
+    {
+      "file": "search-methods.asm",
+      "sha256": "46ebccb832914315d4973c08ec1e13e746e8b383f498cd06b6c6eb742fc3eb85",
+      "bytes": 25995
+    },
+    {
+      "file": "search-screen-begin.asm",
+      "sha256": "4c90a884b3293fd87ebc6cf8f91e5c553acc06cc180043463fe7f5ac7db0afa2",
+      "bytes": 13393
+    },
+    {
+      "file": "search-screen-witness.json",
+      "sha256": "8f44f4469531861fdea91e0dd0e01c499a5867e5cb564cf2173de7ea4d433609",
+      "bytes": 4612
+    },
+    {
+      "file": "search-screen.asm",
+      "sha256": "710719ee08536173d837ca851765eb721a9df4bbc96fab5d04c2bb9e83b4011d",
+      "bytes": 57347
+    },
+    {
+      "file": "search-switch-tag.asm",
+      "sha256": "c183fdc50cda77b6fe7e8bfa281948f368c8dd7f89268515c2d3259dc5ef825f",
+      "bytes": 361
+    },
+    {
+      "file": "search-vm-accessor.asm",
+      "sha256": "383b8c6f6473c9507e3300a42c78df5f4f4deac9953f68a2dda0f1b1af7a0b44",
+      "bytes": 554
+    },
+    {
+      "file": "search-vm-handler.asm",
+      "sha256": "4a0438044b212de8db35092647b911bd722e9f5d552ea4ccc2545d941360174b",
+      "bytes": 683
+    },
+    {
+      "file": "tag-witness-helpers.asm",
+      "sha256": "52bf370357f16fe5566d484d17dfa10930eefd8b961de2bfece96e019275b914",
+      "bytes": 601
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "baseline": "iOS 1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial-carrier-identity-proven-no-new-placement-rule",
+  "scope": "Two native feature-page parents and shared SideMenuToolbarItem; no product/test/device changes",
+  "decision": "Current sidebar-menu resource reuse is consistent with established official resource. No newly closed page-specific placement, material or padding rule warrants replacing all feature toolbars with one guessed style. Existing eight pages must not be equated merely because their icons match.",
+  "current_host_snapshot": [
+    {
+      "path": "implementation/ios/Sources/NativeFileLibrary.swift",
+      "resource_consumers": [
+        {
+          "line": 100,
+          "code": "Button(action: openMenu) { Image(uiImage: officialVisualIcon(\"sidebar-menu\")) }"
+        }
+      ]
+    },
+    {
+      "path": "implementation/ios/Sources/NativeScheduledTasks.swift",
+      "resource_consumers": [
+        {
+          "line": 228,
+          "code": "Image(uiImage: fittedOfficialVisualIcon(\"sidebar-menu\", size: 24))"
+        }
+      ]
+    },
+    {
+      "path": "implementation/ios/Sources/NativePluginsPage.swift",
+      "resource_consumers": [
+        {
+          "line": 96,
+          "code": "Button(action: openMenu) { Image(uiImage: officialVisualIcon(\"sidebar-menu\")) }"
+        }
+      ]
+    },
+    {
+      "path": "implementation/ios/Sources/NativeProjectsPage.swift",
+      "resource_consumers": [
+        {
+          "line": 161,
+          "code": "Button(action: openMenu) { Image(uiImage: officialVisualIcon(\"sidebar-menu\")) }"
+        }
+      ]
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSitesPage.swift",
+      "resource_consumers": [
+        {
+          "line": 171,
+          "code": "Button(action: openMenu) { Image(uiImage: officialVisualIcon(\"sidebar-menu\")) }"
+        }
+      ]
+    },
+    {
+      "path": "implementation/ios/Sources/NativeImagesPage.swift",
+      "resource_consumers": [
+        {
+          "line": 189,
+          "code": "Button(action: openMenu) { Image(uiImage: officialVisualIcon(\"sidebar-menu\")) }"
+        }
+      ]
+    },
+    {
+      "path": "implementation/ios/Sources/NativePersonalAssistantPage.swift",
+      "resource_consumers": [
+        {
+          "line": 129,
+          "code": "Button(action: openMenu) { Image(uiImage: officialVisualIcon(\"sidebar-menu\")) }"
+        }
+      ]
+    },
+    {
+      "path": "implementation/ios/Sources/NativeCustomizePage.swift",
+      "resource_consumers": [
+        {
+          "line": 151,
+          "code": "Button(action: openMenu) { Image(uiImage: officialVisualIcon(\"sidebar-menu\")) }"
+        }
+      ]
+    }
+  ],
+  "covered_source_pages": [
+    {
+      "page": "File library browse",
+      "owner": "ChatGPTFileLibrary.BrowseContent descriptor9570364",
+      "body": "879bd4→8760e8",
+      "actual_type_factory": "BrowseContent body constructs type record7d36760 (existing browse-native.json/raw/tree)",
+      "shared_carrier": "SwiftUIStyleguide.SideMenuToolbarItem reference at typeref offset77 resolvesdescriptor971e804 throughchainedslot aab94a8",
+      "parent_structure": "NativeGroup conditional content (InformationArchitectureRefreshBrowseView vs LegacyBrowseContent), native toolbar TupleToolbarContent withSideMenuToolbarItem and otheritem(s), conditionaltoolbarBackground.",
+      "limit": "This proves carrier composition in emitted browse parent, not current account branch or every directory route. Provided leadingContentInset/usesClearGlass/action values and actual rootbutton visibility inputs remain unclosed."
+    },
+    {
+      "page": "Personal assistant created conversation",
+      "owner": "TibroCore.OrbitSidebarConversationView/OrbitSidebarChatContent family",
+      "source": "ios-native-personal-assistant-page-20261112/tibro-conversation-root.tree.txt",
+      "shared_carrier": "Existing strict generic tree has SideMenuToolbarItem at multiple native toolbar branches (tree lines432/885/1054)",
+      "limit": "Parentbranch source identity established by previous report. Exact branch selection and DI registration/toolbar parameter values not newly closed; onboarding/introduction pages are distinct and cannot inherit this claim automatically."
+    }
+  ],
+  "shared_carrier": {
+    "type": "SwiftUIStyleguide.SideMenuToolbarItem",
+    "descriptor": "0x971e804",
+    "accessor": "0x6f91fbc",
+    "conformance": "0x8383c28",
+    "protocol": "SwiftUI.ToolbarContent (not ordinary View)",
+    "body_witness": "0x6f26c88",
+    "body": "0x6f259f4",
+    "witness_copy": "6f26ca4..6f26cb4 copies153bytes into localself theninvokesbody",
+    "body_type_reference": "0x9419a0c",
+    "observed_generated_structure": [
+      "ToolbarContentBuilder conditional branches",
+      "ToolbarItem",
+      "Button<SideMenuBadgedIcon> andalternativeImage/Label content",
+      "badge modifier and accessibility actions",
+      "DarkNavigationButtonAppearance",
+      "conditional circular background",
+      "SharedBackgroundVisibility",
+      "LayoutDirectionBehaviorEffect",
+      "Frame/ContentShape(Rectangle)",
+      "PaddingLayout"
+    ],
+    "configuration_fields": [
+      "providedBadge",
+      "menuBuilder",
+      "accessibilityActions",
+      "overrideBarButtonStyleToDark",
+      "usesClearGlass",
+      "leadingContentInset",
+      "action",
+      "_sideMenuToolbarBadgeColor",
+      "_isHidden",
+      "_usesSplitViewSideMenuToolbarItem",
+      "_isVisibilityManaged",
+      "_preservesPaneHostingControllers"
+    ],
+    "concrete_calls": {
+      "toolbar_item": "0x6f25b50 SwiftUI.ToolbarItem.init(id:placement:showsByDefault:content:)",
+      "showsByDefault_argument": "6f25b48 w3=1 onthisbranch",
+      "toolbar_id": "6f25b3c x0count16 anddynamicliteralpointer; exactIDstring notdecoded",
+      "button": "0x6f26178 SwiftUI.Button.init(action:label:)",
+      "conditional_environment": "6f262b4..2bc evaluatesdynamicenvironment value beforeToolbarContentBuilder branches; rawoffset90/98 not assignedsemanticnames"
+    },
+    "limits": [
+      "The carrier is more than image plus plain Button; its multiple branches include split-view management and native toolbar background behavior.",
+      "Exact source placementconstant not closed:6f25b14→6fd7730 is genericfunctiontrampoline, not a named topBarLeading getter.",
+      "leadingContentInset is caller input; no universal numeric inset proven in this task.",
+      "usesClearGlass and overrideBarButtonStyleToDark are caller inputs; generic typepresence does not justify always-clear glass or forceddark.",
+      "Parent source visibility and platform split-view state must not be replaced with universalshowtrue."
+    ]
+  },
+  "badged_icon": {
+    "type": "SideMenuBadgedIcon",
+    "descriptor": "0x971e7c0",
+    "body_witness": "0x6f25884",
+    "type_reference": "0x9419974",
+    "observed_structure": "ZStack conditionalImage/StrokePath, optionalCircle badge, Frame/Offset/Scale/LayoutDirection andAccessibility modifiers",
+    "fields": [
+      "_usesSplitViewSideMenuToolbarItem",
+      "_iconSize",
+      "accentColor"
+    ],
+    "limit": "No new icon size/material constants recovered. Existingsidebar-menu asset verification reused; this task deliberately did not duplicate correctresource extraction."
+  },
+  "uncovered_pages": [
+    "Scheduled tasks root",
+    "Plugins directory root",
+    "Projects home",
+    "Sites root",
+    "Images root",
+    "Customize root"
+  ],
+  "uncovered_policy": "These source pages have independent toolbars/reports. No strict SideMenuToolbarItem parent evidence was found within current bounded reused-tree selection; absence here is not proof they never useit. Keep existingperpage adapter untilcaller is traced.",
+  "gesture_haptic_boundary": {
+    "observed": "Carrier has explicit action/menuBuilder/accessibilityActions; nativeowner controls menu/open logic.",
+    "unknown": [
+      "Whether gesture routing attaches to thisitem or outer sidebarcontainer on eachpage.",
+      "Haptic trigger, repeat suppression and timing for these specificroot toolbar taps."
+    ],
+    "rule": "Do not infer gesture/haptic equality from common resource/carrier type or manuallyadd feedback as restored behavior."
+  },
+  "next_minimum_evidence": [
+    "If a concrete page has mismatch, trace its SideMenuToolbarItem initializer arguments/capturedaction and source-environmentbeforechangingstyle.",
+    "Close namedplacement andcallerleadingContentInset forFileLibrary onlybeforepromotingaparameter.",
+    "No furtherbroad inventory is needed forcurrentcorrectresource reuse."
+  ],
+  "limits": [
+    "Static only; no target execution/network/download/full extraction.",
+    "No host/product/test/device changes.",
+    "No other productsource.",
+    "Screenshots notusedas293fact."
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/filelibrary-toolbar-build.asm",
+      "sha256": "4ededf2a2480b331ce0482a4247e88b6bfb001b1d61b5df9a5be57e5901456f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/filelibrary-toolbar-build.json",
+      "sha256": "0cb6aa022287b26eea61e85beea099c668f9ad47c04f16a721736a8a28c6fa9d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/filelibrary-toolbar.json",
+      "sha256": "e61e74b0b7a22a1bcd9b6af2e208d0142dbefe75646985047e1778e859a4d35b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/leading-padding.asm",
+      "sha256": "fff6e7b3ee54278541e11623dc6abf20b668860501a07a47e45bf0cec5dea6cb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/leading-padding.json",
+      "sha256": "cffdf14187d90e8a583b3920c8f6664c92d77f0abff1a24a3616d4598e393c73"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/metadata.json",
+      "sha256": "9bf63a6cc6a1117646d9b7e7301bd203fb7b2fca1bd751be0bff6bc24c146bbe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/placement-helper.asm",
+      "sha256": "9e689b65542702f9b8e0fc11cb8e3f2e16deb06eb4cb313bef16c3a6efe72703"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/placement-helper.json",
+      "sha256": "1b21a7f17236f4f3b808b01608252abc1e560acbd497c70b698a9a5764f8fa29"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/side-menu-icon.asm",
+      "sha256": "4a5c2c2f4ea7e3a91fe5771fef4c7823877e3155f83608bf8d6ca8b489cd62f6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/side-menu-icon.json",
+      "sha256": "481d94d7ad110d2fca300fff283e13176821d6c9f9d5306e1366a58da65b25b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/side-menu-item.asm",
+      "sha256": "e7cff1bf2eee4ce59c98c7c3f419f155d1d2a20909d3d30819d0bbd2d4097c66"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/side-menu-item.json",
+      "sha256": "fa434cb35124dc64d2496a1dc1642f7112e519466ca51b22e8da1c3c6608f453"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/type-9419974.json",
+      "sha256": "f5c103c628b1a489d9c9c34333d664820255f1f6076d203c38dc6e6345e521bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-sidebar-feature-navigation-parent-20261113/type-9419a0c.json",
+      "sha256": "e9cc489a49c0c17b847b2ec14ddf2a56e27fe904bc71118412689effb033962d"
+    }
+  ],
+  "reused_evidence": [
+    "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/browse-native.json",
+    "analysis/full-platform-20261104/ios-sidebar-native-library-20261112/browse-native.tree.txt",
+    "analysis/full-platform-20261104/ios-native-personal-assistant-page-20261112/tibro-conversation-root.tree.txt",
+    "analysis/full-platform-20261104/ios-native-personal-assistant-page-20261112-findings.json"
+  ]
+}

@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "batch": "v537",
+  "status": "partial",
+  "platform": "iOS",
+  "artifact_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "reference_index": "ios-remote-v517-controls-user-reference-index.json",
+  "reference_version": "unknown",
+  "reference_hash_recheck": "5 matched",
+  "source_reports": [
+    "ios-remote-v537-list-section-findings.json",
+    "ios-remote-v537-navigation-title-findings.json"
+  ],
+  "verified_embedded_hash_records": 115,
+  "implementation": [
+    "Workspace and NoWorkspace native Sections now receive source-backed MainSurfacePrimary listRowBackground trait.",
+    "Preserved native Section header placement after disproving the EmptyView-header hypothesis for ordinary workspace sections."
+  ],
+  "source_corrections": [
+    "302794 selects searchResultTapped; ordinary task selection uses showCodexThread →42e0dc→34b39c→3406b4→3013cc→32c63c.",
+    "The navigation destination extra toolbar is DismissToolbarItem conditional on HomeRoot.dismiss. Concrete placement and ordinary mobile root value remain unresolved."
+  ],
+  "validation": {
+    "ui": {
+      "summary": "ios-remote-v537-r2-test-summary.json",
+      "passed": 3,
+      "failed": 0,
+      "runtime_warnings": [],
+      "scope": [
+        "Section collapse and return restoration",
+        "Chinese light XXXL heading scroll captures",
+        "English dark XXXL heading scroll captures"
+      ]
+    },
+    "prior_failure": {
+      "bundle": "ios-remote-v537-r1-ui.xcresult",
+      "cause": "Initial test incorrectly required disjoint AX frames for native pinned Section headers. Assertion changed to heading-before-row and screenshot capture; it does not validate text occlusion."
+    },
+    "visual": {
+      "status": "partial",
+      "reviewed": [
+        "ios-remote-v537-r1-attachments/272539B7-5F44-455F-9881-9A4B6629A06D.png",
+        "ios-remote-v537-r2-attachments/300F2EBC-9623-47D9-9CB8-C1E798D1E2FC.png",
+        "ios-remote-v537-r2-attachments/E92896EC-B87D-49AC-8807-A4C8EF120BE7.png",
+        "ios-remote-v537-r2-attachments/3F41DCDA-41D8-410B-BE9C-5D4F7735F87B.png"
+      ],
+      "finding": "English dark sample0 still visibly overlaps heading and task glyphs. Section background restoration does not resolve the defect. Chinese sample0 shows close adjacent ink and overlapping AX bounds; bounds alone cannot establish visual failure."
+    },
+    "preview": {
+      "build": 537,
+      "pid": 58645,
+      "language": "system-following Chinese",
+      "screen": "Remote task list",
+      "device": "simulator 71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "screenshot": "ios-remote-v537-preview.png",
+      "signed_verified_installed": true,
+      "left_running": true
+    },
+    "retention": "ios-remote-v537-retention-final.json"
+  },
+  "unclosed": [
+    "Pinned header occlusion/host scroll rendering under XXXL, confirmed in English dark screenshot.",
+    "Complete ordinary mobile navigation root, dismiss placement and leading title layout.",
+    "Catalog-only visual header belongs in Section content; current host uses header slot and requires separately scoped restoration.",
+    "Other section families and trait propagation require independent verification.",
+    "Actual dictation/service execution, physical device, Chinese IME and Android parity remain unaccepted."
+  ],
+  "next_minimum_actions": [
+    "Trace native Section header rendering/environment at pinned state with the recovered container and width owner.",
+    "Resolve DismissToolbarItem placement and complete HomeRoot path-binding constructor before altering title alignment."
+  ],
+  "rules_added": false,
+  "rule_reason": "Pinned-header fix is not established; no speculative workspace best practice added.",
+  "files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-displays.json",
+      "sha256": "2074665ca4d8ba1af22b27779830b21882fda70ac0cefb778f3cc12abdb36b9a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-launch.log",
+      "sha256": "951ffdb8d8d332f75fa011208fc485837bc4ceae329a441972461ea5c2795a9b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-callback-thunks.asm",
+      "sha256": "fa98555077b38a357b74666bbaa86bb9ecf834e1a4c02190a573ff8d06b507dc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-focused-types.json",
+      "sha256": "f9ae3cbc549d0c124ee499aeed2c8d8063972b70374315d349440ced7ff65156"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-more-types.json",
+      "sha256": "ef2a35f2d0c7643bad037cf5148e6fbdc8641a6a641a769ff47547f3eecf480f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-background-thunk.asm",
+      "sha256": "bd9f174cf749f3002b13f4eb6e81f0caef557b59b847cb6138196b2578f9fbb5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-builder.json",
+      "sha256": "7f68348728da63517e82ad28fb43386af96101c4af760ca35bf808ed2afc2217"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-color-symbol.json",
+      "sha256": "87f2c9bfb249b94cfe5bc78616aef7af8b51bb82471f488838c2582093dabe7f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-create-thunk.asm",
+      "sha256": "6f18de2c92979d897e2a039067b2f021f75e56f40c07823253ed0c0ebba528ec"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-findings.json",
+      "sha256": "4dfe9b80c296f0a41164b7641aeb1d98dc00022cfda5e0645528160558c50410"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-header-builder.json",
+      "sha256": "77fd5a0d0c1aeca035e5cce21c241400f3ad0147bb637115ee533c33791cf41a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-import-bindings.json",
+      "sha256": "90e7d1eab668400a182bd315d300ac2e371fafb99e6493db748075510c371c4f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-neighbor-types.json",
+      "sha256": "c29688113454f57041957bd3a9bbeecc3d08ae62caf33c54acdf7dd43f28340b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-runtime-gate.asm",
+      "sha256": "c171ab5a65a040d53083a65ae210b91e0bd9c84e70af16d5ff90f1e2f0c252fd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-sdk-corroboration.json",
+      "sha256": "9ddf36d4e19816e9d60dbb076edfe0f9be5ac4d4dee20c6de41ab4a93c4a3156"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-list-section-style-thunk.asm",
+      "sha256": "c321624319bbcb494fd3c42b8931766221c2264011e6469c546cfdac8a4d10f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-enum.json",
+      "sha256": "378bbe382e66030419db918d3591e85371d87de636e326b3dad767b85a79196a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-gettag-full.asm",
+      "sha256": "662e5493611f2de981417354baa1c1e3159ccd2a266911ec30ebee66ad5eb4d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-gettag-full.json",
+      "sha256": "f451c0c4e7ea6adee48ded3930e9c768789020f37319b4ff84cd7d1b90ed2fd3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-gettag.asm",
+      "sha256": "f40d558d0a9381a5de4ff20006557aefc1d6018380ba5b6e1323ec3af7f4b058"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-gettag.json",
+      "sha256": "9b3a6f6df97a264c7c0d2ad84240b2295241d50fae65b0ac425d6ee4ce201847"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-metadata.asm",
+      "sha256": "b649c1420e77e1ca0db19e09a86a54541f62cd75b904c9e148e0ae9e8de8cf37"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-tag-call.asm",
+      "sha256": "54bc142098fb3a124796bfcd8f249bd35b85875c4e7fb88fd22345095d245375"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-tag-call.json",
+      "sha256": "dedbe65bf3a601ff56d12bc770a0bc2c49e42e2b04cf88983e4a32c996219765"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-type-helper.asm",
+      "sha256": "17bd1879a0613342850c86aec3e05bddde248824c3f045ad93f4e6a0fe759639"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-type-helper.json",
+      "sha256": "8f40a73d39f891b7b6e4206616c4c08e514897e9cd28c4f1d480cff020d294d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-type-helper2.asm",
+      "sha256": "5b9d6bf2943424aa2f263190acdcb73c9d5812419ea72fdb4b86c5e7f6650431"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-action-type-helper2.json",
+      "sha256": "26896b0eb0583a6eddc7721a01a45b214ffd9808be3ec397ffa41f17838b95e5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-button.asm",
+      "sha256": "a4f0c9645f64553392deea0a7954a90cc3a1b4f24713246fe26c6f2a8610ed81"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-button.json",
+      "sha256": "11245134f74d2a29afdc53ded97e4d5fe8ae63c2eeab11a0d3f12ea0f8b38c16"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-callback-full.asm",
+      "sha256": "d45db6631f098963a2f82f82a2a9b35f78e99b607f3a0e3722a3fefbdb0a097d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-callback-full.json",
+      "sha256": "899b5a655dc1fb282bf725927a88635d66e6bab4c324ca496058d992c05debd7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-callback.asm",
+      "sha256": "f265a979e3a3b3d02236cdcacaf38ceae57d10b4248680785157f02f8c9413b6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-callback.json",
+      "sha256": "f780d9a9493745c08641f3f813a7fe63db96655385624aeb4ba20d8faab5f29e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-prefix.asm",
+      "sha256": "4d773286d92cbe02e5e74ffe1e762ce5315b31a0823cc783bd9f52c0a59f6919"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-prefix.json",
+      "sha256": "450377c0a700dbcbddbc06de6cddbac18b61cbc88b519b23fe2e323339dae645"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-selection.asm",
+      "sha256": "b8fd956fdecf45957163aaef0afa63990a0ea1f1dedca7aca48192660a9364bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-cell-selection.json",
+      "sha256": "37d9ac7a7a9e861f7d95f6e75cd951e787879f1dec3b6e60e0fc8663e53c9347"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-content-selection-binding.asm",
+      "sha256": "6875de24519d208b000e7f521817242403063b71871994d9283bf4ce65b9e1bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-content-selection-binding.json",
+      "sha256": "7ac48b8dcfd40a8203c9f9d9638dbb4c7b5f5a2ea0e6e926e482195251fda715"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-destination-extra-toolbar.asm",
+      "sha256": "5fb2aed344cec7efdefc95c62ce0cd94c0b78f07578a705775894a6e3c036e7a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-destination-extra-toolbar.json",
+      "sha256": "91f63a7f80935ad7ab303baae64d27e857cd7063725e417af5017b958e679d27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-direct-xrefs.json",
+      "sha256": "dce74a3fe74eefde1e8facca6e0a7069c46f38d3bdd256c900daf72505b3ea08"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-capture.asm",
+      "sha256": "cf0a940293cee234eca2b74f31ebf80f67db54162d531a779caf15a08fcf057d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-capture.json",
+      "sha256": "edfa2bf53468ec23d1fa1a0a8db169cd21896682966f378b36a2606900f2dd4e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-field-helper.asm",
+      "sha256": "0bf2e60707bf09942785fbfc38eda3efa8076ac100b55e87a97f8dcb37241236"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-field-helper.json",
+      "sha256": "d6b2cefdd640e2ab70c7db765b72df9a2fa7ba317deee8f8d5db28416841e4c9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-helper.asm",
+      "sha256": "ef3eae499486e471afd647f10bdbd920eca6bce80f0bab4f4352e89f9d9196f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-helper.json",
+      "sha256": "241c7e0ebf1bb2df4e59486613323fb784b8e3674d1bf44ed20b93afe6a2d282"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-metadata-accessor.asm",
+      "sha256": "b5fd6a9e2cd766bba03b2459917903da85b3313655f3f98fc5391a97f35fa06b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-metadata-accessor.json",
+      "sha256": "1adabc694352ed914913bf8bd234b67100887d8822ac82081a227a94f2feddc3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-dismiss-toolbar-metadata.json",
+      "sha256": "7395f926b2c461b2c15c0bc8ede70a5b9f9696c3d5c075c3caca49e3f198725b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-enum-tag-import.asm",
+      "sha256": "222be5f8dcacf068520a501a86f4ab24bace4ce246c59efc9201ecc52a748f77"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-get-last-destination.asm",
+      "sha256": "e8bde138fe71a4803746fd3a612e5096b9c71eb4f4f4721e01e0a88d28f90561"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-get-last-destination.json",
+      "sha256": "4a36cba47b2d6bbe0347a271b50072d7b88a1d55e8dd13c250bbbe28880ce323"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-navigation-full-write.asm",
+      "sha256": "74a3a3f1172c81a258d27ff062d3ac97b25b7f465e8d0feee7f5adbf256f3704"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-navigation-full-write.json",
+      "sha256": "2fccd87959e86fb7cbd563e8e1fe5d48bf565894e590a4361e94813e085ad97e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-navigation-state-write.asm",
+      "sha256": "6a42c8ab1a407ec1d01795ff2dcbfb7764cd3c66bc352cc3f493ad55ec0ca9a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-navigation-state-write.json",
+      "sha256": "d014b04f3a11fff262a198c105de6984f59eb8d233b9ef8822d9e8b02c255892"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-binding-writer.asm",
+      "sha256": "644521bda9b150386cbcc2f5dec651ead7a5c0a89b09c90b298747e3cf2b3ca3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-binding-writer.json",
+      "sha256": "8fbeae2afeb99239e21bfc35a06303b36cfe0146d6d9ed79828ddcf773c5b224"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-getter.asm",
+      "sha256": "51e00ff93e81140465f7c5a8a411a2b0424c0950d871076691e1fab6b1a9fa0a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-getter.json",
+      "sha256": "2b0e9889a9d1c928a2a20ee81c1b620e53c4620aba0fa506a025c068b95a349d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-mutation-wrapper.asm",
+      "sha256": "ee2e811444aa981c6966496f705031e45341d2b736b0ecdfa72941073ecae89e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-mutation-wrapper.json",
+      "sha256": "bd09ded517d6a1e4fad6b24505d530743bd8b8c2e7daaf2fc2a1f094eca70113"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-projection.asm",
+      "sha256": "a1a46d3b116d86f77be2eb732f6487849718e918a1b0394a285ce274ce02360a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-projection.json",
+      "sha256": "db5c1c0b44c496ac92bee879af0be20e39e0a8f1507711dbf1641a639216697c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-setter-owner.asm",
+      "sha256": "876b1f0682c28ab1b471591382afa5b7f64a8da8ec08844387042f730f3e0111"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-setter-owner.json",
+      "sha256": "f29c27a9ba04a32a216f8a95466b8f2c4501769c399e76a6338f667da9029771"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-setter.asm",
+      "sha256": "cc3aefc4dd263e0ef79dd6e832b47bb55d05de8bed4baa4f61087ae90efa95ca"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-setter.json",
+      "sha256": "937e3f36d958be2ec2c873cde793812477f4b3e42c2e74dafc0a448d2e71cd70"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-write-closure.asm",
+      "sha256": "b0b4894903cffcb2d4c029f1a47030dd247f5b1c552e6f3c39e1fb921188a055"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-path-write-closure.json",
+      "sha256": "378983a099cf5b55d34081e194fd3c4bfbd53fb30b40973e8ddcb0331bba3ad5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-present-screen.asm",
+      "sha256": "899a15fc209feb42882321ef3c115cb142cc9e8759903839870134a2cc7c86e3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-present-screen.json",
+      "sha256": "e7689b4b1254008ec30b2b244510a4bb4d50e1e745dc5b52a8c1907f00f14a86"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-root-builder-tail.asm",
+      "sha256": "17e6b7f3fad6deaf38eed24f51c2012fef1cf4e1e7f2003eb0ac1ea67bc847b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-root-builder-tail.json",
+      "sha256": "4bb6d72af3a990573e93a7b8a667a01165253c9c64038dbc41a9cb83c61c20a1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-root-builder.asm",
+      "sha256": "a2df072cd1e993004adb0719c3a7d8ad5ac42f4b8d9c42638e11ded986859c5c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-root-builder.json",
+      "sha256": "c02b8f2778107faf89cdeeea39043f670b8c899358a02167da85f07a6c987fe4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-root-navigation-container.asm",
+      "sha256": "ec87ed5db6bf135d38a8cf506c6643117cd8a9381820e5037d69c000e39010ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-root-navigation-container.json",
+      "sha256": "e00c7d429a95bc8aa96e113a1e63453a93770b968813cba8c2ec656f3374401a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-route-metadata.json",
+      "sha256": "ada5fac667a6a08669224923be4471b15ec7337843002b7119a39774aa278cf7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-select-forward.asm",
+      "sha256": "d57af0a83d50d24e0e19c78c8b463d0f7a3a340764b75bf58f27be51b5de7645"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-select-forward.json",
+      "sha256": "50e49bc2680db06844be9f927314f7ad9c999446f0ede28bbb0d145a37f8105d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-select-view-helper.asm",
+      "sha256": "35f40f790f145faa17d89cfbfc38ceb07a5c0a6add70ea4d5d9b64d8f630c1f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-select-view-helper.json",
+      "sha256": "8dd4013a7b42ae9c8c59551d86138479568dadbafede56fee795200bdd198655"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-select-vm-entry.asm",
+      "sha256": "c24aac3400628ca97009d044522bbd6788b2d498be7342f592387d2b07e9a128"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-select-vm-entry.json",
+      "sha256": "1f8ea0e0506eaa823770712244cc9a9d0cd14930a73319dd154a86f3c74afbf9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-select-vm-path.asm",
+      "sha256": "07b1fec82adb368408d4178ea478c16e578ec9be75dd8b1967714fa15d37af6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-select-vm-path.json",
+      "sha256": "7dc7ee516bd8dbf6887e257d73e882a0bbc1cfb67bd148c8cc91be4dcf0ab016"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-selection-constructor-helper.asm",
+      "sha256": "4bae2c0edf1dbdc51a16f8955189c9e4b031083c4e907f6cd3e6882d2cd782ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-selection-constructor-helper.json",
+      "sha256": "c9c2a7becabca32b973c1e26a7ccca7daa625eda6dfe41503c44edd5df0ddf37"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-selection-forward-owner.asm",
+      "sha256": "2af91c2e64a638ef6ba31c9f31708a44285d0ffa9f2db2728c3d2dbe419d4819"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-selection-forward-owner.json",
+      "sha256": "32c90891c0a8150d1949de8a73c92905894ef4ed294a6fd0a1228240a499cef6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-selection-helper.asm",
+      "sha256": "dedd5460e0d5ec4f3d18245b8692e854ebe96a93d9e9c51f3bcc6925d7d344cc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-selection-helper.json",
+      "sha256": "6e4626bf73cf5ee3cdcb40a56861e9582aa1d0f208c45593a8686f96e57fdb3f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-selection-projection-helper.asm",
+      "sha256": "e777fe1f679e19ade84d9dbfc575fab8bbb75b9b97c2bcb4256ce47c9c660fef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-selection-projection-helper.json",
+      "sha256": "d490ae9614525d74347f26aecb4a01e34d7782b2705ce04004d78a60791f9fd9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-task-action.asm",
+      "sha256": "6ca1efba62ed74fdacdd191a23ad638f61cb5a5088897a893b749a517845038c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-task-action.json",
+      "sha256": "5d19186b1160402aea54ac55c128b406a3eaf84ce4366a20c8613b11601322f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-tasklist-container-metadata.asm",
+      "sha256": "7aae4c4321e88a32574f3140cd41425d51b96da6db25df46c969bfc2bb463eb8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-tasklist-container-metadata.json",
+      "sha256": "6bf667e6ab305a4ed1afb3b3a34fd4b4179316fafb627f5c0c6ecd3069852095"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-tasklist-helper.asm",
+      "sha256": "3e79795c5e84200ec584aba9237da35a670b286660b52757ed771f09a05560f4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-tasklist-helper.json",
+      "sha256": "77975a492b26b95ea7b0ac046653034faba836ad54992dff61ce8abbbafcd378"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-tasklist-owner.json",
+      "sha256": "f9a2e3647097559c9cba7c0e1694fc281e0b41f827e10a4731e5665ae89e2485"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-tasklist-type-metadata.asm",
+      "sha256": "dcf546892aba07b528ec50004b42da9727d387b287df0a6577ae575af550e059"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-tasklist-type-metadata.json",
+      "sha256": "909533288fdd853b884192de9f81c09f1801f9b00f5bf6ddba3e68768653be8d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-title-findings.json",
+      "sha256": "2a742ad2e08c206e3648cb2b2480eb5b4d3386f8386fb5e23f0725ddadc28e7d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-write-storage-helper.asm",
+      "sha256": "735f1500a2cec8182113a4520deeddd4745d01f77f11c9ae8bff0910935ca260"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-navigation-write-storage-helper.json",
+      "sha256": "2d0401fd52d28210372d08bedbd33d41ab6dc69815fd3226d3b5892256995119"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-preview.png",
+      "sha256": "5946ddcb358555f8972edc4536d251a44159aeb217982f1d8ec9236008bf0223"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-r1-test-summary.json",
+      "sha256": "748cd2deb0ed5b4299bde6f5baaa7141c37e665afa3a86e586c53e3bc12697e1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-r1-ui.log",
+      "sha256": "19efb7dc514c7ea0ff2d6ee1fd72864c6b41a39c4dad35ddc1eb102b3b435fb1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-r2-test-summary.json",
+      "sha256": "70bb2c4230365b898399eeab5359efdc2433325a1e1340f15d9f67e545aff483"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-r2-ui.log",
+      "sha256": "185eaa1fbd9515fe8b63a5f270e2e6d8eed149b7e1bf260e9cde6996b723e6db"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-retention-final.json",
+      "sha256": "5641a0d4d36aa0b8b420a8a24b5e2e61453ce83b4b9d8b32d0730f28f7561f66"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-retention.json",
+      "sha256": "045e678eb5e5be4f7fba170ef593b714c84c73e8cdcd727ad2f7c5f49021b80d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-constructor.asm",
+      "sha256": "d9729b96cf1dbe2a4ac0a2b1901bcacaef1ca17f4788fcd929e7961cf11f999d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-constructor.json",
+      "sha256": "fc7f8a481398085c47c985a82e341dc3d8c75a58e4a8cdd3e325ffeff8e9f4aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-content.asm",
+      "sha256": "2037e93da494870f0e2ea71d7bb273531818afc63994fe55ba6780fa5751d53b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-content.json",
+      "sha256": "6f2a9ababb8211dc1c086690910ba72efa9bdf55891ac78aebadd759b249b692"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-wrapper.asm",
+      "sha256": "7fe80701b449fdc54de4c3dddb0428cc5c13aa04702891232bf3341413b282f4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-section-wrapper.json",
+      "sha256": "507fdf04ee5a3ac95b286368a8b4d3bee0212f549acb3d942c358e6961e5857f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v537-sign.log",
+      "sha256": "11b7953d790d558f49161e6cba3fb048ac33665321ad7df6b2a2f44be0edd508"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "5c26dc2aebfe8a1f8b558513ad44b9270907561509fadc409d0da09da1ee0131"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "efa2d60308cbdfd532d25f25d995049955ddc2b87a8167dd73875eb8275049ee"
+    }
+  ]
+}

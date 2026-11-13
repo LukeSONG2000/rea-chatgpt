@@ -1,0 +1,110 @@
+{
+  "batch": "v608",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Determine whether full reasoning content enters tool-group activities, then locate a concrete reasoning-to-rendered-item producer.",
+  "production_decision": "Keep full reasoning text separate from the recovered thinking-labelled tool activity group. This batch closes the tool converter exclusion and a reasoning casepath entry, but adds no complete reasoning-body rendering contract.",
+  "evidence": [
+    {
+      "type": "official_artifact_static",
+      "owner": "item-to-Activity converter0x1948700..0x1948ac0",
+      "file": "ios-remote-v608-activity-converter.asm",
+      "conclusion": "Reads rendered kind at+0x11 (0x194873c), dispatches via0x7dfdd91 with base0x1948758. ContextCompaction,collaborationToolCall,userMessage,hook return absent Activity. See explicit kind map."
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "converter markdown branch0x1948988",
+      "files": [
+        "ios-remote-v608-activity-converter.asm",
+        "ios-remote-v608-activity-kind-map.json",
+        "ios-remote-v608-casepaths-extract.asm"
+      ],
+      "conclusion": "Markdown-kind items are tested against original ThreadItem fileChange and webSearch payloads. FileChange path uses factory0x2d2fbec / extractor0x2d307c0 comparing tag7, then emits Activity tag1 at0x1948a3c. Absent fileChange falls through0x1948a68 to factory0x2d2ff94 / extractor0x2d30920 comparing tag12, emitting Activity tag2 at0x1948ab8. If both payloads are absent, the result is nil."
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "CodexRenderedItem._originalThreadItem",
+      "file": "ios-remote-v608-original-item-typeref.json",
+      "conclusion": "Type reference0x8f30060 resolves IgnoreEncodable<IgnoredHashable<Generated.Components.Schemas.ThreadItem>> with original enum descriptor0x95f9490."
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "Generated.Components.Schemas.ThreadItem",
+      "file": "ios-remote-v608-threaditem-cases.json",
+      "conclusion": "Metadata cases include reasoningThreadItem index5,fileChangeThreadItem index7,webSearchThreadItem index12. Extractors independently check actual tags7/12; reasoning extractor independently checks5."
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "reasoning casepath factory0x2d2fab8",
+      "files": [
+        "ios-remote-v608-reasoning-casepath-factory.asm",
+        "ios-remote-v608-reasoning-casepath-extract.asm"
+      ],
+      "conclusion": "Factory captures extractor0x2d306d0 at0x2d2faf0..0x2d2faf4. Extractor checks original ThreadItem tag5 at0x2d306e8 and copies the reasoning payload. Nonmatching cases construct absent payload. This proves a schema extraction entry, not a UI consumer."
+    },
+    {
+      "type": "official_artifact_static",
+      "owner": "reasoning keypath thunk0x246958c",
+      "files": [
+        "ios-remote-v608-reasoning-keypath-thunk.asm",
+        "ios-remote-v608-reasoning-casepath-refs.json",
+        "ios-remote-v608-reasoning-keypath-refs.json"
+      ],
+      "conclusion": "Thunk takes factory address0x2d2fab8 and branches0x3a1504. Exact B/BL and adjacent ADRP/ADD reference search finds this sole text reference to the reasoning factory and no text references to the thunk. Indirect keypath/data references remain outside this incomplete pattern search."
+    }
+  ],
+  "reasoning_exclusion": {
+    "supported": "An item whose original ThreadItem is reasoningThreadItem cannot produce fileChange or webSearch Activity through converter markdown branch. Tool Activity enum itself has no reasoning case. The v607 expanded tool-group content therefore supplies tool activity history, not reasoning body text.",
+    "limit": "This does not prove reasoning maps to markdown, that the application hides reasoning, or that no other consumer displays reasoning. A concrete rendered-item producer and visibility path remain required."
+  },
+  "exact_remaining_gap": {
+    "producer": "Reasoning ThreadItem tag5 / extracted payload -> CodexRenderedItem.ID.reasoning tag14 -> kind+0x11 and _content writes.",
+    "caller": "0x246958c keypath thunk has no identified code caller under available exact instruction patterns. The keypath/data consumer or an inlined switch in a rendered-item constructor remains unidentified.",
+    "consumer": "Once kind/content production is proved, trace its resulting RenderUnit/HistoryFragment branch. Existing markdown consumer0x1a36e14 is only a candidate, not the reasoning consumer.",
+    "next_bounded_action": "Resolve the keypath/data reference owner of thunk0x246958c and follow only that owner to its rendered-item constructor, or locate a specific ThreadItem-tag5 switch producer from existing message-model evidence. Avoid deriving a UI from the schema extraction helper alone."
+  },
+  "failed_or_inconclusive_probes": [
+    "Exact metadata accessor references yielded165 records for CodexRenderedItem and0 for CodexRenderedItem.ID. These are weak type-use references and were not treated as constructors. No body-wide extraction of those callers was performed.",
+    "Names filechange-extractor/websearch-extractor on two raw windows are probe labels. These include casepath injection/helper construction. Actual extraction evidence is2d307c0 and2d30920 in casepaths-extract.asm.",
+    "A source-backed full reasoning-body integration was not found in the bounded functions inspected."
+  ],
+  "validation": {
+    "static_only": true,
+    "production_edits": false,
+    "ui_execution": false,
+    "builds": false,
+    "official_online_services": false
+  },
+  "limits": [
+    "Swift enum order is supported by metadata and independently matching concrete case extraction tag checks for the three relevant cases.",
+    "Reference searches cover immediate branches and adjacent ADRP/ADD only, not chained pointers, keypath descriptors or indirect calls.",
+    "No new visual dimensions, animation, reasoning disclosure or lifetime semantics were inferred."
+  ],
+  "raw_evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-v608-activity-converter.asm": "74fec4f275a67709e11f5cd16dc17d4c99bc2c2e167c82762dc8c0f4c854cb30",
+    "analysis/full-platform-20261104/ios-remote-v608-activity-converter.json": "46d752ed23c17b65aee9488641b68319d57eeb2b69593d73c68d9edd5b096e37",
+    "analysis/full-platform-20261104/ios-remote-v608-activity-kind-map.json": "f17d690f55aad25164809ddc4b99a63167b6875246ccdd93be57cde0f80b0fa3",
+    "analysis/full-platform-20261104/ios-remote-v608-casepaths-extract.asm": "b42aef321cc02bff514ae1de6a8ac7dc2aad66b8fb050a0fad655f20abab3194",
+    "analysis/full-platform-20261104/ios-remote-v608-casepaths-extract.json": "07942d738010356c87ab0d3de99b7c45b55411deaa697ace05b76e9615753432",
+    "analysis/full-platform-20261104/ios-remote-v608-casepaths-outline.asm": "01b31475b33d1370aa2ba152681bbeba65ca0fc5e48a51392e0b09584ed18afa",
+    "analysis/full-platform-20261104/ios-remote-v608-casepaths-outline.json": "84b80f462f8f5f4e0d51a2a4894700b9dbbf3a116f773c75650f753f3f202468",
+    "analysis/full-platform-20261104/ios-remote-v608-filechange-extractor.asm": "4bb4dc7136edc507c270a2d414f50c077f67dd4d0aa8341579fcebe73c4f4045",
+    "analysis/full-platform-20261104/ios-remote-v608-filechange-extractor.json": "1563e1897aa2cb1a2a3c30526ed967a38f2687b322596657fd98363256bf4f0d",
+    "analysis/full-platform-20261104/ios-remote-v608-item-type-refs.json": "7906af91191e50e4452d372c275427256c804b972403afc1736b0fbaf3571a06",
+    "analysis/full-platform-20261104/ios-remote-v608-original-item-extractors.asm": "c9fe69615d5c3ba2aeba455cba3297352eaae73a23e6f241d5609b29ec3058ff",
+    "analysis/full-platform-20261104/ios-remote-v608-original-item-extractors.json": "0d52c4626c1dc4a04534dbed60a4e1d98c89cb52eee3bdeced55d75df2383082",
+    "analysis/full-platform-20261104/ios-remote-v608-original-item-typeref.json": "660f319521f260c6bdf4e4c9b3e0621100c941a23c90f17c74dab0767ce3ec61",
+    "analysis/full-platform-20261104/ios-remote-v608-reasoning-casepath-extract.asm": "3533a708a5f1c8edce7a01de936e3b5c4780baa6207ccbd0ef40183abe8cec95",
+    "analysis/full-platform-20261104/ios-remote-v608-reasoning-casepath-extract.json": "a264dbae4410be1434e40b60fd1510a9ede532a20fc45ba315b73eeadd02464e",
+    "analysis/full-platform-20261104/ios-remote-v608-reasoning-casepath-factory.asm": "be148c74affe3108392045b0fde3cb74012024c638aab2a9f406f829c352f131",
+    "analysis/full-platform-20261104/ios-remote-v608-reasoning-casepath-factory.json": "607e13aeef6a4305c8705d95ef3b58309b35ba162c0a15e725d844d0b46b7e88",
+    "analysis/full-platform-20261104/ios-remote-v608-reasoning-casepath-refs.json": "5931e9f10a005b2290b1bd9a94740bbd902beda16d6ee03b4bb06fe0ef8dd3bc",
+    "analysis/full-platform-20261104/ios-remote-v608-reasoning-keypath-refs.json": "3a5316f9efcb0a2e5727e00410f0b24e5bd4933bdee7ae9f9cc6ea8dfd2cf6fd",
+    "analysis/full-platform-20261104/ios-remote-v608-reasoning-keypath-thunk.asm": "37423652711574779435859957e7cd81eb4bf939d0e58e3c61fd8cae8322bb5f",
+    "analysis/full-platform-20261104/ios-remote-v608-threaditem-cases.json": "a8b34eaffb3cfb592ecde8b534ef0c777c025abf29c44f900e4e3b4a3195008d",
+    "analysis/full-platform-20261104/ios-remote-v608-websearch-extractor.asm": "946d0f9bbcffc6176a659ae899ec305c62b2a2caf36e0ff6e67672a91b828cbf",
+    "analysis/full-platform-20261104/ios-remote-v608-websearch-extractor.json": "e5a6af0531828d3a3b3a3cb3c3bf97e5b02d21a365aa10815c49a46405414701"
+  }
+}

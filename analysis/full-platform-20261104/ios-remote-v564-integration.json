@@ -1,0 +1,107 @@
+{
+  "batch": 564,
+  "status": "core_creation_acceptance_passed_page_partial",
+  "page": "Remote task list and conversation",
+  "implementation": [
+    "Home parent navigates to accepted synthetic task",
+    "Project and thread-new page present accepted thread in place",
+    "Atomic task metadata, first turn and exact draft receipt",
+    "Stable created-task search/list projection and process recovery",
+    "Uncatalogued fixture destinations remain in Recents with original routing identity",
+    "Fresh task transcript excludes prepopulated component fixtures"
+  ],
+  "independent_adaptations": [
+    "Synthetic creation transaction and local IDs",
+    "Title derived from first 64 prompt characters or attachment filename",
+    "Offline fixture catalog and Recents membership",
+    "Persistence and crash reconciliation"
+  ],
+  "tests": {
+    "distinct_ui_cases": 6,
+    "passing_executions": 11,
+    "failed_executions": 1,
+    "r1": "2/2 passed",
+    "r2": "5/6 passed; legacy Home keyboard geometry measured during transition",
+    "r3": "4/4 passed, including legacy keyboard geometry after bounded visible-position wait",
+    "foundation": "r5 passed; r3 compile failure in test-only helper reference retained and corrected",
+    "warning": "Existing QuickLook/AppEnum to-0.0 warning observed in both passing combined journeys"
+  },
+  "remaining": [
+    {
+      "priority": 1,
+      "area": "Remote title",
+      "gap": "Exact parent navigation placement differs from user reference; leading alignment unclosed",
+      "next": "Trace 293 outer navigation title placement and parent payload",
+      "acceptance": "Source-bound title geometry and accessible trailing controls at normal CN/EN sizes"
+    },
+    {
+      "priority": 1,
+      "area": "Remote message layout",
+      "gap": "Synthetic replay text/attachments and exact official fragment/bubble layout remain partial",
+      "next": "Connect existing message primitives to dynamic projection with verified parent layout",
+      "acceptance": "Normal message interaction and source-backed shallow/deep appearance"
+    },
+    {
+      "priority": 1,
+      "area": "New-thread composer",
+      "gap": "Project draft attachment/configuration slots and service capabilities remain partial",
+      "next": "Trace original NewThread configuration owner and reuse matching existing inputs",
+      "acceptance": "Attach/configure, submit synthetic task, return with scoped state"
+    },
+    {
+      "priority": 2,
+      "area": "Remote history",
+      "gap": "Full reasoning, search result links, horizontal table position across process restart and large history performance",
+      "next": "Close current page consumer paths incrementally",
+      "acceptance": "Independent reproducible core journeys"
+    },
+    {
+      "priority": 2,
+      "area": "Service",
+      "gap": "Official task creation, server title generation, idempotency and actual connection availability",
+      "next": "Future replaceable service adapter",
+      "acceptance": "Separate authorized integration"
+    },
+    {
+      "priority": 2,
+      "area": "Platform",
+      "gap": "Physical haptics/notifications, external display and Android independent acceptance",
+      "next": "Use available authorized platform later",
+      "acceptance": "Actual platform evidence"
+    }
+  ],
+  "runtime": {
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "product": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app",
+    "installed": "/Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/849D8D4A-5B41-44B1-B63E-F396164C6530/REAChatGPTHost.app",
+    "version": "564",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-interactive-replay",
+      "--remote-attachment-all-capabilities-fixture",
+      "--remote-command-message-fixture",
+      "--remote-search-message-fixture",
+      "--remote-file-message-fixture",
+      "--remote-review-message-fixture",
+      "--remote-draft-profile=preview"
+    ],
+    "launch": "local.rea.chatgpt.ioshost: 94374",
+    "executable_sha256": "52fc52d8fde8ceed7654f32e481111c7aef379955cef3671832ffb9f0a58e4e3",
+    "installed_hash_matches": true,
+    "signing": "ad hoc verified",
+    "language": "follows system",
+    "appearance": "follows system",
+    "status": "running; Chinese Remote task list visibly confirmed via Device Hub",
+    "display": "built-in Color LCD only; external display pending"
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "6fa00b782254219f76521a53a6273f1580c456dfb59a3caa4add242f21ad3811",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "5aa15a4d73cbe40b75c5a44487889b983621b72ff5a968ab80659a10ac487afe",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "cd47e8debd6cd45b27f4faff901498fc38d6e9e6760af0d29390476fd13ba550",
+    "implementation/ios/UITests/HostInteractionTests.swift": "425c525945ab092527117197f6dc15a48676da744a34f9626a2de08177be97d8",
+    "implementation/ios/TextTests/main.swift": "74556ca7831c2766f506d2bba604f05cf83d988a8a370d82b81225044a264071"
+  },
+  "retention": "ios-remote-v564-retention.json has no stale package targets"
+}

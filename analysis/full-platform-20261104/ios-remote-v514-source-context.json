@@ -1,0 +1,69 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "AnchoredZoomPresentationSourceContext",
+      "descriptor": "0x96dde48",
+      "type_section_entry": "0x9d51568",
+      "accessor": "0x62f22a0",
+      "fields": [
+        {
+          "name": "backgroundView",
+          "record": "0x9bab604",
+          "type_reference": "0x8d8a530"
+        },
+        {
+          "name": "foregroundView",
+          "record": "0x9bab610",
+          "type_reference": "0x8d8a530"
+        },
+        {
+          "name": "hidesForeground",
+          "record": "0x9bab61c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "cornerRadius",
+          "record": "0x9bab628",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "alignment",
+          "record": "0x9bab634",
+          "type_reference": "0x90b2de0"
+        },
+        {
+          "name": "scale",
+          "record": "0x9bab640",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "backgroundIsGlass",
+          "record": "0x9bab64c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "prepareForDismissalHandoff",
+          "record": "0x9bab658",
+          "type_reference": "0x8c59ca0"
+        },
+        {
+          "name": "displayOffset",
+          "record": "0x9bab664",
+          "type_reference": "0x92c5da4"
+        }
+      ],
+      "conformances": []
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

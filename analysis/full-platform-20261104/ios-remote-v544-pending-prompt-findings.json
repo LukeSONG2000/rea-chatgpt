@@ -1,0 +1,85 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_observation",
+  "confirmed": [
+    {
+      "type": "CodexRemotePendingPrompt",
+      "descriptor": "0x95aa46c",
+      "fields": [
+        "id",
+        "kind",
+        "text",
+        "userInputs",
+        "attachments",
+        "selectedTextAttachments",
+        "reviewFindingComments",
+        "canEdit",
+        "canRestoreComposerDraft",
+        "clientPendingPromptID"
+      ]
+    },
+    {
+      "type": "CodexRemotePendingPromptRow",
+      "descriptor": "0x95ad2d8",
+      "body_witness": "0x1a0016c",
+      "body_target": "0x19ffa1c",
+      "actions": [
+        "editPrompt",
+        "togglePromptMode",
+        "startPrompt",
+        "cancelPrompt"
+      ],
+      "state": "__expandedPromptID"
+    },
+    {
+      "type": "CodexRemotePendingPromptMenu",
+      "descriptor": "0x95afa4c",
+      "body_witness": "0x1a00fe4",
+      "body_target": "0x1a00170",
+      "native_menu_call": "0x1a00250",
+      "content_callback": "0x1d1b928",
+      "label_callback": "0x1d1b930",
+      "guards_to_trace": [
+        "kind",
+        "canEdit",
+        "areActionsEnabled"
+      ]
+    },
+    {
+      "type": "CodexRemotePendingPromptContent",
+      "body_witness": "0x1a01a80",
+      "body_target": "0x1a00fe8"
+    },
+    {
+      "type": "CodexRemotePendingPromptBubble",
+      "body_witness": "0x1a0262c",
+      "body_target": "0x1a01a84",
+      "state": [
+        "isExpanded",
+        "__visibleHeight",
+        "__comparisonHeight"
+      ]
+    }
+  ],
+  "limits": [
+    "Field names do not establish runtime values, action semantics or service behavior.",
+    "No queued-row appearance or transition accepted.",
+    "Menu callback branch, kind values, action owner and row layout still require bounded tracing."
+  ],
+  "next_minimal_evidence": [
+    "Trace menu content callback0x1d1b928 and kind/canEdit/areActionsEnabled branches.",
+    "Trace row body0x19ffa1c and its prompt identity binding.",
+    "Bind queue/steer frontend envelopes to the confirmed local actions; keep synthetic service scheduling explicit."
+  ],
+  "sources": [
+    "ios-remote-v544-pending-prompt-metadata.json",
+    "ios-remote-v544-pending-prompt-witnesses.json",
+    "ios-remote-v544-pending-prompt-entries.json"
+  ]
+}

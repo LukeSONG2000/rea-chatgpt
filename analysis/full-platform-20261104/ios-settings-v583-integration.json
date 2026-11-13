@@ -1,0 +1,93 @@
+{
+  "batch": 583,
+  "status": "partial",
+  "scope": "Settings to Remote composer frontend integration",
+  "official_evidence": "ios-settings-v583-findings.json",
+  "implemented": [
+    "Settings root Codex route and existing Remote home settings route share composer settings",
+    "Three composer rows preserve recovered ordering",
+    "Dismiss keyboard preference applies after validated local replay acceptance",
+    "Saved queue/steer preference drives normal follow-up; per-send override retained",
+    "Context usage existing binding retained",
+    "Root return position and process restart persistence"
+  ],
+  "independent_adaptations": [
+    "Settings root route placement and NavigationStack/List container",
+    "Follow-up string serialization uses rea.preview.remote.followUpBehavior",
+    "Synchronous synthetic acceptance boundary for focus effect; asynchronous service receipts remain pending"
+  ],
+  "validation": {
+    "state_log": "ios-settings-v583-state.log",
+    "state_groups": 22,
+    "text_and_model_log": "ios-settings-v583-text-test.log",
+    "result": "passed",
+    "r1": {
+      "result_bundle": "ios-settings-v583-r1.xcresult",
+      "passed": 3,
+      "failed": 2,
+      "failure": "New bilingual settings cases expected keyboard to return automatically after native unavailable alert; previous journey and preference assertions passed"
+    },
+    "r2": {
+      "result_bundle": "ios-settings-v583-r2.xcresult",
+      "passed": 4,
+      "failed": 0,
+      "change": "Corrected error-return expectation to retained draft and explicit refocus; no product focus change for the native alert"
+    },
+    "distinct_ui_cases_passed": 7,
+    "cases": [
+      "testAppearancePersistence",
+      "testRemoteContextUsageChinese",
+      "testRemoteContextUsageEnglishDark",
+      "testRemoteComposerSettingsChinese",
+      "testRemoteComposerSettingsEnglishDark",
+      "testRemoteMultiwordSend",
+      "testRemoteMultiwordFollowUp"
+    ],
+    "visually_reviewed": [
+      "ios-settings-v583-r1-attachments/004A4580-6154-4852-84BD-7F96C46F4B55.png",
+      "ios-settings-v583-r1-attachments/69889438-6E53-4A5A-914D-9A81B696D784.png",
+      "ios-settings-v583-r2-attachments/A2F9A636-CFB3-45C3-B234-F27C9FC17475.png",
+      "ios-settings-v583-r2-attachments/0E3E616E-C13C-4C34-9073-49BB4BFA6762.png"
+    ],
+    "visual_observation": "Normal-size settings rows readable in light/dark; keyboard and retained draft visible after explicit refocus. Full settings geometry remains partial.",
+    "runtime": "ios-settings-v583-runtime.json",
+    "retention": "ios-settings-v583-retention.json"
+  },
+  "unfinished": [
+    {
+      "page": "Settings root",
+      "priority": "P1",
+      "missing": "Full applicable groups, ordering, gating and source-bound parent navigation",
+      "next": "Trace remaining SettingsView body section owners and destinations",
+      "acceptance": "Core adapted features have actual settings and remaining destinations return with explicit capability status"
+    },
+    {
+      "page": "Codex settings",
+      "priority": "P1",
+      "missing": "Connection selection/edit/reorder and behavior settings",
+      "next": "Bind existing host projection to recovered connection row and edit state",
+      "acceptance": "Synthetic two-host toggle/reorder persists without cross-host cleanup"
+    },
+    {
+      "page": "Remote composer",
+      "priority": "P2",
+      "missing": "Automatic focus restoration after unavailable alert",
+      "next": "Trace official error presentation/focus owner and verify return behavior",
+      "acceptance": "Failure retains scoped draft and predictable keyboard behavior"
+    },
+    {
+      "page": "Remote composer",
+      "priority": "service",
+      "missing": "Asynchronous service acceptance receipt for focus effects",
+      "next": "Implement when service adapter is provided",
+      "acceptance": "Receipt scope/session/revision validated before effects"
+    },
+    {
+      "page": "Settings/system",
+      "priority": "device",
+      "missing": "Device haptics, actual notifications and external-display acceptance",
+      "next": "Run independent device/display checks when available",
+      "acceptance": "Actual device feedback and routing observed"
+    }
+  ]
+}

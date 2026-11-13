@@ -1,0 +1,167 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "scope": "Customize/AssistantSettings third bounded parent and save-exit audit",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_budget": {
+    "maximum_groups": 2,
+    "groups_used": [
+      "AssistantSettingsScreen save observer/toolbar callback and actual Bool field identity through metadata completion",
+      "Current root/child composition versus retained complete topology and gesture boundaries (reuse only)"
+    ],
+    "stopped": true
+  },
+  "official_observations": [
+    {
+      "conclusion": "Original AssistantSettingsScreen dismisses on didSave becoming true through onChange(initial=false). Current host save-success keep-open behavior differs from this actual parent observer.",
+      "source": [
+        "4260f6c->4261f78 saved getter",
+        "4260fe0/e4 supplies4284e2c callback",
+        "4260ff4 w1=0 initial=false;4261004 onChange(of:initial:)",
+        "4284e3c newValue argumentx1;4284e44 loadBool;4284e48/4c onlytrue continues",
+        "4284e58->6ea868 resolves original _dismiss Environment<DismissActionReference>",
+        "4284e5c->c952e0->753e438",
+        "753e45c loads reference closure/context;753e464 invokes closure"
+      ],
+      "evidence": [
+        "screen-parent.asm",
+        "screen-parent-calls.json",
+        "save-observer-closure.asm",
+        "save-dismiss-call.asm",
+        "dismiss-action-body.asm",
+        "dismiss-field-type.json"
+      ],
+      "limit": "This proves the parent reaction to observed success, not original network save acknowledgement schema, stale-save admission or a general navigation gesture rule."
+    },
+    {
+      "conclusion": "The observed Bool is statically bound to _didSave using actual class metadata completion, not reflection order alone. The older class-fields helper rejected valid reflection kind1 because it only admitted kind7; this pass reads the actual kind1 records without modifying shared tooling.",
+      "source": [
+        "AssistantSettingsViewModel descriptor9640ac8→field descriptor9af4f58 kind1/stride12/count16",
+        "reflectionindex3 record9af4f8c=_isSaving;index4 record9af4f98=_didSave",
+        "singleton completion428d64c",
+        "428d678/67c x10=809b7e0;428d680 stores layout forindex3;428d68c stores same layout forindex4",
+        "809b7e0 size1/stride1 Bool layout",
+        "428d6d4 fieldcount16;428d6d8 _swift_updateClassMetadata2",
+        "4261310 reads+0x58 in saving getter;4261fac reads+0x59 in observed saved getter",
+        "computed keypath809cb20 getter relativeword809cb3c→4261f78"
+      ],
+      "evidence": [
+        "assistant-vm-reflection-fields.json",
+        "vm-metadata-completion.asm",
+        "vm-metadata-completion-calls.json",
+        "saved-property-keypath-raw.json",
+        "saved-property-layout-binding.json",
+        "toolbar-actions.asm"
+      ],
+      "limit": "Name-to-object-offset association is a static metadata-layout derivation corroborated by adjacent original getters. Runtime-filled metadata template vectors are zero in the file; no target metadata initializer was executed or values fabricated."
+    },
+    {
+      "conclusion": "Existing root and personality child still have separate proven parent owners. Root has supplied Form sections/isVisible/isEnabled and no generic Save; personality child grouped Form orders optional Appearance→Personality→CustomInstructions. Current leading official24 icons and unsaved confirmationDialog already match the previous bounded fixes.",
+      "source": [
+        "OrbitProfileCustomizeView1f58234",
+        "AssistantSettingsContent42629e8/record809c430",
+        "actual personalitydestination1f5a6e8→4260a5c"
+      ],
+      "reuse": [
+        "ios-sidebar-customize-20261112-findings.json",
+        "ios-assistant-settings-child-20261112-findings.json",
+        "ios-sidebar-customize-parent-20261113-findings.json"
+      ],
+      "limit": "Current four-entry catalog and actual child options remain explicit provider fixture. No new visible entries or traits inferred."
+    }
+  ],
+  "current_host": {
+    "path": "implementation/ios/Sources/NativeCustomizePage.swift",
+    "sha256": "ce3f80be3504c172b20b419e4d30db00adc24d0a4709bfe488c177ac1d86bbf4",
+    "concrete_gap": "FrontendCustomizeModel.save() sets didSaveSynthetic but NativeAssistantSettingsPage stays visible on success; original parent observes didSave and dismisses.",
+    "already_present": [
+      "root Form source-shaped supply and official multicolor24 leading icons",
+      "child grouped Form source section order",
+      "custom pushedBack dirty confirmationDialog",
+      "save/error/retry independent frontend state"
+    ],
+    "gesture_gap": "navigationBarBackButtonHidden(true) plus custom back() has no explicit host edge-pop bridge. Original interactive-pop/unsaved arbitration is not closed; do not claim restored original edge gesture."
+  },
+  "can_restore_now": [
+    {
+      "change": "Dismiss the current personality editor after an accepted successful save, using its actual presentation owner.",
+      "source_boundary": "Original onChange(didSave,initial:false), newtrue→dismiss.",
+      "adapter_guards": "Current service response request/session validation, presentation token and preserving edits created during an in-flight save must remain explicit host policy; they are not recovered conditions in the observed original callback."
+    }
+  ],
+  "do_not_change_without_more_proof": [
+    "Do not infer dismissal from save-button tap before success.",
+    "Failure must not dismiss by applying the success observer to all terminal outcomes.",
+    "Do not invent traits ranges/catalog or full root section list from enums.",
+    "Do not add guessed edge-pop discard policy or haptic.",
+    "Do not apply Settings Personalization or Remote shared control style as this consumer."
+  ],
+  "unknowns": [
+    {
+      "gap": "Original editor edge-pop/interactive-dismiss arbitration",
+      "next": "No actual gesture owner/interactiveDismissDisabled rule closed in this pass. Current customBack only is an independent limitation."
+    },
+    {
+      "gap": "Original late-save/new-edit guard",
+      "next": "Parent success observer itself contains only newBooltrue check. Async owner and draft compare remain separate; host must preserve newly edited drafts independently."
+    },
+    {
+      "gap": "Complete rowInsets/content label styles",
+      "next": "Retained full Form proves modifier presence; no new exact owner metrics closed here. Keep existing native adapter geometry."
+    },
+    {
+      "gap": "Exact original save error actions and backend response",
+      "next": "Existing error resources retained; full async owner/response schema not recovered."
+    }
+  ],
+  "haptics": {
+    "status": "unknown",
+    "finding": "No direct haptic/sensoryFeedback call established in bounded screen/toolbar/success observer. Indirect action-owner effects are not exhausted. Native confirmation/context menu presence does not prove custom feedback."
+  },
+  "validation": {
+    "static_only": true,
+    "host_modified": false,
+    "shared_tools_modified": false,
+    "built": false,
+    "tests_run": false,
+    "device_or_original_runtime": false
+  },
+  "raw_evidence": {
+    "ios-customize-third-20261113/assistant-vm-reflection-fields.json": "e23eb58ca7af3399bdc595eb0dc335562561abe72ea5b01db7f625e7c8f980b1",
+    "ios-customize-third-20261113/dismiss-action-body-calls.json": "88d79f1df70cec142101001dcf35deec7251bdbc4139ca959a57f64266de5c75",
+    "ios-customize-third-20261113/dismiss-action-body.asm": "4c1ace46b34c0bb4907c2a9241fc3fb648baed23873139bce93d30500a1f2ba5",
+    "ios-customize-third-20261113/dismiss-field-type.json": "2f1b1c080fd18398ba3b8e2127a0ee29b4f47116d67a72ec2707f21ce8fa3e81",
+    "ios-customize-third-20261113/save-dismiss-call-calls.json": "561bb9eff056705738bff697a3d9732cd7faa7f72bb01acd8eaf4e573e19b9e8",
+    "ios-customize-third-20261113/save-dismiss-call.asm": "2ac62e5ef300225680f2457df9372de6bbcf0399cfd51063871219790d2163ba",
+    "ios-customize-third-20261113/save-observer-closure-calls.json": "839910078e681747485df5a6499bcd37a1e1d1319a3f22fbce619471474003f8",
+    "ios-customize-third-20261113/save-observer-closure.asm": "34e1e9945942de1153a92d5cbeda5c0ab4a645c27444eb350657b23e816ae2a6",
+    "ios-customize-third-20261113/save-observer-environment-calls.json": "de001744cb403b04ecb46e847530cc8cff1e9cfeb6e858093dc52e902f60ed9c",
+    "ios-customize-third-20261113/save-observer-environment.asm": "88c9b0dd776b2d1b393a564cec375701ffa4f4a3af39b88040829691b70df380",
+    "ios-customize-third-20261113/save-observer-impl-calls.json": "ac09a9e46995e3900af568cf71fe46f72fc0b6b90b2f401cbbdd55d91d46f93b",
+    "ios-customize-third-20261113/save-observer-impl.asm": "2b4ce609478b7cdaedc1e07bf9fe5e8833c4b5e03ebe0e4760ef5f6ee4435560",
+    "ios-customize-third-20261113/saved-property-keypath-calls.json": "026fedf646e04b12c95a3c419b200ffd9ee5f38718430f2bd0709243626766d2",
+    "ios-customize-third-20261113/saved-property-keypath-raw.json": "2f779c9b8fddb24c3c7a33e24bf05fe37b068181fdabc1f00903b2f08cfb5991",
+    "ios-customize-third-20261113/saved-property-keypath.asm": "2969d53da082b62f51324e2545e2cf9a0ac2bb102e1e15f9419a2d038f5dba6b",
+    "ios-customize-third-20261113/saved-property-layout-binding.json": "58532030849be4aaddee41c539e8e81b5f90c626913efc893bb718c580903b61",
+    "ios-customize-third-20261113/saving-property-keypath-calls.json": "e3b29cbf8d669d3765c6143b87ead6e083170648e7078a066b41cfc707761b95",
+    "ios-customize-third-20261113/saving-property-keypath.asm": "23f88698e9576d6623fb981e6d0f79c6c2584b14a31dcc0786e61d53c232ad5f",
+    "ios-customize-third-20261113/screen-field-helper-calls.json": "282dc2af3f5677d957a5451c435ca62a51cad2a982d5f551464f344072f7cc5a",
+    "ios-customize-third-20261113/screen-field-helper.asm": "dbe8c291f1307793b880605f093806b309f40f475cf24b439c571032fd80533d",
+    "ios-customize-third-20261113/screen-parent-calls.json": "07730600bf1037174a1e2e8f37c91fe69ae018e1b10ac134dea7221bb010c817",
+    "ios-customize-third-20261113/screen-parent.asm": "2f6ea828f91f533197e97fb8f7ebefddd4430b788d609471e9f9b6cfcf4d7d09",
+    "ios-customize-third-20261113/toolbar-actions-calls.json": "3cbc5b1bce8ba5eb1e59dadb88fad4d033ec35b9e4881ce07fbedf6c1623e359",
+    "ios-customize-third-20261113/toolbar-actions.asm": "e577d6a173fb011ae9c66d9202584e494a0f587b23f75b0df95de80c1b2f9a00",
+    "ios-customize-third-20261113/vm-metadata-accessor-calls.json": "ea5ab0fd795fe9241c35b3180e3b6f4578c4d979dc0cc393dcbbb5bc918435d4",
+    "ios-customize-third-20261113/vm-metadata-accessor.asm": "0b5f0ddb3064983d89bfa747c2d51271089f22c58dab112639912e7e1f218dbc",
+    "ios-customize-third-20261113/vm-metadata-base-calls.json": "88326f22cf2fbccc1b47698dfc991b543eec38208aceaf3dab17578afddb24ce",
+    "ios-customize-third-20261113/vm-metadata-base.asm": "3eddbc3a7acc559bc04f16d643d99aaa1ce1832fa422bf9c138e4fb024eba121",
+    "ios-customize-third-20261113/vm-metadata-completion-calls.json": "1ac4b218ad47e94214fbcef6ce3a5b3ea2231a72995d901302fb575620c9445f",
+    "ios-customize-third-20261113/vm-metadata-completion.asm": "0d7c98a187450a44ba5166d2f57ade6056829cd6e30ad5b2f3226fa39bd1bdfb"
+  }
+}

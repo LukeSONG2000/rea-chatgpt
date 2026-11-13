@@ -1,0 +1,78 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "evidence_type": "official_artifact_static",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Remote configuration producer 0x1969430 to MessageInputSliderPreset fields",
+  "evidence": [
+    "ios-remote-v528-preset-metadata.json",
+    "ios-remote-v528-preset-offsets.json",
+    "ios-remote-v528-preset-speed-type.json",
+    "ios-remote-v528-preset-optional-string-type.json",
+    "ios-remote-v526-model-options-configuration.asm",
+    "ios-remote-v526-model-options-findings.json"
+  ],
+  "fields": {
+    "id": {
+      "offset": "0x0",
+      "producer": "0x196965c..0x1969664",
+      "value": "Model.id plus effort identifier; the preset begins at array element +0x18 after its reasoningEffort payload"
+    },
+    "title": {
+      "offset": "0x20",
+      "producer": "0x19695f0 ->0x244e72c, stored0x196966c",
+      "value": "Localized reasoning effort title"
+    },
+    "accentedTitle": {
+      "offset": "0x30",
+      "producer": "0x1969670",
+      "value": null
+    },
+    "modelTitle": {
+      "offset": "0x40",
+      "producer": "0x19695fc ->0x2433f6c, stored0x1969674",
+      "value": "Model title helper result; normalization is separately partial"
+    },
+    "effortTitle": {
+      "offset": "0x50",
+      "producer": "0x1969678..0x196967c",
+      "value": null
+    },
+    "durationText": {
+      "offset": "0x60",
+      "producer": "0x1969680",
+      "value": null
+    },
+    "speed": {
+      "offset": "0x70",
+      "producer": "0x1969684..0x1969688",
+      "raw_value": 3,
+      "value": "Optional Speed none; enum has three no-payload cases standard/fast/ultrafast and typeref is Speed?; this field differs from current configuration speed"
+    },
+    "isDefault": {
+      "offset": "0x71",
+      "producer": "0x1969688",
+      "value": false
+    },
+    "isLocked": {
+      "offset": "0x72",
+      "producer": "0x196968c",
+      "value": false
+    }
+  },
+  "conclusions": [
+    "The ordinary Remote producer preserves the model effort array. A six-marker reference does not establish a fixed six-level UI.",
+    "Preset title and effortTitle are distinct fields. This producer fills title and leaves effortTitle absent.",
+    "Ordinary Remote presets are unlocked and not marked default in this producer. Shared picker locked behavior belongs to a wider consumer scope.",
+    "The selected configuration speed is supplied separately. Do not infer per-preset speed from the screenshot or current speed setting."
+  ],
+  "limitations": [
+    "Static layout and store mapping, no target execution or visual acceptance.",
+    "Swift native representations are artifact-local, not a frontend/backend wire schema.",
+    "Model title normalization, shared alternate preset producers, target frame consumers and gestures have independent evidence scopes."
+  ]
+}

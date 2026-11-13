@@ -1,0 +1,36 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "official_observation": {
+    "geometry_body": "0x62e2074",
+    "geometry_transform": "0x62e2234",
+    "binding_helper": "0x7542db0",
+    "modifier_helper": "0x213ff8",
+    "modifier_import": "_GeometryActionModifier.init(value:action:)",
+    "coordinates": "GeometryProxy.frame(in: GlobalCoordinateSpace.global)",
+    "offset_policy": "message_input_attachments source uses displayOffset(0,0), v514",
+    "frame_provider": "0x62ef638 stores separate layout and presentation rectangles, resolves source-container protocol and safe-area fallback. Full branch semantics remain partial.",
+    "layer_predicate": "0x62efb04 checks layer visibility/opacity/geometry and CASDFElementLayer; source registration at 0x62e2758 supplies frame provider."
+  },
+  "local_sdk_observation": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/SwiftUICore.framework/Modules/SwiftUICore.swiftmodule/arm64-apple-ios-simulator.swiftinterface",
+    "lines": [
+      7885,
+      7886
+    ],
+    "conclusion": "onGeometryChange(for:of:action:) constructs _GeometryActionModifier."
+  },
+  "host_defect": "r8 proves source geometry changes during presentation. Before opening: UIKit and AX attachment source y780, keyboard AX y918 outside the 874pt window. Presentation completion: source y486. The earlier mismatch compared different lifecycle instants.",
+  "candidate": "Independent presentation lifecycle adapter refreshes mounted source geometry after transition and keyboard frame changes, and avoids writing frame while a spring transform is active. The embedded content host delegates safe-area ownership to the presentation controller.",
+  "validation": "r11 Chinese light/dark and r12 English dark/large attachment menu tests pass original actions and added compact/focused intrinsic-height checks. r11 English large picker entry failed once before unchanged r12 pass. r10/r11 plugin final keyboard visibility still fails and is tracked separately.",
+  "limits": [
+    "Full official geometry registration and keyboard/presentation ownership remain partial.",
+    "Observed global geometry to source UIWindow conversion is an independent host bridge.",
+    "Physical device and multiwindow validation remain open.",
+    "The UIKit notification/transition callbacks chosen for the host are an independent adaptation, not recovered official callback wiring."
+  ],
+  "test_environment": "r10 plugin-editing checks reached their final keyboard assertion with keyboard AX y918 outside the screen. Software keyboard was made visible through Device Hub before r11. No plugin intent assertion was removed."
+}

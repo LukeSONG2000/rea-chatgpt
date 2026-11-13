@@ -1,0 +1,80 @@
+{
+  "batch": 582,
+  "status": "部分实现",
+  "implemented": [
+    "Assistant original-text copy is a leading inline button; user copy/edit menu remains available.",
+    "Legacy action glyph14 with6pt padding and rectangular hit shape is integrated with Dynamic Type. Collection height uses the same metric instead of fixed36.",
+    "Completion/active visibility and reduced-motion behavior continue through the existing row owner."
+  ],
+  "source": "ios-chat-v582-findings.json",
+  "independent_adaptations": [
+    "The minimum supported assistant/user operation projection is host policy. The full official role-specific action population remains partial.",
+    "Legacy default chosen for this candidate; ordinary parent overrides and refreshed branch selection remain unknown.",
+    "Native glyph fitting, secondary tint, outer placement and collection sizing remain host implementation."
+  ],
+  "validation": {
+    "artifact": "ios-chat-v582-layout-verification.json",
+    "state_groups": 22,
+    "ui": {
+      "unique_passed": 6,
+      "r1": {
+        "passed": 5,
+        "failed": 1,
+        "skipped": 0
+      },
+      "r2": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "failure": "Native menu item and inline control share Copy original label. The test now selects the native menu item by symbol identity and label; user edit/copy/restart recovery passed on repeat.",
+      "coverage": [
+        "Chinese/light and English/dark Chat and Work",
+        "XXXL copy size and reachability",
+        "active-hidden/terminal-visible",
+        "raw Markdown copy and paste",
+        "user edit confirmation, scoped draft and restart",
+        "A-B-A reader-position restoration",
+        "failure retry and cancellation"
+      ]
+    },
+    "visual": "Reviewed Chinese/light inline-copy full page, English/dark and XXXL pasted-copy screenshots. Primary copy is now below the assistant response. Remaining block gaps, full actions, composer and exact parent layout still need acceptance."
+  },
+  "runtime": "ios-chat-v582-runtime.json",
+  "preview": "Chinese/light stable preview profile, retained synthetic photo draft, process verified and left running",
+  "device": "待设备验证",
+  "service": "待接服务",
+  "display": "Color LCD only; external display pending",
+  "open_items": [
+    {
+      "page": "Chat/Work conversation",
+      "priority": "P1",
+      "gap": "Message block spacing, exact footer containment and ordinary style override",
+      "evidence_break": "surroundingContext->0x38dda6c; MessageRowContent footer and0x389f538 layout branch",
+      "next_action": "Compare ordinary body/footer measurement and actual rendered placement; retain supported copy/edit minimum while assessing the next page",
+      "acceptance": "Same-content ordinary Chinese/English light/dark screenshots with visible footer, keyboard and restored viewport"
+    },
+    {
+      "page": "Chat/Work conversation",
+      "priority": "P2",
+      "gap": "Full feedback/read-aloud/combined-feedback/favorite/overflow/context action policy",
+      "evidence_break": "0x3945cf8 producer;0x395bf3c arrangement;0x395c950 projection",
+      "next_action": "Trace only the next operation required by page acceptance and its owner/capability",
+      "acceptance": "Operation selection, cancellation/unavailable state and identity-bound return verified"
+    },
+    {
+      "page": "Settings and previews",
+      "priority": "P1",
+      "gap": "First-stage page closure",
+      "next_action": "Reuse v549/v567/v572-574 preview evidence, check return and settings consumers; inventory applied settings and returnable pending entries",
+      "acceptance": "Settings change reaches adapted page and persists across restart; preview close restores source draft/reading state"
+    },
+    {
+      "page": "Accessibility/device",
+      "priority": "P2",
+      "gap": "Actual VoiceOver traversal, device haptics and notification delivery",
+      "next_action": "Keep distinct device acceptance gates",
+      "acceptance": "Observed device behavior for each gate"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "revision": "v526",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "scope": "Only shared Settings label, toggle and labeledContent styles applied by CodexRemoteModelConfigurationSheet",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static",
+  "validation": {
+    "official_app_executed": false,
+    "app_modified": false,
+    "visual_parity": "unverified"
+  },
+  "findings": [
+    {
+      "id": "applied-style-owner",
+      "status": "verified_static",
+      "claim": "Advanced Form applies these three shared Settings styles in sequence. Leaf evidence is scoped to these owners.",
+      "offsets": [
+        "0x19983a0",
+        "0x19983e8",
+        "0x1998434"
+      ],
+      "details": {
+        "sequence": [
+          "SettingsLabelStyle",
+          "SettingsToggleStyle",
+          "SettingsLabeledContentStyle"
+        ]
+      }
+    },
+    {
+      "id": "label-layout",
+      "status": "verified_static",
+      "claim": "SettingsLabelStyle constructs centered HStack spacing12 with optional icon and leading title VStack spacing4, title layoutPriority1.",
+      "offsets": [
+        "0x6f20ae4",
+        "0x6f2089c",
+        "0x6f208b4..0x6f208b8",
+        "0x6f20990..0x6f20a44"
+      ],
+      "details": {
+        "environment_field": "_iconsHidden: Environment<Bool>",
+        "factory": "0x6f20acc",
+        "environment_keypath": "0x8380e38",
+        "icon_if": "!iconsHidden",
+        "icon_modifier": "SettingsIconViewModifier",
+        "icon_scaled_dimensions": [
+          24,
+          20
+        ],
+        "title": "SettingsTitleBuilder(configuration.title)",
+        "generic_type_record": "0x8380e60"
+      }
+    },
+    {
+      "id": "icon-style",
+      "status": "verified_static",
+      "claim": "Settings icon modifier applies official icon primary semantic color, aspectRatio layout, body typography token and a scaled24x20 frame at this label callsite.",
+      "offsets": [
+        "0x6f1b314",
+        "0x6f1b1a8..0x6f1b318",
+        "0x6f1b210",
+        "0x6f1b274..0x6f1b2e0",
+        "0x74ed6f4..0x74ed744",
+        "0x74e2714..0x74e2744"
+      ],
+      "details": {
+        "foreground_resource": "ChatGPT/icon/primary",
+        "resource_literal": "0x8a514f0",
+        "font_token": "0x74e2728",
+        "font_token_system_text_style": "body",
+        "bound_import": "0xaad38d8 -> SwiftUI.Font.TextStyle.body",
+        "scaled_metrics": [
+          "width",
+          "height"
+        ],
+        "aspect_ratio": "Optional ratio nil, contentMode raw0; friendly enum name not independently decoded",
+        "frame_alignment": "not independently named",
+        "modifier_type_record": "0x838bae0"
+      }
+    },
+    {
+      "id": "title-subviews",
+      "status": "verified_static",
+      "claim": "SettingsTitleBuilder handles native Group subviews. First subview uses body typography token. Remaining subviews use subheadline token and ChatGPT/text/tertiary foreground, then TextAlignment/lineLimit/fixedSize modifiers.",
+      "offsets": [
+        "0x6f20254",
+        "0x6f1fe80",
+        "0x6f1fef8",
+        "0x6f1ffd8..0x6f201a0",
+        "0x6f20008",
+        "0x6f200bc",
+        "0x6f2010c"
+      ],
+      "details": {
+        "first_font_token": "0x74e2728 / body",
+        "remaining_font_token": "0x74e26f8 / subheadline",
+        "subheadline_import": "0xaad38c8",
+        "secondary_foreground_resource": "ChatGPT/text/tertiary",
+        "resource_literal": "0x8a51c40",
+        "secondary_lineLimit": "nil",
+        "secondary_fixedSize": {
+          "horizontal": false,
+          "vertical": true
+        },
+        "type_records": [
+          "0x838c3e8",
+          "0x838c3f0",
+          "0x838c418"
+        ],
+        "empty_subviews": "no title content",
+        "limits": "Additional environment write on first child at0x6f20050 not named; typography resolver may apply additional font traits."
+      }
+    },
+    {
+      "id": "labeled-content-layout",
+      "status": "verified_static",
+      "claim": "SettingsLabeledContentStyle delegates placement to native LabeledContent(content:label:). Label applies SettingsLabelStyle. Content branches on isLoading.",
+      "offsets": [
+        "0x6f20bd8",
+        "0x6f20af0..0x6f20bc0",
+        "0x6f577cc..0x6f578b4",
+        "0x6f578b8",
+        "0x6f21224"
+      ],
+      "details": {
+        "field": "_isLoading: Environment<Bool>",
+        "factory": "0x6f3f894",
+        "environment_keypath": "0x838ece0",
+        "loading": "OAIProgressView<EmptyView,EmptyView> via0x7549160",
+        "not_loading": "configuration.content.foregroundColor(.secondary).multilineTextAlignment(raw2).lineLimit(2)",
+        "foreground_keypath": "0x838f730",
+        "textAlignment_keypath": "0x838f700",
+        "lineLimit_keypath": "0x838f5e0 -> getter0x1a9d00 -> imported EnvironmentValues.lineLimit",
+        "raw2_friendly_alignment": "not independently decoded",
+        "type_records": [
+          "0x7d9c0c8",
+          "0x7d9c0d0",
+          "0x7d9c0d8",
+          "0x7d9c0e0"
+        ]
+      }
+    },
+    {
+      "id": "toggle-native",
+      "status": "verified_static",
+      "claim": "SettingsToggleStyle recreates native Toggle using configuration binding and label styled with SettingsLabelStyle, then writes nil tintColor environment.",
+      "offsets": [
+        "0x6f212c4",
+        "0x6f21128..0x6f21220",
+        "0x6f578f0",
+        "0x6f21224",
+        "0x6fdee80"
+      ],
+      "details": {
+        "binding": "configuration.$isOn",
+        "label": "configuration.label.labelStyle(SettingsLabelStyle())",
+        "tintColor": "nil",
+        "keypath": "0x838f6a0",
+        "getter": "0x3cfbe0 -> EnvironmentValues.tintColor",
+        "type_record": "0x8380e88",
+        "distinction": "Adjacent0x6f20be4..0x6f21124 belongs to SettingsLoadableToggleStyle and is excluded from this conclusion",
+        "advanced_usage": "Inherited by panel descendants; identified Advanced rows are Pickers."
+      }
+    }
+  ],
+  "ready_to_integrate": [
+    "Native grouped Form and native Picker composition already established in parent report",
+    "Label horizontal/vertical spacing and priority, scaled icon frame",
+    "Semantic icon primary and title tertiary resources; body/subheadline typography token categories",
+    "Native LabeledContent loading branch and content secondary color/lineLimit2",
+    "Native Toggle binding and nil tintColor"
+  ],
+  "unknowns": [
+    {
+      "topic": "Environment defaults",
+      "breakpoint": "iconsHidden keypath0x8380e38 getter0x6f2081c -> metadata accessor0x6fc20c8 and descriptor0x9721b9c; loading keypath0x838ece0 getter0x6ef5954. Defaults not independently closed."
+    },
+    {
+      "topic": "Typography resolver",
+      "breakpoint": "0x74e2728 and0x74e26f8 close body/subheadline categories; resolver0x74e2ee8 and generic0x6fdb290 may supply weight/design/other traits, not fully audited."
+    },
+    {
+      "topic": "Title first child environment",
+      "breakpoint": "0x6f20050 keypath add0x480 and write0x6fde24c not named."
+    },
+    {
+      "topic": "Raw enum labels",
+      "breakpoint": "LabeledContent multilineTextAlignment raw2 and Icon contentMode raw0 retained literally, enum friendly names not independently resolved."
+    },
+    {
+      "topic": "Progress and theme",
+      "breakpoint": "OAIProgressView0x7549160 inner rendering and semantic resource light/dark values not expanded in this leaf scope."
+    }
+  ],
+  "evidence_files": [
+    "ios-remote-v526-advanced-style-environment-accessors-calls.json",
+    "ios-remote-v526-advanced-style-environment-accessors.asm",
+    "ios-remote-v526-advanced-style-icon-actual-calls.json",
+    "ios-remote-v526-advanced-style-icon-actual.asm",
+    "ios-remote-v526-advanced-style-label-body.asm",
+    "ios-remote-v526-advanced-style-labeled-closures.asm",
+    "ios-remote-v526-advanced-style-leaf-proof.json",
+    "ios-remote-v526-advanced-style-leaf-resources.asm",
+    "ios-remote-v526-advanced-style-loading-factory.asm",
+    "ios-remote-v526-advanced-style-nested-metadata.json",
+    "ios-remote-v526-advanced-style-title-actual-calls.json",
+    "ios-remote-v526-advanced-style-title-actual.asm",
+    "ios-remote-v526-advanced-style-types.json",
+    "ios-remote-v526-advanced-settings-style-metadata.json",
+    "ios-remote-v526-advanced-settings-styles.asm",
+    "ios-remote-v526-advanced-settings-styles-calls.json"
+  ]
+}

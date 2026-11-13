@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "revision": "v526",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "scope": "CodexRemoteModelConfigurationSheet advanced panel, its model/effort/speed sections and supplied advanced action only",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static",
+  "validation": {
+    "target_executed": false,
+    "runtime_parity": "unverified",
+    "production_files_changed": false
+  },
+  "findings": [
+    {
+      "id": "sheet-root",
+      "status": "verified_static",
+      "claim": "Sheet body creates NavigationStack(root:) and applies a one-member medium presentation detent set. Root closure forwards to the Form builder.",
+      "offsets": [
+        "0x19979e4",
+        "0x1997cdc",
+        "0x1997d00..0x1997d28",
+        "0x1d15d84..0x1d15d8c"
+      ],
+      "details": {
+        "body_witness": "0x19986e8",
+        "root_builder": "0x1997d6c",
+        "array_header_7cd9440": [
+          1,
+          2
+        ],
+        "detent_import": "PresentationDetent.medium",
+        "limits": "Presentation dispatcher outside this sheet is owned by the parallel entry investigation. No self-sizing behavior asserted."
+      }
+    },
+    {
+      "id": "form-style",
+      "status": "verified_static",
+      "claim": "Root builds native Form, applies grouped style and standard header prominence, then scroll-content margins top 0 and bottom 32.",
+      "offsets": [
+        "0x199820c",
+        "0x1998218..0x1998244",
+        "0x1998258..0x199829c",
+        "0x19982b0..0x1998344",
+        "0x459840..0x459848"
+      ],
+      "details": {
+        "native_style": "FormStyle.grouped",
+        "header_symbol": "_$s7SwiftUI10ProminenceO8standardyA2CmFWC",
+        "header_symbol_slot": "0xaacff40",
+        "margin_bottom_double_bits": "0x4040000000000000",
+        "limits": "These are content margins, not manually inset outer sheet frame."
+      }
+    },
+    {
+      "id": "inherited-settings-styles",
+      "status": "verified_static",
+      "claim": "Form applies shared SettingsLabelStyle, SettingsToggleStyle and SettingsLabeledContentStyle before toolbar.",
+      "offsets": [
+        "0x199835c..0x1998434"
+      ],
+      "details": {
+        "label": {
+          "metadata": "0xa986588",
+          "descriptor": "0x971e460",
+          "factory": "0x6fd63a4 -> 0x6f20acc"
+        },
+        "toggle": {
+          "metadata": "0xa9866b0",
+          "descriptor": "0x971e504"
+        },
+        "labeled_content": {
+          "metadata": "0xa986608",
+          "descriptor": "0x971e4a4",
+          "factory": "0x6fd63a8 -> 0x6f3f894"
+        },
+        "limits": "Their full metrics/environment resolver bodies were not re-expanded in this bounded task. Native grouped Form alone does not prove matching row style."
+      }
+    },
+    {
+      "id": "form-groups",
+      "status": "verified_static",
+      "claim": "Form content tuple has a model/effort section and optional speed section. Speed section is mounted only when available speed choices count is at least two.",
+      "offsets": [
+        "0x1998504",
+        "0x19985bc..0x19985fc",
+        "0x1998614..0x199863c"
+      ],
+      "details": {
+        "model_effort_descriptor": "0x95b14b4",
+        "model_effort_accessor": "0x1d15d6c",
+        "speed_descriptor": "0x95b1458",
+        "speed_accessor": "0x1d15d78",
+        "speed_producer": "0x244e39c",
+        "speed_count_test": "cmp count,#2; b.lo omit",
+        "speed_view_model": "Bindable(wrappedValue:) at 0x19985ec"
+      }
+    },
+    {
+      "id": "model-effort-section",
+      "status": "verified_static",
+      "claim": "Section content consists of Model Picker followed by optional Intelligence/Effort Picker. Model picker is unconditional within the section. Effort picker is omitted if its option producer returns nil.",
+      "offsets": [
+        "0x19986fc",
+        "0x1998870",
+        "0x1998a18",
+        "0x1998a28..0x1998b54"
+      ],
+      "details": {
+        "modern_section": "iOS26 availability at 0x1998718; Section.create(isExpanded:nil,content:,header:EmptyView,footer:EmptyView) through 0x463fd0 -> 0x7c4b754",
+        "legacy_section": "0x1998774..0x1998860 builds legacy native Section generic storage",
+        "typeref_records": [
+          "0x7e25658",
+          "0x7e25660",
+          "0x7e25668"
+        ],
+        "limits": "The nil/nonempty guard is exact. Availability wrapper affects Section construction, not the choice of model list."
+      }
+    },
+    {
+      "id": "model-selection",
+      "status": "verified_static",
+      "claim": "Model picker binds selected String identity through getter 1d2b648 and setter 1d2b774. Setter resolves identity in featured then other options and forwards a matching model to viewModel witness slot +0x238.",
+      "offsets": [
+        "0x1998994",
+        "0x1998a18",
+        "0x1d2b648..0x1d2b770",
+        "0x1d2b774..0x1d2b7f4",
+        "0x19991f4"
+      ],
+      "details": {
+        "current_read": "VM witness +0xb0 returns configuration snapshot",
+        "fallback_read": "Selected model unavailable: first featured option, else first other option, else empty String",
+        "identity_search": "0x19991f4, String at item+0x68, stride0x148",
+        "setter_missing_match": "No VM selection callback when lookup returns nil",
+        "limits": "Concrete VM implementation and server persistence are not closed by the generic witness dispatch."
+      }
+    },
+    {
+      "id": "model-options",
+      "status": "verified_static",
+      "claim": "Picker options are projected from VM witness +0xb8 via 1969c70. Featured options precede a conditional Other models Section. Each model option also uses a native Button forwarding its model to witness +0x238.",
+      "offsets": [
+        "0x1999008",
+        "0x1998c0c..0x1998d2c",
+        "0x1999030",
+        "0x1999090",
+        "0x1999300",
+        "0x1d2b5e8..0x1d2b634"
+      ],
+      "details": {
+        "option_producer": "0x1969c70",
+        "other_group_condition": "other.count > 0",
+        "other_group_localization_key": "codex_remote_thread_configuration_other_models_title",
+        "key_address": "0x88b36c0",
+        "fallback": "Other models",
+        "initializer": "0x1999814",
+        "limits": "Option categorization inside 1969c70 and any unavailable-model exclusions remain its own producer boundary. Do not hardcode screenshot model names."
+      }
+    },
+    {
+      "id": "effort-selection",
+      "status": "verified_static",
+      "claim": "Effort choices are available only when 19990d4 finds a current model and 2451abc produces a nonempty collection. Binding getter consumes configured optional reasoning effort, falls back to the first available effort, then raw known value3 only as terminal fallback. Setter forwards chosen resilient effort to VM witness +0x240.",
+      "offsets": [
+        "0x19990d4..0x1999180",
+        "0x2451abc",
+        "0x1d2b470..0x1d2b51c",
+        "0x1d2b520..0x1d2b54c"
+      ],
+      "details": {
+        "configured_optional": "snapshot payload loaded from stack +0x140/+0x148, tag+0x150; ff means absent",
+        "producer_field": "2451abc reads current model+0xc8 array and projects elements",
+        "value_type": "CodableToolbelt.ResilientCodableEnum<CodexRemoteCore.CodexRemoteThreadConfiguration.KnownReasoningEffort>",
+        "limits": "Do not relabel raw fallback3 or every effort enum case without enum evidence. Per-model allowed efforts control visibility."
+      }
+    },
+    {
+      "id": "speed-picker",
+      "status": "verified_static",
+      "claim": "Speed uses a native Picker bound via Bindable dynamic-member keypath to viewModel. Getter reads configuration and maps through 244c648. Setter invokes VM witness +0x258. Option content uses filtered Speed values from 244e39c.",
+      "offsets": [
+        "0x19994b0",
+        "0x1999608..0x1999710",
+        "0x1999724",
+        "0x1999758",
+        "0x1881bec..0x1881c38",
+        "0x1d2b23c..0x1d2b2ac"
+      ],
+      "details": {
+        "picker_import": "0x1d99330 -> 0x7c4b46c SwiftUI.Picker.init(_:selection:content:)",
+        "keypath": "0x7e25610",
+        "speed_type": "CodexRemoteCore.CodexRemoteThreadConfiguration.Speed",
+        "section_body_witness": "0x1999794 -> 0x19994b0",
+        "localization_key": "codex_remote_thread_configuration_speed_title",
+        "key_address": "0x88b3690",
+        "fallback": "Speed",
+        "localization_initializer": "0x1999798"
+      }
+    },
+    {
+      "id": "speed-order-and-capabilities",
+      "status": "verified_static",
+      "claim": "Available speed producer traverses fixed raw order [0,1,2], always retains0 and conditionally retains1 and2. Row label mapping is Standard, Fast, Ultrafast respectively.",
+      "offsets": [
+        "0x244e39c..0x244e4f0",
+        "0xa56e070",
+        "0x1999788..0x1999790",
+        "0x2418190..0x2418268"
+      ],
+      "details": {
+        "raw0": {
+          "fallback": "Standard",
+          "key": "codex_remote_standard_speed",
+          "key_address": "0x88dd400"
+        },
+        "raw1": {
+          "fallback": "Fast",
+          "key": "codex_remote_fast_speed",
+          "key_address": "0x88dd3e0",
+          "filter": "model from264c3e8 must be present; model+0x60 lowbit must be0; 24215ac optional string must be nonnil"
+        },
+        "raw2": {
+          "fallback": "Ultrafast",
+          "key": "codex_remote_ultrafast_speed",
+          "key_address": "0x88dd3c0",
+          "filter": "model from264c3e8 must be present; model+0x60 lowbit must be0; 265abe8 optional string must be nonnil"
+        },
+        "limits": "Business names of capability fields24215ac/265abe8 and disabled model bit are not established here. Preserve supplied availability rather than invent entitlement flags. Speed-to-service-tier persistence outside this panel remains unknown."
+      }
+    },
+    {
+      "id": "advanced-toolbar-owner",
+      "status": "verified_static",
+      "claim": "Principal toolbar content is MessageInputModelSliderAdvancedTitle, initialized with the configuration sheet advancedActionHandler. Its body creates Button with PlainButtonStyle, whose closure invokes supplied Handler.",
+      "offsets": [
+        "0x1998668..0x19986e4",
+        "0x1d15dbc..0x1d15dcc",
+        "0xa881310",
+        "0x60947e0",
+        "0x6094370..0x6094490",
+        "0x1225ac..0x1225c4"
+      ],
+      "details": {
+        "title_type_descriptor": "0x96cbad0",
+        "action_type": "SwiftToolbelt.Handler<(),()>",
+        "title_button_action": "0x1225ac consumes captured function/context",
+        "localization_key": "tpp_mod_advanced",
+        "key_address": "0x89e8a50",
+        "fallback": "Advanced",
+        "localization_initializer": "0x60947ec",
+        "label_layout": "HStack vertical center, default/nil spacing; Text plus image",
+        "image_resolver": "0x74f5f48",
+        "image_resource": "OpenAI/Symbols/chevron-right-sm",
+        "image_resource_address": "0x8a549c0",
+        "image_modifiers": [
+          "renderingMode at609467c",
+          "Font.Weight.medium at60946a4"
+        ],
+        "limits": "Navigation/presentation consequence of supplied handler belongs to caller. Do not infer it opens another arbitrary advanced settings page. Exact label font token, size and foreground style helper semantics remain unclosed."
+      }
+    }
+  ],
+  "ready_to_integrate": [
+    "Native NavigationStack + grouped Form + single medium detent",
+    "Model/effort grouped section and independent optional Speed section",
+    "Preserve model availability, reasoning-effort option producer, and >=2 speed-choice guard",
+    "Preserve model ID search/setter and separate effort/speed callbacks",
+    "Use Advanced principal plain button with supplied callback and official chevron-right-sm resource",
+    "Content margins top0 bottom32 and headerProminence.standard; recover existing Settings styles rather than custom cards"
+  ],
+  "unknowns": [
+    {
+      "boundary": "Concrete VM and capability producers",
+      "next_minimum_action": "Resolve witness +0x238/+0x240/+0x258 for caller concrete VM; map24215ac/265abe8 fields and264c3e8 current-model resolver",
+      "impact": "Cannot claim persistence/server effect or permission/entitlement semantics."
+    },
+    {
+      "boundary": "Shared Settings style leaf metrics and inherited material",
+      "next_minimum_action": "Reuse existing SettingsLabelStyle/SettingsLabeledContentStyle evidence or inspect6f20acc/6f3f894 and relevant body witnesses",
+      "impact": "Native Form subtree established; exact style/material parity still unverified."
+    },
+    {
+      "boundary": "Presentation owner and advanced callback destination",
+      "next_minimum_action": "Merge parallel slider entry findings for construction and supplied Handler",
+      "impact": "Sheet body gives medium detents; caller dictates presentation transitions and callback action."
+    },
+    {
+      "boundary": "Navigation title display mode value",
+      "next_minimum_action": "Resolve generic stack-stored enum source into19984e4",
+      "impact": "Modifier call confirmed, specific value left unknown."
+    },
+    {
+      "boundary": "Runtime and visual",
+      "next_minimum_action": "Use independent simulator host with Chinese/English, light/dark, supported/empty/single option fixtures",
+      "impact": "Static restoration evidence only; no target execution or device equivalence."
+    }
+  ],
+  "files": [
+    "ios-remote-v526-advanced-builders-calls.json",
+    "ios-remote-v526-advanced-callbacks.asm",
+    "ios-remote-v526-advanced-efforts-producer.asm",
+    "ios-remote-v526-advanced-helpers.asm",
+    "ios-remote-v526-advanced-labels.asm",
+    "ios-remote-v526-advanced-picker-builders-calls.json",
+    "ios-remote-v526-advanced-picker-callbacks.asm",
+    "ios-remote-v526-advanced-section-body.asm",
+    "ios-remote-v526-advanced-sheet-body.asm",
+    "ios-remote-v526-advanced-sheet-builder.asm",
+    "ios-remote-v526-advanced-speed-binding.asm",
+    "ios-remote-v526-advanced-speed-metadata.json",
+    "ios-remote-v526-advanced-speed-option-filter.asm",
+    "ios-remote-v526-advanced-speed-producer.asm",
+    "ios-remote-v526-advanced-speed-row.asm",
+    "ios-remote-v526-advanced-speed-title.asm",
+    "ios-remote-v526-advanced-tiny-style-helpers.asm",
+    "ios-remote-v526-advanced-title-calls.json",
+    "ios-remote-v526-advanced-title-icon.asm",
+    "ios-remote-v526-advanced-title-metadata.json",
+    "ios-remote-v526-advanced-title-root.asm",
+    "ios-remote-v526-advanced-title-style.asm",
+    "ios-remote-v526-advanced-title.asm",
+    "ios-remote-v526-advanced-types.json",
+    "ios-remote-v526-advanced-witness-7e22038.json",
+    "ios-remote-v526-advanced-witness-7e249f8.json",
+    "ios-remote-v526-model-advanced-metadata.json"
+  ],
+  "style_supplement": "ios-remote-v526-advanced-settings-style-findings.json"
+}

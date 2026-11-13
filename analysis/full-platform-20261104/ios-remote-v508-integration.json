@@ -1,0 +1,107 @@
+{
+  "batch": "v508",
+  "status": "partial",
+  "previous_turn": "no_progress: status-only reply; resumed by reproducing and diagnosing the pending r6 failure",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Home inline composer uses persistent shared editor in SafeAreaBar with source-backed home outer insets and original Ask Codex translation.",
+    "Home starts unfocused; search hides but retains editor, clears its focus, and cancel returns to browsing without restoring focus. Home draft is independent of thread/project drafts.",
+    "Single home draft identity stays separate from mutable target; nil selected source does not automatically pick cloud or first host. Selected empty/no-attachments fixture follows verified source-sync subset.",
+    "Native editor visibility, interaction and accessibility follow owner state through a persistent UIKit container; search/cancel and failure retention verified.",
+    "Ordinary workspace source filtering now precedes cross-host DisplayName collision calculation. All/A/B/All recomputes device suffixes while stable IDs, collapse state and existing path subtitles remain.",
+    "95 selected official keys across65 locales; new home placeholder has bound call context."
+  ],
+  "independent_adaptations": [
+    "Offline source order, task membership, titles, dates, cloud eligibility and empty-draft eligibility are explicit synthetic fixture inputs.",
+    "UIKit EditorContainer and accessibility containment are host bridges, not claimed original wrapper implementation. No private runtime APIs used.",
+    "Disconnected submission retains drafts and reports missing target or disconnected service; service execution is not implemented.",
+    "Device Hub software keyboard was explicitly shown for viewport validation. Test English locale and preview system Chinese are separately recorded."
+  ],
+  "validation": {
+    "ui_final": {
+      "unique_cases_passed": 7,
+      "r15": {
+        "passed": 5,
+        "failed": 0,
+        "cases": [
+          "home composer fixed placement/search/draft/failure/navigation with keyboard in viewport",
+          "home draft availability gate",
+          "source-dependent disambiguation and section restoration",
+          "chronological collapse/search/navigation",
+          "fixed approval"
+        ]
+      },
+      "r16": {
+        "passed": 1,
+        "failed": 1,
+        "passed_case": "ordinary editor multiline and cross-thread/host draft isolation",
+        "failure": "project dismissal test selected any editor, including new persistent home editor"
+      },
+      "r17": {
+        "passed": 1,
+        "failed": 0,
+        "case": "project editor explicitly selected by its Message Codex label; all four navigation returns remove that editor and restore Ask Codex home scope",
+        "evidence": "return AX snapshots contain only disabled home TextView labeled Ask Codex"
+      }
+    },
+    "model": "test-official-text.sh passed, including home scope/focus/target guards and source-before-collision assertions",
+    "failures_preserved": "r1-r13 diagnostic failures retained; r14 full home flow passed with temporary instrumentation; r15/r16/r17 run after removal",
+    "visual": "r15 software keyboard screenshot checked; manual Chinese All-source list restored after final testing",
+    "device_build": "signed CFBundleVersion508 build and codesign --verify --deep --strict passed",
+    "physical_device": "final devicectl inventory still unavailable; no new install. Latest successful496,497 install failed.",
+    "preview": {
+      "pid": 20919,
+      "version": 508,
+      "state": "Chinese All-source list with cloud fixture; left running",
+      "screenshot": "ios-remote-v508-list-preview.png",
+      "display": "only internal Color LCD online"
+    },
+    "retention": "fixed build directories reused; no stale desktop build targets; final32GiB available"
+  },
+  "source_findings_ready_for_next_integration": [
+    "v510 attachment menu availability distinguishes attachment capability, Plan, Goal-without-objective and plugin choices; inherited enabled gate retained.",
+    "v510 attachment dimensions derive label padding from(minHeight-fontSize)/2; compact44 label/outerheight32 and expanded48 label/outerwidth48 are separate.",
+    "v510 Whisper codexActivation tag4 is linked to shared idle microphone leaf and startWhisper owner callback.",
+    "v509 destination controls gated by composing, nil worktree progress and showsDestinationControls; full menu wiring remains partial."
+  ],
+  "limits": [
+    "Full list toolbar remains incomplete: attachment menu, dictation, voice primary and target-selection UI not yet integrated.",
+    "Home inherited gradient/capsule selection, final parent max-width and full availability/async destination guards remain partial.",
+    "First-stage directory/path display-name projection, aliases and provider membership remain partial; current fixtures supply display titles explicitly.",
+    "Management destinations, priority projection and service ordering/queries remain unconnected.",
+    "VoiceOver, actual IME composition, physical touch/haptics, dark mode and complete official visual parity remain unaccepted.",
+    "Android evidence/build/interaction alignment and remaining Remote/Chat/Work/settings/haptics scope remain required.",
+    "No commit or push."
+  ],
+  "cross_platform": "Share candidate identity/state tests and event boundaries. SwiftUI SafeAreaBar, UIKit accessibility/keyboard integration and native rendering parameters are iOS evidence; Android requires its own verified official chain.",
+  "next": [
+    "Integrate source-backed home toolbar and capability/actions, then destination controls",
+    "Continue Remote transcript/components/interactions, Chat/Work, haptics and prior feedback in the user priority order"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "7c75187bc6d3561119ce15fba2f12d559e335e6c15546edbf69d60d0e756d1a7",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "f5444b9f102f0f6d6325cf1159d59f47fb90a09efa4678d175ebc431e12f19e0",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "0b344e69de85055e408127ad09a7b9360daf65f6d5307047b8efb9d6264b8388",
+    "implementation/ios/Sources/RemoteWorkspacePresentation.swift": "039bcdff9d62c13235967f74d41628f6252fde1dd368d759a1386fd49b5f5a75",
+    "implementation/ios/Sources/OfficialText.swift": "de272b98fb17e3835e6772518e13352b6ff15c58c8f7cb4f4e24e43082a22198",
+    "implementation/ios/Resources/OfficialTranslations.json": "681b736f34dd1a0a365f3e23fd85f56f33e6060dc7188ae55b576285b688f641",
+    "implementation/ios/UITests/HostInteractionTests.swift": "ba8d26ef26fabb294f241e30637cf073f0de51e42e35e8d1f7041ca2c05bec7b",
+    "implementation/ios/TextTests/main.swift": "d259da63f497f92662d2fff00b6e17f7b199f069709f64cf74336167535fd8d6"
+  },
+  "evidence_hashes": {
+    "ios-remote-v445-findings.json": "e0fb5f932f41036cfda1c707f2ab0304a4a9e8e3a75e0555f96216ad630a3346",
+    "ios-remote-v508-findings.json": "c6e3815c015517557ae177a4b3662fcdaa5f15262e6f91aa774f5937afd19e34",
+    "ios-remote-v508-home-style-findings.json": "7f353ec5882b87dd217b9cf2ee0d592a13e76dc7715dc1b96e894acf2564b9af",
+    "ios-remote-v509-home-state-findings.json": "591dc3be410f24c190a7135ecedc8227dd5ef4d9613db29bb9f6646867cb4bc7",
+    "ios-remote-v509-destination-findings.json": "a184515dfd989eb62c1808bb9d27250db3ae70e9c7ea46f94ad7cb5ac4dde568",
+    "ios-remote-v510-name-scope-findings.json": "a0b158d1cc32ffcbed1c920bd1c4b1559ec2037a6b2fdad5305b45f19ce72ac0",
+    "ios-remote-v510-home-controls-findings.json": "d03ba2d756feab97e51244e6661f1e818e9814f85cd8b69b28f4321083264fac",
+    "ios-remote-v508-r15-ui.summary.json": "1ea3f8c3ade0437e2edcaed3c32b99dcf574a187b4d576f3198e7aa2ec8721d6",
+    "ios-remote-v508-r16-ui.summary.json": "de7834adf6d7e0247fee4be58cad43f65bdb6f01351584a957feb8173ccc10f4",
+    "ios-remote-v508-r17-ui.summary.json": "566bca5e0f6ba7743a4baa181a37ba099cb9d9c99a5c3979a1fe085a66e2759e"
+  }
+}

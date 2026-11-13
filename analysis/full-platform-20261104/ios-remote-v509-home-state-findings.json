@@ -1,0 +1,111 @@
+{
+  "status": "partial",
+  "scope": "Official iOS 1.2026.293 Remote home composer state and destination synchronization",
+  "evidence_type": "official_artifact_static_analysis",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "confirmed": [
+    {
+      "claim": "HomeComposerViewModel owns one current draft. ensure-draft returns the existing object without replacing its text when it exists. No per-host draft map appears in this owner.",
+      "offsets": [
+        "0x2da614",
+        "0x2da700",
+        "0x2da708"
+      ],
+      "boundary": "This owner and examined source-change path only. Other screens may own other drafts."
+    },
+    {
+      "claim": "selectedHostChanged synchronization returns immediately in composing mode. Otherwise it cancels the prior destination subscription and obtains the same current draft. A nil selectedHostIdentity returns without clearing its destination.",
+      "offsets": [
+        "0x2dabd0",
+        "0x2dad7c",
+        "0x2dad88",
+        "0x2dad98",
+        "0x2dadb8",
+        "0x2dae18"
+      ]
+    },
+    {
+      "claim": "Destination synchronization sink validates both captured draft identity against owner current draft and captured host identity against current selectedHostIdentity before updating. It additionally requires an empty prompt String, an empty CodexRemoteAttachment array, and a false boolean read by 0x18af2cc.",
+      "offsets": [
+        "0x3e2c98",
+        "0x3e2ce0",
+        "0x3e2cec",
+        "0x3e2d14",
+        "0x3e2e44",
+        "0x3e2e68",
+        "0x3e2e74",
+        "0x3e2e80"
+      ],
+      "update_target": "0x18b3410 selectHost(_:)",
+      "field_sources": {
+        "prompt": "0x18c7990 -> 0x1892470 -> 0x188ea14",
+        "attachments": "0x18c7a1c -> 0x189269c -> 0x188e908; keypath 0x7e28c78; symbolic type 0x8e1222c",
+        "guard_boolean": "0x18af2cc; NewThreadViewModel bool property; exact property name unresolved"
+      }
+    },
+    {
+      "claim": "Beginning search writes searching mode raw 2 then chatFieldIsFocused false. Ending search is guarded on searching mode, clears query, and writes browsing raw 0. Ending search does not restore prior composing mode or focus. isComposing means mode raw 1.",
+      "offsets": [
+        "0x2db46c",
+        "0x2db478",
+        "0x2da234",
+        "0x2db424",
+        "0x2da1b4",
+        "0x4442d0"
+      ]
+    }
+  ],
+  "integration_conclusions": [
+    {
+      "status": "supported",
+      "text": "Use one home draft identity and retain its prompt and attachments across source filter changes. Filter selection and draft destination must remain separate state. Do not derive submission destination directly from the selected source chip."
+    },
+    {
+      "status": "supported_with_guard_boundary",
+      "text": "Mirror the confirmed source-sync guards. Do not unconditionally retarget nonempty drafts, composing drafts, or callbacks for stale draft/host identities. Nil filter preserves the destination. Resolve the final boolean property before claiming the full official synchronization predicate."
+    }
+  ],
+  "unknowns": [
+    "Exact semantic name of boolean getter 0x18af2cc. _isSubmittingPrompt is only a candidate from class field metadata; field order alone is insufficient.",
+    "Full downstream selectHost behavior and NewThread initial fallback selection remain partial.",
+    "Destination-controls consumer and compact/expanded attachment point are still being traced."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-composer-reducer.asm",
+      "sha256": "f98af8a7ce5da2493259f87c31049dae782f5d133d1fbd0452b4e3341c90a89b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-composer-create-draft.asm",
+      "sha256": "1e1e3e7caa6c74a75a8820edebd5877295bc0dce3f4ec11aa978f325ec9e6efd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v508-composer-mode-change.asm",
+      "sha256": "5705a545a0516fb8c47fbc83b4d42570cedc07fee8eb9050a6c64783f187dbd2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-target-sync-sink.asm",
+      "sha256": "dff85627f1f5aa207d8e451dedb778b567235c19afd1adedce1b64fa83330d30"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-target-sync-fields.asm",
+      "sha256": "be22199e935c099ae253f24bf77919e370ed535f850c83ef41b2f2ee243f3a2a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-draft-class-fields.json",
+      "sha256": "f397d4aacf646d6a6c7a6506e1295582e543129cc6b525544bc8919c36431161"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-target-sync-property-types.json",
+      "sha256": "2182a104c9cca7d408b48380750bfeea2a08781887ef40e35352f06a3a3e32ac"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v509-target-sync-named-types.json",
+      "sha256": "bda4cde279636570a9199358280e9e72ad8110dbe9b328971a61e29906c9115c"
+    }
+  ],
+  "verification": "Static instruction and metadata inspection only. No official app execution or network use."
+}

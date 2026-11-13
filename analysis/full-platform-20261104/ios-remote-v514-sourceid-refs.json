@@ -1,0 +1,73 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "pattern": "adjacent ADRP/ADD (no shifted ADD), B/BL; incomplete references",
+  "hits": [
+    {
+      "pc": "0x1984d24",
+      "target": "0x60694b4",
+      "name": "attachment-sourceID",
+      "pattern": "BL",
+      "function_start": "0x1984534",
+      "next_function_start": "0x1984fa0"
+    },
+    {
+      "pc": "0x19869b8",
+      "target": "0x60694b4",
+      "name": "attachment-sourceID",
+      "pattern": "BL",
+      "function_start": "0x19863cc",
+      "next_function_start": "0x1986a30"
+    },
+    {
+      "pc": "0x4bd4ffc",
+      "target": "0x60694b4",
+      "name": "attachment-sourceID",
+      "pattern": "BL",
+      "function_start": "0x4bd4b84",
+      "next_function_start": "0x4bd533c"
+    },
+    {
+      "pc": "0x4c6d258",
+      "target": "0x60694b4",
+      "name": "attachment-sourceID",
+      "pattern": "BL",
+      "function_start": "0x4c6cf4c",
+      "next_function_start": "0x4c6dc24"
+    },
+    {
+      "pc": "0x4cad1f8",
+      "target": "0x60694b4",
+      "name": "attachment-sourceID",
+      "pattern": "BL",
+      "function_start": "0x4cad0c4",
+      "next_function_start": "0x4cad554"
+    },
+    {
+      "pc": "0x4cad208",
+      "target": "0x60694b4",
+      "name": "attachment-sourceID",
+      "pattern": "BL",
+      "function_start": "0x4cad0c4",
+      "next_function_start": "0x4cad554"
+    },
+    {
+      "pc": "0x62e1c10",
+      "target": "0x96dd89c",
+      "name": "source-view-descriptor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x62e1c10",
+      "next_function_start": "0x62e1c1c"
+    },
+    {
+      "pc": "0x62e9064",
+      "target": "0x96dd998",
+      "name": "presentation-modifier-descriptor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x62e9064",
+      "next_function_start": "0x62e9070"
+    }
+  ]
+}

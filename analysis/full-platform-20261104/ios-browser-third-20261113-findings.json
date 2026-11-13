@@ -1,0 +1,292 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Three bounded candidates: ManagedSafariView browser-policy/error parent; native Safari creation/load callbacks; OpenURL modifier presentation owner. Static artifact plus current local WK source review only.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_evidence": [
+    "ios-files-preview-parent-20261113-findings.json",
+    "ios-files-preview-parent-20261113/browser-content.asm",
+    "ios-files-preview-parent-20261113/browser-content-tree.tree.txt",
+    "ios-remote-v567-safari-make.asm",
+    "ios-remote-v567-browser-bindings.json"
+  ],
+  "official_observations": [
+    {
+      "id": "native-carrier",
+      "type": "official_artifact_observation",
+      "conclusion": "Official browser parent permits ManagedSafariView or a supplied custom AnyView builder. Native Safari creation remains SFSafariViewController with barCollapsingEnabled=false, optional supplied tint/configure callback and modal style raw3.",
+      "source": [
+        "OpenURLBrowserContent descriptor0x96dcad4/body0x62a7358",
+        "conditional tree record0x8263f00",
+        "0x62a73a8 policyquery/cmp1",
+        "0x62a73c4 optionalbuilder",
+        "SafariView0x7560940 ->0x75607e8",
+        "0x7560834/38 falsebarcollapse",
+        "0x756086c/70 modalraw3"
+      ],
+      "evidence": [
+        "../ios-files-preview-parent-20261113-findings.json"
+      ],
+      "limit": "Original Remote link→presentation policy assignment remains unknown. Presence of custom builder is not proof the existing independent WK local page matches it."
+    },
+    {
+      "id": "managed-parent",
+      "type": "official_artifact_observation",
+      "conclusion": "ManagedSafariView adds policy/URL admission and a native unavailable-content branch around Safari. It is not merely a Safari representable.",
+      "source": [
+        "descriptor0x96db294",
+        "conformance0x8260fdc",
+        "bodywitness0x62a03a8 ->0x629fb28",
+        "Body typeref0x93bb140",
+        "0x629fbb8 Foundation.URL equality",
+        "0x629fb54/0x629fbc0/0x629fc4c/0x629fc74 policy accesses",
+        "0x629fe50 ContentUnavailableView constructor",
+        "0x629fc80..0x629fd28 nativeSafari branch",
+        "0x629fea0..0x629ff94 alternativeSafari branch"
+      ],
+      "evidence": [
+        "browser-owner-metadata.json",
+        "managed-safari-witness.json",
+        "managed-safari-body.asm",
+        "managed-body-type.json"
+      ],
+      "limit": "Predicate helper returns raw/discriminated values not completely named. Do not call this generic network-loading-failure UI, or equate source no-policy/denied branch to current offline serviceUnavailable."
+    },
+    {
+      "id": "unavailable-content",
+      "type": "official_artifact_observation",
+      "conclusion": "Original unavailable branch has a label/image, description and a capsule-styled Close action. Exact title and icon can be recovered.",
+      "source": [
+        "0x629fe10..0x629fe50 label0x629ffb4/description0x62a002c/action0x62ba458",
+        "0x629ffcc literal0x89ee5e0=Unable to open link",
+        "0x629fffc ->0x74f70bc",
+        "0x74f70e8/0x74f70ec literal0x8a55200=OpenAI/Symbols/exclamation-mark-triangle",
+        "0x62a0104 ->0x75d6998=Close",
+        "0x62a0160 SwiftUI.Button",
+        "0x62a0238 buttonStyle",
+        "Body tree includesCapsuleButtonStyle"
+      ],
+      "evidence": [
+        "managed-safari-body.asm",
+        "unavailable-icon-factory.asm",
+        "unavailable-action-label.asm",
+        "selected-labels.json",
+        "managed-body-type.json"
+      ],
+      "limit": "Description factory0x75d5984 is not fully interpreted; exact policy reason text and Close owner action body0x62ca444 remain unknown. No dimensions or generic retry control inferred from this branch."
+    },
+    {
+      "id": "load-tracking",
+      "type": "official_artifact_observation",
+      "conclusion": "ManagedSafariView supplies separate configure and initial-load callbacks to SafariView. The initial-load completion forwards a Bool to its captured load tracker, distinct from WK navigation chrome.",
+      "source": [
+        "0x629fcf4..0x629fd04 SafariView.onInitialLoadCompleted callback0x62ba414",
+        "0x629fd08..0x629fd18 configureViewController callback0x62ba438",
+        "0x62ba414..0x62ba42c optionalcontext/Boolmask ->0x629ecf4",
+        "0x62ba438..0x62ba44c optionalcontext ->0x629ebc4",
+        "SafariView coordinator0x7560768..0x7560794 forwardsoptionalBoolcallback",
+        "metadata InAppBrowserLoadTracker fieldsstartedAt/source/now/attemptID/state"
+      ],
+      "evidence": [
+        "managed-safari-body.asm",
+        "safari-callback-thunks.asm",
+        "browser-owner-metadata.json",
+        "../ios-remote-v567-safari-make.asm"
+      ],
+      "limit": "LoadTracker field names alone do not establish failure presentation/retry. Complete success/false/cancellation/timeout semantics and all delegate callbacks are not reconstructed."
+    },
+    {
+      "id": "presentation-owner",
+      "type": "official_artifact_observation",
+      "conclusion": "The common OpenURL modifier owns separate sheet/fullscreen URL state, scene changes, inherited custom builders, in-app browser presentation, policy alert queue and routing lifecycle. Its concrete body constructs environment transforms and observation hooks.",
+      "source": [
+        "OpenURLHandlingViewModifier descriptor0x96dc6d4",
+        "conformance0x8262de4",
+        "bodywitness0x62a7354 ->0x62a224c",
+        "0x62a2d20/0x62a2db0 onChange",
+        "0x62a303c/0x62a30e4 transformEnvironment",
+        "Body typeref0x93bc81e includesOpenURLBrowserPresentation/QueuePresentationHost/PolicyAlert/InAppBrowserPresentationAction"
+      ],
+      "evidence": [
+        "browser-owner-metadata.json",
+        "open-url-modifier-witness.json",
+        "open-url-modifier-body.asm",
+        "modifier-body-type.json"
+      ],
+      "limit": "Body prefix inspected0x62a224c..0x62a35a0 only; generic tree has unresolved opaque context nodes. Metadata state names do not prove which presentation branch Remote selects. Do not label current single .sheet as recovered full original presentation."
+    }
+  ],
+  "current_host_review": {
+    "path": "implementation/ios/Sources/FrontendBrowserPreview.swift",
+    "evidence": "host-browser-source-snapshot.json",
+    "classification": "independent offline frontend adapter",
+    "implemented": [
+      "Local custom-scheme resource provider selected only by explicit browser-preview-fixture and allowlisted example.invalid path.",
+      "Nonpersistent WK store with page JavaScript disabled; URL provider/mainframe admission blocks unapproved navigation.",
+      "Independent address/title/progress/back/forward/reload/error/retry/close controls.",
+      "WKNavigation identity rejects stale didFinish/didFail callbacks; close stops loading; unconnected resource capability shows explicit service-unavailable state.",
+      "SwiftUI .sheet and UINavigationController are host presentation choices."
+    ],
+    "source_differences": [
+      "Original proved native carrier is SFSafariViewController; current WK layout/chrome is not direct recovery.",
+      "Original ManagedSafari policy unavailable UI has triangle label/description/Close; current generic resource-unavailable/loading-failure status does not represent policy-specific admission.",
+      "Original owner has distinct policyURL/url, optional custombuilder, sheet/fullscreen choices, routing and load-tracker callbacks; current request has id/url and a local provider only."
+    ],
+    "not_an_automatic_bug": "These differences are declared service/policy/host boundaries. Existing local WK exercises offline frontend navigation. Without Remote route/policy capability, no source-backed instruction says to replace all URLs with Safari or add a policy-blocked failure for all offline links."
+  },
+  "implementation_decision": {
+    "product_change_recommended": false,
+    "reason": "No bounded evidence closes the missing Remote route→effectivebrowserpolicy→presentation provider. Preserve current explicitly independent WK local adapter. Do not turn native type existence into universal dispatch.",
+    "minimum_future_contract": "A future provider must separately supply original requested URL/policy URL, route policy decision and optional custom browser builder; native Safari can then use observed barCollapse/tint/configure carrier. Policy denial must remain distinct from missing resource capability, network failure and cancellation. Native load tracking is a separate owner contract; do not derive completion from window opening.",
+    "unsupported_ui": "Until that owner exists, current returnable service-unavailable state remains appropriate adapter behavior, with no claim of original policy/error parity."
+  },
+  "unknowns": [
+    {
+      "boundary": "Remote link/Markdown/error owner ->OpenURLHandlingViewModifier",
+      "missing": "Exact effective policy and custombuilder assignment."
+    },
+    {
+      "boundary": "0x629fb54..0x629fc74 policy rawbranches",
+      "missing": "Named policy semantics, denied reason and invalidURL/redirect/external classification."
+    },
+    {
+      "boundary": "0x75d5984 /0x62ca444",
+      "missing": "Unavailable description content and preciseClose callback owner."
+    },
+    {
+      "boundary": "0x629ecf4 /0x629ebc4 /SafariView delegates",
+      "missing": "Full initial-load success/error/cancel and lifecycle cleanup contract."
+    },
+    {
+      "boundary": "0x62a224c modifier presentation",
+      "missing": "Sheet/fullscreen selection and return-context owner; full opaque generic nodes unresolved."
+    },
+    {
+      "boundary": "haptics",
+      "missing": "No new direct browser consumer feedback emitter proved; none suggested."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 3,
+    "static_source_only": true,
+    "tests_executed": false,
+    "product_modified": false,
+    "target_executed": false,
+    "network": false,
+    "device_or_build": false
+  },
+  "evidence_directory": "ios-browser-third-20261113",
+  "evidence_files": [
+    {
+      "path": "ios-browser-third-20261113/browser-owner-metadata.json",
+      "bytes": 6954,
+      "sha256": "d108ac015e245bb9117ae2da05e8a8f488f95edec193b384fdbc28a56495697b"
+    },
+    {
+      "path": "ios-browser-third-20261113/host-browser-source-snapshot.json",
+      "bytes": 14092,
+      "sha256": "66580b45e2e0820671f7e2f3b08532dc185f3261a651a6674538aae898028a3a"
+    },
+    {
+      "path": "ios-browser-third-20261113/managed-body-type.json",
+      "bytes": 2677,
+      "sha256": "72a36a7a6a6cd238ec48b4a294e9cad915d34c6056523db03e7a238e30b8125b"
+    },
+    {
+      "path": "ios-browser-third-20261113/managed-safari-body.asm",
+      "bytes": 27368,
+      "sha256": "654647d6d4bf745e0f33466e5684016096969a1dd82cde9715dee6bcfaa70d1a"
+    },
+    {
+      "path": "ios-browser-third-20261113/managed-safari-body.json",
+      "bytes": 16168,
+      "sha256": "fc4d5198b0058f1186c21a2e2ea8f70636803c07253b2b6b38e9807102310d36"
+    },
+    {
+      "path": "ios-browser-third-20261113/managed-safari-witness.asm",
+      "bytes": 927,
+      "sha256": "af4ed28398d956cac6b3f225ecee9c4e417bf3234d8660f7d1261544b67cd53a"
+    },
+    {
+      "path": "ios-browser-third-20261113/managed-safari-witness.json",
+      "bytes": 4612,
+      "sha256": "ab68f32d46641102ea39d9eeb65607f570e1e1f457fd5d374a773494066ba670"
+    },
+    {
+      "path": "ios-browser-third-20261113/modifier-body-type.json",
+      "bytes": 8853,
+      "sha256": "982109a1506f98fe88624d9473d3895fa3731b2cfacb3e21122513a92a440781"
+    },
+    {
+      "path": "ios-browser-third-20261113/open-url-modifier-body.asm",
+      "bytes": 59638,
+      "sha256": "b47459d57464ae4e7d98ca84ac44f6665ec679d4a137b94b3bfb49e8a37ed26d"
+    },
+    {
+      "path": "ios-browser-third-20261113/open-url-modifier-body.json",
+      "bytes": 38218,
+      "sha256": "cce9fc224e98e89381d09c918d2a404a9250d8933078dd506d463f79f8da143d"
+    },
+    {
+      "path": "ios-browser-third-20261113/open-url-modifier-witness.asm",
+      "bytes": 914,
+      "sha256": "34080740e90e68b9136575a9fccde95cd103e6eeb6cf04f001687d78bfb1ab96"
+    },
+    {
+      "path": "ios-browser-third-20261113/open-url-modifier-witness.json",
+      "bytes": 4762,
+      "sha256": "dd274d8e63e7ed43cf7c105a48de3afee628a28ebf711dbd55222c21826d1b33"
+    },
+    {
+      "path": "ios-browser-third-20261113/safari-callback-thunks.asm",
+      "bytes": 1587,
+      "sha256": "031c7b2af599fed48e76f693cf11cc1adc2ead02008fc662175d399bfeac5f63"
+    },
+    {
+      "path": "ios-browser-third-20261113/safari-callback-thunks.json",
+      "bytes": 1538,
+      "sha256": "9d31552b0324c90c1c99f451b8b5c2a9997bf7b9252946be2d8e31c4ea3248df"
+    },
+    {
+      "path": "ios-browser-third-20261113/selected-labels.json",
+      "bytes": 484,
+      "sha256": "82b20200b3871004d6f46529acfa50b34e9082c58e165a2387d4c39f52a03bc5"
+    },
+    {
+      "path": "ios-browser-third-20261113/unavailable-action-label.asm",
+      "bytes": 715,
+      "sha256": "22a03eeb03ac0b91ba96bccd3ffa54c73f0e136a20bd612821faae037684123d"
+    },
+    {
+      "path": "ios-browser-third-20261113/unavailable-action-label.json",
+      "bytes": 929,
+      "sha256": "eab7c65cd8d4d9fba7d5f6c7e2b7d11c970f174fcf861bd544ad636d31bc6356"
+    },
+    {
+      "path": "ios-browser-third-20261113/unavailable-description-label.asm",
+      "bytes": 650,
+      "sha256": "02335362d6549dccba45b7caac3c07bc71145dff0a3286d09547316db61c0b20"
+    },
+    {
+      "path": "ios-browser-third-20261113/unavailable-description-label.json",
+      "bytes": 895,
+      "sha256": "5c2655d68d388ea5b58d40290d5dcb88424bb2c1c3a3fdb4e66612067d60c508"
+    },
+    {
+      "path": "ios-browser-third-20261113/unavailable-icon-factory.asm",
+      "bytes": 1218,
+      "sha256": "939f09489aa35de79e28bd97407b404ee144ff1e2b925ca0a102a8fe4c918e9b"
+    },
+    {
+      "path": "ios-browser-third-20261113/unavailable-icon-factory.json",
+      "bytes": 2114,
+      "sha256": "31d0930fc540b288ac77a6cc9d4d5f20fde899a7cf1692169ce9fbe6f09aa42b"
+    }
+  ]
+}

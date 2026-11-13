@@ -1,0 +1,95 @@
+{
+  "version": "v618",
+  "scope": "Android Remote list frontend on wireless OnePlus",
+  "source_evidence": "android-remote-list-v618-source.json",
+  "implemented": [
+    "All/cloud/host filters",
+    "Pinned/project/recent groups and collapse",
+    "Search and forced expanded matching groups",
+    "Loading/retry/empty state",
+    "Cross-host duplicate project name labels",
+    "Official Android293 folder/laptop/status icons and row geometry",
+    "Task destination with status and scoped persistent draft",
+    "List position and filter restoration through task return and process restart",
+    "System-following Chinese/English and light/dark theme",
+    "Separate synthetic provider interface"
+  ],
+  "independent_adaptations": [
+    "Compose host and Material theme/filter controls/top bar",
+    "Case-insensitive task/project search",
+    "SharedPreferences snapshot format and index-based viewport persistence",
+    "Synthetic provider and task destination with draft editor"
+  ],
+  "not_implemented": [
+    "Remote transcript and message interactions",
+    "Sending/approvals/steer/queued input",
+    "Project creation and list composer",
+    "Complete official Android typography/material/top-container/filter styling",
+    "Haptics/notifications/live device state",
+    "Semantic anchor migration after reordering",
+    "Task destination restoration across activity recreation"
+  ],
+  "verification": {
+    "build": "android-remote-list-v618-build-r7.log",
+    "chinese_light": "android-remote-list-v618-oneplus-zh-r4.json",
+    "english_dark": "android-remote-list-v618-oneplus-en-r1.json",
+    "tests_per_run": [
+      "modelRules",
+      "listJourney",
+      "verifyRestart"
+    ],
+    "processes": {
+      "chinese": [
+        3619,
+        24807
+      ],
+      "english": [
+        29973,
+        20868
+      ]
+    },
+    "visual_inspection": [
+      "zh-r4/list-initial.png",
+      "zh-r3/failure-listJourney.png",
+      "en-r1/list-initial.png"
+    ],
+    "limits": [
+      "Draft entry uses accessibility text assignment; native composing candidates untested",
+      "Normal Codex button navigation was not completed because phone foreground changed to another application",
+      "No runtime theme-toggle test or haptic/notification test in this batch"
+    ]
+  },
+  "failures_preserved": [
+    "r1 scoped activity configuration crash fixed by scoped composition context",
+    "r2 report exporter parsed multi-column ls output; fixed ls -1 and per-file export errors",
+    "r2/r3 click before list stopped did not navigate; bounded settling and destination assertion passed r4 and English r1"
+  ],
+  "preview": {
+    "runner_restored_system_preview": true,
+    "device_locale": "zh-Hans-CN",
+    "later_observation": "Phone foreground changed to another application; device interaction stopped. No continued preview-foreground claim."
+  },
+  "build_retention": "android-remote-list-v618-retention.json",
+  "files": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListActivity.kt",
+      "sha256": "117b481c551c5efdb245e23ca84f01d765a50031eac45954cba48a7145579684"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListModel.kt",
+      "sha256": "4f598e6f6d29ea17ad61d299931e9a2d0fcd5db88bde82cae5557c59928b738d"
+    },
+    {
+      "path": "implementation/android/test-remote-list.py",
+      "sha256": "bda4835b9c9ad53e43e5bd00bcd0e8b9b4d686255f50da3db6b483323fabf065"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/RemoteListTest.kt",
+      "sha256": "72a134de7c4d1ba42cbf569854b6551e12c1c96d6c67f9c34b3e4fe336ddfab8"
+    },
+    {
+      "path": "implementation/android/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "6225e74c336b6b0526e9aefa9bb5626496b5b1a59d1177754cb02cf9139397e4"
+    }
+  ]
+}

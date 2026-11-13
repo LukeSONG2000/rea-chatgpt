@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "task": "v529 ordinary slider thumb finishing",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official_artifact_static_observation",
+  "validation": {
+    "binary_executed": false,
+    "production_edited": false
+  },
+  "findings": [
+    {
+      "id": "thumb-tree",
+      "status": "verified",
+      "offsets": [
+        "0x609c2bc..0x609cdb4",
+        "0x8239968",
+        "0x8239990",
+        "0x8239998"
+      ],
+      "conclusion": "ZStack contains Circle filled with Color, modified by shadow then opacity, and MessageInputThinkingEffortMeter with frame then opacity. Circle and meter are both constructed. Their visibility is controlled separately."
+    },
+    {
+      "id": "fill-and-shadow",
+      "status": "verified",
+      "offsets": [
+        "0x609c424..0x609c4c8",
+        "0x74ecd44",
+        "0x74ed654",
+        "0x8a514b0",
+        "0x7ce2358",
+        "0x7d7e700"
+      ],
+      "condition": "Boolean returned by 0x609dc40",
+      "when_true": {
+        "fill_resource": "ChatGPT/bg/primary",
+        "shadow_black_opacity": 0
+      },
+      "when_false": {
+        "fill_resource": "ChatGPT/icon/inverted-static",
+        "shadow_black_opacity": 0.16
+      },
+      "shadow": {
+        "radius": 2,
+        "x": 0,
+        "y": 1
+      },
+      "limits": "Resource name is closed. This bounded pass does not independently decode the color asset RGBA for every appearance."
+    },
+    {
+      "id": "thumb-opacity",
+      "status": "verified",
+      "offsets": [
+        "0x609c470..0x609c4a4",
+        "0x609c590..0x609c60c",
+        "0x96cc3fc"
+      ],
+      "conclusion": "Circle opacity is __showsThumbBackground ? 1 : 0 from view metadata field-offset-vector +0x40. Meter opacity is helper609dc40 ? 1 : 0. View metadata field-offset-vector +0x38 is __showsMeterInThumb. Helper609dc40 returns false immediately when that state is false. If true, it also checks an appearance union and VM getter609b920; it is not simply equivalent to usesMeter."
+    },
+    {
+      "id": "appearance-hides-meter",
+      "status": "verified",
+      "offsets": [
+        "0x6099260..0x609948c",
+        "0x60fb4f8..0x60fb528",
+        "0x60fb5ac..0x60fb65c",
+        "0x60fd310..0x60fd35c",
+        "0x6110730"
+      ],
+      "conclusion": "Both branches of expansion/appearance owner6099260 arrange __showsMeterInThumb=false. Direct branch6099304 supplies callback60fb5dc, which writes __isExpanded=true then __showsMeterInThumb=false and __showsPresentationChrome=true. Animated branch60993d8 supplies60fb4f8 to write __isExpanded=true, then609942c supplies60fb5ac which calls60fd310(false), the __showsMeterInThumb setter. Therefore after these appearance mutations settle, thumb meter opacity is0 and fill uses icon/inverted-static with black16% shadow regardless of usesMeter."
+    },
+    {
+      "id": "expanded-size",
+      "status": "verified",
+      "offsets": [
+        "0x6099b90",
+        "0x6099bf0"
+      ],
+      "conclusion": "Existing v528 geometry establishes expanded outer thumb diameter40 and inner meter frame28. Stable expanded thumb can render the recovered 40pt Circle with recovered fill/shadow. Meter visibility state must remain independent of the input usesMeter flag."
+    }
+  ],
+  "ready_to_integrate": [
+    "Use ChatGPT/icon/inverted-static for expanded thumb fill after appearance, with black.opacity(0.16) shadow radius2 x0 y1.",
+    "Expanded outer diameter40.",
+    "Preserve independent Circle background visibility and meter visibility if implementing the original transition."
+  ],
+  "unknowns": [
+    {
+      "boundary": "__showsThumbBackground complete producer lifetime",
+      "next_entry": "field-offset-vector +0x40 writers and presented view constructor",
+      "impact": "Do not claim a complete original entrance/dismissal opacity transition."
+    },
+    {
+      "boundary": "Appearance animation timing and completion equivalence",
+      "next_entry": "6099408..6099478 constants/imported Animation calls and full6099260 parent caller",
+      "impact": "Static mutations prove settled thumb outcome; animation timing and source-to-thumb transition remain unverified."
+    },
+    {
+      "boundary": "609dc40 true-state appearance union semantics",
+      "next_entry": "609a914 union descriptor,609b920 VM+0x60",
+      "impact": "Does not block stable expanded false branch; avoid replacing collapsed/transitional behavior with usesMeter alone."
+    },
+    {
+      "boundary": "overall composite visibility",
+      "next_entry": "609d018 used609c8bc",
+      "impact": "Outside settled ordinary expanded path, whole thumb visibility has additional gates."
+    }
+  ],
+  "evidence_files": [
+    "ios-remote-v528-slider-style-thumb.asm",
+    "ios-remote-v528-slider-style-findings.json",
+    "ios-remote-v529-slider-view-metadata.json",
+    "ios-remote-v529-thumb-types.json",
+    "ios-remote-v529-thumb-shows-meter.asm",
+    "ios-remote-v529-thumb-alternate-fill.asm",
+    "ios-remote-v529-thumb-appearance-owner.asm",
+    "ios-remote-v529-appearance-state.asm",
+    "ios-remote-v529-thumb-state-setters.asm",
+    "ios-remote-v529-thumb-state-helper.asm"
+  ]
+}

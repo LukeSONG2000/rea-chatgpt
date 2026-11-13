@@ -1,0 +1,38 @@
+{
+  "batch": 616,
+  "implemented": [
+    "Shared summary projection with source-observed ordering, comment removal, Markdown parsing and fallback.",
+    "Raw-summary constructors for transient thinking and persistent activity group snapshots.",
+    "Existing synthetic providers now feed Markdown/comment-bearing input into those constructors; original display text constructors remain supported."
+  ],
+  "independent_adaptations": [
+    "Provider hands the adapter ordered optional summary arrays, not a decoded official ThreadItem.",
+    "Fixture input/timing and native display/storage belong to the existing independent host.",
+    "The Foundation implementation executes on the installed SDK/runtime, not within the official binary."
+  ],
+  "unimplemented": [
+    "Original full reasoning content producer and consumer.",
+    "Raw official ThreadItem decoder and complete item visibility filtering integration.",
+    "Reasoning full-body disclosure and Android consumers."
+  ],
+  "evidence": "ios-remote-v616-reasoning-summary-findings.json",
+  "tests": {
+    "foundation": "r2 passed;12 new vectors and existing suite",
+    "r1_failure": "Test expected --- to become empty. Foundation full Markdown parsing returns U+2E3B; expectation corrected to retain parser output. Product code was not changed to force empty output.",
+    "runtime_ui": "5 passed, 0 failed, 0 skipped; ios-remote-v616-r1-summary.json",
+    "official_app_executed": false,
+    "installation": "version616; executable hash matches; ios-remote-v616-runtime.json"
+  },
+  "runtime": {
+    "version": "616",
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "preview": "core",
+    "executable_sha256": "0e4e1724e724be72cb89b720f6feb37d53459bd0872be4d47026ee8a6ddf47e3",
+    "hash_match": true,
+    "launch": "local.rea.chatgpt.ioshost: 82175"
+  },
+  "limits": [
+    "Runtime report records installation and launch; current screen not inspected in this follow-up."
+  ],
+  "retention": "ios-remote-v616-retention.json"
+}

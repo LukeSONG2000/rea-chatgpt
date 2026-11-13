@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "module": "9.4 ChatGPTProjects",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "minimum_project_home_editor_detail_chat_loop_implemented_signed_build_passed",
+  "scope": "Frontend, local catalog bridge and synthetic provider only. Distinct from Remote workspaces and ChatGPTSites; no business backend/model execution/sharing/authorization/memory service.",
+  "source_reports": [
+    {
+      "path": "ios-native-projects-home-editor-20261112-findings.json",
+      "sha256": "bf148ab427f8af8b8c59de1799575cc372809ce90d74cdf214a64add5813f301"
+    },
+    {
+      "path": "ios-native-projects-detail-20261112-findings.json",
+      "sha256": "c7b4b75e101db53df0cfc5e1bf0c40636cf43423678d51297c77cd34cb2ec2bc"
+    }
+  ],
+  "source_observations": [
+    "ProjectsHome View witness4ac499c ->body4abd88c ->full tree81102e0: NavigationStack/Plain List/Button rows/context menu/segmented filter/loading/empty/error/pagination",
+    "ProjectEditor View witness4a87f90 ->4a86020: NavigationStack modal, ScrollView/VStack, avatar/name, optional suggested-project rail and memory region, fixed toolbar",
+    "ProjectDetail View conformance810c42c forwards measurement wrapper; MeasurableBody tableaf2abd0 ->4a6e27c ->actual4a68a24, full810bd20 and810be70",
+    "Detail contains ProjectNavigationTitle/toolbar, FixedBarStack, bottom MessageInputContainer, native project conversation destination; conversation part uses stable IDs/LazyVStack/Divided/ForEach/Button/context menu",
+    "Project GizmoIDTag is distinct from conversation RemoteConversationIdTag. Actual showConversation and startNewThread accept project context."
+  ],
+  "implemented": [
+    "Registered Projects page in explicit host More available-features adapter",
+    "Retained native home using Plain List, explicit fixture filter choices, search, paging, loading/empty/failure/retry, project row and capability-projected menu",
+    "Create/edit native modal with name/emoji/memory fixture selection, fixed Cancel/Save toolbar, validation, unsaved confirmation and save error/retry; existing memory changes gated by capability",
+    "Pin/unpin and confirmed delete through scoped frontend operation receipts; duplicate suppression, revisions and delete tombstones",
+    "Native project detail with loading/retry/empty/conversation rows and bottom composer, independent per-project draft revisions",
+    "Create conversation with failure/draft retention; exact account/project/request admission; preserve creations acknowledged during an older detail read; no automatic navigation from an old project visit",
+    "Independent bridge reuses existing Chat host and deterministic message replay, with explicit project membership, initial draft transfer/send-once intent, Back to retained project detail and separate chat/project drafts",
+    "Project-bound local aliases cannot be rebound, are persisted without losing mode/membership, do not become ordinary blank conversation, and are excluded from ordinary sidebar/search and normal notification routing",
+    "Project file and sharing entries return explicit unsupported state; no fake service success",
+    "Cancelled read tasks cannot acquire a new request token; each SwiftUI query task captures its rendered query rather than rereading another current filter"
+  ],
+  "independent_adaptation": [
+    "Menu admission via previously documented host available-feature menu; original History-to-Projects root dispatch not closed",
+    "Filter visibility/order/labels, fixture project capabilities, emoji choices and memory options supplied by this offline host, not original runtime assignment",
+    "Home search uses native searchable; original search constructor not closed",
+    "SafeAreaInset/native TextField is a minimal adapter for the original FixedBarStack/MessageInputContainer, not complete original input style",
+    "Existing Chat host bridge is not recovered ProjectConversationScreen builder. It currently admits preview offline-local UUID aliases; real service identities need an adapter",
+    "Shared Chat header admits scoped New action and explicit project Back; project conversation interactive edge-pop and original full menus not restored",
+    "Canonical revision/cache/delete/read admission, active-visit token, draft transfer and operation wire contracts are independent frontend design",
+    "Local alias/history cleanup on project deletion is deliberately not inferred from unknown official cascade policy; aliases are hidden from ordinary UI and original project route is tombstoned"
+  ],
+  "not_implemented": [
+    "Actual account catalog/gates, complete official History route, exact menu order/callback factory and original localized keys for filter/action/editor labels",
+    "Full original fonts/dimensions/materials/shadows/animations and project display/emoji/suggested-project controls",
+    "Full memory configuration backend and original save/cancel/dismiss branch behavior",
+    "Original ProjectConversationScreen builder and real project-context transport integration; project chat interactive edge Back and complete project conversation menu",
+    "Conversation pagination/avatars/subtitles/live activity and rename/pin/archive/remove-from-project menu actions",
+    "Actual project file list/tabs/custom tabs, uploads/resources; current file entry only returns capability explanation",
+    "Real list/create/update/delete/pin/share/member/permission/cloud/memory/message services; no backend was built",
+    "Project catalog/create/edit/pin state and detail path cross-process restoration; fixture mutations last this service instance",
+    "Project-specific haptic triggers are unclosed despite original hapticEngine field; no generic tap/save/pin vibration added"
+  ],
+  "verification": {
+    "projects_contract": "passed; /tmp/rea-projects-contract-final-20261112-r2.log",
+    "shared_chat_catalog": "passed rebuilt test-state.sh; /tmp/rea-projects-chat-membership-20261112-final.log",
+    "foundation_harness_note": "Initial added test block ran before its later temp initialization and process exited139; block moved after initialization, subsequent runs passed. Not observed as an app crash.",
+    "r1": {
+      "artifact": "ios-native-projects-20261112.xcresult",
+      "result": "partial journey then locator failure",
+      "passed": [
+        "project list failure/retry",
+        "paging",
+        "create save failure/retry with retained name",
+        "project detail failure/retry and empty state"
+      ],
+      "failure": "Outer project-detail AX identifier propagated into safeAreaInset TextField/send, hiding their leaf identifiers; removed parent identifier without changing visible layout."
+    },
+    "r2": {
+      "artifact": "ios-native-projects-20261112-r2.xcresult",
+      "result": "partial journey then wrong AX-role assertion",
+      "passed": [
+        "project composer",
+        "creation failure/retry with retained text",
+        "project Chat Back header",
+        "actual user body and offline synthetic reply in message collection, independently confirmed by AX snapshot"
+      ],
+      "failure": "Test queried StaticText but selectable shared Chat body is TextView; query scoped to actual message collection/role."
+    },
+    "r3": {
+      "artifact": "ios-native-projects-20261112-r3.xcresult",
+      "test": "testNativeProjectsFinalActionsChinese",
+      "result": "passed",
+      "seconds": 63.757,
+      "passed": [
+        "composer to new conversation and actual user body",
+        "Back to project",
+        "separate project composer and existing Chat draft retention",
+        "edit name/save",
+        "project file explanation and Back",
+        "delete confirmation and removal from home"
+      ],
+      "scope": "Chinese/light targeted remaining journey; earlier failure/paging checks not repeated"
+    },
+    "visual": {
+      "inspected": true,
+      "screenshot": "ios-native-projects-20261112-r3-attachments/6C9C3CC8-76F2-487E-A66D-C779C82BE295.png",
+      "limits": "Semantic native adapter with retained next-project draft; no official pixel or tactile equivalence"
+    },
+    "final_change": "After r3, ordinary catalog/search membership boundary centralized and both title/message search inputs gated. Rebuilt Foundation catalog checks and simulator build passed; no repeat of unchanged UI journey.",
+    "simulator_build": "succeeded; /tmp/rea-native-projects-simulator-final-20261112.log",
+    "physical": {
+      "build": "succeeded",
+      "preflight": "ios-native-projects-20261112-device-final-state.json",
+      "connection": "unavailable",
+      "installed": false,
+      "last_installed": "Settings fixed-close candidate",
+      "install": "not_attempted_preflight_unavailable",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "binary_sha256": "161047bb0fef5d16f0f44c068ca7ba3da8c5b340286f4a58617d318ee38ddaf3"
+    },
+    "simulator": {
+      "report": "ios-native-projects-20261112-preview.json",
+      "hash_match": true,
+      "launch": "local.rea.chatgpt.ioshost: 42503",
+      "ordinary_screenshot": "ios-native-projects-20261112-ordinary.png",
+      "observed": "Visible ordinary core Chat and composer after normal launch; left running"
+    }
+  },
+  "files": [
+    {
+      "path": "implementation/ios/Sources/FrontendProjects.swift",
+      "sha256": "573a0096ceb7318f1459b526d784c1c2595f32d897aea8c9bef9f4d2a050e3ec"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeProjectsPage.swift",
+      "sha256": "912bb24974d91f406a4f44476f898005757b524935b041f7189482217ff648f5"
+    },
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "4112f04a62dcabe42fceeb3f9f09c896cf980bfe93df1900c973260d3f3477b9"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "9aa49ed713fda454eeec8f99c06f2e4afbfcb9ca8fb972b6d1abf76f9ee3ff34"
+    },
+    {
+      "path": "implementation/ios/Tests/Projects/main.swift",
+      "sha256": "4e87a9343c6485ad9eea0f6c3f41613f4744ddbc681606b324e7e14e657985f6"
+    }
+  ],
+  "review_route": "Sidebar > Explore/More > Projects > create or synthetic project > composer > Chat > Back > edit/delete; file entry is capability explanation",
+  "next_package": "ChatGPTSites native list and local browser preview, kept separate from ChatGPTProjects and Remote workspaces"
+}

@@ -1,0 +1,155 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "runtime_verified": false,
+  "production_edits": false,
+  "safe_area": {
+    "status": "verified-static",
+    "native_class": "0xad1b638 SwiftUIToolbelt.DeviceSafeAreaInsetsReader.SafeAreaProbeView",
+    "hooks": {
+      "didMoveToWindow": "0x756a924",
+      "safeAreaInsetsDidChange": "0x756a95c"
+    },
+    "common_measurement": "0x756a838",
+    "expression": "self.window?.safeAreaInsets ?? self.safeAreaInsets",
+    "proof": [
+      "756a848 ->1da3aa8 mov x0,x20 ->7c83180 window selector(slot acb4dc0)",
+      "756a85c safeAreaInsets on nonnil returned window",
+      "756a880 mov x0,x20;756a884 safeAreaInsets on self when window nil",
+      "756a894..8c0 compares all four values against lastInsets;756a8c4/c8 stores;756a900 invokes onChange only after change",
+      "make756aa44 stores callback75867d4 ->756aab8; callback converts to EdgeInsets and publishes binding"
+    ],
+    "scope": "This measurement supplies native safe-area inset; composer keyboard focus remains a separate input to19873c8."
+  },
+  "base_corner_branch": {
+    "entry": "0x761087c",
+    "public_uikit_path_predicate": "nonmutating_scene_corner_configuration_enabled == false && iOS >=26 && scene.keyWindow != nil && excludedOSBuild == false",
+    "proof": [
+      "76108c8/cc global b0a6a40 bit true ->7610910 fallback",
+      "76108d0..e4 iOS26 availability; false ->fallback",
+      "76108ec/f8 scene.keyWindow nil ->fallback",
+      "7610900->77107bc;7610908 tests excludedbuild false ->7610ae0"
+    ],
+    "flag": {
+      "key": "nonmutating_scene_corner_configuration_enabled",
+      "key_string": "0x88a41b0",
+      "initializer": "0x165b4e4, key loaded165b50c..514",
+      "getter": "0x165b4a0",
+      "global_write": "4faec callsgetter;4fafc writes b0a6a40",
+      "default": false,
+      "default_proof": "165b594 calls1661f5c;1661f68 strb wzr,[sp,#0x30].165b5bc..5d4 copies sp descriptor to b07d518. Getter165aee8 reads cachedOptionalBool+0x88; if tag2 at165af8c/90 it loads default+0x30 at165af94, returns bit0.",
+      "reading_proof": "165b4d4 ->1662690 setsx20=sp+8 ->165aee8; deferred update closure may run under lock before final optional/default read.",
+      "limitation": "Default false proven. Actual configured value at original runtime is not observed; explicitly selecting default public branch is an experimental branch selection."
+    },
+    "excluded_os_builds": [
+      "23A5260n",
+      "23A5260u",
+      "23A5276f",
+      "23A5287g"
+    ],
+    "build_proof": "77106e0 constructs set from aa71b50/60/70/80;7710794->77135c4->28df4 tests membership; caches bit atb0a6ab9. OS string producer7710e4c uses kern.osversion via sysctlbyname7710d78. Missing build returnsfalse at77107a8.",
+    "public_path": "7610b3c reads old keyWindow.cornerConfiguration;7610ba0/bac/bc0 sets corners(radius:.containerConcentric(minimum:nil));7610bd4/be4/bf4/c04 reads effectiveRadiusForCorner raw1/2/4/8;7610c54 restores original configuration.",
+    "fallback": "7610910 starts decoded _effectiveUISettings dynamic path; full field access and old OS behavior remain partial."
+  },
+  "screen_corner_correction": {
+    "entry": "0x7610404",
+    "base": "7610428 calls761087c",
+    "geometry": "keyWindow.convert(keyWindow.bounds,to:keyWindow.screen.coordinateSpace), compared against scene.screen.bounds",
+    "proof": [
+      "7610434 keyWindow;7610454 bounds;7610460 screen;7610470 coordinateSpace;761048c convertRect:toCoordinateSpace:",
+      "76104f8 and repeated76137e4 (mov x0,x20;screen) -> e1a064 bounds on scene.screen",
+      "7610674 onward exact floating point equality comparisons, no epsilon"
+    ],
+    "matching_corner_bits": {
+      "1": "window.minX == screen.minX && window.minY == screen.minY",
+      "2": "window.maxX == screen.maxX && window.minY == screen.minY",
+      "4": "window.minX == screen.minX && window.maxY == screen.maxY",
+      "8": "window.maxX == screen.maxX && window.maxY == screen.maxY"
+    },
+    "finite_value_formula": "for each matching corner: radius = min(baseRadius, displayCornerRadius); unmatched corner keeps baseRadius",
+    "clamp_sites": [
+      "7610788..794 TL",
+      "7610798..7a4 TR",
+      "76107a8..7b4 BL",
+      "76107b8..7c4 BR"
+    ],
+    "no_window_or_no_matched_corner": "return base four radii",
+    "fullscreen": "If converted keyWindow bounds coincide with scene.screen.bounds, all four corners are clamped. Fullscreen does not bypass screen radius correction."
+  },
+  "display_corner_radius": {
+    "entry": "0x76118dc",
+    "source": "scene.keyWindow.screen",
+    "decoded_key": "_displayCornerRadius",
+    "key_string": "0x8a5b9c0",
+    "proof": [
+      "7611908 keyWindow;7611920 screen",
+      "7611b5c NSSelectorFromString;7611b70 respondsToSelector:",
+      "7611b90 valueForKey:;7611c04 numeric dynamic cast;7611c0c load radius"
+    ],
+    "fallback": "0 when no keyWindow, selector unavailable, or numeric cast fails",
+    "scope": "Private selector/KVC measurement, separate from UIKit26 public effectiveRadiusForCorner.",
+    "cast": "as? CGFloat (7611bf4/f8 loads aad98e0 binding _$s12CoreGraphics7CGFloatVN, source aad9278 Any metadata)"
+  },
+  "integration": {
+    "source_backed_now": [
+      "Native SafeAreaProbeView hooks and window-first inset measurement",
+      "Finite-input dynamic composer formula fromv519 with styleInsets applied once",
+      "Exact screen corner mask and min clamping, conditional on actual radius providers"
+    ],
+    "constraints": [
+      "A host implementation that uses only public effectiveRadiusForCorner is partial until screen-radius correction and runtime branch applicability are accounted for.",
+      "Do not invent fixed device radius or assume fullscreen means raw public radius unchanged.",
+      "Public branch should preserve and restore original keyWindow.cornerConfiguration around synchronous measurement.",
+      "Legacy fallback and private selector implementation should be separately reviewed; no new production implementation was made here."
+    ],
+    "next_minimum": [
+      "Parent may integrate exact safearea reader immediately.",
+      "For public-only radius adapter, explicitly record partial provenance and verify measured dynamic insets in Simulator; original runtime remains unexecuted."
+    ]
+  },
+  "strings": [
+    {
+      "address": "0x8a5b9c0",
+      "raw": "c3VpZGFScmVucm9DeWFscHNpZF8=",
+      "base64_decode_then_reverse": "_displayCornerRadius"
+    },
+    {
+      "address": "0x8a5b9e0",
+      "raw": "c2duaXR0ZVNJVWV2aXRjZWZmZV8=",
+      "base64_decode_then_reverse": "_effectiveUISettings"
+    },
+    {
+      "address": "0x88a41b0",
+      "raw": "nonmutating_scene_corner_configuration_enabled"
+    },
+    {
+      "address": "0x8a5cb4a",
+      "raw": "kern.osversion"
+    }
+  ],
+  "evidence_files": [
+    "ios-remote-v520-safearea-class.json",
+    "ios-remote-v520-safearea-probe.asm",
+    "ios-remote-v520-safearea-probe-calls.json",
+    "ios-remote-v520-window-thunk.asm",
+    "ios-remote-v520-scene-border.asm",
+    "ios-remote-v520-scene-border-calls.json",
+    "ios-remote-v520-scene-border-helpers.asm",
+    "ios-remote-v520-corner-config-global.asm",
+    "ios-remote-v520-nonmutating-flag.asm",
+    "ios-remote-v520-corner-flags.asm",
+    "ios-remote-v520-osbuild-source.asm",
+    "ios-remote-v520-osbuild-contains.asm",
+    "ios-remote-v520-display-corner-radius.asm",
+    "ios-remote-v520-display-corner-radius-calls.json",
+    "ios-remote-v519-scene-ios26.asm",
+    "ios-remote-v519-scene-cornerbase.asm",
+    "ios-remote-v520-flag-initializer-full.asm",
+    "ios-remote-v520-flag-default-helpers.asm",
+    "ios-remote-v520-flag-getter.asm",
+    "ios-remote-v520-flag-getter-thunk.asm"
+  ]
+}

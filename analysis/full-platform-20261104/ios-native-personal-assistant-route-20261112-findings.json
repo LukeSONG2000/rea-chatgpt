@@ -1,0 +1,130 @@
+{
+  "status": "partial",
+  "scope": "iOS293 default assistant sidebar label and ConversationRoot Orbit pane template wiring; page contents delegated separately",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "static original metadata, exact SwiftUI.View conformance witnesses, full symbolic trees and bounded ARM64; no original App/service execution",
+  "route_correction": {
+    "observation": "HistorySelection has orbit and customize, not personalAssistant. PersonalAssistantHistoryNavigationCell is a label implementation name, not a destination case name.",
+    "descriptor": "0x9592308",
+    "orbit_field_record": "0x9a15290",
+    "enum_evidence": "analysis/full-platform-20261104/ios-native-personal-assistant-route-20261112/history-selection-enum.json",
+    "do_not_substitute": [
+      "AssistantSettingsScreen / Settings Personalization",
+      "Assistant message role renderer",
+      "user-defined R2-D2 name or user avatar",
+      "Chat/Work conversation page merely because it has similar inputs"
+    ]
+  },
+  "sidebar_cell": {
+    "descriptor": "0x95933e8",
+    "accessor": "0x1357098",
+    "protocol": "SwiftUI.View",
+    "body_witness": "0x128fa1c",
+    "actual_body": "0x128efd0",
+    "tree_record": "0x7db3d08",
+    "tree": "analysis/full-platform-20261104/ios-native-personal-assistant-route-20261112/sidebar-cell-tree.json",
+    "actual_structure": "HistoryNavigationCellContent with conditional icon content (AnyView/RemoteImagePart/CalpicoProfileImagePart/Image foreground style), HistoryUnreadBadgeView, truncation mode modifier",
+    "view_model_type": "HistoryNavigationCellViewModel (typeref0x8d8a414, field record0x9a181bc)",
+    "fields_inventory": [
+      "usesOwnIcon",
+      "accentIcon",
+      "layout",
+      "cellState",
+      "itemSpacing",
+      "labelStyle",
+      "themeColorSetting",
+      "unreadBadgeColor",
+      "avatarSize"
+    ],
+    "actual_consumers": [
+      "0x128f048 calls0x123f2d0 for original navigation viewmodel string value used by common content",
+      "0x128f050 calls0x123f31c for additional navigation state",
+      "icon constructor0x128f3c0 has template/profile image alternatives; raw template style typed record7ce0970, profile image record7daea70, URLrecord7db3d70"
+    ],
+    "default_identity_limit": "No source consumer binding a universal default display name/portrait was closed. Actual sidebar label and icon are supplied by navigation/profile state. Do not use R2-D2 or screenshot identity as defaults."
+  },
+  "root_pane": {
+    "descriptor": "0x9565a24",
+    "accessor": "0x661540",
+    "protocol": "SwiftUI.View",
+    "body_witness": "0x51782c",
+    "actual_body": "0x5172f0",
+    "viewmodel_type": "ConversationRootViewModel, not AssistantSettingsViewModel",
+    "viewmodel_evidence": "analysis/full-platform-20261104/ios-native-personal-assistant-route-20261112/pane-viewmodel-type.json",
+    "tree_record": "0x7d0cc48",
+    "tree": "analysis/full-platform-20261104/ios-native-personal-assistant-route-20261112/root-pane-tree.json",
+    "actual_tree": "Optional<ModifiedContent<onChange<AnyView,Bool>,AppearanceActionModifier>>",
+    "calls": [
+      "0x51730c calls lazy pane getter0x517400; nil checks0x517310, nil branch0x5173e0",
+      "0x517354 calls screen factory0x7656724",
+      "0x7656724 calls0x7669fd8, which reads generic metadata field offset+0x70 and tail-calls the stored screen closure",
+      "0x5173ac onChange<Bool> actual SwiftUI consumer",
+      "0x5173c4..0x5173d0 supplies appearance/disappearance closure data"
+    ],
+    "lazy_template_binding": {
+      "root_viewmodel_descriptor": "0x9563fc4",
+      "field_ordinal": 80,
+      "field_name": "$__lazy_storage_$_orbitPaneViewModel",
+      "field_record": "0x99dcff8",
+      "type_reference": "0x8c20f0a",
+      "type": "BaseAnyViewModel<TibroCoreInterface.OrbitConversationScreenTemplate,SwiftUI.AnyView>",
+      "evidence": "analysis/full-platform-20261104/ios-native-personal-assistant-route-20261112/lazy-orbit-pane-type.json",
+      "constructor": "0x517400 obtains injected builder closure;0x5174fc invokes it, then caches resulting model0x51750c..0x517510",
+      "limit": "Original DI factory closure at root dependencies is dynamic. The concrete OrbitSidebarConversationView registration has not been traced, so root-to-template proof is stronger than page-concrete reachability proof."
+    }
+  },
+  "capability_boundaries": {
+    "known_inventory": [
+      "HistoryViewModel orbitAvailable / orbitTitlePublisher / orbitIcon / orbitProfileImagePublisher / orbitAvatarPublisher / orbitUnreadPublisher / orbitShowsBadgePublisher",
+      "OrbitConversationScreenTemplate.ViewModelParams includes prepareForPresentation,openSidebar,openStartScreenSettings,canUsePhoneGesture",
+      "OrbitConversationScreenTemplate.ViewParams includes sideMenuBadge,openCustomize,isOpeningRoom"
+    ],
+    "actual_observed": "Root pane guards optional lazy model before rendering. Sidebar cell actually consumes model label/image state. Runtime enabled state, account/experiment capability and default name are not established by these field names.",
+    "unknown": "Exact _orbitAvailable predicate and Item.orbit→HistorySelection.orbit callback branch to root pane selection not independently mapped."
+  },
+  "page_peer_evidence": {
+    "owner": "account_293 independent worker",
+    "directory": "analysis/full-platform-20261104/ios-native-personal-assistant-page-20261112",
+    "candidates": [
+      "OrbitSidebarConversationView descriptor0x95bd4d8",
+      "OrbitSidebarOnboardingScreen0x95beaa8",
+      "OrbitSidebarOnboardingContent0x95c0ab4",
+      "OrbitSidebarCreationScreen0x95bf520",
+      "OrbitSidebarChatContent0x95beaf4"
+    ],
+    "limit": "Candidate inventory communicated by peer; concrete body findings belong to its report and are not yet promoted as this route consumer."
+  },
+  "frontend_admission": {
+    "can_restore": [
+      "Sidebar common navigation label/avatar/badge mechanism using explicit profile capability data",
+      "Root optional template pane with onChange and appearance ownership",
+      "Independent synthetic Orbit page provider using peer-proven content branch, explicitly marking unclosed original DI registration"
+    ],
+    "cannot_claim": [
+      "Complete source-equivalent default assistant entry route",
+      "Universal default assistant name or avatar",
+      "Server-backed creation, conversation provisioning, browser/computer/voice execution",
+      "Haptic or phone-gesture behavior inferred only from canUsePhoneGesture input"
+    ]
+  },
+  "next_minimum_evidence": [
+    "Resolve ConversationRootViewModel injected factory called at0x5174fc to actual OrbitConversationScreenTemplate builder registration; then match concrete OrbitSidebarConversationView body",
+    "Map HistoryViewController.Item.orbit case constructor through actual dispatcher0x12a8b08 into selectionHandler; preserve empty-case ABI mapping rather than enum declaration index",
+    "Trace orbitTitlePublisher and orbitIcon/profile/ avatar publishers to original fallback name/resource consumer; no custom identity constants",
+    "Resolve static eligibility owner of HistoryViewModel._orbitAvailable rather than using enum presence"
+  ],
+  "failed_or_nonadmitted_probes": [
+    "Attempt to read field offset storage0xb0ddf90 failed not-file-backed (runtime storage); no guessed numeric ivar offset used",
+    "0x7d16240 was not an admissible static type record; failed invalid length, no false generic tree generated"
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-native-personal-assistant-route-20261112",
+  "host_changes": "none",
+  "limits": [
+    "Opaque AnyView erasure is retained; a complete root generic tree does not reveal dynamic registered page implementation.",
+    "No original App, service/network, host changes, builds or device activity.",
+    "Haptics and gestures remain precise unknowns until direct source trigger consumers close."
+  ]
+}

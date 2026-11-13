@@ -1,0 +1,636 @@
+{
+  "schema_version": 1,
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary Remote quick model slider opening/closing and visibility lifecycle",
+  "status": "partial",
+  "findings": [
+    {
+      "id": "ordinary-vs-return",
+      "offsets": [
+        "0x1ce5bd8",
+        "0x199a71c",
+        "0x199a734",
+        "0x1ce599c",
+        "0x1ce59e4",
+        "0x6fd508",
+        "0x199a0dc"
+      ],
+      "conclusion": "Direct ordinary Remote entry supplies appearance0, constructor packs0x4001|(appearance<<8). The configuration-return callback1ce599c checks and clears its pending flag then6fd508 supplies appearance1 to199a60c. That callback is passed asx3 to62a9a08 from the actual Remote control body. Thus the normal entry uses geometry morph and this conditional return uses fade.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": [
+        "Exact generic modifier62a9a08 source declaration remains unresolved. Do not reopen after every advanced-sheet dismissal without the pending-return guard."
+      ]
+    },
+    {
+      "id": "initial-state",
+      "offsets": [
+        "0x60a006c",
+        "0x60a014c",
+        "0x60a0190",
+        "0x60a01a0",
+        "0x60a01b0",
+        "0x60a01c0",
+        "0x60a01d0",
+        "0x60a0288"
+      ],
+      "conclusion": "View initializer uses LazyState wrappedValue closures. isExpanded=false,isDismissing=false,showsPresentationChrome=false,showsMeterInThumb=true,showsSliderChrome=true,showsThumbBackground=true,presentationOpacity=0,hasStartedAppearance=false. False closure145b50→c3d2c storeszero. True2c3d28→3af10→159a50 stores1. SliderChrome directly uses3af10. Doublezero2168290→266274→1875c4. Rail and thumb therefore need no separate opening false→true writer.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": []
+    },
+    {
+      "id": "ready-once",
+      "offsets": [
+        "0x609891c",
+        "0x609895c",
+        "0x60989a4",
+        "0x6098a18",
+        "0x60fb210",
+        "0x60fb238",
+        "0x60fb270"
+      ],
+      "conclusion": "Body derives readiness from positive presentationSize width/height. If footerActions are present it also requires footer width matching current source width and positive footer height. Callback60fb210 exits if hasStartedAppearance is alreadytrue or incoming readinessfalse, otherwise sets hasStartedAppearance=true then calls6099260.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": [
+        "Specific generic observation modifier name and the complete footer-provider chain are outside this bounded slice. This supports first-valid-layout gating rather than an unconditional pre-layout onAppear mutation."
+      ]
+    },
+    {
+      "id": "ordinary-opening",
+      "offsets": [
+        "0x6099374",
+        "0x6099384",
+        "0x460120",
+        "0x6099390",
+        "0x60993d8",
+        "0x60fb4f8",
+        "0x60fb530",
+        "0x609942c",
+        "0x60fb5ac",
+        "0x609946c",
+        "0x60fb5c4"
+      ],
+      "conclusion": "Parallel animations: spring(response0.3,dampingFraction0.79,blendDuration0) setsisExpanded=true with completionCriteria.logicallyComplete. easeOut(duration0.08).delay0.04 setsshowsMeterInThumb=false. easeOut(duration0.24).delay0.06 setsshowsPresentationChrome=true. Spring completion60fb530 updates displayedLabelIndex from current selection only while expanded&&!dismissing and helper6112230 guard passes.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": [
+        "Full semantic meaning of6112230→609e804 retained unknown. Spring response is not a hard wall-clock completion deadline."
+      ]
+    },
+    {
+      "id": "ordinary-close",
+      "offsets": [
+        "0x609e320",
+        "0x609e384",
+        "0x609e9ac",
+        "0x609eb2c",
+        "0x609eb58",
+        "0x609eb80",
+        "0x609ebd8",
+        "0x609ec04",
+        "0x609ec58",
+        "0x609ecc8",
+        "0x609ecd4",
+        "0x60fd290",
+        "0x60fd2f8",
+        "0x60fd360",
+        "0x60fd394",
+        "0x60fd3c8",
+        "0x610b6ac"
+      ],
+      "conclusion": "Owner guards expanded&&!dismissing then marksisDismissing. Ordinary close schedules parallel easeIn0.075 presentationChrome=false, easeIn0.08 meterInThumb=true, easeIn0.06 delay0.15 sliderChrome=false, easeIn0.04 delay0.21 thumbBackground=false. Main spring(response0.25,dampingFraction0.79,blendDuration0) has completionCriteria.removed. Action60fd3c8 first stores a supplied nonnil dismissalSourceFrameInWindow then setsisExpanded=false. Completion610b6ac→60fd494→60fd498 retrieves elevatedPresentationContext and invokes its available callback.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": [
+        "Context callback exact ownership and provider commit ordering are delegated to existing lifecycle evidence. This report proves completion-based dismissal invocation, not every outer service action."
+      ]
+    },
+    {
+      "id": "fade-opening-closing",
+      "offsets": [
+        "0x60992dc",
+        "0x60992ec",
+        "0x26cc70",
+        "0x766318",
+        "0x60fb5dc",
+        "0x6099320",
+        "0x60fb660",
+        "0x609ea84",
+        "0x60fd438",
+        "0x60fd494"
+      ],
+      "conclusion": "For modelSlider presentation whose appearancebits are nonzero, opening createszero transaction storage and setsdisablesAnimations=true, then withTransaction writesexpanded=true,meter=false,presentationChrome=true. easeOut0.2 with no delay sets presentationOpacity=1. Closing uses easeIn0.2 opacity=0 and completionCriteria.removed→the same context callback. The independent initial sliderChrome/thumbBackground states are alreadytrue.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": [
+        "This branch predicate is modelSlider plus nonzero appearancebits. Other shared presentation tags must retain their own branches."
+      ]
+    },
+    {
+      "id": "overall-opacity",
+      "offsets": [
+        "0x60980c4",
+        "0x60980d0",
+        "0x60980d8",
+        "0x60980ec"
+      ],
+      "conclusion": "Whole presentation opacity reads state+44 only for modelSlider with nonzero appearancebits. Ordinary appearance0 uses constant1 even though the unused presentationOpacity state begins0.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": []
+    },
+    {
+      "id": "blur-visibility",
+      "offsets": [
+        "0x6099f08",
+        "0x6099f18",
+        "0x6099f58",
+        "0x610e71c",
+        "0x6099f64",
+        "0x6099f68",
+        "0x61114bc",
+        "0x6113914"
+      ],
+      "conclusion": "VariableBlur opacity is isExpanded ?1:0. At6099f08x19 becomes metadatafield+28 and persists through geometry calls.610e71c reads that sameState viax25+x19 before6099f64..68 converts Bool toalpha. Position follows current/expanded rail midpoint. The blur therefore participates in the main expansion/collapse spring, while the label has separate chrome timing.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": []
+    },
+    {
+      "id": "ordinary-title-opacity",
+      "offsets": [
+        "0x609a628",
+        "0x609b920",
+        "0x609b94c",
+        "0x609a638",
+        "0x609a640",
+        "0x609a658"
+      ],
+      "conclusion": "Ordinary source label readsVM+60 via609b920 (usesMeterSource). When true labelopacity follows showsPresentationChrome field+34; whenfalse opacity1. The5pt titleblur branch609a588..5c4 belongs to another negative-tag presentation and does not apply to ordinary0x4001. Full header typography/placement remains as corrected v529 ordinary nil-header sourceLabel chain.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": []
+    },
+    {
+      "id": "constructor-field-map",
+      "offsets": [
+        "0x96cc3fc",
+        "0x60b70b4"
+      ],
+      "conclusion": "Field names are recoveredSwift metadata, not inferred from screenshots. Dynamic vector offsets+28 expanded,+2c dismissing,+30 dismissalSourceFrame,+34 presentationChrome,+38 meter,+3c sliderChrome,+40 thumbBackground,+44 presentationOpacity,+4c displayedLabelIndex,+6c hasStartedAppearance,+70 presentationSize,+74 footerActionsSize.",
+      "evidence_type": "official_artifact_static",
+      "validation": "static_verified",
+      "limitations": []
+    }
+  ],
+  "implementation_mapping": [
+    "Mount collapsed geometry first and wait for valid measured presentation geometry, then run opening once.",
+    "Use separate expanded, presentationChrome, meter, sliderChrome, thumbBackground and opacity state. Do not bind all visual parts to one fade.",
+    "Use SwiftUI animation completion criteria for cleanup. A fixed sleep equal to spring response changes semantics.",
+    "Retain window and source geometry until dismissal animation removed completion. Preserve owner cancellation and deferred commit identity.",
+    "Use appearance1 only for proven pending configuration-return route. Set disablesAnimations on expanded setup before outer opacity fade."
+  ],
+  "unknowns": [
+    "Official device animation/frame-rate and Reduce Motion behavior have not been executed or verified.",
+    "Generic readiness observer modifier identity and full displayLabelIndex guard meaning remain unresolved.",
+    "Outer context cleanup/cancel/provider sequencing should be joined with existing owner lifecycle evidence before broadening behavior.",
+    "NonmodelSlider negative presentation-tag animation branches were intentionally excluded."
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-model-entry-control-body.asm",
+      "sha256": "1bd7bee81a8ac6d528ab6e195d6aed62b1d49cfeb1420128a5defede14637a80"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-callbacks.asm",
+      "sha256": "915576d8326a0778a6c48c0a8f89591cf65ae8f2012863fb21095837efc16dd5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-lifecycle-findings.json",
+      "sha256": "d8181aa445e916d67e07bbc046b5b2d1919a79a42779fe1d4f3b3bc7ddd2503c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-slider-return-appearance.asm",
+      "sha256": "3cfcb37a53959d9a7cb4d55579abbdf6edd47f1498e599253baedaf89a148e2e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-body.asm",
+      "sha256": "30c90f0b0ab19bea9dc0845ac40021c0cc9303e9ba0cd336b5c0c76ab14b1025"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-view-content.asm",
+      "sha256": "45c37033aa271fd927899032f8cd5d5f80ec70742c74b7339ac08138d82a0b12"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-appearance-state.asm",
+      "sha256": "5177585fa1f3fbb6938d56ff9d8a2eb04400def38718e1d383c3dd00ced06d5c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-label-producer.asm",
+      "sha256": "78cfab41197e739a785ce457542476ebb4b0dc1fb86e9c8cd86f29983531bfea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-view-metadata.json",
+      "sha256": "09031bfee80c949a18f11700ddbc939e6caa4ec261551cfe6cb3af1eeff07b04"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-afterbody.asm",
+      "sha256": "dd5a60b69b137af69622bd4f41c74aa5c2aef5773abc5a039a593c7da09c000b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-afterbody.json",
+      "sha256": "fc23a538f16daa16bce82222ba6bb487781147e477f50d45f9486e8796af96b6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-appear-thunk.asm",
+      "sha256": "6bdd1bfa2f48b81d86b2e4449052bfb1452808bbe103e8e5253be8af56212aaf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-appear-thunk.json",
+      "sha256": "13b42c56d4e97b26f4851d30460c23d23af515e5a206bc046bfb0588463d81a9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-appear.asm",
+      "sha256": "74f211649d49a9fe66a55ae45e25b6934eb659fc52ef8d391139dd847e2d8867"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-appear.json",
+      "sha256": "00309098ba48cc27683521195e8acc31f743690601323140bef97143ba893f54"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-blur-opacity-helper.asm",
+      "sha256": "caba9960327ecd490d7fde2780983edd1fb0f6da20ed0d54d9d9e8de0161a88b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-blur-opacity-helper.json",
+      "sha256": "0394fbad2efc45a8a7ae661f933d54dc18529562095614b7da2d26a1fd759229"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-body-final-thunk.asm",
+      "sha256": "e0843efd94e004ad2963e433817bf0d912a1afd7eac0203820cc4d2c50a405a4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-body-final-thunk.json",
+      "sha256": "eadf80cf8ede1424e8c1fa81d8628b184ade5cc5ab9f24952aaa53e035866c45"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-chrome.asm",
+      "sha256": "89680368ff68f82c31b92a2758c471baa72634b181dc94bb310e3c00388ba990"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-chrome.json",
+      "sha256": "539eca2561c091a71fdf4b59737efbd7bed77a5aac3969885f9751fb52f44b64"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-animation.asm",
+      "sha256": "5bd4bc7d48ebec726b172e848c205574a2cf6d1be14fa9b5ad73ae52284ffac1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-animation.json",
+      "sha256": "c8c8554c7747da5c25f0c313aa0c74b63e51091fdd500ad685bb1d44831bf83b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-chrome.asm",
+      "sha256": "12f40ab9a8118e937462fd8783def3d6098a37da0a229124b3a34706664b36b7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-chrome.json",
+      "sha256": "2ea12d8496f69c58ca7474099355e6d21394a16595aeedbd27393b3e5da6a3fd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-collapse.asm",
+      "sha256": "843cd5600edad7ce19910dcddf45921d3ec08e919f8ee96f2892d204bf6543e0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-collapse.json",
+      "sha256": "5afb9a4d06de402a4fb52922db170db2d44571d0c5283a6da9bf4610fbe599c9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-completion.asm",
+      "sha256": "0ac277bd4d3c2775f2384427538826f5ef5592720dd2846770776c7bc4fe0935"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-completion.json",
+      "sha256": "15aeb098c503b5bf4c81ffff18d089486a3c01aa732fe2ceb762adb4fc36b66a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-constants.json",
+      "sha256": "7df565cdc974a64d0826af60981a81867c0af45e198bfa540ad7e148908eb413"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-fade-completion.asm",
+      "sha256": "ff0abd080bdcfd42cde3a1ddb73a37b14a18e7bf24cfb1b07faf341714e4f47b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-fade-completion.json",
+      "sha256": "8d609adbcd17e700108a05bb5e1446f54e9e59ad0f182f3e276f27bfc3a2117c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-meter.asm",
+      "sha256": "b96d38f55384f520b91975bcc4d1b101bd6d4cafe836183f45addb276091be03"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-meter.json",
+      "sha256": "fc9c672e5ee6fae836b36dc5e9d825672aab04fbaf3e1076c2994f407906212e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-opacity.asm",
+      "sha256": "380eb2c90ab5169b0d113f0026d8ebcb4f39767fe95a78b377cb92ad870e1f0f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-opacity.json",
+      "sha256": "3406cb5750316f11ba085c512cfabe4ee79913ab2490808d2671b32c57f6739a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-slider.asm",
+      "sha256": "1a7fed42e690666db1c1ba8752ad38b85f3c797ff74ba1d2725c8fafbef9c7e5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-slider.json",
+      "sha256": "ec750e55a7ae9bd1236b91d2bed8f69c51e3d30b6a83aa797af2b8273396d3c7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-thumb.asm",
+      "sha256": "520ab77cbdf7cfe5476d4bc31bab84884478869b43cdfec7b99990693a2ba4ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-close-thumb.json",
+      "sha256": "37697a63f0da271942eefd455a9a07ab26f716afc7c1223397c6f8ee6ceb1b76"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-closing-owner.asm",
+      "sha256": "2a4bdcd76991e6ca136e70b6e01a1ab111c16f26d75aaf136f1faa38b5759b4e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-closing-owner.json",
+      "sha256": "0f33e06819a235c0fa50a8d53ad8165193d43cd90596d305cf74bab55b44fafb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-completion-body.asm",
+      "sha256": "7c85873ce7eb44223eefe2ed4552b78b7687cb203c706d71048a814b43c923ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-completion-body.json",
+      "sha256": "4b263b7a3592f4645a1f627b90a47683f0d6fd77b326c54fa487bf286f92d2de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-constants.json",
+      "sha256": "3852d4b03fcc43fa28fc09a2257c300d08e22c9686c554f39a7694b39db230b8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-constructor-candidate.asm",
+      "sha256": "2073eaeaeaf97cd55694f7d17f06f504a93a8ff662910d06516882dd1a691cc1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-constructor-candidate.json",
+      "sha256": "d42055874ceb164b52edb09d8c54b1493cd6565fdf86ada7879c1289e5585d10"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-content-callback.asm",
+      "sha256": "a0fa7dad4fdab01a79d466d5aa1cb6f75557e7d1a40aab35268b10a16565918b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-content-callback.json",
+      "sha256": "557b0e899ebf97ac70a9713315f559d84abe797493079b67df2922df4f2e10c2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-content-maker.asm",
+      "sha256": "cd6bbcff8fa2a036a2018543f7d58a48b367dbbb0a7f5386f274d0d52d555d10"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-content-maker.json",
+      "sha256": "e8a6868cf07f20675eebdb404203100a88cd6d77c18a1c0ccedf450a1c4686a9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-expanded-states.asm",
+      "sha256": "a835d4d4b64dfdce13dc0c959505da0df62c3341016bda3d7e1ed821d226a6c8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-expanded-states.json",
+      "sha256": "9c1c88589d0063f849d2bd0fa8df0dc17fae44586cec4b0e3e986305b8631f53"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-finish-target.asm",
+      "sha256": "76188ec1a3a40eb8fc3cbb3c898428839ad3391e4367c8a2f323a095582d1a48"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-finish-target.json",
+      "sha256": "eba5ec63ab70f4c2ea687afa3b4bf4caf6b7c0bc43bf3c5b1634bc47c582ca6b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-finish.asm",
+      "sha256": "222e2b4bd45b59eb1f4a8a87a0a5b93054521909f2aab169ccafe97941d859a4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-finish.json",
+      "sha256": "b5bff6b8db71e181f25d0191ba1b41681ddd5d4da94e43a34da39e63b0dee5b6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-imports-xrefs.json",
+      "sha256": "5a1ee4225b5603e3cdfdf0940bbbc5bf3d528b4bf525a504928f2e2974fd8a11"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-imports.json",
+      "sha256": "a0c2df882a47116c6509f9f8262c1f688e92625cc23bce2937bc354a36e99f0d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-false-body.asm",
+      "sha256": "41975be1da59f3d4ac5bf50e932d83d9e12847423871241be876f2298027ad30"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-false-body.json",
+      "sha256": "cd9bace8c3308fe678b41d4ec8cbdfc7b3f71c9af2dffff6505f19ab994a81e2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-false.asm",
+      "sha256": "579970d411d114cc7b3fe81f13d02e26bfc3ddfb815dde84fda33a9c935a7a76"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-false.json",
+      "sha256": "78378e4158953e5370b0a1701c235b3f20d8be5c3059b5bcf58ece8954f84b27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-slider-chrome.asm",
+      "sha256": "e4d2c39f915dfb460e48c05ecd29b966200a771f3991a0e517841d262741bc19"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-slider-chrome.json",
+      "sha256": "e6aa7a585d323114e176b2b488b8d9df1e3e6c67e3ea264eb7ba8c6d7d639865"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-true.asm",
+      "sha256": "5b36996b9f7d66154a77ce86622c2c6d0f342590be6d234b4ef67feeaff45227"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-true.json",
+      "sha256": "3aff29a4a24ebbc6652d52e91888ab96d58331f772919219e6c04aa87b5a95fa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-value-store.asm",
+      "sha256": "0c47d473d3b241f864654d745d02575e3b6f0cf4c8d9db9558e8f43502cf9458"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-init-value-store.json",
+      "sha256": "115e3c2634fa4aca017c754d8e2d510b29df1f1a2a594ced0ac7272eb04d4f58"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-lazy-init.asm",
+      "sha256": "61a2964307b83dadde8c42e32a46548dd031287ad5d81648324f46f5e5d40d73"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-lazy-init.json",
+      "sha256": "5dfb46f7b31bd680463bc752a5ff9e2ae22d55c3efbac3620efa74c32954e6af"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-opacity-init.asm",
+      "sha256": "26ab4178bddbcfe0d60b06d311dd75616911bf0ff83f8963e2c32cdb586ee618"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-opacity-init.json",
+      "sha256": "5df86c23b669fa496eda07ca95ec0226a22820f31463b74586765733da0eb402"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-opacity-store-helper.asm",
+      "sha256": "7e3a1848a3577b4993a5ba1466f986b398473b871acbcddc9cdd1ee570415d5d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-opacity-store-helper.json",
+      "sha256": "e6f9925aa7f2fa24aec40bdae6e87a99b5b5dfc202d06914ab58636054690a9a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-opacity-zero.asm",
+      "sha256": "3ed9a43a66627d6e336c31f971e67cf1e275a18bd033a614a2548cfc9fa01492"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-opacity-zero.json",
+      "sha256": "774a5bae3d802ee15d7b111e92f04099726a2256813880bbc42e158708291a77"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-opacity.asm",
+      "sha256": "44158e19535ea0972fa2010ee1d468d84446ef13c457fd6c458508bb1faa33ce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-opacity.json",
+      "sha256": "17e6cffbf09b71a6b1b8dbf906cbae9a01e93dd531f3ea3d2222b00cdee9c5c5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-prebody.asm",
+      "sha256": "367191130a31a1b5f4926b64f44b3447e26bc732c6deabf8d44692b229bf03f6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-prebody.json",
+      "sha256": "79faa4f7b608841da24c6c27347dfbdcab70128e539d511b63576fe6d6f827d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-presentation-opacity-state.asm",
+      "sha256": "a427298414458a8ec240844c00dbaa175025368d821d77550b10d78b46e1a40e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-presentation-opacity-state.json",
+      "sha256": "c438316c909dea725e19ca15ce16ca719cebb1cb7590451f140c1c34efafb18d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-readiness-guard.asm",
+      "sha256": "c3af4c20cdd62d470265ab2de1cfcf38b4d2dd0eb9117f07a5b99d25f91d48ed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-readiness-guard.json",
+      "sha256": "711c638035b0ad631248a9a353d2d24f948580d628c69bc7826c50011590d7d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-readiness-modifier.asm",
+      "sha256": "67baf3f05e1538ee784ac72b22835ecef3c1eb1ab4ef3922426d1ac37c9ebc88"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-readiness-modifier.json",
+      "sha256": "9dc4365e2506dd446127eb6778b1c39bd2fa9fa67bf65ea3504051fd32428224"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-spring-helper.asm",
+      "sha256": "c5db98666180379946306449893f84acad6210e49332bd29761383ddfdbeea2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-spring-helper.json",
+      "sha256": "bd2fb6687a141fbd11fa41b9cb475402ccdb676fb0210778dd0772da7fe65731"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-transaction-helper.asm",
+      "sha256": "7898bfeecf898099be4ab431c6954c5b833249ccd6597e43d870c0602b0d3d08"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-transaction-helper.json",
+      "sha256": "8f9a236dce28670636729b8c57302030fa7b3a55998a7495c2c0763b3ec3ec17"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-transaction-init.asm",
+      "sha256": "17093e2c6407f54d4b152732fdfa8edacce113f3f2a431b9a32526ce963b7ca4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-transaction-init.json",
+      "sha256": "9e5afa916c389c7d87996a89d7d87b4e2d0cb92ca019c9e68648fa69b604aa4c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-transaction-run.asm",
+      "sha256": "129bd1029d1f0cd9e22d2e1d0c008efd2ce6de23d15076ddbe695eaf7229d6d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-transaction-run.json",
+      "sha256": "f8cea4b99064d5220daba3bd1ab28c0b88a126c5f37e7767b92546fe63f46df8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-uses-meter.asm",
+      "sha256": "61a80c1a1396f91aeee98e852d7095cbfe30df5ecc481a3982f51baefb4abb83"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-uses-meter.json",
+      "sha256": "124aeb07a9423e2261e623fe7256298caac3b11a62fa8e8e15d237d5e8d7a5a1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-view-builder.asm",
+      "sha256": "fe323082217b9ab7250ff2830eb6d10395c5c9ed2d2301e05288ec440b595147"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-view-builder.json",
+      "sha256": "b271c0b4bca531f6653904ccf187e598a8d063c9b2527caad622fac99dfae2f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-view-init.asm",
+      "sha256": "5d75415886ca1ab46df45a46c8da1f04741ae0c889823af106ca812015ed674b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-view-init.json",
+      "sha256": "4ef269aef21049da4904949c3f8a8d6097a5d4b41d2482e90d3c77050cdc8521"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-with-animation.asm",
+      "sha256": "eae3558c77d4ef8521d046de0428a666488ef6319508b8e980f6bbfc4de5cf78"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-with-animation.json",
+      "sha256": "4622f096552f790ba9341a0ecc30411d154f5426cfd6bece33260a1dde2a02bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-with-completion.asm",
+      "sha256": "9d0d027c916ceaf657fb99f0db448c6f984357ffcdfbfeaec52e6f34594a07bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-with-completion.json",
+      "sha256": "990914cd267e541c62c51ba0e3918011e79ecff31fe128ad712e4be5c2579999"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-zero-double.asm",
+      "sha256": "fb1bec4e03ba922e2c1fa96aa151a1022eb4e183cacc4b2d9c5baebc7491a421"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v530-slider-animation-zero-double.json",
+      "sha256": "471daba6bf41483955c7f7ea2ac7ad89809a5ce13b6c201e3f110011682790e8"
+    }
+  ]
+}

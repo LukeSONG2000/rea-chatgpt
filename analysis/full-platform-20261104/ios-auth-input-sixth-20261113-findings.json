@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two exact producer groups: AuthInputFieldStyle fieldCheckResult -> border state/resources; actual NativeSignupPasswordView parent -> minimum-height ScaledMetric. Reuse prior geometry, do not re-investigate padding10/12/radius16/floating label.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused": [
+    "ios-auth-input-fourth-20261113-findings.json",
+    "ios-auth-native-third-20261113/field-style-metadata.json",
+    "ios-auth-native-third-20261113/field-style-body.asm",
+    "ios-auth-input-fourth-20261113-raw/overlay-and-placeholder.asm",
+    "ios-native-auth-welcome-20261112/password.asm",
+    "ios-native-auth-welcome-20261112/password-calls.json",
+    "ios-native-auth-welcome-20261112/username-calls.json",
+    "ios-auth-welcome-fourth-20261113-findings.json"
+  ],
+  "findings": [
+    {
+      "id": "validation-type-and-tags",
+      "classification": "official_artifact_metadata_and_consumer",
+      "status": "verified-scoped",
+      "conclusion": "fieldCheckResult is Optional<NativeAuthFieldCheckResult>. NativeAuthFieldCheckResult descriptor957c11c is payload enum error(text:String), info(text:String), success(text:String?). Helperdf0c08 reads its tagbyte at payload+0x10; it is not a derived isValid predicate.",
+      "source": [
+        "AuthInputFieldStyle.fieldCheckResult typeref8cce01c ->957c11c, optional suffixSg",
+        "descriptorfieldkind3/caseserror,info,success;payloadtyperefs8ccea06=SS4text_tand8ccea10=SSSg4text_t",
+        "df0c08 stylemetadata+0x18 ->payload;df0c10readtag+0x10",
+        "d4ddd4 compares2;tag0/1rendersrow,tag2optionaltextnilomitsrow;niloptionalproducesnochild"
+      ],
+      "limit": "Validation computation/when each parent assigns error/info/success is not recovered. This closes visual projection of an already supplied typed result only."
+    },
+    {
+      "id": "border-state-table",
+      "classification": "official_artifact_observation",
+      "status": "verified",
+      "conclusion": "Focus has priority over validation. Focused field uses focus resource, width2 and inset1. Unfocused error(tag0) uses danger-secondary-default, width2/inset1. Unfocused non-error uses heavy border, width1/inset0.5.",
+      "source": [
+        "d4e56c..590 focusbranch;factory74edcd0;lineWidth2",
+        "d4e594..5ac rawtag0 selectsinset1,otherwise0.5",
+        "d4e5b0..5c4 rawtag0 ->74edc80,nonzero ->74ed060",
+        "d4e5c8..5d8 rawtag0 selectswidth2,otherwise1",
+        "74edcd0 literal8a51830=ChatGPT/interactive/border/focus",
+        "74edc80 literal8a517f0=ChatGPT/interactive/border/danger/secondary/default",
+        "74ed060 literal8a510d0=ChatGPT/border/heavy"
+      ],
+      "limit": "Use semantic original resources including trait variants, not invented RGB or unconditional red while focused. Inset is stroke inset geometry, not opacity."
+    },
+    {
+      "id": "password-height-default",
+      "classification": "official_artifact_observation",
+      "status": "verified-scoped",
+      "conclusion": "The examined actual Password input parent initializes AuthInputFieldStyle._textFieldMinimumHeight with base56 scaled relativeTo Font.TextStyle.title. This is an explicit minimum-height producer, not an allocation constant or font point size.",
+      "source": [
+        "d67d80..88 preparesactualstyleoutputaddressx20",
+        "d67d8cIEEE0x404c000000000000=56;d67d90storeswrappedvalue",
+        "d67d94 ->de9670 loads boundenumcase throughaad38e0",
+        "aad38e0 binding _$s7SwiftUI4FontV9TextStyleO5titleyA2EmFWC",
+        "d67db4x0=&56;d67db8x8=x20;d67dbc x1=.title;d67dc0 ScaledMetric.init(wrappedValue:relativeTo:)",
+        "d67dc4 ->debb14 ->dcfe10 =AuthInputFieldStyle metadata;d67dccandlaterwritesnamedfieldCheck/isFocused/hasInput/placeholder/passwordVisibilityinthatstylevalue",
+        "existingconsumerd4e0bc/c4 ScaledMetric.wrappedValue ->FlexFrame minHeight"
+      ],
+      "limit": "Scope is this NativeSignupPasswordView input producer. Do not generalize56/title to Username/OTP/allAuthfields/WelcomeButtons. UIFont/Font size is not56."
+    },
+    {
+      "id": "other-nearby-metric-not-default-proof",
+      "classification": "official_artifact_observation_reused",
+      "status": "verified-negative-scope",
+      "conclusion": "Existing Username native calls include another ScaledMetric init with base36 relativeTo.largeTitle. That surrounding producer was not mapped to AuthInputFieldStyle, so it is not a recovered input default. Welcome51byte style-copy also remains owner supplied and supplies no universal56/28.",
+      "source": [
+        "d75014IEEE0x4042000000000000=36;d75040ScaledMetricinit",
+        "de9650 bindingaad38c0 Font.TextStyle.largeTitle",
+        "ios-auth-welcome-fourth-20261113-findings.json raw0payload+0x70stylecopy"
+      ],
+      "limit": "Do not substitute unrelated title metric for input minimum height or infer common defaults from nearby constants."
+    }
+  ],
+  "visual_state_table": [
+    {
+      "focused": true,
+      "check": "any",
+      "resource": "ChatGPT/interactive/border/focus",
+      "line_width": 2,
+      "stroke_inset": 1
+    },
+    {
+      "focused": false,
+      "check": "error",
+      "resource": "ChatGPT/interactive/border/danger/secondary/default",
+      "line_width": 2,
+      "stroke_inset": 1
+    },
+    {
+      "focused": false,
+      "check": "info/success/absent",
+      "resource": "ChatGPT/border/heavy",
+      "line_width": 1,
+      "stroke_inset": 0.5
+    }
+  ],
+  "implementation_admission": {
+    "can_restore": [
+      "SharedtypedfieldCheckResultborderprojectionwithfocusprecedenceandexactresourcefactories.",
+      "Password-specificScaledMetricbase56relativeTo.title,consumedasminimumheight.",
+      "Error/infoalwayssupplyinfo-rowtext;successhasoptionaltextandcanomitrow."
+    ],
+    "not_admitted": [
+      "GlobalAuthfieldheight56withoutmappedparent.",
+      "Welcomebuttonheight56/corner28asofficialdefaults.",
+      "Focused/unfocusedplaceholderpointfontvalues:actualsuppliedfontsremainunknown.",
+      "Validatorlogic/backenderrorpolicyorautomaticOTPsubmit.",
+      "Unprovedinfo-rowglyph/colormappingbeyondtheexistingtypedprojection."
+    ]
+  },
+  "corrections": [
+    {
+      "path": "raw filenames neutral-border-color/invalid-border-color",
+      "note": "Those were provisional labels. Actual74edc80 is danger-secondary-default;74ed060 is heavy. Exactsemanticnamesandconsumerbranchaboveareauthoritative."
+    }
+  ],
+  "precise_unknowns": [
+    {
+      "boundary": "Username/OTP/AuthInputFieldStyle firstfieldproducer",
+      "missing": "NumericminimumheightandrelativeTextStyleforeachotherinputparent."
+    },
+    {
+      "boundary": "AuthInputFieldPlaceholderStyle parent assignments",
+      "missing": "Effectivefocused/unfocusedFontandColorvalues."
+    },
+    {
+      "boundary": "WelcomeLoginButtonListStyleproducer",
+      "missing": "Selectedownerheight/corner/fontconfigremainsupstreamofthe51bytecopy."
+    },
+    {
+      "boundary": "NativeAuthFieldCheckResultproducer",
+      "missing": "Actualvalidationrulesandparenttiming;currentpassonlyprojection."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 2,
+    "static_only": true,
+    "product_modified": false,
+    "build_or_device": false,
+    "official_app_execution": false,
+    "network": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-auth-input-sixth-20261113-raw",
+  "raw_inventory": [
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/auth-style-meta.asm",
+      "bytes": 549,
+      "sha256": "d226009a7a7743ef691603a7126435c9ed8f4afb3d7546c39cc9b4d3cccfc0b4"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/auth-style-meta.json",
+      "bytes": 939,
+      "sha256": "635b9ca7f83bab2a099fa33b6d62d275ab8f7410866b900d130d2379aff1ac53"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/field-check-fields-colors.json",
+      "bytes": 557,
+      "sha256": "0c6d2368ff3acfbcfb4bb757472fa8a761fb55fe2bdf2c85d3174c6d14fd42e8"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/field-check-predicate.asm",
+      "bytes": 1571,
+      "sha256": "05be3456d1c13d8bff58ee9cb65d78fecdeae9dee9242cb06a5e6c9cb50405e8"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/field-check-predicate.json",
+      "bytes": 1019,
+      "sha256": "f37292c31f1c151c00875bb1300439267e8e706501c599fb70c0fa4dd59093b2"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/field-check-type.json",
+      "bytes": 756,
+      "sha256": "521f1e1324a57070e8c0111ff965c79cab39de0d61c353972362013c8fa9b0fe"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/field-info-states.asm",
+      "bytes": 2161,
+      "sha256": "0813f75de0b0ad4fded1577cb7ad8c6e30b975fdbf975b3f27e4ee239a21f3b2"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/field-info-states.json",
+      "bytes": 2581,
+      "sha256": "14edb376d4af557c4b46f812adad1f41faf83917d56f1f286db90985bc9cf96e"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/focused-border-color.asm",
+      "bytes": 1167,
+      "sha256": "6191b6d34bf80d6ebcd007b0faab05a292002aa1aea90d4cf15603eb688e4344"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/focused-border-color.json",
+      "bytes": 2115,
+      "sha256": "6f362b43d2aad84edbfeeeaacd2055d5418009adbbb0869e5694ecf4e5098430"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/invalid-border-color.asm",
+      "bytes": 1219,
+      "sha256": "8422758147962866f462a8bb893a401d80711c6503479a9df4bd005f87b7971d"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/invalid-border-color.json",
+      "bytes": 2115,
+      "sha256": "45eb5fd8e5fec2971334ab6937bacc7b66dde318052b96ea4a66048fc51e1ef1"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/metric-textstyle-bindings.json",
+      "bytes": 508,
+      "sha256": "a5f73d5bda05ab9128747cef38325a51858f1880e3f7f4bdb889b369154165ac"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/metric-textstyle.asm",
+      "bytes": 670,
+      "sha256": "7e0f0d597aa52dee7f4d3da4f9a01d3b6b815af8c6d4b18c7886867581ab7572"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/metric-textstyle.json",
+      "bytes": 923,
+      "sha256": "991860f5c5cca116e4c647fa599b5fd12571469ca9c1ce3284e144815e7ce60b"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/native-check-metadata.asm",
+      "bytes": 335,
+      "sha256": "5e414e49a614ffa91c6eb67058dfa1f526b65884c8758a0cdeaa4e34a5a67498"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/native-check-metadata.json",
+      "bytes": 891,
+      "sha256": "82befe6fc9442961dda62624a0f36b5256f9eb643455f6208f03ad0125d94211"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/neutral-border-color.asm",
+      "bytes": 1220,
+      "sha256": "7c9edc1be6c0baa35e00d6be15f48a7eb81ad447e9e4cec770bc1858f7d318ec"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/neutral-border-color.json",
+      "bytes": 2115,
+      "sha256": "c03ee9913e879a575e09dd214a6d7d158f26141dca82bf182359c8faef6ae462"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/password-metric-producer.asm",
+      "bytes": 4060,
+      "sha256": "115547f2f567ce912e1a9bd2393afbe444cdf74f04abe18b5408607f38922161"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/password-metric-producer.json",
+      "bytes": 3226,
+      "sha256": "9f7ad67cad070b71c275bf0cb3990acaeb9408592d1ea849d0d250551e626d35"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/type-8ccea06.json",
+      "bytes": 584,
+      "sha256": "e4d24fb86484ef89472aef9be55d49d19d8e5bdac4b869ceb16fbdc1f26bde12"
+    },
+    {
+      "path": "ios-auth-input-sixth-20261113-raw/type-8ccea10.json",
+      "bytes": 589,
+      "sha256": "cd6c83d2b908e119485de199455ea3218139958396d3e897b967a44300005c67"
+    }
+  ],
+  "stop_reason": "Both bounded producer questions yielded implementable scoped facts. Other field defaults/fonts remain precise unknowns; no third producer or wholeUIsearch."
+}

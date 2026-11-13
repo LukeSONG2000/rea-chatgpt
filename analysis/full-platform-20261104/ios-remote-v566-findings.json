@@ -1,0 +1,55 @@
+{
+  "batch": 566,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Connect the source-resolved ordinary user message background to an explicit frontend accent selection.",
+  "public_source_scope": {
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "report": "analysis/upstream-codex-20261105/reuse-map.json",
+    "limit": "Inspected public directories do not supply the native mobile color selector."
+  },
+  "observations": [
+    {
+      "source": "UserMessageBubble text body0x1a6b7d0..0x1a6b804 -> MessageRowStyle resolver0x3d974bc",
+      "finding": "Environment theme feeds style resolver. Raw0 and11 preserve default style. Other known values replace background at offset0x10 with ThemeColorPalette.background at offset0x18."
+    },
+    {
+      "source": "MessageRowStyle descriptor0x962f75c",
+      "finding": "Background and userMessageAccent are distinct stored fields. Accent offset0x18 consumption as a text foreground is not yet established."
+    },
+    {
+      "source": "KnownThemeColorSetting descriptor0x974f2ec; palette0x74e45bc; branch tables0x84b0dab/0x84b0db6/0x84b0dcc",
+      "finding": "Enum order and branch targets independently mapped to exact asset strings in ios-remote-v566-palette-map.json. Green uses mint resources; black has separate theme resources."
+    },
+    {
+      "source": "SettingsAppearanceSection0x1084a1c -> ThemeColorSelectorPart accessor0x6f57928; body0x6f21344 -> Picker0x6f215c0; descriptor0x971e570",
+      "finding": "Selector has themeColorSetting, updateThemeColor, refreshSettings and availableColors. Availability producer and service update completion policy remain unknown."
+    }
+  ],
+  "host_gap": "NativeVisualSettings exposes appearance only. RecoveredRemoteUserMessage always uses the default background.",
+  "planned_integration": "Reuse exact palette resource names for the ordinary bubble. Add a device-local preview preference and picker with an explicitly injected set of known fixture colors. Preserve system-following appearance and locale. Keep source policy/default replacement/service synchronization open.",
+  "independent_adaptations": [
+    "Device-local UserDefaults key and persistence, using current host appearance convention",
+    "Native picker placement and translated color labels in the existing provisional settings section",
+    "Offline preview offers the known enum cases; official account capability availability is not claimed"
+  ],
+  "limitations": [
+    "Exact selector circle metric, original labels and account update lifecycle are not recovered",
+    "DefaultThemeColorProvider replacement policy is unresolved; default stays existing OneOff/UserMessageBackground",
+    "Other controls, Markdown text accent and special message branches require their own consumers",
+    "No Android, physical-device or service acceptance"
+  ],
+  "probe_corrections": [
+    "Initial inline Reader invocation used str and failed before reading; corrected to Path and tuple-return indexing.",
+    "Initial Foundation shell script direct invocation failed permission check; invoked via sh with separate retained r2 log.",
+    "Empty style-metadata probe used nonexistent UserMessageStyle; MessageRowStyle descriptor0x962f75c establishes actual fields."
+  ],
+  "runtime_gap": {
+    "evidence": "ios-remote-v566-r1-attachments/CC30CA89-4FBF-4509-9F49-ED85A4497157.png",
+    "finding": "English ordinary fixture user text is rendered as one truncated line despite source-bound proportional width. The plain Text adapter accepted the finite collection height proposal. Four UI action tests passed without asserting wrapped text height.",
+    "repair": "Expose the native Text intrinsic vertical size at its constrained width and assert the English fixture is multiline. This is an independent host measurement repair; official Markdown is still unimplemented."
+  },
+  "validation": "Foundation and six distinct UI cases passed. R1 visual truncation fixed and verified by r2 screenshots/height assertion; r3 final combined journeys passed."
+}

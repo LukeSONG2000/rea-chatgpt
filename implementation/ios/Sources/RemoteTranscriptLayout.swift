@@ -1,5 +1,24 @@
 import Foundation
 
+// iOS293 ThreadViewContent 0x1a4c164 / 0x1a4c3b4 and effective height
+//0x1a483fc. Values come from the enclosing page and the complete BottomBars.
+//This model only resolves scroll insets; row padding is a separate owner.
+struct RemoteTranscriptScrollInsets: Equatable {
+    let top: Double
+    let bottom: Double
+
+    static func resolve(safeAreaTop: Double, safeAreaBottom: Double,
+                        bottomBarsHeight: Double, initialBottomBarsHeight: Double,
+                        additionalBottomInset: Double, modern: Bool) -> Self? {
+        guard [safeAreaTop, safeAreaBottom, bottomBarsHeight, initialBottomBarsHeight,
+               additionalBottomInset].allSatisfy(\.isFinite) else { return nil }
+        let effectiveHeight = bottomBarsHeight > 0 ? bottomBarsHeight : initialBottomBarsHeight
+        let bottom = effectiveHeight + safeAreaBottom + additionalBottomInset + (modern ? 48 : 10)
+        guard bottom.isFinite else { return nil }
+        return Self(top: modern ? safeAreaTop : 0, bottom: bottom)
+    }
+}
+
 // Supported subset of 293 Fragment.ID (0x95abe48) and ContentID (0x95aeb58).
 // String payloads are independent fixture/service-adapter IDs, not private ABI.
 // The enclosing page owns host + thread scope. Never use array offset as ID.
@@ -121,6 +140,59 @@ struct RemoteTailLayoutState: Equatable {
     }
 }
 
+// Source-bound footer admission, not a wire schema or complete footer inventory.
+// HistoryFragment1a341e8..1a34284 requires success, showsFooterActions and an
+// optional responseCopyText. Some("") is distinct from nil in the consumer.
+struct RemoteAssistantFooterPresentation: Equatable {
+    let status: RemoteTailLayoutState.Status
+    let showsFooterActions: Bool
+    let responseCopyText: String?
+    var responseCompletedAt: Date? = nil
+
+    var copyText: String? {
+        status == .success && showsFooterActions ? responseCopyText : nil
+    }
+
+    //293 HistoryFragment1a34790..1a34844 joins after the optional actions.
+    // Completion time has its own optional input; hiding actions must not
+    // hide a supplied timestamp. An absent date must never become Date.now.
+    var completionDate: Date? {
+        status == .success ? responseCompletedAt : nil
+    }
+}
+
+// Source timestamp formatter1a0949c: calendar/locale/time-zone inputs, base
+// hour+minute, another-day month+day and another-year year. The same-year
+//1..6-day weekday override remains unresolved at1a09b48→11a7620; for that
+//branch retain an explicit readable month/day fallback, not a guessed weekday.
+enum RemoteResponseTimestampFormatting {
+    static func visible(_ completedAt: Date, now: Date, calendar: Calendar,
+                        locale: Locale, timeZone: TimeZone) -> String {
+        var calendar = calendar
+        calendar.timeZone = timeZone
+        var style = Date.FormatStyle()
+            .hour(.defaultDigits(amPM: .abbreviated)).minute(.defaultDigits)
+        style.calendar = calendar; style.locale = locale; style.timeZone = timeZone
+        if !calendar.isDate(completedAt, equalTo: now, toGranularity: .day) {
+            style = style.month(.abbreviated).day(.defaultDigits)
+            if !calendar.isDate(completedAt, equalTo: now, toGranularity: .year) {
+                style = style.year(.defaultDigits)
+            }
+        }
+        return completedAt.formatted(style)
+    }
+
+    //1a09118..1a09260 supplies a complete date to the localized a11y key.
+    static func accessibilityDate(_ completedAt: Date, calendar: Calendar,
+                                  locale: Locale, timeZone: TimeZone) -> String {
+        var style = Date.FormatStyle().day(.defaultDigits).month(.wide).year(.defaultDigits)
+            .hour(.defaultDigits(amPM: .abbreviated)).minute(.defaultDigits)
+        var calendar = calendar; calendar.timeZone = timeZone
+        style.calendar = calendar; style.locale = locale; style.timeZone = timeZone
+        return completedAt.formatted(style)
+    }
+}
+
 // Independent, transport-free projection of iOS293 HistoryFragment spacing.
 // Source:0x1a3337c(top),0x1a334d4(bottom); field/enum maps in v427/v428.
 // The flags retain original names. ordinarySequence restores the supported
@@ -158,5 +230,117 @@ struct RemoteTranscriptFragmentLayout: Equatable {
         if hasInlineActivitySpacingAbove { top += 12 - item }
         let bottom = usesOrdinaryInsets ? (isLast ? group : item) / 2 : (isFirst ? 0 : item)
         return Insets(top: top, bottom: bottom)
+    }
+}
+
+// Independent native reading-state adapter. The 293 collection exposes anchor,
+// reconfigure-pinned-distance restoration and scroll-to-edge inputs (v482).
+// Their original algorithm is still unresolved. These stable row IDs and point
+// offsets belong to this host and stay scoped by its account/host/thread key.
+struct RemoteTranscriptReadingPosition: Equatable, Codable {
+    let rowID: String?
+    let rowOffsetFromVisibleTop: Double
+    let contentOffset: Double
+    let followsTail: Bool
+
+    func restoredOffset(rowTop: Double?, topInset: Double, bottomOffset: Double) -> Double? {
+        guard topInset.isFinite, bottomOffset.isFinite else { return nil }
+        let lower = -topInset
+        let upper = max(lower, bottomOffset)
+        if followsTail { return upper }
+        let desired = rowTop.map { $0 - rowOffsetFromVisibleTop - topInset } ?? contentOffset
+        guard desired.isFinite else { return nil }
+        return min(upper, max(lower, desired))
+    }
+}
+
+// iOS293 HistoryFragment tail -> ErrorRow, 0x1a33c4c..0x1a33f18.
+// This is a frontend visibility/capability projection, not a transport schema.
+// Fallback strings, stopped notice and retry execution are separate consumers.
+struct RemoteTurnErrorPresentation: Equatable {
+    let status: RemoteTailLayoutState.Status
+    var showsError = false
+    var isContextCompactionOnlyTurn = false
+    var showsFooterActions = false
+    var hasRetryHandler = false
+
+    var showsCard: Bool {
+        switch status {
+        case .failure: return showsError
+        case .failedPromptSubmission: return !isContextCompactionOnlyTurn
+        default: return false
+        }
+    }
+
+    var allowsRetry: Bool {
+        showsCard && status == .failedPromptSubmission && showsFooterActions && hasRetryHandler
+    }
+}
+
+// Independent scoped viewport cache. Official read receipts are unrelated to
+// these native point offsets; rendering still resolves the saved row identity.
+struct RemoteReadingCache: Codable {
+    var positions: [RemoteComposerDraftScope: RemoteTranscriptReadingPosition] = [:]
+    var reviews: [RemoteComposerDraftScope: [String: Set<RemoteReviewDisclosureIdentity>]] = [:]
+    var files: [RemoteComposerDraftScope: [String: Set<String>]] = [:]
+    var searches: [RemoteComposerDraftScope: [String: Set<String>]] = [:]
+    var commands: [RemoteComposerDraftScope: [String: Set<String>]] = [:]
+    var activityGroups: [RemoteComposerDraftScope: [String: Set<String>]]? = nil
+}
+
+struct RemoteReadingPersistence {
+    let url: URL
+    let accountID: String
+    private struct Snapshot: Codable { let version: Int; let accountID: String; let cache: RemoteReadingCache }
+    private func valid(_ cache: RemoteReadingCache) -> Bool {
+        let scopes = Set(cache.positions.keys).union(cache.reviews.keys).union(cache.files.keys)
+            .union(cache.searches.keys).union(cache.commands.keys)
+            .union((cache.activityGroups ?? [:]).keys)
+        return !accountID.isEmpty && scopes.allSatisfy { scope in
+            guard scope.hostID?.isEmpty == false, case .thread(let thread) = scope.destination else { return false }
+            return !thread.isEmpty
+        } && cache.positions.values.allSatisfy { $0.contentOffset.isFinite && $0.rowOffsetFromVisibleTop.isFinite }
+    }
+    func load() throws -> RemoteReadingCache {
+        guard FileManager.default.fileExists(atPath: url.path) else { return .init() }
+        let snapshot = try JSONDecoder().decode(Snapshot.self, from: Data(contentsOf: url))
+        guard snapshot.version == 1, snapshot.accountID == accountID, valid(snapshot.cache) else {
+            throw RemoteDraftPersistence.Failure.invalidSnapshot
+        }
+        return snapshot.cache
+    }
+    func save(_ cache: RemoteReadingCache) throws {
+        guard valid(cache) else { throw RemoteDraftPersistence.Failure.invalidSnapshot }
+        let data = try JSONEncoder().encode(Snapshot(version: 1, accountID: accountID, cache: cache))
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try data.write(to: url, options: .atomic)
+    }
+}
+
+//2931a01618/1a6b980 separates prepared full/collapsed prompt projections
+//from expansion state and the owner's optional button override. These String
+//projections are an independent frontend envelope for the original documents;
+//we do not guess the unclosed source splitter or universal40/2 default.
+struct RemotePromptPreparedSource: Equatable {
+    let source: String
+    let collapsedSource: String?
+    let collapsedLineLimit: Int
+}
+struct RemotePromptProjection: Equatable {
+    enum Expansion: Equatable { case noCandidate, candidate, expanded }
+    let source: String
+    let prepared: RemotePromptPreparedSource?
+    var admittedCollapsedSource: String? {
+        guard let prepared, prepared.source == source else { return nil }
+        return prepared.collapsedSource
+    }
+    func expansion(isExpanded: Bool) -> Expansion {
+        isExpanded ? .expanded : admittedCollapsedSource == nil ? .noCandidate : .candidate
+    }
+    func displayedSource(isExpanded: Bool) -> String {
+        isExpanded ? source : admittedCollapsedSource ?? source
+    }
+    func showsExpansionButton(isExpanded: Bool, override: Bool? = nil) -> Bool {
+        override ?? (expansion(isExpanded: isExpanded) == .candidate)
     }
 }

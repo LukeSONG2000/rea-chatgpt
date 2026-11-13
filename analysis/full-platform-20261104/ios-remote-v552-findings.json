@@ -1,0 +1,87 @@
+{
+  "batch": "v552",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Connect dynamic command snapshots to recovered summary, disclosure and shell surfaces.",
+  "evidence": [
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v322-history-findings.json",
+      "offsets": [
+        "0x1a39914",
+        "0x1a39af4"
+      ],
+      "conclusion": "History summary icon slot is 20 relative to body; dynamic adapter reuses this metric."
+    },
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v403-integration.json",
+      "offsets": [
+        "0x1a3ccec",
+        "0x1a42158"
+      ],
+      "conclusion": "Ordinary command summary preserves input for absent duration. Fixed and running duration have separate consumers."
+    },
+    {
+      "type": "official_artifact_static",
+      "file": "ios-remote-v407-integration.json",
+      "offsets": [
+        "0x1a3b054",
+        "0x1a40398",
+        "0x1a40798",
+        "0x1a40e38"
+      ],
+      "conclusion": "Shared Shell includes command, output and status. Known live inProgress follows output. Completed-zero and failed exits differ. One shell implementation now serves static and dynamic contents."
+    },
+    {
+      "type": "independent_host_adaptation",
+      "conclusion": "Command snapshots use existing scope/turn/sequence validation. nil preserves; empty removes; duplicate IDs reject atomically. Cancellation closes active commands while retaining output. Expansion retained by host/destination/turn/command above navigation."
+    },
+    {
+      "type": "independent_host_runtime",
+      "files": [
+        "ios-remote-v552-r1-hang.sample.txt",
+        "ios-remote-v552-r1-command.summary.json",
+        "ios-remote-v552-r2-command.summary.json"
+      ],
+      "conclusion": "Returning to an expanded dynamic output hung in UIHostingContentView/RemoteCommandOutputPreview layout. Measuring intrinsic line height before viewport minimum, with a half-point change guard, passed both language return tests and existing long-line regression. This is an independent self-sizing host adaptation."
+    }
+  ],
+  "fixture": {
+    "flag": "--remote-command-message-fixture",
+    "command": "inspect-ui --synthetic",
+    "executed": false,
+    "delivery": "Three snapshots at three-second intervals after ordinary send; completed exit0 or failed exit1."
+  },
+  "limits": [
+    "Envelope, scheduling, cancellation wording and content order are independent frontend design.",
+    "Single offline account only.",
+    "Output IDs are line indices; arbitrary insertion and exact nested-output scroll restoration unverified.",
+    "Dynamic reasoning, web search, file changes and automatic review records remain unconnected.",
+    "Failure uses shell exit footer and existing replay phase/text. Official transcript error-card body and recovery action remain unconnected.",
+    "Full official row construction, shell heading/footer style, transitions and visual parity remain partial.",
+    "Android consumer requires independent evidence.",
+    "Navigation-lifetime restoration only; process restoration pending."
+  ],
+  "next_minimal_actions": [
+    {
+      "page": "Remote conversation",
+      "missing": "Reasoning delta to rendered item to view consumer",
+      "action": "Trace retained v410 reasoning notification consumers to rendered-item branch.",
+      "acceptance": "Scoped reasoning opens, streams, terminates and restores expansion."
+    },
+    {
+      "page": "Remote conversation",
+      "missing": "Message error-card body and recovery action owner",
+      "action": "Trace error renderer reached by tail showsError predicate in RemoteTranscriptLayout evidence.",
+      "acceptance": "Source-backed synthetic error card and returnable retry/service state."
+    }
+  ],
+  "visual_review": {
+    "r2": "Light and dark captures show expected exit footer and retained output. Missing terminal glyph found by visual review, then changed to the existing officialVisualIcon resource resolver. Final verification recorded under r3.",
+    "r3": "Chinese/light and English/dark captures inspected after officialVisualIcon fix. Terminal glyph, completed success and failed exit1 shown. Layout/typography parity remains partial."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "batch": 565,
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Restore ordinary Remote user prompt containment without changing replay identity or service behavior.",
+  "public_source_scope": {
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "report": "analysis/upstream-codex-20261105/reuse-map.json",
+    "limit": "Inspected public directories do not provide the native mobile bubble implementation."
+  },
+  "observations": [
+    {
+      "source": "UserMessageBubble descriptor0x95addb4, conformance0x7e1a3a8, witness0x1a6d86c -> body0x1a6a06c",
+      "finding": "Existing 293 component owns text, attachments, menus, parsedMarkdown and optional special-message inputs."
+    },
+    {
+      "source": "body0x1a6a0b0..0x1a6a0f4; type0x7e1db50",
+      "finding": "ProportionalLayout receives double0.78, axis byte0, Alignment.trailing; child VStack receives HorizontalAlignment.trailing and spacing6."
+    },
+    {
+      "source": "ProportionalLayout size0x755ec0c, place0x755eed4",
+      "finding": "Single-child ordinary path scales the selected finite proposal dimension before measurement and placement. The selected dimension returns the original proposal when present. Alignment determines placement. This host supports the ordinary horizontal one-child path only."
+    },
+    {
+      "source": "text body0x1a6b724..0x1a6b7b8; types0x7e1dc20/28/10; constant0x7dfda70",
+      "finding": "Edge.Set.all padding stores9,15,9,15; RoundedRectangle clip and insettable background use20 radius. Shape-style raw value needs separate interpretation."
+    },
+    {
+      "source": "0x1a6b7cc ->0x3d96ce0; default color0x3d96d08 ->0x74f16f4 ->cstring0x8a52ae0",
+      "finding": "Default style background is OneOff/UserMessageBackground. Subsequent0x3d974bc resolves accent-dependent style. This batch uses the established default resource; custom accent branch remains partial."
+    },
+    {
+      "source": "type0x7e1db58 and body0x1a6a4c0/4e0",
+      "finding": "Attachment subviews precede optional text-content surface inside the trailing stack. Exact attachment grid and special content selection remain partial."
+    }
+  ],
+  "host_gap": "NativeConversationHost renders current request and replay turn.prompt directly as bare Text, with attachments in the assistant-aligned outer stack.",
+  "planned_integration": "Add source-bound ordinary text surface and single-child proportional layout; reuse attachment preview adapter inside trailing user stack. Keep pending/steer style and identity logic separately scoped.",
+  "limitations": [
+    "Plain Text remains the existing independent renderer; official user Markdown, annotations, selection/context menu owner and rich references remain partial.",
+    "Default background branch only; custom accent and goal/question/delegation variants unaccepted.",
+    "Independent SwiftUI Layout recreates the measured ordinary path; no private target code execution.",
+    "Source filename bubble-color refers to candidate0x1a6c77c which investigation found is text selection, not the resolved background. Preserve the probe with this correction.",
+    "Initial attempt to parse associated type witness0x8e3b07d as terminated type was rejected by existing parser; no conclusion used from that attempt.",
+    "Android layout and runtime equivalence unproven."
+  ]
+}

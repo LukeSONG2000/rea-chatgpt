@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "task": "ios293 Settings About exact URL and metadata supplier bounded follow-up",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "version": "1.2026.293"
+  },
+  "evidence_kind": "official-shipped-artifact-static",
+  "scope": {
+    "candidate_groups": 2,
+    "groups": [
+      "About Link destination providers",
+      "About metadata inputs and root-row locale helper"
+    ],
+    "product_edits": false,
+    "build_or_device": false,
+    "network": false,
+    "official_app_launch": false
+  },
+  "extends": "ios-settings-help-fifth-20261113-findings.json",
+  "findings": [
+    {
+      "id": "terms-destination",
+      "status": "verified",
+      "conclusion": "Terms Link exact destination https://openai.com/terms/",
+      "source": [
+        "10d46fc -> 6d3844c",
+        "6d3844c lazy getter -> 6d383e0",
+        "6d3841c literal 8a259b0, length25; 6d3842c URL constructor; nil traps"
+      ],
+      "official_field": "settings_home_about_terms_of_use",
+      "limitation": "No online destination opened."
+    },
+    {
+      "id": "privacy-destination",
+      "status": "verified",
+      "conclusion": "Privacy Link exact destination https://openai.com/policies/privacy-policy/",
+      "source": [
+        "10d4758 -> 6d3822c",
+        "6d3822c lazy getter -> 6d381c0",
+        "6d381fc literal 8a25a80, length43; 6d3820c URL constructor; nil traps"
+      ],
+      "official_field": "settings_home_about_privacy_policy",
+      "limitation": "No online destination opened."
+    },
+    {
+      "id": "platform-text",
+      "status": "verified",
+      "conclusion": "About metadata chooses iOS for platform raw0, watchOS for raw1, visionOS otherwise, then localized/interpolated for <platform>. This is platform name, not OS numeric version.",
+      "source": [
+        "10d4784 -> 7710c34",
+        "10d4790..10d47d4 small-string platform selection",
+        "10d47dc -> 1036c34; prefix for at 1036c5c..64"
+      ],
+      "limitation": "Underlying platform detector has more inputs; only the consumer selection is needed and established."
+    },
+    {
+      "id": "about-brand-resource",
+      "status": "verified",
+      "conclusion": "74f94a0 used at 10d47f0 produces OpenAI logo ImageResource, not a Version label.",
+      "source": [
+        "74f94cc..74f94d0 literal 8a562f0 = OpenAI/Symbols/openai-logo-bold-lg",
+        "74f94dc imported DeveloperToolsSupport.ImageResource.init(name:bundle:)"
+      ],
+      "limitation": "Raw filename localized-version-label is historical misnaming; actual resource identity above supersedes that filename."
+    },
+    {
+      "id": "version-value",
+      "status": "verified",
+      "conclusion": "7711658 returns version composed in 771142c: short + \" (\" + optionalDifferentDisplayWithTrailingSpace + build + \")\". short and build nil use ?. display omitted if nil or equal to short.",
+      "source": [
+        "10d47f8 -> 7711658 -> 771142c",
+        "7711938 literal 88a2180 = CFBundleShortVersionString -> b0a6b28",
+        "7711990 literal 8a5c920 = OAIDisplayVersion -> b0a6b38",
+        "77119dc smallString CFBundleVersion -> b0a6b48",
+        "771149c -> adf298 appends space+leftParen",
+        "7711500..7711518: copy display string then7713350 appends space, then append to version",
+        "771153c..771157c build fallback and rightParen"
+      ],
+      "limitation": "Use the independently built host Bundle values; original artifact version is evidence provenance, not the host installed version. OAICommitHash adjacent initializer7711a0c is not consumed by this formatter."
+    },
+    {
+      "id": "root-about-icon",
+      "status": "partial",
+      "conclusion": "c9f5c4 at10898f8 is Foundation.Locale.current getter, not Image factory. No root About row icon is established in10898f4..1089960.",
+      "source": [
+        "c9f5c4 -> tail7c41680",
+        "7c41680 stub bindslot aac93e0 -> _$s10Foundation6LocaleV7currentACvgZ"
+      ],
+      "limitation": "Leave root About icon unspecified/empty; do not infer info-circle. The metadata logo asset is not a root-row icon."
+    }
+  ],
+  "implementable": {
+    "topology": "Get Help About navigates settingsHomeAbout, independent of root preview footer. See r1.",
+    "links": "Render the two original label keys and bind exact destination URLs to the host resource-navigation boundary; actual online access remains disabled.",
+    "metadata": "Show source-backed platform and own Bundle version, reuse confirmed original logo if available. Keep independently reconstructed container styling explicit.",
+    "unknown": "Remaining metadata tuple fields/variant identifier from74e27b8 are not decoded in this bounded follow-up; do not invent labels/values. Root About icon unproved."
+  },
+  "raw_manifest": [
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-device-prefix.asm",
+      "sha256": "654a1b1993ae670dbe51a432b691d9ba1db9a10260e2b621bdc0e7f4ecf2a764",
+      "bytes": 4386
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-device-prefix.json",
+      "sha256": "88cc29b5d94f77fe6db32d96b790b236a0dba7605048b6e9fc8bf6d6c3b5551c",
+      "bytes": 3686
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-metadata-init.asm",
+      "sha256": "30921c14c169d05481333880ea8a579a4fb4e55d09643d12b1f4d9ec3fd369ec",
+      "bytes": 905
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-metadata-init.json",
+      "sha256": "89299ff24510bcb5d47d88faa9af0812b48e4a3638c9fe4b6f77eeffe89d8f1c",
+      "bytes": 1389
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-metadata-provider.asm",
+      "sha256": "bad83e0c5f2db066c4c1376800031e2236381f6e73cb4043ae1759c0c1fc06ac",
+      "bytes": 6772
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-metadata-provider.json",
+      "sha256": "bef8c764e63fcc046b346822f2091c545bf70da3ac9ec2cdfe304138f3434265",
+      "bytes": 6550
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-metadata-row.asm",
+      "sha256": "b1cea8d334284a4773c51a0bc082133a23d39f330da5b33c473b8c6354e6729d",
+      "bytes": 2990
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-metadata-row.json",
+      "sha256": "a28c5010214c46b61044066c4c9cb5746b93e2d2d17b13743d4e66d5e72e5c0c",
+      "bytes": 2674
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-metadata-tuple-helper.asm",
+      "sha256": "ecab9239e7e51508cb0cf7f94abc897efa08937c236f3255392ca0096bba61e3",
+      "bytes": 804
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-metadata-tuple-helper.json",
+      "sha256": "391c93e34b99028931b34c3abf0fde1acea95f19cfb4b2327337d6ae0d0e2d62",
+      "bytes": 1292
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-platform-kind.asm",
+      "sha256": "8b07c777c280dcfadfe733448ad8288ec74c950310b38f2893ac9d2fd67dc038",
+      "bytes": 1451
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-platform-kind.json",
+      "sha256": "cf3bb70d723b9261e20cc0187ff302355605ca7994d6e30f2f38be3f6ad1aa2a",
+      "bytes": 1074
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-row-text-bundle.asm",
+      "sha256": "e9fdccb5c5703104684cccae934228bf458046e8ed384916e16958636fe01264",
+      "bytes": 2030
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-row-text-bundle.json",
+      "sha256": "edb60641b75372ffd212c9c9c5cef0d7a2607a57b4654fbb4e80e1f843460438",
+      "bytes": 1590
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-value-prefix.asm",
+      "sha256": "ba28d95f5633bcb0c9904aa5b20d2b0b7958761e9128f6fc91c94e9f243c62d0",
+      "bytes": 655
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-value-prefix.json",
+      "sha256": "1457f2f94b40bfeaca5e051da8162ae1efbfb0d88aa75230f7fb22eb78b62ed8",
+      "bytes": 947
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-variant-identifier.asm",
+      "sha256": "0f8207abc4a16038706c2fb5d584bde3f5dacb5a85601823b4b72152b616e146",
+      "bytes": 717
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-variant-identifier.json",
+      "sha256": "54cdbf2082b3945725a75fc1694ed94d6c45670925894388754a7b63743459c2",
+      "bytes": 913
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-version-state.asm",
+      "sha256": "0d89b95703af0c7575a6cfdf51c5715171070756d20505a4fe2f58fe306b3eee",
+      "bytes": 1545
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/about-version-state.json",
+      "sha256": "5492324325bdb19bb4ab492f1b598b9a10499972780cc6575c30374f257c0907",
+      "bytes": 1729
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/build-number-value-helper.asm",
+      "sha256": "468f1443b2a3075325ed7bb6c58acc4a3456c9e6138247dbf123416c8ced3bbd",
+      "bytes": 719
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/build-number-value-helper.json",
+      "sha256": "6aa7557c172261ac4cea0b22f962a70ec793011b466bc002d73b30d908ba1bac",
+      "bytes": 981
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/bundle-metadata-reader.asm",
+      "sha256": "81dfad6d3249bae9831f34485ec15d95211c9baa467fb2d6b80149d478a3f185",
+      "bytes": 4428
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/bundle-metadata-reader.json",
+      "sha256": "a97c86d14ac7b78aa10e060fe1c7c91f9b74caa4f739e300526aab5466888ef2",
+      "bytes": 1151
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/localized-version-label.asm",
+      "sha256": "8460ba5a156e172520d2f8ee0b423f1bc3fc26415542a5dcc21436c17e27297a",
+      "bytes": 1889
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/localized-version-label.json",
+      "sha256": "d931a59298369421ff07eda4ad891ca2aeeee95170a4a565ef3e061d7ae1b422",
+      "bytes": 2526
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/metadata-and-root-literals.json",
+      "sha256": "e451258d00f3451764431db2cbf688cc3f04bc85b42598bc2039ab5965f4f78c",
+      "bytes": 546
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/metadata-row-values.asm",
+      "sha256": "b1cea8d334284a4773c51a0bc082133a23d39f330da5b33c473b8c6354e6729d",
+      "bytes": 2990
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/metadata-row-values.json",
+      "sha256": "a28c5010214c46b61044066c4c9cb5746b93e2d2d17b13743d4e66d5e72e5c0c",
+      "bytes": 2674
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/platform-kind-init.asm",
+      "sha256": "ce06de2ca87fdf2eaca445eda107db6289d362463b26e1cb293996b018a2532d",
+      "bytes": 2471
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/platform-kind-init.json",
+      "sha256": "f4c270c9f6a2b942454f6f68dcca354a44f56fd26387a3a85b0406d5164f6e73",
+      "bytes": 1712
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/privacy-url-initializer.asm",
+      "sha256": "5e5126ba4edfecd55291275f49663b2c20b2bd5846d2f411b619d1c3eaf64259",
+      "bytes": 1551
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/privacy-url-initializer.json",
+      "sha256": "767911abbf33c9cf0981e0197690fe6d7d5b3525dccdae04622d21e10bb2bb83",
+      "bytes": 1783
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/privacy-url-provider.asm",
+      "sha256": "421e7fd86a8a32f6c3641657795226652d7961f57a8be9a16efb16dbb352a3ea",
+      "bytes": 2295
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/privacy-url-provider.json",
+      "sha256": "409f58e1806af3cc9e517ce0dd535ea29ff1f02894224bfededa2de3e3c84520",
+      "bytes": 1817
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/root-about-icon.asm",
+      "sha256": "9d45e1fa19ac1f54fd23df7d427b6d3adde30c867b53d874faa744ac9af3d1fd",
+      "bytes": 641
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/root-about-icon.json",
+      "sha256": "87be3833730b2cfb7ca9b6500bdc8af86b7ba5ca204864da15fe73ffb3307a03",
+      "bytes": 924
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/terms-url-initializer.asm",
+      "sha256": "551c85de5ebf8b79cc992e7d0cff8c88f0333fd7f0fec9d392f57a6ae04dbf69",
+      "bytes": 1551
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/terms-url-initializer.json",
+      "sha256": "89d89df6b6976a66be55cc712a0b2d24114c116e0ddb07200668478ea7ba852f",
+      "bytes": 1783
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/terms-url-provider.asm",
+      "sha256": "c9c94699d00711418737c5b3684950f35bf01c570def535ad511994d880146b2",
+      "bytes": 2490
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/terms-url-provider.json",
+      "sha256": "d0d44f3c3e5b6dc31aad4cbbc10732e6d00a6de8dbe13999a39a364e410fead8",
+      "bytes": 1834
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/url-and-label-literals.json",
+      "sha256": "f69e0d2d9e69cc2d4c6cbd947e83669dc69671279cfe9e5e268a787e1e234864",
+      "bytes": 213
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/version-initializer.asm",
+      "sha256": "593a163267fa4b25e33e1cfd93a8854da1cad7fdf56d86ebf134ed6c0b0d8aab",
+      "bytes": 7095
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/version-initializer.json",
+      "sha256": "1e96311dcacc1de010a9da6e4d1bd25ac228bfb2586c5952272ddefd287399ee",
+      "bytes": 3983
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/version-paren-open.asm",
+      "sha256": "606f52ac85b89e7428bba0aa47b1cc8a18370c98ed8d5ac3d38bd4539685a469",
+      "bytes": 652
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/version-paren-open.json",
+      "sha256": "597176435ac5cbfe8efae908e56926942f55ce9c08bc54a4cb30cb8b5ae49291",
+      "bytes": 940
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/version-source-initializers.asm",
+      "sha256": "b1ef8ad9f71d5e118f230cc633599ba228e295d65a3fa576d07a4ea78b7f5c40",
+      "bytes": 2315
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/version-source-initializers.json",
+      "sha256": "4d4e5981562484997c85613475ec808f35cc3b3e9d6eab5c1378c5d62882a505",
+      "bytes": 1032
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/version-three-leaf-values.asm",
+      "sha256": "7d583ff18891260fd4142e93c95066df4b8f9f8d2297f75329de14fbcd5547f8",
+      "bytes": 2876
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-r2/version-three-leaf-values.json",
+      "sha256": "1464ef0cc84fa3a7b81fe72bdc61c8b3868aac89a11b2578b579b4e57e33117f",
+      "bytes": 2350
+    }
+  ],
+  "raw_file_count": 50,
+  "stop_reason": "Two requested supplier groups closed to implementable facts; remaining variant identifier and presentation details stay explicit unknown. No expansion."
+}

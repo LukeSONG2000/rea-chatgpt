@@ -1,0 +1,195 @@
+{
+  "batch": "v505",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official_artifact_static",
+  "status": "partial",
+  "component": {
+    "type": "CodexHomeSearchInput",
+    "descriptor": "0x955e994",
+    "makeUIView": "0x30c2c4 ->0x30bf78",
+    "updateUIView": "0x30c2d0 ->0x30c1c4",
+    "native_class": "CodexHomeSearchInput.SearchTextField",
+    "class": "0xacbde10"
+  },
+  "confirmed": [
+    {
+      "topic": "Placeholder",
+      "evidence": [
+        "0x30bfd0 ->0x461230 literal Search chats",
+        "0x30bfdc ->0x1bd138 ->0x75dbe64",
+        "0x30c004 setPlaceholder:"
+      ],
+      "value": "Search chats",
+      "limit": "This is the literal input to shared text helper75dbe64. Exact localization catalog key mapping remains unverified. Do not invent an official key."
+    },
+    {
+      "topic": "Typography",
+      "evidence": [
+        "0x30c03c ->0x74e2728",
+        "0x74e2714 loads0xaad38d8 bound SwiftUI.Font.TextStyle.body",
+        "0x30c04c traitCollection",
+        "0x30c064 ->0x74e307c",
+        "0x30c080 setFont:",
+        "0x30c090 setAdjustsFontForContentSizeCategory:true"
+      ],
+      "value": "Official body typography converted using traitCollection; Dynamic Type enabled."
+    },
+    {
+      "topic": "Native field configuration",
+      "evidence": [
+        "0x30c0cc..0x30c108"
+      ],
+      "value": {
+        "autocapitalizationType_raw": 0,
+        "autocorrectionType_raw": 1,
+        "returnKeyType_raw": 6,
+        "clearButtonMode_raw": 1,
+        "compressionResistancePriority": 250,
+        "axis_raw": 0
+      }
+    },
+    {
+      "topic": "Identity",
+      "value": {
+        "field": "codex-home-search-field",
+        "close": "codex-home-close-search"
+      },
+      "evidence": [
+        "field string0x8857b20 setter0x30c034",
+        "close string0x88570e0 setter0x30b88c"
+      ]
+    },
+    {
+      "topic": "Initial autofocus",
+      "evidence": [
+        "SearchTextField methods didMoveToWindow0x30bdf8/layoutSubviews0x30be64",
+        "bothcall0x30be30 whichcalls0x30bd9c",
+        "ivar completedInitialFocusRequest storage0xad42700",
+        "0x30bdbc window,0x30bdd4 isFirstResponder,0x30bde8 becomeFirstResponder"
+      ],
+      "value": "If initial focus request incomplete and window exists, mark complete if already first responder; otherwise call becomeFirstResponder and store returned success. Future layouts can retry until successful. No repeated autofocus after completion."
+    },
+    {
+      "topic": "Query write from editing",
+      "evidence": [
+        "0x30c178 closure0x4457d4",
+        "0x30c1ac addAction forControlEvents0x20000 editingChanged",
+        "0x445800 weakLoadStrong",
+        "0x445818 text getter",
+        "0x445860 Binding.wrappedValue setter"
+      ],
+      "value": "editingChanged reads weakly-held field.text (nil -> empty) and writes query Binding. This callback has no markedTextRange guard."
+    },
+    {
+      "topic": "IME-safe external update",
+      "evidence": [
+        "0x30c224 querygetter",
+        "0x30c22c..0x30c258 equality",
+        "0x30c264 markedTextRange",
+        "0x30c270..0x30c278 skip if present",
+        "0x30c2b4 setText:"
+      ],
+      "value": "updateUIView changes field.text only if it differs from query and markedTextRange is absent. Equality or active composing skips overwrite."
+    },
+    {
+      "topic": "Cancel responder order",
+      "evidence": [
+        "0x42971c hostingWindow",
+        "0x42973c ->0x464b54",
+        "0x464b54 w2=true ->objcstub0x7c5fee0 selector endEditing: at0xacac0e0",
+        "0x429744..0x429764 endSearching"
+      ],
+      "value": "If hosting window resolves, endEditing(true) before dispatching endSearching. Reducer then clears query and returns browsing when current mode is searching."
+    },
+    {
+      "topic": "Resources and composition",
+      "evidence": [
+        "0x30b9c4 ->0x74f86d8",
+        "0x30bb8c ->0x74fc6d0",
+        "0x8a578e0",
+        "0x30b2ac HStack spacing12",
+        "0x30b5b0 horizontalpadding12",
+        "0x30b688 thin material",
+        "0x30bc30..0x30bc3c 44x44 closebutton frame",
+        "0x30a258..0x30a260 initialdismissfont19.2;0x30bbb0 ScaledMetric"
+      ],
+      "value": {
+        "searchIcon": "OpenAI/Symbols/magnifying-glass-lg",
+        "closeIcon": "OpenAI/Symbols/xmark-lg",
+        "closeLabel": "Close search",
+        "outerSpacing": 12,
+        "inputHorizontalPadding": 12,
+        "inputBackground": "thin material Capsule",
+        "closeFrame": [
+          44,
+          44
+        ],
+        "closeFontBase": 19.2,
+        "closeFontScale": "ScaledMetric"
+      }
+    },
+    {
+      "topic": "Search capsule minimum height and spacing",
+      "evidence": [
+        "0x30b580 center HStack ->0x2123a8 spacingDouble8",
+        "0x30b5a8 horizontal Edge.Set;0x30b5b0 EdgeInsets12",
+        "0x30b5fc x4 infinity x5 optionalpresent",
+        "0x30b604 x6 double44;0x457e94 w7=0",
+        "stub0x7c48058 binding0xaad1828 SwiftUI._FlexFrameLayout.init(minWidth:idealWidth:maxWidth:minHeight:idealHeight:maxHeight:alignment:)"
+      ],
+      "value": {
+        "innerHStackSpacing": 8,
+        "inputHorizontalPadding": 12,
+        "inputVerticalPadding": 0,
+        "maxWidth": "infinity",
+        "minHeight": 44,
+        "heightScaling": "No ScaledMetric at this input minimum-height constructor"
+      },
+      "limit": "This establishes minimum height, not a fixed total height under all Dynamic Type configurations. No additional vertical padding is present in this input HStack → padding → flexframe chain."
+    },
+    {
+      "topic": "Search field text and search icon styling",
+      "evidence": [
+        "0x30c0ac ->0x74ee2c0 resource0x8a51ba0",
+        "0x30c0b0 UIColor conversion followed setTextColor",
+        "0x30b9cc ->0x74ed744 resource0x8a51510",
+        "0x30b2dc bodyfontgetter0x74e2728 applied to outer searchbar"
+      ],
+      "value": {
+        "textColor": "ChatGPT/text/primary",
+        "searchIconColor": "ChatGPT/icon/secondary",
+        "searchIconFont": "Inherited official body typography from enclosing searchbar; no separate numeric icon font at inner label"
+      },
+      "limit": "Recovered original resource tokens and font inheritance. Actual glyph raster and Dynamic Type rendering still require device validation."
+    },
+    {
+      "topic": "Close button independent surface",
+      "evidence": [
+        "0x30bc30..0x30bc3c frame44x44",
+        "0x30bc50 ->0x74ecc58 resource0x8a50f00 ChatGPT/bg/elevated/primary",
+        "0x30bca0 ->0x756d520 GlassFallbackBackgroundContent with Circle",
+        "0x30bcf0 ->0x756d3ec GlassEffectContent with Circle",
+        "0x456620 setsx0=0,x1=0,w2=1",
+        "0x30bcfc ->0x6ef441c shadow preset",
+        "VersionedViewContent conformance0x84be8c8 witnesspattern0xb063810"
+      ],
+      "value": "The close label has its own Circle fallback background and regular/nil-tint/interactive Glass configuration, before shadow and Circle contentShape. Button itself uses PlainButtonStyle.",
+      "limits": [
+        "GlassFallbackBackgroundContent availability witness75b91ec ->756dc80 ->756da3c ->77107f8; original-content witness75b90e0 ->756dc84 ->10205dc ->2f52cc copies the content; fallback witness756dd6c ->756dc8c builds background(style,Circle). Generic VersionedViewContent dispatch is not independently executed here.",
+        "Fallback visual mapping is elevated primary. On enabled Glass, original-content passthrough is supported by witness structure; exact shared dispatch remains static inference.",
+        "Shadow preset6ef441c is present. Effective shadow application remains unclosed from v420; do not invent values."
+      ]
+    }
+  ],
+  "remaining": [
+    "Exact shared localization mapping for Search chats and Close search",
+    "Search result matching and aggregation across host scopes",
+    "Parent sidebar action capture and menu options",
+    "Device keyboard/visual behavior not executed"
+  ],
+  "validation": {
+    "original_app_run": false,
+    "production_edits": false,
+    "runtime": "not_run"
+  }
+}

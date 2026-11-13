@@ -1,0 +1,167 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two bounded candidate groups: fixed draft/pending metadata and restoration helper; same ViewAction dispatcher cancel/submit consumers. Read-only official artifact investigation.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_evidence": [
+    "ios-remote-pending-edit-20261113-findings.json",
+    "ios-remote-controls-parent-current-20261113-r3.json",
+    "ios-remote-pending-owner-20261113-findings.json"
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-remote-pending-edit-fifth-20261113",
+  "answered": [
+    {
+      "id": "actual-edit-parent",
+      "type": "official_artifact_observation",
+      "conclusion": "The prior concrete parent chain is retained: PendingPromptRow optional Edit callback +0x70/+0x78 is captured at 0x1a4ec18..0x1a4ec24, callback 0x1c30f50 reaches 0x1a4ecec and produces editPendingPrompt local tag23. It dispatches to the concrete handler at 0x18b9cbc.",
+      "source": [
+        "0x1a4e814..0x1a4ecec",
+        "0x1c30f50..0x1c30f80",
+        "0x1a4ed50..0x1a4ed70",
+        "conformance 0x7e0b714 /pattern0xa504d18 +0x78 ->0x19433b0 ->0x18b8ff4",
+        "jump table0x18bad50 base0x18b911c tag23 ->0x18b9cbc"
+      ],
+      "limit": "The callback and independent owner gates remain optional. Local enum tags are not protocol values; full concrete generic parent constraint remains a static link boundary."
+    },
+    {
+      "id": "pending-flags-fixed-offsets",
+      "type": "official_artifact_observation",
+      "conclusion": "Independent fixed metadata binding proves PendingPrompt.canEdit is byte+0x48 and canRestoreComposerDraft is byte+0x49. PromptDraft comprises serializedPromptText, displayUserInputs, attachments, selectedTextAttachments and reviewFindingComments. MessageEditState.originalDraft is +0x20.",
+      "source": [
+        "PendingPrompt descriptor0x95aa46c accessor0x1aaef38 metadata0xa505638",
+        "PromptDraft descriptor0x95acc54 accessor0x1be3a38 metadata0xa508a70",
+        "MessageEditState descriptor0x95acc78 accessor0x1be3c44 metadata0xa508b00"
+      ],
+      "evidence": [
+        "fixed-field-offsets.json",
+        "prompt-metatype.asm",
+        "draft-metatype.asm",
+        "editstate-metatype.asm",
+        "edit-draft-state-metadata.json"
+      ],
+      "limit": "No field-order guessing or class virtual-slot mapping is used. This proves local data layout, not service schema."
+    },
+    {
+      "id": "restore-operation-is-effectful",
+      "type": "official_artifact_observation",
+      "conclusion": "0x192b1cc is an effectful pending mutation operation returning whether state changed, not a pure canRestore predicate. In kind0 it matches exact pending ID, compacts the 0x60-stride collection, updates count under observation, and can invoke a callback; return compares count before and after. The caller separately checks canRestoreComposerDraft.",
+      "source": [
+        "0x192b1e8 reads PendingPrompt.kind +0x10",
+        "0x192b218 captures initial count",
+        "0x192b248..0x192b3fc exact-ID collection iteration/compaction",
+        "0x192b400 ->0x1a95f58",
+        "0x192b434..0x192b45c optional callback",
+        "0x192b460..0x192b470 new count comparison",
+        "0x18babbc flag+0x49,0x18babc8 ->0x192b1cc"
+      ],
+      "evidence": [
+        "restoration-predicate-complete.asm",
+        "restoration-predicate-complete.json"
+      ],
+      "limit": "Nonzero kind calls 0x18e8b94/0x1929c3c then compares before/after results; exact service ownership/ack semantics remain unresolved. Do not label this service acceptance or successful submission."
+    },
+    {
+      "id": "edit-is-draft-transaction",
+      "type": "official_artifact_observation",
+      "conclusion": "Two Edit branches remain distinct. A restorable branch gates canRestore and the effectful pending change, then restores the pending payload through 0x1903b30. The queue-match branch snapshots current composer via 0x19038e4, constructs MessageEditState(target, originalDraft), applies it through 0x18dc0d8, then restores pending content through the same structured composer consumer.",
+      "source": [
+        "0x18bab1c..0x18bad50",
+        "0x18babbc..0x18bac0c direct restore",
+        "0x18bacc8..0x18bad40 snapshot/edit-state/restore",
+        "0x19038e4",
+        "0x1903b30"
+      ],
+      "evidence": [
+        "../ios-remote-pending-owner-20261113/pending-edit-handler-tail.asm",
+        "fixed-field-offsets.json"
+      ],
+      "limit": "Owner admission gates and unsupported structured inputs must be preserved. It is not evidence for unconditional text-only Edit."
+    },
+    {
+      "id": "cancel-clears-edit-and-restores-original-draft",
+      "type": "official_artifact_observation",
+      "conclusion": "The cancel handler reads current optional MessageEditState, preserves its originalDraft, sends a zero optional edit state through the same edit-state consumer, then restores the complete originalDraft through 0x1903b30. This provides a concrete cancel/rollback composer transaction.",
+      "source": [
+        "ViewAction descriptor0x95aa444 payload43/empty21; cancelMessageEdit empty index16 ->local tag59",
+        "0x18bad50+59*4 displacement2964 ->0x18b9cb0",
+        "0x18b9cb0..0x18b9cb8 ->0x18f6188",
+        "0x18f619c ->0x18e5c18 admission guard",
+        "0x18f61a8..0x18f61ac ->0x18e6010",
+        "0x18f61b8..0x18f61cc preserves originalDraft at state+0x20",
+        "0x18f6260 ->0x1daef74 zeroes80 bytes",
+        "0x18f6268 ->0x18dc0d8",
+        "0x18f626c..0x18f6270 originalDraft ->0x1903b30"
+      ],
+      "evidence": [
+        "cancel-edit-case.asm",
+        "cancel-edit-handler.asm",
+        "cancel-nil-state-helper.asm",
+        "fixed-field-offsets.json"
+      ],
+      "limit": "Source-named cancel case is matched by enum metadata and local dispatcher table; actual visible cancel-button callback producer was not traced. Guard/no-state branches remain. The exact field mapping of the generic getter metadata+0x4b0 remains unresolved, but returned state layout and rollback consumer are independently corroborated."
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "edit-submit-commit",
+      "boundary": "submitPrompt local tag4 ->0x18b9670 ->0x18f8884; inspected only through0x18f8b38. No completed edit-specific submit/queue replacement/receipt/failure rollback chain is established.",
+      "evidence": [
+        "submit-prompt-case.asm",
+        "submit-current-edit-gate.asm"
+      ],
+      "next_minimal_action": "Trace only edit-state consumption in the remainder of0x18f8884 and its first edit-aware submit consumer; identify whether target identity routes replacement versus normal append."
+    },
+    {
+      "id": "cancel-ui-producer",
+      "boundary": "cancelMessageEdit handler rollback is closed, visible composer cancel callback producer is not.",
+      "next_minimal_action": "Locate the already identified MessageEditState toolbar Cancel producer, without broad page scans."
+    },
+    {
+      "id": "generic-getter-name",
+      "boundary": "Concrete getter0x18e6010 reads metadata slot+0x4b0; class stored field list includes _messageEditState, but descriptor field-order alone cannot bind generic/virtual slots.",
+      "evidence": [
+        "thread-vm-edit-field-selection.json"
+      ]
+    }
+  ],
+  "implementation_decision": {
+    "type": "independent_host_adaptation_recommendation",
+    "can_implement": [
+      "Model pending Edit as a task-scoped transaction carrying exact pending ID, original complete composer draft and restored pending structured payload.",
+      "Cancel clears the editing state and restores the original draft using the same full-draft apply path.",
+      "Keep canEdit, canRestoreComposerDraft and callback availability separate; disable capability where supported structured fields cannot round-trip."
+    ],
+    "must_not_claim": [
+      "Do not claim official edit submission is recovered or enable all pending rows merely because cancel/restoration are closed.",
+      "Do not replace structured content with displayText only, infer service acknowledgments from0x192b1cc, or overwrite another task composer draft."
+    ],
+    "scope_limit": "The current host may add a deterministic scoped frontend transaction once its own adapter defines commit; mark that commit independent until the precise official submit boundary is closed."
+  },
+  "rejected_candidates": [
+    {
+      "address": "0x18ba3f0",
+      "reason": "Adjacent action handler, not the actual cancelMessageEdit table target. Retained candidate raw is not used as cancel evidence."
+    }
+  ],
+  "validation": {
+    "performed": [
+      "Selected retained LLVM code windows",
+      "Fixed struct metadata accessor/vector binding",
+      "Local enum/table mapping",
+      "Prior parent/witness evidence reuse"
+    ],
+    "not_performed": [
+      "Product edits",
+      "Builds",
+      "Simulator or device runtime",
+      "Official app or service execution",
+      "Behavior equivalence testing"
+    ]
+  }
+}

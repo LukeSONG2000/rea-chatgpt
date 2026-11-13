@@ -1,0 +1,70 @@
+{
+  "version": 621,
+  "implemented": [
+    "Complete normal light/dark Material semantic color bridge from Android293 gm/s5n/lim",
+    "Recovered tonal surface logarithmic overlay formula from hmb0.t",
+    "Regression assertions for original palette values and neutral derived tones",
+    "Additional home, root-settings and dark-sidebar screenshot coverage"
+  ],
+  "not_implemented": [
+    "Official sidebar row/text renderer and selected Small/Large producer",
+    "Original Nova/legacy footer selection and parent drawer geometry/motion",
+    "Original settings grouped renderer and route icon bindings",
+    "Original home mode-picker and composer parent integration",
+    "AppLocaleDialog presentation",
+    "Full typography environment, component accent and high-contrast owner"
+  ],
+  "source_reports": [
+    "android-theme-v621-findings.json",
+    "android-shell-v621-style-findings.json",
+    "android-settings-v621-style-findings.json"
+  ],
+  "validation": {
+    "implementation": "Independent frontend with Android293 evidence and synthetic data",
+    "serial": "172.16.197.16:5555",
+    "manufacturer": "OnePlus",
+    "model": "ONEPLUS A6003",
+    "sdk": "35",
+    "run_id": "041b5fe77c0248a09ffd1f1172f949c9",
+    "ui_matrix": [
+      "zh-CN/light",
+      "en/dark",
+      "system/system"
+    ],
+    "status": "passed",
+    "steps": [
+      {
+        "apk": "app/build/outputs/apk/debug/app-debug.apk",
+        "sha256": "9d6e8678f0e9e7ac1a469eab3be5d04338d0bfc662417010710a5cd8ac458189"
+      },
+      {
+        "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+        "sha256": "0f3bbd00a0e71d705dc8c19fac2c40361742d7fad289e7cb2f92b8cbab22020e"
+      },
+      {
+        "test": "preferences",
+        "passed": true
+      },
+      {
+        "test": "journey",
+        "passed": true
+      },
+      {
+        "test": "verifyRestart",
+        "passed": true
+      }
+    ],
+    "export_errors": [],
+    "preview_launch": {
+      "skipped": "Foreground belongs to another app or cannot be established"
+    }
+  },
+  "build_log": "android-shell-v621-build-r1.log",
+  "source_sha256": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendTheme.kt": "7fbdfca723413f6db948729ac3acf64500b1da9749b45477e30ddf1e6200b54a",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/AppShellTest.kt": "630cb3ce8da0fa41fe0c203710cc669960a15c6ba2beecb9ee8b0c2195a705be",
+    "implementation/android/app/build.gradle.kts": "dade80b7d43a9a88c49995901a874597f22e4e09ccb7b5309c179a8cd9bbd506"
+  },
+  "preview_handoff": "APK installed. Runner skipped preview restoration because foreground belonged to another app after tests. Read-only check confirmed a non-REA foreground; no further device navigation performed.",
+  "next": "Restore source-selected sidebar parent/footer and settings grouping before adding new Android feature pages."
+}

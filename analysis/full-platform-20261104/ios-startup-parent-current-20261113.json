@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13T13:52:03.864726+08:00",
+  "module": 1,
+  "pass": "core-host-launch-profile-and-root-recovery",
+  "previous_goal_turn": "progress: Plugins whole-package fixes, source evidence, tests and delivery archived",
+  "status": "implemented_offline_host_delivery_core_with_explicit_deeper_restore_gaps",
+  "scope": "Independent frontend host startup integration, not a recovered original ChatGPT launch/account implementation; iOS only, no business backend or Android expansion",
+  "source_of_defect": {
+    "file": "implementation/ios/Sources/AppDelegate.swift",
+    "before": "No-argument Scene bootstrap selected try? LocalHarness; feature/auth/notification/draft consumers read CLI independently; core-preview.json was only a UITest resource.",
+    "after": "Offline manifest is a host resource; 27 consumer files use one effective argument owner; AppDelegate has no LocalHarness construction path."
+  },
+  "implemented": [
+    "No-argument launches read bundled core capabilities plus one durable selected profile; first launch without selection uses the explicit preview default.",
+    "Named --host-preview=core/--host-profile=<UUID|preview> validates and atomically saves only a version/profile pointer; conflicting component profiles, unsupported durable test flags and malformed manifest/selection are rejected.",
+    "Explicit --offline-fixture tests keep exact ephemeral arguments, do not read/overwrite normal selection, and do not inherit unrelated core capabilities.",
+    "Locale/appearance/failure/test arguments are not saved; existing phone user/system language, theme and data remain intact.",
+    "Chat/auth/Remote drafts/context/connection preferences/notifications/browser/plugin capability owners use the same effective launch context. This does not implement real multi-account service identity.",
+    "Account/profile-scoped root checkpoint restores the existing top-level page after view containment is available; explicit incoming notification navigation takes precedence. Corrupt checkpoints are preserved and not overwritten that session.",
+    "Error/retry and explicit default-profile recovery surface; recovery preserves the old selection pointer and never removes conversation/profile files.",
+    "Launcher supports durable named core profiles and no-argument ordinary launches; no default local harness/model/tool execution."
+  ],
+  "not_implemented": [
+    "Original ChatGPT bootstrap/root-presentation algorithm; this is an independent host correction.",
+    "Exact deep Remote task/project/file/preview/popup re-presentation after process death; root checkpoint saves top-level feature only, existing feature models own their state.",
+    "Full provider-based multi-account/workspace startup, auth session restoration, avatar/profile server cache, and official General Starting page setting.",
+    "Original root/collection gesture arbitration, complete scene/keyboard/material/transition behavior and physical haptic fidelity; prior module source gaps remain.",
+    "Real notification session/provider identity and APNs/Live Activity delivery; fixture notification scope remains independent and physical cross-profile push is not claimed.",
+    "Default-recovery button end-to-end UI scenario and corrupted root-checkpoint UI presentation were not separately exercised; their implementation and pure checkpoint validation exist.",
+    "Physical app-icon tap/gesture/visual acceptance; device run verifies installation, selected metadata and no-argument process launch only."
+  ],
+  "verification": {
+    "launch_contracts": {
+      "result": "passed",
+      "record": "ios-startup-integration-20261113-contract-r2.log",
+      "coverage": [
+        "bundled/saved selection",
+        "single profile across consumers",
+        "isolated fixtures",
+        "locale exclusion",
+        "invalid/conflicting/versioned/oversize shape guards",
+        "scoped root load/save and preservation on rejection"
+      ]
+    },
+    "shared_contracts": {
+      "result": "passed",
+      "record": "ios-startup-integration-20261113-shared-contracts-r2.log",
+      "scope": "Existing text/Remote/frontend contracts compile against shared launch owner; no app backend run"
+    },
+    "ui_long_journey": {
+      "record": "ios-startup-integration-20261113-r1.xcresult",
+      "overall_case_result": "failed at later error-page AX query; not relabeled globally passed",
+      "seconds": 130.274,
+      "completed_assertions": [
+        "No-argument Chat draft/conversation/Work-mode recovery",
+        "No-argument Remote home draft/root/capability recovery",
+        "No-argument Plugins root and directory recovery",
+        "A -> B -> A profile isolation with original Chat draft/mode retained"
+      ],
+      "failure": "Ancestor VStack identifier replaced error heading/buttons identifiers; test expected Other while native AX exposes StaticText/Buttons. Fixed identifiers at actual heading/buttons.",
+      "r1_test_source": "ios-startup-integration-20261113-r1-test-source.txt",
+      "followup": "Only error-surface AX identifiers and test split changed afterward; core resolver/root/draft behavior unchanged; bounded followup used instead of repeating the long matrix."
+    },
+    "ui_error_recovery": {
+      "record": "ios-startup-integration-20261113-r2.xcresult",
+      "result": "passed",
+      "seconds": 36.055,
+      "coverage": [
+        "invalid durable profile gives readable error with no Chat root",
+        "Retry remains error for unchanged invalid input",
+        "No-argument restart returns prior valid selected profile and original draft"
+      ]
+    },
+    "ui_isolated_auth": {
+      "record": "ios-startup-integration-20261113-r1.xcresult",
+      "case": "testAuthenticationNativeUnavailableChinese",
+      "result": "passed",
+      "seconds": 35.983,
+      "meaning": "Explicit ordinary authentication fixture remains unavailable rather than inheriting core successful auth replay"
+    },
+    "screenshots_viewed": [
+      "ios-startup-integration-20261113-r1-attachments/DB59ADDC-4FB7-4B8E-83DA-C6024FC5D458.png",
+      "ios-startup-integration-20261113-r2-attachments/CAF37748-16D1-484A-8725-B4DE8B10BAF8.png"
+    ],
+    "setup_failures": [
+      "First Foundation test compile had a throwing precondition autoclosure; fixed without product changes.",
+      "test-official-text.sh was non-executable; invoked via sh and reran successfully; original permission failure retained."
+    ]
+  },
+  "source_hashes": {
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "5ce75dac9afdb1aa49e881309acf5ad9f221e35f0c12e4dfae66078dbd02780e",
+    "implementation/ios/Sources/AppDelegate.swift": "ca3fd111ee0f516fb8a155d4068234ef06fc2e39993c601588b4bff43b0174e2",
+    "implementation/ios/Sources/FrontendBrowserPreview.swift": "1a973f514054e9471e42acc3e7d3f3b136900dd0d37614fd2e2799128bdd874c",
+    "implementation/ios/Sources/FrontendKeyboardSnapshotSession.swift": "20c9ed6338bec785b2593938e920e5d2015a291fcc70a68951c88500512b5ec8",
+    "implementation/ios/Sources/FrontendNotificationEvents.swift": "c69cf5f3797d28003748b58ed272818a9ace6298deccb5540d544f204dcf6f6a",
+    "implementation/ios/Sources/FrontendNotificationRegistration.swift": "8f6c11e8c34fe250135a3ae20784494e9def01bb7f3b22a04c51381dc224e90b",
+    "implementation/ios/Sources/FrontendNotificationSettings.swift": "97c5ddc2f97b7b57c6a6460b0d00aa60735e3c2a191e5e51df64bf6fb5262d4a",
+    "implementation/ios/Sources/HostLaunchConfiguration.swift": "cb083afd5a0aa05d70d086a2e71c529a5f660dd0ed59701de9804a0fdc08ba28",
+    "implementation/ios/Sources/NativeConversationHost.swift": "b94ed962e5de61ba6ff1a4057ea470bcc3be29d05f46829bb73c90636d9d937c",
+    "implementation/ios/Sources/NativeCustomizePage.swift": "b48cd94ba66c54ec13db8906aa6988b859416e18a55de8ff34405dc325fc5a93",
+    "implementation/ios/Sources/NativeFileLibrary.swift": "4d777fd109cc8942b1523e518d6e632fb38839d6f7bc3dec616616ef92005cee",
+    "implementation/ios/Sources/NativeFrontendAuthentication.swift": "7ce1ec54f33cc32e190a7264c08df66ec9ea4429f3432b578e38b265c573c1b9",
+    "implementation/ios/Sources/NativeImagesPage.swift": "64a9f2f0cb6fad8c571b986fd1d2ae5af6ddc5d37825d857d59c380ede778ca2",
+    "implementation/ios/Sources/NativePersonalAssistantPage.swift": "76796a261aebc1142d06f28d121eaccfccb5bc20c8fdb9782f8db5cfc8347829",
+    "implementation/ios/Sources/NativePluginsPage.swift": "70d78cd813e0f3ee5cf3543a2c89f7f9fd4f59bb7604a833f79383463b7de715",
+    "implementation/ios/Sources/NativeProfileEditor.swift": "9b64c9a929b26cee669637bb716f8cf234021da55a9b72cc8087e0aed8a9ae38",
+    "implementation/ios/Sources/NativeProjectsPage.swift": "c232f26d6a90759e6191edcb6b98afe38d42ab88d7a9ecbe39826e1471b10d38",
+    "implementation/ios/Sources/NativeScheduledTasks.swift": "aac5979dc30fe4f4ba9f5d5b1612df348f099808dd449fbc856419f8a5116991",
+    "implementation/ios/Sources/NativeSidebarContainer.swift": "12fcbba506218714b11435fc48f8db9a03b2b59b87ec4ddc91fb6f62f06c8d6f",
+    "implementation/ios/Sources/NativeSitesPage.swift": "c7df0a47c2b6668f46e599ebebe22bc4c9ce686980b6222ef1e13af517e53ab5",
+    "implementation/ios/Sources/RecoveredRemoteAttachmentInput.swift": "5563135e997c6618ebc4537d5c72ceeffbcd336d0bfdf5b492600e8b39b23f98",
+    "implementation/ios/Sources/RecoveredRemoteComposerGeometry.swift": "883d6b5cc820405df706f2dfe23c0732e47b5f660f59359194257ab3b6fdcab1",
+    "implementation/ios/Sources/RecoveredRemoteModelSlider.swift": "8fc6cbddb85bba6443edf658840ea98da1a016d0164529a8702b034add79a45e",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "64f10a9f2fb83d512122db4c9cb9cb0a0fcf1b9dd757844d5326563d89e1b4f8",
+    "implementation/ios/Sources/RemoteAdvancedConfiguration.swift": "e84cf68620b0a9428c520b0a40334c9774def7f7a4113bae2c4b52baf5db86ab",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "2d20ddcd904351da039a31abd8b9d8419773df581a5cce7f5c26767ca931164c",
+    "implementation/ios/Sources/RemoteContextUsage.swift": "7be387cfb91d6653af27a27f2ba5fcb597108ca5c6630a83e83d0df94afefc44",
+    "implementation/ios/Sources/RemoteGoalPresentation.swift": "991a99647eea877676a0aeab5510ee53f4a5f1f0e2cf61f21d14d69709209b65",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "bb8bf82c587bf9aa427b7f6db0c25261f02b2883ab2571474bae1b6be50b7fd8",
+    "implementation/ios/Tests/Launch/main.swift": "0457e4549223f01a3419bb6a02203b47e4e6c849a14beedfe335d3e4bd54309a",
+    "implementation/ios/Tools/core-preview.json": "f89745646ff49007892648d254f8d5d476168dd41cdff08efcce43bbc782c95d",
+    "implementation/ios/UITests/HostInteractionTests.swift": "d17e2b44d94531d0360bd2b048e8d41db20a7a9516aac676a91bd187d0558ce3",
+    "implementation/ios/run-simulator.py": "b00e49c2e9d7dfc69bd1675f673af4b3d334a84e5d004295486d5648bfb76bfd",
+    "implementation/ios/test-launch.sh": "6003bd5a4c433b676a31bc188733bfd5a3b0f6ddc36837947745f182e9c1dfa6",
+    "implementation/ios/test-official-text.sh": "eed1ff263ec3b50fbb80ffd92dae08eb9f43e8a93a01fbfba67220f9f1cedd09"
+  },
+  "runtime": {
+    "simulator": {
+      "record": "ios-startup-integration-simulator-20261113.json",
+      "pid": 70014,
+      "profile_preserved": "c3df541b-8fda-4d91-99a5-ff3b5687fbaf",
+      "ordinary_arguments": [],
+      "installed_hash_match": true,
+      "host_manifest_matches_repository": true,
+      "kept_running": true
+    },
+    "device": {
+      "record": "ios-startup-integration-device-review-20261113.json",
+      "build": "succeeded",
+      "strict_codesign": "passed",
+      "install": "success",
+      "launch": "success",
+      "pid": 20200,
+      "profile_preserved": "5E169943-333A-4273-A553-F4D1BD4BE46D",
+      "ordinary_arguments": [],
+      "selection_copied_and_matched": true,
+      "new_container_process_match": true,
+      "device_ui_automated": false,
+      "kept_running": true
+    }
+  },
+  "remaining_inventory": "docs/full-platform/MOBILE-REMAINING-20261113.md",
+  "publication": {
+    "commit": false,
+    "push": false,
+    "release": false
+  },
+  "next": "Continue the existing major-module order: check Files/browser for a core blocker, then Remote/Chat whole-page gaps; do not expand dormant sidebar packages or real services."
+}

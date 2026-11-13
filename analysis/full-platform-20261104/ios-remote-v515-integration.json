@@ -1,0 +1,111 @@
+{
+  "batch": "v515",
+  "date": "2026-11-07",
+  "status": "partial",
+  "previous_goal_turn": "progress; registered paired light/dark runtime references with provenance",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implemented": [
+    "Attachment ActionIconButton padded Circle background with original semantic colors and adaptive backgroundMaterial/colorScheme resolver; source factory foreground disabled factor remains separate from whole-row disabled/pressed factor.",
+    "Independent overlay window inherits presenting window appearance override, preserving source page light/dark choice.",
+    "Plugin menu action appends space only after non-whitespace final Character, then @, moves selection to UTF-16 end and focuses native editor.",
+    "Exact case-sensitive Goal-command suppression predicate; recognized available /goal prefix with whitespace boundary dismisses without text/focus mutation.",
+    "Scoped one-shot native editor request waits for marked text completion, checks current request, session and scope, invalidates after search/page removal, retains existing draft and cursor on ordinary rerenders.",
+    "User reference index expanded to17 images; feedback includes thread title/menu, queued-message steer conversion and Codex settings. User correction retained: third settings screenshot is scrolled, no profile-hidden claim."
+  ],
+  "evidence": [
+    "ios-remote-v515-attachment-icon-background-findings.json",
+    "ios-remote-v515-plugin-suppression-findings.json",
+    "ios-remote-v514-attachment-action-order-findings.json",
+    "ios-remote-v515-user-reference-index.json"
+  ],
+  "independent_adaptations": [
+    "Native edit envelope, delivery queue, cancellation identities and UIKit selection/focus bridge are independently implemented from source-observed behavior.",
+    "Preview enables an explicit all-capabilities fixture to expose Plugins/disabled Plan/Goal; actual account or provider capabilities are not inferred.",
+    "Plan/Goal Chinese translations remain independent. Existing glass branch choice and whole-surface transition are partial reconstructions."
+  ],
+  "validation": {
+    "model": {
+      "status": "passed",
+      "log": "/tmp/rea-v515-model.log",
+      "coverage": "64 menu gate combinations plus plugin whitespace, Unicode, exact Goal prefix and catalog gating"
+    },
+    "ui": [
+      {
+        "summary": "ios-remote-v515-r2-ui.summary.json",
+        "passed": 6,
+        "failed": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "summary": "ios-remote-v515-final-ui.summary.json",
+        "passed": 5,
+        "failed": 0,
+        "runtimeWarnings": []
+      }
+    ],
+    "build_failure_retained": {
+      "result": "ios-remote-v515-ui.xcresult",
+      "cause": "New UI test used value key path with non-Equatable Any; replaced with value predicate before successful runs."
+    },
+    "animation_wait_observation": {
+      "log": "/tmp/rea-v515-r2-ui.log",
+      "count": 5,
+      "scope": "Chinese dark menu after unavailable-alert dismissal; test passed after XCTest idle waits, transition smoothness remains unaccepted"
+    },
+    "visual_review": [
+      "light and dark focused-menu screenshot inspected, circular backgrounds visible",
+      "Chinese plugin append screenshot inspected, cursor at end and keyboard visible",
+      "default-system-language preview inspected in Device Hub, all-capability menu left open"
+    ],
+    "physical_device": "not tested; user currently requests simulator only",
+    "real_ime": "marked-text guard implemented; real composition behavior remains unaccepted"
+  },
+  "preview": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle_id": "local.rea.chatgpt.ioshost",
+    "build": "515",
+    "pid": 63068,
+    "language": "system zh-Hans-CN, en-GB; no locale override",
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks",
+      "--remote-attachment-all-capabilities-fixture"
+    ],
+    "screenshot": "ios-remote-v515-default-language-preview.png"
+  },
+  "remaining": [
+    "Official attachment-host backgroundMaterial input and full morph/mask/keyboard policy.",
+    "App/command candidate data, suggestion selection and token insertion owners.",
+    "Camera/photos/files ingestion and provider connection.",
+    "Plan owner/state writeback and Goal replacement range/focus; row predicates alone do not close these actions.",
+    "Thread trailing new button/conditional menu sections, leading title parent layout, queued-to-steer/cancel owners and settings consumers from new reference feedback.",
+    "Remote transcript remainder, Chat/Work, complete settings, haptics, physical-device acceptance and independent Android recovery."
+  ],
+  "source_snapshots": {
+    "implementation/ios/Sources/RecoveredRemoteAttachmentMenu.swift": "90ae2c6727e4edeea4774d402a8b1f0d3503a8e2d2000e32911ef8768b87e4d4",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "05cb55bd0cadcb64cfe8325cdb24d484e2519ecdf49c9ed5303a5d1e4ce90de8",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "2cdcde0fa36d6b590b57ef0eb2024c3394a01a9722cfe95ce1807b7005b79876",
+    "implementation/ios/Sources/NativeConversationHost.swift": "80a9bfe184fc495854fe2b081205ed59a12ec47163f6c72d41f7400930c76706",
+    "implementation/ios/TextTests/main.swift": "20dad67cb60a8ff04074715bbd4a588051783dc59de5c490df474237a8ab862b",
+    "implementation/ios/UITests/HostInteractionTests.swift": "c9964635c6d22a17d8922041ab61e5ef29efe0f529aff1472748145ff5526d8c"
+  },
+  "retention": {
+    "report": "/tmp/rea-v515-retention.json",
+    "targets": [],
+    "ios_outputs": "fixed implementation/ios/.build"
+  },
+  "git": {
+    "committed": false,
+    "pushed": false
+  },
+  "quota": {
+    "remaining_percent": 2,
+    "available_reset_credits": 2,
+    "reset_status": "not_executed",
+    "reason": "Computer Use explicitly rejected access to com.openai.codex for safety reasons. Exposed usage connector is read-only. User notified to redeem in app; no bypass attempted."
+  }
+}

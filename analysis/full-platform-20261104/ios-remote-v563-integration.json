@@ -1,0 +1,97 @@
+{
+  "batch": "v563",
+  "status": "partial",
+  "scope": "Remote frontend process recovery",
+  "attribution": "Independent snapshot and local replay lifecycle adapter. Official collection ownership is reused. Official cache format, disk lifecycle and viewport algorithm remain unknown.",
+  "implemented": [
+    "Persist scoped replay history with stable turn/request/item identities, pending prompts, approval resolution and separately archived attachments.",
+    "Reconcile accepted drafts by exact draft generation, revision, text and attachment IDs across a commit/clear interruption. Migrate v562 drafts before creating receipts.",
+    "Commit approval resolution and visible response together. Publish send/stop/approval acceptance only after successful local snapshot persistence.",
+    "End interrupted synthetic producer state with an explicit local interruption failure. Preserve received content and pending prompts. Retain original submission-only retry eligibility.",
+    "Persist scoped reading offsets and command/search/file/review disclosure state at scroll completion, page exit and background checkpoints."
+  ],
+  "validation": {
+    "foundation": "passed ios-remote-v563-contract-tests-r4.log",
+    "r1": {
+      "passed": 4,
+      "failed": 0,
+      "scope": [
+        "draft restart Chinese light",
+        "draft restart English dark",
+        "history restart Chinese light",
+        "history restart English dark"
+      ]
+    },
+    "r2": {
+      "passed": 5,
+      "failed": 0,
+      "scope": [
+        "existing combined journey Chinese light",
+        "existing combined journey English dark",
+        "history restart Chinese light",
+        "history restart English dark",
+        "interrupted replay and explicit queued continuation"
+      ]
+    },
+    "reading_anchor_process": {
+      "passed": 2,
+      "failed": 0,
+      "scope": [
+        "Chinese light middle-history anchor restart",
+        "English dark middle-history anchor restart"
+      ],
+      "position_tolerance_points": 5,
+      "additional_checks": [
+        "different task position isolation",
+        "keyboard opening preserves reading row",
+        "draft survives task return"
+      ]
+    },
+    "distinct_ui_cases_passed": 9,
+    "executions_passed": 11,
+    "visual_review": [
+      "r1 history Chinese light and English dark",
+      "r2 interrupted replay continuation",
+      "candidate563 Chinese Remote list",
+      "r3 Chinese/light and English/dark reading anchors with native keyboard"
+    ],
+    "warnings": [
+      "Existing system AppEnum caseDisplayRepresentations to-0.0 warning during combined QuickLook journeys; both tests passed."
+    ],
+    "keyboard_limit": "Both captures use the installed system Pinyin nine-key keyboard. English autocorrection is a separate pending gate.",
+    "retention": "ios-remote-v563-retention.json targets empty"
+  },
+  "failures": [
+    {
+      "file": "ios-remote-v563-contract-tests.log",
+      "cause": "Incorrect test expectation for generation-error retry, corrected to explicit queued continuation."
+    }
+  ],
+  "open": [
+    "Official disk storage and restoration algorithm evidence.",
+    "Character-level anchor under changed message layout or Dynamic Type; horizontal table offset across process restart.",
+    "Full page layout and effects including title alignment, precise message spacing and attachment presentation.",
+    "Complete reasoning history, search link navigation, task creation frontend acceptance.",
+    "Large history serialization cost and retention policy.",
+    "Connected service, physical-device haptics/notifications and Android independent acceptance."
+  ],
+  "cross_platform": "Only synthetic contracts and tests are candidate shared logic. Android storage, keyboard, scrolling and native rendering have not been validated by this batch.",
+  "preview": {
+    "status": "signed, installed and visibly running on Chinese Remote list",
+    "runtime": "ios-remote-v563-runtime.json",
+    "profile": "preview",
+    "language": "system",
+    "appearance": "system",
+    "display": "Color LCD only"
+  },
+  "sources": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "84768db0d892dcc4a0800aeb8690b2101de4c34121fcc79a4c2a04d36e3ecbdd",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "deb8c0c20ad9aa0ea11bfcb12f6cd9ec9e718162c4adb13fc1453fac7fbdbf2b",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "d07a39c1903e00ed4750f8047df122d686a1826b8ad9d6543db07a2f226dc8af",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "6d9bff95e99fe7a3f0d45b440e791fffb46fc5e3006ba34667ecdfdafdc9ce2e",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "a09249be0798683fc05bad0f07f7063e3cb770cdd39eff3049200ac274060602",
+    "implementation/ios/Sources/NativeConversationHost.swift": "d2d18c4eb4110c094cf53cd491e345c82a920c76db76a7148861ad62f10eada3",
+    "implementation/ios/Sources/RemoteApprovalInteraction.swift": "151568ecadae731c3db2c25f4b698e05d99ff0f6b0a76ffe67bcd86b0f529c55",
+    "implementation/ios/Sources/RemoteAutomaticReview.swift": "e801e5ff205efa4c576c5aaf4811a925527852d3e0411168e2243b7bfa0ec25c"
+  }
+}

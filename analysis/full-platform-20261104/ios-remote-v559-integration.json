@@ -1,0 +1,100 @@
+{
+  "version": "559",
+  "status": "partial",
+  "page": "Remote conversation",
+  "changes": [
+    "Dynamic file-difference snapshots through normal synthetic send",
+    "Atomic scoped revision validation with optional counts",
+    "Scoped disclosure restoration across task navigation",
+    "Current revision copy with existing static identifiers preserved"
+  ],
+  "validation": {
+    "ui": "ios-remote-v559-r1-files.xcresult",
+    "passed": 4,
+    "failed": 0,
+    "cases": [
+      "Chinese light completion, revision3, expand/collapse, exact copy/paste and A-B-A return",
+      "English dark failure with retained diff and exact copy/paste",
+      "Cancellation with stable detail after late callbacks and task return",
+      "Existing empty/whitespace file-summary availability regression"
+    ],
+    "foundation": "passed; ios-remote-v559-contract-tests.log",
+    "visual_inspection": [
+      "Chinese light expanded dynamic diff",
+      "English dark failure and expanded diff",
+      "Chinese normal Pinyin send with command/search/file snapshots; expanded file left running"
+    ],
+    "limits": [
+      "Focused regression only",
+      "Official whole-page fidelity remains partial",
+      "Physical device and Android acceptance pending"
+    ]
+  },
+  "source": "ios-remote-v559-findings.json",
+  "independent_adaptation": [
+    "File snapshot envelope and fixture content",
+    "Native monospaced code/copy host",
+    "Process-local scoped disclosure retention"
+  ],
+  "open_items": [
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Dynamic automatic review",
+      "evidence": "Existing recovered review input/view and static command attachment",
+      "next_action": "Connect reviews by targetItemID through command snapshot path, preserve known/unknown status and isolate disclosure",
+      "acceptance": "Review status revision, terminal outcome, command identity, return and unknown-state display"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "File title formatter, optional-count producer, code styling and file navigation",
+      "evidence": "v339/v340/v400 consumers established; adapter supplies title/counts",
+      "next_action": "Trace Presentation title/count producer and code-block style consumer for current page blockers",
+      "acceptance": "Version-bound projection plus multi-file/revision/preview return"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Reasoning history and expansion",
+      "evidence": "v558 ID.reasoning discovered; content/kind producer unresolved",
+      "next_action": "Locate reasoning ID producer and kind/content writes",
+      "acceptance": "Entry, visibility and disclosure ownership proved before integration"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Search result links and preview",
+      "evidence": "v558 summary/outer disclosure verified; details are synthetic text",
+      "next_action": "Trace ActivityRow detail consumer and route destination",
+      "acceptance": "Local resource open/close/return and task isolation"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote whole page",
+      "state": "部分实现",
+      "missing_behavior": "Title left placement, message geometry, mixed activity ordering and process restoration",
+      "evidence": "User feedback and prior parent reports; runtime screenshot confirms title still centered",
+      "next_action": "Complete page-level owner and persistent state integration",
+      "acceptance": "Chinese/English light/dark complete page loop and restart restoration"
+    }
+  ],
+  "runtime": "ios-remote-v559-runtime.json",
+  "preview": "ios-remote-v559-preview.png",
+  "retention": {
+    "report": "ios-remote-v559-retention.json",
+    "stale_targets": 0
+  },
+  "cross_platform": "iOS simulator only; physical-device haptics, notifications and Android separately pending",
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "53ed2b18e115b52bc098dbaedd805f5491462f6bbcbf0a14528535f688b2138e",
+    "implementation/ios/Sources/NativeConversationHost.swift": "7b96a713adc639e7770f7d5a70696411f17e68777c772128df2a8f35f006ead3",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "25871bf0a2734bb44f20c4b7c23a88f101fa3f07e545999e542405c5a3b13a99",
+    "implementation/ios/UITests/HostInteractionTests.swift": "2c0dcc64a378214fe5437ba21b21a025f9aad341d3b7d60053e9fd1d83b7bc15",
+    "implementation/ios/TextTests/main.swift": "f4d6bc9e2b96c6a2b80121f725d6d668074cb76a5355f11200b5d7563c47cc31"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "batch": 575,
+  "status": "partial",
+  "scope": "Chat message-row spacing context and host page gap audit",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "file": "ios-chat-v575-context-type.json",
+      "offset": "0x904bff2 -> 0x961e00c",
+      "conclusion": "MessageRowContainer.surroundingContext resolves to MessageRowSurroundingContext."
+    },
+    {
+      "file": "ios-chat-v575-context-metadata.json",
+      "conclusion": "Surrounding context contains previousMessage and currentMessage. Previous type is Optional<MessageRowContext>; current is nonoptional. No next-message field appears in this struct."
+    },
+    {
+      "file": "ios-chat-v575-row-context-metadata.json",
+      "conclusion": "MessageRowContext includes userRole, hasInlineActions, isToolSessionChainedToNextMessage, startsActivityAfterAnswer, automationID and turnOrdinal."
+    },
+    {
+      "file": "ios-chat-v575-context-layout.json",
+      "conclusion": "Concrete context offsets are0/1/2/3/8/24 with size33 stride40. Surrounding context offsets0/40 with size73 stride80. These bind inset loads at+0x28/+0x2a/+0x2b to current role/chained/activity flags."
+    },
+    {
+      "file": "ios-chat-v571-container-insets.asm",
+      "offset": "0x38dda6c..0x38ddc2c",
+      "conclusion": "Top depends on previous presence/chaining, raw role partition and current startsActivityAfterAnswer. Bottom reads current chaining. Caller edge mask gates top/bottom separately; horizontal values zero in this helper."
+    },
+    {
+      "file": "ios-chat-v575-context-layout.json",
+      "offset": "0x8018250",
+      "conclusion": "Raw role0 dispatches to0x38ddc1c; raw roles1..23 dispatch to0x38ddb4c."
+    },
+    {
+      "file": "ios-chat-v575-viewmodel-fields.json",
+      "offset": "0x961f1bc",
+      "conclusion": "MessageRowViewModel owns previousMessageContext, role, tool chaining, startsActivityAfterAnswer and inline-action state. This is field ownership evidence."
+    },
+    {
+      "file": "ios-chat-v575-context-projection.asm",
+      "offset": "0x38de8f0..0x38de970",
+      "conclusion": "Projection calls individual getters and writes role/inline-action/chaining/activity bytes at0/1/2/3, automation at8 and optional turn ordinal at24. 0x3833ad8 forwards into this function."
+    },
+    {
+      "file": "ios-chat-v575-context-parent-a.asm; ios-chat-v575-context-parent-b.asm",
+      "offset": "0x370ebb0/0x37b2d78 -> 0x393f7b0; 0x370ebb8/0x37b2d80 -> 0x3833ad8",
+      "conclusion": "Two iterative parent paths set previousMessageContext then project current context. Full parent identity and eligibility/filtering policy remain unresolved."
+    },
+    {
+      "file": "ios-chat-v575-content-container-caller.asm",
+      "offset": "0x38d7a5c..0x38d7afc",
+      "conclusion": "MessageRowContent body copies incoming surrounding context and forwards containerPaddingEdges at+0x5b to the shared container builder."
+    },
+    {
+      "file": "ios-chat-v575-insets-imports.json",
+      "offset": "0x38ddba8/0x38ddbc0",
+      "conclusion": "Imported Edge.Set.top/bottom accessors identify the independent output edge gates."
+    }
+  ],
+  "static_inferences": [
+    {
+      "claim": "With supplied vertical padding V and transition distance T, ordinary present/nonchained same-role-partition rows use topV/bottomV. Crossing raw role0 vs1..23 adds max(T-2V,0) to topV. With V12/T32 this yields top20/bottom12 for the ordinary cross-partition case.",
+      "limits": "Conditional calculation from instruction flow; excludes activity-after-answer, chaining, edge-mask and style overrides. Not a universal paragraph gap or device measurement."
+    },
+    {
+      "claim": "Current startsActivityAfterAnswer selects a separate16pt residual rule. Current chaining suppresses bottom padding.",
+      "limits": "Exact active producer predicates in ordinary Chat/Work remain unclosed."
+    }
+  ],
+  "host_observations": [
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "symbol": "NativeMessageBlock.fittedHeight/init",
+      "finding": "Independent text block adds top10 and bottom10 around UITextView. Code adds a40pt top slot. Native text-container defaults add their own insets."
+    },
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "symbol": "NativeHostedRow / collectionView sizeForItemAt",
+      "finding": "Row sums independent per-block heights and adds36pt menu area when originalText exists. No recovered surrounding-context spacing owner is currently connected."
+    }
+  ],
+  "decision": "Keep row spacing, Markdown block metrics and action-footer height as separate gaps. Do not replace all block spacing with12/32. Existing v574 preview remains the runnable candidate.",
+  "probe_failure": {
+    "input": "CLI inspect_swift_symbolic_type record0x904bff2",
+    "reason": "invalid type record length",
+    "correction": "Field metadata contains a raw typeref; inspect_raw_type resolved it. No format fallback was applied."
+  },
+  "next_actions": [
+    {
+      "question": "Which visible Chat/Work parent filters rows and supplies active rowVerticalPaddingOverride?",
+      "seed": "0x370e754 and0x37b2aa0 caller identity/filtering; MessageRowContent environment style consumed by0x38ddf28",
+      "completed": "previous-context setter and current-context projection now located"
+    },
+    {
+      "question": "Which Markdown block container owns paragraph insets before native text layout?",
+      "seed": "NativeMessageBlock independent top/bottom10 and UITextView defaults, separate from recovered MessageRowContainer"
+    },
+    {
+      "question": "Which official inline/context action conditions should replace the current always-present36pt menu slot?",
+      "seed": "MessageRowStyle disallowedInlineButtonActions/disallowedContextCellActions/explicitActions and MessageRowContent inlineActions/contentFooter slots"
+    }
+  ],
+  "verification": {
+    "kind": "static artifact checks and independent arithmetic model",
+    "report": "ios-chat-v575-spacing-replay.json",
+    "limits": "Model expectations manually transcribed. No target fragment execution, new app candidate or visual parity. v574 remains runnable candidate."
+  }
+}

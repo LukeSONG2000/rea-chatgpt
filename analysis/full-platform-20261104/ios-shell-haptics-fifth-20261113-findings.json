@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "module": 1,
+  "scope": "Two bounded groups: concrete selection generator cache/lifecycle; sidebar begin/end plus admission/arbitration recheck. No product or runtime changes.",
+  "status": "partial",
+  "authority": "Official iOS293 static artifact + current host source comparison",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused_evidence": [
+    "ios-sidebar-gesture-haptic-20261112-followup.json",
+    "ios-haptics-v597-generator.json",
+    "ios-haptics-v597-engine.json",
+    "ios-haptics-v597-engine-witnesses.json",
+    "ios-shell-gesture-20261112-findings.json"
+  ],
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "Does the concrete selection generator reuse/prepare lifetime differ from the current adapter?",
+      "status": "verified_static_cache_difference",
+      "observations": [
+        {
+          "site": "0x6fe11f8..0x6fe1204",
+          "meaning": "Reads cached optional generator pointer from current concrete engine self+0x28; nonzero skips allocation and returns the retained existing object."
+        },
+        {
+          "site": "0x6fe1208..0x6fe1214",
+          "meaning": "Only nil branch resolves0xaac62d0 bound _OBJC_CLASS_$_UISelectionFeedbackGenerator, allocates and sends init."
+        },
+        {
+          "site": "0x6fe1218..0x6fe1224",
+          "meaning": "Loads old pointer then stores the newly initialized generator to same self+0x28.6f23f4 preserves result into x19 and releases x21; it is not a preparation or new haptic style."
+        },
+        {
+          "site": "0x6fe122c..0x6fe1238",
+          "meaning": "Returns retained x19; helper14b294 restores saved registers/stack. No additional intensity parameter is supplied."
+        },
+        {
+          "site": "0x6fe1344..0x6fe13a8",
+          "meaning": "Existing capability gate, then getter6fe11e8 and selectionChanged selector7c725e0; no prepare() inside this selected emission function."
+        },
+        {
+          "site": "0x6fe1194..0x6fe11e4",
+          "meaning": "A separate capability-gated helper invokes caller-supplied generator accessor and sends prepare(). It is not automatically invoked by selectionChanged; which sidebar caller supplies/executes this helper is not established."
+        },
+        {
+          "site": "0x6fe1088..0x6fe10d4",
+          "meaning": "Impact generator accessor reads container at engine+0x18, tests dictionary count, looks up style key through4a215e4 and returns retained value on hit (values buffer+0x38). No new generator for cache hit."
+        },
+        {
+          "site": "0x6fe10dc..0x6fe10f8",
+          "meaning": "Cache miss converts style via53dce0, resolves class binding0xaac61a0 to UIImpactFeedbackGenerator, allocates and initializes with the converted style."
+        },
+        {
+          "site": "0x6fe1100..0x6fe1120,0x6fe5164..0x6fe525c",
+          "meaning": "Passes dictionary addressengine+0x18, retained new generator and style key to cache-store helper. Helper handles dictionary uniqueness/capacity/find-or-insert, writes value at521c..5220 or calls insertion2596c18, and stores resulting dictionary back at5240. Actual style0/light existing emission chain is unchanged."
+        }
+      ],
+      "current_host": "FrontendHaptics.selectionFeedback() currently calls UISelectionFeedbackGenerator().selectionChanged() per event, so it does not retain/reuse a generator across calls. Sidebar and ComposerStatusPill share this dispatcher. attachmentImported also constructs UIImpactFeedbackGenerator(style:.light) for each accepted file event.",
+      "safe_product_decision": "Retain one lazily created selection generator in the current explicit MainActor frontend haptic adapter, after its existing preference/hardware/active admission; reuse across its selection consumers. This restores the observed per-engine cache mechanism, with existing global frontend adapter scope explicitly independent from original DI lifecycle. Do not hardcode offset0x28 in product code. The known light file-success path can likewise retain a lazily-created .light generator in that same adapter, after admission. A single known-style cache is sufficient now; do not introduce unused styles or alter intensity. If future recovered styles are added, preserve style-distinct cached generators rather than mutating one.",
+      "not_supported": "Do not claim caching increases waveform amplitude or proves cause of reported weak feel. Do not increase strength or add prepare-on-begin from this nearby helper alone."
+    },
+    {
+      "id": 2,
+      "question": "Does sidebar gesture trigger/admission prove another missing strength or preparation stage?",
+      "status": "known_trigger_reconfirmed_full_arbitration_still_partial",
+      "observations": [
+        {
+          "site": "0x62bb80..0x62bbf4,0x62bd9c..0x62be00",
+          "meaning": "Reconfirms ended-only raw3; initial tracker required; strictly interior live progress; consume before selection witness+0x78; selected final open state differs from captured initial. Canceled/nonended clears without this explicit feedback."
+        },
+        {
+          "site": "0x62bc60..0x62be80",
+          "meaning": "Begin handles opposite animation/keyboard coordinator and stores initialIsOpen at62be70. Selected direct instructions do not establish a prepare() haptic caller; absence of direct calls does not rule out helpers/DI behavior."
+        },
+        {
+          "site": "0x629e70..0x629f70",
+          "meaning": "Own recognizer gate still requires absolute horizontal velocity greater than vertical; known close/open capability branch, direction-adjusted sign. Another nonnil state branch returns true, but its complete state identity is not decoded here; do not reduce all states to one Bool."
+        },
+        {
+          "site": "0x62a398..0x62a43c",
+          "meaning": "Separate arbitration first distinguishes own recognizer, checks62a07c, disableSidebarSwipeActionPrecedence field, optional row-swipe helper62a440 and additional view/scroll/custom consumers. Current host header/exposed-surface policy remains independent and cannot be claimed complete official arbitration."
+        }
+      ],
+      "current_host": "Existing ended/interior/changed endpoint trigger matches proven branch. Header-only close-drag admission, dedicated UIScreenEdgePan opening and nested-back heuristic remain documented host policies. No safe generic row/scroll simultaneous-recognition change or extra vibration can be derived from these bounded windows.",
+      "next_exact_evidence": "If expanding original arbitration, resolve62a07c, actual row-swipe helper62a440 object identity and62a154/62a4c0/62aab8 consumer results with class and selected-range/scroll-edge mapping. No broad scan or unbounded new candidates in this pass."
+    }
+  ],
+  "unknowns": [
+    "Exact physical amplitude/waveform/timing and comparison with a named interaction on a real device",
+    "Original concrete engine DI/cache lifetime/reset across owners/app activity",
+    "Whether a specific sidebar caller invokes the separate prepare helper; do not infer from proximity",
+    "Full recognizer precedence involving row swipe, selected text, nested scrolling/navigation and responder hooks"
+  ],
+  "haptic_settings": "Preserve Settings > General > Haptic feedback persistent gate plus explicit hardware/activity admission. Generator reuse must not bypass disabled checks or introduce new feedback triggers.",
+  "bounded_stop": {
+    "groups_used": 2,
+    "no_more_source_candidates_this_pass": true,
+    "product_changed": false,
+    "build_or_device_operation": false,
+    "original_app_run": false
+  },
+  "source_hashes": [
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "9234767d76a2d2be392cc93cf011a2241cbb5048e582089868c856ae434da0d5"
+    }
+  ],
+  "evidence_manifest": [
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/gesture-arbitration.asm",
+      "sha256": "bd502c4dd7a6f99b2e4851c50229be0368d9ca912e5e31187cf5ef8331d7b9b7",
+      "bytes": 9594
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/gesture-arbitration.json",
+      "sha256": "44d05d26c631838d941d13239e8c0f4479213bc20ef41bb68f68f1dc401b8121",
+      "bytes": 9797
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/gesture-should-begin.asm",
+      "sha256": "36f397536a9139b8a7fb1e52d56c0134470b80570707070f81f97c403bc61212",
+      "bytes": 4738
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/gesture-should-begin.json",
+      "sha256": "db1d1baaadaeeff4404f203dc4f952b6572aeb7aa24710f4f64f9ba131b58439",
+      "bytes": 4165
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-accessor.asm",
+      "sha256": "06989ebf2904720b415533b33f7068bc1562b77d9ef8f8bcc1e889ec2c422bcf",
+      "bytes": 2677
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-accessor.json",
+      "sha256": "036ecef7018736c148a0143baf2d8c9cfbf364ec4a0ffa874de14fb2309a5dbe",
+      "bytes": 2148
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-cache-store-full.asm",
+      "sha256": "32cb8fb7694d932a78132a1cc34f7a508279d2b498137c78df16a01fed02358e",
+      "bytes": 3177
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-cache-store-full.json",
+      "sha256": "0752f3ecd40e73eaab36379618b99eb6b85c6cea7f635135ab1513759b29c512",
+      "bytes": 2044
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-cache-store-helper.asm",
+      "sha256": "fb53350b4a38075338a977bd0ecea2627761bca295fe1a04a139ab25540afa7c",
+      "bytes": 1379
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-cache-store-helper.json",
+      "sha256": "e5ec996eddd275c8c7a4a6ba01054a601bdc3db1934f40f62155be0c75b379f1",
+      "bytes": 1136
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-class-binding.json",
+      "sha256": "1e69f62357fb8bc1d48672c704c0feb200600a156226e8056c2ddb489c8ad2b1",
+      "bytes": 362
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-key-helper.asm",
+      "sha256": "3baea875b49d491a821ec911371ffb5e9cc84fa5c95b64c68c2b4170263b9a57",
+      "bytes": 1032
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/impact-key-helper.json",
+      "sha256": "94c9c22d25357707a017273234e1ef4fa556a4a7ac70d7cbde2a573fbd33d922",
+      "bytes": 2190
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/prepare-method.asm",
+      "sha256": "23869c157dcaf0fba0e427e5a2a7c4dd1823b08f8e7c6bfcd3f31bfd1aa9927f",
+      "bytes": 1189
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/prepare-method.json",
+      "sha256": "c811d9d8f8d39b6ac2962865ab4e0cf6b1034205093d5ed3107449ed323f2ddc",
+      "bytes": 1634
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/selection-accessor.asm",
+      "sha256": "4adabbc9a462a5376d365c4cd294d7cab6d3425a71bdc4ca686c46d8e29982c3",
+      "bytes": 1245
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/selection-accessor.json",
+      "sha256": "a3398f6d287d8f0aef433712ea497fcc04c98cf437c858427222b4774ec7b47b",
+      "bytes": 1558
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/selection-cache-helper.asm",
+      "sha256": "98b31ab748118c596530e0b7440f686c5e62bef2e2b5eb92819df7ca26531969",
+      "bytes": 1450
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/selection-cache-helper.json",
+      "sha256": "415ce470ee6aea15bfc42bf284196dfd88d6d3d16386a37beaf7b3dfaea67416",
+      "bytes": 1068
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/selection-class-binding.json",
+      "sha256": "9c89efc02c14166fe18c4b2e6479683e4db2451f2a1a858a54dec6edbe90d0a4",
+      "bytes": 365
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/selection-helper-return.asm",
+      "sha256": "2e5a842bab8c8ed0133db5530e409c1674144304e78c456cf609050d8c0b002b",
+      "bytes": 609
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/selection-helper-return.json",
+      "sha256": "ab9304fac96f3cd0b086b2fd55a1ec4f569cadd88004fd0641a01ff94f7e170e",
+      "bytes": 924
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/sidebar-pan-end.asm",
+      "sha256": "c86700b6a48c0cc6266c81d6060eb8216aa8319363641ff9a2cf38f25260eb0e",
+      "bytes": 9746
+    },
+    {
+      "path": "ios-shell-haptics-fifth-20261113-raw/sidebar-pan-end.json",
+      "sha256": "d3ed5944ce0c6f47e815956ec216e019c0d35a3d0d0e885ee4ff2aab05bd732c",
+      "bytes": 8098
+    }
+  ],
+  "impact_cache_imports": [
+    {
+      "site": "0x6fe5190",
+      "target": "0x7c5470c",
+      "imported_symbol": "_swift_isUniquelyReferenced_nonNull_native"
+    },
+    {
+      "site": "0x6fe51e8",
+      "target": "0x7c50518",
+      "imported_symbol": "_$ss17_NativeDictionaryV12ensureUnique02isD08capacityS2b_SitF",
+      "chained_binding": {
+        "slot": "0xaad7ed0",
+        "symbol": "_$ss17_NativeDictionaryV12ensureUnique02isD08capacityS2b_SitF",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11893,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6fe5224",
+      "target": "0x7c53adc",
+      "imported_symbol": "_objc_release_x9"
+    },
+    {
+      "site": "0x4a21608",
+      "target": "0x7c514e4",
+      "imported_symbol": "_$ss6HasherV5_seedABSi_tcfC",
+      "chained_binding": {
+        "slot": "0xaad8ce0",
+        "symbol": "_$ss6HasherV5_seedABSi_tcfC",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 12324,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x4a21614",
+      "target": "0x7c514fc",
+      "imported_symbol": "_$ss6HasherV8_combineyySuF",
+      "chained_binding": {
+        "slot": "0xaad8cf0",
+        "symbol": "_$ss6HasherV8_combineyySuF",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 12326,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x4a2161c",
+      "target": "0x7c51544",
+      "imported_symbol": "_$ss6HasherV9_finalizeSiyF",
+      "chained_binding": {
+        "slot": "0xaad8d20",
+        "symbol": "_$ss6HasherV9_finalizeSiyF",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 12332,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v483",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x1a4ccc4..0x1a4ceb0",
+        "0x7e13fb8"
+      ],
+      "conclusion": "Remote native collection topEdgeEffect.style is soft with iOS26 availability and exact build bypass."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x1a4c634..0x1a4c66c",
+        "0x1daa574",
+        "0x7c47c98",
+        "0x7e13f90"
+      ],
+      "conclusion": "Native collection wrapper selects Edge.Set.top on iOS26+, empty on older systems. Helper stores edges and obtains SafeAreaRegions.all. Adjacent stored fields and matching ignoring-layout type prove the top-safe-area modifier. A preceding bottom-ignore modifier is separately present; its full content inset/keyboard policy is not integrated here."
+    }
+  ],
+  "implementation": {
+    "native_owner": "UICollectionViewController via UIViewControllerRepresentable; explicit top-only style; no descendant override",
+    "independent_adaptations": [
+      "UIHostingConfiguration for existing recovered SwiftUI components",
+      "Compositional layout with existing fixture spacing/padding",
+      "Stable synthetic introduction/history/current-turn/control rows and diffable reconfiguration",
+      "Bottom inset/pinned-distance policy remains existing fixture behavior, not original collection completeness"
+    ],
+    "top_safe_area": "Recovered source modifier applied to the native transcript only: ignoresSafeArea(.all, edges: iOS26+ ? .top : []). Bottom accessory remains a sibling."
+  },
+  "validation": {
+    "r1": "3 targeted tests passed; visual inspection found content clipped below toolbar, so runtime pass did not establish edge-effect visibility",
+    "r2": "4 passed, 1 failed. Nested output preserved reading/follow state and actual collection topSoft=true,bottomSoft=false. Fragment response toggle did not activate in its synthetic hosting cell; recording shows the control fully visible, so no accessory-overlap cause established.",
+    "model": "passed",
+    "r3": "5 passed, 0 failed, exit0. Title/default-large text/underlap, fixed approval and legacy attachment, host/task/inline actions, fragment remove/reinsert/reorder state, nested output reading/follow preservation and native top-only style observation.",
+    "r1_source_sha256": {
+      "implementation/ios/Sources/NativeConversationHost.swift": "f66d4062ee33f08ce888adde996f7047d019f710b299ee61c178e09a2ae080cc",
+      "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "1aac5a30a1a4d20f0b438186b2fcda1366a0f9258e041538c0d6febe9b15ee00",
+      "implementation/ios/UITests/HostInteractionTests.swift": "cd9e6c7f31e1983fd176dbaac3f2e80f0d18085c68f3e559feda5ed6df3a4311"
+    },
+    "r2_source_sha256": {
+      "implementation/ios/Sources/NativeConversationHost.swift": "2f45e09f54fb75a142ead5582a95cb36f5e0c3b9f88c5d0c83c7a89f45e2acac",
+      "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "ed231ec0bbf142072239458023a88d0f450f4f1c9466f160df12f400b84a840c",
+      "implementation/ios/UITests/HostInteractionTests.swift": "226e9e284530bcb41e7aa0320ac1d27ebb38c7d9952273db55b7d2b4147f880e"
+    },
+    "visual_r1": {
+      "status": "failed_top_containment",
+      "screenshots": [
+        "/tmp/rea-v483-r1-screens/7C5A97A6-A6CA-4BE4-892E-224871291BAA.png",
+        "/tmp/rea-v483-r1-screens/9DA0EEF4-D67A-4146-B576-68C1FD981D87.png"
+      ],
+      "observation": "Content clips at the bottom of the toolbar. This contradicts visual acceptance despite 3 passing action/layout tests. Top-safe-area source trace supplies the missing wrapper."
+    },
+    "fragment_failure": {
+      "recording": "/tmp/rea-v483-r2-screens/F92F6F40-DD96-4A04-9CCE-5DF12559AE9A.mp4",
+      "frame": "/tmp/rea-v483-r2-fragment-final.png",
+      "observation": "Response-removal control fully visible above the ordinary composer; response remained after the tap. Explicit per-button style is being tested to isolate automatic cell action behavior.",
+      "resolution": "With explicit .plain style on the synthetic control cell, the unchanged response remove/reinsert and sibling-state assertions pass in r3. This isolates the migration issue to automatic button behavior in the test fixture hosting cell; no override was added to recovered production message components."
+    },
+    "reports": [
+      "analysis/full-platform-20261104/ios-remote-v483-ui.summary.json",
+      "analysis/full-platform-20261104/ios-remote-v483-r2-ui.summary.json",
+      "analysis/full-platform-20261104/ios-remote-v483-r3-ui.summary.json"
+    ],
+    "visual_final": {
+      "status": "observed_simulator_partial",
+      "observation": "Default and large-text screenshots show transcript content progressively blurred behind the clear title/back/options/status area. Fixed approval remains visible. CUA confirmed ordinary offline fixture command output expanded, actual main scrolling and fixed approval in the retained preview. Exact official version/device pixel equivalence remains unaccepted.",
+      "screenshots": [
+        {
+          "path": "/tmp/rea-v483-r3-screens/3EC7106F-67AE-4F79-80CB-F0F1100EE380.png",
+          "sha256": "f9db9ad4b92b2923c5c17123936a98ad5c0e31ee479eaa1a96a544a8998d2e38"
+        },
+        {
+          "path": "/tmp/rea-v483-r3-screens/01466490-30D2-4D9E-9A15-D541F59341CC.png",
+          "sha256": "fff0d22c2e89241ed522f8d36ec9cb0bf5762527d4fd71c405166e68f95e204f"
+        },
+        {
+          "path": "/tmp/rea-v483-r3-screens/FE47A5C0-7C38-48B7-85EB-C05848F2F95D.png",
+          "sha256": "531d722b9d7a81409bf0cbad9425a65cb1c9bf00459e7a5cb4fa2a8544d7800d"
+        }
+      ]
+    }
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v482-thread-edge-owner.json",
+      "sha256": "d4b09e62fa8ee411806b1e799c5d6e29b5e8d50b52c6924b50f08cee855393d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v482-thread-edge-update.json",
+      "sha256": "6b87d8ec219f53c5fa5bea19613939210c260eaf5b3842ed8684ceebc976d793"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v483-safe-area-type.json",
+      "sha256": "dd6ec5cbf7a2a7b31da14d9fe627d65a237d8afe833134d7a89ed6711a6d54cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v483-safe-area-binding.json",
+      "sha256": "0d65ef1487f3936c2b06ef2fba98cbf744e699d830fb2cf631a7c74c95e833c2"
+    }
+  ],
+  "reference_docs": [
+    "https://developer.apple.com/documentation/SwiftUI/UIHostingConfiguration",
+    "https://developer.apple.com/documentation/uikit/uicollectionview/reconfigureitems(at:)"
+  ],
+  "limits": [
+    "Full original native collection layout/update/pinning behavior remains partial",
+    "Current turn still groups synthetic fragments; official transcript-item projection remains incomplete",
+    "No tactile/physical-device acceptance; Chat/Work/Android equivalence not inferred"
+  ],
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "d5278cc5659be53df9882e403f70c19f3bfebb4e2592cb32facbe1429fa72811",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "ed231ec0bbf142072239458023a88d0f450f4f1c9466f160df12f400b84a840c",
+    "implementation/ios/Sources/RecoveredScrollEdgeCompatibility.swift": "b42987d236581f92518d8a4ef21490d85b4f2ffc8d17b37f2318251aeaeed7e1",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "c77b6b79608bcef781e286380627e344b12e0684c78237efb2b8dde33fec6312",
+    "implementation/ios/UITests/HostInteractionTests.swift": "c6ecf8afecbd2350407fdc9cdfe4fd98211965a8b8cf803eb3e4989db42d9309"
+  },
+  "preview": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "build": "v483-r3",
+    "pid": 49923,
+    "launch_args": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks"
+    ],
+    "route": "fixture-a/shared-thread, command output expanded, transcript scrolled, fixed pending approval retained",
+    "window": "Existing Device Hub window retained, display identity not reverified. Window screenshot size changed since previous batch; current coordinates derived from fresh observations.",
+    "physical_device": "v474 unchanged",
+    "commit_or_push": false
+  },
+  "next_minimum_action": "Continue full Remote page assembly: trace project/source list projection and native transcript item grouping, replace remaining fixture-only grouping with scoped evidence-backed consumers, preserving the new native scroll owner and its toolbar/bottom relationships. Independently trace sidebar and Chat/Work effect callers before reuse.",
+  "previous_goal_turn": "progress: v482 integrated the compatibility gate, fixed a regression test and closed native edge ownership."
+}

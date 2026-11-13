@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "partial",
+  "scope": "Two bounded Report issue factory followups: presenter injection initializer and asynchronous completion/state consumer. No resource-string assembled form, no general feedback components or global scans.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "reused": [
+    "ios-settings-help-fifth-20261113-findings.json",
+    "ios-settings-help-fifth-20261113-r2-findings.json",
+    "ios-settings-help-fifth-20261113/bug-captured-factory.asm",
+    "ios-settings-help-fifth-20261113/report-present-owner.json",
+    "ios-settings-help-fifth-20261113/report-presentation.asm",
+    "ios-settings-help-fifth-20261113/report-admission.asm"
+  ],
+  "corrections": [
+    {
+      "target": "ios-settings-help-fifth-20261113-findings.json report-presentation-owner",
+      "old_overstrong_claim": "Returned presentation state / presented object held at presenter+0x30.",
+      "corrected": "presenter+0x30 is Swift.Task state, proved by actual Task.== call at629883c. It is set to newly created task at6298a88 and cleared after completion by6298c58. It is not a concrete report UI object or evidence a sheet exists. Preserve the historical report; this correction supersedes that sentence."
+    },
+    {
+      "target": "ios-settings-help-fifth-20261113/report-sheet-factory.asm",
+      "corrected": "15409a8 is a generic helper arranging task-allocation arguments; filename is a probe label, not a recovered sheet factory."
+    }
+  ],
+  "candidate_groups": [
+    {
+      "id": 1,
+      "entry": "BugReportPresenter state domain/constructor6298714 and629874c",
+      "stop_condition": "Recover injectedfactory source or establish exact external function/context parameter boundary.",
+      "result": "Exact constructor receives enabled via x0, asyncfactory via x1/context via x2; stores factory/context+0x18/+0x20. No concrete UI factory registration in this bounded initializer."
+    },
+    {
+      "id": 2,
+      "entry": "Factory asynchronous return continuation6298be8/6298c20 and state setter62987ec",
+      "stop_condition": "Recover visible report model/form consumer or establish task bookkeeping only.",
+      "result": "Consumer clears Task state; no report fields/UI-model value, submit-button admission or content carrier established. Historical presented-object interpretation corrected."
+    }
+  ],
+  "findings": [
+    {
+      "id": "exact-injected-factory-initialization",
+      "classification": "official_artifact_observation",
+      "status": "verified",
+      "conclusion": "The presenter is explicitly initialized with an external async function/context. The examined initialization does not select a fixed original form itself.",
+      "source": [
+        "6298714 ->156fcc preservesx1tox21andx2tox19;6298728 savesx0tox22 and allocatesobject",
+        "629874c sameinitialization path;6298764 nils+0x28/+0x30",
+        "6298774 writes enabledbyte+0x10;6298778 writes inputx1/x2 pair+0x18/+0x20",
+        "6298b5c reads thatsamepair,6298b6c decodesasyncfunctiondescriptor,6298bac branches todecodedentry"
+      ],
+      "limit": "Actual callsite supplying x1/x2 at application DI registration remains unresolved. Do not name an unrelated BugReport/feedback view as its consumer from resource/type presence."
+    },
+    {
+      "id": "task-lifetime-not-presented-form",
+      "classification": "official_artifact_observation",
+      "status": "verified",
+      "conclusion": "presenter+0x30 stores an optional Swift.Task, not the report sheet/view controller. Factorycompletion clears the task slot. Neither this state nor its absence proves submission or UI success.",
+      "source": [
+        "6298804 oldvalue+0x30;629883c imported _$sScT2eeoiySbScTyxq_G_ABtFZ (Swift.Task.==)",
+        "bindingaad8bc0=_$ss5NeverON;aad8bd8=_$ss5NeverOs5ErrorsWP",
+        "6298a88 passes newlycreatedtask into62987ecsetter",
+        "6298c50 guardweakpresenter;6298c54 ->154b9c returns x0=nil andx20=presenter;6298c58 ->62987ec clearsTask"
+      ],
+      "limit": "Generic task success type need not be named from this call alone; no actual form fields, validation or submission receipt implied."
+    },
+    {
+      "id": "report-availability-boundary-preserved",
+      "classification": "official_artifact_observation_reused",
+      "status": "verified-scoped",
+      "conclusion": "Entry/admission remain optional resolver and enabled/inflight guards; frontend can truthfully expose an unavailable boundary when no concrete factory exists.",
+      "source": [
+        "Settings GetHelp resolver10119f0 returns optionalBugReportPresenter",
+        "62988a8 enabled+0x10must1;62988b4 getter62988d0 reads+0x28 andrequiresnil",
+        "6298958 getter6298a98 reads+0x30; nonnil taskshortcircuits creation"
+      ],
+      "limit": "Do not rename +0x28 as a specific UI/service state without its producer. This is entry/task admission, not submit-button state."
+    }
+  ],
+  "frontend_recovery": {
+    "original_visible_form_fields": [],
+    "original_local_form_interactions": [],
+    "original_submit_enabled_rule": "unknown; entry task admission is not form submission admission",
+    "original_carrier": "unknown; no proven sheet/email composer/navigation form",
+    "immediately_implementable_original_form": false,
+    "safe_host_behavior": "Keep source-backed Report entry, optional capability, one scoped pending operation/cancellation or return path and explicit unavailable state. A separate independently designed draft would need explicit labeling and is not recovered original UI. No real upload/submission."
+  },
+  "precise_unknowns": [
+    {
+      "boundary": "AppDI callsite ->6298714/629874c x1/x2 function/context",
+      "missing": "Actual injected asyncfactory registration and selected implementation entry.",
+      "next_minimum": "Require exact initializer callsite; do not follow unrelated feedback/resource strings."
+    },
+    {
+      "boundary": "Injectedfunction invoked6298bac -> concretevisiblecontent",
+      "missing": "Original form/view model,fields,localvalidation,attachmentsandbuttons."
+    },
+    {
+      "boundary": "Concreteformsubmitactionowner",
+      "missing": "Frontendsubmitenabled/disabled/pending/errorandcancel semantics; no serverimplementation requested."
+    }
+  ],
+  "validation": {
+    "candidate_groups_used": 2,
+    "static_only": true,
+    "product_modified": false,
+    "build_or_device": false,
+    "official_app_execution": false,
+    "network": false
+  },
+  "evidence_directory": "analysis/full-platform-20261104/ios-settings-report-sixth-20261113-raw",
+  "raw_inventory": [
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/init-allocation-helper.asm",
+      "bytes": 579,
+      "sha256": "e9cede650a8835e2a9ed22fd93e1f443bdcbbdef11c49affa8b359fb92edfa5d"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/init-allocation-helper.json",
+      "bytes": 923,
+      "sha256": "1258823fbfa4559beef4370efcd008b4f4844d5c851c4688f904f6db31deb755"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/init-input-helper.asm",
+      "bytes": 516,
+      "sha256": "747d526a4199f067c1a3dd49a679ad98e40499eb1ed8d10bd05b93022920e6fa"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/init-input-helper.json",
+      "bytes": 907,
+      "sha256": "0e68747c50f90c2fc99d1dbef3892bf495f6b2dff68e4d8547a91b254bc980ec"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presented-object-comparison-types.json",
+      "bytes": 455,
+      "sha256": "b3fc6df8a00dbd5031654c80f2d845b8b0f19f924139b2bd82ba44a5595bf3cf"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presented-object-result.asm",
+      "bytes": 2370,
+      "sha256": "fd6c2235d7a09506e30da75966a03c0fe13fc35a25e56e4658358c17fdcdc922"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presented-object-result.json",
+      "bytes": 2355,
+      "sha256": "9101c8c6b3131424614dcf01569cf943af96bb3166d261309694803b7167eac5"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presenter-factory-return.asm",
+      "bytes": 6528,
+      "sha256": "8b08cbecd794bbff6c79644a3036f6223c0ff76c1f59bba3f61f253963458afd"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presenter-factory-return.json",
+      "bytes": 5187,
+      "sha256": "f790de269d17c00da0699cc5aad9d2e07823b93d0786c6cef3ba3231162b55ee"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presenter-initialization-domain.asm",
+      "bytes": 11947,
+      "sha256": "2174251c0a191241cb8ad0d8314448741430fb8ec26df0997afb1e2326e7606b"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presenter-initialization-domain.json",
+      "bytes": 5921,
+      "sha256": "cbf9ef6b37f0d54c0ecbbcf4d9fe65a2254735c51690610b5a3daa5d30a999a3"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presenter-inject-init.asm",
+      "bytes": 1571,
+      "sha256": "ffb462ae54b40136ee11f4f9b7b963aa4521b0f79d200cc4d790a12aaa3e12c4"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presenter-inject-init.json",
+      "bytes": 1503,
+      "sha256": "faaa3e1c6b3c2088add88fb33d194ab58eeb9daf81444adcb81fc1606f957d18"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presenter-postfactory-owner.asm",
+      "bytes": 15670,
+      "sha256": "bf692f5985d65f53ee036aec2c3856b29250a7344a3404f284fa2f4ca110c40d"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/presenter-postfactory-owner.json",
+      "bytes": 10986,
+      "sha256": "14ac0e151eb0808a3c681f4e0517d08508bb94b396e6de716d51220de7a18f2a"
+    },
+    {
+      "path": "ios-settings-report-sixth-20261113-raw/task-state-setter.json",
+      "bytes": 2281,
+      "sha256": "7cc4f471a459f27b5637aea627b9703dea5961799f68a97054473eb21736e7d5"
+    }
+  ],
+  "stop_reason": "Two requested consumers reached exact externalfactory/taskstate boundary. No safe original form implementation, so archive unknown rather than fabricate fields."
+}

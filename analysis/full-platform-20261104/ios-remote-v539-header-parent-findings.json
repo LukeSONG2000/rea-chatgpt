@@ -1,0 +1,132 @@
+{
+  "batch": "v539",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "official-artifact-static with separately identified host screenshot observation",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Determine whether ordinary workspace pinned-header overlap is explained by an omitted list/container/topSpacing/background modifier after v538 HeaderV2 restoration.",
+  "confirmed": [
+    {
+      "id": "workspace-topspacing-producer-consumer",
+      "conclusion": "The current remoteWorkspace descriptor takes extra topSpacing 0 irrespective of prior section. Existing host default0 matches this branch.",
+      "producer": [
+        "0x337a60 x23=0x6000000000000000",
+        "0x337a64 copies low2 host tag bits into x23",
+        "0x337ad4 branches to0x33745c",
+        "0x337464 stores x23 to Descriptor+0x38"
+      ],
+      "consumer": [
+        "0x39cff8..0x39d080 builds optional previous descriptor using index-1",
+        "0x39d084 passes current descriptor in x20, previous descriptor in x0",
+        "0x39d088 calls0x39c3d8",
+        "0x39c3fc previous-descriptor tag helper;0x39c404 w0==1 branch returns0",
+        "0x39c40c..0x39c418 reads current+0x38 and compares top2bits against3",
+        "workspace tag3>>1 is1, hence0x39c41c returns Double0",
+        "0x39d08c retains Double in d8",
+        "0x39d0d4 stores header+0x50",
+        "0x3a18bc gets Edge.top;0x3a18c4 reads header+0x50 for outer PaddingLayout"
+      ],
+      "boundary": "Other special empty-payload ID cases enter adjacency logic and may get10. No universal topSpacing rule is asserted."
+    },
+    {
+      "id": "parent-margins",
+      "conclusion": "Both direct contentMargins operations outside the task-list container use bottom edges. Neither inspected call supplies a top/header occlusion inset.",
+      "producer": [
+        "0x397bc0 Edge.Set.bottom",
+        "0x397bc8 owner byte+0x171",
+        "true branch0x397bd0..0x397bd4 supplies some(0), false0x397be0 delegates0x397898",
+        "0x397bf8 ContentMarginPlacement.scrollContent"
+      ],
+      "consumer": [
+        "0x397c2c contentMargins(bottom, optionalValue, scrollContent)",
+        "0x397c54 Edge.Set.bottom",
+        "0x397c5c repeats gate, false0x397c70 delegates0x397898",
+        "0x397c80 ContentMarginPlacement.scrollIndicators",
+        "0x397cc0 contentMargins(bottom, optionalValue, scrollIndicators)"
+      ],
+      "boundary": "Semantic name of byte+0x171 and fallback margin value are not re-proven. This only excludes these two calls as missing top inset evidence."
+    },
+    {
+      "id": "list-container-parity",
+      "conclusion": "The inspected ordinary list container matches the existing host on PlainListStyle, row spacing0, custom section spacing0, hidden section separators, hidden scroll-content background and MainSurfacePrimary outer background.",
+      "producer_consumer": [
+        "0x240390c List<Never,Content>.init",
+        "0x2403918 PlainListStyle.init ->0x2403948 listStyle",
+        "0x24039b0 VerticalEdge.Set.all;0x24039c0 Visibility2 ->0x24039dc listSectionSeparator",
+        "0x24039f8..0x24039fc some0 ->0x2403a18 listRowSpacing",
+        "0x2403a28 Double0 ->0x2403a34 ListSectionSpacing.custom ->0x2403a5c listSectionSpacing",
+        "0x2403ad0 Visibility2 ->0x2403adc scrollContentBackground",
+        "0x2403aec asset factory74f0f48 ->0x2403b38 background with Edge.all from0x2403b10"
+      ],
+      "boundary": "RecoveredRemoteListEdges is an independent compatibility adapter. Official soft vertical edge wrapper fromv384 remains separately gated and runtime dependent."
+    },
+    {
+      "id": "section-and-width-boundary",
+      "conclusion": "Existing v537 full generic type proves ordinary workspace remains native Section.header. Existing v538 final HeaderV2 and HomeContentWidth types reveal zero list row insets, overlay, top padding and two width FlexFrameLayouts. They contain no explicit header BackgroundModifier or headerProminence modifier.",
+      "producer_consumer": [
+        "0x399f70 header closure0x39cdec ->0x399f98 Section.create",
+        "type0x7cf7820 ordinary native header;0x7cf7828 ListRowBackgroundTrait wrapper",
+        "0x39a230..0x39a254 Section MainSurfacePrimary row-background trait",
+        "0x3a18e8 final HeaderV2 type0x7cf32f0 ->0x3a1900 zero-inset writer4533f8",
+        "CodexHomeContentWidth conformance0x7cf4748 witness386ef4 ->body386ccc..386ef4, types7cf4b80/4b88/4b90"
+      ],
+      "boundary": "A Section row-background trait does not by itself establish opaque native pinned-header compositing. Width gate/messageInputStyle selected value remains unknown."
+    }
+  ],
+  "host_visual_observation": {
+    "source": "ios-remote-v538-r4-attachments/C23033A9-267B-43CD-BCEF-8E6A4ED6BA9F.png",
+    "evidence_type": "independent-host-screenshot",
+    "observation": "Underlying running task text is visibly blurred behind the pinned workspace title, while header title/folder/new-thread remain crisp. AX frame intersection alone does not identify absent material or establish official parity.",
+    "boundary": "Official app under identical locale/font/OS/scroll state was not observed."
+  },
+  "integration_decision": {
+    "new_source_supported_pin_fix": null,
+    "reason": "No additional omission explaining the pin overlap is proven in this bounded trace. Existing host0 topSpacing is correct for current workspace. A solid header fill, disabling native pinning, or moving workspace header to content lacks support here.",
+    "compatible_parent_work": "Propagating already proven shared HeaderV2 modifier order to plain header variants can proceed independently of pinned-header diagnosis."
+  },
+  "unclosed_boundaries": [
+    "Native SwiftUI pinned-header backdrop behavior for official OS/SDK and environment",
+    "Official same-content/same-font-size scrolling reference",
+    "Host navigation/safe-area viewport and blur adapter behavior, investigated by parent",
+    "Width modifier gate and runtime messageInputStyle",
+    "Special non-workspace topSpacing adjacency handling outside the current failing branch"
+  ],
+  "validation": {
+    "static": "read-only frozen artifact trace",
+    "official_runtime": "not executed",
+    "host_runtime": "parent-owned",
+    "app_test_doc_edits": "none",
+    "shared_rea_target": "untouched"
+  },
+  "evidence_sha256": {
+    "analysis/full-platform-20261104/ios-remote-v539-header-descriptor-writer.asm": "1e523bc6b5b92e0fd712144a3e60633e0c0c752ff6e45a6aa10c3c72b9a61670",
+    "analysis/full-platform-20261104/ios-remote-v539-header-descriptor-writer.json": "fa02e78ce5ed47273d79799cf3e82024c56f147ce95d71d7f4ca8ecd864f3b73",
+    "analysis/full-platform-20261104/ios-remote-v539-header-host-list-snapshot.json": "f8d43cd2fc115972982bcf0e26f2522227f0b080ac425abebd8579988cbe23ce",
+    "analysis/full-platform-20261104/ios-remote-v539-header-kind-extractor.asm": "17a4d886c4ffb78639b3b44561334f132e017e711cac70daf6fb684b50aab51e",
+    "analysis/full-platform-20261104/ios-remote-v539-header-parent-margins.asm": "9666ce0b553bc15f1dba693bd4d1e13b0ef429b1475f1dcba20356afbd9a7eba",
+    "analysis/full-platform-20261104/ios-remote-v539-header-parent-margins.json": "062dab60727e7ef5e69decebd475c362be8c20560c3e298876a8451cddc34457",
+    "analysis/full-platform-20261104/ios-remote-v539-header-topspacing-owner.asm": "06f9100b51696a9427b00eac9318882528061929bcf7da45d31cb09afa5c836f",
+    "analysis/full-platform-20261104/ios-remote-v539-header-topspacing-owner.json": "e94a17582027bf9426af800309f16f0b0f20e0a02cddc5a246659772e85bf9f7",
+    "analysis/full-platform-20261104/ios-remote-v539-header-topspacing.asm": "d336f57b123939e1fa347e4522c0bae50e53d8117d04298866b8c4f1c80df1b6",
+    "analysis/full-platform-20261104/ios-remote-v539-header-topspacing.json": "35eaa7db7034566dcc4a3e64b65e11731a9242f42062a94f892187bd4bc3b25d",
+    "analysis/full-platform-20261104/ios-remote-v539-header-workspace-id-producer.asm": "07e0761822334f6eae6a90b7f9798afba8a912b436be9b3a8cb8f1789dfb1ce7",
+    "analysis/full-platform-20261104/ios-remote-v539-header-workspace-id-producer.json": "b6ddf243c96a2ce81c0ead3950b99b787bbf4fdcc7016e6b6590792370d992f4",
+    "analysis/full-platform-20261104/ios-remote-v383-container.asm": "4e14138b35b97f69ce20b42cdccde46561ef1bb3eeb3d3adedeb4e50fb39efc1",
+    "analysis/full-platform-20261104/ios-remote-v383-container-calls.json": "448ad5ef15de8b28498c242a17fb94a75b068bc70bb4df481a35eba485a4675d",
+    "analysis/full-platform-20261104/ios-remote-v384-edge-findings.json": "304d445b555c9cc5d19b7f04807ca5884b28b99a48abfb4ed37ff97f1d43d8de",
+    "analysis/full-platform-20261104/ios-remote-v386-container-findings.json": "ee1bcbf5542cf98aebcfccfe5863677d7796e217974be14e6cde2bad0001edf8",
+    "analysis/full-platform-20261104/ios-remote-v382-list-types.json": "db74ef454a10ba566b10cbd1562b4866661e08a68c6b3259283d8d626dc21821",
+    "analysis/full-platform-20261104/ios-remote-v537-list-section-findings.json": "4dfe9b80c296f0a41164b7641aeb1d98dc00022cfda5e0645528160558c50410",
+    "analysis/full-platform-20261104/ios-remote-v537-section-wrapper.asm": "7fe80701b449fdc54de4c3dddb0428cc5c13aa04702891232bf3341413b282f4",
+    "analysis/full-platform-20261104/ios-remote-v538-header-findings.json": "c3679fb0642a4baa7408095bfc8f0308c4fe0c26803561a488676976486fb9c9",
+    "analysis/full-platform-20261104/ios-remote-v538-header-final-types.json": "9ffb7ddf57c62a26a308bc127ce51061f0be6a5130cdd4425a270334c53530f5",
+    "analysis/full-platform-20261104/ios-remote-v538-header-width-types.json": "90af549759b81fb5d10040d41257c20612c4ad4ea8abc8cbc3f3ea7eadfa450f",
+    "analysis/full-platform-20261104/ios-remote-v490-descriptor-chain.json": "c07f16d48dc0d6883fa6db0b08c29f2b6a3c0df9c8d64d95641b545a4546a7ef",
+    "analysis/full-platform-20261104/ios-remote-v490-workspace-descriptor.asm": "67e814403afd1a65c15913b8db93f050bc555a11cc5bc869f0ca11f22d254e71",
+    "analysis/full-platform-20261104/ios-remote-v500-no-workspace-findings.json": "610b6fd53aca5dee198a197a376f83164f1aac8e156d44325cca8d0e8ac6c465",
+    "analysis/full-platform-20261104/ios-remote-v507-date-header-findings.json": "e832136cb1574574d4bf96f821ff929e133c57a84e7ef781ccfc774478bea807",
+    "analysis/full-platform-20261104/ios-remote-v538-r4-attachments/C23033A9-267B-43CD-BCEF-8E6A4ED6BA9F.png": "1ede825da1825f5ee49d10053b2dba25cf8c23c0727bb9ab6d0354bc8d5d8461"
+  }
+}

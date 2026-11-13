@@ -1,0 +1,102 @@
+{
+  "version": "561",
+  "status": "partial",
+  "page": "Remote conversation",
+  "changes": [
+    "Added combined Remote task journeys in Chinese/light and English/dark",
+    "Validated approval, sibling review disclosures, search, diff, attachment send, queued follow-up, cancellation, explicit restart, QuickLook and cross-host draft return",
+    "Corrected UI test gesture bounds after retaining two r1 failures"
+  ],
+  "validation": {
+    "ui": "ios-remote-v561-r2-journey.xcresult",
+    "passed": 2,
+    "failed": 0,
+    "previous_failure": "ios-remote-v561-r1-journey.xcresult; 2 failures at earlier-attachment scrolling",
+    "foundation": "passed; ios-remote-v561-contract-tests.log",
+    "visual_inspection": [
+      "Chinese light attachment after task return and retained draft",
+      "English dark attachment after task return and retained draft"
+    ],
+    "limits": [
+      "Single synthetic approval-first scenario per language/theme",
+      "Injected picker result; native QuickLook text content opened and closed",
+      "Page-wide visual fidelity, all failure variants, process restart, real notifications, physical device and Android remain separate"
+    ]
+  },
+  "source": "ios-remote-v561-findings.json",
+  "independent_adaptation": [
+    "Existing v560 synthetic adapters remain in use",
+    "Regression gestures are clipped to the visible collection area using current navigation/editor geometry"
+  ],
+  "open_items": [
+    {
+      "priority": "P1",
+      "page": "Remote list and conversation",
+      "state": "部分实现",
+      "missing_behavior": "Page-wide recovery and appearance acceptance",
+      "evidence": "v561 combined same-process task journey passes; current screenshots retain title/spacing differences",
+      "next_action": "Validate process-restart state and resolve current-page persistence ownership using existing source evidence",
+      "acceptance": "Draft and reading state restored after real process restart; mixed activity position and task identity verified"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "File title formatter, optional-count producer, code styling and file navigation",
+      "evidence": "v339/v340/v400 consumers established; adapter supplies title/counts",
+      "next_action": "Trace Presentation title/count producer and code-block style consumer for current page blockers",
+      "acceptance": "Version-bound projection plus multi-file/revision/preview return"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Reasoning history and expansion",
+      "evidence": "v558 ID.reasoning discovered; content/kind producer unresolved",
+      "next_action": "Locate reasoning ID producer and kind/content writes",
+      "acceptance": "Entry, visibility and disclosure ownership proved before integration"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote conversation",
+      "state": "部分实现",
+      "missing_behavior": "Search result links and preview",
+      "evidence": "v558 summary/outer disclosure verified; details are synthetic text",
+      "next_action": "Trace ActivityRow detail consumer and route destination",
+      "acceptance": "Local resource open/close/return and task isolation"
+    },
+    {
+      "priority": "P1",
+      "page": "Remote whole page",
+      "state": "部分实现",
+      "missing_behavior": "Title left placement, message geometry, mixed activity ordering and process restoration",
+      "evidence": "User feedback and prior parent reports; runtime screenshot confirms title still centered",
+      "next_action": "Complete page-level owner and persistent state integration",
+      "acceptance": "Chinese/English light/dark complete page loop and restart restoration"
+    },
+    {
+      "priority": "P2",
+      "page": "Remote command review",
+      "state": "部分实现",
+      "missing_behavior": "Exact review glyph/palette/risk punctuation and standalone network-review branch",
+      "evidence": "v408 consumers; v560 findings",
+      "next_action": "Trace remaining style payload and branch owner when required by page acceptance",
+      "acceptance": "Version-bound style/owner evidence and corresponding interaction comparison"
+    }
+  ],
+  "runtime": "ios-remote-v561-runtime.json",
+  "preview": "ios-remote-v561-preview.png",
+  "retention": {
+    "report": "ios-remote-v561-retention.json",
+    "stale_targets": 0
+  },
+  "cross_platform": "iOS simulator only; device haptics, notification delivery and Android pending",
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "7d9f28239b39459c58c44e4ba7cfb07eaedd4b479f712afce1a89dcc210eb5ff",
+    "implementation/ios/Sources/RemoteAutomaticReview.swift": "969c3046a617125d6f5e7cece78261a1df015475f0785ff0cd00836fadb13fff",
+    "implementation/ios/Sources/NativeConversationHost.swift": "32b0022dc06019b0d22149d1431c0e209518de984bf59ba30907a6b416367773",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "e74e73e6a1c0773b026d506551dc49af4c8414b1a0ed293f45fd0c6be75b9734",
+    "implementation/ios/TextTests/main.swift": "b11e6b492cd73ca4b9806f795a6dae0bab97b72770a92817730519e63f2bc65a",
+    "implementation/ios/UITests/HostInteractionTests.swift": "b25e4e9739df5b907075a8d6f15f1b99d0c6ca6b6e2b12cf7933eea2a53296a3"
+  }
+}

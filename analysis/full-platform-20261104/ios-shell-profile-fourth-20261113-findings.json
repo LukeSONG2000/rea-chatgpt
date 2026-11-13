@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "partial-direct-content-producer-closed-live-account-flag-unknown",
+  "scope": "Read-only; two bounded candidate groups. No product/AGENTS/plans/build/test/device/network changes.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "previous_report": "ios-shell-bottom-actions-parent-20261113-findings.json",
+  "correction": "1282c1c is not merely an insufficient publisher probe: its end actually constructs the HistoryProfileButtonContent. This is now correlated with the child content copy and the visible leaf. Earlier broad producer-unknown conclusion is superseded for the concrete branch projection, not for live account assignment.",
+  "candidate1_content_producer": {
+    "caller": "HistorySettingsActionItemContainerView.body0x1282990",
+    "constructor": "0x1282c1c",
+    "input_model": {
+      "read": "0x1282c78 ->0x129fb34",
+      "type": "AccountSwitcherAccountModel descriptor0x96b34e0/accessor0x5c6fe60",
+      "type_helper": "0x1282c38 ->0x5c6fe60",
+      "vm_cache_slot": "0x129fb60 reads cached instance-field offset at0xb17d3d0+0x3f8=0xb17d7c8;0x129fb64..74 accesses/copies model",
+      "fields_inventory_only": [
+        "account",
+        "user",
+        "isSelected",
+        "name",
+        "planDisplayText"
+      ]
+    },
+    "avatar_value": "0x1282c80..90 obtains model user via metadata+0x14 and calls0x184a00c with original model context; output is AccountAvatarContent desc0x95a903c.",
+    "boolean_gate": {
+      "getter": "0x1282ce0",
+      "read": "0x1282d18..1c reads boolean at cached field-offset slot0xb17d4a0 from supplied receiver",
+      "branch": "0x1282ca0 calls getter;0x1282ca4 false->0x1282cc0",
+      "semantic_limit": "Prior report labels getter canShowAccountSwitcher; metadata does have _canShowAccountSwitcher(record0x9a1576c,index73,metadata-vector slot0x298). Exact cached slot-to-field mapping and upstream account/configuration assignment are not independently closed in this pass."
+    },
+    "actual_construction": {
+      "true": "0x1282ca8..cb8 copies AccountAvatarContent and supplies single-payload discriminator0",
+      "false": "0x1282cc0..cc8 discards temporary avatar and supplies empty discriminator1",
+      "witness": "0x1282ccc..cd0 ->0x14bb48 sets extraCaseCount1 and payload metadata AccountAvatarContent;0xfaad4 dispatches VWT.storeEnumTagSinglePayload slot0x38. This is one avatar payload plus settingsCog empty case, not inferred enum declaration order.",
+      "child_copy": "Caller0x1282a48 constructs into scratch;0x1282b98 copies that enum into child.content. VM+0x8f0 is separately passed accountSwitcherViewModel, not the content enum."
+    },
+    "leaf_validation": {
+      "body": "0x12844e8,called0x1283c94 from ViewContent.body",
+      "test": "0x1284538..40 ->0x14d5dc invokes payload VWT.getEnumTagSinglePayload(extraCaseCount1) and compares tag1",
+      "empty_case": "tag1 ->0x1284544 ->0x74f78dc ->literal0x8a555c0 OpenAI/Symbols/gear",
+      "payload_case": "tag0 ->0x1284600..4690 forwards supplied AccountAvatarContent to native AccountAvatar0x18498b0",
+      "conclusion": "Source getter true produces avatar; false produces cog. The visible projection is proven directly."
+    }
+  },
+  "candidate2_payload_and_source_gate": {
+    "actual_avatar_factory": "0x184a00c",
+    "types": [
+      "AccountAvatarContent0x95a903c",
+      "Account0x9712218",
+      "User0x9714a54",
+      "AccountSwitcherAccountModel0x96b34e0"
+    ],
+    "observations": [
+      "AccountAvatarContent has url/fallbackImage/initials/missing alternatives and actual producer examines original account/user data.",
+      "Original Account.profilePictureURL is field14; consumer0x184a048 reads Account metadata+0x48. User fallback is separate at0x184a0c4 onward.",
+      "Metadata identifies _currentAccountModel/_canShowAccountSwitcher/_showAccountSwitcher, but source cache slots are runtime zero-fill and are not current live values."
+    ],
+    "unknowns": [
+      "Full URL/fallback/special aggregate flag+0x41/initials/missing ordering not mapped.",
+      "Exact cache slot0xb17d4a0 to original VM field mapping not independently closed; its assigned account/experiment/backend flag is unknown."
+    ],
+    "limited_probe": "HistoryViewModel completion0x13402a0 lays out187 fields; generic field inspector rejected unsupported descriptor kind. No guessed vector-to-cache projection used."
+  },
+  "implementation_decision": {
+    "safe_now": [
+      "Keep explicit profile-content input separate from popover capability/binding and actions.",
+      "An explicit synthetic source-boolean plus supplied avatar content can exercise the proven projection: false gear, true avatar.",
+      "Preserve settingsAction/accountSwitcherAction/avatarSize/minimumHitTarget inputs independently."
+    ],
+    "default_policy": "Do not globally replace current gear with avatar; live assigned source flag is unknown. Screenshots, nonempty profile URL or account name do not establish true.",
+    "not_claimed": [
+      "Live account gate recovered",
+      "Original complete avatar URL/fallback/render pipeline",
+      "New haptic caller"
+    ]
+  },
+  "haptics": {
+    "new_explicit_caller_proven": false,
+    "limit": "No explicit haptic emitter demonstrated in constructor/projection/leaf windows. Indirect/shared system feedback remains unknown."
+  },
+  "precise_breakpoints": [
+    "Source getter1282ce0/cache slot0xb17d4a0 ->actual VM field-offset vector ->assigned account/configuration owner.",
+    "AccountAvatarContent184a00c special model flag+0x41 and initials formatting/full source fallback map."
+  ],
+  "evidence_directory": "analysis/full-platform-20261104/ios-shell-profile-fourth-20261113",
+  "raw": [
+    "profile-producer.asm",
+    "profile-container-content-copy.asm",
+    "profile-leaf-enum-consumer.asm",
+    "avatar-content-producer.asm",
+    "account-model-read.asm",
+    "single-payload-store.asm",
+    "single-payload-store-vwt.asm",
+    "single-payload-test.asm",
+    "avatar-metadata-accessor.asm",
+    "content-metadata-accessor.asm",
+    "producer-copy-helper.asm",
+    "avatar-type-helper.asm",
+    "gear-resource.asm",
+    "vm-layout-completion.asm",
+    "selected-models.json",
+    "selected-vm-fields.json"
+  ],
+  "stop_reason": "Two groups reached; direct projection closed and upstream live assignment remains explicit unknown. No broadened source search."
+}

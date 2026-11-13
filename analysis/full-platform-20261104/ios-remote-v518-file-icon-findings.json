@@ -1,0 +1,299 @@
+{
+  "status": "partial",
+  "evidence_type": "official-artifact-static-inference",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "CodexRemoteFileAttachmentChip local filename icon, Files.FileIconView and FilePreviewInfo",
+  "consumer": {
+    "body": "0x197313c",
+    "initializer_chain": [
+      "0x1973258",
+      "0x4557e8",
+      "0x1da0d90",
+      "0x6a6ec44"
+    ],
+    "info_arguments": {
+      "filename": "caller string",
+      "libraryArtifactKind": null,
+      "providerFile": null,
+      "providerFile_nil_tag": 4
+    },
+    "icon_font_size": 16,
+    "icon_font_weight": "regular",
+    "background_size": 28,
+    "background_size_scaling": "ScaledMetric<CGFloat>",
+    "corner_radius": 10,
+    "rendering_mode": "filled (raw 0, inherited default)",
+    "glyph_color": "White foregroundStyle supplied by source; final pixel color requires rendering-path validation"
+  },
+  "style_evidence": {
+    "default_constructor": "0x6a72ad8",
+    "white_call": "0x6a72b04",
+    "rendering_mode_store": "0x6a72b54",
+    "caller_background_size": "0x19732fc..0x1973300",
+    "caller_rounded_shape": "0x197332c..0x1973330",
+    "caller_scaled_size": "0x1973364..0x1973378",
+    "view_body": "0x6a6e73c",
+    "frame": "0x6a6e7c0..0x6a6e7f8",
+    "clip_shape": "0x6a6e818..0x6a6e875",
+    "content_helper": "0x6a6e888",
+    "filled_color_branch": "0x6a6e928,0x6a6e954..0x6a6e95c",
+    "accessibility_hidden": "0x6a6e9c8..0x6a6e9d0"
+  },
+  "kind_mapping": [
+    {
+      "raw_tag": 0,
+      "kind": "pdf",
+      "symbol": "OpenAI/Symbols/pdf-document",
+      "background_color": "OneOff/Red400",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 1,
+      "kind": "spreadsheet",
+      "symbol": "OpenAI/Symbols/spreadsheet",
+      "background_color": "ChatGPT/theme/green/default",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 2,
+      "kind": "csv",
+      "symbol": "OpenAI/Symbols/spreadsheet",
+      "background_color": "ChatGPT/theme/green/default",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 3,
+      "kind": "presentation",
+      "symbol": "OpenAI/Symbols/slides",
+      "background_color": "OneOff/Red400",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 4,
+      "kind": "archive",
+      "symbol": "OpenAI/Symbols/zip-document",
+      "background_color": "OneOff/Gray800",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 5,
+      "kind": "audio",
+      "symbol": "OpenAI/Symbols/wavelength",
+      "background_color": "ChatGPT/theme/purple/default",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 6,
+      "kind": "video",
+      "symbol": "OpenAI/Symbols/film-strip",
+      "background_color": "ChatGPT/theme/purple/default",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 7,
+      "kind": "sourceCode",
+      "symbol": "OpenAI/Symbols/code",
+      "background_color": "OneOff/Gray800",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 8,
+      "kind": "text",
+      "symbol": "OpenAI/Symbols/terms",
+      "background_color": "ChatGPT/theme/blue/default",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 9,
+      "kind": "image",
+      "symbol": "OpenAI/Symbols/photo",
+      "background_color": "ChatGPT/theme/pink/default",
+      "foreground_style": "SwiftUI.Color.white"
+    },
+    {
+      "raw_tag": 10,
+      "kind": "other",
+      "symbol": "OpenAI/Symbols/document",
+      "background_color": "OneOff/Gray800",
+      "foreground_style": "SwiftUI.Color.white"
+    }
+  ],
+  "kind_mapping_evidence": {
+    "kind_enum_metadata": "0x97034cc",
+    "glyph_selector": "0x6a6f7b4",
+    "glyph_jump_table": "0x82fb4db",
+    "glyph_jump_bytes": [
+      3,
+      0,
+      0,
+      4,
+      1,
+      6,
+      7,
+      5,
+      9,
+      2,
+      8
+    ],
+    "color_selector": "0x6a6f844",
+    "color_jump_table": "0x82fb4e6",
+    "color_jump_bytes": [
+      1,
+      2,
+      2,
+      1,
+      0,
+      3,
+      3,
+      0,
+      4,
+      5,
+      0
+    ],
+    "gray800_factory_tail": [
+      "0x74f0bdc",
+      "0x75035ac"
+    ],
+    "red400_factory_tail": [
+      "0x74f11c4",
+      "0x7503644"
+    ]
+  },
+  "classification": {
+    "constructor": "0x6a6ec44",
+    "filename_extension": "NSString.pathExtension, then lowercase",
+    "uttype": "UTType(filenameExtension: extension, conformingTo: .data)",
+    "uttype_constructor_call": "0x6a6ee8c",
+    "optional_type_classifier": "0x6a6f144",
+    "nil_type_result": "other (tag10)",
+    "classifier": "0x6a6f4a4",
+    "kind_iteration_bytes": "0xa9255e8 = 00 01 02 03 04 05 06 07 08 09 0a",
+    "ordered_conformance_tests": [
+      "pdf",
+      "spreadsheet",
+      "commaSeparatedText",
+      "presentation",
+      "archive",
+      "audio",
+      "audiovisualContent",
+      "sourceCode",
+      "text excluding image",
+      "image"
+    ],
+    "conforms_calls": [
+      "0x6a6f65c",
+      "0x6a6f68c"
+    ],
+    "fallback": "After no conformance, lowercase identifier and preferredMIMEType checked against presentation via helper0x6a7b10c; true returns presentation3, otherwise other10. Exact String comparison helper not independently resolved."
+  },
+  "office_overrides": {
+    "selector": "0x6a702e4",
+    "precedence": "before generic kind glyph",
+    "cases": [
+      {
+        "extensions": [
+          "doc",
+          "docx"
+        ],
+        "symbol": "OpenAI/Symbols/ms-word",
+        "factory": "0x74f8c60",
+        "resource_string": "0x8a55e40"
+      },
+      {
+        "extensions": [
+          "ppt",
+          "pptx"
+        ],
+        "symbol": "OpenAI/Symbols/ms-powerpoint",
+        "factory": "0x74f8be4",
+        "resource_string": "0x8a55e20"
+      },
+      {
+        "extensions": [
+          "xls",
+          "xlsx"
+        ],
+        "symbol": "OpenAI/Symbols/ms-excel",
+        "factory": "0x74f8b68",
+        "resource_string": "0x8a55e00"
+      }
+    ],
+    "doc_color_override": "ChatGPT/theme/blue/default"
+  },
+  "rendering_caveat": {
+    "template_decision_helper": "0x6a6fdac",
+    "local_nil_library_nil_provider_result": false,
+    "note": "Local nil library/provider path does not explicitly apply Image.renderingMode(.template). Symbol metadata/default rendering should be preserved; do not infer every provider glyph is monochrome.",
+    "conversion_mode": "true path explicitly selects .original via binding0xaad4ec8; local false skips it"
+  },
+  "unknowns": [
+    "No original runtime executed; static path and exact assets do not establish visual parity.",
+    "Asset catalog RGBA/rendering-intent details not extracted in this task.",
+    "Provider/library icon branches excluded from supported local-chip mapping.",
+    "Presentation string fallback helper semantics pending direct inspection."
+  ],
+  "validation": {
+    "static_disassembly": true,
+    "swift_metadata": true,
+    "import_binding_membership": true,
+    "controlled_replay": false,
+    "official_runtime": false,
+    "production_edits": false
+  },
+  "files": [
+    "ios-remote-v518-file-icon-body-calls.json",
+    "ios-remote-v518-file-icon-body.asm",
+    "ios-remote-v518-file-icon-classifier-calls.json",
+    "ios-remote-v518-file-icon-classifier.asm",
+    "ios-remote-v518-file-icon-color-0.asm",
+    "ios-remote-v518-file-icon-color-1.asm",
+    "ios-remote-v518-file-icon-color-2.asm",
+    "ios-remote-v518-file-icon-color-3.asm",
+    "ios-remote-v518-file-icon-color-4.asm",
+    "ios-remote-v518-file-icon-color-5.asm",
+    "ios-remote-v518-file-icon-color-string-tails.asm",
+    "ios-remote-v518-file-icon-doc-color-calls.json",
+    "ios-remote-v518-file-icon-doc-color.asm",
+    "ios-remote-v518-file-icon-enums.json",
+    "ios-remote-v518-file-icon-generic-color-calls.json",
+    "ios-remote-v518-file-icon-generic-color.asm",
+    "ios-remote-v518-file-icon-glyph-0.asm",
+    "ios-remote-v518-file-icon-glyph-1.asm",
+    "ios-remote-v518-file-icon-glyph-2.asm",
+    "ios-remote-v518-file-icon-glyph-3.asm",
+    "ios-remote-v518-file-icon-glyph-4.asm",
+    "ios-remote-v518-file-icon-glyph-5.asm",
+    "ios-remote-v518-file-icon-glyph-6.asm",
+    "ios-remote-v518-file-icon-glyph-7.asm",
+    "ios-remote-v518-file-icon-glyph-8.asm",
+    "ios-remote-v518-file-icon-glyph-9.asm",
+    "ios-remote-v518-file-icon-info-metadata.json",
+    "ios-remote-v518-file-icon-info-projection-calls.json",
+    "ios-remote-v518-file-icon-info-projection.asm",
+    "ios-remote-v518-file-icon-info-types.json",
+    "ios-remote-v518-file-icon-kind-mappings.asm",
+    "ios-remote-v518-file-icon-metadata.json",
+    "ios-remote-v518-file-icon-office-resources.asm",
+    "ios-remote-v518-file-icon-resource-map.json",
+    "ios-remote-v518-file-icon-style-calls.json",
+    "ios-remote-v518-file-icon-style.asm",
+    "ios-remote-v518-file-icon-view-body-calls.json",
+    "ios-remote-v518-file-icon-view-body.asm",
+    "ios-remote-v518-file-icon-witness.json"
+  ],
+  "rendering_review": {
+    "trigger": "Parent observed black terms glyph using Image(uiImage:).resizable().scaledToFit().foregroundStyle(.white).",
+    "confirmed_source_expression": "Image(ImageResource(name:resourceName,bundle:officialBundle)).foregroundStyle(style.iconColor).font(style.iconFont) on filled background, frame with ScaledMetric size, clipped rounded shape",
+    "foreground_modifier_type_record": "0x7d143d0 -> 0x8db3360 = ModifiedContent<Image,_ForegroundStyleModifier<Color>>",
+    "image_resource_initializer": "0x6a6ebc0 -> 0x7c4b28c",
+    "font_modifier": "0x6a6e994 -> 0x6ec6b0c -> 0x6ec6b44 imports View.font",
+    "local_rendering_mode": "0x6a6fdac false, branch0x6a6ebcc skips explicit renderingMode",
+    "catalog": "terms contains vector glyphs, hierarchical and multicolor layers, Glyph RenderingMode raw0; raw enum semantic not inferred",
+    "finding": "Source passes white foregroundStyle. A UIImage-resizable adapter runtime is insufficient to prove original SwiftUI ImageResource final glyph color. Validate original ImageResource construction without resizable/template override before choosing an adapter.",
+    "status": "partial",
+    "no_production_edits": true
+  }
+}

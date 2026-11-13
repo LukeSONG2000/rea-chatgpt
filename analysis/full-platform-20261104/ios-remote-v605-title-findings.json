@@ -1,0 +1,61 @@
+{
+  "batch": "v605",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "official-artifact-static plus independent-host observation",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "public_source_check": {
+    "record": "analysis/upstream-codex-20261105/reuse-map.json",
+    "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+    "limit": "Public source does not supply the frozen mobile SwiftUI page."
+  },
+  "official_mechanism": [
+    "CodexRemoteThreadViewContent descriptor0x95ac4bc contains _toolbarRole at field index18; field offset vector4 yields metadata slot0x68.",
+    "__Key_codexRemoteThreadToolbarRole descriptor0x95ac528/conformance0x7e11920 default witness0x1a43ddc tails0x1a43dd8 then stub0x7c46e34, chained slot0xaad0318 resolves SwiftUI.ToolbarRole.editor.",
+    "Content builder0x1a4843c..0x1a49624 reads metadata slot0x68 at0x1a48ea0, reads Environment<ToolbarRole> through0x195fb78 at0x1a48eb0 and applies View.toolbarRole at0x1a48ed0 via stub0x7c4a3b0/slot0xaad3f30.",
+    "Direct page content caller0x1a47134 calls0x1a4843c. Existing iOS26 principal title placement and fixed44pt label container are retained."
+  ],
+  "host_gap": "RemoteThreadFixturePage has navigationTitle, inline display and principal location label, but no toolbarRole modifier.",
+  "before_observation": "CUA inspected the installed v604 Chinese dark core preview on2026-11-09. Opening fixture-a/shared-thread shows the two-line title centered, with a large gap after the back button.",
+  "integration": "Apply default editor toolbar role at the ordinary reconstructed Remote thread page. Keep native placement, fonts and dimensions. No positional offset is introduced.",
+  "independent_adaptation": "The host selects the recovered default directly. It does not implement the private environment key or unobserved embedding overrides. Test geometric tolerances are regression bounds, not recovered layout constants.",
+  "limits": [
+    "Other official embeddings may override the private key.",
+    "Static evidence alone does not prove the runtime alignment effect.",
+    "The full measured-body callback graph is not exhaustively recovered."
+  ],
+  "evidence_files": [
+    "ios-remote-v605-toolbar-role-consumer.asm",
+    "ios-remote-v605-toolbar-role-consumer.json",
+    "ios-remote-v605-toolbar-role-default-binding.json",
+    "ios-remote-v605-toolbar-role-default-tail.asm",
+    "ios-remote-v605-toolbar-role-default.asm",
+    "ios-remote-v605-toolbar-role-default.json",
+    "ios-remote-v605-toolbar-role-env-reader-full.asm",
+    "ios-remote-v605-toolbar-role-env-reader.asm",
+    "ios-remote-v605-toolbar-role-env-reader.json",
+    "ios-remote-v605-toolbar-role-import-bindings.json",
+    "ios-remote-v605-toolbar-role-imports.json",
+    "ios-remote-v605-toolbar-role-key-access.asm",
+    "ios-remote-v605-toolbar-role-key.json",
+    "ios-remote-v605-toolbar-role-metadata.json",
+    "ios-remote-v605-toolbar-role-root-xrefs.json",
+    "ios-remote-v605-toolbar-role-xrefs.json",
+    "ios-remote-v605-thread-content-witness.json"
+  ],
+  "validation": {
+    "implementation": "implemented",
+    "foundation": "passed",
+    "ui": "3 tests passed, 0 failed",
+    "coverage": [
+      "Chinese light and English dark, each standard and XXXL long title",
+      "native44pt container, title beside back, trailing controls reachable",
+      "scroll under title, approval remains reachable, A-B-A title identity",
+      "menu capability branches and new-thread draft return"
+    ],
+    "visual": "Inspected light/dark short-title, Chinese long-title/XXXL and Chinese menu captures. Title is leading next to back; native top soft edge is visible."
+  }
+}

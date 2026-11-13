@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "module": "6 Remote approvals and user input second pass",
+  "date": "2026-11-13",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "core_frontend_implemented_source_fidelity_and_service_gaps_remain",
+  "previous_goal_turn": "progress: module5 source-backed shared carrier/menu/haptics, tests, builds and running preview archived",
+  "source_reports": [
+    "ios-remote-approval-parent-20261113-findings.json",
+    "ios-remote-user-input-parent-20261113-findings.json",
+    "ios-remote-requests-parent-assets-20261113.json",
+    "ios-remote-requests-parent-preintegration-20261113.json"
+  ],
+  "implemented_this_pass": [
+    {
+      "component": "ordinary approval parent",
+      "source": "Banner1a1d1d4/1a1d31c; generic7e1e6a0",
+      "change": "Decision group and feedback HStack are siblings in parent spacing16; decision group leading/spacing8/top8; Rectangle border/light.opacity.8 height.5 with its own top8"
+    },
+    {
+      "component": "feedback row and label",
+      "source": "1a1db90..1a1dbe8;1a1f6e4..1a1fa40",
+      "change": "center HStack10/minHeight32; plain callout primary text field; separate footnote.medium/h14/minHeight32 Capsule bg/primary opacity.01, border/default opacity.65 width1; retain original primary approval CapsuleButtonStyle"
+    },
+    {
+      "component": "current request versus local answer state",
+      "source": "QuestionCards7e142a8 IDView<...,ApprovalRequestKey>;UserInput finalbody7e1e978;key reset1cf4494;current question getter1a54310",
+      "change": "scope-keyed form, current payload updates without full-value recreation, new-key clears answers/custom drafts/current text/index; current question clamped against current questions"
+    },
+    {
+      "component": "request identity",
+      "source": "ApprovalRequestKey descriptor95d4610 / ios-remote-v409-request-identity.json",
+      "change": "optional callID projected with requestID/threadID/turnID/itemID; old Codable scopes without callID decode; host/connection/id remain independent envelope"
+    },
+    {
+      "component": "controlled update coverage",
+      "evidence_type": "independent_offline_fixture",
+      "change": "explicit offline-only menu injection supports same-key questions update and new-key replacement in actual task page; absent from ordinary/core preview"
+    }
+  ],
+  "retained_core": [
+    "ordinary task list to fixed bottom request card with transcript scrolling",
+    "availability-bound approve/session/policy decision, deny and feedback intent validation",
+    "question choices, custom and secure fields, previous/next, skip, empty requests",
+    "synthetic accepted receipt retires card and resumes composer/response; unavailable adapter retains request",
+    "exact host/connection/task/request identity checks, duplicate rejection and identity-only receipt persistence without secret answer payload"
+  ],
+  "feature_chain": {
+    "entry": "Remote task list -> RemoteThreadFixturePage -> taskBottomBars/userInputBar",
+    "identity": "original ApprovalRequestKey fields plus independent host/connection/fixture envelope and stable question IDs",
+    "state": "approval feedback local state; current request + per-question answers/drafts/index; separate processed receipts",
+    "data_source": "deterministic frontend fixtures and disconnected adapter interfaces; no real backend",
+    "projection": "approval capability selection or current question projection; unsupported branches explicit",
+    "render": "recovered Banner action/feedback tree or request-keyed QuestionCards input form under existing BottomBars",
+    "side_effects": "typed approval/answer/skip events and atomic synthetic receipts; no execution or network",
+    "cleanup_recovery": "new user-input key retires local answers/custom/index, current questions kept fresh; answer payload never stored in receipt; existing processed-key restart cache retained"
+  },
+  "independent_adaptations": [
+    "Host/connection/id envelope in addition to original request key",
+    "same-key effective question-ID change restores per-ID unsent text; original arbitrary reorder/removal merge policy unknown and no invented answer filtering",
+    "scope-keyed SwiftUI state carrier plus pure draft update mirrors source identity/current-payload distinction; exact original LazyState implementation not reused",
+    "diagnostic request-update Menu Section appears only with both offline and replacement fixture flags; not an official menu item or live subscription",
+    "existing reason/command fixtures, local receipt cache, synthetic continuation and unavailable-service notices"
+  ],
+  "not_implemented": [
+    "OpenAIForm/MCP/network-policy/full permissions preview variants and complete reason formatting",
+    "real subscription, asynchronous request/policy coordination, reconnect and server enforcement",
+    "ordinary approval upstream feedback reset policy; source key lifetime must not be generalized from UserInput",
+    "effective outer wide-screen cap/messageInput environment and exact whole-page visual/keyboard transition",
+    "arbitrary same-key question removal/reorder answer reconciliation; form ScrollView is proved ordinary, upstream intrinsic-height proposal remains unknown",
+    "physical haptic playback and actual notification delivery"
+  ],
+  "haptics": {
+    "new_trigger_added": false,
+    "bounded_source_result": "Approval/feedback/QuestionCards consumers did not prove explicit haptic emission; not a claim of global absence",
+    "existing_gate": "Settings -> General -> Haptic feedback; persistent preference, hardware support and application active",
+    "source_snapshot": "ios-gesture-haptics-current-20261113-controls.json",
+    "current_dispatch_files_hashed": true,
+    "limits": "No guessed approval/answer vibration; OS implicit feedback is separate; device unavailable"
+  },
+  "verification": {
+    "pure": [
+      {
+        "command": "sh implementation/ios/test-official-text.sh",
+        "result": "passed",
+        "log": "/tmp/rea-remote-requests-parent-text-20261113.log",
+        "new_vectors": "same-key current payload and per-question drafts; new-key resets all answers/drafts/index; call identity and legacy Codable"
+      },
+      {
+        "command": "sh implementation/ios/test-haptics.sh",
+        "result": "passed",
+        "log": "/tmp/rea-remote-requests-parent-haptics-20261113.log",
+        "scope": "existing common gate/tracker; no tactile playback"
+      }
+    ],
+    "ui": {
+      "artifact": "ios-remote-requests-parent-20261113-r1.xcresult",
+      "passed": 2,
+      "failed": 0,
+      "cases": [
+        {
+          "name": "testRemoteApprovalFeedbackReplayChinese",
+          "seconds": 37.093,
+          "scope": "ordinary approval feedback field and capsule action; synthetic acknowledgment and resumed composer"
+        },
+        {
+          "name": "testRemoteRequestReplacementChinese",
+          "seconds": 55.626,
+          "scope": "same-key updated questions preserve unsent text; key replacement at secret question clears prior text/index; new answers complete; other host approval and composer resume"
+        }
+      ],
+      "matrix": "Chinese/light only"
+    },
+    "screenshots_reviewed": [
+      "ios-remote-requests-parent-20261113-r1-attachments/799116F6-7965-4BFD-A531-6132CBF85C70.png",
+      "ios-remote-requests-parent-20261113-r1-attachments/25AE3705-9611-45AF-ACC0-1CD5DCDEBDDF.png",
+      "ios-remote-requests-parent-20261113-ordinary-ready.png"
+    ],
+    "scope_limit": "Earlier skip/options/unavailable/receipt-restart UI evidence retained in prior module report, not rerun or claimed newly passed; in-page replacement fixture is not persistent service feed",
+    "diff_check": "passed"
+  },
+  "runtime": {
+    "simulator": {
+      "build": "succeeded",
+      "build_log": "/tmp/rea-remote-requests-parent-final-sim-20261113.log",
+      "preview_report": "ios-remote-requests-parent-20261113-preview.json",
+      "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+      "hash_match": true,
+      "executable_sha256": "8674e63a5486a5e7f165cf377a932c19ecdce9d09d4000396918542b756d42eb",
+      "launch": "local.rea.chatgpt.ioshost: 91420",
+      "ordinary_profile_preserved": true,
+      "kept_running": true
+    },
+    "physical": {
+      "build": "signed succeeded",
+      "build_log": "/tmp/rea-remote-requests-parent-device-20261113.log",
+      "candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "executable_sha256": "90783094962ed69e580a8eb79a64eb6a92b618d9bafb33902ccd34933b30047e",
+      "device": "00008150-001E34E93A12401C",
+      "state": "unavailable",
+      "inventory": "ios-remote-requests-parent-20261113-device-state.json",
+      "installed_current_candidate": false,
+      "last_evidenced_installed_candidate": "earlier Settings fixed-close candidate; current phone contents not read offline"
+    },
+    "external_display_placement": "not verified"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "8adb1dbdac8cf3b8139cc6f9ce5f764e9af1717919d21f88001e202e5cb67b5e"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "10e70ff6c6a9428cde22ab2364f3ae07b6d1567f86d3f750044c76103b6cd561"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteUserInputInteraction.swift",
+      "sha256": "623d733bc7ad134b4dddc511294381d39ca9976d82a3adccca51f6a1a527771f"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+      "sha256": "151568ecadae731c3db2c25f4b698e05d99ff0f6b0a76ffe67bcd86b0f529c55"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "sha256": "347dd90e7a6c5fb15ecd49cd493a6a66e1b3de9f56f926ffdbfe9e5348c26262"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "fe94e58a274753a6f5fef0312ac690028fbbaae8f82eeb172c29c8957aec3490"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteModelSlider.swift",
+      "sha256": "4345b2d2305a6653e6322ab027648389e4a6140e529cf0c4535e4020d16da0bc"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteGoalPresentation.swift",
+      "sha256": "119b43029eec8b178bb7778f352c82722f63eba13e6b11801d6c4d5865b2cae8"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "d84a6d15b8c5dd88669b72eb1768b0b5cfb2f465dcec9e1c4d5f4f555aecd732"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "a413b4d3f485d322957467967449f90adb0c2a02a00ade2a5dc62351c5d571c5"
+    },
+    {
+      "path": "implementation/ios/Tools/core-preview.json",
+      "sha256": "3a3532497d53d7b46d0cda950185e6bad0cec07c36b202e952b671482420ef36"
+    }
+  ],
+  "next_major_module": "7 Chat/Work list and conversation",
+  "git_mutations": "none; no commit/push/release"
+}

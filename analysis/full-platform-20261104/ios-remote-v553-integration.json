@@ -1,0 +1,68 @@
+{
+  "batch": "v553",
+  "page": "Remote conversation",
+  "page_status": "部分实现",
+  "implementation_status": "已实现待验收",
+  "slice_status": "core simulator checks passed",
+  "source_findings": "ios-remote-v553-findings.json",
+  "runtime": "ios-remote-v553-runtime.json",
+  "implemented": [
+    "Transient thinking status after normal send",
+    "Recovered Thinking translations, body font, secondary color, tail truncation and existing shine",
+    "Scoped summary snapshots with preserve/clear semantics",
+    "Terminal cleanup for completion/failure/cancellation and rejection of late events"
+  ],
+  "validation": {
+    "foundation": "passed",
+    "typecheck": "passed with existing warnings",
+    "ui": {
+      "result": "ios-remote-v553-r1-thinking.xcresult",
+      "passed": 4,
+      "failed": 0,
+      "cases": [
+        "testRemoteThinkingChinese",
+        "testRemoteThinkingEnglishDarkFailure",
+        "testRemoteThinkingCancellation",
+        "testRemoteDynamicCommandChinese"
+      ]
+    },
+    "visual": "Chinese/light and English/dark screenshots inspected; status visible, keyboard retained and text readable. Exact official placement and whole-page parity remain partial.",
+    "manual_preview": "Signed553 launched with system language/appearance and opened Chinese Remote task list through sidebar; left running."
+  },
+  "independent_adaptation": [
+    "thinking event envelope and deterministic scheduling",
+    "terminal status cleanup policy",
+    "status placement within replay row",
+    "existing reduce-motion/scene lifecycle shine gating"
+  ],
+  "open_items": [
+    {
+      "page": "Remote conversation",
+      "behavior": "Full reasoning history and disclosure",
+      "priority": "P1",
+      "breakpoint": "ThinkingStatus consumers1a32308/1a393bc are located; full reasoning item consumer and its expansion state remain unclosed.",
+      "next": "Trace reasoning ThreadItem into transcript fragment and its row/action owner.",
+      "acceptance": "Scoped reasoning updates, disclosure/copy and task return, both appearances."
+    },
+    {
+      "page": "Remote conversation",
+      "behavior": "Message error card and recovery action",
+      "priority": "P1",
+      "breakpoint": "TurnState.errorMessage metadata offset0x28; TurnError message/additionalDetails/codexErrorInfo/misalignment metadata. Rendering branch and action owner unclosed.",
+      "next": "Trace turn failure branch to displayed error text/link/style and available recovery intent.",
+      "acceptance": "Source-backed error appearance, explicit action states and task-isolated recovery."
+    },
+    {
+      "page": "Remote conversation",
+      "behavior": "Header left alignment and exact body spacing",
+      "priority": "P1",
+      "breakpoint": "Existing host principal title remains centered; official outer parent alignment policy pending.",
+      "next": "Continue existing title owner investigation; inspect whole row geometry after native Markdown projection.",
+      "acceptance": "Reference-matched source-backed header and body containment at ordinary Chinese/English sizes."
+    }
+  ],
+  "other_open": "Dynamic file differences/search/reviews, multiaccount, process restoration, full theme matrix, physical haptics/notifications, Android independent acceptance remain partial.",
+  "retention": "ios-remote-v553-retention.json",
+  "disk_available": "16 GiB observed",
+  "commit_push_release": "not performed"
+}

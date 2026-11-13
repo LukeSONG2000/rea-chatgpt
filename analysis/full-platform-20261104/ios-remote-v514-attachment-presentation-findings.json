@@ -1,0 +1,633 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "Remote attachment custom presentation, source registration and immediate owner",
+  "baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "method": "Read-only LLVM ARM64 disassembly, Swift descriptors and chained imports; no official app or service execution.",
+  "findings": [
+    {
+      "id": "actual-presentation-kind",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x1984d1c..0x1984d44",
+        "0x62e4e1c..0x62e4ebc",
+        "0x9754830",
+        "0x9c53e24..0x9c53e54"
+      ],
+      "conclusion": "Composer constructs PresentationStyle.custom. Factory62e4e1c wraps an ElevatedPresentationImplementation existential and stores multi-payload enum tag2 at62e4e98/9c. Descriptor9754830 cases are sheet,popover,custom,fullScreenCover,fullScreenInteractiveDismiss.",
+      "limits": [
+        "Final custom UIKit window/controller chain is now closed below. This is static evidence, with no target-app runtime validation."
+      ]
+    },
+    {
+      "id": "custom-implementation-arguments",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0xa8ab770",
+        "0xa8ab778",
+        "0x96dddb4",
+        "0x9754858",
+        "0x1984d24",
+        "0x60694b4",
+        "0xa87e3e0",
+        "0x89e8150",
+        "0x1984d38",
+        "0x1541c8",
+        "0x1984d40",
+        "0x62e5100..0x62e5110"
+      ],
+      "conclusion": "Concrete custom implementation is ChatGPTPresentationCore.ElevatedPresentationImplementation conforming to SwiftUIToolbelt.CustomPresentationImplementation. Fields are presentation,sourceID,allowsInteractiveDismissal,initialLayout. Composer supplies sourceID message_input_attachments, allowsInteractiveDismissal true, initialLayout nil.",
+      "values": {
+        "sourceID": "message_input_attachments",
+        "allowsInteractiveDismissal": true,
+        "initialLayout": null
+      },
+      "limits": [
+        "allowsInteractiveDismissal does not independently prove outside-tap behavior or dismiss keyboard policy.",
+        "A nil initialLayout delegates positioning to the presentation system/source configuration."
+      ]
+    },
+    {
+      "id": "source-registration",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x19863cc",
+        "0x19869b8",
+        "0x19869d8",
+        "0x198eb58",
+        "0x1986a00",
+        "0x62e1e50",
+        "0x62e1eac",
+        "0x96dd89c",
+        "0x96dd880",
+        "0x93bf212"
+      ],
+      "conclusion": "The attachment button itself is wrapped in ElevatedPresentationSourceView using the same message_input_attachments sourceID. Source configuration is anchoredZoom carrying ElevatedPresentationSourceRepresentation. Wrapper62e1e50 takes enabled=true at19869f4 and only registers a source when the supplied presentation service is nonnil (62e1f18/1f1c).",
+      "limits": [
+        "The exact measured frame callback to the service remains beyond the current source wrapper. Metadata identifies __layoutFrameInWindow on ElevatedPresentationSourceGeometryView, but does not prove a numeric frame."
+      ]
+    },
+    {
+      "id": "source-visual-identity",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x198eb90",
+        "0x198eb98",
+        "0x198ecb0..0x198ecc8",
+        "0x96dd864",
+        "0x96dd7f4",
+        "0x96dd82c",
+        "0x93bf1d6",
+        "0x8fd08b0"
+      ],
+      "conclusion": "Source representation uses clipShape capsule, horizontal alignment leading, displayOffset(0,0). Source background builds custom Color.clear. Source foreground is composed from the actual attachment label/style state.",
+      "values": {
+        "sourceClipShape": "capsule",
+        "sourceHorizontalAlignment": "leading",
+        "sourceDisplayOffset": [
+          0,
+          0
+        ],
+        "sourceBackground": "custom Color.clear"
+      },
+      "limits": [
+        "These values describe the source attachment control. Expanded menu corner radius and material cannot be copied from the source.",
+        "Foreground identity/helpers and active theme color retain v511/v512 limitations."
+      ]
+    },
+    {
+      "id": "queue-and-custom-host-path",
+      "status": "partial",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x1984d54",
+        "0x1984d58",
+        "0x1984dd0",
+        "0x1984e18",
+        "0x62a9d70",
+        "0x75506d4",
+        "0x7550c14",
+        "0x75504b0",
+        "0x8265d00",
+        "0xa8ab938",
+        "0xa8ab948",
+        "0x62e5144",
+        "0x62e4ebc",
+        "0x62e5028",
+        "0x62e2d14",
+        "0x96dd998",
+        "0x96dd464"
+      ],
+      "conclusion": "Composer passes AttachmentPresentation raw0 and its PresentationQueue binding to shared62a9a08/75506d4. Queue adapter forwards to75504b0. Custom implementation protocol witness62e5144 branches62e4ebc, which constructs ElevatedPresentationViewModifier through62e2d14. Modifier stores item,presentation,sourceID,allowsInteractiveDismissal,initialLayout,onDismiss,presentedContent,transitionStyle and activePresentation. Presentation service protocol is ElevatedPresentationRendering.",
+      "limits": [
+        "Concrete host and default layout are closed below. Native transition animation, full keyboard lifecycle and complex size changes remain partial."
+      ]
+    },
+    {
+      "id": "actual-uikit-host",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62e34e0",
+        "0x62e37bc",
+        "0x62ea4b4",
+        "0x62eda7c",
+        "0x96dda98",
+        "0x62ea9dc",
+        "0x62db254",
+        "0x62e3d38",
+        "0x62e3e6c",
+        "0x62ded3c",
+        "0x62e3f14",
+        "0x62e0190",
+        "0x62e023c",
+        "0x62d9d44",
+        "0x62d9ca0",
+        "0x62f0538"
+      ],
+      "conclusion": "Modifier continuation creates ElevatedPresentationWindow, assigns ElevatedPresentationRootViewController as its root and shows the window. Root presents its presentedContentViewController using a custom AnchoredZoomPresentationTransitionCoordinator/AnchoredZoomPresentationController. The attachment SwiftUI content is hosted inside this native custom presentation hierarchy.",
+      "limits": [
+        "Window initializer details independently read by root agent in v514-window-init.asm. System API calls do not prove exact runtime frame on a device."
+      ]
+    },
+    {
+      "id": "nil-initial-layout-default",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62f0638..0x62f0670",
+        "0x96dd69c",
+        "0x96dd6b8",
+        "0x62d5690..0x62d56a8",
+        "0x62d5cb8",
+        "0x62d5804",
+        "0x62f3d80"
+      ],
+      "conclusion": "Nil initialLayout becomes anchoredIntrinsic (layout tag0xc0), scalesPresentedContent=true, respectsHorizontalSafeArea=true. Dispatch for tag3 goes to62d5804 and then62d6288 with intrinsic=true.",
+      "values": {
+        "layoutMode": "anchoredIntrinsic",
+        "scalesPresentedContent": true,
+        "respectsHorizontalSafeArea": true
+      }
+    },
+    {
+      "id": "target-corner-radius",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62d52d0",
+        "0x62f3b14",
+        "0x62d52fc..0x62d5304",
+        "0x62d53dc..0x62d53e0",
+        "0x62d4760..0x62d4768",
+        "0x62d5d34..0x62d5d3c"
+      ],
+      "conclusion": "Radius selector checks layoutMode byte. anchoredIntrinsic tag0xc0 takes default46pt branch. That return value is applied through setCornerRadius on the presented content view layer. Other layout modes have separate window-edge-dependent logic with minimum24pt.",
+      "values": {
+        "anchoredIntrinsicTargetRadius": 46
+      },
+      "limits": [
+        "Source capsule radius is a distinct transition endpoint. Confirm target content clipping/masking animation through chrome-layout before claiming complete transition parity."
+      ]
+    },
+    {
+      "id": "target-background-effect",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62d1b28..0x62d1b44",
+        "0x62d1c48..0x62d1cbc",
+        "0xaac6148",
+        "0xaac6058",
+        "0x1bdeac",
+        "0x77107f8"
+      ],
+      "conclusion": "Chrome backgroundView is a UIVisualEffectView. Its effect factory selects UIGlassEffect style0 and interactive=true when iOS26 availability and77107f8 gate pass. Otherwise it uses UIBlurEffect style10. Parent passes true at62d1b28.",
+      "values": {
+        "glassStyleRaw": 0,
+        "glassInteractive": true,
+        "fallbackBlurStyleRaw": 10
+      },
+      "limits": [
+        "77107f8 also checks cached configuration byte b0a6ab8!=1. Gate initialization follows7713534\u219277105ac and remains unnamed. Do not assume every supported OS always takes glass."
+      ]
+    },
+    {
+      "id": "anchored-intrinsic-sizing-position",
+      "status": "verified-static",
+      "evidence_type": "official_artifact_observation",
+      "source": [
+        "0x62d6288..0x62d6784",
+        "0x62d61b4..0x62d6220",
+        "0x62d9680..0x62d98e0",
+        "0x62e42a8",
+        "0x62dbe7c",
+        "0x62d164c",
+        "0x62d169c"
+      ],
+      "conclusion": "SourceContext alignment combines source horizontalAlignment with resolved verticalAlignment. Horizontal leading maps to0 in LTR and1 in RTL. Vertical defaults bottom=1. Service62dbe7c returns center=.5 only when service fields0x60 and0x88 are both nonnil. Fitting target constraints use safe insets each at least10pt, maximum330x420, intrinsic systemLayoutSizeFitting priority50/50 then sizeThatFits then preferredContentSize fallbacks, width floor280 subject to available width. Final origin aligns source and target same normalized anchor and adds source displayOffset. For ordinary bottom-leading this places the target lower leading corner on the source lower leading corner.",
+      "values": {
+        "maxWidth": 330,
+        "maxHeight": 420,
+        "minWidthWithinAvailableBounds": 280,
+        "minimumSafeInsetPerEdge": 10,
+        "sourceDisplayOffset": [
+          0,
+          0
+        ],
+        "horizontalAnchorLTR": 0,
+        "horizontalAnchorRTL": 1,
+        "defaultVerticalAnchor": 1
+      },
+      "limits": [
+        "Attachment content itself separately declares320pt ideal/max width in v513, so generic330 cap does not override that fixed content maximum. Available-width calculation contains a70pt horizontal reserve (RTL origin adjustment) at62d639c..63c4. Service fields0x60/0x88 need semantic identification before asserting when center replaces bottom. No arbitrary gap is present in final origin."
+      ]
+    }
+  ],
+  "integration_guidance": {
+    "evidence_type": "independent_design_recommendation",
+    "conclusion": "Use a reusable sourceID-based custom presentation boundary with the attachment button geometry and presentation owner. Reuse v513 first-level content geometry and v512 action queue transitions. Keep source snapshot/foreground, expanded content and target action ownership distinct so later presentation fidelity work changes the shared host rather than every action row.",
+    "limits": [
+      "A custom window/root VC/native custom-presentation host is source-backed. A SwiftUI overlay approximation must remain labelled independent host adaptation.",
+      "Use the anchoredIntrinsic target geometry and separate46pt target radius from capsule source geometry. Preserve queue ownership and content-building boundaries.",
+      "Exact animated masking, keyboard fallback and unnamed glass feature gate remain partial."
+    ]
+  },
+  "remaining_boundaries": [
+    {
+      "question": "Outside tap dismiss and touch exclusion",
+      "status": "partial",
+      "next_action": "Root agent tracing AnchoredZoomPresentationController handleContainerAreaTap62d67c8, handleContainerAreaPan62d6878 and gestureRecognizer shouldReceiveTouch62d6940."
+    },
+    {
+      "question": "Full keyboard policy / centered source condition",
+      "status": "partial",
+      "next_action": "Identify DefaultElevatedPresentation fields0x60 and0x88 consumed by62dbe7c; follow KeyboardSubstitutionController transitions. Normal absent-field branch is bottom."
+    },
+    {
+      "question": "Native morph transition / clip / animation exactness",
+      "status": "partial",
+      "next_action": "Read AnchoredZoomPresentationChromeView62d1e28 and transition animator62d9220 only when needed for animation parity."
+    },
+    {
+      "question": "Glass gate exact configuration name",
+      "status": "partial",
+      "next_action": "77107f8 uses iOS26 availability plus cached b0a6ab8!=1, initialized7713534\u219277105ac."
+    },
+    {
+      "question": "Exact measured source frame",
+      "status": "partial",
+      "next_action": "Registration is sourceID-bound and geometry-derived. Verify source frame in reconstructed host at runtime, preserving window coordinate conversion."
+    }
+  ],
+  "reused_reports": [
+    "ios-remote-v512-attachment-menu-findings.json",
+    "ios-remote-v513-attachment-layout-findings.json"
+  ],
+  "validation": {
+    "production_files_edited": false,
+    "official_app_executed": false,
+    "online_services_called": false,
+    "static_binding_verified": true,
+    "device_behavior_verified": false
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-alignment-helper.asm",
+      "sha256": "27577933cca6117d8be77191a8e7a86054405a153825f19cb1617432d261a025"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-alignment-helper.calls.json",
+      "sha256": "6af1cf506390f69302569aeeb1e68ed153625c3b74b32b297e66006d9145f599"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-anchored-helpers.asm",
+      "sha256": "b396993f66ea52256a4b45cdee2ed10a131963e39c7763aa7381cd628dc5ca9e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-anchored-helpers.calls.json",
+      "sha256": "7db85a8b4e7f30453dc3c025a797cb38e1bae6a1b75e0f72144f9b403048a7d4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-anchored-intrinsic.asm",
+      "sha256": "b6c5947015d5f40571d57e5f8dc039974ccbd100033309cf9d5344101d85bb5d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-anchored-intrinsic.calls.json",
+      "sha256": "6a9c6e028d8a434929c1df9de8d96ba6d81a0af0d91d334dceec5bfe2debb3b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-chrome-effect.asm",
+      "sha256": "1631610d39642b74c545151ab196c171efc9e3fa713e6adff24398c591d9dfae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-chrome-effect.calls.json",
+      "sha256": "cffc4a23be75a025c352222c5fc051fbea06750705c206aba36d577bd40d786f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-chrome-init.asm",
+      "sha256": "a3412eef46fb5df4612a0b1e0070ef0663d90cc5dca54b150623d69f9b4717fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-chrome-init.calls.json",
+      "sha256": "6cc4b19e26cc0fb9006eb644ead418bef8f4027c6d5895201d3ad13d593cec63"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-chrome-layout.asm",
+      "sha256": "c1ccb1b3b9025be02449c1eab5fc3d1b3f5400bc3fc7dcc10e6f2f10768cffd4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-chrome-layout.calls.json",
+      "sha256": "1b567415d88c807a7021f754570598af162a8029147bc42aa26c05148263835d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-chrome-metadata.json",
+      "sha256": "ae200faad3f03274ef5e7c0437cc78fb475ea9a284abc5eb8313eed3af4e3b8c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-custom-implementation.asm",
+      "sha256": "305b95724b2b90a05e0b74bbf33b235f3f57e41a0ed232a4b97c070ce4dffe2b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-custom-witness.asm",
+      "sha256": "6cebe93f71e562219b0269dee39c8fb67fce8491b368ac1cbf7da10bdd6dba64"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-elevated-component-metadata.json",
+      "sha256": "ecd1aba6b503369ee00035a02cb90ad0b8d4196a48864b506e398086470504b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-elevated-metadata.json",
+      "sha256": "1afa71aacd2233c89d701fa21921df4ae88333017d0a465b9ac24b4f6af7c3fe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-elevated-present-calls.json",
+      "sha256": "4ab384b8c93d217bed3f44da5d1bfa4e73aa5619b21a0c77b571a9005d71984b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-elevated-present.asm",
+      "sha256": "92d54436529e1e1867444d89c09fa6e4c64b07675fe52d2d4cb94d81265c16d8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-glass-gate.asm",
+      "sha256": "6b84d4cf918706704309023b6c175bcb010d72ca5481ecab08d06863da13f5a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-glass-gate.calls.json",
+      "sha256": "df277aefb4c5bdf2eb5555b8da38a9390216dda0094556eb5dd7cbafaf04a488"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-layout-request.json",
+      "sha256": "591c574830525c0bf3415bb9a0aadc97943c47663906753e532ce93f93fd28a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-layout-size.asm",
+      "sha256": "b7d6cd2569a664cf895b777090aaf9129eef63243b972848ab852c691a5311b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-layout-size.calls.json",
+      "sha256": "ad9d688a1f90a2336109b8dbcc7e561d21dc2dddf4c6c3109d08e46eb2bde0fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-modifier-body-tail-calls.json",
+      "sha256": "8d299bdaaa34982bd5aa824fc4d98325f7f0d0dfd7991066a1bd4b8dda63bbad"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-modifier-body-tail.asm",
+      "sha256": "e20ffd044f0354679a30b6233fa3ece8a37cc412a3c734d178327d226d136c60"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-modifier-onappear-calls.json",
+      "sha256": "df20770483d0f1bf9607174c46173f7d0a82b4355c0dc5e397982c76c8c83f88"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-modifier-onappear.asm",
+      "sha256": "83bbf7fca5704ddad2e3a49a05e982cb4bf8871b3073e56691f45d9d6e6082e9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-morph-registration-calls.json",
+      "sha256": "6c9a6cb45db022c6ae5007afd9103d61088d77cc252a4cc0be51586e60eb0347"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-morph-registration.asm",
+      "sha256": "33064974cece5ecf37acc7bbbc181154ae53d6265602daa3beb4160b86259271"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-plus-source-registration-calls.json",
+      "sha256": "159da4372d7753d47fe049bf717012a99638cf97bf2d0b1a77c350964eb0ff0c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-plus-source-registration.asm",
+      "sha256": "5055be59991ebe85f39331d380b3e4b712eb38754fc8b333f993cfc1ac89c07e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-controller-metadata.json",
+      "sha256": "185b061aa047b32edc90f0078094a750745d3a974e725bbfaa7e4c6715e67b96"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-frame.asm",
+      "sha256": "2a8145535d527a086ccc6ec1b14d6e3478158266e975fe1dfe008b6fc47f5dc3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-frame.calls.json",
+      "sha256": "21167d73dae5598c8e5d7b1edc86908bd93075ed349ecaa76d85ab16399cdb30"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-init.asm",
+      "sha256": "369a41a2496e50de68249f71329ebc47566ef2609fc4be69f1232c595c2593db"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-init.calls.json",
+      "sha256": "d73e455f9315d8d1a0d07c00db1291e9dac6ab547a42a7eadaf2fc175915dfbc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-kind.json",
+      "sha256": "9aceab7b74e23b6177dace757856f4d7209e1b0c8da7bc33452082a6e2ca767b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-layout.asm",
+      "sha256": "cca6013a34962807bedd3bda774695de0621d8612657cc910737422516b8dafc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-presentation-layout.calls.json",
+      "sha256": "6193c6e77676ff09c64ee929a3121ee9d1e2507387873152cb26efe81e436721"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-queue-present-calls.json",
+      "sha256": "007a84b7a01213e3243760b17d9f8b2904208419c116a19de0feee67d620359a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-queue-present.asm",
+      "sha256": "08fd1a4f26960da99b5a4d2be88c656c5beabc79771db4a8c87ecb99eaec429d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-root-vc-layout.asm",
+      "sha256": "822aa042e6eb47d4cd8094ec4705f6fae9763219ed59a2067e4f94a12541c7d3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-root-vc-layout.calls.json",
+      "sha256": "aeb8e5e8828eaad55a18fcd4a0fb1291264e45f58c206dfa8e73f225edde196f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-root-vc.json",
+      "sha256": "387165e9d7532240fa60e08e0b11f54a16744434ac365b9857b9bea037d8ec2d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-factory.asm",
+      "sha256": "a6c02251629ac08c3c88909f11acf6717bbf2746272af5fcb3e32fd283d5cc18"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-factory.calls.json",
+      "sha256": "492a8c41a892dbd2e1f6b35b7ceea06c4a26908a75de9068e3d5949796c89480"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-init.asm",
+      "sha256": "44f5a0e1db27c37410b0cdf960276de2f06d081b32aa495599cfc0eadb633997"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-init.calls.json",
+      "sha256": "2ac04bffedadf41615b7fc030d7eb3c80493f028656edefdb15b29bb526e1386"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-present.asm",
+      "sha256": "226daa6e00c5e65f172fb4415a13bedcb0ebc4fe307b4f44401656eb2752e26f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-present.calls.json",
+      "sha256": "e941a4718c4e714178e6b8d21862efe4e3496536241826e1faca59bc37eeacdb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-vertical-alignment.asm",
+      "sha256": "75ab81dcb1d35cb2376ef673903518af30ef86740f8ddab3839f2920c7121661"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-service-vertical-alignment.calls.json",
+      "sha256": "95856b44170134ed6b9876ce30b2f4162414e7c6028e25683ea4fe7c1fe9599b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-config-calls.json",
+      "sha256": "e92a3f1ccb01a78f0614682e877c1aaf263deee2972bb913664d3690bbd2d870"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-config-fields.json",
+      "sha256": "e4d13e3f313547fd04cd8a48beaf2e0d665796550ee3b9d9e82662a919f7bb16"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-config-type.json",
+      "sha256": "abeaed4af34ccca3751d884df75a8dd3b9b8f1b8237dda2a21eea02c3c0fb2c3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-config.asm",
+      "sha256": "2bea0d7e3de432eaf65bbdc0d726e411f6aeb4afec0a91896fefa0978445d320"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-context-resolve.asm",
+      "sha256": "961aeafd23a05551babf8ae8b496fdc442f0c1b0602a9b92db6ff8e23fa592cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-context-resolve.calls.json",
+      "sha256": "165ebae147cf5032b042884cd5e12ee7c99e75377aae74969dc83820ee9ba0e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-context.json",
+      "sha256": "e35a1825c9aa702a9768932a3588bd1e718029e544bea2da114de3f58b5b3454"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-representation-types.json",
+      "sha256": "5bf02910bff699d861a3b5baca7086d9b489dc917c7600f98a425261d1721ed1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-shape-cases.json",
+      "sha256": "3e259630318bdb0404547a746985b235d786e4bd43042dc667b1b86a4fe0e6e5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-vertical-alignment.asm",
+      "sha256": "ce1af19bcaf236edd24e62eb163c8b57fea5be6418812c154db9397d8e94da17"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-vertical-alignment.calls.json",
+      "sha256": "b9f0fea3eefd6fcbe68bf80c1f7b79cc589d046be3e3e5af18211aaa65456b15"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-wrapper-calls.json",
+      "sha256": "d25e4b6068aed200ae8e89d8c2b6d6e7a082c9abd7d28a8b3a5ab135dfcc45bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-source-wrapper.asm",
+      "sha256": "bc4bcdaf3ebe3196ad57ee721387513ce2c1b54cb6cc47b68edbc98226aec36f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-sourceid-refs.json",
+      "sha256": "7b1c25d85d27289dff4d336371c0ae0adabda3f4d43ce3a64a20be139cbbfc1d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-transition-controller-factory.asm",
+      "sha256": "6feae0b3e33e1e1f0259d28ecde916b63d44a714642b939c90b9c747f4183699"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-transition-controller-factory.calls.json",
+      "sha256": "ea7629460a662ef2c10eaf225ec9e4d59201c95000804422df21fc1b5cf69dc3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-transition-coordinator-metadata.json",
+      "sha256": "50d63d8a9b9ead09fa3c1e7b24c9235f33ce6372a725de4a71b106d2026e77b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-transition-factory.asm",
+      "sha256": "2e263b122768b472d1e34d1ef37f4837abff354976c3210ed3717b65ab9dda82"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-transition-factory.calls.json",
+      "sha256": "050b328fba4286819505095702c13a1cdc7dc9d7ed5ea0752090b16cb1477877"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-window-factory-calls.json",
+      "sha256": "eb96818b31467e770365c191e4be3ed1cdebf1ecf2efe2161c975fa378740014"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-window-factory.asm",
+      "sha256": "f47a9ab51f6185b3847374b81c7191dd143ef7985bb8b7bb1adff2f818649a61"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-window-init-calls.json",
+      "sha256": "b840c240cd2db5660644991a1e6c01d483ec40251e0e21453bb07ba49eefcc84"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-window-init.asm",
+      "sha256": "aa61f98885142c2c83070194f390a7cae7d8bb4fd91a24231a2dcbd516e0869f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-window-owner-calls.json",
+      "sha256": "553c894234675c0142b98a8c4d011671711356d49ef38d4bdfbf929e6b6107f5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-window-owner.asm",
+      "sha256": "b915d004b5b977e3e55191e1d6cd5acd7e3dbffc0b027410f248cd5f317419eb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-witness-62e5144-calls.json",
+      "sha256": "488317eeb78aca1aeda7afac89d6f67c3c7da52d8aeba00894d40fd533ec39d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-witness-62e5144.asm",
+      "sha256": "7fc438105fdd1d587f4c1fb574ff59c94efbd6a95ff87a7b50f777e8389cc158"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-witness-62eed30-calls.json",
+      "sha256": "e1bae4901c1a53d3abd9ef5f8aaabff451edef47579fd1f833096d44e6109e26"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-witness-62eed30.asm",
+      "sha256": "9d9364a5fdcba9051d1ff3b68d946bfd5376d39864e434aa163d886da9e46f39"
+    }
+  ]
+}

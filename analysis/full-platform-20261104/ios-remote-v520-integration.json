@@ -1,0 +1,72 @@
+{
+  "batch": "v520",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "scope": "Remote home composer scene geometry and surface parent integration",
+  "evidence": [
+    "ios-remote-v520-scene-measurement-findings.json",
+    "ios-remote-v520-home-surface-order-findings.json",
+    "ios-remote-v520-glass-gate-fallback-findings.json"
+  ],
+  "restored": [
+    "Home styleInsets once -> maxWidth728 -> additional scene correction -> infinity frame -> scene reader",
+    "Focused additional correction zero; phone nil safe area fallback8; finite radius/safe-area formula retained including negative bottom correction",
+    "Actual field continuous radius24, background -> clip -> whole-content Glass, then style padding and outer GlassEffectContainer",
+    "Glass OS/excluded-build gate and reduced-transparency elevated-secondary/nil-Glass branch"
+  ],
+  "independent_adaptations": [
+    "Selected confirmed default nonmutating_scene_corner_configuration_enabled=false; configured official experiment unknown",
+    "UIKit scene reader caches inputs and guards reentry before temporary key-window corner configuration; SwiftUI delivery coalesced asynchronously",
+    "Persistent UITextView delegate rejects native focus while compact or owner-disabled; compact activation remains owned by explicit focus button"
+  ],
+  "failures_retained": [
+    "Initial measurement loop: window cornerConfiguration changes repeatedly scheduled layout; process sample and screenshot retained",
+    "r2 actions4pass and r3 actions6pass did not catch foreground blur; restored whole-content effect ordering; r4 visual controls clear",
+    "r4/r5/r6/r7 fixed-search test failed on unintended first responder restoration. Trace proves allowsFocus and focused cleared, followed by native didBegin while compact; compact/disabled shouldBeginEditing guard added; r8 six tests passed",
+    "Standalone model r3 failed because CoreGraphics CGRect accessors were not imported; r4 model suite passed after explicit import"
+  ],
+  "validation": {
+    "model": "passed-r4",
+    "ui": {
+      "suite": "ios-remote-v520-r8-ui.xcresult",
+      "passed": 6,
+      "failed": 0,
+      "runtimeWarnings": []
+    },
+    "r4_visual": "Chinese/light and English/dark compact, Chinese attachment+keyboard, reduced transparency attachment unfocused inspected; foreground clear",
+    "device": "simulator-only",
+    "physical_device": "not-validated",
+    "android": "not-validated",
+    "r8_visual": "Chinese default compact preview, Chinese/light and English/dark attachment+keyboard, reduced-transparency attachment unfocused inspected",
+    "measured_scene": {
+      "bottom_corner_radius": 62,
+      "bottom_safe_area": 34,
+      "idle_horizontal_inset": 38,
+      "focused_horizontal_inset": 12
+    }
+  },
+  "remaining": [
+    "iPad metrics producer",
+    "Legacy/non-default scene configuration branch",
+    "Thread/new-thread caller containment and dynamic insets",
+    "Outer HeightConditionalShape threshold and optional stroke full conditions",
+    "Permission/context/model/dictation screenshots remain reference-only, exact version unknown",
+    "Full official visual parity, real device interaction and haptics"
+  ],
+  "next": "Complete Home regression and retain Chinese system-following preview; then trace thread composer caller before reusing confirmed geometry/material mechanism.",
+  "preview": {
+    "pid": 4523,
+    "version": "520",
+    "language": "system default, observed Chinese",
+    "page": "Remote synthetic task list",
+    "running": true,
+    "display": "built-in only, external position unvalidated"
+  },
+  "storage": {
+    "available": "22GiB",
+    "build_directory": "implementation/ios/.build",
+    "retention_preflight_targets": []
+  }
+}
