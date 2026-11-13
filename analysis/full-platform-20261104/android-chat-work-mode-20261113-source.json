@@ -1,0 +1,178 @@
+{
+  "scope": "Single bounded candidate group: Android293 ordinary Chat/Work entry to mode switch owner. Read-only frozen sources; no official app/network/device/build/product edits.",
+  "conclusion": "Neither universally independent Chat/Work conversations/lists nor unconditional same-conversation mode mutation is established. Do not change product identity architecture on the strength of the toggle alone.",
+  "observed": [
+    "Topbar ordinary branch q1s→l3f.h. Mode and Chat/Work capability choices come from o3f/m3f, not separate root-list models.",
+    "oq7 case3 sets optimistic selected value, dispatches x2f/y2f then rnq(mode); mode selection has configuration-service effects beyond display label.",
+    "o3f→s9b→aqm mode configuration selection ultimately calls n5r.M. This call is corroborated by smali.",
+    "rnq receiver c6s has UI effects; this event does not establish outgoing request schema.",
+    "Existing ordinary conversation schema has local id, remoteId,currentLeafNodeId,defaultModelSlug; sidebar row classification does not prove independent lists."
+  ],
+  "inferred": [
+    "Treat mode as a requested configuration transition with independently owned conversation identity until identity transition owner is recovered.",
+    "Independent implementation may preserve draft and accepted-send configuration, but that is adapter policy, not recovered official protocol."
+  ],
+  "unknown": [
+    "n5r.M full retain/replace/new conversation decisions and completion/rollback semantics.",
+    "Exact downstream send invocation and serialized payload fields for mode/model/conversation/parent; no payload claimed.",
+    "Whether and when switching mode within an existing conversation forks, creates or retains it.",
+    "Whether any capability/account branch filters histories into distinct mode lists."
+  ],
+  "stop_boundary": {
+    "call": "aqm.b→n5r.M(t2f,String,boolean,String,String,vwp)",
+    "reason": "Concrete unrecovered identity-transition call reached. M is a large warning-affected coroutine; no further candidate groups or broad search pursued."
+  },
+  "minimal_product_guidance": "Keep identity and list ownership explicit and independent of mode label. Do not claim a forced new-chat or two-list policy is official Android evidence; retain existing adapter policy unless separately authorized behavior requires correction.",
+  "sources": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/q1s.java",
+      "sha256": "9c7df024d22e88604302eb0a4bfcfb787101e385e2eb96b1943dfff010a7bda5",
+      "lines": [
+        1023,
+        1036
+      ],
+      "claim": "ConversationTopBar ordinary entry delegates l3f.h.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/l3f.java",
+      "sha256": "07d6cae89f682d0381292f53f055cff55f12bafbcae0475aed4d9a76295fb42f",
+      "lines": [
+        540,
+        623
+      ],
+      "claim": "Mode state o3f/m3f; nullable capability options; toggle only z && no title; optimistic selection callback.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/oq7.java",
+      "sha256": "f819552db899a1f1c9adf8b4134ba29036c80e1ec9cc4f66e45e6cb3375c77e1",
+      "lines": [
+        126,
+        144
+      ],
+      "claim": "Set local mode; dispatch x2f/y2f to n19; emit rnq(mode).",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/o3f.java",
+      "sha256": "f1824c228f35f83d18365ffa45a79cdbe9545103c613928b6b3a9c09d9c019a9",
+      "lines": [
+        14,
+        34
+      ],
+      "claim": "Observe rod0 and v2f; mode selection coroutine owner.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/s9b.java",
+      "sha256": "dba68d86a95e2735d77f9851f34bff275d93dbf88ae26642659103df73c648c7",
+      "lines": [
+        312,
+        397
+      ],
+      "claim": "Select cached/default configuration and dispatch aqm.a/b; cancellation/selection ownership m1.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/n3f.java",
+      "sha256": "b845fcf77e44ad9915c0150664eb79a3f9e56c15cd12fc62181c8fb91963d4b2",
+      "lines": [
+        34,
+        63
+      ],
+      "claim": "State projection from b4f mode and v5r configuration; cached Chat choice.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/v2f.java",
+      "sha256": "ca4b70538ef0e088e66ab55d2a72e348b4f0c544f1de5a201ec4c9c6a6153546",
+      "lines": [
+        14,
+        32
+      ],
+      "claim": "Mode/config observable state and compare-and-set update.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/aqm.java",
+      "sha256": "a4434fe2c7b37febeef8fcba59a238fc3d42d7995a1658ba670ebe7b7113d19a",
+      "lines": [
+        166,
+        304
+      ],
+      "claim": "Guard configuration switching, then n5r.M call; JADX control-flow warnings.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/c6s.java",
+      "sha256": "9421b463dad72a6a1c46f7484dbd536ebe2dcd7e3bfc336060aa25e665b31453",
+      "lines": [
+        619,
+        640
+      ],
+      "claim": "rnq event performs UI effects; does not alone prove conversation creation or payload.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/n5r.java",
+      "sha256": "263e943a7dde5bbae3481ff18874716823e32d2a6b8a742303305290bdd4f8d3",
+      "lines": [
+        1090,
+        1185
+      ],
+      "claim": "BOUNDARY: M receives mode+configuration; accesses current qxp and has major coroutine control-flow recovery. Identity outcome and downstream send not established.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ixp.java",
+      "sha256": "7e473d80469f8288100677b5426a51afcb3520e15d08fe1dea409b213861131d",
+      "lines": [
+        20,
+        47
+      ],
+      "claim": "Ordinary conversation serializer identity is separate local id/remoteId/currentLeafNodeId; not mode keyed Remote DTO.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/lku0.java",
+      "sha256": "51844de9b105d9d3a31836b4025dc3f583c97b9c6a805a70b86c33c7ca819130",
+      "lines": [
+        371,
+        400
+      ],
+      "claim": "History select remote id if available else local id; row Work classification is not proof of distinct lists.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes4/oq7.smali",
+      "sha256": "cd9b3171dfd8d14b2ecb9378341409b99b4ceab9a4893b14527120c45b970dce",
+      "lines": [
+        2116,
+        2135
+      ],
+      "claim": "n19.F then rnq construction and callback",
+      "kind": "smali"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali/aqm.smali",
+      "sha256": "35b4825d35f9b956327f116085c798c5401b0bbc825df2adbf4c1fd9863bae16",
+      "lines": [
+        1455,
+        1605
+      ],
+      "claim": "Configuration comparison branch then n5r.M mode/config invocation",
+      "kind": "smali"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes5/l3f.smali",
+      "sha256": "8d73aebe03ba1742db1b785b54be44953042b8850be583c930c680051619966c",
+      "lines": [
+        5340,
+        5378
+      ],
+      "claim": "Toggle predicate corroboration reused prior report",
+      "kind": "smali"
+    }
+  ]
+}

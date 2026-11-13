@@ -92,27 +92,19 @@ struct FrontendProfileEditorPresentation: Identifiable {
 //Field style, button-region metrics and the avatar placeholder are native adapters.
 struct NativeProfileEditorSheet: View {
     @StateObject private var model: FrontendProfileEditorModel
+    @StateObject private var avatar: FrontendAvatarModel
     @Environment(\.dismiss) private var dismiss
-    @State private var showsAvatarBoundary = false
     init(profile: FrontendEditableProfile,
          accepted: @escaping (FrontendProfileSaveRequest, FrontendEditableProfile) -> FrontendProfileFailure?) {
         _model = StateObject(wrappedValue: .make(profile: profile, accepted: accepted))
+        _avatar = StateObject(wrappedValue: .init(accountID: profile.accountID))
     }
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
                 //Parent2246f4c/58 supplies16/20;2248220/24 center and13.
                 VStack(alignment: .center, spacing: 13) {
-                    Button { showsAvatarBoundary = true } label: {
-                        Image(systemName: "person.crop.circle.fill").resizable().scaledToFit()
-                            .foregroundStyle(.orange).frame(width: 72, height: 72)
-                            .overlay(alignment: .bottomTrailing) {
-                                Image(systemName: "pencil").padding(6).background(.background, in: Circle())
-                            }
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(visualText("编辑头像", "Edit avatar"))
-                    .accessibilityIdentifier("profile-edit-avatar")
+                    FrontendProfileAvatar(model: avatar, parentEnabled: model.state.pending == nil)
                     field(.profileName, value: Binding(get: { model.state.draft.name },
                         set: { model.edit(name: $0) }), identifier: "profile-edit-name")
                     field(.profileUsername, value: Binding(get: { model.state.draft.username },
@@ -150,7 +142,7 @@ struct NativeProfileEditorSheet: View {
                     }.frame(maxWidth: .infinity)
                 }.buttonStyle(.borderedProminent).buttonBorderShape(.capsule)
                     .disabled(!model.state.canSave).accessibilityIdentifier("profile-edit-save")
-                Button(OfficialText.text(.remoteRenameCancel)) { model.cancel(); dismiss() }
+                Button(OfficialText.text(.remoteRenameCancel)) { avatar.retire(); model.cancel(); dismiss() }
                     .frame(maxWidth: .infinity)
                     .accessibilityIdentifier("auth-profile-edit-close")
             }.padding(16)
@@ -163,17 +155,11 @@ struct NativeProfileEditorSheet: View {
         .background(Color(uiColor: .systemBackground))
         //Retire outstanding callbacks while preserving drafts across a child
         //capability sheet. Explicit Cancel separately discards unsaved edits.
-        .onDisappear { model.retirePending() }
-        .sheet(isPresented: $showsAvatarBoundary) {
-            NavigationStack {
-                SettingsServiceUnavailablePage(title: visualText("头像编辑", "Avatar editing"))
-                    .toolbar {
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button(OfficialText.text(.authClose)) { showsAvatarBoundary = false }
-                                .accessibilityIdentifier("profile-avatar-close")
-                        }
-                    }
-            }
+        .onDisappear {
+            model.retirePending()
+            // A child picker can cover this view. Its own close retains the
+            // form; final dismissal retires the editor-local callback scope.
+            if avatar.picker == nil { avatar.retire() }
         }
     }
     private func field(_ label: OfficialTextKey, value: Binding<String>, identifier: String) -> some View {

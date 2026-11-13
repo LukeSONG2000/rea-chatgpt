@@ -13,9 +13,12 @@ final class FrontendPluginsModel: ObservableObject {
     @Published var path: [Route] = []
     @Published var scrollID: String?
     @Published var searchScrollID: String?
+    @Published private(set) var promptFailure: String?
+    var openNewChat: ((FrontendPluginPromptIntent) -> Bool)?
     let sources: [FrontendPluginSource]
     private let service: any FrontendPluginServing
     private let replaysRefreshFixture: Bool
+    private var retired = false
     private var hasReplayedRefresh = false
     var query: FrontendPluginQuery { .init(sourceID: sourceID, text: "") }
     var searchQuery: FrontendPluginQuery { .init(sourceID: sourceID, text: searchText) }
@@ -58,6 +61,9 @@ final class FrontendPluginsModel: ObservableObject {
             visualText("生成提纲", "Create outline"), visualText("检查格式", "Check format"),
             visualText("整理日程", "Organize schedule"), visualText("导出摘要", "Export summary")]
         for index in values.indices where index < 2 {
+            values[index].defaultPrompts = [.init(id: 0, mention: values[index].name,
+                body: visualText("帮我整理一份简短清单。", "Help me organize a short checklist."))]
+            values[index].canUsePrompt = true //explicit local draft capability, not install status
             values[index].skills = skillTitles.enumerated().map { .init(id: "fixture-skill-\($0.offset)", title: $0.element) }
             values[index].information = [
                 .init(id: .developer, value: .text(visualText("独立合成示例", "Independent synthetic fixture"))),
@@ -83,7 +89,7 @@ final class FrontendPluginsModel: ObservableObject {
                 && !HostLaunchRuntime.arguments.contains("--plugins-manual-refresh-fixture"))
     }
     func load(_ query: FrontendPluginQuery, more: Bool = false, force: Bool = false) async {
-        guard !Task.isCancelled else { return }
+        guard !retired, !Task.isCancelled else { return }
         if !force && !more && state.listing(query).phase == .ready { return }
         guard let request = state.beginList(query, more: more) else { return }
         do {
@@ -106,6 +112,7 @@ final class FrontendPluginsModel: ObservableObject {
         } catch { _ = state.failList(error as? FrontendPluginFailure ?? .loadFailed, request: request) }
     }
     func loadDetail(_ id: String, force: Bool = false) async {
+        guard !retired, !Task.isCancelled else { return }
         if !force && state.detailPhases[id] == .ready { return }
         guard let request = state.beginDetail(id) else { return }
         do {
@@ -118,6 +125,7 @@ final class FrontendPluginsModel: ObservableObject {
         } catch { _ = state.failDetail(error as? FrontendPluginFailure ?? .loadFailed, request: request) }
     }
     func perform(_ action: FrontendPlugin.Action, id: String) async {
+        guard !retired, !Task.isCancelled else { return }
         guard let request = state.beginOperation(action, id: id) else { return }
         do {
             let receipt = try await service.perform(request)
@@ -135,6 +143,11 @@ final class FrontendPluginsModel: ObservableObject {
         }
     }
     func closeDetail(_ id: String) { state.cancelDetail(id) }
+    func retire() { retired = true; state.retire(); service.retire() }
+    func usePrompt(_ id: Int, pluginID: String) {
+        guard let intent = state.promptIntent(id, pluginID: pluginID), state.accepts(intent) else { return }
+        promptFailure = openNewChat?(intent) == true ? nil : pluginID
+    }
     func cancel(_ query: FrontendPluginQuery) { state.cancelList(query) }
     func cancelSearch() {
         guard path.last == .search else { return }
@@ -208,7 +221,8 @@ struct NativePluginsPage: View {
                 .navigationDestination(for: FrontendPluginsModel.Route.self) { route in
                     switch route {
                     case .search: NativePluginSearch(model: model)
-                    case .detail(let id): NativePluginDetail(model: model, pluginID: id)
+                    case .detail(let id): NativePluginDetail(model: model, pluginID: id,
+                        allowsPromptHandoff: closeDirectory == nil)
                     case .settings(let id):
                         SettingsServiceUnavailablePage(title: model.state.entities[id]?.name ?? OfficialText.text(.pluginsDirectoryTitle))
                     }
@@ -732,6 +746,7 @@ private final class PluginNativeSearchBar: UISearchBar {
 private struct NativePluginDetail: View {
     @ObservedObject var model: FrontendPluginsModel
     let pluginID: String
+    let allowsPromptHandoff: Bool
     private var item: FrontendPlugin? { model.state.entities[pluginID] }
     var body: some View {
         ScrollView {
@@ -741,6 +756,27 @@ private struct NativePluginDetail: View {
                     Text(item.name).font(.title2).fontWeight(.semibold)
                     Text(item.summary).foregroundStyle(.secondary)
                     if model.state.detailPhases[pluginID] == .ready {
+                        //293 eb0bc0: nonempty prompts before Description;
+                        //eb19e4 supplies16. Bubble paint/base font remain host
+                        //adapters; mention weight and text composition proved.
+                        if !item.defaultPrompts.isEmpty {
+                            VStack(alignment: .leading, spacing: 16) {
+                                ForEach(item.defaultPrompts) { prompt in
+                                    Button { model.usePrompt(prompt.id, pluginID: pluginID) } label: {
+                                        (Text(prompt.mention).fontWeight(.semibold)
+                                            + Text((prompt.mention.isEmpty || prompt.body.isEmpty ? "" : " ") + prompt.body))
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }.buttonStyle(.bordered)
+                                        .disabled(!allowsPromptHandoff || !item.canUsePrompt || model.state.operations[pluginID] != nil)
+                                        .accessibilityHint(OfficialText.text(.pluginsUsePromptHint))
+                                        .accessibilityIdentifier("plugin-prompt-" + String(prompt.id))
+                                }
+                            }
+                        }
+                        if model.promptFailure == pluginID {
+                            Text(visualText("新聊天入口不可用，当前页面和草稿已保留。", "New chat is unavailable. This page and its draft are retained."))
+                                .foregroundStyle(.secondary).accessibilityIdentifier("plugin-prompt-error")
+                        }
                         RecoveredPluginDescription(text: item.detail).id(pluginID)
                         ForEach(item.actions, id: \.self) { action in
                             Button(actionTitle(action)) {

@@ -26,6 +26,23 @@ struct FrontendPluginSkillsPresentation {
     var remaining: Int { max(0, skills.count - visible.count) }
 }
 
+struct FrontendPluginDefaultPrompt: Identifiable, Equatable {
+    let id: Int
+    let mention: String
+    let body: String
+    //293 eb2160 joins these text segments with U+0020 when both exist.
+    var text: String { mention + (mention.isEmpty || body.isEmpty ? "" : " ") + body }
+}
+
+struct FrontendPluginPromptIntent: Equatable {
+    let id: UUID
+    let scope: FrontendPluginScope
+    let pluginID: String
+    let actionPluginID: String?
+    let revision: Int
+    let prompt: FrontendPluginDefaultPrompt
+}
+
 struct FrontendPlugin: Identifiable, Equatable {
     enum Action: String, Hashable { case connect, disconnect, settings, tryInChat }
     let id: String
@@ -39,6 +56,10 @@ struct FrontendPlugin: Identifiable, Equatable {
     var detail: String = ""
     var skills: [FrontendPluginSkill] = []
     var information: [FrontendPluginInformation] = []
+    var defaultPrompts: [FrontendPluginDefaultPrompt] = []
+    //Independent capability; original primaryAction/pending-install semantics
+    //are incomplete. Never infer prompt use from installed alone.
+    var canUsePrompt = false
 }
 
 struct FrontendPluginSource: Identifiable, Hashable {
@@ -107,6 +128,13 @@ protocol FrontendPluginServing: AnyObject {
     func list(_ request: FrontendPluginListRequest) async throws -> FrontendPluginListPage
     func detail(_ request: FrontendPluginDetailRequest) async throws -> FrontendPluginDetail
     func perform(_ request: FrontendPluginOperation) async throws -> FrontendPluginReceipt
+    func retire()
+}
+
+extension FrontendPluginServing {
+    // A future transport may already have accepted work. Retirement still
+    // fences frontend receipts; an adapter owns any external cancellation.
+    func retire() {}
 }
 
 // One account/workspace owner canonicalizes list/detail/operation snapshots.
@@ -122,6 +150,7 @@ struct FrontendPluginState {
         var consumed: Set<String> = []
     }
     let scope: FrontendPluginScope
+    private var retired = false
     private(set) var entities: [String: FrontendPlugin] = [:]
     private(set) var listings: [FrontendPluginQuery: Listing] = [:]
     private(set) var detailRequests: [String: FrontendPluginDetailRequest] = [:]
@@ -139,7 +168,7 @@ struct FrontendPluginState {
     }
 
     mutating func beginList(_ query: FrontendPluginQuery, more: Bool = false) -> FrontendPluginListRequest? {
-        guard !scope.accountID.isEmpty, !scope.workspaceID.isEmpty, !query.sourceID.isEmpty else { return nil }
+        guard !retired, !scope.accountID.isEmpty, !scope.workspaceID.isEmpty, !query.sourceID.isEmpty else { return nil }
         var value = listing(query)
         if more {
             guard value.pending == nil, value.next != nil else { return nil }
@@ -212,7 +241,7 @@ struct FrontendPluginState {
     }
 
     mutating func beginDetail(_ id: String) -> FrontendPluginDetailRequest? {
-        guard !scope.accountID.isEmpty, !scope.workspaceID.isEmpty, !id.isEmpty else { return nil }
+        guard !retired, !scope.accountID.isEmpty, !scope.workspaceID.isEmpty, !id.isEmpty else { return nil }
         let request = FrontendPluginDetailRequest(id: UUID(), scope: scope, pluginID: id)
         detailRequests[id] = request; detailPhases[id] = .loading
         return request
@@ -246,7 +275,7 @@ struct FrontendPluginState {
     }
 
     mutating func beginOperation(_ action: FrontendPlugin.Action, id: String) -> FrontendPluginOperation? {
-        guard let item = entities[id], let actionID = item.actionPluginID, !actionID.isEmpty,
+        guard !retired, let item = entities[id], let actionID = item.actionPluginID, !actionID.isEmpty,
               item.actions.contains(action), item.revision < Int.max, operations[id] == nil else { return nil }
         let request = FrontendPluginOperation(id: UUID(), scope: scope, pluginID: id,
             actionPluginID: actionID, revision: item.revision, action: action)
@@ -271,11 +300,33 @@ struct FrontendPluginState {
         return true
     }
 
+    mutating func retire() {
+        retired = true
+        for query in Array(listings.keys) { cancelList(query) }
+        detailRequests.removeAll(); operations.removeAll(); operationFailures.removeAll()
+    }
+
+    func promptIntent(_ promptID: Int, pluginID: String) -> FrontendPluginPromptIntent? {
+        guard !retired, detailPhases[pluginID] == .ready,
+              let item = entities[pluginID], item.canUsePrompt,
+              let prompt = item.defaultPrompts.first(where: { $0.id == promptID }) else { return nil }
+        return .init(id: UUID(), scope: scope, pluginID: item.id, actionPluginID: item.actionPluginID,
+                     revision: item.revision, prompt: prompt)
+    }
+    func accepts(_ intent: FrontendPluginPromptIntent) -> Bool {
+        guard !retired, intent.scope == scope, detailPhases[intent.pluginID] == .ready,
+              let item = entities[intent.pluginID], item.canUsePrompt else { return false }
+        return intent.actionPluginID == item.actionPluginID && intent.revision == item.revision
+            && item.defaultPrompts.contains(intent.prompt)
+    }
+
     private func valid(_ item: FrontendPlugin) -> Bool {
         !item.id.isEmpty && !item.name.isEmpty && !item.sourceID.isEmpty && item.revision >= 0
             && Set(item.skills.map(\.id)).count == item.skills.count
             && item.skills.allSatisfy({ !$0.id.isEmpty && !$0.title.isEmpty })
             && Set(item.information.map(\.id)).count == item.information.count
+            && Set(item.defaultPrompts.map(\.id)).count == item.defaultPrompts.count
+            && item.defaultPrompts.allSatisfy { !$0.text.isEmpty && $0.text.utf8.count <= 16_384 }
     }
     private mutating func merge(_ item: FrontendPlugin) {
         if var old = entities[item.id], old.revision >= item.revision {
@@ -284,6 +335,9 @@ struct FrontendPluginState {
             }
             if old.revision == item.revision && old.skills.isEmpty { old.skills = item.skills }
             if old.revision == item.revision && old.information.isEmpty { old.information = item.information }
+            if old.revision == item.revision && old.defaultPrompts.isEmpty {
+                old.defaultPrompts = item.defaultPrompts; old.canUsePrompt = item.canUsePrompt
+            }
             entities[item.id] = old
             return
         }
@@ -360,6 +414,8 @@ final class SyntheticPluginService: FrontendPluginServing {
     private var failures: Set<String> = []
     private var loadedQueries: Set<FrontendPluginQuery> = []
     private var failedRefreshes: Set<FrontendPluginQuery> = []
+    private var retired = false
+    func retire() { retired = true }
     init(scope: FrontendPluginScope, catalog: [FrontendPlugin], failsOnce: Bool = false,
          failsFirstRefresh: Bool = false, replaysConnectionChanges: Bool = false,
          journal: FrontendPluginConnectionJournal? = nil, failsLocalSaveOnce: Bool = false) {
@@ -370,6 +426,7 @@ final class SyntheticPluginService: FrontendPluginServing {
         self.failsLocalSaveOnce = failsLocalSaveOnce
     }
     private func restoreJournal() throws {
+        guard !retired else { throw CancellationError() }
         guard journalNeedsRestore, let journal else { return }
         do {
             let entries = try journal.load()
@@ -381,7 +438,8 @@ final class SyntheticPluginService: FrontendPluginServing {
                     revision: entry.revision, name: updated.name, summary: updated.summary,
                     sourceID: updated.sourceID, installed: entry.installed,
                     actions: entry.installed ? [.disconnect, .settings, .tryInChat] : [.connect],
-                    detail: updated.detail, skills: updated.skills, information: updated.information)
+                    detail: updated.detail, skills: updated.skills, information: updated.information,
+                    defaultPrompts: updated.defaultPrompts, canUsePrompt: updated.canUsePrompt)
                 catalog[index] = updated
             }
             journalNeedsRestore = false
@@ -390,6 +448,9 @@ final class SyntheticPluginService: FrontendPluginServing {
     private func pause(_ key: String) async throws {
         try await Task.sleep(nanoseconds: 120_000_000)
         try Task.checkCancellation()
+        // Root replacement can happen during the suspension even when a
+        // caller's Task is not cancelled. No old owner may commit afterward.
+        guard !retired else { throw CancellationError() }
         if failsOnce, failures.insert(key).inserted { throw FrontendPluginFailure.loadFailed }
     }
     func list(_ request: FrontendPluginListRequest) async throws -> FrontendPluginListPage {
@@ -444,7 +505,8 @@ final class SyntheticPluginService: FrontendPluginServing {
                 revision: old.revision + 1, name: old.name, summary: old.summary,
                 sourceID: old.sourceID, installed: installed,
                 actions: installed ? [.disconnect, .settings, .tryInChat] : [.connect], detail: old.detail,
-                skills: old.skills, information: old.information)
+                skills: old.skills, information: old.information,
+                defaultPrompts: old.defaultPrompts, canUsePrompt: old.canUsePrompt)
             do {
                 if failsLocalSaveOnce { failsLocalSaveOnce = false; throw FrontendPluginFailure.localStorage }
                 try journal?.save(updated, expected: old)

@@ -150,6 +150,10 @@ private fun AppShell(sessionOwner:FrontendSessionOwner, settings: FrontendSettin
             preferences.account, preferences.profile, FrontendPreferences.modes.associateWith(preferences::draft)),
         SyntheticChatProvider(chinese), coroutine) }
     DisposableEffect(chatOwner){onDispose{chatOwner.close()}}
+    val searchOwner=remember(chatOwner,sessionOwner.value.session){ChatSearchOwner(ChatSearchScope(preferences.account,preferences.profile,sessionOwner.value.session,sessionOwner.value.revision),LocalChatSearchProvider({if(chatOwner.storageError)error("Local catalog unavailable") else chatOwner.snapshot.rows},preferences.profile.startsWith("test-chatsearch-")),coroutine)}
+    DisposableEffect(searchOwner){onDispose{searchOwner.close()}}
+    val pluginsOwner=remember(preferences,sessionOwner.value.session,chinese){PluginsOwner(PluginScope(preferences.profile,preferences.account,sessionOwner.value.session,sessionOwner.value.revision),SyntheticPluginsProvider(chinese,preferences.profile.startsWith("test-plugins-")),coroutine)}
+    DisposableEffect(pluginsOwner){onDispose{pluginsOwner.close()}}
     SideEffect { chatOwner.useProvider(SyntheticChatProvider(chinese)) }
     val focus = LocalFocusManager.current
     val settingsScroll = rememberLazyListState()
@@ -275,7 +279,8 @@ private fun AppShell(sessionOwner:FrontendSessionOwner, settings: FrontendSettin
                         modifier = Modifier.padding(16.dp).testTag("shell-error"))
                     when (route) {
                         "home" -> ChatConversationPage(mode, chatOwner, unavailable = { notice = true })
-                        "search" -> ChatSearch(chatOwner, ::selectConversation)
+                        "search" -> ChatSearchPage(searchOwner,chatOwner,::selectConversation,::back)
+                        "plugins" -> FrontendPluginsPage(pluginsOwner)
                         "settings" -> LazyColumn(state = settingsScroll, contentPadding = PaddingValues(vertical = 24.dp),
                             modifier = Modifier.fillMaxSize().testTag("shell-settings-list")) {
                             item(key="account-section") {

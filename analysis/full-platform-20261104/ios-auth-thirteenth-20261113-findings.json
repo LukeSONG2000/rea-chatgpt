@@ -1,0 +1,336 @@
+{
+  "schema": "rea-ios-avatar-source-findings-v1",
+  "date": "2026-11-13T22:05:33.677565+08:00",
+  "status": "partial-menu-parent-and-action-owners-closed-picker-return-upload-unclosed",
+  "scope": "iOS293 account profile avatar editor; two bounded actual-consumer groups. Read-only source evidence; no product, build, devices, Git or service access.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "entry_reused": "Settings.Presentation.editProfile10e7198→1149d98→CalpicoUserProfileEditSheetView→CalpicoUserProfileEditView→ContentView; this is the proven broader profile editor, not an avatar-only Settings root route.",
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "Does the actual profile form construct an active avatar menu with exact actions, geometry and gates?",
+      "result": "Yes. Content2248384 supplies CalpicoUserProfileImageMenu and actual body builds SwiftUI.Menu. Visible menu members are conditional on their optional callback."
+    },
+    {
+      "id": 2,
+      "question": "Where do the three actual parent callbacks go, and is select/cancel/editor/upload return closed?",
+      "result": "Photo library/file callbacks enter a shared event send path; Camera invokes real VM media operation. Original final reducer, picker callback and image-editor/upload acceptance remain specific unclosed boundaries. Stop rather than claim local image selection is account upload."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "actual-menu-consumer",
+      "type": "official-artifact-observation",
+      "source": [
+        "CalpicoUserProfileImageMenu descriptor95c98b8/accessor22ec57c; View conformance7e71650 bodywitness224b154→224a63c.",
+        "Body224a6d8 supplies content2306990→224a794 and label2306998→224ab04 to SwiftUI.Menu initializer7c49d74 at224a700.",
+        "Generic record7e72110 is actual Menu<conditional original profile-image label,TupleView<3 optional Button<Label<Text,Image>>>>;7e72188 wraps this Menu in EnvironmentKeyTransformModifier<Bool>."
+      ],
+      "conclusion": "The original avatar slot is a native Menu, not a button that only opens an unavailable explanation. The original label has real CalpicoProfileImagePart/redaction/upload progress/shortcut rendering branches, not a fixed SF placeholder."
+    },
+    {
+      "id": "parent-config",
+      "type": "official-artifact-observation",
+      "source": [
+        "Content2248248→2248384 constructs image/menu slot.",
+        "22484e0 gets original Content metadata; metadata field-offset-vector=2. Content+0x18/0x1c slots are isUploadingImage/isLoading; +0x40/44/48 slots are three action closures.",
+        "224850c..2248510 stores Double112 into image-menu size slot+0x18;2248514..2248518 sets enableProfileUploadShortcut=true in slot+0x1c.",
+        "2248520/28 copies uploading/loading into menu slots+0x20/+0x24;224852c..2248558 copies callbacks into slots+0x28/+0x2c/+0x30.",
+        "Both struct descriptors fieldOffsetVectorOffset=2 confirmed from emitted descriptor words; no guessed field-address arithmetic from a screenshot."
+      ],
+      "conclusion": "This parent supplies avatar size112 and upload shortcut true; uploading/loading are current input state. This size belongs to profile-edit avatar, not Settings header or all image controls."
+    },
+    {
+      "id": "menu-enabled",
+      "type": "official-artifact-observation",
+      "source": [
+        "224a704→2321b78;224a708..224a730 reads actual uploading/loading/shortcut fields and forms disabled=uploading||loading||!shortcut.",
+        "224a738..224a750 captures disabled Bool;224a778..224a784 attaches44ab38→1225d0.",
+        "1225d0..1225dc computes inheritedEnabled & !disabled; raw type7e72188 is EnvironmentKeyTransformModifier<Bool>."
+      ],
+      "conclusion": "Menu enablement preserves inherited disabled state; uploading, loading or absent shortcut disables entire menu. Do not silently enable it during profile save merely to show actions."
+    },
+    {
+      "id": "ordered-members",
+      "type": "official-artifact-observation",
+      "members": [
+        {
+          "name": "Photos Library",
+          "condition": "onPhotoLibrary optional callback nonnil;224a83c..224a848 absent skips first member",
+          "label_consumer": "224a89c..224a8b4 uses224aa9c→2258f80; literal small-string Photos Library",
+          "resource_consumer": "224aa9c points74f9fec;74fa018→8a56820",
+          "resource": "OpenAI/Symbols/photo-on-tilted-square",
+          "action": "captured original closure pair; shared thunk1459ac"
+        },
+        {
+          "name": "Take photo",
+          "condition": "onCamera optional callback nonnil;224a8d4..224a8e0",
+          "label_consumer": "224a930..224a948 uses224aac8→2258f2c→75d2a28; original small-string Take photo",
+          "resource_consumer": "224aad0..224aad4→74f5640;74f566c→8a54560",
+          "resource": "OpenAI/Symbols/camera",
+          "action": "captured original closure pair;1225ac"
+        },
+        {
+          "name": "Choose File",
+          "condition": "onChooseFile optional callback nonnil;224a96c..224a978",
+          "label_consumer": "224a9c8..224a9dc uses224aadc→2258f80; original small-string Choose File",
+          "resource_consumer": "224aadc→74f7708;74f7734→8a554f0",
+          "resource": "OpenAI/Symbols/folder",
+          "action": "captured original closure pair;1459ac"
+        }
+      ],
+      "conclusion": "Order and visibility are established by this actual constructor; metadata callback inventory alone was not used. Original camera menu title is Take photo, not Camera. Packaged localization lookup remains its normal original resource consumer; no missing-translation claim is made."
+    },
+    {
+      "id": "parent-callback-owners",
+      "type": "official-artifact-observation",
+      "source": [
+        "CalpicoUserProfileEditView2246e60..2246ea4 writes onPhotoLibrary=22c4434, onCamera=22c447c, onChooseFile=22c45a0 into Content metadata+0x40/+0x44/+0x48, each retaining original editor owner context.",
+        "Photos22c4434 loads a packed value then branches22c45a8. File22c45a0 loads a distinct packed value then same22c45a8; labels/callback binding proves their action identity, not a guessed enum declaration order.",
+        "22c45a8 closes original keyboard/focus helper2247820 then reads observable VM owner;22c4678→2221264.",
+        "2221264 invokes its supplied event builder at2221288 and calls Combine.PassthroughSubject.send at2221294→7c45c94. This is a send helper, NOT a proven presentation setter/reducer.",
+        "Camera22c447c→2247820;22c44d4 passes true to actual VM method2224bd0.",
+        "2224bd0 reads source dependency via runtime ivar offset wordb07f0b0, builds callback22f92c8 and invokes shared media operation5423768 at2224ca4."
+      ],
+      "conclusion": "All three original parent callbacks belong to the same Calpico profile editing owner. Actual media request exists; final presentation/selection result is not closed by this bounded pass. Packed values are not promoted to service enums."
+    }
+  ],
+  "current_host_gap": {
+    "source": "implementation/ios/Sources/NativeProfileEditor.swift:106-115,167-177",
+    "observed": "Current avatar is a fixed SF-symbol Button→returnable unavailable child sheet. This omits the proven original Menu and its three source-backed members. FrontendProfileEditing contract intentionally contains only Name/Username and no avatar bytes; that separation is appropriate, not a reason to merge selection into Name/Username save."
+  },
+  "safe_product_decision": {
+    "can_restore_now": [
+      "Replace avatar-only unavailable-button presentation with source-shaped native Menu using original ordered labels/icons and optional capability callbacks.",
+      "Use profile-edit size112 only at this proved parent; preserve loading/uploading/shortcut and inherited enablement inputs.",
+      "Provide distinct profile-scoped photo-library/camera/file intents; a local platform carrier may reuse existing Photos/File/UIKit picker mechanics as an independent adapter, never their chat attachment scope or callbacks."
+    ],
+    "independent_frontend_adapter": [
+      "Selected image preview/import must be a separate account/session/request-scoped transient operation. Reject old picker callbacks after close/account change/replacement.",
+      "Keep Name/Username draft, base revision and accepted account profile untouched by avatar selection.",
+      "A local selection is not uploaded or saved to the account. Without an explicit matching upload/service receipt, expose unavailable upload while preserving a local preview or cancel/return; this is a host decision, not recovered original save semantics.",
+      "Synthetic/user-designated local material can drive preview; no official network/account data required."
+    ],
+    "not_admitted_as_original": [
+      "System picker style/allowed formats/multiple-selection limit, original crop/editor optics or exact cancel transitions.",
+      "Original upload API/state/result/cache mutation or auto-save/dismiss on selected image.",
+      "Assuming camera always available from original callback binding; independent platform availability must be an explicit adapter input."
+    ]
+  },
+  "precise_unknowns": [
+    "Shared Photos/File event send2221264→actual subscriber/reducer selecting CalpicoEditUserProfileViewModel.Presentation and the injected photoPickerScreenBuilder; specific registration/callback still missing.",
+    "Camera request5423768 callback22f92c8→current editor presentation/image result/cancel acceptance; dependency type registration not closed.",
+    "Original ProfileImageEditorStandalone type appears in reused edit-view parent opaque generic tree, but actual returned-image/cancel/upload consumer is not proven by that type alone.",
+    "Original uploadRequest completion→profileImageURL/cache key update and error clearing/lifetime."
+  ],
+  "haptics": {
+    "new_exact_caller_proved": false,
+    "decision": "No source-backed new haptic trigger recommended for avatar/menu/picker from inspected windows."
+  },
+  "reused_reports": [
+    "ios-auth-account-parent-20261113-findings.json",
+    "ios-auth-account-third-20261113-findings.json",
+    "ios-auth-parent-current-20261113-r4.json"
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-auth-thirteenth-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "FrontendProfileEditing.swift.snapshot.txt",
+      "sha256": "c8f5a8bcc2ddc7d91200f5bca44c774e7ca6f96815e5a9398c0028322983f198",
+      "bytes": 876
+    },
+    {
+      "file": "NativeProfileEditor.swift.snapshot.txt",
+      "sha256": "db84eac0f760b729a444109172670d47505dad7d7d28427c9a0bcc26fc8267ff",
+      "bytes": 6403
+    },
+    {
+      "file": "camera-action-owner.asm",
+      "sha256": "0b2206953a531991a842524b148ac745996f22cbe162a21f86eac84958e85a93",
+      "bytes": 5299
+    },
+    {
+      "file": "camera-icon.asm",
+      "sha256": "bc3274b550c44c138d28aa3ecec386b3e327c201c78166e9d33f220e9324ba9c",
+      "bytes": 1721
+    },
+    {
+      "file": "camera-label.asm",
+      "sha256": "b929884ea3571dea491fecf4439e1dd74f16238d8eb57515ae795ab2459e9d34",
+      "bytes": 734
+    },
+    {
+      "file": "choose-file-action.asm",
+      "sha256": "7b9a1ee448e1db3a0cc50bea27a90d7cfff10f291e4acf0fbd7e4e9f8841c970",
+      "bytes": 2920
+    },
+    {
+      "file": "disabled-transform-consumer.asm",
+      "sha256": "0ddc7fab2de619f5505169d9c59ac6c07cf56ff8ccb9f9c0bf83f622790e330f",
+      "bytes": 710
+    },
+    {
+      "file": "disabled-transform.asm",
+      "sha256": "98c44afc2b8e3716c328b3265115bddb3ec2aed71884df7e49a79e5ffc6644f6",
+      "bytes": 490
+    },
+    {
+      "file": "edit-presentation-setter-calls.json",
+      "sha256": "074f071830af3f99d11068d405aa3cfae5fee0eeb61d74d044644d46943b4759",
+      "bytes": 7905
+    },
+    {
+      "file": "edit-presentation-setter.asm",
+      "sha256": "d4abc4608eeefc3bbc5cce53b6b4544858dda0acad87885ae65e122d8314cd6b",
+      "bytes": 7691
+    },
+    {
+      "file": "file-icon.asm",
+      "sha256": "b100a12130667d1baf257b2b55956eec94d9004e725b7fcebf431b6e979d83f1",
+      "bytes": 1755
+    },
+    {
+      "file": "image-menu-body-calls.json",
+      "sha256": "28df3f4690a89ac5e3bf701f625e9b76e956b8345df5e406c87a9d7999e6a08d",
+      "bytes": 55352
+    },
+    {
+      "file": "image-menu-body.asm",
+      "sha256": "ff2695107e8d64b27ded2bd4e0b9cb8ea09e4af6ed4ae49b4a06f89f5e60a1f7",
+      "bytes": 60059
+    },
+    {
+      "file": "image-menu-config-resources.json",
+      "sha256": "64a72903ec82043a3002e827bb3df59d477a39b7d27f420412a688de2f29b1a2",
+      "bytes": 777
+    },
+    {
+      "file": "image-menu-content-actions.asm",
+      "sha256": "b743a6b5fc206783563046f7943615ed468a1ec7da2bee0c8b56923dcbb51453",
+      "bytes": 18661
+    },
+    {
+      "file": "image-menu-content.json",
+      "sha256": "23292e46f158c0c87768c65bae612de6ec446a46bf0b4aae45dd987b3c355af6",
+      "bytes": 1422555
+    },
+    {
+      "file": "image-menu-content.raw",
+      "sha256": "e29005ac2bbb9eb597b922a92e70ad9a49f5400e96941313f9feddfbc914562f",
+      "bytes": 341
+    },
+    {
+      "file": "image-menu-content.refs.tsv",
+      "sha256": "2f898fd86e3f2b1fa829a8e81fc4a5244e91016dbec4519e55f23ef2166af27c",
+      "bytes": 1162
+    },
+    {
+      "file": "image-menu-content.tree.txt",
+      "sha256": "cee8a09394e3a5d8543bde56b16551dde332eeb45e7c1eeb0534aa420cd3f848",
+      "bytes": 162501
+    },
+    {
+      "file": "image-menu-disabled.json",
+      "sha256": "7e14fcfc4b796390f64490f26e8935700b5e8a39a6e7866cee7e6549ac2f85a5",
+      "bytes": 1637187
+    },
+    {
+      "file": "image-menu-disabled.raw",
+      "sha256": "711fe922630d9b699725552af9450715f27f918fbc6cdc13627a71d17d504887",
+      "bytes": 396
+    },
+    {
+      "file": "image-menu-disabled.refs.tsv",
+      "sha256": "cbd6b5f645039326f99d4423df6dad3c572692675f0e61a2f77dec4de28fb50e",
+      "bytes": 1324
+    },
+    {
+      "file": "image-menu-disabled.tree.txt",
+      "sha256": "5d1d2ee9dfe5ea8a093ee7d28ba2ae3572ca8ce1f6b8163829aca80c480d5dd4",
+      "bytes": 185533
+    },
+    {
+      "file": "image-menu-full-r2.json",
+      "sha256": "0d785d696d7c575902ce5c85ddab59704610a594295f3e860bc16cfc94f60acd",
+      "bytes": 1543476
+    },
+    {
+      "file": "image-menu-full-r2.raw",
+      "sha256": "d120233cc1080505ac6c91f2d4292a44391281da38167166776bbd36d557e3f3",
+      "bytes": 388
+    },
+    {
+      "file": "image-menu-full-r2.refs.tsv",
+      "sha256": "994786655f9800bb1dee58443c5b0e113a8eb1ba234935e2d3d5c11f694f2c4e",
+      "bytes": 1324
+    },
+    {
+      "file": "image-menu-full-r2.tree.txt",
+      "sha256": "19005889ecf960dc1e4a19c7959e08928c7bc127a29829419e6caff9b43df84c",
+      "bytes": 175888
+    },
+    {
+      "file": "image-menu-full.raw",
+      "sha256": "d120233cc1080505ac6c91f2d4292a44391281da38167166776bbd36d557e3f3",
+      "bytes": 388
+    },
+    {
+      "file": "image-menu-full.refs.tsv",
+      "sha256": "994786655f9800bb1dee58443c5b0e113a8eb1ba234935e2d3d5c11f694f2c4e",
+      "bytes": 1324
+    },
+    {
+      "file": "image-menu-metadata.json",
+      "sha256": "a5b9e88ae27820a7c3d8c1d2e9695b6fded68cff6b8596b31a304e9177e8989e",
+      "bytes": 2031
+    },
+    {
+      "file": "image-menu-witness.json",
+      "sha256": "b16c8c9300ad37ec7b64e25030394ceb7e3ee0b145c631ae7d119c5cf81c58e2",
+      "bytes": 4613
+    },
+    {
+      "file": "photos-icon.asm",
+      "sha256": "cdfcc16d3072eade103da58160648eee2afe30196adf85fb3e63e9b7122931f1",
+      "bytes": 1721
+    },
+    {
+      "file": "reused-content-type028.tree.txt",
+      "sha256": "d80e9e5f72d547ef1265be0a2c71f82522c79b2ee6c47bff81a0f40a814701f5",
+      "bytes": 47051
+    },
+    {
+      "file": "reused-edit-content-body.asm",
+      "sha256": "834f928d2a230b16cca9662f725410aee7b397e507beb3c19d2d33624aa2034c",
+      "bytes": 86339
+    },
+    {
+      "file": "reused-edit-view-body.asm",
+      "sha256": "374946819da9680b80e79fcfe533d4242eea85e46029f575263a34284fbdc9d6",
+      "bytes": 54569
+    },
+    {
+      "file": "reused-edit-view-root-tree.tree.txt",
+      "sha256": "d25746168c55f65eed5fe0978053645392b60fef20a9c7d98ee6d071884c9b4b",
+      "bytes": 995
+    },
+    {
+      "file": "reused-parent-field-action-closures.asm",
+      "sha256": "d3de621af8ebae8b78d6132f198b5d9831c53d80f88fcffe3bd8d5f3e006eb53",
+      "bytes": 8362
+    }
+  ],
+  "tooling_note": "Initial /tmp demangle bridge was missing. Preserved partial output, reused existing pinned bridge in prior analysis directory with new output stem; no install/configuration/rebuild/target execution.",
+  "validation": {
+    "static_only": true,
+    "product_changed": false,
+    "build_tests_device": false,
+    "git_operation": false,
+    "original_online_access": false,
+    "candidate_limit_respected": true
+  }
+}

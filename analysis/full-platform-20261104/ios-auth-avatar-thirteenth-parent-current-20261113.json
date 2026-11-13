@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-13",
+  "module": "iOS account/avatar frontend closure",
+  "source_findings": "ios-auth-thirteenth-20261113-findings.json",
+  "source_evidence_raw_records_verified": 37,
+  "source_manifest": "ios-auth-avatar-thirteenth-20261113-current-source.json",
+  "source_backed": [
+    "Profile editor avatar actual SwiftUI.Menu with optional Photos Library / Take photo / Choose File in original order",
+    "Original parent size112, inherited enablement and uploading/loading/shortcut gate",
+    "Original image resources and 3 context-proven packaged locale labels"
+  ],
+  "independent_host": [
+    "UIKit Photos/camera/document picker carriers; hardware availability selects camera callback",
+    "Editor-local transient image preview with 8MiB/16384-pixel budget and1024 thumbnail",
+    "Account/editor/request admission; replacement, cancel, close and duplicate callbacks fenced",
+    "Selected image does not enter Name/Username draft, saved profile baseline or disk journal",
+    "Localized camera usage description; no upload or account service"
+  ],
+  "verification": {
+    "foundation": "Profile, avatar and authentication contract groups passed: .tmp/avatar-account-contract-20261113.log",
+    "simulator_build": "passed .tmp/avatar-build-simulator-20261113.log",
+    "signed_build": "passed .tmp/avatar-device-build-20261113.log; deep strict signature verified",
+    "ui": "ios-auth-avatar-thirteenth-20261113-r3.xcresult",
+    "ui_seconds": 43.552,
+    "passed_tests": 1,
+    "language": "zh-Hans",
+    "appearance": "light",
+    "flow": [
+      "open original menu",
+      "photos fixture cancel returns to same Name/Username draft",
+      "file fixture sample previews locally",
+      "no saved-profile status from avatar selection",
+      "cancel editor discards unsaved Name/Username",
+      "reopen has original profile and no transient avatar"
+    ]
+  },
+  "earlier_tests": [
+    {
+      "result": "r1 failed34.430s",
+      "reason": "Incorrect test assumed this simulator has no camera; actual runtime reports available. Product hardware gate unchanged."
+    },
+    {
+      "result": "r2 failed40.431s",
+      "reason": "Incorrect test assumed pre-existing replay status view absent; correct invariant is unchanged unsaved status. Menu/cancel/local selection had run; product unchanged."
+    }
+  ],
+  "visual_review": [
+    "r3 avatar menu and transient preview screenshots exported; preview image/no-upload text and retained fields visible",
+    "normal no-argument preview screenshot checked after restoring original preferences"
+  ],
+  "runtime": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "launch": "local.rea.chatgpt.ioshost: 91716",
+    "launch_arguments": [],
+    "installed_binary_sha256": "2a0a70da972f5d1b822a785efd0e65d7d8fcd05b0be3ce0d6b6b7a1f638f6bd1",
+    "preference_values_restored": true,
+    "camera_privacy_en": true,
+    "physical": "Air unavailable in fresh inventory; no install",
+    "physical_inventory": ".tmp/avatar-devices-20261113.json",
+    "signed_binary_sha256": "3fada0ec7be135030cdfef648283d23cb503fec272bd710b0812bc7d68213599",
+    "deep_strict_signature_verified": true
+  },
+  "not_implemented": [
+    "Original Photos/File Combine subscriber and injected picker builder",
+    "Original camera callback to crop/editor/upload receipt",
+    "Original upload API/cache/profileImageURL mutation; no service requested",
+    "Complete original avatar optics/crop/transition semantics",
+    "Production photo library/document import/camera capture device journeys; controlled sample only exercised selection result",
+    "Physical iOS install and haptic/notification delivery; Air unavailable"
+  ],
+  "next_module": "Plugins core closure on iOS and independent Android parity; no other sidebar expansion",
+  "git": "Local after explicit checkpoint7af822dcc5; no further commit/push"
+}

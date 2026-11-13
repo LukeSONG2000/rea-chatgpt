@@ -28,7 +28,16 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
     private var customizePage: UIHostingController<NativeCustomizePage>?
     private lazy var customizeModel = FrontendCustomizeModel.make(accountID: account)
     private var pluginsPage: UIHostingController<NativePluginsPage>?
-    private lazy var pluginsModel = FrontendPluginsModel.make(accountID: account)
+    private var retainedPluginsModel: FrontendPluginsModel?
+    private weak var activeSearchHost: NativeSearchHost?
+    private var consumedPluginPrompts: Set<UUID> = []
+    private var pluginsModel: FrontendPluginsModel {
+        if let retainedPluginsModel { return retainedPluginsModel }
+        let model = FrontendPluginsModel.make(accountID: account)
+        model.openNewChat = { [weak self] intent in self?.openPluginPrompt(intent) ?? false }
+        retainedPluginsModel = model
+        return model
+    }
     private var projectsPage: UIHostingController<NativeProjectsPage>?
     private lazy var projectsModel = FrontendProjectsModel.make(accountID: account)
     private var sitesPage: UIHostingController<NativeSitesPage>?
@@ -457,6 +466,8 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
     // logout cleanup order. Preserve local records and reject old callbacks.
     func retireFrontendSession() {
         guard !sessionRetired else { return }
+        retainedPluginsModel?.retire()
+        activeSearchHost?.retire()
         if isViewLoaded { saveDraft(); saveAnchor() }
         let active = turns.values.flatMap { $0 }.filter(\.isActive).map(\.scope)
         for key in Array(turns.keys) {
@@ -1080,6 +1091,7 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
     }
 
     @objc private func openLocalSearch() {
+        guard !sessionRetired else { return }
         editor.resignFirstResponder(); saveDraft(); saveAnchor()
         // Independent local source for the packaged293 search repository.
         // Conversation destinations may omit message_id; include empty/renamed
@@ -1096,16 +1108,23 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
                     "message_id": turn.scope.request + "-assistant"]] }
         }
         let search = NativeSearchHost(rows: rows)
+        activeSearchHost = search
         search.onOpen = { [weak self] destination, message in
-            guard let self, self.catalog?.ordinaryEntries.contains(where: { $0.id == destination }) == true else { return }
+            guard let self, !self.sessionRetired,
+                  self.catalog?.ordinaryEntries.contains(where: { $0.id == destination }) == true else { return false }
             self.switchConversation(to: destination)
-            guard message != nil else { return } // Title hit preserves the saved reading anchor.
+            guard self.store.scope.conversationID == destination else { return false }
+            guard message != nil else { return true } // Title hit preserves the saved reading anchor.
             self.followsTail[self.store.scope] = false
+            let scope = self.store.scope, generation = self.store.generation
             DispatchQueue.main.async { [weak self] in
-                guard let self, let message, let rowID = self.renderRows.values.first(where: { $0.id == message || $0.blocks.contains(where: { $0.id == message }) })?.id, let index = self.source.indexPath(for: rowID) else { return }
+                guard let self, !self.sessionRetired, self.store.scope == scope, self.store.generation == generation,
+                      let message, let rowID = self.renderRows.values.first(where: { $0.id == message || $0.blocks.contains(where: { $0.id == message }) })?.id,
+                      let index = self.source.indexPath(for: rowID) else { return }
                 self.table.scrollToItem(at: index, at: .centeredVertically, animated: false)
                 self.saveAnchor(); self.updateLatestButton()
             }
+            return true
         }
         navigationController?.pushViewController(search, animated: true)
     }
@@ -1314,6 +1333,23 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
         projectConversation = nil
         navigationItem.leftBarButtonItem = ordinarySidebarItem
         navigationItem.title = nil
+    }
+
+    //Independent local handoff for the original "opens a new chat" intent.
+    //Plain-text draft only; no plugin activation or automatic send. Existing
+    //draft persistence errors remain visible through the Chat host notice.
+    private func openPluginPrompt(_ intent: FrontendPluginPromptIntent) -> Bool {
+        guard !sessionRetired, intent.scope.accountID == account,
+              retainedPluginsModel?.state.accepts(intent) == true,
+              !consumedPluginPrompts.contains(intent.id),
+              let shell = notificationShell ?? navigationController?.parent as? NativeSidebarContainer,
+              shell.view.window?.rootViewController?.presentedViewController == nil,
+              persistenceAvailable, createLocalConversation() else { return false }
+        editor.text = intent.prompt.text
+        saveDraft(); resizeEditor()
+        consumedPluginPrompts.insert(intent.id)
+        shell.showInitialContent(); shell.closeMenu()
+        return true
     }
 
     private func showPluginsPage() {
@@ -2950,7 +2986,7 @@ private enum NativeInlineRenderer {
 
 // Packaged 293 data mapping/repository in JSC; independent UIKit and local-only source.
 final class NativeSearchHost: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
-    var onOpen: ((String, String?) -> Void)?
+    var onOpen: ((String, String?) -> Bool)?
     private let rows: [[String: Any]]
     private let search = UISearchBar()
     private let filters = UISegmentedControl(items: [visualText("全部", "Top"), visualText("聊天", "Chats"), visualText("图片", "Images"), visualText("文档", "Documents"), visualText("项目", "Projects")])
@@ -2960,6 +2996,8 @@ final class NativeSearchHost: UIViewController, UISearchBarDelegate, UITableView
     private var context: JSContext?
     private var generation = 0
     private var pending: DispatchWorkItem?
+    private var retired = false
+    private var completedInitialFocusRequest = false
     init(rows: [[String: Any]]) { self.rows = rows; super.init(nibName: nil, bundle: nil) }
     required init?(coder: NSCoder) { fatalError("Storyboard unsupported") }
     override func viewDidLoad() {
@@ -2995,9 +3033,25 @@ final class NativeSearchHost: UIViewController, UISearchBarDelegate, UITableView
         }
         schedule()
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //293 GlobalSearchHostingController13c9588: wait for a window and mark
+        //the initial request complete only if focus is already held or succeeds.
+        //This existing native carrier is an adapter, not proof of root layout.
+        guard !retired, !completedInitialFocusRequest, view.window != nil else { return }
+        if search.searchTextField.isFirstResponder || search.searchTextField.becomeFirstResponder() {
+            completedInitialFocusRequest = true
+        }
+    }
     override func viewWillDisappear(_ animated: Bool) { super.viewWillDisappear(animated); pending?.cancel(); generation += 1 }
+    func retire() {
+        retired = true; generation += 1; pending?.cancel(); pending = nil
+        onOpen = nil; context = nil
+        if isViewLoaded { search.resignFirstResponder() }
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { schedule() }
     @objc private func schedule() {
+        guard !retired else { return }
         pending?.cancel(); generation += 1
         let captured = generation
         let query = (search.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
@@ -3010,7 +3064,7 @@ final class NativeSearchHost: UIViewController, UISearchBarDelegate, UITableView
         pending = task; DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: task)
     }
     private func execute(_ query: String, generation captured: Int) {
-        guard captured == generation, let context, let data = try? JSONSerialization.data(withJSONObject: rows), let payload = String(data: data, encoding: .utf8) else { return }
+        guard !retired, captured == generation, let context, let data = try? JSONSerialization.data(withJSONObject: rows), let payload = String(data: data, encoding: .utf8) else { return }
         let success: @convention(block) (String) -> Void = { [weak self] json in
             guard let self, captured == self.generation else { return }
             guard let data = json.data(using: .utf8), let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let items = object["results"] as? [[String: Any]] else { self.status.text = visualText("本地结果解析失败，可重试", "Unable to decode local results. Retry."); return }
@@ -3033,10 +3087,15 @@ final class NativeSearchHost: UIViewController, UISearchBarDelegate, UITableView
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !retired, results.indices.contains(indexPath.row) else { return }
         let item = results[indexPath.row]
         guard let destination = item["destinationId"] as? String else { return }
+        guard onOpen?(destination, item["messageId"] as? String) == true else {
+            tableView.deselectRow(at: indexPath, animated: true)
+            status.text = visualText("搜索目标已不可用，请刷新后重试。", "This destination is no longer available. Refresh and try again.")
+            return
+        }
         search.resignFirstResponder(); navigationController?.popViewController(animated: true)
-        onOpen?(destination, item["messageId"] as? String)
     }
 }
 

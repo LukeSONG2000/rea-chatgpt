@@ -1,0 +1,354 @@
+{
+  "schema": "rea-ios-history-search-findings-v1",
+  "date": "2026-11-13T23:19:12.465070+08:00",
+  "status": "partial-real-native-parent-and-initial-focus-closed-entry-dispatch-layout-close-open",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Ordinary History/sidebar search only; not Remote, Plugins or package-demo UI. Two bounded candidate groups, no product/build/device/Git/shared-doc changes.",
+  "candidate_groups": [
+    {
+      "id": 1,
+      "decision": "Identify actual History search parent/model before copying any JS layout.",
+      "result": "Original Root GlobalSearchPresentationHost carries Reference<HistoryGlobalSearchViewModel> and actually constructs native GlobalSearchScreen<HistoryGlobalSearchViewModel> with typed conversation navigation. Sidebar button uses Handler<HistoryNavigationAction>; exact handler-to-presentation mutation not fully closed."
+    },
+    {
+      "id": 2,
+      "decision": "Find lifecycle focus and original input/filter/results/close responsibilities.",
+      "result": "Concrete native hosting controller performs a successful-only first-focus handshake during layout. Complete screen input/filter positioning and close callback remain unresolved; keep explicit host navigation/layout boundary. No third candidate group."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "sidebar-native-search-button",
+      "type": "official-artifact-observation",
+      "source": [
+        "HistoryNavigationActionsContent descriptor959439c;fields showsSearch,closeSidebar,showsDirectMessages,...,actionHandler.",
+        "Actual search region127b604:127b684..68c tests showsSearch byte;search button label127b874..898 uses magnifying-glass-lg factory74f86d8 and sharedConversationNavigationBarButtonLabel2f9681c.",
+        "Action payload captured from original Handler fields127b690..127b6d8 through764096c;type8d8d62c resolvesSwiftToolbelt.Handler<ChatGPTHistory.HistoryNavigationAction>."
+      ],
+      "conclusion": "The sidebar is a native History action consumer. The entry is not proven to mount the packaged chatgpt_global_search JS Screen. Exact HistoryNavigationAction case reducer→globalSearchPresentation value write is the remaining entry dispatch breakpoint; enum declaration order is not used as proof."
+    },
+    {
+      "id": "real-root-search-parent",
+      "type": "official-artifact-observation",
+      "source": [
+        "GlobalSearchPresentationHost descriptor9565f3c,Viewconformance7d115d4,bodywitness607b68→606ae4.",
+        "Original globalSearchPresentation fieldrecord99e0ce8 typeref8d910f4 resolvesSwiftToolbelt.Reference<ChatGPTHistory.HistoryGlobalSearchViewModel>.",
+        "Actual body606d24..606d68 uses emitted record7d11cc0;full resolved tree is GlobalSearchScreen<HistoryGlobalSearchViewModel>.navigationDestination<ConversationNavigationDestination,retainedanonymousdestination>.",
+        "GlobalSearchScreen descriptor9595af0,Viewconformance7dba198,bodywitness13d31f4→13ceeb8.",
+        "Native GlobalSearchPresentingViewController classacc4d60 andGlobalSearchHostingController classacc4e50 are present with actual UIKit load/layout/appearance methods."
+      ],
+      "conclusion": "The actual root native search content is GlobalSearchScreen parameterized with HistoryGlobalSearchViewModel, not a native wrapper selected by the JS module name. Typed conversation navigation is part of that parent; its anonymous destination internals remain unknown."
+    },
+    {
+      "id": "successful-only-first-focus",
+      "type": "official-artifact-observation",
+      "source": [
+        "GlobalSearchHostingController ObjCviewDidLayoutSubviews13c969c→13c966c calls super then13c9588.",
+        "13c959c..13c95a8 reads actual ivar completedInitialFocusRequest viaoffsetStorageb181908;true skips entire request.",
+        "13c95b8 uses7c82b20=viewIfLoaded;13c95c4 nil exits;13c95cc uses7c83180=window andnil exitswithoutflag.",
+        "13c95e4→13c99ac recursively finds UITextField using importedclassslot aac6350, isKindOfClass andsubviews traversal. This is actual typed target, not any arbitrary first responder.",
+        "13c95f0→7c68a00=isFirstResponder;ifalreadytrue sets success. Otherwise13c9610→7c59140=becomeFirstResponder;13c9624 stores its successful Bool in completedInitialFocusRequest.",
+        "Recursive helper13c99ac..13c9aa4 returns first UITextField in loaded descendant order; exactfocusinputconfiguration still belongs to nativeScreen."
+      ],
+      "conclusion": "The native parent requests focus once after readiness, and retries later layouts when no window/text field or focus failure occurs. It does not unconditionally mark completion on first appearance. This proves a current minimal frontend integration gap: NativeSearchHost currently never requests first focus."
+    },
+    {
+      "id": "native-screen-structure-boundary",
+      "type": "official-artifact-observation-with-explicit-limits",
+      "source": [
+        "ActualScreen13ceeb8 owns model input and invokes native generic builders; no evidence here that its model is the packaged JS demoState.",
+        "Record7dba0f8 is Button<GlobalSearchResultCell>, not full screen;7dba108 is conditional GlobalSearchStateCell/anonymousresultregion;7dba100 is pager selected-page onAppear background. Those intermediate trees cannot establish whole input/filter/results relative placement.",
+        "Body-associated witness target8d9f991 begins unsupported symbolic-kind7. Strict symbolic reader rejected it; no guessed reconstruction used.",
+        "Current nativeScreen andTabSwipeContainer metadata mention toolbarVerticalEdge andverticaltoolbarcapability, but fields alone do not prove an always-top or always-bottom search field."
+      ],
+      "conclusion": "Do not claim complete recovered native layout. Exact search field parent, vertical/horizontal toolbar gate and filters/results/overlay relationship remain missing at nativeScreen generic body/opaque bound builders. Tokyo/demo JS cannot fill this gap."
+    }
+  ],
+  "current_host_observation": {
+    "source": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256": "36b592d4e651c8390811f4ae76798aa56fd31d3cf18869d2427fcddbb6a7a349",
+    "entry": "sidebar.onSearch1218 closes sidebar andpushesNativeSearchHost viaopenLocalSearch;hostlayoutat2978 uses verticalUIStackView[UISearchBar,filters,status,table] pinnedkeyboardLayoutGuide.",
+    "data_boundary": "Current host uses packaged GlobalSearchRepository on local synthetic ordinary history. Executing that repository is not proof its UI Screen is the original sidebar consumer.",
+    "clear_gap": "No viewDidAppear/layout-readyfirst-focus or equivalent request exists inNativeSearchHost. Existing viewWillDisappear only cancels pending work andincrementsgeneration.",
+    "close_boundary": "Current pop/back is independent UINavigationController behavior; native explicit closeTapped/didRequestDismissal final handler not established by this pass. Do not infer cancellation by focus loss."
+  },
+  "safe_product_decision": {
+    "can_fix_now": [
+      "Add one presentation-lifetime first-focus state to the independent native search host. Retry after loaded-view/window/searchTextField readiness;finishonly when field alreadyfocused orbecomeFirstResponder returns true.",
+      "Preserve any user dismissal after the first successful focus; do not re-focuson every layout orkeyboard close.",
+      "Retain current scope/generation cancellation andreturn restoration; no new query/filter/backend behavior justified by focus evidence."
+    ],
+    "keep_explicit_adapter": [
+      "Current UISearchBar/topfilters/results layout remains independent. Do not cite packagedJSdemo as native293placementproof.",
+      "No new cancel/close button style orpop policy is admitted as official without actual nativeScreen.closeTapped→model.didRequestDismissal→presentation owner consumer.",
+      "Actual focus implementation recursively searches UITextField because it owns aSwiftUI/UIKithostingtree. Independent host alreadyownsitssearchTextField andcan targetthat directly; no global responder traversal required."
+    ]
+  },
+  "precise_unknowns": [
+    "HistoryNavigationAction selectedsearchpayload→HistoryViewModel.isGlobalSearchPresented/globalSearchPresentation actual mutation call.",
+    "GlobalSearchScreen13ceeb8 nativefloating/input control builder,toolbarVerticalEdge policy,query/focusbindingsandfilter/resultsrelativeparent. Need actual consumersratherthanmodelsinventory.",
+    "GlobalSearchScreen.closeTapped/newChatTapped action→HistoryGlobalSearchViewModel.didRequestDismissal/didRequestNewChat andRoot.resolvedDismiss owner.",
+    "GlobalSearchPresentingViewController exactpresent/dismissanimationstateandinput cleanup; nativepresentationmetadataalone doesnotprovefullScreenCover/sheet/push."
+  ],
+  "haptics": {
+    "new_direct_caller": false,
+    "decision": "No newsearchhapticrecommendation."
+  },
+  "reused": [
+    "ios-sidebar-layout-20261112-findings.json",
+    "ios-sidebar-layout-20261112-navigation-content.asm",
+    "ios-sidebar-layout-20261112-navigation-tree.json"
+  ],
+  "coordinated_package_binding": "Parent reportsios-chat-search-fifteenth-20261113-package-binding.json ties4JSto frozenvaldimoduleSHA91bada8c300b881b1ea8c9ca0ca701d382594c573e75860e12cd20f7bf801e35. Packagepresence/demo defaults do notproveactualsidebarrenderer.",
+  "bounded_failures": [
+    "inspect_swift_class_fields rejectedHistoryViewModel fielddescriptorkind/countcombination; no guessedmetadatafieldsused.",
+    "AssociatedBody8d9f991 unsupportedkind7 retained asunknown.",
+    "Intermediate native result/pager records are correctly classified,notpassed offasfullSearchScreenroot."
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-history-search-fifteenth-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "current-host-windows.txt",
+      "sha256": "8970a5bfd0d3dad2ef12cfdad0f856ce78ba4f4f550e594907c2635f99219157",
+      "bytes": 8859
+    },
+    {
+      "file": "find-focus-target.asm",
+      "sha256": "66750ca9747a6ffcd474a8ac9d30ab59aac0da195e643142a556883175a95004",
+      "bytes": 2904
+    },
+    {
+      "file": "focus-objc-stubs.json",
+      "sha256": "5e2fc7dda484fa17f446c50ac955744c64bac630f4a3c25a521dbbbc40f81572",
+      "bytes": 500
+    },
+    {
+      "file": "focus-proofs.json",
+      "sha256": "2509ff8376926a1bc0cb05faa29a5e25206e8bd519766b959525fb9c85da3e97",
+      "bytes": 1870
+    },
+    {
+      "file": "hosting-lifecycle-calls.json",
+      "sha256": "7d9e1d27c5b57e8d6380d73e96e2242dd90dd26de765648a3aeb014fbd983ab1",
+      "bytes": 8948
+    },
+    {
+      "file": "hosting-lifecycle.asm",
+      "sha256": "de485f22e2eb3ab0013decc4f867532352c7eadc3f84401062a508c4ba13da59",
+      "bytes": 8387
+    },
+    {
+      "file": "initial-focus-calls.json",
+      "sha256": "379352d7836629ea9e5e44b4990069ce0523c3d54f173bae4a14abc737485e7c",
+      "bytes": 2632
+    },
+    {
+      "file": "initial-focus.asm",
+      "sha256": "df379b66296a923a2de866715e77fc9130ecd7d555c134ebd40999294bf98b46",
+      "bytes": 3853
+    },
+    {
+      "file": "presentation-contents-tree.json",
+      "sha256": "4fbd9f966e9d1a38fc9f5886aeffb0282ac9b9b62a712878d03c1ec12836df16",
+      "bytes": 21933
+    },
+    {
+      "file": "presentation-contents-tree.raw",
+      "sha256": "ad4cc3d9628621fb189118df4dc954de153cdf1b896fd90d052327bf4ad8d18f",
+      "bytes": 32
+    },
+    {
+      "file": "presentation-contents-tree.refs.tsv",
+      "sha256": "3660239e1e0cf9a7dec5ed012f790ef5e94d40524164ee2c930f1f657b2483b0",
+      "bytes": 320
+    },
+    {
+      "file": "presentation-contents-tree.tree.txt",
+      "sha256": "a7b132479835898062d749cfd40670f69af1e691f8586010ba7c55c96962fa92",
+      "bytes": 3387
+    },
+    {
+      "file": "presentation-host-body-thunk.asm",
+      "sha256": "70b2d0255399eb511ca47d35a1513b5c2ed42eb4dc7f137de514fb744e440bce",
+      "bytes": 1040
+    },
+    {
+      "file": "presentation-host-body.asm",
+      "sha256": "86a2ee101fad078302a167d7323bd9909c38ba7da734e1567653d865922daa69",
+      "bytes": 14122
+    },
+    {
+      "file": "presentation-host-calls.json",
+      "sha256": "4d5baf8900feba29a20e9496811e2fde317d537249333d4f825286095e42621c",
+      "bytes": 13831
+    },
+    {
+      "file": "presentation-host-witness.json",
+      "sha256": "06a1c925f27e875baa01f3d37a7f3791f997683d1746616ceeb1e86dc2bf5fe1",
+      "bytes": 4612
+    },
+    {
+      "file": "reused-sidebar-navigation-content.asm",
+      "sha256": "cdd81d7eec20726e3066f77ab0130089143f3aea5ba764fcef5fd9abc08e3579",
+      "bytes": 25802
+    },
+    {
+      "file": "reused-sidebar-navigation-tree.json",
+      "sha256": "68a376d3363682a414d7a27ec88702ecf6df71f5da99ee40e80399d6cc5509ac",
+      "bytes": 84163
+    },
+    {
+      "file": "search-body-associated-0x8d9f992.json",
+      "sha256": "35cfd54d8ca01b10e978b315ff0ddaf7ba3eecd50708787e4d934937f7c14710",
+      "bytes": 575
+    },
+    {
+      "file": "search-body-thunk.asm",
+      "sha256": "83696d54e2de0ac20e25d2dc947f1067e1572203722be98d7b831e891672adf0",
+      "bytes": 1832
+    },
+    {
+      "file": "search-content-root.json",
+      "sha256": "86a83df8a58c0707d750a45345a8872532b0362fd3e668ed8b833a8f0a766e00",
+      "bytes": 2489
+    },
+    {
+      "file": "search-content-root.raw",
+      "sha256": "e9b5352e202705acf247edbfb4e2ab40769bb8f5fea8d2469d748b344dd5eaa6",
+      "bytes": 12
+    },
+    {
+      "file": "search-content-root.refs.tsv",
+      "sha256": "531a9ba326e85a9e0833e64b8e8bc56cff6be4fe7f4a6974ccf8ca19f316c349",
+      "bytes": 87
+    },
+    {
+      "file": "search-content-root.tree.txt",
+      "sha256": "7225689c0e713e82670f37753684dc2462a8b25dc32cb00d1fab5dc8e5cc40fc",
+      "bytes": 315
+    },
+    {
+      "file": "search-objc.json",
+      "sha256": "d695198bb8b586cbb6751da83f7cd7f8ededf131533438680dada2ed582208ca",
+      "bytes": 50756
+    },
+    {
+      "file": "search-parent-builder.asm",
+      "sha256": "e80514e938cd2f86572ecc11795167a01071049b0a49022f0f9d9ed30f2eb3f3",
+      "bytes": 7460
+    },
+    {
+      "file": "search-parent-content.json",
+      "sha256": "b8f1147f0658a2aaf83085e8c990e143e259573fc0917eb8c635a086608853b2",
+      "bytes": 8837
+    },
+    {
+      "file": "search-parent-content.raw",
+      "sha256": "5b6cecea853b38f803f70b5fa2a7f756a990df9d718be9cd6feeb505300da75e",
+      "bytes": 38
+    },
+    {
+      "file": "search-parent-content.refs.tsv",
+      "sha256": "e3529e6c50522493f25dc60e9c1ad5bf952d558828f48ca3cbd23c6f68db8e69",
+      "bytes": 256
+    },
+    {
+      "file": "search-parent-content.tree.txt",
+      "sha256": "236ec002f5c0415188451c726dbb96539fa1d9724673d52494042944b715cf08",
+      "bytes": 1247
+    },
+    {
+      "file": "search-parent-inner.json",
+      "sha256": "8723f605c61da9c8a615f3d61ff0d2f98ba3b39306d1f8ba82d48df2dca2d0e6",
+      "bytes": 4941
+    },
+    {
+      "file": "search-parent-inner.raw",
+      "sha256": "f4fd263be7dd43ec7aa080b72956f9a32cfc500d59ac45df718747d0bf932233",
+      "bytes": 21
+    },
+    {
+      "file": "search-parent-inner.refs.tsv",
+      "sha256": "d9aca8f266c25f360ef82221937c5f86e3faaf3d9e7ec0fd711d3c475315290e",
+      "bytes": 145
+    },
+    {
+      "file": "search-parent-inner.tree.txt",
+      "sha256": "90bf0d7d8799a0c1d40e1e4493d2e0ed87724491863e5f2bcbc09b6a66468e99",
+      "bytes": 713
+    },
+    {
+      "file": "search-root-calls.json",
+      "sha256": "d87d9a92b89296d6377a6e78cfd871410f2dc17e36c9a106aa68b18b143a9fd7",
+      "bytes": 21440
+    },
+    {
+      "file": "search-root-tail.asm",
+      "sha256": "a5d499eb8a1c7fb7920f488cc17aa89c8b9f51e98d8e7551f04b8baf565f313c",
+      "bytes": 9820
+    },
+    {
+      "file": "search-root-typehelpers.asm",
+      "sha256": "744b60956b1ce1c1cfc31af37b22dc0f3f5ec1f7010430ba3907210d6df39587",
+      "bytes": 2235
+    },
+    {
+      "file": "search-screen-body.asm",
+      "sha256": "9eb32a55e7d5b5352412d5e6fc20dfb1488919b4b31bab7fea3066fb4aa7e841",
+      "bytes": 11074
+    },
+    {
+      "file": "search-screen-witness.json",
+      "sha256": "57d98ca920498bdcbae0bb232d9946b4f927e3931d12ef42f94e8b0d4a8065ff",
+      "bytes": 4614
+    },
+    {
+      "file": "search-selected-body.json",
+      "sha256": "b8614700030077bdbce0f0d94938454b7fa32172114c9af7400aca7b411202e9",
+      "bytes": 3971
+    },
+    {
+      "file": "search-selected-body.raw",
+      "sha256": "6a3508577d9be6ae9865ceb5b13ce963ec5e496f982c7a9253732545504acd74",
+      "bytes": 14
+    },
+    {
+      "file": "search-selected-body.refs.tsv",
+      "sha256": "ab8694cfff7ec415ad2dd4fec290ec96885841f3911b12f50313e3ed242176a4",
+      "bytes": 128
+    },
+    {
+      "file": "search-selected-body.tree.txt",
+      "sha256": "919aab527e20c9a2d42be8216c1f2ce4830fe2d4dd0031cf01ead68baa038036",
+      "bytes": 574
+    },
+    {
+      "file": "selected-metadata-index.json",
+      "sha256": "d7b6c43f3e96ef775a20d6f62820f722c26882c952bdb363eb2407456f1ad0af",
+      "bytes": 759
+    },
+    {
+      "file": "selected-ui.json",
+      "sha256": "dac2ca63c93b68323f67ad2b6c3de5cfa4b66a678837c69616d8548b93c3ede7",
+      "bytes": 3846
+    },
+    {
+      "file": "typed-inputs.json",
+      "sha256": "425146374f979e1bdc3fe731e64c3e3a47f3c01fe1830425ed93ccceb44f720b",
+      "bytes": 2623
+    }
+  ],
+  "validation": {
+    "source_only": true,
+    "product_modified": false,
+    "build_device_ui": false,
+    "official_network": false,
+    "git": false,
+    "two_groups_stop": true
+  }
+}

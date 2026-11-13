@@ -16,6 +16,10 @@ LIMIT = 16 * 1024 * 1024
 # Do not add matching English strings without checking the original consumer.
 # Copy code is deliberately excluded: the bundled Chinese value means OTP code.
 KEYS = {
+    'gpt_plugins_directory_use_suggested_prompt_accessibility_hint': '293 DefaultPromptBubble eb1d90..eb1de0 key887f860; plugins-fourteenth-20261113',
+    'Photos Library': '293 actual avatar Menu224a794 label224aa9c; auth-thirteenth-20261113',
+    'Take photo': '293 actual avatar Menu224a794 label224aac8→75d2a28; auth-thirteenth-20261113',
+    'Choose File': '293 actual avatar Menu224a794 label224aadc; auth-thirteenth-20261113',
     'gpt_plugins_directory_detail_information_heading': '293 eb89dc..eb8a2c; plugins-detail-sixth-20261113',
     'gpt_plugins_directory_detail_capabilities_label': '293 eb98a0 label dispatch; plugins-detail-sixth-20261113',
     'gpt_plugins_directory_detail_developer_label': '293 eb996c label dispatch; plugins-detail-sixth-20261113',

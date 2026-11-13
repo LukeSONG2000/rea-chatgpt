@@ -677,10 +677,62 @@ extension HostInteractionTests {
     }
 
     @MainActor
+    func testProfileAvatarMenuChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--profile-avatar-fixture",
+            "--chat-state-profile=" + UUID().uuidString, "--auth-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        let edit = app.buttons["edit-profile-picture"]
+        XCTAssertTrue(edit.wait(for: \.isHittable, toEqual: true, timeout: 5)); edit.tap()
+        let name = app.textFields["profile-edit-name"]
+        let username = app.textFields["profile-edit-username"]
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        replaceDraft(name, in: app, with: "Avatar Draft")
+        replaceDraft(username, in: app, with: "avatar-draft")
+        let avatar = app.buttons["profile-edit-avatar"]
+        if !avatar.isHittable { app.scrollViews.firstMatch.swipeDown() }
+        avatar.tap()
+        let photos = app.buttons["profile-avatar-photos"]
+        XCTAssertTrue(photos.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["profile-avatar-file"].exists)
+        // Simulator camera capabilities vary by runtime. The production menu
+        // follows UIImagePickerController availability, not a test assumption.
+        if app.buttons["profile-avatar-camera"].exists {
+            XCTAssertEqual(app.buttons["profile-avatar-camera"].label, "拍照")
+        }
+        let menu = XCTAttachment(screenshot: app.screenshot()); menu.name = "avatar-original-menu-zh-light"
+        menu.lifetime = .keepAlways; add(menu)
+        photos.tap()
+        let cancel = app.buttons["profile-avatar-close"]
+        XCTAssertTrue(cancel.waitForExistence(timeout: 5)); cancel.tap()
+        XCTAssertEqual(name.value as? String, "Avatar Draft")
+        XCTAssertEqual(username.value as? String, "avatar-draft")
+        avatar.tap(); app.buttons["profile-avatar-file"].tap()
+        let sample = app.buttons["profile-avatar-sample"]
+        XCTAssertTrue(sample.waitForExistence(timeout: 5)); sample.tap()
+        XCTAssertTrue(app.staticTexts["profile-avatar-preview"].waitForExistence(timeout: 5))
+        XCTAssertEqual(name.value as? String, "Avatar Draft")
+        XCTAssertEqual(username.value as? String, "avatar-draft")
+        XCTAssertEqual(app.staticTexts["profile-edit-preview-status"].label, "合成个人资料，仅用于前端预览。", "Selection must not publish the saved-profile status")
+        let preview = XCTAttachment(screenshot: app.screenshot()); preview.name = "avatar-transient-preview-zh-light"
+        preview.lifetime = .keepAlways; add(preview)
+        app.buttons["auth-profile-edit-close"].tap()
+        XCTAssertEqual(app.staticTexts["settings-profile-display-name"].label, "预览账户")
+        edit.tap(); XCTAssertTrue(name.waitForExistence(timeout: 5))
+        XCTAssertEqual(name.value as? String, "预览账户")
+        XCTAssertFalse(app.staticTexts["profile-avatar-preview"].exists, "Preview is editor-local and not persisted")
+        app.buttons["auth-profile-edit-close"].tap()
+    }
+
+    @MainActor
     func testAccountProfileEditChinese() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--offline-fixture", "--profile-save-failure-fixture",
+        app.launchArguments = ["--offline-fixture", "--profile-avatar-fixture", "--profile-save-failure-fixture",
             "--chat-state-profile=" + UUID().uuidString, "--auth-state-profile=" + UUID().uuidString,
             "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
         app.launch()
@@ -697,6 +749,7 @@ extension HostInteractionTests {
         replaceDraft(name, in: app, with: "Fixture Name")
         replaceDraft(username, in: app, with: "fixtureprofile")
         app.buttons["profile-edit-avatar"].tap()
+        app.buttons["profile-avatar-photos"].tap()
         let avatarClose = app.buttons["profile-avatar-close"]
         XCTAssertTrue(avatarClose.waitForExistence(timeout: 5)); avatarClose.tap()
         XCTAssertEqual(name.value as? String, "Fixture Name")
@@ -1251,6 +1304,40 @@ extension HostInteractionTests {
         XCTAssertTrue(delete.waitForExistence(timeout: 5)); delete.tap()
         XCTAssertTrue(app.buttons["projects-create"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["project-row-project-alpha"].exists)
+    }
+
+    @MainActor
+    func testPluginPromptNewDraftChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "--auth-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        let menu = app.buttons["open-conversation-list"], editor = app.textViews["draft-editor"]
+        XCTAssertTrue(menu.waitForExistence(timeout: 10))
+        let parent = try XCTUnwrap(menu.value as? String)
+        replaceDraft(editor, in: app, with: "Keep parent draft")
+        menu.tap(); openAdditionalSidebarFeature("plugins", app: app)
+        let calendar = app.buttons["plugin-row-calendar"]
+        XCTAssertTrue(calendar.wait(for: \.isHittable, toEqual: true, timeout: 5)); calendar.tap()
+        let prompt = app.buttons["plugin-prompt-0"]
+        XCTAssertTrue(prompt.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        let detail = XCTAttachment(screenshot: app.screenshot())
+        detail.name = "plugin-default-prompt-zh-light"; detail.lifetime = .keepAlways; add(detail)
+        prompt.tap()
+        XCTAssertTrue(editor.waitForExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "合成日历 帮我整理一份简短清单。")
+        XCTAssertNotEqual(menu.value as? String, parent, "Prompt opens a NEW draft, not the existing conversation")
+        let draft = XCTAttachment(screenshot: app.screenshot())
+        draft.name = "plugin-new-chat-draft-zh-light"; draft.lifetime = .keepAlways; add(draft)
+        menu.tap()
+        let parentRow = app.cells["conversation-row-" + parent]
+        XCTAssertTrue(parentRow.waitForExistence(timeout: 5)); parentRow.tap()
+        XCTAssertEqual(editor.value as? String, "Keep parent draft")
+        menu.tap(); openAdditionalSidebarFeature("plugins", app: app)
+        XCTAssertTrue(prompt.waitForExistence(timeout: 5), "Plugin detail route is retained")
+        XCTAssertTrue(app.buttons["plugin-action-connect"].isEnabled, "Using a prompt does not install/connect")
     }
 
     @MainActor
@@ -3155,6 +3242,50 @@ final class HostInteractionTests: XCTestCase {
         add(capture)
         selectConversation(chatID, app: app)
         XCTAssertTrue(modes.buttons.element(boundBy: 0).isSelected)
+    }
+
+    @MainActor
+    func testChatSearchInitialFocusAndReturnChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "--auth-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        let identity = app.buttons["open-conversation-list"], editor = app.textViews["draft-editor"]
+        XCTAssertTrue(identity.waitForExistence(timeout: 10))
+        let parent = try XCTUnwrap(identity.value as? String)
+        let mode = app.segmentedControls["home-mode-control"].buttons.element(boundBy: 1)
+        mode.tap(); replaceDraft(editor, in: app, with: "Keep Work search draft")
+        func openSearch() {
+            identity.tap(); app.buttons["sidebar-search"].tap()
+            XCTAssertTrue(app.searchFields["global-search-query"].waitForExistence(timeout: 5))
+            XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
+        }
+        openSearch()
+        let query = app.searchFields["global-search-query"]
+        let focus = XCTAttachment(screenshot: app.screenshot())
+        focus.name = "chat-search-initial-focus-zh-light"; focus.lifetime = .keepAlways; add(focus)
+        //No tap: the source-backed initial request must focus this field.
+        query.typeText("新会话")
+        let found = app.cells["search-result-conversation-" + parent]
+        XCTAssertTrue(found.waitForExistence(timeout: 5))
+        query.buttons.firstMatch.tap(); query.typeText("no-result-" + UUID().uuidString)
+        XCTAssertTrue(app.staticTexts["未找到本地结果；官方服务未连接"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(editor.waitForExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "Keep Work search draft")
+        XCTAssertTrue(mode.isSelected)
+        openSearch()
+        let value = query.value as? String ?? ""
+        XCTAssertTrue(value.isEmpty || value == "搜索本地会话", "A new search instance must not retain the closed query")
+        query.typeText("新会话")
+        XCTAssertTrue(found.waitForExistence(timeout: 5)); found.tap()
+        XCTAssertEqual(identity.value as? String, parent)
+        XCTAssertEqual(editor.value as? String, "Keep Work search draft")
+        XCTAssertTrue(mode.isSelected)
+        let restored = XCTAttachment(screenshot: app.screenshot())
+        restored.name = "chat-search-work-draft-return-zh-light"; restored.lifetime = .keepAlways; add(restored)
     }
 
     @MainActor

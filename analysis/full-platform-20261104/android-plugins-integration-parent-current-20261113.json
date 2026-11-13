@@ -1,0 +1,51 @@
+{
+  "module": "Android Plugins core",
+  "status": "bounded offline core implemented; original fidelity partial",
+  "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-integration-20261113-report.md",
+  "source_evidence": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-integration-20261113-source.json",
+  "source_manifest": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-focus-20261113-source-hashes.json",
+  "evidence_validation": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-integration-20261113-evidence-validation.json",
+  "runtime": [
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-integration-20261113-oneplus-r1.json",
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-integration-20261113-oneplus-r2.json"
+  ],
+  "before": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-integration-20261113-before.json",
+  "after": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-focus-20261113-after.json",
+  "product_sha256": "661787f09873d0df9deefd0f51a24ec7b46a92dbbca99872389c2c9af637e737",
+  "test_sha256": "ca17582d24b6f6bd0386b8ce208ebb7b6cce37c21c558d11e9eba85ff378dba0",
+  "implemented": [
+    "Existing normal AppShell sidebar Plugins route now opens the directory instead of unavailable. Single Plugins capability; no invented GPTs selector or installed tab.",
+    "Home installed example rail and provider categories; category and search are separate children; detail return preserves query/category and local list anchor state. Root parent Chat draft survives leaving/reentering.",
+    "Injectable async list/detail provider with loading, failure/retry, empty and cancellation; current platform/profile/account/session/revision/query/request token checks, duplicate and late rejection, invalid ID/revision/catalog protection.",
+    "Session-keyed owner terminal disposal refuses subsequent load/open/accept; coroutine cancellation is supplementary. No plugin journal or mutation action can outlive an accepted account session.",
+    "Explicit local fixture records only. Installed fixture state is distinct from live connected/install success. Install/Manage opens a returnable unavailable capability message and never changes state.",
+    "Source-backed ordinary search-entry focus; host single-generation claim rejects repeat/query/back/leave/retire. No explicit keyboard.show."
+  ],
+  "remaining": [
+    "Actual install/connect/remove/auth/configuration providers, RPC receipts and persistence are not implemented; no fake successful installation.",
+    "Settings apps entry capability/destination mapping is source-partial; no speculative Settings route added. Conditional root Settings/Share toolbar not integrated.",
+    "Skills capability/title selector, original installed overflow capacity behavior, remote logos, screenshots/tools/prompts/apps sections and complete detail schema remain unimplemented.",
+    "Original category taxonomy/sort/pagination/cache, original query/back/scroll restoration reducer and scope protocol are unclosed. Current fixture data and exact identity/query/navigation state are independent host contracts.",
+    "Original search vertical placement, full detail/header/card layout, typography/material tokens and precise optical parity remain partial. Search at bottom, app shell chrome, Material field/dialog, text placeholder logo and list spacing are host adaptations.",
+    "Directory/query state is in-memory scoped; no durable plugin cold-process query restoration. Local anchors are implemented but no measured scrolled-position gate was run in this small fixture.",
+    "Only Chinese/light OnePlus core checked. No full regression matrix, dark/landscape/extra device/backend test."
+  ],
+  "acceptance": "Old product r1 partial + r2 remaining passed; final product focus-only9.772s passed. No full final-product journey rerun.",
+  "no_network": true,
+  "no_install_success_simulated": true,
+  "ordinary_preferences_unchanged": true,
+  "heavy_window_released": true,
+  "next_smallest_action": "Trace Android dcm0.h conditional toolbar through actual settings owner before adding management actions.",
+  "previous_source_manifest": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-integration-20261113-source-hashes.json",
+  "previous_product_sha256": "240d67c1accab155192da45b11250e492bd386f6323f32dcbb94f11b895260c2",
+  "focus_followup": {
+    "source": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-focus-20261113-source.json",
+    "runtime": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-focus-20261113-oneplus.json",
+    "after": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-plugins-focus-20261113-after.json",
+    "seconds": 9.772,
+    "ax_focused": true,
+    "ime_package_visible": true,
+    "visual_keyboard_visible": true,
+    "original_ime_geometry_verified": false
+  }
+}

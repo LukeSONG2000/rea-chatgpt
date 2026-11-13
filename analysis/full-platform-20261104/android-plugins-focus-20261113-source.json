@@ -1,0 +1,61 @@
+{
+  "sources": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/zh81.java",
+      "sha256": "1a6fd4de63898572be458ec469310551002fd82eba46476ffdf8c45160775cb2",
+      "lines": [
+        740,
+        801
+      ],
+      "finding": "remember FocusRequester, Unit effect using nullable rcm0.c"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/zx2.java",
+      "sha256": "1cf58982733047b34a89d488eaadb8c13ee3da93f129259f9aedb74c60cf4d57",
+      "lines": [
+        371,
+        375
+      ],
+      "finding": "case18 null guard requests focus"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes4/zx2.smali",
+      "sha256": "5e19a27cf3c55f01870b66f7e3a6243679de28ab84380033e0eb4bef375af616",
+      "lines": [
+        1654,
+        1681
+      ],
+      "finding": "null guard and safe focus invoke corroborated"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/u7p0.java",
+      "sha256": "361e6e98bc43a5cbb3173f68b141c87db62d30913a82fb3fae4c254d3b2b2be4",
+      "lines": [
+        501,
+        506
+      ],
+      "finding": "safeRequestFocus invokes hb10.a"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/m0q.java",
+      "sha256": "31fe7d1a9c1a7a398e445156d6186060fe6fa8a59491f2f61d4fc74a1a40ab71",
+      "lines": [
+        279,
+        315
+      ],
+      "finding": "same requester forwarded to z671.a"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/z671.java",
+      "sha256": "ede44a19aad3910959fe8d40710c72763bc70cb2283a541bd8b12638755c25c3",
+      "lines": [
+        285,
+        364
+      ],
+      "finding": "same requester forwarded to actual input ob81.w"
+    }
+  ],
+  "observed": "Search first-focus request exists when rcm0.c is null. Exact nullable target production remains partial.",
+  "adaptation": "Explicit ordinary search entry generation claims focus once; no extra keyboard.show call.",
+  "unknown": "IME geometry and complex preset/deep-link restoration are not inferred from static focus."
+}

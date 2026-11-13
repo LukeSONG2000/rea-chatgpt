@@ -2,6 +2,12 @@
 
 ## Current mobile priorities (user update 2026-11-13)
 
+- 本次搜索整项见`PROGRESS-20261113-CHAT-SEARCH.md`：iOS原生首次焦点及独立会话退休／定位身份检查、Android独立异步搜索核心已接。中文浅色iOS32.391秒／OnePlus22.845秒通过，签名构建完成；原完整布局／服务和Android n5r.M模式身份仍未知，不把同会话切换作为已证官方要求。头像、插件、搜索按本次授权保存到个人origin；历史模块测试保持各自快照边界。
+
+- 最新插件整项见 `PROGRESS-20261113-PLUGINS-INTEGRATION.md`：iOS源证默认提示词→独立新Chat草稿与根退休隔离，Android原目录／分类／search／detail核心及首次焦点已接。iOS30.742秒与Android旧分段核心＋最后9.772秒焦点专项分别绑定实际快照；无新全套矩阵或安装服务。模拟器／OnePlus保留运行，Air不可用。下一整项Chat／Work：先证明Android模式与conversation身份，再改状态；不以iOS行为或截图代替。其余冻结侧栏包、后端和Git边界保留。
+
+- 最新账户收口见 `PROGRESS-20261113-ACCOUNT-CLOSURE.md`：iOS原头像菜单／112父级与门控已接，选图为独立编辑器本地预览，不进入姓名／用户名或账户保存；中文浅色43.552秒流程与构建通过。模拟器原偏好恢复并保留运行，Air不可用；实际系统选取／拍摄、原裁切／上传和完整光学继续保留边界。Android离线账户闭环已在7af822dcc5推送。下一整项只推进Plugins，其他侧栏包不扩展。新iOS工作留本地，不追加Git操作。
+
 - 最新明确授权检查点见 `CHECKPOINT-20261113-FILES-SETTINGS-ACCOUNT.md`：仅推送文件／浏览器、设置接线与已完成的Android离线账户闭环。27个合并源码摘要全部匹配；OnePlus账户核心及实际重启通过。iOS头像菜单尚未集成／构建，保留本地且不纳入本次检查点。账户整项未收尾；此前未接服务和原版光学缺口保留。此授权限本次个人origin，不外推为后续推送或发布许可。
 
 - Latest selected Settings module is `PROGRESS-20261113-SETTINGS-INTEGRATION.md`: Android connects source-specific General/start/accent/haptic, Codex follow-up/connection frontend, OS notification status and actual PackageInfo; report/signout retain honest service/session boundaries. Chinese/light15.492s journey,6.149s actual restart and8.274s settled screenshots passed. Initial stale-frame images are not visual proof. Current11-source manifest matches and ordinary preview preferences are preserved. iOS current10-source consumer snapshots retained with no new product patch or broad rerun; Air unavailable. Next ONE module is login/account frontend, then Plugins only. Preserve source/adapter distinctions, partial optics/full palette/actual permission-return and signout gaps; no new push/backend/other-sidebar expansion.

@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-13",
+  "module": "iOS Plugins core closure",
+  "source_findings": "ios-plugins-fourteenth-20261113-findings.json",
+  "source_raw_hashes_verified": 30,
+  "source_manifest": "ios-plugins-fourteenth-20261113-current-source.json",
+  "source_count": 80,
+  "implemented": [
+    "Source-backed nonempty default-prompt section before Description; VStack spacing16, stable Int IDs, inline semibold mention + U+0020 + body",
+    "Original packaged use-suggested-prompt accessibility hint",
+    "Full prompt identity/snapshot passed through explicitly injected local NEW Chat draft handoff; source Chat draft preserved, no automatic send or plugin activation",
+    "Prompt use capability explicit and independent of installed state; exact scope/plugin/action/revision/full prompt admission",
+    "Root session retirement clears pending plugin list/detail/operation and permanently rejects callbacks; local synthetic provider checks retirement after await before any journal write",
+    "Existing directory/installed/search/detail/skills/information/Settings core retained"
+  ],
+  "independent_adapters": [
+    "Default prompt bubble base font/paint/trailing glyph and canUsePrompt supply",
+    "New chat plain-text draft/no automatic send/root routing; no claim of recovered final coordinator or plugin mention token serialization",
+    "Settings-presented directory prompt use disabled until its specific multi-level dismissal handoff is connected; sidebar directory is the admitted owner",
+    "Root session lease, local journal retirement and request identity are host invariants, not original wire protocol"
+  ],
+  "verification": {
+    "foundation": ".tmp/plugins-fourteenth-20261113-contract.log passed; includes existing core plus delayed service retirement, exact prompt payload/capability/foreign scope/revision checks",
+    "ui": "ios-plugins-fourteenth-20261113-r1.xcresult",
+    "ui_seconds": 30.742,
+    "ui_passed": 1,
+    "language": "zh-Hans",
+    "appearance": "light",
+    "ui_coverage": [
+      "Source prompt appears before description",
+      "Tap opens different Chat conversation with exact text, no auto-send",
+      "Original parent draft retained",
+      "Return retains plugin detail and no connect/install state mutation"
+    ],
+    "simulator_build": "UI build succeeded",
+    "signed_build": ".tmp/plugins-fourteenth-20261113-device-build.log succeeded; strict signature verified",
+    "visual_review": [
+      "ios-plugins-fourteenth-20261113-r1-images/2D55B9EE-9DA3-4A5F-9435-1D2E999F3FE1.png",
+      "ios-plugins-fourteenth-20261113-r1-images/345B1542-1F65-444B-AA62-2EEC2838FB13.png"
+    ]
+  },
+  "runtime": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "launch": "local.rea.chatgpt.ioshost: 96522",
+    "arguments": [],
+    "installed_binary_sha256": "782a67d7abd5eadfb303ea6a4de113bf3025e8b1b9542a5114c01a3958f12e6d",
+    "original_preference_values_restored": true,
+    "kept_running": true,
+    "signed_build": "passed",
+    "signature": "deep strict verified",
+    "signed_binary_sha256": "843c48a4503d565a852f977725669221475490152c10af2e9fe170138f6745e4",
+    "physical": "Fresh inventory: Air unavailable, not installed this pass",
+    "physical_inventory": ".tmp/plugins-devices-20261113.json"
+  },
+  "remaining": [
+    "Original tryInChat coordinator/presentation unwind, auto-submit policy and structured plugin token mapping",
+    "Full original primaryAction/pendingInstall/account capability semantics",
+    "Settings-origin prompt handoff, Apps/Tools/screenshots/full management and per-plugin configuration",
+    "Original icon loader/private optics/full toolbar; no plugin haptic inferred",
+    "New-chat catalog/draft crash transaction not expanded; existing Chat persistence error notice retained",
+    "Real installation/auth/tools/backend outside current scope"
+  ],
+  "publication": "Local after authorized checkpoint7af822dcc5; no new commit/push"
+}

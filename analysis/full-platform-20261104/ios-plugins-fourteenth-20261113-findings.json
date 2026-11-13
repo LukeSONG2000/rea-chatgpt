@@ -1,0 +1,296 @@
+{
+  "schema": "rea-ios-plugin-prompts-findings-v1",
+  "date": "2026-11-13T22:46:58.363165+08:00",
+  "status": "partial-default-prompts-ui-and-detail-intent-closed-final-chat-handoff-unclosed",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "One minimum meaningful Plugins detail feature; two targeted consumer groups. No host implementation/build/device/target-service/Git/shared documentation changes.",
+  "selected_gap": "Default prompt selection. This is better supported than inventing Tools/Apps/screenshots/management or treating .tryInChat as an installation/auth operation.",
+  "candidate_groups": [
+    {
+      "group": 1,
+      "question": "Does default prompt content have actual parent/body/click consumers?",
+      "result": "Closed actual nonempty array parent, emitted VStack/ForEach and concrete native Button, whole-prompt callback."
+    },
+    {
+      "group": 2,
+      "question": "Does default-prompt detail action prove final new-chat/composer mutation?",
+      "result": "Closed typed payload transfer to detail actionHandler and original accessibility semantic Opens a new chat with this prompt. Actual coordinator/route/composer final consumer not closed; stop at named boundary."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "parent-order-and-presence",
+      "type": "official-artifact-observation",
+      "source": [
+        "GPTPluginDetailRenderModel desc9582808 metadata field vector=2; defaultPrompts field7 maps+0x2c; native emitted field metadata independently retained.",
+        "GPTPluginDetailLoadedContent9583bec/contenteb0850:eb0bc0..eb0bcc loads content defaultPrompts and skips entire section when Array.count at+0x10 iszero.",
+        "eb0cd0..eb0cd8 supplies original prompt array and actionf31684 into optional GPTPluginDetailDefaultPromptsSection.",
+        "Loaded tree7d79a88 order places optional default prompts before optional Description, then Apps/Skills/Information as established in sixth report."
+      ],
+      "conclusion": "Use only a supplied nonempty prompt array; retain its order and do not synthesize suggestions from plugin longDescription. No standalone Suggestions heading is established by section tree."
+    },
+    {
+      "id": "actual-section-and-identity",
+      "type": "official-artifact-observation",
+      "source": [
+        "GPTPluginDetailDefaultPromptsSection descriptor9584318,Viewconformance7d7a3e8,witnesseb1bb4→eb1974.",
+        "Full generic record7d7b310 reused:VStack<ForEach<Array<GPTPluginDetailDefaultPromptContent>,Int,GPTPluginDetailDefaultPromptBubble>> plus padding/frame/background modifiers. Anonymous child nominal preserved as descriptor9584b94, then independently metadata-named.",
+        "eb19e0 calls alignment getter andeb19e4 supplies16 to VStackhelperae2f50; constructoreb1a28..eb1a3c passes actual rowbuilderf37154.",
+        "GPTPluginDetailDefaultPromptContent desc9583480 fields id:Swift.Int (Si at8e133f0),mention:String,body:String; actiontype8cfaa02 is (GPTPluginDetailDefaultPromptContent)->Void; ScreenAction.defaultPromptTapped payload typeref8cf3834 is same content type."
+      ],
+      "conclusion": "This is a vertical supplied prompt array with stable local Int identity. id is a frontend projected identity, not a plugin service identifier or a wire numeric value."
+    },
+    {
+      "id": "real-clickable-bubble",
+      "type": "official-artifact-observation",
+      "source": [
+        "Concrete GPTPluginDetailDefaultPromptBubble desc9584b94,Viewconformance7d7bb40,bodywitnesseb2754→eb1bc0.",
+        "Actual body type record7d7ca40 is Button<modified HStack<TupleView<Text,...optional image>>> with original content/background/stroke/shadow/font/accessibility modifiers. It is not a generic ordinary text list inferred from model fields.",
+        "eb2754..eb2778 copies actual prompt and action into body inputs;eb1c8c loads original action pair from input+0x28.",
+        "eb2160 label subbuilder reads mention atprompt+0x8 and body at+0x18; both used in native text construction.",
+        "Rowbuilderf37154 retains complete five-word prompt payload and original section action. f37280 loads captured action and calls it with original prompt atcontext+0x28."
+      ],
+      "conclusion": "Rows are real actionable prompt bubbles; selection carries full id/mention/body rather than only display text. Exact typography/paint/icon resources were not fully closed, so their independent host rendering remains explicit."
+    },
+    {
+      "id": "mention-and-body-text-composition",
+      "type": "official-artifact-observation",
+      "source": [
+        "eb2160 label reads mention pair atprompt+0x8(eb220c) andbody pair at+0x18(eb2210).",
+        "eb2218 calls exact SwiftUI.Font.Weight.semibold getter;eb222c appliesText.fontWeight to the mention Text.",
+        "eb2240..eb229c checks body count, then mention count;eb2264 constructs U+0020 only for nonempty mention, theneb2288 String.append forms body segment. Empty body goes emptysegment.",
+        "eb22c4 imports SwiftUI.Text.+, joining weighted mention Text and body segment Text; full row tree has single modified Text within HStack plusoptional trailing Image."
+      ],
+      "conclusion": "Visible prompt is inline semibold mention followed by body in one composed Text, with a separating space when both are present. It is not two unrelated title/subtitle rows. Whole payload is independently preserved for selection. Base font and trailing glyph exact resource still unknown."
+    },
+    {
+      "id": "detail-action-and-new-chat-semantic",
+      "type": "official-artifact-observation",
+      "source": [
+        "Loaded section actionf31684 obtains current LoadedContent then tailcallseb11fc with full selected prompt.",
+        "eb11fc creates actual GPTPluginDetailScreenAction metadataf0c9b4, copies fullprompt ateb124c..eb1264, then calls supplied detail actionHandler ateb1288..eb128c. Exact tag writer in shared helper14d524 not named by declaration ordering; typed payload binding and producer establish action purpose.",
+        "eb1d90..eb1de0 constructs original accessibility hint using key887f860:gpt_plugins_directory_use_suggested_prompt_accessibility_hint and fallback887f8a0:Opens a new chat with this prompt.",
+        "DetailScreen parenteaefc0 supplies generic bound handler through7640d64 ateaf1b4; original coordinator owns tryInChat separately from installation/authorization."
+      ],
+      "conclusion": "Original selection intent opens a new chat with that prompt. This does not by itself establish whether original handoff prepopulates, automatically sends, attaches a mention token, enables a plugin or dismisses multiple presentation levels. Do not silently replace that with an unrelated backend perform(.tryInChat) success."
+    },
+    {
+      "id": "enablement-boundary",
+      "type": "official-artifact-observation",
+      "source": [
+        "Loadedeb0bc0 first gates nonempty array. eb0c18..eb0ca4 also computes a disablement value from pendingInstallPluginID/currentplugin comparison and primaryAction byte at content metadata+0x40.",
+        "eb0cc0 stores captured disableBool;eb0ce0..eb0ce4 supplies44ab38→1225d0 inherited-enablement transform."
+      ],
+      "conclusion": "Prompt section visibility and prompt use eligibility differ. Full semantic mapping of primaryAction raw cases and account eligibility remains unclosed; installed=true alone is not a source-backed canUsePrompt predicate."
+    }
+  ],
+  "current_host": {
+    "source_files": {
+      "implementation/ios/Sources/FrontendPlugins.swift": "54ea739d277cb8eb67fdd155c07a8d3043543e979924087884d561b3fa9da743",
+      "implementation/ios/Sources/NativePluginsPage.swift": "fadc60e14cb4da16691761aeccf9f23897a0bba48d2d9eeb5bb5fcabcb98b7f4"
+    },
+    "gap": "FrontendPlugin has detail/skills/information but no default prompts. NativePluginDetail ready content renders Description→generic action buttons→Skills→Information; no default prompt section. Existing .tryInChat generic action calls model.perform and unavailable service, so it is not a restored actual new-chat handoff."
+  },
+  "minimum_independent_data_contract": {
+    "classification": "independent frontend adapter fields, not official wire schema",
+    "projection": [
+      "prompts:[{id:Int,mention:String,body:String}] preserves proved source model and array order",
+      "canUsePrompt:Bool supplied explicitly by admitted capability projection; do not derive from installed flag",
+      "scope accountID/workspaceID plus displayPluginID/actionPluginID, entity revision and requestID for local handoff identity"
+    ],
+    "intent": "selectPrompt(exactScope,pluginIdentity,entityRevision,promptID,fullPromptSnapshot,requestID)",
+    "safe_behavior": [
+      "Add optional nonempty prompt section before Description. Render actual supplied mention/body and original accessibility hint.",
+      "Route to an independently owned NEW Chat draft only through an explicit injected local handoff. Preserve source chat/task/draft and plugin detail return state; account/revision/target must still match at receipt.",
+      "Default no handoff capability returns explicit unavailable, keeping current state. A synthetic local new-chat draft route may demonstrate frontend interaction without installing, authorizing or executing a plugin.",
+      "Prefilling the draft without automatic send is a safe explicit host choice; do not call it the recovered original submit policy.",
+      "Never alter installed/connected/authorized flags or call tools solely because user selected a prompt."
+    ]
+  },
+  "precise_unknowns": [
+    "GPTPluginDetailScreen bound actionHandler defaultPromptTapped consumption→ChatGPTPluginActionCoordinator actual tryInChat target and context assembly. Current next concrete binding iseaefc0/eaf1b4→7640d64 generic handler; final concrete owner not yet named.",
+    "tryInChatCoordinator/tryInChatHandoff/pendingTryInChatDismissal actual accepted-result/dismiss/new composer dispatch. Fields alone are not active UI proof.",
+    "Original prompt eligibility semantic raw-case mapping and account/plan/pending-install lifecycle.",
+    "Original mention token encoding, draft merge/replacement, autosend and cancel/return policy.",
+    "Exact prompt bubble icon factory/paint/font/current optical parent. No original new haptic caller proved."
+  ],
+  "rejected_adjacent_evidence": [
+    "prompt-bubble-body.asm at eb32c8 and its calls belong to a different adjacent visual carrier reached byf372a4, not the prompt bubble View witness. Retained raw is not used for prompt layout claims. Actual bubble is witness eb2754→eb1bc0.",
+    "The earlier section prompts-body.asm eb1974 is valid via newly checked witnesseb1bb4, not guessed merely by proximity."
+  ],
+  "safe_product_decision": {
+    "recommendation": "Implement default prompt projection and optional independent new-chat handoff; keep service and exact original final route boundaries explicit.",
+    "do_not_expand": "No Tools/Apps/screenshots/manage/install/auth implementation justified by this bounded prompt chain; no desktop/Android analogy used."
+  },
+  "raw_directory": "analysis/full-platform-20261104/ios-plugins-fourteenth-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "FrontendPlugins.swift.snapshot.txt",
+      "sha256": "8bf2c0ad942cafac0d5aa977cb153fa41ffdb2463fc486b12e90d4e019cdfad8",
+      "bytes": 2719
+    },
+    {
+      "file": "NativePluginsPage.swift.snapshot.txt",
+      "sha256": "d03e8cfa77d9fc990ced8906f43e1619fa76dd1caffbc56be53624aeacfb4986",
+      "bytes": 3890
+    },
+    {
+      "file": "default-prompts-metadata.json",
+      "sha256": "7a8fb46bbb335caa724ddbf4671b39767268a2b063e22bb47db3672f7c0b4fb7",
+      "bytes": 1123
+    },
+    {
+      "file": "default-prompts-witness.json",
+      "sha256": "e08b3b89c9b7cc9c47238be73a078047233fcdfbfd0842f6d2062a36f89dbb64",
+      "bytes": 4612
+    },
+    {
+      "file": "prompt-action-emit.asm",
+      "sha256": "64ce1d644cfe8eac0f7340740c278224db52931e52635eca07b07af52c98c506",
+      "bytes": 5953
+    },
+    {
+      "file": "prompt-bubble-actual.asm",
+      "sha256": "4298da33f763c42a9166687029285542b3fa27de65508e9674c738a05223e5d5",
+      "bytes": 14294
+    },
+    {
+      "file": "prompt-bubble-body-tree.json",
+      "sha256": "168691cf98d47a2a2dddc33da122a2c394dd1d722acc33b28a6233a1e6465ba0",
+      "bytes": 184040
+    },
+    {
+      "file": "prompt-bubble-body-tree.raw",
+      "sha256": "deb494f0b558736f6bf32febe83e7d7842530af30cdd4acf2d6f85b56fbf4b77",
+      "bytes": 238
+    },
+    {
+      "file": "prompt-bubble-body-tree.refs.tsv",
+      "sha256": "769522d3fb01e035f352f5599840ce655b2a0bfe5a919c11d6d045cc00afe0cf",
+      "bytes": 1153
+    },
+    {
+      "file": "prompt-bubble-body-tree.tree.txt",
+      "sha256": "cb8a1c98919ffe675d347a428e79600d3403be16e24fd3429d5fccb917a12912",
+      "bytes": 22047
+    },
+    {
+      "file": "prompt-bubble-body.asm",
+      "sha256": "e2d07315057aa1ca58233b0103959b070599764195c78e965536a63cffecefb4",
+      "bytes": 16365
+    },
+    {
+      "file": "prompt-bubble-calls.json",
+      "sha256": "ececd1985d50fcca075b4408b7cbfdadc1399455ad1e26dbc45dd5fdcae3ba39",
+      "bytes": 20209
+    },
+    {
+      "file": "prompt-bubble-label-tree.json",
+      "sha256": "ab4c581ce5cc8490f54bfbb26e70e93bbc3714f3805398c0b978da02deb3e624",
+      "bytes": 16304
+    },
+    {
+      "file": "prompt-bubble-label-tree.raw",
+      "sha256": "fe12d82fe2a2e0723f2e5ea1c32c17ee74701b03a0c8166d25cb997ba2cdd35f",
+      "bytes": 48
+    },
+    {
+      "file": "prompt-bubble-label-tree.refs.tsv",
+      "sha256": "c1ee550c52af87bd281601b52ea8a8e923dcf34d01865270cf6522f8e6e539f6",
+      "bytes": 288
+    },
+    {
+      "file": "prompt-bubble-label-tree.tree.txt",
+      "sha256": "44d121efd06d4042bf02a417441d2adbafffd8358d1bfefdaa92a4e0ad51f316",
+      "bytes": 2226
+    },
+    {
+      "file": "prompt-bubble-metadata.json",
+      "sha256": "c7246d1a654c173a4290a8cb529d02edb813799eb2144247410ab256de2d3b08",
+      "bytes": 1120
+    },
+    {
+      "file": "prompt-bubble-witness.json",
+      "sha256": "1dec96451d0f22da9d1d6d3fa16fe251720b46e21b915abbfde1d7ab5d3229b3",
+      "bytes": 4612
+    },
+    {
+      "file": "prompt-button-captured-action.asm",
+      "sha256": "9aa91eb26d7acf694db5c0a02d28aef34a1c9c9582c56b54ff26933580b1abd3",
+      "bytes": 1634
+    },
+    {
+      "file": "prompt-content-metadata.json",
+      "sha256": "d0acdd0405ede019ae2c3194723b6191f1d821e637aa48272c8be993e9670896",
+      "bytes": 1365
+    },
+    {
+      "file": "prompt-row-builder.asm",
+      "sha256": "f5fb00e53da3d8d9bfc4bcdb561acf9ef6b8d6fc467b3e38639bad1fdbfca0c3",
+      "bytes": 2216
+    },
+    {
+      "file": "prompt-row-calls.json",
+      "sha256": "3769286d243a00a3d5acb66480042dfa5691f3a05ec06538178a1a2375113ba8",
+      "bytes": 18152
+    },
+    {
+      "file": "prompt-text-consumers.json",
+      "sha256": "25a313692ed0819fa94adf2f35fee6421bc8b1a08c38f8eb426662e0c6476211",
+      "bytes": 4002
+    },
+    {
+      "file": "prompt-types-labels.json",
+      "sha256": "d78ecf883365a5116c06b70f4fb5ef604052b85b498bf0257ae1b2c40414938a",
+      "bytes": 2727
+    },
+    {
+      "file": "prompts-actual-body.asm",
+      "sha256": "dd06eaaa7230ccc9710462ab2f7c47d0d058f40fe899a2374c9e75447eef9478",
+      "bytes": 23345
+    },
+    {
+      "file": "prompts-parent-action.asm",
+      "sha256": "f7358388cc4b7f7dddd1d08a2bd5f5fbcfd51899ae7378a617ac1008c16bde4a",
+      "bytes": 3460
+    },
+    {
+      "file": "reused-loaded-components.asm",
+      "sha256": "fb842934e852069766a1c658a7b9a211efc72d0dd28288cc7eaffb4c34586cf8",
+      "bytes": 31782
+    },
+    {
+      "file": "reused-prompts-body.asm",
+      "sha256": "fe476a0906955b4e6ea74d7114763e1349d98259b6ac748362f0d1794d017621",
+      "bytes": 6501
+    },
+    {
+      "file": "reused-prompts-tree.json",
+      "sha256": "32c9bd8c10a0af6fc86c9903e601c62449e48075246d1515818e624b3f300b89",
+      "bytes": 32273
+    },
+    {
+      "file": "reused-prompts-tree.tree.txt",
+      "sha256": "0bac61f41b73014a2d603e56332134ca3eb681845b3f6be165a6a566c5636d70",
+      "bytes": 4333
+    }
+  ],
+  "reused_reports": [
+    "ios-native-plugins-20261112-findings.json",
+    "ios-plugins-detail-fifth-20261113-findings.json",
+    "ios-plugins-detail-sixth-20261113-findings.json",
+    "ios-plugins-parent-current-20261113.json"
+  ],
+  "validation": {
+    "source_only": true,
+    "product_changed": false,
+    "build_device_runtime": false,
+    "git": false,
+    "two_candidate_groups_stopped": true
+  }
+}

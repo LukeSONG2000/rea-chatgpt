@@ -1,0 +1,35 @@
+{
+  "module": "Android Chat/Work core: ChatSearch integration",
+  "status": "bounded core passed; mode identity unchanged and source unresolved",
+  "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-search-integration-20261113-report.md",
+  "source_manifest": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-search-integration-20261113-source-hashes.json",
+  "source_evidence": [
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-search-20261113-source.json",
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-work-mode-20261113-source.json"
+  ],
+  "evidence_validation": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-search-integration-20261113-evidence-validation.json",
+  "runtime": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-search-integration-20261113-oneplus-r1.json",
+  "before": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-search-integration-20261113-before.json",
+  "after": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-search-integration-20261113-after.json",
+  "product_sha256": "ec6806846c01c2357050bc35d8222ba722441f367f7bca17072d15477447b361",
+  "test_sha256": "922beb284fc2409db1a41b8fda204186dfe4b4f12f8cbd3abe5247fe2fd36c07",
+  "implemented": [
+    "Normal sidebar ChatSearch now uses a separate session-keyed owner and replaceable asynchronous Chat-only provider. No Plugins/Remote owner reuse.",
+    "Exact platform/account/profile/session/revision/query/entry/request-token receipt fence, loading/empty/error/retry/cancel, duplicate/late rejection and terminal disposal. No search journal or network.",
+    "First-entry FocusRequester claim, committed IME query only; cancellation ends search-only state. Stateless field uses observed full-width/top8/48dp carriers and packaged icons; host rounded24/surface tokens remain explicit.",
+    "Selection rechecks current conversation ID/title/mode/non-archived state before existing Chat select; stale results refresh. Search disposal does not clear current conversation/draft. Existing sidebar/root owner persists.",
+    "Independent documented policy: each explicit search starts with empty query; cancel/exit clears only search query/results/request and returns via existing shell back/drawer behavior."
+  ],
+  "remaining": [
+    "Android mode identity/send boundary remains at n5r.M; neither universal same-conversation switching nor independent dual conversation lists has been proven. Current fixed-row mode and selected[mode] remain independent adapter policy.",
+    "Original global-search service, result tabs/types/files, pagination/ranking, message-level jump and exact query persistence are not implemented. Local provider searches titles only; empty query includes local unarchived conversations.",
+    "Exact original search material/rounded radius/IME transitions/parent optical fidelity and navigation iiW0 destination are unclosed. Current top shell header, rounded24 and cancellation drawer policy are host adaptation.",
+    "Sidebar list state remains same existing parent; no measured scroll-anchor acceptance added. No search process-restart restoration is claimed; query is transient.",
+    "Only Chinese/light single OnePlus core flow; no broad Chat/Remote/Plugins regression, dark/landscape/backend or physical iOS testing."
+  ],
+  "build_seconds": 16,
+  "journey_seconds": 22.845,
+  "ordinary_preferences_unchanged": true,
+  "heavy_window_released": true,
+  "mode_claim_correction": "Same-conversation mode switching is not yet established as Android official expected behavior; independent dual lists are also unproven."
+}

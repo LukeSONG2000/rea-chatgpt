@@ -3,6 +3,7 @@ import Foundation
 // Only context-checked keys are exposed. Identical English text is not enough
 // to establish that a translation belongs to a particular control.
 enum OfficialTextKey: String {
+    case pluginsUsePromptHint = "gpt_plugins_directory_use_suggested_prompt_accessibility_hint"
     case settingsStartScreen = "settings_start_screen"
     case settingsStartScreenDescription = "Choose where you start when you open ChatGPT."
     case remoteLiveActivityGrouping = "codex_remote_live_activity_grouping"
@@ -48,6 +49,9 @@ enum OfficialTextKey: String {
     case sitesTitle = "sites_display_name"
     case sitesCreate = "sites_create_site"
     case profileName = "Name"
+    case profileAvatarPhotos = "Photos Library"
+    case profileAvatarCamera = "Take photo"
+    case profileAvatarFile = "Choose File"
     case profileUsername = "calpico_username"
     case profileSave = "Save profile"
     case profileFootnote = "Your profile helps people recognize you in group chats."

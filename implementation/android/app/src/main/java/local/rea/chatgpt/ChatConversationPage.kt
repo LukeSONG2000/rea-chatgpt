@@ -159,18 +159,3 @@ internal fun ColumnScope.ChatConversationPage(mode: String, owner: ChatConversat
     }
 }
 
-@Composable
-internal fun ChatSearch(owner: ChatConversationOwner, select: (ChatConversation) -> Unit) {
-    var query by remember { mutableStateOf("") }
-    Column(Modifier.fillMaxSize().testTag("chat-search")) {
-        OutlinedTextField(query, { query = it }, modifier = Modifier.fillMaxWidth().padding(16.dp).testTag("chat-search-query"),
-            placeholder = { Text(remoteControlText("搜索会话", "Search conversations")) }, singleLine = true)
-        val results = owner.snapshot.rows.filter { !it.archived && (query.isBlank() || it.title.contains(query, true)) }
-        LazyColumn(Modifier.weight(1f)) {
-            if (results.isEmpty()) item { Text(remoteControlText("没有匹配的会话", "No matching conversations"), Modifier.padding(16.dp).testTag("chat-search-empty")) }
-            items(results, key = { it.id }) { row ->
-                Text(row.title, Modifier.fillMaxWidth().clickable { select(row) }.padding(16.dp).testTag("chat-search-${row.id}"))
-            }
-        }
-    }
-}

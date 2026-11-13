@@ -173,3 +173,56 @@ let afterRemoval = SyntheticPluginService(scope: scope, catalog: [metadata], rep
 let removedList = try await afterRemoval.list(installedRequest)
 precondition(removedList.items.isEmpty)
 print("Plugins: source first8/all projection, ordered metadata enrichment, failed durable commit/retry, cold restoration, workspace isolation and corrupt preservation passed")
+
+//Root retirement differs from leaving a detail page. An old owner must not
+//write a stable same-account namespace after logout/relogin.
+var retiring = FrontendPluginState(scope: scope)
+let initial = retiring.beginList(query)!
+precondition(retiring.receive(.init(request: initial, items: [item()], next: nil)))
+let pendingList = retiring.beginList(query)!
+let pendingDetail = retiring.beginDetail("display-a")!
+let pendingOperation = retiring.beginOperation(.connect, id: "display-a")!
+retiring.retire()
+precondition(!retiring.receive(.init(request: pendingList, items: [item(revision: 2)], next: nil)))
+precondition(!retiring.receive(.init(request: pendingDetail, item: item(revision: 2))))
+precondition(!retiring.receive(.init(operation: pendingOperation, result: .success(item(revision: 2, installed: true)))))
+precondition(retiring.beginList(query) == nil && retiring.beginDetail("display-a") == nil)
+precondition(retiring.beginOperation(.connect, id: "display-a") == nil)
+let retiredJournal = FrontendPluginConnectionJournal(url: folder.appendingPathComponent("retired.json"), scope: scope)
+let retiringService = SyntheticPluginService(scope: scope, catalog: [item()], replaysConnectionChanges: true, journal: retiredJournal)
+let lateOperation = Task { try await retiringService.perform(operation) }
+try await Task.sleep(nanoseconds: 10_000_000)
+retiringService.retire()
+do { _ = try await lateOperation.value; preconditionFailure("Retired service accepted operation") }
+catch is CancellationError {} catch { preconditionFailure("Unexpected retirement result") }
+precondition(!FileManager.default.fileExists(atPath: retiredJournal.url.path))
+precondition(retiringService.catalog[0].revision == 0 && !retiringService.catalog[0].installed)
+print("Plugins: root retirement rejects late list/detail/operation and prevents old local journal writes")
+
+var promptItem = item(detail: "Loaded")
+promptItem.defaultPrompts = [.init(id: 7, mention: "Fixture", body: "Prompt body")]
+promptItem.canUsePrompt = true
+var prompts = FrontendPluginState(scope: scope)
+let promptRead = prompts.beginDetail(promptItem.id)!
+precondition(prompts.receive(.init(request: promptRead, item: promptItem)))
+let promptIntent = prompts.promptIntent(7, pluginID: promptItem.id)!
+precondition(promptIntent.prompt.text == "Fixture Prompt body" && prompts.accepts(promptIntent))
+precondition(prompts.promptIntent(99, pluginID: promptItem.id) == nil)
+let foreignPrompt = FrontendPluginPromptIntent(id: promptIntent.id, scope: other, pluginID: promptItem.id,
+    actionPluginID: promptItem.actionPluginID, revision: promptItem.revision, prompt: promptIntent.prompt)
+precondition(!prompts.accepts(foreignPrompt))
+let alteredPrompt = FrontendPluginPromptIntent(id: promptIntent.id, scope: scope, pluginID: promptItem.id,
+    actionPluginID: promptItem.actionPluginID, revision: promptItem.revision,
+    prompt: .init(id: 7, mention: "Fixture", body: "Wrong body"))
+precondition(!prompts.accepts(alteredPrompt))
+let promptUpdate = prompts.beginDetail(promptItem.id)!
+promptItem = FrontendPlugin(id: promptItem.id, actionPluginID: promptItem.actionPluginID, revision: 1,
+    name: promptItem.name, summary: promptItem.summary, sourceID: promptItem.sourceID,
+    installed: true, actions: [.disconnect], detail: "Loaded", defaultPrompts: promptItem.defaultPrompts, canUsePrompt: false)
+precondition(prompts.receive(.init(request: promptUpdate, item: promptItem)))
+precondition(!prompts.accepts(promptIntent) && prompts.promptIntent(7, pluginID: promptItem.id) == nil,
+    "Installed does not imply prompt-use capability; stale revision cannot hand off")
+precondition(FrontendPluginDefaultPrompt(id: 1, mention: "", body: "body").text == "body")
+precondition(FrontendPluginDefaultPrompt(id: 1, mention: "mention", body: "").text == "mention")
+prompts.retire(); precondition(!prompts.accepts(promptIntent))
+print("Plugins: full default-prompt payload, explicit capability, wrong scope/body/revision and retired handoff checked")

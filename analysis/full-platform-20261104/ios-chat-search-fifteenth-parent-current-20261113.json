@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-13",
+  "module": "iOS ordinary Chat search focus and lifetime",
+  "source_findings": "ios-history-search-fifteenth-20261113-findings.json",
+  "package_binding": "ios-chat-search-fifteenth-20261113-package-binding.json",
+  "source_manifest": "ios-chat-search-fifteenth-20261113-current-source.json",
+  "raw_hashes_verified": 46,
+  "implemented": [
+    "Source-backed success-only initial focus after field enters window",
+    "Independent root retirement rejects pending search and result admission",
+    "Exact conversation/generation checks before scheduled message scrolling",
+    "Rejected destination remains returnable instead of silently navigating"
+  ],
+  "verification": {
+    "ui": "ios-chat-search-fifteenth-20261113-r1.xcresult",
+    "passed_tests": 1,
+    "seconds": 32.391,
+    "language": "zh-Hans",
+    "appearance": "light",
+    "coverage": [
+      "initial focus without tapping field",
+      "local title search",
+      "no results",
+      "Back restores Work mode and draft",
+      "reopen clears transient query",
+      "select existing conversation preserves identity/draft"
+    ],
+    "simulator_build": "passed in UI build",
+    "signed_device_build": "passed; deep strict signature verified",
+    "visual_review": "Two named local screenshots exported; initial screenshot shows focused caret but no rendered keyboard. AX keyboard assertion does not verify keyboard geometry."
+  },
+  "runtime": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "launch": "local.rea.chatgpt.ioshost: 1338",
+    "arguments": [],
+    "installed_binary_sha256": "00d6a808368bbc187d62e823c5a4534544c68a4e614cf6b60c7c87b35863ff80",
+    "preference_values_restored": true,
+    "kept_running": true,
+    "signed_binary_sha256": "a5fdf950d3c684b7f03578fb38de3f7deecbc3b0b34092e5208fae1defbd88a1",
+    "signed_build": "passed",
+    "strict_signature": "passed",
+    "physical_install": "not performed in this checkpoint; last inventory unavailable"
+  },
+  "remaining": [
+    "Native root relative field/filter/result layout is unresolved; current UISearchBar/filters are independent host layout",
+    "Original dismissal consumer and exact search query lifetime unresolved",
+    "Packaged JS is byte-identical to container members, but not proof of active sidebar Screen wiring",
+    "Real service, files/images/projects search and original ranking/pagination not implemented",
+    "No physical iOS installation or keyboard geometry acceptance in this checkpoint"
+  ]
+}
