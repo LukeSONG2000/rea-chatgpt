@@ -10,6 +10,7 @@ import socketserver
 import subprocess
 import sys
 import threading
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 
@@ -33,10 +34,11 @@ class Server(ThreadingHTTPServer):
         self.server_name = 'localhost'
         self.server_port = self.server_address[1]
 
-    def __init__(self, mode='fixture'):
+    def __init__(self, mode='fixture', *, hold_after_first_text=0):
         super().__init__(('127.0.0.1', 0), Handler)
         self.token = secrets.token_urlsafe(32)
         self.mode = mode
+        self.hold_after_first_text = hold_after_first_text
         self.lock = threading.Lock()
         self.active = {}
         self.seen = set()
@@ -109,6 +111,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header('Cache-Control', 'no-store')
             self.end_headers()
             sequence, terminal = 0, False
+            hold = self.server.hold_after_first_text
             for line in child.stdout:
                 if len(line) > 524288: raise ValueError('line budget')
                 event = json.loads(line)
@@ -117,6 +120,10 @@ class Handler(BaseHTTPRequestHandler):
                 sequence += 1
                 terminal = event.get('kind') in ('completed', 'failed', 'cancelled')
                 self.wfile.write(line); self.wfile.flush()
+                if hold and event.get('kind') == 'delta' and event.get('text', '').strip():
+                    # Give the UI smoke test time to observe the real partial reply.
+                    time.sleep(hold)
+                    hold = 0
                 if terminal: break
             if not terminal:
                 event = {'schema': 'rea-message-v1', 'scope': request['scope'], 'subscription': 1,

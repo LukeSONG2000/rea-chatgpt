@@ -8,8 +8,8 @@ mkdir -p "$PROJECT_DIR/.build/text-tests"
   "$PROJECT_DIR/Sources/HostLaunchConfiguration.swift" "$PROJECT_DIR/Sources/RemoteModelSliderConfiguration.swift" "$PROJECT_DIR/Sources/RemoteAdvancedConfiguration.swift" \
   "$PROJECT_DIR/Sources/RemotePermissionPicker.swift" "$PROJECT_DIR/Sources/RemoteContextUsage.swift" "$PROJECT_DIR/Sources/RecoveredRemoteComposerGeometry.swift" "$PROJECT_DIR/Sources/RemoteWorkspacePresentation.swift" "$PROJECT_DIR/Sources/OfficialText.swift" "$PROJECT_DIR/Sources/RemoteCommandSummary.swift" \
   "$PROJECT_DIR/Sources/FrontendHaptics.swift" "$PROJECT_DIR/Sources/FrontendNotificationRegistration.swift" "$PROJECT_DIR/Sources/FrontendNotificationEvents.swift" "$PROJECT_DIR/Sources/RemotePreviousMessages.swift" \
-  "$PROJECT_DIR/Sources/RecoveredScrollEdgeCompatibility.swift" \
-  "$PROJECT_DIR/Sources/RemoteThreadReplay.swift" "$PROJECT_DIR/Sources/RemoteTranscriptLayout.swift" "$PROJECT_DIR/Sources/RemoteComposerInteraction.swift" "$PROJECT_DIR/Sources/RemoteAgentsPresentation.swift" \
-  "$PROJECT_DIR/Sources/RemoteUserInputInteraction.swift" "$PROJECT_DIR/Sources/RemoteApprovalInteraction.swift" "$PROJECT_DIR/Sources/RemoteAutomaticReview.swift" "$PROJECT_DIR/TextTests/main.swift" \
+  "$PROJECT_DIR/Sources/RecoveredScrollEdgeCompatibility.swift" "$PROJECT_DIR/Sources/FrontendBrowserPreview.swift" \
+  "$PROJECT_DIR/Sources/CodexComplexMessagePresentation.swift" "$PROJECT_DIR/Sources/CodexMessageReading.swift" "$PROJECT_DIR/Sources/CodexInstanceTaskList.swift" "$PROJECT_DIR/Sources/CodexTaskCreation.swift" "$PROJECT_DIR/Sources/CodexTaskFiles.swift" "$PROJECT_DIR/Sources/CodexTaskRequests.swift" "$PROJECT_DIR/Sources/RemoteThreadReplay.swift" "$PROJECT_DIR/Sources/RemoteTranscriptLayout.swift" "$PROJECT_DIR/Sources/RemoteComposerInteraction.swift" "$PROJECT_DIR/Sources/RemoteAgentsPresentation.swift" \
+  "$PROJECT_DIR/Sources/RemoteUserInputInteraction.swift" "$PROJECT_DIR/Sources/RemoteApprovalInteraction.swift" "$PROJECT_DIR/Sources/RecoveredRemoteOpenAIForm.swift" "$PROJECT_DIR/Sources/RemoteAutomaticReview.swift" "$PROJECT_DIR/TextTests/main.swift" \
   -o "$PROJECT_DIR/.build/text-tests/check"
-exec "$PROJECT_DIR/.build/text-tests/check" "$PROJECT_DIR/Resources/OfficialTranslations.json"
+exec "$PROJECT_DIR/.build/text-tests/check" "$PROJECT_DIR/Resources/OfficialTranslations.json" "$@"

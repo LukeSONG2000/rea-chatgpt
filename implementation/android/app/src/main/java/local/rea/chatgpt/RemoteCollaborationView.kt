@@ -41,7 +41,9 @@ import androidx.compose.ui.unit.dp
                 Text(text("独立本地关联任务预览","Independent local related-task preview"),style=MaterialTheme.typography.labelMedium)
                 activity.agents.forEach{agent->
                     Text(agent.label,Modifier.padding(top=8.dp))
-                    TextButton(onClick={route.begin(agent)},enabled=route.phase!="loading",modifier=Modifier.testTag("remote-agent-open-${agent.reference}")){Text(text("查看关联任务","View related task"))}
+                    if (agent.allowsRelatedTask) {
+                        TextButton(onClick={route.begin(agent)},enabled=route.phase!="loading",modifier=Modifier.testTag("remote-agent-open-${agent.reference}")){Text(text("查看关联任务","View related task"))}
+                    }
                 }
                 when(route.phase){
                     "loading"->Row{CircularProgressIndicator(Modifier.size(20.dp));TextButton(onClick=route::cancel,modifier=Modifier.testTag("remote-agent-cancel")){Text(text("取消","Cancel"))}}

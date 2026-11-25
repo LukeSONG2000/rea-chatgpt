@@ -34,6 +34,33 @@ struct RemoteAdvancedConfiguration: Equatable {
     var effortOptions: [RemoteReasoningEffort] { currentModel?.efforts ?? [] }
     var speedOptions: [RemoteConfigurationSpeed] { currentModel?.speeds ?? [.standard] }
 
+    var hasValidProviderOptions: Bool {
+        let models = featured + other
+        return models.count <= 256 && Set(models.map(\.id)).count == models.count &&
+              models.allSatisfy({ model in
+                  !model.id.isEmpty && model.id.utf8.count <= 1024 &&
+                  !model.title.isEmpty && model.title.utf8.count <= 4096 &&
+                  model.efforts.count <= 64 &&
+                  Set(model.speeds).count == model.speeds.count &&
+                  model.efforts.allSatisfy { effort in
+                      if case .custom(let id) = effort { return !id.isEmpty && id.utf8.count <= 1024 }
+                      return true
+                  }
+              })
+    }
+
+    // Explicit provider qualification, separate from the source's display-only
+    // fallbacks. Never repair an external ID/effort against the offline fixture.
+    var isValidProviderSelection: Bool {
+        guard hasValidProviderOptions else { return false }
+        if featured.isEmpty && other.isEmpty {
+            return selectedModelID == nil && selectedEffort == nil && selectedSpeed == .standard
+        }
+        guard let model = currentModel,
+              model.speeds.isEmpty ? selectedSpeed == .standard : model.speeds.contains(selectedSpeed) else { return false }
+        return model.efforts.isEmpty ? selectedEffort == nil : selectedEffort.map(model.efforts.contains) == true
+    }
+
     // Independent in-memory fixture writes. Source callbacks dispatch to VM
     // witnesses +238/+240/+258; actual server writes are outside this adapter.
     mutating func selectModel(_ id: String) {
@@ -143,6 +170,14 @@ struct RemoteThreadConfigurationState {
         selection.permission = value
         selections[scope] = selection
     }
+
+    @discardableResult
+    mutating func admitExternal(model: RemoteAdvancedConfiguration, permission: RemoteApprovalPickerSelection,
+                                in scope: RemoteComposerDraftScope) -> Bool {
+        guard model.isValidProviderSelection else { return false }
+        selections[scope] = .init(model: model, permission: permission)
+        return true
+    }
 }
 
 // Local frontend choices, deliberately separate from immutable accepted-intent
@@ -212,10 +247,10 @@ final class RemoteThreadConfigurationStore: ObservableObject {
     @Published private(set) var storageFailed = false
     private var persistence: RemoteThreadConfigurationPersistence?
     private var unreadableSnapshot = false
-    init() {
+    init(persistsToDisk: Bool = true) {
+        guard persistsToDisk else { return }
         // Only the explicit synthetic provider uses this cache. Future service
         // selection/acknowledgement and catalog reload remain separate work.
-        guard HostLaunchRuntime.arguments.contains("--remote-interactive-replay") else { return }
         do {
             if let profile = try RemoteDraftPersistence.current() {
                 let adapter = RemoteThreadConfigurationPersistence(directory: profile.directory,
@@ -226,6 +261,18 @@ final class RemoteThreadConfigurationStore: ObservableObject {
         } catch { unreadableSnapshot = true; storageFailed = true }
     }
     func snapshot(_ scope: RemoteComposerDraftScope) -> RemoteThreadConfigurationState.Selection { state.snapshot(scope) }
+    // The owning provider/catalog validates permissions and canonical receipts.
+    // External choices are admitted atomically in memory, never serialized using
+    // the fixture-only offline restore format.
+    @discardableResult
+    func admitExternal(model: RemoteAdvancedConfiguration, permission: RemoteApprovalPickerSelection,
+                       in scope: RemoteComposerDraftScope) -> Bool {
+        guard persistence == nil, !unreadableSnapshot else { return false }
+        var next = state
+        guard next.admitExternal(model: model, permission: permission, in: scope) else { return false }
+        state = next; storageFailed = false
+        return true
+    }
     @discardableResult
     func setModel(_ value: RemoteAdvancedConfiguration, in scope: RemoteComposerDraftScope) -> Bool {
         var next = state; next.setModel(value, in: scope); return commit(next)

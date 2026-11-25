@@ -14,13 +14,13 @@ try{
   const link=document.createElement('link');link.rel='stylesheet';link.href='/'+name;
   link.onload=resolve;link.onerror=()=>reject(Error('Startup CSS failed: '+name));document.head.append(link);
  })));
- const original=await import('/app-initial-feb30b196d11.js');
+ const original=await import('/'+options.modules.initial);
  const originalRemote=createOriginalRemoteRuntime(original,(...args)=>window.reaNative.remote(...args),remoteState);
  window.__reaOriginalRemote=originalRemote;window.addEventListener('pagehide',()=>originalRemote.dispose(),{once:true});
  const runtime=await import('/'+options.modules.runtime);
  const root=rpc.KNt().createRoot(document.getElementById('root'),{onUncaughtError:error=>window.reaNative.ready('failed:'+error.message)});
  const appTree=await runtime.initializeApp();
- if(options.localAppShell){const stop=startLocalAppShell();window.addEventListener('pagehide',stop,{once:true})}
+ if(options.localAppShell||options.fileSamples){const stop=startLocalAppShell(globalThis,{shell:options.localAppShell,files:options.fileSamples});window.addEventListener('pagehide',stop,{once:true})}
  const stopLanguage=startLocalLanguage();window.addEventListener('pagehide',stopLanguage,{once:true});
  root.render(appTree);
  if(options.localRemoteUI){const stop=startLocalRemoteUI();window.addEventListener('pagehide',stop,{once:true})}

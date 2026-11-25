@@ -1,0 +1,68 @@
+{
+  "acceptedIntentIDs" : [
+    "00000000-0000-0000-0000-000000000001"
+  ],
+  "pendingPrompts" : [
+
+  ],
+  "resolvedApprovals" : [
+
+  ],
+  "scope" : {
+    "destination" : {
+      "thread" : {
+        "_0" : "synthetic-thread"
+      }
+    },
+    "hostID" : "synthetic-host"
+  },
+  "turns" : [
+    {
+      "attachments" : [
+
+      ],
+      "automaticReviews" : [
+
+      ],
+      "commands" : [
+        {
+          "command" : "inspect-ui --synthetic",
+          "exitCode" : 0,
+          "id" : "inspect",
+          "output" : [
+            "synthetic output"
+          ],
+          "phase" : {
+            "completed" : {
+
+            }
+          },
+          "startedAt" : -978307200
+        }
+      ],
+      "failureKind" : {
+        "generation" : {
+
+        }
+      },
+      "fileChanges" : [
+
+      ],
+      "id" : "00000000-0000-0000-0000-000000000001",
+      "intentID" : "00000000-0000-0000-0000-000000000001",
+      "isRetrying" : false,
+      "phase" : "completed",
+      "prompt" : "synthetic command history",
+      "searches" : [
+
+      ],
+      "sequence" : 1,
+      "text" : "synthetic completion",
+      "thinking" : {
+        "idle" : {
+
+        }
+      }
+    }
+  ]
+}

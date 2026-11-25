@@ -24,7 +24,17 @@ class RemoteListTest {
             if (device.currentPackageName == context.packageName) capture("failure-${description.methodName}")
         }
     }
-    private fun node(id: String): UiObject2 = device.wait(Until.findObject(By.res(id)), 8000) ?: error("Missing $id")
+    private fun node(id: String): UiObject2 {
+        // Compose can repaint a lazy footer before UiAutomation invalidates its
+        // cached hierarchy. Query the current AX tree instead of a stale phase.
+        val deadline=android.os.SystemClock.uptimeMillis()+8000
+        do {
+            refresh()
+            device.findObject(By.res(id))?.let{return it}
+            android.os.SystemClock.sleep(100)
+        } while(android.os.SystemClock.uptimeMillis()<deadline)
+        error("Missing $id")
+    }
     private fun refresh() { instrumentation.uiAutomation.clearCache() }
     private fun click(id: String) {
         val target = node(id)
@@ -41,6 +51,7 @@ class RemoteListTest {
     }
     private fun capture(name: String) {
         assertEquals(context.packageName, device.currentPackageName)
+        device.waitForIdle();refresh()
         val dir = File(context.filesDir, "remote-list-test-$runID").apply { mkdirs() }
         assertTrue(device.takeScreenshot(File(dir, "$name.png")))
         device.dumpWindowHierarchy(File(dir, "$name.xml"))
@@ -81,6 +92,150 @@ class RemoteListTest {
         assertTrue("Draft text must reach the requested value", device.wait(
             Until.hasObject(By.res("remote-draft").text(text)), 5000))
         assertEquals(text, node("remote-draft").text)
+    }
+    @Test fun catalogContracts() {
+        RemoteProjectCatalogTest().apply {
+            sourceIsolationReceiptsAndCatalogReplacement()
+            unsupportedIsScopedAndPreservesOrdinaryBase()
+        }
+    }
+    @Test fun catalogUnsupportedJourney() {
+        context.startActivity(Intent(context,RemoteListActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra("remote-profile","test-list-catalog-unsupported-$runID")
+            .putExtra("remote-language",language).putExtra("remote-theme",appearance))
+        node("remote-task-list");node(taskA());host("fixture-a")
+        node("remote-catalog-error-fixture-a");node(taskA())
+        capture("catalog-unsupported-before")
+        click("remote-catalog-retry-fixture-a")
+        node("remote-catalog-loading-fixture-a")
+        assertTrue(device.wait(Until.gone(By.res("remote-catalog-fixture-a")),6000))
+        refresh()
+        assertFalse(device.hasObject(By.res("remote-catalog-error-fixture-a")))
+        assertFalse(device.hasObject(By.res("remote-catalog-retry-fixture-a")))
+        //The proved fallback still groups ordinary tasks by cwd. They do not
+        //become projectless and are not removed by success-empty pruning.
+        node("remote-group-project-fixture-a-demo");node(taskA())
+        capture("catalog-unsupported-fallback-preserves-base")
+        click(taskA());node("remote-task-title");draft("目录降级保留任务草稿")
+        if(device.hasObject(By.pkg(imePackage))){device.pressBack();device.wait(Until.gone(By.pkg(imePackage)),5000)}
+        click("remote-task-back");node(taskA())
+        assertFalse(device.hasObject(By.res("remote-catalog-fixture-a")))
+        host("fixture-b");node("remote-catalog-loading-fixture-b");node(taskB())
+        capture("catalog-unsupported-other-host-unchanged")
+        host("fixture-a");node(taskA())
+        assertFalse(device.hasObject(By.res("remote-catalog-fixture-a")))
+    }
+    @Test fun catalogBaseRetentionJourney() {
+        context.startActivity(Intent(context,RemoteListActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra("remote-profile","test-list-catalog-base-$runID")
+            .putExtra("remote-language",language).putExtra("remote-theme",appearance))
+        node("remote-task-list");node(taskA());host("fixture-a")
+        node("remote-catalog-error-fixture-a")
+        click("remote-catalog-retry-fixture-a")
+        node("remote-catalog-loading-fixture-a")
+        val deadline=android.os.SystemClock.uptimeMillis()+6000
+        do {
+            refresh()
+            if(!device.hasObject(By.res("remote-catalog-fixture-a"))) break
+            android.os.SystemClock.sleep(100)
+        } while(android.os.SystemClock.uptimeMillis()<deadline)
+        refresh();assertFalse(device.hasObject(By.res("remote-catalog-fixture-a")))
+        // Replay omits demo from the accepted catalog. Ordinary base group stays.
+        node("remote-group-project-fixture-a-demo");node(taskA())
+        capture("catalog-success-missing-group-preserves-base")
+        click(taskA());node("remote-task-title");draft("目录成功仍保留普通任务草稿")
+        if(device.hasObject(By.pkg(imePackage))){device.pressBack();device.wait(Until.gone(By.pkg(imePackage)),5000)}
+        click("remote-task-back");node(taskA())
+        host("fixture-b");node("remote-catalog-loading-fixture-b");node(taskB())
+        host("fixture-a");node("remote-group-project-fixture-a-demo")
+        click(taskA());node("remote-task-title")
+        assertEquals("目录成功仍保留普通任务草稿",node("remote-draft").text)
+        capture("catalog-base-draft-restored")
+        click("remote-task-back");node(taskA())
+    }
+    @Test fun catalogJourney() {
+        context.startActivity(Intent(context,RemoteListActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra("remote-profile","test-list-catalog-$runID")
+            .putExtra("remote-language",language).putExtra("remote-theme",appearance))
+        node("remote-task-list");node(taskA())
+        assertFalse(device.hasObject(By.res("remote-catalog-fixture-a")))
+        host("fixture-a")
+        assertEquals("无法加载项目。",node("remote-catalog-error-fixture-a").text)
+        node(taskA());capture("catalog-failure-preserves-tasks")
+        click("remote-catalog-retry-fixture-a")
+        assertEquals("正在加载项目…",node("remote-catalog-loading-fixture-a").text)
+        node("remote-catalog-error-fixture-a")
+        node(taskA())
+        click("remote-catalog-retry-fixture-a")
+        node("remote-catalog-loading-fixture-a")
+        host("fixture-b")
+        node("remote-catalog-loading-fixture-b");node(taskB())
+        assertFalse(device.hasObject(By.res("remote-catalog-error-fixture-a")))
+        host("fixture-a")
+        //Poll fresh semantics: cached AX can outlive removal of the status row.
+        val deadline = android.os.SystemClock.uptimeMillis() + 6000
+        do {
+            refresh()
+            if (!device.hasObject(By.res("remote-catalog-fixture-a"))) break
+            android.os.SystemClock.sleep(100)
+        } while(android.os.SystemClock.uptimeMillis() < deadline)
+        refresh();assertFalse(device.hasObject(By.res("remote-catalog-fixture-a")))
+        node(taskA());click(taskA());node("remote-task-title");draft("项目目录重试后保留草稿")
+        if(device.hasObject(By.pkg(imePackage))){device.pressBack();device.wait(Until.gone(By.pkg(imePackage)),5000)}
+        click("remote-task-back");node(taskA())
+        assertFalse(device.hasObject(By.res("remote-catalog-fixture-a")))
+        host("fixture-b");node("remote-catalog-loading-fixture-b");node(taskB())
+        capture("other-catalog-stays-loading-after-success")
+        host("all");node(taskA())
+        assertFalse(device.hasObject(By.res("remote-catalog-fixture-b")))
+    }
+    @Test fun loadingContracts() {
+        RemoteListLoadingTest().apply {
+            receiptScopeFilterTokenAndRetirement()
+            exactIdentityAppendCursorRetryAndEnd()
+            hostRefreshPreservesOtherHostAndRejectsForeignContent()
+            mutatedDuplicatePageRejectedAndLegacyHostProjectionPreservesQuerySemantics()
+            providerFailureRetainsSnapshotAndRetryOperation()
+        }
+    }
+    @Test fun loadingJourney() {
+        context.startActivity(Intent(context,RemoteListActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra("remote-profile","test-list-loading-$runID")
+            .putExtra("remote-language",language).putExtra("remote-theme",appearance))
+        node("remote-task-list");node(taskA())
+        // The first-page viewport is still at its start. Exercise the actual
+        // native pull-refresh parent, not an injected click/semantic shortcut.
+        val bounds=node("remote-task-list").visibleBounds
+        val density=context.resources.displayMetrics.density
+        assertTrue(device.swipe(bounds.centerX(),bounds.top+(24*density).toInt(),
+            bounds.centerX(),minOf(bounds.bottom-20,bounds.top+(300*density).toInt()),35))
+        node("remote-page-error");node(taskA())
+        capture("refresh-failed-keeps-first-page")
+        click("remote-retry");node("remote-load-more")
+        click("remote-load-more");node("remote-page-error")
+        capture("append-failed-keeps-cursor")
+        click("remote-retry");node("remote-task-list")
+        repeat(12) {
+            if(!device.hasObject(By.res("remote-list-end"))) {
+                node("remote-task-list").swipe(Direction.UP,.65f);device.waitForIdle();refresh()
+            }
+        }
+        node("remote-list-end");capture("all-threads-loaded")
+        val last="remote-task-recent-fixture-a-recent-11"
+        click(last);node("remote-task-title");draft("列表分页草稿")
+        if(device.hasObject(By.pkg(imePackage))){device.pressBack();device.wait(Until.gone(By.pkg(imePackage)),5000)}
+        click("remote-task-back");node("remote-list-end")
+        capture("paged-list-return-preserves-position")
+        click(last);assertEquals("列表分页草稿",node("remote-draft").text)
+        click("remote-task-back");node("remote-list-end")
+        // Legacy whole-directory providers still use the same initial error
+        // and retry footer; they are not forced into a fake partial page.
+        start(failFirst=true,suffix="-footer")
+        node("remote-load-error");click("remote-retry");node("remote-task-list")
     }
     @Test fun modelRules() = runBlocking {
         val data = SyntheticRemoteListProvider(false).load()

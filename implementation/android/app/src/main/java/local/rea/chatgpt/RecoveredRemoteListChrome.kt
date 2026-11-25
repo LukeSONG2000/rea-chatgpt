@@ -61,7 +61,6 @@ internal fun RecoveredRemoteListHeader(searching: Boolean, query: String, onQuer
     var menu by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
     val keyboard = LocalSoftwareKeyboardController.current
-    val controlBackground = if (isSystemInDarkTheme()) Color(0xFF303030) else Color.White
     // Resolve in the page's configured locale before entering the popup window.
     val priorityLabel = stringResource(R.string.remote_sort_priority)
     val projectLabel = stringResource(R.string.remote_sort_project)
@@ -72,7 +71,7 @@ internal fun RecoveredRemoteListHeader(searching: Boolean, query: String, onQuer
         .heightIn(min = 48.dp).testTag("remote-header"), content = {
         Box {
             if (!searching) IconButton(onClick = openSidebar, modifier = Modifier.size(44.dp)
-                .clip(CircleShape).background(controlBackground).testTag("remote-sidebar")) {
+                .frontendFloatingControl(prominent = true).testTag("remote-sidebar")) {
                 Icon(painterResource(R.drawable.ds_sidebar_menu_regular_24), stringResource(R.string.shell_menu), Modifier.size(24.dp))
             }
         }
@@ -115,7 +114,7 @@ internal fun RecoveredRemoteListHeader(searching: Boolean, query: String, onQuer
             }
             toggleSearch()
         }, modifier = Modifier.size(44.dp)
-            .clip(CircleShape).background(controlBackground).testTag("remote-search")) {
+            .frontendFloatingControl(prominent = true).testTag("remote-search")) {
             Icon(painterResource(if (searching) R.drawable.ds_xmark_lg_regular_24 else R.drawable.ds_magnifying_glass_lg_regular_24),
                 stringResource(if (searching) R.string.remote_done else R.string.remote_search), Modifier.size(24.dp))
         }
@@ -241,15 +240,27 @@ private fun RemoteTitleMenuRow(label: String, icon: Int, tag: String, selected: 
 // border, default typography and minimum-interactive-component layout.
 @Composable
 internal fun RecoveredRemoteHostSelector(hosts: List<RemoteListHost>, selectedHost: String?,
-    select: (String?) -> Unit) {
+    openConnections: () -> Unit, select: (String?) -> Unit) {
+    val cloudOnly = hosts.singleOrNull()?.cloud == true
     LazyRow(Modifier.fillMaxWidth().testTag("remote-hosts"),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        item(key = "all") {
+        if (!cloudOnly) item(key = "all") {
             RemoteHostChip("all", stringResource(R.string.remote_all), null, selectedHost == null) { select(null) }
         }
         items(hosts, key = { it.id }) { host ->
-            RemoteHostChip(host.id, host.name, host, selectedHost == host.id) { select(host.id) }
+            RemoteHostChip(host.id, host.name, host, cloudOnly || selectedHost == host.id) { select(host.id) }
+        }
+        if (cloudOnly) item(key = "connect") {
+            Row(Modifier.heightIn(min = 36.dp).clip(CircleShape)
+                .clickable(role = Role.Button, onClick = openConnections)
+                .testTag("remote-connect-computer").padding(horizontal = 12.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                val foreground = MaterialTheme.colorScheme.onSurfaceVariant
+                Icon(painterResource(R.drawable.ds_laptop_regular_24), null, Modifier.size(16.dp), tint = foreground)
+                Text(remoteControlText("连接电脑", "Connect computer"),
+                    style = MaterialTheme.typography.labelMedium, color = foreground)
+            }
         }
     }
 }
@@ -257,7 +268,7 @@ internal fun RecoveredRemoteHostSelector(hosts: List<RemoteListHost>, selectedHo
 @Composable
 private fun RemoteHostChip(id: String, label: String, host: RemoteListHost?, selected: Boolean, click: () -> Unit) {
     val colors = MaterialTheme.colorScheme
-    val shape = if (host == null) CircleShape else RoundedCornerShape(17.dp)
+    val shape = CircleShape
     Surface(color = if (selected) colors.tertiaryContainer else Color.Transparent,
         contentColor = if (selected) colors.onSurface else colors.onSurfaceVariant,
         shape = shape, tonalElevation = 0.dp, shadowElevation = 0.dp) {

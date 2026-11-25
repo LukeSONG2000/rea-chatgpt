@@ -42,6 +42,25 @@ full native platform interactions, renderer fonts/media beyond the allowlist and
 public release packaging remain incomplete. Original packages and other app profiles
 are never used as writable application state.
 
+## 桌面资料空间的原包文件样例
+
+源码宿主通过 `--file-samples` 把本地示例目录接到 macOS 冻结基线 26.1021 的 `/space`。在右侧「全部」列表或左侧「最近」打开同一原件。详情留在资料空间，左侧可继续切换文件。预览模式在原包的资料空间主区域显示原包文件详情。
+
+```sh
+python3 implementation/desktop/native/generate-file-samples.py .tmp/desktop-file-samples
+node implementation/desktop/native/run.cjs --profile file-preview-demo --artifact macos --local-app-shell --file-samples .tmp/desktop-file-samples
+```
+
+生成器使用 python-docx、openpyxl、python-pptx、Pillow、LibreOffice 和 Poppler。样例包含 TXT、Markdown、TypeScript、CSV、Notebook、DOCX、XLSX、PPTX、PDF、PNG、HTML 和 ZIP。PDF 样例嵌入字库供离线阅读。HTML 样例在禁用脚本和子资源请求的沙箱中显示。
+
+原包笔记编辑器可自动保存已有 Markdown 和 TXT 样例。修改保存在当前 REA 配置的样例副本中，重新打开和下载均读取已保存版本。首次打开读取生成目录中的原件。正式服务、授权及原件编辑能力见 [文件格式矩阵](../../../docs/full-platform/FILE-FORMAT-MATRIX-20261124.md)。
+
+「全部」和「最近」的文件操作菜单可重命名、下载、移动到样例文件夹「复查资料」，以及删除到回收站。回收站可恢复或永久删除当前配置里的样例副本。预览标题下拉可查看文件信息和版本历史。样例保留初始版本及最近的本地修订，Markdown 和 TXT 可在原包笔记编辑器中预览旧版并恢复为新修订。云端共享沿用原包的权限条件。
+
+「新建」内可创建目录或通过原生文件选择器上传。目录及导入文件保存在当前 REA 配置。导入上限为每个文件 4 MiB，每个配置 32 个文件。选中文件后可将它移动到创建的目录。
+
+在首页打开「离线组件验证 · A」，选择对话右侧的「新建标签页 → 文件」，即可打开同一套样例的工作区目录树。双击列表项或打开对话正文中的样例链接，进入原包预览。当前工作区内的 Markdown 和 TXT 可编辑，对话侧保存会检查原修改时间，资料空间能读回相同的内容和版本。目录、文件及版本数据只写入当前 REA 配置。
+
 ## Local self-contained payload build
 
 ```sh
@@ -460,8 +479,9 @@ Windows OS behavior remains untested; v172-r2 is retained for connection rollbac
 Iterate from the source host instead of making a versioned full app for each edit.
 Full builds are restricted to `implementation/desktop/dist/<version>` and now
 run retention automatically after payload hashes and platform package integrity
-checks pass. The new candidate replaces the old candidate; the pinned rollback
-is unchanged. Windows integrity verification does not mean Windows OS acceptance.
+checks pass. The new candidate replaces the old candidate. An explicitly pinned
+rollback is preserved. Set `rollback` to `null` to retire a low-risk rollback.
+Record Windows OS acceptance separately from package integrity.
 
 Inspect policy: `implementation/desktop/native/build-retention.json`.
 Preview cleanup: `python3 implementation/desktop/native/retain-builds.py`.

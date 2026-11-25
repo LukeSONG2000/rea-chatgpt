@@ -24,7 +24,8 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
     private var scheduledTasksPage: UIHostingController<NativeScheduledTasksPage>?
     private lazy var scheduledTasksModel = FrontendScheduledTasksModel.make(accountID: account)
     private var fileLibraryPage: UIHostingController<NativeFileLibraryPage>?
-    private lazy var fileLibraryModel = FrontendFileLibraryModel.make(accountID: account)
+    private lazy var fileLibraryModel = FrontendFileLibraryModel.make(accountID: account,
+        profileID: chatProfile ?? "default")
     private var customizePage: UIHostingController<NativeCustomizePage>?
     private lazy var customizeModel = FrontendCustomizeModel.make(accountID: account)
     private var pluginsPage: UIHostingController<NativePluginsPage>?
@@ -69,6 +70,7 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
     private let editor = UITextView()
+    private var autocorrectionBinding: FrontendAutocorrectionBinding?
     private let composer = UIView()
     private let send = UIButton(type: .system)
     private let attach = UIButton(type: .system)
@@ -122,10 +124,12 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
     private let messageService: (any ChatMessageService)?
     private let memoryState: MemoryPresentationState
     private let accountAccess: FrontendAuthenticationModel?
+    private let codexProviders: CodexPageProviders?
     private var sessionRetired = false
 
     init(messageService: (any ChatMessageService)? = nil, memoryState: MemoryPresentationState = .unavailable,
-         accountAccess: FrontendAuthenticationModel? = nil) {
+         accountAccess: FrontendAuthenticationModel? = nil, codexProviders: CodexPageProviders? = nil) {
+        self.codexProviders = codexProviders ?? (HostLaunchRuntime.arguments.contains("--codex-operations-fixture") ? CodexOperationPreviewProvider.bundle() : nil)
         self.messageService = messageService
         self.memoryState = memoryState
         self.accountAccess = accountAccess
@@ -214,7 +218,10 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
                     guard let self, self.store.scope == actionScope, self.store.generation == actionGeneration else { return }
                     self.previewChatAttachment(attachment)
                 }, onAction: { [weak self] action in
-                    guard let self, self.store.scope == actionScope, self.store.generation == actionGeneration else { return }
+                    // Independent payload fence: a retained menu must target
+                    // the exact rendered snapshot, not revised text under one ID.
+                    guard let self, self.store.scope == actionScope, self.store.generation == actionGeneration,
+                          self.renderRows[row.id] == row else { return }
                     self.performMessageAction(action, rowID: row.id)
                 })
                     // UIKit can scale fonts without invalidating SwiftUI's cached
@@ -262,6 +269,8 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
         send.tintColor = .label
         attach.tintColor = .label
         editor.delegate = self
+        autocorrectionBinding = FrontendAutocorrectionBinding(editor: editor,
+            profile: FrontendStartScreenDestination.currentProfile)
         editor.accessibilityLabel = "消息草稿"
         editor.accessibilityIdentifier = "draft-editor"
         send.setImage(UIImage(systemName: "arrow.up.circle.fill"), for: .normal)
@@ -485,9 +494,16 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
     }
 
     func textViewDidChange(_ textView: UITextView) {
+        autocorrectionBinding?.refresh()
         // Do not persist an intermediate IME composition as committed draft text.
         if textView.markedTextRange == nil { saveDraft() }
         resizeEditor()
+    }
+
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        // A native marked-text commit may only change the selection. Retry on
+        // the next main turn, without replacing the text or the stable editor.
+        DispatchQueue.main.async { [weak self] in self?.autocorrectionBinding?.refresh() }
     }
 
     private func saveDraft() {
@@ -1216,7 +1232,7 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
         guard let catalog else { notice.text = "会话目录不可用；原文件保留"; return nil }
         let list = NativeConversationList(entries: catalog.ordinaryEntries, selected: store.scope.conversationID,
                                           selectedFeature: activeSidebarFeature, accountAccess: accountAccess, assistantModel: personalAssistantModel,
-                                          pluginsModel: pluginsModel)
+                                          pluginsModel: pluginsModel, codexDisplayName: codexProviders?.sidebarTitle ?? "Codex")
         list.onCreate = { [weak self] in self?.createLocalConversation() ?? false }
         list.onRename = { [weak self] id, title in
             try catalog.rename(id, title: title)
@@ -1420,7 +1436,7 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
                 notificationNavigation: notificationNavigation, openMenu: { [weak self, weak shell] in
                     guard let self, let shell else { return }
                     self.toggleConversationSidebar(in: shell)
-                }))
+                }, providers: codexProviders))
         }
         guard let page = remotePage else { return }
         activeSidebarFeature = "codex"
@@ -1430,6 +1446,8 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard !sessionRetired else { return }
+        autocorrectionBinding?.refresh()
         notificationShell = navigationController?.parent as? NativeSidebarContainer
         notificationShell?.requestOpenMenu = { [weak self] in self?.openConversationSidebar() }
         FrontendNotificationDelivery.shared.cancelOpenTarget = { [weak self] in self?.notificationNavigation.finish(false) }
@@ -1441,14 +1459,18 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
     }
 
     private func openNotificationTarget(_ target: FrontendNotificationTarget, completion: @escaping (Bool) -> Void) {
-        guard let shell = notificationShell ?? navigationController?.parent as? NativeSidebarContainer else { completion(false); return }
+        let generation = FrontendNotificationDelivery.shared.generation
+        guard FrontendNotificationRouteAdmission.allows(sessionRetired: sessionRetired,
+                expectedGeneration: generation, currentGeneration: FrontendNotificationDelivery.shared.generation),
+              let shell = notificationShell ?? navigationController?.parent as? NativeSidebarContainer else { completion(false); return }
         //An explicit incoming route takes precedence over last-root recovery.
         restoredRootPage = true; pendingRootFeature = nil
-        let generation = FrontendNotificationDelivery.shared.generation
         shell.view.endEditing(true)
         saveDraft(); saveAnchor()
         let navigate = { [weak self, weak shell] in
-            guard let self, let shell, FrontendNotificationDelivery.shared.generation == generation else { completion(false); return }
+            guard let self, let shell,
+                  FrontendNotificationRouteAdmission.allows(sessionRetired: self.sessionRetired,
+                    expectedGeneration: generation, currentGeneration: FrontendNotificationDelivery.shared.generation) else { completion(false); return }
             if target.kind == .chat, self.catalog?.entries.contains(where: { $0.id == target.conversationID && $0.projectID == nil }) == true {
                 shell.showInitialContent()
                 shell.closeMenu()
@@ -1458,11 +1480,11 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
             } else if target.kind == .remote, HostLaunchRuntime.arguments.contains("--offline-fixture") {
                 self.showRemotePage()
                 self.notificationNavigation.open(target) { opened in
-                    if !opened { self.showNotificationTargetUnavailable() }
+                    if !opened { self.showNotificationTargetUnavailable(generation: generation) }
                     completion(opened)
                 }
             } else {
-                self.showNotificationTargetUnavailable()
+                self.showNotificationTargetUnavailable(generation: generation)
                 completion(false)
             }
         }
@@ -1470,8 +1492,10 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
         else { navigate() }
     }
 
-    private func showNotificationTargetUnavailable() {
-        guard let shell = notificationShell ?? navigationController?.parent as? NativeSidebarContainer else { return }
+    private func showNotificationTargetUnavailable(generation: UInt64) {
+        guard FrontendNotificationRouteAdmission.allows(sessionRetired: sessionRetired,
+                expectedGeneration: generation, currentGeneration: FrontendNotificationDelivery.shared.generation),
+              let shell = notificationShell ?? navigationController?.parent as? NativeSidebarContainer else { return }
         let alert = UIAlertController(title: visualText("无法打开通知", "Unable to open notification"),
             message: visualText("目标会话或任务当前不可用。请返回列表查看。", "The conversation or task is unavailable. Return to the list to continue."), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: visualText("好", "OK"), style: .cancel))
@@ -1616,7 +1640,9 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
         case .retry: return
         case .copy:
             UIPasteboard.general.string = original
-            UIAccessibility.post(notification: .announcement, argument: "已复制原文")
+            // Independent host announcement; no context-checked official copied
+            // resource is exposed. Follow the existing system-language adapter.
+            UIAccessibility.post(notification: .announcement, argument: visualText("已复制原文", "Copied original text"))
         case .editAsDraft:
             guard row.canEditAsDraft else { return }
             editor.resignFirstResponder(); saveDraft()
@@ -1627,7 +1653,7 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
             let apply = { [weak self] in
                 guard let self, self.store.scope == scope, self.store.generation == generation,
                       self.editor.markedTextRange == nil, self.editor.text == previous, self.store.attachments == previousAttachments,
-                      self.renderRows[rowID]?.originalText == original else { return }
+                      self.renderRows[rowID] == row else { return }
                 self.editor.text = original
                 self.store.saveAttachments(row.attachments, for: scope, generation: generation)
                 self.refreshChatAttachments()
@@ -1749,7 +1775,11 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
               viewIfLoaded?.window != nil else { return }
         saveDraft()
         saveAnchor()
-        let request = FrontendBrowserRequest(url: url)
+        let request = FrontendBrowserRequest(url: url, usesSystemBrowser: true)
+        if let browser = FrontendBrowserAdapter.systemPreview(for: request) {
+            present(browser, animated: true)
+            return
+        }
         let controller = FrontendBrowserController(request: request,
             resources: FrontendBrowserAdapter.resources(for: request), onClose: { [weak self] in
             self?.dismiss(animated: true)
@@ -1791,6 +1821,16 @@ private struct NativeHostedRow: View {
             if row.isUserMessage, let text = row.originalText {
                 if !text.isEmpty {
                     NativeHostedChatUserMessage(text: text, id: row.id, category: category)
+                        // 293 MessageRowUserMessageTextPart attaches contextMenu
+                        // to the actual bubble. Contents/admission below remain
+                        // this host's existing Copy/Edit-as-draft projection.
+                        // Preserve native UITextView selection; do not replace
+                        // its gesture owner or enlarge the bubble hit region.
+                        .contextMenu {
+                            if row.hasMessageActions && row.canShowMessageActions {
+                                NativeChatUserMessageMenuContent(row: row, onAction: onAction)
+                            }
+                        }
                         .fixedSize(horizontal: false, vertical: true)
                 }
             } else {
@@ -1846,10 +1886,7 @@ private struct NativeChatMessageActions: View {
             if row.isUserMessage {
                 Spacer(minLength: 0)
                 Menu {
-                    Button(visualText("复制原文", "Copy original"), systemImage: "doc.on.doc") { onAction(.copy) }
-                    if row.canEditAsDraft {
-                        Button(visualText("编辑为草稿", "Edit as draft"), systemImage: "pencil") { onAction(.editAsDraft) }
-                    }
+                    NativeChatUserMessageMenuContent(row: row, onAction: onAction)
                 } label: {
                     Image(systemName: "ellipsis")
                         .font(.system(size: Self.iconSize(category: category)))
@@ -1870,6 +1907,23 @@ private struct NativeChatMessageActions: View {
         .foregroundStyle(.secondary)
         .padding(.horizontal, 16)
         .frame(height: Self.height(category: category))
+    }
+}
+
+// One menu-content owner for the bubble's recovered context-menu parent and
+// the existing footer entry. These are explicit host actions, not the unclosed
+// original generic action array or Handler<Int> editing operation.
+private struct NativeChatUserMessageMenuContent: View {
+    let row: HostMessageRow
+    let onAction: (NativeMessageAction) -> Void
+
+    var body: some View {
+        if row.hasMessageActions && row.canShowMessageActions {
+            Button(visualText("复制原文", "Copy original"), systemImage: "doc.on.doc") { onAction(.copy) }
+            if row.canEditAsDraft {
+                Button(visualText("编辑为草稿", "Edit as draft"), systemImage: "pencil") { onAction(.editAsDraft) }
+            }
+        }
     }
 }
 
@@ -2074,9 +2128,11 @@ private final class NativeChatUserBlock: UIView {
 private final class RemoteMarkdownProjection: ObservableObject {
     private lazy var parser = Result { try OfficialMarkdown() }
     private var cached: (id: String, text: String, blocks: [HostMessage])?
+    private var previous: (id: String, text: String, blocks: [HostMessage])?
 
     func blocks(text: String, id: String) -> [HostMessage] {
         if let cached, cached.id == id, cached.text == text { return cached.blocks }
+        if let previous, previous.id == id, previous.text == text { return previous.blocks }
         let blocks: [HostMessage]
         do {
             let parsed = try parser.get().messages(text, prefix: id)
@@ -2088,6 +2144,7 @@ private final class RemoteMarkdownProjection: ObservableObject {
                     "内容解析失败，已保留原文。", "Content parsing failed. Original text is preserved.")))
             ]
         }
+        previous = cached
         cached = (id, text, blocks)
         return blocks
     }
@@ -2108,6 +2165,49 @@ private struct RecoveredRemoteThinkingStatus: View {
     }
 }
 
+private struct CodexReasoningBody: View {
+    let itemID: String
+    let paragraphs: [String]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            ForEach(Array(paragraphs.enumerated()), id: \.offset) { index, paragraph in
+                Text(verbatim: paragraph)
+                    .textSelection(.enabled)
+                    .accessibilityIdentifier("codex-reasoning-paragraph-\(itemID)-\(index)")
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+private struct CodexReasoningDetail: View {
+    let itemID: String
+    let value: CodexReadReasoningSummary
+    let turnID: String
+    let scope: RemoteComposerDraftScope
+    @ObservedObject var readingStore: RemoteTranscriptReadingStore
+
+    private var expanded: Binding<Bool> {
+        Binding(get: { readingStore.reasoningExpansions[scope]?[turnID]?.contains(itemID) == true },
+                set: { value in
+            var ids = readingStore.reasoningExpansions[scope]?[turnID] ?? []
+            if value { ids.insert(itemID) } else { ids.remove(itemID) }
+            readingStore.reasoningExpansions[scope, default: [:]][turnID] = ids
+        })
+    }
+
+    var body: some View {
+        RecoveredRemoteSummaryDisclosure(isExpanded: expanded, canExpand: value.hasBody,
+            accessibilityIdentifier: "codex-reasoning-toggle-" + itemID) {
+            CodexReasoningBody(itemID: itemID, paragraphs: value.content ?? [])
+        } label: {
+            RecoveredRemoteThinkingStatus(summary: RemoteReasoningSummary.latest(in: [value.summary]),
+                animates: value.isRunning)
+        }
+    }
+}
+
 // 293 HistoryFragment1a35e60 -> group summary1a393bc and ordered ActivityRows.
 // Group construction/order and 12pt child spacing are independent adapters.
 // Legacy snapshots continue to render their ungrouped activity components.
@@ -2115,17 +2215,19 @@ private struct RemoteReplayActivitiesView: View {
     let turn: RemoteThreadReplayTurn
     let scope: RemoteComposerDraftScope
     @ObservedObject var readingStore: RemoteTranscriptReadingStore
+    var providerItems: [CodexReadItem] = []
+    var toolFileLoader: (any RemoteFilePreviewLoading)? = nil
     @ScaledMetric(relativeTo: .body) private var historyIconSize = 20
 
     private var groups: [RemoteReplayActivityGroup] { turn.activityGroups ?? [] }
     private var groupedMembers: Set<RemoteReplayActivityReference> { Set(groups.flatMap(\.members)) }
 
     private func expansion(_ group: RemoteReplayActivityGroup) -> Binding<Bool> {
-        Binding(get: { readingStore.activityGroupExpansions[scope]?[turn.id]?.contains(group.id) == true },
+        Binding(get: { readingStore.activityGroupExpansions[scope]?[turn.presentationID]?.contains(group.id) == true },
                 set: { value in
-                    var ids = readingStore.activityGroupExpansions[scope]?[turn.id] ?? []
+                    var ids = readingStore.activityGroupExpansions[scope]?[turn.presentationID] ?? []
                     if value { ids.insert(group.id) } else { ids.remove(group.id) }
-                    readingStore.activityGroupExpansions[scope, default: [:]][turn.id] = ids
+                    readingStore.activityGroupExpansions[scope, default: [:]][turn.presentationID] = ids
                 })
     }
 
@@ -2136,25 +2238,49 @@ private struct RemoteReplayActivitiesView: View {
             if let command = turn.commands.first(where: { $0.id == id }) {
                 RemoteReplayCommandView(command: command,
                     reviews: turn.automaticReviews.filter { $0.targetItemID == id },
-                    turnID: turn.id, scope: scope, readingStore: readingStore)
+                    turnID: turn.presentationID, scope: scope, readingStore: readingStore)
             }
         case .search(let id):
             if let search = turn.searches.first(where: { $0.id == id }) {
-                RemoteReplaySearchView(search: search, turnID: turn.id, scope: scope, readingStore: readingStore)
+                RemoteReplaySearchView(search: search, turnID: turn.presentationID, scope: scope, readingStore: readingStore)
             }
         case .fileChange(let id):
             if let change = turn.fileChanges.first(where: { $0.id == id }) {
-                RemoteReplayFileChangeView(change: change, turnID: turn.id, scope: scope, readingStore: readingStore)
+                RemoteReplayFileChangeView(change: change, turnID: turn.presentationID, scope: scope, readingStore: readingStore)
+            }
+        }
+    }
+
+    @ViewBuilder private func providerActivity(_ id: String) -> some View {
+        if let content = providerItems.first(where: { $0.id == id })?.content {
+            switch content {
+            case .toolCall(let tool):
+                CodexToolActivityView(itemID: id, tool: tool, turnID: turn.presentationID, scope: scope,
+                    readingStore: readingStore, fileLoader: toolFileLoader)
+            case .command: activity(.command(id))
+            case .webSearch, .webSearchActivity: activity(.search(id))
+            case .fileChange: activity(.fileChange(id))
+            default: EmptyView()
             }
         }
     }
 
     var body: some View {
         ForEach(groups) { group in
-            RecoveredRemoteSummaryDisclosure(isExpanded: expansion(group), canExpand: !group.members.isEmpty,
+            let source = providerItems.first { $0.id == group.id }
+            RecoveredRemoteSummaryDisclosure(isExpanded: expansion(group), canExpand: group.canExpand ?? !group.members.isEmpty,
                 accessibilityIdentifier: "remote-replay-group-" + group.id) {
                 VStack(alignment: .leading, spacing: 12) {
-                    ForEach(group.members, id: \.self) { activity($0) }
+                    if case .activityGroup(let projection) = source?.content {
+                        ForEach(CodexReadActivityPresentation.reasoningBodies(for: projection, in: providerItems)) { item in
+                            if case .reasoningSummary(let value) = item.content {
+                                CodexReasoningBody(itemID: item.id, paragraphs: value.content ?? [])
+                            }
+                        }
+                        ForEach(projection.memberItemIDs, id: \.self) { providerActivity($0) }
+                    } else {
+                        ForEach(group.members, id: \.self) { activity($0) }
+                    }
                 }
             } label: {
                 if let latest = group.latestActivity {
@@ -2196,21 +2322,152 @@ private struct RemoteReplayActivitiesView: View {
     }
 }
 
-private extension RemoteReplayCommand {
-    var summaryInput: RemoteCommandInput {
-        let status: String
-        switch phase {
-        case .running: status = "inProgress"
-        case .completed: status = "completed"
-        case .failed: status = "failed"
-        case .cancelled: status = "cancelled" // Explicit unknown original status, no running timer/footer.
+private struct CodexToolActivityView: View {
+    let itemID: String
+    let tool: CodexReadToolCall
+    let turnID: String
+    let scope: RemoteComposerDraftScope
+    @ObservedObject var readingStore: RemoteTranscriptReadingStore
+    var fileLoader: (any RemoteFilePreviewLoading)? = nil
+    @ScaledMetric(relativeTo: .body) private var iconSize = 20
+
+    private var expanded: Binding<Bool> {
+        Binding(get: { readingStore.toolExpansions[scope]?[turnID]?.contains(itemID) == true }, set: { value in
+            var ids = readingStore.toolExpansions[scope]?[turnID] ?? []
+            if value { ids.insert(itemID) } else { ids.remove(itemID) }
+            readingStore.toolExpansions[scope, default: [:]][turnID] = ids
+        })
+    }
+    private var status: String {
+        switch tool.phase {
+        case .running: return visualText("运行中", "Running")
+        case .completed: return visualText("已完成", "Completed")
+        case .failed: return visualText("失败", "Failed")
+        case .cancelled: return visualText("已取消", "Cancelled")
         }
-        return .init(rawStatus: status, isCachedPreview: false, renderedSummary: nil,
-            displayCommand: command, command: command,
-            exitCode: exitCode, durationMilliseconds: nil,
-            startedAt: startedAt, referenceDate: startedAt)
+    }
+    private var icon: String {
+        switch tool.origin { case .dynamic: return "terminal"; case .mcp: return "plugin" }
     }
 
+    var body: some View {
+        RecoveredRemoteSummaryDisclosure(isExpanded: expanded, canExpand: tool.hasDetails,
+            accessibilityIdentifier: "codex-tool-toggle-" + itemID) {
+            VStack(alignment: .leading, spacing: 12) {
+                if let input = tool.arguments {
+                    detail(visualText("参数", "Arguments"), input, monospace: true)
+                }
+                ForEach(tool.content.indices, id: \.self) { index in
+                    switch tool.content[index] {
+                    case .text(let text): detail(visualText("结果", "Result"), text)
+                    case .structuredText(let text): detail(visualText("结果", "Result"), text, monospace: true)
+                    case .resource(let id, let name):
+                        resource(id: id, name: name, isImage: false)
+                    case .imageResource(let id, let name):
+                        resource(id: id, name: name, isImage: true)
+                    case .unsupported(let kind, let summary): detail(visualText("其他内容", "Other content"), summary ?? kind)
+                    }
+                }
+                if let error = tool.error {
+                    detail(visualText("错误", "Error"), error)
+                }
+            }
+        } label: {
+            HStack(spacing: 8) {
+                Image(uiImage: officialVisualIcon(icon)).resizable().scaledToFit()
+                    .frame(width: iconSize, height: iconSize).accessibilityHidden(true)
+                Text(verbatim: tool.qualifiedName).lineLimit(1).layoutPriority(1)
+                Text(status).font(.caption)
+                if let duration = tool.durationMilliseconds {
+                    Text(visualText("\(duration) 毫秒", "\(duration) ms")).font(.caption)
+                }
+            }
+            .lineLimit(1)
+            .font(.body)
+            .foregroundStyle(Color(uiColor: officialVisualColor("ChatGPT/text/secondary")))
+        }
+    }
+
+    @ViewBuilder private func resource(id: String, name: String, isImage: Bool) -> some View {
+        if let fileLoader {
+            CodexToolResourceLink(id: id, name: name, scope: scope, loader: fileLoader, isImage: isImage)
+                .id(id)
+        } else {
+            detail(visualText("工具文件不可预览", "Tool file preview unavailable"), name)
+        }
+    }
+
+    private func detail(_ title: String, _ value: String, monospace: Bool = false) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(title).font(.footnote.weight(.medium)).foregroundStyle(.secondary)
+                Spacer()
+                Button { UIPasteboard.general.string = value } label: {
+                    Image(uiImage: fittedOfficialVisualIcon("square-on-square", size: 14))
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(visualText("复制", "Copy") + " " + title)
+            }
+            Text(verbatim: value).font(.system(.body, design: monospace ? .monospaced : .default))
+                .textSelection(.enabled)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
+private struct CodexToolResourceLink: View {
+    let id: String
+    let name: String
+    let scope: RemoteComposerDraftScope
+    let isImage: Bool
+    @StateObject private var preview: RemoteFilePreviewController
+
+    init(id: String, name: String, scope: RemoteComposerDraftScope,
+         loader: any RemoteFilePreviewLoading, isImage: Bool) {
+        self.id = id; self.name = name; self.scope = scope; self.isImage = isImage
+        _preview = StateObject(wrappedValue: RemoteFilePreviewController(loader: loader))
+    }
+
+    private func open() {
+        preview.open(id, scope: scope, requiresImage: isImage)
+    }
+
+    private var link: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Button(action: open) {
+                if isImage {
+                    Label(name, systemImage: "photo")
+                } else {
+                    Text(verbatim: name).underline()
+                }
+            }
+            .accessibilityIdentifier("codex-tool-resource-" + id)
+            if preview.state.phase == .loading {
+                ProgressView(visualText("正在加载文件", "Loading file"))
+                Button(visualText("取消", "Cancel")) { preview.cancel() }
+            }
+            if case .failed(let reason) = preview.state.phase {
+                Text(preview.failureText(reason)).foregroundStyle(.secondary)
+                Button(visualText("重试", "Retry"), action: open)
+            }
+        }
+    }
+
+    var body: some View {
+        Group {
+            if isImage {
+                link.frontendMediaPreview($preview.mediaPreview)
+            } else {
+                link.quickLookPreview($preview.url)
+                    .sheet(item: $preview.sourcePreview) { source in
+                        RemoteSourceFilePreviewPage(source: source).id(source.id)
+                    }
+                    .frontendBrowserPreview($preview.htmlPreview)
+                    .frontendMediaPreview($preview.mediaPreview)
+            }
+        }
+        .onDisappear { preview.retireOwner() }
+    }
 }
 
 // Reuses the recovered disclosure/command shell. Snapshot scheduling and
@@ -2236,6 +2493,8 @@ private struct RemoteReplayCommandLabel: View {
                 }
             }
         }
+        .lineLimit(1)
+        .truncationMode(.tail)
         .font(.body)
         .foregroundStyle(Color(uiColor: officialVisualColor("ChatGPT/text/tertiary")))
     }
@@ -2278,10 +2537,10 @@ private struct RemoteReplayCommandView: View {
                     RecoveredRemoteAutomaticReview(review: review, isExpanded: reviewExpansion(review))
                 }
                 RecoveredRemoteCommandShell(shell: input.shell) {
-                    if #available(iOS 18.0, *) {
-                        RemoteCommandOutputPreview(lines: command.output.enumerated().map {
-                            RemoteOutputLine(id: $0.offset, runs: [.init(text: $0.element, foreground: nil)])
-                        }, autoScrollToBottom: input.shell.autoScrollToBottom)
+                    let displayed = RemoteOutputLine.presented(command.output)
+                    if #available(iOS 18.0, *), !displayed.isEmpty {
+                        RemoteCommandOutputPreview(lines: displayed,
+                            autoScrollToBottom: input.shell.autoScrollToBottom)
                     }
                 }
                 .accessibilityIdentifier("remote-replay-command-shell-" + command.id)
@@ -2584,14 +2843,21 @@ struct RemoteLinkedMarkdownBlocks: View {
     let scope: RemoteComposerDraftScope
     let readingStore: RemoteTranscriptReadingStore
     @StateObject private var projection = RemoteMarkdownProjection()
+    @State private var revealTimeline = CodexParagraphRevealTimeline()
     @StateObject private var filePreview: RemoteFilePreviewController
     @Environment(\.sizeCategory) private var sizeCategory
     @State private var browserRequest: FrontendBrowserRequest?
     @State private var unsupportedLink = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    let streamsAssistantBody: Bool
+    let assistantReveal: CodexAssistantReveal?
 
     init(text: String, turnID: String, footer: RemoteAssistantFooterPresentation? = nil,
          promptID: String? = nil, scope: RemoteComposerDraftScope,
-         readingStore: RemoteTranscriptReadingStore, fileLoader: (any RemoteFilePreviewLoading)? = nil) {
+         readingStore: RemoteTranscriptReadingStore, fileLoader: (any RemoteFilePreviewLoading)? = nil,
+         streamsAssistantBody: Bool = false, assistantReveal: CodexAssistantReveal? = nil) {
+        self.streamsAssistantBody = streamsAssistantBody
+        self.assistantReveal = assistantReveal
         self.text = text
         self.turnID = turnID
         self.footer = footer
@@ -2607,18 +2873,37 @@ struct RemoteLinkedMarkdownBlocks: View {
         switch RemoteMessageLinkDestination(url) {
         case .file(let resourceID, let lineNumber):
             filePreview.open(resourceID, scope: scope, lineNumber: lineNumber)
-        case .browser(let url): browserRequest = .init(url: url)
+        case .windowsFile(let path, let lineNumber):
+            filePreview.open(.windowsPath(path), scope: scope, lineNumber: lineNumber)
+        case .browser(let url):
+            if FrontendHTMLSnapshotDocument.admitsLocalURL(url) {
+                filePreview.open(.localWeb(url), scope: scope)
+            } else {
+                browserRequest = .init(url: url, usesSystemBrowser: true)
+            }
         case .unsupported: unsupportedLink = true
         }
     }
 
+    private func standaloneFileLink(_ block: HostMessage) -> (label: String, url: URL)? {
+        guard promptID == nil, block.containers.isEmpty, case .rich(let spans, false) = block.content,
+              spans.count == 1, let span = spans.first, !span.code, !span.bold, !span.italic,
+              let href = span.href, let url = URL(string: href),
+              RemoteMessageLinkDestination(url).isFile else { return nil }
+        return (span.text, url)
+    }
+
     @ViewBuilder
     private var linkStatus: some View {
-        // Loading/error presentation is independent host UI. The source-backed
-        // split dispatches file references to a file owner, external URLs to openURL.
         if filePreview.state.phase == .loading {
+            let title: String = {
+                if case .localWeb? = filePreview.state.request?.target {
+                    return visualText("正在加载网页快照", "Loading webpage snapshot")
+                }
+                return visualText("正在加载文件", "Loading file")
+            }()
             HStack {
-                ProgressView(visualText("正在加载文件", "Loading file"))
+                ProgressView(title)
                     .accessibilityIdentifier("remote-message-file-loading")
                 Button(visualText("取消", "Cancel")) { filePreview.cancel() }
                     .accessibilityIdentifier("remote-message-file-cancel")
@@ -2630,7 +2915,7 @@ struct RemoteLinkedMarkdownBlocks: View {
                 .accessibilityIdentifier("remote-message-file-error")
             if let request = filePreview.state.request {
                 Button(visualText("重试", "Retry")) {
-                    filePreview.open(request.fileID, scope: scope, lineNumber: request.lineNumber)
+                    filePreview.open(request.target, scope: scope, lineNumber: request.lineNumber)
                 }
                     .accessibilityIdentifier("remote-message-file-retry")
             }
@@ -2646,6 +2931,14 @@ struct RemoteLinkedMarkdownBlocks: View {
         let rowID = promptID ?? "remote-replay-response-" + turnID
         let row = HostMessageRow(id: rowID,
             blocks: text.isEmpty ? [] : projection.blocks(text: text, id: rowID), originalText: text)
+        let fixtureReducesMotion = HostLaunchRuntime.arguments.contains("--codex-assistant-reveal-reduced-motion-fixture")
+        let reveal = reduceMotion || fixtureReducesMotion ? nil : assistantReveal
+        let category = UIContentSizeCategory(sizeCategory)
+        let plan = reveal.map { mark in
+            CodexParagraphRevealPlan(mark: mark, blocks: row.blocks,
+                previousBlocks: mark.previousMarkdown.isEmpty ? [] : projection.blocks(text: mark.previousMarkdown, id: rowID),
+                traits: UITraitCollection(preferredContentSizeCategory: category))
+        }
         VStack(alignment: .leading, spacing: 0) {
             ForEach(row.blocks, id: \.id) { block in
                 if promptID != nil, block.containers.isEmpty, case .rich(let spans, let heading) = block.content {
@@ -2661,13 +2954,35 @@ struct RemoteLinkedMarkdownBlocks: View {
                     Text(text).font(.body).textSelection(.enabled)
                         .fixedSize(horizontal: false, vertical: true)
                         .accessibilityIdentifier(promptID ?? block.id)
+                } else if let file = standaloneFileLink(block) {
+                    Link(destination: file.url) {
+                        Label {
+                            Text(verbatim: file.label)
+                        } icon: {
+                            Image(systemName: "doc").font(.footnote.weight(.semibold))
+                                .accessibilityHidden(true)
+                        }
+                        .font(.body.weight(.medium))
+                        .foregroundStyle(Color(uiColor: .link))
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.vertical, 10)
+                } else if block.containers.isEmpty, case .code(let code) = block.content {
+                    //Shared code-header consumer; ordinary-parent optical metrics
+                    //remain an independent host adaptation, not FileChange defaults.
+                    RemoteCodeBlockPreview(presentation: .init(code: code, language: block.codeLanguage,
+                        includesHeader: true, allowsHorizontalScroll: true, copyEnabled: true,
+                        identifierPrefix: "codex-message-code-" + block.id))
+                        .id(block.id)
                 } else {
-                    NativeHostedMessage(message: block, category: UIContentSizeCategory(sizeCategory),
+                    NativeHostedMessage(message: block, category: category,
                         tableIdentity: NativeTableIdentity.make(
                             scope: DraftScope(accountID: "offline-fixture-account", conversationID: turnID), row: row, block: block),
                         readTablePosition: { readingStore.tablePositions[scope]?[$0] },
                         onTablePosition: { readingStore.tablePositions[scope, default: [:]][$0] = $1 },
-                        onLink: openLink, onUserScroll: {}, allowsFileLinks: true)
+                        onLink: openLink, onUserScroll: {}, allowsFileLinks: true, horizontalInset: 0,
+                        streamsAssistantBody: streamsAssistantBody && block.isRevealParagraph,
+                        revealPlan: block.isRevealParagraph ? plan : nil, revealTimeline: revealTimeline)
                         .id(block.id + "-" + block.rendererKind)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -2694,8 +3009,23 @@ struct RemoteLinkedMarkdownBlocks: View {
         .sheet(item: $filePreview.sourcePreview) { source in
             RemoteSourceFilePreviewPage(source: source).id(source.id)
         }
-        .onChange(of: scope) { _, _ in filePreview.cancel(); filePreview.url = nil }
-        .onDisappear { filePreview.cancel() }
+        .frontendBrowserPreview($filePreview.htmlPreview)
+        .frontendMediaPreview($filePreview.mediaPreview)
+        .onChange(of: reveal == nil) { _, ended in
+            if ended { revealTimeline.reset() }
+        }
+        .onDisappear {
+            revealTimeline.reset()
+            filePreview.retireOwner()
+        }
+        .onChange(of: scope) { _, _ in filePreview.retireOwner() }
+    }
+}
+
+private extension HostMessage {
+    var isRevealParagraph: Bool {
+        guard containers.isEmpty, case .rich = content else { return false }
+        return true
     }
 }
 
@@ -2711,8 +3041,17 @@ struct NativeHostedMessage: UIViewRepresentable {
     let onLink: (URL) -> Void
     let onUserScroll: () -> Void
     let allowsFileLinks: Bool
+    let horizontalInset: CGFloat
+    let streamsAssistantBody: Bool
+    let revealPlan: CodexParagraphRevealPlan?
+    let revealTimeline: CodexParagraphRevealTimeline?
     var message: HostMessage { HostMessage(id: messageID, content: content, containers: containers) }
-    init(message: HostMessage, category: UIContentSizeCategory, tableIdentity: NativeTableIdentity?, readTablePosition: @escaping (NativeTableIdentity) -> CGFloat?, onTablePosition: @escaping (NativeTableIdentity, CGFloat) -> Void, onLink: @escaping (URL) -> Void, onUserScroll: @escaping () -> Void, allowsFileLinks: Bool = false) {
+    init(message: HostMessage, category: UIContentSizeCategory, tableIdentity: NativeTableIdentity?, readTablePosition: @escaping (NativeTableIdentity) -> CGFloat?, onTablePosition: @escaping (NativeTableIdentity, CGFloat) -> Void, onLink: @escaping (URL) -> Void, onUserScroll: @escaping () -> Void, allowsFileLinks: Bool = false, horizontalInset: CGFloat = 16,
+         streamsAssistantBody: Bool = false, revealPlan: CodexParagraphRevealPlan? = nil,
+         revealTimeline: CodexParagraphRevealTimeline? = nil) {
+        self.streamsAssistantBody = streamsAssistantBody
+        self.revealPlan = revealPlan
+        self.revealTimeline = revealTimeline
         self.category = category
         self.messageID = message.id
         self.content = message.content
@@ -2723,25 +3062,30 @@ struct NativeHostedMessage: UIViewRepresentable {
         self.onLink = onLink
         self.onUserScroll = onUserScroll
         self.allowsFileLinks = allowsFileLinks
+        self.horizontalInset = horizontalInset
     }
 
-    static func makeBlock(_ message: HostMessage, category: UIContentSizeCategory? = nil) -> UIView {
+    static func makeBlock(_ message: HostMessage, category: UIContentSizeCategory? = nil, horizontalInset: CGFloat = 16,
+                          streamsAssistantBody: Bool = false) -> UIView {
         if !message.containers.isEmpty {
-            return NativeNestedMarkdownBlock(message: message, category: category)
+            return NativeNestedMarkdownBlock(message: message, category: category, horizontalInset: horizontalInset)
         }
         if case .rule = message.content {
             let rule = NativeMarkdownRuleBlock(frame: .zero)
+            rule.horizontalInset = horizontalInset
             if let category { rule.traitOverrides.preferredContentSizeCategory = category }
             rule.accessibilityIdentifier = "markdown-rule-" + message.id
             return rule
         }
         if case .table(let model) = message.content {
             let block = NativeTableBlock(frame: .zero)
+            block.horizontalInset = horizontalInset
             if let category { block.traitOverrides.preferredContentSizeCategory = category }
             block.configure(model, id: message.id)
             return block
         }
-        let block = NativeMessageBlock(frame: .zero)
+        let block = NativeMessageBlock(frame: .zero, streamsAssistantBody: streamsAssistantBody)
+        block.horizontalInset = horizontalInset
         if let category { block.traitOverrides.preferredContentSizeCategory = category }
         block.configure(message)
         return block
@@ -2750,30 +3094,38 @@ struct NativeHostedMessage: UIViewRepresentable {
         if let nested = block as? NativeNestedMarkdownBlock { return nested.fittedHeight(width: width) }
         if let rule = block as? NativeMarkdownRuleBlock { return rule.fittedHeight }
         if let text = block as? NativeMessageBlock { return text.fittedHeight(width: width) }
+        if let table = block as? NativeTableBlock { return table.fittedHeight() }
         block.bounds.size.width = width
         block.setNeedsLayout(); block.layoutIfNeeded()
         return max(44, ceil(block.systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height))
     }
-    func makeUIView(context: Context) -> UIView { Self.makeBlock(message, category: category) }
+    func makeUIView(context: Context) -> UIView {
+        Self.makeBlock(message, category: category, horizontalInset: horizontalInset, streamsAssistantBody: streamsAssistantBody)
+    }
     func updateUIView(_ view: UIView, context: Context) {
         view.traitOverrides.preferredContentSizeCategory = category
         func updateLeaf(_ leaf: UIView) {
             leaf.traitOverrides.preferredContentSizeCategory = category
             if let block = leaf as? NativeMessageBlock {
+                block.horizontalInset = horizontalInset
                 block.allowsFileLinks = allowsFileLinks
-                block.onLink = onLink; block.configure(message)
+                block.onLink = onLink
+                block.configure(message)
+                block.revealAppend(revealPlan, timeline: revealTimeline, in: message)
             } else if let block = leaf as? NativeTableBlock, case .table(let model) = message.content {
+                block.horizontalInset = horizontalInset
                 block.allowsFileLinks = allowsFileLinks
                 block.onLink = onLink; block.onUserScroll = onUserScroll
                 block.bindPosition(tableIdentity, restoredX: tableIdentity.flatMap(readTablePosition), changed: onTablePosition)
                 block.configure(model, id: message.id)
             } else if let rule = leaf as? NativeMarkdownRuleBlock {
+                rule.horizontalInset = horizontalInset
                 rule.accessibilityIdentifier = "markdown-rule-" + message.id
                 rule.setNeedsLayout()
             }
         }
         if let nested = view as? NativeNestedMarkdownBlock {
-            nested.configure(message, category: category)
+            nested.configure(message, category: category, horizontalInset: horizontalInset)
             updateLeaf(nested.leaf)
         } else { updateLeaf(view) }
     }
@@ -2791,17 +3143,20 @@ private final class NativeNestedMarkdownBlock: UIView {
     private var message: HostMessage
     private var decorations: [UIView] = []
     private var indent: CGFloat = 0
+    private var horizontalInset: CGFloat
 
-    init(message: HostMessage, category: UIContentSizeCategory?) {
+    init(message: HostMessage, category: UIContentSizeCategory?, horizontalInset: CGFloat) {
         self.message = message
-        leaf = NativeHostedMessage.makeBlock(HostMessage(id: message.id, content: message.content), category: category)
+        self.horizontalInset = horizontalInset
+        leaf = NativeHostedMessage.makeBlock(HostMessage(id: message.id, content: message.content), category: category, horizontalInset: horizontalInset)
         super.init(frame: .zero)
         addSubview(leaf)
         if let category { traitOverrides.preferredContentSizeCategory = category }
         rebuildDecorations()
     }
     required init?(coder: NSCoder) { fatalError("Storyboard construction unsupported") }
-    func configure(_ message: HostMessage, category: UIContentSizeCategory) {
+    func configure(_ message: HostMessage, category: UIContentSizeCategory, horizontalInset: CGFloat) {
+        self.horizontalInset = horizontalInset
         let changed = self.message.containers != message.containers || traitCollection.preferredContentSizeCategory != category
         self.message = message
         traitOverrides.preferredContentSizeCategory = category
@@ -2847,7 +3202,7 @@ private final class NativeNestedMarkdownBlock: UIView {
         super.layoutSubviews()
         let font = UIFont.preferredFont(forTextStyle: .body, compatibleWith: traitCollection)
         let space = (" " as NSString).size(withAttributes: [.font: font]).width
-        var x: CGFloat = 16 //Same outer text inset as the existing native leaf.
+        var x = horizontalInset //Same caller-owned inset as the native leaf.
         for (container, decoration) in zip(message.containers, decorations) {
             switch container {
             case .quote:
@@ -2866,6 +3221,7 @@ private final class NativeNestedMarkdownBlock: UIView {
 
 private final class NativeMarkdownRuleBlock: UIView {
     private let line = UIView()
+    var horizontalInset: CGFloat = 16 { didSet { if horizontalInset != oldValue { setNeedsLayout() } } }
     var fittedHeight: CGFloat { ceil(UIFont.preferredFont(forTextStyle: .body, compatibleWith: traitCollection).lineHeight) }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -2876,7 +3232,254 @@ private final class NativeMarkdownRuleBlock: UIView {
     required init?(coder: NSCoder) { fatalError("Storyboard construction unsupported") }
     override func layoutSubviews() {
         super.layoutSubviews()
-        line.frame = CGRect(x: 16, y: bounds.midY, width: max(0, bounds.width - 32), height: 1 / max(1, traitCollection.displayScale))
+        line.frame = CGRect(x: horizontalInset, y: bounds.midY, width: max(0, bounds.width - 2 * horizontalInset), height: 1 / max(1, traitCollection.displayScale))
+    }
+}
+
+struct CodexParagraphRevealPlan {
+    struct Paragraph {
+        let range: NSRange
+        let groups: [NSRange]
+        let offset: TimeInterval
+    }
+
+    let mark: CodexAssistantReveal
+    let paragraphs: [String: Paragraph]
+    let duration: TimeInterval
+
+    init(mark: CodexAssistantReveal, blocks: [HostMessage], previousBlocks: [HostMessage], traits: UITraitCollection) {
+        self.mark = mark
+        let previous = Dictionary(uniqueKeysWithValues: previousBlocks.map { ($0.id, $0) })
+        var paragraphs: [String: Paragraph] = [:]
+        var offset: TimeInterval = 0
+        for block in blocks where block.isRevealParagraph {
+            guard case .rich(let spans, let heading) = block.content,
+                  block != previous[block.id] else { continue }
+            let current = NativeInlineRenderer.render(spans, heading: heading, traits: traits, allowsFileLinks: true)
+            let range: NSRange
+            if let old = previous[block.id] {
+                guard old.isRevealParagraph, case .rich(let spans, let heading) = old.content else { continue }
+                let prefix = NativeInlineRenderer.render(spans, heading: heading, traits: traits, allowsFileLinks: true)
+                guard let suffix = NativeMessageBlock.appendedRange(from: prefix, to: current) else { continue }
+                range = suffix
+            } else {
+                range = NSRange(location: 0, length: current.length)
+            }
+            guard range.length > 0 else { continue }
+            let text = current.string as NSString
+            let stride = max(1, (range.length + CodexGlyphRevealTiming.maximumGroups - 1) / CodexGlyphRevealTiming.maximumGroups)
+            var groups: [NSRange] = []
+            var cursor = range.location
+            while cursor < NSMaxRange(range) {
+                let nominalEnd = min(NSMaxRange(range), cursor + stride)
+                let end = min(NSMaxRange(range), NSMaxRange(text.rangeOfComposedCharacterSequence(at: nominalEnd - 1)))
+                groups.append(NSRange(location: cursor, length: end - cursor))
+                cursor = end
+            }
+            paragraphs[block.id] = Paragraph(range: range, groups: groups, offset: offset)
+            // Allow the preceding fully opaque frame to be drawn before starting the next paragraph.
+            offset += CodexGlyphRevealTiming.duration(count: groups.count) + 1.0 / 30
+        }
+        self.paragraphs = paragraphs
+        duration = offset
+    }
+}
+
+@MainActor
+final class CodexParagraphRevealTimeline {
+    private let layouts = NSHashTable<CodexAssistantRevealLayout>.weakObjects()
+    private var frames: Task<Void, Never>?
+    private var revision: Int?
+    private var start: TimeInterval = 0
+    private var end: TimeInterval = 0
+    private var skipsCurrentRevision = false
+    private var frameTime: TimeInterval = 0
+    private var previousTick: TimeInterval = 0
+
+    fileprivate func append(_ paragraph: CodexParagraphRevealPlan.Paragraph, plan: CodexParagraphRevealPlan,
+                            messageID: String, to layout: CodexAssistantRevealLayout) {
+        let now = ProcessInfo.processInfo.systemUptime
+        if revision != plan.mark.revision {
+            if !CodexGlyphRevealTiming.queueFits(pending: end - frameTime, duration: plan.duration) {
+                // Settle the oldest accepted text first when an animated queue
+                // would outlive the same presentation window used for live deltas.
+                reset()
+            }
+            if frames == nil {
+                frameTime = now
+                previousTick = now
+            }
+            revision = plan.mark.revision
+            skipsCurrentRevision = !CodexGlyphRevealTiming.queueFits(pending: 0, duration: plan.duration)
+            start = max(frameTime, end)
+            end = skipsCurrentRevision ? start : start + plan.duration
+        }
+        guard !skipsCurrentRevision else { return }
+        layout.appendReveal(paragraph, startedAt: start + paragraph.offset, frameTime: frameTime,
+                            messageID: messageID, revision: plan.mark.revision)
+        layouts.add(layout)
+        guard frames == nil else { return }
+        frames = Task { [weak self] in
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .milliseconds(16))
+                guard !Task.isCancelled, let self else { return }
+                let now = ProcessInfo.processInfo.systemUptime
+                // A blocked main thread cannot paint intermediate frames. Limit
+                // each tick so its first resumed paint preserves paragraph order.
+                self.frameTime += min(now - self.previousTick, 1.0 / 45)
+                self.previousTick = now
+                for layout in self.layouts.allObjects where !layout.advanceReveal(to: self.frameTime) {
+                    self.layouts.remove(layout)
+                }
+                if self.layouts.allObjects.isEmpty {
+                    self.frames = nil
+                    return
+                }
+            }
+        }
+    }
+
+    func reset() {
+        frames?.cancel()
+        frames = nil
+        revision = nil
+        skipsCurrentRevision = false
+        start = 0
+        end = 0
+        for layout in layouts.allObjects { layout.settleReveal() }
+        layouts.removeAllObjects()
+    }
+}
+
+private final class CodexAssistantRevealLayout: NSLayoutManager {
+    private final class Run {
+        let range: NSRange
+        let groups: [NSRange]
+        let startedAt: TimeInterval
+        let messageID: String
+        let revision: Int
+        var firstDrawn = false
+        var lastDrawn = false
+        var fullDrawn = false
+        var lastObservedFrame: TimeInterval?
+        var observedFrames: [String] = []
+
+        init(range: NSRange, groups: [NSRange], startedAt: TimeInterval, messageID: String, revision: Int) {
+            self.range = range
+            self.groups = groups
+            self.startedAt = startedAt
+            self.messageID = messageID
+            self.revision = revision
+        }
+
+        func observe(_ event: String) {
+            NSLog("REA paragraph frame %@ %d %@ %.3f", messageID, revision, event,
+                  ProcessInfo.processInfo.systemUptime * 1000)
+        }
+    }
+    private var runs: [Run] = []
+    private var finishingObservations: [Run] = []
+    private var frameTime: TimeInterval = 0
+    private let observesFrames = HostLaunchRuntime.arguments.contains("--codex-glyph-frame-observation")
+
+    func appendReveal(_ paragraph: CodexParagraphRevealPlan.Paragraph, startedAt: TimeInterval, frameTime: TimeInterval,
+                      messageID: String, revision: Int) {
+        guard let storage = textStorage, NSMaxRange(paragraph.range) <= storage.length else { return }
+        runs.append(Run(range: paragraph.range, groups: paragraph.groups, startedAt: startedAt,
+                        messageID: messageID, revision: revision))
+        self.frameTime = frameTime
+        invalidateDisplay(forCharacterRange: paragraph.range)
+    }
+
+    @discardableResult
+    func advanceReveal(to time: TimeInterval) -> Bool {
+        frameTime = time
+        let previous = runs
+        runs.removeAll { time - $0.startedAt >= CodexGlyphRevealTiming.duration(count: $0.groups.count) }
+        for run in previous {
+            invalidateDisplay(forCharacterRange: run.range)
+            if observesFrames, time - run.startedAt >= CodexGlyphRevealTiming.duration(count: run.groups.count) {
+                finishingObservations.append(run)
+            }
+            if observesFrames, !run.observedFrames.isEmpty,
+               time - run.startedAt >= CodexGlyphRevealTiming.duration(count: run.groups.count) {
+                NSLog("REA glyph frames %d:%d %@",
+                      run.range.location, run.range.length, run.observedFrames.joined(separator: " "))
+            }
+        }
+        return !runs.isEmpty
+    }
+
+    func settleReveal() {
+        let previous = runs
+        runs.removeAll()
+        finishingObservations.removeAll()
+        for run in previous { invalidateDisplay(forCharacterRange: run.range) }
+    }
+
+    override func drawGlyphs(forGlyphRange glyphsToShow: NSRange, at origin: CGPoint) {
+        defer {
+            for run in finishingObservations where !run.fullDrawn {
+                if !run.firstDrawn, let group = run.groups.first,
+                   NSIntersectionRange(glyphsToShow, glyphRange(forCharacterRange: group, actualCharacterRange: nil)).length > 0 {
+                    run.firstDrawn = true
+                    run.observe("first")
+                }
+                guard let group = run.groups.last,
+                      NSIntersectionRange(glyphsToShow, glyphRange(forCharacterRange: group, actualCharacterRange: nil)).length > 0 else { continue }
+                if !run.lastDrawn { run.lastDrawn = true; run.observe("last") }
+                run.fullDrawn = true
+                run.observe("full")
+            }
+            finishingObservations.removeAll { $0.fullDrawn }
+        }
+        guard !runs.isEmpty, let context = UIGraphicsGetCurrentContext() else {
+            super.drawGlyphs(forGlyphRange: glyphsToShow, at: origin)
+            return
+        }
+        var cursor = glyphsToShow.location
+        let end = NSMaxRange(glyphsToShow)
+        for run in runs {
+            let record = observesFrames && run.lastObservedFrame != frameTime
+            var observed: [String] = []
+            // A ligature can include the last old character. Keep that glyph
+            // visible and animate only glyphs wholly on the new side.
+            let prefix = run.range.location > 0
+                ? glyphRange(forCharacterRange: NSRange(location: 0, length: run.range.location), actualCharacterRange: nil)
+                : NSRange(location: 0, length: 0)
+            let start = max(cursor, NSMaxRange(prefix))
+            for (index, group) in run.groups.enumerated() {
+                let glyphs = glyphRange(forCharacterRange: group, actualCharacterRange: nil)
+                let overlapStart = max(start, cursor, glyphs.location)
+                let overlapEnd = min(end, NSMaxRange(glyphs))
+                guard overlapStart < overlapEnd else { continue }
+                if overlapStart > cursor {
+                    super.drawGlyphs(forGlyphRange: NSRange(location: cursor, length: overlapStart - cursor), at: origin)
+                }
+                let opacity = CodexGlyphRevealTiming.opacity(index: index, count: run.groups.count,
+                                                            elapsed: frameTime - run.startedAt)
+                if record { observed.append(String(format: "%d=%.2f", index, opacity)) }
+                if opacity > 0 {
+                    context.saveGState()
+                    context.setAlpha(opacity)
+                    super.drawGlyphs(forGlyphRange: NSRange(location: overlapStart, length: overlapEnd - overlapStart), at: origin)
+                    context.restoreGState()
+                    if observesFrames, opacity >= 0.01 {
+                        if index == 0, !run.firstDrawn { run.firstDrawn = true; run.observe("first") }
+                        if index == run.groups.count - 1, !run.lastDrawn { run.lastDrawn = true; run.observe("last") }
+                    }
+                }
+                cursor = overlapEnd
+            }
+            if record && !observed.isEmpty {
+                run.lastObservedFrame = frameTime
+                run.observedFrames.append(String(format: "%.0f", (frameTime - run.startedAt) * 1000) +
+                    "ms[" + observed.joined(separator: ",") + "]")
+            }
+        }
+        if cursor < end {
+            super.drawGlyphs(forGlyphRange: NSRange(location: cursor, length: end - cursor), at: origin)
+        }
     }
 }
 
@@ -2885,16 +3488,43 @@ final class NativeMessageBlock: UIView, UITextViewDelegate {
     var allowsFileLinks = false {
         didSet { if allowsFileLinks != oldValue { configured = nil } }
     }
-    private let textView = UITextView()
+    private let textView: UITextView
+    private let revealLayout: CodexAssistantRevealLayout?
+    private var revealRevision: Int?
+    private let observesReveal = HostLaunchRuntime.arguments.contains("--codex-assistant-reveal-fixture")
+    private var horizontalConstraints: [NSLayoutConstraint] = []
+    var horizontalInset: CGFloat = 16 {
+        didSet {
+            guard horizontalInset != oldValue else { return }
+            for constraint in horizontalConstraints {
+                constraint.constant = constraint.firstAttribute == .leading ? horizontalInset : -horizontalInset
+            }
+            invalidateIntrinsicContentSize(); setNeedsLayout()
+        }
+    }
     private let copyCode = UIButton(type: .system)
     private var textTop: NSLayoutConstraint!
     private var configured: HostMessage?
     private var configuredCategory: UIContentSizeCategory?
+    private var renderedRichText: NSAttributedString?
     private var codeText: String?
     func fittedHeight(width: CGFloat) -> CGFloat {
-        max(44, ceil(textView.sizeThatFits(CGSize(width: max(1, width - 32), height: .greatestFiniteMagnitude)).height + textTop.constant + 10))
+        max(44, ceil(textView.sizeThatFits(CGSize(width: max(1, width - 2 * horizontalInset), height: .greatestFiniteMagnitude)).height + textTop.constant + 10))
     }
-    override init(frame: CGRect) {
+    init(frame: CGRect, streamsAssistantBody: Bool = false) {
+        if streamsAssistantBody {
+            let storage = NSTextStorage()
+            let layout = CodexAssistantRevealLayout()
+            let container = NSTextContainer(size: CGSize(width: CGFloat.zero, height: CGFloat.greatestFiniteMagnitude))
+            container.widthTracksTextView = true
+            storage.addLayoutManager(layout)
+            layout.addTextContainer(container)
+            textView = UITextView(frame: .zero, textContainer: container)
+            revealLayout = layout
+        } else {
+            textView = UITextView()
+            revealLayout = nil
+        }
         super.init(frame: frame)
         textView.delegate = self
         textView.isEditable = false
@@ -2916,8 +3546,11 @@ final class NativeMessageBlock: UIView, UITextViewDelegate {
         copyCode.addTarget(self, action: #selector(copyCodeTapped), for: .touchUpInside)
         addSubview(copyCode)
         textTop = textView.topAnchor.constraint(equalTo: topAnchor, constant: 10)
-        NSLayoutConstraint.activate([textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16), textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16), textTop, textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            copyCode.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16), copyCode.topAnchor.constraint(equalTo: topAnchor, constant: 4), copyCode.heightAnchor.constraint(equalToConstant: 36), copyCode.widthAnchor.constraint(equalToConstant: 44)])
+        horizontalConstraints = [textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horizontalInset),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horizontalInset),
+            copyCode.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horizontalInset)]
+        NSLayoutConstraint.activate(horizontalConstraints + [textTop, textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            copyCode.topAnchor.constraint(equalTo: topAnchor, constant: 4), copyCode.heightAnchor.constraint(equalToConstant: 36), copyCode.widthAnchor.constraint(equalToConstant: 44)])
     }
     required init?(coder: NSCoder) { fatalError("Storyboard construction unsupported") }
     @objc private func copyCodeTapped() {
@@ -2928,37 +3561,46 @@ final class NativeMessageBlock: UIView, UITextViewDelegate {
     func configure(_ message: HostMessage) {
         let category = traitCollection.preferredContentSizeCategory
         if configured == message && configuredCategory == category { return }
-        defer { configured = message; configuredCategory = category }
+        let nextRichText: NSAttributedString?
+        if case .rich(let spans, let heading) = message.content {
+            nextRichText = NativeInlineRenderer.render(spans, heading: heading, traits: traitCollection, allowsFileLinks: allowsFileLinks)
+        } else {
+            nextRichText = nil
+        }
+        defer {
+            configured = message
+            configuredCategory = category
+            renderedRichText = revealLayout == nil ? nil : nextRichText
+        }
+        if observesReveal {
+            textView.accessibilityIdentifier = "message-" + message.id
+        }
         if case .code(let value) = message.content { codeText = value } else { codeText = nil }
         copyCode.isHidden = codeText == nil
         copyCode.setImage(fittedOfficialVisualIcon("square-on-square", size: UIFontMetrics.default.scaledValue(for: 14,
             compatibleWith: traitCollection)), for: .normal)
         copyCode.accessibilityIdentifier = "copy-code-" + message.id
         textTop.constant = codeText == nil ? 10 : 40
-        if textView.accessibilityIdentifier == "message-" + message.id,
-           case .rich(let spans, let heading) = message.content,
-           let previous = textView.attributedText {
-            let next = NativeInlineRenderer.render(spans, heading: heading, traits: traitCollection, allowsFileLinks: allowsFileLinks)
-            // Preserve UIKit selection/menu only for an unchanged attributed prefix.
-            // Revisions, changed styles and recycled identities take the full replacement path.
-            if next.length >= previous.length,
-               next.attributedSubstring(from: NSRange(location: 0, length: previous.length)).isEqual(to: previous) {
-                if next.length > previous.length {
-                    let selection = textView.selectedRange
-                    textView.textStorage.append(next.attributedSubstring(from: NSRange(location: previous.length, length: next.length - previous.length)))
-                    if selection.length > 0 && textView.selectedRange != selection { textView.selectedRange = selection }
-                }
-                return
+        // Compare the renderer's canonical styles before UIKit normalizes its
+        // copy. Text replacements and format changes still reconfigure the view.
+        if configured?.id == message.id, let previous = renderedRichText ?? textView.attributedText, let next = nextRichText,
+           textView.text == previous.string, let suffix = Self.appendedRange(from: previous, to: next) {
+            if suffix.length > 0 {
+                let selection = textView.selectedRange
+                textView.textStorage.append(next.attributedSubstring(from: suffix))
+                if selection.length > 0 && textView.selectedRange != selection { textView.selectedRange = selection }
             }
+            return
         }
+        settleReveal()
+        if configured?.id != message.id { revealRevision = nil }
         textView.attributedText = nil
         textView.accessibilityIdentifier = "message-" + message.id
         textView.backgroundColor = .clear
         textView.textColor = .label
         textView.font = .preferredFont(forTextStyle: .body, compatibleWith: traitCollection)
         switch message.content {
-        case .rich(let spans, let heading):
-            textView.attributedText = NativeInlineRenderer.render(spans, heading: heading, traits: traitCollection, allowsFileLinks: allowsFileLinks)
+        case .rich: textView.attributedText = nextRichText
         case .table: textView.text = "表格单元路由错误"
         case .rule: textView.text = ""
         case .text(let value): textView.text = value
@@ -2968,6 +3610,34 @@ final class NativeMessageBlock: UIView, UITextViewDelegate {
         case .reasoning(let value): textView.text = value; textView.textColor = .secondaryLabel
         }
     }
+    private func settleReveal() {
+        revealLayout?.settleReveal()
+    }
+
+    fileprivate static func appendedRange(from previous: NSAttributedString, to current: NSAttributedString) -> NSRange? {
+        let prefix = NSRange(location: 0, length: previous.length)
+        guard current.length >= previous.length,
+              current.attributedSubstring(from: prefix).isEqual(to: previous) else { return nil }
+        return NSRange(location: previous.length, length: current.length - previous.length)
+    }
+
+    func revealAppend(_ plan: CodexParagraphRevealPlan?, timeline: CodexParagraphRevealTimeline?, in message: HostMessage) {
+        guard let revealLayout, let plan, let timeline, !UIAccessibility.isReduceMotionEnabled else {
+            settleReveal()
+            return
+        }
+        let mark = plan.mark
+        guard revealRevision != mark.revision else { return }
+        revealRevision = mark.revision
+        guard let paragraph = plan.paragraphs[message.id], let current = renderedRichText, textView.text == current.string,
+              ProcessInfo.processInfo.systemUptime - mark.acceptedAt < CodexAssistantReveal.presentationDeadline else { return }
+        timeline.append(paragraph, plan: plan, messageID: message.id, to: revealLayout)
+        if observesReveal {
+            let range = paragraph.range
+            textView.accessibilityIdentifier = "message-" + message.id + " [reveal \(range.location):\(range.length)]"
+        }
+    }
+
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         onLink?(URL)
         return false
@@ -2980,14 +3650,52 @@ final class NativeTableBlock: UIView, UITextViewDelegate {
     var allowsFileLinks = false
     var onUserScroll: (() -> Void)?
     private let scroll = UIScrollView()
+    private var horizontalConstraints: [NSLayoutConstraint] = []
+    var horizontalInset: CGFloat = 16 {
+        didSet {
+            guard horizontalInset != oldValue else { return }
+            for constraint in horizontalConstraints {
+                constraint.constant = constraint.firstAttribute == .leading ? horizontalInset : -horizontalInset
+            }
+            invalidateIntrinsicContentSize(); setNeedsLayout()
+        }
+    }
     private let rows = UIStackView()
+    private let columnWidth: CGFloat = 180
+    private let verticalInset: CGFloat = 10
+    //Measure the existing fixed-width cells without resizing the live scroll
+    //viewport. An ideal-width sizing pass must not clamp a decelerating table
+    //and publish that temporary zero as the user's reading position.
+    func fittedHeight() -> CGFloat {
+        let heights = rows.arrangedSubviews.compactMap { $0 as? UIStackView }.map { row in
+            row.arrangedSubviews.compactMap { $0 as? UITextView }.map {
+                $0.sizeThatFits(CGSize(width: columnWidth, height: .greatestFiniteMagnitude)).height
+            }.max() ?? 0
+        }
+        return max(44, ceil(heights.reduce(0, +) + CGFloat(max(0, heights.count - 1)) * rows.spacing + 2 * verticalInset))
+    }
     private var blockID: String?
     private var positionIdentity: NativeTableIdentity?
     private var pendingRestore: CGFloat?
     private var restoring = false
     private var preferredX: CGFloat = 0
+    private var diagnosticReadX: CGFloat?
+    private var diagnosticWrites = 0
+    private func observePosition() {
+        guard HostLaunchRuntime.arguments.contains("--codex-scroll-test-observation") else { return }
+        let values: [String: Any] = ["identity": positionIdentity.map { String($0.hashValue) } ?? "nil",
+            "readX": diagnosticReadX.map { $0 as Any } ?? NSNull(),
+            "pendingX": pendingRestore.map { $0 as Any } ?? NSNull(), "preferredX": preferredX,
+            "offsetX": scroll.contentOffset.x, "viewportWidth": scroll.bounds.width,
+            "contentWidth": scroll.contentSize.width, "writes": diagnosticWrites]
+        if let data = try? JSONSerialization.data(withJSONObject: values, options: [.sortedKeys]) {
+            scroll.accessibilityValue = String(data: data, encoding: .utf8)
+        }
+    }
     private var onPosition: ((NativeTableIdentity, CGFloat) -> Void)?
     func bindPosition(_ identity: NativeTableIdentity?, restoredX: CGFloat?, changed: @escaping (NativeTableIdentity, CGFloat) -> Void) {
+        diagnosticReadX = restoredX
+        defer { observePosition() }
         if identity != positionIdentity {
             positionIdentity = identity
             pendingRestore = max(0, restoredX ?? 0)
@@ -2998,6 +3706,10 @@ final class NativeTableBlock: UIView, UITextViewDelegate {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        //The scroll child's contentLayoutGuide can settle after the parent's
+        //first layout. Apply the pending reading position only after it is ready.
+        scroll.layoutIfNeeded()
+        defer { observePosition() }
         guard !scroll.isDragging, !scroll.isDecelerating, scroll.bounds.width > 0, scroll.contentSize.width > 0 else { return }
         let x = pendingRestore ?? preferredX
         restoring = true
@@ -3006,11 +3718,13 @@ final class NativeTableBlock: UIView, UITextViewDelegate {
         restoring = false
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView === scroll else { return }
+        defer { observePosition() }
         // Width changes clamp UIKit's applied offset. Only an actual gesture
         // replaces the user's preferred reading position for a narrower viewport.
         guard !restoring, pendingRestore == nil, scrollView.isDragging || scrollView.isDecelerating else { return }
         preferredX = max(0, scrollView.contentOffset.x)
-        if let identity = positionIdentity { onPosition?(identity, preferredX) }
+        if let identity = positionIdentity { diagnosticWrites += 1; onPosition?(identity, preferredX) }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -3019,11 +3733,11 @@ final class NativeTableBlock: UIView, UITextViewDelegate {
         rows.translatesAutoresizingMaskIntoConstraints = false
         rows.axis = .vertical; rows.spacing = 1
         addSubview(scroll); scroll.addSubview(rows)
-        NSLayoutConstraint.activate([
-            scroll.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            scroll.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            scroll.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            scroll.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+        horizontalConstraints = [scroll.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horizontalInset),
+            scroll.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horizontalInset)]
+        NSLayoutConstraint.activate(horizontalConstraints + [
+            scroll.topAnchor.constraint(equalTo: topAnchor, constant: verticalInset),
+            scroll.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalInset),
             rows.leadingAnchor.constraint(equalTo: scroll.contentLayoutGuide.leadingAnchor),
             rows.trailingAnchor.constraint(equalTo: scroll.contentLayoutGuide.trailingAnchor),
             rows.topAnchor.constraint(equalTo: scroll.contentLayoutGuide.topAnchor),
@@ -3032,7 +3746,12 @@ final class NativeTableBlock: UIView, UITextViewDelegate {
         ])
     }
     required init?(coder: NSCoder) { fatalError("Storyboard unsupported") }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) { onUserScroll?() }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard scrollView === scroll else { return }
+        //A real gesture takes ownership from any not-yet-applied restoration.
+        pendingRestore = nil
+        onUserScroll?()
+    }
     func configure(_ model: NativeTableModel, id: String) {
         if blockID != id {
             for view in rows.arrangedSubviews { rows.removeArrangedSubview(view); view.removeFromSuperview() }
@@ -3062,7 +3781,7 @@ final class NativeTableBlock: UIView, UITextViewDelegate {
                 else {
                     cell = UITextView(); cell.isEditable = false; cell.isSelectable = true; cell.isScrollEnabled = false
                     cell.delegate = self; cell.adjustsFontForContentSizeCategory = true
-                    cell.widthAnchor.constraint(equalToConstant: 180).isActive = true
+                    cell.widthAnchor.constraint(equalToConstant: columnWidth).isActive = true
                     row.addArrangedSubview(cell)
                 }
                 let rendered = NativeInlineRenderer.render(value, heading: rowIndex == 0, traits: traitCollection, allowsFileLinks: allowsFileLinks)
@@ -3096,6 +3815,10 @@ private enum NativeInlineRenderer {
                     if ["https", "http"].contains(scheme) ||
                         (allowsFileLinks && ["file", "codex-file-citation"].contains(scheme)) {
                         attributes[.link] = url
+                    }
+                    if allowsFileLinks, RemoteMessageLinkDestination(url).isFile {
+                        attributes[.foregroundColor] = UIColor.link
+                        attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
                     }
                 }
                 result.append(NSAttributedString(string: span.text, attributes: attributes))
@@ -3663,8 +4386,10 @@ private final class NativeConversationList: UIViewController, UICollectionViewDa
     var onRename: ((String, String) throws -> Void)?
     var onSetPinned: ((String, Bool) throws -> Void)?
 
+    private let codexDisplayName: String
     init(entries: [LocalConversation], selected: String, selectedFeature: String?, accountAccess: FrontendAuthenticationModel? = nil,
-         assistantModel: FrontendPersonalAssistantModel? = nil, pluginsModel: FrontendPluginsModel? = nil) {
+         assistantModel: FrontendPersonalAssistantModel? = nil, pluginsModel: FrontendPluginsModel? = nil, codexDisplayName: String = "Codex") {
+        self.codexDisplayName = codexDisplayName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Codex" : codexDisplayName
         self.pluginsModel = pluginsModel
         self.assistantModel = assistantModel
         self.assistantEntry = assistantModel?.sidebarEntry
@@ -3832,7 +4557,7 @@ private final class NativeConversationList: UIViewController, UICollectionViewDa
         case "clock": return visualText("定时任务", "Tasks")
         case "square-stack-fanned": return visualText("资料空间", "Space")
         case "sliders": return visualText("自定义", "Customize")
-        case "codex": return "Codex"
+        case "codex": return codexDisplayName
         default: return visualText("探索", "Explore")
         }
     }
@@ -4337,11 +5062,12 @@ private struct RecoveredCodexHome: View {
     @ObservedObject var notificationNavigation: FrontendNotificationNavigation
     let openMenu: () -> Void
     @State private var state: CodexHomePreviewState
+    @State private var lifecycleProviders: CodexPageProviders?
     @State private var unavailableAction = false
     @State private var retryTask: Task<Void, Never>?
     private let isFixture: Bool
 
-    init(notificationNavigation: FrontendNotificationNavigation, openMenu: @escaping () -> Void) {
+    init(notificationNavigation: FrontendNotificationNavigation, openMenu: @escaping () -> Void, providers: CodexPageProviders? = nil) {
         self.notificationNavigation = notificationNavigation
         self.openMenu = openMenu
         let args = HostLaunchRuntime.arguments
@@ -4350,14 +5076,15 @@ private struct RecoveredCodexHome: View {
         let requested = args.first(where: { $0.hasPrefix(prefix) }).flatMap {
             CodexHomePreviewState(rawValue: String($0.dropFirst(prefix.count)))
         }
-        _state = State(initialValue: isFixture ? (requested ?? .tasks) : .unavailable)
+        _state = State(initialValue: providers != nil ? .tasks : isFixture ? (requested ?? .tasks) : .unavailable)
+        _lifecycleProviders = State(initialValue: providers ?? (args.contains("--codex-operations-fixture") ? CodexOperationPreviewProvider.bundle() : args.contains("--codex-authoritative-lifecycle-fixture") ? CodexLifecyclePreviewProvider.bundle() : nil))
     }
 
     var body: some View {
         NavigationStack {
             Group {
             if state == .tasks {
-                RemoteTaskFixturePage(notificationNavigation: notificationNavigation, openMenu: openMenu)
+                RemoteTaskFixturePage(notificationNavigation: notificationNavigation, openMenu: openMenu, providers: lifecycleProviders)
             } else {
             ScrollView {
                 VStack(spacing: 20) {
@@ -4388,7 +5115,7 @@ private struct RecoveredCodexHome: View {
                 .onChange(of: notificationNavigation.target) { _, target in
                     if target != nil && state != .tasks { notificationNavigation.finish(false) }
                 }
-                .navigationTitle("Codex").navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(lifecycleProviders?.productName ?? "Codex").navigationBarTitleDisplayMode(.inline)
                 // Offline preview explicitly supplies the Remote capability.
                 // A service adapter must supply availability independently of
                 // host connection health; non-fixture remains unavailable.
@@ -4444,7 +5171,7 @@ private struct RecoveredCodexHome: View {
 // Independent fixture adapter and native integration. State/identity boundaries:
 // iOS 293 v313/v314 reports. Layout, labels and sample content are NOT recovered
 // official components. No network or local execution capability is attached.
-private struct RemotePreviewTask: Identifiable, Hashable {
+private struct RemotePreviewTask: Identifiable, Hashable, CodexInstanceTaskItem {
     struct ID: Hashable { let host: String; let thread: String }
     enum Activity: String { case running, idle, unread, failed }
     enum Pending { case approval, userInput }
@@ -4476,6 +5203,7 @@ private struct RemotePreviewTask: Identifiable, Hashable {
     // Synthetic service assignment; identity never derives from the display title.
     var workspaceKey: String? = "ui"
     var isPinned = false
+    var isArchived = false
     // Explicit projected membership, never inferred from a missing workspace.
     var isRecent = false
     // Explicit service projection after official item/host/path guards. A nil
@@ -4495,8 +5223,16 @@ private struct RemotePreviewTask: Identifiable, Hashable {
     var isCreatedReplay = false
     //Independent provider target; no implied original child-task UI variant.
     var isAgentChild = false
+    //Explicit catalog capability. Component fixtures keep their own transcript.
+    var readsOrdinaryMessages = false
+    var ordinaryRequest: CodexPendingTaskReference? = nil
+    // Independent already-projected approval input. These are not decoded
+    // permission-profile entries or permission grants to the local device.
+    var approvalPermissionDetails: [RemotePermissionDetail] = []
+    var approvalCommand: String? = "inspect-ui --fixture fixture-a"
+    var approvalOpenAIForm: RemoteOpenAIFormProjection? = nil
 
-    static func created(_ state: RemoteThreadReplayState) -> Self {
+    static func created(_ state: RemoteThreadReplayState, authoritative: Bool = false) -> Self {
         let receipt = state.creation!
         let destination = receipt.destination
         // Explicit fixture catalog mapping. Service adapters supply their own
@@ -4505,10 +5241,11 @@ private struct RemotePreviewTask: Identifiable, Hashable {
         let catalogKey = destination.workspaceDirectory.flatMap { knownDirectories[$0] }
         let hasCatalogEntry = destination.hostID == "fixture-a" ||
             (destination.hostID == "fixture-b" && catalogKey == "ui")
-        let workspace = hasCatalogEntry ? catalogKey : nil
+        let workspace = receipt.repositoryID != nil ? receipt.workspaceKey : (hasCatalogEntry ? catalogKey : nil)
         let subtitle = destination.workspaceDirectory.map { URL(fileURLWithPath: $0).lastPathComponent }
             ?? destination.projectID
-        var task = Self(id: .init(host: destination.hostID, thread: "local-" + receipt.intentID.uuidString),
+        guard case .thread(let threadID) = state.scope.destination else { preconditionFailure("Created task needs a thread identity") }
+        var task = Self(id: .init(host: destination.hostID, thread: threadID),
             title: receipt.title, activity: .idle, pending: nil, connected: true,
             inProgressWebSearchItemID: nil, hostIcon: destination.hostID == cloudFixtureHostID ? .cloud : destination.hostID == "fixture-b" ? .desktop : .laptop,
             hostDisplayName: destination.hostID, subtitle: subtitle.map { .project($0) },
@@ -4517,7 +5254,8 @@ private struct RemotePreviewTask: Identifiable, Hashable {
         task.newThreadTarget = .init(scope: .init(hostID: destination.hostID,
             workspaceDirectory: destination.workspaceDirectory, projectID: destination.projectID),
             title: subtitle ?? visualText("新建任务", "New task"))
-        task.isCreatedReplay = true
+        task.isCreatedReplay = !authoritative
+        task.readsOrdinaryMessages = authoritative
         return task
     }
     // Deterministic adapter data, never inferred from task completion/approval.
@@ -4548,30 +5286,81 @@ private struct RemotePreviewTask: Identifiable, Hashable {
         }
     }
     var key: String { id.host + "-" + id.thread }
+    var codexInstanceID: String { id.host }
+    var codexThreadID: String { id.thread }
     // Independent fixture encoding for the official payload-free cloud identity.
     // It remains distinct from every device identity, even for equal thread IDs.
     static let cloudFixtureHostID = "fixture-cloud"
     static var cloudSamples: [Self] {
-        guard HostLaunchRuntime.arguments.contains("--remote-cloud-fixture") else { return [] }
         // These items explicitly select the unpinned/unassigned byWorkspaces
         // fallback (0x3374c8 ->0x337210). Upstream assignment is still partial.
         return [
+            .init(id: .init(host: cloudFixtureHostID, thread: "ordinary-files"),
+                title: visualText("检查文件与结果", "Inspect files and results"), activity: .idle, pending: nil,
+                connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, workspaceKey: nil,
+                isRecent: true, readsOrdinaryMessages: true),
+            .init(id: .init(host: cloudFixtureHostID, thread: "ordinary-approval"),
+                title: visualText("检查普通审批", "Inspect ordinary approval"), activity: .running, pending: .approval,
+                connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, workspaceKey: nil,
+                isRecent: true, readsOrdinaryMessages: true, ordinaryRequest: .approval),
+            .init(id: .init(host: cloudFixtureHostID, thread: "ordinary-input"),
+                title: visualText("检查普通补充输入", "Inspect ordinary input"), activity: .running, pending: .userInput,
+                connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, workspaceKey: nil,
+                isRecent: true, readsOrdinaryMessages: true, ordinaryRequest: .input),
             .init(id: .init(host: cloudFixtureHostID, thread: "recent-thread"),
                 title: visualText("检查云端最近任务", "Inspect cloud recent task"),
                 activity: .idle, pending: nil, connected: true, inProgressWebSearchItemID: nil,
-                hostIcon: .cloud, workspaceKey: nil, isRecent: true),
+                hostIcon: .cloud, workspaceKey: nil, isRecent: true, readsOrdinaryMessages: true),
             .init(id: .init(host: cloudFixtureHostID, thread: "shared-thread"),
                 title: visualText("检查云端目录归组", "Inspect cloud directory grouping"),
                 activity: .unread, pending: nil, connected: true, inProgressWebSearchItemID: nil,
-                hostIcon: .cloud, workspaceKey: "cloud-fixture-directory", isRecent: true)
+                hostIcon: .cloud, workspaceKey: "cloud-fixture-directory", isRecent: true, readsOrdinaryMessages: true),
+            //Deliberately not preclassified as recent: the source-backed
+            //unassigned Cloud fallback must supply its list membership.
+            .init(id: .init(host: cloudFixtureHostID, thread: "unassigned-thread"),
+                title: visualText("检查云端未分组任务", "Inspect cloud unassigned task"),
+                activity: .running, pending: nil, connected: true, inProgressWebSearchItemID: nil,
+                hostIcon: .cloud, workspaceKey: nil, isRecent: false, readsOrdinaryMessages: true)
         ]
     }
-    static var samples: [Self] { [
+    private static var calendarFormSamples: [Self] {
+        guard HostLaunchRuntime.arguments.contains("--remote-openai-date-form-fixture") else { return [] }
+        return [.init(id: .init(host: "fixture-b", thread: "date-form-thread"),
+            title: visualText("检查日期表单", "Inspect date form"), activity: .running, pending: .approval,
+            connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, hostDisplayName: "fixture-b",
+            workspaceKey: nil, isRecent: true, approvalCommand: nil,
+            approvalOpenAIForm: .fields(message: "Synthetic calendar fields", fields: [
+                .string(.init(name: "day", title: visualText("日期", "Date"), required: true, format: .date)),
+                .string(.init(name: "time", title: visualText("日期和时间", "Date and time"),
+                              defaultValue: "2026-11-19T03:00:00Z", format: .dateTime))
+            ]))]
+    }
+
+    static var samples: [Self] { calendarFormSamples + [
+        .init(id: .init(host: "fixture-a", thread: "ordinary-files"),
+            title: visualText("检查文件与结果", "Inspect files and results"), activity: .idle, pending: nil,
+            connected: true, inProgressWebSearchItemID: nil, hostIcon: .laptop, workspaceKey: nil,
+            isRecent: true, readsOrdinaryMessages: true),
+        .init(id: .init(host: "fixture-a", thread: "ordinary-approval"),
+            title: visualText("检查普通审批", "Inspect ordinary approval"), activity: .running, pending: .approval,
+            connected: true, inProgressWebSearchItemID: nil, hostIcon: .laptop, workspaceKey: nil,
+            isRecent: true, readsOrdinaryMessages: true, ordinaryRequest: .approval),
+        .init(id: .init(host: "fixture-a", thread: "ordinary-input"),
+            title: visualText("检查普通补充输入", "Inspect ordinary input"), activity: .running, pending: .userInput,
+            connected: true, inProgressWebSearchItemID: nil, hostIcon: .laptop, workspaceKey: nil,
+            isRecent: true, readsOrdinaryMessages: true, ordinaryRequest: .input),
+        .init(id: .init(host: "fixture-a", thread: "permissions-thread"),
+            title: visualText("检查请求权限明细", "Inspect requested permissions"),
+            activity: .idle, pending: .approval, connected: true,
+            inProgressWebSearchItemID: nil, hostIcon: .laptop, hostDisplayName: "fixture-a",
+            subtitle: .project("UI fixture"),
+            approvalPermissionDetails: [.fileSystem(access: .readWrite, paths: ["/fixtures/ui"]), .network],
+            approvalCommand: nil),
         // Explicit fixture membership and order, independent of official service data.
         .init(id: .init(host: "fixture-a", thread: "no-workspace-thread"), title: visualText("检查无工作区任务 A", "Inspect unassigned task A"), activity: .idle, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .laptop, hostDisplayName: "fixture-a", workspaceKey: nil, isWithoutWorkspace: true),
         .init(id: .init(host: "fixture-b", thread: "no-workspace-thread"), title: visualText("检查无工作区任务 B", "Inspect unassigned task B"), activity: .unread, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .desktop, hostDisplayName: "fixture-b", workspaceKey: nil, isWithoutWorkspace: true),
-        .init(id: .init(host: "fixture-a", thread: "recent-thread"), title: visualText("检查最近任务 A", "Inspect recent task A"), activity: .idle, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .laptop, hostDisplayName: "fixture-a", workspaceKey: nil, isRecent: true),
-        .init(id: .init(host: "fixture-b", thread: "recent-thread"), title: visualText("检查最近任务 B", "Inspect recent task B"), activity: .unread, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .desktop, hostDisplayName: "fixture-b", workspaceKey: nil, isRecent: true),
+        .init(id: .init(host: "fixture-a", thread: "recent-thread"), title: visualText("检查最近任务 A", "Inspect recent task A"), activity: .idle, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .laptop, hostDisplayName: "fixture-a", workspaceKey: nil, isRecent: true, readsOrdinaryMessages: true),
+        .init(id: .init(host: "fixture-b", thread: "recent-thread"), title: visualText("检查最近任务 B", "Inspect recent task B"), activity: .unread, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .desktop, hostDisplayName: "fixture-b", workspaceKey: nil, isRecent: true, readsOrdinaryMessages: true),
         .init(id: .init(host: "fixture-a", thread: "pinned-thread"), title: visualText("检查置顶任务 A", "Inspect pinned task A"), activity: .idle, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .laptop, hostDisplayName: "fixture-a", workspaceKey: nil, isPinned: true, isRecent: true),
         .init(id: .init(host: "fixture-b", thread: "pinned-thread"), title: visualText("检查置顶任务 B", "Inspect pinned task B"), activity: .running, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .desktop, hostDisplayName: "fixture-b", workspaceKey: nil, isPinned: true, isRecent: true),
         .init(id: .init(host: "fixture-a", thread: "shared-thread"), title: HostLaunchRuntime.arguments.contains("--remote-long-title-fixture") ? String(repeating: "长任务标题 Long task title ", count: 12) : visualText("检查界面组件", "Inspect interface components"), activity: .running, pending: .approval, connected: true, inProgressWebSearchItemID: "review", hostIcon: .laptop, hostDisplayName: "fixture-a", subtitle: .project("UI fixture"), commandInput: .init(rawStatus: "inProgress", isCachedPreview: HostLaunchRuntime.arguments.contains("--remote-command-cached-fixture"), renderedSummary: "Inspect component output · synthetic", displayCommand: "inspect-ui", command: "inspect-ui --fixture fixture-a", exitCode: nil, durationMilliseconds: 65000, startedAt: commandReferenceDate.addingTimeInterval(-65), referenceDate: commandReferenceDate), showsChanges: true, showsFiles: true, newThreadTarget: .init(scope: .init(hostID: "fixture-a", workspaceDirectory: "/fixtures/ui", projectID: nil), title: "UI fixture")),
@@ -4579,8 +5368,140 @@ private struct RemotePreviewTask: Identifiable, Hashable {
         .init(id: .init(host: "fixture-a", thread: "completed-thread"), title: visualText("整理页面结构", "Review page structure"), activity: .unread, pending: nil, connected: true, inProgressWebSearchItemID: nil, diffSummary: .init(insertions: 12, deletions: 3), hostIcon: .laptop, hostDisplayName: "fixture-a", commandInput: .init(rawStatus: HostLaunchRuntime.arguments.contains("--remote-command-declined-fixture") ? "declined" : "completed", isCachedPreview: false, renderedSummary: "Inspect component output · synthetic", displayCommand: "inspect-ui", command: "inspect-ui --fixture fixture-a", exitCode: 0, durationMilliseconds: 65000, startedAt: nil, referenceDate: commandReferenceDate)),
         .init(id: .init(host: "fixture-b", thread: "failed-thread"), title: visualText("检查失败状态", "Inspect failure state"), activity: .failed, pending: nil, connected: false, inProgressWebSearchItemID: nil, hostIcon: .cloud, hostDisplayName: "fixture-b", commandInput: .init(rawStatus: "failed", isCachedPreview: false, renderedSummary: "Inspect failure output · synthetic", displayCommand: nil, command: "inspect-ui --fixture fixture-b", exitCode: 2, durationMilliseconds: 1200, startedAt: nil, referenceDate: commandReferenceDate)),
         .init(id: .init(host: "fixture-a", thread: "idle-thread"), title: visualText("检查已读任务", "Inspect read task"), activity: .idle, pending: nil, connected: true, inProgressWebSearchItemID: nil, diffSummary: .init(insertions: 0, deletions: 0), hostIcon: .laptop, hostDisplayName: "fixture-a", workspaceKey: "layout", commandInput: .init(rawStatus: "completed", isCachedPreview: false, renderedSummary: "Inspect component sources · synthetic", displayCommand: "inspect-ui", command: "inspect-ui --fixture fixture-a", exitCode: 0, durationMilliseconds: 65000, startedAt: nil, referenceDate: commandReferenceDate, actions: [specializedFixtureAction])),
+        //Explicit synthetic URI projection, not raw schema or remote URL opening.
+        .init(id: .init(host: "fixture-b", thread: "uri-form-thread"), title: visualText("检查 URI 表单", "Inspect URI form"), activity: .running, pending: .approval, connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, hostDisplayName: "fixture-b", workspaceKey: nil, isRecent: true, approvalCommand: nil, approvalOpenAIForm: .fields(message: "Synthetic URI fields", fields: [
+            .string(.init(name: "address", title: visualText("合成地址", "Synthetic address"), required: true, format: .uri)),
+            .string(.init(name: "optionalAddress", title: visualText("可选合成地址", "Optional synthetic address"), format: .uri)),
+            .boolean(.init(name: "confirmed", title: visualText("保留合成检查结果", "Keep synthetic inspection results"), required: true))
+        ])),
+        //Explicit typed mixed-field projection, not raw schema interpretation.
+        .init(id: .init(host: "fixture-b", thread: "mixed-form-thread"), title: visualText("检查混合字段表单", "Inspect mixed-field form"), activity: .running, pending: .approval, connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, hostDisplayName: "fixture-b", workspaceKey: nil, isRecent: true, approvalCommand: nil, approvalOpenAIForm: .fields(message: "Synthetic mixed fields", fields: [
+            .string(.init(name: "name", title: visualText("合成名称", "Synthetic name"), required: true, minimumLength: 2, maximumLength: 4)),
+            .string(.init(name: "note", title: visualText("合成说明", "Synthetic notes"), defaultValue: "  预设  ", maximumLength: 200)),
+            .boolean(.init(name: "confirmed", title: visualText("保留合成检查结果", "Keep synthetic inspection results"), required: true))
+        ])),
+        // Explicit Boolean-only projection; synthetic labels/data are not official user content.
+        .init(id: .init(host: "fixture-b", thread: "boolean-form-thread"), title: visualText("检查布尔表单", "Inspect Boolean form"), activity: .running, pending: .approval, connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, hostDisplayName: "fixture-b", workspaceKey: nil, isRecent: true, approvalCommand: nil, approvalOpenAIForm: .booleanFields(message: "Synthetic Boolean confirmation", fields: [
+            .init(name: "required", title: visualText("保留合成检查结果", "Keep synthetic inspection results"), description: visualText("仅用于本地前端回放，不会提交到线上。", "Local frontend replay only; nothing is sent online."), required: true),
+            .init(name: "optional", title: visualText("附加合成说明", "Include synthetic notes"), defaultValue: true)
+        ])),
+        // Explicit synthetic empty-fields provider, not schema inference or a grant.
+        .init(id: .init(host: "fixture-b", thread: "empty-form-thread"), title: visualText("检查无字段表单", "Inspect empty-fields form"), activity: .running, pending: .approval, connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, hostDisplayName: "fixture-b", workspaceKey: nil, isRecent: true, approvalCommand: nil, approvalOpenAIForm: .emptyFields(message: "Synthetic empty-fields confirmation")),
         .init(id: .init(host: "fixture-b", thread: "running-thread"), title: visualText("检查运行任务", "Inspect running task"), activity: .running, pending: nil, connected: true, inProgressWebSearchItemID: nil, hostIcon: .cloud, hostDisplayName: "fixture-b", commandInput: .init(rawStatus: "inProgress", isCachedPreview: false, renderedSummary: "Search component definitions · synthetic", displayCommand: "inspect-ui", command: "inspect-ui --fixture fixture-b", exitCode: nil, durationMilliseconds: 65000, startedAt: commandReferenceDate.addingTimeInterval(-65), referenceDate: commandReferenceDate, actions: [.search]))
     ] }
+}
+
+@MainActor private final class CodexTaskListPreviewOwner: ObservableObject {
+    @Published private(set) var state: CodexInstanceTaskListState<RemotePreviewTask>
+    private var loads: [String: Task<Void, Never>] = [:]
+    private var reloadAfterPending: Set<String> = []
+    private var failedOnce: Set<String> = []
+    private let providers: CodexPageProviders?
+    private let archiveMode: Bool
+    private var directoryChanges: AnyCancellable?
+    init(providers: CodexPageProviders? = nil, archiveMode: Bool = false, directory: CodexDirectoryStore? = nil) {
+        self.archiveMode = archiveMode
+        self.providers = providers
+        if let providers {
+            state = .init(scope: providers.scope, instances: directory?.snapshot.instances ?? providers.instances)
+            directoryChanges = directory?.$snapshot.dropFirst().sink { [weak self] snapshot in self?.applyDirectory(snapshot) }
+            return
+        }
+        //Explicit bundled offline capability/membership, not live entitlement.
+        var instances: [CodexListInstance] = []
+        if !HostLaunchRuntime.arguments.contains("--codex-list-without-cloud-fixture") {
+            instances.append(.init(id: RemotePreviewTask.cloudFixtureHostID, kind: .cloud,
+                name: "Cloud", symbol: "cloud"))
+        }
+        if !HostLaunchRuntime.arguments.contains("--codex-list-cloud-only-fixture") {
+            instances += [.init(id: "fixture-a", kind: .remote, name: "fixture-a", symbol: "laptop"),
+                .init(id: "fixture-b", kind: .remote, name: "fixture-b", symbol: "desktop")]
+        }
+        let profile = try? RemoteDraftPersistence.current()
+        state = .init(scope: .init(accountID: profile?.accountID ?? "offline-fixture-account",
+            profileID: profile?.directory.path ?? "ephemeral"), instances: instances)
+    }
+    private func applyDirectory(_ snapshot: CodexDirectorySnapshot) {
+        guard snapshot.valid, snapshot.scope == state.scope else { return }
+        if snapshot.instances != state.instances {
+            loads.values.forEach { $0.cancel() }; loads = [:]; reloadAfterPending = []
+            _ = state.replace(scope: snapshot.scope, instances: snapshot.instances)
+            for instance in state.instances { load(instance.id) }
+        } else { for instance in state.instances { load(instance.id, refreshIfLoading: true) } }
+    }
+    func loadInitial() {
+        for instance in state.instances where state.phase(instance.id) == .idle { load(instance.id) }
+    }
+    func load(_ id: String, refreshIfLoading: Bool = false) {
+        guard let request = state.begin(id) else {
+            if refreshIfLoading, loads[id] != nil { reloadAfterPending.insert(id) }
+            return
+        }
+        if let providers {
+            loads[id] = Task { [weak self] in
+                do {
+                    let receipt: CodexTaskListReceipt
+                    if self?.archiveMode == true {
+                        guard let archive = providers.list as? any CodexArchivedTaskListProviding else { throw CodexTaskListFailure.unavailable }
+                        receipt = try await archive.archivedTasks(request)
+                    } else { receipt = try await providers.list.tasks(request) }
+                    guard !Task.isCancelled, let self else { return }
+                    let valid = receipt.request == request && receipt.tasks.allSatisfy {
+                        $0.title.utf8.count <= 4096 && ($0.workspaceKey?.utf8.count ?? 0) <= 4096 && $0.updatedAt.timeIntervalSince1970.isFinite
+                    }
+                    self.state.receive(valid ? .success(receipt.tasks.map { input in
+                        let instance = self.state.instance(input.instanceID)
+                        return RemotePreviewTask(id: .init(host: input.instanceID, thread: input.threadID), title: input.title,
+                            activity: .init(rawValue: input.activity.rawValue) ?? .idle,
+                            pending: input.pendingRequest.map { $0.kind == .approval ? .approval : .userInput },
+                            connected: input.connected, inProgressWebSearchItemID: nil,
+                            hostIcon: instance?.kind == .cloud ? .cloud : .desktop, hostDisplayName: instance?.name,
+                            workspaceKey: input.workspaceKey, isPinned: input.isPinned, isArchived: self.archiveMode || input.isArchived, isRecent: input.isRecent,
+                            isWithoutWorkspace: input.isWithoutWorkspace, sortDate: input.updatedAt, updatedAt: input.updatedAt,
+                            readsOrdinaryMessages: true, ordinaryRequest: input.pendingRequest, approvalCommand: nil)
+                    }) : .failure(.invalidResult), for: request)
+                    self.loads[id] = nil
+                    if self.reloadAfterPending.remove(id) != nil { self.load(id) }
+                } catch {
+                    guard !Task.isCancelled, let self else { return }
+                    self.state.receive(.failure(error as? CodexTaskListFailure ?? .loadFailed), for: request)
+                    self.loads[id] = nil
+                    if self.reloadAfterPending.remove(id) != nil { self.load(id) }
+                }
+            }
+            return
+        }
+        let rows = Self.rows.filter { $0.id.host == id }
+        let args = HostLaunchRuntime.arguments
+        let fails = args.contains("--codex-list-failure-instance=" + id) && !failedOnce.contains(id)
+        if fails { failedOnce.insert(id) }
+        let empty = args.contains("--codex-list-empty-instance=" + id)
+        loads[id] = Task { [weak self] in
+            do { try await Task.sleep(for: .milliseconds(160)) }
+            catch { return }
+            guard !Task.isCancelled, let self else { return }
+            self.state.receive(fails ? .failure(.loadFailed) : .success(empty ? [] : rows), for: request)
+            self.loads[id] = nil
+        }
+    }
+    func refresh() async {
+        for instance in state.instances { load(instance.id) }
+        let pending = Array(loads.values)
+        for task in pending { await task.value }
+    }
+    private static var rows: [RemotePreviewTask] {
+        let calendar = Calendar.autoupdatingCurrent
+        let anchor = calendar.startOfDay(for: Date()).addingTimeInterval(12 * 3600)
+        let ages = [0, 1, 2, 7, 8, 30, 0, 1, 8, 31, 40, 2, 0, 7]
+        return (RemotePreviewTask.samples + RemotePreviewTask.cloudSamples).enumerated().map { index, input in
+            var task = input
+            task.sortDate = calendar.date(byAdding: .day, value: -ages[index % ages.count], to: anchor)!
+                .addingTimeInterval(-Double(index))
+            task.updatedAt = task.sortDate
+            return task
+        }
+    }
+    deinit { for task in loads.values { task.cancel() } }
 }
 
 // 293 CodexTaskRowPendingRequestPill, body 0x3a5bc8; v335 evidence.
@@ -4826,9 +5747,13 @@ private struct RecoveredRemoteHostFilterRow: View {
     @Binding var selection: String
     let horizontalContentInset: CGFloat
     let bottomPadding: CGFloat
+    var soleCloudID: String? = nil
     @Namespace private var selectionNamespace
     @ScaledMetric(relativeTo: .body) private var iconSize = 18
     @ScaledMetric(relativeTo: .body) private var contentSpacing = 6
+    private func isSelected(_ choice: Choice) -> Bool {
+        selection == choice.id || (selection == "all" && choice.id == soleCloudID)
+    }
 
     private func label(for choice: Choice) -> some View {
         HStack(alignment: .center, spacing: contentSpacing) {
@@ -4854,10 +5779,10 @@ private struct RecoveredRemoteHostFilterRow: View {
         .padding(.vertical, 10)
         .padding(.horizontal, 16)
         .fixedSize(horizontal: true, vertical: false)
-        .foregroundStyle(Color(uiColor: officialVisualColor(selection == choice.id
+        .foregroundStyle(Color(uiColor: officialVisualColor(isSelected(choice)
             ? "ChatGPT/text/primary" : "ChatGPT/text/tertiary")))
         .background {
-            if selection == choice.id {
+            if isSelected(choice) {
                 //293 IndicatorSourceModifier6f066bc: the selected label
                 // supplies geometry; the surface belongs to the whole row.
                 Color.clear
@@ -4885,12 +5810,12 @@ private struct RecoveredRemoteHostFilterRow: View {
                     .buttonStyle(.plain)
                     .accessibilityLabel(choice.title)
                     .accessibilityValue(choice.statusDescription)
-                    .accessibilityAddTraits(selection == choice.id ? .isSelected : [])
+                    .accessibilityAddTraits(isSelected(choice) ? .isSelected : [])
                     .accessibilityIdentifier("remote-source-" + choice.id)
                 }
             }
             .background(alignment: .center) {
-                if choices.contains(where: { $0.id == selection }) {
+                if choices.contains(where: isSelected) {
                     //293 IndicatorModifier6f066f0 / SelectionIndicator6f06cf4:
                     // default custom filled style is one Capsule destination,
                     // before the row's horizontal padding, never one per tab.
@@ -5102,9 +6027,8 @@ private struct RecoveredRemoteSearchInput: UIViewRepresentable {
 private struct RecoveredRemoteSearchDismissSurface: ViewModifier {
     @ViewBuilder func body(content: Content) -> some View {
         // 293 Circle fallback0x756d520 + regular/interactive Glass0x756d3ec.
-        // OS availability/fixture input substitute for the unclosed private
-        // disable gate. Shared shadow preset is still unclosed; no guessed shadow.
-        if #available(iOS 26.0, *),
+        // The fallback wrapper uses the common OS/build gate at 0x77107f8.
+        if #available(iOS 26.0, *), RecoveredRemoteGlassAvailability.isAvailable,
            !HostLaunchRuntime.arguments.contains("--remote-search-without-glass") {
             content.glassEffect(.regular.interactive(), in: Circle())
         } else {
@@ -5154,6 +6078,7 @@ private struct RecoveredRemoteHomeMenu: View {
     private let observesLayout = HostLaunchRuntime.arguments.contains("--remote-home-menu-layout-probe")
     @Binding var grouping: RemoteHomeGrouping
     @Binding var showsChatsFirst: Bool
+    var displayName = "Codex"
     let showsOrganize: Bool
     let priorityAvailable: Bool
     let projectSortOrder: RemoteProjectSortOrder?
@@ -5224,7 +6149,7 @@ private struct RecoveredRemoteHomeMenu: View {
             VStack(spacing: 1) {
                 HStack(spacing: 4) {
                     Image(uiImage: officialVisualIcon("chevron-down-sm")).hidden()
-                    Text("Codex").font(.body.weight(.semibold))
+                    Text(displayName).font(.body.weight(.semibold))
                     Image(uiImage: officialVisualIcon("chevron-down-sm"))
                         .foregroundStyle(Color(uiColor: officialVisualColor("ChatGPT/text/secondary")))
                 }.font(.caption)
@@ -5305,7 +6230,8 @@ private struct RecoveredRemoteDestinationScrollPhases: ViewModifier {
 private final class RemoteProjectSortOwner: ObservableObject {
     @Published private(set) var preference: RemoteProjectSortPreference?
     @Published var failed = false
-    init() {
+    init(persistsToDisk: Bool = true) {
+        guard persistsToDisk else { return }
         do {
             let file = try RemoteDraftPersistence.current()?.directory.appendingPathComponent("project-sort-v1.json")
             preference = try RemoteProjectSortPreference(fileURL: file)
@@ -5324,21 +6250,36 @@ private final class RemoteProjectSortOwner: ObservableObject {
 //293 ordinary row39ecc4 ->39ecf0 ->CodexTaskRowMenu39f064.
 //This is separate from the conversation toolbar menu. The input capabilities
 //are independent provider data, not recovered account/permission assignments.
+// BEGIN REMOTE_LIST_ROW_MENU_POLICY
 private enum RemoteListRowAction: String, Identifiable {
     case pin, rename, readStatus, copyID, archive
     var id: String { rawValue }
-}
-private struct RemoteListRowActionTarget: Identifiable {
-    let task: RemotePreviewTask
-    let revision: Int
-    var id: RemotePreviewTask.ID { task.id }
-    var scope: RemoteComposerDraftScope { .init(hostID: task.id.host, threadID: task.id.thread) }
 }
 private struct RemoteListRowCapabilities {
     let availableActions: Set<RemoteListRowAction>
     let mutationsEnabled: Bool
     let allowsArchiveSwipe: Bool
     let allowsThreadPreview: Bool
+
+    //2933a2ef4..3a2fc0 separates membership from each item's enabled flag.
+    //The provider supplies membership; the original kind/activity raw mapping
+    //is not inferred from the host's synthetic activity enum.
+    var ordinaryActions: [RemoteListRowAction] {
+        [.pin, .rename, .readStatus, .copyID].filter(availableActions.contains)
+    }
+    func isEnabled(_ action: RemoteListRowAction, readStatusAllowed: Bool) -> Bool {
+        guard availableActions.contains(action) else { return false }
+        if action == .copyID { return true }
+        return mutationsEnabled && (action != .readStatus || readStatusAllowed)
+    }
+}
+// END REMOTE_LIST_ROW_MENU_POLICY
+private struct RemoteListRowActionTarget: Identifiable {
+    var capturedMetadata: CodexTaskMetadataSnapshot? = nil
+    let task: RemotePreviewTask
+    let revision: Int
+    var id: RemotePreviewTask.ID { task.id }
+    var scope: RemoteComposerDraftScope { .init(hostID: task.id.host, threadID: task.id.thread) }
 }
 private struct RecoveredRemoteListRowMenu: View {
     let target: RemoteListRowActionTarget
@@ -5346,11 +6287,10 @@ private struct RecoveredRemoteListRowMenu: View {
     let perform: (RemoteListRowAction) -> Void
     //29339f2ac builds the non-destructive collection separately from the
     //optional archive child. LiveActivity still has no provider here.
-    private var ordinaryItems: [RemoteListRowAction] {
-        [.pin, .rename, .readStatus, .copyID].filter {
-            capabilities.availableActions.contains($0) &&
-            ($0 != .readStatus || target.task.activity == .idle || target.task.activity == .unread)
-        }
+    private var readStatusAllowed: Bool {
+        //Independent host admission, unchanged from the existing handler.
+        //Running/pending requests keep the supplied menu item visible-disabled.
+        target.task.activity == .idle || target.task.activity == .unread
     }
     private func title(_ action: RemoteListRowAction) -> OfficialTextKey {
         switch action {
@@ -5376,14 +6316,14 @@ private struct RecoveredRemoteListRowMenu: View {
         }
     }
     var body: some View {
-        ForEach(ordinaryItems) { action in
+        ForEach(capabilities.ordinaryActions) { action in
             Button { perform(action) } label: { label(action) }
-                .disabled(action != .copyID && !capabilities.mutationsEnabled)
+                .disabled(!capabilities.isEnabled(action, readStatusAllowed: readStatusAllowed))
                 .accessibilityIdentifier("remote-row-" + action.rawValue)
         }
         if capabilities.availableActions.contains(.archive) {
             Button(role: .destructive) { perform(.archive) } label: { label(.archive) }
-                .disabled(!capabilities.mutationsEnabled)
+                .disabled(!capabilities.isEnabled(.archive, readStatusAllowed: readStatusAllowed))
                 .accessibilityIdentifier("remote-row-archive")
         }
     }
@@ -5422,13 +6362,52 @@ private struct RemoteListTaskTapStyle: PrimitiveButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .contentShape(Rectangle())
-            .onTapGesture { if isEnabled { configuration.trigger() } }
+            .onTapGesture {
+                if HostLaunchRuntime.arguments.contains("--codex-creation-test-controls") { NSLog("[CreationTap] enabled=%d", isEnabled ? 1 : 0) }
+                if isEnabled { configuration.trigger() }
+            }
             .accessibilityAddTraits(.isButton)
             .accessibilityAction { if isEnabled { configuration.trigger() } }
     }
 }
 
+// Embeddable existing Codex page. The caller owns sidebar presentation and
+// provides a stable bundle. Changing bundles retires every navigation owner.
+struct CodexPage: View {
+    let providers: CodexPageProviders
+    let openSidebar: () -> Void
+    @StateObject private var navigation = FrontendNotificationNavigation()
+    var body: some View {
+        NavigationStack {
+            RemoteTaskFixturePage(notificationNavigation: navigation, openMenu: openSidebar, providers: providers)
+                .id(providers.id)
+        }
+    }
+}
+
 private struct RemoteTaskFixturePage: View {
+    private let providers: CodexPageProviders?
+    init(notificationNavigation: FrontendNotificationNavigation, openMenu: @escaping () -> Void, providers: CodexPageProviders? = nil) {
+        self.notificationNavigation = notificationNavigation; self.openMenu = openMenu; self.providers = providers
+        let offline = providers == nil
+        let reading = RemoteTranscriptReadingStore(providers: providers)
+        _instanceList = StateObject(wrappedValue: CodexTaskListPreviewOwner(providers: providers, directory: reading.directory))
+        _directory = ObservedObject(wrappedValue: reading.directory)
+        _threadReading = StateObject(wrappedValue: reading)
+        _externalMetadata = ObservedObject(wrappedValue: reading.taskMetadata)
+        _externalRequestResponses = ObservedObject(wrappedValue: reading.requestResponses)
+        _threadReplay = StateObject(wrappedValue: RemoteThreadReplayStore(allowsSyntheticOperations: offline))
+        _threadMetadata = StateObject(wrappedValue: RemoteThreadMetadataStore(allowsSyntheticOperations: offline))
+        _composerDrafts = StateObject(wrappedValue: RemoteComposerDraftStore(persistsToDisk: offline))
+        _configurations = StateObject(wrappedValue: RemoteThreadConfigurationStore(persistsToDisk: offline))
+        _listCheckpoint = StateObject(wrappedValue: RemoteListCheckpointOwner(persistsToDisk: offline))
+        _projectSort = StateObject(wrappedValue: RemoteProjectSortOwner(persistsToDisk: offline))
+        _goals = StateObject(wrappedValue: RemoteGoalStore(
+            acceptsSyntheticOperations: offline && HostLaunchRuntime.arguments.contains("--remote-interactive-replay"),
+            provider: providers?.goals, namespaceAccount: providers?.scope.accountID, profileID: providers?.scope.profileID))
+        managementAvailable = offline && !HostLaunchRuntime.arguments.contains("--remote-home-management-disabled-fixture")
+        projectSortingAvailable = offline && HostLaunchRuntime.arguments.contains("--remote-project-sort-menu-fixture")
+    }
     @ObservedObject var notificationNavigation: FrontendNotificationNavigation
     @ObservedObject private var notifications = FrontendNotificationDelivery.shared
     @AppStorage(RemoteConnectionPreferences.storageKey) private var connectionData = Data()
@@ -5451,6 +6430,11 @@ private struct RemoteTaskFixturePage: View {
     @State private var unavailableMenuAction: OfficialTextKey?
     @State private var showsRemoteSettings = false
     @State private var showsArchivedTasks = false
+    @ObservedObject private var externalRequestResponses: CodexRequestResponseStore
+    @ObservedObject private var directory: CodexDirectoryStore
+    @ObservedObject private var externalMetadata: CodexTaskMetadataStore
+    @State private var activeMetadataScope: CodexMessageScope?
+    @State private var visibleMetadataScopes: Set<CodexMessageScope> = []
     @State private var rowRenameTarget: RemoteListRowActionTarget?
     @State private var rowRenameTitle = ""
     @State private var rowActionFailed = false
@@ -5458,12 +6442,11 @@ private struct RemoteTaskFixturePage: View {
     @StateObject private var listCheckpoint = RemoteListCheckpointOwner()
     @State private var didRestoreListPreferences = false
     @Environment(\.scenePhase) private var listScenePhase
-    private let projectSortingAvailable = HostLaunchRuntime.arguments.contains("--remote-project-sort-menu-fixture")
+    private let projectSortingAvailable: Bool
     // Explicit preview layout/capability inputs, not inferred from device size.
     private let homeLayout: RemoteHomeLayout = HostLaunchRuntime.arguments
         .contains("--remote-standard-layout-fixture") ? .standard : .taskList
-    private let managementAvailable = !HostLaunchRuntime.arguments
-        .contains("--remote-home-management-disabled-fixture")
+    private let managementAvailable: Bool
     // Explicit fixture capability for the ordinary task-list layout. Detail
     // and composing destinations own their separate toolbars and actions.
     private let canSearch = !HostLaunchRuntime.arguments.contains("--remote-search-disabled-fixture")
@@ -5473,6 +6456,7 @@ private struct RemoteTaskFixturePage: View {
     @State private var collapsedDateTitles: Set<String> = []
     @State private var projectsSectionCollapsed = false
     @StateObject private var catalog = RemoteCatalogFixtureStore()
+    @StateObject private var instanceList = CodexTaskListPreviewOwner()
     // Independent draft ownership lives above navigation, keyed by host/thread.
     @StateObject private var composerDrafts = RemoteComposerDraftStore()
     @StateObject private var threadReplay = RemoteThreadReplayStore()
@@ -5496,6 +6480,8 @@ private struct RemoteTaskFixturePage: View {
     // owner callbacks (0x39af1c -> 0x4399c8 -> 0x39e830), not a disclosure link.
     @State private var selectedTask: RemotePreviewTask?
     @State private var newThreadTarget: RemoteNewThreadFixtureTarget?
+    @State private var showsCreationTargets = false
+    private var creation: CodexCreationStore { threadReading.creations }
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     // Scoped identities survive filtering and navigation; titles are presentation only.
     @State private var collapsedSectionIDs: Set<RemoteWorkspaceIdentity> = []
@@ -5538,7 +6524,7 @@ private struct RemoteTaskFixturePage: View {
         let sharedTitle = longLabels
             ? visualText("用于检查工作区标题截断的长名称", "Long workspace title for truncation checks")
             : "UI fixture"
-        let candidates: [RemoteWorkspacePresentation] = [
+        let candidates: [RemoteWorkspacePresentation] = providers != nil ? directory.snapshot.workspaces : [
             .init(id: .init(hostIdentity: "fixture-a", workspaceKey: "ui"), title: sharedTitle),
             .init(id: .init(hostIdentity: "fixture-b", workspaceKey: "ui"), title: sharedTitle),
             .init(id: .init(hostIdentity: "fixture-a", workspaceKey: "layout"), title: "Layout fixture")
@@ -5546,12 +6532,13 @@ private struct RemoteTaskFixturePage: View {
         // Explicit synthetic provider rankings exercise both menu selections.
         // Actual service project timestamps/manual ranks remain provider inputs.
         let ordering = RemoteProjectOrderSnapshot(manual: candidates.map(\.id),
-            lastUpdated: [candidates[2].id, candidates[0].id, candidates[1].id])
+            lastUpdated: providers == nil ? [candidates[2].id, candidates[0].id, candidates[1].id] : candidates.map(\.id))
         let ordered = projectSortingAvailable ? ordering.apply(to: candidates,
             order: projectSort.preference?.order ?? .manual) : candidates
         return RemoteWorkspacePresentation.disambiguated(
-            ordered, selectedHostIdentity: source == "all" ? nil : source,
-            hostNames: ["fixture-a": "fixture-a", "fixture-b": "fixture-b"]
+            ordered.filter { providers != nil || instanceList.state.instance($0.id.hostIdentity)?.kind == .remote },
+            selectedHostIdentity: source == "all" ? nil : source,
+            hostNames: Dictionary(uniqueKeysWithValues: instanceList.state.instances.map { ($0.id, $0.name) })
         ) { host, subtitle in
             OfficialText.format(.remoteWorkspaceSubtitleWithHost, arguments: [host, subtitle])
         }.filter { workspace in
@@ -5584,11 +6571,11 @@ private struct RemoteTaskFixturePage: View {
         // 2930x3a1874..0x3a189c: independent trailing overlay after metrics.
         .overlay(alignment: .trailing) {
             RecoveredRemoteProjectNewThreadButton {
-                newThreadTarget = .init(
-                    scope: .init(hostID: workspace.id.hostIdentity,
-                        workspaceDirectory: "/fixtures/" + workspace.id.workspaceKey, projectID: nil),
-                    title: workspace.title)
+                if let target = creation.targets.first(where: { $0.destination.hostID == workspace.id.hostIdentity && $0.workspaceKey == workspace.id.workspaceKey }), target.available {
+                    newThreadTarget = suppliedNewTarget(target)
+                }
             }
+            .disabled(creation.targets.first(where: { $0.destination.hostID == workspace.id.hostIdentity && $0.workspaceKey == workspace.id.workspaceKey })?.available != true)
             .accessibilityLabel(visualText("在项目中新建任务", "New task in project") + " " + workspace.title)
             .accessibilityIdentifier("remote-new-thread-" + workspace.id.hostIdentity + "-" + workspace.id.workspaceKey)
             .padding(.trailing, 20)
@@ -5597,23 +6584,14 @@ private struct RemoteTaskFixturePage: View {
         .listRowInsets(EdgeInsets())
     }
 
-    // Synthetic dates are explicit adapter inputs, independent of activity,
-    // project membership and official service timestamp generation.
-    private static let datedFixtureTasks: [RemotePreviewTask] = {
-        let calendar = Calendar.autoupdatingCurrent
-        let anchor = calendar.startOfDay(for: Date()).addingTimeInterval(12 * 3600)
-        let ages = [0, 1, 2, 7, 8, 30, 0, 1, 8, 31, 40, 2, 0, 7]
-        return (RemotePreviewTask.samples + RemotePreviewTask.cloudSamples).enumerated().map { index, input in
-            var task = input
-            let date = calendar.date(byAdding: .day, value: -ages[index % ages.count], to: anchor)!
-                .addingTimeInterval(-Double(index))
-            task.sortDate = date
-            task.updatedAt = date
-            return task
-        }
-    }()
     private func openPendingNotification() {
         guard let target = notificationNavigation.target else { return }
+        if let hostID = target.hostID, instanceList.state.instance(hostID) != nil {
+            switch instanceList.state.phase(hostID) {
+            case .idle, .loading: return
+            default: break
+            }
+        }
         guard let task = allTasks.first(where: { $0.id.host == target.hostID && $0.id.thread == target.conversationID }) else {
             notificationNavigation.finish(false)
             return
@@ -5631,18 +6609,82 @@ private struct RemoteTaskFixturePage: View {
         projectedTasks.filter { !isArchived($0) }
     }
     private func isArchived(_ task: RemotePreviewTask) -> Bool {
-        threadMetadata.snapshot(.init(hostID: task.id.host, threadID: task.id.thread)).isArchived == true
+        if providers != nil { return externalMetadata.snapshot(metadataScope(task))?.isArchived ?? task.isArchived }
+        return threadMetadata.snapshot(.init(hostID: task.id.host, threadID: task.id.thread)).isArchived == true
+    }
+    private func metadataScope(_ task: RemotePreviewTask) -> CodexMessageScope {
+        threadReading.messages.scope(instanceID: task.id.host, threadID: task.id.thread)
+    }
+    private var archiveAvailable: Bool {
+        providers.map { $0.metadata != nil && $0.list is any CodexArchivedTaskListProviding } ?? managementAvailable
+    }
+    private var metadataStatusScope: CodexMessageScope? {
+        if let scope = activeMetadataScope, let entry = externalMetadata.entries[scope], entry.phase != .accepted && entry.phase != .idle { return scope }
+        if let scope = externalMetadata.entries.first(where: { $0.value.phase != .accepted && $0.value.phase != .idle })?.key { return scope }
+        return visibleMetadataScopes.first { if case .failed = externalMetadata.readPhase($0) { return true }; return false }
+    }
+    private func submitMetadata(_ action: CodexTaskMetadataAction, captured: CodexTaskMetadataSnapshot) {
+        activeMetadataScope = captured.scope
+        let operation = CodexTaskMetadataOperation(id: UUID(), sessionID: threadReading.metadataSessionID,
+            baseRevision: captured.revision, captured: captured, action: action)
+        if !externalMetadata.begin(operation) { rowActionFailed = true }
+    }
+    private func suppliedNewTarget(_ target: CodexCreationTarget) -> RemoteNewThreadFixtureTarget {
+        .init(scope: .init(hostID: target.destination.hostID, workspaceDirectory: target.destination.workspaceDirectory, projectID: target.destination.projectID),
+              title: target.title, catalogID: target.id)
     }
     private var projectedTasks: [RemotePreviewTask] {
-        (threadReplay.createdThreads.map(RemotePreviewTask.created) + Self.datedFixtureTasks).map { original in
+        //Canonical rows replace the same accepted local repository identity;
+        //refreshing cannot duplicate a just-created task in the list.
+        let supplied = Set(instanceList.state.items.map(\.id))
+        return (threadReplay.createdThreads.map { RemotePreviewTask.created($0, authoritative: providers != nil) }.filter { !supplied.contains($0.id) } + instanceList.state.items)
+            .filter { instanceList.state.instance($0.id.host) != nil }.map { original in
             var task = original
             let metadata = threadMetadata.snapshot(.init(hostID: task.id.host, threadID: task.id.thread))
             task.title = metadata.title ?? task.title
             task.isPinned = metadata.isPinned ?? task.isPinned
-            task.connected = original.connected && (connections?.isEnabled(task.id.host) ?? false)
+            if providers != nil, let supplied = externalMetadata.snapshot(metadataScope(task)) {
+                task.title = supplied.title; task.isPinned = supplied.isPinned; task.isArchived = supplied.isArchived
+                if task.activity == .idle || task.activity == .unread { task.activity = supplied.isUnread ? .unread : .idle }
+            }
+            if task.readsOrdinaryMessages, let target = creation.targets.first(where: { $0.destination.hostID == task.id.host && $0.isInstanceDefault && $0.available }) {
+                task.newThreadTarget = suppliedNewTarget(target)
+            }
+            let instance = instanceList.state.instance(task.id.host)
+            task.connected = original.connected && (providers != nil ? instance?.available == true : (instance?.permitsConnection(
+                remotePreference: connections?.isEnabled(task.id.host)) ?? false))
+            //This provider supplies unassigned Cloud items.2933374c8 chooses
+            //Recents before examining directory. Pinned remains higher priority;
+            //earlier canonical project/custom assignment is not supplied here.
+            if providers == nil && instance?.kind == .cloud && !task.isPinned {
+                task.isRecent = true; task.isWithoutWorkspace = false; task.workspaceKey = nil
+            }
             let state = threadReplay.snapshot(.init(hostID: task.id.host, threadID: task.id.thread))
-            if threadReplay.isEnabled, let turn = state.turns.last {
+            if threadReplay.canOperate(.init(hostID: task.id.host, threadID: task.id.thread)), let turn = state.turns.last {
                 task.activity = turn.isActive ? .running : turn.phase == .failed ? .failed : .idle
+            }
+            let requestScope = threadReading.messages.scope(instanceID: task.id.host, threadID: task.id.thread)
+            if providers != nil, let snapshot = threadReading.messages.state.snapshot(requestScope) {
+                if let last = snapshot.turns.last {
+                    if last.status == .running { task.activity = .running }
+                    else if last.status == .failure { task.activity = .failed }
+                    else if task.activity == .running { task.activity = .idle }
+                }
+                if let current = snapshot.requestState {
+                    switch current {
+                    case .none: task.ordinaryRequest = nil; task.pending = nil
+                    case .pending(let id, let revision, let kind):
+                        task.ordinaryRequest = .init(id: id, revision: revision, kind: kind == .approval ? .approval : .input)
+                        task.pending = kind == .approval ? .approval : .userInput
+                    }
+                }
+            }
+            if let reference = task.ordinaryRequest {
+                let supplied = providers?.requestResponses != nil ? externalRequestResponses.snapshot(requestScope) : threadReading.requests.snapshot(requestScope)
+                let noCurrentRequest = threadReading.messages.state.snapshot(requestScope)?.requestState == .some(.none)
+                if (providers == nil && state.hasResolvedOrdinary(reference)) || (supplied?.identity.id == reference.id && (supplied?.identity.revision ?? -1) >= reference.revision && supplied?.status != .pending) || noCurrentRequest {
+                    task.pending = nil
+                }
             }
             // Match this fixture's active request, never any historical receipt.
             if task.pending == .approval && state.resolvedApprovals.contains(where: {
@@ -5662,7 +6704,7 @@ private struct RemoteTaskFixturePage: View {
             if task.activity == .idle || task.activity == .unread, let unread = metadata.isUnread {
                 task.activity = unread ? .unread : .idle
             }
-            if task.activity == .idle && notifications.unreadTargets.contains(.init(kind: .remote,
+            if providers == nil && task.activity == .idle && notifications.unreadTargets.contains(.init(kind: .remote,
                 hostID: task.id.host, conversationID: task.id.thread)) { task.activity = .unread }
             return task
         }
@@ -5737,36 +6779,41 @@ private struct RemoteTaskFixturePage: View {
     private func isNoWorkspaceCollapsed(_ host: String) -> Bool {
         !search.hasQuery && collapsedNoWorkspaceHosts.contains(host)
     }
-    // Synthetic capability input, independent of the fetched task count.
-    private let cloudFixtureEnabled = HostLaunchRuntime.arguments.contains("--remote-cloud-fixture")
+    private var soleCloudID: String? {
+        instanceList.state.instances.count == 1 && instanceList.state.instances.first?.kind == .cloud
+            ? instanceList.state.instances.first?.id : nil
+    }
     private var sourceChoices: [RecoveredRemoteHostFilterRow.Choice] {
-        // Explicit fixture hostItems ordering. The official row enumerates
-        // supplied hosts; producer capability/sort policy remains partial.
-        var choices: [RecoveredRemoteHostFilterRow.Choice] = [
-            .init(id: "all", title: OfficialText.text(.remoteAllThreads), icon: nil)
-        ]
-        if cloudFixtureEnabled {
-            choices.append(.init(id: RemotePreviewTask.cloudFixtureHostID,
-                title: OfficialText.text(.remoteCloudSource), icon: "cloud"))
+        let instances = instanceList.state.instances
+        let remoteIDs = instances.filter { $0.kind == .remote }.map(\.id)
+        var remoteOrder = (providers == nil ? (connections?.ordered(remoteIDs) ?? remoteIDs) : remoteIDs).makeIterator()
+        let ordered = instances.map { instance in
+            guard instance.kind == .remote, let id = remoteOrder.next() else { return instance }
+            return instances.first { $0.id == id } ?? instance
         }
-        // Explicit host snapshot inputs, independent of user enablement and
-        // per-thread transport/activity. No live availability service is claimed.
         let stateName = HostLaunchRuntime.arguments.first { $0.hasPrefix("--remote-host-status-fixture=") }
             .map { String($0.dropFirst("--remote-host-status-fixture=".count)) } ?? "connected"
-        choices.append(.init(id: "fixture-a", title: "fixture-a", icon: "laptop",
-            availability: .online(.connected), showsStatusIndicator: true,
-            isUserEnabled: connections?.isEnabled("fixture-a")))
-        choices.append(.init(id: "fixture-b",
-            title: HostLaunchRuntime.arguments.contains("--remote-source-long-title-fixture")
-                ? "fixture-b · Secondary" : "fixture-b", icon: "desktop",
-            availability: RemoteHostAvailability.fixture(stateName), showsStatusIndicator: true,
-            isUserEnabled: connections?.isEnabled("fixture-b")))
-        let byID = Dictionary(uniqueKeysWithValues: choices.map { ($0.id, $0) })
-        let availableIDs = choices.filter { $0.id != "all" }.map(\.id)
-        // Preference failure is not an empty host catalog. Preserve supplied
-        // membership and surface the error while mutation admission stays closed.
-        let ordered = connections?.ordered(availableIDs) ?? availableIDs
-        return [choices[0]] + ordered.compactMap { byID[$0] }
+        var choices: [RecoveredRemoteHostFilterRow.Choice] = soleCloudID == nil
+            ? [.init(id: "all", title: OfficialText.text(.remoteAllThreads), icon: nil)] : []
+        for instance in ordered {
+            let loading: Bool
+            switch instanceList.state.phase(instance.id) { case .idle, .loading: loading = true; default: loading = false }
+            //Independent request-state projection into the recovered selector
+            //indicator; it does not claim a real device connection state.
+            let progress: RemoteHostAvailability? = providers != nil && (directory.loading || loading) ? .determining : nil
+            if instance.kind == .cloud {
+                choices.append(.init(id: instance.id, title: providers == nil ? OfficialText.text(.remoteCloudSource) : instance.name, icon: instance.symbol,
+                    availability: progress, showsStatusIndicator: progress != nil))
+            } else {
+                choices.append(.init(id: instance.id,
+                    title: instance.id == "fixture-b" && HostLaunchRuntime.arguments.contains("--remote-source-long-title-fixture")
+                        ? "fixture-b · Secondary" : instance.name, icon: instance.symbol,
+                    availability: providers == nil ? (instance.id == "fixture-a" ? .online(.connected) : RemoteHostAvailability.fixture(stateName)) : progress,
+                    showsStatusIndicator: providers == nil || progress != nil,
+                    isUserEnabled: providers == nil ? connections?.isEnabled(instance.id) : instance.available))
+            }
+        }
+        return choices
     }
     // 293 default branch 0x39653c -> Color.blue -> list field +0x118 ->
     // CodexTaskRowV2.unreadBadgeColor. Fixture has no profile/theme assignment.
@@ -5859,18 +6906,28 @@ private struct RemoteTaskFixturePage: View {
         }
         .padding(.vertical, 8)
     }
-    private var rowActionCapabilities: RemoteListRowCapabilities {
+    private func rowActionCapabilities(_ task: RemotePreviewTask) -> RemoteListRowCapabilities {
+        if providers != nil {
+            let scope = metadataScope(task), snapshot = externalMetadata.snapshot(scope)
+            var actions: Set<RemoteListRowAction> = [.copyID]
+            if let rights = snapshot?.capabilities {
+                if rights.canPin { actions.insert(.pin) }; if rights.canRename { actions.insert(.rename) }
+                if rights.canArchive { actions.insert(.archive) }; if rights.canSetReadStatus { actions.insert(.readStatus) }
+            }
+            return .init(availableActions: actions, mutationsEnabled: !externalMetadata.locked(scope),
+                allowsArchiveSwipe: snapshot?.capabilities.canArchive == true && !externalMetadata.locked(scope), allowsThreadPreview: false)
+        }
         //Explicit local provider capabilities, not connected-derived rights.
         //The original unnamed discriminator/busy/activity gates remain in the
         //evidence ledger. A future service supplies these inputs independently.
-        let fixture = HostLaunchRuntime.arguments.contains("--offline-fixture")
+        let fixture = providers == nil && HostLaunchRuntime.arguments.contains("--offline-fixture")
         return .init(availableActions: fixture ? [.pin, .rename, .readStatus, .copyID, .archive] : [.copyID],
             mutationsEnabled: threadMetadata.isEnabled,
             allowsArchiveSwipe: fixture && threadMetadata.isEnabled,
             allowsThreadPreview: fixture && threadReplay.isEnabled)
     }
     private func performRowAction(_ action: RemoteListRowAction, target: RemoteListRowActionTarget) {
-        guard rowActionCapabilities.availableActions.contains(action),
+        guard rowActionCapabilities(target.task).availableActions.contains(action),
               let current = projectedTasks.first(where: { $0.id == target.id }), !isArchived(current) else {
             rowActionFailed = true; return
         }
@@ -5878,7 +6935,22 @@ private struct RemoteTaskFixturePage: View {
             UIPasteboard.general.string = target.task.id.thread
             return
         }
-        guard rowActionCapabilities.mutationsEnabled else { rowActionFailed = true; return }
+        if providers != nil {
+            guard let captured = target.capturedMetadata, captured == externalMetadata.snapshot(metadataScope(current)),
+                  !externalMetadata.locked(captured.scope) else { rowActionFailed = true; return }
+            if action == .rename { rowRenameTitle = captured.title; rowRenameTarget = target; return }
+            let mutation: CodexTaskMetadataAction
+            switch action {
+            case .pin: mutation = .setPinned(!captured.isPinned)
+            case .archive: mutation = .setArchived(true)
+            case .readStatus:
+                guard current.activity == .idle || current.activity == .unread else { rowActionFailed = true; return }
+                mutation = .setUnread(!captured.isUnread)
+            default: return
+            }
+            submitMetadata(mutation, captured: captured); return
+        }
+        guard rowActionCapabilities(target.task).mutationsEnabled else { rowActionFailed = true; return }
         if action == .readStatus {
             //The actual source callback captures a complete task. This offline
             //provider adds exact revision/state fencing, not a server schema.
@@ -5910,7 +6982,11 @@ private struct RemoteTaskFixturePage: View {
         } catch { rowActionFailed = true }
     }
     private func commitRowRename(_ target: RemoteListRowActionTarget) {
-        guard rowActionCapabilities.mutationsEnabled,
+        if providers != nil {
+            guard let captured = target.capturedMetadata else { rowActionFailed = true; return }
+            submitMetadata(.rename(rowRenameTitle), captured: captured); return
+        }
+        guard rowActionCapabilities(target.task).mutationsEnabled,
               let current = projectedTasks.first(where: { $0.id == target.id }), !isArchived(current) else {
             rowActionFailed = true; return
         }
@@ -5920,7 +6996,7 @@ private struct RemoteTaskFixturePage: View {
     private func rowPreview(_ task: RemotePreviewTask) -> AnyView {
         //Deferred optional frontend provider. Peeking never selects a task,
         //marks notifications read, prepares replay or reconciles its draft.
-        guard rowActionCapabilities.allowsThreadPreview, !search.hasQuery,
+        guard rowActionCapabilities(task).allowsThreadPreview, !search.hasQuery,
               let current = projectedTasks.first(where: { $0.id == task.id }), !isArchived(current) else {
             return AnyView(EmptyView())
         }
@@ -5928,10 +7004,13 @@ private struct RemoteTaskFixturePage: View {
             composerDrafts: composerDrafts, replay: threadReplay, goals: goals, configurations: configurations))
     }
     private func taskRow(_ task: RemotePreviewTask, isInProject: Bool, isLastInSection: Bool) -> some View {
-        let target = RemoteListRowActionTarget(task: task,
+        let target = RemoteListRowActionTarget(capturedMetadata: providers == nil ? nil : externalMetadata.snapshot(metadataScope(task)), task: task,
             revision: threadMetadata.snapshot(.init(hostID: task.id.host, threadID: task.id.thread)).revision)
-        let capabilities = rowActionCapabilities
-        return Button { selectedTask = task } label: {
+        let capabilities = rowActionCapabilities(task)
+        return Button {
+            if HostLaunchRuntime.arguments.contains("--codex-creation-test-controls") { NSLog("[CreationTap] task row action") }
+            selectedTask = task
+        } label: {
             Group {
                 if isPriorityModeActive {
                     priorityRow(for: task)
@@ -5960,6 +7039,13 @@ private struct RemoteTaskFixturePage: View {
         }
         // Gesture admission is an independent host adapter; original inherited
         // button style / selection appearance is not fully recovered.
+        .onAppear {
+            guard providers != nil else { return }
+            let scope = metadataScope(task); visibleMetadataScopes.insert(scope)
+            externalMetadata.activate(scope, session: threadReading.metadataSessionID)
+            externalMetadata.load(scope, session: threadReading.metadataSessionID)
+        }
+        .onDisappear { visibleMetadataScopes.remove(metadataScope(task)) }
         .buttonStyle(RemoteListTaskTapStyle())
         // Navigation destination state is the fixture's selection source.
         // Official selected-thread lifetime is not inferred from this.
@@ -6019,15 +7105,18 @@ private struct RemoteTaskFixturePage: View {
     }
 
     private var showsProjectsSection: Bool {
-        // 293 producer0x333094..0x3332f4 inserts the standalone title before
-        // the first workspace/project. This fixture always has project groups;
-        // catalog-request-only insertion position remains a separate boundary.
-        !visibleWorkspaces.isEmpty
+        // 293 producer0x333180..0x3332f4 also inserts Projects for supplied
+        // catalog requests alone. Search39c240..39c278 preserves these requests
+        // independently of matching workspace/task rows.
+        !visibleWorkspaces.isEmpty || !visibleCatalogRequests.isEmpty
     }
 
     private var visibleCatalogRequests: [RemoteProjectCatalogRequest] {
         // Provider ordering/filter placement remains an explicit fixture policy.
-        catalog.requests.filter { source == "all" || source == $0.id }
+        guard providers == nil else { return [] }
+        return catalog.requests.filter {
+            instanceList.state.instance($0.id)?.kind == .remote && (source == "all" || source == $0.id)
+        }
     }
 
     private var hidesProjectSections: Bool {
@@ -6081,15 +7170,13 @@ private struct RemoteTaskFixturePage: View {
         .listRowInsets(EdgeInsets())
     }
 
-    private var recentNewThreadTarget: RemoteNewThreadFixtureTarget? {
-        // Explicit fixture targets for each query, not a recovered host-selection
-        // algorithm. Official multi-host merge/arbitration remains unresolved.
-        let targetHosts = ["all": "fixture-a", "fixture-a": "fixture-a", "fixture-b": "fixture-b",
-                           RemotePreviewTask.cloudFixtureHostID: RemotePreviewTask.cloudFixtureHostID]
-        return targetHosts[source].map { host in
-            .init(scope: .init(hostID: host, workspaceDirectory: nil, projectID: nil),
-                  title: OfficialText.text(.remoteRecentSection))
-        }
+    private var recentCreationTargets: [CodexCreationTarget] {
+        creation.targets.filter { $0.isInstanceDefault && (source == "all" || $0.destination.hostID == source) }
+    }
+    private func openRecentCreation() {
+        if recentCreationTargets.count == 1, let target = recentCreationTargets.first, target.available {
+            newThreadTarget = suppliedNewTarget(target)
+        } else { showsCreationTargets = true }
     }
 
     private var recentHeader: some View {
@@ -6101,7 +7188,7 @@ private struct RemoteTaskFixturePage: View {
             RecoveredRemotePlainSectionHeaderLabel(
                 title: OfficialText.text(.remoteRecentSection),
                 isExpanded: !isRecentCollapsed, fadesWhenExpanded: true,
-                hasNewThreadAction: recentNewThreadTarget != nil)
+                hasNewThreadAction: !recentCreationTargets.isEmpty)
         }
         .buttonStyle(.plain)
         .accessibilityValue(isRecentCollapsed
@@ -6109,10 +7196,11 @@ private struct RemoteTaskFixturePage: View {
         .accessibilityIdentifier("remote-section-recent")
         .modifier(RecoveredRemoteTaskRowMetrics())
         .overlay(alignment: .trailing) {
-            if let target = recentNewThreadTarget {
-                RecoveredRemoteProjectNewThreadButton { newThreadTarget = target }
-                    .accessibilityLabel(visualText("新建任务", "New task") + " " + (target.scope.hostID ?? ""))
+            if !recentCreationTargets.isEmpty {
+                RecoveredRemoteProjectNewThreadButton(action: openRecentCreation)
+                    .accessibilityLabel(visualText("新建任务", "New task"))
                     .accessibilityIdentifier("remote-new-thread-recent")
+                    .disabled(creation.catalogLoading)
                     .padding(.trailing, 20)
             }
         }
@@ -6140,28 +7228,38 @@ private struct RemoteTaskFixturePage: View {
         .listRowInsets(EdgeInsets())
     }
 
+    private var homeCreationState: RemoteComposerSubmissionState {
+        composerDrafts.submissionState(.init(canSubmit: creation.target(homeComposerState.destination)?.available == true &&
+            homeComposerState.destinationHostID.map { eligibleDestinationHosts.contains($0) } == true && !creation.catalogLoading && !creation.catalogFailure,
+            isSending: creation.busy.contains(.home)), in: .home)
+    }
+    private func completeHomeCreation(_ state: RemoteThreadReplayState) {
+        homeComposerState.creationAccepted(); selectedTask = .created(state, authoritative: providers != nil)
+    }
+    private func commitHomeCreation(_ operation: CodexCreationOperation, _ receipt: CodexCreationReceipt) -> Result<RemoteThreadReplayState,RemoteComposerSubmissionFailure> {
+        threadReplay.acceptCreation(operation, receipt: receipt, drafts: composerDrafts)
+    }
+    private func retryHomeCreation() {
+        creation.retry(.home, session: homeComposerSession, draft: composerDrafts.snapshot(in: .home),
+            commit: commitHomeCreation, completed: completeHomeCreation)
+    }
     private func submitHomeDraft(_ input: RemoteComposerSubmission) -> Bool {
-        var event = input
-        event.configuration = .init(model: .fixture, permission: .preset(.askPermissions))
-        let state = composerDrafts.submissionState(RemoteComposerSubmissionState(), in: .home)
-        if threadReplay.isEnabled {
-            switch threadReplay.createThread(event, scope: .home, session: homeComposerSession,
-                drafts: composerDrafts, state: state, destination: homeComposerState.destination,
-                eligibleHosts: eligibleDestinationHosts) {
-            case .success(let created):
-                homeComposerState.focusChanged(false)
-                selectedTask = .created(created)
-                return true
-            case .failure(let failure): homeSubmissionFailure = failure
-            }
-        } else {
-            homeSubmissionFailure = DisconnectedRemoteComposerAdapter().submit(event,
-                currentScope: .home, currentSession: homeComposerSession,
-                currentDraft: composerDrafts.snapshot(in: .home), state: state,
-                currentDestination: homeComposerState.destination)
-        }
-        homeSubmissionUnavailable = true
+        guard let target = creation.target(homeComposerState.destination) else { return false }
+        var event = input; event.configuration = target.configuration
+        creation.submit(event, target: target, draft: composerDrafts.snapshot(in: .home), state: homeCreationState,
+            commit: commitHomeCreation, completed: completeHomeCreation)
         return false
+    }
+    private var homeCreationBar: some View {
+        VStack(spacing: 8) {
+            CodexDirectoryStatus(store: directory, fixture: providers?.directory as? CodexOperationPreviewProvider)
+            if homeComposerState.destination != nil && creation.target(homeComposerState.destination) == nil && !creation.catalogLoading {
+                Text(visualText("所选目标暂不可用，草稿与目标已保留。", "The selected target is unavailable. Your draft and target are kept."))
+                    .font(.footnote).foregroundStyle(.secondary).accessibilityIdentifier("codex-directory-target-unavailable")
+            }
+            CodexCreationStatus(store: creation, scope: .home, session: homeComposerSession, retry: retryHomeCreation)
+            homeComposer.disabled(creation.locked(.home))
+        }
     }
 
     private struct DestinationOption: Identifiable {
@@ -6170,21 +7268,20 @@ private struct RemoteTaskFixturePage: View {
     }
     private var destinationHosts: [RecoveredRemoteHostFilterRow.Choice] {
         HostLaunchRuntime.arguments.contains("--remote-destination-no-hosts-fixture")
-            ? [] : sourceChoices.filter { $0.id != "all" }
+            ? [] : sourceChoices.filter { choice in choice.id != "all" && creation.targets.contains { $0.destination.hostID == choice.id } }
     }
     private var eligibleDestinationHosts: Set<String> {
         let disabledB = HostLaunchRuntime.arguments.contains("--remote-destination-disabled-host-fixture")
-        return Set(destinationHosts.map(\.id).filter { (connections?.isEnabled($0) ?? false) && (!disabledB || $0 != "fixture-b") })
+        return Set(destinationHosts.map(\.id).filter { host in
+            creation.targets.contains { target in target.destination.hostID == host && target.isInstanceDefault && target.available &&
+                (providers != nil || !target.controls.usesComputerConnection || connections?.isEnabled(target.destination.hostID) == true) } &&
+                (!disabledB || host != "fixture-b")
+        })
     }
     private var destinationOptions: [DestinationOption] {
         guard let host = homeComposerState.destinationHostID else { return [] }
-        // Explicit remote-service fixtures. Their identity and eligibility are
-        // independent of source filtering, task loading and display titles.
-        return [
-            .init(id: .init(hostID: host, workspaceDirectory: "/fixtures/ui"), title: "UI fixture"),
-            .init(id: .init(hostID: host, workspaceDirectory: "/fixtures/layout"), title: "Layout fixture"),
-            .init(id: .init(hostID: host, projectID: "fixture-project"), title: "Project fixture")
-        ]
+        return creation.targets.filter { $0.destination.hostID == host && !$0.isInstanceDefault && $0.available }
+            .map { .init(id: $0.destination, title: $0.title) }
     }
     private func selectDestination(_ target: RemoteComposerDestination) {
         homeComposerState.selectDestination(target, eligibleHostIDs: eligibleDestinationHosts)
@@ -6287,7 +7384,7 @@ private struct RemoteTaskFixturePage: View {
     private var homeToolbar: RemoteComposerToolbarConfiguration {
         // Explicit synthetic capabilities for exercising the recovered toolbar.
         // No current account/host capability or connected audio service is inferred.
-        let enabled = !HostLaunchRuntime.arguments.contains("--remote-home-toolbar-unavailable-fixture")
+        let enabled = providers == nil && !HostLaunchRuntime.arguments.contains("--remote-home-toolbar-unavailable-fixture")
         return RemoteComposerToolbarConfiguration(
             state: RemoteComposerAccessoryState(hostSupportsRemoteAttachments: enabled,
                 allowsAttachments: true, allowsSupplementaryWhisperButton: enabled,
@@ -6356,10 +7453,10 @@ private struct RemoteTaskFixturePage: View {
         if hasHomeDraft {
             RecoveredRemoteOrdinaryFieldSurface {
                 RecoveredRemoteComposerField(drafts: composerDrafts, scope: .home,
-                    placeholder: OfficialText.text(.remoteHomeComposerPlaceholder),
+                    placeholder: OfficialText.text(.remoteHomeComposerPlaceholder).replacingOccurrences(of: "Codex", with: providers?.productName ?? "Codex"),
                     textColor: officialVisualColor("ChatGPT/text/primary"),
                     placeholderColor: officialVisualColor("ChatGPT/text/tertiary"),
-                    sessionID: homeComposerSession, submissionState: RemoteComposerSubmissionState(),
+                    sessionID: homeComposerSession, submissionState: homeCreationState,
                     sendSymbol: officialVisualSymbol("arrow-up-lg-button"),
                     stopSymbol: officialVisualSymbol("stop-sm-fill"),
                     queueSymbol: officialVisualSymbol("follow-up"),
@@ -6407,6 +7504,56 @@ private struct RemoteTaskFixturePage: View {
         }
     }
 
+    @ViewBuilder private var instanceLoadRows: some View {
+        if source != "all" && instanceList.state.instance(source) == nil {
+            Text(visualText("当前实例暂不可用，保留了选择和草稿。", "The selected instance is unavailable. Your selection and draft are kept."))
+                .foregroundStyle(.secondary).accessibilityIdentifier("codex-directory-source-unavailable")
+        }
+        if creation.catalogFailure {
+            HStack {
+                Text(visualText("新建目标加载失败", "Creation targets could not be loaded"))
+                Button(OfficialText.text(.remoteProjectCatalogRetry)) {
+                    creation.load(scope: instanceList.state.scope, instances: instanceList.state.instances, force: true)
+                }.accessibilityIdentifier("codex-creation-catalog-retry")
+            }.modifier(RecoveredRemoteTaskRowMetrics()).listRowInsets(EdgeInsets())
+        }
+        ForEach(instanceList.state.scopedInstances(source)) { instance in
+            switch instanceList.state.phase(instance.id) {
+            case .idle, .loading:
+                if providers == nil { HStack(spacing: 8) {
+                    ProgressView()
+                    Text(instance.kind == .cloud ? OfficialText.text(.remoteCloudSource) : instance.name)
+                    Text(visualText("正在加载任务", "Loading tasks")).foregroundStyle(.secondary)
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityIdentifier("codex-list-loading-" + instance.id)
+                .modifier(RecoveredRemoteTaskRowMetrics())
+                .listRowInsets(EdgeInsets()).listRowSeparator(.hidden) }
+            case .failed:
+                HStack {
+                    Text((instance.kind == .cloud ? OfficialText.text(.remoteCloudSource) : instance.name) +
+                        visualText("任务加载失败", " tasks could not be loaded"))
+                        .foregroundStyle(.secondary).accessibilityIdentifier("codex-list-error-" + instance.id)
+                    Spacer()
+                    Button(OfficialText.text(.remoteProjectCatalogRetry)) { instanceList.load(instance.id) }
+                        .accessibilityIdentifier("codex-list-retry-" + instance.id)
+                }
+                .modifier(RecoveredRemoteTaskRowMetrics())
+                .listRowInsets(EdgeInsets()).listRowSeparator(.hidden)
+            case .loaded: EmptyView()
+            }
+        }
+        if instanceList.state.instances.isEmpty {
+            Text(visualText("暂无可用实例", "No instances available"))
+                .accessibilityIdentifier("codex-list-no-instances")
+        } else if instanceList.state.hasFinished(source), !tasks.contains(where: { source == "all" || $0.id.host == source }) {
+            Text(search.hasQuery ? visualText("没有匹配的任务", "No matching tasks") : visualText("暂无任务", "No tasks yet"))
+                .foregroundStyle(.secondary)
+                .accessibilityIdentifier(search.hasQuery ? "codex-list-no-results" : "codex-list-empty")
+                .modifier(RecoveredRemoteTaskRowMetrics()).listRowInsets(EdgeInsets()).listRowSeparator(.hidden)
+        }
+    }
+
     private var browsingContent: some View {
         List {
             if listCheckpoint.storageFailed {
@@ -6414,7 +7561,7 @@ private struct RemoteTaskFixturePage: View {
                     .font(.footnote).foregroundStyle(.secondary)
                     .accessibilityIdentifier("remote-list-checkpoint-error")
             }
-            if connections == nil {
+            if connections == nil && (source == "all" || instanceList.state.instance(source)?.kind == .remote) {
                 Text(visualText("连接偏好无法读取，设备目录仍保留。连接相关操作暂不可用。",
                     "Connection preferences could not be read. The device catalog is retained; connection operations are unavailable."))
                     .font(.footnote).foregroundStyle(.secondary)
@@ -6433,13 +7580,14 @@ private struct RemoteTaskFixturePage: View {
                     //293 actual caller399878/7cfc8d0 writes16/12.
                     // Separate conditional top12 (owner+170) remains unclosed.
                     horizontalContentInset: 16,
-                    bottomPadding: 12)
+                    bottomPadding: 12, soleCloudID: soleCloudID)
                     .background { RemoteListViewportMarker(anchor: .top, owner: listCheckpoint,
                         query: .init(source: source, grouping: grouping.rawValue)) }
                     .id(RemoteListAnchor.top)
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.hidden)
             }
+            instanceLoadRows
             if !pinnedTasks.isEmpty {
                 Section {
                     if !isPinnedCollapsed {
@@ -6532,9 +7680,22 @@ private struct RemoteTaskFixturePage: View {
         // Identify the list before attaching its sibling input bar. Applying
         // this identifier outside SafeAreaBar overrides child control IDs.
         .accessibilityIdentifier("remote-task-list")
+        .refreshable {
+            if directory.usesService { await directory.refresh() }
+            await instanceList.refresh()
+            if providers != nil { for scope in visibleMetadataScopes {
+                externalMetadata.load(scope, session: threadReading.metadataSessionID, force: true)
+            } }
+        }
         .modifier(RecoveredRemoteListReading(owner: listCheckpoint,
             query: RemoteListReadingKey(source: source, grouping: grouping.rawValue),
-            searching: search.isSearching || homeComposerState.mode != .browsing))
+            searching: search.isSearching || homeComposerState.mode != .browsing,
+            restorationReady: instanceList.state.scopedInstances(source).allSatisfy { instance in
+                switch instanceList.state.phase(instance.id) {
+                case .idle, .loading: return false
+                default: return true
+                }
+            }))
     }
 
     var body: some View {
@@ -6550,16 +7711,43 @@ private struct RemoteTaskFixturePage: View {
                 }
                 .allowsHitTesting(homeComposerState.mode != .composing)
                 .accessibilityHidden(homeComposerState.mode == .composing)
-            if homeComposerState.mode == .composing { destinationControls }
+            if homeComposerState.mode == .composing { destinationControls.disabled(creation.locked(.home)) }
         }
         .background(Color(uiColor: officialVisualColor("OneOff/MainSurfacePrimary")))
-        .modifier(RecoveredRemoteBottomBar(bar: homeComposer))
+        .modifier(RecoveredRemoteBottomBar(bar: VStack(spacing: 8) {
+            if providers?.metadata != nil, let scope = metadataStatusScope {
+                CodexMetadataStatus(store: externalMetadata, scope: scope, session: threadReading.metadataSessionID)
+                    .padding(.horizontal, 16)
+            }
+            if providers?.requestResponses != nil,
+               let scope = externalRequestResponses.entries.first(where: { $0.value.phase != .accepted && $0.value.phase != .idle })?.key {
+                CodexRequestResponseStatus(store: externalRequestResponses, scope: scope, readingStore: threadReading, reference: nil)
+                    .padding(.horizontal, 16)
+            }
+            homeCreationBar
+        }))
         .onAppear(perform: restoreListPreferences)
+        .task {
+            directory.load()
+            instanceList.loadInitial()
+            creation.load(scope: instanceList.state.scope, instances: instanceList.state.instances)
+        }
+        .onChange(of: instanceList.state.items) { _, _ in openPendingNotification() }
+        .onChange(of: externalMetadata.snapshots) { old, new in
+            //An accepted restore can finish after its sheet closes. Refresh the
+            //active directory only for an actual known archive transition.
+            let hosts = Set(new.values.compactMap { value -> String? in
+                guard let before = old[value.scope], before.isArchived != value.isArchived else { return nil }
+                return value.scope.instanceID
+            })
+            for host in hosts { instanceList.load(host, refreshIfLoading: true) }
+        }
         .onChange(of: savedListPreferences) { _, preferences in
             if didRestoreListPreferences { listCheckpoint.savePreferences(preferences) }
         }
         .onChange(of: listScenePhase) { _, phase in
             if phase != .active { listCheckpoint.flush() }
+            else if directory.usesService { Task { await directory.refresh(); await instanceList.refresh() } }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
             homeComposerState.keyboardWillHide()
@@ -6568,6 +7756,7 @@ private struct RemoteTaskFixturePage: View {
             homeComposerState.resetKeyboardDismissal()
         }
         .onDisappear {
+            creation.retire(.home, session: homeComposerSession)
             homeComposerSession = UUID()
             homePluginEdit = nil
             attachmentPresenter.dismiss(animated: false)
@@ -6622,8 +7811,12 @@ private struct RemoteTaskFixturePage: View {
         }
         .onGeometryChange(for: Double.self) { Double($0.size.width) } action: { contentWidth = $0 }
         .onAppear {
+            creation.activate(.home, session: homeComposerSession)
             threadReplay.reconcileCreationDraft(.home, drafts: composerDrafts)
             openPendingNotification()
+        }
+        .onChange(of: instanceList.state.instances) { _, instances in
+            creation.load(scope: instanceList.state.scope, instances: instances)
         }
         .onChange(of: notificationNavigation.target) { _, _ in openPendingNotification() }
         .onChange(of: selectedTask?.id) { _, id in
@@ -6636,35 +7829,41 @@ private struct RemoteTaskFixturePage: View {
                     revision: threadMetadata.snapshot(scope).revision) }
                 catch { rowActionFailed = true }
             }
-            notifications.markRead(.init(kind: .remote, hostID: id.host, conversationID: id.thread))
+            if providers == nil { notifications.markRead(.init(kind: .remote, hostID: id.host, conversationID: id.thread)) }
         }
         .navigationDestination(isPresented: $showsRemoteSettings) {
             RecoveredRemoteContextUsageSettings()
         }
         .sheet(isPresented: $showsArchivedTasks) {
             RemoteArchivedTasksPage(tasks: projectedTasks.filter(isArchived),
-                choices: sourceChoices, metadata: threadMetadata)
+                choices: sourceChoices, metadata: threadMetadata, soleCloudID: soleCloudID, providers: providers, readingStore: threadReading)
         }
         .navigationDestination(item: $selectedTask) { task in
             RemoteThreadFixturePage(baseTask: task, metadata: threadMetadata, composerDrafts: composerDrafts, replay: threadReplay, readingStore: threadReading, goals: goals,
                 configurations: configurations).id(task.id)
         }
+        .confirmationDialog(visualText("选择实例", "Choose instance"), isPresented: $showsCreationTargets) {
+            ForEach(recentCreationTargets) { target in
+                Button(target.instanceName) { newThreadTarget = suppliedNewTarget(target) }.disabled(!target.available)
+            }
+            Button(visualText("取消", "Cancel"), role: .cancel) {}
+        }
         .navigationDestination(item: $newThreadTarget) { target in
             RemoteNewThreadFixturePage(target: target, metadata: threadMetadata, composerDrafts: composerDrafts,
-                replay: threadReplay, readingStore: threadReading, goals: goals, configurations: configurations)
+                replay: threadReplay, readingStore: threadReading, goals: goals, configurations: configurations, creation: creation)
                 .id(target.scope)
         }
+        .navigationTitle(providers?.productName ?? "Codex")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if selectedTask == nil && newThreadTarget == nil && !showsRemoteSettings {
-                if !search.isSearching && homeComposerState.mode != .composing {
-                    // CodexContentView305b3c..305c08 -> shared sidebar toolbar.
-                    // Ordinary item uses topBarLeading and sidebar-menu (v540).
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button(action: openMenu) { Image(uiImage: officialVisualIcon("sidebar-menu")) }
-                            .accessibilityLabel(visualText("打开侧栏", "Open sidebar"))
-                            .accessibilityIdentifier("codex-home-open-menu")
-                    }
+            if !search.isSearching && homeComposerState.mode != .composing {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: openMenu) { Image(uiImage: officialVisualIcon("sidebar-menu")) }
+                        .accessibilityLabel(visualText("打开侧栏", "Open sidebar"))
+                        .accessibilityIdentifier("codex-home-open-menu")
                 }
+            }
+            if selectedTask == nil && newThreadTarget == nil && !showsRemoteSettings {
                 ToolbarItem(placement: .principal) {
                     Group {
                         if search.isSearching {
@@ -6678,12 +7877,13 @@ private struct RemoteTaskFixturePage: View {
                                     if value != .priority { grouping = value }
                                     else { unavailableMenuAction = value.label }
                                 }), showsChatsFirst: $showsChatsFirst,
+                                displayName: providers?.productName ?? "Codex",
                                 showsOrganize: !HostLaunchRuntime.arguments.contains("--remote-home-organize-disabled-fixture"),
                                 priorityAvailable: HostLaunchRuntime.arguments.contains("--remote-priority-list-fixture"),
                                 projectSortOrder: projectSortingAvailable ? projectSort.preference?.order : nil,
                                 selectProjectSortOrder: projectSort.select,
-                                presentArchiveList: managementAvailable ? {
-                                    if threadMetadata.isEnabled { showsArchivedTasks = true }
+                                presentArchiveList: archiveAvailable ? {
+                                    if providers != nil || threadMetadata.isEnabled { showsArchivedTasks = true }
                                     else { unavailableMenuAction = .remoteHomeArchived }
                                 } : nil,
                                 presentAddConnection: managementAvailable ? { unavailableMenuAction = .remoteHomeAddConnection } : nil,
@@ -6728,10 +7928,188 @@ private struct RemoteTaskFixturePage: View {
 // reuses HostFilterRow/HeaderV2 and a plain List with searchable/refreshable.
 // The local snapshot provider, single-section grouping and error presentation
 // are independent adapters; official section production remains unresolved.
+//Independent response state presentation. Original cards/forms remain the
+//action consumers; only the provider can resolve a request or advance history.
+//Independent resource availability/status; no original fallback policy claimed.
+private struct CodexDirectoryStatus: View {
+    @ObservedObject var store: CodexDirectoryStore
+    var fixture: CodexOperationPreviewProvider? = nil
+    private var hasFixture: Bool { HostLaunchRuntime.arguments.contains("--codex-directory-fixture") && fixture != nil }
+    var body: some View {
+        if store.failure != nil || hasFixture {
+            VStack(spacing: 4) {
+                if store.failure != nil {
+                    HStack {
+                        Text(visualText("目录更新失败，已保留当前内容。", "Directory update failed. Current content was kept."))
+                        Button(visualText("重试", "Retry")) { Task { await store.refresh() } }
+                            .accessibilityIdentifier("codex-directory-retry")
+                    }.font(.footnote).accessibilityIdentifier("codex-directory-error")
+                }
+                if hasFixture, let fixture {
+                    HStack {
+                        Button("更新目录状态") { fixture.advanceDirectory(); Task { await store.refresh() } }
+                            .accessibilityIdentifier("codex-directory-next").accessibilityValue(String(fixture.directoryStep))
+                        Button("刷新目录") { Task { await store.refresh() } }
+                            .accessibilityIdentifier("codex-directory-refresh").accessibilityValue(store.loading ? "loading" : "ready")
+                    }.buttonStyle(.plain)
+                }
+            }
+        }
+    }
+}
+
+private struct CodexRequestResponseStatus: View {
+    @ObservedObject var store: CodexRequestResponseStore
+    let scope: CodexMessageScope
+    let readingStore: RemoteTranscriptReadingStore
+    let reference: CodexPendingTaskReference?
+    private var session: UUID { readingStore.responseSessionID }
+    private var retryReference: CodexPendingTaskReference? {
+        if let reference { return reference }
+        guard let request = store.snapshot(scope) ?? store.operation(scope)?.captured else { return nil }
+        return .init(id: request.identity.id, revision: request.identity.revision, kind: CodexRequestResponseActionComparison.kind(request))
+    }
+    private var canRetry: Bool {
+        guard !store.locked(scope), let previous = store.operation(scope), let current = store.snapshot(scope),
+              previous.captured == current,
+              readingStore.messages.state.snapshot(scope) != nil else { return false }
+        return previous.action.validates(current)
+    }
+    private func retry() {
+        guard let previous = store.operation(scope), let current = store.snapshot(scope),
+              let history = readingStore.messages.state.snapshot(scope) else { return }
+        let op = CodexRequestResponseOperation(id: UUID(), scope: scope, sessionID: session,
+            historyRevision: history.revision, captured: current, action: previous.action)
+        _ = store.retryRejected(op, currentHistoryRevision: history.revision, commit: readingStore.requestResponseCommit)
+    }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            switch store.phase(scope) {
+            case .pending, .checking:
+                HStack {
+                    ProgressView().accessibilityIdentifier("codex-response-busy")
+                    Text(store.phase(scope) == .checking ? visualText("正在核对响应结果", "Checking response outcome") : visualText("正在提交响应", "Submitting response"))
+                    Button(visualText("取消等待", "Cancel wait")) { store.cancel(scope, session: session) }
+                        .accessibilityIdentifier("codex-response-cancel")
+                }
+            case .rejected:
+                HStack {
+                    Text(visualText("响应未被接受，输入已保留。", "Response was not accepted. Input was kept."))
+                        .accessibilityIdentifier("codex-response-rejected")
+                    Button(visualText("重试", "Retry"), action: retry).disabled(!canRetry)
+                        .accessibilityIdentifier("codex-response-retry")
+                }
+            case .uncertain:
+                HStack {
+                    Text(visualText("响应结果尚未确认，请勿重复提交。", "Response outcome is unknown. Do not resubmit."))
+                        .accessibilityIdentifier("codex-response-uncertain")
+                    Button(visualText("检查结果", "Check outcome")) { _ = store.lookup(scope, session: session, commit: readingStore.requestResponseCommit) }
+                        .accessibilityIdentifier("codex-response-lookup")
+                }
+            case .localCommitFailed:
+                HStack {
+                    Text(visualText("响应已接受，页面状态需要恢复。", "Response accepted. Page state needs recovery."))
+                        .accessibilityIdentifier("codex-response-local-failed")
+                    Button(visualText("重试", "Retry")) { _ = store.retryLocalCommit(scope, session: session, commit: readingStore.requestResponseCommit) }
+                        .accessibilityIdentifier("codex-response-local-retry")
+                }
+            case .idle, .accepted: EmptyView()
+            }
+            if case .failed = store.readPhase(scope) {
+                HStack {
+                    Text(visualText("请求加载失败。", "Request could not be loaded."))
+                    if let retryReference {
+                        Button(visualText("重试", "Retry")) { store.load(scope, reference: retryReference, session: session, force: true) }
+                            .accessibilityIdentifier("codex-response-load-retry")
+                    }
+                }
+            }
+            if let request = store.snapshot(scope), request.status == .pending,
+               !CodexRequestResponseActionComparison.supports(request) {
+                Text(visualText("此表单的响应能力尚未接入。", "Responding to this form is not available."))
+                    .accessibilityIdentifier("codex-response-unsupported")
+            }
+            if store.snapshot(scope)?.status == .expired || store.snapshot(scope)?.status == .withdrawn {
+                Text(visualText("此请求已失效，任务未取消。", "This request is no longer current. The task was not cancelled."))
+                    .accessibilityIdentifier("codex-response-expired")
+            }
+        }.font(.footnote)
+    }
+}
+
+//Independent async status adapter shared by list, detail and archive navigation.
+//The provider owns acceptance; the consumer never changes metadata optimistically.
+private struct CodexMetadataStatus: View {
+    @ObservedObject var store: CodexTaskMetadataStore
+    let scope: CodexMessageScope
+    let session: UUID
+    private var canRetry: Bool {
+        guard !store.locked(scope), let old = store.operation(scope), let current = store.snapshot(scope) else { return false }
+        return old.action.permitted(by: current)
+    }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            switch store.phase(scope) {
+            case .pending, .checking:
+                HStack {
+                    ProgressView().accessibilityIdentifier("codex-metadata-busy")
+                    Text(visualText("正在提交修改", "Submitting change"))
+                    Button(visualText("取消等待", "Cancel wait")) { store.cancel(scope, session: session) }
+                        .accessibilityIdentifier("codex-metadata-cancel")
+                }
+            case .uncertain:
+                HStack {
+                    Text(visualText("修改结果尚未确认。", "Change outcome is unknown."))
+                        .accessibilityIdentifier("codex-metadata-uncertain")
+                    Button(visualText("检查结果", "Check outcome")) { _ = store.lookup(scope, session: session) }
+                        .accessibilityIdentifier("codex-metadata-lookup")
+                }
+            case .rejected:
+                HStack {
+                    Text(visualText("修改未被接受。", "Change was not accepted."))
+                        .accessibilityIdentifier("codex-metadata-rejected")
+                    Button(visualText("重试", "Retry")) {
+                        guard let previous = store.operation(scope), let current = store.snapshot(scope) else { return }
+                        _ = store.retryRejected(.init(id: UUID(), sessionID: session,
+                            baseRevision: current.revision, captured: current, action: previous.action))
+                    }.disabled(!canRetry).accessibilityIdentifier("codex-metadata-retry")
+                }
+            case .localCommitFailed:
+                HStack {
+                    Text(visualText("修改已接受，正在恢复页面。", "Change accepted. Restoring page state."))
+                    Button(visualText("重试", "Retry")) { _ = store.retryLocalCommit(scope, session: session) }
+                        .accessibilityIdentifier("codex-metadata-local-retry")
+                }
+            case .idle, .accepted: EmptyView()
+            }
+            if case .failed = store.readPhase(scope) {
+                HStack {
+                    Text(visualText("任务操作加载失败。", "Task actions could not be loaded."))
+                    Button(visualText("重试", "Retry")) { store.retryRead(scope, session: session) }
+                        .accessibilityIdentifier("codex-metadata-read-retry")
+                }
+            }
+        }.font(.footnote)
+    }
+}
+
 private struct RemoteArchivedTasksPage: View {
+    private let providers: CodexPageProviders?
+    private let readingStore: RemoteTranscriptReadingStore
+    @StateObject private var archiveList: CodexTaskListPreviewOwner
+    @ObservedObject private var externalMetadata: CodexTaskMetadataStore
+    @State private var activeMetadataScope: CodexMessageScope?
+    init(tasks: [RemotePreviewTask], choices: [RecoveredRemoteHostFilterRow.Choice], metadata: RemoteThreadMetadataStore,
+         soleCloudID: String?, providers: CodexPageProviders?, readingStore: RemoteTranscriptReadingStore) {
+        self.tasks = tasks; self.choices = choices; self.metadata = metadata; self.soleCloudID = soleCloudID
+        self.providers = providers; self.readingStore = readingStore
+        _archiveList = StateObject(wrappedValue: CodexTaskListPreviewOwner(providers: providers, archiveMode: true, directory: readingStore.directory))
+        _externalMetadata = ObservedObject(wrappedValue: readingStore.taskMetadata)
+    }
     let tasks: [RemotePreviewTask]
     let choices: [RecoveredRemoteHostFilterRow.Choice]
     @ObservedObject var metadata: RemoteThreadMetadataStore
+    var soleCloudID: String? = nil
     @Environment(\.dismiss) private var dismiss
     @State private var source = "all"
     @State private var query = ""
@@ -6747,13 +8125,28 @@ private struct RemoteArchivedTasksPage: View {
 
     private var visibleTasks: [RemotePreviewTask] {
         let text = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        return tasks.filter { task in
+        let candidates = providers == nil ? tasks : archiveList.state.items.compactMap { original -> RemotePreviewTask? in
+            var task = original
+            let scope = readingStore.messages.scope(instanceID: task.id.host, threadID: task.id.thread)
+            if let canonical = externalMetadata.snapshot(scope) {
+                guard canonical.isArchived else { return nil }
+                task.title = canonical.title; task.isPinned = canonical.isPinned
+            }
+            return task
+        }
+        return candidates.filter { task in
             (source == "all" || task.id.host == source) &&
                 (text.isEmpty || task.title.localizedCaseInsensitiveContains(text))
         }
     }
 
     private func reload() async {
+        if providers != nil {
+            loading = true
+            await archiveList.refresh()
+            loading = false
+            return
+        }
         let request = UUID()
         loadRequest = request
         loading = true
@@ -6767,26 +8160,44 @@ private struct RemoteArchivedTasksPage: View {
 
     private func row(_ task: RemotePreviewTask) -> some View {
         let scope = RemoteComposerDraftScope(hostID: task.id.host, threadID: task.id.thread)
-        let pending = restoring.contains(scope)
+        let externalScope = readingStore.messages.scope(instanceID: task.id.host, threadID: task.id.thread)
+        let pending = providers == nil ? restoring.contains(scope) : externalMetadata.isBusy(externalScope)
         return HStack {
             VStack(alignment: .leading) {
                 Text(task.title).font(.body)
                 Text(task.hostDisplayName ?? task.id.host).font(.footnote).foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            if providers != nil, case .failed = externalMetadata.readPhase(externalScope) {
+                Button(visualText("重试", "Retry")) { externalMetadata.retryRead(externalScope, session: readingStore.metadataSessionID) }
+                    .accessibilityIdentifier("codex-archive-metadata-retry-" + task.key)
+            }
             // Original row button dispatches its unarchive closure (44855c),
             // swapping OAIProgressView/Image in label2ca830 while unarchiving.
-            Button { restoring.insert(scope) } label: {
+            Button {
+                if providers != nil {
+                    guard let captured = externalMetadata.snapshot(externalScope) else { return }
+                    activeMetadataScope = externalScope
+                    let op = CodexTaskMetadataOperation(id: UUID(), sessionID: readingStore.metadataSessionID,
+                        baseRevision: captured.revision, captured: captured, action: .setArchived(false))
+                    if !externalMetadata.begin(op) { restoreFailed = true }
+                } else { restoring.insert(scope) }
+            } label: {
                 if pending { ProgressView() }
                 else { Image(uiImage: officialVisualIcon("arrow-uturn-left")) }
             }
             .buttonStyle(.plain)
-            .disabled(pending)
+            .disabled(pending || (providers != nil && (externalMetadata.locked(externalScope) || externalMetadata.snapshot(externalScope)?.capabilities.canRestore != true)))
             .accessibilityLabel(OfficialText.text(.remoteThreadUnarchive))
             .accessibilityIdentifier("remote-unarchive-" + task.key)
         }
+        .onAppear {
+            guard providers != nil else { return }
+            externalMetadata.activate(externalScope, session: readingStore.metadataSessionID)
+            externalMetadata.load(externalScope, session: readingStore.metadataSessionID)
+        }
         .task(id: pending) {
-            guard pending else { return }
+            guard providers == nil, pending else { return }
             let revision = metadata.snapshot(scope).revision
             defer { restoring.remove(scope) }
             do {
@@ -6810,8 +8221,22 @@ private struct RemoteArchivedTasksPage: View {
         NavigationStack {
             List {
                 RecoveredRemoteHostFilterRow(choices: choices, selection: $source,
-                    horizontalContentInset: 0, bottomPadding: 0)
+                    horizontalContentInset: 0, bottomPadding: 0, soleCloudID: soleCloudID)
                     .listRowSeparator(.hidden)
+                if providers != nil {
+                    ForEach(archiveList.state.instances) { instance in
+                        if case .failed = archiveList.state.phase(instance.id) {
+                            HStack {
+                                Text(instance.name + visualText("：无法加载归档", ": archived tasks unavailable"))
+                                Button(visualText("重试", "Retry")) { archiveList.load(instance.id) }
+                                    .accessibilityIdentifier("codex-archive-retry-" + instance.id)
+                            }
+                        }
+                    }
+                    if let scope = activeMetadataScope {
+                        CodexMetadataStatus(store: externalMetadata, scope: scope, session: readingStore.metadataSessionID)
+                    }
+                }
                 if loading {
                     ProgressView().accessibilityIdentifier("remote-archive-loading")
                 } else if loadFailed {
@@ -6946,6 +8371,7 @@ private struct RecoveredRemoteProjectNewThreadButton: View {
 private struct RemoteNewThreadFixtureTarget: Hashable {
     let scope: RemoteComposerDraftScope
     let title: String
+    var catalogID: String? = nil
 }
 
 // Independent service-free navigation adapter for the official new-draft route.
@@ -6962,44 +8388,47 @@ private struct RemoteNewThreadFixturePage: View {
     let readingStore: RemoteTranscriptReadingStore
     @ObservedObject var goals: RemoteGoalStore
     @ObservedObject var configurations: RemoteThreadConfigurationStore
+    @ObservedObject var creation: CodexCreationStore
     @State private var createdTask: RemotePreviewTask?
     @State private var sessionID = UUID()
     @State private var submissionFailure: RemoteComposerSubmissionFailure?
     @State private var showsSubmissionFailure = false
 
     private var scope: RemoteComposerDraftScope { target.scope }
-    private var submissionState: RemoteComposerSubmissionState {
-        composerDrafts.submissionState(RemoteComposerSubmissionState(
-            canSubmit: scope.hostID.map { RemoteConnectionPreferences.decode(connectionData)?.isEnabled($0) ?? false } ?? false), in: scope)
+    private var catalogTarget: CodexCreationTarget? {
+        guard let host = scope.hostID, case .newThread(let directory, let project) = scope.destination,
+              let value = creation.target(.init(hostID: host, workspaceDirectory: directory, projectID: project)),
+              target.catalogID == nil || target.catalogID == value.id else { return nil }
+        return value
     }
-
+    private var submissionState: RemoteComposerSubmissionState {
+        let target = catalogTarget
+        return composerDrafts.submissionState(.init(canSubmit: target?.available == true && !creation.catalogLoading && !creation.catalogFailure &&
+            (readingStore.providers != nil || target?.controls.usesComputerConnection == false || scope.hostID.map { RemoteConnectionPreferences.decode(connectionData)?.isEnabled($0) == true } == true),
+            isSending: creation.busy.contains(scope)), in: scope)
+    }
+    private func commitCreation(_ operation: CodexCreationOperation, _ receipt: CodexCreationReceipt) -> Result<RemoteThreadReplayState,RemoteComposerSubmissionFailure> {
+        replay.acceptCreation(operation, receipt: receipt, drafts: composerDrafts)
+    }
+    private func completeCreation(_ value: RemoteThreadReplayState) { createdTask = .created(value, authoritative: readingStore.providers != nil) }
+    private func retryCreation() {
+        creation.retry(scope, session: sessionID, draft: composerDrafts.snapshot(in: scope), commit: commitCreation, completed: completeCreation)
+    }
     private func submit(_ input: RemoteComposerSubmission) -> Bool {
-        var event = input
-        // Explicit fixture defaults until new-draft capabilities are supplied.
-        // Preserve them with the first accepted intent, like ordinary sends.
-        event.configuration = .init(model: .fixture, permission: .preset(.askPermissions))
-        if replay.isEnabled {
-            let preferences = RemoteConnectionPreferences.decode(connectionData)
-            let hosts = Set(["fixture-a", "fixture-b", RemotePreviewTask.cloudFixtureHostID]
-                .filter { preferences?.isEnabled($0) ?? false })
-            switch replay.createThread(event, scope: scope, session: sessionID,
-                drafts: composerDrafts, state: submissionState, eligibleHosts: hosts) {
-            case .success(let created): createdTask = .created(created); return true
-            case .failure(let failure): submissionFailure = failure
-            }
-        } else {
-            submissionFailure = DisconnectedRemoteComposerAdapter().submit(event,
-                currentScope: scope, currentSession: sessionID,
-                currentDraft: composerDrafts.snapshot(in: scope), state: submissionState)
-        }
-        showsSubmissionFailure = true
+        guard let target = catalogTarget else { return false }
+        var event = input; event.configuration = target.configuration
+        creation.submit(event, target: target, draft: composerDrafts.snapshot(in: scope), state: submissionState,
+            commit: commitCreation, completed: completeCreation)
         return false
     }
 
     private var composer: some View {
+        VStack(spacing: 8) {
+        CodexDirectoryStatus(store: readingStore.directory, fixture: readingStore.providers?.directory as? CodexOperationPreviewProvider)
+        CodexCreationStatus(store: creation, scope: scope, session: sessionID, retry: retryCreation)
         RecoveredRemoteOrdinaryFieldSurface {
             RecoveredRemoteComposerField(drafts: composerDrafts, scope: scope,
-                placeholder: visualText("给 Codex 发消息", "Message Codex"),
+                placeholder: visualText("给 " + (readingStore.providers?.productName ?? "Codex") + " 发消息", "Message " + (readingStore.providers?.productName ?? "Codex")),
                 textColor: officialVisualColor("ChatGPT/text/primary"),
                 placeholderColor: officialVisualColor("ChatGPT/text/tertiary"),
                 sessionID: sessionID, submissionState: submissionState,
@@ -7014,6 +8443,8 @@ private struct RemoteNewThreadFixturePage: View {
                 primaryColor: officialVisualColor("OneOff/AppForeground"),
                 submit: submit, focusesOnAppear: true, inputTrailingInset: 16,
                 onFocusChanged: { composerFocused = $0 })
+        }
+        .disabled(creation.locked(scope))
         }
         .modifier(RemoteLayoutBoundsProbe(identifier: "remote-new-thread-composer-surface"))
         //293 NewThreadScreen19f45b0 passes nil sceneMetrics/trailingOutsideContent.
@@ -7031,7 +8462,8 @@ private struct RemoteNewThreadFixturePage: View {
                     .id(task.id)
             } else { draftPage }
         }
-        .onAppear { replay.reconcileCreationDraft(scope, drafts: composerDrafts) }
+        .onAppear { creation.activate(scope, session: sessionID); replay.reconcileCreationDraft(scope, drafts: composerDrafts) }
+        .onDisappear { creation.retire(scope, session: sessionID) }
     }
 
     private var draftPage: some View {
@@ -7042,6 +8474,10 @@ private struct RemoteNewThreadFixturePage: View {
             Color(uiColor: officialVisualColor("OneOff/MainSurfacePrimary"))
         }
         .modifier(RecoveredRemoteBottomBar(bar: composer))
+        .overlay(alignment: .top) {
+            if catalogTarget == nil { Text(visualText("当前目标不可创建任务，请返回重新选择。", "This target cannot create a task. Return and choose another target."))
+                .foregroundStyle(.secondary).padding().accessibilityIdentifier("codex-creation-target-unavailable") }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -7339,6 +8775,8 @@ private struct RecoveredRemoteOrdinaryCommandSummary: View {
         Text(presentation.title(locale: locale) { key, arguments in
             OfficialText.format(key, arguments: arguments)
         })
+        .lineLimit(1)
+        .truncationMode(.tail)
         .font(.body)
         .foregroundStyle(Color(uiColor: officialVisualColor("ChatGPT/text/tertiary")))
         .accessibilityIdentifier("remote-ordinary-command-summary")
@@ -7369,6 +8807,8 @@ private struct RecoveredRemoteRunningCommandSummary: View {
     var body: some View {
         TimelineView(.periodic(from: presentation.startedAt, by: 1)) { context in
             Text(title(at: context.date))
+                .lineLimit(1)
+                .truncationMode(.tail)
                 .font(.body)
                 .foregroundStyle(Color(uiColor: officialVisualColor("ChatGPT/text/tertiary")))
                 // 293 0x1da3a80 supplies false to numericText at0x1a3fff0.
@@ -7380,7 +8820,8 @@ private struct RecoveredRemoteRunningCommandSummary: View {
 }
 
 // Independent service-facing run input, matching recovered text/foreground boundary.
-// ANSI parsing and original Line.id generation are not implemented by this adapter.
+//Actual Shell parsing supplies proved foreground cases; synthetic pre-parsed
+//runs may also use this renderer. Private complete parser grammar remains partial.
 private enum RemoteOutputForeground {
     enum Named: Int {
         case black, red, green, yellow, blue, magenta, cyan, white
@@ -7422,13 +8863,28 @@ private struct RemoteOutputRun {
     var color: Color? { foreground?.color }
 }
 
-// Explicit service/fixture line IDs; official parser ID generation remains unverified.
+//Actual parser enumerates line IDs from0; service/fixture IDs remain explicit
+//when entering through the separate pre-parsed preview path.
 private struct RemoteOutputLine: Identifiable {
     let id: Int
     let runs: [RemoteOutputRun]
     var text: Text {
         runs.reduce(Text("")) { result, run in
             result + Text(verbatim: run.text).foregroundColor(run.color ?? Color(uiColor: officialVisualColor("ChatGPT/text/secondary")))
+        }
+    }
+    static func presented(_ raw: [String]) -> [Self] {
+        RecoveredRemoteCommandOutput.presentation(raw).lines.map { line in
+            .init(id: line.id, runs: line.runs.map { run in
+                let foreground: RemoteOutputForeground?
+                switch run.foreground {
+                case .named(let index): foreground = RemoteOutputForeground.Named(rawValue: index).map { .named($0) }
+                case .indexed(let index): foreground = .indexed(index)
+                case .rgb(let red, let green, let blue): foreground = .rgb(red: red, green: green, blue: blue)
+                case nil: foreground = nil
+                }
+                return RemoteOutputRun(text: run.text, foreground: foreground)
+            })
         }
     }
 }
@@ -7609,26 +9065,48 @@ private struct RemoteCodeBlockPreview: View {
 // Official293 has distinct workspace/turn sheets and DiffFileList/sections.
 // This sheet intentionally labels its synthetic turn scope. Working-tree queries,
 // official DocumentDiff gutters/comments and exact section styling remain pending.
-private struct RemoteTurnDiffPreview: View {
+private struct RemoteTurnDiffSnapshot: Identifiable {
+    let id = UUID()
     let files: [RemoteReplayFileChange]
+    var readsWorkspace = false
+}
+
+private struct RemoteTurnDiffPreview: View {
+    private let turnFiles: [RemoteReplayFileChange]
+    private let loadWorkspace: (() async throws -> CodexWorkspaceChangesReceipt)?
     let host: String
     @Environment(\.dismiss) private var dismiss
     @AppStorage(RemoteDiffPreference.key) private var wrapsLines = RemoteDiffPreference.defaultValue
     @State private var collapsed: Set<String> = []
+    @State private var workspace: CodexWorkspaceChangesReceipt?
+    @State private var workspaceAttempt = UUID()
+    @State private var workspaceLoading = false
+    @State private var workspaceFailed = false
+    private var files: [RemoteReplayFileChange] { workspace?.files ?? turnFiles }
     let scope: RemoteComposerDraftScope
     @StateObject private var preview: RemoteFilePreviewController
 
     init(files: [RemoteReplayFileChange], host: String, scope: RemoteComposerDraftScope,
-         loader: any RemoteFilePreviewLoading) {
-        self.files = files
+         loader: any RemoteFilePreviewLoading, sharedPreview: RemoteFilePreviewController? = nil,
+         loadWorkspace: (() async throws -> CodexWorkspaceChangesReceipt)? = nil) {
+        turnFiles = files
+        self.loadWorkspace = loadWorkspace
         self.host = host
         self.scope = scope
-        _preview = StateObject(wrappedValue: RemoteFilePreviewController(loader: loader))
+        _preview = StateObject(wrappedValue: sharedPreview ?? RemoteFilePreviewController(loader: loader))
     }
 
     @ViewBuilder
     private func fileAction(_ file: RemoteReplayFileChange) -> some View {
-        let current = preview.state.request?.fileID == file.id
+        if loadWorkspace == nil || file.resourceID != nil {
+            fullFileAction(file)
+        }
+    }
+
+    @ViewBuilder
+    private func fullFileAction(_ file: RemoteReplayFileChange) -> some View {
+        let resourceID = file.resourceID ?? file.id
+        let current = preview.state.request?.fileID == resourceID
         if current && preview.state.phase == .loading {
             HStack {
                 ProgressView(visualText("正在加载文件", "Loading file"))
@@ -7641,12 +9119,12 @@ private struct RemoteTurnDiffPreview: View {
                 Text(preview.failureText(reason)).foregroundStyle(.secondary)
                     .accessibilityIdentifier("remote-diff-file-error")
                 if reason == .loadFailed {
-                    Button(visualText("重试", "Retry")) { preview.open(file.id, scope: scope) }
+                    Button(visualText("重试", "Retry")) { preview.open(resourceID, scope: scope) }
                         .accessibilityIdentifier("remote-diff-file-retry")
                 }
             }
         } else {
-            Button(visualText("打开文件", "Open file")) { preview.open(file.id, scope: scope) }
+            Button(visualText("打开文件", "Open file")) { preview.open(resourceID, scope: scope) }
                 .accessibilityIdentifier("remote-diff-" + file.id + "-open-file")
         }
     }
@@ -7656,13 +9134,23 @@ private struct RemoteTurnDiffPreview: View {
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     VStack(alignment: .leading) {
-                        Text(visualText("合成任务的最近一次文件差异快照", "Latest synthetic turn file-diff snapshot"))
+                        Text(loadWorkspace == nil
+                            ? visualText("合成任务的最近一次文件差异快照", "Latest synthetic turn file-diff snapshot")
+                            : visualText("工作区更改", "Workspace changes"))
                             .font(.footnote).foregroundStyle(.secondary)
                         Text(host).font(.footnote).foregroundStyle(.secondary)
                             .accessibilityIdentifier("remote-diff-host")
                     }
-                    if files.isEmpty {
-                        Text(visualText("本轮没有文件差异。", "This turn has no file differences."))
+                    if workspaceLoading {
+                        ProgressView().accessibilityIdentifier("remote-diff-workspace-loading")
+                    }
+                    if workspaceFailed {
+                        Text(visualText("无法读取工作区更改。", "Unable to read workspace changes."))
+                            .accessibilityIdentifier("remote-diff-workspace-error")
+                    }
+                    if files.isEmpty && (loadWorkspace == nil || workspace != nil) {
+                        Text(loadWorkspace == nil ? visualText("本轮没有文件差异。", "This turn has no file differences.")
+                            : visualText("工作区没有更改。", "The workspace has no changes."))
                             .accessibilityIdentifier("remote-diff-empty")
                     }
                     ForEach(files) { file in
@@ -7698,17 +9186,50 @@ private struct RemoteTurnDiffPreview: View {
             }
             // ScrollView/LazyVStack ownership matches the293 final body.
             // Default native spacing and disclosure styling remain host adapters.
-            .quickLookPreview($preview.url)
-            .onDisappear { preview.cancel() }
-            .onChange(of: files) { _, _ in preview.cancel() }
-            .onChange(of: scope) { _, _ in preview.cancel() }
             .navigationTitle(OfficialText.text(.remoteThreadChanges))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                if loadWorkspace != nil {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(visualText("刷新", "Refresh")) { workspaceAttempt = UUID() }
+                            .disabled(workspaceLoading).accessibilityIdentifier("remote-diff-workspace-refresh")
+                    }
+                }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(visualText("完成", "Done")) { dismiss() }
+                    Button(visualText("完成", "Done")) { preview.cancel(); dismiss() }
                         .accessibilityIdentifier("remote-diff-close")
                 }
+            }
+        }
+        //The navigation container owns its presented reader. Attaching it to
+        //the inner ScrollView let disappearance cancel a live QuickLook URL.
+        .quickLookPreview($preview.url)
+        .sheet(item: $preview.sourcePreview) { source in RemoteSourceFilePreviewPage(source: source).id(source.id) }
+        .frontendBrowserPreview($preview.htmlPreview)
+        .frontendMediaPreview($preview.mediaPreview)
+        .onDisappear {
+            if preview.url == nil && preview.sourcePreview == nil &&
+                preview.htmlPreview == nil && preview.mediaPreview == nil { preview.cancel() }
+        }
+        .onChange(of: files) { _, _ in preview.cancel() }
+        .onChange(of: scope) { _, _ in preview.retireOwner() }
+        .task(id: workspaceAttempt) {
+            guard let loadWorkspace else { return }
+            let attempt = workspaceAttempt
+            workspaceLoading = true
+            workspaceFailed = false
+            defer { if workspaceAttempt == attempt { workspaceLoading = false } }
+            do {
+                let receipt = try await loadWorkspace()
+                try Task.checkCancellation()
+                guard workspaceAttempt == attempt else { return }
+                if let workspace, receipt.revision < workspace.revision ||
+                    (receipt.revision == workspace.revision && receipt.files != workspace.files) {
+                    throw RemoteFilePreviewFailure.loadFailed
+                }
+                workspace = receipt
+            } catch is CancellationError {} catch {
+                if workspaceAttempt == attempt { workspaceFailed = true }
             }
         }
     }
@@ -7728,46 +9249,14 @@ private func remoteMessageFilePreviewLoader(scope: RemoteComposerDraftScope) -> 
         }.joined(separator: "\n")
     }
     let resources: [RemoteFilePreviewResource] = offline ? [
-        .init(id: "/workspace/preview.txt", name: "preview.txt", data: Data(content.utf8))
+        .init(id: "/workspace/preview.txt", name: "preview.txt", data: Data(content.utf8),
+            readingIdentity: .knownNoComment(path: "/workspace/preview.txt", style: .slashSeparated))
     ] : []
     return RemoteSnapshotFilePreviewLoader(scope: scope, resources: resources,
         delayNanoseconds: offline && arguments.contains("--remote-linked-file-delay-fixture") ? 5_000_000_000 : 0,
         failsOnce: offline && arguments.contains("--remote-linked-file-failure-fixture"))
 }
 
-@MainActor
-private func remoteWorkspacePreviewResources(scope: RemoteComposerDraftScope) -> [RemoteFilePreviewResource] {
-    let provenance = "Synthetic workspace file\nhost=" + (scope.hostID ?? "") + "\n"
-    let markdown = visualText(
-        "# 文件预览示例\n\n这是**合成 Markdown 文件**，用于检查前端。\n\n```swift\nlet preview = \"offline\"\n```\n\n| 模式 | 内容 |\n| --- | --- |\n| 原文 | 完整文件 |\n| Markdown | 基础原生渲染 |\n\n[本地网页](https://example.invalid/preview)\n",
-        "# File preview example\n\nThis is a **synthetic Markdown file** for frontend inspection.\n\n```swift\nlet preview = \"offline\"\n```\n\n| Mode | Content |\n| --- | --- |\n| Raw | Complete file |\n| Markdown | Basic native rendering |\n\n[Local web page](https://example.invalid/preview)\n")
-    var resources: [RemoteFilePreviewResource] = [
-        .init(id: "README", name: "README.txt", data: Data((provenance + "Frontend preview fixture. No host filesystem was read.\n").utf8)),
-        //Provider supplies the body; a new reading state uses293 Markdown default.
-        .init(id: "Markdown", name: "README.md", data: Data(markdown.utf8),
-            markdownContents: markdown),
-        .init(id: "Sources/preview", name: "preview.txt", data: Data((provenance + "directory=Sources\nComplete file contents.\n").utf8)),
-        .init(id: "Documents/document", name: "sample.rtf",
-              data: Data(#"{\rtf1\ansi\deff0 {\fonttbl {\f0 Helvetica;}}\f0\fs28 Synthetic document preview\par Complete local RTF resource.}"#.utf8)),
-        .init(id: "Documents/unsupported", name: "sample.reaunsupported", data: Data([0, 1, 2, 255]))
-    ]
-    let image = UIGraphicsImageRenderer(size: CGSize(width: 240, height: 160)).image { context in
-        UIColor.systemTeal.setFill(); context.fill(CGRect(x: 0, y: 0, width: 240, height: 160))
-        UIColor.white.setFill(); context.fill(CGRect(x: 80, y: 40, width: 80, height: 80))
-    }
-    if let data = image.pngData() {
-        resources.append(.init(id: "Documents/image", name: "sample.png", data: data))
-    }
-    let pdf = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 320, height: 480)).pdfData { context in
-        for page in 1...2 {
-            context.beginPage()
-            ("REA synthetic PDF page \(page)" as NSString).draw(at: CGPoint(x: 24, y: 32),
-                withAttributes: [.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.black])
-        }
-    }
-    resources.append(.init(id: "Documents/pdf", name: "sample.pdf", data: pdf))
-    return resources
-}
 
 // iOS293 ordinary Files uses FileNavigationStack -> DirectoryContent ->
 // Header + plain List, distinct from the WorkspaceBrowser disclosure tree.
@@ -7918,6 +9407,8 @@ private struct RecoveredRemoteApprovalCard: View {
     let reason: String
     let command: String?
     let onAction: (RemoteApprovalEvent) -> Bool
+    var formIsSubmitting = false
+    var onFormAction: ((RemoteOpenAIFormAction, [String: RemoteOpenAIFormValue]?) -> Void)? = nil
     @Environment(\.recoveredRemoteCardAppearance) private var appearance
 
     var body: some View {
@@ -7954,15 +9445,25 @@ private struct RecoveredRemoteApprovalCard: View {
                     .accessibilityIdentifier("remote-approval-detail-reason")
                 }
             }
-            if let command {
+            if let form = request.openAIForm {
+                RecoveredRemoteOpenAIForm(form: form, isSubmitting: formIsSubmitting,
+                    hasActionHandler: onFormAction != nil) { action, values in onFormAction?(action, values) }
+                    .id(request) // Retire field state when the full owning request changes.
+            } else {
+            if let command, !command.isEmpty {
                 ScrollView(.horizontal) {
                     Text(verbatim: command).font(.system(.callout, design: .monospaced))
                         .foregroundStyle(Color(uiColor: officialVisualColor("ChatGPT/text/secondary")))
                         .fixedSize(horizontal: true, vertical: false)
                         .accessibilityIdentifier("remote-approval-command")
                 }
+            } else {
+                //293 form→command→permissions precedence. This ordinary
+                //fallback branch never manufactures an OpenAIForm projection.
+                RecoveredRemotePermissionPreview(details: request.visiblePermissionDetails(command: command))
             }
             RecoveredRemoteApprovalActionButtons(request: request, onAction: onAction)
+            }
         }
         // Banner 0x1a1d1d4: top12, horizontal20, bottom20. Request card
         //0x1a2ab4c: banner's inner infinity frame is separate from the card's
@@ -8075,9 +9576,12 @@ private struct RecoveredRemoteCardGlass: ViewModifier {
 // availability and an explicit compatibility fixture, not an official setting.
 private struct RecoveredRemoteBottomBar<Bar: View>: ViewModifier {
     let bar: Bar
+    var hidesBottomScrollEdge = false
     func body(content: Content) -> some View {
         if #available(iOS 26.0, *), !HostLaunchRuntime.arguments.contains("--remote-bottom-bar-legacy") {
-            content.safeAreaBar(edge: .bottom, alignment: .center, spacing: 0) { bar }
+            content
+                .scrollEdgeEffectHidden(hidesBottomScrollEdge, for: .bottom)
+                .safeAreaBar(edge: .bottom, alignment: .center, spacing: 0) { bar }
         } else {
             content.safeAreaInset(edge: .bottom, alignment: .center, spacing: 0) { bar }
         }
@@ -8109,6 +9613,8 @@ private struct RecoveredRemoteComposerAdjacentCard: ViewModifier {
 private struct RecoveredRemoteOrdinaryFieldSurface<Content: View>: View {
     @Environment(\.recoveredRemoteCardAppearance) private var appearance
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    var usesClearGlass = false
+    var softensExpandedBackdrop = false
     @ViewBuilder let content: () -> Content
 
     private var effectiveAppearance: RecoveredRemoteCardAppearance {
@@ -8130,21 +9636,20 @@ private struct RecoveredRemoteOrdinaryFieldSurface<Content: View>: View {
         // outside style padding (19827d0). This independent host keeps foreground
         // controls outside Glass: whole-content compositing prevents native Menu
         // selection here (v469-v475, reproduced after v522 in v543-v544).
-        // Retain the recovered shape, material and outer layout while adapting
-        // the effect to a noninteractive background with a stable foreground.
+        // List and detail use different materials with the same foreground owner.
+        // Clip the editor only. The shaped glass draws its own edge and must
+        // stay outside that clip to preserve the material's rim.
         content()
+            .clipShape(shape)
             .background {
                 if #available(iOS 26.0, *), appearance.usesGlass {
-                    GlassEffectContainer {
-                        shape.fill(appearance.innerBackground)
-                            .modifier(RecoveredRemoteCardGlass(appearance: appearance, shape: shape))
-                    }
-                    .allowsHitTesting(false)
+                    RecoveredRemoteGlassBackdrop(shape: shape, background: appearance.innerBackground,
+                        glass: usesClearGlass ? (softensExpandedBackdrop ? .regular : .clear) : .regular.interactive(),
+                        contrastFillOpacity: usesClearGlass ? 0.72 : 0, contrastFillInset: 1)
                 } else {
                     shape.fill(appearance.innerBackground).allowsHitTesting(false)
                 }
             }
-            .clipShape(shape)
     }
 }
 
@@ -8155,12 +9660,15 @@ private struct RecoveredRemoteUserInputForm: View {
     let request: RemoteUserInputRequest
     let viewportHeight: CGFloat
     let onAction: (RemoteUserInputEvent) async -> Bool
+    let externalCancellationID: UUID?
     @State private var draft: RemoteUserInputDraft
     @State private var submission = RemoteUserInputSubmissionGate()
     @State private var submissionTask: Task<Void, Never>?
     @FocusState private var inputFocused: Bool
-    init(request: RemoteUserInputRequest, viewportHeight: CGFloat, onAction: @escaping (RemoteUserInputEvent) async -> Bool) {
+    init(request: RemoteUserInputRequest, viewportHeight: CGFloat, externalCancellationID: UUID? = nil,
+         onAction: @escaping (RemoteUserInputEvent) async -> Bool) {
         self.request = request; self.viewportHeight = viewportHeight; self.onAction = onAction
+        self.externalCancellationID = externalCancellationID
         _draft = State(initialValue: .init(request: request))
     }
     private var questionMaximumHeight: CGFloat {
@@ -8352,6 +9860,7 @@ private struct RecoveredRemoteUserInputForm: View {
             .onChange(of: request) { _, value in
                 cancelSubmission(); draft.updateRequest(value)
             }
+            .onChange(of: externalCancellationID) { _, _ in cancelSubmission() }
             .onDisappear { cancelSubmission() }
     }
 }
@@ -8423,6 +9932,8 @@ private struct RecoveredRemoteThreadMenu: View {
     let isPinned: Bool
     let showsChanges: Bool
     let showsFiles: Bool
+    var metadataCapabilities: CodexTaskMetadataCapabilities? = nil
+    var metadataEnabled = true
     let onAction: (RemoteThreadMenuAction) -> Void
     //Independent deterministic event injection; absent in ordinary previews.
     var replaceRequestFixture: (() -> Void)? = nil
@@ -8443,13 +9954,19 @@ private struct RecoveredRemoteThreadMenu: View {
             // Toolbar1ce9428 constructs a Section whose header reads the same
             // VM witness+28 as the location label. Native Menu owns its material.
             Section {
-                action(.togglePin, title: isPinned ? .remoteThreadUnpin : .remoteThreadPin,
-                       icon: isPinned ? "pin-slash" : "pin")
-                action(.rename, title: .remoteThreadRename, icon: "pencil")
+                if metadataCapabilities?.canPin ?? true {
+                    action(.togglePin, title: isPinned ? .remoteThreadUnpin : .remoteThreadPin,
+                           icon: isPinned ? "pin-slash" : "pin").disabled(!metadataEnabled)
+                }
+                if metadataCapabilities?.canRename ?? true {
+                    action(.rename, title: .remoteThreadRename, icon: "pencil").disabled(!metadataEnabled)
+                }
                 action(.copyID, title: .remoteThreadCopyID, icon: "square-on-square")
                 // Original role at0x1a1caa0 is destructive. The disconnected owner
                 // never removes or archives a task optimistically.
-                action(.archive, title: .remoteThreadArchive, icon: "archive", role: .destructive)
+                if metadataCapabilities?.canArchive ?? true {
+                    action(.archive, title: .remoteThreadArchive, icon: "archive", role: .destructive).disabled(!metadataEnabled)
+                }
                 // 1a1cd78 independently gates Changes(+58) and Files(+60).
                 // The original EmptyConditionalContent adds the Divider only
                 // when the following collection has visible subviews.
@@ -8508,7 +10025,7 @@ private struct RecoveredRemotePendingPromptMenu: View {
     let edit: (() -> Void)?
     let toggle: (() -> Void)?
     let start: (() -> Void)?
-    let cancel: () -> Void
+    let cancel: (() -> Void)?
     let identifier: String
     let statusIdentifier: String
 
@@ -8539,9 +10056,11 @@ private struct RecoveredRemotePendingPromptMenu: View {
                         Label { Text(OfficialText.text(.remotePendingStart)) } icon: { icon("play-fill") }
                     }.accessibilityIdentifier("remote-pending-start")
                 }
-                Button(role: .destructive, action: cancel) {
-                    Label { Text(OfficialText.text(.remotePendingCancel)) } icon: { icon("trash") }
-                }.accessibilityIdentifier("remote-pending-cancel")
+                if let cancel {
+                    Button(role: .destructive, action: cancel) {
+                        Label { Text(OfficialText.text(.remotePendingCancel)) } icon: { icon("trash") }
+                    }.accessibilityIdentifier("remote-pending-cancel")
+                }
             } header: {
                 Text(displayText)
             }
@@ -8567,6 +10086,7 @@ private struct RecoveredRemotePendingPromptMenu: View {
 
 private struct RemoteThreadFixturePage: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.scenePhase) private var taskScenePhase
     @AppStorage(RemoteConnectionPreferences.storageKey) private var connectionData = Data()
     @Environment(\.openURL) private var openURL
     @StateObject private var attachmentPresenter = RemoteAttachmentPresenter()
@@ -8580,12 +10100,12 @@ private struct RemoteThreadFixturePage: View {
         bottomCornerRadius: 0, bottomSafeAreaInset: nil)
     @State private var presentedNewThread: RemoteNewThreadFixtureTarget?
     private var fixtureIsPinned: Bool {
-        metadata.snapshot(composerScope).isPinned ?? (baseTask.isPinned ||
+        externalMetadata.snapshot(messageScope)?.isPinned ?? metadata.snapshot(composerScope).isPinned ?? (baseTask.isPinned ||
             (HostLaunchRuntime.arguments.contains("--remote-pinned-thread-fixture") && task.id.host == "fixture-b"))
     }
     @State private var showsWorkspaceFiles = false
-    @State private var showsTurnDiff = false
-    @State private var turnDiffFiles: [RemoteReplayFileChange] = []
+    @State private var turnDiffPresentation: RemoteTurnDiffSnapshot?
+    @StateObject private var taskFiles: CodexTaskFilesOwner
     @State private var failedThreadAction: RemoteThreadMenuAction?
     @State private var threadActionUnavailable = false
     @State private var showsRename = false
@@ -8593,6 +10113,11 @@ private struct RemoteThreadFixturePage: View {
     @State private var renameRevision = 0
     @State private var metadataFailure = false
 
+    private func submitExternalMetadata(_ action: CodexTaskMetadataAction, captured: CodexTaskMetadataSnapshot) {
+        let op = CodexTaskMetadataOperation(id: UUID(), sessionID: readingStore.metadataSessionID,
+            baseRevision: captured.revision, captured: captured, action: action)
+        if !externalMetadata.begin(op) { metadataFailure = true }
+    }
     private func applyMetadata(_ action: RemoteThreadMetadataAction, revision: Int) {
         do { try metadata.apply(action, in: composerScope, revision: revision) }
         catch { metadataFailure = true }
@@ -8601,6 +10126,12 @@ private struct RemoteThreadFixturePage: View {
         // Explicit offline adapter. Local copy uses only the selected synthetic
         // thread identity. Supported synthetic mutations update the shared owner;
         // disconnected operations retain the current snapshot.
+        if readingStore.providers != nil, [.togglePin, .rename, .archive].contains(action) {
+            guard let captured = externalMetadata.snapshot(messageScope), !externalMetadata.locked(messageScope) else { metadataFailure = true; return }
+            if action == .rename { renameTitle = captured.title; renameCapturedMetadata = captured; showsRename = true; return }
+            submitExternalMetadata(action == .togglePin ? .setPinned(!captured.isPinned) : .setArchived(true), captured: captured)
+            return
+        }
         if action == .copyID {
             UIPasteboard.general.string = task.id.thread
         } else if action == .togglePin && metadata.isEnabled {
@@ -8615,12 +10146,31 @@ private struct RemoteThreadFixturePage: View {
                     revision: metadata.snapshot(composerScope).revision)
                 dismiss()
             } catch { metadataFailure = true }
-        } else if action == .changes && replay.isEnabled {
+        } else if action == .changes && taskShowsChanges && (task.readsOrdinaryMessages || controlsEnabled) {
+            if taskFiles.loader.supportsWorkspaceChanges {
+                turnDiffPresentation = .init(files: [], readsWorkspace: true)
+                return
+            }
             // Capture only this selected task’s latest turn. Earlier diffs are
             // never merged into a fabricated current workspace snapshot.
-            turnDiffFiles = replayState.turns.last?.fileChanges ?? []
-            showsTurnDiff = true
-        } else if action == .files && task.showsFiles && replay.isEnabled {
+            let files: [RemoteReplayFileChange]
+            if task.readsOrdinaryMessages {
+                if let latest = replayState.turns.last, latest.sourceReadTurnID == nil {
+                    files = latest.fileChanges
+                } else {
+                    //Read-seeded turns use current provider resource references;
+                    //old local journals cannot supply a missing file identity.
+                    files = messageSnapshot?.turns.last.map { turn in
+                        (messageSnapshot?.historyPolicy == .authoritative ? [] : activityPresentation(turn).fileChanges) + turn.items.compactMap { item in
+                            guard case .fileChange(let change) = item.content else { return nil }
+                            return RemoteReplayFileChange(id: change.id, title: change.title, diff: change.diff,
+                                counts: .init(insertions: change.insertions, deletions: change.deletions), resourceID: change.resourceID)
+                        }
+                    } ?? []
+                }
+            } else { files = replayState.turns.last?.fileChanges ?? [] }
+            turnDiffPresentation = .init(files: files)
+        } else if action == .files && taskShowsFiles && (task.readsOrdinaryMessages || controlsEnabled) {
             showsWorkspaceFiles = true
         } else {
             failedThreadAction = action
@@ -8646,26 +10196,55 @@ private struct RemoteThreadFixturePage: View {
         let value = metadata.snapshot(.init(hostID: baseTask.id.host, threadID: baseTask.id.thread))
         projected.title = value.title ?? baseTask.title
         projected.isPinned = value.isPinned ?? baseTask.isPinned
+        if readingStore.providers != nil, let supplied = externalMetadata.snapshot(messages.scope(instanceID: baseTask.id.host, threadID: baseTask.id.thread)) {
+            projected.title = supplied.title; projected.isPinned = supplied.isPinned; projected.isArchived = supplied.isArchived
+        }
         return projected
     }
     @ObservedObject var composerDrafts: RemoteComposerDraftStore
     @ObservedObject var replay: RemoteThreadReplayStore
     let readingStore: RemoteTranscriptReadingStore
+    @ObservedObject private var messages: CodexMessageReadingStore
+    @ObservedObject private var operations: CodexTaskOperationStore
+    @ObservedObject private var externalMetadata: CodexTaskMetadataStore
+    @State private var renameCapturedMetadata: CodexTaskMetadataSnapshot?
+    @ObservedObject private var modelCatalog: CodexModelCatalogStore
+    @ObservedObject private var responses: CodexRequestResponseStore
+    @ObservedObject private var requests: CodexTaskRequestStore
+    @State private var ordinaryApprovalTask: Task<Void, Never>?
     @ObservedObject var goals: RemoteGoalStore
     @State private var showsGoal = false
     @State private var showsAgents = false
     @State private var selectedAgent: RemoteAgentPresentation?
+    @State private var retryAgentIntent: RemoteAgentOpenIntent?
     @State private var selectedAgentThread: RemotePreviewTask?
     @State private var agentNavigation = RemoteAgentNavigationState()
     @State private var agentNavigationTask: Task<Void, Never>?
     @State private var agentNavigationNotice: String?
+    @State private var suppliedAgents: RemoteAgentsSnapshot?
+    @State private var agentRosterRefreshID = UUID()
+    @State private var agentRosterFailed = false
+    @State private var agentRosterStreamFailed = false
     private var taskControlsEnabled: Bool {
-        !task.isAgentChild && HostLaunchRuntime.arguments.contains("--remote-task-controls-fixture")
+        readingStore.providers == nil && !task.isAgentChild && HostLaunchRuntime.arguments.contains("--remote-task-controls-fixture")
     }
     private var goalScope: RemoteGoalScope {
-        .init(accountID: goals.accountID, hostID: task.id.host, threadID: task.id.thread)
+        .init(accountID: goals.accountID, hostID: task.id.host, threadID: task.id.thread,
+            profileID: readingStore.providers?.scope.profileID)
+    }
+    private var showsGoalControls: Bool {
+        taskControlsEnabled || (!task.isAgentChild && readingStore.providers?.goals != nil)
+    }
+    private var showsAgentControls: Bool {
+        taskControlsEnabled || (!task.isAgentChild && readingStore.providers?.agents != nil)
+    }
+    private var hasAgentRoster: Bool {
+        taskControlsEnabled || suppliedAgents?.scope == composerScope
     }
     private var agentsSnapshot: RemoteAgentsSnapshot {
+        if readingStore.providers != nil {
+            return suppliedAgents ?? .init(scope: composerScope, revision: 0, sections: [])
+        }
         var snapshot = RemoteAgentsSnapshot.fixture(scope: composerScope)
         for section in snapshot.sections.indices {
             for row in snapshot.sections[section].subagents.indices {
@@ -8683,6 +10262,12 @@ private struct RemoteThreadFixturePage: View {
     }
     @State private var showsRemoteScrollToBottom = false
     @State private var replayScrollRequestID: String?
+    @State private var manualBottomRequestID: UUID?
+    @State private var outgoingSubmissionID: UUID?
+    @State private var outgoingRequestsKeyboardDismissal = false
+    @State private var preparedOutgoingRowID: String?
+    @AppStorage(RemoteComposerPreferences.dismissKeyboardKey) private var dismissKeyboardAfterSending = true
+    @State private var composerExpanded = false
     private struct TranscriptGeometry: Equatable {
         var height: CGFloat = 0
         var safeAreaTop: CGFloat = 0
@@ -8693,8 +10278,342 @@ private struct RemoteThreadFixturePage: View {
     private var replayState: RemoteThreadReplayState { replay.snapshot(composerScope) }
     @ObservedObject var configurations: RemoteThreadConfigurationStore
     var isContextMenuPreview = false
-    private var permissionSelection: RemoteApprovalPickerSelection { configurations.snapshot(composerScope).permission }
-    private var modelConfiguration: RemoteAdvancedConfiguration { configurations.snapshot(composerScope).model }
+
+    init(baseTask: RemotePreviewTask, metadata: RemoteThreadMetadataStore,
+         composerDrafts: RemoteComposerDraftStore, replay: RemoteThreadReplayStore,
+         readingStore: RemoteTranscriptReadingStore, goals: RemoteGoalStore,
+         configurations: RemoteThreadConfigurationStore, isContextMenuPreview: Bool = false) {
+        self.baseTask = baseTask
+        self.metadata = metadata; self.composerDrafts = composerDrafts; self.replay = replay
+        self.readingStore = readingStore; self.goals = goals; self.configurations = configurations
+        self.isContextMenuPreview = isContextMenuPreview
+        _directory = ObservedObject(wrappedValue: readingStore.directory)
+        _messages = ObservedObject(wrappedValue: readingStore.messages)
+        _operations = ObservedObject(wrappedValue: readingStore.operations)
+        _externalMetadata = ObservedObject(wrappedValue: readingStore.taskMetadata)
+        _modelCatalog = ObservedObject(wrappedValue: readingStore.models)
+        _responses = ObservedObject(wrappedValue: readingStore.requestResponses)
+        _requests = ObservedObject(wrappedValue: readingStore.requests)
+        let service = readingStore.providers.map { $0.files ?? UnavailableCodexPageService() }
+        _taskFiles = StateObject(wrappedValue: CodexTaskFilesOwner(scope: readingStore.messages.scope(instanceID: baseTask.id.host, threadID: baseTask.id.thread),
+            service: service, permitsLocalWeb: {
+                if isContextMenuPreview { return false }
+                if service != nil {
+                    return readingStore.directory.snapshot.instances.contains {
+                        $0.id == baseTask.id.host && $0.kind == .remote && $0.available
+                    }
+                }
+                return baseTask.id.host == "fixture-a"
+            }))
+    }
+    @ObservedObject private var directory: CodexDirectoryStore
+    private var directoryInstanceAvailable: Bool {
+        !directory.usesService || directory.snapshot.instances.contains { $0.id == baseTask.id.host && $0.available }
+    }
+    private var messageScope: CodexMessageScope {
+        messages.scope(instanceID: task.id.host, threadID: task.id.thread)
+    }
+    private var messageSnapshot: CodexMessageSnapshot? { messages.state.snapshot(messageScope) }
+    private var usesAuthoritativeMessages: Bool { readingStore.providers != nil }
+    private var projectsSubmittedUserMessage: Bool { readingStore.providers?.echoesSubmittedUserMessages == true }
+    private func projectsUserMessage(_ event: RemoteComposerSubmission) -> Bool {
+        projectsSubmittedUserMessage && event.mode == .normal &&
+            !event.draft.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+    private var outgoingSendFocus: RemoteComposerSendFocus? {
+        guard let id = outgoingSubmissionID, let operation = operations.operation(messageScope),
+              operation.id == id, operation.sessionID == composerSessionID else { return nil }
+        switch operations.phase(messageScope) {
+        case .pending, .uncertain, .checking, .accepted, .localCommitFailed:
+            if outgoingRequestsKeyboardDismissal, preparedOutgoingRowID != CodexReadItem.submissionKey(id) { return nil }
+            return .admitted(id)
+        case .rejected: return .rejected(id)
+        case .idle, .awaitingQueuedDelivery: return nil
+        }
+    }
+    private var controlsEnabled: Bool {
+        usesAuthoritativeMessages ? readingStore.providers?.operations != nil && messageSnapshot != nil : replay.canOperate(composerScope)
+    }
+    private var operationLocked: Bool { usesAuthoritativeMessages && (operations.blocksNewOperation(messageScope) || responses.pendingOperation(messageScope) != nil) }
+    private var suppliedModelCatalog: CodexModelCatalogSnapshot? { modelCatalog.snapshot(messageScope) }
+    private var externalModelAllowsSubmit: Bool {
+        readingStore.providers?.models == nil || suppliedModelCatalog?.savedModelUnavailable == false
+    }
+    private var operationAvailable: Bool {
+        controlsEnabled && ordinaryConnectionAvailable && directoryInstanceAvailable && !operationLocked && messages.state.phase(messageScope) == .loaded
+    }
+    private var taskShowsFiles: Bool {
+        guard readingStore.providers == nil || readingStore.providers?.files != nil else { return false }
+        return task.readsOrdinaryMessages ? messageSnapshot?.files?.canBrowse == true : task.showsFiles
+    }
+    private var taskShowsChanges: Bool {
+        guard readingStore.providers == nil || readingStore.providers?.files != nil else { return false }
+        return task.readsOrdinaryMessages ? messageSnapshot?.files?.canViewChanges == true : task.showsChanges
+    }
+    private var ordinaryRequestReference: CodexPendingTaskReference? {
+        if usesAuthoritativeMessages, let state = messageSnapshot?.requestState {
+            switch state {
+            case .none: return nil
+            case .pending(let id, let revision, let kind):
+                return .init(id: id, revision: revision, kind: kind == .approval ? .approval : .input)
+            }
+        }
+        return baseTask.ordinaryRequest
+    }
+    private var suppliedRequest: CodexTaskRequestSnapshot? {
+        usesAuthoritativeMessages && readingStore.providers?.requestResponses != nil ? responses.snapshot(messageScope) : requests.snapshot(messageScope)
+    }
+    private var ordinaryRequestLoaded: Bool {
+        guard let reference = ordinaryRequestReference, let snapshot = suppliedRequest else { return false }
+        return snapshot.identity.id == reference.id && snapshot.identity.revision >= reference.revision &&
+            CodexRequestResponseActionComparison.kind(snapshot) == reference.kind
+    }
+    private var currentOrdinaryRequest: CodexTaskRequestSnapshot? {
+        guard let reference = ordinaryRequestReference, let value = suppliedRequest, value.status == .pending,
+              value.identity.id == reference.id, value.identity.revision >= reference.revision,
+              usesAuthoritativeMessages || !replayState.hasResolvedOrdinary(value.identity) else { return nil }
+        return value
+    }
+    private var requestResponseAvailable: Bool {
+        guard usesAuthoritativeMessages, readingStore.providers?.requestResponses != nil,
+              task.connected, directoryInstanceAvailable, messageSnapshot != nil, messages.state.phase(messageScope) == .loaded else { return false }
+        return !responses.locked(messageScope)
+    }
+    private var ordinaryRequestDisabled: Bool {
+        usesAuthoritativeMessages ? !requestResponseAvailable : requests.busy(messageScope) || requests.hasRetainedAcceptance(messageScope) || !controlsEnabled || !ordinaryConnectionAvailable
+    }
+    private func loadCurrentRequest(force: Bool = false) {
+        guard let reference = ordinaryRequestReference else { return }
+        if usesAuthoritativeMessages, readingStore.providers?.requestResponses != nil {
+            responses.activate(messageScope, session: readingStore.responseSessionID)
+            responses.load(messageScope, reference: reference, session: readingStore.responseSessionID, force: force)
+        } else {
+            requests.activate(messageScope, session: composerSessionID)
+            requests.load(messageScope, reference: reference, force: force)
+        }
+    }
+    private func commitOrdinaryRequest(_ operation: CodexTaskRequestOperation, _ receipt: CodexTaskRequestReceipt) -> CodexTaskRequestFailure? {
+        replay.acceptOrdinaryRequest(operation, receipt: receipt, scope: composerScope)
+    }
+    private func respondOrdinary(_ action: CodexTaskRequestAction) async -> Bool {
+        if usesAuthoritativeMessages {
+            beginAuthoritativeRequestResponse(action)
+            return false
+        }
+        guard ordinaryConnectionAvailable, controlsEnabled, let current = currentOrdinaryRequest else { return false }
+        return await requests.respond(action, expected: current, session: composerSessionID, commit: commitOrdinaryRequest)
+    }
+    private func beginAuthoritativeRequestResponse(_ action: CodexTaskRequestAction, expected: CodexTaskRequestIdentity? = nil) {
+        guard requestResponseAvailable, let current = currentOrdinaryRequest, let history = messageSnapshot,
+              expected == nil || current.identity == expected else { return }
+        let op = CodexRequestResponseOperation(id: UUID(), scope: messageScope, sessionID: readingStore.responseSessionID,
+            historyRevision: history.revision, captured: current, action: action)
+        _ = responses.begin(op, currentHistoryRevision: history.revision, commit: readingStore.requestResponseCommit)
+    }
+    private var ordinaryControls: CodexTaskControlCapabilities? {
+        let value = messageSnapshot?.controls ?? replayState.creation?.controls
+        guard readingStore.providers != nil, let value else { return value }
+        let available = readingStore.providers?.operations != nil
+        return .init(usesComputerConnection: value.usesComputerConnection,
+            canSubmit: available && value.canSubmit, canStop: available && value.canStop,
+            canRetry: available && value.canRetry,
+            canSelectModel: available && value.canSelectModel && suppliedModelCatalog?.canSelectModel == true,
+            canSelectPermissions: available && value.canSelectPermissions && externalModelAllowsSubmit && suppliedModelCatalog?.canSelectPermissions == true,
+            usedTokens: value.usedTokens, contextWindow: value.contextWindow)
+    }
+    private var ordinaryConnectionAvailable: Bool {
+        guard let capability = ordinaryControls else { return false }
+        if readingStore.providers != nil { return task.connected }
+        if !capability.usesComputerConnection { return true }
+        return !HostLaunchRuntime.arguments.contains("--remote-connection-preferences-unavailable-fixture") &&
+            (RemoteConnectionPreferences.decode(connectionData)?.isEnabled(task.id.host) ?? false)
+    }
+    private func prepareOrdinaryControls() {
+        guard task.readsOrdinaryMessages, !isContextMenuPreview, let snapshot = messageSnapshot else { return }
+        _ = replay.prepareOrdinary(snapshot, expected: messageScope)
+        replay.reconcileDraft(composerScope, drafts: composerDrafts)
+    }
+    private func applySuppliedModelCatalog() {
+        guard usesAuthoritativeMessages, let value = suppliedModelCatalog, value.valid, !value.savedModelUnavailable else { return }
+        _ = configurations.admitExternal(model: value.configuration, permission: value.permission, in: composerScope)
+    }
+    private func commitExternalOperation(_ receipt: CodexTaskOperationReceipt) -> Bool {
+        let operation = receipt.operation
+        guard operation.scope == messageScope, receipt.matches(operation) else { return false }
+        if let canonical = receipt.canonicalConfiguration {
+            guard let catalog = suppliedModelCatalog else { return false }
+            let base = operation.catalogRevision ?? catalog.revision
+            let confirmedRevision = receipt.canonicalCatalogRevision ?? base
+            let alreadyReconciled = receipt.canonicalCatalogRevision == catalog.revision &&
+                catalog.configuration == canonical.model && catalog.permission == canonical.permission
+            if catalog.revision <= confirmedRevision && !alreadyReconciled {
+                if catalog.savedModelUnavailable, case .configuration(let requested) = operation.payload,
+                   canonical.model.selectedModelID != requested.model.selectedModelID { return false }
+                guard modelCatalog.confirmCanonical(model: canonical.model, permission: canonical.permission,
+                    in: messageScope, baseRevision: base, canonicalRevision: receipt.canonicalCatalogRevision) else {
+                    modelCatalog.load(messageScope, session: composerSessionID, force: true); return false
+                }
+            }
+            //A newer supplied directory wins over an older accepted operation;
+            //otherwise the confirmed overlay survives cache/read failure/reentry.
+            guard let effective = modelCatalog.snapshot(messageScope) else { return false }
+            if !effective.savedModelUnavailable &&
+                !configurations.admitExternal(model: effective.configuration, permission: effective.permission, in: composerScope) { return false }
+        }
+        if let snapshot = receipt.snapshot {
+            guard messages.reconcileOperation(snapshot, expected: messageScope) else { return false }
+            operations.confirmProjectedUserMessages(snapshot.submittedUserMessageIDs, in: messageScope)
+        }
+        if case .submit(let event, _) = operation.payload {
+            //Accept only the exact submitted draft. A newly edited draft remains
+            //the user's next draft and is never cleared by this older receipt.
+            if composerDrafts.snapshot(in: composerScope) == event.draft {
+                guard composerDrafts.accept(event.draft, in: composerScope) else { return false }
+            }
+            if !projectsUserMessage(event) {
+                replayScrollRequestID = operation.id.uuidString
+            }
+        }
+        if case .queuedPrompt(let target, .edit(let submitted)) = operation.payload,
+           let edit = composerDrafts.pendingEdit(in: composerScope),
+           edit.sessionID == operation.sessionID, case .provider(target) = edit.target,
+           edit.draft == submitted {
+            _ = composerDrafts.cancelPendingEdit(in: composerScope, sessionID: operation.sessionID)
+        }
+        if receipt.snapshot == nil { messages.load(messageScope, title: task.title, force: true) }
+        if case .configuration = operation.payload { modelCatalog.load(messageScope, session: composerSessionID, force: true) }
+        return true
+    }
+    private func submitExternalConfiguration(model: RemoteAdvancedConfiguration, permission: RemoteApprovalPickerSelection) {
+        guard operationAvailable, let snapshot = messageSnapshot, let catalog = suppliedModelCatalog,
+              catalog.permitsChange(model: model, permission: permission) else { configurationUnavailable = true; return }
+        _ = operations.begin(.init(id: UUID(), scope: messageScope, sessionID: composerSessionID,
+            historyRevision: snapshot.revision, catalogRevision: catalog.revision,
+            payload: .configuration(.init(model: model, permission: permission))),
+            currentRevision: snapshot.revision, commit: commitExternalOperation)
+    }
+    private var canRetryExternalOperation: Bool {
+        guard let operation = operations.operation(messageScope) else { return false }
+        if case .queuedPrompt(let target, let action) = operation.payload {
+            guard operationAvailable, let snapshot = messageSnapshot,
+                  action.matchesCurrentTarget(target, in: snapshot, expectedTurnID: operation.turnID) else { return false }
+            if case .edit = action {
+                guard queuedPromptEditTarget == target else { return false }
+                return composerDrafts.snapshot(in: composerScope).isValidQueuedPromptEdit
+            }
+            return true
+        }
+        if case .submit(let submission, _) = operation.payload, submission.mode != .normal {
+            return operation.turnID == composerRunningTurnID
+        }
+        return true
+    }
+    private func retryExternalOperation() {
+        guard canRetryExternalOperation, let operation = operations.operation(messageScope) else { return }
+        switch operation.payload {
+        case .submit(let previous, _):
+            let running = composerRunningTurnID
+            _ = submitComposer(.init(intentID: UUID(), scope: composerScope, sessionID: composerSessionID,
+                draft: composerDrafts.snapshot(in: composerScope),
+                mode: running == nil ? .normal : (previous.mode == .normal ? .queue : previous.mode), runningTurnID: running))
+        case .stop(let turn):
+            stopComposer(.init(intentID: UUID(), scope: composerScope, sessionID: composerSessionID, turnID: turn))
+        case .configuration(let value): submitExternalConfiguration(model: value.model, permission: value.permission)
+        case .queuedPrompt(let target, let action):
+            switch action {
+            case .edit:
+                submitQueuedPromptAction(.edit(composerDrafts.snapshot(in: composerScope)), target: target, session: composerSessionID)
+            case .cancel, .steer, .start:
+                submitQueuedPromptAction(action, target: target, session: composerSessionID, expectedTurnID: operation.turnID)
+            }
+        }
+    }
+    @ViewBuilder private var externalOperationStatus: some View {
+        if usesAuthoritativeMessages {
+            switch operations.phase(messageScope) {
+            case .pending, .checking:
+                HStack {
+                    ProgressView().accessibilityIdentifier("codex-operation-busy")
+                    Text(operations.phase(messageScope) == .checking ? visualText("正在检查操作结果", "Checking operation outcome") : visualText("正在提交操作", "Submitting operation"))
+                    Button(visualText("取消等待", "Cancel wait")) { operations.cancel(messageScope, sessionID: composerSessionID) }
+                        .accessibilityIdentifier("codex-operation-cancel")
+                }.font(.footnote)
+            case .uncertain:
+                HStack {
+                    Text(visualText("操作结果尚未确认，输入已保留。", "Operation outcome is unknown. Input was kept."))
+                        .accessibilityIdentifier("codex-operation-uncertain")
+                    Button(visualText("检查结果", "Check outcome")) { _ = operations.lookup(messageScope, sessionID: composerSessionID, commit: commitExternalOperation) }
+                        .accessibilityIdentifier("codex-operation-lookup")
+                }.font(.footnote)
+            case .localCommitFailed:
+                HStack {
+                    Text(visualText("操作已接受，正在恢复页面状态。", "Operation accepted. Page state needs recovery."))
+                        .accessibilityIdentifier("codex-operation-local-commit")
+                    Button(visualText("重试", "Retry")) { _ = operations.retryLocalCommit(messageScope, sessionID: composerSessionID, commit: commitExternalOperation) }
+                        .accessibilityIdentifier("codex-operation-local-retry")
+                }.font(.footnote)
+            case .rejected:
+                HStack {
+                    Text(visualText("操作未被接受，输入已保留。", "Operation was not accepted. Input was kept."))
+                        .accessibilityIdentifier("codex-operation-rejected")
+                    if canRetryExternalOperation {
+                        Button(visualText("重试", "Retry"), action: retryExternalOperation)
+                            .accessibilityIdentifier("codex-operation-retry")
+                    }
+                }.font(.footnote)
+            case .idle, .accepted, .awaitingQueuedDelivery: EmptyView()
+            }
+            if let snapshot = messageSnapshot {
+                ForEach(operations.awaitingQueuedPrompts(messageScope).filter { hasQueuedDeliveryEcho($0, in: snapshot) }) { prompt in
+                    HStack {
+                        Text(visualText("引导已接受，等待写入原轮次。", "Steer accepted. Waiting for the original turn to update."))
+                        refreshQueuedDelivery(prompt)
+                    }.font(.footnote)
+                }
+            }
+            if readingStore.providers?.models != nil, case .failed = modelCatalog.phase(messageScope) {
+                HStack {
+                    Text(visualText("模型配置加载失败。", "Model settings could not be loaded."))
+                    Button(visualText("重试", "Retry")) { modelCatalog.load(messageScope, session: composerSessionID, force: true) }
+                        .accessibilityIdentifier("codex-model-catalog-retry")
+                }.font(.footnote)
+            }
+            if let catalog = suppliedModelCatalog, catalog.savedModelUnavailable,
+               let modelID = catalog.configuration.selectedModelID {
+                HStack {
+                    Text(visualText("已保存的模型不可用", "Saved model unavailable") + " · " + modelID)
+                        .accessibilityIdentifier("codex-model-unavailable")
+                    if ordinaryControls?.canSelectModel == true {
+                        Menu(visualText("选择模型", "Choose model")) {
+                            ForEach(catalog.configuration.featured + catalog.configuration.other) { model in
+                                Button(model.title) {
+                                    guard let live = suppliedModelCatalog, live == catalog,
+                                          let candidate = live.recoveryCandidate(model.id) else { return }
+                                    submitExternalConfiguration(model: candidate, permission: live.permission)
+                                }.accessibilityIdentifier("codex-model-recovery-" + model.id)
+                            }
+                        }
+                        .disabled(!operationAvailable)
+                        .accessibilityIdentifier("codex-model-recovery-picker")
+                    }
+                }
+                .font(.footnote)
+                .padding(.horizontal, 16)
+            }
+        }
+    }
+    private var permissionSelection: RemoteApprovalPickerSelection {
+        let current = configurations.snapshot(composerScope)
+        if usesAuthoritativeMessages, let catalog = suppliedModelCatalog,
+           !catalog.accepts(model: current.model, permission: current.permission) { return catalog.permission }
+        return current.permission
+    }
+    private var modelConfiguration: RemoteAdvancedConfiguration {
+        let current = configurations.snapshot(composerScope)
+        if usesAuthoritativeMessages, let catalog = suppliedModelCatalog,
+           !catalog.accepts(model: current.model, permission: current.permission) { return catalog.configuration }
+        return current.model
+    }
     @State private var modelTransaction = RemoteConfigurationTransaction<RemoteAdvancedConfiguration>()
     @State private var permissionTransaction = RemoteConfigurationTransaction<RemoteApprovalPickerSelection>()
     @State private var configurationUnavailable = false
@@ -8702,10 +10621,11 @@ private struct RemoteThreadFixturePage: View {
     // updates; disconnected service mode preserves the previous selection.
     private var modelOperationBinding: Binding<RemoteAdvancedConfiguration> {
         Binding(get: { modelConfiguration }, set: { value in
-            guard value != modelConfiguration else { return }
+            guard value != modelConfiguration, ordinaryControls?.canSelectModel != false else { return }
+            if usesAuthoritativeMessages { submitExternalConfiguration(model: value, permission: permissionSelection); return }
             let operation = modelTransaction.begin(value: value, scope: composerScope,
                 sessionID: composerSessionID)
-            let failure = PreviewRemoteConfigurationAdapter(isReplayEnabled: replay.isEnabled).failure(for: operation)
+            let failure = PreviewRemoteConfigurationAdapter(isReplayEnabled: controlsEnabled).failure(for: operation)
             guard modelTransaction.resolve(operation, currentScope: composerScope,
                 currentSession: composerSessionID, failure: failure) else { return }
             if failure != nil || !configurations.setModel(operation.value, in: composerScope) {
@@ -8714,10 +10634,11 @@ private struct RemoteThreadFixturePage: View {
         })
     }
     private func changePermission(_ value: RemoteApprovalPickerSelection) {
-        guard value != permissionSelection else { return }
+        guard value != permissionSelection, ordinaryControls?.canSelectPermissions != false else { return }
+        if usesAuthoritativeMessages { submitExternalConfiguration(model: modelConfiguration, permission: value); return }
         let operation = permissionTransaction.begin(value: value, scope: composerScope,
             sessionID: composerSessionID)
-        let failure = PreviewRemoteConfigurationAdapter(isReplayEnabled: replay.isEnabled).failure(for: operation)
+        let failure = PreviewRemoteConfigurationAdapter(isReplayEnabled: controlsEnabled).failure(for: operation)
         guard permissionTransaction.resolve(operation, currentScope: composerScope,
             currentSession: composerSessionID, failure: failure) else { return }
         if failure != nil || !configurations.setPermission(operation.value, in: composerScope) {
@@ -8728,12 +10649,13 @@ private struct RemoteThreadFixturePage: View {
     @State private var showsSliderUnavailable = false
     @State private var reopensModelSlider = false
     private var hasModelControlFixture: Bool {
-        HostLaunchRuntime.arguments.contains("--remote-model-slider-fixture")
+        if usesAuthoritativeMessages && !externalModelAllowsSubmit { return false }
+        return ordinaryControls?.canSelectModel == true || (readingStore.providers == nil && HostLaunchRuntime.arguments.contains("--remote-model-slider-fixture"))
     }
     private var composerModelControl: RemoteModelControlConfiguration? {
         guard hasModelControlFixture else { return nil }
         return .init(value: modelOperationBinding, presenter: modelSliderPresenter,
-            isEnabled: task.connected, openAdvanced: { showsAdvancedFixture = true },
+            isEnabled: usesAuthoritativeMessages ? operationAvailable : (ordinaryControls != nil ? (controlsEnabled && ordinaryConnectionAvailable) : task.connected), openAdvanced: { showsAdvancedFixture = true },
             appearance: composerSliderAppearance)
     }
     private var composerSliderAppearance: RemoteModelSliderAppearance {
@@ -8745,6 +10667,9 @@ private struct RemoteThreadFixturePage: View {
                 accent.remoteSliderPrimaryColorAsset ?? "OneOff/AppForeground")))
     }
     private var locationContext: (workspace: String?, cloud: String?) {
+        if let context = messageSnapshot?.context {
+            return (context.workspaceDisplayName, context.cloudEnvironmentName)
+        }
         switch task.subtitle {
         case .project(let name): return (name, nil)
         case .environment(let name): return (nil, name)
@@ -8754,9 +10679,9 @@ private struct RemoteThreadFixturePage: View {
     private var locationLabel: some View {
         // Explicit synthetic context projection. This mapping belongs to the
         // fixture adapter, not the official transport schema or capability gate.
-        RecoveredRemoteThreadLocationLabel(title: task.title,
+        RecoveredRemoteThreadLocationLabel(title: externalMetadata.snapshot(messageScope)?.title ?? metadata.snapshot(composerScope).title ?? messageSnapshot?.context.threadTitle ?? task.title,
             workspaceDisplayName: locationContext.workspace,
-            hostDisplayName: task.hostDisplayName,
+            hostDisplayName: messageSnapshot.map { $0.context.hostDisplayName } ?? task.hostDisplayName,
             cloudEnvironmentName: locationContext.cloud)
     }
     private var titlePlacement: ToolbarItemPlacement {
@@ -8802,6 +10727,11 @@ private struct RemoteThreadFixturePage: View {
     }
     @State private var unavailable = false
     @State private var approvalFailure: RemoteApprovalSubmissionFailure?
+    @State private var formSubmission = RemoteOpenAIFormSubmissionGate()
+    @State private var formSubmissionTask: Task<Void, Never>?
+    @State private var formSubmissionFailure: RemoteApprovalSubmissionFailure?
+    @State private var formFailureConsumed = false
+    @State private var formWasDismissed = false
     @State private var lastApprovalWasFeedback = false
     @State private var inputUnavailable = false
     @State private var inputFailure: RemoteUserInputFailure?
@@ -8825,7 +10755,9 @@ private struct RemoteThreadFixturePage: View {
     @State private var composerStopUnavailable = false
     @State private var composerStopFailure: RemoteComposerStopFailure?
     private var composerRunningTurnID: String? {
-        if replay.isEnabled { return replayState.activeTurnID }
+        if usesAuthoritativeMessages { return messageSnapshot?.activeTurnID }
+        if controlsEnabled { return replayState.activeTurnID }
+        if task.readsOrdinaryMessages { return nil }
         return task.activity == .running ? "fixture-turn" : nil
     }
     // Independent scoped fixtures stand in for ThreadState.contextUsage.
@@ -8835,18 +10767,24 @@ private struct RemoteThreadFixturePage: View {
     // host and thread transport configuration must be supplied by a service adapter.
     private var composerPermissions: RemotePermissionPickerConfiguration? {
         let arguments = HostLaunchRuntime.arguments
-        guard arguments.contains("--remote-permission-fixture") else { return nil }
+        guard ordinaryControls?.canSelectPermissions == true || (readingStore.providers == nil && arguments.contains("--remote-permission-fixture")) else { return nil }
+        if usesAuthoritativeMessages, let catalog = suppliedModelCatalog {
+            return .init(options: catalog.permissionOptions, isEnabled: operationAvailable, select: changePermission, helpNotice: visualText("按当前任务提供的权限配置选择。", "Choose from this task’s supplied permission settings."), displayName: readingStore.providers?.productName ?? "Codex")
+        }
         let restricted = arguments.contains("--remote-permission-restricted-fixture")
         return .init(options: .init(availablePresets: restricted ? [.askPermissions, .guardianApprovals] : RemoteApprovalPreset.allCases,
             allowsCustom: !restricted,
             autoReviewRequired: arguments.contains("--remote-permission-required-fixture"),
-            selected: permissionSelection), isEnabled: task.connected,
+            selected: permissionSelection), isEnabled: ordinaryControls != nil ? (controlsEnabled && ordinaryConnectionAvailable) : task.connected,
             select: changePermission,
             helpNotice: visualText("离线预览保留官方帮助入口。", "The offline preview retains the official help entry.")
                 + "\nhttps://learn.chatgpt.com/docs/sandboxing?surface=app#how-you-control-it")
     }
 
     private var composerContextUsage: RemoteContextUsage? {
+        if let controls = ordinaryControls, let used = controls.usedTokens, let window = controls.contextWindow {
+            return .init(usedTokens: used, modelContextWindow: window)
+        }
         guard HostLaunchRuntime.arguments.contains("--remote-context-usage-fixture") else { return nil }
         switch task.id.thread {
         case "completed-thread": return .init(usedTokens: 230_000, modelContextWindow: 260_000)
@@ -8859,7 +10797,7 @@ private struct RemoteThreadFixturePage: View {
         // Independent disconnected fixture capabilities. The official thread
         //passes !usesRealtimeVoiceComposer for supplementary Whisper; this
         //fixture selects ordinary composition, with no live voice session.
-        let enabled = !HostLaunchRuntime.arguments.contains("--remote-thread-toolbar-unavailable-fixture")
+        let enabled = readingStore.providers == nil && !HostLaunchRuntime.arguments.contains("--remote-thread-toolbar-unavailable-fixture")
         return RemoteComposerToolbarConfiguration(
             state: RemoteComposerAccessoryState(hostSupportsRemoteAttachments: enabled,
                 allowsAttachments: true, allowsSupplementaryWhisperButton: enabled,
@@ -9029,16 +10967,23 @@ private struct RemoteThreadFixturePage: View {
         .init(hostID: task.id.host, threadID: task.id.thread)
     }
     private var composerSubmissionState: RemoteComposerSubmissionState {
+        if let target = queuedPromptEditTarget {
+            return .init(canSubmit: operationAvailable && messageSnapshot?.queuedPrompts.contains(target) == true &&
+                composerDrafts.snapshot(in: composerScope).isValidQueuedPromptEdit)
+        }
         // Independent fixture projection. Task activity is not treated as an
         // official transport acknowledgement or a real service capability.
-        .init(canSubmit: RemoteConnectionPreferences.decode(connectionData)?.isEnabled(task.id.host) ?? false,
+        return .init(canSubmit: usesAuthoritativeMessages ? (operationAvailable && externalModelAllowsSubmit && ordinaryControls?.canSubmit == true) : ordinaryControls != nil
+                ? (controlsEnabled && ordinaryControls?.canSubmit == true && ordinaryConnectionAvailable)
+                : (RemoteConnectionPreferences.decode(connectionData)?.isEnabled(task.id.host) ?? false),
               isReconnecting: composerReconnectFixture != nil,
               isRunningTurn: composerRunningTurnID != nil)
     }
     private var composerReconnectFixture: String? {
+        guard !usesAuthoritativeMessages else { return nil }
         // Explicit offline fixture projection; task.connected is not a source
         // for the official reconnect predicate or the task-vs-host branch.
-        HostLaunchRuntime.arguments.first { $0.hasPrefix("--remote-composer-reconnecting=") }
+        return HostLaunchRuntime.arguments.first { $0.hasPrefix("--remote-composer-reconnecting=") }
             .map { String($0.dropFirst("--remote-composer-reconnecting=".count)) }
     }
     private var composerReconnectLabel: String {
@@ -9049,7 +10994,20 @@ private struct RemoteThreadFixturePage: View {
         return OfficialText.text(.remoteReconnectingTask)
     }
     private func stopComposer(_ event: RemoteComposerStopIntent) {
-        if replay.isEnabled {
+        if usesAuthoritativeMessages {
+            guard operationAvailable, ordinaryControls?.canStop == true,
+                  RemoteComposerIntentValidation().stop(event, currentScope: composerScope, currentSession: composerSessionID,
+                    currentTurnID: composerRunningTurnID, currentDraft: composerDrafts.snapshot(in: composerScope), state: composerSubmissionState) == nil,
+                  let snapshot = messageSnapshot else { return }
+            _ = operations.begin(.init(id: event.intentID, scope: messageScope, sessionID: composerSessionID,
+                historyRevision: snapshot.revision, turnID: event.turnID, payload: .stop(turnID: event.turnID)),
+                currentRevision: snapshot.revision, commit: commitExternalOperation)
+            return
+        }
+        if ordinaryControls != nil && (!ordinaryConnectionAvailable || ordinaryControls?.canStop != true) {
+            composerStopFailure = .disconnected; composerStopUnavailable = true; return
+        }
+        if controlsEnabled {
             composerStopFailure = replay.stop(event, scope: composerScope, session: composerSessionID,
                 draft: composerDrafts.snapshot(in: composerScope),
                 state: composerDrafts.submissionState(composerSubmissionState, in: composerScope))
@@ -9065,8 +11023,35 @@ private struct RemoteThreadFixturePage: View {
     }
     private func submitComposer(_ event: RemoteComposerSubmission) -> Bool {
         var event = event
+        if usesAuthoritativeMessages {
+            if let target = queuedPromptEditTarget, let edit = composerDrafts.pendingEdit(in: composerScope) {
+                guard edit.validates(event, scope: composerScope, sessionID: composerSessionID,
+                                     currentDraft: composerDrafts.snapshot(in: composerScope)) == nil else { return false }
+                submitQueuedPromptAction(.edit(event.draft), target: target, session: event.sessionID, intentID: event.intentID)
+                return false
+            }
+            guard externalModelAllowsSubmit else { return false }
+            let configuration = suppliedModelCatalog.map { _ in CodexTaskConfiguration(model: modelConfiguration, permission: permissionSelection) }
+            event.configuration = configuration.map { .init(model: $0.model, permission: $0.permission) }
+            guard operationAvailable, let snapshot = messageSnapshot,
+                  RemoteComposerIntentValidation().submit(event, currentScope: composerScope, currentSession: composerSessionID,
+                    currentDraft: composerDrafts.snapshot(in: composerScope), state: composerSubmissionState,
+                    currentTurnID: composerRunningTurnID) == nil else { return false }
+            let projectsMessage = projectsUserMessage(event)
+            let admitted = operations.begin(.init(id: event.intentID, scope: messageScope, sessionID: composerSessionID,
+                historyRevision: snapshot.revision, catalogRevision: suppliedModelCatalog?.revision,
+                turnID: event.runningTurnID, payload: .submit(event, configuration: configuration)),
+                currentRevision: snapshot.revision, projectsUserMessage: projectsMessage, commit: commitExternalOperation)
+            if admitted && projectsMessage {
+                outgoingSubmissionID = event.intentID
+                outgoingRequestsKeyboardDismissal = dismissKeyboardAfterSending && composerFocused
+                preparedOutgoingRowID = nil
+                replayScrollRequestID = event.intentID.uuidString
+            }
+            return false
+        }
         event.configuration = .init(model: modelConfiguration, permission: permissionSelection)
-        if replay.isEnabled {
+        if controlsEnabled {
             if composerDrafts.pendingEdit(in: composerScope) != nil {
                 composerFailure = replay.submitPendingEdit(event, scope: composerScope,
                     session: composerSessionID, drafts: composerDrafts,
@@ -9088,8 +11073,13 @@ private struct RemoteThreadFixturePage: View {
         return false
     }
     private var userInputRequest: RemoteUserInputRequest? {
+        if usesAuthoritativeMessages && ordinaryRequestReference == nil { return nil }
+        if ordinaryRequestReference != nil {
+            if case .input(let request) = currentOrdinaryRequest?.payload { return request }
+            return nil
+        }
         guard let request = rawUserInputRequest else { return nil }
-        return replay.isEnabled && replayState.hasResolved(request) ? nil : request
+        return controlsEnabled && replayState.hasResolved(request) ? nil : request
     }
     private var rawUserInputRequest: RemoteUserInputRequest? {
         guard let request = fixtureUserInputRequest else { return nil }
@@ -9142,7 +11132,8 @@ private struct RemoteThreadFixturePage: View {
             ])
     }
     private func submitUserInput(_ event: RemoteUserInputEvent) async -> Bool {
-        if replay.isEnabled {
+        if usesAuthoritativeMessages || ordinaryRequestReference != nil { return await respondOrdinary(.input(event)) }
+        if controlsEnabled {
             //Independent asynchronous provider seam. A queued call is not an
             //acceptance; revalidate after awaiting and before durable commit.
             let delayed = HostLaunchRuntime.arguments.contains("--remote-user-input-delayed-fixture")
@@ -9160,7 +11151,7 @@ private struct RemoteThreadFixturePage: View {
     }
     private func acceptUserInput(_ event: RemoteUserInputEvent) -> Bool {
         if case .dismiss = event { inputWasDismiss = true } else { inputWasDismiss = false }
-        if replay.isEnabled {
+        if controlsEnabled {
             inputFailure = replay.answer(event, current: userInputRequest, scope: composerScope)
             inputUnavailable = inputFailure != nil
             if inputFailure == nil { replayScrollRequestID = UUID().uuidString }
@@ -9173,6 +11164,11 @@ private struct RemoteThreadFixturePage: View {
     }
 
     private var approvalAvailability: RemoteApprovalAvailability {
+        if !task.approvalPermissionDetails.isEmpty {
+            return .init(kind: .permissions,
+                availableCommandExecutionDecisions: [.accept, .acceptForSession],
+                proposedExecpolicyAmendment: nil)
+        }
         let scenario = HostLaunchRuntime.arguments.first {
             $0.hasPrefix("--remote-approval-fixture=")
         }?.split(separator: "=", maxSplits: 1).last.map(String.init)
@@ -9192,29 +11188,43 @@ private struct RemoteThreadFixturePage: View {
         }
     }
     private var approvalRequest: RemoteApprovalRequestInput? {
+        if usesAuthoritativeMessages && ordinaryRequestReference == nil { return nil }
+        if ordinaryRequestReference != nil {
+            if case .approval(let request) = currentOrdinaryRequest?.payload { return request }
+            return nil
+        }
         guard let request = rawApprovalRequest else { return nil }
-        return replay.isEnabled && replayState.resolvedApprovals.contains(request.scope) ? nil : request
+        return controlsEnabled && replayState.resolvedApprovals.contains(request.scope) ? nil : request
     }
     private var rawApprovalRequest: RemoteApprovalRequestInput? {
         guard task.pending == .approval else { return nil }
         // Synthetic input, original ordinary-selector ordering. Availability is
         // retained with the request so policy changes invalidate captured taps.
-        let availability = approvalAvailability
+        let availability = task.approvalOpenAIForm != nil
+            ? RemoteApprovalAvailability(kind: .mcpServerElicitation,
+                availableCommandExecutionDecisions: nil, proposedExecpolicyAmendment: nil)
+            : approvalAvailability
         return RemoteApprovalRequestInput(scope: .init(hostID: task.id.host,
             connectionID: "fixture-connection-" + task.id.host,
             key: .init(requestID: "approval-1", threadID: task.id.thread,
                        turnID: "fixture-turn", itemID: "inspect", callID: nil)),
             actions: availability.selection.decisions.map {
                 .init(title: OfficialText.text($0.ordinaryTitleKey), decision: $0)
-            }, availability: availability, header: approvalHeaderInput)
+            }, availability: availability, header: approvalHeaderInput,
+            permissionDetails: task.approvalPermissionDetails,
+            openAIForm: task.approvalOpenAIForm)
     }
     private var approvalHeaderInput: RemoteApprovalHeaderInput {
         // Explicit synthetic content, never account/chat data. The same source
         // title/reason selector is used for normal preview and scoped tests.
-        let reason = replay.isEnabled
+        let reason = controlsEnabled
             ? visualText("是否批准此合成请求并继续前端回放？", "Approve this synthetic request and continue frontend replay?")
             : visualText("是否允许查看合成组件状态？此预览的审批服务尚未连接。", "Allow inspection of synthetic component state? This preview's approval service is disconnected.")
         let args = HostLaunchRuntime.arguments
+        if task.approvalOpenAIForm != nil {
+            return .init(title: visualText("继续此合成确认表单？", "Continue this synthetic confirmation form?"),
+                reason: reason, layout: .ordinary)
+        }
         if args.contains("--offline-fixture"), args.contains("--remote-approval-header-title-fixture") {
             return .init(title: visualText("检查合成审批标题", "Inspect synthetic approval title"),
                 subtitle: visualText("合成命令预览", "Synthetic command preview"), reason: reason,
@@ -9223,8 +11233,50 @@ private struct RemoteThreadFixturePage: View {
         }
         return .init(reason: reason, layout: .ordinary)
     }
+    private func submitOpenAIForm(_ action: RemoteOpenAIFormAction, values: [String: RemoteOpenAIFormValue]?,
+                                  request: RemoteApprovalRequestInput, identity: CodexTaskRequestIdentity?) {
+        if usesAuthoritativeMessages {
+            guard let identity else { return }
+            let operation = RemoteOpenAIFormOperation(id: UUID(), request: request, action: action, fieldValues: values)
+            beginAuthoritativeRequestResponse(.approval(.openAIForm(operation)), expected: identity)
+            return
+        }
+        guard let operation = formSubmission.begin(action, request: request, current: approvalRequest, fieldValues: values) else { return }
+        formSubmissionFailure = nil
+        formWasDismissed = action == .dismiss
+        let injectFailure = !formFailureConsumed &&
+            HostLaunchRuntime.arguments.contains("--remote-openai-form-failure-once")
+        if injectFailure { formFailureConsumed = true }
+        let adapter = PreviewRemoteOpenAIFormAdapter(isReplayEnabled: controlsEnabled, fails: injectFailure,
+            delayMilliseconds: HostLaunchRuntime.arguments.contains("--remote-openai-form-delay-fixture") ? 1500 : 180)
+        formSubmissionTask = Task { @MainActor in
+            let failure = await adapter.respond(to: operation)
+            guard !Task.isCancelled, formSubmission.finish(operation, current: approvalRequest) else { return }
+            formSubmissionTask = nil
+            if let failure { formSubmissionFailure = failure; return }
+            // Local acknowledgement and replay receipt use a form-specific
+            // response. This never dispatches ordinary approve/deny/feedback.
+            let result = replay.approve(.openAIForm(operation), current: approvalRequest, scope: composerScope)
+            formSubmissionFailure = result
+            if result == nil { replayScrollRequestID = operation.id.uuidString }
+        }
+    }
+    private func cancelOpenAIFormSubmission() {
+        formSubmissionTask?.cancel(); formSubmissionTask = nil
+        formSubmission.cancel()
+    }
     private func submitApproval(_ event: RemoteApprovalEvent) -> Bool {
-        if replay.isEnabled {
+        if usesAuthoritativeMessages || ordinaryRequestReference != nil {
+            guard (usesAuthoritativeMessages ? requestResponseAvailable : !requests.busy(messageScope)), ordinaryApprovalTask == nil else { return false }
+            ordinaryApprovalTask = Task { @MainActor in
+                _ = await respondOrdinary(.approval(event))
+                ordinaryApprovalTask = nil
+            }
+            //Preserve the card's local feedback until the async receipt removes
+            //this exact request; no synchronous success is fabricated.
+            return false
+        }
+        if controlsEnabled {
             approvalFailure = replay.approve(event, current: approvalRequest, scope: composerScope)
             unavailable = approvalFailure != nil
             if approvalFailure == nil { replayScrollRequestID = UUID().uuidString }
@@ -9247,26 +11299,45 @@ private struct RemoteThreadFixturePage: View {
     }
     @ViewBuilder
     private func userInputBar(viewportHeight: CGFloat) -> some View {
-        if let request = approvalRequest {
+        if ordinaryRequestReference != nil && !ordinaryRequestLoaded {
+            VStack(spacing: 8) {
+                if usesAuthoritativeMessages && readingStore.providers?.requestResponses != nil {
+                    CodexRequestResponseStatus(store: responses, scope: messageScope, readingStore: readingStore, reference: ordinaryRequestReference)
+                    if responses.readPhase(messageScope) == .loading { ProgressView(visualText("正在加载请求", "Loading request")) }
+                } else if requests.failure(messageScope) != nil {
+                    Text(visualText("请求加载失败", "Request could not be loaded"))
+                    Button(visualText("重试", "Retry")) { loadCurrentRequest(force: true) }
+                        .accessibilityIdentifier("codex-request-load-retry")
+                } else { ProgressView(visualText("正在加载请求", "Loading request")) }
+            }.padding()
+        } else if let request = approvalRequest {
+            let identity = usesAuthoritativeMessages ? currentOrdinaryRequest?.identity : nil
             // ApprovalCard is a separate native component. Attachment uses the
             // recovered BottomBars host; latest official screenshots confirm
             // its fixed-bottom placement. Full parent selection is still partial.
             RecoveredRemoteApprovalCard(request: request,
-                reason: replay.isEnabled
+                reason: controlsEnabled
                     ? visualText("是否批准此合成请求并继续前端回放？", "Approve this synthetic request and continue frontend replay?")
                     : visualText("是否允许查看合成组件状态？此预览的审批服务尚未连接。", "Allow inspection of synthetic component state? This preview's approval service is disconnected."),
-                command: "inspect-ui --fixture fixture-a", onAction: submitApproval)
+                command: ordinaryRequestReference != nil ? suppliedRequest?.command : task.approvalCommand, onAction: submitApproval,
+                formIsSubmitting: usesAuthoritativeMessages ? responses.isBusy(messageScope) : formSubmission.pending != nil,
+                onFormAction: { action, values in submitOpenAIForm(action, values: values, request: request, identity: identity) })
                 .id(request.scope)
+                .id(identity)
+                .disabled(ordinaryRequestReference != nil && ordinaryRequestDisabled)
         } else if let request = userInputRequest {
             // 0x1a23dbc → 0x1a25600 constructs QuestionCards within BottomBars;
             // 0x1a29b48 → 0x1a2a1b8 constructs the request-bound input card.
             // Input receives the original viewport (0x1a2a280/414). Do not apply
             // sibling card maximumHeight deductions as an input-form constraint.
-            RecoveredRemoteUserInputForm(request: request, viewportHeight: viewportHeight, onAction: submitUserInput)
+            RecoveredRemoteUserInputForm(request: request, viewportHeight: viewportHeight,
+                externalCancellationID: ordinaryRequestReference != nil && !usesAuthoritativeMessages ? requests.cancellationID(messageScope) : nil,
+                onAction: submitUserInput)
                 // Local acceptance fixture, not an official preference or server field.
                 .environment(\.recoveredRemoteElevationDisabled,
                              HostLaunchRuntime.arguments.contains("--remote-card-without-elevation"))
                 .id(request.scope)
+                .disabled(ordinaryRequestReference != nil && ordinaryRequestDisabled)
                 .alert(visualText("服务未连接", "Service not connected"), isPresented: $inputUnavailable) {
                     Button(visualText("好", "OK"), role: .cancel) {}
                 } message: {
@@ -9282,13 +11353,15 @@ private struct RemoteThreadFixturePage: View {
                         Text(visualText("回答未发送；服务未连接，请求仍待处理。", "Answers were not sent; the service is disconnected and the request remains pending."))
                     }
                 }
-        } else if task.pending == nil || (replay.isEnabled &&
+        } else if task.readsOrdinaryMessages || task.pending == nil || (controlsEnabled &&
             ((rawApprovalRequest.map { replayState.resolvedApprovals.contains($0.scope) } ?? false) ||
              (rawUserInputRequest.map { replayState.hasResolved($0) } ?? false))) {
             // Ordinary source path with explicit disconnected fixture capabilities.
             // Pending approvals and user-input requests select their own form above.
             // Prediction and active audio state remain separate recovery work.
-            RecoveredRemoteOrdinaryFieldSurface {
+            RecoveredRemoteOrdinaryFieldSurface(usesClearGlass: true,
+                softensExpandedBackdrop: composerExpanded &&
+                    !HostLaunchRuntime.arguments.contains("--remote-expanded-clear-glass-baseline")) {
                 VStack(spacing: 0) {
                     if composerDrafts.pendingEdit(in: composerScope) != nil {
                         // Independent cancel carrier. Original state rollback is
@@ -9298,16 +11371,22 @@ private struct RemoteThreadFixturePage: View {
                             Spacer()
                             Button(visualText("取消", "Cancel")) {
                                 _ = composerDrafts.cancelPendingEdit(in: composerScope, sessionID: composerSessionID)
-                                composerSessionID = UUID()
+                                if !usesAuthoritativeMessages { composerSessionID = UUID() }
                             }.accessibilityIdentifier("remote-pending-edit-cancel")
+                                .disabled(usesAuthoritativeMessages && operationLocked)
                         }
                         .padding(.horizontal, 16).padding(.top, 8)
+                        if let target = queuedPromptEditTarget, !operationLocked,
+                           messageSnapshot?.queuedPrompts.contains(target) != true {
+                            Text(visualText("排队消息已变化。编辑内容仍在输入框中。", "The queued message changed. Your edit is still in the composer."))
+                                .font(.footnote).foregroundStyle(.secondary).padding(.horizontal, 16)
+                        }
                     }
                 RecoveredRemoteComposerField(drafts: composerDrafts,
                     scope: composerScope,
                     // Explicit fixture value for defaultPlaceholderText;
                     // original presentation/translation mapping remains partial.
-                    placeholder: visualText("给 Codex 发消息", "Message Codex"),
+                    placeholder: visualText("给 " + (readingStore.providers?.productName ?? "Codex") + " 发消息", "Message " + (readingStore.providers?.productName ?? "Codex")),
                     textColor: officialVisualColor("ChatGPT/text/primary"),
                     placeholderColor: officialVisualColor("ChatGPT/text/tertiary"),
                     sessionID: composerSessionID, submissionState: composerSubmissionState,
@@ -9321,14 +11400,17 @@ private struct RemoteThreadFixturePage: View {
                     runningTurnID: composerRunningTurnID, stop: stopComposer,
                     primaryColor: officialVisualColor("OneOff/AppForeground"),
                     submit: submitComposer,
+                    sendFocus: outgoingSendFocus,
                     followUpBehaviorOverride: HostLaunchRuntime.arguments.contains("--remote-follow-up=steer") ? .steer : nil,
                     inputTrailingInset: 16,
-                    onFocusChanged: { composerFocused = $0 }, toolbar: composerToolbar,
+                    onFocusChanged: { composerFocused = $0 },
+                    onExpansionChanged: { composerExpanded = $0 }, toolbar: queuedPromptEditTarget == nil ? composerToolbar : nil,
                     contextUsage: composerContextUsage, permissions: composerPermissions,
                     modelControl: composerModelControl,
                     pluginEdit: $composerPluginEdit, dictationEdit: $composerDictationEdit,
                     activeDictation: activeDictationConfiguration,
-                    attachmentRequest: $composerAttachmentRequest)
+                    attachmentRequest: $composerAttachmentRequest,
+                    allowsStop: !usesAuthoritativeMessages || (operationAvailable && ordinaryControls?.canStop == true))
                 }
             }
             .modifier(RemoteLayoutBoundsProbe(identifier: "remote-thread-composer-surface"))
@@ -9465,8 +11547,8 @@ private struct RemoteThreadFixturePage: View {
                     }.font(.body).foregroundStyle(Color(uiColor: officialVisualColor("ChatGPT/text/tertiary")))
                 }
         case .item("response"):
-            Text(visualText("这是合成响应，用于检查消息分隔与返回导航。", "This is a synthetic response for checking message separation and return navigation."))
-                .font(.body).textSelection(.enabled)
+            RemoteLinkedMarkdownBlocks(text: visualText("这是合成响应，用于检查消息分隔与返回导航。", "This is a synthetic response for checking message separation and return navigation."),
+                turnID: "component-response", scope: composerScope, readingStore: readingStore)
                 .accessibilityIdentifier("remote-response-content")
                 .modifier(RemoteLayoutBoundsProbe(identifier: "remote-response-layout"))
         case .item:
@@ -9567,10 +11649,16 @@ private struct RemoteThreadFixturePage: View {
     // Stable synthetic row identities keep loaded history and the current turn
     // separate. Official transcript-item grouping is still being recovered.
     private var transcriptRows: [RecoveredRemoteTranscriptRow] {
-        var rows = [RecoveredRemoteTranscriptRow("fixture-introduction") {
+        var rows: [RecoveredRemoteTranscriptRow] = []
+        if readingStore.providers == nil {
+        rows = [RecoveredRemoteTranscriptRow("fixture-introduction") {
             VStack(alignment: .leading, spacing: 20) {
                 Text(task.id.host).font(.caption).foregroundStyle(.secondary)
                     .accessibilityIdentifier("remote-thread-host")
+                if ordinaryRequestReference != nil && HostLaunchRuntime.arguments.contains("--codex-request-test-controls") {
+                    Button("Expire supplied request") { requests.expireSynthetic(messageScope) }
+                        .buttonStyle(.plain).accessibilityIdentifier("codex-request-expire")
+                }
 
                 Text(visualText("以下是独立合成内容，用于检验组件边界，不是恢复出的官方消息。", "Independent synthetic content for component boundaries, not recovered official messages."))
                     .font(.footnote).foregroundStyle(.secondary)
@@ -9584,7 +11672,7 @@ private struct RemoteThreadFixturePage: View {
                         .font(.footnote).foregroundStyle(.red)
                         .accessibilityIdentifier("remote-history-storage-error")
                 }
-                if replay.isEnabled {
+                if controlsEnabled {
                     Text(visualText("合成事件回放", "Synthetic event replay"))
                         .font(.footnote).foregroundStyle(.secondary)
                         .accessibilityIdentifier("remote-replay-mode")
@@ -9592,7 +11680,7 @@ private struct RemoteThreadFixturePage: View {
                     Text(visualText("离线预览：可选择本地附件。发送、停止、语音及配置服务尚未连接，草稿会保留。", "Offline preview: local attachments are available. Send, stop, voice and configuration services are disconnected; drafts are kept."))
                         .font(.footnote).foregroundStyle(.secondary)
                 }
-                if !task.isCreatedReplay && !task.isAgentChild {
+                if !task.readsOrdinaryMessages && !task.isCreatedReplay && !task.isAgentChild {
                     RecoveredRemotePreviousMessageToggle(isExpanded: historyExpansion, presentation: historyPresentation)
                         .alert(visualText("服务未连接", "Service not connected"), isPresented: $historyUnavailable) {
                             Button(visualText("好", "OK"), role: .cancel) {}
@@ -9607,7 +11695,109 @@ private struct RemoteThreadFixturePage: View {
                 }
             }
         }]
-        if !task.isCreatedReplay && !task.isAgentChild {
+        }
+        if task.readsOrdinaryMessages && (usesAuthoritativeMessages || !controlsEnabled), let snapshot = messageSnapshot {
+            if case .failed = messages.state.phase(messageScope) {
+                rows.append(RecoveredRemoteTranscriptRow("codex-update-failure") {
+                    HStack {
+                        Text(visualText("消息更新中断，已保留当前内容。", "Message updates stopped. Current content was kept."))
+                            .accessibilityIdentifier("codex-message-update-error")
+                        Button(visualText("重试", "Retry")) { messages.reconnect(messageScope, title: task.title) }
+                            .accessibilityIdentifier("codex-message-update-retry")
+                    }.font(.footnote).foregroundStyle(.secondary)
+                })
+            }
+            if let service = readingStore.providers?.messages as? CodexLifecyclePreviewProvider {
+                rows.append(RecoveredRemoteTranscriptRow("lifecycle-test-controls") {
+                    HStack {
+                        Button("修订") { service.advance(messageScope) }.accessibilityIdentifier("codex-lifecycle-advance")
+                        Button("断线") { service.disconnect(messageScope) }.accessibilityIdentifier("codex-lifecycle-disconnect")
+                        Button("删项") { service.clearItems(messageScope) }.accessibilityIdentifier("codex-lifecycle-clear-items")
+                        Button("清空") { service.empty(messageScope) }.accessibilityIdentifier("codex-lifecycle-empty")
+                    }
+                    .font(.caption)
+                    .accessibilityElement(children: .contain)
+                    .accessibilityValue("revision-" + String(snapshot.revision))
+                    .accessibilityIdentifier("codex-lifecycle-controls")
+                })
+            }
+            if HostLaunchRuntime.arguments.contains("--codex-tails-fixture"),
+               let service = readingStore.providers?.messages as? CodexOperationPreviewProvider {
+                rows.append(RecoveredRemoteTranscriptRow("tails-test-controls") {
+                    Button("下一尾部状态") { service.advanceTail(messageScope) }
+                        .buttonStyle(.plain).accessibilityIdentifier("codex-tail-next")
+                        .accessibilityValue(String(snapshot.revision))
+                })
+            }
+            if let service = readingStore.providers?.messages as? CodexOperationPreviewProvider, service.complexEnabled {
+                rows.append(RecoveredRemoteTranscriptRow("complex-test-controls") {
+                    Button("更新活动消息") { service.advanceComplex(messageScope) }
+                        .buttonStyle(.plain).accessibilityIdentifier("codex-complex-next")
+                        .accessibilityValue(String(snapshot.revision))
+                })
+            }
+            let confirmedSubmissions = snapshot.submittedUserMessageIDs
+            let projectedMessages = (operations.projectedUserMessages[messageScope] ?? [])
+                .filter { !confirmedSubmissions.contains($0.id) }
+            if snapshot.turns.isEmpty && snapshot.queuedPrompts.isEmpty && projectedMessages.isEmpty {
+                rows.append(RecoveredRemoteTranscriptRow("messages-empty") {
+                    Text(visualText("此任务暂无消息。", "This task has no messages."))
+                        .foregroundStyle(.secondary).accessibilityIdentifier("codex-message-empty")
+                })
+            }
+            for turn in snapshot.turns {
+                if snapshot.historyPolicy == .authoritative || !turn.items.isEmpty {
+                    for item in CodexReadActivityPresentation.visibleItems(turn) {
+                        let key = item.presentationKey(turnID: turn.id)
+                        rows.append(RecoveredRemoteTranscriptRow(key) {
+                            orderedMessageItem(item, turn: turn, key: key)
+                        })
+                    }
+                    if CodexReadTailPresentation(turn: turn).hasContent(ordered: true) {
+                        rows.append(RecoveredRemoteTranscriptRow("codex-tail-" + String(turn.id.utf8.count) + ":" + turn.id) {
+                            ordinaryMessageTail(turn, ordered: true)
+                        })
+                    }
+                    continue
+                }
+                rows.append(RecoveredRemoteTranscriptRow("message-" + turn.id + "-prompt") {
+                    RecoveredRemoteUserMessage(text: turn.prompt,
+                        textIdentifier: "codex-message-prompt-" + turn.id,
+                        scope: composerScope, readingStore: readingStore) { EmptyView() }
+                })
+                rows.append(RecoveredRemoteTranscriptRow("message-" + turn.id + "-body") {
+                    RemoteLinkedMarkdownBlocks(text: turn.bodyMarkdown, turnID: "history-" + turn.id,
+                        footer: nil, scope: composerScope, readingStore: readingStore, fileLoader: taskFiles.loader)
+                })
+                rows.append(RecoveredRemoteTranscriptRow("message-" + turn.id + "-activities") {
+                    RemoteReplayActivitiesView(turn: activityPresentation(turn), scope: composerScope, readingStore: readingStore)
+                })
+                if CodexReadTailPresentation(turn: turn).hasContent(ordered: false) {
+                    rows.append(RecoveredRemoteTranscriptRow("message-" + turn.id + "-tail") {
+                        ordinaryMessageTail(turn, ordered: false)
+                    })
+                }
+            }
+            for prompt in snapshot.queuedPrompts {
+                rows.append(RecoveredRemoteTranscriptRow(prompt.presentationKey) {
+                    authoritativeQueuedPromptRow(prompt, in: snapshot)
+                })
+            }
+            for pending in operations.awaitingQueuedPrompts(messageScope)
+            where !snapshot.queuedPrompts.contains(where: { $0.id == pending.id }) && !hasQueuedDeliveryEcho(pending, in: snapshot) {
+                rows.append(RecoveredRemoteTranscriptRow(pending.presentationKey) {
+                    authoritativeQueuedPromptRow(pending, in: snapshot)
+                })
+            }
+            for message in projectedMessages {
+                let key = CodexReadItem.submissionKey(message.id)
+                rows.append(RecoveredRemoteTranscriptRow(key) {
+                    RecoveredRemoteUserMessage(text: message.text, textIdentifier: key,
+                        scope: composerScope, readingStore: readingStore) { EmptyView() }
+                })
+            }
+        }
+        if !task.readsOrdinaryMessages && !task.isCreatedReplay && !task.isAgentChild {
             if history {
                 rows.append(RecoveredRemoteTranscriptRow("loaded-history") {
                     VStack(alignment: .leading, spacing: 0) {
@@ -9653,8 +11843,29 @@ private struct RemoteThreadFixturePage: View {
                 })
             }
         }
-        if replay.isEnabled {
+        if controlsEnabled && !usesAuthoritativeMessages {
             for turn in replayState.turns {
+                if let sourceID = turn.sourceReadTurnID {
+                    //Keep the original read-row IDs/expansion keys while actions
+                    //target the provider's distinct, explicit control UUID.
+                    rows.append(RecoveredRemoteTranscriptRow("message-" + sourceID + "-prompt") {
+                        RecoveredRemoteUserMessage(text: turn.prompt, textIdentifier: "codex-message-prompt-" + sourceID,
+                            scope: composerScope, readingStore: readingStore) { EmptyView() }
+                    })
+                    rows.append(RecoveredRemoteTranscriptRow("message-" + sourceID + "-body") {
+                        RemoteLinkedMarkdownBlocks(text: turn.text, turnID: turn.presentationID,
+                            footer: turn.footerPresentation(showsFooterActions: true), scope: composerScope, readingStore: readingStore,
+                            fileLoader: taskFiles.loader)
+                    })
+                    rows.append(RecoveredRemoteTranscriptRow("message-" + sourceID + "-activities") {
+                        VStack(alignment: .leading, spacing: 16) {
+                            RemoteReplayActivitiesView(turn: turn, scope: composerScope, readingStore: readingStore)
+                            Text(replayPhaseLabel(turn.phase)).font(.caption).foregroundStyle(.secondary)
+                                .accessibilityIdentifier("remote-replay-phase-" + turn.phase.rawValue)
+                        }
+                    })
+                    continue
+                }
                 rows.append(RecoveredRemoteTranscriptRow("replay-" + turn.id) {
                     VStack(alignment: .leading, spacing: 16) {
                         RecoveredRemoteUserMessage(text: turn.prompt,
@@ -9705,6 +11916,171 @@ private struct RemoteThreadFixturePage: View {
         return rows
     }
 
+    @ViewBuilder private func orderedMessageItem(_ item: CodexReadItem, turn: CodexReadTurn, key: String) -> some View {
+        switch item.content {
+        case .user(let text):
+            RecoveredRemoteUserMessage(text: text, textIdentifier: key, scope: composerScope, readingStore: readingStore) { EmptyView() }
+        case .assistant(let markdown, let copy):
+            let footer = messageFooter(turn)
+            RemoteLinkedMarkdownBlocks(text: markdown, turnID: key,
+                footer: .init(status: footer.status, showsFooterActions: turn.showsFooterActions,
+                    responseCopyText: copy, responseCompletedAt: nil),
+                scope: composerScope, readingStore: readingStore, fileLoader: taskFiles.loader,
+                streamsAssistantBody: usesAuthoritativeMessages,
+                assistantReveal: messages.assistantReveals[messageScope]?[key])
+        case .reasoning(let summary):
+            // Compatibility with summary-only providers.
+            RecoveredRemoteThinkingStatus(summary: summary, animates: turn.status == .running)
+                .accessibilityIdentifier(key)
+        case .reasoningSummary(let summary):
+            if summary.hasBody {
+                CodexReasoningDetail(itemID: item.id, value: summary, turnID: CodexReadActivityPresentation.turnKey(turn.id),
+                    scope: composerScope, readingStore: readingStore)
+            } else {
+                RecoveredRemoteThinkingStatus(summary: RemoteReasoningSummary.latest(in: [summary.summary]), animates: summary.isRunning)
+                    .accessibilityIdentifier(key)
+            }
+        case .activityGroup:
+            if let group = CodexReadActivityPresentation.group(item, turn: turn) {
+                RemoteReplayActivitiesView(turn: group, scope: composerScope, readingStore: readingStore,
+                    providerItems: turn.items, toolFileLoader: readingStore.providers?.files == nil ? nil : taskFiles.loader)
+            }
+        case .toolCall(let tool):
+            CodexToolActivityView(itemID: item.id, tool: tool, turnID: CodexReadActivityPresentation.turnKey(turn.id),
+                scope: composerScope, readingStore: readingStore,
+                fileLoader: readingStore.providers?.files == nil ? nil : taskFiles.loader)
+        case .command, .fileChange, .webSearch, .webSearchActivity:
+            RemoteReplayActivitiesView(turn: CodexReadActivityPresentation.activity(item, turn: turn),
+                scope: composerScope, readingStore: readingStore)
+        case .unsupported(let kind, let summary):
+            VStack(alignment: .leading, spacing: 8) {
+                Text(visualText("此消息类型尚未恢复：", "Message type not yet restored: ") + kind).foregroundStyle(.secondary)
+                if let summary { Text(summary).textSelection(.enabled) }
+            }.accessibilityIdentifier(key)
+        }
+    }
+
+    @ViewBuilder private func ordinaryMessageTail(_ turn: CodexReadTurn, ordered: Bool) -> some View {
+        let presentation = CodexReadTailPresentation(turn: turn)
+        let footer = ordered ? presentation.orderedFooter : presentation.footer
+        VStack(alignment: .leading, spacing: 0) {
+            if let error = presentation.errorMessage ?? (presentation.usesSubmissionErrorFallback ? OfficialText.text(.remoteSubmissionError)
+                : presentation.usesGenerationErrorFallback ? OfficialText.text(.remoteGenerationError) : nil) {
+                //Read history supplies no submission operation to retry. Reuse
+                //the original card without inventing a Send/replay callback.
+                RemoteReplayErrorCard(message: error)
+            }
+            if let notice = presentation.stoppedNotice {
+                //Original stopped admission is recovered; the provider supplies
+                //text until the original lazy Text/key binding is established.
+                Text(notice).foregroundStyle(.secondary)
+                    .accessibilityIdentifier("codex-message-stopped-notice")
+            }
+            if footer.copyText != nil || footer.completionDate != nil {
+                RemoteLinkedMarkdownBlocks(text: "", turnID: "history-tail-" + turn.id,
+                    footer: footer, scope: composerScope, readingStore: readingStore, fileLoader: taskFiles.loader)
+            }
+        }
+    }
+    private func messageFooter(_ turn: CodexReadTurn) -> RemoteAssistantFooterPresentation {
+        CodexReadTailPresentation(turn: turn).footer
+    }
+    private func activityPresentation(_ turn: CodexReadTurn) -> RemoteThreadReplayTurn {
+        //Presentation-only adapter: never feeds historical events into Send/replay.
+        var result = RemoteThreadReplayTurn(id: "history-" + turn.id,
+            intentID: UUID(uuidString: "00000000-0000-0000-0000-000000000001")!, prompt: turn.prompt)
+        result.commands = turn.commands.map { .init(id: $0.id, command: $0.command, startedAt: $0.startedAt,
+            phase: $0.exitCode == nil ? .running : ($0.exitCode == 0 ? .completed : .failed),
+            output: $0.output, exitCode: $0.exitCode) }
+        result.fileChanges = turn.fileChanges.map { .init(id: $0.id, title: $0.title, diff: $0.diff,
+            counts: .init(insertions: $0.insertions, deletions: $0.deletions), resourceID: $0.resourceID) }
+        return result
+    }
+    @ViewBuilder private var messageLoadState: some View {
+        VStack(spacing: 16) {
+            if case .failed = messages.state.phase(messageScope) {
+                Text(visualText("消息加载失败。", "Messages could not be loaded."))
+                    .accessibilityIdentifier("codex-message-error")
+                Button(visualText("重试", "Retry")) { messages.load(messageScope, title: task.title, force: true) }
+                    .accessibilityIdentifier("codex-message-retry")
+            } else {
+                ProgressView(visualText("正在加载消息", "Loading messages"))
+                    .accessibilityIdentifier("codex-message-loading")
+            }
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var queuedPromptEditTarget: CodexQueuedPrompt? {
+        guard usesAuthoritativeMessages, let edit = composerDrafts.pendingEdit(in: composerScope),
+              edit.sessionID == composerSessionID, case .provider(let target) = edit.target else { return nil }
+        return target
+    }
+
+    private func submitQueuedPromptAction(_ action: CodexTaskOperation.QueuedPromptAction,
+                                          target: CodexQueuedPrompt, session: UUID, expectedTurnID: String? = nil,
+                                          intentID: UUID = UUID()) {
+        guard session == composerSessionID, operationAvailable, let snapshot = messageSnapshot,
+              !operations.awaitsDelivery(of: target, in: messageScope),
+              action.matchesCurrentTarget(target, in: snapshot, expectedTurnID: expectedTurnID) else { return }
+        if case .edit(let draft) = action {
+            guard queuedPromptEditTarget == target, composerDrafts.snapshot(in: composerScope) == draft,
+                  !composerDrafts.isImporting(in: composerScope) else { return }
+        }
+        _ = operations.begin(.init(id: intentID, scope: messageScope, sessionID: session,
+            historyRevision: snapshot.revision, turnID: expectedTurnID, payload: .queuedPrompt(target, action: action)),
+            currentRevision: snapshot.revision, commit: commitExternalOperation)
+    }
+
+    private func hasQueuedDeliveryEcho(_ prompt: CodexQueuedPrompt, in snapshot: CodexMessageSnapshot) -> Bool {
+        snapshot.turns.contains { turn in
+            turn.items.contains { $0.sourceQueuedPromptID == prompt.id || prompt.matchesDeliveredItem($0) }
+        }
+    }
+
+    private func refreshQueuedDelivery(_ prompt: CodexQueuedPrompt) -> some View {
+        Button(visualText("刷新", "Refresh")) { messages.load(messageScope, title: task.title, force: true) }
+            .disabled(messages.state.phase(messageScope) == .loading)
+            .accessibilityIdentifier("codex-operation-refresh-queue-delivery-" + prompt.id)
+    }
+
+    private func authoritativeQueuedPromptRow(_ prompt: CodexQueuedPrompt, in snapshot: CodexMessageSnapshot) -> some View {
+        let session = composerSessionID
+        let statusID = "codex-queued-prompt-status-" + prompt.id
+        let delivering = operations.awaitsDelivery(of: prompt, in: messageScope)
+        let canEdit = prompt.editableText != nil && composerDrafts.pendingEdit(in: composerScope) == nil
+        let steer: (() -> Void)? = snapshot.activeTurnID.flatMap { turn in
+            guard prompt.canSteer else { return nil }
+            return { submitQueuedPromptAction(.steer, target: prompt, session: session, expectedTurnID: turn) }
+        }
+        let start: (() -> Void)? = prompt.canStart && snapshot.activeTurnID == nil ? {
+            submitQueuedPromptAction(.start(knownTurnIDs: snapshot.turns.map(\.id)), target: prompt, session: session)
+        } : nil
+        return VStack(alignment: .trailing, spacing: 8) {
+            if delivering {
+                HStack {
+                    Text(visualText("等待写入原轮次", "Waiting for the original turn"))
+                        .font(.subheadline).foregroundStyle(.secondary).accessibilityIdentifier(statusID)
+                    refreshQueuedDelivery(prompt)
+                }
+            } else if readingStore.providers?.operations != nil && (prompt.canCancel || prompt.editableText != nil || steer != nil || start != nil) {
+                RecoveredRemotePendingPromptMenu(displayText: prompt.text, mode: .queue,
+                    canEdit: canEdit, areActionsEnabled: operationAvailable && (canEdit || prompt.canCancel || steer != nil || start != nil),
+                    edit: {
+                        guard session == composerSessionID, operationAvailable,
+                              !operations.awaitsDelivery(of: prompt, in: messageScope),
+                              messageSnapshot?.queuedPrompts.contains(prompt) == true else { return }
+                        _ = composerDrafts.beginPendingEdit(prompt, in: composerScope, sessionID: session)
+                    }, toggle: steer, start: start,
+                    cancel: prompt.canCancel ? { submitQueuedPromptAction(.cancel, target: prompt, session: session) } : nil,
+                    identifier: "codex-queued-prompt-menu-" + prompt.id, statusIdentifier: statusID)
+            } else {
+                Text(OfficialText.text(.remotePendingQueuedStatus))
+                    .font(.subheadline).foregroundStyle(.secondary).accessibilityIdentifier(statusID)
+            }
+            pendingPromptText(prompt.text, identifier: "codex-queued-prompt-" + prompt.id)
+        }.frame(maxWidth: .infinity, alignment: .trailing)
+    }
+
     // Menu names/actions are supported by the 293 PendingPromptMenu. The
     // scoped replay policy and this temporary row layout are independent.
     private func pendingReplayRow(_ pending: RemotePendingReplayPrompt) -> some View {
@@ -9726,9 +12102,9 @@ private struct RemoteThreadFixturePage: View {
                     // official target-kind/service admission. Preserve full host
                     // draft and exact pending identity; never copy display text.
                     RecoveredRemotePendingPromptMenu(displayText: pending.text, mode: pending.mode,
-                        canEdit: replay.isEnabled && pending.mode == .queue &&
+                        canEdit: controlsEnabled && pending.mode == .queue &&
                             composerDrafts.pendingEdit(in: composerScope) == nil,
-                        areActionsEnabled: replay.isEnabled, edit: {
+                        areActionsEnabled: controlsEnabled, edit: {
                             let nextSession = UUID()
                             guard scope == composerScope, session == composerSessionID,
                                   replayState.pendingPrompts.contains(where: {
@@ -9748,13 +12124,17 @@ private struct RemoteThreadFixturePage: View {
                 }
             }
             RemoteReplayAttachmentList(attachments: pending.attachments) { replayAttachmentPreviewURL = $0.url }
-            Text(pending.text).font(.body).textSelection(.enabled)
-                .padding(16)
-                .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20))
-                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(uiColor: .separator), lineWidth: 0.5))
-                .accessibilityIdentifier("remote-replay-pending-text-" + pending.id.uuidString)
+            pendingPromptText(pending.text, identifier: "remote-replay-pending-text-" + pending.id.uuidString)
         }
         .frame(maxWidth: .infinity, alignment: .trailing)
+    }
+
+    private func pendingPromptText(_ text: String, identifier: String) -> some View {
+        Text(text).font(.body).textSelection(.enabled)
+            .padding(16)
+            .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20))
+            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(uiColor: .separator), lineWidth: 0.5))
+            .accessibilityIdentifier(identifier)
     }
 
     private func replayPhaseLabel(_ phase: RemoteThreadReplayEvent.Phase) -> String {
@@ -9786,28 +12166,84 @@ private struct RemoteThreadFixturePage: View {
                         initialBottomBarsHeight: 0, additionalBottomInset: 0, modern: modern)
     }
 
+    private func observeAgentRoster(sessionID: UUID, refreshID: UUID) async {
+        guard !Task.isCancelled, sessionID == composerSessionID, refreshID == agentRosterRefreshID,
+              !task.isAgentChild, let providers = readingStore.providers, let service = providers.agents else { return }
+        let request = RemoteAgentRosterRequest(accountID: providers.scope.accountID,
+            profileID: providers.scope.profileID, scope: composerScope, sessionID: sessionID)
+        let updates = service.rosterUpdates(for: request)
+        agentRosterStreamFailed = false
+        async let initialRead: Void = loadAgentRoster(service, request: request, refreshID: refreshID)
+        if let updates {
+            do {
+                for try await receipt in updates {
+                    guard isCurrentAgentRoster(request, refreshID: refreshID) else { break }
+                    applyAgentRoster(receipt, request: request, failIfUnchanged: false)
+                }
+            } catch {
+                // The retry state below also covers an unexpectedly ended stream.
+            }
+            if isCurrentAgentRoster(request, refreshID: refreshID) { agentRosterStreamFailed = true }
+        }
+        await initialRead
+    }
+
+    private func loadAgentRoster(_ service: any RemoteAgentRosterProviding,
+                                 request: RemoteAgentRosterRequest, refreshID: UUID) async {
+        let previous = suppliedAgents
+        do {
+            let receipt = try await service.roster(for: request)
+            guard isCurrentAgentRoster(request, refreshID: refreshID) else { return }
+            applyAgentRoster(receipt, request: request, failIfUnchanged: suppliedAgents == previous)
+        } catch {
+            if isCurrentAgentRoster(request, refreshID: refreshID), suppliedAgents == previous { agentRosterFailed = true }
+        }
+    }
+
+    private func isCurrentAgentRoster(_ request: RemoteAgentRosterRequest, refreshID: UUID) -> Bool {
+        !Task.isCancelled && refreshID == agentRosterRefreshID && request.sessionID == composerSessionID
+            && request.scope == composerScope && request.accountID == readingStore.providers?.scope.accountID
+            && request.profileID == readingStore.providers?.scope.profileID
+    }
+
+    private func applyAgentRoster(_ receipt: RemoteAgentRosterReceipt, request: RemoteAgentRosterRequest, failIfUnchanged: Bool) {
+        switch receipt.resolve(for: request, previous: suppliedAgents) {
+        case .accepted(let snapshot):
+            if suppliedAgents != snapshot { suppliedAgents = snapshot }
+            agentRosterFailed = false
+        case .stale: break
+        case .invalid:
+            if failIfUnchanged { agentRosterFailed = true }
+        }
+    }
+
     private func openAgent(_ intent: RemoteAgentOpenIntent) {
         let snapshot = agentsSnapshot
-        guard let request = RemoteAgentThreadRequest(accountID: goals.accountID,
+        let providers = readingStore.providers
+        let service: (any RemoteAgentThreadProviding)? = providers == nil ? replay.agentThreadProvider : providers?.agents
+        guard let service, let request = RemoteAgentThreadRequest(accountID: goals.accountID,
+            profileID: providers?.scope.profileID,
             intent: intent, snapshot: snapshot, sessionID: composerSessionID),
             let attempt = agentNavigation.begin(request) else { return }
         agentNavigationNotice = nil
         agentNavigationTask = Task { @MainActor in
             do {
-                let supplied = try await replay.agentThreadProvider.target(for: request)
+                let supplied = try await service.target(for: request)
                 guard !Task.isCancelled, agentNavigation.finish(attempt) else { return }
                 agentNavigationTask = nil
                 //Retired scope/session or replaced full payload cannot navigate
                 //or surface an error in the new owner, even if a provider ignores cancel.
                 guard agentsSnapshot.resolve(intent, currentSession: composerSessionID) == request.agent,
-                      goals.accountID == request.accountID else { return }
+                      goals.accountID == request.accountID,
+                      readingStore.providers?.scope.profileID == request.profileID else { return }
                 guard let target = request.resolve(supplied, accountID: goals.accountID,
+                    profileID: readingStore.providers?.scope.profileID,
                     snapshot: agentsSnapshot, sessionID: composerSessionID, availableHosts: [task.id.host]) else {
                     agentNavigationNotice = visualText("此智能体没有可用的关联任务入口。", "No associated task is available for this agent.")
                     selectedAgent = request.agent
                     return
                 }
-                guard replay.prepareAgentThread(target, parent: composerScope) else {
+                guard providers != nil || replay.prepareAgentThread(target, parent: composerScope) else {
                     agentNavigationNotice = visualText("无法保存子任务，已保留原任务。请重试。", "Unable to save the child task. The parent was kept. Please retry.")
                     selectedAgent = request.agent
                     return
@@ -9815,12 +12251,14 @@ private struct RemoteThreadFixturePage: View {
                 selectedAgentThread = RemotePreviewTask(id: .init(host: target.hostID, thread: target.threadID),
                     title: target.title, activity: .idle, pending: nil, connected: task.connected,
                     inProgressWebSearchItemID: nil, hostIcon: task.hostIcon, hostDisplayName: task.hostDisplayName,
-                    subtitle: task.subtitle, workspaceKey: task.workspaceKey, isAgentChild: true)
+                    subtitle: task.subtitle, workspaceKey: task.workspaceKey, isAgentChild: true,
+                    readsOrdinaryMessages: providers != nil)
             } catch {
                 guard !Task.isCancelled, agentNavigation.finish(attempt) else { return }
                 agentNavigationTask = nil
                 guard agentsSnapshot.resolve(intent, currentSession: composerSessionID) == request.agent,
-                      goals.accountID == request.accountID else { return }
+                      goals.accountID == request.accountID,
+                      readingStore.providers?.scope.profileID == request.profileID else { return }
                 agentNavigationNotice = visualText("无法加载关联任务，请重试。", "Unable to load the associated task. Please retry.")
                 selectedAgent = request.agent
             }
@@ -9836,7 +12274,44 @@ private struct RemoteThreadFixturePage: View {
     }
     private var taskBottomBars: some View {
         VStack(spacing: 8) {
-            if taskControlsEnabled {
+            externalOperationStatus
+            if HostLaunchRuntime.arguments.contains("--codex-running-follow-up-fixture"),
+               let fixture = readingStore.providers?.operations as? CodexOperationPreviewProvider {
+                Button("完成测试活动轮") { fixture.completePreviewFollowUpTurn(messageScope) }
+                    .font(.footnote)
+                    .disabled(operationLocked || composerRunningTurnID == nil)
+                    .accessibilityIdentifier("codex-follow-up-fixture-complete")
+                    .accessibilityValue(composerRunningTurnID ?? "")
+            }
+            if HostLaunchRuntime.arguments.contains("--codex-send-transition-fixture"),
+               let id = outgoingSubmissionID, operations.phase(messageScope) == .pending,
+               let fixture = readingStore.providers?.operations as? CodexOperationPreviewProvider {
+                HStack {
+                    Button("接受测试发送") { fixture.finishPreviewSend(id, accepts: true) }
+                        .accessibilityIdentifier("codex-send-fixture-accept")
+                    Button("拒绝测试发送") { fixture.finishPreviewSend(id, accepts: false) }
+                        .accessibilityIdentifier("codex-send-fixture-reject")
+                }.font(.footnote)
+            }
+            if HostLaunchRuntime.arguments.contains("--codex-assistant-reveal-fixture"),
+               let fixture = readingStore.providers?.messages as? CodexOperationPreviewProvider {
+                Button("更新回复") { fixture.advanceAssistantReveal(messageScope) }
+                    .font(.footnote)
+                    .accessibilityIdentifier("codex-assistant-reveal-next")
+                    .accessibilityValue(String(messageSnapshot?.revision ?? 0))
+            }
+            if HostLaunchRuntime.arguments.contains("--codex-response-test-controls"),
+               let fixture = readingStore.providers?.messages as? CodexOperationPreviewProvider {
+                HStack {
+                    Button("注入新请求") { fixture.replaceRequest(messageScope) }.accessibilityIdentifier("codex-response-replace")
+                    Button("撤回当前请求") { fixture.withdrawRequest(messageScope) }.accessibilityIdentifier("codex-response-withdraw")
+                }.font(.footnote)
+            }
+            if readingStore.providers?.metadata != nil {
+                CodexMetadataStatus(store: externalMetadata, scope: messageScope, session: readingStore.metadataSessionID)
+                    .padding(.horizontal, 16)
+            }
+            if showsGoalControls || showsAgentControls {
                 if agentNavigation.pending != nil {
                     HStack {
                         ProgressView()
@@ -9850,13 +12325,89 @@ private struct RemoteThreadFixturePage: View {
                     .font(.subheadline).padding(.horizontal, 16)
                     .accessibilityIdentifier("remote-agent-navigation-loading")
                 }
-                if showsAgents { agentsControls.details }
-                RemoteGoalControls(scope: goalScope, store: goals,
-                    isExpanded: Binding(get: { showsGoal }, set: { value in
-                        showsGoal = value
-                        if value { showsAgents = false }
-                    })) { agentsControls.summary }
-                    .padding(.horizontal, 12)
+                if showsAgentControls, agentRosterFailed || agentRosterStreamFailed {
+                    Button(visualText("重试读取智能体", "Retry loading agents")) {
+                        agentRosterRefreshID = UUID()
+                    }.accessibilityIdentifier("remote-agent-roster-retry")
+                }
+                if showsAgentControls, HostLaunchRuntime.arguments.contains("--codex-agent-live-fixture"),
+                   let fixture = readingStore.providers?.agents as? CodexOperationPreviewProvider {
+                    HStack {
+                        Button("更新测试智能体") { fixture.advanceAgentRoster(composerScope) }
+                            .accessibilityIdentifier("codex-agent-fixture-update")
+                        Button("断开测试订阅") { fixture.disconnectAgentRoster(composerScope) }
+                            .accessibilityIdentifier("codex-agent-fixture-disconnect")
+                    }.font(.footnote)
+                }
+                if showsAgentControls, hasAgentRoster, showsAgents { agentsControls.details }
+                if showsGoalControls {
+                    if HostLaunchRuntime.arguments.contains("--codex-goal-live-fixture"),
+                       let fixture = readingStore.providers?.goals as? CodexOperationPreviewProvider {
+                        Button("更新测试目标") { fixture.advanceGoal(goalScope) }
+                            .font(.footnote)
+                            .accessibilityIdentifier("codex-goal-fixture-update")
+                    }
+                    RemoteGoalControls(scope: goalScope, store: goals,
+                        isExpanded: Binding(get: { showsGoal }, set: { value in
+                            showsGoal = value
+                            if value { showsAgents = false }
+                        })) {
+                            if showsAgentControls, hasAgentRoster { agentsControls.summary }
+                        }
+                        .padding(.horizontal, 12)
+                } else if showsAgentControls, hasAgentRoster {
+                    agentsControls.summary.padding(.horizontal, 12)
+                }
+            }
+            if usesAuthoritativeMessages {
+                CodexDirectoryStatus(store: directory, fixture: readingStore.providers?.directory as? CodexOperationPreviewProvider)
+                    .padding(.horizontal, 16)
+                if !directoryInstanceAvailable {
+                    Text(visualText("当前实例暂不可用，草稿与内容已保留。", "This instance is unavailable. Your draft and content are kept."))
+                        .font(.footnote).foregroundStyle(.secondary).accessibilityIdentifier("codex-directory-thread-unavailable")
+                }
+                if readingStore.providers?.requestResponses != nil {
+                    //Loading state below owns the same status once; avoid duplicate buttons.
+                    if ordinaryRequestLoaded || ordinaryRequestReference == nil {
+                        CodexRequestResponseStatus(store: responses, scope: messageScope, readingStore: readingStore, reference: ordinaryRequestReference)
+                            .padding(.horizontal, 16)
+                    }
+                } else if ordinaryRequestReference != nil {
+                    Text(visualText("请求响应服务未连接。", "Request response service is unavailable.")).font(.footnote)
+                }
+            } else if ordinaryRequestReference != nil {
+                if requests.busy(messageScope) {
+                    HStack {
+                        ProgressView(visualText("正在提交响应", "Submitting response"))
+                            .accessibilityIdentifier("codex-request-submitting")
+                        Button(visualText("取消", "Cancel")) {
+                            ordinaryApprovalTask?.cancel(); ordinaryApprovalTask = nil
+                            requests.cancelSubmission(messageScope, session: composerSessionID)
+                        }.accessibilityIdentifier("codex-request-cancel-submission")
+                    }.padding(.horizontal, 16)
+                }
+                if let failure = requests.failure(messageScope), suppliedRequest != nil {
+                    VStack(spacing: 8) {
+                        Text([.uncertain, .invalidResult, .stale].contains(failure)
+                            ? visualText("提交结果尚未确认，请重新检查请求。", "Submission outcome is unknown. Check the request again.")
+                            : visualText("响应未保存，输入已保留。", "Response was not saved. Input was kept."))
+                            .accessibilityIdentifier("codex-request-error")
+                        Button(visualText([.uncertain, .invalidResult, .stale].contains(failure) ? "重新检查" : "重试", [.uncertain, .invalidResult, .stale].contains(failure) ? "Check again" : "Retry")) {
+                            if [.uncertain, .invalidResult, .stale].contains(failure), let reference = ordinaryRequestReference {
+                                requests.load(messageScope, reference: reference, force: true)
+                            } else {
+                                ordinaryApprovalTask = Task { @MainActor in
+                                    _ = await requests.retry(messageScope, session: composerSessionID, commit: commitOrdinaryRequest)
+                                    ordinaryApprovalTask = nil
+                                }
+                            }
+                        }.disabled(requests.busy(messageScope)).accessibilityIdentifier("codex-request-retry")
+                    }.padding(.horizontal, 16)
+                }
+                if suppliedRequest?.status == .expired || suppliedRequest?.status == .withdrawn {
+                    Text(visualText("此请求已失效，任务未取消。", "This request is no longer current. The task was not cancelled."))
+                        .font(.footnote).foregroundStyle(.secondary).accessibilityIdentifier("codex-request-expired")
+                }
             }
             userInputBar(viewportHeight: transcriptGeometry.height)
         }
@@ -9879,22 +12430,30 @@ private struct RemoteThreadFixturePage: View {
     }
     private var interactiveBody: some View {
         ZStack(alignment: .bottom) {
-            RecoveredRemoteTranscriptCollection(readingStore: readingStore, scope: composerScope, rows: transcriptRows,
-                scrollInsets: transcriptScrollInsets,
-                scrollRequestID: replayScrollRequestID, followsReplayUpdates: replay.isEnabled,
-                onBottomDistanceVisibility: { showsRemoteScrollToBottom = $0 })
-                .ignoresSafeArea(.all, edges: ignoredTranscriptEdges)
+            //Do not save a loading/error row as the task's reading anchor.
+            if task.readsOrdinaryMessages && messageSnapshot == nil {
+                messageLoadState
+            } else {
+                RecoveredRemoteTranscriptCollection(readingStore: readingStore, scope: composerScope, rows: transcriptRows,
+                    scrollInsets: transcriptScrollInsets,
+                    scrollRequestID: replayScrollRequestID, followsReplayUpdates: controlsEnabled,
+                    composerIsFocused: composerFocused,
+                    manualBottomRequestID: manualBottomRequestID,
+                    outgoingRowID: outgoingSubmissionID.map(CodexReadItem.submissionKey),
+                    preparesOutgoingRowForKeyboard: outgoingRequestsKeyboardDismissal,
+                    onOutgoingRowPrepared: { rowID in
+                        guard outgoingSubmissionID.map(CodexReadItem.submissionKey) == rowID else { return }
+                        preparedOutgoingRowID = rowID
+                    },
+                    onBottomDistanceVisibility: { showsRemoteScrollToBottom = $0 })
+                    .ignoresSafeArea(.all, edges: ignoredTranscriptEdges)
+            }
             //293 1a4c758..784 keeps the color sibling mounted even when its
             //opacity is zero. This host displays the transcript, corresponding
             //to hidesTranscript=false. The stack owns the outer safe-area bar.
             Color.clear.ignoresSafeArea(.all, edges: .all).allowsHitTesting(false)
-            if showsRemoteScrollToBottom {
-                RecoveredRemoteScrollToBottomButton {
-                    replayScrollRequestID = UUID().uuidString
-                }
-                // Independent safe-area-bar placement while the private parent
-                //padding is unresolved. Do not classify this inset as recovered.
-                .padding(.bottom, 8)
+            RemoteScrollToBottomOverlay(isVisible: showsRemoteScrollToBottom) {
+                manualBottomRequestID = UUID()
             }
         }
             .modifier(RecoveredRemoteBottomBar(bar:
@@ -9909,7 +12468,7 @@ private struct RemoteThreadFixturePage: View {
                             RemoteComposerSceneReader { composerSceneMetrics = $0 }
                                 .allowsHitTesting(false)
                         }
-                    }))
+                    }, hidesBottomScrollEdge: true))
             // Independent host measurement. Keep dynamic collection/bar content
             // outside a lazy GeometryReader: in-place new-thread navigation on
             // iOS27 left that subtree at its first accepted replay snapshot.
@@ -9926,17 +12485,77 @@ private struct RemoteThreadFixturePage: View {
             .toolbarRole(.editor)
             .quickLookPreview($replayAttachmentPreviewURL)
             .onAppear {
+                taskFiles.activate()
+                if let messageSnapshot { readingStore.reconcileActivityDisclosures(messageSnapshot, scope: composerScope) }
+                if usesAuthoritativeMessages {
+                    externalMetadata.activate(messageScope, session: readingStore.metadataSessionID)
+                    externalMetadata.load(messageScope, session: readingStore.metadataSessionID, force: true)
+                    operations.activate(messageScope, sessionID: composerSessionID)
+                    if let snapshot = messageSnapshot {
+                        operations.reconcileQueuedDelivery(snapshot, sessionID: composerSessionID)
+                    }
+                    modelCatalog.activate(messageScope, session: composerSessionID)
+                    modelCatalog.load(messageScope, session: composerSessionID, force: true)
+                    applySuppliedModelCatalog()
+                }
+                if task.readsOrdinaryMessages {
+                    if readingStore.providers != nil { messages.resume(messageScope, title: task.title) }
+                    else { messages.load(messageScope, title: task.title) }
+                }
+                loadCurrentRequest(force: usesAuthoritativeMessages)
                 // Explicit inspection entry, separate from the official slider
                 // route. Legacy Controls opens a menu, not this sheet.
                 if taskControlsEnabled {
-                    goals.prepare(.init(objective: visualText("检查页面结构与返回恢复。", "Inspect page structure and return recovery."),
-                        status: .active, timeUsedSeconds: 120, allowsEditingAndResuming: true), scope: goalScope)
+                    var fixtureGoal = RemoteGoalSnapshot(objective: visualText("检查页面结构与返回恢复。", "Inspect page structure and return recovery."),
+                        status: .active, timeUsedSeconds: 120, allowsEditingAndResuming: true)
+                    //Explicit synthetic states; no raw status ordinal inference
+                    //or service execution. Ordinary fixtures remain unchanged.
+                    if HostLaunchRuntime.arguments.contains("--remote-goal-resume-states-fixture") {
+                        switch (task.id.host, task.id.thread) {
+                        case ("fixture-a", "completed-thread"): fixtureGoal.status = .blocked
+                        case ("fixture-b", "shared-thread"): fixtureGoal.status = .usageLimited
+                        default: break
+                        }
+                    }
+                    goals.prepare(fixtureGoal, scope: goalScope)
                 }
-                replay.prepare(composerScope, running: task.activity == .running && task.pending == nil)
+                if task.readsOrdinaryMessages { prepareOrdinaryControls() }
+                else { replay.prepare(composerScope, running: task.activity == .running && task.pending == nil) }
                 replay.reconcileDraft(composerScope, drafts: composerDrafts)
-                showsAdvancedFixture = HostLaunchRuntime.arguments.contains("--remote-model-advanced-fixture")
+                showsAdvancedFixture = readingStore.providers == nil && HostLaunchRuntime.arguments.contains("--remote-model-advanced-fixture")
             }
-            .sheet(item: $selectedAgent) { agent in
+            .onChange(of: messageSnapshot) { _, next in
+                if let next {
+                    readingStore.reconcileActivityDisclosures(next, scope: composerScope)
+                    operations.confirmProjectedUserMessages(next.submittedUserMessageIDs, in: messageScope)
+                    operations.reconcileQueuedDelivery(next, sessionID: composerSessionID)
+                }
+                prepareOrdinaryControls()
+            }
+            .onChange(of: operations.phase(messageScope)) { _, phase in
+                if phase == .awaitingQueuedDelivery, let snapshot = messageSnapshot {
+                    operations.reconcileQueuedDelivery(snapshot, sessionID: composerSessionID)
+                }
+            }
+            .onChange(of: suppliedModelCatalog) { _, _ in applySuppliedModelCatalog() }
+            .task(id: [composerSessionID, agentRosterRefreshID]) { [sessionID = composerSessionID, refreshID = agentRosterRefreshID] in
+                await observeAgentRoster(sessionID: sessionID, refreshID: refreshID)
+            }
+            .onChange(of: taskScenePhase) { _, phase in
+                guard task.readsOrdinaryMessages, readingStore.providers != nil else { return }
+                if phase == .active {
+                    messages.resume(messageScope, title: task.title)
+                    agentRosterRefreshID = UUID()
+                    Task {
+                        if showsGoalControls { await goals.refreshFromProvider(goalScope) }
+                    }
+                } else { messages.suspend(messageScope) }
+            }
+            .sheet(item: $selectedAgent, onDismiss: {
+                guard let intent = retryAgentIntent else { return }
+                retryAgentIntent = nil
+                openAgent(intent)
+            }) { agent in
                 NavigationStack {
                     VStack(alignment: .leading, spacing: 16) {
                         Text(agent.displayName).font(.headline)
@@ -9944,10 +12563,8 @@ private struct RemoteThreadFixturePage: View {
                             .accessibilityIdentifier("remote-agent-navigation-error")
                         Text(agent.id).font(.caption).textSelection(.enabled)
                         Button(visualText("重试", "Retry")) {
+                            retryAgentIntent = agentsSnapshot.openIntent(agentID: agent.id, sessionID: composerSessionID)
                             selectedAgent = nil
-                            guard let current = agentsSnapshot.openIntent(agentID: agent.id,
-                                sessionID: composerSessionID) else { return }
-                            openAgent(current)
                         }.accessibilityIdentifier("remote-agent-navigation-retry")
                         Spacer()
                     }
@@ -9981,7 +12598,7 @@ private struct RemoteThreadFixturePage: View {
                 }
             }) {
                 RecoveredRemoteAdvancedConfigurationSheet(configuration: modelOperationBinding,
-                    isEnabled: task.connected, advancedAction: {
+                    isEnabled: usesAuthoritativeMessages ? operationAvailable : task.connected, advancedAction: {
                         if hasModelControlFixture, modelConfiguration.sliderConfiguration != nil {
                             reopensModelSlider = true
                             showsAdvancedFixture = false
@@ -9995,9 +12612,37 @@ private struct RemoteThreadFixturePage: View {
                         Text(visualText("当前任务未提供可用的快捷模型配置，可以继续使用高级设置。", "This task has no available quick model configuration. You can continue using advanced settings."))
                     }
             }
+            .onChange(of: approvalRequest) { _, _ in
+                cancelOpenAIFormSubmission()
+                formSubmissionFailure = nil
+            }
+            .alert(visualText("表单未提交", "Form not submitted"), isPresented: Binding(
+                get: { formSubmissionFailure != nil }, set: { if !$0 { formSubmissionFailure = nil } })) {
+                Button(visualText("好", "OK"), role: .cancel) { formSubmissionFailure = nil }
+            } message: {
+                Text(formWasDismissed
+                    ? visualText("关闭响应未保存，表单仍待处理。请重试；任务未取消。", "Dismissal was not saved. The form is still pending. Retry; the task was not cancelled.")
+                    : visualText("表单响应未保存，当前请求仍待处理。可以再次选择继续。", "The form response was not saved. The request is still pending; you can choose Continue again."))
+            }
+            .onChange(of: ordinaryRequestReference) { _, _ in loadCurrentRequest(force: true) }
             .onDisappear {
+                ordinaryApprovalTask?.cancel(); ordinaryApprovalTask = nil
+                if usesAuthoritativeMessages {
+                    operations.suspend(messageScope, sessionID: composerSessionID)
+                    modelCatalog.retire(messageScope, session: composerSessionID)
+                }
+                requests.retire(messageScope, session: composerSessionID)
+                //System QuickLook covers the task and its directory. Retire
+                //only after the task actually leaves, not while a file sheet owns it.
+                if !showsWorkspaceFiles && turnDiffPresentation == nil {
+                    taskFiles.retire()
+                    if task.readsOrdinaryMessages, readingStore.providers != nil { messages.suspend(messageScope) }
+                }
+                cancelOpenAIFormSubmission()
+                formSubmissionFailure = nil
                 agentNavigationTask?.cancel(); agentNavigationTask = nil
                 agentNavigation.cancel()
+                retryAgentIntent = nil
                 selectedAgent = nil; agentNavigationNotice = nil
                 _ = composerDrafts.cancelPendingEdit(in: composerScope, sessionID: composerSessionID)
                 composerSessionID = UUID()
@@ -10047,48 +12692,66 @@ private struct RemoteThreadFixturePage: View {
                 // owns material, spacing and hit regions; no drawn capsule.
                 ToolbarItem(placement: .topBarTrailing) {
                     RecoveredRemoteThreadMenu(title: task.title, isPinned: fixtureIsPinned,
-                        showsChanges: task.showsChanges, showsFiles: task.showsFiles,
+                        showsChanges: taskShowsChanges, showsFiles: taskShowsFiles,
+                        metadataCapabilities: readingStore.providers == nil ? nil : (externalMetadata.snapshot(messageScope)?.capabilities ?? .init()),
+                        metadataEnabled: readingStore.providers == nil ? metadata.isEnabled : !externalMetadata.locked(messageScope),
                         onAction: performThreadAction,
                         replaceRequestFixture: hasRequestReplacementFixture ? { requestFixtureRevision += 1 } : nil)
                 }
             }
             .navigationDestination(item: $presentedNewThread) { target in
                 RemoteNewThreadFixturePage(target: target, metadata: metadata, composerDrafts: composerDrafts,
-                    replay: replay, readingStore: readingStore, goals: goals, configurations: configurations)
+                    replay: replay, readingStore: readingStore, goals: goals, configurations: configurations, creation: readingStore.creations)
             }
-            .sheet(isPresented: $showsWorkspaceFiles) {
+            .sheet(isPresented: $showsWorkspaceFiles, onDismiss: { taskFiles.preview.cancel() }) {
                 let scope = RemoteComposerDraftScope(hostID: task.id.host, threadID: task.id.thread)
                 let arguments = HostLaunchRuntime.arguments
                 let offline = arguments.contains("--offline-fixture")
+                if task.readsOrdinaryMessages {
+                    RemoteWorkspaceFilesPreview(scope: scope, rootDisplayPath: messageSnapshot?.files?.rootDisplayPath,
+                        directoryLoader: taskFiles.loader, fileLoader: taskFiles.loader, sharedPreview: taskFiles.preview)
+                } else {
                 RemoteWorkspaceFilesPreview(scope: scope, rootDisplayPath: RemoteSnapshotDirectoryLoader.workspaceDisplayPath,
                     directoryLoader: RemoteSnapshotDirectoryLoader(scope: scope,
                         delayNanoseconds: offline && arguments.contains("--remote-directory-delay-fixture")
                             ? 2_000_000_000 : 0,
                         failsOnce: offline && arguments.contains("--remote-directory-failure-fixture")),
                     fileLoader: RemoteSnapshotFilePreviewLoader(scope: scope, resources: remoteWorkspacePreviewResources(scope: scope)))
+                }
             }
-            .sheet(isPresented: $showsTurnDiff) {
+            .sheet(item: $turnDiffPresentation, onDismiss: { taskFiles.preview.cancel() }) { result in
                 let scope = RemoteComposerDraftScope(hostID: task.id.host, threadID: task.id.thread)
-                let resources = turnDiffFiles.compactMap { file -> RemoteFilePreviewResource? in
+                let resources = result.files.compactMap { file -> RemoteFilePreviewResource? in
                     guard let text = file.previewText else { return nil }
                     return .init(id: file.id, name: file.title, data: Data(text.utf8))
                 }
-                RemoteTurnDiffPreview(files: turnDiffFiles, host: task.id.host, scope: scope,
+                if task.readsOrdinaryMessages {
+                    RemoteTurnDiffPreview(files: result.files, host: task.id.host, scope: scope,
+                        loader: taskFiles.loader, sharedPreview: taskFiles.preview,
+                        loadWorkspace: result.readsWorkspace ? { try await taskFiles.loader.workspaceChanges() } : nil)
+                } else {
+                RemoteTurnDiffPreview(files: result.files, host: task.id.host, scope: scope,
                     loader: RemoteSnapshotFilePreviewLoader(scope: scope, resources: resources, delayNanoseconds:
                         HostLaunchRuntime.arguments.contains("--offline-fixture") &&
                         HostLaunchRuntime.arguments.contains("--remote-file-preview-delay-fixture")
                             ? 3_000_000_000 : 0,
                         failsOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
                             HostLaunchRuntime.arguments.contains("--remote-file-preview-failure-fixture")))
+                }
             }
             //293 CodexRemoteThreadRenamePresentation38bdd0 -> alert, editor38c49c.
             //Local commit, revision fence and persistence are independent adapters.
+            .onChange(of: externalMetadata.snapshot(messageScope)?.isArchived) { _, archived in
+                if archived == true { dismiss() }
+            }
             .alert(OfficialText.text(.remoteRenameTitle), isPresented: $showsRename) {
                 TextField(OfficialText.text(.remoteRenameField), text: $renameTitle)
                     .accessibilityIdentifier("remote-rename-title")
                 Button(OfficialText.text(.remoteRenameSave)) {
                     showsRename = false
-                    applyMetadata(.rename(renameTitle), revision: renameRevision)
+                    if readingStore.providers != nil, let captured = renameCapturedMetadata {
+                        submitExternalMetadata(.rename(renameTitle), captured: captured)
+                    } else { applyMetadata(.rename(renameTitle), revision: renameRevision) }
                 }.disabled(renameTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 Button(OfficialText.text(.remoteRenameCancel), role: .cancel) { showsRename = false }
             }
@@ -10198,12 +12861,31 @@ private enum NativeSettingsDestination: Hashable {
     case unavailable(title: String)
 }
 
+// Settings is hosted by UIKit and cannot rely on a parent SwiftUI observer.
+// Forward the existing optional account owner's changes without creating a
+// replacement account/session or copying its accepted profile state.
+@MainActor private final class NativeSettingsAccountObservation: ObservableObject {
+    let account: FrontendAuthenticationModel?
+    private var subscription: AnyCancellable?
+    init(_ account: FrontendAuthenticationModel?) {
+        self.account = account
+        subscription = account?.objectWillChange.sink { [weak self] _ in self?.objectWillChange.send() }
+    }
+}
+
 private struct NativeVisualSettings: View {
-    var accountAccess: FrontendAuthenticationModel? = nil
+    @StateObject private var accountObservation: NativeSettingsAccountObservation
+    private var accountAccess: FrontendAuthenticationModel? { accountObservation.account }
     var pluginsModel: FrontendPluginsModel? = nil
     var startDestinations: [FrontendStartScreenDestination] = [.chatGPT]
     var assistantDisplayName: String?
     var customizationPresentation = LegacySettingsCustomizePresentation.referencePreview
+    init(accountAccess: FrontendAuthenticationModel? = nil, pluginsModel: FrontendPluginsModel? = nil,
+         startDestinations: [FrontendStartScreenDestination] = [.chatGPT], assistantDisplayName: String? = nil) {
+        _accountObservation = StateObject(wrappedValue: .init(accountAccess))
+        self.pluginsModel = pluginsModel; self.startDestinations = startDestinations
+        self.assistantDisplayName = assistantDisplayName
+    }
     private var customization: LegacySettingsCustomizePresentation {
         var value = customizationPresentation
         if HostLaunchRuntime.arguments.contains("--offline-fixture") {
@@ -10283,7 +12965,8 @@ private struct NativeVisualSettings: View {
                         }
                         else { SettingsServiceUnavailablePage(title: OfficialText.text(.settingsPlugins)) }
                     case .pluginSettings(let id):
-                        SettingsServiceUnavailablePage(title: pluginsModel?.state.entities[id]?.name ?? OfficialText.text(.settingsPlugins))
+                        if let pluginsModel { NativePluginSettingsDetailPage(model: pluginsModel, pluginID: id) }
+                        else { SettingsServiceUnavailablePage(title: OfficialText.text(.settingsPlugins)) }
                     case .unavailable(let title): SettingsServiceUnavailablePage(title: title)
                     }
                 }
@@ -10291,7 +12974,12 @@ private struct NativeVisualSettings: View {
                     //293 Sheet -> actual UserProfileEditView/ContentView:
                     //Name/Username and Save/Cancel consumers now closed. The
                     //account-scoped snapshot/service are independent adapters.
-                    NativeProfileEditorSheet(profile: presentation.profile) { request, updated in
+                    NativeProfileEditorSheet(profile: presentation.profile, initialAvatar: presentation.avatar,
+                        avatarAccepted: { request, revision in
+                            guard let accountAccess else { return .unavailable }
+                            return accountAccess.acceptLocalAvatar(request, baseRevision: revision,
+                                sessionID: presentation.accountSessionID)
+                        }) { request, updated in
                         guard let accountAccess else { return .unavailable }
                         let failure = accountAccess.acceptProfilePreview(updated, baseRevision: request.baseRevision,
                             sessionID: presentation.accountSessionID)
@@ -10305,12 +12993,21 @@ private struct NativeVisualSettings: View {
         ScrollView {
             VStack(spacing: 16) {
                 VStack(spacing: 10) {
-                    Image(systemName: "person.crop.circle.fill").resizable().scaledToFit()
-                        .foregroundStyle(.orange).frame(width: 72, height: 72)
+                    Group {
+                        if let value = accountAccess?.localAvatar, let image = UIImage(data: value.pngData) {
+                            Image(uiImage: image).resizable().scaledToFill()
+                        } else {
+                            Image(systemName: "person.crop.circle.fill").resizable().scaledToFit().foregroundStyle(.orange)
+                        }
+                    }.frame(width: 72, height: 72).clipShape(Circle())
+                        .accessibilityIdentifier("settings-profile-avatar")
+                        .accessibilityValue(HostLaunchRuntime.arguments.contains("--profile-avatar-fixture")
+                            ? (accountAccess?.localAvatar?.imageID.uuidString ?? "") : "")
                         .overlay(alignment: .bottomTrailing) {
                             Button {
                                 profileEditorPresentation = .init(profile: profileSnapshot,
-                                    accountSessionID: accountAccess?.state.session?.sessionID)
+                                    accountSessionID: accountAccess?.state.session?.sessionID,
+                                    avatar: accountAccess?.localAvatar)
                     } label: {
                                 Image(uiImage: fittedOfficialVisualIcon("pencil", size: 16))
                                     .frame(width: 32, height: 32)
@@ -10321,6 +13018,12 @@ private struct NativeVisualSettings: View {
                                 .accessibilityIdentifier("edit-profile-picture")
                                 .disabled(accountAccess?.canEditPreviewProfile == false)
                         }
+                    if accountAccess?.avatarStorageFailed == true {
+                        Text(visualText("本地头像未能读取或保存。", "Could not read or save the local avatar."))
+                            .font(.footnote).foregroundStyle(.red).accessibilityIdentifier("avatar-storage-error")
+                        Button(visualText("重试", "Retry")) { accountAccess?.retryAvatarStorage() }
+                            .accessibilityIdentifier("avatar-storage-retry")
+                    }
                     if accountAccess?.profileStorageFailed == true {
                         Text(visualText("本地资料读取或保存失败，已有文件保留。", "Local metadata could not be read or saved. Existing files were kept."))
                             .font(.footnote).foregroundStyle(.red).accessibilityIdentifier("profile-storage-error")
@@ -10370,12 +13073,27 @@ private struct NativeVisualSettings: View {
                         HStack {
                             Text(OfficialText.text(.settingsAccentColor))
                             Spacer()
-                            Picker(OfficialText.text(.settingsAccentColor), selection: $accent) {
-                                ForEach(availableAccents, id: \.rawValue) { color in
-                                    PreviewAccentMenuLabel(accent: color).tag(color.rawValue)
+                            let currentAccent = PreviewAccent(rawValue: accent) ?? .default
+                            Menu {
+                                Picker(OfficialText.text(.settingsAccentColor), selection: $accent) {
+                                    ForEach(availableAccents, id: \.rawValue) { color in
+                                        PreviewAccentMenuLabel(accent: color).tag(color.rawValue)
+                                    }
                                 }
-                            }.pickerStyle(.menu).labelsHidden()
-                                .accessibilityIdentifier("settings-accent")
+                                .pickerStyle(.inline)
+                                .labelsHidden()
+                            } label: {
+                                HStack(spacing: 6) {
+                                    PreviewAccentSelectionSwatch(accent: currentAccent)
+                                    Text(currentAccent.title)
+                                    Image(uiImage: officialVisualIcon("chevron-up-chevron-down-sm"))
+                                        .accessibilityHidden(true)
+                                }
+                                .foregroundStyle(.secondary)
+                            }
+                            .accessibilityLabel(OfficialText.text(.settingsAccentColor))
+                            .accessibilityValue(currentAccent.title)
+                            .accessibilityIdentifier("settings-accent")
                         }.font(.body).padding(.horizontal, 22).frame(minHeight: 52)
                     }
                     .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 26))
@@ -10552,7 +13270,7 @@ private struct NativeVisualSettings: View {
                         content.accessibilityIdentifier("settings-entry-" + identity)
                     } else {
                         Button {
-                            switch row.0 {
+                            switch identity {
                             case "personalization": path.append(.personalization)
                             case "book-open": path.append(.memory)
                             case "plugin": path.append(.plugins)
@@ -10654,6 +13372,25 @@ enum MemoryPresentationState: String {
     }
 }
 
+private struct RemoteScrollToBottomOverlay: View {
+    let isVisible: Bool
+    let action: () -> Void
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        let animate = !reduceMotion && !HostLaunchRuntime.arguments.contains("--remote-manual-bottom-reduced-motion")
+        ZStack {
+            if isVisible {
+                RecoveredRemoteScrollToBottomButton(action: action)
+                    .padding(.bottom, 8)
+                    .transition(animate ? .scale(scale: 0.6, anchor: .bottom).combined(with: .opacity) : .identity)
+            }
+        }
+        // iOS 293 0x6f15184–0x6f151e4: bottom-anchored scale and opacity.
+        .animation(animate ? .spring(response: 0.2, dampingFraction: 1) : nil, value: isVisible)
+    }
+}
+
 //293 ScrollToEdgeButton: icon18, padding8.5, pressScale0.9.
 //The collection geometry/state is recovered; shape/material and typography
 //environment here are explicit platform adapters pending full style recovery.
@@ -10675,15 +13412,83 @@ private struct RecoveredRemoteScrollToBottomButton: View {
     }
 }
 private struct RemoteScrollToBottomPressStyle: ButtonStyle {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     func makeBody(configuration: Configuration) -> some View {
-        surface(configuration.label)
-            .scaleEffect(configuration.isPressed ? 0.9 : 1)
+        let animate = !reduceMotion && !HostLaunchRuntime.arguments.contains("--remote-manual-bottom-reduced-motion")
+        return configuration.label.modifier(RecoveredRemoteFloatingControlSurface(shape: Circle()))
+            .contentShape(Circle())
+            .scaleEffect(configuration.isPressed && animate ? 0.9 : 1)
+            .animation(animate ? .spring(response: 0.5, dampingFraction: 1) : nil, value: configuration.isPressed)
     }
-    @ViewBuilder private func surface<Content: View>(_ content: Content) -> some View {
-        if #available(iOS 26.0, *) {
-            content.glassEffect(.regular.interactive(), in: Circle())
+}
+
+@available(iOS 26.0, *)
+private struct RecoveredRemoteGlassBackdrop<Surface: InsettableShape>: View {
+    let shape: Surface
+    let background: Color
+    let glass: Glass
+    var contrastFillOpacity: Double = 0
+    var contrastFillInset: CGFloat = 0
+
+    var body: some View {
+        GlassEffectContainer {
+            shape.fill(background).glassEffect(glass, in: shape)
+        }
+        .overlay {
+            if contrastFillOpacity > 0 {
+                shape.inset(by: contrastFillInset)
+                    .fill(Color(uiColor: officialVisualColor("ChatGPT/bg/primary")).opacity(contrastFillOpacity))
+            }
+        }
+        .allowsHitTesting(false)
+    }
+}
+
+enum RecoveredRemoteFloatingSurfaceRole {
+    case floatingControl, composerStatus
+}
+
+struct RecoveredRemoteFloatingControlSurface<Surface: InsettableShape>: ViewModifier {
+    let shape: Surface
+    var isSelected = false
+    var role: RecoveredRemoteFloatingSurfaceRole = .floatingControl
+    @Environment(\.recoveredRemoteCardAppearance) private var appearance
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
+    private var selectionColor: Color? {
+        isSelected ? Color(uiColor: officialVisualColor("OneOff/AppForeground")) : nil
+    }
+
+    private var usesReducedTransparency: Bool {
+        reduceTransparency || HostLaunchRuntime.arguments.contains("--remote-reduced-transparency-fixture")
+    }
+
+    private var fallbackColor: Color {
+        if let selectionColor { return selectionColor }
+        if role == .floatingControl {
+            // 293 ScrollToEdgeButtonStyle's fallback is opaque in both schemes.
+            return Color(uiColor: officialVisualColor("OneOff/InputMessageBackground"))
+        }
+        if !usesReducedTransparency { return appearance.innerBackground }
+        return Color(uiColor: officialVisualColor("ChatGPT/bg/elevated/secondary"))
+    }
+
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *), appearance.usesGlass, !usesReducedTransparency,
+           HostLaunchRuntime.arguments.contains("--remote-floating-controls-baseline") {
+            content.glassEffect(.regular.tint(selectionColor).interactive(), in: shape)
         } else {
-            content.background(.regularMaterial, in: Circle())
+            content.background {
+                if #available(iOS 26.0, *), appearance.usesGlass, !usesReducedTransparency {
+                    // 293 0x19b9004 and 0x6f15684 use one regular glass effect
+                    // for status surfaces and ScrollToEdgeButton respectively.
+                    RecoveredRemoteGlassBackdrop(shape: shape, background: .clear,
+                        glass: .regular.tint(selectionColor).interactive())
+                } else {
+                    shape.fill(fallbackColor).allowsHitTesting(false)
+                }
+            }
         }
     }
 }

@@ -11,6 +11,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.*
+import androidx.compose.ui.semantics.*
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -43,10 +45,12 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
     placeholder: String, modelLabel: String?, unavailable: () -> Unit,
     primaryAction: (() -> Unit)? = null, running: Boolean = false, canSubmit: Boolean = true,
     tagPrefix: String = "shell", editorTag: String = "shell-draft",
-    remoteModelControl: (@Composable () -> Unit)? = null,
-    remotePermissionControl: (@Composable () -> Unit)? = null) {
+    modelControl: (@Composable () -> Unit)? = null,
+    remotePermissionControl: (@Composable () -> Unit)? = null,
+    prediction: ComposerPrediction? = null, showsVoiceCall: Boolean = true,
+    permissionExpandedOnly: Boolean = false) {
     val dark = isSystemInDarkTheme()
-    val accent=frontendAccent(LocalFrontendSettings.current)
+    val accent=frontendAccent(LocalFrontendSettings.current,dark)
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
     var focused by remember { mutableStateOf(false) }
@@ -69,25 +73,31 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
     val lineHeight = with(density) { 24.sp.toDp() }
     val controlHeight = maxOf(48.dp, lineHeight)
     val sideInset = (controlHeight - 48.dp) / 2 + 2.dp
+    val sending = value.text.isNotBlank()
+    val showsPrimary = sending || running || showsVoiceCall
+    val trailingWidth = if (showsPrimary) 96.dp else 48.dp
     // Explicit ordinary synthetic capability: dynamic insets with no rounded
     // corner reservation. xjo returns 12dp after the parent consumes system/IME
     // insets; lzr adds 12dp above. Gesture-navigation corner adaptation remains
     // unconnected. This is not lzr's fixed branch (which has no bottom padding).
     BoxWithConstraints(Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally)
         .widthIn(max = 640.dp).padding(horizontal = 12.dp, vertical = 12.dp)) {
-        val permissionWidth = if (remotePermissionControl != null) 34.dp else 0.dp
-        val compactWidth = (maxWidth - sideInset * 2 - 48.dp * 3 - permissionWidth).coerceAtLeast(1.dp)
+        val compactPermissionWidth = if (remotePermissionControl != null && !permissionExpandedOnly) 34.dp else 0.dp
+        val compactWidth = (maxWidth - sideInset * 2 - 48.dp - trailingWidth - compactPermissionWidth).coerceAtLeast(1.dp)
         val measured = measurer.measure(value.text.ifEmpty { " " }, style,
             constraints = Constraints(maxWidth = with(density) { compactWidth.roundToPx() }), maxLines = 6)
         val overflow = value.text.isNotEmpty() && measured.size.height > with(density) { 24.sp.toPx() } * 1.1f
-        val expanded = homeComposerExpanded(modelLabel != null || remoteModelControl != null, effectiveFocus,
+        val expanded = homeComposerExpanded(modelLabel != null || modelControl != null, effectiveFocus,
             value.text.isNotEmpty(), overflow, requestedExpansion)
+        val showPermission = remotePermissionControl != null && (expanded || !permissionExpandedOnly)
+        val permissionWidth = if (showPermission) 34.dp else 0.dp
         // Native host interpolation. Original u0e0 uses a measured transition
         // and coroutine state; exact original animation is still a separate gap.
         val progress by animateFloatAsState(if (expanded) 1f else 0f, label = "HomeComposerExpansion")
-        Surface(shape = RoundedCornerShape(controlHeight / 2),
-            color = if (dark) Color(0xFF303030) else Color.White,
-            modifier = Modifier.fillMaxWidth().testTag(if (expanded) "$tagPrefix-composer-expanded" else "$tagPrefix-composer-compact")) {
+        val shape = RoundedCornerShape(controlHeight / 2)
+        Surface(shape = shape, color = frontendFloatingFill(), border = frontendFloatingOutline(),
+            modifier = Modifier.fillMaxWidth().frontendFloatingShadow(shape, prominent = true)
+                .testTag(if (expanded) "$tagPrefix-composer-expanded" else "$tagPrefix-composer-compact")) {
             Layout(modifier = Modifier.padding(horizontal = sideInset, vertical = 2.dp), content = {
                 // One mounted editor across both layouts preserves the input connection,
                 // composing range and selection while only measurement/placement changes.
@@ -99,10 +109,20 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
                     }
                 }, textStyle = style.copy(color = MaterialTheme.colorScheme.onSurface),
                     cursorBrush = SolidColor(accent), maxLines = 6,
-                    modifier = Modifier.testTag(editorTag).onFocusChanged { focused = it.isFocused },
+                    modifier = Modifier.testTag(editorTag).onFocusChanged { focused = it.isFocused }
+                        .onPreviewKeyEvent { event ->
+                            // m1e0→ebo: only nonrepeated KeyDown Space/Enter. Soft IME text commits remain text.
+                            val key = event.nativeKeyEvent
+                            focused && prediction != null && event.type == KeyEventType.KeyDown && key.repeatCount == 0 &&
+                                key.keyCode in listOf(android.view.KeyEvent.KEYCODE_SPACE, android.view.KeyEvent.KEYCODE_ENTER,
+                                    android.view.KeyEvent.KEYCODE_NUMPAD_ENTER) && prediction.accept()
+                        }.semantics {
+                            if (focused && prediction != null) customActions = listOf(CustomAccessibilityAction(prediction.acceptLabel, prediction.accept))
+                        },
                     decorationBox = { editor ->
                         Box(contentAlignment = Alignment.CenterStart) {
-                            if (value.text.isEmpty()) Text(placeholder, style = style,
+                            if (value.text.isEmpty()) Text(if (focused && prediction != null) prediction.text + " " + prediction.hint else placeholder, style = style,
+                                modifier = if (focused && prediction != null) Modifier.testTag("chat-prediction") else Modifier,
                                 color = if (dark) Color(0xFFAFAFAF) else Color(0xFF8F8F8F),
                                 maxLines = 1, overflow = TextOverflow.Ellipsis)
                             editor()
@@ -113,13 +133,12 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
                     // Android293 InputDecorations is separate from InputActions,
                     // sharing bottom-row vertical placement. Exact x-branch is
                     // unresolved; attach-adjacent placement is our host adapter.
-                    remotePermissionControl?.invoke()
+                    if (showPermission) remotePermissionControl?.invoke()
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     ComposerIcon(R.drawable.ds_microphone_regular_24, R.string.shell_voice, "$tagPrefix-microphone", unavailable)
-                    val sending = value.text.isNotBlank()
                     // w7o -> l7p0.c: bbv0.o=32dp surface inside bbv0.r=48dp target.
-                    IconButton(onClick = {
+                    if (showsPrimary) IconButton(onClick = {
                         if (primaryAction != null && (sending || running)) primaryAction() else unavailable()
                     }, enabled = primaryAction == null || running || (canSubmit && sending && value.text.length <= 16384),
                         modifier = Modifier.size(48.dp)
@@ -129,14 +148,14 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
                             Icon(painterResource(if (running) R.drawable.ds_stop_fill_regular_24 else if (sending) R.drawable.ds_arrow_up_lg_button_regular_24
                                 else R.drawable.ds_voice_button_regular_24),
                                 stringResource(if (running) R.string.remote_reply_stop else if (sending) R.string.shell_send else R.string.shell_voice_mode),
-                                Modifier.size(24.dp), tint = Color.White)
+                                Modifier.size(24.dp), tint = frontendAccentForeground(LocalFrontendSettings.current,dark))
                         }
                     }
                 }
-                // ldo/ki60 is an optional model-control slot. This synthetic label
-                // denotes the reserved model entry, not a selected service model.
+                // ldo/ki60 is an optional provider-supplied model-control slot.
+                // The standalone label remains an unavailable capability entry.
                 Box {
-                    if (expanded && remoteModelControl != null) remoteModelControl()
+                    if (expanded && modelControl != null) modelControl()
                     else if (expanded && modelLabel != null) TextButton(onClick = unavailable,
                         modifier = Modifier.testTag("$tagPrefix-model")) {
                         Text(modelLabel, style = style, maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -146,7 +165,7 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
                 val width = constraints.maxWidth
                 val rowHeight = controlHeight.roundToPx()
                 val leading = children[1].measure(Constraints.fixed((48.dp + permissionWidth).roundToPx(), rowHeight))
-                val trailing = children[2].measure(Constraints.fixed(96.dp.roundToPx(), rowHeight))
+                val trailing = children[2].measure(Constraints.fixed(trailingWidth.roundToPx(), rowHeight))
                 val textInset = 16.dp.roundToPx()
                 val gap = 4.dp.roundToPx()
                 val editorWidth = if (expanded) width - textInset * 2 else width - leading.width - trailing.width

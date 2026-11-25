@@ -50,6 +50,39 @@ class RemoteAgentsTest {
         device.executeShellCommand("input tap ${bounds.centerX()} ${bounds.centerY()}")
         device.waitForIdle();instrumentation.uiAutomation.clearCache()
     }
+
+    @Test fun relatedTaskCapabilityRules() {
+        val coroutine = CoroutineScope(SupervisorJob() + Dispatchers.Unconfined)
+        var calls = 0
+        val provider = object : RemoteAgentThreadProvider {
+            override suspend fun resolve(request: RemoteAgentThreadRequest): RemoteAgentThreadResult {
+                calls++
+                return RemoteAgentThreadResult(request, null)
+            }
+        }
+        val turn = RemoteFrontendTurn("history", "history", 0, "", "", RemoteTurnPhase.Completed)
+        val fixture = requireNotNull(fixtureCollaborationActivity(parent, turn, true))
+        val legacy = fixture.agents.first()
+        val restricted = fixture.agents.last().copy(canOpenRelatedTask = false)
+        val activity = fixture.copy(agents = listOf(legacy, restricted))
+        val owner = RemoteAgentRouteOwner(RemoteAgentScope("account", "profile", parent, "session", 1),
+            activity, provider, coroutine)
+        try {
+            assertTrue(activity.valid())
+            assertTrue(activity.summary(false).contains(restricted.reference))
+            owner.begin(restricted)
+            owner.begin(restricted.copy(canOpenRelatedTask = true))
+            assertNull(owner.request)
+            assertEquals(0, calls)
+            owner.begin(legacy)
+            assertEquals(1, calls)
+            assertEquals(legacy, owner.request?.agent)
+        } finally {
+            owner.close()
+            coroutine.cancel()
+        }
+    }
+
     private fun contracts(){
         val job=SupervisorJob();val co=CoroutineScope(job+Dispatchers.Unconfined)
         val provider=object:RemoteAgentThreadProvider{override suspend fun resolve(request:RemoteAgentThreadRequest):RemoteAgentThreadResult{awaitCancellation()}}
@@ -74,15 +107,22 @@ class RemoteAgentsTest {
     }
     @Test fun journey(){
         contracts();FrontendPreferences(context,profile).apply{selectLanguage("zh-CN");selectAppearance("light")}
+        // Seed independent configurations so routing verification does not depend on picker transitions.
+        val saved=store()
+        val fixture=SyntheticRemoteConversationProvider(true)
+        for((task,effort) in listOf(parent to "high",child to "low")){
+            val controls=saved.controls(task)
+            assertTrue(saved.saveTaskRuntime(task,fixture.history(task),controls.copy(configuration=controls.configuration.copy(effort=effort)),clearDraft=false))
+        }
         context.startActivity(Intent(context,AppShellActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK).putExtra("shell-profile",profile).putExtra("remote",true))
         node("remote-title");click("remote-search");node("remote-query").text="Demo";device.waitForIdle();hideKeyboard()
         val row="remote-task-project-fixture-a-demo-fixture-a-shared-task"
         repeat(6){if(!device.hasObject(By.res(row))){node("remote-task-list").swipe(Direction.UP,.45f);device.waitForIdle()}};click(row);node("remote-conversation")
-        draft("父任务独立草稿");click("remote-config");click("remote-effort-high");click("remote-control-close");assertEquals("high",store().controls(parent).configuration.effort)
+        draft("父任务独立草稿");assertEquals("high",store().controls(parent).configuration.effort)
         activity();capture("tool-summary");click("remote-collab-close");assertEquals("父任务独立草稿",node("remote-draft").text)
         activity();sheetClick("remote-agent-open-unmapped-reference");reveal("remote-agent-unavailable");capture("unmapped");click("remote-collab-close")
         activity();sheetClick("remote-agent-open-worker-reference-A");reveal("remote-agent-error");sheetClick("remote-agent-retry");assertTrue(device.wait(Until.gone(By.res("remote-collab-sheet")),5000));assertEquals("关联审查子任务",node("remote-task-title").text);assertEquals("",node("remote-draft").text)
-        draft("子任务独立草稿");click("remote-config");click("remote-effort-low");click("remote-control-close");capture("child");click("remote-task-back");assertEquals("父任务独立草稿",node("remote-draft").text);assertEquals("high",store().controls(parent).configuration.effort);assertEquals("low",store().controls(child).configuration.effort)
+        draft("子任务独立草稿");capture("child");click("remote-task-back");assertEquals("父任务独立草稿",node("remote-draft").text);assertEquals("high",store().controls(parent).configuration.effort);assertEquals("low",store().controls(child).configuration.effort)
         activity();sheetClick("remote-agent-open-worker-reference-A");assertEquals("关联审查子任务",node("remote-task-title").text);assertEquals("子任务独立草稿",node("remote-draft").text);click("remote-reply-send")
         assertTrue(device.wait(Until.hasObject(By.res("remote-turn-phase").text("已完成")),20000));click("remote-task-back");assertEquals("父任务独立草稿",node("remote-draft").text);assertEquals("high",store().controls(parent).configuration.effort);assertTrue(store().turns(child).any{it.prompt=="子任务独立草稿"&&it.phase==RemoteTurnPhase.Completed});assertFalse(store().turns(parent).any{it.prompt=="子任务独立草稿"});capture("parent-restored")
         click("remote-task-back");node("remote-query");assertEquals("Demo",node("remote-query").text)

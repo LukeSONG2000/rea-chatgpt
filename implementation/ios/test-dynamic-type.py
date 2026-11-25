@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
-"""Focused live-font test on the dedicated simulator; restore its original setting."""
+"""Focused live-font test on the shared simulator; restore its original setting."""
 import argparse
 import json
 import pathlib
 import subprocess
 import time
+from Tools.simulator_target import shared_device
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--device', required=True)
 parser.add_argument('--only-test', default='testLiveDynamicTypeMixedReply', choices=['testLiveDynamicTypeMixedReply', 'testLiveDynamicTypeReadingPosition'])
 parser.add_argument('--result', type=pathlib.Path, required=True)
 args = parser.parse_args()
-inventory = json.loads(subprocess.check_output(['xcrun', 'simctl', 'list', 'devices', '--json']))
-assert any(d['udid'] == args.device and d['name'] == 'REA ChatGPT Offline' and d['state'] == 'Booted'
-           for group in inventory['devices'].values() for d in group), 'Dedicated booted simulator required'
+shared_device(args.device, booted=True)
 result = args.result.resolve()
 log = result.with_suffix('.log')
 report = result.with_suffix('.font.json')

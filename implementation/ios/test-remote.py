@@ -9,6 +9,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from Tools.simulator_target import shared_device
 
 root = pathlib.Path(__file__).resolve().parents[2]
 p = argparse.ArgumentParser(); p.add_argument('--device', required=True); p.add_argument('--result', type=pathlib.Path, required=True)
@@ -17,8 +18,7 @@ p.add_argument('--delayed-poll', action='store_true')
 a = p.parse_args()
 if a.delayed_poll and a.mode != 'fixture': raise SystemExit('Delayed proxy is fixture-only')
 if a.result.exists() or a.result.suffix != '.xcresult': raise SystemExit('New xcresult required')
-inv = json.loads(subprocess.check_output(['xcrun','simctl','list','devices','--json']))
-if not any(d['udid']==a.device and d['name']=='REA ChatGPT Offline' and d.get('isAvailable') for group in inv['devices'].values() for d in group): raise SystemExit('Dedicated simulator required')
+shared_device(a.device, booted=True)
 def destination_path():
     container = pathlib.Path(subprocess.check_output(['xcrun','simctl','get_app_container',a.device,'local.rea.chatgpt.ioshost','data'],text=True).strip())
     return container/'Documents/remote-pairings.json'

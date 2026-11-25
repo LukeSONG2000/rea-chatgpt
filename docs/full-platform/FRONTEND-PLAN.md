@@ -1,3 +1,5 @@
+> 当前移动端执行以 `MOBILE-DEVELOPMENT-PLAN.md` 为准：收口iOS并逐项对齐Android，单批聚焦一整项、中文浅色聚焦检查；下文旧“暂停Android”是历史安排，不覆盖当前方向。最新插件权限补漏见 `PROGRESS-20261115-PLUGIN-SETTINGS-ROWS.md`。
+
 > 2026-11-12 模块顺序更新：先主框架/首页/侧栏，再按移动端计划依次推进 Remote 各模块、Chat/Work、文件/浏览器、设置、其他侧栏功能、登录账户前端。以 `MOBILE-DEVELOPMENT-PLAN.md` 的当前逐点执行顺序为准。
 
 > 2026-11-12 最新安排：全力推进 iOS，暂停 Android 新增功能，保留已有成果。iOS 每批同步现有模拟器与可用真机，离线分别记录；iOS 核心页面稳定后再按官方 Android 对应实现适配。下文双端并进安排均被此条替代。详见[当前页面计划](MOBILE-DEVELOPMENT-PLAN.md)。

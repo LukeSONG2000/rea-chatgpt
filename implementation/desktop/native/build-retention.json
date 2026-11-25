@@ -1,6 +1,6 @@
 {
   "schema": "rea-build-retention-v1",
-  "macos": {"candidate": "v174-r4-macos", "rollback": "v172-r2-macos"},
-  "windows": {"candidate": "v173-windows", "rollback": "v172-windows"},
-  "notes": "Candidate means integrity-verified build, not full UI acceptance. Rollback changes require explicit acceptance evidence. Original packages and reports are outside cleanup scope."
+  "macos": {"candidate": "v174-r4-macos", "rollback": null},
+  "windows": {"candidate": "v173-windows", "rollback": null},
+  "notes": "2026-11-21: retain the current integrity-verified build for each platform. Pin a rollback only for a documented operational need. Preserve acceptance records and original inputs independently."
 }

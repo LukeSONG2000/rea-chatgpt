@@ -93,3 +93,115 @@ as a long-running service.
 ## Dynamic synthetic conversations (v42)
 
 `scope_contract.py` admits the two legacy fixture identities plus `offline-local-<canonical lowercase UUID>`. Both loopback admission and model worker use it. Account remains `offline-fixture-account`; request identities remain scoped to account/conversation/request. No authentication or listener boundary changed. Run tests with `/opt/homebrew/bin/python3.12 -m unittest test_loopback_server test_model_worker` from this directory. Ten tests passed, including separate conversation scopes with the same request ID and mocked model identity propagation. This does not prove a new live Zhipu or native UI streaming run.
+
+## Live mobile stream regression (2026-11-21)
+
+The CC Switch GLM profile returned a complete stream through the authenticated
+loopback server. The first run received two text increments before completion.
+A second run piped the real NDJSON into the Swift `ChatFrontendStreamCursor`
+used by the iOS conversation host. It applied 17 increments in order and
+finished at sequence 19. The Swift check ran on macOS with the same source files
+as the iOS host. The normal app launch continues to use its existing service
+selection. Both requests used synthetic prompts. The loopback listener stopped
+after each run.
+
+Use a live model to exercise incremental text and terminal states. For Codex
+regressions that depend on instance capabilities or service state, use the
+existing typed providers to supply queue identity, Goal revisions, approvals,
+and scoped resource receipts. Those inputs can be combined with model output
+when a feature needs both.
+
+[Transport result](../ios/.build/llm-harness-20261121/live-transport.json) ·
+[Swift projection result](../ios/.build/llm-harness-20261121/live-ios-projection.json)
+
+## iOS Chat page
+
+After building the iOS target with `build-for-testing`, run the opt-in UI
+check on the shared simulator using Python 3.11 or newer:
+
+```sh
+python3.12 implementation/ios/test-live-chat.py \
+  --xctestrun /absolute/path/to/REAChatGPTHost_iphonesimulator.xctestrun \
+  --result /absolute/path/to/new-live-chat.xcresult
+```
+
+The runner uses one billable synthetic GLM request. It pairs the independent
+simulator app to a temporary loopback listener and restores the prior pairing
+after the run. The UI receives the real first text increment, then the runner
+holds the rest of the stream for four seconds so the test can observe the
+partial reply. The test checks completion and persistence after a cold launch.
+The normal icon launch uses its bundled fixtures. The loopback launch flag is
+handled only by the simulator's explicit test entry point.
+
+The focused test passed on the shared Soul Next simulator in 27.540 seconds.
+It observed a partial reply, waited for generation to end, and recovered the
+same final text and conversation after a cold launch. The harness counted one
+generation request. The temporary pairing was removed and ordinary preview
+was relaunched. The initial longer prompt hit the model's output-token budget
+and recorded a failure state without presenting a completed response.
+[Passing UI result](../ios/.build/chat-live-ui-20261121/chat-live-r3.summary.json)
+
+## iOS Codex page
+
+Add `--surface codex` to the same runner. The explicit simulator preview
+provider uses the real loopback text stream for ordinary submissions and
+publishes scoped Codex history revisions. Each revision updates the same
+assistant item. A successful terminal event enables copy. An incomplete
+response preserves any received text and shows the failure state. The scripted
+preview remains available for operations such as queues and approvals.
+
+The Cloud preview passed in 46.625 seconds with one GLM request. The UI
+displayed text as it arrived, enabled copy at completion, and recovered the
+completed response after visiting the separate Remote task and returning.
+The Remote task did not display the Cloud response. The temporary pairing was
+removed and the ordinary preview relaunched.
+[Passing UI result](../ios/.build/codex-live-ui-20261121/codex-live.summary.json) ·
+[Operation contract](../ios/.build/codex-live-ui-20261121/operations.log) ·
+[Message contract](../ios/.build/codex-live-ui-20261121/messages.log)
+
+## Android Chat page
+
+Build the independent Android debug app and test APK, then run the loopback
+check on an available OnePlus wireless ADB transport:
+
+```sh
+python3 implementation/android/build.py --tests
+python3.12 implementation/android/test-chat.py --serial <wireless-ADB-serial> \
+  --live --report /absolute/path/to/new-android-chat-report.json
+```
+
+The runner pairs a fresh debug profile through an ADB reverse port to the
+local GLM harness. It sends one synthetic prompt, checks the visible partial
+reply and completion, then force-stops the app and checks the same reply after
+relaunch. The runner removes the profile's pairing and its reverse port and
+reopens the ordinary preview.
+
+On 2026-11-22 both OnePlus journeys passed over wireless ADB. The main
+journey observed the real partial reply before copy became available and
+verified that an ordinary unsent draft stayed local. The cold launch retained
+the completed text, message identity and copy action. The harness recorded one
+generation request for the two journeys. The installed APK digest matched the
+build, the preview preferences matched, and the temporary pairing was removed.
+[OnePlus report](../android/.artifacts/real-chat-20261122/oneplus.json) ·
+[Installed APK verification](../android/.artifacts/real-chat-20261122/installed-verification.json)
+
+After sharing the transport with Codex, both Chat journeys passed again on
+OnePlus. Earlier retries captured the completed reply but missed the UI
+assertion while accessibility was waiting for an idle window. The streaming
+observation now queries without that idle wait. The completed-text assertion
+is scoped to the assistant message. [Repeat report](../android/.artifacts/real-codex-20261123/chat-oneplus-r3.json)
+
+## Android Codex page
+
+Use the same runner with `--live-codex` and a fresh report path. The isolated
+Codex profile uses the same loopback text stream as Chat. The runner opens an
+existing Cloud fixture task, verifies partial text and the completed copy
+action, opens a separate Remote fixture task to check isolation, then force
+stops the app and verifies the completed Cloud turn after relaunch.
+
+Both journeys passed on the physical OnePlus over wireless ADB with one Zhipu
+GLM generation. The live profile supports ordinary text submission. Task
+controls depend on capabilities from a task provider. The runner removed its
+pairing and reverse port and reopened the ordinary preview. Its report records
+unchanged preview preference digests.
+[OnePlus Codex report](../android/.artifacts/real-codex-20261123/oneplus.json)

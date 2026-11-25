@@ -198,18 +198,22 @@ final class NativeSidebarContainer: UIViewController, UIGestureRecognizerDelegat
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let pan = gestureRecognizer as? UIPanGestureRecognizer, presentedViewController == nil else { return false }
         let velocity = pan.velocity(in: view)
-        guard abs(velocity.x) > abs(velocity.y) else { return false }
+        //Independent dual-pan phase adapter: a live touch drag, not any active
+        //tap/settling animator, corresponds to original associated dragging.
+        //Both original stable-open states share this directional rule.
+        let phase: RecoveredSidebarDragAdmission.Phase = dragBeginFraction != nil
+            ? .dragging : (isMenuOpen ? .open : .closed)
+        let canOpen = requestOpenMenu != nil && !hasNestedBackNavigation(content)
+        guard RecoveredSidebarDragAdmission.admits(velocityX: velocity.x, velocityY: velocity.y,
+            directionSign: directionSign, phase: phase, canDragOpen: canOpen,
+            canDragClose: true) else { return false }
         if gestureRecognizer === edgePan {
             // Native screen-edge admission is an explicit host policy. Defer to
             // nested page Back instead of stealing preview/settings navigation.
             return !isMenuOpen && velocity.x * directionSign > 0 &&
-                requestOpenMenu != nil && !hasNestedBackNavigation(content)
+                canOpen
         }
         guard isMenuOpen else { return false }
-        //293629f04..24 admits a closing direction for the steady open states.
-        //Keep the existing interruption adapter while an animator is active;
-        //the original associated dragging-state arbitration is still partial.
-        if animator == nil && velocity.x * directionSign >= 0 { return false }
         let point = pan.location(in: view)
         // Preserve history-row swipe actions and text selection. Close dragging
         // starts on the exposed content/edge or sidebar header in this preview;
@@ -226,6 +230,23 @@ final class NativeSidebarContainer: UIViewController, UIGestureRecognizerDelegat
     private func hasNestedBackNavigation(_ controller: UIViewController) -> Bool {
         if let nav = controller as? UINavigationController, nav.viewControllers.count > 1 { return true }
         return controller.children.contains(where: hasNestedBackNavigation)
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldBeRequiredToFailBy other: UIGestureRecognizer) -> Bool {
+        guard gestureRecognizer === edgePan || gestureRecognizer === closePan else { return false }
+        //293 Popen/Pclose read visible distance, not the logical animation target.
+        //The official movement-style/frame resolver remains separate. This
+        //full-window adapter maps the actual translated surface into that input,
+        //and adapts the original single pan to our edge-open/close pair.
+        let translation = contentSurface.layer.presentation()?.affineTransform().tx
+            ?? contentSurface.transform.tx
+        let distance = min(dragExtent, max(0, translation * directionSign))
+        let canOpen = presentedViewController == nil && requestOpenMenu != nil &&
+            !hasNestedBackNavigation(content)
+        let edges = RecoveredSidebarScrollPriority.edges(distance: distance, extent: dragExtent,
+            directionSign: directionSign, canDragOpen: canOpen)
+        return RecoveredSidebarScrollPriority.prefersSidebar(over: other, edges: edges)
     }
 
     @objc private func handleSidebarPan(_ pan: UIPanGestureRecognizer) {

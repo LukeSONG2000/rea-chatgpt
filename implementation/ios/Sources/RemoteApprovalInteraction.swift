@@ -134,19 +134,53 @@ struct RemoteApprovalHeaderInput: Hashable {
     }
 }
 
+//293 PermissionDetail0x95aff6c is a projected UI enum, not the generated
+//RequestPermissionProfile wire schema. A provider supplies these display rows;
+//entries/read/write normalization and granting permissions remain external.
+enum RemotePermissionAccess: Hashable {
+    case read, write, readWrite
+
+    var titleResourceKey: String {
+        switch self {
+        case .read: "codex_remote_permissions_read_label"
+        case .write: "codex_remote_permissions_write_label"
+        case .readWrite: "codex_remote_permissions_read_write_label"
+        }
+    }
+}
+
+enum RemotePermissionDetail: Hashable {
+    case fileSystem(access: RemotePermissionAccess, paths: [String])
+    case network
+}
+
 struct RemoteApprovalRequestInput: Hashable {
     let scope: RemoteApprovalScope
     let actions: [RemoteApprovalActionInput]
     let availability: RemoteApprovalAvailability?
     let header: RemoteApprovalHeaderInput?
+    let permissionDetails: [RemotePermissionDetail]
+    let openAIForm: RemoteOpenAIFormProjection?
 
     init(scope: RemoteApprovalScope, actions: [RemoteApprovalActionInput],
          availability: RemoteApprovalAvailability? = nil,
-         header: RemoteApprovalHeaderInput? = nil) {
+         header: RemoteApprovalHeaderInput? = nil,
+         permissionDetails: [RemotePermissionDetail] = [],
+         openAIForm: RemoteOpenAIFormProjection? = nil) {
         self.scope = scope
         self.actions = actions
         self.availability = availability
         self.header = header
+        self.permissionDetails = permissionDetails
+        self.openAIForm = openAIForm
+    }
+
+    //Actual banner1a1d75c..1a1daa4: form first, then nonempty command,
+    //then nonempty projected permissions. Whitespace is a present command.
+    //Do not infer this admission from kind or flatten a form to ordinary rows.
+    func visiblePermissionDetails(command: String?, hasOpenAIForm: Bool = false) -> [RemotePermissionDetail] {
+        guard !hasOpenAIForm, openAIForm == nil, command?.isEmpty ?? true else { return [] }
+        return permissionDetails
     }
 }
 
@@ -164,10 +198,12 @@ enum RemoteApprovalEvent {
     case approve(request: RemoteApprovalRequestInput, decision: RemoteApprovalDecision)
     case deny(request: RemoteApprovalRequestInput)
     case feedback(request: RemoteApprovalRequestInput, text: RemoteApprovalFeedback)
+    case openAIForm(RemoteOpenAIFormOperation)
 
     var request: RemoteApprovalRequestInput {
         switch self {
         case .approve(let request, _), .deny(let request), .feedback(let request, _): return request
+        case .openAIForm(let operation): return operation.request
         }
     }
 }
@@ -219,6 +255,12 @@ enum RemoteApprovalSubmissionFailure: Equatable {
 struct RemoteApprovalIntentValidation {
     func submit(_ event: RemoteApprovalEvent, current: RemoteApprovalRequestInput?) -> RemoteApprovalSubmissionFailure? {
         guard event.request == current else { return .staleRequest }
+        // Actual form-first branch has separate submit/dismiss callbacks and
+        // never exposes the ordinary command/permission decision controls.
+        if case .openAIForm(let operation) = event {
+            return operation.isValid ? nil : .unsupportedDecision
+        }
+        guard event.request.openAIForm == nil else { return .unsupportedDecision }
         if case .feedback(_, let text) = event,
            text.withServiceValue({ $0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }) {
             return .unsupportedDecision

@@ -7,7 +7,10 @@ import java.util.UUID
 // Independent optional related-task capability. Original dcl receiverThreadIds,
 // agentsStates and senderThreadId are distinct; no identity is a route by itself.
 internal data class RemoteAgentScope(val account:String,val profile:String,val task:RemoteTaskKey,val session:String,val revision:Int,val platform:String="android")
-internal data class RemoteAgentRecord(val reference:String,val state:String,val label:String)
+internal data class RemoteAgentRecord(val reference:String,val state:String,val label:String,
+    val canOpenRelatedTask:Boolean?=null) {
+    val allowsRelatedTask: Boolean get() = canOpenRelatedTask != false
+}
 internal data class RemoteCollaborationActivity(val task:RemoteTaskKey,val turn:String,val request:String,val attempt:Int,val id:String,val revision:Int,
     val tool:String,val status:String,val prompt:String,val senderReference:String?,val receivers:List<String>,val agents:List<RemoteAgentRecord>,val model:String?,val effort:String?) {
     fun valid():Boolean = task.hostID.safeAgentID() && task.threadID.safeAgentID() && turn.safeAgentID() && request.safeAgentID() && id.safeAgentID() && attempt>=0 && revision>=0 &&
@@ -57,13 +60,13 @@ internal class RemoteAgentRouteOwner(val scope:RemoteAgentScope,val activity:Rem
     var phase by mutableStateOf("idle");private set
     private var job:Job?=null;private var retired=false
     fun begin(agent:RemoteAgentRecord){
-        if(retired||phase=="loading"||!activity.valid()||activity.task!=scope.task||agent !in activity.agents)return
+        if(retired||phase=="loading"||!activity.valid()||activity.task!=scope.task||!agent.allowsRelatedTask||agent !in activity.agents)return
         job?.cancel();target=null;val next=RemoteAgentThreadRequest(scope,activity,agent);request=next;phase="loading"
         job=coroutine.launch{try{accept(provider.resolve(next))}catch(c:CancellationException){throw c}catch(_:Exception){if(request==next){phase="failed"}}}
     }
     fun retry(){if(phase!="failed"||retired)return;request?.agent?.let(::begin)}
     fun accept(result:RemoteAgentThreadResult){val current=request?:return
-        if(retired||phase!="loading"||result.request!=current||current.scope!=scope||current.activity!=activity||current.agent !in activity.agents)return
+        if(retired||phase!="loading"||result.request!=current||current.scope!=scope||current.activity!=activity||!current.agent.allowsRelatedTask||current.agent !in activity.agents)return
         val next=result.target
         if(next==null){phase="unavailable";return}
         if(!next.valid()||next.key==scope.task){phase="unavailable";return}

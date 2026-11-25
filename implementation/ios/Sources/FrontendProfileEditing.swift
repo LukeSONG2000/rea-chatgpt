@@ -40,28 +40,37 @@ struct FrontendProfileSaveReceipt {
 }
 
 struct FrontendProfileEditState {
+    // Independent host recovery: provider acceptance and local journal
+    // acceptance are different outcomes. Never repeat a provider mutation
+    // merely because the exact accepted proposal could not be saved locally.
+    private struct AcceptedProposal {
+        let request: FrontendProfileSaveRequest
+        let profile: FrontendEditableProfile
+    }
+    private var acceptedProposal: AcceptedProposal?
     private(set) var profile: FrontendEditableProfile
     private(set) var draft: FrontendProfileDraft
     private(set) var sessionID = UUID()
     private(set) var pending: FrontendProfileSaveRequest?
     private(set) var failure: FrontendProfileFailure?
+    var awaitingLocalAcceptance: Bool { acceptedProposal != nil }
     var hasChanges: Bool { draft != FrontendProfileDraft(profile) }
     // Explicit host input budgets/admission; original validation is not recovered.
     var canSave: Bool {
-        pending == nil && hasChanges && !profile.accountID.isEmpty
+        pending == nil && (awaitingLocalAcceptance || (hasChanges && !profile.accountID.isEmpty
             && !draft.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            && draft.name.utf8.count <= 256 && draft.username.utf8.count <= 256
+            && draft.name.utf8.count <= 256 && draft.username.utf8.count <= 256))
     }
 
     init(_ profile: FrontendEditableProfile) {
         self.profile = profile; draft = .init(profile)
     }
     mutating func edit(_ draft: FrontendProfileDraft) {
-        guard self.draft != draft else { return }
+        guard !awaitingLocalAcceptance, self.draft != draft else { return }
         self.draft = draft; failure = nil
     }
     mutating func beginSave() -> FrontendProfileSaveRequest? {
-        guard canSave else { return nil }
+        guard canSave, !awaitingLocalAcceptance else { return nil }
         let request = FrontendProfileSaveRequest(id: UUID(), sessionID: sessionID,
             accountID: profile.accountID, baseRevision: profile.revision, draft: draft)
         pending = request; failure = nil; return request
@@ -82,14 +91,38 @@ struct FrontendProfileEditState {
                   updated.name.utf8.count <= 256, updated.username.utf8.count <= 256 else {
                 failure = .invalidResult; return false
             }
-            if let rejected = acceptance?(request, updated) { failure = rejected; return true }
+            if let rejected = acceptance?(request, updated) {
+                if rejected == .localStorage {
+                    acceptedProposal = .init(request: request, profile: updated)
+                }
+                failure = rejected; return true
+            }
             profile = updated; failure = nil
             // A receipt commits its submitted baseline, not edits made later.
             if draft == request.draft { draft = .init(updated) }
         }
         return true
     }
-    mutating func retireRequests() { sessionID = UUID(); pending = nil }
+    @discardableResult
+    mutating func retryLocalAcceptance(
+        _ acceptance: (FrontendProfileSaveRequest, FrontendEditableProfile) -> FrontendProfileFailure?
+    ) -> Bool {
+        guard pending == nil, let proposal = acceptedProposal,
+              proposal.request.sessionID == sessionID,
+              proposal.request.accountID == profile.accountID,
+              proposal.request.baseRevision == profile.revision else { return false }
+        if let rejected = acceptance(proposal.request, proposal.profile) {
+            failure = rejected
+            return false
+        }
+        profile = proposal.profile
+        if draft == proposal.request.draft { draft = .init(profile) }
+        acceptedProposal = nil; failure = nil
+        return true
+    }
+    mutating func retireRequests() {
+        sessionID = UUID(); pending = nil; acceptedProposal = nil
+    }
     mutating func cancel() {
         retireRequests(); failure = nil; draft = .init(profile)
     }

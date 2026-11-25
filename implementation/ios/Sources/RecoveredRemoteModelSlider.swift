@@ -60,18 +60,19 @@ struct RecoveredRemoteModelControl: View {
             .onTapGesture {
                 guard configuration.isEnabled else { return }
                 presenter.present(configuration: configuration.value, appearance: configuration.appearance,
-                    openAdvanced: configuration.openAdvanced)
+                    openingFeedback: true, openAdvanced: configuration.openAdvanced)
             }
             .simultaneousGesture(LongPressGesture(minimumDuration: 0.2, maximumDistance: 10)
                 .sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .global))
                 .onChanged { value in
-                    guard configuration.isEnabled, case .second(true, let drag?) = value else { return }
-                    guard didDragDuringLongPress || hypot(drag.translation.width, drag.translation.height) >= 6 else { return }
-                    didDragDuringLongPress = true
+                    guard configuration.isEnabled, case .second(true, let drag) = value else { return }
                     if !presenter.isPresented {
                         presenter.present(configuration: configuration.value, appearance: configuration.appearance,
-                            openAdvanced: configuration.openAdvanced)
+                            openingFeedback: true, openAdvanced: configuration.openAdvanced)
                     }
+                    guard presenter.isPresented, let drag,
+                          didDragDuringLongPress || hypot(drag.translation.width, drag.translation.height) >= 6 else { return }
+                    didDragDuringLongPress = true
                     presenter.selectFromSourceDrag(drag.location)
                 }
                 .onEnded { value in
@@ -139,6 +140,13 @@ struct RecoveredRemoteModelControl: View {
 // Retains the editing window as key, allowing keyboard/draft ownership to stay
 // with the original editor. Source snapshots use actual mounted window geometry.
 @MainActor
+private final class RemoteModelEntryDisplayLink: NSObject {
+    let update: (CADisplayLink) -> Void
+    init(update: @escaping (CADisplayLink) -> Void) { self.update = update }
+    @objc func tick(_ link: CADisplayLink) { update(link) }
+}
+
+@MainActor
 final class RemoteModelSliderPresenter: ObservableObject {
     weak var source: UIView?
     @Published private(set) var isPresented = false
@@ -148,6 +156,9 @@ final class RemoteModelSliderPresenter: ObservableObject {
     @Published private(set) var showsSliderChrome = true
     @Published private(set) var showsThumbBackground = true
     @Published private(set) var presentationOpacity: Double = 1
+    @Published private(set) var entryProgress: CGFloat?
+    @Published private(set) var entryObservation: String?
+    @Published private(set) var feedbackObservation = ""
     @Published private(set) var selectedIndex = 0
     @Published private(set) var appearance = RemoteModelSliderAppearance()
     @Published private(set) var selectionTrigger = 0
@@ -163,30 +174,55 @@ final class RemoteModelSliderPresenter: ObservableObject {
     private var window: UIWindow?
     private var closing = false
     private var keyboardSubstitution: FrontendKeyboardSnapshotSession?
+    private var keyboardHandoffLink: CADisplayLink?
     private var backgroundObserver: NSObjectProtocol?
     private var keyboardLayoutObserver: NSObjectProtocol?
     private var presentationIdentity = UUID()
     private var hasBegunAppearance = false
     private var fadesAppearance = false
+    private var entryLink: CADisplayLink?
+    private var entryFirstTimestamp: CFTimeInterval?
+    private var entrySamples: [(progress: CGFloat, index: Int)] = []
+    private var entryObservationSize: CGSize = .zero
+    private let observesEntry = HostLaunchRuntime.arguments.contains("--remote-model-entry-observation")
+    private let observesKeyboard = HostLaunchRuntime.arguments.contains("--remote-model-keyboard-probe")
+    private var keyboardProbeObservers: [NSObjectProtocol] = []
+    private let reduceMotionFixture = HostLaunchRuntime.arguments.contains("--remote-model-reduce-motion-fixture")
+    private var appearanceStart: CFTimeInterval = 0
+    private var feedbackEvents: [String] = []
+
+    var reducesMotion: Bool { reduceMotionFixture || UIAccessibility.isReduceMotionEnabled }
+    var acceptsTitleTap: Bool { isExpanded && !closing }
+
+    var expansion: CGFloat { entryProgress ?? (isExpanded ? 1 : 0) }
 
     @discardableResult
     func present(configuration: Binding<RemoteAdvancedConfiguration>,
                  appearance: RemoteModelSliderAppearance = .init(),
-                 fadesAppearance: Bool = false, openAdvanced: @escaping () -> Void) -> Bool {
+                 fadesAppearance: Bool = false, openingFeedback: Bool = false,
+                 openAdvanced: @escaping () -> Void) -> Bool {
+        let value = configuration.wrappedValue
         guard window == nil, let source, let sourceWindow = source.window,
               let scene = sourceWindow.windowScene, !source.bounds.isEmpty,
-              let slider = configuration.wrappedValue.sliderConfiguration else { return false }
+              let slider = value.sliderConfiguration,
+              let index = slider.selections.firstIndex(where: { $0.presetID == slider.selectedPresetID }) else { return false }
         self.configuration = configuration
         self.appearance = appearance
         self.openAdvanced = openAdvanced
         selections = slider.selections
-        selectedIndex = selections.firstIndex { $0.presetID == slider.selectedPresetID } ?? 0
-        modelTitle = configuration.wrappedValue.currentModel?.title ?? ""
+        selectedIndex = index
+        modelTitle = value.currentModel?.title ?? ""
         session = RemoteModelSliderSession(configuration: slider)
         hapticBoundary.reset()
         closing = false
         presentationIdentity = UUID()
         hasBegunAppearance = false
+        entryProgress = nil
+        entryObservation = nil
+        entrySamples.removeAll()
+        feedbackEvents.removeAll()
+        feedbackObservation = ""
+        appearanceStart = CACurrentMediaTime()
         self.fadesAppearance = fadesAppearance
         isExpanded = false
         showsPresentationChrome = false
@@ -216,7 +252,9 @@ final class RemoteModelSliderPresenter: ObservableObject {
         controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         container.view.addSubview(controller.view)
         controller.didMove(toParent: container)
-        keyboardSubstitution = FrontendKeyboardSnapshotSession.capture(source: source, presentationWindow: overlay)
+        startKeyboardProbe()
+        keyboardSubstitution = FrontendKeyboardSnapshotSession.capture(source: source, presentationWindow: overlay,
+                                                                        deferSubstitution: true)
         if let snapshot = keyboardSubstitution?.snapshot {
             container.view.insertSubview(snapshot, belowSubview: controller.view)
         }
@@ -233,6 +271,20 @@ final class RemoteModelSliderPresenter: ObservableObject {
         window = overlay
         isPresented = true
         overlay.isHidden = false
+        recordKeyboardProbe("overlay-visible")
+        if keyboardSubstitution != nil {
+            afterKeyboardHandoffFrame { [weak self] in
+                guard let self, !self.closing,
+                      self.keyboardSubstitution?.snapshot.window === self.window,
+                      self.source?.window?.isKeyWindow == true else { return }
+                self.keyboardSubstitution?.activate()
+                self.recordKeyboardProbe("snapshot-active")
+            }
+        }
+        if openingFeedback {
+            recordFeedback("open-soft")
+            FrontendHaptics.modelPickerOpened()
+        }
         return true
     }
 
@@ -256,14 +308,25 @@ final class RemoteModelSliderPresenter: ObservableObject {
         selectedIndex = index
         session?.selectedPresetID = selections[index].presetID
         selectionTrigger += 1
+        recordFeedback("selection-\(index)")
     }
 
     func updateHapticBoundary(x: CGFloat, innerWidth: CGFloat) {
         guard !closing, isPresented, innerWidth >= 48, x.isFinite else { return }
-        if hapticBoundary.update(outside: x < 24 || x > innerWidth - 24) { boundaryTrigger += 1 }
+        if hapticBoundary.update(outside: x < 24 || x > innerWidth - 24) {
+            boundaryTrigger += 1
+            recordFeedback("edge-soft")
+        }
     }
 
     func resetHapticBoundary() { hapticBoundary.reset() }
+
+    private func recordFeedback(_ event: String) {
+        guard observesEntry, feedbackEvents.count < 40 else { return }
+        let milliseconds = Int((CACurrentMediaTime() - appearanceStart) * 1000)
+        feedbackEvents.append("\(event)@\(milliseconds)")
+        feedbackObservation = feedbackEvents.joined(separator: ",")
+    }
 
     func selectFromSourceDrag(_ pointInSourceWindow: CGPoint) {
         guard let window, let sourceWindow = source?.window else { return }
@@ -275,11 +338,13 @@ final class RemoteModelSliderPresenter: ObservableObject {
             count: selections.count, innerWidth: rect.width - 24))
     }
 
-    func beginAppearance() {
-        guard window != nil, !closing, !hasBegunAppearance else { return }
+    func beginAppearance(presentationSize: CGSize) {
+        guard window != nil, !closing, !hasBegunAppearance,
+              presentationSize.width > 0, presentationSize.height > 0, !sourceFrame.isEmpty else { return }
         hasBegunAppearance = true
-        let reduceMotion = UIAccessibility.isReduceMotionEnabled
-        if fadesAppearance {
+        entryObservationSize = presentationSize
+        let reduceMotion = reducesMotion
+        if fadesAppearance || reduceMotion {
             var transaction = Transaction(animation: nil)
             transaction.disablesAnimations = true
             withTransaction(transaction) {
@@ -288,18 +353,99 @@ final class RemoteModelSliderPresenter: ObservableObject {
                 showsPresentationChrome = true
             }
             withAnimation(reduceMotion ? nil : .easeOut(duration: 0.2)) { presentationOpacity = 1 }
+            if observesEntry { entryObservation = reduceMotion ? "reduced:1" : "fade:1" }
             return
         }
-        withAnimation(reduceMotion ? nil : .spring(response: 0.3, dampingFraction: 0.79, blendDuration: 0),
-                      completionCriteria: .logicallyComplete) {
-            isExpanded = true
-        } completion: {}
-        withAnimation(reduceMotion ? nil : .easeOut(duration: 0.08).delay(0.04)) {
-            showsMeterInThumb = false
+        // Give the mounted source geometry its own display frame before
+        // publishing any expanded measurements to the new hosting window.
+        entryFirstTimestamp = nil
+        entryProgress = 0
+        let target = RemoteModelEntryDisplayLink { [weak self] link in
+            guard let self else { link.invalidate(); return }
+            self.updateEntry(at: link.timestamp)
         }
-        withAnimation(reduceMotion ? nil : .easeOut(duration: 0.24).delay(0.06)) {
-            showsPresentationChrome = true
+        let link = CADisplayLink(target: target, selector: #selector(RemoteModelEntryDisplayLink.tick(_:)))
+        entryLink = link
+        link.add(to: .main, forMode: .common)
+    }
+
+    private func updateEntry(at timestamp: CFTimeInterval) {
+        guard !closing, window != nil else { stopEntry(); return }
+        guard let origin = entryFirstTimestamp else {
+            entryFirstTimestamp = timestamp
+            if observesEntry { entrySamples.append((0, selectedIndex)) }
+            withAnimation(.easeOut(duration: 0.08).delay(0.04)) { showsMeterInThumb = false }
+            withAnimation(.easeOut(duration: 0.24).delay(0.06)) { showsPresentationChrome = true }
+            return
         }
+        let elapsed = timestamp - origin
+        let position = RemoteModelSliderEntryMotion.progress(at: elapsed)
+        entryProgress = position
+        if observesEntry { entrySamples.append((position, selectedIndex)) }
+        guard elapsed >= RemoteModelSliderEntryMotion.duration else { return }
+        stopEntry()
+        isExpanded = true
+        entryProgress = nil
+        if observesEntry {
+            entryObservation = entrySamples.map { String(format: "%.4f", Double($0.progress)) }.joined(separator: ",")
+            for sample in entrySamples { logEntryGeometry(sample.progress, selectedIndex: sample.index, size: entryObservationSize) }
+        }
+    }
+
+    private func logEntryGeometry(_ progress: CGFloat, selectedIndex: Int, size: CGSize) {
+        let layout = RemoteModelSliderGeometry.layout(progress: progress, presentationSize: size,
+            sourceFrame: sourceFrame, bottomSafeArea: bottomSafeArea)
+        let expanded = RemoteModelSliderGeometry.layout(expanded: true, presentationSize: size,
+            sourceFrame: sourceFrame, bottomSafeArea: bottomSafeArea)
+        let ticks = selections.indices.map { index in
+            let x = RemoteModelSliderGeometry.entryTickX(index: index, count: selections.count,
+                currentWidth: layout.innerWidth, expandedWidth: expanded.innerWidth, progress: progress)
+            return String(format: "%.2f", layout.frame.minX + layout.padding + x)
+        }
+        NSLog("REA picker geometry p=%.4f source=%.2f frame=%.2f:%.2f ticks=%@",
+              progress, sourceFrame.midX, layout.frame.minX, layout.frame.maxX, ticks.joined(separator: ","))
+        let thumbX = RemoteModelSliderGeometry.entryTickX(index: selectedIndex, count: selections.count,
+            currentWidth: layout.innerWidth, expandedWidth: expanded.innerWidth, progress: progress)
+        let fill = RemoteModelSliderGeometry.railFillWidth(width: layout.innerWidth,
+            railHeight: layout.railHeight, thumbX: thumbX, progress: progress)
+        let needle = RecoveredRemoteEffortMeter.needleAngle(
+            progress: RecoveredRemoteEffortMeter.progress(index: selectedIndex, count: selections.count))
+        NSLog("REA picker selection p=%.4f index=%d count=%d needle=%.2f thumb=%.2f fill=%.2f width=%.2f railControlVisibility=%.2f",
+              progress, selectedIndex, selections.count, needle, layout.frame.minX + layout.padding + thumbX, fill, layout.innerWidth,
+              RemoteModelSliderGeometry.expandedControlVisibility(progress))
+    }
+
+    private func startKeyboardProbe() {
+        guard observesKeyboard else { return }
+        recordKeyboardProbe("before-overlay")
+        for name in [UIResponder.keyboardWillChangeFrameNotification, UIResponder.keyboardDidChangeFrameNotification,
+                     UIResponder.keyboardWillHideNotification, UIResponder.keyboardDidHideNotification,
+                     UITextView.textDidBeginEditingNotification, UITextView.textDidEndEditingNotification] {
+            let observer = NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { [weak self] notification in
+                MainActor.assumeIsolated {
+                    let begin = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+                    let end = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+                    self?.recordKeyboardProbe(name.rawValue, beginY: begin?.minY, endY: end?.minY)
+                }
+            }
+            keyboardProbeObservers.append(observer)
+        }
+    }
+
+    private func recordKeyboardProbe(_ label: String, beginY: CGFloat? = nil, endY: CGFloat? = nil) {
+        guard observesKeyboard, let sourceWindow = source?.window else { return }
+        func hasResponder(_ view: UIView) -> Bool {
+            view.isFirstResponder || view.subviews.contains(where: hasResponder)
+        }
+        NSLog("REA picker keyboard %@ index=%d key=%@ responder=%@ begin=%.2f end=%.2f %.3f",
+              label, selectedIndex, sourceWindow.isKeyWindow ? "yes" : "no", hasResponder(sourceWindow) ? "yes" : "no",
+              beginY ?? -1, endY ?? -1, ProcessInfo.processInfo.systemUptime * 1000)
+    }
+
+    private func stopEntry() {
+        entryLink?.invalidate()
+        entryLink = nil
+        entryFirstTimestamp = nil
     }
 
     func dismiss(advanced: Bool = false, commit: Bool = true) {
@@ -312,8 +458,9 @@ final class RemoteModelSliderPresenter: ObservableObject {
         }
         guard !closing else { return }
         closing = true
+        stopEntry()
         let identity = presentationIdentity
-        let reduceMotion = UIAccessibility.isReduceMotionEnabled
+        let reduceMotion = reducesMotion
         if fadesAppearance {
             withAnimation(reduceMotion ? nil : .easeIn(duration: 0.2), completionCriteria: .removed) {
                 presentationOpacity = 0
@@ -333,6 +480,7 @@ final class RemoteModelSliderPresenter: ObservableObject {
         withAnimation(reduceMotion ? nil : .spring(response: 0.25, dampingFraction: 0.79, blendDuration: 0),
                       completionCriteria: .removed) {
             isExpanded = false
+            entryProgress = nil
         } completion: { [weak self] in
             guard let self, self.presentationIdentity == identity else { return }
             self.removePresentation(advanced: advanced, commit: true)
@@ -340,7 +488,39 @@ final class RemoteModelSliderPresenter: ObservableObject {
     }
 
     private func removePresentation(advanced: Bool, commit: Bool) {
+        guard window != nil else { return }
+        keyboardHandoffLink?.invalidate()
+        keyboardHandoffLink = nil
+        if keyboardSubstitution?.returnLiveKeyboard() == true, commit {
+            recordKeyboardProbe("live-keyboard-restored")
+            afterKeyboardHandoffFrame { [weak self] in self?.finishPresentation(advanced: advanced, commit: commit) }
+            return
+        }
+        finishPresentation(advanced: advanced, commit: commit)
+    }
+
+    // The original facade lifetime is retained. The independent host gives the
+    // incoming layer a display interval before withdrawing the outgoing layer.
+    private func afterKeyboardHandoffFrame(_ action: @escaping () -> Void) {
+        var firstTick: CFTimeInterval?
+        let identity = presentationIdentity
+        let target = RemoteModelEntryDisplayLink { [weak self] link in
+            guard let self, self.presentationIdentity == identity else { link.invalidate(); return }
+            guard let firstTick else { firstTick = link.timestamp; return }
+            guard link.timestamp > firstTick else { return }
+            link.invalidate()
+            self.keyboardHandoffLink = nil
+            action()
+        }
+        let link = CADisplayLink(target: target, selector: #selector(RemoteModelEntryDisplayLink.tick(_:)))
+        keyboardHandoffLink = link
+        link.add(to: .main, forMode: .common)
+    }
+
+    private func finishPresentation(advanced: Bool, commit: Bool) {
         guard let window else { return }
+        recordKeyboardProbe("before-overlay-close")
+        stopEntry()
         presentationIdentity = UUID()
         keyboardSubstitution?.restore()
         keyboardSubstitution = nil
@@ -352,6 +532,9 @@ final class RemoteModelSliderPresenter: ObservableObject {
         window.rootViewController = nil
         self.window = nil
         isPresented = false
+        recordKeyboardProbe("overlay-closed")
+        for observer in keyboardProbeObservers { NotificationCenter.default.removeObserver(observer) }
+        keyboardProbeObservers.removeAll()
         guard commit, var session, let configuration else {
             self.session = nil
             self.configuration = nil
@@ -410,7 +593,6 @@ private final class RemoteModelSliderSourceView: UIView {
 
 private struct RecoveredRemoteModelSliderOverlay: View {
     @ObservedObject var presenter: RemoteModelSliderPresenter
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var dragX: CGFloat?
     @AppStorage(FrontendHaptics.storageKey) private var hapticsEnabled = FrontendHaptics.defaultEnabled
     @ScaledMetric(relativeTo: .subheadline) private var titleBaseSize: CGFloat = 15
@@ -418,7 +600,12 @@ private struct RecoveredRemoteModelSliderOverlay: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let layout = RemoteModelSliderGeometry.layout(expanded: presenter.isExpanded,
+            let progress = presenter.expansion
+            let visibility = min(1, max(0, progress))
+            let layout = RemoteModelSliderGeometry.layout(progress: progress,
+                presentationSize: geometry.size, sourceFrame: presenter.sourceFrame,
+                bottomSafeArea: presenter.bottomSafeArea)
+            let expanded = RemoteModelSliderGeometry.layout(expanded: true,
                 presentationSize: geometry.size, sourceFrame: presenter.sourceFrame,
                 bottomSafeArea: presenter.bottomSafeArea)
             let rect = layout.frame
@@ -429,25 +616,39 @@ private struct RecoveredRemoteModelSliderOverlay: View {
                 RecoveredRemoteSliderVariableBlur()
                     .frame(width: geometry.size.width, height: 520)
                     .position(x: geometry.size.width / 2, y: rect.midY)
-                    .opacity(presenter.isExpanded ? 1 : 0)
+                    .opacity(visibility)
                     .allowsHitTesting(false)
-                rail(layout: layout)
+                rail(layout: layout, expandedWidth: expanded.innerWidth, expansion: progress)
                     .padding(layout.padding)
                     .background {
                         RecoveredRemoteSliderRailBackground().opacity(presenter.showsSliderChrome ? 1 : 0)
                     }
                     .frame(width: rect.width, height: rect.height)
                     .overlay(alignment: .top) {
-                        header.padding(.bottom, presenter.isExpanded ? 20 : 0)
+                        header.padding(.bottom, 20 * visibility)
                             .alignmentGuide(.top) { $0[.bottom] }
                     }
                     .position(x: rect.midX, y: rect.midY)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
+            .onGeometryChange(for: CGSize.self, of: \.size) { size in
+                presenter.beginAppearance(presentationSize: size)
+            }
         }
         .ignoresSafeArea()
         .opacity(presenter.presentationOpacity)
-        .onAppear { presenter.beginAppearance() }
+        .background {
+            if let observation = presenter.entryObservation {
+                Color.clear.accessibilityElement()
+                    .accessibilityLabel(observation)
+                    .accessibilityIdentifier("remote-model-entry-samples")
+            }
+            if !presenter.feedbackObservation.isEmpty {
+                Color.clear.accessibilityElement()
+                    .accessibilityLabel(presenter.feedbackObservation)
+                    .accessibilityIdentifier("remote-model-feedback-observation")
+            }
+        }
         .sensoryFeedback(.selection, trigger: presenter.selectionTrigger) { _, _ in allowsHaptics }
         .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.4), trigger: presenter.boundaryTrigger) { _, _ in allowsHaptics }
         // 609cd44 binds accessibility escape to finish(false). Ordinary Remote
@@ -462,7 +663,7 @@ private struct RecoveredRemoteModelSliderOverlay: View {
     }
 
     private var header: some View {
-        let scale = presenter.isExpanded ? titleExpandedSize / titleBaseSize : 1
+        let scale = 1 + (titleExpandedSize / titleBaseSize - 1) * presenter.expansion
         return Button { presenter.dismiss(advanced: true) } label: {
             HStack(spacing: 4 / scale) {
                 (Text(presenter.modelTitle).fontWeight(.medium)
@@ -478,57 +679,68 @@ private struct RecoveredRemoteModelSliderOverlay: View {
             .opacity(presenter.showsPresentationChrome ? 1 : 0)
         }
         .buttonStyle(.plain)
+        .disabled(!presenter.acceptsTitleTap)
         .accessibilityIdentifier("remote-model-slider-title")
     }
 
-    private func rail(layout: RemoteModelSliderGeometry.Layout) -> some View {
+    private func rail(layout: RemoteModelSliderGeometry.Layout, expandedWidth: CGFloat, expansion: CGFloat) -> some View {
         let width = layout.innerWidth
-        let x = presenter.isExpanded ? (dragX ?? RemoteModelSliderGeometry.tickX(index: presenter.selectedIndex,
-            count: presenter.selections.count, innerWidth: width)) : width / 2
+        let center = width / 2
+        func tick(_ index: Int) -> CGFloat {
+            RemoteModelSliderGeometry.entryTickX(index: index, count: presenter.selections.count,
+                currentWidth: width, expandedWidth: expandedWidth, progress: expansion)
+        }
+        let x = dragX ?? tick(presenter.selectedIndex)
+        let fill = RemoteModelSliderGeometry.railFillWidth(width: width, railHeight: layout.railHeight, thumbX: x, progress: expansion)
+        let controlVisibility = RemoteModelSliderGeometry.expandedControlVisibility(expansion)
         let color = presenter.appearance.railColor
         return ZStack(alignment: .leading) {
             Capsule().fill(color)
-                .frame(width: presenter.isExpanded ? min(width, max(layout.railHeight, x + 24)) : width,
+                .frame(width: fill,
                        height: layout.railHeight)
-                .opacity(presenter.showsSliderChrome ? 1 : 0)
+                .opacity(presenter.showsSliderChrome ? controlVisibility : 0)
             ForEach(presenter.selections.indices, id: \.self) { index in
                 Circle().fill(Color(uiColor: officialVisualColor("ChatGPT/icon/tertiary")))
                     .frame(width: layout.tickDiameter, height: layout.tickDiameter)
-                    .position(x: RemoteModelSliderGeometry.tickX(index: index,
-                        count: presenter.selections.count, innerWidth: width, expanded: presenter.isExpanded),
+                    .position(x: tick(index),
                               y: layout.railHeight / 2)
-                    .opacity(presenter.showsSliderChrome ? 1 : 0)
+                    .opacity(presenter.showsSliderChrome ? controlVisibility : 0)
             }
-            // Stable expanded ordinary branch: 609dc40=false, meter hidden.
+            // The mounted trigger is a meter. Make the expanded knob visible
+            // after the ticks part, so the source's position cannot read as a
+            // temporary rightmost selection for a lower preset.
             ZStack {
-                Circle().fill(Color(uiColor: officialVisualColor(presenter.showsMeterInThumb
-                    ? "ChatGPT/bg/primary" : "ChatGPT/icon/inverted-static")))
-                    .shadow(color: .black.opacity(presenter.showsMeterInThumb ? 0 : 0.16), radius: 2, x: 0, y: 1)
-                    .opacity(presenter.showsThumbBackground ? 1 : 0)
+                Circle().fill(Color(uiColor: officialVisualColor("ChatGPT/icon/inverted-static")))
+                    .shadow(color: .black.opacity(0.16), radius: 2, x: 0, y: 1)
+                    .opacity(presenter.showsThumbBackground && !presenter.showsMeterInThumb ? controlVisibility : 0)
                 RecoveredRemoteEffortMeter(index: presenter.selectedIndex, count: presenter.selections.count)
-                    .frame(width: presenter.isExpanded ? 28 : layout.thumbDiameter,
-                           height: presenter.isExpanded ? 28 : layout.thumbDiameter)
+                    .frame(width: layout.thumbDiameter + (28 - layout.thumbDiameter) * min(1, expansion),
+                           height: layout.thumbDiameter + (28 - layout.thumbDiameter) * min(1, expansion))
                     .opacity(presenter.showsMeterInThumb ? 1 : 0)
             }
             .frame(width: layout.thumbDiameter, height: layout.thumbDiameter)
-            .position(x: presenter.isExpanded ? min(width - 24, max(24, x)) : width / 2,
+            .position(x: min(width, max(0, x)),
                       y: layout.railHeight / 2)
         }
         .frame(width: max(0, width), height: layout.railHeight)
         .clipShape(Capsule())
         .contentShape(Capsule())
+        // Picker input begins at touch-down (293 0x6098a5c). One recognizer
+        // handles both a stationary tap and a drag, so lift cannot select twice.
         .gesture(DragGesture(minimumDistance: 0).onChanged { value in
+            guard presenter.isExpanded else { return }
             presenter.updateHapticBoundary(x: value.location.x, innerWidth: width)
-            dragX = min(width - 24, max(24, value.location.x))
+            dragX = width >= 48 ? min(width - 24, max(24, value.location.x)) : center
             presenter.select(RemoteModelSliderGeometry.nearestIndex(x: value.location.x,
                 count: presenter.selections.count, innerWidth: width))
         }.onEnded { value in
-            presenter.select(RemoteModelSliderGeometry.nearestIndex(x: value.location.x,
-                count: presenter.selections.count, innerWidth: width))
-            // Internal gesture dismissesAfterSelection=false. It leaves preview
-            // open; outside tap/default accessibility action finalizes later.
+            guard dragX != nil else { return }
             presenter.resetHapticBoundary()
-            withAnimation(reduceMotion ? nil : .default) { dragX = nil }
+            withAnimation(presenter.reducesMotion ? nil : .spring(response: 0.32, dampingFraction: 0.76)) {
+                presenter.select(RemoteModelSliderGeometry.nearestIndex(x: value.location.x,
+                    count: presenter.selections.count, innerWidth: width))
+                dragX = nil
+            }
         })
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(OfficialText.text(.remoteIntelligenceTitle))
@@ -536,12 +748,18 @@ private struct RecoveredRemoteModelSliderOverlay: View {
         .accessibilityIdentifier("remote-model-slider-rail")
         .accessibilityAdjustableAction { direction in
             switch direction {
-            case .increment: presenter.select(min(presenter.selections.count - 1, presenter.selectedIndex + 1))
-            case .decrement: presenter.select(max(0, presenter.selectedIndex - 1))
+            case .increment: selectTick(min(presenter.selections.count - 1, presenter.selectedIndex + 1))
+            case .decrement: selectTick(max(0, presenter.selectedIndex - 1))
             @unknown default: break
             }
         }
         .accessibilityAction { presenter.dismiss() }
+    }
+
+    private func selectTick(_ index: Int) {
+        withAnimation(presenter.reducesMotion ? nil : .timingCurve(0.22, 0.78, 0.28, 1, duration: 0.24)) {
+            presenter.select(index)
+        }
     }
 }
 
@@ -659,7 +877,11 @@ final class RecoveredNativeVariableBlurView: UIView {
 private struct RecoveredRemoteEffortMeter: View {
     let index: Int
     let count: Int
-    private var progress: Double { count > 0 ? Double(min(count, max(1, index + 1))) / Double(count) : 0 }
+    static func progress(index: Int, count: Int) -> Double {
+        count > 0 ? Double(min(count, max(1, index + 1))) / Double(count) : 0
+    }
+    static func needleAngle(progress: Double) -> Double { 137 + 266 * progress }
+    private var progress: Double { Self.progress(index: index, count: count) }
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -675,7 +897,7 @@ private struct RecoveredRemoteEffortMeter: View {
                         style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 RemoteEffortNeedle().fill(Color(uiColor: officialVisualColor("ChatGPT/icon/primary")))
                     .frame(width: width, height: width)
-                    .rotationEffect(.degrees(137 + 266 * progress))
+                    .rotationEffect(.degrees(Self.needleAngle(progress: progress)))
                     .position(center)
             }
         }

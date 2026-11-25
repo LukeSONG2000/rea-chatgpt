@@ -10,8 +10,8 @@ from pathlib import Path
 parser = argparse.ArgumentParser()
 parser.add_argument('--serial', required=True)
 parser.add_argument('--report', type=Path, required=True)
-parser.add_argument('--methods', nargs='+', choices=['preferences', 'rootsAndGestures', 'verifyRootRestart', 'corruptRootReturn', 'composer', 'journey', 'verifyRestart'],
-                    default=['preferences', 'rootsAndGestures', 'verifyRootRestart', 'corruptRootReturn', 'composer', 'journey', 'verifyRestart'])
+parser.add_argument('--methods', nargs='+', choices=['sidebarDragGateRules', 'sidebarNestedAdmissionRules', 'nestedPluginGestureJourney', 'sidebarDirectoryRules', 'sidebarDirectoryJourney', 'sidebarCarrierRules', 'sidebarCarrierJourney', 'sidebarCarrierRestart', 'preferences', 'rootsAndGestures', 'verifyRootRestart', 'corruptRootReturn', 'composer', 'journey', 'verifyRestart'],
+                    default=['sidebarCarrierRules', 'sidebarCarrierJourney', 'sidebarCarrierRestart'])
 args = parser.parse_args()
 root = Path(__file__).resolve().parent
 adb = str(Path.home() / 'Library/Android/sdk/platform-tools/adb')
@@ -40,6 +40,14 @@ result = {'implementation': 'Independent frontend with Android293 evidence and s
           'run_id': run_id, 'methods': args.methods,
           'ui_matrix': ['zh-CN/light', 'en/dark', 'system/system'] if 'journey' in args.methods else ['zh-CN/light'],
           'status': 'running', 'steps': []}
+def ordinary_preferences():
+    values = {}
+    for name in ['frontend-preview.xml', 'remote-list-preview.xml', 'chat-preview.xml', 'session-preview.xml']:
+        value = subprocess.run([adb, '-s', args.serial, 'exec-out', 'run-as', package,
+                                'cat', 'shared_prefs/' + name], capture_output=True)
+        values[name] = hashlib.sha256(value.stdout).hexdigest() if value.returncode == 0 else None
+    return values
+result['ordinary_preferences_before'] = ordinary_preferences()
 try:
     for relative in ['app/build/outputs/apk/debug/app-debug.apk', 'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk']:
         apk = root / relative
@@ -90,9 +98,11 @@ finally:
         result['preview_launch'] = {'returncode': launch.returncode, 'output': launch.stdout.strip()}
     else:
         result['preview_launch'] = {'skipped': 'Foreground belongs to another app or cannot be established'}
+    result['ordinary_preferences_after'] = ordinary_preferences()
+    result['ordinary_preferences_preserved'] = result['ordinary_preferences_before'] == result['ordinary_preferences_after']
     if result['status'] == 'running':
         result['status'] = 'failed'
     report.write_text(json.dumps(result, indent=2) + '\n')
 print(report)
-if result['status'] != 'passed' or result['export_errors']:
+if result['status'] != 'passed' or result['export_errors'] or not result['ordinary_preferences_preserved']:
     raise SystemExit(1)

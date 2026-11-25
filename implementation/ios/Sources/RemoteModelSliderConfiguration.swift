@@ -1,5 +1,6 @@
 import Foundation
 import CoreGraphics
+import SwiftUI
 
 // iOS293 6099020,6099abc,609f774. Counts are supplied by the model.
 enum RemoteModelSliderGeometry {
@@ -24,6 +25,22 @@ enum RemoteModelSliderGeometry {
             tickDiameter: expanded ? 12 : sourceFrame.height * 0.25)
     }
 
+    static func layout(progress: CGFloat, presentationSize: CGSize, sourceFrame: CGRect,
+                       bottomSafeArea: CGFloat) -> Layout {
+        let first = layout(expanded: false, presentationSize: presentationSize,
+                           sourceFrame: sourceFrame, bottomSafeArea: bottomSafeArea)
+        let last = layout(expanded: true, presentationSize: presentationSize,
+                          sourceFrame: sourceFrame, bottomSafeArea: bottomSafeArea)
+        func lerp(_ a: CGFloat, _ b: CGFloat) -> CGFloat { a + (b - a) * progress }
+        return Layout(frame: CGRect(x: lerp(first.frame.minX, last.frame.minX),
+            y: lerp(first.frame.minY, last.frame.minY), width: max(0, lerp(first.frame.width, last.frame.width)),
+            height: max(0, lerp(first.frame.height, last.frame.height))),
+            padding: max(0, lerp(first.padding, last.padding)),
+            railHeight: max(0, lerp(first.railHeight, last.railHeight)),
+            thumbDiameter: max(0, lerp(first.thumbDiameter, last.thumbDiameter)),
+            tickDiameter: max(0, lerp(first.tickDiameter, last.tickDiameter)))
+    }
+
     static func expandedFrame(presentationSize: CGSize, sourceFrame: CGRect,
                               bottomSafeArea: CGFloat) -> CGRect {
         let width = min(max(presentationSize.width - 56, 0), 340)
@@ -35,6 +52,23 @@ enum RemoteModelSliderGeometry {
     static func tickX(index: Int, count: Int, innerWidth: CGFloat, expanded: Bool = true) -> CGFloat {
         guard expanded, count >= 2 else { return innerWidth / 2 }
         return 24 + CGFloat(index) / CGFloat(count - 1) * max(innerWidth - 48, 0)
+    }
+
+    // The frame center already moves with the spring. Interpolate the tick's
+    // final offset from that center once, using the final rail width.
+    static func entryTickX(index: Int, count: Int, currentWidth: CGFloat,
+                           expandedWidth: CGFloat, progress: CGFloat) -> CGFloat {
+        let destination = tickX(index: index, count: count, innerWidth: expandedWidth)
+        return currentWidth / 2 + (destination - expandedWidth / 2) * progress
+    }
+
+    static func railFillWidth(width: CGFloat, railHeight: CGFloat, thumbX: CGFloat, progress: CGFloat) -> CGFloat {
+        let endInset = 24 * min(1, max(0, progress))
+        return min(width, max(railHeight, thumbX + endInset))
+    }
+
+    static func expandedControlVisibility(_ progress: CGFloat) -> Double {
+        Double(min(1, max(0, (progress - 0.08) / 0.24)))
     }
 
     // Strictly nearer wins. Equal-distance ties retain the earlier source item.
@@ -50,6 +84,19 @@ enum RemoteModelSliderGeometry {
             }
         }
         return nearest
+    }
+}
+
+// 293 ordinary opening uses response 0.3 and damping fraction 0.79.
+// Sample the system spring to drive the independently sized parts together.
+enum RemoteModelSliderEntryMotion {
+    private static let spring = Spring(response: 0.3, dampingRatio: 0.79)
+    static let duration = spring.settlingDuration
+
+    static func progress(at time: TimeInterval) -> CGFloat {
+        guard time > 0 else { return 0 }
+        guard time < duration else { return 1 }
+        return spring.value(target: CGFloat(1), time: time)
     }
 }
 

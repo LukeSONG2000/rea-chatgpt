@@ -28,5 +28,11 @@ with tempfile.TemporaryDirectory() as temp:
   assert not (m.DIST/'mac-current/app').exists()
   for name in ['mac-new','mac-rollback','win-current','win-rollback']:assert (m.DIST/name/'app').exists()
   assert json.loads(m.POLICY.read_text())['macos']['candidate']=='mac-new'
+  policy=json.loads(m.POLICY.read_text());policy['macos']['rollback']=None;m.atomic_json(m.POLICY,policy)
+  sys.argv=['retain-builds.py','--apply']
+  with contextlib.redirect_stdout(io.StringIO()):m.main()
+  assert not (m.DIST/'mac-rollback/app').exists()
+  assert (m.DIST/'mac-rollback/retention-receipt.json').is_file()
+  for name in ['mac-new','win-current','win-rollback']:assert (m.DIST/name/'app').exists()
  finally:m.verify_build=real_verify;m.subprocess.check_output=real_ps;sys.argv=old_argv
-print('PASS: promotion removes prior candidate, preserves pinned rollback and other platform; platform verifier mocked only in orchestration test')
+print('PASS: promotion preserves pinned rollback; retiring a rollback archives it and preserves other platform builds')

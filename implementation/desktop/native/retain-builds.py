@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Keep current+rollback desktop builds; archive verified independent inputs before removal."""
+"""Keep current and explicitly pinned desktop builds; archive inputs before removal."""
 import argparse, datetime, hashlib, json, os, shutil, subprocess, tarfile, tempfile
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
@@ -64,12 +64,14 @@ def archive(d):
     return {'removed':receipt['removedPackage'],'archive':receipt['archive'],'verifiedFiles':len(records)}
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--apply',action='store_true');parser.add_argument('--promote',type=Path);args=parser.parse_args()
-    policy=json.loads(POLICY.read_text());keep={policy[p][k] for p in ['macos','windows'] for k in ['candidate','rollback']}
+    policy=json.loads(POLICY.read_text())
     if args.promote:
         d=args.promote.resolve()
         if d.parent!=DIST: raise ValueError('Promoted build must be a direct child of canonical dist')
         platform=verify_build(d);policy[platform]['candidate']=d.name
-        keep={policy[p][k] for p in ['macos','windows'] for k in ['candidate','rollback']}
+    platforms=('macos','windows')
+    keep={policy[p]['candidate'] for p in platforms}
+    keep.update(policy[p]['rollback'] for p in platforms if policy[p]['rollback'] is not None)
     # Verify retained builds exist before removing any old copy. No automatic rollback promotion.
     for name in keep:
         _,payload,_=load_build(DIST/name)

@@ -17,6 +17,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 // Independent snapshot contract. Command text is displayed, never executed.
@@ -24,7 +25,11 @@ import androidx.compose.ui.unit.dp
 enum class RemoteCommandStatus { InProgress, Completed, Failed, Declined, Unknown }
 data class RemoteCommandOutput(val id: String, val command: String, val output: String,
     val status: RemoteCommandStatus = RemoteCommandStatus.Unknown,
-    val exitCode: Int? = null, val durationMs: Long? = null)
+    val exitCode: Int? = null, val durationMs: Long? = null,
+    // Android293 commandExecution.cwd -> o001.b -> qqj.b. Display-only remote path.
+    val workingDirectory: String? = null,
+    //null: not supplied/legacy unknown; empty: explicitly no projected actions.
+    val actions: List<RemoteCommandAction>? = null)
 
 // Android293 kv81.c + s4x0.X0: retain the last 20000 UTF-16 units.
 // This differs from the inspected desktop delta branch. Marker remains sticky.
@@ -41,13 +46,18 @@ internal fun appendRemoteCommandOutput(previous: String?, delta: String): String
 // Mixed activity grouping is not modeled here; each entry opens one command.
 @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
-internal fun RemoteCommandOutputView(turn: RemoteFrontendTurn, command: RemoteCommandOutput) {
-    var expanded by rememberSaveable(turn.id, turn.request, command.id) { mutableStateOf(false) }
+internal fun RemoteCommandOutputView(task: RemoteTaskKey, turn: RemoteFrontendTurn, command: RemoteCommandOutput) {
+    var expanded by rememberSaveable(task, turn.id, turn.request, command.id) { mutableStateOf(false) }
+    //iv81.b normalizes only the details renderer input; the stored command and
+    //the collapsed activity summary are separate source boundaries.
+    val displayCommand = remember(command.command) { recoveredCommandDisplay(command.command) }
+    val description = recoveredCommandDescription(command)
     // Resolve under the page locale before Material3 creates a separate window.
     // Matches the established popup/dialog locale boundary in this host.
     val executionLabel = stringResource(R.string.remote_command_execution)
     val outputLabel = stringResource(R.string.remote_command_output)
     val copyLabel = stringResource(R.string.remote_copy)
+    val directoryLabel = stringResource(R.string.remote_command_working_directory)
     val statusLabel = stringResource(when (command.status) {
         RemoteCommandStatus.InProgress -> R.string.remote_command_running
         RemoteCommandStatus.Completed -> R.string.remote_command_completed
@@ -59,7 +69,7 @@ internal fun RemoteCommandOutputView(turn: RemoteFrontendTurn, command: RemoteCo
     val durationLabel = command.durationMs?.let { stringResource(R.string.remote_command_duration, it) }
     Column(Modifier.fillMaxWidth()) {
         TextButton(onClick = { expanded = !expanded }, modifier = Modifier.testTag("remote-command-toggle-${command.id}")) {
-            Text((if (expanded) "▾ " else "▸ ") + command.command, maxLines = 2)
+            Text((if (expanded) "▾ " else "▸ ") + command.command, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         if (expanded) ModalBottomSheet(onDismissRequest = { expanded = false },
             modifier = Modifier.semantics { testTagsAsResourceId = true }.testTag("remote-command-sheet")) {
@@ -73,11 +83,15 @@ internal fun RemoteCommandOutputView(turn: RemoteFrontendTurn, command: RemoteCo
                 if (command.command.isNotBlank()) {
                     Row(Modifier.padding(start = 16.dp, end = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text("bash", Modifier.weight(1f), style = MaterialTheme.typography.labelMedium)
-                        NativeCopyButton(command.command, copyLabel,
+                        CompositionLocalProvider(LocalCodeCopyFeedbackScope provides
+                            remoteCommandCopyIdentity(task, turn, command.id, "source")) {
+                        NativeCopyButton(displayCommand, copyLabel,
                             Modifier.testTag("remote-command-source-copy-${command.id}"))
                     }
+                    }
                     SelectionContainer {
-                        Text(command.command, Modifier.horizontalScroll(rememberScrollState()).padding(16.dp),
+                        Text(displayCommand, Modifier.horizontalScroll(rememberScrollState()).padding(16.dp)
+                            .testTag("remote-command-source-${command.id}"),
                             fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.bodySmall)
                     }
                     if (command.output.isNotBlank()) HorizontalDivider(Modifier.padding(horizontal = 16.dp))
@@ -86,8 +100,11 @@ internal fun RemoteCommandOutputView(turn: RemoteFrontendTurn, command: RemoteCo
                 Column(Modifier.padding(16.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(outputLabel, Modifier.weight(1f), style = MaterialTheme.typography.labelMedium)
-                    NativeCopyButton(command.output, copyLabel,
-                        Modifier.testTag("remote-command-copy-${command.id}"))
+                    CompositionLocalProvider(LocalCodeCopyFeedbackScope provides
+                            remoteCommandCopyIdentity(task, turn, command.id, "output")) {
+                        NativeCopyButton(command.output, copyLabel,
+                            Modifier.testTag("remote-command-copy-${command.id}"))
+                    }
                 }
                 SelectionContainer {
                     Box(Modifier.horizontalScroll(rememberScrollState()).testTag("remote-command-output-${command.id}")) {
@@ -105,7 +122,29 @@ internal fun RemoteCommandOutputView(turn: RemoteFrontendTurn, command: RemoteCo
                 }
                 }
                 }
+                //293 iv81.b: ordinary description Text after the code card,
+                //before cwd; no invented heading and no trimming of the value.
+                description?.let {
+                    Text(it, style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.testTag("remote-command-description-${command.id}"))
+                }
+                // iv81.b puts nonblank qqj.b below the command card, without trimming.
+                command.workingDirectory?.takeUnless(String::isBlank)?.let { directory ->
+                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        Text(directoryLabel, style = MaterialTheme.typography.labelSmall)
+                        SelectionContainer {
+                            Text(directory, style = MaterialTheme.typography.bodySmall,
+                                modifier = Modifier.testTag("remote-command-directory-${command.id}"))
+                        }
+                    }
+                }
             }
         }
     }
 }
+
+// Independent ownership adapter for the source-proved sqi.c receipt feedback.
+// Payload changes reset NativeCopyButton itself; each sheet disposal retires state.
+internal fun remoteCommandCopyIdentity(task: RemoteTaskKey, turn: RemoteFrontendTurn,
+    commandID: String, role: String): String = org.json.JSONArray(listOf(
+        task.hostID, task.threadID, turn.id, turn.request, turn.revision, commandID, role)).toString()

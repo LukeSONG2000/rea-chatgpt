@@ -1,4 +1,120 @@
 import Foundation
+import CryptoKit
+
+// Focused adapter-to-recovered-consumer regression. The fixture was serialized
+// by the pre-duration production replay model, using synthetic content only.
+func verifyRemoteCommandDurationProjection() throws {
+    let fixture = URL(fileURLWithPath: CommandLine.arguments[1])
+        .deletingLastPathComponent().deletingLastPathComponent()
+        .appendingPathComponent("TextTests/Fixtures/remote-command-history-before-duration.json")
+    let oldData = try Data(contentsOf: fixture)
+    let decoder = JSONDecoder(), encoder = JSONEncoder()
+    let oldState = try decoder.decode(RemoteThreadReplayState.self, from: oldData)
+    precondition(oldState.isValidSnapshot)
+    precondition(oldState.turns[0].commands[0].durationMilliseconds == nil)
+    let oldCommand = oldState.turns[0].commands[0]
+    var command = oldCommand
+    command.durationMilliseconds = 61_000
+    precondition(command.isValid && command.summaryInput.durationMilliseconds == 61_000)
+    precondition(command.summaryInput.shell.status == .success)
+    guard case .ordinary(let ordinary) = command.summaryInput.presentation else {
+        fatalError("Completed command lost ordinary presentation")
+    }
+    precondition(ordinary.durationMilliseconds == 61_000)
+    precondition(ordinary.durationText(locale: Locale(identifier: "en_US")) != nil)
+    var selectedKey: OfficialTextKey?
+    _ = ordinary.title(locale: Locale(identifier: "en_US")) { key, arguments in
+        selectedKey = key
+        precondition(arguments.count == 2 && arguments[0] == command.command && !arguments[1].isEmpty)
+        return "synthetic formatted summary"
+    }
+    precondition(selectedKey == .ranCommandDuration)
+    for milliseconds in [nil, 0, 999] as [Int64?] {
+        command.durationMilliseconds = milliseconds
+        precondition(command.isValid)
+        guard case .ordinary(let value) = command.summaryInput.presentation else { fatalError() }
+        precondition(value.durationText(locale: Locale(identifier: "en_US")) == nil)
+    }
+    command.durationMilliseconds = 61_000
+    command.phase = .failed; command.exitCode = 1
+    guard case .ordinary(let failed) = command.summaryInput.presentation else { fatalError() }
+    precondition(failed.durationMilliseconds == 61_000 && failed.rawStatus == "failed")
+    command.phase = .completed; command.exitCode = 0
+
+    let scope = oldState.scope
+    var state = RemoteThreadReplayState(scope: scope)
+    let turn = state.begin(intentID: UUID(), prompt: "duration input")!
+    func event(_ scope: RemoteComposerDraftScope, turnID: String, sequence: Int = 1,
+               attemptID: UUID? = nil, commands: [RemoteReplayCommand]? = nil,
+               phase: RemoteThreadReplayEvent.Phase = .streaming) -> RemoteThreadReplayEvent {
+        .init(scope: scope, turnID: turnID, sequence: sequence, phase: phase,
+              text: "synthetic body", commands: commands, attemptID: attemptID)
+    }
+    precondition(state.receive(event(scope, turnID: turn, commands: [command])))
+    let accepted = try encoder.encode(state)
+    let restored = try decoder.decode(RemoteThreadReplayState.self, from: accepted)
+    precondition(restored.isValidSnapshot && restored.turns[0].commands[0].durationMilliseconds == 61_000)
+    let wrongHost = RemoteComposerDraftScope(hostID: "other-host", threadID: "synthetic-thread")
+    let wrongThread = RemoteComposerDraftScope(hostID: "synthetic-host", threadID: "other-thread")
+    for rejected in [event(wrongHost, turnID: turn, sequence: 2, commands: []),
+                     event(wrongThread, turnID: turn, sequence: 2, commands: []),
+                     event(scope, turnID: "other-turn", sequence: 2, commands: []),
+                     event(scope, turnID: turn, sequence: 2, attemptID: UUID(), commands: []),
+                     event(scope, turnID: turn, sequence: 1, commands: [])] {
+        precondition(!state.receive(rejected))
+    }
+    precondition(state.turns[0].sequence == 1 && state.turns[0].commands == [command])
+    var invalid = command; invalid.durationMilliseconds = -1
+    precondition(!invalid.isValid)
+    precondition(!state.receive(event(scope, turnID: turn, sequence: 2, commands: [invalid])))
+    invalid = command; invalid = .init(id: invalid.id, command: invalid.command,
+        startedAt: Date(timeIntervalSince1970: .infinity), phase: .completed,
+        output: [], exitCode: 0, durationMilliseconds: 61_000)
+    precondition(!invalid.isValid)
+    precondition(!state.receive(event(scope, turnID: turn, sequence: 2, commands: [invalid])))
+    precondition(state.turns[0].sequence == 1 && state.turns[0].commands == [command])
+    precondition(state.receive(event(scope, turnID: turn, sequence: 2))) // nil preserves duration
+    precondition(state.turns[0].commands == [command])
+    precondition(state.receive(event(scope, turnID: turn, sequence: 3, phase: .cancelled)))
+    precondition(!state.receive(event(scope, turnID: turn, sequence: 4, commands: [command], phase: .completed)))
+    precondition(state.turns[0].commands == [command])
+
+    let retriedTurn = state.begin(intentID: UUID(), prompt: "retry command duration")!
+    // Only the separately admitted failed-submission branch offers retry.
+    precondition(state.receive(.init(scope: scope, turnID: retriedTurn, sequence: 1,
+        phase: .failed, text: "", failureKind: .submission)))
+    let attempt = UUID()
+    precondition(state.retry(.init(scope: scope, turnID: retriedTurn, failedSequence: 1,
+        previousAttemptID: nil, attemptID: attempt)))
+    command.phase = .completed; command.exitCode = 0; command.durationMilliseconds = 12_000
+    precondition(!state.receive(event(scope, turnID: retriedTurn, commands: [command], phase: .completed)))
+    precondition(state.turns.last!.commands.isEmpty)
+    precondition(state.receive(event(scope, turnID: retriedTurn, attemptID: attempt,
+        commands: [command], phase: .completed)))
+    precondition(state.turns.last!.commands[0].durationMilliseconds == 12_000 && state.isValidSnapshot)
+
+    // Decoder type rejection, separate from the independent nonnegative gate.
+    let commandData = try encoder.encode(command)
+    let object = try JSONSerialization.jsonObject(with: commandData) as! [String: Any]
+    for unsupported in ["NaN", "Infinity", 1.5, true, UInt64.max] as [Any] {
+        var changed = object; changed["durationMilliseconds"] = unsupported
+        let data = try JSONSerialization.data(withJSONObject: changed)
+        do { _ = try decoder.decode(RemoteReplayCommand.self, from: data); fatalError("Invalid Int64 admitted") }
+        catch is DecodingError {} // Expected: not silently coerced/clamped.
+    }
+    var history = try JSONSerialization.jsonObject(with: oldData) as! [String: Any]
+    var turns = history["turns"] as! [[String: Any]]
+    var commands = turns[0]["commands"] as! [[String: Any]]
+    commands[0]["durationMilliseconds"] = -1
+    turns[0]["commands"] = commands; history["turns"] = turns
+    let corrupt = try decoder.decode(RemoteThreadReplayState.self,
+        from: JSONSerialization.data(withJSONObject: history))
+    precondition(!corrupt.isValidSnapshot)
+    print("Remote command duration: pre-field history decode, formatter forwarding, typed input, atomic scope/turn/attempt/sequence admission, cancellation and cache validation passed")
+}
+
+try verifyRemoteCommandDurationProjection()
+if CommandLine.arguments.contains("--remote-command-duration-only") { exit(0) }
 
 precondition(OfficialTextKey.pluginsMoreSkills.argumentCount == 1)
 precondition(OfficialTextCatalog.render(OfficialTextKey.pluginsMoreSkills.englishDefault, arguments: ["2"]) == "2 more")
@@ -230,6 +346,70 @@ print("Scroll-edge compatibility: four official build exclusions and six nonmatc
 
 let resource = URL(fileURLWithPath: CommandLine.arguments[1])
 let catalog = try OfficialTextCatalog(data: Data(contentsOf: resource))
+precondition(catalog.text(.pluginFormInvalid, preferredLanguages: ["zh-Hans"]) == "此值不符合该设置的要求。")
+precondition(catalog.text(.pluginFormReadFailure, preferredLanguages: ["zh-Hans"]) == "无法加载设置。请重试。")
+precondition(catalog.text(.pluginFormSaveFailure, preferredLanguages: ["zh-Hans"]) == "无法保存设置。请检查你的更改，然后重试。")
+precondition(catalog.text(.pluginFormInvalid, preferredLanguages: ["en"]) == "This value doesn’t match the setting’s requirements.")
+for (key, chinese, english) in [
+    (OfficialTextKey.pluginsLocalPermissionsTitle, "权限", "Permissions"),
+    (OfficialTextKey.pluginsLocalPermissionsAllowed, "已允许", "Allowed"),
+    (OfficialTextKey.pluginsLocalPermissionsLimited, "访问受限", "Limited access"),
+    (OfficialTextKey.pluginsLocalPermissionsNotAllowed, "不允许", "Not allowed"),
+    (OfficialTextKey.pluginsLocalPermissionsRestricted, "受限", "Restricted"),
+    (OfficialTextKey.pluginsLocalPermissionsUnavailable, "不可用", "Unavailable"),
+    (OfficialTextKey.pluginsToolsLoading, "正在加载工具…", "Loading tools…"),
+    (OfficialTextKey.pluginsToolsEmpty, "尚无可用工具。", "No tools available yet."),
+    (OfficialTextKey.pluginsToolsLoadErrorTitle, "无法加载工具", "Couldn't load tools"),
+    (OfficialTextKey.pluginsToolsLoadErrorMessage, "请尝试重新加载工具。", "Try loading the tools again."),
+    (OfficialTextKey.pluginsToolsReadActions, "读取操作", "Read actions"),
+    (OfficialTextKey.pluginsToolsWriteActions, "写入操作", "Write actions"),
+    (OfficialTextKey.pluginsToolsConnectForWrite, "建立账户连接以执行写入操作", "Connect account for write actions"),
+    (OfficialTextKey.pluginsToolsLastSynced, "上次同步", "Last synced"),
+    (OfficialTextKey.pluginsToolNoDescription, "未提供描述。", "No description provided."),
+    (OfficialTextKey.pluginsToolDisabled, "已禁用", "Disabled"),
+    (OfficialTextKey.pluginsToolDisabledByAdmin, "已被管理员禁用", "Disabled by admin"),
+    (OfficialTextKey.pluginsToolStatus, "状态", "Status")
+] {
+    precondition(catalog.text(key, preferredLanguages: ["zh-Hans"]) == chinese)
+    precondition(catalog.text(key, preferredLanguages: ["en"]) == english)
+}
+for (key, chinese, english) in [
+    (OfficialTextKey.pluginsIncludedApp, "应用", "App"),
+    (.pluginsIncludedApps, "应用", "Apps"),
+    (.pluginsAppConnect, "连接", "Connect"),
+    (.pluginsAppReconnect, "重新连接", "Reconnect"),
+    (.pluginsAppStatusUnavailable, "状态不可用", "Status unavailable"),
+    (.pluginsAppUnavailable, "不可用", "Unavailable"),
+    (.pluginsAppDisabledByAdmin, "已被管理员禁用", "Disabled by admin"),
+    (.pluginsAppPlanNotEligible, "你的套餐不支持此功能", "Not available on your plan")
+] {
+    precondition(catalog.text(key, preferredLanguages: ["zh-Hans"]) == chinese)
+    precondition(catalog.text(key, preferredLanguages: ["en"]) == english)
+}
+precondition(catalog.format(.pluginsOpenAppTools, arguments: ["合成应用"], preferredLanguages: ["zh-Hans"]) == "显示 合成应用 的操作")
+precondition(catalog.text(.pluginSettingsSkills, preferredLanguages: ["zh-Hans"]) == "技能")
+precondition(catalog.text(.pluginSettingsSkills, preferredLanguages: ["en"]) == "Skills")
+precondition(catalog.text(.pluginSettingsSkillDisabled, preferredLanguages: ["zh-Hans"]) == "禁用")
+precondition(catalog.text(.pluginSettingsSkillDisabled, preferredLanguages: ["en"]) == "Disabled")
+precondition(catalog.text(.pluginSettingsSkillUse, preferredLanguages: ["zh-Hans"]) == "启用技能")
+precondition(catalog.text(.pluginSettingsSkillUse, preferredLanguages: ["en"]) == "Use skill")
+precondition(catalog.text(.pluginSettingsSkillUpdateError, preferredLanguages: ["zh-Hans"]) == "无法更新技能")
+precondition(catalog.text(.pluginSettingsSkillUpdateError, preferredLanguages: ["en"]) == "Unable to update skill")
+precondition(catalog.text(.pluginSettingsConnectors, preferredLanguages: ["zh-Hans"]) == "连接器")
+precondition(catalog.text(.pluginSettingsConnectorReconnect, preferredLanguages: ["zh-Hans"]) == "重新连接")
+precondition(catalog.text(.pluginConnectorPrivacyAsk, preferredLanguages: ["zh-Hans"]) == "始终询问")
+precondition(catalog.text(.pluginConnectorPrivacyReads, preferredLanguages: ["zh-Hans"]) == "允许读取操作")
+precondition(catalog.text(.pluginConnectorPrivacyLowRisk, preferredLanguages: ["zh-Hans"]) == "允许低风险操作")
+precondition(catalog.text(.pluginConnectorPrivacyAll, preferredLanguages: ["zh-Hans"]) == "允许所有操作")
+precondition(catalog.text(.pluginConnectorDisconnect, preferredLanguages: ["zh-Hans"]) == "取消关联")
+precondition(catalog.text(.pluginConnectorRemove, preferredLanguages: ["zh-Hans"]) == "移除")
+precondition(catalog.format(.pluginConnectorConnectAccount, arguments: ["Test"], preferredLanguages: ["zh-Hans"]) == "关联 Test 账户")
+precondition(catalog.format(.pluginConnectorConnectAccountDescription, arguments: ["Test"], preferredLanguages: ["en"]) == "Connect your Test account to unlock full capabilities.")
+precondition(catalog.format(.pluginConnectorConnectNamed, arguments: ["Test"], preferredLanguages: ["zh-Hans"]) == "连接 Test")
+precondition(catalog.format(.pluginConnectorConnectTitle, arguments: ["Test"], preferredLanguages: ["en"]) == "Connect Test")
+precondition(catalog.format(.pluginsOpenAppTools, arguments: ["Synthetic app"], preferredLanguages: ["en"]) == "Show actions for Synthetic app")
+precondition(catalog.format(.pluginsToolsAdminSyncedDescription, arguments: ["合成笔记"], preferredLanguages: ["zh-Hans"]) == "来自 合成笔记 的数据会自动同步，并用于只读操作。这是由你的管理员为你设置的。")
+precondition(catalog.format(.pluginsToolsAdminSyncedDescription, arguments: ["Synthetic notes"], preferredLanguages: ["en"]) == "Data from Synthetic notes is automatically synced and used for read-only actions. This was set up for you on behalf of your admin.")
 func expect(_ key: OfficialTextKey, _ languages: [String], _ value: String) {
     let actual = catalog.text(key, preferredLanguages: languages)
     precondition(actual == value, "\(key.rawValue) \(languages): \(actual) != \(value)")
@@ -2151,7 +2331,36 @@ precondition(expandedSliderLayout.frame == CGRect(x: 31, y: 476, width: 340, hei
 precondition(expandedSliderLayout.padding == 12 && expandedSliderLayout.innerWidth == 316)
 precondition(expandedSliderLayout.railHeight == 48 && expandedSliderLayout.thumbDiameter == 40)
 precondition(expandedSliderLayout.tickDiameter == 12)
+for fraction: CGFloat in [0, 0.25, 0.5, 0.75, 1, 1.017] {
+    let frame = RemoteModelSliderGeometry.layout(progress: fraction, presentationSize: CGSize(width: 402, height: 874),
+        sourceFrame: collapsedSliderLayout.frame, bottomSafeArea: 34)
+    for index in 0..<4 {
+        let x = frame.frame.minX + frame.padding + RemoteModelSliderGeometry.entryTickX(index: index, count: 4,
+            currentWidth: frame.innerWidth, expandedWidth: expandedSliderLayout.innerWidth, progress: fraction)
+        let endpoint = expandedSliderLayout.frame.minX + expandedSliderLayout.padding
+            + RemoteModelSliderGeometry.tickX(index: index, count: 4, innerWidth: expandedSliderLayout.innerWidth)
+        let start = collapsedSliderLayout.frame.midX
+        precondition(abs(x - (start + (endpoint - start) * fraction)) < 0.001)
+    }
+}
 print("Slider collapsed source geometry and independent expanded component dimensions passed")
+
+do {
+    let panel = CGSize(width: 402, height: 874)
+    let source = collapsedSliderLayout.frame
+    let sampleCount = Int(ceil(RemoteModelSliderEntryMotion.duration * 60))
+    let samples = (0...sampleCount).map { RemoteModelSliderEntryMotion.progress(at: Double($0) / 60) }
+    precondition(samples.first == 0 && samples.last == 1)
+    precondition(samples[1] < samples[5] - samples[4])
+    precondition(samples.max()! > 1.01 && samples.max()! < 1.025)
+    precondition(RemoteModelSliderGeometry.layout(progress: samples[0], presentationSize: panel,
+        sourceFrame: source, bottomSafeArea: 34) == collapsedSliderLayout)
+    precondition(RemoteModelSliderGeometry.layout(progress: samples[sampleCount], presentationSize: panel,
+        sourceFrame: source, bottomSafeArea: 34) == expandedSliderLayout)
+    precondition(RemoteModelSliderGeometry.layout(progress: samples.max()!, presentationSize: panel,
+        sourceFrame: source, bottomSafeArea: 34).frame.width > expandedSliderLayout.frame.width)
+    print("Slider entry starts at the mounted source, accelerates, overshoots slightly and settles at expanded geometry")
+}
 
 // v532: exercise the production insertion helper with independent expected
 // strings/carets, especially UTF16 positions inside extended graphemes.
@@ -3368,6 +3577,101 @@ do {
     print("Message link routing: explicit file resources, fragments, encoded names, web URLs and unsupported targets passed")
 }
 
+do {
+    func route(_ url: String) -> RemoteMessageLinkDestination {
+        RemoteMessageLinkDestination(URL(string: url)!)
+    }
+    let drive = RemoteWindowsFilePath(#"C:\Workspace\资料\Drive Source.txt"#)!
+    let unc = RemoteWindowsFilePath(#"\\Studio\Share\Folder\UNC Source.txt"#)!
+    precondition(drive.normalized == "c:/workspace/资料/drive source.txt")
+    precondition(unc.normalized == "//studio/share/folder/unc source.txt")
+    precondition(RemoteWindowsFilePath("c:/WORKSPACE/资料/DRIVE SOURCE.txt") == drive)
+    precondition(route("file:///C:/Workspace/%E8%B5%84%E6%96%99/Drive%20Source.txt#L2") == .windowsFile(drive, lineNumber: 2))
+    precondition(route("codex-file-citation:?path=C%3A%5CWorkspace%5C%E8%B5%84%E6%96%99%5CDrive%20Source.txt&line=2") == .windowsFile(drive, lineNumber: 2))
+    precondition(route("file://Studio/Share/Folder/UNC%20Source.txt#l3") == .windowsFile(unc, lineNumber: 3))
+    precondition(route("codex-file-citation:?path=%5C%5CStudio%5CShare%5CFolder%5CUNC%20Source.txt") == .windowsFile(unc, lineNumber: nil))
+    precondition(route("codex-file-citation:?path=C%3A%2Fwork%2Fa%252Fb.txt") ==
+        .windowsFile(RemoteWindowsFilePath("c:/work/a%2fb.txt")!, lineNumber: nil))
+    precondition(route("file:///workspace/a%5Cb.txt") == .file(resourceID: #"/workspace/a\b.txt"#))
+    for url in ["file://Studio/Share", "file://Studio/Share/dir%2Fname.txt", "file://Studio/Share/dir%5Cname.txt",
+                "file://Studio/Share/File.txt?download=1", "codex-file-citation:?path=C%3Arelative",
+                "codex-file-citation:?path=C%3A%2F%2E%2E%2Fsecret", "file://user@Studio/Share/File.txt",
+                "codex-file-citation:?path=%5C%5C%3F%5CC%3A%5Cfile"] {
+        precondition(route(url) == .unsupported, url)
+    }
+    print("Windows path routing: drive and UNC aliases, encoded names, citation line, literal POSIX backslash and malformed paths passed")
+}
+
+// A localhost snapshot maps only its bundled pages and subresources to a request-local origin.
+do {
+    let fileShapes = [
+        (#"C:\Workspace\Site"#, "c:/workspace/site/index.html"),
+        (#"\\Studio\Share\Site"#, "//studio/share/site/index.html"),
+        ("/workspace/site", "/workspace/site/index.html")
+    ]
+    for (root, entry) in fileShapes {
+        let (snapshot, data) = FrontendHTMLSnapshot.fixture(sourceRoot: root, sourcePath: entry)
+        let first = try FrontendHTMLSnapshotDocument(snapshot: snapshot, main: data)
+        let distinct = try FrontendHTMLSnapshotDocument(snapshot: snapshot, main: data)
+        assert(first.initialURL.scheme == FrontendHTMLSnapshotDocument.scheme)
+        assert(first.asset(at: distinct.initialURL) == nil)
+        assert(first.asset(at: first.initialURL)?.mimeType == "text/html")
+        func relative(_ path: String) -> URL { URL(string: path, relativeTo: first.initialURL)!.absoluteURL }
+        assert(first.asset(at: relative("/assets/theme.css?rev=1"))?.mimeType == "text/css")
+        assert(first.asset(at: relative("/assets/theme.css?rev=2")) == nil)
+        assert(first.asset(at: relative("/assets/sample.png"))?.mimeType == "image/png")
+        assert(first.asset(at: relative("/docs/?page=2#detail"))?.mimeType == "text/html")
+        assert(first.displayedURL(for: relative("/docs/?page=2#detail"))?.fragment == "detail")
+        assert(first.proxyURL(for: URL(string: "http://localhost:8765/docs/?page=2#detail")!) == relative("/docs/?page=2#detail"))
+        assert(first.proxyURL(for: URL(string: "http://localhost:8766/docs/?page=2#detail")!) == nil)
+        assert(first.asset(at: relative("/assets%2Fsample.png")) == nil)
+        assert(first.asset(at: relative("/%2e/assets/sample.png")) == nil)
+        let originalPage = first.pageForExport(at: first.initialURL)
+        assert(originalPage?.name == "index.html" && originalPage?.bytes == data)
+        let preview = String(decoding: first.previewData(for: first.asset(at: first.initialURL)!), as: UTF8.self)
+        assert(preview.contains(relative("/assets/theme.css?rev=1").absoluteString))
+        assert(preview.contains(relative("/assets/preview.js").absoluteString))
+        assert(first.download(at: relative("/assets/report.txt"))?.data == Data("Snapshot report\n".utf8))
+        assert(first.download(at: URL(string: "http://localhost:8766/assets/report.txt")!) == nil)
+        assert(first.download(at: distinct.initialURL) == nil)
+        assert(first.pageForExport(at: relative("/assets/report.txt")) == nil)
+    }
+    let (original, bytes) = FrontendHTMLSnapshot.fixture(sourceRoot: "C:/workspace/site", sourcePath: "C:/workspace/site/index.html")
+    func withAssets(_ assets: [FrontendHTMLSnapshot.Asset]) -> FrontendHTMLSnapshot {
+        .init(sourceRoot: original.sourceRoot, sourcePath: original.sourcePath, mainURL: original.mainURL, assets: assets, allowsScripts: true)
+    }
+    let wrongPath = FrontendHTMLSnapshot(sourceRoot: original.sourceRoot, sourcePath: "C:/other/index.html",
+        mainURL: original.mainURL, assets: original.assets)
+    let foreignAsset = FrontendHTMLSnapshot.Asset(url: URL(string: "https://example.invalid/assets/sample.png")!, mimeType: "image/png", data: Data())
+    assert((try? FrontendHTMLSnapshotDocument(snapshot: wrongPath, main: bytes)) == nil)
+    assert((try? FrontendHTMLSnapshotDocument(snapshot: withAssets(original.assets + original.assets), main: bytes)) == nil)
+    assert((try? FrontendHTMLSnapshotDocument(snapshot: withAssets([foreignAsset]), main: bytes)) == nil)
+    var scriptDenied = original
+    scriptDenied.allowsScripts = false
+    let inert = try FrontendHTMLSnapshotDocument(snapshot: scriptDenied, main: bytes)
+    assert(!inert.allowsScripts)
+    let inertMarkup = String(decoding: inert.previewData(for: inert.asset(at: inert.initialURL)!), as: UTF8.self)
+    assert(inertMarkup.contains("script-src 'none'"))
+    var invalidName = original.assets.last!
+    invalidName.downloadName = "../bad.txt"
+    assert((try? FrontendHTMLSnapshotDocument(snapshot: withAssets([invalidName]), main: bytes)) == nil)
+    let absolute = "http://localhost:8765/assets/sample.png"
+    let markup = Data("<p>\(absolute)</p><!-- <img src='\(absolute)'> --><img src='//localhost:8765/assets/sample.png' srcset='\(absolute) 1x, \(absolute) 2x'><style>@import url('http://localhost:8765/assets/theme.css?rev=1'); p{background:url('\(absolute)')}</style>".utf8)
+    let transformed = try FrontendHTMLSnapshotDocument(snapshot: original, main: markup)
+    let output = String(decoding: transformed.previewData(for: transformed.asset(at: transformed.initialURL)!), as: UTF8.self)
+    assert(output.contains("<p>\(absolute)</p><!-- <img src='\(absolute)'> -->"))
+    assert(output.components(separatedBy: "rea-html-snapshot://").count == 6)
+    print("HTML snapshot routing: drive/UNC/POSIX roots, directory index, assets, queries, aliases and rejection passed")
+    for external in ["https://example.com/docs?q=read#section", "http://example.com/"] {
+        assert(FrontendPlatformBrowserURL.admits(URL(string: external)!))
+    }
+    for isolated in ["https://example.invalid/preview", "http://localhost:8080", "http://tool.localhost/",
+                     "http://127.0.0.1/", "http://[::1]/", "https://name:password@example.com/", "file:///tmp/any"] {
+        assert(!FrontendPlatformBrowserURL.admits(URL(string: isolated)!))
+    }
+    print("Platform browser URL admission: HTTP(S), credential rejection and offline fixture isolation passed")
+}
+
 // v613: the293 citation plugin uses the first matching path and optional line.
 do {
     func destination(_ query: String) -> RemoteMessageLinkDestination {
@@ -3765,6 +4069,12 @@ do {
     precondition(RemoteSourceFilePreview.range(of: 2, in: "a\n") == nil)
     precondition(RemoteSourceFilePreview.range(of: 2, in: "a\r\n") == nil)
     precondition(RemoteSourceFilePreview.range(of: 2, in: "a\rb") == NSRange(location: 2, length: 1))
+    let plainSource = "文本\t\n\r\u{0085}"
+    precondition(RemoteSourceFilePreview.admittedText(Data(plainSource.utf8)) == plainSource)
+    precondition(RemoteSourceFilePreview.admittedText(Data()) == "")
+    for bytes: [UInt8] in [[0x00], [0x0C], [0x1F], [0x7F], [0xC0, 0x80], [0xE4, 0xB8]] {
+        precondition(RemoteSourceFilePreview.admittedText(Data(bytes)) == nil)
+    }
     let request = UUID()
     let preview = RemoteSourceFilePreview(id: request, name: "test.swift", contents: text, lineNumber: 2)
     precondition(preview.id == request && preview.contents == text && preview.targetRange == expected[1])
@@ -4047,3 +4357,407 @@ do {
     precondition(gate.finish(fourth, current: request))
     print("Input async admission: single flight, replaced payload, cross-host, cancelled/late attempt, retry and skip passed")
 }
+
+//Ordinary read/control admission uses a supplied target UUID; it must neither
+//weaken journal IDs nor fabricate an accepted composer draft.
+let ordinaryScope = RemoteComposerDraftScope(hostID: "fixture-cloud", threadID: "ordinary-controls")
+let readScope = CodexMessageScope(accountID: "offline", profileID: "p", instanceID: "fixture-cloud", threadID: "ordinary-controls")
+let capability = CodexTaskControlCapabilities(usesComputerConnection: false, canSubmit: true, canStop: true,
+    canRetry: true, canSelectModel: true, canSelectPermissions: true, usedTokens: 10, contextWindow: 100)
+let controlID = UUID()
+let readTurn = CodexReadTurn(id: "source-turn", controlID: controlID, prompt: "old", bodyMarkdown: "visible", responseCopyText: "", status: .running)
+let readSnapshot = CodexMessageSnapshot(scope: readScope, revision: 1,
+    context: .init(threadTitle: nil, workspaceDisplayName: nil, hostDisplayName: nil, cloudEnvironmentName: ""),
+    turns: [readTurn], controls: capability)
+var imported = RemoteThreadReplayState(scope: ordinaryScope)
+precondition(imported.admitOrdinaryRead(readSnapshot) && imported.isValidSnapshot)
+precondition(imported.activeTurnID == controlID.uuidString && imported.lastAcceptedDraft == nil)
+precondition(imported.turns.first?.presentationID == "history-source-turn")
+imported.recoverInterruptedReplay(message: "local producer stopped")
+precondition(imported.activeTurnID == controlID.uuidString, "Read seed is not a local producer")
+precondition(imported.receive(.init(scope: ordinaryScope, turnID: controlID.uuidString, sequence: 1, phase: .cancelled, text: "visible")))
+precondition(imported.admitOrdinaryRead(readSnapshot) && imported.activeTurnID == nil && imported.turns.count == 1)
+precondition(!imported.receive(.init(scope: ordinaryScope, turnID: controlID.uuidString, sequence: 2, phase: .completed, text: "late")))
+let importedReload = try JSONDecoder().decode(RemoteThreadReplayState.self, from: JSONEncoder().encode(imported))
+precondition(importedReload.isValidSnapshot && importedReload.turns.first?.phase == .cancelled)
+let completeRead = CodexReadTurn(id: "source-complete", controlID: UUID(), prompt: "old", bodyMarkdown: "visible", responseCopyText: "", status: .success)
+let completeSnapshot = CodexMessageSnapshot(scope: readScope, revision: 2, context: readSnapshot.context, turns: [completeRead], controls: capability)
+var completedRead = RemoteThreadReplayState(scope: ordinaryScope)
+precondition(completedRead.admitOrdinaryRead(completeSnapshot))
+precondition(completedRead.turns.first?.footerPresentation(showsFooterActions: true).copyText == "")
+let missingID = CodexReadTurn(id: "bad", prompt: "", bodyMarkdown: "", responseCopyText: nil, status: .running)
+let badSnapshot = CodexMessageSnapshot(scope: readScope, revision: 1, context: readSnapshot.context, turns: [missingID], controls: capability)
+precondition(!badSnapshot.valid && !completedRead.admitOrdinaryRead(badSnapshot))
+precondition(completedRead.turns.count == 1 && completedRead.isValidSnapshot)
+print("PASS: explicit ordinary control target, unchanged journal UUID invariant, no draft acceptance, stable reading keys, seed restart provenance, stop/late-result/reload/reimport, supplied empty copy and missing-ID rejection")
+
+let requestReference = CodexPendingTaskReference.input
+let requestIdentity = CodexTaskRequestIdentity(scope: readScope, id: requestReference.id, revision: 1)
+let ordinaryQuestion = RemoteUserInputRequest(scope: .init(hostID: "fixture-cloud", connectionID: "provider",
+    id: "ordinary", requestID: "request", threadID: "ordinary-controls", turnID: controlID.uuidString, itemID: nil),
+    questions: [.init(id: "detail", header: "", question: "Question", isOther: false, isSecret: true, options: nil)])
+let requestSnapshot = CodexTaskRequestSnapshot(identity: requestIdentity, status: .pending,
+    payload: .input(ordinaryQuestion), continuationTargetID: controlID.uuidString)
+let answerAction = CodexTaskRequestAction.input(.submit(ordinaryQuestion, .init(["detail":["private-answer-marker"]])))
+var admission = CodexTaskRequestAdmission(); let requestSession = UUID()
+admission.activate(requestSession); precondition(admission.replace(requestSnapshot))
+let requestOperation = admission.begin(answerAction, expected: requestSnapshot, session: requestSession)!
+precondition(admission.begin(answerAction, expected: requestSnapshot, session: requestSession) == nil)
+let requestReceipt = CodexTaskRequestReceipt(operationID: requestOperation.id, identity: requestIdentity,
+    continuationTargetID: controlID.uuidString, completed: true, notice: "accepted")
+precondition(admission.accepts(requestReceipt, operation: requestOperation))
+let wrongReceipt = CodexTaskRequestReceipt(operationID: UUID(), identity: requestIdentity,
+    continuationTargetID: controlID.uuidString, completed: true, notice: "")
+precondition(!admission.accepts(wrongReceipt, operation: requestOperation))
+var requestState = RemoteThreadReplayState(scope: ordinaryScope)
+precondition(requestState.admitOrdinaryRead(readSnapshot))
+precondition(requestState.acceptOrdinaryRequest(requestOperation, receipt: requestReceipt))
+precondition(requestState.turns.count == 1 && requestState.turns[0].phase == .completed)
+precondition(requestState.lastAcceptedDraft == nil && requestState.hasResolvedOrdinary(requestIdentity))
+precondition(!requestState.acceptOrdinaryRequest(requestOperation, receipt: requestReceipt))
+let responseJournal = try JSONEncoder().encode(requestState)
+precondition(!String(decoding: responseJournal, as: UTF8.self).contains("private-answer-marker"))
+let responseReload = try JSONDecoder().decode(RemoteThreadReplayState.self, from: responseJournal)
+precondition(responseReload.isValidSnapshot && responseReload.hasResolvedOrdinary(requestIdentity))
+var expired = requestSnapshot; expired.status = .expired
+precondition(admission.replace(expired))
+precondition(!admission.accepts(requestReceipt, operation: requestOperation))
+precondition(admission.begin(answerAction, expected: expired, session: requestSession) == nil)
+precondition(admission.replace(requestSnapshot))
+let cancelledOperation = admission.begin(answerAction, expected: requestSnapshot, session: requestSession)!
+admission.cancelSubmission(requestSession)
+precondition(!admission.accepts(.init(operationID: cancelledOperation.id, identity: requestIdentity,
+    continuationTargetID: controlID.uuidString, completed: true, notice: ""), operation: cancelledOperation))
+precondition(admission.begin(answerAction, expected: requestSnapshot, session: requestSession) != nil)
+admission.cancel(requestSession)
+precondition(admission.begin(answerAction, expected: requestSnapshot, session: requestSession) == nil)
+let foreignScope = CodexMessageScope(accountID: "offline", profileID: "p", instanceID: "other", threadID: "ordinary-controls")
+let foreign = CodexTaskRequestSnapshot(identity: .init(scope: foreignScope, id: requestReference.id, revision: 1), status: .pending,
+    payload: .input(ordinaryQuestion), continuationTargetID: controlID.uuidString)
+precondition(!admission.replace(foreign))
+print("PASS: ordinary request exact scope/payload/session/attempt, single flight, explicit expiry, cancel/retry/late receipt, same active target without new turn/draft acceptance, durable identity and no answer content in journal")
+
+//Codex file responses must bind the full resource request, not just its title.
+do {
+    let scope = CodexMessageScope(accountID: "file-account", profileID: "file-profile", instanceID: "cloud", threadID: "files")
+    let request = CodexTaskFileRequest(id: UUID(), scope: scope, kind: .resource, resourceID: "Sources/preview")
+    let body = RemoteFilePreviewResource(id: request.resourceID, name: "preview.txt", data: Data("complete bytes".utf8))
+    assert(CodexTaskResourceReceipt(request: request, resource: body).matches(request))
+    let metadata = RemoteFilePreviewResource(id: request.resourceID, name: body.name, data: Data())
+    let secureURL = URL(string: "https://files.example.invalid/object")!
+    let download = CodexAuthorizedFileDownload(url: secureURL, byteCount: 2048, bearerToken: "synthetic-token")
+    assert(CodexTaskResourceReceipt(request: request, resource: metadata, download: download).matches(request))
+    assert(!CodexTaskResourceReceipt(request: request, resource: body, download: download).matches(request))
+    assert(download.makeRequest()?.value(forHTTPHeaderField: "Authorization") == "Bearer synthetic-token")
+    assert(download.makeRequest()?.httpShouldHandleCookies == false)
+    assert(!String(describing: download).contains("synthetic-token"))
+    assert(CodexAuthorizedFileDownload(url: secureURL, byteCount: 2048, bearerToken: "x\r\ny").makeRequest() == nil)
+    assert(CodexAuthorizedFileDownload(url: secureURL, byteCount: Int.max, bearerToken: nil).makeRequest() == nil)
+    assert(CodexAuthorizedFileDownload(url: URL(string: "http://files.example.invalid/object")!,
+        byteCount: 2048, bearerToken: nil).makeRequest() == nil)
+    let resumable = CodexAuthorizedFileDownload(url: secureURL, byteCount: 2048, bearerToken: nil,
+        strongETag: "\"version-1\"")
+    assert(resumable.rangeRequest(start: 17)?.value(forHTTPHeaderField: "Range") == "bytes=17-")
+    assert(resumable.rangeRequest(start: 17)?.value(forHTTPHeaderField: "If-Range") == "\"version-1\"")
+    let headers = ["ETag": "\"version-1\"", "Content-Range": "bytes 17-2047/2048", "Content-Length": "2031"]
+    let partialResponse = HTTPURLResponse(url: secureURL, statusCode: 206, httpVersion: nil, headerFields: headers)!
+    assert(resumable.acceptsRange(partialResponse, start: 17))
+    assert(!resumable.acceptsRange(partialResponse, start: 18))
+    let fullResponse = HTTPURLResponse(url: secureURL, statusCode: 200, httpVersion: nil, headerFields: headers)!
+    assert(!resumable.acceptsRange(fullResponse, start: 17))
+    assert(CodexAuthorizedFileDownload(url: secureURL, byteCount: 2048, bearerToken: nil,
+        strongETag: "W/\"version-1\"").makeRequest() == nil)
+    let other = CodexTaskFileRequest(id: request.id, scope: .init(accountID: "other", profileID: scope.profileID, instanceID: scope.instanceID, threadID: scope.threadID), kind: .resource, resourceID: request.resourceID)
+    let restartGrant = CodexAuthorizedFileDownload(url: secureURL, byteCount: 2048, bearerToken: "new-token",
+        strongETag: "\"version-1\"", persistentResumeID: "fixture-asset")
+    let rotatedGrant = CodexAuthorizedFileDownload(url: URL(string: "https://files.example.invalid/renewed?signature=other")!,
+        byteCount: 2048, bearerToken: "rotated-token", strongETag: "\"version-1\"", persistentResumeID: "fixture-asset")
+    let key = CodexDownloadCheckpoint.key(for: request, grant: restartGrant)
+    assert(key != nil && key == CodexDownloadCheckpoint.key(for: request, grant: rotatedGrant))
+    assert(key != CodexDownloadCheckpoint.key(for: other, grant: restartGrant))
+    assert(CodexDownloadCheckpoint.key(for: request, grant: resumable) == nil)
+    assert(!CodexTaskResourceReceipt(request: other, resource: body).matches(request))
+    assert(!CodexTaskResourceReceipt(request: request, resource: .init(id: "other-file", name: body.name, data: body.data)).matches(request))
+    let nextAttempt = CodexTaskFileRequest(id: UUID(), scope: scope, kind: .resource, resourceID: request.resourceID)
+    assert(!CodexTaskResourceReceipt(request: request, resource: body).matches(nextAttempt))
+    let path = RemoteWindowsFilePath("C:/workspace/preview.txt")!
+    let mapping = CodexTaskWindowsPathRequest(id: request.id, scope: scope, path: path)
+    let resolved = CodexTaskWindowsPathReceipt(request: mapping, resourceID: request.resourceID)
+    assert(resolved.matches(mapping))
+    assert(!resolved.matches(.init(id: request.id, scope: other.scope, path: path)))
+    assert(!resolved.matches(.init(id: nextAttempt.id, scope: scope, path: path)))
+    assert(!resolved.matches(.init(id: request.id, scope: scope, path: RemoteWindowsFilePath("//host/share/preview.txt")!)))
+    assert(!CodexTaskWindowsPathReceipt(request: mapping, resourceID: "").matches(mapping))
+    var fileState = RemoteFilePreviewState()
+    let composition = RemoteComposerDraftScope(hostID: scope.instanceID, threadID: scope.threadID)
+    let initial = fileState.begin(scope: composition, target: .windowsPath(path), lineNumber: 7)
+    assert(fileState.finish(initial, failure: .loadFailed))
+    let retry = fileState.begin(scope: composition, target: initial.target, lineNumber: initial.lineNumber)
+    assert(retry.target == .windowsPath(path) && retry.lineNumber == 7 && retry.id != initial.id)
+    assert(!fileState.accepts(initial) && fileState.accepts(retry))
+    let directory = CodexTaskFileRequest(id: UUID(), scope: scope, kind: .directory, resourceID: "root")
+    let entry = RemoteWorkspaceFileEntry(id: "Sources/preview", title: "preview.txt", isDirectory: false)
+    assert(CodexTaskDirectoryReceipt(request: directory, entries: [entry]).matches(directory))
+    assert(!CodexTaskDirectoryReceipt(request: directory, entries: [entry,entry]).matches(directory))
+    assert(!CodexTaskDirectoryReceipt(request: directory, entries: [.init(id: "root", title: "loop", isDirectory: true)]).matches(directory))
+    let change = RemoteReplayFileChange(id: "patch", title: "preview.txt", diff: "+new", counts: nil, resourceID: request.resourceID)
+    let restored = try JSONDecoder().decode(RemoteReplayFileChange.self, from: JSONEncoder().encode(change))
+    assert(restored.resourceID == "Sources/preview" && restored.previewText == nil)
+    print("Codex scoped file receipts and distinct complete-resource identity passed")
+}
+
+do {
+    let completed = DispatchSemaphore(value: 0)
+    Task.detached {
+        let payload = Data((0..<(CodexFileDownloadBody.chunkBytes + 7)).map { UInt8(truncatingIfNeeded: $0) })
+        func stream(_ data: Data) -> AsyncStream<UInt8> {
+            AsyncStream { continuation in
+                for byte in data { continuation.yield(byte) }
+                continuation.finish()
+            }
+        }
+        let name = UUID().uuidString + ".pdf"
+        func temporaryFile() -> URL? {
+            let root = FileManager.default.temporaryDirectory
+            let directories = (try? FileManager.default.contentsOfDirectory(at: root, includingPropertiesForKeys: nil)) ?? []
+            return directories.lazy.filter { $0.lastPathComponent.hasPrefix("rea-attachment-") }
+                .map { $0.appendingPathComponent(name) }.first { FileManager.default.fileExists(atPath: $0.path) }
+        }
+        do {
+            let boundary = CodexFileDownloadBody.chunkBytes + 3
+            func transfer(_ data: Data, interrupted: Bool = false) -> AsyncThrowingStream<UInt8, Error> {
+                AsyncThrowingStream { continuation in
+                    for byte in data { continuation.yield(byte) }
+                    continuation.finish(throwing: interrupted ? URLError(.networkConnectionLost) : nil)
+                }
+            }
+            do {
+                let resumed = try await CodexFileDownloadBody.stage(
+                    transfer(payload.prefix(boundary), interrupted: true), byteCount: payload.count, name: name
+                ) { offset in
+                    assert(offset == boundary)
+                    return transfer(payload.suffix(from: offset))
+                }
+                assert(resumed.digest == Data(SHA256.hash(data: payload)))
+            }
+            let checkpointRoot = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+            defer { try? FileManager.default.removeItem(at: checkpointRoot) }
+            let checkpointKey = Data(SHA256.hash(data: Data("same-resource-version".utf8)))
+            do {
+                let first = CodexDownloadCheckpoint(directory: checkpointRoot)
+                _ = try await first.stage(identity: checkpointKey, byteCount: payload.count, name: name) { offset in
+                    assert(offset == 0 || offset == boundary)
+                    if offset > 0 { throw URLError(.notConnectedToInternet) }
+                    return transfer(payload.prefix(boundary), interrupted: true)
+                }
+                preconditionFailure("Interrupted transfer should exit with a saved checkpoint")
+            } catch let failure as URLError {
+                assert(failure.code == .notConnectedToInternet)
+            }
+            let relaunched = CodexDownloadCheckpoint(directory: checkpointRoot)
+            let restored = try await relaunched.stage(identity: checkpointKey, byteCount: payload.count, name: "checkpoint-" + name) { offset in
+                assert(offset == boundary)
+                return transfer(payload.suffix(from: offset))
+            }
+            let restoredBytes = try Data(contentsOf: restored.file.url)
+            assert(restoredBytes == payload)
+            assert(restored.digest == Data(SHA256.hash(data: payload)))
+            assert(!FileManager.default.fileExists(atPath: checkpointRoot.appendingPathComponent("record.json").path))
+            let multilineComment = CodexSourceComment(id: "sample", startLine: 2, endLine: 3, text: "note")
+            let annotated = "one\r\n🧪 two\r\nthree\n"
+            let spans = RemoteSourceFilePreview.commentRanges(in: annotated, comments: [multilineComment])
+            assert(spans.count == 1 && (annotated as NSString).substring(with: spans[0]) == "🧪 two\r\nthree")
+            let originalText = String(repeating: "a", count: RemoteTextWindowIndex.windowBytes - 2) + "😀\r\n" +
+                String(repeating: "b", count: RemoteTextWindowIndex.windowBytes + 3) + "\rLast\n"
+            let source = try RemoteLocalAttachment.textPreview(originalText, name: "window.txt")
+            let index = try await RemoteTextWindowIndex.build(source.url)
+            assert(index.page(containing: 1) == 0 && index.page(containing: 2) != nil)
+            assert(index.page(containing: 4) == nil)
+            var combined = ""
+            for page in index.pages.indices {
+                combined += try await index.text(in: source.url, page: page)
+                assert(index.pages[page].count <= RemoteTextWindowIndex.windowBytes)
+            }
+            assert(combined == originalText)
+            do {
+                let body = try await CodexFileDownloadBody.stage(stream(payload), byteCount: payload.count, name: name)
+                let resource = RemoteFilePreviewResource(id: "file", name: name, data: Data(), stagedBody: body)
+                assert(resource.byteCount == payload.count && resource.data.isEmpty)
+                let restored = try resource.readBytes(upTo: payload.count)
+                assert(restored == payload)
+                assert(body.digest == Data(SHA256.hash(data: payload)))
+                assert(temporaryFile() != nil)
+                do { _ = try resource.readBytes(upTo: payload.count - 1); preconditionFailure("Read exceeded budget") }
+                catch { assert(error as? RemoteFilePreviewFailure == .unsupported) }
+            }
+            assert(temporaryFile() == nil)
+            for declaredLength in [payload.count + 1, payload.count - 1] {
+                do {
+                    _ = try await CodexFileDownloadBody.stage(stream(payload), byteCount: declaredLength, name: name)
+                    preconditionFailure("Inexact response accepted")
+                } catch { assert(error as? RemoteFilePreviewFailure == .loadFailed) }
+                assert(temporaryFile() == nil)
+            }
+            let partial = AsyncStream<UInt8> { continuation in
+                for byte in payload { continuation.yield(byte) }
+                // Leave the transfer open until its caller cancels.
+            }
+            let pending = Task { try await CodexFileDownloadBody.stage(partial, byteCount: payload.count + 1, name: name) }
+            var written = 0
+            for _ in 0..<200 {
+                if let file = temporaryFile(),
+                   let length = try? file.resourceValues(forKeys: [.fileSizeKey]).fileSize {
+                    written = length
+                    if written >= CodexFileDownloadBody.chunkBytes { break }
+                }
+                try await Task.sleep(for: .milliseconds(10))
+            }
+            pending.cancel()
+            do { _ = try await pending.value; preconditionFailure("Cancelled response accepted") }
+            catch { assert(error is CancellationError) }
+            assert(written == CodexFileDownloadBody.chunkBytes)
+            assert(temporaryFile() == nil)
+        } catch { preconditionFailure("Staged file fixture failed: \(error)") }
+        completed.signal()
+    }
+    precondition(completed.wait(timeout: .now() + 20) == .success)
+    print("Codex staged downloads: chunk boundaries, exact bytes, incremental digest, read limit and partial cleanup passed")
+}
+
+//Provider creation IDs/titles are distinct from client submission identity.
+do {
+    let account = CodexListScope(accountID: "create-account", profileID: "create-profile")
+    let controls = CodexTaskControlCapabilities(usesComputerConnection: false, canSubmit: true, canStop: true,
+        canRetry: true, canSelectModel: true, canSelectPermissions: true, usedTokens: nil, contextWindow: nil)
+    let target = CodexCreationTarget(id: "cloud/default", destination: .init(hostID: "cloud"), title: "Cloud", instanceName: "Cloud", kind: .cloud, available: true, controls: controls)
+    let draft = RemoteComposerDraft(text: "创建输入", revision: 1)
+    let event = RemoteComposerSubmission(intentID: UUID(), scope: .home, sessionID: UUID(), draft: draft,
+        mode: .normal, destination: target.destination, configuration: target.configuration)
+    let op = CodexCreationOperation(scope: account, catalogRevision: 2, target: target, event: event)
+    let receipt = CodexCreationReceipt(request: op, threadID: "provided-repository", title: "提供方标题", controls: controls, createdAt: Date(timeIntervalSince1970: 1000))
+    assert(op.valid && receipt.matches(op))
+    let foreign = CodexCreationOperation(scope: .init(accountID: "other", profileID: account.profileID), catalogRevision: 2, target: target, event: event)
+    assert(!receipt.matches(foreign))
+    let newer = CodexCreationOperation(scope: account, catalogRevision: 3, target: target, event: event)
+    assert(!receipt.matches(newer))
+    var changed = event; changed.destination = .init(hostID: "other")
+    assert(!CodexCreationOperation(scope: account, catalogRevision: 2, target: target, event: changed).valid)
+    let state = try RemoteThreadReplayState.create(event, scope: .home, session: event.sessionID, draft: draft,
+        state: .init(), destination: target.destination, eligibleHosts: ["cloud"], date: receipt.createdAt,
+        repositoryID: receipt.threadID, providedTitle: receipt.title, controls: receipt.controls).get()
+    assert(state.scope == .init(hostID: "cloud", threadID: "provided-repository"))
+    assert(state.creation?.title == "提供方标题" && state.turns.count == 1 && state.turns[0].prompt == draft.text && state.isValidSnapshot)
+    let restored = try JSONDecoder().decode(RemoteThreadReplayState.self, from: JSONEncoder().encode(state))
+    assert(restored.creation?.controls?.usesComputerConnection == false && restored.creation?.repositoryID == receipt.threadID)
+    let request = CodexCreationCatalogRequest(id: UUID(), scope: account, instances: [.init(id: "cloud", kind: .cloud, name: "Cloud", symbol: "cloud")])
+    assert(CodexCreationCatalogReceipt(request: request, revision: 2, targets: [target]).matches(request))
+    assert(!CodexCreationCatalogReceipt(request: request, revision: 2, targets: [target,target]).matches(request))
+    var home = RemoteHomeComposerState()
+    home.selectDestination(target.destination, eligibleHostIDs: ["cloud"])
+    home.focusChanged(true); home.creationAccepted()
+    assert(home.mode == .browsing && !home.isEditorFocused && home.destination == target.destination)
+    let projectScope = RemoteComposerDraftScope(hostID: "remote", workspaceDirectory: "/provider/arbitrary-root", projectID: nil)
+    let projectEvent = RemoteComposerSubmission(intentID: UUID(), scope: projectScope, sessionID: UUID(), draft: draft,
+        mode: .normal, configuration: target.configuration)
+    let project = try RemoteThreadReplayState.create(projectEvent, scope: projectScope, session: projectEvent.sessionID, draft: draft,
+        state: .init(), destination: nil, eligibleHosts: ["remote"], repositoryID: "remote-provided-id", providedTitle: "Remote title", controls: controls,
+        workspaceKey: "catalog-owned-key").get()
+    assert(project.creation?.workspaceKey == "catalog-owned-key" && project.isValidSnapshot)
+    print("PASS: scoped creation catalog/receipt, target/revision/account isolation, provider repository/title/capabilities, one initial turn and restart projection")
+}
+
+//Authoritative ordered items keep terminal tails independent from aggregate text.
+do {
+    let scope = CodexMessageScope(accountID: "tail", profileID: "p", instanceID: "cloud", threadID: "same")
+    for status: CodexReadTurn.Status in [.running, .success, .failure, .interrupted, .stopped, .failedPromptSubmission] {
+        var turn = CodexReadTurn(id: "String-turn", prompt: "old", bodyMarkdown: "old aggregate", responseCopyText: "", status: status)
+        turn.errorMessage = "provider error"; turn.showsError = true
+        let tail = CodexReadTailPresentation(turn: turn)
+        precondition(tail.footer.copyText == (status == .success ? "" : nil))
+        precondition(tail.errorMessage == ([.failure, .failedPromptSubmission].contains(status) ? "provider error" : nil))
+        precondition(!tail.error.allowsRetry)
+        precondition(CodexMessageSnapshot(scope: scope, revision: 1, context: .init(), turns: [turn], historyPolicy: .authoritative).valid)
+    }
+    var empty = CodexReadTurn(id: "empty", prompt: "old", bodyMarkdown: "old", responseCopyText: "", status: .success, completedAt: Date(timeIntervalSince1970: 1234))
+    precondition(CodexReadTailPresentation(turn: empty).orderedFooter.copyText == "")
+    precondition(CodexReadTailPresentation(turn: empty).orderedFooter.completionDate == empty.completedAt)
+    empty.items = [.init(id: "a", content: .assistant(markdown: "a", copyText: "")), .init(id: "b", content: .assistant(markdown: "b", copyText: "b"))]
+    precondition(CodexReadTailPresentation(turn: empty).orderedFooter.copyText == nil)
+    precondition(CodexReadTailPresentation(turn: empty).orderedFooter.completionDate == empty.completedAt)
+    var failure = CodexReadTurn(id: "error", prompt: "", bodyMarkdown: "", responseCopyText: nil, status: .failure, errorMessage: "provider")
+    precondition(CodexReadTailPresentation(turn: failure).errorMessage == nil)
+    failure.showsError = true
+    precondition(CodexReadTailPresentation(turn: failure).errorMessage == "provider")
+    let compact = CodexReadTurn(id: "compact", prompt: "", bodyMarkdown: "", responseCopyText: nil, status: .failedPromptSubmission, isContextCompactionOnlyTurn: true)
+    precondition(CodexReadTailPresentation(turn: compact).errorMessage == nil)
+    let submission = CodexReadTurn(id: "submission", prompt: "", bodyMarkdown: "", responseCopyText: nil, status: .failedPromptSubmission)
+    precondition(CodexReadTailPresentation(turn: submission).usesSubmissionErrorFallback)
+    failure.errorMessage = String(repeating: "a", count: 100001)
+    precondition(!failure.valid)
+}
+print("Codex authoritative tails: explicit error visibility, interrupted/stopped, empty copy presence, timestamp ownership and ordered-item copy passed")
+
+do {
+    var turn = CodexReadTurn(id: "stop", prompt: "old", bodyMarkdown: "old", responseCopyText: nil, status: .stopped, stoppedNotice: "provider stop")
+    precondition(CodexReadTailPresentation(turn: turn).stoppedNotice == "provider stop")
+    turn.isContextCompactionOnlyTurn = true
+    precondition(!CodexReadTailPresentation(turn: turn).hasContent(ordered: true))
+    let interrupted = CodexReadTurn(id: "interrupted", prompt: "old", bodyMarkdown: "old", responseCopyText: "do not copy", status: .interrupted, errorMessage: "hidden", stoppedNotice: "hidden", showsError: true)
+    precondition(!CodexReadTailPresentation(turn: interrupted).hasContent(ordered: true))
+}
+print("Codex stopped notice: explicit provider text and compaction-only admission; interrupted has no fabricated tail passed")
+
+do {
+    let failure = CodexReadTurn(id: "failure", prompt: "", bodyMarkdown: "", responseCopyText: nil, status: .failure, showsError: true)
+    precondition(CodexReadTailPresentation(turn: failure).usesGenerationErrorFallback)
+    precondition(CodexReadTailPresentation(turn: failure).hasContent(ordered: true))
+    precondition(!CodexReadTailPresentation(turn: failure).usesSubmissionErrorFallback)
+}
+print("Codex missing provider error text: source-specific generation fallback admission passed")
+
+//Exercise the same pure native presentation adapter used by the full page.
+do {
+    let reason = CodexReadItem(id: "reason", content: .reasoningSummary(.init(summary: ["old", "**最新摘要**<!--hidden-->"], isRunning: true)))
+    let command = CodexReadItem(id: "command", content: .command(.init(id: "payload-id", command: "example", startedAt: Date(timeIntervalSince1970: 1), output: ["line"], exitCode: nil, phase: .completed)))
+    let search = CodexReadItem(id: "search", content: .webSearchActivity(.init(title: "title", phase: .failed, queries: ["", "q", "q", " "])))
+    let before = CodexReadItem(id: "before", content: .assistant(markdown: "same", copyText: nil))
+    let after = CodexReadItem(id: "after", content: .assistant(markdown: "same", copyText: nil))
+    var group = CodexReadItem(id: "group", content: .activityGroup(.init(summary: .thinking(reasoningItemIDs: [reason.id]), memberItemIDs: [search.id, command.id], isRunning: false)))
+    var turn = CodexReadTurn(id: "String-turn", prompt: "old", bodyMarkdown: "old", responseCopyText: nil, status: .running, items: [before, reason, command, group, search, after])
+    precondition(turn.valid)
+    precondition(CodexReadActivityPresentation.visibleItems(turn).map(\.id) == [before.id, group.id, after.id])
+    var native = CodexReadActivityPresentation.group(group, turn: turn)!
+    precondition(native.activityGroups![0].summary == "最新摘要")
+    precondition(native.activityGroups![0].members == [.search(search.id), .command(command.id)])
+    precondition(native.activityGroups![0].canExpand == true && !native.isActive)
+    precondition(native.commands[0].phase == .completed && native.commands[0].exitCode == nil)
+    precondition(native.commands[0].id == command.id && native.searches[0].phase == .failed)
+    precondition(native.searches[0].displayedQueries == ["q", "q", " "])
+    let oldKey = native.presentationID
+    let key = CodexReadActivityPresentation.turnKey(turn.id)
+    let scope = CodexMessageScope(accountID: "complex", profileID: "p", instanceID: "cloud", threadID: "same")
+    func snapshot(_ turn: CodexReadTurn) -> CodexMessageSnapshot { .init(scope: scope, revision: 1, context: .init(), turns: [turn], historyPolicy: .authoritative) }
+    let cache = [key: Set([command.id]), "legacy": Set(["kept"])]
+    precondition(CodexReadActivityPresentation.prune(cache, snapshot: snapshot(turn), kind: .command) == cache)
+    group = .init(id: "group", content: .activityGroup(.init(summary: .latest(itemID: command.id, fallback: .init(icon: .runCommand, text: "done")), memberItemIDs: [command.id])))
+    turn.items = [after, command, group, before]
+    native = CodexReadActivityPresentation.group(group, turn: turn)!
+    precondition(native.presentationID == oldKey && native.activityGroups![0].latestActivity == .command(command.id))
+    precondition(CodexReadActivityPresentation.prune(cache, snapshot: snapshot(turn), kind: .command) == cache)
+    turn.items = [after, before]
+    precondition(CodexReadActivityPresentation.prune(cache, snapshot: snapshot(turn), kind: .command)[key]?.isEmpty == true)
+    turn.items = []
+    precondition(CodexReadActivityPresentation.visibleItems(turn).isEmpty)
+    group = .init(id: "group", content: .activityGroup(.init(summary: .history(.init(icon: .tools, text: "empty")), memberItemIDs: [])))
+    turn.items = [group]
+    precondition(CodexReadActivityPresentation.group(group, turn: turn)!.activityGroups![0].canExpand == true)
+    group = .init(id: "group", content: .activityGroup(.init(summary: .history(.init(icon: .tools, text: "explicit")), memberItemIDs: [], canExpand: false)))
+    turn.items = [group]
+    precondition(CodexReadActivityPresentation.group(group, turn: turn)!.activityGroups![0].canExpand == false)
+    for icon in CodexReadActivityHistorySummary.Icon.allCases {
+        group = .init(id: "group", content: .activityGroup(.init(summary: .history(.init(icon: icon, text: "history")), memberItemIDs: [])))
+        turn.items = [group]
+        precondition(CodexReadActivityPresentation.group(group, turn: turn)!.activityGroups![0].historySummary?.icon.rawValue == icon.rawValue)
+    }
+}
+print("Codex complex read presentation: ordered group/summary, per-tool state, unique item identity, revision-stable disclosure/deletion, explicit empty group and history icons passed")

@@ -3,6 +3,17 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
+val sourceSyntaxAssets = layout.buildDirectory.dir("rea-source-syntax")
+val prepareSourceSyntax by tasks.registering(Exec::class) {
+    val workspace = rootProject.projectDir.parentFile
+    val prepare = workspace.resolve("ios/Tools/prepare-source-syntax.py")
+    inputs.files(prepare, workspace.resolve("shared/source-highlight-adapter.js"),
+        workspace.resolve("ios/ThirdParty/highlight-js-LICENSE"),
+        workspace.parentFile.resolve("analysis/full-platform-20261104/ios-files-split-20261123-source.json"),
+        workspace.parentFile.resolve("recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Highlightr_Highlightr.bundle/highlight.min.js"))
+    outputs.dir(sourceSyntaxAssets)
+    commandLine("python3", prepare, "--output", sourceSyntaxAssets.get().asFile)
+}
 android {
     namespace = "local.rea.chatgpt"
     compileSdk = 36
@@ -15,12 +26,14 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures { compose = true }
+    sourceSets["main"].assets.srcDir(sourceSyntaxAssets)
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
 }
+tasks.named("preBuild") { dependsOn(prepareSourceSyntax) }
 dependencies {
     implementation(project(":richtext"))
     implementation("androidx.activity:activity-compose:1.10.0")

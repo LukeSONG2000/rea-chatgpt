@@ -45,6 +45,7 @@ struct RemotePermissionPickerConfiguration {
     let isEnabled: Bool
     let select: (RemoteApprovalPickerSelection) -> Void
     let helpNotice: String
+    var displayName = "Codex"
 }
 
 // Ordinary Controls permission branch. Metrics come from1970c78/1965dd4.
@@ -72,11 +73,11 @@ struct RecoveredRemotePermissionControl: View {
         }
         .buttonStyle(.plain)
         .disabled(!configuration.isEnabled)
-        .accessibilityLabel(OfficialText.text(.remoteApprovalHeader))
+        .accessibilityLabel(OfficialText.text(.remoteApprovalHeader).replacingOccurrences(of: "Codex", with: configuration.displayName))
         .accessibilityValue(OfficialText.text(entrySelection.title))
         .accessibilityIdentifier("remote-permission-control")
         .sheet(isPresented: $isPresented) {
-            RecoveredRemotePermissionSheet(options: configuration.options,
+            RecoveredRemotePermissionSheet(options: configuration.options, displayName: configuration.displayName,
                 learnMore: { showsHelpNotice = true }) { selection in
                     //1c225a8 closes first, then delegates to the Thread owner.
                     isPresented = false
@@ -105,6 +106,7 @@ private struct RemotePermissionSheetCompatibility: ViewModifier {
 
 struct RecoveredRemotePermissionSheet: View {
     let options: RemoteThreadApprovalOptions
+    var displayName = "Codex"
     let learnMore: () -> Void
     let select: (RemoteApprovalPickerSelection) -> Void
     @State private var contentHeight: CGFloat?
@@ -120,7 +122,7 @@ struct RecoveredRemotePermissionSheet: View {
             VStack(spacing: 16) {
                 VStack(spacing: 0) {
                     // BalancedText's custom line-breaking remains a host boundary.
-                    Text(OfficialText.text(.remoteApprovalHeader))
+                    Text(OfficialText.text(.remoteApprovalHeader).replacingOccurrences(of: "Codex", with: displayName))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(Color(uiColor: officialVisualColor("ChatGPT/text/primary")))
                         .accessibilityAddTraits(.isHeader)

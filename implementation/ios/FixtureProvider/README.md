@@ -7,7 +7,7 @@ sharing on the host Documents directory, which also contains local pairing data.
 Prepare only on the dedicated booted simulator:
 
 ```sh
-python3 implementation/ios/Tools/install-fixture-provider.py --device 71BCC1D2-0ABD-4F11-BB67-37818435B176
+python3 implementation/ios/Tools/install-fixture-provider.py --device 75DC8CB1-B8AC-4185-8AE3-8F4954F1BA76
 ```
 
 The installer builds/signs the local fixture application, installs it and launches

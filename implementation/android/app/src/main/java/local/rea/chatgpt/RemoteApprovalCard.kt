@@ -32,6 +32,13 @@ internal fun RemoteApprovalCard(request: RemoteCommandApprovalRequest, submittin
                 request.command?.takeIf { it.isNotBlank() }?.let {
                     Text(it, Modifier.horizontalScroll(rememberScrollState()), fontFamily = FontFamily.Monospace)
                 }
+                request.networkContext?.let { context ->
+                    // Android293 dp60.d shows the supplied protocol/host;
+                    // this is preview text, never a navigation or network request.
+                    Text(listOfNotNull(context.protocol?.takeIf { it.isNotEmpty() }, context.host)
+                        .joinToString("://"), Modifier.testTag("remote-approval-network-context"),
+                        style = MaterialTheme.typography.bodySmall)
+                }
             }
             if (actions.accept) Button(onClick = { act(RemoteApprovalAction.Decide(RemoteApprovalDecision.Accept)) },
                 enabled = !submitting, modifier = Modifier.fillMaxWidth().testTag("remote-approval-once")) {
@@ -44,6 +51,16 @@ internal fun RemoteApprovalCard(request: RemoteCommandApprovalRequest, submittin
                         Text(stringResource(R.string.remote_approval_always))
                         Text(if (decision == RemoteApprovalDecision.AcceptForSession) stringResource(R.string.remote_approval_session)
                             else stringResource(R.string.remote_approval_prefix, request.proposedCommandPrefix.joinToString(" ")),
+                            style = MaterialTheme.typography.bodySmall)
+                    }
+                }
+            }
+            actions.networkAction?.let { amendment ->
+                OutlinedButton(onClick = { request.networkSubmission()?.let(submit) }, enabled = !submitting,
+                    modifier = Modifier.fillMaxWidth().testTag("remote-approval-network")) {
+                    Column {
+                        Text(stringResource(R.string.remote_approval_network_allow, amendment.host))
+                        Text(stringResource(R.string.remote_approval_network_remember),
                             style = MaterialTheme.typography.bodySmall)
                     }
                 }

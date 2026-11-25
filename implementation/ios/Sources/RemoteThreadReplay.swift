@@ -119,6 +119,7 @@ struct RemoteReplayActivityGroup: Identifiable, Equatable, Codable {
     // Independent projection of the supported SummaryStyle.latestItem branches.
     // When cleared, historySummary supplies the source-observed fallback.
     var latestActivity: RemoteReplayLatestActivity? = nil
+    var canExpand: Bool? = nil //Explicit new reader capability; legacy policy remains separate.
 
     static func valid(_ groups: [Self], commands: [RemoteReplayCommand],
                       searches: [RemoteReplaySearch], files: [RemoteReplayFileChange]) -> Bool {
@@ -179,6 +180,30 @@ struct RemoteReplayCommand: Identifiable, Equatable, Codable {
     var phase: Phase
     var output: [String]
     var exitCode: Int32? = nil
+    // Independent snapshot field forwarded to the recovered 293 durationMs
+    // consumer (Int64, not wall-clock elapsed time). Optional keeps old histories.
+    var durationMilliseconds: Int64? = nil
+
+    // Adapter input admission; the original formatter keeps its own subsecond
+    // fallback. An Int64 cannot represent NaN/infinity; Codable rejects those.
+    var isValid: Bool {
+        !id.isEmpty && startedAt.timeIntervalSince1970.isFinite &&
+            (durationMilliseconds.map { $0 >= 0 } ?? true)
+    }
+
+    var summaryInput: RemoteCommandInput {
+        let status: String
+        switch phase {
+        case .running: status = "inProgress"
+        case .completed: status = "completed"
+        case .failed: status = "failed"
+        case .cancelled: status = "cancelled" // Unknown original status; no live timer/footer.
+        }
+        return .init(rawStatus: status, isCachedPreview: false, renderedSummary: nil,
+            displayCommand: command, command: command,
+            exitCode: exitCode, durationMilliseconds: durationMilliseconds,
+            startedAt: startedAt, referenceDate: startedAt)
+    }
 }
 
 // Independent complete search snapshot. The source-backed label is selected by
@@ -248,6 +273,8 @@ struct RemoteReplayFileChange: Identifiable, Equatable, Codable {
     // Independent adapter payload. Full file content must be supplied separately
     // from a patch. Legacy snapshots have no preview resource.
     var previewText: String? = nil
+    //Separate provider resource identity; a patch ID is not a file ID.
+    var resourceID: String? = nil
     // iOS293 checks String length without trimming (v400).
     var canExpand: Bool { !diff.isEmpty }
     var isValid: Bool {
@@ -275,6 +302,13 @@ struct RemoteThreadReplayTurn: Identifiable, Codable {
     var phase: RemoteThreadReplayEvent.Phase = .accepted
     // Optional preserves history written before timestamps were supplied.
     var responseCompletedAt: Date? = nil
+    //Optional preserves old journals. Supplied nil/empty copy is distinct from
+    //legacy synthetic text-copy fallback; read seeds are not local producers.
+    struct PreparedFooter: Codable { let copyText: String?; let showsActions: Bool }
+    var preparedFooter: PreparedFooter? = nil
+    var isReadSeed: Bool? = nil
+    var sourceReadTurnID: String? = nil
+    var presentationID: String { sourceReadTurnID.map { "history-" + $0 } ?? id }
     var sequence = 0
     var isActive: Bool { phase == .accepted || phase == .streaming }
     var errorPresentation: RemoteTurnErrorPresentation {
@@ -293,8 +327,9 @@ struct RemoteThreadReplayTurn: Identifiable, Codable {
         case .failed: status = errorPresentation.status
         case .cancelled: status = .stopped
         }
-        return .init(status: status, showsFooterActions: showsFooterActions,
-            responseCopyText: text, responseCompletedAt: responseCompletedAt)
+        return .init(status: status, showsFooterActions: preparedFooter?.showsActions ?? showsFooterActions,
+            responseCopyText: preparedFooter != nil ? preparedFooter?.copyText : text,
+            responseCompletedAt: responseCompletedAt)
     }
 
 }
@@ -319,23 +354,43 @@ struct RemotePendingReplayPrompt: Identifiable, Codable {
 // Its draft overlay is intentionally transient; the durable original draft is
 // untouched, so termination cannot strand edited text in another task's draft.
 struct RemotePendingEditTransaction {
+    enum Target {
+        case replay(id: UUID, revision: Int)
+        case provider(CodexQueuedPrompt)
+    }
+
     let scope: RemoteComposerDraftScope
     let sessionID: UUID
-    let promptID: UUID
-    let revision: Int
+    let target: Target
     let originalDraft: RemoteComposerDraft
     var draft: RemoteComposerDraft
 
     init?(pending: RemotePendingReplayPrompt, scope: RemoteComposerDraftScope,
           sessionID: UUID, originalDraft: RemoteComposerDraft) {
         guard pending.phase == .pending, pending.mode == .queue else { return nil }
-        self.scope = scope; self.sessionID = sessionID
-        promptID = pending.id; revision = pending.revision
-        self.originalDraft = originalDraft
         var restored = RemoteComposerDraft()
         restored.update(pending.text)
         restored.append(pending.attachments)
-        draft = restored
+        self.init(scope: scope, sessionID: sessionID, target: .replay(id: pending.id, revision: pending.revision),
+                  originalDraft: originalDraft, draft: restored)
+    }
+
+    init?(queuedPrompt: CodexQueuedPrompt, scope: RemoteComposerDraftScope,
+          sessionID: UUID, originalDraft: RemoteComposerDraft) {
+        guard let editableText = queuedPrompt.editableText else { return nil }
+        var restored = RemoteComposerDraft()
+        restored.update(editableText)
+        self.init(scope: scope, sessionID: sessionID, target: .provider(queuedPrompt),
+                  originalDraft: originalDraft, draft: restored)
+    }
+
+    private init(scope: RemoteComposerDraftScope, sessionID: UUID, target: Target,
+                 originalDraft: RemoteComposerDraft, draft: RemoteComposerDraft) {
+        self.scope = scope
+        self.sessionID = sessionID
+        self.target = target
+        self.originalDraft = originalDraft
+        self.draft = draft
     }
 
     func validates(_ event: RemoteComposerSubmission, scope: RemoteComposerDraftScope,
@@ -412,9 +467,12 @@ struct RemoteCreatedThread: Codable {
     let destination: RemoteComposerDestination
     let title: String
     let createdAt: Date
+    var repositoryID: String? = nil
+    var workspaceKey: String? = nil
+    var controls: CodexTaskControlCapabilities? = nil
 
     var scope: RemoteComposerDraftScope {
-        .init(hostID: destination.hostID, threadID: "local-" + intentID.uuidString)
+        .init(hostID: destination.hostID, threadID: repositoryID ?? ("local-" + intentID.uuidString))
     }
 }
 
@@ -434,9 +492,72 @@ struct RemoteThreadReplayState: Codable {
         configurationByIntent?[intentID.uuidString] = value
     }
 
+    private(set) var ordinaryRequestReceipts: [CodexTaskRequestHandlingReceipt]? = nil
+    func hasResolvedOrdinary(_ identity: CodexTaskRequestIdentity) -> Bool {
+        ordinaryRequestReceipts?.contains { $0.identity == identity } == true
+    }
+    func hasResolvedOrdinary(_ reference: CodexPendingTaskReference) -> Bool {
+        ordinaryRequestReceipts?.contains { $0.identity.id == reference.id && $0.identity.revision == reference.revision } == true
+    }
+    mutating func acceptOrdinaryRequest(_ operation: CodexTaskRequestOperation, receipt: CodexTaskRequestReceipt) -> Bool {
+        let identity = operation.snapshot.identity
+        guard operation.action.validates(operation.snapshot), receipt.operationID == operation.id,
+              receipt.identity == identity, receipt.continuationTargetID == operation.snapshot.continuationTargetID,
+              identity.scope.instanceID == scope.hostID, case .thread(let threadID) = scope.destination,
+              identity.scope.threadID == threadID, !hasResolvedOrdinary(identity) else { return false }
+        if let target = receipt.continuationTargetID {
+            guard let current = turns.last, current.id == target, current.isActive else { return false }
+            //The independent provider supplies the visible continuation. No new
+            //prompt/turn is created and no feedback or answer text is persisted.
+            let text = current.text + (receipt.notice.isEmpty ? "" : "\n\n" + receipt.notice)
+            guard receive(.init(scope: scope, turnID: target, sequence: current.sequence + 1,
+                phase: receipt.completed ? .completed : .streaming, text: text,
+                attemptID: current.attemptID, completedAt: receipt.completed ? Date() : nil)) else { return false }
+        }
+        if ordinaryRequestReceipts == nil { ordinaryRequestReceipts = [] }
+        ordinaryRequestReceipts?.append(.init(identity: identity, operationID: operation.id))
+        return true
+    }
+    private var ordinaryReadRevision: Int? = nil
+    //One-time offline provider admission, not a real server reconciliation rule.
+    //Existing local operation history remains authoritative and is never replaced.
+    mutating func admitOrdinaryRead(_ snapshot: CodexMessageSnapshot) -> Bool {
+        guard snapshot.historyPolicy == .syntheticReplay, snapshot.valid, snapshot.controls != nil,
+              snapshot.turns.allSatisfy({ $0.status != .interrupted }),
+              snapshot.scope.instanceID == scope.hostID, case .thread(let threadID) = scope.destination, snapshot.scope.threadID == threadID else { return false }
+        if ordinaryReadRevision != nil { return true }
+        if !turns.isEmpty { ordinaryReadRevision = snapshot.revision; return true }
+        for source in snapshot.turns {
+            guard let controlID = source.controlID else { return false }
+            var turn = RemoteThreadReplayTurn(id: controlID.uuidString, intentID: controlID, prompt: source.prompt)
+            turn.text = source.bodyMarkdown
+            turn.preparedFooter = .init(copyText: source.responseCopyText, showsActions: source.showsFooterActions)
+            turn.isReadSeed = true
+            turn.sourceReadTurnID = source.id
+            turn.responseCompletedAt = source.completedAt
+            switch source.status {
+            case .running: turn.phase = .streaming
+            case .success: turn.phase = .completed
+            case .failure: turn.phase = .failed
+            case .stopped: turn.phase = .cancelled
+            case .interrupted: return false //No matching legacy replay phase; never relabel as failure.
+            case .failedPromptSubmission:
+                turn.phase = .failed; turn.failureKind = .submission
+            }
+            turn.failureMessage = source.errorMessage
+            turn.commands = source.commands.map { .init(id: $0.id, command: $0.command, startedAt: $0.startedAt,
+                phase: $0.exitCode == nil ? .running : ($0.exitCode == 0 ? .completed : .failed), output: $0.output, exitCode: $0.exitCode) }
+            turn.fileChanges = source.fileChanges.map { .init(id: $0.id, title: $0.title, diff: $0.diff,
+                counts: .init(insertions: $0.insertions, deletions: $0.deletions), resourceID: $0.resourceID) }
+            turns.append(turn); acceptedIntentIDs.insert(controlID)
+        }
+        ordinaryReadRevision = snapshot.revision
+        return isValidSnapshot
+    }
     private var acceptedIntentIDs: Set<UUID> = []
     private(set) var resolvedApprovals: Set<RemoteApprovalScope> = []
     private(set) var userInputReceipts: [RemoteUserInputReceipt]? = nil
+    private(set) var openAIFormReceipts: [RemoteOpenAIFormReceipt]? = nil
     var activeTurnID: String? { turns.last.flatMap { $0.isActive ? $0.id : nil } }
 
     mutating func recordAcceptedDraft(_ draft: RemoteComposerDraft) {
@@ -447,7 +568,8 @@ struct RemoteThreadReplayState: Codable {
                        session: UUID, draft: RemoteComposerDraft,
                        state: RemoteComposerSubmissionState,
                        destination: RemoteComposerDestination?, eligibleHosts: Set<String>,
-                       date: Date = Date()) -> Result<Self, RemoteComposerSubmissionFailure> {
+                       date: Date = Date(), repositoryID: String? = nil, providedTitle: String? = nil,
+                       controls: CodexTaskControlCapabilities? = nil, workspaceKey: String? = nil) -> Result<Self, RemoteComposerSubmissionFailure> {
         if let failure = RemoteComposerIntentValidation().submit(event,
             currentScope: scope, currentSession: session, currentDraft: draft,
             state: state, currentDestination: destination, acceptsLocalAttachments: true) {
@@ -469,7 +591,8 @@ struct RemoteThreadReplayState: Codable {
         let title = String(draft.text.trimmingCharacters(in: .whitespacesAndNewlines).prefix(64))
         let receipt = RemoteCreatedThread(intentID: event.intentID, draftScope: scope,
             acceptedDraft: .init(draft), destination: target,
-            title: title.isEmpty ? (draft.attachments.first?.name ?? "") : title, createdAt: date)
+            title: providedTitle ?? (title.isEmpty ? (draft.attachments.first?.name ?? "") : title), createdAt: date,
+            repositoryID: repositoryID, workspaceKey: workspaceKey, controls: controls)
         var result = Self(scope: receipt.scope)
         result.creation = receipt
         guard result.begin(intentID: event.intentID, prompt: draft.text, attachments: draft.attachments) != nil else {
@@ -482,7 +605,8 @@ struct RemoteThreadReplayState: Codable {
 
     var isValidSnapshot: Bool {
         if let creation {
-            guard creation.scope == scope, !creation.title.isEmpty,
+            guard creation.repositoryID.map({ !$0.isEmpty && $0.utf8.count <= 1024 }) ?? true,
+                  creation.scope == scope, !creation.title.isEmpty,
                   creation.createdAt.timeIntervalSince1970.isFinite,
                   turns.first?.intentID == creation.intentID,
                   turns.first?.prompt == creation.acceptedDraft.text,
@@ -511,7 +635,7 @@ struct RemoteThreadReplayState: Codable {
                   Set(turn.searches.map(\.id)).count == turn.searches.count,
                   Set(turn.fileChanges.map(\.id)).count == turn.fileChanges.count,
                   Set(turn.automaticReviews.map(\.id)).count == turn.automaticReviews.count,
-                  turn.commands.allSatisfy({ !$0.id.isEmpty }), turn.searches.allSatisfy({ !$0.id.isEmpty }),
+                  turn.commands.allSatisfy(\.isValid), turn.searches.allSatisfy({ !$0.id.isEmpty }),
                   turn.fileChanges.allSatisfy(\.isValid),
                   RemoteReplayActivityGroup.valid(turn.activityGroups ?? [], commands: turn.commands,
                       searches: turn.searches, files: turn.fileChanges),
@@ -523,12 +647,17 @@ struct RemoteThreadReplayState: Codable {
         } && resolvedApprovals.allSatisfy { $0.hostID == scope.hostID && $0.key.threadID == thread }
           && (userInputReceipts ?? []).allSatisfy { $0.scope.hostID == scope.hostID && $0.scope.threadID == thread }
           && Set((userInputReceipts ?? []).map(\.scope)).count == (userInputReceipts ?? []).count
+          && (openAIFormReceipts ?? []).allSatisfy {
+              $0.scope.hostID == scope.hostID && $0.scope.key.threadID == thread && resolvedApprovals.contains($0.scope)
+          }
+          && Set((openAIFormReceipts ?? []).map(\.operationID)).count == (openAIFormReceipts ?? []).count
+          && Set((openAIFormReceipts ?? []).map(\.scope)).count == (openAIFormReceipts ?? []).count
     }
 
     // Only the local synthetic producer ends with the process. A real service
     // adapter must query its authoritative state instead of applying this policy.
     mutating func recoverInterruptedReplay(message: String) {
-        guard let turn = turns.last, turn.isActive else { return }
+        guard let turn = turns.last, turn.isActive, turn.isReadSeed != true else { return }
         let commands = turn.commands.map { value in
             var copy = value
             if copy.phase == .running { copy.phase = .failed }
@@ -592,7 +721,7 @@ struct RemoteThreadReplayState: Codable {
                turns[index].fileChanges.isEmpty && (event.fileChanges ?? []).isEmpty &&
                turns[index].automaticReviews.isEmpty && (event.automaticReviews ?? []).isEmpty) else { return false }
         var commands = event.commands ?? turns[index].commands
-        guard commands.allSatisfy({ !$0.id.isEmpty }),
+        guard commands.allSatisfy(\.isValid),
               Set(commands.map(\.id)).count == commands.count else { return false }
         var searches = event.searches ?? turns[index].searches
         guard searches.allSatisfy({ !$0.id.isEmpty }),
@@ -636,6 +765,8 @@ struct RemoteThreadReplayState: Codable {
         turns[index].fileChanges = fileChanges
         turns[index].automaticReviews = reviews
         turns[index].sequence = event.sequence
+        turns[index].preparedFooter = nil
+        turns[index].isReadSeed = false
         turns[index].phase = event.phase
         turns[index].responseCompletedAt = event.completedAt
         turns[index].text = event.text
@@ -654,12 +785,12 @@ struct RemoteThreadReplayState: Codable {
     // revision, and never append when an edited target was consumed or changed.
     mutating func replacePending(_ edit: RemotePendingEditTransaction,
                                  with draft: RemoteComposerDraft) -> Bool {
-        guard edit.scope == scope, draft == edit.draft,
-              let index = pendingPrompts.firstIndex(where: { $0.id == edit.promptID }),
+        guard edit.scope == scope, draft == edit.draft, case .replay(let id, let revision) = edit.target,
+              let index = pendingPrompts.firstIndex(where: { $0.id == id }),
               pendingPrompts[index].phase == .pending,
               pendingPrompts[index].mode == .queue,
-              pendingPrompts[index].revision == edit.revision,
-              edit.revision < Int.max - 1 else { return false }
+              pendingPrompts[index].revision == revision,
+              revision < Int.max - 1 else { return false }
         pendingPrompts[index].text = draft.text
         pendingPrompts[index].attachments = draft.attachments
         pendingPrompts[index].revision += 1
@@ -727,6 +858,18 @@ struct RemoteThreadReplayState: Codable {
         switch event { case .submit: outcome = .answered; case .dismiss: outcome = .skipped }
         if userInputReceipts == nil { userInputReceipts = [] }
         userInputReceipts?.append(.init(scope: request.scope, outcome: outcome))
+        return true
+    }
+
+    mutating func recordOpenAIForm(_ operation: RemoteOpenAIFormOperation) -> Bool {
+        guard operation.isValid,
+              resolvedApprovals.contains(operation.request.scope),
+              !(openAIFormReceipts ?? []).contains(where: {
+                  $0.operationID == operation.id || $0.scope == operation.request.scope
+              }) else { return false }
+        if openAIFormReceipts == nil { openAIFormReceipts = [] }
+        openAIFormReceipts?.append(.init(operationID: operation.id,
+            scope: operation.request.scope, action: operation.action))
         return true
     }
 
@@ -883,8 +1026,9 @@ final class RemoteThreadMetadataStore: ObservableObject {
     @Published private(set) var state = RemoteThreadMetadataState()
     private var persistence: RemoteThreadMetadataPersistence?
     private var unreadableSnapshot = false
-    let isEnabled = HostLaunchRuntime.arguments.contains("--remote-interactive-replay")
-    init() {
+    let isEnabled: Bool
+    init(allowsSyntheticOperations: Bool = true) {
+        isEnabled = allowsSyntheticOperations && HostLaunchRuntime.arguments.contains("--remote-interactive-replay")
         guard isEnabled else { return }
         do {
             if let profile = try RemoteDraftPersistence.current() {
@@ -911,21 +1055,37 @@ final class RemoteThreadMetadataStore: ObservableObject {
 // replay. Network-backed adapters will feed the same scoped event projection.
 @MainActor
 final class RemoteThreadReplayStore: ObservableObject {
-    let isEnabled = HostLaunchRuntime.arguments.contains("--remote-interactive-replay")
+    let isEnabled: Bool
+    private let allowsSyntheticOperations: Bool
+    @Published private var ordinaryControls: [RemoteComposerDraftScope: CodexTaskControlCapabilities] = [:]
+    private func capabilities(_ scope: RemoteComposerDraftScope) -> CodexTaskControlCapabilities? {
+        ordinaryControls[scope] ?? states[scope]?.creation?.controls
+    }
+    func canOperate(_ scope: RemoteComposerDraftScope) -> Bool { allowsSyntheticOperations && (isEnabled || capabilities(scope) != nil) }
+    @discardableResult func prepareOrdinary(_ snapshot: CodexMessageSnapshot, expected: CodexMessageScope) -> Bool {
+        guard allowsSyntheticOperations, snapshot.historyPolicy == .syntheticReplay, snapshot.scope == expected, snapshot.controls != nil else { return false }
+        let scope = RemoteComposerDraftScope(hostID: expected.instanceID, threadID: expected.threadID)
+        var state = self.snapshot(scope)
+        guard state.admitOrdinaryRead(snapshot), commit(state) else { return false }
+        ordinaryControls[scope] = snapshot.controls
+        return true
+    }
     let agentThreadProvider: any RemoteAgentThreadProviding
     @Published private var states: [RemoteComposerDraftScope: RemoteThreadReplayState] = [:]
     @Published private(set) var storageFailed = false
     private var persistence: RemoteThreadHistoryPersistence?
     private var unreadableSnapshot = false
 
-    init(agentThreadProvider: (any RemoteAgentThreadProviding)? = nil) {
+    init(agentThreadProvider: (any RemoteAgentThreadProviding)? = nil, allowsSyntheticOperations: Bool = true) {
+        self.allowsSyntheticOperations = allowsSyntheticOperations
+        isEnabled = allowsSyntheticOperations && HostLaunchRuntime.arguments.contains("--remote-interactive-replay")
         self.agentThreadProvider = agentThreadProvider ?? SyntheticRemoteAgentThreadProvider(
             enabled: HostLaunchRuntime.arguments.contains("--remote-interactive-replay")
                 && HostLaunchRuntime.arguments.contains("--remote-task-controls-fixture"),
             delayed: HostLaunchRuntime.arguments.contains("--remote-agent-delayed-fixture"),
             failFirst: HostLaunchRuntime.arguments.contains("--remote-agent-fail-first-fixture"),
             unavailable: HostLaunchRuntime.arguments.contains("--remote-agent-unavailable-fixture"))
-        guard isEnabled else { return }
+        guard allowsSyntheticOperations else { return }
         do {
             guard let profile = try RemoteDraftPersistence.current() else { return }
             let adapter = RemoteThreadHistoryPersistence(directory: profile.directory
@@ -961,6 +1121,26 @@ final class RemoteThreadReplayStore: ObservableObject {
         states.values.filter { $0.creation != nil }.sorted {
             $0.creation!.createdAt > $1.creation!.createdAt
         }
+    }
+
+    func acceptCreation(_ operation: CodexCreationOperation, receipt: CodexCreationReceipt,
+                        drafts: RemoteComposerDraftStore) -> Result<RemoteThreadReplayState, RemoteComposerSubmissionFailure> {
+        guard receipt.matches(operation), operation.event.draft == drafts.snapshot(in: operation.event.scope) else { return .failure(.staleDraft) }
+        let result = RemoteThreadReplayState.create(operation.event, scope: operation.event.scope,
+            session: operation.event.sessionID, draft: operation.event.draft,
+            state: .init(canSubmit: true), destination: operation.event.destination,
+            eligibleHosts: [operation.target.destination.hostID], date: receipt.createdAt,
+            repositoryID: receipt.threadID, providedTitle: receipt.title, controls: receipt.controls, workspaceKey: operation.target.workspaceKey)
+        guard case .success(let created) = result else { return result }
+        if let existing = states[created.scope] {
+            guard existing.creation?.intentID == operation.event.intentID,
+                  existing.creation?.destination == operation.target.destination else { return .failure(.staleScope) }
+            drafts.accept(operation.event.draft, in: operation.event.scope); return .success(existing)
+        }
+        guard commit(created) else { return .failure(.localStorage) }
+        drafts.accept(operation.event.draft, in: operation.event.scope)
+        if allowsSyntheticOperations { scheduleResponse(scope: created.scope, turnID: operation.event.intentID.uuidString) }
+        return .success(created)
     }
 
     func reconcileCreationDraft(_ scope: RemoteComposerDraftScope, drafts: RemoteComposerDraftStore) {
@@ -1033,6 +1213,7 @@ final class RemoteThreadReplayStore: ObservableObject {
     func submit(_ event: RemoteComposerSubmission, scope: RemoteComposerDraftScope, session: UUID,
                 drafts: RemoteComposerDraftStore,
                 state: RemoteComposerSubmissionState) -> RemoteComposerSubmissionFailure? {
+        guard canOperate(scope), capabilities(scope)?.canSubmit != false else { return .disconnected }
         let current = snapshot(scope)
         let validation = RemoteComposerIntentValidation().submit(event,
             currentScope: scope, currentSession: session,
@@ -1059,7 +1240,7 @@ final class RemoteThreadReplayStore: ObservableObject {
     func submitPendingEdit(_ event: RemoteComposerSubmission, scope: RemoteComposerDraftScope,
                            session: UUID, drafts: RemoteComposerDraftStore,
                            state: RemoteComposerSubmissionState) -> RemoteComposerSubmissionFailure? {
-        guard isEnabled else { return .disconnected }
+        guard canOperate(scope) else { return .disconnected }
         guard let edit = drafts.pendingEdit(in: scope) else { return .staleDraft }
         if let failure = edit.validates(event, scope: scope, sessionID: session,
                                        currentDraft: drafts.snapshot(in: scope)) { return failure }
@@ -1078,7 +1259,7 @@ final class RemoteThreadReplayStore: ObservableObject {
 
     func changePending(_ action: RemotePendingReplayAction, scope: RemoteComposerDraftScope,
                        session: UUID) -> Bool {
-        guard action.belongs(to: scope, sessionID: session) else { return false }
+        guard canOperate(scope), action.belongs(to: scope, sessionID: session) else { return false }
         var state = snapshot(scope)
         guard state.change(action) else { return false }
         guard commit(state) else { return false }
@@ -1104,6 +1285,7 @@ final class RemoteThreadReplayStore: ObservableObject {
     func stop(_ event: RemoteComposerStopIntent, scope: RemoteComposerDraftScope,
               session: UUID, draft: RemoteComposerDraft,
               state: RemoteComposerSubmissionState) -> RemoteComposerStopFailure? {
+        guard canOperate(scope), capabilities(scope)?.canStop != false else { return .disconnected }
         let current = snapshot(scope)
         let validation = RemoteComposerIntentValidation().stop(event,
             currentScope: scope, currentSession: session, currentTurnID: current.activeTurnID,
@@ -1113,6 +1295,15 @@ final class RemoteThreadReplayStore: ObservableObject {
         guard receive(.init(scope: scope, turnID: event.turnID, sequence: turn.sequence + 1,
             phase: .cancelled, text: turn.text, attemptID: turn.attemptID)) else { return .localStorage }
         return nil
+    }
+
+    func acceptOrdinaryRequest(_ operation: CodexTaskRequestOperation, receipt: CodexTaskRequestReceipt,
+                               scope: RemoteComposerDraftScope) -> CodexTaskRequestFailure? {
+        guard canOperate(scope), receipt.identity.scope.instanceID == scope.hostID,
+              case .thread(let threadID) = scope.destination, receipt.identity.scope.threadID == threadID else { return .stale }
+        var next = snapshot(scope)
+        guard next.acceptOrdinaryRequest(operation, receipt: receipt) else { return .stale }
+        return commit(next) ? nil : .localStorage
     }
 
     func answer(_ event: RemoteUserInputEvent, current: RemoteUserInputRequest?,
@@ -1150,14 +1341,33 @@ final class RemoteThreadReplayStore: ObservableObject {
             prompt = text.withServiceValue { value in
                 visualText("合成审批补充输入：", "Synthetic approval feedback: ") + value
             }
+        case .openAIForm(let operation):
+            guard state.recordOpenAIForm(operation) else { return .staleRequest }
+            switch operation.action {
+            case .continueEmptyForm:
+                prompt = visualText("合成表单已提交空值对象，继续前端回放。", "Synthetic form submitted an empty values object. Continue frontend replay.")
+            case .continueForm:
+                // Field answers stay in the request-scoped operation only.
+                prompt = visualText("合成表单已提交，继续前端回放。", "Synthetic form submitted. Continue frontend replay.")
+            case .dismiss:
+                prompt = visualText("合成表单已关闭，任务未取消。", "Synthetic form dismissed; the task was not cancelled.")
+            }
         }
         guard let turnID = state.begin(intentID: UUID(), prompt: prompt) else { return .staleRequest }
+        let isFormDismiss: Bool
+        if case .openAIForm(let operation) = event { isFormDismiss = operation.action == .dismiss }
+        else { isFormDismiss = false }
         if case .deny = event {
             guard state.receive(.init(scope: scope, turnID: turnID, sequence: 1, phase: .cancelled, text: "")) else { return .staleRequest }
+        } else if isFormDismiss {
+            // Independent local receipt display, not cancellation of the task
+            // or an ordinary deny/permission decision.
+            guard state.receive(.init(scope: scope, turnID: turnID, sequence: 1,
+                phase: .completed, text: prompt)) else { return .staleRequest }
         }
         // Resolution and its visible response commit together before acknowledgement.
         guard commit(state) else { return .localStorage }
-        if case .deny = event {} else { scheduleResponse(scope: scope, turnID: turnID) }
+        if case .deny = event {} else if !isFormDismiss { scheduleResponse(scope: scope, turnID: turnID) }
         return nil
     }
 
@@ -1176,6 +1386,7 @@ final class RemoteThreadReplayStore: ObservableObject {
 
     @discardableResult
     func retry(_ intent: RemoteReplayRetryIntent) -> Bool {
+        guard canOperate(intent.scope), capabilities(intent.scope)?.canRetry != false else { return false }
         var state = snapshot(intent.scope)
         guard state.retry(intent) else { return false }
         guard commit(state) else { return false }
@@ -1186,7 +1397,8 @@ final class RemoteThreadReplayStore: ObservableObject {
     private func scheduleResponse(scope: RemoteComposerDraftScope, turnID: String) {
         guard let turn = snapshot(scope).turns.last, turn.id == turnID else { return }
         let attemptID = turn.attemptID
-        let submissionFixture = HostLaunchRuntime.arguments.contains("--remote-submission-failure-fixture")
+        let ordinaryFailFirst = scope.hostID.map { HostLaunchRuntime.arguments.contains("--codex-control-submission-failure-instance=" + $0) } ?? false
+        let submissionFixture = ordinaryFailFirst || HostLaunchRuntime.arguments.contains("--remote-submission-failure-fixture")
         let retryFailure = HostLaunchRuntime.arguments.contains("--remote-retry-failure-fixture")
         if submissionFixture && (attemptID == nil || retryFailure) {
             Task { [weak self] in
@@ -1238,7 +1450,9 @@ final class RemoteThreadReplayStore: ObservableObject {
         let historyGroupFixture = latestGroupFixture || HostLaunchRuntime.arguments.contains("--remote-history-group-fixture")
         let groupFixture = historyGroupFixture || HostLaunchRuntime.arguments.contains("--remote-thinking-group-fixture")
         let unknownReviewFixture = HostLaunchRuntime.arguments.contains("--remote-review-unknown-fixture")
-        let toolFixture = groupFixture || reviewFixture || HostLaunchRuntime.arguments.contains("--remote-command-message-fixture")
+        let newlineOutputFixture = HostLaunchRuntime.arguments.contains("--remote-output-newlines-fixture")
+        let colorOutputFixture = HostLaunchRuntime.arguments.contains("--remote-output-colors-fixture")
+        let toolFixture = newlineOutputFixture || colorOutputFixture || groupFixture || reviewFixture || HostLaunchRuntime.arguments.contains("--remote-command-message-fixture")
         let fileFixture = groupFixture || HostLaunchRuntime.arguments.contains("--remote-file-message-fixture")
         let searchFixture = groupFixture || HostLaunchRuntime.arguments.contains("--remote-search-message-fixture")
         let thinkingFixture = HostLaunchRuntime.arguments.contains("--remote-thinking-message-fixture")
@@ -1256,8 +1470,20 @@ final class RemoteThreadReplayStore: ObservableObject {
                 let command = RemoteReplayCommand(id: "inspect", command: "inspect-ui --synthetic",
                     startedAt: startedAt,
                     phase: terminal ? (fail ? .failed : .completed) : .running,
-                    output: (1...(offset + 1)).map { "synthetic output \($0)" },
-                    exitCode: terminal ? (fail ? 1 : 0) : nil)
+                    output: newlineOutputFixture ? ["\n前导保留", "内部空行", "", "尾部空格 \t\r\n", "\n", ""]
+                        : colorOutputFixture ? [
+                            "\u{001B}[31mBASIC_RED\u{001B}[39m RESET_DEFAULT",
+                            "\u{001B}[38;5;33mINDEXED_BLUE\u{001B}[0m RESET_DEFAULT",
+                            "\u{001B}[38;2;-20;96;300mRGB_CLAMP_0_96_255\u{001B}[0m",
+                            "\u{001B}[92mCROSS_LINE_GREEN",
+                            "STILL_GREEN\u{001B}[0m RESET_DEFAULT",
+                            "\u{001B}[31m\u{001B}[48;5;32mRED_WITH_BACKGROUND_SKIPPED\u{001B}[0m",
+                            "CSI\u{001B}[2K_ERASE_CONSUMED"
+                        ]
+                        : (1...(offset + 1)).map { "synthetic output \($0)" },
+                    exitCode: terminal ? (fail ? 1 : 0) : nil,
+                    // Deterministic fixture input, never measured execution.
+                    durationMilliseconds: terminal ? 9_000 : nil)
                 var searches: [RemoteReplaySearch]? = searchFixture ? [.init(id: "search", phase: terminal ? (fail ? .failed : .completed) : .running,
                         details: visualText("合成搜索记录", "Synthetic search record") + " \(offset + 1)",
                         queries: Array([
@@ -1281,7 +1507,14 @@ final class RemoteThreadReplayStore: ObservableObject {
                 }
                 self?.receive(.init(scope: scope, turnID: turnID,
                     sequence: offset + (thinkingFixture ? 2 : 1), phase: item.0, text: item.1,
-                    commands: toolFixture ? [command] : nil,
+                    commands: toolFixture ? [command] + (newlineOutputFixture ? [RemoteReplayCommand(
+                        id: "empty-newlines", command: "inspect-empty --synthetic", startedAt: startedAt,
+                        phase: terminal ? .completed : .running, output: ["\r\n", "\u{2028}", "\n"],
+                        exitCode: terminal ? 0 : nil)] : []) + (colorOutputFixture ? [RemoteReplayCommand(
+                            id: "malformed-colors", command: "inspect-malformed --synthetic", startedAt: startedAt,
+                            phase: terminal ? .completed : .running,
+                            output: ["LITERAL_FALLBACK \u{001B}[31munchanged \u{001B}[38;2;12m"],
+                            exitCode: terminal ? 0 : nil)] : []) : nil,
                     searches: searches,
                     fileChanges: fileFixture ? [.init(id: "inspect", title: "preview.txt",
                         diff: "-previous\n+revision \(offset + 1)" + (HostLaunchRuntime.arguments.contains("--remote-long-diff-fixture")

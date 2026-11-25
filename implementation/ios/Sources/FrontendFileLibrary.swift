@@ -32,6 +32,50 @@ struct FrontendLibraryResource {
     let nodeID: String
     let name: String
     let data: Data
+    var markdownContents: String? = nil
+    #if canImport(UIKit)
+    var htmlSnapshot: FrontendHTMLSnapshot? = nil
+    #endif
+}
+
+// Independent preview lifetime, scoped to the directory that owns the tap.
+// The293 FileLibrary root owns DirectoryRoute and filePreviewFactory, not a
+// recovered private request schema or cancellation algorithm.
+struct FrontendLibraryPreviewRequest: Equatable {
+    let id: UUID
+    let accountID: String
+    let directoryID: String
+    let nodeID: String
+}
+
+struct FrontendLibraryPreviewState {
+    private(set) var request: FrontendLibraryPreviewRequest?
+
+    mutating func begin(accountID: String, directoryID: String, nodeID: String) -> FrontendLibraryPreviewRequest {
+        let next = FrontendLibraryPreviewRequest(id: UUID(), accountID: accountID,
+            directoryID: directoryID, nodeID: nodeID)
+        request = next
+        return next
+    }
+
+    func accepts(_ candidate: FrontendLibraryPreviewRequest,
+                 accountID: String, directoryID: String) -> Bool {
+        request == candidate && candidate.accountID == accountID && candidate.directoryID == directoryID
+    }
+
+    func matches(_ resource: FrontendLibraryResource, for candidate: FrontendLibraryPreviewRequest) -> Bool {
+        request == candidate && resource.requestID == candidate.id &&
+            resource.accountID == candidate.accountID && resource.nodeID == candidate.nodeID
+    }
+
+    @discardableResult
+    mutating func finish(_ candidate: FrontendLibraryPreviewRequest) -> Bool {
+        guard request == candidate else { return false }
+        request = nil
+        return true
+    }
+
+    mutating func cancel() { request = nil }
 }
 
 enum FrontendLibraryFailure: Error, Equatable { case unavailable, loadFailed, invalidResult, unsupported }
@@ -118,9 +162,12 @@ final class SyntheticLibraryService: FrontendLibraryServing {
     private var failedDirectories: Set<String> = []
     private let directoryName: String
     private let emptyName: String
-    init(accountID: String, directoryName: String, emptyName: String, failsOnce: Bool = false) {
+    private let resourceDelayNanoseconds: UInt64
+    init(accountID: String, directoryName: String, emptyName: String, failsOnce: Bool = false,
+         resourceDelayNanoseconds: UInt64 = 120_000_000) {
         self.accountID = accountID; self.directoryName = directoryName; self.emptyName = emptyName
         self.failsOnce = failsOnce
+        self.resourceDelayNanoseconds = resourceDelayNanoseconds
     }
     func load(_ request: FrontendLibraryRequest) async throws -> FrontendLibraryPage {
         guard request.accountID == accountID else { throw FrontendLibraryFailure.unavailable }
@@ -134,7 +181,20 @@ final class SyntheticLibraryService: FrontendLibraryServing {
             .init(id: "empty", name: emptyName, kind: .directory),
             .init(id: "readme", name: "README.txt", kind: .file),
             .init(id: "sample", name: "sample.swift", kind: .file)]
-        case "documents": all = [.init(id: "notes", name: "notes.txt", kind: .file)]
+        case "documents":
+            let documents: [FrontendLibraryNode] = [
+                .init(id: "notes", name: "notes.txt", kind: .file),
+                .init(id: "guide", name: "guide.md", kind: .file)]
+            #if canImport(UIKit)
+            if !SyntheticOfficePreviewFile.samples.isEmpty {
+                all = SyntheticOfficePreviewFile.samples.map { .init(id: $0.id, name: $0.name, kind: .file) }
+            } else {
+                all = HostLaunchRuntime.arguments.contains("--codex-html-snapshot-fixture")
+                    ? documents + [.init(id: "html-snapshot", name: "snapshot.html", kind: .file)] : documents
+            }
+            #else
+            all = documents
+            #endif
         case "empty": all = []
         default: throw FrontendLibraryFailure.unavailable
         }
@@ -149,16 +209,57 @@ final class SyntheticLibraryService: FrontendLibraryServing {
     }
     func resource(accountID: String, nodeID: String, requestID: UUID) async throws -> FrontendLibraryResource {
         guard self.accountID == accountID else { throw FrontendLibraryFailure.unavailable }
-        try await Task.sleep(nanoseconds: 120_000_000)
+        try await Task.sleep(nanoseconds: resourceDelayNanoseconds)
         try Task.checkCancellation()
+        #if canImport(UIKit)
+        if let office = SyntheticOfficePreviewFile.samples.first(where: { $0.id == nodeID }) {
+            return .init(requestID: requestID, accountID: accountID, nodeID: nodeID, name: office.name, data: office.data)
+        }
+        #endif
         let value: (String, String)
         switch nodeID {
         case "readme": value = ("README.txt", "Synthetic library file. No online account or personal content is used.\n")
         case "sample": value = ("sample.swift", "let source = \"synthetic library fixture\"\n")
         case "notes": value = ("notes.txt", "Synthetic nested directory preview.\n")
+        case "guide":
+            var body = "# Library source preview\n\n"
+            #if canImport(UIKit)
+            if HostLaunchRuntime.arguments.contains("--library-system-browser-fixture") {
+                body += "[Browser test link](https://example.com/)\n\n"
+            }
+            #endif
+            body += (1...48).map { "Library section \($0)\n" }.joined(separator: "\n")
+            return .init(requestID: requestID, accountID: accountID, nodeID: nodeID,
+                name: "guide.md", data: Data(body.utf8), markdownContents: body)
+        #if canImport(UIKit)
+        case "html-snapshot" where HostLaunchRuntime.arguments.contains("--codex-html-snapshot-fixture"):
+            let (snapshot, data) = FrontendHTMLSnapshot.fixture(sourceRoot: "/library/site", sourcePath: "/library/site/index.html")
+            return .init(requestID: requestID, accountID: accountID, nodeID: nodeID,
+                name: "snapshot.html", data: data, htmlSnapshot: snapshot)
+        #endif
         default: throw FrontendLibraryFailure.unavailable
         }
         return .init(requestID: requestID, accountID: accountID, nodeID: nodeID,
             name: value.0, data: Data(value.1.utf8))
     }
 }
+
+#if canImport(UIKit)
+// Test-runner samples stay out of the application bundle and ordinary directory.
+struct SyntheticOfficePreviewFile {
+    let id: String
+    let name: String
+    let data: Data
+
+    static let samples: [Self] = {
+        let arguments = HostLaunchRuntime.arguments
+        guard arguments.contains("--offline-fixture"), arguments.contains("--office-preview-fixture") else { return [] }
+        let environment = ProcessInfo.processInfo.environment
+        return ["docx", "xlsx", "pptx"].compactMap { ext in
+            guard let value = environment["REA_OFFICE_" + ext.uppercased()], value.utf8.count <= 128 * 1024,
+                  let data = Data(base64Encoded: value), !data.isEmpty else { return nil }
+            return .init(id: "office-" + ext, name: "sample." + ext, data: data)
+        }
+    }()
+}
+#endif

@@ -1,6 +1,9 @@
 package local.rea.chatgpt
 
 import android.content.SharedPreferences
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlinx.coroutines.delay
@@ -11,8 +14,10 @@ data class RemoteTaskKey(val hostID: String, val threadID: String) {
     val storageKey: String get() = JSONArray(listOf(hostID, threadID)).toString()
 }
 enum class RemoteConnectionStatus { Connected, Connecting, Reconnecting, Determining, Unavailable, DisconnectedByNotification }
+enum class RemoteTaskStatusControl { Goal, Usage, Agents }
 data class RemoteListHost(val id: String, val name: String, val cloud: Boolean = false,
-    val connection: RemoteConnectionStatus? = null)
+    val connection: RemoteConnectionStatus? = null,
+    val taskStatusControls: Set<RemoteTaskStatusControl> = emptySet())
 data class RemoteListProject(val hostID: String, val id: String, val name: String) {
     val key: String get() = JSONArray(listOf(hostID, id)).toString()
 }
@@ -68,8 +73,10 @@ class SyntheticRemoteListProvider(private val chinese: Boolean, private val fail
         if (failFirst && attempts++ == 0) error("synthetic-list-failure")
         fun text(zh: String, en: String) = if (chinese) zh else en
         val hosts = listOf(RemoteListHost("cloud", text("云端", "Cloud"), true),
-            RemoteListHost("fixture-a", "Studio Mac", connection = RemoteConnectionStatus.Connected),
-            RemoteListHost("fixture-b", "Studio PC", connection = RemoteConnectionStatus.Connected))
+            RemoteListHost("fixture-a", "Studio Mac", connection = RemoteConnectionStatus.Connected,
+                taskStatusControls = RemoteTaskStatusControl.entries.toSet()),
+            RemoteListHost("fixture-b", "Studio PC", connection = RemoteConnectionStatus.Connected,
+                taskStatusControls = RemoteTaskStatusControl.entries.toSet()))
         val projects = listOf(RemoteListProject("fixture-a", "demo", "Demo"),
             RemoteListProject("fixture-a", "mobile", "Mobile"), RemoteListProject("fixture-b", "demo", "Demo"))
         val tasks = mutableListOf(
@@ -82,6 +89,13 @@ class SyntheticRemoteListProvider(private val chinese: Boolean, private val fail
         )
         tasks += RemoteListTask(RemoteTaskKey("fixture-a", "tool-input"), text("填写任务补充信息", "Provide task details"), "demo", RemoteTaskStatus.Approval)
         tasks += RemoteListTask(RemoteTaskKey("fixture-a", "async-input"), text("回答后续问题", "Answer follow-up questions"), "demo", RemoteTaskStatus.Approval)
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "async-resume"), text("继续回答后续问题", "Resume follow-up questions"), "demo", RemoteTaskStatus.Approval)
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "reasoning"), text("检查摘要与正文投影", "Inspect summary and content projections"), "demo", RemoteTaskStatus.Completed)
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "mcp-confirmation"), text("检查 MCP 确认", "Inspect MCP confirmation"), "demo", RemoteTaskStatus.Approval)
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "boolean-form"), text("检查布尔字段表单", "Inspect Boolean fields form"), "demo", RemoteTaskStatus.Approval)
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "mixed-form"), text("检查混合字段表单", "Inspect Mixed fields form"), "demo", RemoteTaskStatus.Approval)
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "image-form"), text("检查图像选择表单", "Inspect image choice form"), "demo", RemoteTaskStatus.Approval)
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "network-approval"), text("检查网络策略审批", "Inspect network policy approval"), "demo", RemoteTaskStatus.Approval)
         repeat(12) { index -> tasks += RemoteListTask(RemoteTaskKey("fixture-a", "recent-$index"),
             text("交互记录 ${index + 1}", "Interaction ${index + 1}"), null, RemoteTaskStatus.Idle) }
         val now = java.time.Instant.now().epochSecond
@@ -95,16 +109,24 @@ class SyntheticRemoteListProvider(private val chinese: Boolean, private val fail
 // One atomically committed preference snapshot keeps task drafts and list state
 // together. The account/profile is chosen by the composition root.
 class RemoteListStore(private val preferences: SharedPreferences, val resourceProfile: String = "legacy", val resourceAccount: String = "offline-shell-account") {
-    internal fun projectedTask(task: RemoteListTask): RemoteListTask = task.copy(
+    private var overlayRevision by mutableStateOf(0L)
+    internal fun projectedTask(task: RemoteListTask): RemoteListTask {
+        overlayRevision // Observe accepted overlay writes in the list composition.
+        return task.copy(
         pinned = preferences.getBoolean("thread-pin:" + task.key.storageKey, task.pinned),
         title = preferences.getString("thread-title:" + task.key.storageKey, null) ?: task.title,
         archived = preferences.getBoolean("thread-archived:" + task.key.storageKey, task.archived))
+    }
+    private fun acceptedOverlay(commit: Boolean): Boolean {
+        if (commit) overlayRevision++
+        return commit
+    }
     internal fun saveTitle(key: RemoteTaskKey, title: String): Boolean =
-        title.isNotBlank() && title.length <= 128 && preferences.edit().putString("thread-title:" + key.storageKey, title).commit()
+        title.isNotBlank() && title.length <= 128 && acceptedOverlay(preferences.edit().putString("thread-title:" + key.storageKey, title).commit())
     internal fun saveArchived(key: RemoteTaskKey): Boolean =
-        preferences.edit().putBoolean("thread-archived:" + key.storageKey, true).commit()
+        acceptedOverlay(preferences.edit().putBoolean("thread-archived:" + key.storageKey, true).commit())
     internal fun savePinned(key: RemoteTaskKey, pinned: Boolean): Boolean =
-        preferences.edit().putBoolean("thread-pin:" + key.storageKey, pinned).commit()
+        acceptedOverlay(preferences.edit().putBoolean("thread-pin:" + key.storageKey, pinned).commit())
     private fun approvalReceiptKey(identity: RemoteApprovalIdentity): String = JSONArray(listOf(
         identity.task.hostID, identity.task.threadID, identity.connection, identity.turn, identity.request) +
         (if (identity.revision == 0) emptyList() else listOf(identity.revision))).toString()
@@ -116,6 +138,14 @@ class RemoteListStore(private val preferences: SharedPreferences, val resourcePr
         preferences.getBoolean("input-receipt:" + approvalReceiptKey(identity), false)
     internal fun saveInputReceipt(identity: RemoteApprovalIdentity): Boolean =
         preferences.edit().putBoolean("input-receipt:" + approvalReceiptKey(identity), true).commit()
+    // Account/profile persist across session replacement; the in-flight receipt
+    // additionally checks session/revision and the exact submission in the owner.
+    private fun mcpReceiptKey(identity: RemoteApprovalIdentity): String =
+        "mcp-receipt:" + JSONArray(listOf(resourceAccount, resourceProfile, approvalReceiptKey(identity))).toString()
+    internal fun hasMcpReceipt(identity: RemoteApprovalIdentity): Boolean =
+        preferences.getBoolean(mcpReceiptKey(identity), false)
+    internal fun saveMcpReceipt(identity: RemoteApprovalIdentity): Boolean =
+        preferences.edit().putBoolean(mcpReceiptKey(identity), true).commit()
     private var value = JSONObject(preferences.getString("snapshot", "{}") ?: "{}")
     val sort: RemoteListSort get() = runCatching {
         RemoteListSort.valueOf(value.optString("sort", "ByProject"))
@@ -131,6 +161,41 @@ class RemoteListStore(private val preferences: SharedPreferences, val resourcePr
         (0 until array.length()).map { array.getString(it) }.toSet()
     }.orEmpty()
     fun draft(key: RemoteTaskKey): String = value.optJSONObject("drafts")?.optString(key.storageKey).orEmpty()
+    private fun creationScope(scope: RemoteListLoadScope): String =
+        JSONArray(listOf(scope.account, scope.profile, scope.session, scope.revision)).toString()
+
+    internal fun pendingCreation(scope: RemoteListLoadScope): PendingRemoteCreation? {
+        val item = value.optJSONObject("homeCreation") ?: return null
+        if (item.optString("scope") != creationScope(scope)) return null
+        val target = RemoteCreationTarget(item.optString("host"), item.optString("project").takeIf { it.isNotEmpty() },
+            item.optString("label"))
+        val id = item.optString("id")
+        val prompt = item.optString("prompt")
+        if (!target.valid || id.isBlank() || id.length > 128 || prompt.isBlank() || prompt.length > 16384) return null
+        val source = item.optString("sourceThread").takeIf { it.isNotEmpty() }
+            ?.let { RemoteTaskKey(target.hostID, it) }
+        return PendingRemoteCreation(RemoteCreationRequest(scope, target, id), prompt, source)
+    }
+
+    internal fun savePendingCreation(pending: PendingRemoteCreation): Boolean = change { document ->
+        val (request, prompt, source) = pending
+        document.put("homeCreation", JSONObject().put("scope", creationScope(request.scope))
+            .put("id", request.id).put("host", request.target.hostID).put("project", request.target.projectID.orEmpty())
+            .put("label", request.target.label).put("prompt", prompt)
+            .put("sourceThread", source?.threadID.orEmpty()))
+    }
+
+    internal fun clearPendingCreation(request: RemoteCreationRequest, task: RemoteTaskKey? = null): Boolean {
+        val pending = pendingCreation(request.scope)?.takeIf { it.request == request } ?: return false
+        return change { document ->
+            if (task != null) {
+                val drafts = document.optJSONObject("drafts") ?: JSONObject().also { document.put("drafts", it) }
+                if (draft(task).isEmpty()) drafts.put(task.storageKey, pending.prompt)
+            }
+            document.remove("homeCreation")
+        }
+    }
+
     private fun change(update: (JSONObject) -> Unit): Boolean {
         val next = JSONObject(value.toString())
         update(next)

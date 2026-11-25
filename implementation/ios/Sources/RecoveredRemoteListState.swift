@@ -5,6 +5,7 @@ import SwiftUI
 @MainActor
 final class RemoteListCheckpointOwner: ObservableObject {
     @Published private(set) var storageFailed = false
+    private let persistsToDisk: Bool
     private var persistence: RemoteListCheckpointStore?
     private var value = RemoteListCheckpointValue()
     private var writeTask: Task<Void, Never>?
@@ -21,7 +22,9 @@ final class RemoteListCheckpointOwner: ObservableObject {
     private(set) var hasSavedPreferences = false
     var preferences: RemoteListSavedPreferences { value.preferences }
 
-    init() {
+    init(persistsToDisk: Bool = true) {
+        self.persistsToDisk = persistsToDisk
+        guard persistsToDisk else { return }
         do {
             let profile = try RemoteDraftPersistence.current()
             let url = profile?.directory.appendingPathComponent("list-checkpoint-v1.json")
@@ -43,6 +46,11 @@ final class RemoteListCheckpointOwner: ObservableObject {
         allowsReading = !searching
         currentQuery = query; recordingQuery = nil; generation = UUID()
         return (generation, restore)
+    }
+    func waitForData(_ query: RemoteListReadingKey) {
+        //Do not mark this query restored or record a loading viewport as the
+        //user's reading position. Its actual tasks have not arrived yet.
+        generation = UUID(); currentQuery = query; recordingQuery = nil; allowsReading = false
     }
     func isCurrent(_ token: UUID, query: RemoteListReadingKey) -> Bool {
         generation == token && currentQuery == query
@@ -107,6 +115,9 @@ final class RemoteListCheckpointOwner: ObservableObject {
     func flush() {
         writeTask?.cancel(); writeTask = nil
         guard dirty else { return }
+        //Explicit in-memory owners keep their preferences/anchors in memory;
+        //an intentionally absent disk journal is not a storage failure.
+        guard persistsToDisk else { dirty = false; return }
         guard var store = persistence else { storageFailed = true; return }
         do {
             try store.save(value); persistence = store; dirty = false; storageFailed = false
@@ -144,11 +155,13 @@ struct RecoveredRemoteListReading: ViewModifier {
     @ObservedObject var owner: RemoteListCheckpointOwner
     let query: RemoteListReadingKey
     let searching: Bool
-    private struct Request: Hashable { let query: RemoteListReadingKey; let searching: Bool }
+    var restorationReady = true
+    private struct Request: Hashable { let query: RemoteListReadingKey; let searching: Bool; let ready: Bool }
     func body(content: Content) -> some View {
         ScrollViewReader { proxy in
             content
-                .task(id: Request(query: query, searching: searching)) {
+                .task(id: Request(query: query, searching: searching, ready: restorationReady)) {
+                    guard restorationReady else { owner.waitForData(query); return }
                     let request = owner.beginRestoration(query, searching: searching)
                     //A detail Back in this same List lifetime already retains
                     //its exact native offset. Never replace it with a coarse

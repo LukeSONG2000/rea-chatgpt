@@ -22,14 +22,22 @@ import androidx.compose.ui.unit.dp
 // 48dp field/close and packaged icons. Rounded24/color are explicit host tokens;
 // original z671 dynamic surface/IME animations and exact optics are not recovered.
 @Composable internal fun ChatSearchField(value:TextFieldValue,change:(TextFieldValue)->Unit,requester:FocusRequester,cancel:()->Unit){
+    RecoveredBottomSearchField(value,change,requester,remoteControlText("搜索会话","Search conversations"),
+        "chat-search-query","chat-search-cancel",cancel)
+}
+
+// Both Settings a181.c and conversation search use z671. Keep one stateless
+// carrier; page owners supply text, focus and action identity separately.
+@Composable internal fun RecoveredBottomSearchField(value:TextFieldValue,change:(TextFieldValue)->Unit,
+    requester:FocusRequester,placeholder:String,queryTag:String,cancelTag:String,cancel:()->Unit){
     Row(Modifier.fillMaxWidth().padding(start=16.dp,end=16.dp,top=8.dp,bottom=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)){
         Surface(shape=RoundedCornerShape(24.dp),color=MaterialTheme.colorScheme.surfaceVariant,modifier=Modifier.weight(1f).height(48.dp)){
             Row(Modifier.padding(horizontal=16.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)){
                 Icon(painterResource(R.drawable.ds_magnifying_glass_lg_regular_24),null,Modifier.size(24.dp))
-                BasicTextField(value,onValueChange=change,singleLine=true,textStyle=MaterialTheme.typography.bodyLarge.copy(color=MaterialTheme.colorScheme.onSurface),modifier=Modifier.weight(1f).focusRequester(requester).testTag("chat-search-query"),decorationBox={input->Box{if(value.text.isEmpty())Text(remoteControlText("搜索会话","Search conversations"),color=MaterialTheme.colorScheme.onSurfaceVariant);input()}})
+                BasicTextField(value,onValueChange=change,singleLine=true,textStyle=MaterialTheme.typography.bodyLarge.copy(color=MaterialTheme.colorScheme.onSurface),modifier=Modifier.weight(1f).focusRequester(requester).testTag(queryTag),decorationBox={input->Box{if(value.text.isEmpty())Text(placeholder,color=MaterialTheme.colorScheme.onSurfaceVariant);input()}})
             }
         }
-        Surface(shape=RoundedCornerShape(24.dp),color=MaterialTheme.colorScheme.surfaceVariant){IconButton(onClick=cancel,modifier=Modifier.size(48.dp).testTag("chat-search-cancel")){Icon(painterResource(R.drawable.ds_xmark_md_regular_24),remoteControlText("取消搜索","Cancel search"),Modifier.size(24.dp))}}
+        Surface(shape=RoundedCornerShape(24.dp),color=MaterialTheme.colorScheme.surfaceVariant){IconButton(onClick=cancel,modifier=Modifier.size(48.dp).testTag(cancelTag)){Icon(painterResource(R.drawable.ds_xmark_md_regular_24),remoteControlText("取消搜索","Cancel search"),Modifier.size(24.dp))}}
     }
 }
 @Composable internal fun ChatSearchPage(owner:ChatSearchOwner,chat:ChatConversationOwner,select:(ChatConversation)->Unit,cancel:()->Unit){

@@ -94,6 +94,11 @@ struct RemoteHomeComposerState {
         mode = searching ? .searching : .browsing
     }
 
+    //Independent receipt-driven return transition, after exact draft acceptance.
+    mutating func creationAccepted() {
+        resetKeyboardDismissal(); isEditorFocused = false; mode = .browsing
+    }
+
     mutating func selectedHostChanged(_ host: String?, draft: RemoteComposerDraft) {
         // 2dad7c skips composing; 2dae18 skips nil selection. The sink checks
         // exact empty String, not whitespace trimming, before updating target.
@@ -193,6 +198,36 @@ final class RemoteLocalAttachment: Equatable, @unchecked Sendable, Identifiable,
             return .init(id: UUID(), url: destination, name: filename, directory: directory)
         } catch {
             try? FileManager.default.removeItem(at: directory)
+            throw error
+        }
+    }
+
+    static func streamedPreview<T>(name: String, write: (FileHandle) async throws -> T)
+        async throws -> (file: RemoteLocalAttachment, output: T) {
+        let filename = (name as NSString).lastPathComponent
+        guard !filename.isEmpty, filename != ".", filename != "..", filename != "/",
+              !filename.contains("/"), !filename.contains("\0") else {
+            throw CocoaError(.fileWriteInvalidFileName)
+        }
+        let id = UUID()
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("rea-attachment-" + id.uuidString, isDirectory: true)
+        let file = RemoteLocalAttachment(id: id, url: directory.appendingPathComponent(filename),
+                                         name: filename, directory: directory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: false,
+                                                 attributes: [.posixPermissions: 0o700])
+        guard FileManager.default.createFile(atPath: file.url.path, contents: nil,
+                                              attributes: [.posixPermissions: 0o600]) else {
+            throw CocoaError(.fileWriteUnknown)
+        }
+        let handle = try FileHandle(forWritingTo: file.url)
+        do {
+            let output = try await write(handle)
+            try Task.checkCancellation()
+            try handle.close()
+            return (file, output)
+        } catch {
+            try? handle.close()
             throw error
         }
     }
@@ -818,11 +853,36 @@ final class RemoteAttachmentArchive {
 
 // Independent frontend resource contract for the293 async openFile action.
 // Service adapters supply complete contents separately from the displayed patch.
+enum RemoteFilePreviewTarget: Equatable {
+    case resourceID(String)
+    case windowsPath(RemoteWindowsFilePath)
+    case localWeb(URL)
+}
+
 struct RemoteFilePreviewRequest: Equatable {
-    let id = UUID()
+    let id: UUID
     let scope: RemoteComposerDraftScope
-    let fileID: String
-    var lineNumber: Int? = nil
+    let target: RemoteFilePreviewTarget
+    let lineNumber: Int?
+
+    init(id: UUID = UUID(), scope: RemoteComposerDraftScope, fileID: String, lineNumber: Int? = nil) {
+        self.init(id: id, scope: scope, target: .resourceID(fileID), lineNumber: lineNumber)
+    }
+
+    init(id: UUID = UUID(), scope: RemoteComposerDraftScope, target: RemoteFilePreviewTarget, lineNumber: Int? = nil) {
+        self.id = id
+        self.scope = scope
+        self.target = target
+        self.lineNumber = lineNumber
+    }
+
+    var fileID: String {
+        switch target {
+        case .resourceID(let id): return id
+        case .windowsPath(let path): return path.normalized
+        case .localWeb(let url): return url.absoluteString
+        }
+    }
 }
 
 enum RemoteFilePreviewFailure: Error, Equatable {
@@ -835,7 +895,12 @@ struct RemoteFilePreviewState {
     private(set) var phase: Phase = .idle
 
     mutating func begin(scope: RemoteComposerDraftScope, fileID: String, lineNumber: Int? = nil) -> RemoteFilePreviewRequest {
-        let next = RemoteFilePreviewRequest(scope: scope, fileID: fileID, lineNumber: lineNumber)
+        begin(scope: scope, target: .resourceID(fileID), lineNumber: lineNumber)
+    }
+
+    mutating func begin(scope: RemoteComposerDraftScope, target: RemoteFilePreviewTarget,
+                        lineNumber: Int? = nil) -> RemoteFilePreviewRequest {
+        let next = RemoteFilePreviewRequest(scope: scope, target: target, lineNumber: lineNumber)
         request = next
         phase = .loading
         return next
@@ -866,12 +931,49 @@ struct RemoteFilePreviewState {
     }
 }
 
+// Lexical provider key. A Windows path is never used as a device URL.
+struct RemoteWindowsFilePath: Equatable {
+    let normalized: String
+
+    static func hasDrivePrefix(_ path: String) -> Bool {
+        let bytes = Array(path.utf8.prefix(2))
+        guard bytes.count == 2, bytes[1] == 58 else { return false }
+        return (65...90).contains(bytes[0]) || (97...122).contains(bytes[0])
+    }
+
+    static func looksLikeWindows(_ path: String) -> Bool {
+        hasDrivePrefix(path) || path.hasPrefix("\\\\") || path.hasPrefix("//")
+    }
+
+    init?(_ path: String) {
+        guard path.utf8.count <= 16_384,
+              path.unicodeScalars.allSatisfy({ $0.value >= 32 && $0.value != 127 }) else { return nil }
+        let value = path.replacingOccurrences(of: "\\", with: "/")
+        let prefix: String
+        let components: [Substring]
+        if value.hasPrefix("//") {
+            prefix = "//"
+            components = value.dropFirst(2).split(separator: "/", omittingEmptySubsequences: false)
+            guard components.count >= 3 else { return nil }
+        } else if Self.hasDrivePrefix(value), value.dropFirst(2).first == "/" {
+            prefix = String(value.prefix(3))
+            components = value.dropFirst(3).split(separator: "/", omittingEmptySubsequences: false)
+        } else { return nil }
+        guard !components.isEmpty, components.allSatisfy({ component in
+            !component.isEmpty && component != "." && component != ".." &&
+                !component.contains(where: { ":?*<>|\"".contains($0) })
+        }) else { return nil }
+        normalized = (prefix + components.joined(separator: "/")).lowercased()
+    }
+}
+
 // The293 destination enum separates file/external/unsupported. This bounded
 // URL policy is an independent frontend adapter. The citation query fields and
 // first-match selection follow the293 Markdown plugin (0x19c5f44..0x19c65c0).
 // File paths are opaque resource IDs scoped by the request, never local reads.
 enum RemoteMessageLinkDestination: Equatable {
     case file(resourceID: String, lineNumber: Int? = nil)
+    case windowsFile(RemoteWindowsFilePath, lineNumber: Int?)
     case browser(URL)
     case unsupported
 
@@ -885,20 +987,53 @@ enum RemoteMessageLinkDestination: Equatable {
                 return
             }
             let line = items.first(where: { $0.name == "line" })?.value.flatMap { Int($0) }
-            self = .file(resourceID: path, lineNumber: line)
+            if RemoteWindowsFilePath.looksLikeWindows(path) {
+                guard let reference = RemoteWindowsFilePath(path) else { self = .unsupported; return }
+                self = .windowsFile(reference, lineNumber: line)
+            } else {
+                self = .file(resourceID: path, lineNumber: line)
+            }
         case "file":
-            guard let path = URLComponents(url: url, resolvingAgainstBaseURL: false)?.percentEncodedPath.removingPercentEncoding,
-                  url.host?.isEmpty != false, url.user == nil, url.password == nil,
+            guard let parts = URLComponents(url: url, resolvingAgainstBaseURL: false),
+                  let path = parts.percentEncodedPath.removingPercentEncoding, url.user == nil, url.password == nil,
                   url.port == nil, url.query == nil, path.hasPrefix("/"),
                   !path.contains("\0"), !url.hasDirectoryPath else {
                 self = .unsupported
                 return
             }
-            self = .file(resourceID: path)
+            let reference: String?
+            if let host = parts.host, !host.isEmpty {
+                guard !host.contains("/"), !host.contains("\\") else { self = .unsupported; return }
+                reference = "//" + host + path
+            } else if RemoteWindowsFilePath.hasDrivePrefix(String(path.dropFirst())) {
+                reference = String(path.dropFirst())
+            } else {
+                reference = path.hasPrefix("//") ? path : nil
+            }
+            if let reference {
+                let encoded = parts.percentEncodedPath.lowercased()
+                guard !encoded.contains("%2f"), !encoded.contains("%5c"),
+                      let windows = RemoteWindowsFilePath(reference) else { self = .unsupported; return }
+                let line = parts.fragment.flatMap { fragment -> Int? in
+                    guard fragment.first == "L" || fragment.first == "l",
+                          let value = Int(fragment.dropFirst()), value > 0 else { return nil }
+                    return value
+                }
+                self = .windowsFile(windows, lineNumber: line)
+            } else {
+                self = .file(resourceID: path)
+            }
         case "https", "http":
             self = .browser(url)
         default:
             self = .unsupported
+        }
+    }
+
+    var isFile: Bool {
+        switch self {
+        case .file, .windowsFile: return true
+        case .browser, .unsupported: return false
         }
     }
 }
@@ -910,8 +1045,178 @@ enum RemoteMessageLinkDestination: Equatable {
 //comes from the VM's Optional<String> markdownContents, separately from the
 //ReadingState displayMode (ios-files-preview-fourth-20261113-findings.json).
 //The provider/classifier and initial selection below remain host inputs.
-enum RemoteMarkdownFileDisplayMode: Int, CaseIterable, Hashable {
+enum RemoteMarkdownFileDisplayMode: Int, CaseIterable, Hashable, Codable {
     case raw = 0, markdown = 1
+}
+
+// BEGIN REMOTE_FILE_READING_OWNER
+//29318a0608: ReadingStateEntry(path/style, linked line, comment context)
+//reuses a parent-owned ReadingState. Only explicitly projected no-comment
+//resources are supported here; nil identity means unknown, not no comment.
+struct RemoteFileReadingIdentity: Equatable {
+    enum Style: String, Hashable, Codable { case slashSeparated, windows }
+    let rawValue: String
+    let style: Style
+    private init(rawValue: String, style: Style) { self.rawValue = rawValue; self.style = style }
+    static func knownNoComment(path: String, style: Style) -> Self {
+        .init(rawValue: path, style: style)
+    }
+}
+
+struct RemoteFileReadingSnapshot: Equatable, Codable {
+    var mode: RemoteMarkdownFileDisplayMode
+    // UIKit/SwiftUI coordinate storage is an independent viewport adapter.
+    var rawOffsetY: Double? = nil
+    var renderedOffsetY: Double? = nil
+    var hasAppliedLinkedLine = false
+    var pdfPage: Int? = nil
+    var imageZoom: Double? = nil
+    var textPage: Int? = nil
+    var valid: Bool {
+        rawOffsetY.map(\.isFinite) != false && renderedOffsetY.map(\.isFinite) != false &&
+            pdfPage.map { $0 >= 0 } != false && imageZoom.map { $0.isFinite && (1...6).contains($0) } != false &&
+            textPage.map { (0..<4096).contains($0) } != false
+    }
+}
+
+struct RemoteFileReadingLease: Equatable {
+    fileprivate let id: UUID
+    fileprivate let key: RemoteFileReadingStore.Key
+}
+
+struct RemoteFileReadingStore {
+    enum Scope: Hashable, Codable {
+        case task(RemoteComposerDraftScope)
+        case library(accountID: String, directoryID: String)
+    }
+    struct ContentsVersion: Equatable, Codable {
+        let raw: Data
+        let markdown: Data?
+    }
+    fileprivate struct Key: Hashable {
+        let scope: Scope
+        let path: String
+        let style: RemoteFileReadingIdentity.Style
+        let line: Int?
+    }
+    private struct Entry {
+        let version: ContentsVersion?
+        var reading: RemoteFileReadingSnapshot
+    }
+    private var values: [Key: Entry] = [:]
+    private var active: RemoteFileReadingLease?
+
+    mutating func begin(scope: Scope, identity: RemoteFileReadingIdentity,
+                        line: Int?, defaultMode: RemoteMarkdownFileDisplayMode,
+                        version: ContentsVersion? = nil,
+                        restored: RemoteFileReadingSnapshot? = nil) -> RemoteFileReadingLease {
+        //Original path equality2ac9acc lowercases only Windows style; preserve
+        //the provider's raw path otherwise. No fileID/name/UUID substitution.
+        let key = Key(scope: scope,
+            path: identity.style == .windows ? identity.rawValue.lowercased() : identity.rawValue,
+            style: identity.style, line: line)
+        if restored?.valid == true || values[key] == nil || values[key]?.version != version {
+            values[key] = .init(version: version, reading: restored.flatMap { $0.valid ? $0 : nil } ?? .init(mode: defaultMode))
+        }
+        let lease = RemoteFileReadingLease(id: UUID(), key: key)
+        active = lease
+        return lease
+    }
+    func read(_ lease: RemoteFileReadingLease) -> RemoteFileReadingSnapshot? {
+        guard active == lease else { return nil }
+        return values[lease.key]?.reading
+    }
+    @discardableResult
+    mutating func write(_ value: RemoteFileReadingSnapshot, lease: RemoteFileReadingLease) -> Bool {
+        guard active == lease, value.valid else { return false }
+        values[lease.key]?.reading = value
+        return true
+    }
+    mutating func retireLease() { active = nil }
+    @discardableResult
+    mutating func retireLease(_ lease: RemoteFileReadingLease) -> Bool {
+        guard active == lease else { return false }
+        active = nil
+        return true
+    }
+    mutating func retireOwner() { active = nil; values.removeAll() }
+}
+
+struct RemoteFileReadingJournal: Codable {
+    private struct Entry: Codable {
+        let key: String
+        let contents: RemoteFileReadingStore.ContentsVersion
+        let reading: RemoteFileReadingSnapshot
+    }
+    private var version = 1
+    private var entries: [Entry] = []
+
+    mutating func read(key: String, contents: RemoteFileReadingStore.ContentsVersion) -> RemoteFileReadingSnapshot? {
+        guard let index = entries.firstIndex(where: { $0.key == key }) else { return nil }
+        let entry = entries.remove(at: index)
+        guard entry.contents == contents, entry.reading.valid else { return nil }
+        entries.append(entry)
+        return entry.reading
+    }
+
+    mutating func write(_ reading: RemoteFileReadingSnapshot, key: String, contents: RemoteFileReadingStore.ContentsVersion) {
+        guard reading.valid else { return }
+        entries.removeAll { $0.key == key }
+        entries.append(.init(key: key, contents: contents, reading: reading))
+        if entries.count > 128 { entries.removeFirst(entries.count - 128) }
+    }
+
+    static func load(_ data: Data?) -> Self {
+        guard let data, data.count <= 100_000,
+              let value = try? JSONDecoder().decode(Self.self, from: data),
+              value.version == 1, value.entries.count <= 128,
+              Set(value.entries.map(\.key)).count == value.entries.count,
+              value.entries.allSatisfy({ $0.key.utf8.count == 64 && $0.reading.valid }) else { return .init() }
+        return value
+    }
+}
+
+//The UI's callbacks hold only a request lease, never direct cache mutation.
+//Retiring a sheet immediately rejects late raw/rendered reader callbacks.
+struct RemoteSourceFileReadingLease {
+    let initialValue: RemoteFileReadingSnapshot
+    let read: () -> RemoteFileReadingSnapshot?
+    let write: (RemoteFileReadingSnapshot) -> Bool
+    let retire: () -> Void
+    func update(_ change: (inout RemoteFileReadingSnapshot) -> Void) {
+        guard var value = read() else { return }
+        change(&value)
+        _ = write(value)
+    }
+}
+// END REMOTE_FILE_READING_OWNER
+
+struct CodexSourceComment: Equatable, Identifiable {
+    let id: String
+    let startLine: Int
+    let endLine: Int
+    let text: String
+}
+
+struct CodexSourceComments: Equatable {
+    let revision: Int
+    let canAttach: Bool
+    let canRemove: Bool
+    let comments: [CodexSourceComment]
+
+    func valid(lineCount: Int = Int.max) -> Bool {
+        revision >= 0 && comments.count <= 128 && Set(comments.map(\.id)).count == comments.count &&
+            comments.allSatisfy {
+                (1...512).contains($0.id.utf8.count) && !$0.id.contains("\0") &&
+                $0.startLine > 0 && $0.startLine <= $0.endLine && $0.endLine <= lineCount &&
+                (1...8192).contains($0.text.utf8.count) && !$0.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            }
+    }
+}
+
+enum CodexSourceCommentAction: Equatable {
+    case attach(line: Int, text: String)
+    case remove(id: String)
 }
 
 struct RemoteSourceFilePreview: Identifiable {
@@ -925,6 +1230,10 @@ struct RemoteSourceFilePreview: Identifiable {
     let shareFileURL: URL?
     let markdownContents: String?
     let initialMarkdownDisplayMode: RemoteMarkdownFileDisplayMode
+    var windowedFile: URL? = nil
+    var reading: RemoteSourceFileReadingLease? = nil
+    var comments: CodexSourceComments? = nil
+    var applyComment: ((CodexSourceCommentAction, Int) async throws -> CodexSourceComments)? = nil
 
     init(id: UUID, name: String, contents: String, lineNumber: Int? = nil, shareFileURL: URL? = nil,
          markdownContents: String? = nil,
@@ -943,6 +1252,25 @@ struct RemoteSourceFilePreview: Identifiable {
     }
 
     static func sourceLineCount(in contents: String) -> Int { sourceLineRanges(in: contents).count }
+    static func commentRanges(in contents: String, comments: [CodexSourceComment]) -> [NSRange] {
+        guard !comments.isEmpty else { return [] }
+        let lines = sourceLineRanges(in: contents)
+        return comments.compactMap { item in
+            guard item.startLine > 0, item.endLine >= item.startLine, item.endLine <= lines.count else { return nil }
+            let start = lines[item.startLine - 1].location
+            return NSRange(location: start, length: NSMaxRange(lines[item.endLine - 1]) - start)
+        }
+    }
+
+    // 293 0x1913c8c validates UTF-8 before constructing a source reader.
+    static func admittedText(_ data: Data) -> String? {
+        guard let text = String(data: data, encoding: .utf8),
+              text.unicodeScalars.allSatisfy({
+                  let value = $0.value
+                  return value == 9 || value == 10 || value == 13 || (value >= 0x20 && value != 0x7f)
+              }) else { return nil }
+        return text
+    }
 
     static func range(of lineNumber: Int, in contents: String) -> NSRange? {
         guard lineNumber > 0 else { return nil }
@@ -955,7 +1283,7 @@ struct RemoteSourceFilePreview: Identifiable {
     //Unicode scalars on CR or LF (CRLF once), and appends the final segment
     //even when empty. Other Unicode separators are content. Keep original
     //bytes/text untouched; only the independently native ranges use UTF-16.
-    private static func sourceLineRanges(in contents: String) -> [NSRange] {
+    static func sourceLineRanges(in contents: String) -> [NSRange] {
         let scalars = contents.unicodeScalars
         var end = scalars.endIndex
         if contents.hasSuffix("\r\n") { end = scalars.index(end, offsetBy: -2) }
@@ -981,20 +1309,130 @@ struct RemoteSourceFilePreview: Identifiable {
     }
 }
 
+// A byte index keeps native text layout bounded, including a single long line.
+struct RemoteTextWindowIndex {
+    static let windowBytes = 64 * 1024
+    static let maximumBytes = 64 * 1024 * 1024
+    struct Page {
+        let offset: UInt64
+        let count: Int
+        let firstLine: Int
+        let lastLine: Int
+    }
+    let pages: [Page]
+
+    static func build(_ url: URL) async throws -> Self {
+        let file = try FileHandle(forReadingFrom: url)
+        defer { try? file.close() }
+        let size = try file.seekToEnd()
+        guard size > 0, size <= UInt64(maximumBytes) else { throw RemoteFilePreviewFailure.unsupported }
+        var pages: [Page] = []
+        var offset: UInt64 = 0
+        var firstLine = 1
+        while offset < size {
+            try Task.checkCancellation()
+            try file.seek(toOffset: offset)
+            let requested = min(windowBytes + 1, Int(size - offset))
+            let bytes = try file.read(upToCount: requested) ?? Data()
+            guard bytes.count == requested else { throw RemoteFilePreviewFailure.loadFailed }
+            var end = min(windowBytes, bytes.count)
+            if end < bytes.count {
+                while end > 0, bytes[end] & 0xC0 == 0x80 { end -= 1 }
+                if end > 0, bytes[end - 1] == 13, bytes[end] == 10 { end -= 1 }
+                if end > 0, let newline = bytes[..<end].lastIndex(where: { $0 == 10 || $0 == 13 }),
+                   newline >= windowBytes / 2 {
+                    end = newline + 1
+                }
+            }
+            guard end > 0, RemoteSourceFilePreview.admittedText(bytes.prefix(end)) != nil else {
+                throw RemoteFilePreviewFailure.unsupported
+            }
+            var breaks = 0
+            var previousWasCR = false
+            for byte in bytes.prefix(end) {
+                if byte == 13 || (byte == 10 && !previousWasCR) { breaks += 1 }
+                previousWasCR = byte == 13
+            }
+            let endsAtLine = bytes[end - 1] == 10 || bytes[end - 1] == 13
+            pages.append(.init(offset: offset, count: end, firstLine: firstLine,
+                lastLine: firstLine + breaks - (endsAtLine ? 1 : 0)))
+            firstLine += breaks
+            offset += UInt64(end)
+        }
+        return .init(pages: pages)
+    }
+
+    func page(containing line: Int) -> Int? {
+        pages.firstIndex { $0.firstLine <= line && line <= $0.lastLine }
+    }
+
+    func text(in url: URL, page: Int) async throws -> String {
+        try Task.checkCancellation()
+        guard pages.indices.contains(page) else { throw RemoteFilePreviewFailure.unavailable }
+        let range = pages[page]
+        let file = try FileHandle(forReadingFrom: url)
+        defer { try? file.close() }
+        try file.seek(toOffset: range.offset)
+        guard let bytes = try file.read(upToCount: range.count), bytes.count == range.count,
+              let text = RemoteSourceFilePreview.admittedText(bytes) else { throw RemoteFilePreviewFailure.loadFailed }
+        return text
+    }
+}
+
 // Independent full-file response. IDs are provider identifiers, never local
 // filesystem paths. The returned name supplies the preview's format extension.
 struct RemoteFilePreviewResource: Equatable {
+    struct StagedBody: Equatable {
+        let file: RemoteLocalAttachment
+        let byteCount: Int
+        let digest: Data
+    }
+
     let id: String
     let name: String
-    let data: Data
+    var data: Data
     //The optional body supplies capability; a mode choice alone must not admit
     //the Markdown renderer. The original language classifier is not recovered.
     var markdownContents: String? = nil
     var initialMarkdownDisplayMode: RemoteMarkdownFileDisplayMode = .markdown
+    //Explicit provider projection; comments and reading identity are independent.
+    var readingIdentity: RemoteFileReadingIdentity? = nil
+    #if canImport(UIKit)
+    var htmlSnapshot: FrontendHTMLSnapshot? = nil
+    #endif
+    var stagedBody: StagedBody? = nil
+    var sourceComments: CodexSourceComments? = nil
+
+    var byteCount: Int { stagedBody?.byteCount ?? data.count }
+
+    func readBytes(upTo maximum: Int) throws -> Data {
+        guard byteCount <= maximum else { throw RemoteFilePreviewFailure.unsupported }
+        guard let stagedBody else { return data }
+        let file = try FileHandle(forReadingFrom: stagedBody.file.url)
+        defer { try? file.close() }
+        let bytes = try file.read(upToCount: stagedBody.byteCount + 1) ?? Data()
+        guard bytes.count == stagedBody.byteCount else { throw RemoteFilePreviewFailure.loadFailed }
+        return bytes
+    }
 }
 
 protocol RemoteFilePreviewLoading {
+    var fileReadingNamespace: [String]? { get }
     func load(_ request: RemoteFilePreviewRequest) async throws -> RemoteFilePreviewResource
+    func resolve(_ path: RemoteWindowsFilePath, for request: RemoteFilePreviewRequest) async throws -> String
+    func applySourceComment(_ action: CodexSourceCommentAction, resourceID: String, revision: Int,
+                            scope: RemoteComposerDraftScope) async throws -> CodexSourceComments
+}
+
+extension RemoteFilePreviewLoading {
+    var fileReadingNamespace: [String]? { nil }
+    func resolve(_ path: RemoteWindowsFilePath, for request: RemoteFilePreviewRequest) async throws -> String {
+        throw RemoteFilePreviewFailure.unavailable
+    }
+    func applySourceComment(_ action: CodexSourceCommentAction, resourceID: String, revision: Int,
+                            scope: RemoteComposerDraftScope) async throws -> CodexSourceComments {
+        throw RemoteFilePreviewFailure.unavailable
+    }
 }
 
 // Offline source only. Delay/failure injection is passed by the fixture owner.
@@ -1014,7 +1452,7 @@ actor RemoteSnapshotFilePreviewLoader: RemoteFilePreviewLoading {
     }
 
     func load(_ request: RemoteFilePreviewRequest) async throws -> RemoteFilePreviewResource {
-        guard request.scope == scope else { throw RemoteFilePreviewFailure.unavailable }
+        guard request.scope == scope, case .resourceID = request.target else { throw RemoteFilePreviewFailure.unavailable }
         try Task.checkCancellation()
         let failThisAttempt = failsOnce
         failsOnce = false

@@ -15,8 +15,8 @@ import androidx.compose.ui.semantics.testTagsAsResourceId
 // This credential-free local presentation is explicitly an offline adapter.
 @OptIn(androidx.compose.ui.ExperimentalComposeUiApi::class)
 @Composable
-internal fun FrontendWelcome(owner:FrontendSessionOwner,close:(()->Unit)?=null) {
-    Column(Modifier.fillMaxSize().semantics{testTagsAsResourceId=true}.safeDrawingPadding().padding(24.dp).testTag("auth-welcome"),verticalArrangement=Arrangement.Center,horizontalAlignment=Alignment.CenterHorizontally){
+internal fun FrontendWelcome(owner:FrontendSessionOwner,modifier:Modifier=Modifier.fillMaxSize(),close:(()->Unit)?=null) {
+    Column(modifier.semantics{testTagsAsResourceId=true}.safeDrawingPadding().padding(24.dp).testTag("auth-welcome"),verticalArrangement=Arrangement.Center,horizontalAlignment=Alignment.CenterHorizontally){
         Text("ChatGPT",style=MaterialTheme.typography.headlineLarge)
         Text(remoteControlText("本地登录预览","Local sign-in preview"),Modifier.padding(vertical=24.dp))
         Button(onClick={owner.begin("login","google")},modifier=Modifier.fillMaxWidth().testTag("auth-google")){Text(remoteControlText("使用 Google 继续","Continue with Google"))}

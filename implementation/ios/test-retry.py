@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dedicated simulator retry acceptance with a temporary local-only fixture service."""
+"""Simulator retry acceptance with a temporary local-only fixture service."""
 import argparse
 import json
 import os
@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from Tools.simulator_target import shared_device
 
 root = pathlib.Path(__file__).resolve().parents[2]
 p = argparse.ArgumentParser()
@@ -16,10 +17,7 @@ p.add_argument('--result', type=pathlib.Path, required=True)
 a = p.parse_args()
 if a.result.exists() or a.result.suffix != '.xcresult':
     raise SystemExit('A new .xcresult path is required')
-inventory = json.loads(subprocess.check_output(['xcrun', 'simctl', 'list', 'devices', '--json']))
-if not any(d['udid'] == a.device and d['name'] == 'REA ChatGPT Offline' and d.get('isAvailable')
-           for group in inventory['devices'].values() for d in group):
-    raise SystemExit('Dedicated REA simulator required')
+shared_device(a.device, booted=True)
 container = pathlib.Path(subprocess.check_output(['xcrun', 'simctl', 'get_app_container', a.device,
     'local.rea.chatgpt.ioshost', 'data'], text=True).strip())
 pairing = container / 'Documents/harness-pairing.json'

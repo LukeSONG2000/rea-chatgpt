@@ -148,7 +148,7 @@ Foundation的32种条件组合通过，中英文浅深色两项UI回归通过，
 从仓库根目录向当前测试模拟器注入，先通过应用设置授予通知权限。使用 `remote-b.apns` 和 `chat.apns` 可分别检查跨设备任务与Chat会话入口。
 
 ```sh
-xcrun simctl push 71BCC1D2-0ABD-4F11-BB67-37818435B176 local.rea.chatgpt.ioshost implementation/ios/Tests/Notifications/remote-a.apns
+xcrun simctl push F31F98F7-ED7F-452E-ADDA-D7CB7EF7E590 local.rea.chatgpt.ioshost implementation/ios/Tests/Notifications/remote-a.apns
 ```
 
 显式冷响应回放支持 `--notification-route-fixture=remote-a`、`remote-b`、`missing` 或 `chat`，同时要求 `--offline-fixture`。Remote场景使用 `--codex-home-fixture=tasks`。普通预览省略路由回放参数。UI测试使用独立UUID草稿profile，重复注入用于校验客户端响应去重。
@@ -371,7 +371,7 @@ The dedicated simulator has signed build548 installed and is left on the Chinese
 The current scope follows [the mobile minimum-usable plan](../../docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md). Remote replay uses synthetic frontend events through the existing scoped action entry points.
 
 ```sh
-xcrun simctl launch --terminate-running-process 71BCC1D2-0ABD-4F11-BB67-37818435B176 local.rea.chatgpt.ioshost --offline-fixture --codex-home-fixture=tasks --remote-interactive-replay
+xcrun simctl launch --terminate-running-process F31F98F7-ED7F-452E-ADDA-D7CB7EF7E590 local.rea.chatgpt.ioshost --offline-fixture --codex-home-fixture=tasks --remote-interactive-replay
 ```
 
 Open the sidebar, select Codex and a synthetic task. A completed task accepts text and produces three timed updates. A pending-approval task supports approval and stopping. Add `--remote-replay-failure` for failure. Language and appearance follow the system by default.
@@ -508,11 +508,13 @@ UI cancellation, streaming Markdown and physical-device pairing remain pending.
 UI automation uses the independent `REAHostUITests` target and shared scheme:
 
 ```sh
-python3 implementation/ios/test-ui.py --device <REA-simulator-UDID> --result /absolute/new-result.xcresult
+python3 implementation/ios/test-ui.py --result /absolute/new-result.xcresult
 ```
 
-The runner accepts only an available simulator named `REA ChatGPT Offline` and
-refuses to overwrite result bundles. Tests operate synthetic drafts in this
+The runner uses the existing `Soul Next` iPhone Air on iOS 27 and accepts its
+UDID as an optional assertion. Run REA and Soul UI sessions serially on this
+device. REA disables parallel XCTest workers to avoid simulator clones and
+preserves result bundles. Tests operate synthetic drafts in this
 host, terminate/relaunch the actual app process, and retain screenshots. They do
 not launch an official app. Keyboard visibility, composer geometry, A/B draft
 isolation, process recovery and unavailable-service alerts are separate from
@@ -526,7 +528,7 @@ and `output/ios-host-scene-v2.png`. Keyboard, gestures, device recovery and offi
 visual parity remain unaccepted. Historical runtime-unavailable notes below refer
 to earlier milestones.
 
-`python3 implementation/ios/run-simulator.py --report <new-report.json>` verifies the independent bundle identity, selects an available iOS 27 runtime, and creates/reuses only the named `REA ChatGPT Offline` iPhone 17 Pro simulator. It installs and launches this host without touching physical devices. Launch success remains separate from UI/visual acceptance.
+`python3 implementation/ios/run-simulator.py --report <new-report.json>` verifies the REA bundle identity and launches it on the shared `Soul Next` simulator. The launcher requires that device to exist. REA and Soul retain separate app sandboxes. UI and visual acceptance require a separate check.
 
 On 2026-11-04 the root agent started `xcodebuild -downloadPlatform iOS -architectureVariant arm64`; the selected runtime is iOS 27.0 (24A434), approximately 8.05 GB. Download is not installation acceptance. Recheck `simctl list runtimes` before invoking the launcher.
 
@@ -567,10 +569,10 @@ See `analysis/full-platform-20261104/ios-scroll-milestone-v13.json`.
 
 ### Focused native selection acceptance
 
-With fixture pairing installed on the dedicated simulator:
+With REA fixture pairing installed on the shared simulator, run:
 
 ```sh
-python3 implementation/ios/test-ui.py --device 71BCC1D2-0ABD-4F11-BB67-37818435B176 --only-test testNativeReplyCopyPaste --result analysis/full-platform-20261104/ios-selection-NEW.xcresult
+python3 implementation/ios/test-ui.py --only-test testNativeReplyCopyPaste --result analysis/full-platform-20261104/ios-selection-NEW.xcresult
 ```
 
 The test uses UIKit selection handles and system Copy/Paste, requiring exact
@@ -578,11 +580,8 @@ synthetic content and A/B/A draft isolation. It is calibrated to the short fixtu
 line/default font; physical-device and arbitrary selection geometry remain open.
 The runner supports repeated `--only-test` arguments and rejects focused zero-pass
 or skipped runs. Verbose sysdiagnose collection is disabled; xcresult attachments
-remain available. Clear the dedicated simulator's synthetic clipboard after use:
-
-```sh
-xcrun simctl pbcopy 71BCC1D2-0ABD-4F11-BB67-37818435B176 < /dev/null
-```
+remain available. Arrange clipboard-based tests in the REA session because the
+simulator clipboard is shared with Soul.
 
 ### Selection during append
 
@@ -928,7 +927,7 @@ v129 阅读位置回归已复现并修复：字号放大前后从 block-6 跳到
 
 ### v142 可重复重试成功验收
 
-`/opt/homebrew/bin/python3.12 implementation/ios/test-retry.py --device <专用模拟器UUID> --result <新的.xcresult路径>` 自动启动仅回环 fixture、临时配对、运行重试成功及切换取消 UI 用例，最后恢复原配对并停止本轮服务。仅适用于已安装宿主的 `REA ChatGPT Offline` 专用模拟器；不连接官方或 Zhipu 服务。
+`/opt/homebrew/bin/python3.12 implementation/ios/test-retry.py --device <共用模拟器UUID> --result <新的.xcresult路径>` 自动启动仅回环 fixture、临时配对、运行重试成功及切换取消 UI 用例，最后恢复原配对并停止本轮服务。在已安装 REA 宿主的 `Soul Next` 模拟器上运行。
 
 夹具提示词 `REA synthetic retry success test` 在每个会话的首次请求返回部分正文后失败，后续新请求成功；计数仅存于本轮 fixture 服务内存，重启服务清零，不属于持久化后端重试语义。客户端不能指定计数。普通 Zhipu 模式不启用此场景。取消验收每次新建会话，以免历史完成消息污染当前请求的终态断言。
 

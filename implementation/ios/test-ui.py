@@ -1,31 +1,28 @@
 #!/usr/bin/env python3
-"""UI acceptance for the dedicated simulator only; preserves result bundles."""
+"""Run REA UI acceptance on the shared simulator and preserve result bundles."""
 import argparse
 import json
 import pathlib
 import subprocess
+from Tools.simulator_target import shared_device
 
 root = pathlib.Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
-parser.add_argument('--device', required=True)
+parser.add_argument('--device', help='Assert the UDID of the shared simulator')
 parser.add_argument('--only-test', action='append', default=[], help='HostInteractionTests method name')
 parser.add_argument('--result', type=pathlib.Path, required=True)
 args = parser.parse_args()
 result = args.result.resolve()
 if result.exists() or result.suffix != '.xcresult':
     raise SystemExit('A new .xcresult path is required')
-inventory = json.loads(subprocess.check_output(['xcrun', 'simctl', 'list', 'devices', '--json']))
-devices = [d for group in inventory['devices'].values() for d in group
-           if d['udid'] == args.device and d['name'] == 'REA ChatGPT Offline'
-           and d.get('isAvailable')]
-if len(devices) != 1:
-    raise SystemExit('Device must be the available dedicated REA ChatGPT Offline simulator')
+_, device = shared_device(args.device)
 subprocess.run(['python3', str(root / 'implementation/ios/Tools/prepare-markdown.py')], check=True)
 command = ['xcodebuild', '-project', str(root / 'implementation/ios/REAChatGPTHost.xcodeproj'),
            '-scheme', 'REAChatGPTHost', '-configuration', 'Debug',
-           '-destination', 'platform=iOS Simulator,id=' + args.device,
+           '-destination', 'platform=iOS Simulator,id=' + device['udid'],
+           '-parallel-testing-enabled', 'NO',
            '-derivedDataPath', str(root / 'implementation/ios/.build'),
-           '-resultBundlePath', str(result), '-collect-test-diagnostics', 'never', 'CODE_SIGNING_ALLOWED=NO', 'test']
+           '-resultBundlePath', str(result), '-collect-test-diagnostics', 'never', 'CODE_SIGNING_ALLOWED=NO', 'ONLY_ACTIVE_ARCH=YES', 'test']
 for method in args.only_test:
     if not method.startswith('test') or not method.isidentifier():
         raise SystemExit('Expected a test method identifier')

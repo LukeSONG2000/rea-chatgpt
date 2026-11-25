@@ -21,3 +21,4 @@ import subprocess,sys
 subprocess.run([sys.executable,str(root/"implementation/ios/Tools/prepare-search.py")],check=True)
 
 subprocess.run([sys.executable,str(root/"implementation/ios/Tools/prepare-library.py")],check=True)
+subprocess.run([sys.executable,str(root/"implementation/ios/Tools/prepare-source-syntax.py")],check=True)

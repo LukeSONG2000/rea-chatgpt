@@ -7,6 +7,7 @@ struct FrontendProfileEditorPresentation: Identifiable {
     let id = UUID()
     let profile: FrontendEditableProfile
     let accountSessionID: UUID?
+    var avatar: FrontendLocalAvatar? = nil
 }
 
 @MainActor final class FrontendProfileEditorModel: ObservableObject {
@@ -37,6 +38,13 @@ struct FrontendProfileEditorPresentation: Identifiable {
         state.edit(draft); savedInPreview = false
     }
     func save() {
+        if state.awaitingLocalAcceptance {
+            var next = state
+            let committed = next.retryLocalAcceptance(accepted)
+            state = next
+            savedInPreview = committed && isReplay
+            return
+        }
         guard let request = state.beginSave() else { return }
         task = Task { [weak self, service] in
             let receipt: FrontendProfileSaveReceipt
@@ -53,8 +61,8 @@ struct FrontendProfileEditorPresentation: Identifiable {
         let result = receipt.request == request ? receipt
             : .init(request: request, result: .failure(.invalidResult))
         //The account-session owner must durably accept the exact proposed
-        //baseline before the editor publishes a successful save. A failure
-        //retains the submitted draft and old baseline for a genuine retry.
+        //baseline before the editor publishes a successful save. A local
+        //failure retains its exact proposal for acceptance-only retry.
         var next = state
         let received = next.receive(result, acceptance: accepted)
         state = next
@@ -94,10 +102,12 @@ struct NativeProfileEditorSheet: View {
     @StateObject private var model: FrontendProfileEditorModel
     @StateObject private var avatar: FrontendAvatarModel
     @Environment(\.dismiss) private var dismiss
-    init(profile: FrontendEditableProfile,
+    init(profile: FrontendEditableProfile, initialAvatar: FrontendLocalAvatar? = nil,
+         avatarAccepted: ((FrontendAvatarSubmissionRequest, UInt64) -> FrontendAvatarSubmissionFailure?)? = nil,
          accepted: @escaping (FrontendProfileSaveRequest, FrontendEditableProfile) -> FrontendProfileFailure?) {
         _model = StateObject(wrappedValue: .make(profile: profile, accepted: accepted))
-        _avatar = StateObject(wrappedValue: .init(accountID: profile.accountID))
+        _avatar = StateObject(wrappedValue: .init(accountID: profile.accountID, initialAvatar: initialAvatar,
+            accepted: avatarAccepted))
     }
     var body: some View {
         VStack(spacing: 0) {
@@ -131,7 +141,7 @@ struct NativeProfileEditorSheet: View {
             }
             .scrollDismissesKeyboard(.interactively)
             //2932247eb8: preserve inherited enablement AND !isSaving.
-            .disabled(model.state.pending != nil)
+            .disabled(model.state.pending != nil || model.state.awaitingLocalAcceptance)
             //Source has independent primary/secondary actions. Exact button
             //spacing, complete CapsuleButtonStyle and scroll modes remain unknown.
             VStack(spacing: 12) {
@@ -159,7 +169,7 @@ struct NativeProfileEditorSheet: View {
             model.retirePending()
             // A child picker can cover this view. Its own close retains the
             // form; final dismissal retires the editor-local callback scope.
-            if avatar.picker == nil { avatar.retire() }
+            if !avatar.hasChildPresentation { avatar.retire() }
         }
     }
     private func field(_ label: OfficialTextKey, value: Binding<String>, identifier: String) -> some View {

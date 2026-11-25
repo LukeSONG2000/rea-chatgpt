@@ -27,12 +27,31 @@ class AppShellTest {
     private fun refresh() { device.waitForIdle(); instrumentation.uiAutomation.clearCache() }
     private fun click(id: String) {
         assertEquals("Another app owns the foreground", context.packageName, device.currentPackageName)
-        if (id.startsWith("shell-entry-")) node("shell-drawer")
+        if (id.startsWith("shell-entry-")) {
+            node("shell-drawer")
+            if (id != "shell-entry-explore" && !device.hasObject(By.res(id))) {
+                device.findObject(By.res("shell-entry-explore"))?.let { it.click(); refresh() }
+                repeat(4) {
+                    if (!device.hasObject(By.res(id))) {
+                        node("chat-sidebar-list").scroll(androidx.test.uiautomator.Direction.DOWN, 0.7f)
+                        refresh()
+                    }
+                }
+            }
+        }
         node(id).click(); refresh()
     }
     private fun back() {
         assertEquals("Another app owns the foreground", context.packageName, device.currentPackageName)
         device.pressBack(); refresh()
+    }
+    private fun hideKeyboard() {
+        val ime = android.provider.Settings.Secure.getString(context.contentResolver,
+            android.provider.Settings.Secure.DEFAULT_INPUT_METHOD).substringBefore('/')
+        if (device.hasObject(By.pkg(ime))) {
+            back(); assertTrue(device.wait(Until.gone(By.pkg(ime)), 5000))
+        }
+        refresh()
     }
     private fun start(profileSuffix: String = "") {
         val launch = context.packageManager.getLaunchIntentForPackage(context.packageName) ?: error("Launcher missing")
@@ -109,6 +128,152 @@ class AppShellTest {
         assertEquals("home", invalid.rootRoute)
         assertFalse(invalid.selectRoot("home"))
         assertEquals("unknown", corrupt.getString("root-route", null))
+    }
+    @Test fun sidebarDirectoryRules() {
+        RecoveredSidebarDirectoryTest().apply {
+            defaultRanksBeforeTakingFiveAndKeepsEqualRankOrder()
+            experimentUsesItsOwnOrderRatherThanTheFirstFive()
+            onlyDefaultForcesOneRemainingFeatureOpen()
+            expansionRevealsTheSameIdentitiesAndDoesNotCreateACollapseRoute()
+            availabilityIsExplicitAndProjectionSnapshotsTheInput()
+        }
+    }
+    @Test fun sidebarDirectoryJourney() {
+        val profile = "test-$runID-directory"
+        val prefs = FrontendPreferences(context, profile)
+        assertTrue(prefs.selectLanguage("zh-CN")); assertTrue(prefs.selectAppearance("light"))
+        assertTrue(prefs.saveDraft("chat", "目录展开保留草稿"))
+        start("-directory")
+        click("shell-menu"); node("shell-drawer")
+        for (entry in listOf("tasks", "library", "customize", "remote")) node("shell-entry-$entry")
+        for (entry in listOf("images", "projects", "sites", "plugins")) assertFalse(device.hasObject(By.res("shell-entry-$entry")))
+        assertEquals("查看更多", node("shell-entry-explore").findObject(By.clazz("android.widget.TextView")).text)
+        capture("directory-collapsed-zh-light")
+        click("shell-entry-explore"); node("shell-drawer")
+        assertFalse(device.hasObject(By.res("shell-entry-explore")))
+        node("shell-entry-images"); node("shell-entry-projects")
+        capture("directory-expanded-zh-light")
+        click("shell-entry-plugins"); node("plugins-page")
+        click("shell-menu"); node("shell-drawer")
+        assertFalse(device.hasObject(By.res("shell-entry-explore")))
+        click("shell-entry-chat"); node("shell-home")
+        assertEquals("目录展开保留草稿", node("shell-draft").text)
+        // Another isolated profile must not inherit this account's local flag.
+        val otherPrefs = FrontendPreferences(context, "test-$runID-directory-other")
+        assertTrue(otherPrefs.selectLanguage("zh-CN")); assertTrue(otherPrefs.selectAppearance("light"))
+        start("-directory-other")
+        click("shell-menu"); node("shell-drawer"); node("shell-entry-explore")
+        assertFalse(device.hasObject(By.res("shell-entry-plugins")))
+        capture("directory-profile-isolation-zh-light")
+        back(); node("shell-home")
+    }
+    @Test fun sidebarCarrierRules() {
+        RecoveredSidebarLayoutTest().apply {
+            widthUsesAllThreeBoundsAndIndependentTinyScreenGuard()
+            offsetsMirrorForRtlAndMainContentStaysFixed()
+            progressClampsAndHandlesDegenerateWidth()
+            zeroVelocityUsesNearestWithExplicitMidpointPolicy()
+            anyNonzeroLogicalVelocitySelectsItsDirectionalAnchor()
+            independentGuardsRejectNonfiniteAndInvalidDimensions()
+        }
+    }
+    @Test fun sidebarCarrierJourney() {
+        val profile = "test-$runID-carrier"
+        val prefs = FrontendPreferences(context, profile)
+        assertTrue(prefs.selectLanguage("zh-CN")); assertTrue(prefs.selectAppearance("light"))
+        assertTrue(prefs.saveDraft("chat", "侧栏保留草稿"))
+        start("-carrier")
+        val density = context.resources.displayMetrics.density
+        val y = device.displayHeight / 2
+        fun x(dp: Int) = (dp * density).toInt()
+        fun openEdge() {
+            node("shell-sidebar-open-edge")
+            assertTrue(device.swipe(x(12), y, x(260), y, 30)); refresh(); node("shell-drawer")
+        }
+        // A single native pointer stream can reverse before release. The edge
+        // recognizer must remain attached when progress first becomes nonzero.
+        assertTrue(device.swipe(arrayOf(android.graphics.Point(x(12), y),
+            android.graphics.Point(x(220), y), android.graphics.Point(x(12), y)), 15))
+        refresh(); node("shell-menu")
+        assertFalse(device.hasObject(By.res("shell-drawer")))
+        openEdge()
+        val bounds = node("shell-drawer").visibleBounds
+        val expected = RecoveredSidebarLayoutModel.width(device.displayWidth.toFloat(), density)
+        assertEquals(expected, bounds.width().toFloat(), 2f)
+        assertEquals(0, bounds.left)
+        assertFalse(device.hasObject(By.res("shell-menu")))
+        capture("sidebar-source-width-zh-light")
+        assertTrue(device.click((bounds.right + device.displayWidth) / 2, y)); refresh()
+        node("shell-menu"); assertEquals("侧栏保留草稿", node("shell-draft").text)
+        click("shell-menu"); node("shell-drawer"); back(); node("shell-menu")
+        openEdge(); click("shell-entry-library"); node("shell-page-title")
+        assertEquals("library", FrontendPreferences(context, profile).rootRoute)
+        openEdge(); click("shell-entry-remote"); node("remote-title")
+        click("remote-search"); node("remote-query").text = "调整列表布局"; refresh()
+        hideKeyboard()
+        // Query and result deliberately share the same text. Select the actual
+        // task row, not the focused EditText carrying the search query.
+        click("remote-task-project-fixture-a-demo-fixture-a-layout")
+        node("remote-task-title")
+        assertTrue(device.wait(Until.gone(By.res("shell-sidebar-open-edge")), 5000))
+        assertTrue(device.swipe(x(12), y, x(260), y, 30)); refresh()
+        assertFalse(device.hasObject(By.res("shell-drawer")))
+        node("remote-task-title")
+        capture("nested-task-keeps-back-owner-zh-light")
+        click("remote-task-back"); node("remote-query"); node("shell-sidebar-open-edge")
+        // Re-entering the search field restores its native focus. IME Back
+        // precedes drawer Back; close it explicitly before checking the latter.
+        hideKeyboard()
+        openEdge(); capture("remote-list-sidebar-restored-zh-light"); back(); node("remote-query")
+        assertEquals("remote", FrontendPreferences(context, profile).rootRoute)
+    }
+    @Test fun sidebarNestedAdmissionRules() {
+        RecoveredSidebarLayoutTest().nestedNavigationOpeningAdmission()
+    }
+    @Test fun sidebarDragGateRules() {
+        RecoveredSidebarLayoutTest().sourceDragGateAndInterruptedTarget()
+    }
+    @Test fun nestedPluginGestureJourney() {
+        val suffix = "-nested-plugin"
+        val prefs = FrontendPreferences(context, "test-$runID$suffix")
+        assertTrue(prefs.selectLanguage("zh-CN"))
+        assertTrue(prefs.selectAppearance("light"))
+        assertTrue(prefs.saveDraft("chat", "插件返回保留草稿"))
+        // Explicit synthetic preference, not an assertion about account policy.
+        val settings = prefs.settingsOwner()
+        assertTrue(settings.save(settings.value.copy(accent = "green")))
+        start(suffix)
+        val density = context.resources.displayMetrics.density
+        val y = device.displayHeight / 2
+        fun dragFromEdge() {
+            assertEquals(context.packageName, device.currentPackageName)
+            assertTrue(device.swipe((12 * density).toInt(), y, (260 * density).toInt(), y, 30))
+            refresh()
+        }
+        node("shell-sidebar-open-edge"); dragFromEdge(); node("shell-drawer")
+        back(); node("shell-home")
+        node("shell-sidebar-open-edge"); dragFromEdge(); node("shell-drawer")
+        click("shell-entry-plugins"); node("plugins-page")
+        click("plugins-installed-local-notes"); node("plugins-detail")
+        assertTrue(device.wait(Until.gone(By.res("shell-sidebar-open-edge")), 5000))
+        dragFromEdge()
+        assertFalse(device.hasObject(By.res("shell-drawer")))
+        node("plugins-detail")
+        capture("nested-plugin-keeps-back-owner-zh-light")
+        click("plugins-back"); node("plugins-page")
+        node("shell-sidebar-open-edge"); dragFromEdge(); node("shell-drawer")
+        capture("plugin-root-restores-sidebar-zh-light")
+        back(); node("plugins-page")
+        assertEquals("插件返回保留草稿", prefs.draft("chat"))
+    }
+    @Test fun sidebarCarrierRestart() {
+        val profile = "test-$runID-carrier"
+        context.startActivity(context.packageManager.getLaunchIntentForPackage(context.packageName)!!
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK).putExtra("shell-profile", profile))
+        node("remote-query"); node("shell-sidebar-open-edge")
+        assertEquals("remote", FrontendPreferences(context, profile).rootRoute)
+        assertEquals("侧栏保留草稿", FrontendPreferences(context, profile).draft("chat"))
+        capture("sidebar-root-restart-zh-light")
     }
     @Test fun rootsAndGestures() {
         val suffix = "-roots"
@@ -297,7 +462,7 @@ class AppShellTest {
         click("shell-entry-chat"); node("shell-home")
         assertEquals("Chat draft $runID", node("shell-draft").text)
         click("shell-menu")
-        click("shell-entry-library"); node("shell-capability"); back(); node("shell-home")
+        click("shell-entry-library"); node("files-directory"); back(); node("shell-home")
         for (entry in listOf("tasks", "customize", "sites", "projects", "plugins", "images")) {
             click("shell-menu"); click("shell-entry-$entry"); node("shell-capability")
             click("shell-capability-back"); node("shell-home")

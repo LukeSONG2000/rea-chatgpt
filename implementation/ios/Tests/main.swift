@@ -486,3 +486,16 @@ do {
     preconditionFailure("Deep AST must terminate within the host budget")
 } catch HostMarkdownProjection.Failure.budgetExceeded {}
 print("PASS: original293 nested list/quote/rule/task AST, stable leaves, continuation markers and explicit structure budgets")
+
+//Original Markdown JS supplies an optional language independently of code text.
+let languageCode = try HostMarkdownProjection.messages( [["kind":"code", "text":"let a = 1\n", "language":"swift"]], prefix: "language")
+assert(languageCode.first?.codeLanguage == "swift")
+let emptyLanguage = try HostMarkdownProjection.messages( [["kind":"code", "text":"", "language":""]], prefix: "empty-language")
+assert(emptyLanguage.first?.codeLanguage == "")
+let noLanguage = try HostMarkdownProjection.messages( [["kind":"code", "text":"code"]], prefix: "no-language")
+assert(noLanguage.first?.codeLanguage == nil)
+do {
+    _ = try HostMarkdownProjection.messages( [["kind":"code", "text":"code", "language":false]], prefix: "invalid-language")
+    assertionFailure("Invalid language type must fail")
+} catch {}
+print("PASS: code language metadata preserves supplied/nil/empty and rejects invalid types")

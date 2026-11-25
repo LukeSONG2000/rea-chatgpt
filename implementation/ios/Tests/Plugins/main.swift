@@ -1,5 +1,149 @@
 import Foundation
 
+var settingsState = FrontendPluginSettingsState(scope: .init(accountID: "settings-a", workspaceID: "w"),
+    pluginID: "plugin", actionPluginID: "action", revision: 2)
+let firstSettings = settingsState.begin()!
+precondition(settingsState.begin() == nil)
+settingsState.receive(.init(request: firstSettings, result: .failure(.loadFailed)), for: firstSettings)
+let retrySettings = settingsState.begin()!
+let projection = FrontendPluginSettingsProjection(layout: .legacy,
+    additionalForm: .init(id: "fixture-form", providerCount: 2))
+settingsState.receive(.init(request: firstSettings, result: .success(projection)), for: firstSettings)
+precondition(settingsState.pending == retrySettings, "late settings result cannot replace retry")
+settingsState.receive(.init(request: firstSettings, result: .success(projection)), for: retrySettings)
+precondition(settingsState.phase == .failed(.invalidResult), "wrong receipt fails only its current attempt")
+let goodSettings = settingsState.begin()!
+settingsState.receive(.init(request: goodSettings, result: .success(projection)), for: goodSettings)
+precondition(settingsState.projection == projection && settingsState.phase == .ready)
+precondition(!FrontendPluginSettingsProjection(layout: .legacy, additionalForm: .init(id: "empty", providerCount: 0)).valid)
+precondition(FrontendPluginSettingsProjection(layout: .legacy).valid)
+let retiringSettings = settingsState.begin()!
+settingsState.retire()
+settingsState.receive(.init(request: retiringSettings, result: .success(.init(layout: .canonical))), for: retiringSettings)
+precondition(settingsState.projection == projection && settingsState.begin() == nil)
+print("Plugins: separate settings owner, raw layout capability, nonempty form, retry and retired receipt checks passed")
+
+//Settings Skill identity/state is not the directory's title-only chip model.
+let nilNameSkill = FrontendPluginSettingsSkill(id: "skill-id")
+let emptyNameSkill = FrontendPluginSettingsSkill(id: "empty", name: "", isEnabled: true)
+precondition(nilNameSkill.title == "skill-id" && !nilNameSkill.isEnabled)
+precondition(emptyNameSkill.title.isEmpty, "Only nil names fall back to the original ID")
+let disabledSkill = FrontendPluginSettingsSkill(id: "disabled", name: "Named", description: "Original description")
+let enabledSkill = FrontendPluginSettingsSkill(id: "enabled", name: "Named", isEnabled: true)
+let skillProjection = FrontendPluginSettingsProjection(layout: .legacy,
+    skills: [disabledSkill, enabledSkill, nilNameSkill, emptyNameSkill])
+precondition(skillProjection.valid && skillProjection.hasDisplayableLegacySettings,
+    "Same names are permitted; settings row identity belongs to the skill ID")
+precondition(FrontendPluginSettingsProjection(layout: .legacy, skills: []).hasDisplayableLegacySettings)
+precondition(!FrontendPluginSettingsProjection(layout: .legacy, skills: [disabledSkill, disabledSkill]).valid)
+precondition(!FrontendPluginSettingsProjection(layout: .legacy,
+    skills: [.init(id: "", name: "Invalid")]).valid)
+let includedFile = FrontendPluginSkillFile(path: "examples/checklist.txt", mimeType: "text/plain",
+    sizeInBytes: 4, preview: .init(body: "Test", format: .plainText))
+precondition(includedFile.isValid)
+for path in ["/absolute.txt", "../escape.txt", "folder//file.txt", "skill.md", "file:///other"] {
+    precondition(!FrontendPluginSkillFile(path: path).isValid)
+}
+precondition(!FrontendPluginSettingsProjection(layout: .legacy,
+    skills: [.init(id: "duplicate-file", includedFiles: [includedFile, includedFile])]).valid)
+var oversizedFile = includedFile
+oversizedFile.preview = .init(body: String(repeating: "x", count: 128 * 1024 + 1), format: .plainText)
+precondition(!oversizedFile.isValid)
+var skillState = FrontendPluginSettingsState(scope: .init(accountID: "settings-a", workspaceID: "w"),
+    pluginID: "plugin", actionPluginID: "action", revision: 2)
+let loadedSkills = skillState.begin()!
+skillState.receive(.init(request: loadedSkills, result: .success(skillProjection)), for: loadedSkills)
+precondition(skillState.skill(disabledSkill.id, from: loadedSkills) == disabledSkill,
+    "Disabled skills keep their details navigation")
+precondition(skillState.skill("missing", from: loadedSkills) == nil)
+precondition(skillState.skill(disabledSkill.id, from: nil) == nil)
+let reloadedSkills = skillState.begin()!
+precondition(skillState.skill(disabledSkill.id, from: loadedSkills) == nil)
+skillState.receive(.init(request: reloadedSkills, result: .success(skillProjection)), for: reloadedSkills)
+precondition(skillState.skill(disabledSkill.id, from: loadedSkills) == nil,
+    "An old page cannot attach to a replacement settings load")
+precondition(skillState.skill(disabledSkill.id, from: reloadedSkills) == disabledSkill)
+var retiredSkills = skillState; retiredSkills.retire()
+precondition(retiredSkills.skill(disabledSkill.id, from: reloadedSkills) == nil)
+let canonicalSkills = skillState.begin()!
+skillState.receive(.init(request: canonicalSkills, result: .success(.init(layout: .canonical,
+    skills: [disabledSkill]))), for: canonicalSkills)
+precondition(skillState.skill(disabledSkill.id, from: canonicalSkills) == nil,
+    "A legacy skill row must not invent the canonical layout")
+print("Plugins: separate settings skills, nil/empty names, disabled navigation, duplicate IDs and load/retirement identity passed")
+
+let mutableSkill = FrontendPluginSettingsSkill(id: "mutable", name: "Skill", isEnabled: false, isToggleDisabled: false)
+let lockedSkill = FrontendPluginSettingsSkill(id: "locked", isEnabled: true)
+var mutableSettings = FrontendPluginSettingsState(scope: .init(accountID: "skills-account", workspaceID: "skills-workspace"),
+    pluginID: "skills-plugin", actionPluginID: "skills-action", revision: 2)
+let mutableLoad = mutableSettings.begin()!
+mutableSettings.receive(.init(request: mutableLoad, result: .success(.init(layout: .legacy,
+    skills: [mutableSkill, lockedSkill]))), for: mutableLoad)
+precondition(mutableSettings.canUpdateSkill(mutableSkill.id, from: mutableLoad), "disabled value is still editable when explicitly eligible")
+precondition(!mutableSettings.canUpdateSkill(lockedSkill.id, from: mutableLoad), "unknown/missing capability stays locked")
+precondition(mutableSettings.beginSkillUpdate(mutableSkill.id, enabled: false, from: mutableLoad) == nil, "same-value input is not a mutation")
+let mutation = mutableSettings.beginSkillUpdate(mutableSkill.id, enabled: true, from: mutableLoad)!
+precondition(mutableSettings.skill(mutableSkill.id, from: mutableLoad)?.isEnabled == true, "exact skill changes optimistically")
+precondition(mutableSettings.skill(lockedSkill.id, from: mutableLoad)?.isEnabled == true, "other skill unchanged")
+precondition(mutableSettings.begin() == nil && !mutableSettings.canUpdateSkill(mutableSkill.id, from: mutableLoad), "busy state gates reload and duplicate operations")
+let wrongMutation = FrontendPluginSkillUpdateRequest(id: UUID(), settings: mutableLoad, skillID: mutableSkill.id, wasEnabled: false, isEnabled: true)
+precondition(!mutableSettings.receiveSkillUpdate(.init(request: wrongMutation, result: .success(true)), for: wrongMutation), "foreign attempt cannot settle active operation")
+precondition(mutableSettings.receiveSkillUpdate(.init(request: mutation, result: .failure(.loadFailed)), for: mutation))
+precondition(mutableSettings.skill(mutableSkill.id, from: mutableLoad)?.isEnabled == false, "failure restores captured old value")
+mutableSettings.clearSkillUpdateFailure(UUID())
+precondition(mutableSettings.skillUpdateFailure?.request == mutation, "stale alert dismissal cannot clear another operation error")
+mutableSettings.clearSkillUpdateFailure(mutation.id)
+precondition(mutableSettings.skillUpdateFailure == nil && mutableSettings.canUpdateSkill(mutableSkill.id, from: mutableLoad))
+let retryMutation = mutableSettings.beginSkillUpdate(mutableSkill.id, enabled: true, from: mutableLoad)!
+precondition(retryMutation.id != mutation.id)
+precondition(!mutableSettings.receiveSkillUpdate(.init(request: mutation, result: .success(true)), for: mutation), "late failure-attempt success rejected")
+precondition(mutableSettings.receiveSkillUpdate(.init(request: retryMutation, result: .success(true)), for: retryMutation))
+precondition(mutableSettings.skill(mutableSkill.id, from: mutableLoad)?.isEnabled == true && mutableSettings.skillUpdateFailure == nil)
+let malformedMutation = mutableSettings.beginSkillUpdate(mutableSkill.id, enabled: false, from: mutableLoad)!
+precondition(mutableSettings.receiveSkillUpdate(.init(request: malformedMutation, result: .success(true)), for: malformedMutation))
+precondition(mutableSettings.skill(mutableSkill.id, from: mutableLoad)?.isEnabled == true && mutableSettings.skillUpdateFailure?.error == .invalidResult,
+    "mismatched result rolls back exact optimistic operation")
+let retiringMutation = mutableSettings.beginSkillUpdate(mutableSkill.id, enabled: false, from: mutableLoad)!
+mutableSettings.retire()
+precondition(!mutableSettings.receiveSkillUpdate(.init(request: retiringMutation, result: .success(false)), for: retiringMutation))
+precondition(mutableSettings.beginSkillUpdate(mutableSkill.id, enabled: true, from: mutableLoad) == nil, "retired owner cannot mutate or accept old callbacks")
+print("Plugins: optimistic skill mutation, capability/busy admission, exact rollback, retry, malformed/late receipt and alert identity passed")
+
+//Real settings projection admission, not a mirrored UI algorithm. A legacy
+//local capability must be explicitly supplied; installed is never its source.
+precondition(FrontendPluginSettingsProjection(layout: .legacy).localPermissions == nil)
+precondition(!FrontendPluginSettingsProjection(layout: .legacy).hasDisplayableLegacySettings)
+for status in FrontendPluginLocalPermissionStatus.allCases {
+    let readOnly = FrontendPluginLocalPermissionsProjection(state: .init(status: status))
+    precondition(readOnly.displayedStatus == status && readOnly.action == nil && !readOnly.actionEnabled)
+    let busy = FrontendPluginLocalPermissionsProjection(state: .init(status: status, action: .requestPermissions), isRequesting: true)
+    precondition(busy.displayedStatus == nil && !busy.actionEnabled, "busy must not publish a granted or ordinary empty result")
+}
+let permissionFixture = FrontendPluginLocalPermissionsProjection(state: .init(status: .notAllowed, action: .requestPermissions))
+precondition(permissionFixture.actionEnabled && permissionFixture.displayedStatus == .notAllowed)
+precondition(FrontendPluginLocalPermissionsProjection(state: .init(status: .restricted, action: .openSettings)).actionEnabled)
+let noPermissionState = FrontendPluginLocalPermissionsProjection()
+precondition(noPermissionState.displayedStatus == nil && noPermissionState.action == nil && !noPermissionState.actionEnabled)
+let onlyPermission = FrontendPluginSettingsProjection(layout: .legacy, localPermissions: permissionFixture)
+precondition(onlyPermission.valid && onlyPermission.hasDisplayableLegacySettings && onlyPermission.additionalForm == nil)
+precondition(!FrontendPluginSettingsProjection(layout: .canonical, localPermissions: permissionFixture).hasDisplayableLegacySettings,
+             "legacy section cannot be inferred into canonical content")
+var permissionOwner = FrontendPluginSettingsState(scope: .init(accountID: "permission-account", workspaceID: "workspace"),
+    pluginID: "notes", actionPluginID: "notes-action", revision: 3)
+let permissionRequest = permissionOwner.begin()!
+let foreignPermissionRequest = FrontendPluginSettingsRequest(id: permissionRequest.id,
+    scope: .init(accountID: "other-account", workspaceID: "workspace"), pluginID: "notes", actionPluginID: "notes-action", revision: 3)
+permissionOwner.receive(.init(request: foreignPermissionRequest, result: .success(onlyPermission)), for: foreignPermissionRequest)
+precondition(permissionOwner.pending == permissionRequest && permissionOwner.projection == nil)
+permissionOwner.receive(.init(request: permissionRequest, result: .success(onlyPermission)), for: permissionRequest)
+precondition(permissionOwner.projection?.localPermissions == permissionFixture)
+let pendingPermission = permissionOwner.begin()!
+permissionOwner.retire()
+permissionOwner.receive(.init(request: pendingPermission, result: .success(.init(layout: .legacy,
+    localPermissions: .init(state: .init(status: .allowed))))), for: pendingPermission)
+precondition(permissionOwner.projection?.localPermissions == permissionFixture, "retirement preserves snapshot and rejects late privilege display")
+print("Plugins: explicit local permission, five statuses, optional action, busy/nil and owner-scoped settings contracts passed")
+
 let scope = FrontendPluginScope(accountID: "a", workspaceID: "w")
 let other = FrontendPluginScope(accountID: "a", workspaceID: "other")
 let query = FrontendPluginQuery(sourceID: "all", text: "")
@@ -226,3 +370,180 @@ precondition(FrontendPluginDefaultPrompt(id: 1, mention: "", body: "body").text 
 precondition(FrontendPluginDefaultPrompt(id: 1, mention: "mention", body: "").text == "mention")
 prompts.retire(); precondition(!prompts.accepts(promptIntent))
 print("Plugins: full default-prompt payload, explicit capability, wrong scope/body/revision and retired handoff checked")
+
+let skillService = SyntheticPluginService(scope: scope, catalog: [metadata],
+    settingsCatalog: [metadata.id: .init(layout: .legacy, skills: [mutableSkill, lockedSkill])],
+    failsSkillUpdateOnce: true, skillUpdateDelayMilliseconds: 0)
+var firstSkillPage = FrontendPluginSettingsState(scope: scope, pluginID: metadata.id,
+    actionPluginID: metadata.actionPluginID, revision: metadata.revision)
+let skillPageLoad = firstSkillPage.begin()!
+firstSkillPage.receive(try await skillService.settings(skillPageLoad), for: skillPageLoad)
+let failedSkillOperation = firstSkillPage.beginSkillUpdate(mutableSkill.id, enabled: true, from: skillPageLoad)!
+do { _ = try await skillService.updateSkill(failedSkillOperation); preconditionFailure("explicit failure fixture must fail") }
+catch { firstSkillPage.receiveSkillUpdate(.init(request: failedSkillOperation, result: .failure(.loadFailed)), for: failedSkillOperation) }
+precondition(firstSkillPage.skill(mutableSkill.id, from: skillPageLoad)?.isEnabled == false)
+let acceptedSkillOperation = firstSkillPage.beginSkillUpdate(mutableSkill.id, enabled: true, from: skillPageLoad)!
+firstSkillPage.receiveSkillUpdate(try await skillService.updateSkill(acceptedSkillOperation), for: acceptedSkillOperation)
+var secondSkillPage = FrontendPluginSettingsState(scope: scope, pluginID: metadata.id,
+    actionPluginID: metadata.actionPluginID, revision: metadata.revision)
+let freshSkillLoad = secondSkillPage.begin()!
+secondSkillPage.receive(try await skillService.settings(freshSkillLoad), for: freshSkillLoad)
+precondition(secondSkillPage.skill(mutableSkill.id, from: freshSkillLoad)?.isEnabled == true,
+    "A new settings owner must read the accepted synthetic provider state, not reset its own fixture")
+do { _ = try await skillService.updateSkill(failedSkillOperation); preconditionFailure("stale old-value operation must not overwrite accepted state") } catch {}
+precondition(secondSkillPage.skill(lockedSkill.id, from: freshSkillLoad)?.isToggleDisabled == true)
+print("Plugins: actual synthetic skill failure/retry, accepted provider snapshot, new-page reload and stale-value rejection passed")
+
+let usesReference = FrontendPluginCanonicalSettingsReference(pluginID: "canonical", actionPluginID: "canonical-action", revision: 2, title: "Canonical")
+let canonicalUse = FrontendPluginSettingsConnector(id: "canonical-use", name: "Canonical", canonicalSettings: usesReference,
+    linkState: .loaded(nil), privacy: .allowAll)
+precondition(canonicalUse.route == .canonicalSettings(usesReference) && canonicalUse.tail == .connect,
+    "Canonical route wins independently of Connect status")
+let disconnectedUse = FrontendPluginSettingsConnector(id: "uses-id", canonicalConnectorID: "canonical-connector-id",
+    name: "Connector", linkState: .loaded(nil), privacy: .allowAll)
+precondition(disconnectedUse.route == .connect("canonical-connector-id") && disconnectedUse.tail == .connect)
+let unknownUse = FrontendPluginSettingsConnector(id: "unknown-use", name: "Unknown", linkState: .unknown, privacy: .allowReads)
+precondition(unknownUse.route == .detail("unknown-use") && unknownUse.tail == .privacy(.allowReads))
+let emptyCanonical = FrontendPluginSettingsConnector(id: "id", canonicalConnectorID: "", name: "Empty canonical")
+precondition(emptyCanonical.valid && emptyCanonical.route == .detail(""), "Empty canonical ID is not nil and is never trimmed away")
+let reauthUse = FrontendPluginSettingsConnector(id: "reauth", name: "Reauth",
+    linkState: .loaded(.init(id: "link", authStatus: .reauthRequired)), privacy: .allowAll)
+precondition(reauthUse.route == .detail("reauth") && reauthUse.tail == .reconnect)
+let unknownAuth = FrontendPluginSettingsConnector(id: "unknown-auth", name: "Unknown auth",
+    linkState: .loaded(.init(id: "link", authStatus: .unknown)), privacy: .allowLowRisk)
+precondition(unknownAuth.tail == .privacy(.allowLowRisk))
+precondition(!FrontendPluginSettingsProjection(layout: .legacy, connectors: [disconnectedUse, disconnectedUse]).valid)
+precondition(!FrontendPluginSettingsProjection(layout: .legacy, connectors: []).hasDisplayableLegacySettings)
+let detachedDetails = FrontendPluginConnectorDetailProjection(title: "Connector", snapshot: .init(linkState: .loaded(nil), privacy: nil),
+    showsHeaderConnect: true, showsConnectAccount: true)
+let attachedDetails = FrontendPluginConnectorDetailProjection(title: "Connector", snapshot: .init(linkState: .loaded(.init(id: "known-link")), privacy: .alwaysAsk),
+    showsHeaderDisconnect: true, showsRemove: true)
+let connectionForm = FrontendPluginConnectorConnectionForm(title: "Connect Connector", connectorName: "Connector", primaryTitle: "Connect Connector",
+    allowedAuthTypes: [.oauth], preferredAuthTypeID: .oauth, isConnectionEnabled: true)
+precondition(connectionForm.valid && connectionForm.canContinue && connectionForm.selectedAuthTypeID == .oauth)
+var unsupportedForm = connectionForm; unsupportedForm.allowedAuthTypes = []; precondition(!unsupportedForm.canContinue)
+unsupportedForm = connectionForm; unsupportedForm.isConnectionEnabled = false; precondition(!unsupportedForm.canContinue)
+unsupportedForm = connectionForm; unsupportedForm.requiresAdditionalParameters = true; precondition(!unsupportedForm.canContinue)
+unsupportedForm = connectionForm; unsupportedForm.allowedAuthTypes = [.apiKey]; precondition(!unsupportedForm.canContinue,
+    "Unadapted credential form cannot send a guessed OAuth request")
+let connectorFixture = SyntheticPluginConnectorFixture(current: detachedDetails, connected: attachedDetails,
+    disconnected: detachedDetails, form: connectionForm)
+let usesService = SyntheticPluginService(scope: scope, catalog: [metadata],
+    settingsCatalog: [metadata.id: .init(layout: .legacy, connectors: [canonicalUse, disconnectedUse])],
+    connectorFixtures: [metadata.id: [disconnectedUse.id: connectorFixture]], replaysConnectorConnections: true, failsConnectorConnectionOnce: true)
+var usesPage = FrontendPluginSettingsState(scope: scope, pluginID: metadata.id, actionPluginID: metadata.actionPluginID, revision: metadata.revision)
+let usesLoad = usesPage.begin()!; usesPage.receive(try await usesService.settings(usesLoad), for: usesLoad)
+precondition(usesPage.beginConnectorOperation(.connect, id: canonicalUse.id, from: usesLoad) == nil)
+precondition(usesPage.beginConnectorOperation(.connect, id: disconnectedUse.id, from: loadedSkills) == nil, "Other settings owner cannot connect")
+let cancelledConnection = usesPage.beginConnectorOperation(.connect, id: disconnectedUse.id, from: usesLoad)!
+precondition(cancelledConnection.connectorID == "canonical-connector-id", "Dispatch resolved connector ID, not the display app ID")
+precondition(usesPage.begin() == nil && usesPage.beginConnectorOperation(.connect, id: disconnectedUse.id, from: usesLoad) == nil)
+let preparedConnection = try await usesService.prepareConnectorConnection(cancelledConnection)
+if case .success(.interaction(let form)) = preparedConnection.result { precondition(form == connectionForm) }
+else { preconditionFailure("Expected explicit connection presentation") }
+usesPage.cancelConnectorOperation(cancelledConnection)
+precondition(!usesPage.receiveConnectorOperation(.init(request: cancelledConnection, result: .success(attachedDetails.snapshot)), for: cancelledConnection),
+    "Cancelled presentation cannot publish a late connection")
+let failedConnection = usesPage.beginConnectorOperation(.connect, id: disconnectedUse.id, from: usesLoad)!
+do { _ = try await usesService.connectConnector(.init(id: UUID(), operation: failedConnection, authTypeID: .oauth)); preconditionFailure("Failure fixture") }
+catch { precondition(!usesPage.receiveConnectorOperation(.init(request: failedConnection, result: .failure(.loadFailed)), for: failedConnection)) }
+precondition(usesPage.connector(disconnectedUse.id, from: usesLoad)?.route == .connect("canonical-connector-id"))
+let retryConnection = usesPage.beginConnectorOperation(.connect, id: disconnectedUse.id, from: usesLoad)!
+let connectedReceipt = try await usesService.connectConnector(.init(id: UUID(), operation: retryConnection, authTypeID: .oauth))
+precondition(usesPage.receiveConnectorOperation(connectedReceipt, for: retryConnection))
+precondition(usesPage.connector(disconnectedUse.id, from: usesLoad)?.tail == .privacy(.alwaysAsk))
+var usesReentry = FrontendPluginSettingsState(scope: scope, pluginID: metadata.id, actionPluginID: metadata.actionPluginID, revision: metadata.revision)
+let reentryLoad = usesReentry.begin()!; usesReentry.receive(try await usesService.settings(reentryLoad), for: reentryLoad)
+let reentryConnector = usesReentry.connector(disconnectedUse.id, from: reentryLoad)!
+precondition(reentryConnector.route == .detail("canonical-connector-id"), "New page reads accepted link state")
+let detailRequest = FrontendPluginConnectorDetailRequest(id: UUID(), settings: reentryLoad, connector: reentryConnector)
+let detailReceipt = try await usesService.connectorDetails(detailRequest)
+precondition(usesReentry.receiveConnectorDetails(detailReceipt, for: detailRequest))
+let removeConnectorOperation = usesReentry.beginConnectorOperation(.disconnect, id: disconnectedUse.id, from: reentryLoad)!
+let removal = try await usesService.disconnectConnector(removeConnectorOperation)
+precondition(usesReentry.receiveConnectorOperation(removal, for: removeConnectorOperation))
+precondition(usesReentry.connector(disconnectedUse.id, from: reentryLoad)?.route == .connect("canonical-connector-id"))
+precondition(!usesReentry.receiveConnectorDetails(detailReceipt, for: detailRequest), "Old detail load cannot resurrect a removed link")
+let afterRemove = usesReentry.beginConnectorOperation(.connect, id: disconnectedUse.id, from: reentryLoad)!
+let cancelledSubmit = Task { try await usesService.connectConnector(.init(id: UUID(), operation: afterRemove, authTypeID: .oauth)) }
+cancelledSubmit.cancel(); usesReentry.cancelConnectorOperation(afterRemove)
+do { _ = try await cancelledSubmit.value; preconditionFailure("Cancelled provider must not create a link") } catch is CancellationError {}
+let verifyRemove = try await usesService.settings(reentryLoad)
+if case .success(let value) = verifyRemove.result { precondition(value.connectors?.first(where: { $0.id == disconnectedUse.id })?.route == .connect("canonical-connector-id")) }
+usesReentry.retire()
+precondition(!usesReentry.receiveConnectorOperation(connectedReceipt, for: retryConnection))
+print("Plugins: Uses route/tail separation, explicit OAuth form, cancellation, failed connect/retry, canonical ID, re-entry and remove/late-load isolation passed")
+
+
+//Additional settings: explicit provider/account, local fields, dirty-only save,
+//write/read reconciliation and stale attempts use the actual frontend adapter.
+let formProvider = FrontendPluginFormProvider(appID: "fixture.form", readToolName: "read", accountID: "account")
+let formReference = FrontendPluginSettingsFormReference(id: "settings-form", providerCount: 1, provider: formProvider)
+let formMetadata = FrontendPlugin(id: "form-plugin", actionPluginID: "form-action", revision: 1, name: "Form",
+    summary: "", sourceID: "personal", installed: true, actions: [.settings])
+let formScope = FrontendPluginScope(accountID: "form-account", workspaceID: "form-workspace")
+let formSettings = FrontendPluginSettingsRequest(id: UUID(), scope: formScope, pluginID: formMetadata.id,
+    actionPluginID: formMetadata.actionPluginID, revision: formMetadata.revision)
+let formContext = FrontendPluginFormRequest(id: UUID(), settings: formSettings, reference: formReference, provider: formProvider)
+let formProjection = FrontendPluginFormProjection(title: "Form", groups: [.init(id: "main", fields: [
+    .init(id: "bool", title: "Boolean", kind: .boolean, input: .boolean(true)),
+    .init(id: "text", title: "Text", kind: .plainText, input: .text("before"))])], saveEnabled: true)
+let formService = SyntheticPluginService(scope: formScope, catalog: [formMetadata],
+    settingsCatalog: [formMetadata.id: .init(layout: .legacy, additionalForm: formReference)],
+    settingsForms: [formReference.id: formProjection], failsFormReadOnce: true, failsFormSaveOnce: true)
+var formState = FrontendPluginFormState(request: formContext)
+let formRead1 = formState.beginRead()!
+do { _ = try await formService.readSettingsForm(formRead1); preconditionFailure("read failure fixture") }
+catch { formState.receive(.init(request: formRead1, result: .failure(.loadFailed)), for: formRead1) }
+let formRead2 = formState.beginRead()!
+precondition(formRead1.id != formRead2.id)
+formState.receive(.init(request: formRead1, result: .success(formProjection)), for: formRead1)
+precondition(formState.pendingRead == formRead2, "late read cannot settle a replacement attempt")
+formState.receive(try await formService.readSettingsForm(formRead2), for: formRead2)
+precondition(!formState.canSave, "unchanged form cannot save")
+formState.edit("bool", value: .text("wrong kind"))
+precondition(formState.projection?.fields[0].input == .boolean(true))
+formState.edit("bool", value: .boolean(false)); formState.edit("text", value: .text(""))
+precondition(formState.canSave)
+let formSave1 = formState.beginSave()!
+precondition(formSave1.changes == ["bool": .boolean(false), "text": .text("")], "false and empty strings are actual changes")
+formState.edit("text", value: .text("busy input"))
+precondition(formState.projection?.fields[1].input == .text(""), "save snapshot is frozen")
+let formWrite1: FrontendPluginFormSaveReceipt
+do { formWrite1 = try await formService.saveSettingsForm(formSave1) }
+catch { formWrite1 = .init(request: formSave1, result: .failure(.loadFailed)) }
+let formReadback1 = FrontendPluginFormRequest(id: UUID(), settings: formSettings, reference: formReference, provider: formProvider)
+formState.reconcile(formWrite1, readback: try await formService.readSettingsForm(formReadback1), readRequest: formReadback1, for: formSave1)
+precondition(formState.saveFailure == .loadFailed && formState.canSave && !formState.hasSaved)
+precondition(formState.baseline["text"] == .text("before") && formState.projection?.fields[1].input == .text(""),
+    "failed write/read success uses fresh baseline but restores full submitted draft")
+let formSave2 = formState.beginSave()!
+let formWrite2 = try await formService.saveSettingsForm(formSave2)
+let formReadback2 = FrontendPluginFormRequest(id: UUID(), settings: formSettings, reference: formReference, provider: formProvider)
+formState.reconcile(formWrite2, readback: try await formService.readSettingsForm(formReadback2), readRequest: formReadback2, for: formSave2)
+precondition(formState.hasSaved && !formState.canSave && formState.saveFailure == nil)
+var reenteredForm = FrontendPluginFormState(request: formContext)
+let reenteredRead = reenteredForm.beginRead()!
+reenteredForm.receive(try await formService.readSettingsForm(reenteredRead), for: reenteredRead)
+precondition(reenteredForm.projection?.fields[0].input == .boolean(false) && reenteredForm.projection?.fields[1].input == .text(""))
+reenteredForm.edit("text", value: .text("readback failure draft"))
+let failedReadSave = reenteredForm.beginSave()!
+let failedRead = FrontendPluginFormRequest(id: UUID(), settings: formSettings, reference: formReference, provider: formProvider)
+reenteredForm.reconcile(.init(request: failedReadSave, result: .success(())), readback: .init(request: failedRead, result: .failure(.loadFailed)), readRequest: failedRead, for: failedReadSave)
+precondition(reenteredForm.phase == .failed(.loadFailed) && !reenteredForm.hasSaved && !reenteredForm.canSave,
+    "write completion alone does not publish a successful baseline")
+precondition(reenteredForm.projection?.fields[1].input == .text("readback failure draft"))
+var retiredForm = FrontendPluginFormState(request: formContext)
+let retiringRead = retiredForm.beginRead()!; retiredForm.retire()
+retiredForm.receive(.init(request: retiringRead, result: .success(formProjection)), for: retiringRead)
+precondition(retiredForm.projection == nil && retiredForm.beginRead() == nil)
+let wrongProvider = FrontendPluginFormProvider(appID: formProvider.appID, readToolName: formProvider.readToolName, accountID: "other-account")
+do { _ = try await formService.readSettingsForm(.init(id: UUID(), settings: formSettings, reference: formReference, provider: wrongProvider)); preconditionFailure("wrong provider/account accepted") }
+catch { }
+let describedField = FrontendPluginFormField(id: "d", title: "", description: "Footer", kind: .plainText, input: .text(""))
+let plainField = formProjection.fields[0]
+let sectionProjection = FrontendPluginFormGroup(id: "sections", fields: [plainField, describedField,
+    .init(id: "last", title: "Last", kind: .plainText, input: .text(""))])
+precondition(sectionProjection.fieldSections.map { $0.fields.count } == [1, 1, 1])
+precondition(sectionProjection.fieldSections[1].description == "Footer" && describedField.title.isEmpty)
+print("Plugins: provider/account-scoped form reads, plain Bool/Text drafts, dirty save, failure readback/retry, re-entry, retired attempts and description footers passed")

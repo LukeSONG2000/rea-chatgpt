@@ -1,0 +1,98 @@
+import Foundation
+
+let scope = RemoteFileReadingStore.Scope.task(.init(hostID: "host-a", threadID: "thread-a"))
+let path = RemoteFileReadingIdentity.knownNoComment(path: "/workspace/README.md", style: .slashSeparated)
+var owner = RemoteFileReadingStore()
+let first = owner.begin(scope: scope, identity: path, line: nil, defaultMode: .markdown)
+precondition(owner.read(first) == .init(mode: .markdown))
+var reading = owner.read(first)!
+reading.mode = .raw; reading.rawOffsetY = 320; reading.renderedOffsetY = 640
+reading.hasAppliedLinkedLine = true
+precondition(owner.write(reading, lease: first))
+owner.retireLease()
+precondition(owner.read(first) == nil && !owner.write(.init(mode: .markdown), lease: first))
+let reopened = owner.begin(scope: scope, identity: path, line: nil, defaultMode: .markdown)
+precondition(owner.read(reopened) == reading)
+precondition(!owner.write(.init(mode: .markdown), lease: first))
+precondition(!owner.retireLease(first) && owner.read(reopened) == reading)
+
+let other = RemoteFileReadingIdentity.knownNoComment(path: "/workspace/other.md", style: .slashSeparated)
+let another = owner.begin(scope: scope, identity: other, line: nil, defaultMode: .markdown)
+precondition(owner.read(another) == .init(mode: .markdown))
+let restored = owner.begin(scope: scope, identity: path, line: nil, defaultMode: .markdown)
+precondition(owner.read(restored) == reading)
+let linked = owner.begin(scope: scope, identity: path, line: 15, defaultMode: .raw)
+precondition(owner.read(linked) == .init(mode: .raw))
+var linkedReading = owner.read(linked)!
+linkedReading.mode = .markdown; linkedReading.hasAppliedLinkedLine = true; linkedReading.rawOffsetY = 850
+precondition(owner.write(linkedReading, lease: linked))
+owner.retireLease()
+let linkedAgain = owner.begin(scope: scope, identity: path, line: 15, defaultMode: .raw)
+precondition(owner.read(linkedAgain) == linkedReading) // Initial Raw cannot overwrite the user's mode.
+let linkedElsewhere = owner.begin(scope: scope, identity: path, line: 16, defaultMode: .raw)
+precondition(owner.read(linkedElsewhere) == .init(mode: .raw))
+let otherTask = owner.begin(scope: .task(.init(hostID: "host-a", threadID: "thread-b")), identity: path, line: nil, defaultMode: .markdown)
+precondition(owner.read(otherTask) == .init(mode: .markdown))
+let otherHost = owner.begin(scope: .task(.init(hostID: "host-b", threadID: "thread-a")), identity: path, line: nil, defaultMode: .markdown)
+precondition(owner.read(otherHost) == .init(mode: .markdown))
+
+let windows = RemoteFileReadingIdentity.knownNoComment(path: "C:\\Workspace\\README.md", style: .windows)
+let win = owner.begin(scope: scope, identity: windows, line: nil, defaultMode: .markdown)
+precondition(owner.write(reading, lease: win))
+let sameWindows = owner.begin(scope: scope, identity: .knownNoComment(path: "c:\\workspace\\readme.MD", style: .windows), line: nil, defaultMode: .markdown)
+precondition(owner.read(sameWindows) == reading)
+let differentStyle = owner.begin(scope: scope, identity: .knownNoComment(path: windows.rawValue, style: .slashSeparated), line: nil, defaultMode: .markdown)
+precondition(owner.read(differentStyle) == .init(mode: .markdown))
+let slashCase = owner.begin(scope: scope, identity: .knownNoComment(path: "/workspace/readme.md", style: .slashSeparated), line: nil, defaultMode: .markdown)
+precondition(owner.read(slashCase) == .init(mode: .markdown))
+var nonfinite = owner.read(slashCase)!
+nonfinite.rawOffsetY = .infinity
+precondition(!owner.write(nonfinite, lease: slashCase))
+nonfinite.rawOffsetY = 10; nonfinite.renderedOffsetY = .nan
+precondition(!owner.write(nonfinite, lease: slashCase))
+owner.retireOwner()
+precondition(owner.read(slashCase) == nil)
+let afterOwner = owner.begin(scope: scope, identity: path, line: nil, defaultMode: .markdown)
+precondition(owner.read(afterOwner) == .init(mode: .markdown))
+
+let library = RemoteFileReadingStore.Scope.library(accountID: "account", directoryID: "docs")
+let old = RemoteFileReadingStore.ContentsVersion(raw: Data([1]), markdown: Data([2]))
+let sameBodyNewRendering = RemoteFileReadingStore.ContentsVersion(raw: Data([1]), markdown: Data([3]))
+let newBody = RemoteFileReadingStore.ContentsVersion(raw: Data([4]), markdown: Data([3]))
+let libraryFirst = owner.begin(scope: library, identity: path, line: nil, defaultMode: .markdown, version: old)
+precondition(owner.write(reading, lease: libraryFirst))
+let libraryAgain = owner.begin(scope: library, identity: path, line: nil, defaultMode: .markdown, version: old)
+precondition(owner.read(libraryAgain) == reading)
+for otherLibrary in [RemoteFileReadingStore.Scope.library(accountID: "account", directoryID: "other"),
+                     .library(accountID: "other", directoryID: "docs"), scope] {
+    let lease = owner.begin(scope: otherLibrary, identity: path, line: nil, defaultMode: .markdown, version: old)
+    precondition(owner.read(lease) == .init(mode: .markdown))
+}
+let renderedChange = owner.begin(scope: library, identity: path, line: nil, defaultMode: .markdown, version: sameBodyNewRendering)
+precondition(owner.read(renderedChange) == .init(mode: .markdown))
+precondition(!owner.write(reading, lease: libraryAgain))
+precondition(owner.write(reading, lease: renderedChange))
+let rawChange = owner.begin(scope: library, identity: path, line: nil, defaultMode: .markdown, version: newBody)
+precondition(owner.read(rawChange) == .init(mode: .markdown))
+let storedKey = String(repeating: "a", count: 64)
+let otherKey = String(repeating: "b", count: 64)
+var journal = RemoteFileReadingJournal()
+journal.write(reading, key: storedKey, contents: old)
+let mediaReading = RemoteFileReadingSnapshot(mode: .raw, pdfPage: 4, imageZoom: 2.5)
+journal.write(mediaReading, key: otherKey, contents: newBody)
+let serialized = try JSONEncoder().encode(journal)
+var relaunched = RemoteFileReadingJournal.load(serialized)
+precondition(relaunched.read(key: otherKey, contents: old) == nil)
+var mediaJournal = RemoteFileReadingJournal.load(serialized)
+precondition(mediaJournal.read(key: otherKey, contents: newBody) == mediaReading)
+precondition(!RemoteFileReadingSnapshot(mode: .raw, pdfPage: -1).valid)
+precondition(!RemoteFileReadingSnapshot(mode: .raw, imageZoom: .infinity).valid)
+var freshOwner = RemoteFileReadingStore()
+let resumed = freshOwner.begin(scope: library, identity: path, line: nil, defaultMode: .markdown, version: old,
+    restored: relaunched.read(key: storedKey, contents: old))
+precondition(freshOwner.read(resumed) == reading)
+precondition(relaunched.read(key: storedKey, contents: sameBodyNewRendering) == nil)
+precondition(relaunched.read(key: storedKey, contents: old) == nil)
+var corrupted = RemoteFileReadingJournal.load(Data("{\"version\":2,\"entries\":[]}".utf8))
+precondition(corrupted.read(key: storedKey, contents: old) == nil)
+print("PASS reading owner and restart journal: mode/positions, scope isolation, content revision and retired leases")

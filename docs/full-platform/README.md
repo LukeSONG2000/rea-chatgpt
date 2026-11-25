@@ -1325,14 +1325,21 @@ User-authorized cleanup removed 47 superseded generated package/payload copies.
 `desktop/dist` decreased from 35.4 GiB to 3.46 GiB; filesystem free-space measurement
 increased by 32.26 GiB (to approximately 36 GiB). Independent source archives,
 manifests and test evidence remain; original inputs and Git history were untouched.
-Mac retains v174-r4 candidate / v172-r2 rollback; Windows retains v173 candidate /
-v172 rollback. Candidates are not claims of full UI or platform acceptance.
+The November 5 policy retained the v174-r4 Mac and v173 Windows candidates
+alongside their v172 rollbacks. Package integrity and UI or platform acceptance
+are recorded independently.
 
 Rules are in `AGENTS.md`. `build-payload.py` now checks a new full package then
 promotes it via `native/retain-builds.py`, preserving the explicitly pinned rollback.
 Use source-host runs for daily iteration. Retention skips running/in-progress builds,
 verifies archives before deletion, and rejects path/hash mismatches. Final dry-run
 reported no stale package targets. Receipt: `analysis/build-retention/20261105-093106-68465.json`.
+
+On November 21 the user authorized retiring low-risk rollback packages.
+Reverified the v174-r4 Mac and v173 Windows candidates and retired the v172-r2
+Mac and v172 Windows packages. Independent sources, manifests and prior acceptance
+records remain. The live policy uses a null rollback for each platform.
+[Cleanup receipt](../../analysis/build-retention/20261121-004611-7472.json)
 
 ### Desktop shell CSS ordering fix (v175 source host)
 

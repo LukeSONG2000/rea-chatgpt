@@ -53,6 +53,29 @@ enum SidebarGeometryTests {
         precondition(D.fraction(begin: 0.4, translation: 30, targetIsOpen: true, directionSign: 1, extent: 300) == 0.5)
         precondition(D.fraction(begin: 0, translation: .nan, targetIsOpen: true, directionSign: 1, extent: 300) == nil)
         precondition(D.fraction(begin: 0, translation: 10, targetIsOpen: true, directionSign: 1, extent: 0) == nil)
+        typealias A = RecoveredSidebarDragAdmission
+        for sign in [1.0, -1.0] {
+            func admits(_ x: Double, _ phase: A.Phase,
+                        _ open: Bool = true, _ close: Bool = true, y: Double = 1) -> Bool {
+                A.admits(velocityX: x * sign, velocityY: y, directionSign: sign,
+                    phase: phase, canDragOpen: open, canDragClose: close)
+            }
+            precondition(admits(20, .closed) && !admits(-20, .closed))
+            precondition(!admits(20, .closed, false) && admits(20, .closed, true, false))
+            precondition(admits(-20, .open) && !admits(20, .open))
+            precondition(!admits(-20, .open, true, false) && admits(-20, .open, false, true))
+            precondition(admits(20, .dragging, false, false) && admits(-20, .dragging, false, false))
+            //Tap opening/settling is still its stable target phase. The mere
+            //existence of an animator must not loosen its directional gate.
+            precondition(!admits(20, .open) && !admits(-20, .closed))
+            for phase in A.Phase.allCases {
+                precondition(!admits(5, phase, y: 5) && !admits(-5, phase, y: 5), "strict dominance rejects ties")
+                precondition(!admits(0, phase, y: 0) && !admits(2, phase, y: 5))
+                precondition(!admits(.nan, phase, y: 0) && !admits(.infinity, phase, y: 0))
+            }
+        }
+        precondition(!A.admits(velocityX: 20, velocityY: 1, directionSign: 0,
+            phase: .dragging, canDragOpen: true, canDragClose: true))
         //Independent fixed vectors for293129d908/76103b0: compact,
         //asymmetric bottom corners, clamped radius and safe-area dominance.
         typealias F = RecoveredSidebarFooterGeometry
@@ -76,6 +99,7 @@ enum SidebarGeometryTests {
         }
         print("PASS: 7 source vectors, RTL/inset mirroring, trailing edge, invalid geometry")
         print("PASS: source drag normalization, RTL, closing direction, velocity projection, exact threshold and interrupted progress")
+        print("PASS: source phase/direction admission, strict horizontal dominance, flags, RTL and stable settling targets")
         print("PASS: 12 footer vectors, distinct compact/phone branches, max bottom corner, unknown-input rejection")
     }
 }

@@ -18,6 +18,9 @@ struct RemoteAgentPresentation: Equatable, Identifiable {
     var status: RemoteAgentStatus
     var parentThreadID: String?
     var recencyAt: Date?
+    // Older providers project only a roster and resolve the task on demand.
+    // When supplied, this capability can explicitly keep the row read-only.
+    var canOpenAssociatedTask: Bool? = nil
 }
 
 //293 Section.ID 0x95b1b98 confirms these two groups. Exact status-to-group and
@@ -44,14 +47,14 @@ struct RemoteAgentsSnapshot: Equatable {
 
     func openIntent(agentID: String, sessionID: UUID) -> RemoteAgentOpenIntent? {
         guard hasValidIdentity,
-              sections.flatMap(\.subagents).contains(where: { $0.id == agentID }) else { return nil }
+              sections.flatMap(\.subagents).contains(where: { $0.id == agentID && $0.canOpenAssociatedTask != false }) else { return nil }
         return .init(scope: scope, sessionID: sessionID, revision: revision, agentID: agentID)
     }
 
     func resolve(_ intent: RemoteAgentOpenIntent, currentSession: UUID) -> RemoteAgentPresentation? {
         guard intent.scope == scope, intent.sessionID == currentSession,
               intent.revision == revision, hasValidIdentity else { return nil }
-        return sections.flatMap(\.subagents).first { $0.id == intent.agentID }
+        return sections.flatMap(\.subagents).first { $0.id == intent.agentID && $0.canOpenAssociatedTask != false }
     }
 
     static func fixture(scope: RemoteComposerDraftScope) -> Self {
@@ -90,24 +93,25 @@ struct RemoteAgentThreadTarget: Equatable {
 
 struct RemoteAgentThreadRequest: Equatable {
     let accountID: String
+    let profileID: String?
     let intent: RemoteAgentOpenIntent
     let agent: RemoteAgentPresentation
 
-    init?(accountID: String, intent: RemoteAgentOpenIntent,
+    init?(accountID: String, profileID: String? = nil, intent: RemoteAgentOpenIntent,
           snapshot: RemoteAgentsSnapshot, sessionID: UUID) {
         guard !accountID.isEmpty, let hostID = snapshot.scope.hostID, !hostID.isEmpty,
               case .thread(let threadID) = snapshot.scope.destination, !threadID.isEmpty,
               let agent = snapshot.resolve(intent, currentSession: sessionID) else { return nil }
-        self.accountID = accountID; self.intent = intent; self.agent = agent
+        self.accountID = accountID; self.profileID = profileID; self.intent = intent; self.agent = agent
     }
 
     //Recheck the current account/session, projection revision and complete
     //payload before accepting an asynchronous provider's destination. The host
     //catalog is an admission input, not a server authorization grant.
     func resolve(_ target: RemoteAgentThreadTarget?, accountID currentAccount: String,
-                 snapshot: RemoteAgentsSnapshot, sessionID: UUID,
+                 profileID currentProfile: String? = nil, snapshot: RemoteAgentsSnapshot, sessionID: UUID,
                  availableHosts: Set<String>) -> RemoteAgentThreadTarget? {
-        guard currentAccount == accountID,
+        guard currentAccount == accountID, currentProfile == profileID,
               snapshot.resolve(intent, currentSession: sessionID) == agent,
               let target, availableHosts.contains(target.hostID),
               !target.hostID.isEmpty, !target.threadID.isEmpty, !target.title.isEmpty,
@@ -121,12 +125,48 @@ struct RemoteAgentThreadRequest: Equatable {
     }
 }
 
+struct RemoteAgentRosterRequest: Equatable {
+    let attemptID = UUID()
+    let accountID: String
+    let profileID: String
+    let scope: RemoteComposerDraftScope
+    let sessionID: UUID
+}
+
+struct RemoteAgentRosterReceipt {
+    enum Resolution: Equatable {
+        case accepted(RemoteAgentsSnapshot), stale, invalid
+    }
+
+    let request: RemoteAgentRosterRequest
+    let snapshot: RemoteAgentsSnapshot
+
+    func resolve(for request: RemoteAgentRosterRequest, previous: RemoteAgentsSnapshot?) -> Resolution {
+        guard self.request == request, snapshot.scope == request.scope, snapshot.hasValidIdentity else { return .invalid }
+        if let previous, previous.scope == request.scope {
+            if snapshot.revision < previous.revision { return .stale }
+            if snapshot.revision == previous.revision && snapshot != previous { return .invalid }
+        }
+        return .accepted(snapshot)
+    }
+}
+
 // Independent frontend service boundary. The original owner resolver and its
 // loading/error presentation are not recovered. A reference alone is never a
 // navigation target; the injected provider must supply a complete destination.
 @MainActor
 protocol RemoteAgentThreadProviding {
     func target(for request: RemoteAgentThreadRequest) async throws -> RemoteAgentThreadTarget?
+}
+
+@MainActor protocol RemoteAgentRosterProviding: RemoteAgentThreadProviding {
+    func roster(for request: RemoteAgentRosterRequest) async throws -> RemoteAgentRosterReceipt
+    // Full roster snapshots with the same revisions as the initial read.
+    func rosterUpdates(for request: RemoteAgentRosterRequest) -> AsyncThrowingStream<RemoteAgentRosterReceipt, Error>?
+}
+
+extension RemoteAgentRosterProviding {
+    func rosterUpdates(for request: RemoteAgentRosterRequest) -> AsyncThrowingStream<RemoteAgentRosterReceipt, Error>? { nil }
 }
 
 struct RemoteAgentNavigationState {
@@ -232,11 +272,14 @@ struct RemoteAgentsControls: View {
                                         if agent.status == .running || agent.status == .refreshing {
                                             ProgressView().controlSize(.small)
                                         }
-                                        Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
+                                        if agent.canOpenAssociatedTask != false {
+                                            Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
+                                        }
                                     }
                                     .foregroundStyle(.primary).contentShape(Rectangle())
                                 }
                                 .buttonStyle(.plain)
+                                .disabled(agent.canOpenAssociatedTask == false)
                                 .accessibilityIdentifier("remote-agent-row-" + agent.id)
                             }
                         }
@@ -246,7 +289,7 @@ struct RemoteAgentsControls: View {
             .padding(12)
         }
         .frame(maxHeight: 220)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .modifier(RecoveredRemoteComposerStatusSurface(shape: RoundedRectangle(cornerRadius: 16, style: .continuous)))
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("remote-agents-details")
     }

@@ -1,6 +1,7 @@
 package local.rea.chatgpt
 
 import android.net.Uri
+import java.util.Locale
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -17,14 +18,30 @@ import androidx.compose.ui.semantics.testTagsAsResourceId
 // Independent frontend route, not an Android293 recovered URL decoder.
 // Paths are opaque remote resource identifiers. Never open them on this device.
 internal data class RemoteFileLink(val task: RemoteTaskKey, val turn: String,
-    val request: String, val resource: String)
+    val request: String, val resource: String, val sourceReference: String? = null)
 internal fun remoteFileLink(task: RemoteTaskKey, turn: RemoteFrontendTurn, raw: String): RemoteFileLink? {
-    if (raw.length > 4096) return null
+    if (raw.length > 4096 || '\u0000' in raw) return null
     val uri = Uri.parse(raw)
-    if (uri.scheme != "file" || !uri.host.isNullOrEmpty() || uri.query != null || uri.fragment != null) return null
-    val path = uri.path ?: return null
+    if (uri.scheme != "file" || uri.query != null) return null
+    val encodedPath = uri.encodedPath ?: return null
+    if (uri.fragment != null && resourceTextLines(raw) == null) return null
+    // Strip a literal location suffix before URI decoding. An encoded colon
+    // belongs to the resource name, not to the separate source location.
+    val encodedReference = encodedPath.replace(Regex(":\\d+(?::\\d+)?$"), "")
+    val path = Uri.decode(encodedReference)
     if (!path.startsWith('/') || path.endsWith('/') || path.contains('\u0000')) return null
-    return RemoteFileLink(task, turn.id, turn.request, path)
+    val authority = uri.encodedAuthority.orEmpty()
+    val drive = Regex("^/[A-Za-z]:/").containsMatchIn(path)
+    val reference = if (drive || authority.isNotEmpty()) {
+        if (Regex("%(?:2[fF]|5[cC])").containsMatchIn(encodedReference) || '\\' in path) return null
+        val segments = path.drop(1).split('/')
+        if (segments.size < 2 || segments.any { it.isEmpty() || it == "." || it == ".." }) return null
+        if (authority.isEmpty()) path.drop(1).lowercase(Locale.ROOT) else {
+            if (drive || !authority.matches(Regex("[A-Za-z0-9][A-Za-z0-9._-]{0,252}"))) return null
+            ("//$authority$path").lowercase(Locale.ROOT)
+        }
+    } else path
+    return RemoteFileLink(task, turn.id, turn.request, reference, raw)
 }
 
 // Minimal fixture host behind a scoped route. Full directory and format previews

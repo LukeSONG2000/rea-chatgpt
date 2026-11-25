@@ -182,8 +182,8 @@ struct RecoveredRemoteContextUsageSettings: View {
     @State private var connectionNotice: String?
     private var preferences: RemoteConnectionPreferences? { RemoteConnectionPreferences.decode(connectionData) }
     private var hosts: [String] {
-        let available = HostLaunchRuntime.arguments.contains("--remote-cloud-fixture")
-            ? ["fixture-cloud", "fixture-a", "fixture-b"] : ["fixture-a", "fixture-b"]
+        //Cloud is a separate instance capability, not a computer connection.
+        let available = ["fixture-a", "fixture-b"]
         return preferences?.ordered(available) ?? available
     }
     private func updateConnections(_ change: (inout RemoteConnectionPreferences) -> Void) {

@@ -8,6 +8,10 @@ import UIKit
     //A corrupt profile must not lock the whole app or overwrite its old journal.
     @Published private(set) var previewProfile: FrontendEditableProfile?
     @Published private(set) var profileStorageFailed = false
+    @Published private(set) var localAvatar: FrontendLocalAvatar?
+    @Published private(set) var avatarStorageFailed = false
+    private var avatarReadFailed = false
+    private var didInjectAvatarSaveFailure = false
     private var profileReadFailed = false
     private var didInjectProfileSaveFailure = false
     @Published var username = ""
@@ -50,6 +54,7 @@ import UIKit
             state.replaceSession(startsSignedOut || stored == true ? nil : .preview()); storageFailed = false
         } catch { state.replaceSession(nil); storageFailed = true }
         restoreProfile()
+        restoreAvatar()
     }
     private func profileJournal(accountID: String) -> FrontendProfilePersistence? {
         persistence.map { .init(url: $0.url.deletingLastPathComponent().appendingPathComponent("profile-v1.json"),
@@ -62,6 +67,43 @@ import UIKit
         catch { profileReadFailed = true; profileStorageFailed = true }
     }
     func retryProfileStorage() { restoreProfile() }
+    private func avatarJournal(accountID: String) -> FrontendAvatarPersistence? {
+        persistence.map { .init(url: $0.url.deletingLastPathComponent().appendingPathComponent("avatar-v1.json"),
+            accountID: accountID) }
+    }
+    private func restoreAvatar() {
+        localAvatar = nil; avatarReadFailed = false; avatarStorageFailed = false
+        guard let account = state.session?.accountID else { return }
+        do {
+            let restored = try avatarJournal(accountID: account)?.load()
+            if let restored, FrontendAvatarModel.decode(restored.pngData) == nil {
+                throw FrontendAvatarSubmissionFailure.invalidReceipt
+            }
+            localAvatar = restored
+        } catch { avatarReadFailed = true; avatarStorageFailed = true }
+    }
+    func retryAvatarStorage() { restoreAvatar() }
+    func acceptLocalAvatar(_ request: FrontendAvatarSubmissionRequest, baseRevision: UInt64,
+                           sessionID: UUID?) -> FrontendAvatarSubmissionFailure? {
+        guard !storageFailed, !avatarReadFailed, let session = state.session,
+              session.sessionID == sessionID, session.accountID == request.selection.accountID,
+              (localAvatar?.revision ?? 0) == baseRevision, baseRevision < .max,
+              FrontendAvatarModel.decode(request.croppedData) != nil else {
+            return avatarReadFailed ? .localStorage : .invalidReceipt
+        }
+        let next = FrontendLocalAvatar(accountID: session.accountID, revision: baseRevision + 1,
+            imageID: request.selection.id, pngData: request.croppedData)
+        do {
+            if HostLaunchRuntime.arguments.contains("--offline-fixture"),
+               HostLaunchRuntime.arguments.contains("--avatar-local-save-failure-fixture"), !didInjectAvatarSaveFailure {
+                didInjectAvatarSaveFailure = true; throw FrontendAvatarSubmissionFailure.localStorage
+            }
+            guard let journal = avatarJournal(accountID: session.accountID) else { return .unavailable }
+            try journal.save(next, expectedRevision: baseRevision)
+        } catch { avatarStorageFailed = true; return .localStorage }
+        localAvatar = next; avatarStorageFailed = false
+        return nil
+    }
     var canEditPreviewProfile: Bool { !storageFailed && !profileReadFailed && state.session != nil }
     func retryStorage() {
         if let unsavedRoute {
@@ -112,7 +154,7 @@ import UIKit
         }
         let changed = next.session != state.session
         state = next; task = nil
-        if changed { username = ""; restoreProfile(); sessionChanged?() }
+        if changed { username = ""; restoreProfile(); restoreAvatar(); sessionChanged?() }
     }
     func acceptProfilePreview(_ profile: FrontendEditableProfile, baseRevision: UInt64,
                               sessionID: UUID?) -> FrontendProfileFailure? {

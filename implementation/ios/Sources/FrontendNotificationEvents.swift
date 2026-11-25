@@ -22,6 +22,14 @@ struct FrontendNotificationTarget: Codable, Hashable {
     }
 }
 
+// Independent host lifetime gate, not an official notification schema/policy.
+// The destination may disappear while modal dismissal or route delivery waits.
+enum FrontendNotificationRouteAdmission {
+    static func allows(sessionRetired: Bool, expectedGeneration: UInt64, currentGeneration: UInt64) -> Bool {
+        !sessionRetired && expectedGeneration == currentGeneration
+    }
+}
+
 struct FrontendNotificationEvent: Codable, Equatable {
     let version: Int
     let id: String
@@ -192,6 +200,7 @@ final class FrontendNotificationDelivery: NSObject, ObservableObject, UNUserNoti
     func retryPersistence() {
         do {
             if loadFailed { try restorePersistence() }
+            else if pendingResponseCommit != nil { commitCompletedResponse() }
             else { try persistence?.save(journal); storageFailed = false }
         } catch { storageFailed = true }
     }
@@ -201,13 +210,25 @@ final class FrontendNotificationDelivery: NSObject, ObservableObject, UNUserNoti
         do {
             try persistence?.save(next)
             journal = next
-            storageFailed = false
+            // Another event may be durably received while an already opened
+            // response still needs its read receipt committed. Keep that error.
+            storageFailed = pendingResponseCommit != nil
             unreadTargets = journal.unreadTargets
             return true
         } catch { storageFailed = true; return false }
     }
     private var queue: [String] = []
     private var openingID: String?
+    private var openingAttempt: UUID?
+    // Independent host receipt, not an official notification payload. Holding
+    // this exact completion prevents retrying an already successful navigation
+    // when only its durable read/handled transition failed.
+    private struct CompletedResponse {
+        let id: String
+        let generation: UInt64
+        let attempt: UUID
+    }
+    private var pendingResponseCommit: CompletedResponse?
     var generation: UInt64 { journal.generation }
     var cancelOpenTarget: (() -> Void)?
     var openTarget: ((FrontendNotificationTarget, @escaping (Bool) -> Void) -> Void)? {
@@ -217,7 +238,10 @@ final class FrontendNotificationDelivery: NSObject, ObservableObject, UNUserNoti
     func activate(_ scope: FrontendNotificationScope?, persist: Bool = true) {
         let generation = journal.generation
         journal.activate(scope)
-        if journal.generation != generation { queue.removeAll(); openingID = nil; cancelOpenTarget?() }
+        if journal.generation != generation {
+            queue.removeAll(); openingID = nil; openingAttempt = nil; pendingResponseCommit = nil
+            cancelOpenTarget?()
+        }
         unreadTargets = journal.unreadTargets
         if persist, persistence != nil, !loadFailed { _ = commit(journal) }
     }
@@ -249,15 +273,38 @@ final class FrontendNotificationDelivery: NSObject, ObservableObject, UNUserNoti
               let entry = journal.entries[id] else { return }
         queue.removeFirst()
         openingID = id
+        let attempt = UUID()
+        openingAttempt = attempt
         let generation = journal.generation
         openTarget(entry.event.target) { [weak self] opened in
-            guard let self, self.journal.generation == generation, self.openingID == id else { return }
-            var next = self.journal
-            next.finishResponse(id, generation: generation, opened: opened)
-            _ = self.commit(next)
-            self.openingID = nil
-            self.drain()
+            guard let self, self.journal.generation == generation, self.openingID == id,
+                  self.openingAttempt == attempt, self.pendingResponseCommit == nil else { return }
+            guard opened else {
+                // Failure leaves the event unread; no changed journal to save.
+                self.openingID = nil
+                self.openingAttempt = nil
+                self.drain()
+                return
+            }
+            self.pendingResponseCommit = .init(id: id, generation: generation, attempt: attempt)
+            self.commitCompletedResponse()
         }
+    }
+
+    private func commitCompletedResponse() {
+        guard let completed = pendingResponseCommit,
+              journal.generation == completed.generation,
+              openingID == completed.id, openingAttempt == completed.attempt else { return }
+        // Apply to the latest journal so intervening received/read events are
+        // preserved. Never retry the route provider to repair local storage.
+        var next = journal
+        next.finishResponse(completed.id, generation: completed.generation, opened: true)
+        guard commit(next) else { return }
+        pendingResponseCommit = nil
+        storageFailed = false
+        openingID = nil
+        openingAttempt = nil
+        drain()
     }
 
     // Only the independently named contract is admitted. An official notification

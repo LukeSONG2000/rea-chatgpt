@@ -72,26 +72,39 @@ enum PreviewAccent: String, CaseIterable {
 
 struct PreviewAccentMenuLabel: View {
     let accent: PreviewAccent
-    //Original uses _themeColorCircleSize ScaledMetric; its initializer value
-    //is unclosed. Body-sized17 is an explicit host default, not recovered size.
     @ScaledMetric(relativeTo: .body) private var pointSize: CGFloat = 17
     @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         Label {
             Text(accent.title)
         } icon: {
-            Image(uiImage: swatch)
+            Image(uiImage: previewAccentSwatch(accent, pointSize: pointSize, colorScheme: colorScheme))
         }.labelStyle(.titleAndIcon)
     }
-    private var swatch: UIImage {
-        let traits = UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)
-        let color = officialVisualColor(accent.menuSwatchAsset).resolvedColor(with: traits)
-        let image = UIImage(systemName: "circlebadge.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: pointSize)) ?? UIImage()
-        //Bottom0/right-4 are supplied by the original. Top/left0 remain host
-        //defaults until the original inset helper is decoded.
-        return image.withTintColor(color, renderingMode: .alwaysOriginal)
-            .withAlignmentRectInsets(.init(top: 0, left: 0, bottom: 0, right: -4))
+}
+
+struct PreviewAccentSelectionSwatch: View {
+    let accent: PreviewAccent
+    // Render the compact selection directly so the Menu label cannot
+    // remap a selected-color symbol to the monochrome control tint.
+    @ScaledMetric(relativeTo: .body) private var diameter: CGFloat = 8
+
+    var body: some View {
+        Circle()
+            .fill(Color(uiColor: officialVisualColor(accent.menuSwatchAsset)))
+            .frame(width: diameter, height: diameter)
+            .accessibilityHidden(true)
     }
+}
+
+private func previewAccentSwatch(_ accent: PreviewAccent, pointSize: CGFloat, colorScheme: ColorScheme) -> UIImage {
+    let traits = UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)
+    let color = officialVisualColor(accent.menuSwatchAsset).resolvedColor(with: traits)
+    let image = UIImage(systemName: "circlebadge.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: pointSize)) ?? UIImage()
+    // The original menu supplies bottom 0 and right -4.
+    return image.withTintColor(color, renderingMode: .alwaysOriginal)
+        .withAlignmentRectInsets(.init(top: 0, left: 0, bottom: 0, right: -4))
 }
 
 // Independent device-local adapter for the recovered 293 ColorSchemeSetting
@@ -174,10 +187,15 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
             return
         }
-        //Independent offline host: normal icon launch and named core selection
-        //share one resolved capability/profile owner. No automatic harness.
-        let service: () -> (any ChatMessageService)? = { HostLaunchRuntime.arguments.contains("--offline-fixture")
-            ? FixtureChatService(interval: HostLaunchRuntime.arguments.contains("--fixture-slow") ? 1_000_000_000 : 180_000_000,
+        let service: () -> (any ChatMessageService)? = {
+            #if targetEnvironment(simulator)
+            if HostLaunchRuntime.origin == .explicitFixture,
+               HostLaunchRuntime.arguments.contains("--chat-loopback-fixture") {
+                return try? LocalHarness()
+            }
+            #endif
+            guard HostLaunchRuntime.arguments.contains("--offline-fixture") else { return nil }
+            return FixtureChatService(interval: HostLaunchRuntime.arguments.contains("--fixture-slow") ? 1_000_000_000 : 180_000_000,
                                  failFirstRequest: HostLaunchRuntime.arguments.contains("--chat-failure-fixture"),
                                  chunks: HostLaunchRuntime.arguments.contains("--chat-structure-fixture") ? [
                                     "3. **有序一**\n4. 有序二\n   - 内层 `行内代码`\n\n",
@@ -194,7 +212,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                     "[" + visualText("查看未接服务", "Open unavailable page") + "](https://example.invalid/unconnected)"
                                  ] : nil,
                                  replacementAfterFirstDelta: HostLaunchRuntime.arguments.contains("--chat-revision-fixture")
-                                    ? visualText("修订后的合成正文。\n\n", "Revised synthetic body.\n\n") : nil) : nil }
+                                    ? visualText("修订后的合成正文。\n\n", "Revised synthetic body.\n\n") : nil)
+        }
         chatServiceFactory = service
         let authentication = FrontendAuthenticationModel.make()
         self.authentication = authentication
@@ -216,8 +235,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let window, let authentication,
               !installedRoot || renderedSession != authentication.state.session
                   || renderedStorageFailure != authentication.storageFailed else { return }
-        conversationHost?.retireFrontendSession()
-        conversationHost = nil
         let delivery = FrontendNotificationDelivery.shared
         // AppDelegate restored the initial journal already. Retire it only on
         // a real root-session transition or an initially signed-out bootstrap.
@@ -228,6 +245,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             delivery.openTarget = nil; delivery.cancelOpenTarget = nil
             FrontendNotificationRegistrationModel.shared.configure(scope: nil, provider: nil)
         }
+        // Invalidate queued responses before retiring the old host. Its pending
+        // route completion is synchronous and must not drain the old session.
+        conversationHost?.retireFrontendSession()
+        conversationHost = nil
         window.rootViewController?.dismiss(animated: false)
         if authentication.storageFailed {
             window.rootViewController = UIHostingController(rootView: FrontendAuthStorageFailurePage(model: authentication))

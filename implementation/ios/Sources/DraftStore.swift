@@ -194,6 +194,7 @@ struct HostMessage: Hashable {
     let id: String
     let content: Content
     var containers: [NativeMarkdownContainer] = []
+    var codeLanguage: String? = nil
     var rendererKind: String {
         let leaf: String
         switch content {
@@ -271,7 +272,11 @@ enum HostMarkdownProjection {
                 default:
                     content = .unsupported("原始解析器已识别 \(kind)，原生渲染尚未接线")
                 }
-                result.append(HostMessage(id: id, content: content, containers: containers))
+                if kind == "code", let value = block["language"], !(value is String), !(value is NSNull) {
+                    throw Failure.invalidStructure
+                }
+                result.append(HostMessage(id: id, content: content, containers: containers,
+                    codeLanguage: kind == "code" ? block["language"] as? String : nil))
             }
             return result
         }

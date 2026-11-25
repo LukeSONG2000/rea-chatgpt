@@ -1,11 +1,23 @@
 package local.rea.chatgpt
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.graphics.shadow.Shadow
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.dp
 import kotlin.math.ln
 
 // Android 293 m2o0.b -> gm.invoke maps q5n to the Material ColorScheme.
@@ -69,4 +81,35 @@ internal fun recoveredMaterialColors(dark: Boolean): ColorScheme {
 @Composable
 fun FrontendTheme(content: @Composable () -> Unit) {
     MaterialTheme(colorScheme = recoveredMaterialColors(isSystemInDarkTheme()), content = content)
+}
+
+// Shared chrome for the separate Android host. APK evidence establishes a
+// distinct paint path for floating surfaces; these are our Compose values.
+@Composable
+internal fun Modifier.frontendFloatingShadow(shape: Shape, prominent: Boolean = false): Modifier {
+    val dark = isSystemInDarkTheme()
+    return dropShadow(shape, Shadow(
+        radius = if (prominent) 30.dp else 16.dp,
+        spread = if (prominent) 4.dp else 0.dp,
+        offset = DpOffset(0.dp, if (prominent) 6.dp else 3.dp),
+        color = Color.Black.copy(alpha = if (dark) 0.38f else if (prominent) 0.11f else 0.075f)
+    ))
+}
+
+@Composable
+internal fun frontendFloatingOutline(prominent: Boolean = false): BorderStroke =
+    BorderStroke(if (prominent) 1.dp else Dp.Hairline, MaterialTheme.colorScheme.outlineVariant)
+
+@Composable
+internal fun frontendFloatingFill(): Color =
+    if (isSystemInDarkTheme()) MaterialTheme.colorScheme.secondaryContainer else Color.White
+
+@Composable
+internal fun Modifier.frontendFloatingControl(prominent: Boolean = false): Modifier {
+    val shape = CircleShape
+    val outline = frontendFloatingOutline(prominent)
+    return frontendFloatingShadow(shape, prominent)
+        .clip(shape)
+        .background(frontendFloatingFill())
+        .border(outline, shape)
 }

@@ -7,6 +7,11 @@ struct RemoteGoalScope: Hashable, Codable {
     let accountID: String
     let hostID: String
     let threadID: String
+    let profileID: String?
+
+    init(accountID: String, hostID: String, threadID: String, profileID: String? = nil) {
+        self.accountID = accountID; self.hostID = hostID; self.threadID = threadID; self.profileID = profileID
+    }
 }
 
 enum RemoteGoalStatus: Equatable, Codable {
@@ -19,10 +24,23 @@ struct RemoteGoalSnapshot: Equatable, Codable {
     var status: RemoteGoalStatus
     var timeUsedSeconds: Int
     var allowsEditingAndResuming: Bool
+    var createdAt: Date? = nil
 }
 
 enum RemoteGoalAction: Equatable {
     case setObjective(String), pause, resume, clear
+}
+
+extension RemoteGoalStatus {
+    //293 GoalDetails1a2ced8..1a2cf18, independently bound to the status
+    //pill's jump table: blocked/usageLimited can resume; budget/complete cannot.
+    var controlAction: RemoteGoalAction? {
+        switch self {
+        case .active: return .pause
+        case .paused, .blocked, .usageLimited: return .resume
+        case .budgetLimited, .complete, .unknown: return nil
+        }
+    }
 }
 
 struct RemoteGoalOperation: Equatable {
@@ -32,6 +50,59 @@ struct RemoteGoalOperation: Equatable {
     let action: RemoteGoalAction
 }
 
+struct RemoteGoalReadReceipt: Equatable {
+    let scope: RemoteGoalScope
+    let revision: Int
+    let snapshot: RemoteGoalSnapshot?
+
+    var isValid: Bool {
+        guard revision >= 0, revision < Int.max else { return false }
+        guard let snapshot else { return true }
+        guard !snapshot.objective.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              snapshot.timeUsedSeconds >= 0,
+              snapshot.createdAt?.timeIntervalSince1970.isFinite != false else { return false }
+        if case .unknown(let detail) = snapshot.status { return !detail.isEmpty }
+        return true
+    }
+}
+
+struct RemoteGoalWriteReceipt {
+    let operation: RemoteGoalOperation
+    let result: RemoteGoalReadReceipt
+}
+
+struct RemoteGoalActionAnchor: Equatable {
+    let scope: RemoteGoalScope
+    let revision: Int
+    let snapshot: RemoteGoalSnapshot?
+
+    func matches(scope: RemoteGoalScope, state: RemoteGoalState) -> Bool {
+        guard self.scope == scope else { return false }
+        if revision == state.revision { return snapshot == state.snapshot }
+        guard revision < state.revision, var snapshot, let current = state.snapshot,
+              let createdAt = snapshot.createdAt, createdAt == current.createdAt,
+              current.timeUsedSeconds > snapshot.timeUsedSeconds else { return false }
+        // Only an identified goal can remain current across an elapsed-time update.
+        snapshot.timeUsedSeconds = current.timeUsedSeconds
+        return snapshot == current
+    }
+}
+
+enum RemoteGoalProviderFailure: Error { case rejected, unavailable }
+
+@MainActor protocol RemoteGoalProviding: AnyObject {
+    func goal(in scope: RemoteGoalScope) async throws -> RemoteGoalReadReceipt
+    // Optional canonical snapshots, using the same revisions as goal and write receipts.
+    func goalUpdates(in scope: RemoteGoalScope) -> AsyncStream<RemoteGoalReadReceipt>?
+    func execute(_ operation: RemoteGoalOperation) async throws -> RemoteGoalWriteReceipt
+    // nil is an authoritative result that the original operation did not commit.
+    func lookup(_ operation: RemoteGoalOperation) async throws -> RemoteGoalWriteReceipt?
+}
+
+extension RemoteGoalProviding {
+    func goalUpdates(in scope: RemoteGoalScope) -> AsyncStream<RemoteGoalReadReceipt>? { nil }
+}
+
 // Deterministic independent state reducer. Host/account identity is part of
 // every acknowledgement, and a refresh invalidates the previous operation.
 struct RemoteGoalState: Equatable {
@@ -39,6 +110,7 @@ struct RemoteGoalState: Equatable {
     private(set) var revision = 0
     private(set) var pending: RemoteGoalOperation?
     private(set) var failed = false
+    private var deferredUpdate: RemoteGoalReadReceipt?
 
     init(snapshot: RemoteGoalSnapshot?, revision: Int = 0) {
         self.snapshot = snapshot
@@ -50,6 +122,22 @@ struct RemoteGoalState: Equatable {
         revision += 1
         pending = nil
         failed = false
+        deferredUpdate = nil
+    }
+
+    @discardableResult
+    mutating func receive(_ update: RemoteGoalReadReceipt, scope: RemoteGoalScope) -> Bool {
+        guard update.scope == scope, update.isValid, update.revision > revision,
+              update.revision > (deferredUpdate?.revision ?? revision) else { return false }
+        if pending != nil { deferredUpdate = update }
+        else { snapshot = update.snapshot; revision = update.revision }
+        return true
+    }
+
+    private mutating func applyDeferredUpdate() {
+        guard let update = deferredUpdate else { return }
+        deferredUpdate = nil
+        receive(update, scope: update.scope)
     }
 
     mutating func begin(_ action: RemoteGoalAction, scope: RemoteGoalScope) -> RemoteGoalOperation? {
@@ -61,7 +149,8 @@ struct RemoteGoalState: Equatable {
         case .pause:
             guard snapshot?.status == .active else { return nil }
         case .resume:
-            guard snapshot?.status == .paused, snapshot?.allowsEditingAndResuming == true else { return nil }
+            guard snapshot?.status.controlAction == .resume,
+                  snapshot?.allowsEditingAndResuming == true else { return nil }
         case .clear:
             guard snapshot != nil else { return nil }
         }
@@ -71,12 +160,25 @@ struct RemoteGoalState: Equatable {
         return operation
     }
 
+    mutating func accept(_ receipt: RemoteGoalWriteReceipt, operation: RemoteGoalOperation) -> Bool {
+        let result = receipt.result
+        guard pending == operation, receipt.operation == operation, result.scope == operation.scope,
+              result.revision > revision, result.isValid,
+              (operation.action == .clear) == (result.snapshot == nil) else { return false }
+        snapshot = result.snapshot
+        revision = result.revision
+        pending = nil
+        failed = false
+        applyDeferredUpdate()
+        return true
+    }
+
     @discardableResult
     mutating func resolve(_ operation: RemoteGoalOperation, scope: RemoteGoalScope, accepted: Bool) -> Bool {
         guard pending == operation, operation.scope == scope, operation.revision == revision else { return false }
         pending = nil
         failed = !accepted
-        guard accepted else { return true }
+        guard accepted else { applyDeferredUpdate(); return true }
         switch operation.action {
         case .setObjective(let objective):
             if snapshot != nil { snapshot?.objective = objective }
@@ -86,6 +188,7 @@ struct RemoteGoalState: Equatable {
         case .clear: snapshot = nil
         }
         revision += 1
+        applyDeferredUpdate()
         return true
     }
 }
@@ -163,8 +266,19 @@ final class RemoteGoalStore: ObservableObject {
     private(set) var isUnavailable = false
     private(set) var accountID = "offline-fixture-account"
     let acceptsSyntheticOperations: Bool
-    init(acceptsSyntheticOperations: Bool) {
+    private let provider: (any RemoteGoalProviding)?
+    private let profileID: String?
+    private var reads: [RemoteGoalScope: UUID] = [:]
+    @Published private var readFailures = Set<RemoteGoalScope>()
+    @Published private var uncertain = Set<RemoteGoalScope>()
+    @Published private var checking = Set<RemoteGoalScope>()
+
+    init(acceptsSyntheticOperations: Bool, provider: (any RemoteGoalProviding)? = nil,
+         namespaceAccount: String? = nil, profileID: String? = nil) {
         self.acceptsSyntheticOperations = acceptsSyntheticOperations
+        self.provider = provider
+        self.profileID = profileID
+        if let namespaceAccount { accountID = namespaceAccount }
         guard acceptsSyntheticOperations,
               HostLaunchRuntime.arguments.contains("--offline-fixture") else { return }
         do {
@@ -177,10 +291,64 @@ final class RemoteGoalStore: ObservableObject {
         } catch { isUnavailable = true; storageFailed = true }
     }
     func state(_ scope: RemoteGoalScope) -> RemoteGoalState { states[scope] ?? .init(snapshot: nil) }
+    var usesProvider: Bool { provider != nil }
+    func awaitingInitialRead(_ scope: RemoteGoalScope) -> Bool { provider != nil && states[scope] == nil }
+    func readFailed(_ scope: RemoteGoalScope) -> Bool { readFailures.contains(scope) }
+    func needsLookup(_ scope: RemoteGoalScope) -> Bool { uncertain.contains(scope) }
+    func isChecking(_ scope: RemoteGoalScope) -> Bool { checking.contains(scope) }
+
+    func observeProvider(_ scope: RemoteGoalScope) async {
+        guard let provider, scope.accountID == accountID, scope.profileID == profileID else { return }
+        let updates = provider.goalUpdates(in: scope)
+        async let initialRead: Void = refreshFromProvider(scope)
+        if let updates {
+            for await update in updates {
+                guard !Task.isCancelled else { break }
+                if var current = states[scope] {
+                    guard current.receive(update, scope: scope) else { continue }
+                    states[scope] = current
+                } else {
+                    guard update.scope == scope, update.isValid else { continue }
+                    states[scope] = .init(snapshot: update.snapshot, revision: update.revision)
+                }
+                readFailures.remove(scope)
+            }
+        }
+        await initialRead
+    }
+
+    func refreshFromProvider(_ scope: RemoteGoalScope) async {
+        guard let provider, scope.accountID == accountID, scope.profileID == profileID,
+              states[scope]?.pending == nil else { return }
+        let read = UUID()
+        reads[scope] = read
+        let previous = states[scope]
+        defer { if reads[scope] == read { reads.removeValue(forKey: scope) } }
+        do {
+            let result = try await provider.goal(in: scope)
+            guard !Task.isCancelled, reads[scope] == read, states[scope]?.pending == nil else { return }
+            guard result.scope == scope, result.isValid else {
+                readFailures.insert(scope)
+                return
+            }
+            if var current = states[scope] {
+                guard result.revision >= current.revision else { return }
+                if result.revision == current.revision {
+                    guard result.snapshot == current.snapshot else { readFailures.insert(scope); return }
+                } else if current.receive(result, scope: scope) {
+                    states[scope] = current
+                }
+            } else { states[scope] = .init(snapshot: result.snapshot, revision: result.revision) }
+            readFailures.remove(scope)
+        } catch {
+            if !Task.isCancelled, reads[scope] == read, states[scope] == previous { readFailures.insert(scope) }
+        }
+    }
+
     // A cleared goal remains an initialized nil snapshot. Re-entering its
     // page must not seed the fixture again; load remains an explicit refresh.
     func prepare(_ value: RemoteGoalSnapshot?, scope: RemoteGoalScope) {
-        guard !isUnavailable, states[scope] == nil else { return }
+        guard provider == nil, !isUnavailable, states[scope] == nil else { return }
         load(value, scope: scope)
     }
     func load(_ value: RemoteGoalSnapshot?, scope: RemoteGoalScope) {
@@ -190,10 +358,9 @@ final class RemoteGoalStore: ObservableObject {
         do { try persistence?.save(next); states = next; storageFailed = false }
         catch { storageFailed = true }
     }
-    // A future service adapter calls begin and resolve separately; never use
-    // synthetic acknowledgement as evidence of service-side goal execution.
     func begin(_ action: RemoteGoalAction, scope: RemoteGoalScope) -> RemoteGoalOperation? {
-        guard !isUnavailable, scope.accountID == accountID else { return nil }
+        guard !isUnavailable, scope.accountID == accountID, scope.profileID == profileID,
+              !awaitingInitialRead(scope) else { return nil }
         var state = state(scope)
         let operation = state.begin(action, scope: scope)
         states[scope] = state
@@ -223,14 +390,45 @@ final class RemoteGoalStore: ObservableObject {
         }
     }
     @discardableResult
-    func perform(_ action: RemoteGoalAction, scope: RemoteGoalScope) -> Bool {
-        guard let operation = begin(action, scope: scope) else { return false }
-        return resolve(operation, accepted: acceptsSyntheticOperations)
+    func perform(_ action: RemoteGoalAction, scope: RemoteGoalScope) async -> Bool {
+        guard let provider, let operation = begin(action, scope: scope) else { return false }
+        do {
+            let receipt = try await provider.execute(operation)
+            if apply(receipt, operation: operation) { return true }
+        } catch RemoteGoalProviderFailure.rejected {
+            return resolve(operation, accepted: false)
+        } catch {}
+        if states[scope]?.pending == operation { uncertain.insert(scope) }
+        return false
+    }
+
+    func lookup(_ scope: RemoteGoalScope) async {
+        guard let provider, uncertain.contains(scope), let operation = states[scope]?.pending,
+              checking.insert(scope).inserted else { return }
+        defer { checking.remove(scope) }
+        do {
+            if let receipt = try await provider.lookup(operation) {
+                _ = apply(receipt, operation: operation)
+            } else {
+                uncertain.remove(scope)
+                _ = resolve(operation, accepted: false)
+            }
+        } catch {}
+    }
+
+    private func apply(_ receipt: RemoteGoalWriteReceipt, operation: RemoteGoalOperation) -> Bool {
+        let scope = operation.scope
+        var state = state(scope)
+        guard state.accept(receipt, operation: operation) else { return false }
+        states[scope] = state
+        uncertain.remove(scope)
+        readFailures.remove(scope)
+        return true
     }
 }
 
 //293 StatusSurfaceModifier19b8d30 is shared by the Capsule pill and rounded
-//Goal details. Both source keypaths project from MessageInputStyle. Consume
+//Goal and agent details. The source keypaths project from MessageInputStyle. Consume
 //the matched shared background environment; nonnil AnyShapeStyle stroke and
 //its width conversion remain unresolved, so this adapter retains nil stroke.
 struct RecoveredRemoteComposerStatusSurface<Surface: InsettableShape>: ViewModifier {
@@ -238,22 +436,10 @@ struct RecoveredRemoteComposerStatusSurface<Surface: InsettableShape>: ViewModif
     var isSelected = false
     var isPressed = false
     var stroke: (color: Color, width: CGFloat)? = nil
-    @Environment(\.recoveredRemoteCardAppearance) private var appearance
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    @ViewBuilder private func surface<Content: View>(_ content: Content) -> some View {
-        if #available(iOS 26.0, *) {
-            content.glassEffect(.regular
-                .tint(isSelected ? Color(uiColor: officialVisualColor("OneOff/AppForeground")) : nil)
-                .interactive(), in: shape)
-        } else {
-            content.background(isSelected
-                ? Color(uiColor: officialVisualColor("OneOff/AppForeground")) : appearance.innerBackground, in: shape)
-        }
-    }
-
     func body(content: Content) -> some View {
-        surface(content)
+        content.modifier(RecoveredRemoteFloatingControlSurface(shape: shape, isSelected: isSelected, role: .composerStatus))
             .overlay {
                 if let stroke { shape.strokeBorder(stroke.color, lineWidth: stroke.width) }
             }
@@ -312,10 +498,20 @@ struct RemoteGoalControls<Accessory: View>: View {
     @State private var draft = ""
     @State private var confirmsClear = false
     @State private var showsFailure = false
+    @State private var showsChangedGoal = false
+    @State private var editAnchor: RemoteGoalActionAnchor?
+    @State private var clearAnchor: RemoteGoalActionAnchor?
     @State private var objectiveHeight: CGFloat?
+    @State private var presentationID = UUID()
     private var state: RemoteGoalState { store.state(scope) }
+    private var actionAnchor: RemoteGoalActionAnchor {
+        .init(scope: scope, revision: state.revision, snapshot: state.snapshot)
+    }
     private func text(_ chinese: String, _ english: String) -> String { visualText(chinese, english) }
     private var statusTitle: String {
+        if store.awaitingInitialRead(scope) {
+            return store.readFailed(scope) ? text("重试读取目标", "Retry loading goal") : text("正在读取目标…", "Loading goal…")
+        }
         switch state.snapshot?.status {
         case .active: return OfficialText.text(.remoteGoalActive)
         case .paused: return OfficialText.text(.remoteGoalPaused)
@@ -327,11 +523,50 @@ struct RemoteGoalControls<Accessory: View>: View {
         case nil: return text("追求目标", "Pursue goal")
         }
     }
-    @discardableResult
-    private func submit(_ action: RemoteGoalAction) -> Bool {
-        let accepted = store.perform(action, scope: scope)
-        showsFailure = !accepted
-        return accepted
+    private func submit(_ action: RemoteGoalAction, anchor: RemoteGoalActionAnchor?) {
+        guard let anchor, anchor.matches(scope: scope, state: state) else {
+            showsChangedGoal = true
+            return
+        }
+        if !store.usesProvider {
+            guard let operation = store.begin(action, scope: scope) else { return }
+            let accepted = store.resolve(operation, accepted: store.acceptsSyntheticOperations)
+            showsFailure = !accepted
+            if accepted { finish(action) }
+            return
+        }
+        let presentation = presentationID
+        Task {
+            guard presentationID == presentation else { return }
+            guard anchor.matches(scope: scope, state: state) else { showsChangedGoal = true; return }
+            let accepted = await store.perform(action, scope: scope)
+            guard presentationID == presentation else { return }
+            showsFailure = !accepted && !store.needsLookup(scope)
+            if accepted { finish(action) }
+        }
+    }
+
+    private func finish(_ action: RemoteGoalAction) {
+        switch action {
+        case .setObjective: editing = false; isExpanded = true
+        case .clear: isExpanded = false
+        case .pause, .resume: break
+        }
+    }
+
+    private var goalLookup: some View {
+        Button(text("查询目标更新", "Check goal update")) {
+            let presentation = presentationID
+            Task {
+                guard let action = state.pending?.action else { return }
+                await store.lookup(scope)
+                guard presentationID == presentation, !store.needsLookup(scope) else { return }
+                if state.failed { showsFailure = true }
+                else { finish(action) }
+            }
+        }
+        .disabled(store.isChecking(scope))
+        .accessibilityIdentifier("remote-goal-lookup")
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -340,6 +575,7 @@ struct RemoteGoalControls<Accessory: View>: View {
                     .font(.footnote).foregroundStyle(.secondary)
                     .accessibilityIdentifier("remote-goal-storage-error")
             }
+            if store.needsLookup(scope), !editing { goalLookup }
             if isExpanded, let goal = state.snapshot {
                 VStack(alignment: .leading, spacing: 12) {
                     //293 FittedScrollView1a2c7ec supplies maxHeight180 and
@@ -358,19 +594,21 @@ struct RemoteGoalControls<Accessory: View>: View {
                     //after measuring a short label; keep one fitted-height owner.
                     .frame(height: min(180, objectiveHeight ?? 180))
                     HStack(spacing: 12) {
-                        Button { draft = goal.objective; editing = true } label: { Image(systemName: "pencil") }
+                        Button { draft = goal.objective; editAnchor = actionAnchor; editing = true } label: { Image(systemName: "pencil") }
                             .accessibilityLabel(text("编辑目标", "Edit goal"))
                             .accessibilityIdentifier("remote-goal-edit")
                             .disabled(!goal.allowsEditingAndResuming)
-                        if goal.status == .active || goal.status == .paused {
-                            Button { submit(goal.status == .active ? .pause : .resume) } label: {
-                                Image(systemName: goal.status == .active ? "pause.circle" : "play.circle")
+                        if let statusAction = goal.status.controlAction {
+                            Button { submit(statusAction, anchor: actionAnchor) } label: {
+                                Image(systemName: statusAction == .pause ? "pause.circle" : "play.circle")
                             }
-                            .accessibilityLabel(goal.status == .active ? text("暂停目标", "Pause goal") : text("恢复目标", "Resume goal"))
+                            .accessibilityLabel(statusAction == .pause ? text("暂停目标", "Pause goal") : text("恢复目标", "Resume goal"))
                             .accessibilityIdentifier("remote-goal-toggle-status")
-                            .disabled(goal.status == .paused && !goal.allowsEditingAndResuming)
+                            //Original1a2d110..11c disables only Resume when
+                            //allowsEditingAndResuming is false, not Pause.
+                            .disabled(statusAction == .resume && !goal.allowsEditingAndResuming)
                         }
-                        Button(role: .destructive) { confirmsClear = true } label: { Image(systemName: "trash") }
+                        Button(role: .destructive) { clearAnchor = actionAnchor; confirmsClear = true } label: { Image(systemName: "trash") }
                             .accessibilityLabel(text("清除目标", "Clear goal"))
                             .accessibilityIdentifier("remote-goal-clear")
                     }
@@ -389,7 +627,8 @@ struct RemoteGoalControls<Accessory: View>: View {
                     //The absent-goal creation button is an independent entry,
                     //not a proved GoalStatusPill consumer of the source haptic.
                     playsSelectionFeedback: state.snapshot != nil, action: {
-                    if state.snapshot == nil { draft = ""; editing = true }
+                    if store.awaitingInitialRead(scope) { Task { await store.refreshFromProvider(scope) } }
+                    else if state.snapshot == nil { draft = ""; editAnchor = actionAnchor; editing = true }
                     else { withAnimation { isExpanded.toggle() } }
                 }) {
                     HStack(spacing: 8) {
@@ -400,32 +639,33 @@ struct RemoteGoalControls<Accessory: View>: View {
                             .accessibilityHidden(true)
                         Text(statusTitle)
                         if let goal = state.snapshot { Text(Duration.seconds(max(0, goal.timeUsedSeconds)).formatted(.units(allowed: [.hours, .minutes, .seconds], width: .narrow))).monospacedDigit() }
-                        if state.pending != nil { ProgressView().controlSize(.small) }
+                        if state.pending != nil, !store.needsLookup(scope) { ProgressView().controlSize(.small) }
                     }
                 }
                 .accessibilityIdentifier("remote-goal-status")
-                .disabled(store.isUnavailable)
+                .disabled(store.isUnavailable || (store.awaitingInitialRead(scope) && !store.readFailed(scope)))
                 accessory()
             }
         }
         .confirmationDialog(text("清除当前目标？", "Clear this goal?"), isPresented: $confirmsClear, titleVisibility: .visible) {
             Button(text("清除目标", "Clear goal"), role: .destructive) {
-                if submit(.clear) { isExpanded = false }
+                submit(.clear, anchor: clearAnchor)
             }
                 .accessibilityIdentifier("remote-goal-clear-confirm")
             Button(text("取消", "Cancel"), role: .cancel) {}
         }
         .sheet(isPresented: $editing) {
             NavigationStack {
-                TextEditor(text: $draft).padding().accessibilityIdentifier("remote-goal-objective")
+                VStack {
+                    TextEditor(text: $draft).padding().accessibilityIdentifier("remote-goal-objective")
+                    if store.needsLookup(scope) { goalLookup }
+                }
                     .navigationTitle(text("编辑目标", "Edit goal"))
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) { Button(text("取消", "Cancel")) { editing = false } }
                         ToolbarItem(placement: .confirmationAction) {
                             Button(text("保存", "Save")) {
-                                let accepted = store.perform(.setObjective(draft), scope: scope)
-                                if accepted { editing = false; isExpanded = true }
-                                else { showsFailure = true }
+                                submit(.setObjective(draft), anchor: editAnchor)
                             }
                             .disabled(draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || state.pending != nil)
                             .accessibilityIdentifier("remote-goal-save")
@@ -434,18 +674,45 @@ struct RemoteGoalControls<Accessory: View>: View {
                     .alert(text("目标未更新", "Goal not updated"), isPresented: $showsFailure) {
                         Button(text("好", "OK"), role: .cancel) {}
                     } message: { failureMessage }
+                    .alert(text("目标已更新", "Goal changed"), isPresented: $showsChangedGoal) {
+                        if state.snapshot?.allowsEditingAndResuming != false {
+                            Button(text("使用当前目标", "Use current goal")) { editAnchor = actionAnchor }
+                        }
+                        Button(text("关闭", "Close"), role: .cancel) {}
+                    } message: {
+                        Text(text("编辑内容已保留。核对当前目标后再保存。", "Your draft was kept. Confirm the current goal before saving."))
+                    }
             }
         }
         .alert(text("目标未更新", "Goal not updated"), isPresented: Binding(get: { showsFailure && !editing }, set: { showsFailure = $0 })) {
             Button(text("好", "OK"), role: .cancel) {}
         } message: { failureMessage }
-        .onChange(of: scope) { _, _ in isExpanded = false; editing = false; draft = ""; confirmsClear = false; showsFailure = false; objectiveHeight = nil }
+        .alert(text("目标已更新", "Goal changed"), isPresented: Binding(
+            get: { showsChangedGoal && !editing }, set: { if !editing { showsChangedGoal = $0 } })) {
+            Button(text("好", "OK"), role: .cancel) {}
+        } message: {
+            Text(text("请确认当前目标后重试。", "Check the current goal and try again."))
+        }
+        .task(id: scope) { await store.observeProvider(scope) }
+        .onDisappear { presentationID = UUID() }
+        .onChange(of: scope) { _, _ in
+            presentationID = UUID()
+            isExpanded = false
+            editing = false
+            draft = ""
+            confirmsClear = false
+            showsFailure = false
+            showsChangedGoal = false
+            editAnchor = nil
+            clearAnchor = nil
+            objectiveHeight = nil
+        }
     }
 
     private var failureMessage: Text {
         Text(store.storageFailed
             ? text("本地目标状态未能保存，目标和编辑内容已保留。", "Local goal state could not be saved. The goal and draft were kept.")
-            : text("服务未连接，目标和编辑内容已保留。", "The service is disconnected. The goal and draft were kept."))
+            : text("目标更新未确认，已保留原状态和编辑内容。", "The goal update was unconfirmed. The prior state and draft were kept."))
     }
 }
 #endif

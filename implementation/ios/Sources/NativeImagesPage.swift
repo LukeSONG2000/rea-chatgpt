@@ -436,16 +436,22 @@ private struct NativeImageModalPage: View {
     }
 }
 
-private struct NativeImageZoomView: UIViewRepresentable {
+struct NativeImageZoomView: UIViewRepresentable {
     let image: UIImage
-    func makeUIView(context: Context) -> ImageZoomScrollView { ImageZoomScrollView(image: image) }
+    var reading: RemoteSourceFileReadingLease? = nil
+    func makeUIView(context: Context) -> ImageZoomScrollView {
+        ImageZoomScrollView(image: image, reading: reading)
+    }
     func updateUIView(_ view: ImageZoomScrollView, context: Context) {}
 }
-private final class ImageZoomScrollView: UIScrollView, UIScrollViewDelegate {
+final class ImageZoomScrollView: UIScrollView, UIScrollViewDelegate {
     private let imageView: UIImageView
+    private let reading: RemoteSourceFileReadingLease?
     private var lastSize: CGSize = .zero
-    init(image: UIImage) {
+    private var applyingLayout = false
+    init(image: UIImage, reading: RemoteSourceFileReadingLease? = nil) {
         imageView = UIImageView(image: image)
+        self.reading = reading
         super.init(frame: .zero)
         backgroundColor = .systemBackground; delegate = self
         maximumZoomScale = 6; bouncesZoom = true; addSubview(imageView)
@@ -458,14 +464,26 @@ private final class ImageZoomScrollView: UIScrollView, UIScrollViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         if bounds.size != lastSize, bounds.width > 0, bounds.height > 0 {
+            let ratio = lastSize == .zero ? (reading?.initialValue.imageZoom ?? 1)
+                : (reading == nil ? 1 : zoomScale / minimumZoomScale)
             lastSize = bounds.size
             let scale = min(bounds.width / imageView.bounds.width, bounds.height / imageView.bounds.height)
-            minimumZoomScale = scale; maximumZoomScale = max(6, scale * 6); zoomScale = scale
+            applyingLayout = true
+            maximumZoomScale = max(6, scale * 6)
+            minimumZoomScale = scale
+            zoomScale = scale * ratio
+            applyingLayout = false
         }
         centerImage()
     }
     func viewForZooming(in scrollView: UIScrollView) -> UIView? { imageView }
-    func scrollViewDidZoom(_ scrollView: UIScrollView) { centerImage() }
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        centerImage()
+        if !applyingLayout, minimumZoomScale > 0 {
+            let ratio = min(6, max(1, zoomScale / minimumZoomScale))
+            reading?.update { $0.imageZoom = ratio }
+        }
+    }
     private func centerImage() {
         contentInset = .init(top: max(0, (bounds.height - contentSize.height) / 2), left: max(0, (bounds.width - contentSize.width) / 2),
             bottom: 0, right: 0)

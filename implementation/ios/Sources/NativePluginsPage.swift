@@ -1,6 +1,392 @@
 import UIKit
 import SwiftUI
 
+@MainActor final class FrontendPluginSettingsModel: ObservableObject {
+    @Published private(set) var state: FrontendPluginSettingsState
+    private let service: any FrontendPluginServing
+    private let current: (FrontendPluginSettingsRequest) -> Bool
+    private var task: Task<Void, Never>?
+    init(state: FrontendPluginSettingsState, service: any FrontendPluginServing,
+         current: @escaping (FrontendPluginSettingsRequest) -> Bool) {
+        self.state = state; self.service = service; self.current = current
+    }
+    func load() {
+        guard let request = state.begin() else { return }
+        guard current(request) else {
+            state.receive(.init(request: request, result: .failure(.unavailable)), for: request); return
+        }
+        task = Task { [weak self, service] in
+            let receipt: FrontendPluginSettingsReceipt
+            do { receipt = try await service.settings(request) }
+            catch is CancellationError { return }
+            catch { receipt = .init(request: request, result: .failure(error as? FrontendPluginFailure ?? .loadFailed)) }
+            guard !Task.isCancelled, let self else { return }
+            guard self.current(request) else { self.retire(); return }
+            self.state.receive(receipt, for: request); self.task = nil
+        }
+    }
+    func updateSkill(_ id: String, enabled: Bool, from settings: FrontendPluginSettingsRequest?) {
+        guard let request = state.beginSkillUpdate(id, enabled: enabled, from: settings) else { return }
+        guard current(request.settings) else { retire(); return }
+        task = Task { [weak self, service] in
+            let receipt: FrontendPluginSkillUpdateReceipt
+            do { receipt = try await service.updateSkill(request) }
+            catch is CancellationError { return }
+            catch { receipt = .init(request: request, result: .failure(error as? FrontendPluginFailure ?? .loadFailed)) }
+            guard !Task.isCancelled, let self else { return }
+            guard self.current(request.settings) else { self.retire(); return }
+            self.state.receiveSkillUpdate(receipt, for: request); self.task = nil
+        }
+    }
+    func clearSkillUpdateFailure(_ id: UUID) {
+        guard state.skillUpdateFailure?.request.id == id else { return }
+        state.clearSkillUpdateFailure(id)
+    }
+    func formModel(_ reference: FrontendPluginSettingsFormReference,
+                   from source: FrontendPluginSettingsRequest?) -> FrontendPluginSettingsFormModel? {
+        guard let source, current(source), state.loadedRequest == source,
+              state.projection?.additionalForm == reference, let provider = reference.provider else { return nil }
+        return .init(request: .init(id: UUID(), settings: source, reference: reference, provider: provider),
+            service: service, current: { [weak self] in
+                guard let self else { return false }
+                return self.current(source) && self.state.loadedRequest == source &&
+                    self.state.projection?.additionalForm == reference
+            })
+    }
+    func currentConnector(_ id: String, from request: FrontendPluginSettingsRequest?) -> FrontendPluginSettingsConnector? {
+        guard let request, current(request) else { return nil }
+        return state.connector(id, from: request)
+    }
+    func canonicalSettingsModel(_ id: String, from request: FrontendPluginSettingsRequest,
+                                reference: FrontendPluginCanonicalSettingsReference) -> FrontendPluginSettingsModel {
+        .init(state: .init(scope: request.scope, pluginID: reference.pluginID,
+            actionPluginID: reference.actionPluginID, revision: reference.revision), service: service,
+            current: { [weak self] child in
+                guard let self, self.currentConnector(id, from: request)?.canonicalSettings == reference else { return false }
+                return child.scope == request.scope && child.pluginID == reference.pluginID &&
+                    child.actionPluginID == reference.actionPluginID && child.revision == reference.revision
+            })
+    }
+    var connectorConnectionBusy: Bool { state.pendingConnectorOperation != nil }
+    func connectionModel() -> FrontendPluginConnectorConnectionModel { .init(parent: self, service: service) }
+    func connectorDetailModel(source: FrontendPluginSettingsRequest, entryID: String,
+                              connectorID: String) -> FrontendPluginConnectorDetailModel {
+        .init(parent: self, service: service, source: source, entryID: entryID, connectorID: connectorID)
+    }
+    func reserveConnectorOperation(_ action: FrontendPluginConnectorOperationRequest.Action, entryID: String,
+                                   source: FrontendPluginSettingsRequest) -> FrontendPluginConnectorOperationRequest? {
+        guard currentConnector(entryID, from: source) != nil else { return nil }
+        return state.beginConnectorOperation(action, id: entryID, from: source)
+    }
+    func acceptsConnectorOperation(_ request: FrontendPluginConnectorOperationRequest) -> Bool {
+        currentConnector(request.connector.id, from: request.settings) != nil && state.acceptsConnectorOperation(request)
+    }
+    func cancelConnectorOperation(_ request: FrontendPluginConnectorOperationRequest) { state.cancelConnectorOperation(request) }
+    func acceptConnectorOperation(_ receipt: FrontendPluginConnectorOperationReceipt,
+                                  for request: FrontendPluginConnectorOperationRequest) -> FrontendPluginFailure? {
+        guard acceptsConnectorOperation(request) else { state.cancelConnectorOperation(request); return .invalidResult }
+        if receipt.request == request, case .failure(let failure) = receipt.result {
+            state.cancelConnectorOperation(request); return failure
+        }
+        return state.receiveConnectorOperation(receipt, for: request) ? nil : .invalidResult
+    }
+    func acceptConnectorDetails(_ receipt: FrontendPluginConnectorDetailReceipt,
+                               for request: FrontendPluginConnectorDetailRequest) -> Bool {
+        guard currentConnector(request.connector.id, from: request.settings) != nil else { return false }
+        return state.receiveConnectorDetails(receipt, for: request)
+    }
+    func retire() { task?.cancel(); task = nil; state.retire() }
+    deinit { task?.cancel() }
+}
+
+//293 PluginSettingsDetailScreen/DetailView is a separate grouped Form.
+//The independent loader supplies explicit layout/form/local-permission presence.
+//Uses, Skills and ordinary additional fields use separate scoped owners.
+//The alternate canonical layout remains unclosed. Settings Skills use their own
+//array and actual row destination. The actual51c15dc accessory supplies the
+//Toggle; exact injected template optics and file rendering remain separate.
+struct NativePluginSettingsDetailPage: View {
+    @ObservedObject var model: FrontendPluginsModel
+    let pluginID: String
+    private let titleOverride: String?
+    @StateObject private var owner: FrontendPluginSettingsModel
+    @StateObject private var connectorConnection: FrontendPluginConnectorConnectionModel
+    @State private var unavailablePermissionAction: FrontendPluginLocalPermissionAction?
+    init(model: FrontendPluginsModel, pluginID: String, title: String? = nil,
+         owner: FrontendPluginSettingsModel? = nil) {
+        self.model = model; self.pluginID = pluginID
+        self.titleOverride = title
+        let resolved = owner ?? model.settingsModel(pluginID)
+        _owner = StateObject(wrappedValue: resolved)
+        _connectorConnection = StateObject(wrappedValue: resolved.connectionModel())
+    }
+    var body: some View {
+        ZStack {
+            switch owner.state.phase {
+            case .idle, .loading: ProgressView().accessibilityIdentifier("plugin-settings-loading")
+            case .failed(.unavailable):
+                SettingsServiceUnavailablePage(title: model.state.entities[pluginID]?.name ?? OfficialText.text(.settingsPlugins))
+            case .failed:
+                VStack(spacing: 12) {
+                    Text(visualText("无法加载插件设置。", "Plugin settings could not be loaded."))
+                        .accessibilityIdentifier("plugin-settings-error")
+                    Button(visualText("重试", "Retry")) { owner.load() }
+                        .accessibilityIdentifier("plugin-settings-retry")
+                }
+            case .ready:
+                if let projection = owner.state.projection, projection.layout == .legacy {
+                    Form {
+                        if let permission = projection.localPermissions {
+                            //293 LegacySections places this optional section first.
+                            Section {
+                                if let action = permission.action {
+                                    Button { unavailablePermissionAction = action } label: { permissionLabel(permission) }
+                                        .buttonStyle(.plain).disabled(!permission.actionEnabled)
+                                        .accessibilityIdentifier("plugin-local-permissions-entry")
+                                } else { permissionLabel(permission) }
+                            }
+                        }
+                        if let connectors = projection.connectors, !connectors.isEmpty {
+                            Section(OfficialText.text(.pluginSettingsConnectors)) {
+                                ForEach(connectors) { connector in
+                                    connectorEntry(connector)
+                                }
+                            }
+                        }
+                        if let skills = projection.skills {
+                            Section(OfficialText.text(.pluginSettingsSkills)) {
+                                ForEach(skills) { skill in
+                                    NavigationLink {
+                                        NativePluginSkillSettingsDetailPage(owner: owner,
+                                            request: owner.state.loadedRequest, skillID: skill.id)
+                                    } label: {
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text(skill.title)
+                                            if !skill.isEnabled {
+                                                Text(OfficialText.text(.pluginSettingsSkillDisabled))
+                                                    .font(.subheadline).foregroundStyle(.secondary)
+                                            }
+                                        }
+                                    }.accessibilityIdentifier("plugin-settings-skill-" + skill.id)
+                                }
+                            }
+                        }
+                        if let form = projection.additionalForm {
+                            Section {
+                                NavigationLink {
+                                    if let formOwner = owner.formModel(form, from: owner.state.loadedRequest) {
+                                        NativePluginSettingsFormPage(owner: formOwner)
+                                    } else {
+                                        SettingsServiceUnavailablePage(title: OfficialText.text(.pluginsAdditionalSettings))
+                                    }
+                                } label: { Text(OfficialText.text(.pluginsAdditionalSettings)) }
+                                    .id(form.id).accessibilityIdentifier("plugin-additional-settings-entry")
+                            }
+                        } else if !projection.hasDisplayableLegacySettings {
+                            Section { Text(visualText("此插件暂未提供可显示的设置。", "This plugin has no displayable settings.")) }
+                        }
+                    }
+                } else { SettingsServiceUnavailablePage(title: OfficialText.text(.settingsPlugins)) }
+            }
+        }
+        .navigationTitle(titleOverride ?? model.state.entities[pluginID]?.name ?? OfficialText.text(.settingsPlugins))
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(item: $unavailablePermissionAction) { action in
+            //Returnable host boundary, not the original permissionsTapped
+            //callback implementation; no permission request/system URL opens.
+            Form {
+                Section {
+                    Text(visualText("本地权限能力未接入，不会申请或更改系统权限。", "Local permission capability is not connected. No system permission will be requested or changed."))
+                        .accessibilityIdentifier("plugin-local-permissions-unavailable")
+                    Text(action == .requestPermissions
+                        ? visualText("此入口对应请求权限。", "This entry represents requesting permissions.")
+                        : visualText("此入口对应打开系统设置。", "This entry represents opening system settings."))
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+            }
+            .navigationTitle(OfficialText.text(.pluginsLocalPermissionsTitle))
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("plugin-settings-page")
+        .task { if owner.state.phase == .idle { owner.load() } }
+        .modifier(PluginConnectorConnectionPresenter(model: connectorConnection))
+        //A pushed form covers this parent; retire on actual page destruction,
+        //not onDisappear, so Back retains the same request/result owner.
+    }
+    @ViewBuilder
+    private func connectorEntry(_ connector: FrontendPluginSettingsConnector) -> some View {
+        let source = owner.state.loadedRequest
+        if case .connect = connector.route {
+            Button {
+                if let source { connectorConnection.start(entryID: connector.id, source: source) }
+            } label: {
+                NativePluginConnectorRow(connector: connector)
+            }.buttonStyle(.plain)
+                .disabled(owner.connectorConnectionBusy)
+                .accessibilityIdentifier("plugin-settings-connector-" + connector.id)
+        } else {
+            NavigationLink {
+                NativePluginUsesDestination(model: model, owner: owner, source: source,
+                    entryID: connector.id, route: connector.route)
+            } label: { NativePluginConnectorRow(connector: connector) }
+                .accessibilityIdentifier("plugin-settings-connector-" + connector.id)
+        }
+    }
+    private func permissionLabel(_ projection: FrontendPluginLocalPermissionsProjection) -> some View {
+        LabeledContent {
+            if let status = projection.displayedStatus {
+                Text(OfficialText.text(permissionStatusKey(status)))
+                    .foregroundStyle(.secondary).accessibilityIdentifier("plugin-local-permissions-status")
+            }
+        } label: { Text(OfficialText.text(.pluginsLocalPermissionsTitle)) }
+        //Plain button labels otherwise leave the space between the two
+        //columns outside the hit target in this native host.
+        .contentShape(Rectangle())
+    }
+    private func permissionStatusKey(_ status: FrontendPluginLocalPermissionStatus) -> OfficialTextKey {
+        switch status {
+        case .allowed: return .pluginsLocalPermissionsAllowed
+        case .limited: return .pluginsLocalPermissionsLimited
+        case .notAllowed: return .pluginsLocalPermissionsNotAllowed
+        case .restricted: return .pluginsLocalPermissionsRestricted
+        case .unavailable: return .pluginsLocalPermissionsUnavailable
+        }
+    }
+}
+
+//The original row is a Label with ConnectorLogoView and an independent tail.
+//Monogram logo paint is an explicit offline resource adapter, not a vendor logo.
+private struct NativePluginConnectorRow: View {
+    let connector: FrontendPluginSettingsConnector
+    var body: some View {
+        HStack(spacing: 12) {
+            Text(String(connector.name.prefix(1))).frame(width: 30, height: 30)
+                .background(Color(uiColor: .systemGray5), in: RoundedRectangle(cornerRadius: 7))
+                .accessibilityHidden(true)
+            Text(connector.name).frame(maxWidth: .infinity, alignment: .leading)
+            if let tail = connector.tail {
+                Text(OfficialText.text(tail.textKey)).foregroundStyle(.secondary)
+                    .font(.subheadline).multilineTextAlignment(.trailing)
+            }
+        }.contentShape(Rectangle())
+    }
+}
+private extension FrontendPluginConnectorTail {
+    var textKey: OfficialTextKey {
+        switch self {
+        case .connect: return .pluginsAppConnect
+        case .reconnect: return .pluginSettingsConnectorReconnect
+        case .privacy(let privacy): return privacy.textKey
+        }
+    }
+}
+private extension FrontendPluginConnectorPrivacy {
+    var textKey: OfficialTextKey {
+        switch self {
+        case .alwaysAsk: return .pluginConnectorPrivacyAsk
+        case .allowReads: return .pluginConnectorPrivacyReads
+        case .allowLowRisk: return .pluginConnectorPrivacyLowRisk
+        case .allowAll: return .pluginConnectorPrivacyAll
+        }
+    }
+}
+private struct NativePluginUsesDestination: View {
+    @ObservedObject var model: FrontendPluginsModel
+    @ObservedObject var owner: FrontendPluginSettingsModel
+    let source: FrontendPluginSettingsRequest?
+    let entryID: String
+    let route: FrontendPluginConnectorRoute
+    var body: some View {
+        if let source, let connector = owner.currentConnector(entryID, from: source) {
+            switch route {
+            case .canonicalSettings(let reference):
+                if connector.canonicalSettings == reference {
+                    //The source factory returns an erased view model. Erasing
+                    //here also breaks the recursive SwiftUI navigation type.
+                    AnyView(NativePluginSettingsDetailPage(model: model, pluginID: reference.pluginID,
+                        title: reference.title, owner: owner.canonicalSettingsModel(entryID,
+                            from: source, reference: reference)))
+                } else { stale }
+            case .detail(let connectorID):
+                if connector.canonicalSettings == nil && connector.connectorID == connectorID {
+                    NativePluginConnectorDetailPage(owner: owner, source: source, entryID: entryID,
+                        connectorID: connectorID)
+                } else { stale }
+            case .connect: stale //Connect dispatches an action; it is not navigation.
+            }
+        } else { stale }
+    }
+    private var stale: some View {
+        Text(visualText("此连接器入口已失效，请返回后重新打开。", "This connector entry is no longer current. Go back and reopen it."))
+            .padding().accessibilityIdentifier("plugin-connector-entry-stale")
+    }
+}
+
+//29351c11b8 passes accessory5266ad4 ->51c15dc to the shared template.
+//That actual accessory creates Toggle<Text>, labelsHidden, with inherited
+//enablement AND !isToggleDisabled. Form grouping/metrics remain host optics.
+private struct NativePluginSkillSettingsDetailPage: View {
+    @ObservedObject var owner: FrontendPluginSettingsModel
+    let request: FrontendPluginSettingsRequest?
+    let skillID: String
+    private var skill: FrontendPluginSettingsSkill? { owner.state.skill(skillID, from: request) }
+    var body: some View {
+        let failure = owner.state.skillUpdateFailure.flatMap { $0.request.skillID == skillID ? $0 : nil }
+        Form {
+            if let skill {
+                Section {
+                    HStack {
+                        Text(skill.title).frame(maxWidth: .infinity, alignment: .leading)
+                            .accessibilityIdentifier("plugin-skill-settings-name")
+                        Toggle(OfficialText.text(.pluginSettingsSkillUse), isOn: Binding(
+                            get: { self.skill?.isEnabled ?? false },
+                            set: { owner.updateSkill(skillID, enabled: $0, from: request) }))
+                            .labelsHidden().fixedSize()
+                            .disabled(!owner.state.canUpdateSkill(skillID, from: request))
+                            .accessibilityIdentifier("plugin-skill-settings-toggle")
+                    }
+                    if let description = skill.description, !description.isEmpty {
+                        Text(description).accessibilityIdentifier("plugin-skill-settings-description")
+                    }
+                    if skill.document != nil || !skill.includedFiles.isEmpty {
+                        NavigationLink {
+                            if let current = self.skill, current.document == skill.document,
+                               current.includedFiles == skill.includedFiles {
+                                PluginSkillContentView(title: current.title, document: current.document,
+                                    files: current.includedFiles)
+                                    .navigationTitle(skill.title)
+                                    .navigationBarTitleDisplayMode(.inline)
+                            } else {
+                                Text(visualText("技能资料已更新，请返回后重新打开。", "Skill details changed. Go back and reopen them."))
+                            }
+                        } label: {
+                            Text(visualText("查看技能正文", "View skill document"))
+                        }
+                        .accessibilityIdentifier("plugin-skill-settings-document")
+                    }
+                }
+            } else {
+                Section {
+                    Text(visualText("此技能资料已失效，请返回后重新打开。", "This skill information is no longer current. Go back and reopen it."))
+                        .accessibilityIdentifier("plugin-skill-settings-stale")
+                }
+            }
+        }
+        .navigationTitle(skill?.title ?? OfficialText.text(.pluginSettingsSkills))
+        .navigationBarTitleDisplayMode(.inline)
+        .alert(OfficialText.text(.pluginSettingsSkillUpdateError), isPresented: Binding(
+            get: { failure != nil && owner.state.skillUpdateFailure?.request.id == failure?.request.id },
+            set: { presented in
+                guard !presented, let failure else { return }
+                // SwiftUI writes this binding during dismissal. Clear model state after that update.
+                Task { @MainActor in owner.clearSkillUpdateFailure(failure.request.id) }
+            }), presenting: failure) { _ in
+                Button(visualText("好", "OK")) {}
+            }
+    }
+}
+
 // Native 293 root/directory topology, with explicit synthetic catalog inputs.
 // Source membership, row metrics, monogram icons and capability values below
 // are independent adapters; no service authorization or installation occurs.
@@ -14,9 +400,13 @@ final class FrontendPluginsModel: ObservableObject {
     @Published var scrollID: String?
     @Published var searchScrollID: String?
     @Published private(set) var promptFailure: String?
+    @Published var toolsModel: FrontendPluginToolsModel?
     var openNewChat: ((FrontendPluginPromptIntent) -> Bool)?
     let sources: [FrontendPluginSource]
+    let screenshotResources: FrontendPluginScreenshotResources
+    let skillsDirectory: FrontendSkillsDirectory?
     private let service: any FrontendPluginServing
+    private let toolsService: (any FrontendPluginToolsServing)?
     private let replaysRefreshFixture: Bool
     private var retired = false
     private var hasReplayedRefresh = false
@@ -25,12 +415,25 @@ final class FrontendPluginsModel: ObservableObject {
     let installedQuery = FrontendPluginQuery(sourceID: "installed", text: "")
 
     init(scope: FrontendPluginScope, sources: [FrontendPluginSource], service: any FrontendPluginServing,
-         replaysRefreshFixture: Bool = false) {
+         replaysRefreshFixture: Bool = false,
+         screenshotResources: FrontendPluginScreenshotResources = .init(),
+         toolsService: (any FrontendPluginToolsServing)? = nil,
+         skillsDirectory: FrontendSkillsDirectory? = nil) {
         state = .init(scope: scope); self.sources = sources; self.service = service
         self.replaysRefreshFixture = replaysRefreshFixture
+        self.screenshotResources = screenshotResources
+        self.toolsService = toolsService
+        self.skillsDirectory = skillsDirectory.flatMap { $0.scope == scope ? $0 : nil }
     }
+    private static let fixtureSkillFiles: [FrontendPluginSkillFile] = [
+        .init(path: "examples/checklist.txt", mimeType: "text/plain", sizeInBytes: 25,
+              preview: .init(body: "Review the visible notes.", format: .plainText)),
+        .init(path: "references/layout.bin", mimeType: "application/octet-stream", sizeInBytes: 16)
+    ]
+
     static func make(accountID: String) -> FrontendPluginsModel {
-        let scope = FrontendPluginScope(accountID: accountID, workspaceID: "offline-workspace")
+        let scope = FrontendPluginScope(accountID: accountID, workspaceID: "offline-workspace",
+                                       profileID: FrontendStartScreenDestination.currentProfile)
         let sources: [FrontendPluginSource] = [
             .init(id: "all", title: visualText("浏览", "Browse")),
             .init(id: "workspace", title: visualText("工作空间", "Workspace")),
@@ -64,11 +467,49 @@ final class FrontendPluginsModel: ObservableObject {
             values[index].defaultPrompts = [.init(id: 0, mention: values[index].name,
                 body: visualText("帮我整理一份简短清单。", "Help me organize a short checklist."))]
             values[index].canUsePrompt = true //explicit local draft capability, not install status
-            values[index].skills = skillTitles.enumerated().map { .init(id: "fixture-skill-\($0.offset)", title: $0.element) }
+            values[index].skills = skillTitles.enumerated().map { index, title in
+                .init(id: "fixture-skill-\(index)", title: title,
+                    document: index == 9 ? .init(
+                        body: "# Skill document\n\nReview the **synthetic calendar** before using this skill.",
+                        format: .markdown) : nil,
+                    includedFiles: index == 9 ? Self.fixtureSkillFiles : [])
+            }
             values[index].information = [
                 .init(id: .developer, value: .text(visualText("独立合成示例", "Independent synthetic fixture"))),
                 .init(id: .capabilities, value: .list([visualText("目录演示", "Catalog replay"), visualText("本地状态", "Local state") ])),
                 .init(id: .website, value: .link(URL(string: "https://example.invalid/preview")!))]
+        }
+        if HostLaunchRuntime.arguments.contains("--offline-fixture") {
+            //Explicit synthetic input to the production detail consumer; not
+            //the user's apps, installed catalog or an authorization result.
+            //The ordinary offline preview uses this same supplied catalog so
+            //the new entry can be inspected without a test-only launch flag.
+            values[0].includedApps = [
+                .init(id: "fixture-app-tools", name: visualText("合成工具应用", "Synthetic tools app"),
+                    summary: visualText("本地界面示例", "Local interface fixture"), state: .connected, showsTools: true,
+                    hasPersonalConnection: true),
+                .init(id: "fixture-app-connect", name: visualText("合成待连接应用", "Synthetic connect app")),
+                .init(id: "fixture-app-reconnect", name: visualText("合成重新连接应用", "Synthetic reconnect app"),
+                    state: .reauthenticationRequired),
+                .init(id: "fixture-app-unavailable", name: visualText("合成不可用应用", "Synthetic unavailable app"),
+                    state: .statusUnavailable, isUnavailable: true)]
+        }
+        var screenshotBytes: [URL: Data] = [:]
+        if HostLaunchRuntime.arguments.contains("--plugins-screenshots-fixture") {
+            //Entirely synthetic local images, separate from the user's images
+            //and real plugin logos. This exercises the production consumer.
+            for index in 0..<2 {
+                values[index].screenshots = (0..<(index == 0 ? 2 : 1)).map { ordinal in
+                    let id = "fixture-\(index)-\(ordinal)"
+                    let url = URL(string: "rea-plugin-screenshot://local/" + id)!
+                    screenshotBytes[url] = makePluginScreenshotFixture(ordinal: ordinal)
+                    return .init(id: id, url: url, userPrompt: nil,
+                                 appName: visualText("本地合成示例", "Local synthetic fixture"))
+                }
+            }
+            values[2].defaultPrompts = [.init(id: 0, mention: values[2].name,
+                body: visualText("整理一份清单。", "Organize a checklist."))]
+            values[2].canUsePrompt = true
         }
         var journal: FrontendPluginConnectionJournal?
         let profile = FrontendStartScreenDestination.currentProfile
@@ -78,15 +519,123 @@ final class FrontendPluginsModel: ObservableObject {
             let scopeName = Data((scope.accountID + "\u{0}" + scope.workspaceID).utf8).map { String(format: "%02x", $0) }.joined()
             journal = .init(url: support.appendingPathComponent("REAOffline/plugin-profiles/" + profile + "/" + scopeName + "/connections-v1.json"), scope: scope)
         }
+        var toolsSnapshot = FrontendPluginToolsSnapshot(readActions: [
+            .init(id: "fixture-read", name: "synthetic_read", displayName: visualText("读取合成笔记", "Read synthetic notes"),
+                description: visualText("**本地工具目录示例**\n\n只展示工具说明，不读取真实文件，也不执行工具。", "**Local tools catalog fixture**\n\nShows a tool description only; it does not read real files or execute tools."))
+        ], writeActions: [
+            .init(id: "fixture-write-disabled", name: "synthetic_disabled", displayName: visualText("合成写入操作", "Synthetic write action"),
+                description: "", isReadAction: false, isEnabled: false),
+            .init(id: "fixture-write-admin", name: "synthetic_admin_disabled", displayName: visualText("管理员禁用的合成操作", "Synthetic admin-disabled action"),
+                description: visualText("这是独立的管理员禁用状态示例。", "An independent admin-disabled fixture."),
+                isReadAction: false, isEnabled: false, isDisabledByAdministrator: true)
+        ])
+        if HostLaunchRuntime.arguments.contains("--plugins-tools-admin-sync-fixture") {
+            toolsSnapshot.adminSync = .init(appName: visualText("合成笔记", "Synthetic notes"),
+                lastSyncedAt: HostLaunchRuntime.arguments.contains("--plugins-tools-admin-sync-no-date-fixture")
+                    ? nil : Date().addingTimeInterval(-3600))
+        }
+        let toolsService: (any FrontendPluginToolsServing)? = HostLaunchRuntime.arguments.contains("--offline-fixture")
+            ? SyntheticPluginToolsService(mode: HostLaunchRuntime.arguments.contains("--plugins-tools-empty-fixture") ? .empty :
+                (HostLaunchRuntime.arguments.contains("--plugins-tools-failure-fixture") ? .failFirst : .populated),
+                catalog: ["fixture-app-tools": toolsSnapshot]) : nil
+        let canonicalSettings = FrontendPluginCanonicalSettingsReference(pluginID: values[1].id,
+            actionPluginID: values[1].actionPluginID, revision: values[1].revision, title: values[1].name)
+        let connectorEntries: [FrontendPluginSettingsConnector] = [
+            .init(id: "fixture.uses.canonical", name: visualText("规范插件示例", "Canonical plugin fixture"),
+                canonicalSettings: canonicalSettings, linkState: .loaded(nil), privacy: .allowAll),
+            .init(id: "fixture.uses.connect", canonicalConnectorID: "fixture.connector.shared",
+                name: visualText("合成连接器", "Synthetic connector"), linkState: .loaded(nil)),
+            .init(id: "fixture.uses.linked", name: visualText("已关联示例", "Linked fixture"),
+                linkState: .loaded(.init(id: "fixture-existing-link", authStatus: .reauthRequired)), privacy: .allowReads),
+            .init(id: "fixture.uses.unknown", name: visualText("状态未载入示例", "Unloaded state fixture"),
+                linkState: .unknown, privacy: .allowLowRisk)]
+        var connectorFixtures: [String: SyntheticPluginConnectorFixture] = [:]
+        for entry in connectorEntries where entry.canonicalSettings == nil {
+            let detached = FrontendPluginConnectorDetailProjection(title: entry.name,
+                description: visualText("本地合成连接资料。", "Local synthetic connection information."),
+                snapshot: .init(linkState: .loaded(nil), privacy: nil),
+                showsHeaderConnect: true, showsConnectAccount: true)
+            let linked = FrontendPluginConnectorDetailProjection(title: entry.name,
+                description: visualText("本地合成连接资料。", "Local synthetic connection information."),
+                snapshot: .init(linkState: .loaded(.init(id: "fixture-known-link-" + entry.id)),
+                    privacy: entry.privacy ?? .alwaysAsk), showsHeaderDisconnect: true, showsRemove: true)
+            var initial: FrontendPluginConnectorDetailProjection
+            switch entry.linkState {
+            case .loaded(nil): initial = detached
+            case .loaded(let existing?):
+                initial = linked; initial.snapshot = .init(linkState: .loaded(existing), privacy: entry.privacy)
+                if existing.authStatus == .reauthRequired { initial.showsHeaderConnect = true; initial.showsHeaderDisconnect = false }
+            case .unknown: initial = linked
+            }
+            let form = FrontendPluginConnectorConnectionForm(
+                title: OfficialText.format(.pluginConnectorConnectTitle, arguments: [entry.name]),
+                connectorName: entry.name, blurbs: [visualText("用于本地交互预览。", "For local interaction preview.")],
+                primaryTitle: OfficialText.format(.pluginConnectorConnectNamed, arguments: [entry.name]),
+                allowedAuthTypes: [.oauth], preferredAuthTypeID: .oauth, isConnectionEnabled: true)
+            connectorFixtures[entry.id] = .init(current: initial, connected: linked, disconnected: detached, form: form,
+                attemptsDirectConnection: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                    HostLaunchRuntime.arguments.contains("--plugins-uses-direct-fixture"))
+        }
         return .init(scope: scope, sources: sources, service: SyntheticPluginService(scope: scope,
             catalog: values, failsOnce: HostLaunchRuntime.arguments.contains("--plugins-failure-fixture"),
             failsFirstRefresh: HostLaunchRuntime.arguments.contains("--plugins-refresh-failure-fixture"),
             replaysConnectionChanges: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
                 HostLaunchRuntime.arguments.contains("--plugins-operation-success-fixture"),
             journal: journal, failsLocalSaveOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
-                HostLaunchRuntime.arguments.contains("--plugins-local-save-failure-fixture")),
+                HostLaunchRuntime.arguments.contains("--plugins-local-save-failure-fixture"),
+            settingsCatalog: ["notes": .init(layout: .legacy,
+                additionalForm: .init(id: "fixture-notes-additional", providerCount: 1,
+                    provider: .init(appID: "fixture.notes", readToolName: "read_preferences", accountID: "fixture.personal")),
+                //Independent synthetic capability, never inferred from installed.
+                localPermissions: HostLaunchRuntime.arguments.contains("--offline-fixture")
+                    ? .init(state: .init(status: .notAllowed, action: .requestPermissions)) : nil,
+                connectors: connectorEntries,
+                //Independent synthetic settings skills; directory chips above
+                //are deliberately a different type and capability projection.
+                skills: [.init(id: "fixture.skill.organize", name: visualText("整理笔记", "Organize notes"),
+                    description: visualText("独立合成技能资料，不会执行操作。", "Independent synthetic skill information; no operation is executed."),
+                    isEnabled: true, isToggleDisabled: false,
+                    document: .init(body: visualText("按主题整理当前可见的笔记。", "Organize the visible notes by topic."), format: .plainText),
+                    includedFiles: Self.fixtureSkillFiles),
+                    .init(id: "fixture.skill.disabled", name: visualText("归档笔记", "Archive notes"), isEnabled: false, isToggleDisabled: false),
+                    .init(id: "fixture.skill.fallback", isEnabled: true)]),
+                "calendar": .init(layout: .legacy, skills: [
+                    .init(id: "fixture.calendar.skill", name: visualText("整理日程", "Organize schedule"), isEnabled: true)])],
+            failsSettingsOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-settings-failure-fixture"),
+            failsSkillUpdateOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-skill-update-failure-fixture"),
+            skillUpdateDelayMilliseconds: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-skill-update-slow-fixture") ? 5000 : 200,
+            connectorFixtures: ["notes": connectorFixtures],
+            replaysConnectorConnections: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-uses-success-fixture"),
+            failsConnectorConnectionOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-uses-failure-fixture"),
+            failsConnectorDetailOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-uses-detail-failure-fixture"),
+            settingsForms: ["fixture-notes-additional": .init(title: visualText("笔记设置", "Note settings"),
+                groups: [.init(id: "fixture.preferences", fields: [
+                    .init(id: "organize", title: visualText("自动整理", "Organize automatically"), kind: .boolean, input: .boolean(true)),
+                    .init(id: "prefix", title: visualText("标题前缀", "Title prefix"), kind: .plainText, input: .text(""))])], saveEnabled: true)],
+            failsFormReadOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-form-read-failure-fixture"),
+            failsFormSaveOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-form-save-failure-fixture")),
             replaysRefreshFixture: HostLaunchRuntime.arguments.contains("--plugins-refresh-failure-fixture")
-                && !HostLaunchRuntime.arguments.contains("--plugins-manual-refresh-fixture"))
+                && !HostLaunchRuntime.arguments.contains("--plugins-manual-refresh-fixture"),
+            screenshotResources: .init(screenshotBytes), toolsService: toolsService,
+            skillsDirectory: .init(scope: scope, skills: [
+                .init(skill: .init(id: "directory-notes", title: visualText("整理笔记", "Organize notes"),
+                    document: .init(body: visualText("## 整理步骤\n\n按主题归类，再检查待办事项。",
+                        "## Organizing steps\n\nGroup notes by topic, then check the action items."), format: .markdown),
+                    includedFiles: Self.fixtureSkillFiles),
+                    summary: visualText("按主题整理和核对笔记", "Group and review notes by topic"), isInstalled: true),
+                .init(skill: .init(id: "directory-schedule", title: visualText("整理日程", "Organize schedule"),
+                    document: .init(body: visualText("## 日程检查\n\n列出各项安排与截止时间。",
+                        "## Schedule review\n\nList appointments and deadlines."), format: .markdown)),
+                    summary: visualText("梳理安排与截止时间", "Review appointments and deadlines"), isInstalled: false)
+            ]))
     }
     func load(_ query: FrontendPluginQuery, more: Bool = false, force: Bool = false) async {
         guard !retired, !Task.isCancelled else { return }
@@ -143,7 +692,42 @@ final class FrontendPluginsModel: ObservableObject {
         }
     }
     func closeDetail(_ id: String) { state.cancelDetail(id) }
-    func retire() { retired = true; state.retire(); service.retire() }
+    func openAppTools(pluginID: String, appID: String) {
+        guard !retired, let intent = state.includedAppIntent(.tools, pluginID: pluginID, appID: appID),
+              state.accepts(intent) else { return }
+        toolsModel?.retire()
+        toolsModel = .init(destination: .init(intent: intent), service: toolsService,
+            isCurrent: { [weak self] in self?.state.accepts(intent) == true })
+    }
+    func closeAppTools(_ id: UUID) {
+        guard toolsModel?.id == id else { return }
+        toolsModel?.retire(); toolsModel = nil
+    }
+    func performApp(_ action: FrontendPluginIncludedAppIntent.Action, pluginID: String, appID: String) async {
+        guard !retired, !Task.isCancelled,
+              let request = state.includedAppIntent(action, pluginID: pluginID, appID: appID),
+              state.beginIncludedAppOperation(request) else { return }
+        do {
+            let receipt = try await service.performIncludedApp(request)
+            if receipt.operation == request { _ = state.receive(receipt) }
+            else { _ = state.receive(.init(operation: request, result: .failure(.invalidResult))) }
+        } catch {
+            _ = state.receive(.init(operation: request,
+                result: .failure(error as? FrontendPluginFailure ?? .loadFailed)))
+        }
+    }
+    func settingsModel(_ id: String) -> FrontendPluginSettingsModel {
+        let item = state.entities[id]
+        return .init(state: .init(scope: state.scope, pluginID: id,
+            actionPluginID: item?.actionPluginID, revision: item?.revision ?? 0), service: service,
+            current: { [weak self] request in
+                guard let self, !self.retired, let current = self.state.entities[id] else { return false }
+                return request.scope == self.state.scope && request.pluginID == current.id &&
+                    request.actionPluginID == current.actionPluginID && request.revision == current.revision &&
+                    current.actions.contains(.settings)
+            })
+    }
+    func retire() { retired = true; toolsModel?.retire(); toolsModel = nil; state.retire(); service.retire() }
     func usePrompt(_ id: Int, pluginID: String) {
         guard let intent = state.promptIntent(id, pluginID: pluginID), state.accepts(intent) else { return }
         promptFailure = openNewChat?(intent) == true ? nil : pluginID
@@ -161,30 +745,48 @@ final class FrontendPluginsModel: ObservableObject {
 }
 
 struct NativePluginsPage: View {
+    private enum Section: Hashable { case plugins, skills }
     @ObservedObject var model: FrontendPluginsModel
     let openMenu: () -> Void
     var closeDirectory: (() -> Void)? = nil
+    @State private var section: Section = .plugins
+    private var skills: FrontendSkillsDirectory? { closeDirectory == nil ? model.skillsDirectory : nil }
+    private var title: String {
+        section == .skills ? visualText("技能", "Skills") : OfficialText.text(.pluginsDirectoryTitle)
+    }
     var body: some View {
         NavigationStack(path: $model.path) {
-            directory
-                .navigationTitle(OfficialText.text(.pluginsDirectoryTitle))
+            Group {
+                if section == .skills, let skills {
+                    NativeSkillsDirectory(skills: skills)
+                } else {
+                    directory.refreshable { await refreshDirectory(model.query) }
+                }
+            }
+                .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        //293 picks ChatGPTDirectorySection, NOT a sourceID.
-                        //This host enables the Plugins section only. Skills/
-                        //GPTs must not appear as usable routes without owners.
-                        Menu {
-                            Picker(OfficialText.text(.pluginsDirectoryTitle), selection: .constant("plugins")) {
-                                Text(OfficialText.text(.pluginsDirectoryTitle)).tag("plugins")
-                            }.labelsHidden()
-                        } label: {
-                            HStack(spacing: 6) {
-                                Text(OfficialText.text(.pluginsDirectoryTitle)).font(.headline)
-                                Image(uiImage: officialVisualIcon("chevron-down-sm"))
-                                    .foregroundStyle(.secondary)
+                    if skills != nil {
+                        ToolbarItem(placement: .principal) {
+                            Menu {
+                                Picker(visualText("目录", "Directory"), selection: $section) {
+                                    Text(OfficialText.text(.pluginsDirectoryTitle)).tag(Section.plugins)
+                                    Text(visualText("技能", "Skills")).tag(Section.skills)
+                                }.labelsHidden()
+                            } label: {
+                                HStack(spacing: 6) {
+                                    Text(title).font(.headline).foregroundStyle(.primary)
+                                    Image(systemName: "chevron.down")
+                                        .font(.footnote.weight(.semibold))
+                                        .foregroundStyle(.secondary)
+                                        .accessibilityHidden(true)
+                                }
+                                .lineLimit(1)
                             }
-                        }.accessibilityIdentifier("plugins-directory-picker")
+                            .menuIndicator(.hidden)
+                            .accessibilityLabel(title)
+                            .accessibilityIdentifier("plugins-directory-picker")
+                        }
                     }
                     ToolbarItem(placement: .topBarLeading) {
                         if let closeDirectory {
@@ -197,26 +799,20 @@ struct NativePluginsPage: View {
                                 .accessibilityIdentifier("plugins-open-menu")
                         }
                     }
-                    ToolbarItem(placement: .topBarTrailing) {
-                        //Independent preview source filter, kept distinct from
-                        //the recovered directory-section title picker above.
-                        Menu {
-                            ForEach(model.sources) { source in
-                                Button { model.sourceID = source.id } label: {
-                                    if model.sourceID == source.id { Label(source.title, systemImage: "checkmark") }
-                                    else { Text(source.title) }
-                                }.accessibilityIdentifier("plugins-source-" + source.id)
-                            }
-                        } label: { Image(systemName: "line.3.horizontal.decrease") }
-                            .accessibilityLabel(visualText("筛选来源", "Filter source"))
-                            .accessibilityIdentifier("plugins-source-picker")
+                    if section == .plugins {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Menu {
+                                ForEach(model.sources) { source in
+                                    Button { model.sourceID = source.id } label: {
+                                        if model.sourceID == source.id { Label(source.title, systemImage: "checkmark") }
+                                        else { Text(source.title) }
+                                    }.accessibilityIdentifier("plugins-source-" + source.id)
+                                }
+                            } label: { Image(systemName: "line.3.horizontal.decrease") }
+                                .accessibilityLabel(visualText("筛选来源", "Filter source"))
+                                .accessibilityIdentifier("plugins-source-picker")
+                        }
                     }
-                }
-                //293 Screen e824bc applies refreshable to its directory root
-                //after title/toolbar/displayMode, not to a NavigationStack.
-                //The current provider reloads scoped queries independently.
-                .refreshable {
-                    await refreshDirectory(model.query)
                 }
                 .navigationDestination(for: FrontendPluginsModel.Route.self) { route in
                     switch route {
@@ -224,9 +820,17 @@ struct NativePluginsPage: View {
                     case .detail(let id): NativePluginDetail(model: model, pluginID: id,
                         allowsPromptHandoff: closeDirectory == nil)
                     case .settings(let id):
-                        SettingsServiceUnavailablePage(title: model.state.entities[id]?.name ?? OfficialText.text(.pluginsDirectoryTitle))
+                        NativePluginSettingsDetailPage(model: model, pluginID: id)
                     }
                 }
+        }
+        .sheet(item: $model.toolsModel) { tools in
+            NativePluginToolsSheet(model: tools, didClose: model.closeAppTools)
+        }
+        .onChange(of: model.state.entities) { _, _ in
+            if let tools = model.toolsModel, !model.state.accepts(tools.state.destination.intent) {
+                model.closeAppTools(tools.id)
+            }
         }
     }
     private func refreshDirectory(_ query: FrontendPluginQuery) async {
@@ -571,6 +1175,142 @@ private struct NativePluginSearch: View {
     }
 }
 
+private struct NativeSkillsDirectory: View {
+    let skills: FrontendSkillsDirectory
+    @State private var showsInstalled = false
+
+    var body: some View {
+        SkillDirectoryListing(skills: skills, installedOnly: false, openInstalled: { showsInstalled = true })
+            .navigationDestination(isPresented: $showsInstalled) {
+                SkillDirectoryListing(skills: skills, installedOnly: true)
+                    .navigationTitle(visualText("已安装技能", "Installed skills"))
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+    }
+}
+
+private struct SkillDirectoryListing: View {
+    let skills: FrontendSkillsDirectory
+    let installedOnly: Bool
+    var openInstalled: (() -> Void)? = nil
+    @State private var search = ""
+    @State private var selected: FrontendDirectorySkill?
+
+    var body: some View {
+        let matches = skills.matches(search, installedOnly: installedOnly)
+        List {
+            if let openInstalled {
+                Section {
+                    Button(action: openInstalled) {
+                        Label(visualText("已安装", "Installed"), systemImage: "checkmark.circle")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .overlay(alignment: .trailing) { Image(systemName: "chevron.right").font(.footnote) }
+                    }.accessibilityIdentifier("skills-directory-installed")
+                }
+            }
+            Section {
+                if matches.isEmpty {
+                    Text(visualText("没有匹配的技能", "No matching skills")).foregroundStyle(.secondary)
+                }
+                ForEach(matches) { item in
+                    HStack(spacing: 12) {
+                        Button {
+                            selected = item
+                        } label: {
+                            HStack(spacing: 12) {
+                                skillDirectoryIcon
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(item.skill.title).font(.headline)
+                                    if !item.summary.isEmpty {
+                                        Text(item.summary).font(.subheadline).foregroundStyle(.secondary).lineLimit(1)
+                                    }
+                                }
+                                Spacer(minLength: 0)
+                            }.contentShape(Rectangle())
+                        }.buttonStyle(.plain).accessibilityIdentifier("skills-directory-item-" + item.id)
+                        Menu {
+                            Button(visualText("复制技能名称", "Copy skill name")) {
+                                UIPasteboard.general.string = item.skill.title
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle").font(.title3)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(visualText("更多操作", "More actions"))
+                        .accessibilityIdentifier("skills-directory-actions-" + item.id)
+                    }
+                    .padding(.vertical, 3)
+                }
+            } header: {
+                if !installedOnly { Text(visualText("全部技能", "All skills")) }
+            }
+        }
+        .listStyle(.insetGrouped)
+        .accessibilityIdentifier("skills-directory")
+        .safeAreaInset(edge: .bottom) {
+            HStack(spacing: 10) {
+                Image(systemName: "magnifyingglass").accessibilityHidden(true)
+                TextField(visualText("搜索技能", "Search skills"), text: $search)
+                    .accessibilityIdentifier("skills-directory-search")
+                if !search.isEmpty {
+                    Button { search = "" } label: { Image(systemName: "xmark.circle.fill") }
+                        .buttonStyle(.plain).accessibilityLabel(visualText("清除搜索", "Clear search"))
+                        .accessibilityIdentifier("skills-directory-clear-search")
+                }
+            }
+            .foregroundStyle(.primary).padding(12)
+            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
+            .padding(.horizontal, 20).padding(.bottom, 8)
+        }
+        .sheet(item: $selected) { item in
+            NavigationStack {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .top, spacing: 12) {
+                        skillDirectoryIcon
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(item.skill.title).font(.title2.weight(.semibold))
+                                .accessibilityIdentifier("skills-detail-title")
+                            if !item.summary.isEmpty {
+                                Text(item.summary).font(.subheadline).foregroundStyle(.secondary)
+                                    .accessibilityIdentifier("skills-detail-summary")
+                            }
+                        }
+                        Spacer(minLength: 0)
+                    }
+                    .padding()
+                    .background(Color(uiColor: .secondarySystemGroupedBackground))
+                    Divider()
+                    PluginSkillContentView(title: item.skill.title, document: item.skill.document,
+                                           files: item.skill.includedFiles, showsFileMetadata: true)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button(visualText("关闭", "Close")) { selected = nil }
+                            .accessibilityIdentifier("skills-detail-close")
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Menu {
+                            Button(visualText("复制技能名称", "Copy skill name")) {
+                                UIPasteboard.general.string = item.skill.title
+                            }
+                        } label: { Image(systemName: "ellipsis.circle") }
+                            .accessibilityLabel(visualText("更多操作", "More actions"))
+                    }
+                }
+            }
+        }
+    }
+
+    private var skillDirectoryIcon: some View {
+        Image(systemName: "sparkles").font(.body.weight(.semibold))
+            .foregroundStyle(Color.accentColor)
+            .frame(width: 36, height: 36)
+            .background(Color.accentColor.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+            .accessibilityHidden(true)
+    }
+}
+
 //293 SkillsSection eb74e4/eb765c consumes FlowLayout and first8/all input.
 //Spacing, pill paint, and the local expansion/click route are host adapters;
 //final ScreenAction dispatch and original modifier inputs remain unclosed.
@@ -599,12 +1339,125 @@ private struct RecoveredPluginSkills: View {
             }
             .sheet(item: $selected) { skill in
                 NavigationStack {
-                    SettingsServiceUnavailablePage(title: skill.title)
+                    Group {
+                        if skill.document != nil || !skill.includedFiles.isEmpty {
+                            PluginSkillContentView(title: skill.title, document: skill.document, files: skill.includedFiles)
+                        } else {
+                            SettingsServiceUnavailablePage(title: skill.title)
+                        }
+                    }
+                        .navigationTitle(skill.title)
                         .toolbar { ToolbarItem(placement: .topBarTrailing) {
                             Button(visualText("关闭", "Close")) { selected = nil }
                                 .accessibilityIdentifier("plugin-skill-close")
                         } }
                 }
+            }
+            .onChange(of: skills) { _, current in
+                if let selected, !current.contains(selected) { self.selected = nil }
+            }
+        }
+    }
+}
+
+// The 293 template separates instructions, selected file preview, and the included file list.
+private struct PluginSkillContentView: View {
+    let title: String
+    let document: FrontendPluginSkillDocument?
+    let files: [FrontendPluginSkillFile]
+    var showsFileMetadata = false
+    @State private var selectedPath: String?
+
+    private var selectedFile: FrontendPluginSkillFile? { files.first { $0.path == selectedPath } }
+
+    var body: some View {
+        ZStack {
+            if let document {
+                PluginSkillDocumentView(title: title, document: document)
+                    .opacity(selectedFile == nil ? 1 : 0)
+                    .allowsHitTesting(selectedFile == nil)
+                    .accessibilityHidden(selectedFile != nil)
+            } else if selectedFile == nil {
+                Text(visualText("暂无技能正文", "No instructions available"))
+            }
+            if let selectedFile {
+                VStack(alignment: .leading, spacing: 8) {
+                    Button("SKILL.md") { selectedPath = nil }
+                        .accessibilityIdentifier("plugin-skill-instructions")
+                    Text(selectedFile.path).font(.headline)
+                    Group {
+                        if let preview = selectedFile.preview {
+                            PluginSkillDocumentView(title: selectedFile.path, document: preview)
+                                .id(selectedFile.path)
+                        } else {
+                            Text(visualText("无法预览此文件", "Preview unavailable for this file"))
+                                .accessibilityIdentifier("plugin-skill-file-unavailable")
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                }
+                .padding()
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            if !files.isEmpty {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(visualText("附属文件", "Included files")).font(.headline).padding(.horizontal)
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: 0) {
+                            ForEach(files) { file in
+                                Button { selectedPath = file.path } label: {
+                                    Label {
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text(file.path)
+                                            if showsFileMetadata {
+                                                let metadata = [file.mimeType, file.sizeInBytes.map {
+                                                    ByteCountFormatter.string(fromByteCount: $0, countStyle: .file)
+                                                }].compactMap { $0 }.joined(separator: " · ")
+                                                if !metadata.isEmpty {
+                                                    Text(metadata).font(.caption).foregroundStyle(.secondary)
+                                                }
+                                            }
+                                        }
+                                    } icon: {
+                                        Image(systemName: selectedPath == file.path ? "checkmark" : "doc")
+                                    }
+                                    .frame(maxWidth: .infinity, minHeight: showsFileMetadata ? 56 : 44, alignment: .leading)
+                                    .padding(.horizontal)
+                                }
+                                .accessibilityIdentifier("plugin-skill-file-" + file.path)
+                                .accessibilityAddTraits(selectedPath == file.path ? .isSelected : [])
+                            }
+                        }
+                    }
+                    .frame(height: min(CGFloat(files.count) * (showsFileMetadata ? 56 : 44), showsFileMetadata ? 168 : 132))
+                }
+                .padding(.vertical, 8)
+                .background(.bar)
+            }
+        }
+    }
+}
+
+private struct PluginSkillDocumentView: View {
+    let title: String
+    let document: FrontendPluginSkillDocument
+    @State private var showRaw = false
+    @State private var sourceID = UUID()
+
+    var body: some View {
+        if document.format == .markdown && !showRaw {
+            RemoteRenderedMarkdownFile(
+                source: .init(id: sourceID, name: title, contents: document.body, lineNumber: nil),
+                markdownContents: document.body, showRaw: { showRaw = true })
+        } else {
+            ScrollView {
+                Text(document.body)
+                    .textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                    .accessibilityIdentifier("plugin-skill-document")
             }
         }
     }
@@ -674,7 +1527,7 @@ private struct RecoveredPluginInformation: View {
         case .text(let text): Text(text)
         case .list(let values): Text(values.formatted())
         case .link(let url):
-            Button(url.host ?? url.absoluteString) { browser = .init(url: url) }
+            Button(url.host ?? url.absoluteString) { browser = .init(url: url, usesSystemBrowser: true) }
                 .buttonStyle(.plain).foregroundStyle(.tint)
                 .accessibilityIdentifier("plugin-info-link-" + row.id.rawValue)
         }
@@ -759,9 +1612,12 @@ private struct NativePluginDetail: View {
                         //293 eb0bc0: nonempty prompts before Description;
                         //eb19e4 supplies16. Bubble paint/base font remain host
                         //adapters; mention weight and text composition proved.
-                        if !item.defaultPrompts.isEmpty {
+                        if !item.screenshots.isEmpty {
+                            RecoveredPluginScreenshots(screenshots: item.screenshots,
+                                resources: model.screenshotResources).id(pluginID)
+                        } else if !item.visibleDefaultPrompts.isEmpty {
                             VStack(alignment: .leading, spacing: 16) {
-                                ForEach(item.defaultPrompts) { prompt in
+                                ForEach(item.visibleDefaultPrompts) { prompt in
                                     Button { model.usePrompt(prompt.id, pluginID: pluginID) } label: {
                                         (Text(prompt.mention).fontWeight(.semibold)
                                             + Text((prompt.mention.isEmpty || prompt.body.isEmpty ? "" : " ") + prompt.body))
@@ -778,6 +1634,10 @@ private struct NativePluginDetail: View {
                                 .foregroundStyle(.secondary).accessibilityIdentifier("plugin-prompt-error")
                         }
                         RecoveredPluginDescription(text: item.detail).id(pluginID)
+                        if let apps = item.includedApps, !apps.isEmpty {
+                            RecoveredPluginIncludedApps(model: model, plugin: item, apps: apps)
+                                .id(pluginID)
+                        }
                         ForEach(item.actions, id: \.self) { action in
                             Button(actionTitle(action)) {
                                 if action == .settings { model.path.append(.settings(pluginID)) }
@@ -820,6 +1680,165 @@ private struct NativePluginDetail: View {
         case .settings: visualText("设置", "Settings")
         case .tryInChat: visualText("在聊天中试用", "Try in chat")
         }
+    }
+}
+
+//293 actual AppRow eb52b4 branches on showsTools, then eb5470/eb5848
+//switch horizontal/vertical layout by _isAccessibilitySize (spacing12).
+//Icon paint/size and text typography below are independent host adapters;
+//original per-app image loader and complete optical tokens remain unknown.
+private struct RecoveredPluginIncludedApps: View {
+    @ObservedObject var model: FrontendPluginsModel
+    let plugin: FrontendPlugin
+    let apps: [FrontendPluginIncludedApp]
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(OfficialText.text(apps.count == 1 ? .pluginsIncludedApp : .pluginsIncludedApps))
+                .font(.headline).accessibilityIdentifier("plugin-included-apps")
+            ForEach(Array(apps.enumerated()), id: \.element.id) { index, app in
+                appRow(app)
+                if index < apps.count - 1 { Divider() }
+            }
+        }
+    }
+    private func appRow(_ app: FrontendPluginIncludedApp) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Group {
+                if dynamicTypeSize.isAccessibilitySize {
+                    VStack(alignment: .leading, spacing: 12) {
+                        identityOrTools(app)
+                        actionControl(app).frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                } else {
+                    HStack(spacing: 12) {
+                        identityOrTools(app).frame(maxWidth: .infinity, alignment: .leading)
+                        actionControl(app)
+                    }
+                }
+            }.padding(.vertical)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                //Original isUnavailable operand at 7cdb430 =0.6.
+                .opacity(app.isUnavailable ? 0.6 : 1)
+            let key = FrontendPluginIncludedAppKey(pluginID: plugin.id, appID: app.id)
+            if let failure = model.state.includedAppFailures[key] {
+                Text(failure == .unavailable
+                    ? visualText("应用服务尚未接入，没有更改连接或授权。", "App service is not connected. No connection or authorization was changed.")
+                    : visualText("应用操作失败，可以重试。", "The app operation failed. You can retry."))
+                    .font(.footnote).foregroundStyle(.secondary)
+                    .accessibilityIdentifier("plugin-app-status-" + app.id)
+            }
+        }
+    }
+    @ViewBuilder private func identityOrTools(_ app: FrontendPluginIncludedApp) -> some View {
+        if app.showsTools {
+            Button { model.openAppTools(pluginID: plugin.id, appID: app.id) } label: { identity(app) }
+                .buttonStyle(.plain)
+                .accessibilityHint(OfficialText.format(.pluginsOpenAppTools, arguments: [app.name]))
+                .accessibilityIdentifier("plugin-app-tools-" + app.id)
+        } else { identity(app) }
+    }
+    private func identity(_ app: FrontendPluginIncludedApp) -> some View {
+        HStack(spacing: 16) {
+            //Explicit placeholder, never a recovered app icon or third-party logo.
+            Text(String(app.name.prefix(1))).font(.body)
+                .frame(width: 40, height: 40)
+                .background(Color(uiColor: .secondarySystemBackground), in: RoundedRectangle(cornerRadius: 10))
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(app.name).font(.body).accessibilityIdentifier("plugin-app-name-" + app.id)
+                if let summary = app.summary, !summary.isEmpty {
+                    Text(summary).font(.subheadline).foregroundStyle(.secondary)
+                }
+            }
+        }.frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
+    }
+    @ViewBuilder private func actionControl(_ app: FrontendPluginIncludedApp) -> some View {
+        let key = FrontendPluginIncludedAppKey(pluginID: plugin.id, appID: app.id)
+        if let action = app.connectionAction {
+            Button {
+                Task { await model.performApp(action, pluginID: plugin.id, appID: app.id) }
+            } label: {
+                if model.state.includedAppOperations[key] != nil { ProgressView() }
+                else { Text(OfficialText.text(action == .connect ? .pluginsAppConnect : .pluginsAppReconnect)) }
+            }.buttonStyle(.plain)
+                .disabled(model.state.includedAppOperations[key] != nil || model.state.operations[plugin.id] != nil)
+                .accessibilityIdentifier("plugin-app-" + action.rawValue + "-" + app.id)
+        } else {
+            switch app.state {
+            case .connected: EmptyView()
+            case .statusUnavailable: Text(OfficialText.text(.pluginsAppStatusUnavailable)).foregroundStyle(.secondary)
+            case .unavailable: Text(OfficialText.text(.pluginsAppUnavailable)).foregroundStyle(.secondary)
+            case .disabledByAdministrator: Text(OfficialText.text(.pluginsAppDisabledByAdmin)).foregroundStyle(.secondary)
+            case .planNotEligible: Text(OfficialText.text(.pluginsAppPlanNotEligible)).foregroundStyle(.secondary)
+            case .connect, .reauthenticationRequired: EmptyView()
+            }
+        }
+    }
+}
+
+//293 actual section0xeb33f8→0xeb2d08 and type record0x7d7b378:
+//single screenshot or horizontal LazyHStack/ForEachWithIndex, view-aligned
+//scroll targets, hidden indicators, unclipped scroll. Multi-item spacing8 at
+//eb33b4. Image loading, dimensions and rounded paint here are independent host
+//adaptations; no unproved image viewer/tap action or official loader is added.
+private struct RecoveredPluginScreenshots: View {
+    let screenshots: [FrontendPluginScreenshot]
+    let resources: FrontendPluginScreenshotResources
+    var body: some View {
+        GeometryReader { geometry in
+            if screenshots.count == 1, let screenshot = screenshots.first {
+                image(screenshot).frame(width: geometry.size.width)
+                    .accessibilityIdentifier("plugin-screenshot-single")
+            } else {
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 8) {
+                        ForEach(screenshots) { screenshot in
+                            image(screenshot).frame(width: geometry.size.width * 0.82)
+                                .id(screenshot.id)
+                        }
+                    }.scrollTargetLayout()
+                }.scrollTargetBehavior(.viewAligned)
+                    .scrollIndicators(.hidden).scrollClipDisabled()
+                    .accessibilityIdentifier("plugin-screenshot-rail")
+            }
+        }.frame(height: 220)
+            .accessibilityIdentifier("plugin-screenshots")
+    }
+    private func image(_ screenshot: FrontendPluginScreenshot) -> some View {
+        Group {
+            if let data = resources.data(for: screenshot), let image = UIImage(data: data) {
+                Image(uiImage: image).resizable().scaledToFit()
+            } else {
+                Text(visualText("截图资源不可用", "Screenshot resource unavailable"))
+                    .foregroundStyle(.secondary).frame(maxWidth: .infinity, minHeight: 160)
+            }
+        }.clipShape(RoundedRectangle(cornerRadius: 16))
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(screenshot.appName + ", " + (screenshot.userPrompt ?? visualText("截图", "Screenshot")))
+            .accessibilityIdentifier("plugin-screenshot-" + screenshot.id)
+    }
+}
+
+@MainActor
+private func makePluginScreenshotFixture(ordinal: Int) -> Data {
+    let renderer = UIGraphicsImageRenderer(size: CGSize(width: 600, height: 360))
+    return renderer.pngData { context in
+        UIColor.secondarySystemBackground.setFill()
+        context.fill(CGRect(x: 0, y: 0, width: 600, height: 360))
+        let title = visualText("本地合成截图", "Local synthetic screenshot") + " \(ordinal + 1)"
+        (title as NSString).draw(at: CGPoint(x: 30, y: 24), withAttributes: [
+            .font: UIFont.systemFont(ofSize: 26, weight: .semibold), .foregroundColor: UIColor.label])
+        for row in 0..<3 {
+            UIColor.tertiarySystemFill.setFill()
+            UIBezierPath(roundedRect: CGRect(x: 30, y: 92 + row * 64, width: 540 - row * 55, height: 42),
+                         cornerRadius: 10).fill()
+        }
+        (visualText("独立离线展示 · 非官方内容", "Independent offline fixture · not official content") as NSString)
+            .draw(at: CGPoint(x: 30, y: 310), withAttributes: [
+                .font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.secondaryLabel])
     }
 }
 

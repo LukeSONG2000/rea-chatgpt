@@ -9,11 +9,16 @@ import ObjectiveC.runtime
 @MainActor
 final class FrontendKeyboardSnapshotSession {
     let snapshot: UIView
-    private var restoreAlpha: (() -> Void)?
+    private var hideKeyboard: (() -> Void)?
+    private var showKeyboard: (() -> Void)?
+    private var releaseLease: (() -> Void)?
 
-    private init(snapshot: UIView, restoreAlpha: @escaping () -> Void) {
+    private init(snapshot: UIView, hideKeyboard: @escaping () -> Void, showKeyboard: @escaping () -> Void,
+                 releaseLease: @escaping () -> Void) {
         self.snapshot = snapshot
-        self.restoreAlpha = restoreAlpha
+        self.hideKeyboard = hideKeyboard
+        self.showKeyboard = showKeyboard
+        self.releaseLease = releaseLease
     }
 
     private static var activeLease: UUID?
@@ -30,7 +35,8 @@ final class FrontendKeyboardSnapshotSession {
         } catch { assertionFailure("Keyboard probe could not write diagnostics: \(error)") }
     }
 
-    static func capture(source: UIView, presentationWindow: UIWindow) -> FrontendKeyboardSnapshotSession? {
+    static func capture(source: UIView, presentationWindow: UIWindow,
+                        deferSubstitution: Bool = false) -> FrontendKeyboardSnapshotSession? {
         trace(["event": "capture-begin", "phone": String(UIDevice.current.userInterfaceIdiom == .phone),
                "keyWindow": String(source.window?.isKeyWindow == true)])
         guard activeLease == nil, UIDevice.current.userInterfaceIdiom == .phone,
@@ -50,13 +56,15 @@ final class FrontendKeyboardSnapshotSession {
         trace(["event": "accessors-resolved", "usesInputSystemUI": String(usesRemoteInputSystem)])
         guard !usesRemoteInputSystem else { return nil }
         let activeKeyboard = unsafeBitCast(method_getImplementation(activeMethod), to: ActiveKeyboard.self)
-        guard var captureView = activeKeyboard(keyboardClass, activeSelector)?.takeUnretainedValue(),
-              let keyboardWindow = captureView.window else {
+        guard let originalKeyboard = activeKeyboard(keyboardClass, activeSelector)?.takeUnretainedValue(),
+              let keyboardWindow = originalKeyboard.window else {
             trace(["event": "active-keyboard-unavailable"])
             return nil
         }
-        trace(["event": "active-keyboard", "class": NSStringFromClass(type(of: captureView)),
+        trace(["event": "active-keyboard", "class": NSStringFromClass(type(of: originalKeyboard)),
+               "identity": String(describing: ObjectIdentifier(originalKeyboard)),
                "sameScene": String(keyboardWindow.windowScene === sourceWindow.windowScene)])
+        var captureView = originalKeyboard
         // UIKit owns the active in-process keyboard's scene and screen wrapper.
         // Follow the recovered accessor and coordinate conversion instead of
         // comparing those wrappers with the source editor's objects.
@@ -92,23 +100,51 @@ final class FrontendKeyboardSnapshotSession {
         let setAlpha = unsafeBitCast(method_getImplementation(alphaMethod), to: SetKeyboardAlpha.self)
         let lease = UUID()
         activeLease = lease
-        let substitution = FrontendKeyboardSnapshotSession(snapshot: container) {
+        let substitution = FrontendKeyboardSnapshotSession(snapshot: container, hideKeyboard: {
+            guard activeLease == lease else { return }
+            setAlpha(keyboardClass, alphaSelector, 0)
+        }, showKeyboard: {
+            guard activeLease == lease else { return }
+            setAlpha(keyboardClass, alphaSelector, 1)
+            if let keyboard = activeKeyboard(keyboardClass, activeSelector)?.takeUnretainedValue() {
+                trace(["event": "keyboard-after-restore", "identity": String(describing: ObjectIdentifier(keyboard))])
+            }
+        }, releaseLease: {
             guard activeLease == lease else { return }
             activeLease = nil
-            setAlpha(keyboardClass, alphaSelector, 1)
-        }
-        setAlpha(keyboardClass, alphaSelector, 0)
-        trace(["event": "substituted"])
+        })
+        if !deferSubstitution { substitution.activate() }
         return substitution
+    }
+
+    func activate() {
+        guard let hideKeyboard else { return }
+        self.hideKeyboard = nil
+        hideKeyboard()
+        Self.trace(["event": "substituted"])
+    }
+
+    @discardableResult
+    func returnLiveKeyboard() -> Bool {
+        guard hideKeyboard == nil, let showKeyboard else { return false }
+        self.showKeyboard = nil
+        showKeyboard()
+        Self.trace(["event": "keyboard-alpha-restored"])
+        return true
     }
 
     func restore() {
         Self.trace(["event": "restore"])
         snapshot.removeFromSuperview()
-        let action = restoreAlpha
-        restoreAlpha = nil
-        action?()
+        returnLiveKeyboard()
+        hideKeyboard = nil
+        showKeyboard = nil
+        releaseLease?()
+        releaseLease = nil
     }
 
-    deinit { restoreAlpha?() }
+    deinit {
+        if hideKeyboard == nil { showKeyboard?() }
+        releaseLease?()
+    }
 }

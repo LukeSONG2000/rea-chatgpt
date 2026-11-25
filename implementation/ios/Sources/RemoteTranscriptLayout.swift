@@ -344,3 +344,55 @@ struct RemotePromptProjection: Equatable {
         override ?? (expansion(isExpanded: isExpanded) == .candidate)
     }
 }
+
+//Independent adapter to the recovered293 tail predicates. Provider statuses and
+//explicit error inputs are preserved; this is not an official wire decoder.
+struct CodexReadTailPresentation: Equatable {
+    let turn: CodexReadTurn
+    var status: RemoteTailLayoutState.Status {
+        switch turn.status {
+        case .running: return .running
+        case .success: return .success
+        case .failure: return .failure
+        case .interrupted: return .interrupted
+        case .stopped: return .stopped
+        case .failedPromptSubmission: return .failedPromptSubmission
+        }
+    }
+    var error: RemoteTurnErrorPresentation {
+        .init(status: status, showsError: turn.showsError,
+            isContextCompactionOnlyTurn: turn.isContextCompactionOnlyTurn,
+            showsFooterActions: turn.showsFooterActions, hasRetryHandler: false)
+    }
+    var errorMessage: String? {
+        guard error.showsCard else { return nil }
+        return turn.errorMessage
+    }
+    var stoppedNotice: String? {
+        turn.status == .stopped && !turn.isContextCompactionOnlyTurn ? turn.stoppedNotice : nil
+    }
+    func hasContent(ordered: Bool) -> Bool {
+        let value = ordered ? orderedFooter : footer
+        return errorMessage != nil || usesSubmissionErrorFallback || usesGenerationErrorFallback || stoppedNotice != nil ||
+            value.copyText != nil || value.completionDate != nil
+    }
+    var usesGenerationErrorFallback: Bool {
+        error.showsCard && turn.status == .failure && turn.errorMessage == nil
+    }
+    var usesSubmissionErrorFallback: Bool {
+        error.showsCard && turn.status == .failedPromptSubmission && turn.errorMessage == nil
+    }
+    var footer: RemoteAssistantFooterPresentation {
+        .init(status: status, showsFooterActions: turn.showsFooterActions,
+            responseCopyText: turn.responseCopyText, responseCompletedAt: turn.completedAt)
+    }
+    //Ordered items keep their explicitly supplied copy payloads. Their parent
+    //owns one timestamp; empty items can still carry an explicit turn footer.
+    var orderedFooter: RemoteAssistantFooterPresentation {
+        let hasItemCopy = turn.items.contains {
+            if case .assistant(_, let copy) = $0.content { return copy != nil }; return false
+        }
+        return .init(status: status, showsFooterActions: turn.showsFooterActions,
+            responseCopyText: hasItemCopy ? nil : turn.responseCopyText, responseCompletedAt: turn.completedAt)
+    }
+}

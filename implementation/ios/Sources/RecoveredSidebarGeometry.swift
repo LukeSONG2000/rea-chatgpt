@@ -63,6 +63,27 @@ enum RecoveredSidebarDragProgress {
     static func continuesTarget(projectedFraction: Double) -> Bool { projectedFraction >= 0.5 }
 }
 
+//293 shouldBegin629e70 reads Binding<SideMenuState>;6f12ec separates
+//closed, the two equivalent open-direction cases and associated dragging.
+//629908 constructs dragging(from:) only for its explicit interactive flag,
+//not merely because UIViewPropertyAnimator exists. We merge both open cases;
+//their individual binary tag-to-name assignment is not required here.
+enum RecoveredSidebarDragAdmission {
+    enum Phase: CaseIterable { case closed, open, dragging }
+    static func admits(velocityX: Double, velocityY: Double, directionSign: Double,
+                       phase: Phase, canDragOpen: Bool, canDragClose: Bool) -> Bool {
+        //Independent public-host validation, separate from original comparison.
+        guard velocityX.isFinite, velocityY.isFinite, abs(directionSign) == 1,
+              abs(velocityX) > abs(velocityY) else { return false }
+        //Original629edc compares abs(y) to abs(x), b.pl rejects equal/greater.
+        switch phase {
+        case .closed: return canDragOpen && velocityX * directionSign > 0
+        case .open: return canDragClose && velocityX * directionSign < 0
+        case .dragging: return true
+        }
+    }
+}
+
 //293 History129d908 ->76103b0. Window/trait/corner acquisition belongs to
 //the host. In particular, missing scene corner inputs are not zero radii.
 enum RecoveredSidebarFooterGeometry {
@@ -80,3 +101,51 @@ enum RecoveredSidebarFooterGeometry {
         return max(padding, safeBottom)
     }
 }
+
+//29362a354/62a014/6fc890/62a1a0: shouldBeRequiredToFailBy, not
+//shouldRequireFailureOf. A true result gives the sidebar priority over the
+//scroll view. The caller must supply its actual visible displacement; a target
+//open/closed Boolean cannot represent an interrupted transition.
+enum RecoveredSidebarScrollPriority {
+    struct Edges: Equatable {
+        let left: Bool
+        let right: Bool
+    }
+    static func edges(distance: Double, extent: Double, directionSign: Double,
+                      canDragOpen: Bool) -> Edges {
+        //Independent fail-closed validation for the public host geometry.
+        guard distance.isFinite, extent.isFinite, extent > 0,
+              abs(directionSign) == 1 else { return .init(left: false, right: false) }
+        let opening = canDragOpen && distance < extent
+        let closing = distance > 0
+        return directionSign > 0 ? .init(left: opening, right: closing)
+            : .init(left: closing, right: opening)
+    }
+    static func prefersSidebar(offsetX: Double, contentWidth: Double, viewportWidth: Double,
+                               insetLeft: Double, insetRight: Double, decelerating: Bool,
+                               hasSelection: Bool, edges: Edges) -> Bool {
+        guard !hasSelection,
+              [offsetX, contentWidth, viewportWidth, insetLeft, insetRight].allSatisfy(\.isFinite)
+        else { return false }
+        let tolerance = decelerating ? 10.0 : 0.0
+        return (edges.left && offsetX <= tolerance - insetLeft) ||
+            (edges.right && offsetX >= contentWidth - viewportWidth + insetRight - tolerance)
+    }
+}
+
+#if canImport(UIKit)
+import UIKit
+
+extension RecoveredSidebarScrollPriority {
+    @MainActor static func prefersSidebar(over other: UIGestureRecognizer, edges: Edges) -> Bool {
+        //An arbitrary recognizer attached to a scroll view is not its scroll pan.
+        guard other is UIPanGestureRecognizer, let scroll = other.view as? UIScrollView,
+              other === scroll.panGestureRecognizer else { return false }
+        let selection = (scroll as? any UITextInput)?.selectedTextRange
+        return prefersSidebar(offsetX: scroll.contentOffset.x, contentWidth: scroll.contentSize.width,
+            viewportWidth: scroll.bounds.width, insetLeft: scroll.adjustedContentInset.left,
+            insetRight: scroll.adjustedContentInset.right, decelerating: scroll.isDecelerating,
+            hasSelection: selection.map { !$0.isEmpty } ?? false, edges: edges)
+    }
+}
+#endif

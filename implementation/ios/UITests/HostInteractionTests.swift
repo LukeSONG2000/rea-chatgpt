@@ -1,7 +1,270 @@
 import XCTest
+import ObjectiveC
 import UIKit
+import Vision
 
 extension HostInteractionTests {
+    @MainActor
+    func testRemoteOpenAICalendarFormChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-openai-date-form-fixture",
+            "--remote-openai-form-failure-once"])
+        app.buttons["remote-source-fixture-b"].tap()
+        openReplayThread("date-form-thread", host: "fixture-b", app: app)
+        let next = app.buttons["remote-openai-form-continue"]
+        let selectDay = app.buttons["remote-openai-form-select-day"]
+        XCTAssertTrue(selectDay.waitForExistence(timeout: 5))
+        XCTAssertTrue(next.isHittable)
+        next.tap()
+        XCTAssertTrue(app.staticTexts["remote-openai-form-invalid-day"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.alerts.firstMatch.exists)
+        selectDay.tap()
+        XCTAssertTrue(selectDay.waitForNonExistence(timeout: 3))
+        let clearTime = app.buttons["remote-openai-form-clear-time"]
+        XCTAssertTrue(clearTime.isHittable)
+        clearTime.tap()
+        let selectTime = app.buttons["remote-openai-form-select-time"]
+        XCTAssertTrue(selectTime.waitForExistence(timeout: 3))
+        next.tap()
+        let error = app.alerts.firstMatch
+        XCTAssertTrue(error.waitForExistence(timeout: 5))
+        XCTAssertEqual(error.label, "表单未提交")
+        error.buttons.firstMatch.tap()
+        XCTAssertFalse(selectDay.exists)
+        XCTAssertTrue(selectTime.exists)
+        next.tap()
+        XCTAssertTrue(next.waitForNonExistence(timeout: 8))
+    }
+
+    @MainActor
+    func testRemoteOpenAIURIFormChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-openai-form-failure-once"])
+        app.buttons["remote-source-fixture-b"].tap()
+        openReplayThread("uri-form-thread", host: "fixture-b", app: app)
+        let fields = app.scrollViews["remote-openai-form-fields"]
+        let address = app.textFields["remote-openai-form-string-address"]
+        let next = app.buttons["remote-openai-form-continue"]
+        XCTAssertTrue(address.waitForExistence(timeout: 5))
+        for _ in 0..<3 where !address.isHittable { fields.swipeDown(velocity: .slow) }
+        address.tap(); address.typeText("relative/path")
+        next.tap()
+        XCTAssertTrue(app.staticTexts["remote-openai-form-invalid-address"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.alerts.firstMatch.exists, "A relative URI fails locally before the provider")
+        address.tap()
+        address.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: "relative/path".count))
+        address.typeText("demo:component")
+        XCTAssertEqual(address.value as? String, "demo:component")
+        next.tap()
+        XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 4))
+        XCTAssertEqual(app.alerts.firstMatch.label, "表单未提交")
+        app.alerts.firstMatch.buttons.firstMatch.tap()
+        XCTAssertEqual(address.value as? String, "demo:component")
+        let retained = XCTAttachment(screenshot: app.screenshot())
+        retained.name = "remote-uri-form-failure-preserves-custom-scheme-zh-light"
+        retained.lifetime = .keepAlways; add(retained)
+        next.tap()
+        expectation(for: NSPredicate { _, _ in !next.exists }, evaluatedWith: next)
+        waitForExpectations(timeout: 6)
+        app.navigationBars.buttons.firstMatch.tap()
+        openReplayThread("uri-form-thread", host: "fixture-b", app: app)
+        XCTAssertFalse(next.exists, "Accepted form identity is retained without storing field answers")
+    }
+
+    @MainActor
+    func testRemoteOpenAIMixedFormChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-openai-form-failure-once"])
+        app.buttons["remote-source-fixture-b"].tap()
+        openReplayThread("mixed-form-thread", host: "fixture-b", app: app)
+        let next = app.buttons["remote-openai-form-continue"]
+        let name = app.textFields["remote-openai-form-string-name"]
+        let fields = app.scrollViews["remote-openai-form-fields"]
+        XCTAssertTrue(next.waitForExistence(timeout: 5)); XCTAssertTrue(next.isHittable)
+        next.tap()
+        XCTAssertTrue(app.staticTexts["remote-openai-form-invalid-name"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.alerts.firstMatch.exists, "Local validation must precede the synthetic provider")
+        for _ in 0..<3 where !name.isHittable { fields.swipeDown(velocity: .slow) }
+        XCTAssertTrue(name.isHittable); name.tap(); name.typeText(" 文 ")
+        XCTAssertEqual(name.value as? String, " 文 ")
+        next.tap()
+        XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 4))
+        XCTAssertEqual(app.alerts.firstMatch.label, "表单未提交")
+        app.alerts.firstMatch.buttons.firstMatch.tap()
+        XCTAssertEqual(name.value as? String, " 文 ", "A failed receipt must preserve raw field text")
+        let note = app.descendants(matching: .any).matching(identifier: "remote-openai-form-string-note").firstMatch
+        for _ in 0..<3 where !note.isHittable { fields.swipeUp(velocity: .slow) }
+        XCTAssertTrue(note.exists); XCTAssertEqual(note.value as? String, "  预设  ")
+        let failed = XCTAttachment(screenshot: app.screenshot()); failed.name = "remote-openai-mixed-form-failure-retains-values-zh-light"
+        failed.lifetime = .keepAlways; add(failed)
+        XCTAssertTrue(next.isHittable); next.tap()
+        expectation(for: NSPredicate { _, _ in !next.exists }, evaluatedWith: next)
+        waitForExpectations(timeout: 6)
+        app.navigationBars.buttons.firstMatch.tap()
+        openReplayThread("mixed-form-thread", host: "fixture-b", app: app)
+        XCTAssertFalse(next.exists, "Accepted form receipt must survive task return without retaining answers")
+    }
+
+    @MainActor
+    func testRemoteOpenAIBooleanFormChinese() throws {
+        continueAfterFailure = false
+        let profile = UUID().uuidString
+        let app = launchRemoteReplay(extraArguments: ["--remote-draft-profile=" + profile,
+            "--chat-state-profile=" + profile, "--remote-openai-form-failure-once"])
+        app.buttons["remote-source-fixture-b"].tap()
+        let row = app.buttons["remote-task-fixture-b-boolean-form-thread"]
+        let list = app.collectionViews["remote-task-list"]
+        let editor = app.textViews["remote-composer-editor"]
+        for _ in 0..<7 {
+            if row.isHittable && (!editor.exists || row.frame.maxY < editor.frame.minY) { break }
+            list.swipeUp()
+        }
+        XCTAssertTrue(row.isHittable)
+        XCTAssertTrue(!editor.exists || row.frame.maxY < editor.frame.minY)
+        row.tap()
+        let required = app.switches["remote-openai-form-boolean-required"]
+        let optional = app.switches["remote-openai-form-boolean-optional"]
+        let next = app.buttons["remote-openai-form-continue"]
+        XCTAssertTrue(required.waitForExistence(timeout: 5))
+        XCTAssertEqual(required.value as? String, "0") // Required/no default seeds false.
+        XCTAssertEqual(optional.value as? String, "1") // Supplied true default.
+        XCTAssertEqual(app.staticTexts["remote-openai-form-title-required"].label, "保留合成检查结果")
+        XCTAssertTrue(app.staticTexts["remote-openai-form-description-required"].exists)
+        XCTAssertFalse(app.buttons["remote-approval-approveOnce"].exists)
+        XCTAssertFalse(app.buttons["remote-approval-deny"].exists)
+        XCTAssertFalse(app.textFields["remote-approval-feedback-input"].exists)
+        required.tap(); optional.tap()
+        XCTAssertEqual(required.value as? String, "1")
+        XCTAssertEqual(optional.value as? String, "0")
+        let before = XCTAttachment(screenshot: app.screenshot())
+        before.name = "remote-openai-boolean-form-zh-light"; before.lifetime = .keepAlways; add(before)
+        next.tap()
+        XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 4))
+        XCTAssertEqual(app.alerts.firstMatch.label, "表单未提交")
+        app.alerts.firstMatch.buttons.firstMatch.tap()
+        XCTAssertEqual(required.value as? String, "1")
+        XCTAssertEqual(optional.value as? String, "0") // Failure preserves answers.
+        next.tap()
+        let resolved = NSPredicate { _, _ in !next.exists }
+        expectation(for: resolved, evaluatedWith: next)
+        waitForExpectations(timeout: 6)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(app.buttons["remote-task-fixture-b-boolean-form-thread"].waitForExistence(timeout: 4))
+        // A fresh isolated profile checks the independent Dismiss path and local
+        // initial values again, without restoring persisted form answers.
+        app.terminate()
+        let fresh = launchRemoteReplay(extraArguments: ["--remote-draft-profile=" + UUID().uuidString,
+            "--chat-state-profile=" + UUID().uuidString])
+        fresh.buttons["remote-source-fixture-b"].tap()
+        let freshRow = fresh.buttons["remote-task-fixture-b-boolean-form-thread"]
+        let freshEditor = fresh.textViews["remote-composer-editor"]
+        for _ in 0..<7 {
+            if freshRow.isHittable && (!freshEditor.exists || freshRow.frame.maxY < freshEditor.frame.minY) { break }
+            fresh.collectionViews["remote-task-list"].swipeUp()
+        }
+        freshRow.tap()
+        let dismiss = fresh.buttons["remote-openai-form-dismiss"]
+        XCTAssertTrue(dismiss.waitForExistence(timeout: 5))
+        XCTAssertEqual(fresh.switches["remote-openai-form-boolean-required"].value as? String, "0")
+        dismiss.tap()
+        expectation(for: NSPredicate { _, _ in !dismiss.exists }, evaluatedWith: dismiss)
+        waitForExpectations(timeout: 6)
+        fresh.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(fresh.buttons["remote-task-fixture-b-boolean-form-thread"].waitForExistence(timeout: 4))
+    }
+
+    @MainActor
+    func testRemoteOpenAIEmptyFormChinese() throws {
+        continueAfterFailure = false
+        let profile = UUID().uuidString
+        let app = launchRemoteReplay(extraArguments: ["--remote-draft-profile=" + profile,
+            "--chat-state-profile=" + profile, "--remote-openai-form-failure-once"])
+        app.buttons["remote-source-fixture-b"].tap()
+        let row = app.buttons["remote-task-fixture-b-empty-form-thread"]
+        let list = app.collectionViews["remote-task-list"]
+        let editor = app.textViews["remote-composer-editor"]
+        // AX can call a partly composer-covered row hittable. Bring its actual
+        // bounds above the fixed editor before touching the ordinary list row.
+        for _ in 0..<5 {
+            if row.isHittable && (!editor.exists || row.frame.maxY < editor.frame.minY) { break }
+            list.swipeUp()
+        }
+        XCTAssertTrue(row.isHittable)
+        XCTAssertTrue(!editor.exists || row.frame.maxY < editor.frame.minY)
+        row.tap()
+        XCTAssertTrue(app.collectionViews["remote-thread-history"].waitForExistence(timeout: 5))
+        let next = app.buttons["remote-openai-form-continue"]
+        let dismiss = app.buttons["remote-openai-form-dismiss"]
+        XCTAssertTrue(next.waitForExistence(timeout: 5))
+        XCTAssertTrue(next.isHittable && dismiss.isHittable)
+        XCTAssertEqual(next.label, "继续")
+        XCTAssertFalse(app.buttons["remote-approval-approveOnce"].exists)
+        XCTAssertFalse(app.buttons["remote-approval-deny"].exists)
+        XCTAssertFalse(app.textFields["remote-approval-feedback-input"].exists)
+        XCTAssertFalse(app.staticTexts["remote-approval-command"].exists)
+        XCTAssertFalse(app.buttons["remote-composer-send"].exists)
+        let before = XCTAttachment(screenshot: app.screenshot())
+        before.name = "remote-openai-empty-form-zh-light"; before.lifetime = .keepAlways; add(before)
+        next.tap()
+        XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 4))
+        XCTAssertEqual(app.alerts.firstMatch.label, "表单未提交")
+        app.alerts.firstMatch.buttons.firstMatch.tap()
+        XCTAssertTrue(next.isHittable && dismiss.isHittable)
+        next.tap()
+        let resolved = NSPredicate { _, _ in !next.exists }
+        expectation(for: resolved, evaluatedWith: next)
+        waitForExpectations(timeout: 6)
+        XCTAssertFalse(app.alerts.firstMatch.exists)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(app.buttons["remote-task-fixture-b-empty-form-thread"].waitForExistence(timeout: 4))
+    }
+}
+
+extension HostInteractionTests {
+    @MainActor
+    func testNativePluginScreenshotsChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--plugins-screenshots-fixture",
+            "--chat-state-profile=" + UUID().uuidString, "-AppleLanguages", "(zh-Hans)",
+            "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap()
+        openAdditionalSidebarFeature("plugins", app: app)
+        let notes = app.buttons["plugins-installed-notes"]
+        XCTAssertTrue(notes.waitForExistence(timeout: 6)); notes.tap()
+        // The GeometryReader's outer identifier owns the native ScrollView AX
+        // node; use the actual hierarchy, not its overwritten child marker.
+        let rail = app.scrollViews["plugin-screenshots"]
+        XCTAssertTrue(rail.waitForExistence(timeout: 6))
+        let secondImage = app.otherElements["plugin-screenshot-fixture-0-1"]
+        XCTAssertTrue(secondImage.exists)
+        let beforeX = secondImage.frame.minX
+        XCTAssertFalse(app.buttons["plugin-prompt-0"].exists)
+        let multiple = XCTAttachment(screenshot: app.screenshot())
+        multiple.name = "plugins-screenshots-multiple-zh-light"; multiple.lifetime = .keepAlways; add(multiple)
+        rail.swipeLeft()
+        XCTAssertLessThan(secondImage.frame.minX, beforeX - 30)
+        app.navigationBars.buttons.firstMatch.tap()
+        let calendar = app.buttons["plugin-row-calendar"]
+        if !calendar.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(calendar.waitForExistence(timeout: 5)); calendar.tap()
+        let singleContainer = app.descendants(matching: .any).matching(identifier: "plugin-screenshots").firstMatch
+        XCTAssertTrue(singleContainer.waitForExistence(timeout: 6))
+        XCTAssertEqual(singleContainer.descendants(matching: .image).count, 1)
+        XCTAssertFalse(app.buttons["plugin-prompt-0"].exists)
+        let single = XCTAttachment(screenshot: app.screenshot())
+        single.name = "plugins-screenshot-single-zh-light"; single.lifetime = .keepAlways; add(single)
+        app.navigationBars.buttons.firstMatch.tap()
+        app.buttons["plugins-source-picker"].tap(); app.buttons["plugins-source-personal"].tap()
+        let documents = app.buttons["plugin-row-documents"]
+        XCTAssertTrue(documents.waitForExistence(timeout: 5)); documents.tap()
+        XCTAssertTrue(app.buttons["plugin-prompt-0"].waitForExistence(timeout: 6))
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "plugin-screenshots").firstMatch.exists)
+        app.navigationBars.buttons.firstMatch.tap()
+    }
+
     @MainActor
     func testRemoteAsyncInputRetryChinese() throws {
         continueAfterFailure = false
@@ -192,6 +455,287 @@ extension HostInteractionTests {
     }
 
     @MainActor
+    func testPluginAdditionalSettingsFormChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "--plugins-form-read-failure-fixture", "--plugins-form-save-failure-fixture",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        let plugins = app.buttons["settings-entry-plugin"]
+        for _ in 0..<5 where !plugins.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(plugins.isHittable); plugins.tap()
+        let notes = app.buttons["plugins-settings-added-notes"]
+        XCTAssertTrue(notes.waitForExistence(timeout: 5)); notes.tap()
+        let entry = app.buttons["plugin-additional-settings-entry"]
+        for _ in 0..<5 where !entry.isHittable { app.swipeUp() }
+        XCTAssertTrue(entry.isHittable); entry.tap()
+        let retry = app.buttons["plugin-form-read-retry"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 5)); retry.tap()
+        let toggle = app.switches["plugin-form-field-organize"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        let save = app.buttons["plugin-form-save"]
+        XCTAssertFalse(save.isEnabled, "Unchanged values cannot save")
+        //Form exports a row-wide Switch frame; hit the actual native control.
+        toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+        XCTAssertEqual(toggle.value as? String, "0")
+        let text = app.textFields["plugin-form-field-prefix"]
+        text.tap(); text.typeText("prefix")
+        XCTAssertTrue(save.isEnabled); save.tap()
+        let error = app.staticTexts["plugin-form-save-error"]
+        XCTAssertTrue(error.waitForExistence(timeout: 5))
+        XCTAssertEqual(error.label, "无法保存设置。请检查你的更改，然后重试。")
+        XCTAssertEqual(text.value as? String, "prefix", "Write failure/readback must preserve the submitted input")
+        XCTAssertEqual(toggle.value as? String, "0")
+        XCTAssertTrue(save.isEnabled); save.tap()
+        XCTAssertTrue(text.wait(for: \.isEnabled, toEqual: true, timeout: 5))
+        XCTAssertFalse(save.isEnabled)
+        XCTAssertFalse(error.exists)
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "plugin-additional-settings-saved-zh-light"
+        shot.lifetime = .keepAlways; add(shot)
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(entry.wait(for: \.isHittable, toEqual: true, timeout: 5)); entry.tap()
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5)); XCTAssertEqual(toggle.value as? String, "0")
+        XCTAssertEqual(text.value as? String, "prefix"); XCTAssertFalse(save.isEnabled)
+        text.tap(); text.typeText("-unsaved")
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(entry.wait(for: \.isHittable, toEqual: true, timeout: 5)); entry.tap()
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        XCTAssertEqual(text.value as? String, "prefix", "Back must not autosave an unfinished edit")
+        app.navigationBars.buttons.firstMatch.tap(); app.navigationBars.buttons.firstMatch.tap()
+        app.navigationBars.buttons.firstMatch.tap(); app.buttons["close-settings"].tap()
+        XCTAssertTrue(app.buttons["open-settings"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testPluginUsesConnectorLoopChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "--plugins-uses-success-fixture", "--plugins-uses-failure-fixture", "--plugins-uses-detail-failure-fixture",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        let plugins = app.buttons["settings-entry-plugin"]
+        for _ in 0..<5 where !plugins.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(plugins.isHittable); plugins.tap()
+        let added = app.buttons["plugins-settings-added-notes"]
+        XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
+        let canonical = app.buttons["plugin-settings-connector-fixture.uses.canonical"]
+        XCTAssertTrue(canonical.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(canonical.label.contains("连接")); canonical.tap()
+        XCTAssertTrue(app.buttons["plugin-settings-skill-fixture.calendar.skill"].waitForExistence(timeout: 5),
+            "Canonical settings must win even when the independent tail says Connect")
+        app.navigationBars.buttons.firstMatch.tap()
+        let unknown = app.buttons["plugin-settings-connector-fixture.uses.unknown"]
+        XCTAssertTrue(unknown.waitForExistence(timeout: 5)); XCTAssertTrue(unknown.label.contains("允许低风险操作"))
+        if !unknown.isHittable { app.swipeUp() }; unknown.tap()
+        XCTAssertTrue(app.buttons["plugin-connector-detail-retry"].waitForExistence(timeout: 5))
+        app.buttons["plugin-connector-detail-retry"].tap()
+        XCTAssertTrue(app.staticTexts["plugin-connector-detail-name"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["plugin-connector-detail-name"].label, "状态未载入示例")
+        XCTAssertTrue(app.buttons["connector-remove"].exists)
+        app.navigationBars.buttons.firstMatch.tap()
+        let linked = app.buttons["plugin-settings-connector-fixture.uses.linked"]
+        XCTAssertTrue(linked.waitForExistence(timeout: 5)); XCTAssertTrue(linked.label.contains("重新连接"))
+        let entry = app.buttons["plugin-settings-connector-fixture.uses.connect"]
+        if !entry.isHittable { app.swipeDown() }
+        XCTAssertTrue(entry.isHittable); entry.tap()
+        let cancel = app.buttons["plugin-connector-connect-cancel"]
+        XCTAssertTrue(cancel.waitForExistence(timeout: 5)); cancel.tap()
+        XCTAssertTrue(entry.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertFalse(entry.label.contains("始终询问"), "Cancelling the connection cannot publish a link")
+        entry.tap()
+        let submit = app.buttons["plugin-connector-connect-continue"]
+        XCTAssertTrue(submit.waitForExistence(timeout: 5)); XCTAssertEqual(submit.label, "连接 合成连接器")
+        XCTAssertEqual(app.textFields.count, 0, "No extra account fields for the ordinary single OAuth branch")
+        submit.tap()
+        XCTAssertTrue(app.staticTexts["plugin-connector-connect-error"].waitForExistence(timeout: 5))
+        XCTAssertTrue(submit.isEnabled); submit.tap()
+        XCTAssertTrue(entry.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(entry.label.contains("始终询问"))
+        let listShot = XCTAttachment(screenshot: app.screenshot()); listShot.name = "plugin-uses-accepted-link-zh-light"
+        listShot.lifetime = .keepAlways; add(listShot)
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
+        XCTAssertTrue(entry.wait(for: \.isHittable, toEqual: true, timeout: 5)); XCTAssertTrue(entry.label.contains("始终询问"))
+        entry.tap()
+        XCTAssertTrue(app.buttons["connector-remove"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.buttons["plugin-connector-header-disconnect"].label, "取消关联")
+        XCTAssertEqual(app.buttons["connector-remove"].label, "移除")
+        let detailShot = XCTAttachment(screenshot: app.screenshot()); detailShot.name = "plugin-connector-linked-details-zh-light"
+        detailShot.lifetime = .keepAlways; add(detailShot)
+        app.buttons["connector-remove"].tap()
+        XCTAssertTrue(app.buttons["connector-connect-account"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.buttons["connector-connect-account"].label, "关联 合成连接器 账户")
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(entry.wait(for: \.isHittable, toEqual: true, timeout: 5)); XCTAssertFalse(entry.label.contains("始终询问"))
+        entry.tap(); XCTAssertTrue(cancel.waitForExistence(timeout: 5)); cancel.tap()
+        XCTAssertTrue(entry.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap(); app.navigationBars.buttons.firstMatch.tap()
+        app.buttons["close-settings"].tap()
+        XCTAssertTrue(app.buttons["open-settings"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testPluginSettingsSkillsChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "--plugins-skill-update-failure-fixture", "--plugins-skill-update-slow-fixture",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        let plugins = app.buttons["settings-entry-plugin"]
+        for _ in 0..<5 where !plugins.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(plugins.isHittable); plugins.tap()
+        let added = app.buttons["plugins-settings-added-notes"]
+        XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
+        let enabled = app.buttons["plugin-settings-skill-fixture.skill.organize"]
+        let disabled = app.buttons["plugin-settings-skill-fixture.skill.disabled"]
+        let fallback = app.buttons["plugin-settings-skill-fixture.skill.fallback"]
+        XCTAssertTrue(enabled.waitForExistence(timeout: 5))
+        for _ in 0..<4 where !enabled.isHittable { app.swipeUp() }
+        XCTAssertTrue(enabled.label.contains("整理笔记")); XCTAssertFalse(enabled.label.contains("禁用"))
+        XCTAssertTrue(disabled.label.contains("禁用"))
+        XCTAssertTrue(fallback.label.contains("fixture.skill.fallback"))
+        XCTAssertTrue(app.buttons["plugin-local-permissions-entry"].exists)
+        let listShot = XCTAttachment(screenshot: app.screenshot())
+        listShot.name = "plugin-settings-skills-zh-light"; listShot.lifetime = .keepAlways; add(listShot)
+        disabled.tap()
+        let skillSwitch = app.switches["plugin-skill-settings-toggle"]
+        XCTAssertTrue(skillSwitch.waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["plugin-skill-settings-name"].label, "归档笔记")
+        XCTAssertEqual(skillSwitch.label, "启用技能")
+        XCTAssertTrue(skillSwitch.isEnabled); XCTAssertEqual(skillSwitch.value as? String, "0")
+        skillSwitch.tap()
+        XCTAssertTrue(skillSwitch.wait(for: \.isEnabled, toEqual: false, timeout: 2))
+        XCTAssertEqual(skillSwitch.value as? String, "1", "The original switch updates before the async result")
+        let failure = app.alerts["无法更新技能"]
+        XCTAssertTrue(failure.waitForExistence(timeout: 6)); failure.buttons.firstMatch.tap()
+        XCTAssertEqual(skillSwitch.value as? String, "0", "Failure restores the captured old state")
+        XCTAssertTrue(skillSwitch.isEnabled)
+        skillSwitch.tap()
+        XCTAssertTrue(skillSwitch.wait(for: \.isEnabled, toEqual: false, timeout: 2))
+        XCTAssertTrue(skillSwitch.wait(for: \.isEnabled, toEqual: true, timeout: 6))
+        XCTAssertEqual(skillSwitch.value as? String, "1")
+        let detailShot = XCTAttachment(screenshot: app.screenshot())
+        detailShot.name = "plugin-skill-toggle-success-zh-light"; detailShot.lifetime = .keepAlways; add(detailShot)
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(disabled.waitForExistence(timeout: 5)); XCTAssertFalse(disabled.label.contains("禁用"))
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
+        for _ in 0..<4 where !disabled.isHittable { app.swipeUp() }
+        XCTAssertTrue(disabled.waitForExistence(timeout: 5)); XCTAssertFalse(disabled.label.contains("禁用"))
+        disabled.tap()
+        XCTAssertTrue(skillSwitch.waitForExistence(timeout: 5)); XCTAssertEqual(skillSwitch.value as? String, "1")
+        skillSwitch.tap()
+        XCTAssertTrue(skillSwitch.wait(for: \.isEnabled, toEqual: false, timeout: 2))
+        XCTAssertTrue(skillSwitch.wait(for: \.isEnabled, toEqual: true, timeout: 6))
+        XCTAssertEqual(skillSwitch.value as? String, "0")
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(disabled.waitForExistence(timeout: 5)); XCTAssertTrue(disabled.label.contains("禁用"))
+        fallback.tap()
+        XCTAssertTrue(skillSwitch.waitForExistence(timeout: 5)); XCTAssertFalse(skillSwitch.isEnabled)
+        XCTAssertEqual(skillSwitch.value as? String, "1", "Capability is independent of the current enabled value")
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(enabled.waitForExistence(timeout: 5)); enabled.tap()
+        XCTAssertTrue(app.staticTexts["plugin-skill-settings-description"].waitForExistence(timeout: 5))
+        XCTAssertEqual(skillSwitch.value as? String, "1")
+        let skillDocument = app.buttons["plugin-skill-settings-document"]
+        XCTAssertTrue(skillDocument.wait(for: \.isHittable, toEqual: true, timeout: 5)); skillDocument.tap()
+        XCTAssertTrue(app.staticTexts["plugin-skill-document"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["plugin-skill-document"].label, "按主题整理当前可见的笔记。")
+        let checklist = app.buttons["plugin-skill-file-examples/checklist.txt"]
+        XCTAssertTrue(checklist.wait(for: \.isHittable, toEqual: true, timeout: 5)); checklist.tap()
+        XCTAssertTrue(app.staticTexts["Review the visible notes."].waitForExistence(timeout: 5))
+        let instructions = app.buttons["plugin-skill-instructions"]
+        XCTAssertTrue(instructions.wait(for: \.isHittable, toEqual: true, timeout: 5)); instructions.tap()
+        XCTAssertTrue(app.staticTexts["按主题整理当前可见的笔记。"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(skillSwitch.waitForExistence(timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap()
+        let additional = app.buttons["plugin-additional-settings-entry"]
+        for _ in 0..<4 where !additional.isHittable { app.swipeUp() }
+        XCTAssertTrue(additional.isHittable); additional.tap()
+        XCTAssertTrue(app.switches["plugin-form-field-organize"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["plugin-form-save"].isEnabled)
+        app.navigationBars.buttons.firstMatch.tap()
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
+        XCTAssertTrue(disabled.waitForExistence(timeout: 5)); XCTAssertTrue(disabled.label.contains("禁用"))
+        app.navigationBars.buttons.firstMatch.tap()
+        app.navigationBars.buttons.firstMatch.tap()
+        app.buttons["close-settings"].tap()
+        XCTAssertTrue(app.buttons["open-settings"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testPluginSettingsParentChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "--plugins-settings-failure-fixture", "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN",
+            "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        let plugins = app.buttons["settings-entry-plugin"]
+        for _ in 0..<5 where !plugins.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(plugins.isHittable); plugins.tap()
+        let added = app.buttons["plugins-settings-added-notes"]
+        XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
+        let retry = app.buttons["plugin-settings-retry"]
+        let hasRetry = retry.waitForExistence(timeout: 5)
+        if !hasRetry {
+            let failed = XCTAttachment(screenshot: app.screenshot()); failed.name = "plugin-settings-entry-diagnostic"
+            failed.lifetime = .keepAlways; add(failed)
+            print("PLUGIN_SETTINGS_ENTRY_TREE " + app.debugDescription)
+        }
+        XCTAssertTrue(hasRetry); retry.tap()
+        let permissions = app.buttons["plugin-local-permissions-entry"]
+        XCTAssertTrue(permissions.waitForExistence(timeout: 5))
+        XCTAssertTrue(permissions.label.contains("权限")); XCTAssertTrue(permissions.label.contains("不允许"))
+        permissions.tap()
+        XCTAssertTrue(app.staticTexts["plugin-local-permissions-unavailable"].waitForExistence(timeout: 5))
+        let permissionShot = XCTAttachment(screenshot: app.screenshot())
+        permissionShot.name = "plugin-local-permissions-service-boundary-zh-light"
+        permissionShot.lifetime = .keepAlways; add(permissionShot)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(permissions.waitForExistence(timeout: 5)); XCTAssertTrue(permissions.label.contains("不允许"))
+        let additional = app.buttons["plugin-additional-settings-entry"]
+        XCTAssertTrue(additional.waitForExistence(timeout: 5)); XCTAssertEqual(additional.label, "其他设置")
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "plugin-settings-original-parent-zh-light"
+        shot.lifetime = .keepAlways; add(shot)
+        additional.tap()
+        XCTAssertTrue(app.staticTexts["附加设置尚未恢复，未提交任何设置。"].waitForExistence(timeout: 5))
+        let formShot = XCTAttachment(screenshot: app.screenshot()); formShot.name = "plugin-additional-settings-boundary-zh-light"
+        formShot.lifetime = .keepAlways; add(formShot)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(additional.waitForExistence(timeout: 5)); XCTAssertFalse(retry.exists)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
+        XCTAssertTrue(additional.waitForExistence(timeout: 5)); XCTAssertFalse(retry.exists)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        app.buttons["plugins-settings-browse"].tap()
+        let notes = app.buttons["plugins-installed-notes"]
+        XCTAssertTrue(notes.waitForExistence(timeout: 5)); notes.tap()
+        let entry = app.buttons["plugin-action-settings"]
+        for _ in 0..<7 where !entry.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(entry.isHittable); entry.tap()
+        XCTAssertTrue(additional.waitForExistence(timeout: 5))
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        app.buttons["plugins-directory-close"].tap()
+        XCTAssertTrue(added.waitForExistence(timeout: 5))
+    }
+
+    @MainActor
     func testPluginsSettingsDetailAndRestartChinese() throws {
         continueAfterFailure = false
         let app = XCUIApplication(), profile = UUID().uuidString
@@ -243,6 +787,12 @@ extension HostInteractionTests {
         XCTAssertFalse(more.exists)
         let lastSkill = app.buttons["plugin-skill-fixture-skill-9"]
         XCTAssertTrue(lastSkill.exists); reveal(lastSkill); lastSkill.tap()
+        XCTAssertTrue(app.descendants(matching: .any)["remote-markdown-rendered"].firstMatch.waitForExistence(timeout: 5))
+        let binaryFile = app.buttons["plugin-skill-file-references/layout.bin"]
+        XCTAssertTrue(binaryFile.wait(for: \.isHittable, toEqual: true, timeout: 5)); binaryFile.tap()
+        XCTAssertTrue(app.staticTexts["plugin-skill-file-unavailable"].waitForExistence(timeout: 5))
+        app.buttons["plugin-skill-instructions"].tap()
+        XCTAssertTrue(app.descendants(matching: .any)["remote-markdown-rendered"].firstMatch.waitForExistence(timeout: 5))
         XCTAssertTrue(app.buttons["plugin-skill-close"].waitForExistence(timeout: 5)); app.buttons["plugin-skill-close"].tap()
         let website = app.buttons["plugin-info-link-website"]
         reveal(website); website.tap()
@@ -254,8 +804,7 @@ extension HostInteractionTests {
         closeDirectory()
         let added = app.buttons["plugins-settings-added-calendar"]
         XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
-        XCTAssertTrue(app.otherElements["settings-unavailable-page"].waitForExistence(timeout: 5)
-            || app.staticTexts["此功能尚未接入"].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["plugin-settings-page"].firstMatch.waitForExistence(timeout: 8))
         back()
         let settingsShot = XCTAttachment(screenshot: app.screenshot())
         settingsShot.name = "plugins-settings-added-browse-zh-light"; settingsShot.lifetime = .keepAlways; add(settingsShot)
@@ -669,6 +1218,8 @@ extension HostInteractionTests {
         XCTAssertTrue(error.waitForExistence(timeout: 5))
         XCTAssertEqual(error.label, "本地资料未保存，修改已保留，请重试。")
         XCTAssertEqual(name.value as? String, "Offline Profile A")
+        XCTAssertFalse(name.isEnabled, "Retained accepted result freezes edits until local retry or cancel")
+        XCTAssertTrue(close.isEnabled, "Local persistence retry must not trap the editor")
         XCTAssertTrue(save.isEnabled); save.tap()
         let status = app.staticTexts["profile-edit-preview-status"]
         let accepted = NSPredicate(format: "label CONTAINS %@", "已保存到本地离线资料")
@@ -730,18 +1281,200 @@ extension HostInteractionTests {
         avatar.tap(); app.buttons["profile-avatar-file"].tap()
         let sample = app.buttons["profile-avatar-sample"]
         XCTAssertTrue(sample.waitForExistence(timeout: 5)); sample.tap()
+        let crop = app.otherElements["profile-avatar-crop-image"]
+        XCTAssertTrue(crop.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["profile-avatar-preview"].exists)
+        app.buttons["profile-avatar-crop-cancel"].tap()
+        XCTAssertEqual(name.value as? String, "Avatar Draft")
+        XCTAssertFalse(app.staticTexts["profile-avatar-preview"].exists)
+        avatar.tap(); app.buttons["profile-avatar-file"].tap()
+        XCTAssertTrue(sample.waitForExistence(timeout: 5)); sample.tap()
+        XCTAssertTrue(crop.waitForExistence(timeout: 5))
+        let start = crop.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+        let end = crop.coordinate(withNormalizedOffset: CGVector(dx: 0.65, dy: 0.5))
+        start.press(forDuration: 0.1, thenDragTo: end)
+        crop.pinch(withScale: 1.3, velocity: 1)
+        let cropping = XCTAttachment(screenshot: app.screenshot()); cropping.name = "avatar-crop-pan-zoom-zh-light"
+        cropping.lifetime = .keepAlways; add(cropping)
+        app.buttons["profile-avatar-crop-confirm"].tap()
         XCTAssertTrue(app.staticTexts["profile-avatar-preview"].waitForExistence(timeout: 5))
         XCTAssertEqual(name.value as? String, "Avatar Draft")
         XCTAssertEqual(username.value as? String, "avatar-draft")
         XCTAssertEqual(app.staticTexts["profile-edit-preview-status"].label, "合成个人资料，仅用于前端预览。", "Selection must not publish the saved-profile status")
         let preview = XCTAttachment(screenshot: app.screenshot()); preview.name = "avatar-transient-preview-zh-light"
         preview.lifetime = .keepAlways; add(preview)
+        //Cancel a replacement crop without discarding the previously confirmed avatar.
+        avatar.tap(); app.buttons["profile-avatar-file"].tap()
+        XCTAssertTrue(sample.waitForExistence(timeout: 5)); sample.tap()
+        XCTAssertTrue(crop.waitForExistence(timeout: 5))
+        app.buttons["profile-avatar-crop-cancel"].tap()
+        XCTAssertTrue(app.staticTexts["profile-avatar-preview"].waitForExistence(timeout: 5))
         app.buttons["auth-profile-edit-close"].tap()
         XCTAssertEqual(app.staticTexts["settings-profile-display-name"].label, "预览账户")
         edit.tap(); XCTAssertTrue(name.waitForExistence(timeout: 5))
         XCTAssertEqual(name.value as? String, "预览账户")
-        XCTAssertFalse(app.staticTexts["profile-avatar-preview"].exists, "Preview is editor-local and not persisted")
+        XCTAssertTrue(app.staticTexts["profile-avatar-preview"].exists, "Confirmed local avatar survives text cancellation and re-entry")
         app.buttons["auth-profile-edit-close"].tap()
+    }
+
+    @MainActor
+    func testProfileAvatarLocalPersistenceChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let profile = UUID().uuidString
+        let arguments = ["--offline-fixture", "--profile-avatar-fixture", "--avatar-local-save-failure-fixture",
+            "--chat-state-profile=" + UUID().uuidString, "--auth-state-profile=" + profile,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launchArguments = arguments; app.launch()
+        func openSettings() {
+            XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+            app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+            XCTAssertTrue(app.buttons["edit-profile-picture"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+        }
+        openSettings(); app.buttons["edit-profile-picture"].tap()
+        let name = app.textFields["profile-edit-name"]
+        XCTAssertTrue(name.waitForExistence(timeout: 5)); replaceDraft(name, in: app, with: "Unsaved text")
+        let avatar = app.buttons["profile-edit-avatar"]
+        if !avatar.isHittable { app.scrollViews.firstMatch.swipeDown() }
+        avatar.tap(); app.buttons["profile-avatar-file"].tap()
+        let sample = app.buttons["profile-avatar-sample"]
+        XCTAssertTrue(sample.waitForExistence(timeout: 5)); sample.tap()
+        let confirm = app.buttons["profile-avatar-crop-confirm"]
+        XCTAssertTrue(confirm.wait(for: \.isHittable, toEqual: true, timeout: 5)); confirm.tap()
+        let failure = app.staticTexts["profile-avatar-submit-error"]
+        XCTAssertTrue(failure.waitForExistence(timeout: 5))
+        XCTAssertEqual(failure.label, "头像未能保存在此设备，请重试。")
+        XCTAssertTrue(confirm.isEnabled); confirm.tap()
+        let status = app.staticTexts["profile-avatar-preview"]
+        XCTAssertTrue(status.waitForExistence(timeout: 5)); XCTAssertEqual(status.label, "已保存在此设备。")
+        var imageID = avatar.value as? String
+        XCTAssertFalse(imageID?.isEmpty ?? true)
+        XCTAssertEqual(name.value as? String, "Unsaved text")
+        avatar.tap(); app.buttons["profile-avatar-file"].tap()
+        XCTAssertTrue(sample.waitForExistence(timeout: 5)); sample.tap()
+        XCTAssertTrue(confirm.wait(for: \.isHittable, toEqual: true, timeout: 5)); confirm.tap()
+        XCTAssertTrue(status.waitForExistence(timeout: 5))
+        XCTAssertNotEqual(avatar.value as? String, imageID, "The same editor can commit a newer local avatar revision")
+        imageID = avatar.value as? String
+        app.buttons["auth-profile-edit-close"].tap()
+        XCTAssertEqual(app.staticTexts["settings-profile-display-name"].label, "预览账户")
+        let header = app.descendants(matching: .any).matching(identifier: "settings-profile-avatar").firstMatch
+        XCTAssertEqual(header.value as? String, imageID, "Accepted crop updates settings without saving text")
+        let saved = XCTAttachment(screenshot: app.screenshot()); saved.name = "account-local-avatar-settings-zh-light"
+        saved.lifetime = .keepAlways; add(saved)
+        app.terminate(); app.launchArguments = arguments; app.launch(); openSettings()
+        XCTAssertEqual(header.value as? String, imageID, "Local avatar survives process restart")
+        app.buttons["edit-profile-picture"].tap()
+        XCTAssertTrue(name.waitForExistence(timeout: 5)); XCTAssertEqual(name.value as? String, "预览账户")
+        XCTAssertEqual(avatar.value as? String, imageID)
+        avatar.tap(); app.buttons["profile-avatar-file"].tap()
+        XCTAssertTrue(sample.waitForExistence(timeout: 5)); sample.tap()
+        XCTAssertTrue(confirm.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        app.buttons["profile-avatar-crop-cancel"].tap()
+        XCTAssertTrue(status.waitForExistence(timeout: 5)); XCTAssertEqual(avatar.value as? String, imageID)
+        app.buttons["auth-profile-edit-close"].tap()
+        app.terminate()
+        app.launchArguments = arguments.map { $0.hasPrefix("--auth-state-profile=") ? "--auth-state-profile=" + UUID().uuidString : $0 }
+        app.launch(); openSettings()
+        XCTAssertEqual(header.value as? String, "", "Separate local account profile does not inherit the avatar")
+    }
+
+    @MainActor
+    func testProfileAvatarSubmissionChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--profile-avatar-fixture",
+            "--profile-avatar-submit-failure-fixture", "--profile-avatar-submit-slow-fixture",
+            "--chat-state-profile=" + UUID().uuidString, "--auth-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        let edit = app.buttons["edit-profile-picture"]
+        XCTAssertTrue(edit.wait(for: \.isHittable, toEqual: true, timeout: 5)); edit.tap()
+        let name = app.textFields["profile-edit-name"]
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        replaceDraft(name, in: app, with: "Avatar Submit Draft")
+        let avatar = app.buttons["profile-edit-avatar"]
+        if !avatar.isHittable { app.scrollViews.firstMatch.swipeDown() }
+        func sample() {
+            avatar.tap(); app.buttons["profile-avatar-file"].tap()
+            let sample = app.buttons["profile-avatar-sample"]
+            XCTAssertTrue(sample.waitForExistence(timeout: 5)); sample.tap()
+            XCTAssertTrue(app.otherElements["profile-avatar-crop-image"].waitForExistence(timeout: 5))
+        }
+        let use = app.buttons["profile-avatar-crop-confirm"]
+        let failure = app.staticTexts["profile-avatar-submit-error"]
+        sample(); use.tap()
+        XCTAssertTrue(use.wait(for: \.isEnabled, toEqual: false, timeout: 3))
+        XCTAssertFalse(use.isEnabled, "Awaiting local preparation is single-flight")
+        let processing = XCTAttachment(screenshot: app.screenshot())
+        processing.name = "avatar-submit-local-busy-zh-light"; processing.lifetime = .keepAlways; add(processing)
+        XCTAssertTrue(failure.waitForExistence(timeout: 8))
+        XCTAssertTrue(use.isEnabled, "Failure leaves the crop available for retry")
+        XCTAssertTrue(app.otherElements["profile-avatar-crop-image"].exists)
+        let failed = XCTAttachment(screenshot: app.screenshot())
+        failed.name = "avatar-submit-local-failure-zh-light"; failed.lifetime = .keepAlways; add(failed)
+        use.tap()
+        XCTAssertTrue(app.staticTexts["profile-avatar-preview"].waitForExistence(timeout: 9))
+        XCTAssertEqual(name.value as? String, "Avatar Submit Draft")
+        let previousPreview = avatar.value as? String
+        XCTAssertFalse(previousPreview?.isEmpty ?? true)
+        sample(); use.tap()
+        XCTAssertTrue(use.wait(for: \.isEnabled, toEqual: false, timeout: 3))
+        app.buttons["profile-avatar-crop-cancel"].tap()
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        XCTAssertEqual(name.value as? String, "Avatar Submit Draft")
+        XCTAssertEqual(avatar.value as? String, previousPreview, "Cancelled replacement preserves the previous preview")
+        XCTAssertTrue(app.staticTexts["profile-avatar-preview"].exists)
+        XCTAssertEqual(app.staticTexts["profile-edit-preview-status"].label, "合成个人资料，仅用于前端预览。")
+        let returned = XCTAttachment(screenshot: app.screenshot())
+        returned.name = "avatar-submit-cancel-preserves-preview-draft-zh-light"; returned.lifetime = .keepAlways; add(returned)
+        app.buttons["auth-profile-edit-close"].tap()
+    }
+
+    @MainActor
+    func testProfileSystemPickersCancelChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        // Exercise the real platform selection carriers, not the avatar fixture.
+        // Do not select assets, inspect gallery/file rows or capture the pickers.
+        app.launchArguments = ["--offline-fixture",
+            "--chat-state-profile=" + UUID().uuidString, "--auth-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        let edit = app.buttons["edit-profile-picture"]
+        XCTAssertTrue(edit.wait(for: \.isHittable, toEqual: true, timeout: 5)); edit.tap()
+        let name = app.textFields["profile-edit-name"]
+        let username = app.textFields["profile-edit-username"]
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        replaceDraft(name, in: app, with: "Picker Draft")
+        replaceDraft(username, in: app, with: "picker-draft")
+        let avatar = app.buttons["profile-edit-avatar"]
+        if !avatar.isHittable { app.scrollViews.firstMatch.swipeDown() }
+        for source in ["profile-avatar-photos", "profile-avatar-file"] {
+            XCTAssertTrue(avatar.wait(for: \.isHittable, toEqual: true, timeout: 5)); avatar.tap()
+            let entry = app.buttons[source]
+            XCTAssertTrue(entry.waitForExistence(timeout: 5)); entry.tap()
+            // Let XCTest resolve the filtered remote query. Enumerating the
+            // document extension's stale AX elements inside a waiter can fail.
+            let cancel = app.buttons.matching(NSPredicate(format:
+                "(label == %@ OR label == %@) AND identifier != %@", "取消", "Cancel", "auth-profile-edit-close")).firstMatch
+            XCTAssertTrue(cancel.wait(for: \.isHittable, toEqual: true, timeout: 10))
+            XCTAssertFalse(app.buttons["profile-avatar-sample"].exists)
+            cancel.tap()
+            XCTAssertTrue(avatar.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            XCTAssertEqual(name.value as? String, "Picker Draft")
+            XCTAssertEqual(username.value as? String, "picker-draft")
+            XCTAssertFalse(app.staticTexts["profile-avatar-preview"].exists)
+            XCTAssertFalse(app.staticTexts["profile-avatar-error"].exists)
+        }
+        let returned = XCTAttachment(screenshot: app.screenshot())
+        returned.name = "avatar-system-pickers-cancelled-zh-light"; returned.lifetime = .keepAlways; add(returned)
+        app.buttons["auth-profile-edit-close"].tap()
+        XCTAssertEqual(app.staticTexts["settings-profile-display-name"].label, "预览账户")
     }
 
     @MainActor
@@ -1323,6 +2056,160 @@ extension HostInteractionTests {
     }
 
     @MainActor
+    func testPluginIncludedAppsChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString
+        app.launchArguments = ["--offline-fixture", "--host-profile=" + profile,
+            "--chat-state-profile=" + profile, "--auth-state-profile=" + profile,
+            "--plugins-included-apps-fixture", "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN",
+            "-rea.preview.appearance", "light"]
+        app.launch()
+        let menu = app.buttons["open-conversation-list"]
+        XCTAssertTrue(menu.waitForExistence(timeout: 10)); menu.tap()
+        openAdditionalSidebarFeature("plugins", app: app)
+        let notes = app.buttons["plugins-installed-notes"]
+        XCTAssertTrue(notes.wait(for: \.isHittable, toEqual: true, timeout: 5)); notes.tap()
+        let detail = app.scrollViews["plugin-detail-page"]
+        func reveal(_ element: XCUIElement) {
+            for _ in 0..<4 where !element.isHittable { detail.swipeUp() }
+            XCTAssertTrue(element.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        }
+        let tools = app.buttons["plugin-app-tools-fixture-app-tools"]
+        reveal(tools)
+        XCTAssertFalse(app.buttons["plugin-app-connect-fixture-app-tools"].exists)
+        let rows = XCTAttachment(screenshot: app.screenshot())
+        rows.name = "plugin-included-apps-zh-light"; rows.lifetime = .keepAlways; add(rows)
+        tools.tap()
+        XCTAssertTrue(app.buttons["plugin-tools-close"].waitForExistence(timeout: 5))
+        app.buttons["plugin-tools-close"].tap()
+        XCTAssertTrue(detail.waitForExistence(timeout: 5))
+        for (action, id) in [("connect", "fixture-app-connect"), ("reconnect", "fixture-app-reconnect")] {
+            let button = app.buttons["plugin-app-" + action + "-" + id]
+            reveal(button); button.tap()
+            let status = app.staticTexts["plugin-app-status-" + id]
+            XCTAssertTrue(status.waitForExistence(timeout: 5))
+            XCTAssertTrue(status.label.contains("尚未接入"))
+            XCTAssertTrue(button.isEnabled, "Unsupported service must keep the original connection action")
+        }
+        let state = XCTAttachment(screenshot: app.screenshot())
+        state.name = "plugin-included-apps-unavailable-zh-light"; state.lifetime = .keepAlways; add(state)
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(notes.waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testPluginAdminSyncChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        func openTools(withDate: Bool) {
+            let profile = UUID().uuidString
+            app.launchArguments = ["--offline-fixture", "--host-profile=" + profile,
+                "--chat-state-profile=" + profile, "--auth-state-profile=" + profile,
+                "--plugins-tools-admin-sync-fixture", "-AppleLanguages", "(zh-Hans)",
+                "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+            if !withDate { app.launchArguments.append("--plugins-tools-admin-sync-no-date-fixture") }
+            app.launch()
+            let menu = app.buttons["open-conversation-list"]
+            XCTAssertTrue(menu.waitForExistence(timeout: 10)); menu.tap()
+            openAdditionalSidebarFeature("plugins", app: app)
+            let notes = app.buttons["plugins-installed-notes"]
+            XCTAssertTrue(notes.wait(for: \.isHittable, toEqual: true, timeout: 5)); notes.tap()
+            let tools = app.buttons["plugin-app-tools-fixture-app-tools"]
+            for _ in 0..<4 where !tools.isHittable { app.scrollViews["plugin-detail-page"].swipeUp() }
+            XCTAssertTrue(tools.wait(for: \.isHittable, toEqual: true, timeout: 5)); tools.tap()
+        }
+        func footer() -> XCUIElement {
+            app.staticTexts["plugin-tools-admin-sync-description"]
+        }
+        func shot(_ name: String) {
+            let value = XCTAttachment(screenshot: app.screenshot())
+            value.name = name; value.lifetime = .keepAlways; add(value)
+        }
+        openTools(withDate: true)
+        XCTAssertTrue(footer().waitForExistence(timeout: 5))
+        XCTAssertEqual(footer().label, "来自 合成笔记 的数据会自动同步，并用于只读操作。这是由你的管理员为你设置的。")
+        let date = app.descendants(matching: .any).matching(identifier: "plugin-tools-last-synced").firstMatch
+        XCTAssertTrue(date.exists)
+        XCTAssertTrue((date.label + String(describing: date.value ?? "")).contains("上次同步"))
+        XCTAssertFalse(app.staticTexts["plugin-tools-admin-sync-unavailable"].exists)
+        shot("plugin-admin-sync-date-zh-light")
+        app.buttons["plugin-tools-close"].tap()
+        XCTAssertTrue(app.scrollViews["plugin-detail-page"].waitForExistence(timeout: 5))
+        app.terminate()
+        openTools(withDate: false)
+        XCTAssertTrue(footer().waitForExistence(timeout: 5))
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "plugin-tools-last-synced").firstMatch.exists)
+        XCTAssertTrue(app.buttons["plugin-tool-read-fixture-read"].exists)
+        shot("plugin-admin-sync-without-date-zh-light")
+        app.buttons["plugin-tools-close"].tap()
+        XCTAssertTrue(app.scrollViews["plugin-detail-page"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testPluginToolsCoreChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        func launch(_ fixture: String) {
+            let profile = UUID().uuidString
+            app.launchArguments = ["--offline-fixture", "--host-profile=" + profile,
+                "--chat-state-profile=" + profile, "--auth-state-profile=" + profile,
+                fixture, "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN",
+                "-rea.preview.appearance", "light"]
+            app.launch()
+            let menu = app.buttons["open-conversation-list"]
+            XCTAssertTrue(menu.waitForExistence(timeout: 10)); menu.tap()
+            openAdditionalSidebarFeature("plugins", app: app)
+            let notes = app.buttons["plugins-installed-notes"]
+            XCTAssertTrue(notes.wait(for: \.isHittable, toEqual: true, timeout: 5)); notes.tap()
+            let detail = app.scrollViews["plugin-detail-page"]
+            let tools = app.buttons["plugin-app-tools-fixture-app-tools"]
+            for _ in 0..<4 where !tools.isHittable { detail.swipeUp() }
+            XCTAssertTrue(tools.wait(for: \.isHittable, toEqual: true, timeout: 5)); tools.tap()
+        }
+        func shot(_ name: String) {
+            let value = XCTAttachment(screenshot: app.screenshot())
+            value.name = name; value.lifetime = .keepAlways; add(value)
+        }
+        func row(_ id: String) -> XCUIElement {
+            let value = app.buttons[id]
+            for _ in 0..<3 where !value.isHittable { app.descendants(matching: .any).matching(identifier: "plugin-tools-list").firstMatch.swipeUp() }
+            XCTAssertTrue(value.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            return value
+        }
+        launch("--plugins-tools-failure-fixture")
+        XCTAssertTrue(app.staticTexts["plugin-tools-error"].waitForExistence(timeout: 5)); shot("plugin-tools-failure-zh-light")
+        app.buttons["plugin-tools-retry"].tap()
+        let read = row("plugin-tool-read-fixture-read")
+        XCTAssertTrue(app.staticTexts["读取操作"].exists); shot("plugin-tools-list-zh-light")
+        read.tap()
+        XCTAssertTrue(app.descendants(matching: .any).matching(identifier: "plugin-tool-description").firstMatch.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@ OR value CONTAINS %@", "本地工具目录示例", "本地工具目录示例")).firstMatch.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "plugin-tool-status").firstMatch.exists)
+        shot("plugin-tool-read-details-zh-light")
+        app.navigationBars.buttons.firstMatch.tap()
+        row("plugin-tool-write-fixture-write-disabled").tap()
+        XCTAssertTrue(app.staticTexts["plugin-tool-no-description"].waitForExistence(timeout: 5))
+        let disabled = app.descendants(matching: .any).matching(identifier: "plugin-tool-status").firstMatch
+        XCTAssertTrue(disabled.waitForExistence(timeout: 5))
+        XCTAssertTrue((disabled.label + String(describing: disabled.value ?? "")).contains("已禁用"))
+        app.navigationBars.buttons.firstMatch.tap()
+        row("plugin-tool-write-fixture-write-admin").tap()
+        let admin = app.descendants(matching: .any).matching(identifier: "plugin-tool-status").firstMatch
+        XCTAssertTrue(admin.waitForExistence(timeout: 5))
+        XCTAssertTrue((admin.label + String(describing: admin.value ?? "")).contains("已被管理员禁用"))
+        shot("plugin-tool-admin-details-zh-light")
+        app.navigationBars.buttons.firstMatch.tap(); app.buttons["plugin-tools-close"].tap()
+        XCTAssertTrue(app.scrollViews["plugin-detail-page"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(app.buttons["plugins-installed-notes"].waitForExistence(timeout: 5))
+        app.terminate()
+        launch("--plugins-tools-empty-fixture")
+        XCTAssertTrue(app.staticTexts["plugin-tools-empty"].waitForExistence(timeout: 5)); shot("plugin-tools-empty-zh-light")
+        app.buttons["plugin-tools-close"].tap()
+        XCTAssertTrue(app.scrollViews["plugin-detail-page"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
     func testPluginPromptNewDraftChinese() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -1480,6 +2367,67 @@ extension HostInteractionTests {
     }
 
     @MainActor
+    func testNativeSkillsDirectoryChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap()
+        XCTAssertTrue(app.collectionViews["native-conversation-list"].waitForExistence(timeout: 5))
+        openAdditionalSidebarFeature("plugins", app: app)
+        let picker = app.buttons["plugins-directory-picker"]
+        XCTAssertTrue(picker.waitForExistence(timeout: 5))
+        XCTAssertEqual(picker.label, "插件")
+        let pluginsTitle = XCTAttachment(screenshot: app.screenshot())
+        pluginsTitle.name = "directory-title-plugins-closed"
+        pluginsTitle.lifetime = .keepAlways
+        add(pluginsTitle)
+        picker.tap()
+        let skills = app.buttons["技能"].firstMatch
+        XCTAssertTrue(skills.waitForExistence(timeout: 5)); skills.tap()
+        let notes = app.buttons["skills-directory-item-directory-notes"]
+        let schedule = app.buttons["skills-directory-item-directory-schedule"]
+        XCTAssertTrue(notes.waitForExistence(timeout: 5)); XCTAssertTrue(schedule.exists)
+        XCTAssertEqual(picker.label, "技能")
+        let skillsTitle = XCTAttachment(screenshot: app.screenshot())
+        skillsTitle.name = "directory-title-skills-closed"
+        skillsTitle.lifetime = .keepAlways
+        add(skillsTitle)
+        let installed = app.buttons["skills-directory-installed"]
+        installed.tap()
+        let installedBar = app.navigationBars["已安装技能"]
+        XCTAssertTrue(installedBar.waitForExistence(timeout: 5))
+        XCTAssertTrue(schedule.waitForNonExistence(timeout: 5)); XCTAssertTrue(notes.exists)
+        installedBar.buttons.firstMatch.tap()
+        XCTAssertTrue(schedule.waitForExistence(timeout: 5))
+        let search = app.textFields["skills-directory-search"]
+        search.tap(); search.typeText("日程")
+        XCTAssertTrue(notes.waitForNonExistence(timeout: 5)); XCTAssertTrue(schedule.exists)
+        app.buttons["skills-directory-clear-search"].tap()
+        XCTAssertTrue(notes.wait(for: \.isHittable, toEqual: true, timeout: 5)); notes.tap()
+        XCTAssertTrue(app.staticTexts["skills-detail-title"].waitForExistence(timeout: 5))
+        let rendered = app.descendants(matching: .any)["remote-markdown-rendered"].firstMatch
+        let instructions = app.descendants(matching: .any).matching(NSPredicate(
+            format: "label CONTAINS %@ OR value CONTAINS %@", "整理步骤", "整理步骤")).firstMatch
+        XCTAssertTrue(rendered.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(instructions.waitForExistence(timeout: 5))
+        let file = app.buttons["plugin-skill-file-examples/checklist.txt"]
+        XCTAssertTrue(file.waitForExistence(timeout: 5)); XCTAssertTrue(file.label.contains("text/plain"))
+        file.tap()
+        XCTAssertTrue(app.staticTexts["Review the visible notes."].waitForExistence(timeout: 5))
+        app.buttons["plugin-skill-instructions"].tap()
+        XCTAssertTrue(instructions.waitForExistence(timeout: 5))
+        app.buttons["skills-detail-close"].tap()
+        XCTAssertTrue(notes.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        picker.tap()
+        app.buttons["插件"].firstMatch.tap()
+        XCTAssertTrue(app.buttons["plugins-search"].waitForExistence(timeout: 5))
+        XCTAssertEqual(picker.label, "插件")
+    }
+
+    @MainActor
     func testNativePluginsCoreChinese() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -1571,8 +2519,7 @@ extension HostInteractionTests {
         app.buttons["plugins-installed-notes"].tap()
         let settings = app.buttons["plugin-action-settings"]
         XCTAssertTrue(settings.waitForExistence(timeout: 5)); settings.tap()
-        XCTAssertTrue(app.otherElements["settings-unavailable-page"].waitForExistence(timeout: 5)
-            || app.staticTexts["此功能尚未接入"].exists)
+        XCTAssertTrue(app.buttons["plugin-additional-settings-entry"].waitForExistence(timeout: 5))
         app.navigationBars.buttons.firstMatch.tap()
         XCTAssertTrue(settings.waitForExistence(timeout: 5))
         app.navigationBars.buttons.firstMatch.tap()
@@ -1996,6 +2943,36 @@ final class HostInteractionTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Expanded source tail."].waitForExistence(timeout: 5))
         XCTAssertFalse(expand.exists)
         app.terminate()
+    }
+
+    @MainActor
+    func testRemoteListReadStatusVisibilityChinese() throws {
+        continueAfterFailure = false
+        let profile = UUID().uuidString
+        let app = launchRemoteReplay(extraArguments: ["--chat-state-profile=" + profile,
+            "--remote-draft-profile=" + profile])
+        func openMenu(_ id: String) {
+            let row = app.buttons[id]
+            for _ in 0..<4 where !row.isHittable { app.swipeDown() }
+            for _ in 0..<7 where !row.isHittable { app.swipeUp() }
+            XCTAssertTrue(row.isHittable)
+            row.press(forDuration: 1)
+            XCTAssertTrue(app.buttons["remote-row-copyID"].waitForExistence(timeout: 5))
+            XCTAssertFalse(app.buttons["remote-thread-options"].exists)
+        }
+        openMenu("remote-task-fixture-a-shared-thread")
+        let readStatus = app.buttons["remote-row-readStatus"]
+        XCTAssertTrue(readStatus.exists, "The provider supplies this item even for the pending-approval task")
+        XCTAssertFalse(readStatus.isEnabled)
+        let shot = XCTAttachment(screenshot: app.screenshot())
+        shot.name = "remote-row-read-status-disabled-zh-light"; shot.lifetime = .keepAlways; add(shot)
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: 0.10)).tap()
+        XCTAssertTrue(readStatus.waitForNonExistence(timeout: 5))
+        openMenu("remote-task-fixture-a-pinned-thread")
+        XCTAssertTrue(readStatus.exists)
+        XCTAssertTrue(readStatus.isEnabled, "The existing idle/unread host admission remains enabled")
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: 0.10)).tap()
+        XCTAssertTrue(readStatus.waitForNonExistence(timeout: 5))
     }
 
     @MainActor
@@ -2513,12 +3490,9 @@ final class HostInteractionTests: XCTestCase {
         XCTAssertTrue(documents.waitForExistence(timeout: 5))
         documents.tap()
         app.buttons["remote-files-entry-Documents/pdf"].tap()
-        let done = app.buttons["QLOverlayDoneButtonAccessibilityIdentifier"]
+        let done = app.buttons["remote-image-preview-close"]
         XCTAssertTrue(done.wait(for: \.isHittable, toEqual: true, timeout: 15))
-        // QuickLook first exposes a generic close/share shell. Wait for the
-        // loaded document before checking appearance of the preview itself.
-        let document = app.descendants(matching: .any).matching(NSPredicate(
-            format: "label == %@ OR label CONTAINS %@", "sample", "REA synthetic PDF page 1")).firstMatch
+        let document = app.descendants(matching: .any)["remote-pdf-preview"].firstMatch
         XCTAssertTrue(document.waitForExistence(timeout: 15))
         for appearance in [XCUIDevice.Appearance.dark, .light] {
             XCUIDevice.shared.appearance = appearance
@@ -2595,6 +3569,21 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
+    private func waitForQuickLookText(_ marker: String, app: XCUIApplication) -> XCTWaiter.Result {
+        let contents = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            if app.debugDescription.contains(marker) { return true }
+            let text = VNRecognizeTextRequest()
+            text.recognitionLevel = .accurate
+            let handler = VNImageRequestHandler(data: app.screenshot().pngRepresentation)
+            guard (try? handler.perform([text])) != nil else { return false }
+            return (text.results ?? []).contains { $0.topCandidates(1).first?.string.contains(marker) == true }
+        }, object: nil)
+        // On a cold simulator the system preview extension may need over ten
+        // seconds after its controls appear before the document is rendered.
+        return XCTWaiter.wait(for: [contents], timeout: 40)
+    }
+
+    @MainActor
     private func verifyRemoteFileFormats(englishDark: Bool) throws {
         continueAfterFailure = false
         let app = launchRemoteReplay(englishDark: englishDark, extraArguments: [
@@ -2616,32 +3605,38 @@ final class HostInteractionTests: XCTestCase {
             let file = app.buttons["remote-files-entry-Documents/" + kind]
             XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 5))
             file.tap()
-            let done = app.buttons["QLOverlayDoneButtonAccessibilityIdentifier"]
+            let done = app.buttons[kind == "document" ? "QLOverlayDoneButtonAccessibilityIdentifier" : "remote-image-preview-close"]
             XCTAssertTrue(done.wait(for: \.isHittable, toEqual: true, timeout: 10))
             if kind == "document" {
-                let text = app.descendants(matching: .any).matching(NSPredicate(
-                    format: "label CONTAINS %@ OR value CONTAINS %@", "Synthetic document preview", "Synthetic document preview")).firstMatch
-                XCTAssertTrue(text.waitForExistence(timeout: 10))
+                XCTAssertEqual(waitForQuickLookText("Synthetic document preview", app: app), .completed)
             }
+            let canvas = app.descendants(matching: .any)[kind == "image" ? "remote-image-preview" : "remote-pdf-preview"].firstMatch
             if kind == "image" {
-                let canvas = app.descendants(matching: .any)["QLMarkupImageItemViewControllerMarkupImageViewAccessibilityIdentifier"]
                 XCTAssertTrue(canvas.waitForExistence(timeout: 15))
                 capture(kind)
                 canvas.pinch(withScale: 2, velocity: 1)
                 capture("image-zoom")
-                // Native QuickLook hides its controls while interacting with the image.
-                if !done.isHittable { canvas.tap() }
             } else {
                 capture(kind)
             }
             if kind == "pdf" {
-                app.swipeUp()
+                XCTAssertTrue(canvas.waitForExistence(timeout: 8))
+                canvas.swipeUp()
+                let secondPage = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "2"), object: canvas)
+                XCTAssertEqual(XCTWaiter.wait(for: [secondPage], timeout: 5), .completed)
                 capture("pdf-scroll")
             }
             XCTAssertTrue(done.wait(for: \.isHittable, toEqual: true, timeout: 5))
             done.tap()
             XCTAssertTrue(done.waitForNonExistence(timeout: 10))
             XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            if kind == "pdf" {
+                file.tap()
+                let resumed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "2"), object: canvas)
+                XCTAssertEqual(XCTWaiter.wait(for: [resumed], timeout: 8), .completed)
+                done.tap()
+                XCTAssertTrue(done.waitForNonExistence(timeout: 10))
+            }
         }
         app.buttons["remote-files-entry-Documents/unsupported"].tap()
         let error = app.staticTexts["remote-files-file-error"]
@@ -2732,6 +3727,121 @@ final class HostInteractionTests: XCTestCase {
         app.buttons["remote-files-parent"].tap()
         app.buttons["remote-files-close"].tap()
         XCTAssertTrue(app.buttons["remote-approval-approveOnce"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testRemoteFileReadingOwnerChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-file-reading-fixture",
+            "--remote-draft-profile=" + UUID().uuidString, "--chat-state-profile=" + UUID().uuidString])
+        //The workspace-capable fixture owns Files; completed-thread has no
+        //workspace capability and correctly omits that ordinary menu action.
+        openReplayThread("shared-thread", app: app)
+        //This existing fixture starts at a synthetic approval, whose card
+        //replaces the composer. Follow its established frontend precondition.
+        app.buttons["remote-approval-approveOnce"].tap()
+        XCTAssertTrue(app.buttons["remote-composer-stop"].waitForExistence(timeout: 3))
+        app.buttons["remote-composer-stop"].tap()
+        app.buttons["remote-composer-focus"].tap()
+        app.textViews["remote-composer-editor"].typeText("文件阅读父草稿")
+        app.buttons["remote-thread-options"].tap(); app.collectionViews.buttons["文件"].tap()
+        let markdownFile = app.buttons["remote-files-entry-Markdown"]
+        XCTAssertTrue(markdownFile.waitForExistence(timeout: 5)); markdownFile.tap()
+        let close = app.buttons["remote-source-close"]
+        XCTAssertTrue(close.waitForExistence(timeout: 8))
+        XCTAssertTrue(app.descendants(matching: .any)["remote-markdown-rendered"].firstMatch.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        func selectMode(_ identifier: String, title: String) {
+            app.buttons["remote-markdown-options"].tap()
+            let submenu = app.buttons["remote-markdown-display-menu"]
+            let display = submenu.exists ? submenu : app.buttons["显示"]
+            XCTAssertTrue(display.waitForExistence(timeout: 3)); display.tap()
+            let tagged = app.buttons[identifier]
+            let choice = tagged.exists ? tagged : app.buttons[title]
+            XCTAssertTrue(choice.waitForExistence(timeout: 3)); choice.tap()
+        }
+        selectMode("remote-markdown-mode-raw", title: "原始")
+        let raw = app.textViews["remote-source-text"]
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 5)); raw.swipeUp()
+        let rawBefore = XCTAttachment(screenshot: app.screenshot())
+        rawBefore.name = "file-reading-raw-before-close-zh-light"; rawBefore.lifetime = .keepAlways; add(rawBefore)
+        close.tap()
+        XCTAssertTrue(markdownFile.wait(for: \.isHittable, toEqual: true, timeout: 5)); markdownFile.tap()
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 5), "Close/reopen must preserve the user's Raw mode")
+        let restored = XCTAttachment(screenshot: app.screenshot())
+        restored.name = "file-reading-raw-reopened-zh-light"; restored.lifetime = .keepAlways; add(restored)
+        close.tap()
+        app.buttons["remote-files-entry-Sources"].tap()
+        app.buttons["remote-files-entry-Sources/preview"].tap()
+        XCTAssertTrue(close.waitForExistence(timeout: 8))
+        let rendered = app.descendants(matching: .any)["remote-markdown-rendered"].firstMatch
+        XCTAssertTrue(rendered.wait(for: \.isHittable, toEqual: true, timeout: 5), "Another source path must start with its own mode")
+        close.tap(); app.buttons["remote-files-parent"].tap()
+        XCTAssertTrue(markdownFile.waitForExistence(timeout: 5)); markdownFile.tap()
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        selectMode("remote-markdown-mode-rendered", title: "Markdown")
+        XCTAssertTrue(rendered.wait(for: \.isHittable, toEqual: true, timeout: 5)); rendered.swipeUp()
+        let renderedBefore = XCTAttachment(screenshot: app.screenshot())
+        renderedBefore.name = "file-reading-rendered-before-close-zh-light"; renderedBefore.lifetime = .keepAlways; add(renderedBefore)
+        close.tap(); XCTAssertTrue(markdownFile.waitForExistence(timeout: 5)); markdownFile.tap()
+        XCTAssertTrue(rendered.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        let renderedAfter = XCTAttachment(screenshot: app.screenshot())
+        renderedAfter.name = "file-reading-rendered-reopened-zh-light"; renderedAfter.lifetime = .keepAlways; add(renderedAfter)
+        close.tap(); app.buttons["remote-files-close"].tap()
+        XCTAssertEqual(app.textViews["remote-composer-editor"].value as? String, "文件阅读父草稿")
+    }
+
+    @MainActor
+    func testRemoteFileReadingRawReturnChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-file-reading-fixture",
+            "--remote-draft-profile=" + UUID().uuidString, "--chat-state-profile=" + UUID().uuidString])
+        openReplayThread("shared-thread", app: app)
+        app.buttons["remote-approval-approveOnce"].tap()
+        XCTAssertTrue(app.buttons["remote-composer-stop"].waitForExistence(timeout: 3))
+        app.buttons["remote-composer-stop"].tap()
+        app.buttons["remote-composer-focus"].tap()
+        app.textViews["remote-composer-editor"].typeText("文件阅读返回草稿")
+        app.buttons["remote-thread-options"].tap(); app.collectionViews.buttons["文件"].tap()
+        let file = app.buttons["remote-files-entry-Markdown"]
+        XCTAssertTrue(file.waitForExistence(timeout: 5)); file.tap()
+        let close = app.buttons["remote-source-close"]
+        XCTAssertTrue(close.waitForExistence(timeout: 8))
+        app.buttons["remote-markdown-options"].tap()
+        let submenu = app.buttons["remote-markdown-display-menu"]
+        (submenu.exists ? submenu : app.buttons["显示"]).tap()
+        let mode = app.buttons["remote-markdown-mode-raw"]
+        (mode.exists ? mode : app.buttons["原始"]).tap()
+        let raw = app.textViews["remote-source-text"]
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 5)); raw.swipeUp()
+        func readingDiagnostic() -> [String: Any] {
+            let rawValue = raw.value as? String ?? "<missing raw value>"
+            print("RAW_READING_DIAGNOSTIC " + rawValue)
+            guard let data = rawValue.data(using: .utf8),
+                  let result = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                XCTFail("Missing opt-in Raw reading diagnostic: " + rawValue); return [:]
+            }
+            return result
+        }
+        let beforeState = readingDiagnostic()
+        let savedOffset = beforeState["cached"] as? Double ?? -1
+        XCTAssertGreaterThan(savedOffset, 100, "A real swipe must reach the owner cache before close: \(beforeState)")
+        let before = XCTAttachment(screenshot: app.screenshot())
+        before.name = "file-reading-raw-final-before-close"; before.lifetime = .keepAlways; add(before)
+        close.tap(); XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 5)); file.tap()
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        let restoredPosition = NSPredicate { _, _ in
+            let state = readingDiagnostic()
+            return (state["applied"] as? Bool == true) &&
+                abs((state["actual"] as? Double ?? -10_000) - savedOffset) < 3
+        }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: restoredPosition, object: raw)], timeout: 5), .completed,
+            "Raw offset must actually restore, independent of mode/hittability: \(readingDiagnostic())")
+        let after = XCTAttachment(screenshot: app.screenshot())
+        after.name = "file-reading-raw-final-reopened"; after.lifetime = .keepAlways; add(after)
+        close.tap(); app.buttons["remote-files-close"].tap()
+        let editor = app.textViews["remote-composer-editor"]
+        XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertEqual(editor.value as? String, "文件阅读返回草稿")
     }
 
     @MainActor
@@ -3150,6 +4260,69 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
+    func testChatUserBubbleContextMenuChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN",
+            "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap()
+        app.buttons["sidebar-new-chat"].tap()
+        let conversationID = try XCTUnwrap(app.buttons["open-conversation-list"].value as? String)
+        let editor = app.textViews["draft-editor"]
+        let list = app.collectionViews["message-list"]
+        let prompt = "长按检查"
+        replaceDraft(editor, in: app, with: prompt)
+        app.buttons["send-entry"].tap()
+        let ready = expectation(for: NSPredicate(format: "label != %@", "停止"),
+            evaluatedWith: app.buttons["send-entry"])
+        wait(for: [ready], timeout: 15)
+        let user = app.textViews.matching(NSPredicate(format: "value == %@", prompt)).firstMatch
+        func revealUser() {
+            app.buttons["open-conversation-list"].tap()
+            app.buttons["dismiss-conversation-sidebar"].tap()
+            for _ in 0..<5 {
+                if user.exists && user.isHittable && user.frame.minY > 160 { break }
+                list.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.25))
+                    .press(forDuration: 0.1, thenDragTo: list.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.8)))
+            }
+            XCTAssertTrue(user.isHittable)
+        }
+        revealUser()
+        // Press the actual single-line text centre once, never bubble padding
+        // or footer ellipsis. A competing native selection menu is a failure
+        // boundary to report, not a reason for a second compensating gesture.
+        user.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 1)
+        let copy = app.buttons.matching(NSPredicate(format: "identifier == %@ AND label == %@",
+            "doc.on.doc", "复制原文")).firstMatch
+        XCTAssertTrue(copy.waitForExistence(timeout: 3))
+        XCTAssertTrue(app.buttons["编辑为草稿"].exists)
+        let capture = XCTAttachment(screenshot: app.screenshot())
+        capture.name = "chat-user-bubble-context-menu-zh-light"; capture.lifetime = .keepAlways; add(capture)
+        copy.tap()
+        editor.tap()
+        editor.press(forDuration: 1.2)
+        let paste = app.descendants(matching: .any).matching(NSPredicate(format: "label IN %@", ["Paste", "粘贴"])).firstMatch
+        XCTAssertTrue(paste.waitForExistence(timeout: 3))
+        paste.tap()
+        XCTAssertEqual(editor.value as? String, prompt)
+        replaceDraft(editor, in: app, with: "保留已有草稿")
+        revealUser()
+        user.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 1)
+        let edit = app.buttons["编辑为草稿"]
+        XCTAssertTrue(edit.waitForExistence(timeout: 3))
+        edit.tap()
+        let confirm = app.alerts["替换当前草稿？"]
+        XCTAssertTrue(confirm.waitForExistence(timeout: 3))
+        confirm.buttons["载入草稿"].tap()
+        XCTAssertEqual(editor.value as? String, prompt)
+        XCTAssertTrue(app.keyboards.firstMatch.exists)
+        XCTAssertEqual(app.buttons["open-conversation-list"].value as? String, conversationID)
+    }
+
+    @MainActor
     func testChatUserEditRecovery() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -3433,6 +4606,47 @@ final class HostInteractionTests: XCTestCase {
             selectConversation(id, app: app)
             XCTAssertTrue((app.textViews["draft-editor"].value as? String ?? "").hasPrefix("修订后的合成正文。"))
         }
+    }
+
+    @MainActor
+    func testChatLiveLoopbackChinese() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["REA_CHAT_LIVE_UI_TEST"] == "1")
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let profile = UUID().uuidString
+        app.launchArguments = ["--offline-fixture", "--chat-loopback-fixture",
+                               "--chat-state-profile=" + profile, "--auth-state-profile=" + profile,
+                               "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        let identity = app.buttons["open-conversation-list"]
+        XCTAssertTrue(identity.waitForExistence(timeout: 10))
+        identity.tap(); app.buttons["sidebar-new-chat"].tap()
+        let conversation = try XCTUnwrap(identity.value as? String)
+        let editor = app.textViews["draft-editor"]
+        replaceDraft(editor, in: app, with: "REA synthetic streaming check. Write exactly: Streaming transport works.")
+        app.buttons["send-entry"].tap()
+        let streamingPrefix = "chat-response-status-streaming-"
+        let streaming = app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@", streamingPrefix)).firstMatch
+        let failure = app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@", "chat-response-status-failed-")).firstMatch
+        let firstResult = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            streaming.exists || failure.exists
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [firstResult], timeout: 30), .completed)
+        XCTAssertTrue(streaming.exists, "Expected a visible live response. Failure shown: \(failure.exists)")
+        let replyID = String(streaming.identifier.dropFirst(streamingPrefix.count))
+        let body = app.textViews["message-" + replyID]
+        XCTAssertTrue(body.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["message-copy-" + replyID].isHittable)
+        let copy = app.buttons["message-copy-" + replyID]
+        XCTAssertTrue(streaming.waitForNonExistence(timeout: 30))
+        XCTAssertTrue(copy.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["chat-response-status-failed-" + replyID].exists)
+        let finalBody = try XCTUnwrap(body.value as? String)
+        XCTAssertTrue(finalBody.contains("Streaming transport works."))
+        app.terminate(); app.launch()
+        XCTAssertTrue(copy.waitForExistence(timeout: 10))
+        XCTAssertEqual(identity.value as? String, conversation)
+        XCTAssertEqual(body.value as? String, finalBody)
     }
 
     @MainActor
@@ -5578,6 +6792,9 @@ final class HostInteractionTests: XCTestCase {
         let terminal = app.staticTexts[failure ? "remote-replay-phase-failed" : "remote-replay-phase-completed"]
         XCTAssertTrue(terminal.waitForExistence(timeout: 15))
         XCTAssertTrue(app.staticTexts["synthetic output 3"].exists)
+        if !failure {
+            XCTAssertTrue(toggle.label.contains("9"), "Completed dynamic command must expose the fixture's supplied nine-second duration")
+        }
         app.navigationBars.buttons.element(boundBy: 0).tap()
         openReplayThread("shared-thread", host: "fixture-b", app: app)
         XCTAssertFalse(app.buttons["remote-replay-command-toggle-inspect"].exists)
@@ -5691,6 +6908,75 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
+    func testRemoteCommandOutputColorsChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-output-colors-fixture"])
+        openReplayThread("completed-thread", app: app)
+        app.buttons["remote-composer-focus"].tap()
+        app.textViews["remote-composer-editor"].typeText("合成彩色输出")
+        app.buttons["remote-composer-send"].tap()
+        XCTAssertTrue(app.staticTexts["remote-replay-phase-completed"].waitForExistence(timeout: 12))
+        let history = app.collectionViews["remote-thread-history"]
+        let ordinary = app.buttons["remote-replay-command-toggle-inspect"]
+        for _ in 0..<4 where !ordinary.isHittable { history.swipeUp(velocity: .slow) }
+        XCTAssertTrue(ordinary.isHittable); ordinary.tap()
+        let output = app.scrollViews["remote-replay-command-shell-inspect"]
+        XCTAssertTrue(output.waitForExistence(timeout: 5))
+        for line in ["BASIC_RED RESET_DEFAULT", "INDEXED_BLUE RESET_DEFAULT", "RGB_CLAMP_0_96_255",
+                     "CROSS_LINE_GREEN", "STILL_GREEN RESET_DEFAULT", "RED_WITH_BACKGROUND_SKIPPED", "CSI_ERASE_CONSUMED"] {
+            XCTAssertTrue(output.staticTexts[line].exists, "Expected interpreted line: " + line)
+        }
+        let styled = XCTAttachment(screenshot: app.screenshot()); styled.name = "remote-shell-source-styled-colors-zh-light"
+        styled.lifetime = .keepAlways; add(styled)
+        ordinary.tap()
+        let malformed = app.buttons["remote-replay-command-toggle-malformed-colors"]
+        for _ in 0..<4 where !malformed.isHittable { history.swipeUp(velocity: .slow) }
+        XCTAssertTrue(malformed.isHittable); malformed.tap()
+        let literal = app.scrollViews["remote-replay-command-shell-malformed-colors"]
+        XCTAssertTrue(literal.waitForExistence(timeout: 5))
+        let text = literal.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "LITERAL_FALLBACK")).firstMatch
+        XCTAssertTrue(text.exists); XCTAssertTrue(text.label.contains("[31munchanged"))
+        XCTAssertTrue(text.label.contains("[38;2;12m"), "Unsupported sequence keeps the whole original output")
+        let fallback = XCTAttachment(screenshot: app.screenshot()); fallback.name = "remote-shell-unsupported-literal-zh-light"
+        fallback.lifetime = .keepAlways; add(fallback)
+        malformed.tap()
+        XCTAssertTrue(app.buttons["remote-composer-focus"].exists)
+    }
+
+    @MainActor
+    func testRemoteCommandOutputNewlinesChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-output-newlines-fixture"])
+        openReplayThread("completed-thread", app: app)
+        app.buttons["remote-composer-focus"].tap()
+        app.textViews["remote-composer-editor"].typeText("合成输出换行")
+        app.buttons["remote-composer-send"].tap()
+        XCTAssertTrue(app.staticTexts["remote-replay-phase-completed"].waitForExistence(timeout: 12))
+        let history = app.collectionViews["remote-thread-history"]
+        let ordinary = app.buttons["remote-replay-command-toggle-inspect"]
+        for _ in 0..<4 where !ordinary.isHittable { history.swipeUp(velocity: .slow) }
+        XCTAssertTrue(ordinary.isHittable); ordinary.tap()
+        // This mounted Shell's existing outer identifier propagates to its
+        // ScrollView. Inspect the actual AX role; do not change product layout
+        // or accessibility grouping just to satisfy a leaf-ID assumption.
+        let output = app.scrollViews["remote-replay-command-shell-inspect"]
+        XCTAssertTrue(output.waitForExistence(timeout: 5))
+        XCTAssertTrue(output.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "前导保留")).firstMatch.exists)
+        XCTAssertTrue(output.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "尾部空格")).firstMatch.exists)
+        let visible = XCTAttachment(screenshot: app.screenshot()); visible.name = "remote-command-trimmed-output-zh-light"
+        visible.lifetime = .keepAlways; add(visible)
+        ordinary.tap()
+        let empty = app.buttons["remote-replay-command-toggle-empty-newlines"]
+        for _ in 0..<4 where !empty.isHittable { history.swipeUp(velocity: .slow) }
+        XCTAssertTrue(empty.isHittable); empty.tap()
+        XCTAssertTrue(app.descendants(matching: .any)["remote-replay-command-shell-empty-newlines"].exists)
+        XCTAssertFalse(output.exists, "A newline-only result must omit the output subtree")
+        XCTAssertFalse(app.scrollViews["remote-replay-command-shell-empty-newlines"].exists)
+        let omitted = XCTAttachment(screenshot: app.screenshot()); omitted.name = "remote-command-empty-output-omitted-zh-light"
+        omitted.lifetime = .keepAlways; add(omitted)
+    }
+
+    @MainActor
     func testRemoteRichMessageEnglishDark() throws {
         try verifyRemoteRichMessage(englishDark: true)
     }
@@ -5791,7 +7077,7 @@ final class HostInteractionTests: XCTestCase {
     private func verifyRemoteReadingAnchorReturn(englishDark: Bool, restart: Bool = false) throws {
         continueAfterFailure = false
         let profile = UUID().uuidString
-        let arguments = ["--remote-history-scroll-fixture", "--chat-state-profile=" + profile,
+        let arguments = ["--remote-history-scroll-fixture", "--remote-inset-test-observation", "--chat-state-profile=" + profile,
                          "--remote-draft-profile=" + profile]
         var app = launchRemoteReplay(englishDark: englishDark, extraArguments: arguments)
         openReplayThread("completed-thread", app: app)
@@ -5799,6 +7085,14 @@ final class HostInteractionTests: XCTestCase {
         XCTAssertTrue(history.waitForExistence(timeout: 5))
         dragRemoteHistory(app, earlier: false, span: 0.35)
         dragRemoteHistory(app, earlier: false, span: 0.35)
+        func followsTail() -> Double? {
+            guard let value = app.collectionViews["remote-thread-history"].value as? String,
+                  let data = value.data(using: .utf8),
+                  let metrics = try? JSONDecoder().decode([String: Double].self, from: data) else { return nil }
+            return metrics["followsTail"]
+        }
+        if followsTail() == 1 { dragRemoteHistory(app, earlier: true, span: 0.18) }
+        XCTAssertEqual(followsTail(), 0, "The reading anchor must be away from the bottom before leaving")
         let navigationBottom = app.navigationBars.firstMatch.frame.maxY
         let visible = (0..<24).map { app.staticTexts["remote-history-fixture-\($0)"] }
             .first { $0.isHittable && $0.frame.minY > navigationBottom + 20 && $0.frame.maxY < 350 }
@@ -5826,18 +7120,36 @@ final class HostInteractionTests: XCTestCase {
         let returned = app.staticTexts[markerID]
         XCTAssertTrue(returned.wait(for: \.isHittable, toEqual: true, timeout: 5))
         XCTAssertEqual(returned.frame.minY, originalY, accuracy: 5)
-        app.buttons["remote-composer-focus"].tap()
-        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
+        XCTAssertEqual(followsTail(), 0, "Restoring a reading anchor must preserve manual scrolling")
+        let beforeKeyboard = history.value as? String ?? ""
         let editor = app.textViews["remote-composer-editor"]
+        func waitForVisibleKeyboard() {
+            let keyboard = app.keyboards.firstMatch
+            let visible = NSPredicate { _, _ in
+                keyboard.exists && keyboard.frame.intersection(app.frame).height > 150 &&
+                    editor.frame.maxY <= keyboard.frame.minY + 1
+            }
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: visible, object: nil)],
+                                         timeout: 8), .completed, "The software keyboard must intersect the viewport")
+        }
+        app.buttons["remote-composer-focus"].tap()
+        waitForVisibleKeyboard()
+        let keyboardOpen = history.value as? String ?? ""
         editor.typeText("Reading anchor draft")
-        XCTAssertEqual(returned.frame.minY, originalY, accuracy: 5,
-            "Opening the keyboard should keep the current reading row")
+        waitForVisibleKeyboard()
+        XCTAssertEqual(returned.frame.minY, originalY, accuracy: 5, """
+            Opening the keyboard should keep the current reading row.
+            Before keyboard: \(beforeKeyboard)
+            Keyboard open: \(keyboardOpen)
+            After typing: \(history.value as? String ?? "")
+            """)
         app.navigationBars.buttons.element(boundBy: 0).tap()
         openReplayThread("completed-thread", app: app)
         XCTAssertTrue(returned.wait(for: \.isHittable, toEqual: true, timeout: 5))
-        XCTAssertEqual(returned.frame.minY, originalY, accuracy: 5)
+        XCTAssertEqual(returned.frame.minY, originalY, accuracy: 5,
+            "Returning while the keyboard was open should restore the same reading row. \(history.value as? String ?? "")")
         app.buttons["remote-composer-focus"].tap()
-        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
+        waitForVisibleKeyboard()
         XCTAssertEqual(editor.value as? String, "Reading anchor draft")
         let capture = XCTAttachment(screenshot: app.screenshot())
         capture.name = (restart ? "restart-" : "") + (englishDark ? "reading-anchor-en-dark" : "reading-anchor-zh-light")
@@ -5971,6 +7283,43 @@ final class HostInteractionTests: XCTestCase {
         let capture = XCTAttachment(screenshot: app.screenshot())
         capture.name = "queued-attachment-completed"
         capture.lifetime = .keepAlways; add(capture)
+    }
+
+    @MainActor
+    func testRemotePermissionPreviewChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-draft-profile=" + UUID().uuidString])
+        openReplayThread("permissions-thread", app: app)
+        let file = app.descendants(matching: .any)["remote-permission-row-0"].firstMatch
+        let network = app.descendants(matching: .any)["remote-permission-row-1"].firstMatch
+        XCTAssertTrue(file.waitForExistence(timeout: 5))
+        XCTAssertTrue(file.label.contains("/fixtures/ui"))
+        XCTAssertTrue(network.exists)
+        XCTAssertTrue(network.label.contains("互联网访问"))
+        XCTAssertFalse(app.staticTexts["remote-approval-command"].exists)
+        let approve = app.buttons["remote-approval-approveOnce"]
+        XCTAssertTrue(approve.isHittable)
+        let image = XCTAttachment(screenshot: app.screenshot())
+        image.name = "remote-permission-preview-zh-light"; image.lifetime = .keepAlways; add(image)
+        approve.tap()
+        XCTAssertTrue(approve.waitForNonExistence(timeout: 5))
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        // The returned List exposes the correct visible row frame but XCTest
+        // reports an invalid activation point after the pending pill vanishes.
+        // Exercise actual touch within that observed frame, without retapping
+        // the already-selected source filter or changing product navigation.
+        let returnedRow = app.buttons["remote-task-fixture-a-permissions-thread"]
+        XCTAssertTrue(returnedRow.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.frame.contains(returnedRow.frame))
+        returnedRow.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertTrue(app.collectionViews["remote-thread-history"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["remote-approval-approveOnce"].exists)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        let commandRow = app.buttons["remote-task-fixture-a-shared-thread"]
+        XCTAssertTrue(commandRow.waitForExistence(timeout: 5))
+        commandRow.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertTrue(app.staticTexts["remote-approval-command"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.descendants(matching: .any)["remote-permission-row-0"].firstMatch.exists)
     }
 
     @MainActor
@@ -6562,18 +7911,37 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
-    private func openReplayThread(_ thread: String, host: String = "fixture-a", app: XCUIApplication) {
-        app.buttons["remote-source-" + host].tap()
+    private func openReplayThread(_ thread: String, host: String = "fixture-a", title: String? = nil, app: XCUIApplication) {
+        // Source pills belong to the scrolling list. Returning from a later
+        // task preserves that list offset, so reveal the actual filter before
+        // selecting it rather than assuming a fixed toolbar control.
+        let source = app.buttons["remote-source-" + host]
+        let list = app.collectionViews["remote-task-list"]
+        for _ in 0..<7 where !source.isHittable { list.swipeDown(velocity: .slow) }
+        XCTAssertTrue(source.isHittable); source.tap()
         let row = app.buttons["remote-task-" + host + "-" + thread]
-        for _ in 0..<5 where !row.isHittable { app.swipeUp() }
+        //AX may report a row behind the fixed composer as hittable. Use the
+        //current toolbar and actual compact/expanded input controls as bounds.
+        func fullyVisible() -> Bool {
+            let inputs = [app.buttons["remote-composer-focus"], app.textViews["remote-composer-editor"]]
+                .filter { $0.exists && !$0.frame.isEmpty }
+            let bottom = inputs.map { $0.frame.minY }.min() ?? app.frame.maxY
+            return row.isHittable && row.frame.minY > app.navigationBars.firstMatch.frame.maxY && row.frame.maxY < bottom - 8
+        }
+        for _ in 0..<7 where !fullyVisible() {
+            let list = app.collectionViews["remote-task-list"]
+            if row.exists && row.frame.minY < app.navigationBars.firstMatch.frame.maxY { list.swipeDown() }
+            else { list.swipeUp() }
+        }
         XCTAssertTrue(row.isHittable)
+        XCTAssertTrue(fullyVisible())
         row.tap()
         // Restored reading positions may leave the fixture banner offscreen.
         // The fixed navigation label still identifies the destination host.
         let location = app.descendants(matching: .any)["remote-thread-location"].firstMatch
         XCTAssertTrue(location.waitForExistence(timeout: 5))
-        XCTAssertTrue(location.label.contains(host))
-        XCTAssertTrue(app.collectionViews["remote-thread-history"].exists)
+        XCTAssertTrue(location.label.contains(title ?? host), location.label)
+        XCTAssertTrue(app.collectionViews["remote-thread-history"].waitForExistence(timeout: 5))
     }
 
     @MainActor
@@ -7195,7 +8563,158 @@ final class HostInteractionTests: XCTestCase {
     func testRemoteQuickModelChinese() throws { try verifyRemoteQuickModel(englishDark: false) }
 
     @MainActor
+    func testRemoteModelEntryFeedbackChinese() throws { verifyRemoteModelEntryFeedback(reduceMotion: false) }
+
+    @MainActor
+    func testRemoteModelEntryFeedbackReducedMotionChinese() throws { verifyRemoteModelEntryFeedback(reduceMotion: true) }
+
+    @MainActor
+    func testRemoteModelPreselectedKeyboardChinese() {
+        continueAfterFailure = false
+        let profile = UUID().uuidString
+        let app = launchRemoteReplay(extraArguments: [
+            "--remote-model-slider-fixture", "--remote-model-entry-observation", "--remote-model-keyboard-probe",
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile
+        ])
+        // Use a short transcript so the picker timing observations are not
+        // dominated by the dense Markdown fixture's accessibility layout.
+        openReplayThread("completed-thread", app: app)
+        let editor = focusCodexSendEditor(app)
+        let keyboard = app.keyboards.firstMatch
+        let control = app.buttons["remote-model-control"]
+        let rail = app.descendants(matching: .any)["remote-model-slider-rail"].firstMatch
+        let entry = app.descendants(matching: .any)["remote-model-entry-samples"].firstMatch
+
+        func visibleKeyboard() {
+            let visible = NSPredicate { _, _ in
+                keyboard.exists && keyboard.frame.height > 150 &&
+                    keyboard.frame.minY < app.frame.maxY - 150 && editor.frame.maxY < keyboard.frame.minY
+            }
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: visible, object: nil)],
+                                         timeout: 8), .completed)
+        }
+        func openPicker() {
+            XCTAssertTrue(control.waitForExistence(timeout: 5))
+            let frame = control.frame
+            let viewport = app.frame
+            XCTAssertTrue(viewport.contains(CGPoint(x: frame.midX, y: frame.midY)))
+            app.coordinate(withNormalizedOffset: .zero).withOffset(.init(
+                dx: frame.midX - viewport.minX, dy: frame.midY - viewport.minY)).tap()
+            XCTAssertTrue(rail.waitForExistence(timeout: 5))
+            XCTAssertTrue(entry.waitForExistence(timeout: 5))
+        }
+        func closePicker() {
+            app.coordinate(withNormalizedOffset: .init(dx: 0.50, dy: 0.30)).tap()
+            XCTAssertTrue(rail.waitForNonExistence(timeout: 5))
+            visibleKeyboard()
+        }
+
+        visibleKeyboard()
+        let initialKeyboardY = keyboard.frame.minY
+        openPicker()
+        XCTAssertEqual(rail.value as? String, "中")
+        rail.coordinate(withNormalizedOffset: .init(dx: 0.12, dy: 0.50)).tap()
+        XCTAssertEqual(rail.value as? String, "低")
+        closePicker()
+        openPicker()
+        XCTAssertEqual(rail.value as? String, "低")
+        rail.coordinate(withNormalizedOffset: .init(dx: 0.50, dy: 0.50)).tap()
+        XCTAssertEqual(rail.value as? String, "中")
+        closePicker()
+        openPicker()
+        XCTAssertEqual(rail.value as? String, "中")
+        closePicker()
+        let finalKeyboardY = keyboard.frame.minY
+        XCTAssertEqual(finalKeyboardY, initialKeyboardY, accuracy: 1)
+        editor.typeText("键盘连续")
+        XCTAssertEqual(editor.value as? String, "键盘连续")
+        print("REA_PICKER_KEYBOARD y=\(initialKeyboardY) final=\(finalKeyboardY)")
+    }
+
+    @MainActor
+    private func verifyRemoteModelEntryFeedback(reduceMotion: Bool) {
+        continueAfterFailure = false
+        var arguments = ["--remote-model-slider-fixture", "--remote-model-entry-observation",
+                         "--remote-draft-profile=" + UUID().uuidString]
+        if reduceMotion { arguments.append("--remote-model-reduce-motion-fixture") }
+        let app = launchRemoteReplay(extraArguments: arguments)
+        openReplayThread("completed-thread", app: app)
+        let control = app.buttons["remote-model-control"]
+        if !control.exists {
+            let field = app.buttons["remote-composer-focus"]
+            XCTAssertTrue(field.waitForExistence(timeout: 5))
+            field.tap()
+        }
+        XCTAssertTrue(control.waitForExistence(timeout: 5))
+        control.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        let presentation = app.descendants(matching: .any)["remote-model-entry-samples"].firstMatch
+        let feedback = app.descendants(matching: .any)["remote-model-feedback-observation"].firstMatch
+        XCTAssertTrue(presentation.waitForExistence(timeout: 5))
+        XCTAssertTrue(feedback.waitForExistence(timeout: 5))
+        func events() -> [String] { feedback.label.split(separator: ",").map { String($0.prefix { $0 != "@" }) } }
+        if reduceMotion { XCTAssertEqual(presentation.label, "reduced:1") }
+        else {
+            let frames = presentation.label.split(separator: ",").compactMap { Double($0) }
+            XCTAssertEqual(frames.first, 0)
+            XCTAssertEqual(frames.last, 1)
+            XCTAssertTrue(frames.contains { $0 > 0 && $0 < 1 })
+        }
+        XCTAssertEqual(events(), ["open-soft"])
+        let rail = app.descendants(matching: .any)["remote-model-slider-rail"].firstMatch
+        XCTAssertTrue(rail.exists)
+        let previous = rail.value as? String
+        let nextStop: CGFloat = previous == "高" ? 0.12 : 0.88
+        let otherStop: CGFloat = nextStop < 0.5 ? 0.88 : 0.12
+        let next = rail.coordinate(withNormalizedOffset: CGVector(dx: nextStop, dy: 0.5))
+        next.tap()
+        XCTAssertNotEqual(rail.value as? String, previous)
+        XCTAssertEqual(events().filter { $0.hasPrefix("selection-") }.count, 1)
+        next.tap()
+        XCTAssertEqual(events().filter { $0.hasPrefix("selection-") }.count, 1)
+        next.press(forDuration: 0.05, thenDragTo: rail.coordinate(withNormalizedOffset: CGVector(dx: otherStop, dy: 0.5)))
+        XCTAssertGreaterThan(events().filter { $0.hasPrefix("selection-") }.count, 1)
+        let edge = rail.coordinate(withNormalizedOffset: CGVector(dx: 0.98, dy: 0.5))
+        edge.press(forDuration: 0.2)
+        XCTAssertEqual(events().filter { $0 == "edge-soft" }.count, 1)
+        edge.tap()
+        XCTAssertEqual(events().filter { $0 == "edge-soft" }.count, 2)
+        XCTAssertEqual(events().filter { $0 == "open-soft" }.count, 1)
+        let evidence = XCTAttachment(string: presentation.label + "\n" + feedback.label)
+        evidence.name = reduceMotion ? "model-entry-reduced-feedback" : "model-entry-spring-feedback"
+        evidence.lifetime = .keepAlways
+        add(evidence)
+    }
+
+    @MainActor
     func testRemoteQuickModelEnglishDark() throws { try verifyRemoteQuickModel(englishDark: true) }
+
+    @MainActor
+    func testRemoteGoalResumeStatesChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-task-controls-fixture", "--remote-goal-resume-states-fixture"])
+        openReplayThread("completed-thread", app: app)
+        let goal = app.buttons["remote-goal-status"]
+        XCTAssertTrue(goal.waitForExistence(timeout: 5)); goal.tap()
+        let toggle = app.buttons["remote-goal-toggle-status"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        XCTAssertEqual(toggle.label, "恢复目标"); XCTAssertTrue(toggle.isEnabled)
+        let blocked = XCTAttachment(screenshot: app.screenshot()); blocked.name = "remote-goal-blocked-resume-zh-light"
+        blocked.lifetime = .keepAlways; add(blocked)
+        toggle.tap()
+        XCTAssertEqual(toggle.label, "暂停目标")
+        app.navigationBars.buttons.firstMatch.tap()
+        openReplayThread("shared-thread", host: "fixture-b", app: app)
+        XCTAssertTrue(goal.waitForExistence(timeout: 5)); goal.tap()
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        XCTAssertEqual(toggle.label, "恢复目标"); XCTAssertTrue(toggle.isEnabled)
+        let limited = XCTAttachment(screenshot: app.screenshot()); limited.name = "remote-goal-usage-limited-resume-zh-light"
+        limited.lifetime = .keepAlways; add(limited)
+        toggle.tap(); XCTAssertEqual(toggle.label, "暂停目标")
+        app.navigationBars.buttons.firstMatch.tap()
+        openReplayThread("completed-thread", app: app)
+        XCTAssertTrue(goal.waitForExistence(timeout: 5)); goal.tap()
+        XCTAssertEqual(toggle.label, "暂停目标", "Returning must not reseed the blocked fixture after accepted Resume")
+    }
 
     @MainActor
     func testRemoteGoalAndAgentsCoreChinese() throws {
@@ -7333,7 +8852,7 @@ final class HostInteractionTests: XCTestCase {
                 "-codexRemoteContextWindowUsageEnabled", "YES"]
         }
         if !disconnected && !corePreview {
-            app.launchArguments.append("--remote-interactive-replay")
+            app.launchArguments += ["--remote-interactive-replay", "--remote-model-entry-observation"]
         }
         if disconnected {
             app.launchArguments += ["--remote-draft-profile=" + UUID().uuidString]
@@ -7449,6 +8968,19 @@ final class HostInteractionTests: XCTestCase {
         control.tap()
         let rail = app.descendants(matching: .any).matching(identifier: "remote-model-slider-rail").firstMatch
         XCTAssertTrue(rail.waitForExistence(timeout: 5), app.debugDescription)
+        if !corePreview {
+            let trace = app.descendants(matching: .any)["remote-model-entry-samples"].firstMatch
+            XCTAssertTrue(trace.waitForExistence(timeout: 5))
+            let frames = trace.label.split(separator: ",").compactMap { Double($0) }
+            XCTAssertGreaterThan(frames.count, 2)
+            XCTAssertEqual(frames.first, 0)
+            XCTAssertLessThanOrEqual(frames.max() ?? 0, 1.025)
+            XCTAssertEqual(frames.last, 1)
+            let record = XCTAttachment(string: trace.label)
+            record.name = "model-entry-display-link-progress"
+            record.lifetime = .keepAlways
+            add(record)
+        }
         XCTAssertEqual(rail.value as? String, englishDark ? "Medium" : "中")
         XCTAssertEqual(rail.frame.height, 48, accuracy: 1)
         XCTAssertLessThanOrEqual(rail.frame.width, 316.5)
@@ -7456,6 +8988,13 @@ final class HostInteractionTests: XCTestCase {
         rail.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.5)).tap()
         XCTAssertTrue(rail.exists, "Internal selection must leave the picker open")
         XCTAssertEqual(rail.value as? String, englishDark ? "High" : "高")
+        if !corePreview {
+            rail.coordinate(withNormalizedOffset: CGVector(dx: 0.90, dy: 0.5)).press(forDuration: 0.05,
+                thenDragTo: rail.coordinate(withNormalizedOffset: CGVector(dx: 0.56, dy: 0.5)))
+            XCTAssertEqual(rail.value as? String, englishDark ? "Medium" : "中")
+            rail.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.5)).tap()
+            XCTAssertEqual(rail.value as? String, englishDark ? "High" : "高")
+        }
         app.buttons["remote-model-slider-title"].tap()
         let effort = app.buttons["remote-advanced-effort"]
         XCTAssertTrue(effort.waitForExistence(timeout: 5))
@@ -9460,6 +10999,1214 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
+    func testCodexOrdinaryMessageReadingChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks",
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile,
+            "--codex-message-read-failure-instance=fixture-cloud", "--remote-inset-test-observation",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        let cloud = app.buttons["remote-source-fixture-cloud"]
+        XCTAssertTrue(cloud.waitForExistence(timeout: 5)); cloud.tap()
+        let search = app.buttons["codex-home-search"]
+        func open(_ instance: String, _ thread: String, query: String) {
+            search.tap()
+            let field = app.textFields["codex-home-search-field"]
+            XCTAssertTrue(field.waitForExistence(timeout: 5)); field.typeText(query)
+            let row = app.buttons["remote-task-" + instance + "-" + thread]
+            XCTAssertTrue(row.waitForExistence(timeout: 5)); row.tap()
+        }
+        func backToList() {
+            app.navigationBars.buttons.firstMatch.tap()
+            XCTAssertTrue(app.buttons["codex-home-close-search"].waitForExistence(timeout: 5))
+            app.buttons["codex-home-close-search"].tap()
+        }
+        open("fixture-cloud", "recent-thread", query: "最近")
+        XCTAssertTrue(app.staticTexts["codex-message-error"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.collectionViews["remote-thread-history"].exists,
+            "Loading/failure must not overwrite an existing transcript anchor")
+        app.buttons["codex-message-retry"].tap()
+        let history = app.collectionViews["remote-thread-history"]
+        XCTAssertTrue(history.waitForExistence(timeout: 5))
+        let language = app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND identifier ENDSWITH %@", "codex-message-code-", "-language")).firstMatch
+        for _ in 0..<5 where !language.isHittable { history.swipeUp(velocity: .slow) }
+        XCTAssertEqual(language.label, "swift")
+        let codeCopy = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND identifier ENDSWITH %@", "codex-message-code-", "-copy")).firstMatch
+        XCTAssertTrue(codeCopy.isHittable); codeCopy.tap()
+        XCTAssertEqual(codeCopy.value as? String, "copied")
+        let code = app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND identifier ENDSWITH %@", "codex-message-code-", "-code")).firstMatch
+        XCTAssertTrue(code.exists)
+        code.swipeLeft()
+        let codeShot = XCTAttachment(screenshot: app.screenshot()); codeShot.name = "codex-ordinary-code-language-zh-light"
+        codeShot.lifetime = .keepAlways; add(codeShot)
+        let copy = app.buttons["remote-replay-copy-response"]
+        for _ in 0..<8 where !copy.isHittable { history.swipeUp(velocity: .slow) }
+        //AX hitability alone includes a footer partially covered by bottom bars.
+        //Reveal the entire control before testing its native tap.
+        if copy.frame.maxY > app.buttons["remote-composer-focus"].frame.minY - 48 {
+            history.swipeUp(velocity: .slow)
+        }
+        let copyShot = XCTAttachment(screenshot: app.screenshot()); copyShot.name = "codex-ordinary-response-copy-visible-zh-light"
+        copyShot.lifetime = .keepAlways; add(copyShot)
+        XCTAssertTrue(copy.isHittable); copy.tap(); XCTAssertEqual(copy.value as? String, "copied")
+        app.buttons["remote-composer-focus"].tap()
+        let editor = app.textViews["remote-composer-editor"]
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5)); editor.press(forDuration: 1.1)
+        let paste = app.menuItems.matching(NSPredicate(format: "label IN %@", ["Paste", "粘贴"])).firstMatch
+        XCTAssertTrue(paste.waitForExistence(timeout: 5)); paste.tap()
+        XCTAssertTrue((editor.value as? String)?.hasPrefix("# fixture-cloud/recent-thread\n\n## 阅读检查") == true,
+            "Copy uses supplied copyable Markdown rather than visible Text")
+        backToList()
+        //A second instance with the same thread ID cannot inherit Cloud history/draft.
+        let a = app.buttons["remote-source-fixture-a"]
+        let filters = app.scrollViews["remote-source-filter"]
+        if !a.isHittable { filters.swipeLeft() }; a.tap()
+        open("fixture-a", "recent-thread", query: "最近")
+        XCTAssertTrue(history.waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["remote-thread-host"].label, "fixture-a")
+        XCTAssertFalse(app.staticTexts["codex-message-error"].exists)
+        backToList()
+        filters.swipeRight(); cloud.tap()
+        open("fixture-cloud", "recent-thread", query: "最近")
+        XCTAssertTrue(history.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["codex-message-error"].exists, "Cached history must not reload on A-B-A")
+        let command = app.buttons["remote-replay-command-toggle-read-command"]
+        for _ in 0..<8 where !command.isHittable { history.swipeUp(velocity: .slow) }
+        XCTAssertTrue(command.isHittable); command.tap()
+        XCTAssertTrue(app.descendants(matching: .any)["remote-replay-command-shell-read-command"].firstMatch.waitForExistence(timeout: 5))
+        let diff = app.buttons["remote-replay-file-toggle-read-diff"]
+        for _ in 0..<4 where !diff.isHittable { history.swipeUp(velocity: .slow) }
+        XCTAssertTrue(diff.isHittable); diff.tap()
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-ordinary-output-diff-zh-light"
+        shot.lifetime = .keepAlways; add(shot)
+        backToList()
+        open("fixture-cloud", "unassigned-thread", query: "未分组")
+        XCTAssertTrue(app.staticTexts["codex-message-error"].waitForExistence(timeout: 5))
+        app.buttons["codex-message-retry"].tap(); XCTAssertTrue(history.waitForExistence(timeout: 5))
+        for _ in 0..<7 { history.swipeUp(velocity: .slow) }
+        XCTAssertFalse(copy.exists, "Running reply has no response-copy action")
+    }
+
+    @MainActor
+    func testCodexHTMLSnapshotChinese() {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--codex-html-snapshot-fixture", "--chat-state-profile=" + UUID().uuidString
+        ])
+        app.buttons["codex-home-search"].tap()
+        let search = app.textFields["codex-home-search-field"]
+        XCTAssertTrue(search.wait(for: \.isHittable, toEqual: true, timeout: 5)); search.typeText("检查文件与结果")
+        let row = app.buttons["remote-task-fixture-a-ordinary-files"]
+        XCTAssertTrue(row.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        row.coordinate(withNormalizedOffset: .init(dx: 0.25, dy: 0.5)).tap()
+        for label in ["盘符快照", "UNC 快照"] {
+            let link = app.links[label]
+            XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 10)); link.tap()
+            verifyOfflineHTMLSnapshot(app)
+        }
+    }
+
+    @MainActor
+    func testCodexLocalWebSnapshotChinese() {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--codex-local-web-fixture", "--chat-state-profile=" + UUID().uuidString
+        ])
+        let searchButton = app.buttons["codex-home-search"]
+        let link = app.links.matching(NSPredicate(format: "label == %@ AND identifier == ''", "本机网页")).firstMatch
+        func openTask(_ instance: String) {
+            searchButton.tap()
+            let search = app.textFields["codex-home-search-field"]
+            XCTAssertTrue(search.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            search.typeText("检查文件与结果")
+            let row = app.buttons["remote-task-" + instance + "-ordinary-files"]
+            XCTAssertTrue(row.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            row.coordinate(withNormalizedOffset: .init(dx: 0.25, dy: 0.5)).tap()
+            XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 10))
+            link.tap()
+        }
+        openTask("fixture-a")
+        verifyOfflineHTMLSnapshot(app)
+
+        app.navigationBars.buttons.firstMatch.tap()
+        let closeSearch = app.buttons["codex-home-close-search"]
+        if closeSearch.waitForExistence(timeout: 3) { closeSearch.tap() }
+        let cloud = app.buttons["remote-source-fixture-cloud"]
+        XCTAssertTrue(cloud.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        cloud.tap()
+
+        openTask("fixture-cloud")
+        let error = app.staticTexts["remote-message-file-error"]
+        XCTAssertTrue(error.waitForExistence(timeout: 8))
+        XCTAssertEqual(error.label, "此任务未提供本机网页快照。")
+        XCTAssertFalse(app.webViews.firstMatch.exists)
+    }
+
+    @MainActor
+    func testLibraryHTMLSnapshotChinese() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--codex-html-snapshot-fixture",
+            "--chat-state-profile=" + UUID().uuidString, "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap()
+        app.buttons["sidebar-feature-square-stack-fanned"].tap()
+        let folder = app.buttons["library-node-documents"]
+        XCTAssertTrue(folder.wait(for: \.isHittable, toEqual: true, timeout: 5)); folder.tap()
+        let file = app.buttons["library-node-html-snapshot"]
+        XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 5)); file.tap()
+        verifyOfflineHTMLSnapshot(app, checkExport: true)
+        XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 5))
+    }
+
+    private func verifyOfflineHTMLSnapshot(_ app: XCUIApplication, checkExport: Bool = false) {
+        let browser = app.webViews.firstMatch
+        let close = app.buttons["browser-preview-close"]
+        let detail = browser.links["Snapshot details"]
+        XCTAssertTrue(close.waitForExistence(timeout: 8))
+        XCTAssertTrue(detail.wait(for: \.isHittable, toEqual: true, timeout: 10))
+        XCTAssertTrue(browser.staticTexts["Snapshot script ready"].waitForExistence(timeout: 8))
+        XCTAssertTrue(browser.staticTexts["Inline script blocked"].exists)
+        XCTAssertTrue(app.buttons["browser-preview-save"].isEnabled)
+        let image = browser.images["Snapshot image"]
+        XCTAssertTrue(image.waitForExistence(timeout: 5))
+        XCTAssertGreaterThan(image.frame.width, 20, "The bundled stylesheet scales the 2 px snapshot image")
+        XCTAssertEqual(app.staticTexts["browser-preview-address"].label, "http://localhost:8765/")
+        if checkExport {
+            let save = app.buttons["DOCPicker.actionButton"]
+            func completeExport() {
+                XCTAssertTrue(save.wait(for: \.isHittable, toEqual: true, timeout: 25))
+                save.tap()
+                XCTAssertTrue(save.waitForNonExistence(timeout: 10))
+                XCTAssertTrue(detail.wait(for: \.isHittable, toEqual: true, timeout: 8))
+            }
+            app.buttons["browser-preview-save"].tap()
+            completeExport()
+            let report = browser.links["Snapshot report"]
+            XCTAssertTrue(report.wait(for: \.isHittable, toEqual: true, timeout: 8)); report.tap()
+            completeExport()
+        }
+        detail.tap()
+        XCTAssertTrue(browser.staticTexts["Snapshot details page"].waitForExistence(timeout: 8))
+        XCTAssertEqual(app.staticTexts["browser-preview-address"].label, "http://localhost:8765/docs/?page=2#detail")
+        app.buttons["browser-preview-back"].tap()
+        XCTAssertTrue(detail.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        close.tap()
+        XCTAssertTrue(close.waitForNonExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testCodexWindowsFileMappingChinese() {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--codex-windows-file-fixture", "--chat-state-profile=" + UUID().uuidString
+        ])
+        app.buttons["codex-home-search"].tap()
+        let search = app.textFields["codex-home-search-field"]
+        XCTAssertTrue(search.wait(for: \.isHittable, toEqual: true, timeout: 5)); search.typeText("检查文件与结果")
+        let row = app.buttons["remote-task-fixture-a-ordinary-files"]
+        XCTAssertTrue(row.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        row.coordinate(withNormalizedOffset: .init(dx: 0.25, dy: 0.5)).tap()
+        let raw = app.textViews["remote-source-text"]
+        let close = app.buttons["remote-source-close"]
+        for (label, marker) in [("盘符文件", "Sources/windows-drive"), ("UNC 文件", "Sources/windows-unc")] {
+            let link = app.links[label]
+            XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 10)); link.tap()
+            XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 8))
+            let contents = raw.value as? String ?? ""
+            XCTAssertTrue(contents.contains("host=fixture-a"))
+            XCTAssertTrue(contents.contains("resource=" + marker))
+            XCTAssertFalse(app.staticTexts["remote-source-line-unavailable"].exists)
+            close.tap()
+            XCTAssertTrue(close.waitForNonExistence(timeout: 5))
+        }
+        let unmapped = app.links["未映射的文件"]
+        XCTAssertTrue(unmapped.wait(for: \.isHittable, toEqual: true, timeout: 5)); unmapped.tap()
+        let error = app.staticTexts["remote-message-file-error"]
+        XCTAssertTrue(error.waitForExistence(timeout: 8))
+        XCTAssertEqual(error.label, "完整文件尚未提供。")
+        XCTAssertFalse(close.exists)
+    }
+
+    @MainActor
+    func testCodexSharedFilePreviewChinese() {
+        continueAfterFailure = false
+        let profile = UUID().uuidString
+        let app = launchRemoteReplay(extraArguments: [
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile
+        ])
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        let link = app.links["preview.txt"]
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8)); link.tap()
+        let sourceClose = app.buttons["remote-source-close"]
+        let raw = app.textViews["remote-source-text"]
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        XCTAssertTrue((raw.value as? String)?.contains("host=fixture-a") == true)
+        sourceClose.tap()
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        app.buttons["remote-thread-options"].tap()
+        let files = app.collectionViews.buttons["文件"]
+        XCTAssertTrue(files.wait(for: \.isHittable, toEqual: true, timeout: 5)); files.tap()
+        let markdown = app.buttons["remote-files-entry-Markdown"]
+        XCTAssertTrue(markdown.wait(for: \.isHittable, toEqual: true, timeout: 5)); markdown.tap()
+        let rendered = app.descendants(matching: .any)["remote-markdown-rendered"].firstMatch
+        XCTAssertTrue(rendered.wait(for: \.isHittable, toEqual: true, timeout: 10))
+        sourceClose.tap()
+        XCTAssertTrue(markdown.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        app.buttons["remote-files-close"].tap()
+        XCTAssertTrue(app.buttons["remote-thread-options"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+    }
+
+    @MainActor
+    func testCodexFilesRegularWidthChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--chat-state-profile=" + UUID().uuidString])
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        defer { XCUIDevice.shared.orientation = .portrait }
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let options = app.buttons["remote-thread-options"]
+        XCTAssertTrue(options.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        options.tap()
+        let files = app.collectionViews.buttons["文件"]
+        XCTAssertTrue(files.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        files.tap()
+
+        let detailDone = app.buttons["remote-files-detail-close"]
+        let folders = app.buttons["remote-files-entry-Documents"]
+        XCTAssertTrue(folders.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        guard detailDone.wait(for: \.isHittable, toEqual: true, timeout: 3) else {
+            throw XCTSkip("This device's file sheet has a compact horizontal size class.")
+        }
+        folders.tap()
+        let pdf = app.buttons["remote-files-entry-Documents/pdf"]
+        XCTAssertTrue(pdf.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        pdf.tap()
+        let document = app.descendants(matching: .any)["remote-pdf-preview"].firstMatch
+        XCTAssertTrue(document.wait(for: \.isHittable, toEqual: true, timeout: 10))
+        let parent = app.buttons["remote-files-parent"]
+        XCTAssertTrue(parent.isHittable, "The directory must remain usable alongside the document.")
+        parent.tap()
+        XCTAssertTrue(folders.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        XCTAssertTrue(document.waitForNonExistence(timeout: 5))
+
+        let markdown = app.buttons["remote-files-entry-Markdown"]
+        XCTAssertTrue(markdown.isHittable)
+        markdown.tap()
+        let rendered = app.descendants(matching: .any)["remote-markdown-rendered"].firstMatch
+        XCTAssertTrue(rendered.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        XCTAssertTrue(markdown.isHittable)
+        app.buttons["remote-source-close"].tap()
+        XCTAssertTrue(detailDone.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        detailDone.tap()
+        XCTAssertTrue(options.wait(for: \.isHittable, toEqual: true, timeout: 5))
+    }
+
+    @MainActor
+    func testCodexSourceCommentsChinese() {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--codex-source-comments-fixture", "--remote-file-reading-fixture",
+            "--chat-state-profile=" + UUID().uuidString
+        ])
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        let link = app.links["源码引用"]
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        link.tap()
+        let comments = app.buttons["remote-source-comments"]
+        XCTAssertTrue(comments.wait(for: \.isHittable, toEqual: true, timeout: 10))
+        let inlineToggle = app.buttons["remote-source-inline-toggle-81"]
+        XCTAssertTrue(inlineToggle.wait(for: \.isHittable, toEqual: true, timeout: 10))
+        inlineToggle.tap()
+        let inlineBody = app.staticTexts["remote-source-inline-body-81"]
+        XCTAssertTrue(inlineBody.waitForExistence(timeout: 5))
+        XCTAssertEqual(inlineBody.label, "检查行号边界")
+        let raw = app.textViews["remote-source-text"]
+        XCTAssertTrue(raw.exists)
+        func readingDiagnostic() -> [String: Any] {
+            let value = raw.value as? String ?? ""
+            return (try? JSONSerialization.jsonObject(with: Data(value.utf8)) as? [String: Any]) ?? [:]
+        }
+        let expectedLength = (1...120).reduce(0) { length, line in
+            length + (line == 81 ? "let answer = \"代码 🧪\" // 原文\n" : "let line\(line) = \(line)\n").utf16.count
+        }
+        XCTAssertEqual(readingDiagnostic()["sourceUTF16Length"] as? Int, expectedLength)
+        inlineToggle.tap()
+        XCTAssertTrue(inlineBody.waitForNonExistence(timeout: 5))
+        comments.tap()
+        let original = app.staticTexts["remote-source-comment-review"]
+        XCTAssertTrue(original.waitForExistence(timeout: 8))
+        app.buttons["remote-source-comment-line-review"].tap()
+        XCTAssertTrue(comments.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        comments.tap()
+        let remove = app.buttons["remote-source-comment-remove-review"]
+        XCTAssertTrue(remove.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        remove.tap()
+        XCTAssertTrue(original.waitForNonExistence(timeout: 8))
+        let draft = app.descendants(matching: .any)["remote-source-comment-draft"].firstMatch
+        XCTAssertTrue(draft.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        draft.tap()
+        draft.typeText("Check linked line")
+        let add = app.buttons["remote-source-comment-add"]
+        if !add.isHittable { app.swipeUp() }
+        XCTAssertTrue(add.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        add.tap()
+        XCTAssertTrue(app.staticTexts["Check linked line"].waitForExistence(timeout: 8))
+        app.navigationBars["批注"].buttons["完成"].tap()
+        XCTAssertTrue(inlineToggle.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        inlineToggle.tap()
+        XCTAssertTrue(inlineBody.waitForExistence(timeout: 5))
+        XCTAssertEqual(inlineBody.label, "Check linked line")
+        raw.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.89)).press(forDuration: 0.05,
+            thenDragTo: raw.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.13)))
+        let before = readingDiagnostic()
+        let sourceOffset = before["cached"] as? Double ?? -1
+        XCTAssertGreaterThan(sourceOffset, 100, "\(before)")
+        XCTAssertGreaterThan((before["actual"] as? Double ?? 0) - sourceOffset, 55, "\(before)")
+        app.buttons["remote-source-close"].tap()
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        link.tap()
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        let restored = NSPredicate { _, _ in
+            let diagnostic = readingDiagnostic()
+            return diagnostic["applied"] as? Bool == true &&
+                abs((diagnostic["sourceActual"] as? Double ?? -1) - sourceOffset) < 3
+        }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: restored, object: raw)], timeout: 5),
+            .completed, "Reopening after a scroll past an expanded annotation must preserve the source position")
+    }
+
+    @MainActor
+    func testCodexSourceSyntaxChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--codex-source-syntax-fixture", "--chat-state-profile=" + UUID().uuidString,
+        ])
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        let link = app.links["源码引用"]
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        link.tap()
+
+        let raw = app.textViews["remote-source-text"]
+        let highlight = "swift|comment,keyword,literal,string|true"
+        let linked = XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "value == %@", highlight + "|line-ready=true"), object: raw)
+        let loaded = XCTWaiter.wait(for: [linked], timeout: 12)
+        XCTAssertEqual(loaded, .completed, "Source accessibility value: \(String(describing: raw.value))")
+
+        raw.coordinate(withNormalizedOffset: CGVector(dx: 0.22, dy: 0.5)).doubleTap()
+        let copy = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label IN %@", ["拷贝", "复制", "Copy"])).firstMatch
+        XCTAssertTrue(copy.wait(for: \.isHittable, toEqual: true, timeout: 8), app.debugDescription)
+        copy.tap()
+        app.buttons["remote-source-close"].tap()
+        let compact = app.buttons["remote-composer-focus"]
+        XCTAssertTrue(compact.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        compact.tap()
+        let editor = app.textViews["remote-composer-editor"]
+        XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        editor.press(forDuration: 1)
+        let paste = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label IN %@", ["粘贴", "Paste"])).firstMatch
+        XCTAssertTrue(paste.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        paste.tap()
+        XCTAssertEqual(editor.value as? String, "answer")
+    }
+
+    @MainActor
+    func testCodexWindowedTextChinese() {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--codex-windowed-text-fixture", "--chat-state-profile=" + UUID().uuidString,
+        ])
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        let link = app.links["大文本引用"]
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8)); link.tap()
+        let body = app.textViews["remote-source-text"]
+        XCTAssertTrue(body.waitForExistence(timeout: 18))
+        XCTAssertTrue((body.value as? String)?.contains("文本行 4793 ") == true)
+        XCTAssertLessThan((body.value as? String)?.utf8.count ?? Int.max, 65_537)
+        let page = app.staticTexts["remote-source-page"]
+        let old = page.label
+        XCTAssertTrue(old.hasPrefix("22 / "))
+        app.buttons["remote-source-next"].tap()
+        XCTAssertTrue(body.waitForExistence(timeout: 8))
+        let next = page.label
+        XCTAssertNotEqual(next, old)
+        XCTAssertFalse((body.value as? String)?.contains("文本行 4793 ") == true)
+        let close = app.buttons["remote-source-close"]
+        close.tap()
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        link.tap()
+        XCTAssertTrue(body.waitForExistence(timeout: 18))
+        XCTAssertEqual(page.label, next)
+        close.tap()
+    }
+
+    @MainActor
+    func testCodexWorkspaceChangesChinese() {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--codex-workspace-changes-fixture", "--chat-state-profile=" + UUID().uuidString,
+        ])
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        app.buttons["remote-thread-options"].tap()
+        let changes = app.collectionViews.buttons["更改"]
+        XCTAssertTrue(changes.wait(for: \.isHittable, toEqual: true, timeout: 8)); changes.tap()
+        let initial = app.staticTexts["workspace-1.txt"]
+        XCTAssertTrue(initial.waitForExistence(timeout: 8))
+        let changeList = app.scrollViews.containing(.staticText, identifier: "remote-diff-host").firstMatch
+        XCTAssertTrue(changeList.exists)
+        XCTAssertFalse(changeList.staticTexts["preview.txt"].exists)
+        let refresh = app.buttons["remote-diff-workspace-refresh"]
+        XCTAssertTrue(refresh.wait(for: \.isEnabled, toEqual: true, timeout: 8))
+        refresh.tap()
+        XCTAssertTrue(app.staticTexts["remote-diff-workspace-error"].waitForExistence(timeout: 8))
+        XCTAssertTrue(initial.exists)
+        XCTAssertTrue(refresh.wait(for: \.isEnabled, toEqual: true, timeout: 8))
+        refresh.tap()
+        XCTAssertTrue(app.staticTexts["workspace-3.txt"].waitForExistence(timeout: 8))
+        XCTAssertFalse(initial.exists)
+        let full = app.buttons["remote-diff-workspace-preview-open-file"]
+        XCTAssertTrue(full.wait(for: \.isHittable, toEqual: true, timeout: 8)); full.tap()
+        let closeFile = app.buttons["QLOverlayDoneButtonAccessibilityIdentifier"]
+        XCTAssertTrue(closeFile.waitForExistence(timeout: 12))
+        let body = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            let marker = "Complete file contents"
+            if app.debugDescription.contains(marker) { return true }
+            let text = VNRecognizeTextRequest()
+            text.recognitionLevel = .accurate
+            let handler = VNImageRequestHandler(data: app.screenshot().pngRepresentation)
+            guard (try? handler.perform([text])) != nil else { return false }
+            return (text.results ?? []).contains {
+                $0.topCandidates(1).first?.string.contains(marker) == true
+            }
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [body], timeout: 35), .completed)
+        closeFile.tap()
+        XCTAssertTrue(closeFile.waitForNonExistence(timeout: 8))
+        app.buttons["remote-diff-close"].tap()
+        XCTAssertTrue(app.buttons["remote-thread-options"].wait(for: \.isHittable, toEqual: true, timeout: 8))
+    }
+
+    @MainActor
+    func testCodexStreamedPDFChinese() {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--codex-staged-file-fixture", "--chat-state-profile=" + UUID().uuidString,
+        ])
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        app.buttons["remote-thread-options"].tap()
+        let files = app.collectionViews.buttons["文件"]
+        XCTAssertTrue(files.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        files.tap()
+        let documents = app.buttons["remote-files-entry-Documents"]
+        XCTAssertTrue(documents.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        documents.tap()
+        let pdf = app.buttons["remote-files-entry-Documents/pdf"]
+        XCTAssertTrue(pdf.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        pdf.tap()
+        let document = app.descendants(matching: .any)["remote-pdf-preview"].firstMatch
+        XCTAssertTrue(document.waitForExistence(timeout: 20), app.debugDescription)
+        let close = app.buttons["remote-image-preview-close"]
+        XCTAssertTrue(close.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        close.tap()
+        XCTAssertTrue(document.waitForNonExistence(timeout: 8))
+        XCTAssertTrue(pdf.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        app.buttons["remote-files-close"].tap()
+        XCTAssertTrue(app.buttons["remote-thread-options"].wait(for: \.isHittable, toEqual: true, timeout: 8))
+    }
+
+    @MainActor
+    func testCodexOrdinaryFileLinksAndCommandSummaryChinese() {
+        continueAfterFailure = false
+        let profile = UUID().uuidString
+        let app = launchRemoteReplay(extraArguments: [
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile
+        ])
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        let link = app.links["preview.txt"]
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        let linksShot = XCTAttachment(screenshot: app.screenshot())
+        linksShot.name = "ordinary-codex-bubble-and-file-link"
+        linksShot.lifetime = .keepAlways
+        add(linksShot)
+        link.tap()
+        let close = app.buttons["remote-source-close"]
+        XCTAssertTrue(close.waitForExistence(timeout: 8))
+        close.tap()
+        let missing = app.links["缺失文件"]
+        XCTAssertTrue(missing.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        missing.tap()
+        XCTAssertTrue(app.staticTexts["remote-message-file-error"].waitForExistence(timeout: 8))
+        let history = app.collectionViews["remote-thread-history"]
+        let command = app.buttons["remote-replay-command-toggle-read-command"]
+        let bottom = app.buttons["remote-scroll-to-bottom"]
+        if bottom.isHittable { bottom.tap() }
+        let composer = app.buttons["remote-composer-focus"]
+        for _ in 0..<5 {
+            if command.isHittable, command.frame.minY > 150, command.frame.maxY < composer.frame.minY - 20 { break }
+            history.coordinate(withNormalizedOffset: .init(dx: 0.26, dy: 0.66))
+                .press(forDuration: 0.05,
+                       thenDragTo: history.coordinate(withNormalizedOffset: .init(dx: 0.26, dy: 0.40)))
+        }
+        XCTAssertTrue(command.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        XCTAssertLessThan(command.frame.height, 32)
+        XCTAssertTrue(command.label.contains("fixture-a/ordinary-files"))
+        let commandShot = XCTAttachment(screenshot: app.screenshot())
+        commandShot.name = "ordinary-codex-one-line-command"
+        commandShot.lifetime = .keepAlways
+        add(commandShot)
+        command.coordinate(withNormalizedOffset: .init(dx: 0.20, dy: 0.50)).tap()
+        XCTAssertEqual(command.value as? String, "已展开")
+        let output = app.staticTexts["No command was executed."]
+        for _ in 0..<3 where !output.exists { history.swipeUp(velocity: .slow) }
+        XCTAssertTrue(output.waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testCodexOrdinaryReadingActivitiesChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--codex-list-cloud-only-fixture",
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        app.buttons["codex-home-search"].tap()
+        let field = app.textFields["codex-home-search-field"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5)); field.typeText("最近")
+        let row = app.buttons["remote-task-fixture-cloud-recent-thread"]
+        XCTAssertTrue(row.waitForExistence(timeout: 5)); row.tap()
+        let history = app.collectionViews["remote-thread-history"]
+        XCTAssertTrue(history.waitForExistence(timeout: 5))
+        func reveal(_ element: XCUIElement) {
+            for _ in 0..<12 {
+                if element.exists && element.isHittable && element.frame.minY > 150 &&
+                    element.frame.maxY < app.buttons["remote-composer-focus"].frame.minY - 24 { return }
+                if element.exists && element.frame.minY < 150 {
+                    history.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.35))
+                        .press(forDuration: 0.05, thenDragTo: history.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.60)))
+                } else {
+                    history.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.65))
+                        .press(forDuration: 0.05, thenDragTo: history.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.40)))
+                }
+            }
+            XCTFail("Activity control could not be fully revealed")
+        }
+        func shot(_ name: String) {
+            let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = name
+            shot.lifetime = .keepAlways; add(shot)
+        }
+        let command = app.buttons["remote-replay-command-toggle-read-command"]
+        reveal(command); command.tap(); XCTAssertEqual(command.value as? String, "已展开")
+        let output = app.staticTexts["No command was executed."]
+        XCTAssertTrue(output.waitForExistence(timeout: 5)); reveal(output)
+        shot("codex-ordinary-shell-output-visible-zh-light")
+        reveal(command); command.tap(); XCTAssertEqual(command.value as? String, "已折叠")
+        let diff = app.buttons["remote-replay-file-toggle-read-diff"]
+        reveal(diff); diff.tap(); XCTAssertEqual(diff.value as? String, "已展开")
+        let code = app.staticTexts["remote-replay-file-read-diff-code"]
+        XCTAssertTrue(code.waitForExistence(timeout: 5)); reveal(code)
+        XCTAssertTrue(code.label.contains("+fixture-cloud/recent-thread"))
+        shot("codex-ordinary-diff-body-visible-zh-light")
+    }
+
+    @MainActor
+    func testCodexOrdinaryControlsChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        let common = ["--offline-fixture", "--codex-home-fixture=tasks", "--remote-draft-profile=" + profile,
+            "--chat-state-profile=" + profile, "-codexRemoteContextWindowUsageEnabled", "YES", "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launchArguments = common + ["--remote-connection-preferences-unavailable-fixture",
+            "--codex-control-submission-failure-instance=fixture-cloud"]
+        app.launch()
+        func enter() {
+            XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+            app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        }
+        func open(_ host: String, _ thread: String, query: String) {
+            app.buttons["codex-home-search"].tap()
+            let field = app.textFields["codex-home-search-field"]
+            XCTAssertTrue(field.waitForExistence(timeout: 5)); field.typeText(query)
+            let row = app.buttons["remote-task-" + host + "-" + thread]
+            XCTAssertTrue(row.waitForExistence(timeout: 5)); row.tap()
+            XCTAssertTrue(app.collectionViews["remote-thread-history"].waitForExistence(timeout: 5))
+        }
+        func back() {
+            app.navigationBars.buttons.firstMatch.tap()
+            let close = app.buttons["codex-home-close-search"]
+            XCTAssertTrue(close.waitForExistence(timeout: 5)); close.tap()
+            XCTAssertTrue(close.waitForNonExistence(timeout: 5))
+        }
+        func focus() {
+            app.buttons["remote-composer-focus"].tap()
+            XCTAssertTrue(app.textViews["remote-composer-editor"].waitForExistence(timeout: 5))
+            XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
+        }
+        func shot(_ name: String) {
+            let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = name; shot.lifetime = .keepAlways; add(shot)
+        }
+        enter(); app.buttons["remote-source-fixture-cloud"].tap()
+        open("fixture-cloud", "recent-thread", query: "最近")
+        focus()
+        let editor = app.textViews["remote-composer-editor"]
+        editor.typeText("云端普通输入")
+        XCTAssertEqual(app.buttons["remote-context-usage"].value as? String, "40")
+        let permission = app.buttons["remote-permission-control"]
+        XCTAssertTrue(permission.waitForExistence(timeout: 5)); permission.tap()
+        let full = app.buttons["remote-permission-option-exclamationmark-shield"]
+        XCTAssertTrue(full.waitForExistence(timeout: 5)); full.tap()
+        XCTAssertFalse(app.alerts["配置未更新"].exists)
+        XCTAssertEqual(permission.value as? String, "完全访问")
+        if !editor.isHittable { focus() }
+        XCTAssertEqual(editor.value as? String, "云端普通输入")
+        let model = app.buttons["remote-model-control"]
+        XCTAssertTrue(model.waitForExistence(timeout: 5)); model.tap()
+        let rail = app.descendants(matching: .any)["remote-model-slider-rail"].firstMatch
+        XCTAssertTrue(rail.waitForExistence(timeout: 5))
+        app.buttons["remote-model-slider-title"].tap()
+        let effort = app.buttons["remote-advanced-effort"]
+        XCTAssertTrue(effort.waitForExistence(timeout: 5)); effort.tap()
+        app.buttons["高"].tap()
+        app.buttons["remote-advanced-title"].tap()
+        XCTAssertTrue(rail.waitForExistence(timeout: 5))
+        XCTAssertEqual(rail.value as? String, "高")
+        shot("codex-ordinary-cloud-model-controls-zh-light")
+        //The source presents an outside-tap surface, not a native Button.
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.3)).tap()
+        XCTAssertTrue(rail.waitForNonExistence(timeout: 5))
+        if !editor.isHittable { focus() }
+        XCTAssertEqual(model.value as? String, "高")
+        app.buttons["remote-composer-send"].tap()
+        let history = app.collectionViews["remote-thread-history"]
+        let retry = app.buttons["remote-replay-retry"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 8))
+        for _ in 0..<5 where !retry.isHittable { history.swipeUp(velocity: .slow) }
+        XCTAssertTrue(retry.isHittable); retry.tap()
+        let completedTwice = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            app.staticTexts.matching(identifier: "remote-replay-phase-completed").count == 2
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [completedTwice], timeout: 15), .completed)
+        XCTAssertFalse(app.staticTexts["remote-replay-error"].exists)
+        back()
+        open("fixture-cloud", "unassigned-thread", query: "未分组")
+        focus(); editor.typeText("保留排队输入")
+        XCTAssertTrue(app.buttons["remote-composer-follow-up"].waitForExistence(timeout: 5))
+        app.buttons["remote-composer-follow-up"].tap()
+        let pending = app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@",
+            "remote-replay-pending-text-", "保留排队输入")).firstMatch
+        XCTAssertTrue(pending.waitForExistence(timeout: 5))
+        let stop = app.buttons["remote-composer-stop"]
+        XCTAssertTrue(stop.waitForExistence(timeout: 5)); stop.tap()
+        XCTAssertTrue(stop.waitForNonExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["remote-replay-phase-cancelled"].waitForExistence(timeout: 5))
+        shot("codex-ordinary-active-stop-queued-zh-light")
+        back(); open("fixture-cloud", "unassigned-thread", query: "未分组")
+        XCTAssertFalse(stop.exists, "Reenter must not resurrect the original read seed")
+        back()
+        //Same profile, normal computer preferences; no interactive/config fixture flags.
+        app.terminate(); app.launchArguments = common; app.launch(); enter()
+        let a = app.buttons["remote-source-fixture-a"]
+        let filters = app.scrollViews["remote-source-filter"]
+        if !a.isHittable { filters.swipeLeft() }; a.tap()
+        open("fixture-a", "recent-thread", query: "最近")
+        focus(); editor.typeText("电脑独立输入")
+        XCTAssertTrue(app.buttons["remote-model-control"].exists)
+        app.buttons["remote-composer-send"].tap()
+        let prompt = app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@",
+            "remote-replay-prompt-", "电脑独立输入")).firstMatch
+        XCTAssertTrue(prompt.waitForExistence(timeout: 5))
+        let remoteCompleted = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            app.staticTexts.matching(identifier: "remote-replay-phase-completed").count == 2
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [remoteCompleted], timeout: 12), .completed)
+        XCTAssertFalse(app.staticTexts["remote-history-storage-error"].exists)
+        shot("codex-ordinary-remote-send-complete-zh-light")
+    }
+
+    @MainActor
+    func testCodexCreationChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--remote-draft-profile=" + profile,
+            "--chat-state-profile=" + profile, "--codex-creation-catalog-failure-once", "--codex-creation-failure-once", "--codex-creation-test-controls",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        let retryCatalog = app.buttons["codex-creation-catalog-retry"]
+        XCTAssertTrue(retryCatalog.waitForExistence(timeout: 5)); retryCatalog.tap()
+        func source(_ host: String) {
+            let list = app.descendants(matching: .any)["remote-task-list"].firstMatch
+            for _ in 0..<8 where !app.scrollViews["remote-source-filter"].isHittable { list.swipeDown() }
+            let filter = app.buttons["remote-source-" + host]
+            if !filter.isHittable {
+                if host == "fixture-cloud" || host == "all" { app.scrollViews["remote-source-filter"].swipeRight() }
+                else { app.scrollViews["remote-source-filter"].swipeLeft() }
+            }
+            filter.tap()
+        }
+        func reach(_ button: XCUIElement) {
+            let list = app.descendants(matching: .any)["remote-task-list"].firstMatch
+            for _ in 0..<6 where !button.isHittable { list.swipeUp() }
+            XCTAssertTrue(button.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        }
+        func openCloudFromAll() {
+            let pinned = app.buttons["remote-section-pinned"]
+            if pinned.isHittable && (pinned.value as? String) == "已展开" { pinned.tap() }
+            let plus = app.buttons["remote-new-thread-recent"]; reach(plus); plus.tap()
+            let choice = app.buttons.matching(NSPredicate(format: "label == %@", "Cloud"))
+            XCTAssertTrue(choice.firstMatch.waitForExistence(timeout: 5))
+            let visible = choice.allElementsBoundByIndex.first { $0.isHittable }
+            XCTAssertNotNil(visible); visible?.tap()
+        }
+        func editor() -> XCUIElement {
+            let field = app.textViews["remote-composer-editor"]
+            XCTAssertTrue(field.waitForExistence(timeout: 5)); return field
+        }
+        func backToList() {
+            let candidates = app.navigationBars.buttons.matching(identifier: "BackButton").allElementsBoundByIndex
+            let back = candidates.first { $0.isHittable }
+            XCTAssertNotNil(back); back?.tap()
+            XCTAssertTrue(app.buttons["codex-home-search"].wait(for: \.isHittable, toEqual: true, timeout: 8))
+        }
+        func create(_ host: String, _ text: String) {
+            let field = editor(); field.typeText(text)
+            app.buttons["remote-composer-send"].tap()
+            XCTAssertTrue(app.staticTexts["codex-creation-error"].waitForExistence(timeout: 6))
+            XCTAssertEqual(field.value as? String, text)
+            app.buttons["codex-creation-retry"].tap()
+            XCTAssertTrue(app.staticTexts["remote-replay-phase-completed"].waitForExistence(timeout: 12))
+            let picture = XCTAttachment(screenshot: app.screenshot()); picture.name = "codex-created-" + host; picture.lifetime = .keepAlways; add(picture)
+            backToList()
+            XCTAssertTrue(app.buttons["codex-home-search"].waitForExistence(timeout: 5)); app.buttons["codex-home-search"].tap()
+            app.textFields["codex-home-search-field"].typeText(text)
+            let rows = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "remote-task-" + host + "-synthetic-"))
+            XCTAssertTrue(rows.firstMatch.waitForExistence(timeout: 5)); XCTAssertEqual(rows.count, 1)
+            let identity = rows.firstMatch.identifier
+            //Check search membership, then enter from the ordinary list. The
+            //search keyboard's first-tap dismissal is a separate gesture gap.
+            app.buttons["codex-home-close-search"].tap()
+            let ordinaryRow = app.buttons[identity]; reach(ordinaryRow); ordinaryRow.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5)).tap()
+            XCTAssertTrue(app.buttons["remote-thread-options"].wait(for: \.isHittable, toEqual: true, timeout: 8))
+            backToList()
+        }
+        openCloudFromAll(); create("fixture-cloud", "Cloud创建闭环")
+        source("fixture-cloud")
+        let cloudPlus = app.buttons["remote-new-thread-recent"]; reach(cloudPlus); cloudPlus.tap()
+        XCTAssertEqual(editor().value as? String, "")
+        editor().typeText("Cloud独立未提交草稿"); backToList()
+        source("fixture-a")
+        let project = app.buttons["remote-new-thread-fixture-a-ui"]; reach(project); project.tap()
+        XCTAssertEqual(editor().value as? String, "")
+        create("fixture-a", "Remote项目创建闭环")
+        source("fixture-cloud"); reach(cloudPlus); cloudPlus.tap()
+        XCTAssertEqual(editor().value as? String, "Cloud独立未提交草稿")
+        backToList()
+    }
+
+    @MainActor
+    func testCodexHomeCreationCancelAndUnknownChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--remote-draft-profile=" + profile,
+            "--chat-state-profile=" + profile, "--remote-connection-preferences-unavailable-fixture",
+            "--codex-creation-delay-fixture", "--codex-creation-uncertain-once",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch(); XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        let cloud = app.buttons["remote-source-fixture-cloud"]
+        XCTAssertTrue(cloud.waitForExistence(timeout: 5)); cloud.tap()
+        app.buttons["remote-composer-focus"].tap()
+        let editor = app.textViews["remote-composer-editor"]
+        XCTAssertTrue(editor.waitForExistence(timeout: 5)); editor.typeText("Home取消与核对")
+        let send = app.buttons["remote-composer-send"]
+        XCTAssertTrue(send.isEnabled, "Cloud creation must not depend on computer preference reads")
+        send.tap()
+        let cancel = app.buttons["codex-creation-cancel"]
+        XCTAssertTrue(cancel.waitForExistence(timeout: 3)); cancel.tap()
+        let retry = app.buttons["codex-creation-retry"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 5)); retry.tap()
+        XCTAssertTrue(app.staticTexts["codex-creation-error"].waitForNonExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "Home取消与核对")
+        XCTAssertTrue(send.isEnabled); send.tap()
+        XCTAssertTrue(app.staticTexts["codex-creation-error"].waitForExistence(timeout: 14))
+        XCTAssertTrue(retry.waitForExistence(timeout: 5)); retry.tap()
+        XCTAssertTrue(app.staticTexts["remote-replay-phase-completed"].waitForExistence(timeout: 12))
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(app.buttons["remote-new-thread-recent"].waitForExistence(timeout: 5), "Successful Home creation must return to the browsing list")
+        app.buttons["codex-home-search"].tap(); app.textFields["codex-home-search-field"].typeText("Home取消与核对")
+        let rows = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "remote-task-fixture-cloud-synthetic-"))
+        XCTAssertTrue(rows.firstMatch.waitForExistence(timeout: 5)); XCTAssertEqual(rows.count, 1)
+        app.buttons["codex-home-close-search"].tap(); app.buttons["remote-composer-focus"].tap()
+        XCTAssertEqual(editor.value as? String, "")
+        let picture = XCTAttachment(screenshot: app.screenshot()); picture.name = "codex-home-creation-return-empty"; picture.lifetime = .keepAlways; add(picture)
+    }
+
+    //Local Xcode27.2 UI-test compatibility adapter, never linked into the app.
+    //The framework's global animation-idle notification can time out on an
+    //otherwise idle keyboard/preview scene. Every action below keeps explicit
+    //destination/hittability waits. Runtime type encoding gates the private ABI.
+    @MainActor private func withExplicitFileStateWaits(_ app: XCUIApplication, action: @escaping () -> Void) {
+        let selector = NSSelectorFromString("_performWithInteractionOptions:block:")
+        guard let method = class_getInstanceMethod(type(of: app), selector),
+              let encoding = method_getTypeEncoding(method),
+              String(cString: encoding) == "v28@0:8I16@?20" else { action(); return }
+        typealias Action = @convention(block) () -> Void
+        typealias Perform = @convention(c) (AnyObject, Selector, UInt32, Action) -> Void
+        let invoke = unsafeBitCast(method_getImplementation(method), to: Perform.self)
+        let block: Action = { action() }
+        print("CODEX-FILE-EXPLICIT-WAITS Xcode27.2 skipPrePostQuiescence=3")
+        invoke(app, selector, 3, block)
+    }
+
+    @MainActor
+    func testCodexOrdinaryFilesChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--remote-draft-profile=" + profile,
+            "--chat-state-profile=" + profile, "--codex-files-directory-failure-once", "--codex-files-resource-failure-once",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        withExplicitFileStateWaits(app) {
+            func tap(_ element: XCUIElement) {
+                XCTAssertTrue(element.waitForExistence(timeout: 8))
+                XCTAssertTrue(element.wait(for: \.isHittable, toEqual: true, timeout: 8))
+                element.tap()
+            }
+            func shot(_ name: String) {
+                let a = XCTAttachment(screenshot: app.screenshot()); a.name = name; a.lifetime = .keepAlways; self.add(a)
+            }
+            func openMenu(_ action: String) {
+                tap(app.buttons["remote-thread-options"])
+                let button = app.collectionViews.buttons[action == "files" ? "文件" : "更改"]
+                XCTAssertTrue(button.waitForExistence(timeout: 5)); tap(button)
+            }
+            let qlDone = app.buttons["QLOverlayDoneButtonAccessibilityIdentifier"]
+            for host in ["fixture-cloud", "fixture-a"] {
+                app.launch()
+                XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+                tap(app.buttons["open-conversation-list"]); tap(app.buttons["sidebar-feature-codex"])
+                XCTAssertTrue(app.buttons["codex-home-search"].waitForExistence(timeout: 8))
+                let filter = app.buttons["remote-source-" + host]
+                if !filter.isHittable {
+                    if host == "fixture-cloud" { app.scrollViews["remote-source-filter"].swipeRight() }
+                    else { app.scrollViews["remote-source-filter"].swipeLeft() }
+                }
+                tap(filter)
+                tap(app.buttons["codex-home-search"])
+                let search = app.textFields["codex-home-search-field"]
+                XCTAssertTrue(search.waitForExistence(timeout: 5)); search.typeText("文件与结果")
+                let row = app.buttons["remote-task-" + host + "-ordinary-files"]
+                XCTAssertTrue(row.waitForExistence(timeout: 5)); tap(row)
+                XCTAssertTrue(app.buttons["remote-composer-focus"].waitForExistence(timeout: 8))
+                tap(app.buttons["remote-composer-focus"])
+                let editor = app.textViews["remote-composer-editor"]
+                XCTAssertTrue(editor.waitForExistence(timeout: 5))
+                XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5)); editor.typeText("draft-" + host)
+                openMenu("files")
+                XCTAssertTrue(app.buttons["remote-files-retry"].waitForExistence(timeout: 5)); tap(app.buttons["remote-files-retry"])
+                XCTAssertTrue(app.buttons["remote-files-entry-Sources"].waitForExistence(timeout: 5)); tap(app.buttons["remote-files-entry-Sources"])
+                XCTAssertTrue(app.buttons["remote-files-entry-Sources/preview"].waitForExistence(timeout: 5)); tap(app.buttons["remote-files-entry-Sources/preview"])
+                XCTAssertTrue(app.buttons["remote-files-file-retry"].waitForExistence(timeout: 5)); tap(app.buttons["remote-files-file-retry"])
+                XCTAssertTrue(qlDone.waitForExistence(timeout: 8))
+                XCTAssertEqual(self.waitForQuickLookText("host=" + host, app: app), .completed)
+                shot("codex-files-complete-" + host)
+                tap(qlDone)
+                XCTAssertTrue(app.buttons["remote-files-parent"].waitForExistence(timeout: 5)); tap(app.buttons["remote-files-parent"])
+                tap(app.buttons["remote-files-entry-Empty"])
+                XCTAssertTrue(app.descendants(matching: .any)["remote-files-empty"].firstMatch.waitForExistence(timeout: 5))
+                tap(app.buttons["remote-files-parent"]); tap(app.buttons["remote-files-entry-Markdown"])
+                let sourceDone = app.buttons["remote-source-close"]
+                XCTAssertTrue(sourceDone.waitForExistence(timeout: 8)); shot("codex-files-markdown-" + host); tap(sourceDone)
+                tap(app.buttons["remote-files-entry-Documents"])
+                tap(app.buttons["remote-files-entry-Documents/unsupported"])
+                XCTAssertTrue(app.staticTexts["remote-files-file-error"].waitForExistence(timeout: 5))
+                XCTAssertTrue(app.staticTexts["remote-files-file-info"].exists)
+                if host == "fixture-cloud" {
+                    tap(app.buttons["remote-files-entry-Documents/pdf"])
+                    let closePDF = app.buttons["remote-image-preview-close"]
+                    XCTAssertTrue(app.descendants(matching: .any)["remote-pdf-preview"].firstMatch.waitForExistence(timeout: 8))
+                    tap(closePDF)
+                }
+                tap(app.buttons["remote-files-close"])
+                XCTAssertTrue(editor.waitForExistence(timeout: 5)); XCTAssertEqual(editor.value as? String, "draft-" + host)
+                openMenu("changes")
+                let openFile = app.buttons["remote-diff-read-diff-open-file"]
+                XCTAssertTrue(openFile.waitForExistence(timeout: 5)); tap(openFile)
+                XCTAssertTrue(qlDone.waitForExistence(timeout: 8)); shot("codex-result-complete-file-" + host); tap(qlDone)
+                //QuickLook may retain an AX container after dismissal. Verify the
+                //visible destination and perform the actual close/return action.
+                let returnedToDiff = app.buttons["remote-diff-close"].wait(for: \.isHittable, toEqual: true, timeout: 8)
+                shot("codex-result-returned-diff-" + host)
+                if !returnedToDiff { print("CODEX-QL-FAILED-RETURN " + app.debugDescription) }
+                XCTAssertTrue(returnedToDiff)
+                print("CODEX-QL-RETURN host=\(host) retainedAX=\(app.otherElements["QLPreviewControllerView"].exists)")
+                tap(app.buttons["remote-diff-close"])
+                XCTAssertTrue(app.buttons["remote-diff-close"].waitForNonExistence(timeout: 5))
+                if !editor.exists { tap(app.buttons["remote-composer-focus"]) }
+                XCTAssertEqual(editor.value as? String, "draft-" + host)
+                //The actual link glyph belongs to UITextView, not its full-width carrier.
+                let link = app.links.matching(NSPredicate(format: "label == %@ AND identifier == ''", "preview.txt")).firstMatch
+                let history = app.collectionViews["remote-thread-history"]
+                for _ in 0..<7 where !link.isHittable { history.swipeDown() }
+                XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 5)); tap(link)
+                XCTAssertTrue(sourceDone.waitForExistence(timeout: 8))
+                shot("codex-file-citation-" + host); tap(sourceDone)
+                let missing = app.links.matching(NSPredicate(format: "label == %@ AND identifier == ''", "缺失文件")).firstMatch
+                XCTAssertTrue(missing.wait(for: \.isHittable, toEqual: true, timeout: 5)); tap(missing)
+                XCTAssertTrue(app.staticTexts["remote-message-file-error"].waitForExistence(timeout: 5))
+                tap(app.navigationBars.buttons.firstMatch)
+                XCTAssertTrue(search.wait(for: \.isHittable, toEqual: true, timeout: 10))
+                app.terminate()
+            }
+        }
+    }
+
+    @MainActor
+    func testCodexOrdinaryRequestsChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--remote-draft-profile=" + profile,
+            "--chat-state-profile=" + profile, "--codex-request-failure-once", "--codex-request-test-controls",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        func source(_ host: String) {
+            let button = app.buttons["remote-source-" + host], filters = app.scrollViews["remote-source-filter"]
+            if !button.isHittable { if host == "fixture-cloud" { filters.swipeRight() } else { filters.swipeLeft() } }
+            button.tap()
+        }
+        func open(_ host: String, _ thread: String, _ query: String) {
+            app.buttons["codex-home-search"].tap()
+            let field = app.textFields["codex-home-search-field"]
+            XCTAssertTrue(field.waitForExistence(timeout: 5)); field.typeText(query)
+            let row = app.buttons["remote-task-" + host + "-" + thread]
+            XCTAssertTrue(row.waitForExistence(timeout: 5)); row.tap()
+        }
+        func back() {
+            app.navigationBars.buttons.firstMatch.tap()
+            let close = app.buttons["codex-home-close-search"]
+            XCTAssertTrue(close.waitForExistence(timeout: 5)); close.tap()
+            XCTAssertTrue(close.waitForNonExistence(timeout: 5))
+        }
+        func shot(_ name: String) {
+            let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = name; shot.lifetime = .keepAlways; add(shot)
+        }
+        source("fixture-cloud"); open("fixture-cloud", "ordinary-approval", "普通审批")
+        let approve = app.buttons["remote-approval-approveOnce"]
+        XCTAssertTrue(approve.waitForExistence(timeout: 8)); approve.tap()
+        let error = app.staticTexts["codex-request-error"]
+        XCTAssertTrue(error.waitForExistence(timeout: 5))
+        XCTAssertTrue(approve.exists, "A failed response must keep the current request")
+        shot("codex-cloud-ordinary-approval-retry-zh-light")
+        app.buttons["codex-request-retry"].tap()
+        XCTAssertTrue(approve.waitForNonExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["remote-composer-focus"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["remote-composer-stop"].exists)
+        back(); open("fixture-cloud", "ordinary-approval", "普通审批")
+        XCTAssertTrue(app.buttons["remote-composer-focus"].waitForExistence(timeout: 8))
+        XCTAssertFalse(approve.exists, "The exact request receipt must survive navigation")
+        back(); source("fixture-a"); open("fixture-a", "ordinary-input", "普通补充")
+        let text = app.textViews["remote-input-text"].exists ? app.textViews["remote-input-text"] : app.textFields["remote-input-text"]
+        XCTAssertTrue(text.waitForExistence(timeout: 8)); text.tap(); text.typeText("synthetic-private-request-answer")
+        app.buttons["remote-input-send"].tap()
+        XCTAssertTrue(error.waitForExistence(timeout: 5))
+        XCTAssertEqual(text.value as? String, "synthetic-private-request-answer")
+        shot("codex-remote-ordinary-input-retained-zh-light")
+        app.buttons["codex-request-retry"].tap()
+        XCTAssertTrue(app.otherElements["remote-user-input-form"].waitForNonExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["remote-composer-focus"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "synthetic-private-request-answer")).firstMatch.exists)
+        back(); source("fixture-cloud"); open("fixture-cloud", "ordinary-input", "普通补充")
+        XCTAssertTrue(app.buttons["remote-input-skip"].waitForExistence(timeout: 8))
+        let expire = app.buttons["codex-request-expire"]
+        XCTAssertTrue(expire.waitForExistence(timeout: 5)); expire.tap()
+        XCTAssertTrue(app.staticTexts["codex-request-expired"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["remote-input-skip"].exists)
+        XCTAssertTrue(app.buttons["remote-composer-focus"].exists)
+        XCTAssertTrue(app.buttons["remote-composer-stop"].exists,
+            "Provider expiry retires only the request; it cannot cancel its active task")
+        shot("codex-request-expiry-restores-composer-zh-light")
+    }
+
+    @MainActor
+    func testCodexRequestUnknownOutcomeChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--codex-list-cloud-only-fixture",
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile, "--codex-request-uncertain-once",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        app.buttons["codex-home-search"].tap()
+        let field = app.textFields["codex-home-search-field"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5)); field.typeText("普通审批")
+        let row = app.buttons["remote-task-fixture-cloud-ordinary-approval"]
+        XCTAssertTrue(row.waitForExistence(timeout: 5)); row.tap()
+        let approve = app.buttons["remote-approval-approveOnce"]
+        XCTAssertTrue(approve.waitForExistence(timeout: 8)); approve.tap()
+        let error = app.staticTexts["codex-request-error"]
+        XCTAssertTrue(error.waitForExistence(timeout: 5))
+        XCTAssertTrue(error.label.contains("尚未确认"))
+        approve.tap()
+        XCTAssertTrue(error.exists); XCTAssertTrue(approve.exists,
+            "A native card action cannot bypass the unknown-outcome recheck")
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-request-unknown-no-resend-zh-light"
+        shot.lifetime = .keepAlways; add(shot)
+        app.buttons["codex-request-retry"].tap()
+        XCTAssertTrue(error.waitForNonExistence(timeout: 5))
+        approve.tap()
+        XCTAssertTrue(approve.waitForNonExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["remote-composer-focus"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testCodexRequestFailedReturnChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--codex-list-cloud-only-fixture",
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile, "--codex-request-failure-once",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        func open() {
+            app.buttons["codex-home-search"].tap()
+            let field = app.textFields["codex-home-search-field"]
+            XCTAssertTrue(field.waitForExistence(timeout: 5)); field.typeText("普通审批")
+            let row = app.buttons["remote-task-fixture-cloud-ordinary-approval"]
+            XCTAssertTrue(row.waitForExistence(timeout: 5)); row.tap()
+        }
+        open()
+        let approve = app.buttons["remote-approval-approveOnce"], error = app.staticTexts["codex-request-error"]
+        XCTAssertTrue(approve.waitForExistence(timeout: 8)); approve.tap()
+        XCTAssertTrue(error.waitForExistence(timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap()
+        let close = app.buttons["codex-home-close-search"]
+        XCTAssertTrue(close.waitForExistence(timeout: 5)); close.tap()
+        XCTAssertTrue(close.waitForNonExistence(timeout: 5)); open()
+        XCTAssertTrue(approve.waitForExistence(timeout: 8))
+        XCTAssertFalse(error.exists, "New session has no stale retained action or dead retry control")
+        approve.tap()
+        XCTAssertTrue(approve.waitForNonExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["remote-composer-focus"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testCodexInstanceListCoreChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let profile = UUID().uuidString.lowercased()
+        let common = ["--offline-fixture", "--codex-home-fixture=tasks", "--remote-draft-profile=" + profile,
+            "--chat-state-profile=" + profile, "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN",
+            "-rea.preview.appearance", "light"]
+        //No legacy --remote-cloud-fixture: ordinary supplied instances include Cloud.
+        app.launchArguments = common + ["--codex-list-failure-instance=fixture-cloud",
+            "--remote-connection-preferences-unavailable-fixture"]
+        app.launch()
+        func enter() {
+            if app.otherElements["remote-task-list"].exists { return }
+            XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+            app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        }
+        enter()
+        let filters = app.scrollViews["remote-source-filter"]
+        let cloud = app.buttons["remote-source-fixture-cloud"]
+        let a = app.buttons["remote-source-fixture-a"]
+        let error = app.staticTexts["codex-list-error-fixture-cloud"]
+        XCTAssertTrue(cloud.waitForExistence(timeout: 5))
+        XCTAssertTrue(error.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["remote-task-fixture-a-shared-thread"].exists,
+            "One failed instance cannot erase another instance's tasks")
+        cloud.tap()
+        XCTAssertTrue(cloud.isSelected)
+        XCTAssertFalse(app.staticTexts["remote-connection-preferences-error"].exists,
+            "Cloud must not inherit a computer preference failure")
+        app.buttons["codex-list-retry-fixture-cloud"].tap()
+        let unassigned = app.buttons["remote-task-fixture-cloud-unassigned-thread"]
+        XCTAssertTrue(unassigned.waitForExistence(timeout: 5))
+        XCTAssertFalse(error.exists)
+        XCTAssertFalse(app.buttons["remote-section-no-workspace-fixture-cloud"].exists)
+        let search = app.buttons["codex-home-search"]
+        let field = app.textFields["codex-home-search-field"]
+        search.tap(); XCTAssertTrue(field.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5)); field.typeText("云端目录")
+        let result = app.buttons["remote-task-fixture-cloud-shared-thread"]
+        XCTAssertTrue(result.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["remote-task-fixture-a-shared-thread"].exists)
+        result.tap()
+        XCTAssertTrue(app.staticTexts["remote-thread-host"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["remote-thread-host"].label, "fixture-cloud")
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(field.waitForExistence(timeout: 5)); XCTAssertEqual(field.value as? String, "云端目录")
+        app.buttons["codex-home-close-search"].tap()
+        search.tap(); XCTAssertTrue(field.waitForExistence(timeout: 5)); field.typeText("不存在的Codex任务")
+        XCTAssertTrue(app.staticTexts["codex-list-no-results"].waitForExistence(timeout: 5))
+        app.buttons["codex-home-close-search"].tap()
+        if !a.isHittable { filters.swipeLeft() }; a.tap()
+        XCTAssertTrue(a.isSelected)
+        search.tap(); XCTAssertTrue(field.waitForExistence(timeout: 5)); field.typeText("界面")
+        let remote = app.buttons["remote-task-fixture-a-shared-thread"]
+        XCTAssertTrue(remote.waitForExistence(timeout: 5)); remote.tap()
+        XCTAssertTrue(app.staticTexts["remote-thread-host"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["remote-thread-host"].label, "fixture-a")
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(field.waitForExistence(timeout: 5)); XCTAssertEqual(field.value as? String, "界面")
+        app.buttons["codex-home-close-search"].tap()
+        filters.swipeRight(); cloud.tap()
+        XCTAssertTrue(unassigned.waitForExistence(timeout: 5))
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-cloud-remote-list-core-zh-light"
+        shot.lifetime = .keepAlways; add(shot)
+        //Fresh All selection with a sole Cloud: no All chip, Cloud is selected.
+        app.terminate()
+        app.launchArguments = common.filter { !$0.hasPrefix("--remote-draft-profile=") } +
+            ["--remote-draft-profile=" + UUID().uuidString.lowercased(),
+             "--codex-list-cloud-only-fixture", "--codex-list-empty-instance=fixture-cloud"]
+        app.launch(); enter()
+        XCTAssertTrue(cloud.waitForExistence(timeout: 5)); XCTAssertTrue(cloud.isSelected)
+        XCTAssertFalse(app.buttons["remote-source-all"].exists)
+        XCTAssertFalse(app.buttons["remote-source-fixture-a"].exists)
+        XCTAssertTrue(app.staticTexts["codex-list-empty"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["codex-list-no-results"].exists)
+        XCTAssertFalse(app.buttons["remote-section-projects"].exists)
+        XCTAssertFalse(app.buttons["remote-section-fixture-a-ui"].exists)
+        let emptyShot = XCTAttachment(screenshot: app.screenshot()); emptyShot.name = "codex-sole-cloud-empty-zh-light"
+        emptyShot.lifetime = .keepAlways; add(emptyShot)
+    }
+
+    @MainActor
+    func testCodexSoleCloudEmptyChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks",
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile,
+            "--codex-list-cloud-only-fixture", "--codex-list-empty-instance=fixture-cloud",
+            "--remote-catalog-fixture=mixed", "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN",
+            "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        let cloud = app.buttons["remote-source-fixture-cloud"]
+        XCTAssertTrue(cloud.waitForExistence(timeout: 5)); XCTAssertTrue(cloud.isSelected)
+        XCTAssertFalse(app.buttons["remote-source-all"].exists)
+        XCTAssertTrue(app.staticTexts["codex-list-empty"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["remote-section-projects"].exists)
+        XCTAssertFalse(app.buttons["remote-section-fixture-a-ui"].exists)
+        XCTAssertFalse(app.buttons["remote-catalog-retry-fixture-a"].exists)
+        XCTAssertFalse(app.staticTexts["remote-catalog-loading-fixture-b"].exists)
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-sole-cloud-empty-final-zh-light"
+        shot.lifetime = .keepAlways; add(shot)
+    }
+
+    @MainActor
     func testRemoteCloudFilterRecentsAndDraftIsolation() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -9635,6 +12382,39 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
+    func testRemoteCatalogRequestOnlySearchChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let profile = UUID().uuidString
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks",
+            "--remote-catalog-fixture=mixed", "--chat-state-profile=" + profile,
+            "--remote-draft-profile=" + profile, "-AppleLanguages", "(zh-Hans)",
+            "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        app.buttons["codex-home-search"].tap()
+        let query = app.textFields["codex-home-search-field"]
+        XCTAssertTrue(query.waitForExistence(timeout: 5)); query.typeText("没有匹配的项目xyz")
+        let projects = app.buttons["remote-section-projects"]
+        let retry = app.buttons["remote-catalog-retry-fixture-a"]
+        let loadingA = app.descendants(matching: .any)["remote-catalog-loading-fixture-a"].firstMatch
+        let loadingB = app.descendants(matching: .any)["remote-catalog-loading-fixture-b"].firstMatch
+        XCTAssertFalse(app.buttons["remote-section-fixture-a-ui"].exists)
+        XCTAssertTrue(projects.waitForExistence(timeout: 5)); XCTAssertTrue(retry.isHittable)
+        XCTAssertTrue(loadingB.exists)
+        let capture = XCTAttachment(screenshot: app.screenshot())
+        capture.name = "remote-projects-request-only-search-zh-light"; capture.lifetime = .keepAlways; add(capture)
+        retry.tap(); XCTAssertTrue(loadingA.waitForExistence(timeout: 2))
+        XCTAssertTrue(loadingB.exists)
+        XCTAssertTrue(loadingA.waitForNonExistence(timeout: 6))
+        XCTAssertTrue(projects.exists); XCTAssertTrue(loadingB.exists)
+        app.buttons["codex-home-close-search"].tap()
+        XCTAssertTrue(app.buttons["remote-section-fixture-a-ui"].waitForExistence(timeout: 5))
+        XCTAssertTrue(loadingB.exists)
+    }
+
+    @MainActor
     private func verifyRemoteCatalogStatesRetryAndHostIsolation(chinese: Bool) throws {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -9760,15 +12540,19 @@ final class HostInteractionTests: XCTestCase {
         XCTAssertTrue(target.isHittable)
         let before = target.frame
         let source = app.buttons["remote-source-all"]
+        let sidebar = app.buttons["codex-home-open-menu"]
         XCTAssertFalse(source.isHittable, "The list must actually be away from its top")
+        XCTAssertTrue(sidebar.isHittable)
         let shot = XCTAttachment(screenshot: app.screenshot())
         shot.name = "remote-list-before-task-zh-light"; shot.lifetime = .keepAlways; add(shot)
         for _ in 0..<2 {
             target.tap()
             XCTAssertTrue(app.staticTexts["remote-thread-host"].waitForExistence(timeout: 5))
             XCTAssertEqual(app.staticTexts["remote-thread-host"].label, "fixture-a")
+            XCTAssertFalse(sidebar.isHittable, "The detail keeps its native back control")
             app.navigationBars.buttons.firstMatch.tap()
             XCTAssertTrue(list.waitForExistence(timeout: 5))
+            XCTAssertTrue(sidebar.isHittable, "The root toolbar is back with the list")
             XCTAssertTrue(target.isHittable)
             XCTAssertEqual(target.frame.minY, before.minY, accuracy: 2)
             XCTAssertEqual(target.frame.minX, before.minX, accuracy: 2)
@@ -10671,27 +13455,96 @@ final class HostInteractionTests: XCTestCase {
 
     @MainActor
     func testRemoteScrollToBottomChinese() throws {
+        try verifyRemoteScrollToBottom(reduceMotion: false)
+    }
+
+    @MainActor
+    func testRemoteScrollToBottomReducedMotionChinese() throws {
+        try verifyRemoteScrollToBottom(reduceMotion: true)
+    }
+
+    @MainActor
+    func testCodexBottomKeyboardFollowAndTapToDismissChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-tool-activities-fixture", "--remote-inset-test-observation"])
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        let history = app.collectionViews["remote-thread-history"]
+        let jump = app.buttons["remote-scroll-to-bottom"]
+        if jump.waitForExistence(timeout: 2) { jump.tap() }
+        func metrics() -> [String: Double] {
+            guard let json = history.value as? String else { return [:] }
+            return (try? JSONDecoder().decode([String: Double].self, from: Data(json.utf8))) ?? [:]
+        }
+        func waitForTail(_ after: String) {
+            let atTail = NSPredicate { _, _ in
+                let values = metrics()
+                guard let height = values["contentHeight"], let inset = values["adjustedBottom"],
+                      let viewport = values["frameHeight"], let offset = values["offsetY"] else { return false }
+                return abs(max(-(values["top"] ?? 0), height - viewport + inset) - offset) <= 2 && !jump.exists
+            }
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: atTail, object: nil)],
+                                         timeout: 8), .completed, after)
+        }
+        waitForTail("Settle at bottom before opening the keyboard")
+        let editor = app.textViews["remote-composer-editor"]
+        let keyboard = app.keyboards.firstMatch
+        app.buttons["remote-composer-focus"].tap()
+        if !keyboard.waitForExistence(timeout: 5) {
+            if editor.isHittable { editor.tap() }
+            else { app.buttons["remote-composer-focus"].tap() }
+        }
+        XCTAssertTrue(keyboard.waitForExistence(timeout: 8))
+        let animated = NSPredicate { _, _ in (metrics()["keyboardFollowCount"] ?? 0) > 0 && keyboard.frame.height > 150 }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: animated, object: nil)],
+                                     timeout: 8), .completed)
+        waitForTail("Keep the final message at the keyboard-adjusted bottom")
+        editor.typeText("Retain keyboard draft")
+        let body = history.textViews.matching(NSPredicate(format: "value == %@", "活动后的正常回复")).firstMatch
+        XCTAssertTrue(body.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        body.tap()
+        XCTAssertTrue(keyboard.waitForNonExistence(timeout: 5))
+        waitForTail("Keep the final message at the bottom after a single tap")
+        XCTAssertEqual(app.buttons["remote-composer-focus"].label, "Retain keyboard draft")
+    }
+
+    @MainActor
+    private func verifyRemoteScrollToBottom(reduceMotion: Bool) throws {
         continueAfterFailure = false
         let profile = UUID().uuidString
-        let app = launchRemoteReplay(englishDark: false, extraArguments: [
+        var arguments = [
             "--chat-state-profile=" + profile, "--remote-draft-profile=" + profile,
-            "--remote-history-scroll-fixture", "--remote-inset-test-observation"])
+            "--remote-history-scroll-fixture", "--remote-inset-test-observation", "--remote-manual-bottom-observation"]
+        if reduceMotion { arguments.append("--remote-manual-bottom-reduced-motion") }
+        let app = launchRemoteReplay(englishDark: false, extraArguments: arguments)
         openReplayThread("completed-thread", app: app)
         let history = app.collectionViews["remote-thread-history"]
         let jump = app.buttons["remote-scroll-to-bottom"]
         XCTAssertTrue(jump.waitForExistence(timeout: 5))
         XCTAssertTrue(jump.isHittable)
         jump.tap()
-        let bottom = NSPredicate { _, _ in
+        func geometry() -> [String: Double]? {
             guard let value = history.value as? String,
-                  let data = value.data(using: .utf8),
-                  let m = try? JSONDecoder().decode([String: Double].self, from: data),
+                  let data = value.data(using: .utf8) else { return nil }
+            return try? JSONDecoder().decode([String: Double].self, from: data)
+        }
+        func isAtBottom() -> Bool {
+            guard let m = geometry(),
                   let height = m["contentHeight"], let offset = m["offsetY"],
                   let viewport = m["frameHeight"], let inset = m["adjustedBottom"] else { return false }
             return abs(height - offset - viewport + inset) < 2 && !jump.exists
         }
-        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: bottom, object: nil)],
-                                     timeout: 8), .completed)
+        func verifyArrival(_ count: Double) throws {
+            let settled = NSPredicate { _, _ in isAtBottom() && geometry()?["manualBottomFinishes"] == count }
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: settled, object: nil)],
+                                         timeout: 8), .completed)
+            let frames = try XCTUnwrap(geometry()?["manualBottomIntermediateFrames"])
+            if reduceMotion { XCTAssertEqual(frames, 0) }
+            else { XCTAssertGreaterThan(frames, 0) }
+            print("REA_MANUAL_BOTTOM reduceMotion=\(reduceMotion) frames=\(frames) \(history.value ?? "")")
+        }
+        try verifyArrival(1)
+        if reduceMotion { return }
         dragRemoteHistory(app, earlier: true, span: 0.5)
         XCTAssertTrue(jump.waitForExistence(timeout: 5))
         let shot = XCTAttachment(screenshot: app.screenshot())
@@ -10699,10 +13552,10 @@ final class HostInteractionTests: XCTestCase {
         shot.lifetime = .keepAlways
         add(shot)
         jump.tap()
-        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: bottom, object: nil)],
-                                     timeout: 8), .completed)
+        try verifyArrival(2)
         app.navigationBars.buttons.element(boundBy: 0).tap()
         openReplayThread("completed-thread", app: app)
+        let bottom = NSPredicate { _, _ in isAtBottom() }
         XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: bottom, object: nil)],
                                      timeout: 8), .completed)
     }
@@ -11591,6 +14444,193 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
+    func testRemoteComposerBottomMaterialChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: [
+            "--remote-layout-bounds-probe", "--remote-collection-test-observation"
+        ])
+        let listSurface = app.descendants(matching: .any)["remote-home-composer-surface"].firstMatch
+        XCTAssertTrue(listSurface.waitForExistence(timeout: 5))
+        XCTAssertFalse(listSurface.frame.isEmpty)
+        openReplayThread("completed-thread", app: app)
+        let history = app.collectionViews["remote-thread-history"]
+        let surface = app.descendants(matching: .any)["remote-thread-composer-surface"].firstMatch
+        XCTAssertTrue(history.waitForExistence(timeout: 5))
+        XCTAssertTrue(surface.exists)
+        XCTAssertEqual(history.value as? String, "topSoft=true;bottomHidden=true")
+        // The compact overlay is present in AX on iOS 27, but its synthesized
+        // button hit point can be (-1,-1). Tap the visible composer midpoint.
+        let surfaceFrame = surface.frame
+        let appFrame = app.frame
+        XCTAssertTrue(appFrame.contains(CGPoint(x: surfaceFrame.midX, y: surfaceFrame.midY)))
+        app.coordinate(withNormalizedOffset: .zero).withOffset(
+            .init(dx: surfaceFrame.midX - appFrame.minX, dy: surfaceFrame.midY - appFrame.minY)).tap()
+        let editor = app.textViews["remote-composer-editor"]
+        XCTAssertTrue(editor.waitForExistence(timeout: 5))
+        XCTAssertFalse(surface.frame.isEmpty)
+        XCTAssertEqual(history.value as? String, "topSoft=true;bottomHidden=true")
+        XCTAssertTrue(app.buttons["remote-composer-attachments"].exists)
+    }
+
+    @MainActor
+    func testRemoteExpandedComposerMaterialComparisonChinese() throws {
+        continueAfterFailure = false
+        for baseline in [true, false] {
+            let profile = UUID().uuidString
+            var arguments = ["--remote-layout-bounds-probe", "--remote-inset-test-observation",
+                             "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile]
+            if baseline { arguments.append("--remote-expanded-clear-glass-baseline") }
+            let app = launchRemoteReplay(extraArguments: arguments)
+            openReplayThread("ordinary-files", host: "fixture-a", title: "检查文件与结果", app: app)
+            let surface = app.descendants(matching: .any)["remote-thread-composer-surface"].firstMatch
+            XCTAssertTrue(surface.waitForExistence(timeout: 8))
+            let origin = app.coordinate(withNormalizedOffset: .zero)
+            let compact = surface.frame
+            origin.withOffset(.init(dx: compact.midX, dy: compact.midY)).tap()
+            XCTAssertTrue(app.textViews["remote-composer-editor"].waitForExistence(timeout: 5))
+            XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 6))
+            let expanded = surface.frame
+            XCTAssertGreaterThan(expanded.height, compact.height)
+            let start = origin.withOffset(.init(dx: 18, dy: expanded.minY - 24))
+            let stop = origin.withOffset(.init(dx: 18, dy: expanded.minY - 132))
+            start.press(forDuration: 0.08, thenDragTo: stop, withVelocity: .slow, thenHoldForDuration: 0.2)
+            let name = baseline ? "detail-expanded-clear" : "detail-expanded-regular"
+            let attachment = XCTAttachment(screenshot: app.screenshot())
+            attachment.name = name
+            attachment.lifetime = .keepAlways
+            add(attachment)
+            let history = app.collectionViews["remote-thread-history"]
+            print("REA_MATERIAL \(name) \(surface.frame) \(history.value ?? "")")
+            app.terminate()
+        }
+    }
+
+    @MainActor
+    func testRemoteFloatingControlsMaterialChinese() {
+        continueAfterFailure = false
+        for baseline in [true, false] {
+            let profile = UUID().uuidString
+            var arguments = ["--remote-task-controls-fixture", "--remote-inset-test-observation",
+                             "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile]
+            if baseline { arguments.append("--remote-floating-controls-baseline") }
+            let app = launchRemoteReplay(extraArguments: arguments)
+            openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+            let history = app.collectionViews["remote-thread-history"]
+            let goal = app.buttons["remote-goal-status"]
+            let agents = app.buttons["remote-agents-summary"]
+            let bottom = app.buttons["remote-scroll-to-bottom"]
+            for button in [goal, agents, bottom] {
+                XCTAssertTrue(button.wait(for: \.isHittable, toEqual: true, timeout: 8))
+            }
+            let origin = app.coordinate(withNormalizedOffset: .zero)
+            let start = origin.withOffset(.init(dx: 18, dy: goal.frame.midY - 17))
+            let end = origin.withOffset(.init(dx: 18, dy: goal.frame.midY - 112))
+            start.press(forDuration: 0.08, thenDragTo: end, withVelocity: .slow, thenHoldForDuration: 0.2)
+            let name = baseline ? "floating-controls-before" : "floating-controls-after"
+            let shot = XCTAttachment(screenshot: app.screenshot())
+            shot.name = name
+            shot.lifetime = .keepAlways
+            add(shot)
+            print("REA_FLOATING \(name) goal=\(goal.frame) agents=\(agents.frame) bottom=\(bottom.frame) \(history.value ?? "")")
+            if !baseline {
+                let beforeScroll = history.value as? String
+                bottom.coordinate(withNormalizedOffset: .init(dx: 0.50, dy: 0.50)).tap()
+                let moved = expectation(for: NSPredicate(format: "value != %@", beforeScroll ?? ""), evaluatedWith: history)
+                XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 5), .completed)
+                print("REA_FLOATING after-bottom \(history.value ?? "")")
+                XCTAssertTrue(bottom.waitForNonExistence(timeout: 5))
+                goal.tap()
+                let details = app.descendants(matching: .any)["remote-goal-details"]
+                XCTAssertTrue(details.waitForExistence(timeout: 5))
+                agents.tap()
+                XCTAssertTrue(details.waitForNonExistence(timeout: 5))
+                agents.tap()
+            }
+            app.terminate()
+        }
+    }
+
+    @MainActor
+    func testRemoteCollapsedComposerContrastChinese() throws {
+        continueAfterFailure = false
+        let profile = UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--offline-fixture", "--codex-home-fixture=tasks",
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light",
+            "--remote-layout-bounds-probe", "--remote-collection-test-observation",
+            "--remote-draft-profile=" + profile, "--chat-state-profile=" + profile
+        ]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap()
+        app.buttons["sidebar-feature-codex"].tap()
+        for (host, thread, name) in [
+            ("fixture-b", "running-thread", "running"),
+            ("fixture-a", "ordinary-files", "remote-files"),
+            ("fixture-cloud", "ordinary-files", "cloud-files")
+        ] {
+            let list = app.collectionViews["remote-task-list"]
+            let filter = app.scrollViews["remote-source-filter"]
+            let source = app.buttons["remote-source-" + host]
+            XCTAssertTrue(list.waitForExistence(timeout: 8))
+            for _ in 0..<5 where !filter.isHittable { list.swipeDown(velocity: .slow) }
+            for _ in 0..<3 where !source.isHittable {
+                if host == "fixture-cloud" { filter.swipeRight() } else { filter.swipeLeft() }
+            }
+            XCTAssertTrue(source.isHittable)
+            source.tap()
+            let row = app.buttons["remote-task-" + host + "-" + thread]
+            func rowIsVisible() -> Bool {
+                let nav = app.navigationBars.firstMatch.frame
+                let input = app.buttons["remote-composer-focus"]
+                let bottom = input.exists ? input.frame.minY : app.frame.maxY
+                return row.isHittable && row.frame.minY >= nav.maxY && row.frame.maxY < bottom - 8
+            }
+            for _ in 0..<6 where !rowIsVisible() { list.swipeUp(velocity: .slow) }
+            XCTAssertTrue(rowIsVisible())
+            row.tap()
+            let surface = app.descendants(matching: .any)["remote-thread-composer-surface"].firstMatch
+            let history = app.collectionViews["remote-thread-history"]
+            XCTAssertTrue(surface.waitForExistence(timeout: 8))
+            XCTAssertTrue(history.waitForExistence(timeout: 8))
+            XCTAssertEqual(history.value as? String, "topSoft=true;bottomHidden=true")
+            XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 5))
+            func capture(_ suffix: String) {
+                let label = "composer-" + name + "-" + suffix
+                let screenshot = XCTAttachment(screenshot: app.screenshot())
+                screenshot.name = label
+                screenshot.lifetime = .keepAlways
+                add(screenshot)
+                print("COMPOSER_CONTRAST \(label) frame \(surface.frame)")
+            }
+            capture("initial")
+            let origin = app.coordinate(withNormalizedOffset: .zero)
+            let frame = surface.frame
+            let start = origin.withOffset(.init(dx: 18, dy: frame.minY - 28))
+            let end = origin.withOffset(.init(dx: 18, dy: frame.minY - 123))
+            start.press(forDuration: 0.08, thenDragTo: end, withVelocity: .slow, thenHoldForDuration: 0.15)
+            capture("after-scroll")
+            if thread == "ordinary-files" {
+                let surfaceFrame = surface.frame
+                let appFrame = app.frame
+                XCTAssertTrue(appFrame.contains(CGPoint(x: surfaceFrame.midX, y: surfaceFrame.midY)))
+                origin.withOffset(.init(dx: surfaceFrame.midX - appFrame.minX,
+                    dy: surfaceFrame.midY - appFrame.minY)).tap()
+                let expanded = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                    surface.exists && surface.frame.height > frame.height
+                }, object: nil)
+                XCTAssertEqual(XCTWaiter.wait(for: [expanded], timeout: 6), .completed)
+                XCTAssertTrue(app.textViews["remote-composer-editor"].isHittable)
+                XCTAssertEqual(history.value as? String, "topSoft=true;bottomHidden=true")
+                capture("expanded")
+            }
+            app.navigationBars.buttons.firstMatch.tap()
+            XCTAssertTrue(list.waitForExistence(timeout: 8))
+        }
+    }
+
+    @MainActor
     func testRemoteOutputGestureFollow() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -11603,7 +14643,7 @@ final class HostInteractionTests: XCTestCase {
         // Explicit output identity is separate from the disclosure button.
         let collection = app.collectionViews["remote-thread-history"]
         XCTAssertTrue(collection.waitForExistence(timeout: 3))
-        XCTAssertEqual(collection.value as? String, "topSoft=true;bottomSoft=false")
+        XCTAssertEqual(collection.value as? String, "topSoft=true;bottomHidden=true")
         let output = collection.scrollViews["remote-command-output"]
         let foundContent = output.waitForExistence(timeout: 4)
             if !foundContent {
@@ -12658,7 +15698,9 @@ final class HostInteractionTests: XCTestCase {
         XCTAssertLessThan(personalization.frame.minY, memory.frame.minY)
         XCTAssertLessThan(memory.frame.minY, connectors.frame.minY)
         connectors.tap()
-        XCTAssertTrue(app.staticTexts["此功能尚未接入"].waitForExistence(timeout: 5))
+        // 293 only changes Apps/Plugins branding, not the connectors destination.
+        XCTAssertTrue(app.buttons["plugins-settings-browse"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["此功能尚未接入"].exists)
         // Settings owns a real nested navigation stack; retain native edge Back.
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.003, dy: 0.45)).press(forDuration: 0.05,
             thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.75, dy: 0.45)),
@@ -12705,6 +15747,217 @@ final class HostInteractionTests: XCTestCase {
         app.navigationBars.buttons.firstMatch.tap()
         XCTAssertTrue(close.isHittable)
         close.tap()
+        XCTAssertTrue(app.buttons["open-settings"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testOfficeQuickLookChinese() throws {
+        continueAfterFailure = false
+        let formats = [
+            ("docx", "REA Word Sample"),
+            ("xlsx", "REA Excel Sample"),
+            ("pptx", "REA PowerPoint Sample"),
+        ]
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--office-preview-fixture", "--codex-home-fixture=tasks",
+            "--chat-state-profile=" + UUID().uuidString, "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        for (ext, _) in formats {
+            let fixture = try XCTUnwrap(Bundle(for: type(of: self)).url(
+                forResource: "sample", withExtension: ext, subdirectory: "OfficeFixtures"))
+            app.launchEnvironment["REA_OFFICE_" + ext.uppercased()] = try Data(contentsOf: fixture).base64EncodedString()
+        }
+        app.launch()
+        let done = app.buttons["QLOverlayDoneButtonAccessibilityIdentifier"]
+        func preview(_ file: XCUIElement, marker: String) {
+            XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 8))
+            file.tap()
+            XCTAssertTrue(done.waitForExistence(timeout: 10))
+            let contents = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                let hierarchy = app.debugDescription
+                if hierarchy.contains(marker) { return true }
+                if hierarchy.contains("正在加载…") { return false }
+                let text = VNRecognizeTextRequest()
+                text.recognitionLevel = .accurate
+                let handler = VNImageRequestHandler(data: app.screenshot().pngRepresentation)
+                guard (try? handler.perform([text])) != nil else { return false }
+                return (text.results ?? []).contains { observation in
+                    observation.topCandidates(1).first?.string.localizedCaseInsensitiveContains(marker) == true
+                }
+            }, object: nil)
+            let result = XCTWaiter.wait(for: [contents], timeout: 45)
+            if result != .completed {
+                let attachment = XCTAttachment(screenshot: app.screenshot())
+                attachment.name = marker
+                attachment.lifetime = .keepAlways
+                add(attachment)
+            }
+            XCTAssertEqual(result, .completed, app.debugDescription)
+            XCTAssertTrue(done.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            done.tap()
+            XCTAssertTrue(done.waitForNonExistence(timeout: 8))
+            XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        }
+
+        let sidebar = app.buttons["open-conversation-list"]
+        XCTAssertTrue(sidebar.waitForExistence(timeout: 10))
+        sidebar.tap()
+        app.buttons["sidebar-feature-square-stack-fanned"].tap()
+        let folder = app.buttons["library-node-documents"]
+        XCTAssertTrue(folder.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        folder.tap()
+        for (ext, marker) in formats {
+            preview(app.buttons["library-node-office-" + ext], marker: marker)
+        }
+
+        app.navigationBars.buttons.firstMatch.tap()
+        app.buttons["library-open-menu"].tap()
+        app.buttons["sidebar-feature-codex"].tap()
+        openReplayThread("ordinary-files", title: "检查文件与结果", app: app)
+        app.buttons["remote-thread-options"].tap()
+        let files = app.collectionViews.buttons["文件"]
+        XCTAssertTrue(files.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        files.tap()
+        let documents = app.buttons["remote-files-entry-Documents"]
+        XCTAssertTrue(documents.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        documents.tap()
+        preview(app.buttons["remote-files-entry-office-docx"], marker: "REA Word Sample")
+        app.buttons["remote-files-close"].tap()
+        XCTAssertTrue(app.buttons["remote-thread-options"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+    }
+
+    @MainActor
+    func testNativeLibrarySystemBrowserReturnChinese() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--library-system-browser-fixture",
+            "--chat-state-profile=" + UUID().uuidString, "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        let menu = app.buttons["open-conversation-list"]
+        XCTAssertTrue(menu.waitForExistence(timeout: 10)); menu.tap()
+        app.buttons["sidebar-feature-square-stack-fanned"].tap()
+        let folder = app.buttons["library-node-documents"]
+        XCTAssertTrue(folder.waitForExistence(timeout: 8)); folder.tap()
+        let guide = app.buttons["library-node-guide"]
+        XCTAssertTrue(guide.waitForExistence(timeout: 5)); guide.tap()
+        let link = app.links.matching(NSPredicate(format: "label == %@ AND identifier == ''", "Browser test link")).firstMatch
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8)); link.tap()
+        let address = app.buttons["URL"]
+        XCTAssertTrue(address.waitForExistence(timeout: 15), app.debugDescription)
+        XCTAssertTrue((address.value as? String)?.contains("example.com") == true)
+        let nativeClose = app.buttons["关闭"]
+        XCTAssertTrue(nativeClose.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        nativeClose.tap()
+        XCTAssertTrue(address.waitForNonExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["remote-source-close"].wait(for: \.isHittable, toEqual: true, timeout: 8))
+        XCTAssertTrue(link.isHittable)
+        link.tap()
+        XCTAssertTrue(address.waitForExistence(timeout: 10))
+        nativeClose.tap()
+        XCTAssertTrue(address.waitForNonExistence(timeout: 8))
+        XCTAssertTrue(link.wait(for: \.isHittable, toEqual: true, timeout: 8))
+    }
+
+    @MainActor
+    func testNativeLibrarySharedSourcePreviewChinese() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--remote-file-reading-fixture",
+            "--chat-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        let folder = app.buttons["library-node-documents"]
+        let file = app.buttons["library-node-guide"]
+        func enterFolder() {
+            app.launch()
+            let menu = app.buttons["open-conversation-list"]
+            if menu.waitForExistence(timeout: 5) {
+                menu.tap()
+                app.buttons["sidebar-feature-square-stack-fanned"].tap()
+            }
+            XCTAssertTrue(folder.wait(for: \.isHittable, toEqual: true, timeout: 8)); folder.tap()
+            XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 5)); file.tap()
+        }
+        enterFolder()
+        let rendered = app.descendants(matching: .any)["remote-markdown-rendered"].firstMatch
+        XCTAssertTrue(rendered.wait(for: \.isHittable, toEqual: true, timeout: 10))
+        app.buttons["remote-markdown-options"].tap()
+        let submenu = app.buttons["remote-markdown-display-menu"]
+        (submenu.exists ? submenu : app.buttons["显示"]).tap()
+        let mode = app.buttons["remote-markdown-mode-raw"]
+        (mode.exists ? mode : app.buttons["原始"]).tap()
+        let raw = app.textViews["remote-source-text"]
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 5)); raw.swipeUp()
+        func reading() -> [String: Any] {
+            guard let value = raw.value as? String,
+                  let parsed = try? JSONSerialization.jsonObject(with: Data(value.utf8)) as? [String: Any] else { return [:] }
+            return parsed
+        }
+        let savedOffset = reading()["cached"] as? Double ?? -1
+        XCTAssertGreaterThan(savedOffset, 100)
+        let close = app.buttons["remote-source-close"]
+        close.tap()
+        XCTAssertTrue(close.waitForNonExistence(timeout: 5))
+        XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 8)); file.tap()
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        func checkRestoredOffset() {
+            let restored = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                let state = reading()
+                return state["applied"] as? Bool == true && abs((state["actual"] as? Double ?? -10_000) - savedOffset) < 3
+            }, object: raw)
+            XCTAssertEqual(XCTWaiter.wait(for: [restored], timeout: 5), .completed)
+        }
+        checkRestoredOffset()
+        close.tap()
+        XCTAssertTrue(file.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        app.terminate()
+        enterFolder()
+        XCTAssertTrue(raw.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        checkRestoredOffset()
+    }
+
+    @MainActor
+    func testNativeLibraryPreviewDirectoryOwnershipChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--library-preview-navigation-fixture",
+            "--chat-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap()
+        app.buttons["sidebar-feature-square-stack-fanned"].tap()
+        let folder = app.buttons["library-node-documents"]
+        let readme = app.buttons["library-node-readme"]
+        XCTAssertTrue(folder.waitForExistence(timeout: 5)); XCTAssertTrue(readme.exists)
+        let done = app.buttons["QLOverlayDoneButtonAccessibilityIdentifier"]
+
+        // A file request belongs to root; a later directory push retires it.
+        readme.tap(); folder.tap()
+        let notes = app.buttons["library-node-notes"]
+        XCTAssertTrue(notes.waitForExistence(timeout: 5))
+        let stalePush = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == true"), object: done)
+        stalePush.isInverted = true
+        XCTAssertEqual(XCTWaiter.wait(for: [stalePush], timeout: 2), .completed)
+        XCTAssertTrue(notes.isHittable)
+
+        // Native Back mutates NavigationStack.path through its Binding.
+        notes.tap(); app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(folder.waitForExistence(timeout: 5))
+        let staleBack = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == true"), object: done)
+        staleBack.isInverted = true
+        XCTAssertEqual(XCTWaiter.wait(for: [staleBack], timeout: 2), .completed)
+
+        // A-B-A reentry still permits an explicit new preview and close return.
+        folder.tap(); XCTAssertTrue(notes.waitForExistence(timeout: 5)); notes.tap()
+        XCTAssertTrue(done.waitForExistence(timeout: 10))
+        let content = app.descendants(matching: .any).matching(NSPredicate(format:
+            "label CONTAINS %@ OR value CONTAINS %@", "Synthetic nested directory preview.",
+            "Synthetic nested directory preview.")).firstMatch
+        XCTAssertTrue(content.waitForExistence(timeout: 10))
+        XCTAssertTrue(done.wait(for: \.isHittable, toEqual: true, timeout: 5)); done.tap()
+        XCTAssertTrue(done.waitForNonExistence(timeout: 5)); XCTAssertTrue(notes.isHittable)
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(folder.waitForExistence(timeout: 5))
+        app.buttons["library-open-menu"].tap()
         XCTAssertTrue(app.buttons["open-settings"].waitForExistence(timeout: 5))
     }
 
@@ -12944,6 +16197,36 @@ final class HostInteractionTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["此功能尚未接入"].waitForExistence(timeout: 4))
         app.navigationBars.buttons.firstMatch.tap()
         XCTAssertTrue(ads.isHittable)
+    }
+
+    @MainActor
+    func testSettingsAccentSwatchesChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        let sidebar = app.buttons["open-conversation-list"]
+        XCTAssertTrue(sidebar.waitForExistence(timeout: 10))
+        sidebar.tap(); app.buttons["open-settings"].tap()
+        let picker = app.buttons["settings-accent"]
+        for _ in 0..<7 where !picker.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(picker.isHittable)
+        let original = picker.value as? String
+        picker.tap()
+        let green = app.buttons["绿色"]
+        XCTAssertTrue(green.waitForExistence(timeout: 5))
+        let menu = XCTAttachment(screenshot: app.screenshot())
+        menu.name = "settings-accent-menu-zh-light"; menu.lifetime = .keepAlways; add(menu)
+        green.tap()
+        XCTAssertEqual(picker.value as? String, "绿色")
+        let row = XCTAttachment(screenshot: app.screenshot())
+        row.name = "settings-accent-selected-zh-light"; row.lifetime = .keepAlways; add(row)
+        if let original, original != "绿色" {
+            picker.tap()
+            let previousOption = app.buttons[original]
+            if previousOption.waitForExistence(timeout: 5) { previousOption.tap() }
+        }
     }
 
     @MainActor
@@ -13210,6 +16493,41 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
+    func testGeneralSpellingTopologyChinese() throws {
+        let app = launchNotificationSettings(scenario: "authorized", englishDark: false)
+        app.navigationBars.buttons.firstMatch.tap()
+        func openGeneral() {
+            let entry = app.buttons["settings-general"]
+            for _ in 0..<7 where !entry.isHittable { app.scrollViews.firstMatch.swipeUp() }
+            XCTAssertTrue(entry.isHittable); entry.tap()
+        }
+        openGeneral()
+        let spelling = app.switches["settings-general-spelling"]
+        XCTAssertTrue(spelling.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["settings-general-spelling"].exists)
+        XCTAssertLessThan(app.buttons["settings-general-language"].frame.minY, spelling.frame.minY)
+        XCTAssertLessThan(spelling.frame.minY, app.switches["settings-haptics-enabled"].frame.minY)
+        let status = app.staticTexts["settings-general-spelling-status"]
+        XCTAssertTrue(status.label.contains("应用于聊天和 Codex"))
+        let initial = spelling.value as? String
+        spelling.coordinate(withNormalizedOffset: CGVector(dx: 0.92, dy: 0.5)).tap()
+        let changed = spelling.value as? String
+        XCTAssertNotEqual(initial, changed)
+        let image = XCTAttachment(screenshot: app.screenshot())
+        image.name = "general-spelling-toggle-zh-light"; image.lifetime = .keepAlways; add(image)
+        app.terminate(); app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        openGeneral()
+        XCTAssertTrue(spelling.waitForExistence(timeout: 5))
+        XCTAssertEqual(spelling.value as? String, changed)
+        spelling.coordinate(withNormalizedOffset: CGVector(dx: 0.92, dy: 0.5)).tap()
+        XCTAssertEqual(spelling.value as? String, initial)
+        app.navigationBars.buttons.firstMatch.tap(); app.buttons["close-settings"].tap()
+        XCTAssertTrue(app.buttons["open-settings"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
     func testHapticsPreferenceChinese() throws { try verifyHapticsPreference(englishDark: false) }
 
     @MainActor
@@ -13227,14 +16545,10 @@ final class HostInteractionTests: XCTestCase {
         }
         openHaptics()
         let language = app.buttons["settings-general-language"]
-        let spelling = app.buttons["settings-general-spelling"]
+        let spelling = app.switches["settings-general-spelling"]
         XCTAssertTrue(language.isHittable)
         XCTAssertTrue(spelling.isHittable)
         XCTAssertLessThan(language.frame.minY, spelling.frame.minY)
-        spelling.tap()
-        XCTAssertTrue(app.otherElements["settings-unavailable-page"].waitForExistence(timeout: 5)
-            || app.staticTexts[englishDark ? "This feature is not connected" : "此功能尚未接入"].exists)
-        app.navigationBars.buttons.firstMatch.tap()
         let toggle = app.switches["settings-haptics-enabled"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 5))
         let initial = toggle.value as? String
@@ -15211,4 +18525,1587 @@ final class HostInteractionTests: XCTestCase {
         let attachment = XCTAttachment(screenshot: app.screenshot()); attachment.name = "edited-draft-after-process-restart"; attachment.lifetime = .keepAlways; add(attachment)
     }
 
+}
+
+extension HostInteractionTests {
+    @MainActor
+    func testCodexAuthoritativeLifecycleChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--remote-interactive-replay",
+            "--remote-model-slider-fixture", "--remote-permission-fixture", "--codex-authoritative-lifecycle-fixture",
+            "--chat-state-profile=" + profile, "--remote-draft-profile=" + profile,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        func source(_ id: String) {
+            let list = app.descendants(matching: .any)["remote-task-list"].firstMatch
+            for _ in 0..<6 where !app.scrollViews["remote-source-filter"].isHittable { list.swipeDown() }
+            let button = app.buttons["remote-source-" + id]
+            if !button.isHittable { app.scrollViews["remote-source-filter"].swipeLeft() }
+            XCTAssertTrue(button.wait(for: \.isHittable, toEqual: true, timeout: 5)); button.tap()
+        }
+        func open(_ instance: String) {
+            let row = app.buttons["remote-task-" + instance + "-shared-task"]
+            XCTAssertTrue(row.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            row.coordinate(withNormalizedOffset: CGVector(dx: 0.3, dy: 0.5)).tap()
+            XCTAssertTrue(app.buttons["codex-lifecycle-advance"].waitForExistence(timeout: 5))
+        }
+        func back() {
+            let button = app.navigationBars.buttons.matching(identifier: "BackButton").allElementsBoundByIndex.first { $0.isHittable }
+            XCTAssertNotNil(button); button?.tap()
+            XCTAssertTrue(app.buttons["codex-home-search"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+        }
+        source("lifecycle-cloud"); open("lifecycle-cloud")
+        XCTAssertTrue(app.staticTexts["lifecycle-cloud 第一条用户消息"].waitForExistence(timeout: 4))
+        XCTAssertTrue(app.staticTexts["第二条用户消息"].exists)
+        XCTAssertFalse(app.staticTexts["remote-replay-mode"].exists)
+        XCTAssertFalse(app.buttons["remote-model-control"].exists, "Absent external model service must not expose fixture capability")
+        app.buttons["codex-lifecycle-advance"].tap()
+        XCTAssertTrue(app.textViews.matching(NSPredicate(format: "value == %@", "已修订的独立回复")).firstMatch.waitForExistence(timeout: 4))
+        XCTAssertFalse(app.staticTexts["第二条用户消息"].exists)
+        XCTAssertEqual(app.textViews.matching(NSPredicate(format: "value == %@", "已修订的独立回复")).count, 1)
+        app.buttons["codex-lifecycle-disconnect"].tap()
+        XCTAssertTrue(app.staticTexts["codex-message-update-error"].waitForExistence(timeout: 4))
+        XCTAssertTrue(app.textViews.matching(NSPredicate(format: "value == %@", "已修订的独立回复")).firstMatch.exists)
+        app.buttons["codex-message-update-retry"].tap()
+        XCTAssertTrue(app.buttons["codex-lifecycle-advance"].waitForExistence(timeout: 4))
+        XCTAssertFalse(app.staticTexts["codex-message-update-error"].exists)
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-authoritative-items-revised-zh-light"
+        shot.lifetime = .keepAlways; add(shot)
+        back(); source("lifecycle-remote"); open("lifecycle-remote")
+        XCTAssertTrue(app.staticTexts["lifecycle-remote 第一条用户消息"].waitForExistence(timeout: 4))
+        XCTAssertTrue(app.staticTexts["第二条用户消息"].exists)
+        back(); source("lifecycle-cloud"); open("lifecycle-cloud")
+        XCTAssertTrue(app.textViews.matching(NSPredicate(format: "value == %@", "已修订的独立回复")).firstMatch.waitForExistence(timeout: 4))
+        XCTAssertFalse(app.staticTexts["第二条用户消息"].exists)
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(app.buttons["codex-lifecycle-advance"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(app.textViews.matching(NSPredicate(format: "value == %@", "已修订的独立回复")).firstMatch.exists)
+        app.buttons["codex-lifecycle-clear-items"].tap()
+        XCTAssertFalse(app.textViews.matching(NSPredicate(format: "value == %@", "已修订的独立回复")).firstMatch.waitForExistence(timeout: 1))
+        XCTAssertFalse(app.staticTexts["不应显示的旧汇总用户"].exists)
+        XCTAssertFalse(app.textViews.matching(NSPredicate(format: "value == %@", "不应复活的旧汇总正文")).firstMatch.exists)
+        app.buttons["codex-lifecycle-empty"].tap()
+        XCTAssertTrue(app.staticTexts["codex-message-empty"].waitForExistence(timeout: 4))
+        XCTAssertFalse(app.textViews.matching(NSPredicate(format: "value == %@", "已修订的独立回复")).firstMatch.exists)
+        back(); source("lifecycle-cloud"); open("lifecycle-cloud")
+        XCTAssertTrue(app.staticTexts["codex-message-empty"].waitForExistence(timeout: 4))
+    }
+}
+
+extension HostInteractionTests {
+    @MainActor func testCodexAgentRosterLiveUpdatesChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-task-goals-agents-fixture", "--codex-agent-live-fixture"])
+        let summary = app.buttons["remote-agents-summary"]
+        let review = app.buttons["remote-agent-row-provider-review"]
+        let update = app.buttons["codex-agent-fixture-update"]
+        let followup = app.buttons["remote-agent-row-provider-followup"]
+
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(summary.wait(for: \.label, toEqual: "1 个智能体", timeout: 8))
+        summary.tap()
+        XCTAssertTrue(review.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(review.label.contains("正在处理"))
+        update.tap()
+        XCTAssertTrue(summary.wait(for: \.label, toEqual: "2 个智能体", timeout: 5))
+        XCTAssertTrue(followup.waitForExistence(timeout: 5))
+        XCTAssertTrue(review.label.contains("完成"))
+
+        review.tap()
+        XCTAssertTrue(codexOperationBody("云端智能体历史", app).waitForExistence(timeout: 5))
+        let childBack = app.navigationBars.buttons.matching(identifier: "BackButton").firstMatch
+        XCTAssertTrue(childBack.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        childBack.tap()
+        XCTAssertTrue(summary.wait(for: \.label, toEqual: "2 个智能体", timeout: 5))
+        app.buttons["codex-agent-fixture-disconnect"].tap()
+        let retry = app.buttons["remote-agent-roster-retry"]
+        XCTAssertTrue(retry.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertEqual(summary.label, "2 个智能体")
+        retry.tap()
+        XCTAssertTrue(retry.waitForNonExistence(timeout: 5))
+        update.tap()
+        XCTAssertTrue(summary.wait(for: \.label, toEqual: "1 个智能体", timeout: 5))
+        XCTAssertTrue(followup.waitForNonExistence(timeout: 5))
+
+        backFromCodexOperation(app)
+        codexOperationSource("operations-remote", app)
+        openCodexOperationTask("operations-remote", app)
+        XCTAssertTrue(summary.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        summary.tap()
+        XCTAssertTrue(review.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(review.label.contains("电脑审阅"))
+        XCTAssertTrue(review.label.contains("正在处理"))
+        XCTAssertFalse(followup.exists)
+    }
+
+    @MainActor func testCodexInjectedGoalsAndAgentsAcrossInstancesChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-task-goals-agents-fixture", "--codex-goal-uncertain-once",
+            "--codex-agent-fail-once", "--codex-goal-live-fixture"])
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        let goal = app.buttons["remote-goal-status"]
+        let toggle = app.buttons["remote-goal-toggle-status"]
+        XCTAssertTrue(goal.wait(for: \.isEnabled, toEqual: true, timeout: 5))
+        goal.tap()
+        XCTAssertTrue(app.staticTexts["云端的服务目标"].waitForExistence(timeout: 5))
+        XCTAssertEqual(toggle.label, "暂停目标")
+        toggle.tap()
+        let lookup = app.buttons["remote-goal-lookup"]
+        XCTAssertTrue(lookup.waitForExistence(timeout: 5))
+        XCTAssertEqual(toggle.label, "暂停目标")
+        lookup.tap()
+        XCTAssertTrue(toggle.wait(for: \.label, toEqual: "恢复目标", timeout: 5))
+        let update = app.buttons["codex-goal-fixture-update"]
+        XCTAssertTrue(update.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        update.tap()
+        let updatedObjective = app.staticTexts["服务目标已更新"]
+        XCTAssertTrue(updatedObjective.waitForExistence(timeout: 5))
+        XCTAssertFalse(toggle.exists)
+        update.tap()
+        XCTAssertTrue(updatedObjective.waitForNonExistence(timeout: 5))
+        XCTAssertTrue(goal.wait(for: \.label, toEqual: "追求目标", timeout: 5))
+
+        let retryRoster = app.buttons["remote-agent-roster-retry"]
+        XCTAssertTrue(retryRoster.waitForExistence(timeout: 5))
+        retryRoster.tap()
+        let agents = app.buttons["remote-agents-summary"]
+        XCTAssertTrue(agents.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        agents.tap()
+        let agent = app.buttons["remote-agent-row-provider-review"]
+        XCTAssertTrue(agent.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(agent.label.contains("云端审阅"))
+        agent.tap()
+        let retryThread = app.buttons["remote-agent-navigation-retry"]
+        XCTAssertTrue(retryThread.waitForExistence(timeout: 5))
+        retryThread.tap()
+        let child = codexOperationBody("云端智能体历史", app)
+        XCTAssertTrue(child.waitForExistence(timeout: 5))
+        XCTAssertTrue(agents.wait(for: \.isHittable, toEqual: false, timeout: 5))
+        let back = app.navigationBars.buttons.matching(identifier: "BackButton").firstMatch
+        XCTAssertTrue(back.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        back.tap()
+        XCTAssertTrue(goal.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        backFromCodexOperation(app)
+
+        codexOperationSource("operations-remote", app)
+        openCodexOperationTask("operations-remote", app)
+        XCTAssertTrue(goal.wait(for: \.isEnabled, toEqual: true, timeout: 5))
+        goal.tap()
+        XCTAssertTrue(app.staticTexts["电脑的服务目标"].waitForExistence(timeout: 5))
+        XCTAssertEqual(toggle.label, "暂停目标")
+        XCTAssertTrue(agents.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        agents.tap()
+        XCTAssertTrue(agent.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(agent.label.contains("电脑审阅"))
+        agent.tap()
+        XCTAssertTrue(codexOperationBody("电脑智能体历史", app).waitForExistence(timeout: 5))
+    }
+
+    @MainActor func testCodexRunningFollowUpChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-running-follow-up-fixture", "--codex-operations-reject-once",
+                                         "-rea.preview.remote.followUpBehavior", "queue"])
+        let completion = app.buttons["codex-follow-up-fixture-complete"]
+        let editor = app.textViews["remote-composer-editor"]
+        let followUp = app.buttons["remote-composer-follow-up"]
+        let queuedPrefix = "codex-queued-prompt-"
+        func queued(_ text: String) -> XCUIElement {
+            app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@", queuedPrefix, text)).firstMatch
+        }
+        func sent(_ text: String) -> XCUIElementQuery {
+            app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@", "codex-submission-", text))
+        }
+        func type(_ text: String) {
+            let focus = app.buttons["remote-composer-focus"]
+            if focus.isHittable { focus.tap() }
+            XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            editor.tap()
+            editor.typeText(text)
+            XCTAssertTrue(followUp.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        }
+
+        for (index, host) in ["operations-cloud", "operations-remote"].enumerated() {
+            codexOperationSource(host, app)
+            openCodexOperationTask(host, app)
+            let started = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "provider-initial"),
+                                                    object: completion)
+            XCTAssertEqual(XCTWaiter.wait(for: [started], timeout: 5), .completed)
+            XCTAssertFalse(sent("Queue 0").firstMatch.exists, "An instance must not see another instance's promoted prompt")
+            let queueText = "Queue \(index)"
+            let steerText = "Steer \(index)"
+            type(queueText)
+            followUp.tap()
+            if index == 0 {
+                let retry = app.buttons["codex-operation-retry"]
+                XCTAssertTrue(retry.wait(for: \.isHittable, toEqual: true, timeout: 5))
+                XCTAssertEqual(editor.value as? String, queueText)
+                XCTAssertFalse(queued(queueText).exists)
+                retry.tap()
+            }
+            XCTAssertTrue(queued(queueText).waitForExistence(timeout: 5))
+            XCTAssertFalse(sent(queueText).firstMatch.exists)
+            XCTAssertEqual(completion.value as? String, "provider-initial")
+
+            type(steerText)
+            followUp.press(forDuration: 0.6)
+            let steerChoice = app.buttons["引导"]
+            XCTAssertTrue(steerChoice.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            steerChoice.tap()
+            XCTAssertTrue(sent(steerText).firstMatch.waitForExistence(timeout: 5))
+            XCTAssertEqual(completion.value as? String, "provider-initial")
+            XCTAssertTrue(queued(queueText).exists)
+
+            backFromCodexOperation(app)
+            openCodexOperationTask(host, app)
+            XCTAssertTrue(queued(queueText).waitForExistence(timeout: 5))
+            XCTAssertTrue(completion.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            completion.tap()
+            XCTAssertTrue(sent(queueText).firstMatch.waitForExistence(timeout: 5))
+            XCTAssertTrue(queued(queueText).waitForNonExistence(timeout: 5))
+            XCTAssertEqual(sent(queueText).count, 1)
+            XCTAssertNotEqual(completion.value as? String, "provider-initial")
+            backFromCodexOperation(app)
+        }
+    }
+
+    @MainActor func testCodexQueuedPromptMutationsChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-running-follow-up-fixture", "--codex-queued-prompt-recovery-fixture",
+                                         "-rea.preview.remote.followUpBehavior", "queue"])
+        let editor = app.textViews["remote-composer-editor"]
+        let send = app.buttons["remote-composer-send"]
+        let followUp = app.buttons["remote-composer-follow-up"]
+        let discard = app.buttons["remote-pending-edit-cancel"]
+        let jump = app.buttons["remote-scroll-to-bottom"]
+        func pending(_ text: String) -> XCUIElement {
+            app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@",
+                "codex-queued-prompt-", text)).firstMatch
+        }
+        func focus() {
+            let compact = app.buttons["remote-composer-focus"]
+            if compact.isHittable { compact.tap() }
+            XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            editor.tap()
+        }
+        func action(_ name: String, menu: XCUIElement) {
+            if !menu.isHittable && jump.isHittable { jump.tap() }
+            for _ in 0..<4 where !menu.isHittable { dragRemoteHistory(app, earlier: false) }
+            XCTAssertTrue(menu.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            menu.tap()
+            let button = remotePendingAction(name, app: app)
+            XCTAssertTrue(button.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            button.tap()
+        }
+        func waitForDraft(_ text: String) {
+            let value = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", text), object: editor)
+            XCTAssertEqual(XCTWaiter.wait(for: [value], timeout: 5), .completed)
+        }
+        for (index, host) in ["operations-cloud", "operations-remote"].enumerated() {
+            codexOperationSource(host, app)
+            openCodexOperationTask(host, app)
+            XCTAssertFalse(pending("Queue 0 updated").exists)
+            let original = "Queue \(index)"
+            let updated = original + " updated"
+            let unsent = "Draft \(index)"
+            focus(); editor.typeText(original)
+            XCTAssertTrue(followUp.wait(for: \.isHittable, toEqual: true, timeout: 5)); followUp.tap()
+            let originalRow = pending(original)
+            XCTAssertTrue(originalRow.waitForExistence(timeout: 5))
+            let id = String(originalRow.identifier.dropFirst("codex-queued-prompt-".count))
+            let menu = app.buttons["codex-queued-prompt-menu-" + id]
+            focus(); editor.typeText(unsent)
+            action("edit", menu: menu)
+            waitForDraft(original)
+            editor.typeText(" discarded")
+            XCTAssertTrue(discard.wait(for: \.isHittable, toEqual: true, timeout: 5)); discard.tap()
+            XCTAssertEqual(editor.value as? String, unsent)
+            XCTAssertTrue(originalRow.exists)
+            action("edit", menu: menu)
+            waitForDraft(original)
+            editor.typeText(" updated")
+            XCTAssertTrue(send.wait(for: \.isHittable, toEqual: true, timeout: 5)); send.tap()
+            if index == 0 {
+                let retry = app.buttons["codex-operation-retry"]
+                XCTAssertTrue(retry.wait(for: \.isHittable, toEqual: true, timeout: 5))
+                XCTAssertEqual(editor.value as? String, updated)
+                XCTAssertTrue(originalRow.exists)
+                retry.tap()
+            }
+            XCTAssertTrue(pending(updated).waitForExistence(timeout: 5))
+            XCTAssertEqual(pending(updated).identifier, "codex-queued-prompt-" + id)
+            XCTAssertTrue(discard.waitForNonExistence(timeout: 5))
+            XCTAssertEqual(editor.value as? String, unsent)
+            action("cancel", menu: menu)
+            if index == 0 {
+                let lookup = app.buttons["codex-operation-lookup"]
+                XCTAssertTrue(lookup.wait(for: \.isHittable, toEqual: true, timeout: 5))
+                XCTAssertTrue(pending(updated).exists)
+                lookup.tap()
+            }
+            XCTAssertTrue(pending(updated).waitForNonExistence(timeout: 5))
+            XCTAssertEqual(editor.value as? String, unsent)
+            backFromCodexOperation(app)
+        }
+    }
+
+    @MainActor func testCodexQueuedSteerAcknowledgementChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-running-follow-up-fixture", "--codex-deferred-queue-steer-fixture",
+                                         "-rea.preview.remote.followUpBehavior", "queue"])
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        let active = app.buttons["codex-follow-up-fixture-complete"]
+        XCTAssertTrue(active.wait(for: \.isEnabled, toEqual: true, timeout: 5))
+        let initialTurn = active.value as? String
+        let editor = app.textViews["remote-composer-editor"]
+        let compact = app.buttons["remote-composer-focus"]
+        if compact.isHittable { compact.tap() }
+        XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        editor.tap(); editor.typeText("Deferred steer")
+        let followUp = app.buttons["remote-composer-follow-up"]
+        XCTAssertTrue(followUp.wait(for: \.isHittable, toEqual: true, timeout: 5)); followUp.tap()
+        let queuePrefix = "codex-queued-prompt-"
+        func queued(_ text: String) -> XCUIElement {
+            app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@", queuePrefix, text)).firstMatch
+        }
+        let row = queued("Deferred steer")
+        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        let id = String(row.identifier.dropFirst(queuePrefix.count))
+        let menu = app.buttons["codex-queued-prompt-menu-" + id]
+        let jump = app.buttons["remote-scroll-to-bottom"]
+        if !menu.isHittable && jump.isHittable { jump.tap() }
+        for _ in 0..<4 where !menu.isHittable { dragRemoteHistory(app, earlier: false) }
+        XCTAssertTrue(menu.wait(for: \.isHittable, toEqual: true, timeout: 5)); menu.tap()
+        let steer = remotePendingAction("toggle", app: app)
+        XCTAssertTrue(steer.wait(for: \.isHittable, toEqual: true, timeout: 5)); steer.tap()
+
+        let awaiting = app.staticTexts["codex-queued-prompt-status-" + id]
+        XCTAssertTrue(awaiting.waitForExistence(timeout: 5))
+        let otherClient = queued("Queued on another client")
+        XCTAssertTrue(otherClient.waitForExistence(timeout: 5))
+        XCTAssertTrue(row.exists)
+        XCTAssertEqual(awaiting.label, "等待写入原轮次")
+        XCTAssertFalse(menu.exists)
+        let delivered = app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@",
+            "codex-submission-", "Deferred steer"))
+        XCTAssertFalse(delivered.firstMatch.exists)
+        let adjacentID = String(otherClient.identifier.dropFirst(queuePrefix.count))
+        let adjacentMenu = app.buttons["codex-queued-prompt-menu-" + adjacentID]
+        if !adjacentMenu.isHittable && jump.isHittable { jump.tap() }
+        for _ in 0..<4 where !adjacentMenu.isHittable { dragRemoteHistory(app, earlier: false) }
+        XCTAssertTrue(adjacentMenu.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(adjacentMenu.isEnabled)
+        adjacentMenu.tap()
+        let cancelAdjacent = remotePendingAction("cancel", app: app)
+        XCTAssertTrue(cancelAdjacent.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        cancelAdjacent.tap()
+        XCTAssertTrue(otherClient.waitForNonExistence(timeout: 5))
+        XCTAssertTrue(awaiting.exists)
+        XCTAssertFalse(delivered.firstMatch.exists)
+        let refresh = app.buttons["codex-operation-refresh-queue-delivery-" + id]
+        if !refresh.isHittable && jump.isHittable { jump.tap() }
+        for _ in 0..<4 where !refresh.isHittable { dragRemoteHistory(app, earlier: false) }
+        XCTAssertTrue(refresh.wait(for: \.isHittable, toEqual: true, timeout: 5)); refresh.tap()
+        XCTAssertTrue(delivered.firstMatch.waitForExistence(timeout: 5))
+        XCTAssertTrue(awaiting.waitForNonExistence(timeout: 5))
+        XCTAssertFalse(row.exists)
+        XCTAssertEqual(delivered.count, 1)
+        XCTAssertEqual(active.value as? String, initialTurn)
+        XCTAssertFalse(otherClient.exists)
+    }
+
+    @MainActor func testCodexQueuedPromptDeliveryChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-running-follow-up-fixture",
+                                         "-rea.preview.remote.followUpBehavior", "queue"])
+        let editor = app.textViews["remote-composer-editor"]
+        let followUp = app.buttons["remote-composer-follow-up"]
+        let stop = app.buttons["remote-composer-stop"]
+        let active = app.buttons["codex-follow-up-fixture-complete"]
+        let jump = app.buttons["remote-scroll-to-bottom"]
+        func queued(_ text: String) -> XCUIElement {
+            app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@",
+                "codex-queued-prompt-", text)).firstMatch
+        }
+        func delivered(_ text: String) -> XCUIElementQuery {
+            app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@",
+                "codex-submission-", text))
+        }
+        func focus() {
+            let compact = app.buttons["remote-composer-focus"]
+            if compact.isHittable { compact.tap() }
+            XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            editor.tap()
+        }
+        func menu(for row: XCUIElement) -> XCUIElement {
+            let id = String(row.identifier.dropFirst("codex-queued-prompt-".count))
+            return app.buttons["codex-queued-prompt-menu-" + id]
+        }
+        func select(_ action: String, insteadOf unavailable: String, in menu: XCUIElement) {
+            if !menu.isHittable && jump.isHittable { jump.tap() }
+            for _ in 0..<4 where !menu.isHittable { dragRemoteHistory(app, earlier: false) }
+            XCTAssertTrue(menu.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            menu.tap()
+            let choice = remotePendingAction(action, app: app)
+            XCTAssertTrue(choice.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            XCTAssertFalse(remotePendingAction(unavailable, app: app).exists)
+            choice.tap()
+        }
+        for (index, host) in ["operations-cloud", "operations-remote"].enumerated() {
+            codexOperationSource(host, app)
+            openCodexOperationTask(host, app)
+            XCTAssertTrue(active.wait(for: \.isEnabled, toEqual: true, timeout: 5))
+            let initialTurn = active.value as? String
+            XCTAssertEqual(initialTurn, "provider-initial")
+            XCTAssertFalse(delivered("Steer queued 0").firstMatch.exists)
+            let steerText = "Steer queued \(index)"
+            let startText = "Start queued \(index)"
+            for text in [steerText, startText] {
+                focus(); editor.typeText(text)
+                XCTAssertTrue(followUp.wait(for: \.isHittable, toEqual: true, timeout: 5)); followUp.tap()
+                XCTAssertTrue(queued(text).waitForExistence(timeout: 5))
+            }
+            focus(); editor.typeText("Draft")
+            select("toggle", insteadOf: "start", in: menu(for: queued(steerText)))
+            XCTAssertTrue(delivered(steerText).firstMatch.waitForExistence(timeout: 5))
+            XCTAssertTrue(queued(steerText).waitForNonExistence(timeout: 5))
+            XCTAssertEqual(delivered(steerText).count, 1)
+            XCTAssertEqual(active.value as? String, initialTurn)
+            XCTAssertEqual(editor.value as? String, "Draft")
+
+            focus(); editor.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 5))
+            XCTAssertTrue(stop.wait(for: \.isHittable, toEqual: true, timeout: 5)); stop.tap()
+            XCTAssertTrue(active.wait(for: \.isEnabled, toEqual: false, timeout: 5))
+            XCTAssertTrue(queued(startText).exists)
+            focus(); editor.typeText("Keep")
+            select("start", insteadOf: "toggle", in: menu(for: queued(startText)))
+            XCTAssertTrue(delivered(startText).firstMatch.waitForExistence(timeout: 5))
+            XCTAssertTrue(queued(startText).waitForNonExistence(timeout: 5))
+            XCTAssertEqual(delivered(startText).count, 1)
+            XCTAssertTrue(active.wait(for: \.isEnabled, toEqual: true, timeout: 5))
+            XCTAssertNotEqual(active.value as? String, initialTurn)
+            XCTAssertEqual(editor.value as? String, "Keep")
+            backFromCodexOperation(app)
+        }
+    }
+
+    @MainActor private func launchCodexOperations(_ extra: [String] = []) -> XCUIApplication {
+        let app = XCUIApplication(), profile = UUID().uuidString.lowercased()
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks", "--remote-interactive-replay", "--codex-operations-fixture",
+            "--chat-state-profile=" + profile, "--remote-draft-profile=" + profile,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"] + extra
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        XCTAssertTrue(app.buttons["remote-source-operations-cloud"].waitForExistence(timeout: 5))
+        return app
+    }
+    @MainActor private func codexOperationSource(_ host: String, _ app: XCUIApplication) {
+        let list = app.descendants(matching: .any)["remote-task-list"].firstMatch
+        for _ in 0..<6 where !app.scrollViews["remote-source-filter"].isHittable { list.swipeDown() }
+        let button = app.buttons["remote-source-" + host]
+        if !button.isHittable { app.scrollViews["remote-source-filter"].swipeLeft() }
+        XCTAssertTrue(button.wait(for: \.isHittable, toEqual: true, timeout: 5)); button.tap()
+    }
+    @MainActor private func openCodexOperationTask(_ host: String, _ app: XCUIApplication) {
+        let row = app.buttons["remote-task-" + host + "-shared-task"]
+        XCTAssertTrue(row.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        row.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
+        XCTAssertTrue(app.buttons["remote-thread-options"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(app.textViews["remote-composer-editor"].waitForExistence(timeout: 5))
+    }
+    @MainActor private func backFromCodexOperation(_ app: XCUIApplication) {
+        let button = app.navigationBars.buttons.matching(identifier: "BackButton").allElementsBoundByIndex.first { $0.isHittable }
+        XCTAssertNotNil(button); button?.tap()
+        XCTAssertTrue(app.buttons["codex-home-search"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+    }
+    @MainActor private func codexOperationBody(_ text: String, _ app: XCUIApplication) -> XCUIElement {
+        app.textViews.matching(NSPredicate(format: "value == %@", text)).firstMatch
+    }
+    @MainActor
+    func testCodexLiveLoopbackChinese() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["REA_CODEX_LIVE_UI_TEST"] == "1")
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-loopback-text-fixture"])
+        let cloud = "operations-cloud"
+        codexOperationSource(cloud, app)
+        openCodexOperationTask(cloud, app)
+        let compact = app.buttons["remote-composer-focus"]
+        if compact.isHittable { compact.tap() }
+        let editor = app.textViews["remote-composer-editor"]
+        XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        editor.tap()
+        editor.typeText("REA synthetic streaming check. Write exactly: Streaming transport works.")
+        let send = app.buttons["remote-composer-send"]
+        XCTAssertTrue(send.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        send.tap()
+        let live = app.textViews.matching(NSPredicate(format: "value BEGINSWITH %@", "Streaming")).firstMatch
+        XCTAssertTrue(live.waitForExistence(timeout: 30))
+        let copy = app.buttons["remote-replay-copy-response"]
+        XCTAssertFalse(copy.isHittable)
+        let finalResponse = codexOperationBody("Streaming transport works.", app)
+        XCTAssertTrue(finalResponse.waitForExistence(timeout: 10))
+        XCTAssertTrue(copy.waitForExistence(timeout: 10))
+        backFromCodexOperation(app)
+        codexOperationSource("operations-remote", app)
+        openCodexOperationTask("operations-remote", app)
+        XCTAssertFalse(finalResponse.exists)
+        backFromCodexOperation(app)
+        codexOperationSource(cloud, app)
+        openCodexOperationTask(cloud, app)
+        XCTAssertTrue(finalResponse.waitForExistence(timeout: 5))
+        XCTAssertTrue(copy.exists)
+    }
+
+    @MainActor
+    func testCodexSavedModelRecoveryChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-saved-model-unavailable-fixture", "--codex-operations-reject-once"])
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        let unavailable = app.staticTexts["codex-model-unavailable"]
+        let picker = app.buttons["codex-model-recovery-picker"]
+        let editor = app.textViews["remote-composer-editor"]
+        let send = app.buttons["remote-composer-send"]
+        XCTAssertTrue(unavailable.waitForExistence(timeout: 5))
+        XCTAssertTrue(unavailable.label.contains("retired-preview"))
+        if app.buttons["remote-composer-focus"].isHittable { app.buttons["remote-composer-focus"].tap() }
+        XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        editor.tap()
+        editor.typeText("保留这份草稿")
+        XCTAssertFalse(send.exists && send.isEnabled)
+        picker.tap()
+        app.buttons["Preview One"].tap()
+        let retry = app.buttons["codex-operation-retry"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 5))
+        XCTAssertTrue(unavailable.exists)
+        XCTAssertEqual(editor.value as? String, "保留这份草稿")
+        XCTAssertFalse(send.exists && send.isEnabled)
+        retry.tap()
+        XCTAssertTrue(unavailable.waitForNonExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "保留这份草稿")
+        XCTAssertTrue(send.wait(for: \.isEnabled, toEqual: true, timeout: 5))
+        send.tap()
+        XCTAssertTrue(codexOperationBody("提供方正在生成", app).waitForExistence(timeout: 5))
+    }
+    @MainActor
+    func testCodexAuthoritativeSendBeforeKeyboardEndsChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-send-transition-fixture", "--codex-send-fast-receipt-fixture",
+                                        "-codexRemoteDismissKeyboardAfterSending", "YES"])
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        let jump = app.buttons["remote-scroll-to-bottom"]
+        if jump.isHittable {
+            let frame = jump.frame
+            app.coordinate(withNormalizedOffset: .zero).withOffset(.init(dx: frame.midX, dy: frame.midY)).tap()
+            XCTAssertTrue(jump.waitForNonExistence(timeout: 5))
+        }
+        let editor = focusCodexSendEditor(app)
+        let keyboard = app.keyboards.firstMatch
+        editor.typeText("回执先送达")
+        tapCodexSendWithVisibleKeyboard(app, editor: editor, text: "回执先送达")
+        XCTAssertTrue(keyboard.waitForNonExistence(timeout: 8))
+        XCTAssertTrue(codexOperationBody("提供方正在生成", app).waitForExistence(timeout: 8))
+        XCTAssertEqual(app.collectionViews["remote-thread-history"].staticTexts.matching(
+            NSPredicate(format: "label == %@", "回执先送达")).count, 1)
+    }
+    @MainActor
+    func testCodexAuthoritativeSendTransitionRejectAndRetryChinese() {
+        verifyCodexAuthoritativeSendTransition(hidesKeyboard: true, rejectsFirst: true)
+    }
+    @MainActor
+    func testCodexAuthoritativeSendTransitionKeepsKeyboardChinese() {
+        verifyCodexAuthoritativeSendTransition(hidesKeyboard: false)
+    }
+    @MainActor
+    func testCodexAuthoritativeSendTransitionReducedMotionChinese() {
+        verifyCodexAuthoritativeSendTransition(hidesKeyboard: true, reducesMotion: true)
+    }
+    @MainActor
+    private func focusCodexSendEditor(_ app: XCUIApplication) -> XCUIElement {
+        let editor = app.textViews["remote-composer-editor"]
+        let keyboard = app.keyboards.firstMatch
+        let focus = app.buttons["remote-composer-focus"]
+        if !keyboard.exists {
+            if focus.isHittable { focus.tap() }
+            else {
+                XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 8))
+                editor.tap()
+            }
+        }
+        XCTAssertTrue(keyboard.waitForExistence(timeout: 8))
+        XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        return editor
+    }
+    @MainActor
+    private func tapCodexSendWithVisibleKeyboard(_ app: XCUIApplication, editor: XCUIElement, text: String) {
+        let send = app.buttons["remote-composer-send"]
+        if !app.keyboards.firstMatch.waitForExistence(timeout: 2) {
+            _ = focusCodexSendEditor(app)
+        }
+        let readyToTap = NSPredicate { _, _ in
+            let keyboard = app.keyboards.firstMatch
+            guard keyboard.exists, send.isHittable, editor.value as? String == text else { return false }
+            let frame = keyboard.frame
+            return frame.height > 150 && send.frame.midY < frame.minY
+        }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: readyToTap, object: nil)],
+                                     timeout: 18), .completed)
+        send.coordinate(withNormalizedOffset: .init(dx: 0.50, dy: 0.50)).tap()
+    }
+    @MainActor
+    private func verifyCodexAuthoritativeSendTransition(hidesKeyboard: Bool, rejectsFirst: Bool = false, reducesMotion: Bool = false) {
+        continueAfterFailure = false
+        var arguments = ["--codex-send-transition-fixture", "-codexRemoteDismissKeyboardAfterSending",
+                         hidesKeyboard ? "YES" : "NO"]
+        if reducesMotion { arguments.append("--codex-send-reduced-motion-fixture") }
+        let app = launchCodexOperations(arguments)
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        let editor = focusCodexSendEditor(app)
+        let keyboard = app.keyboards.firstMatch
+        let text = rejectsFirst ? "验证待确认消息" : "verify pending message"
+        editor.typeText(text)
+
+        let history = app.collectionViews["remote-thread-history"]
+        let bubbles = history.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label == %@",
+                                                               "codex-submission-", text))
+        let busy = app.descendants(matching: .any)["codex-operation-busy"].firstMatch
+        let rejected = app.staticTexts["codex-operation-rejected"]
+        let retry = app.buttons["codex-operation-retry"]
+        let accept = app.buttons["codex-send-fixture-accept"]
+        func verifyWaiting() -> String {
+            XCTAssertTrue(busy.waitForExistence(timeout: 5))
+            XCTAssertTrue(bubbles.firstMatch.waitForExistence(timeout: 5))
+            XCTAssertEqual(bubbles.count, 1)
+            if hidesKeyboard {
+                XCTAssertTrue(keyboard.waitForNonExistence(timeout: 5))
+                XCTAssertEqual(app.buttons["remote-composer-focus"].label, text)
+            } else {
+                XCTAssertTrue(keyboard.exists)
+                XCTAssertEqual(editor.value as? String, text)
+            }
+            return bubbles.firstMatch.identifier
+        }
+        tapCodexSendWithVisibleKeyboard(app, editor: editor, text: text)
+        var identity = verifyWaiting()
+        if rejectsFirst {
+            app.buttons["codex-send-fixture-reject"].tap()
+            XCTAssertTrue(rejected.waitForExistence(timeout: 5))
+            XCTAssertTrue(bubbles.firstMatch.waitForNonExistence(timeout: 5))
+            XCTAssertTrue(keyboard.waitForExistence(timeout: 5))
+            XCTAssertEqual(editor.value as? String, text)
+            retry.tap()
+            let retriedIdentity = verifyWaiting()
+            XCTAssertNotEqual(identity, retriedIdentity)
+            identity = retriedIdentity
+        }
+        let followUp = " follow-up draft"
+        if !hidesKeyboard {
+            editor.typeText(followUp)
+            XCTAssertEqual(editor.value as? String, text + followUp)
+        }
+        accept.tap()
+        XCTAssertTrue(codexOperationBody("提供方正在生成", app).waitForExistence(timeout: 8))
+        XCTAssertTrue(busy.waitForNonExistence(timeout: 8))
+        XCTAssertEqual(bubbles.count, 1)
+        XCTAssertEqual(bubbles.firstMatch.identifier, identity)
+        if hidesKeyboard {
+            XCTAssertFalse(keyboard.exists)
+            XCTAssertTrue(app.buttons["remote-composer-focus"].waitForExistence(timeout: 5))
+        } else {
+            XCTAssertTrue(keyboard.exists)
+            XCTAssertEqual(editor.value as? String, text + followUp)
+        }
+    }
+    @MainActor
+    func testCodexExternalOperationsChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-operations-reject-once"])
+        XCTAssertTrue(app.staticTexts["Codex Preview"].exists)
+        codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        let editor = app.textViews["remote-composer-editor"]
+        if !editor.isHittable, app.buttons["remote-composer-focus"].isHittable { app.buttons["remote-composer-focus"].tap() }
+        XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5)); editor.tap(); editor.typeText("外部发送保稿")
+        app.buttons["remote-composer-send"].tap()
+        XCTAssertTrue(app.staticTexts["codex-operation-rejected"].waitForExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "外部发送保稿")
+        app.buttons["codex-operation-retry"].tap()
+        XCTAssertTrue(codexOperationBody("提供方正在生成", app).waitForExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "")
+        XCTAssertTrue(app.buttons["remote-composer-stop"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+        app.buttons["remote-composer-stop"].tap()
+        XCTAssertTrue(codexOperationBody("提供方已停止", app).waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["remote-replay-mode"].exists)
+        let modelControl = app.buttons["remote-model-control"]
+        XCTAssertTrue(modelControl.waitForExistence(timeout: 5)); modelControl.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertTrue(app.buttons["remote-model-slider-title"].waitForExistence(timeout: 5)); app.buttons["remote-model-slider-title"].tap()
+        let model = app.buttons["remote-advanced-model"]
+        XCTAssertTrue(model.waitForExistence(timeout: 5)); model.tap()
+        app.buttons["Preview Two"].tap()
+        XCTAssertTrue(model.wait(for: \.label, toEqual: "模型, Preview Two", timeout: 5) || model.label.contains("Preview Two"))
+        let effort = app.buttons["remote-advanced-effort"]; effort.tap(); app.buttons["高"].tap()
+        expectation(for: NSPredicate { _,_ in effort.label.contains("高") }, evaluatedWith: effort); waitForExpectations(timeout: 5)
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-external-supplied-models-zh-light"; shot.lifetime = .keepAlways; add(shot)
+        app.buttons["remote-advanced-title"].tap()
+        XCTAssertTrue(app.descendants(matching: .any)["remote-model-slider-rail"].firstMatch.waitForExistence(timeout: 5))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.3)).tap()
+        backFromCodexOperation(app); codexOperationSource("operations-remote", app); openCodexOperationTask("operations-remote", app)
+        XCTAssertFalse(codexOperationBody("提供方已停止", app).exists)
+        if app.buttons["remote-composer-focus"].isHittable { app.buttons["remote-composer-focus"].tap() }
+        XCTAssertTrue(app.buttons["remote-model-control"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.buttons["remote-model-control"].value as? String, "brief")
+        backFromCodexOperation(app); codexOperationSource("operations-cloud", app)
+        let plus = app.buttons["remote-new-thread-recent"]
+        XCTAssertTrue(plus.wait(for: \.isHittable, toEqual: true, timeout: 5)); plus.tap()
+        XCTAssertTrue(editor.wait(for: \.isHittable, toEqual: true, timeout: 5)); editor.typeText("创建提供方任务")
+        app.buttons["remote-composer-send"].tap()
+        XCTAssertTrue(codexOperationBody("提供方已创建任务", app).waitForExistence(timeout: 6))
+        XCTAssertFalse(app.staticTexts["remote-replay-mode"].exists)
+        backFromCodexOperation(app)
+        let created = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "remote-task-operations-cloud-provider-created-"))
+        XCTAssertTrue(created.firstMatch.waitForExistence(timeout: 5)); XCTAssertEqual(created.count, 1)
+    }
+    @MainActor
+    func testCodexExternalUnknownReceiptChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-operations-unknown-once"])
+        codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        let editor = app.textViews["remote-composer-editor"]
+        if !editor.isHittable, app.buttons["remote-composer-focus"].isHittable { app.buttons["remote-composer-focus"].tap() }
+        editor.tap(); editor.typeText("未知结果不可重发")
+        app.buttons["remote-composer-send"].tap()
+        XCTAssertTrue(app.staticTexts["codex-operation-uncertain"].waitForExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "未知结果不可重发")
+        XCTAssertFalse(app.buttons["remote-composer-follow-up"].isEnabled)
+        backFromCodexOperation(app); codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(app.staticTexts["codex-operation-uncertain"].exists)
+        XCTAssertEqual(editor.value as? String, "未知结果不可重发")
+        app.buttons["codex-operation-lookup"].tap()
+        XCTAssertTrue(app.staticTexts["codex-operation-uncertain"].waitForNonExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "")
+        XCTAssertEqual(app.staticTexts.matching(NSPredicate(format: "label == %@", "未知结果不可重发")).count, 1)
+        XCTAssertTrue(codexOperationBody("提供方正在生成", app).exists)
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-external-unknown-lookup-one-user-item-zh-light"; shot.lifetime = .keepAlways; add(shot)
+    }
+}
+
+extension HostInteractionTests {
+    @MainActor private func renameCodexMetadata(_ title: String, _ app: XCUIApplication, row: Bool) {
+        if row { app.buttons["remote-row-rename"].tap() }
+        else { app.buttons["重命名"].tap() }
+        let alert = app.alerts.firstMatch
+        XCTAssertTrue(alert.waitForExistence(timeout: 5))
+        let field = alert.textFields.firstMatch
+        XCTAssertTrue(field.waitForExistence(timeout: 5)); field.tap()
+        field.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: 0.5)).tap()
+        field.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: (field.value as? String ?? "").count))
+        field.typeText(title)
+        XCTAssertEqual(field.value as? String, title)
+        alert.buttons["保存"].tap()
+    }
+    @MainActor
+    func testCodexExternalMetadataChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-metadata-fixture", "--codex-metadata-reject-once"])
+        codexOperationSource("operations-cloud", app)
+        let row = app.buttons["remote-task-operations-cloud-shared-task"]
+        XCTAssertTrue(row.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        let original = row.label
+        row.press(forDuration: 0.8)
+        XCTAssertTrue(app.buttons["remote-row-rename"].waitForExistence(timeout: 5))
+        renameCodexMetadata("云端已改名", app, row: true)
+        XCTAssertTrue(app.staticTexts["codex-metadata-rejected"].waitForExistence(timeout: 5))
+        XCTAssertEqual(row.label, original)
+        app.buttons["codex-metadata-retry"].tap()
+        XCTAssertTrue(row.wait(for: \.label, toEqual: "云端已改名", timeout: 5))
+        row.press(forDuration: 0.8); app.buttons["remote-row-pin"].tap()
+        XCTAssertTrue(app.buttons["remote-section-pinned"].waitForExistence(timeout: 5))
+        openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(app.descendants(matching: .any)["remote-thread-location"].firstMatch.label.contains("云端已改名"))
+        app.buttons["remote-thread-options"].tap()
+        XCTAssertTrue(app.buttons["取消置顶"].exists)
+        renameCodexMetadata("共享标题已更新", app, row: false)
+        XCTAssertTrue(app.descendants(matching: .any)["remote-thread-location"].firstMatch.wait(for: \.label, toEqual: "共享标题已更新", timeout: 5))
+        let editor = app.textViews["remote-composer-editor"]
+        if !editor.isHittable, app.buttons["remote-composer-focus"].isHittable { app.buttons["remote-composer-focus"].tap() }
+        editor.tap(); editor.typeText("归档也保留草稿")
+        app.buttons["remote-thread-options"].tap(); app.buttons["归档"].tap()
+        XCTAssertTrue(app.buttons["codex-home-menu"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertFalse(row.exists)
+        app.buttons["codex-home-menu"].tap(); app.buttons["已归档任务"].tap()
+        let restore = app.buttons["remote-unarchive-operations-cloud-shared-task"]
+        XCTAssertTrue(restore.wait(for: \.isEnabled, toEqual: true, timeout: 5))
+        XCTAssertTrue(app.staticTexts["Cloud 已归档目录任务"].exists, "Archive directory must include records absent from active list")
+        restore.tap(); XCTAssertTrue(restore.waitForNonExistence(timeout: 5))
+        app.buttons["remote-archive-close"].tap()
+        XCTAssertTrue(row.wait(for: \.isHittable, toEqual: true, timeout: 5)); XCTAssertEqual(row.label, "共享标题已更新")
+        openCodexOperationTask("operations-cloud", app)
+        if !editor.isHittable, app.buttons["remote-composer-focus"].isHittable { app.buttons["remote-composer-focus"].tap() }
+        XCTAssertEqual(editor.value as? String, "归档也保留草稿")
+        backFromCodexOperation(app); codexOperationSource("operations-remote", app)
+        let other = app.buttons["remote-task-operations-remote-shared-task"]
+        XCTAssertTrue(other.waitForExistence(timeout: 5)); XCTAssertEqual(other.label, "Remote 异步操作")
+        openCodexOperationTask("operations-remote", app)
+        app.buttons["remote-thread-options"].tap()
+        XCTAssertTrue(app.buttons["置顶"].exists)
+        app.buttons["置顶"].tap()
+        backFromCodexOperation(app)
+        XCTAssertFalse(app.staticTexts["remote-list-checkpoint-error"].exists, "An explicitly in-memory owner must not report a disk-write failure")
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-metadata-canonical-remote-zh-light"; shot.lifetime = .keepAlways; add(shot)
+    }
+    @MainActor
+    func testCodexExternalMetadataUnknownChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-metadata-fixture", "--codex-metadata-unknown-once"])
+        codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        app.buttons["remote-thread-options"].tap()
+        renameCodexMetadata("原操作查询确认", app, row: false)
+        XCTAssertTrue(app.staticTexts["codex-metadata-uncertain"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.descendants(matching: .any)["remote-thread-location"].firstMatch.label.contains("原操作查询确认"))
+        backFromCodexOperation(app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(app.staticTexts["codex-metadata-uncertain"].exists)
+        XCTAssertFalse(app.buttons["codex-metadata-retry"].exists)
+        app.buttons["codex-metadata-lookup"].tap()
+        XCTAssertTrue(app.descendants(matching: .any)["remote-thread-location"].firstMatch.wait(for: \.label, toEqual: "原操作查询确认", timeout: 5))
+        XCTAssertFalse(app.staticTexts["codex-metadata-uncertain"].exists)
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-metadata-original-lookup-zh-light"; shot.lifetime = .keepAlways; add(shot)
+    }
+}
+
+extension HostInteractionTests {
+    @MainActor private func openCodexResponseTask(_ host: String, _ app: XCUIApplication) {
+        let row = app.buttons["remote-task-" + host + "-shared-task"]
+        XCTAssertTrue(row.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        row.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
+        XCTAssertTrue(app.buttons["remote-thread-options"].waitForExistence(timeout: 5))
+        let retry = app.buttons["codex-response-load-retry"]
+        if retry.waitForExistence(timeout: 2) { retry.tap() }
+    }
+    @MainActor
+    func testCodexAuthoritativeSingleChoiceFormChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-form-single-choice-fixture", "--codex-responses-reject-once"])
+        codexOperationSource("operations-cloud", app)
+        openCodexResponseTask("operations-cloud", app)
+        let next = app.buttons["remote-openai-form-continue"]
+        let output = app.buttons["remote-openai-form-choice-output"]
+        let channel = app.buttons["remote-openai-form-choice-channel"]
+        let rejected = app.staticTexts["codex-response-rejected"]
+        XCTAssertTrue(next.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertEqual(output.value as? String, "请选择")
+        XCTAssertEqual(channel.value as? String, "网页")
+        next.tap()
+        XCTAssertTrue(app.staticTexts["remote-openai-form-invalid-output"].waitForExistence(timeout: 5))
+        XCTAssertFalse(rejected.exists)
+        output.tap()
+        app.buttons["完整结果"].tap()
+        XCTAssertEqual(output.value as? String, "完整结果")
+        channel.tap()
+        app.buttons["清除选择"].tap()
+        XCTAssertEqual(channel.value as? String, "请选择")
+        next.tap()
+        XCTAssertTrue(rejected.waitForExistence(timeout: 5))
+        XCTAssertEqual(output.value as? String, "完整结果")
+        XCTAssertEqual(channel.value as? String, "请选择")
+        app.buttons["codex-response-retry"].tap()
+        XCTAssertTrue(codexOperationBody("提供方已接受表单响应", app).waitForExistence(timeout: 5))
+        XCTAssertFalse(next.exists)
+    }
+    @MainActor
+    func testCodexAuthoritativeMultipleChoiceFormChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-form-multiple-choice-fixture", "--codex-responses-reject-once"])
+        verifyCodexMultipleChoiceForm(in: "operations-cloud", app: app)
+        backFromCodexOperation(app)
+        verifyCodexMultipleChoiceForm(in: "operations-remote", app: app)
+    }
+    @MainActor
+    func testCodexAuthoritativeImageChoiceFormChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-form-image-choice-fixture", "--codex-responses-reject-once"])
+        for instance in ["operations-cloud", "operations-remote"] {
+            codexOperationSource(instance, app)
+            openCodexResponseTask(instance, app)
+            let next = app.buttons["remote-openai-form-continue"]
+            let weekly = app.buttons["remote-openai-form-image-option-template-weekly"]
+            let monthly = app.buttons["remote-openai-form-image-option-template-monthly"]
+            let rejected = app.staticTexts["codex-response-rejected"]
+            XCTAssertTrue(weekly.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            XCTAssertFalse(weekly.isSelected)
+            XCTAssertFalse(monthly.isSelected)
+            next.tap()
+            XCTAssertTrue(app.staticTexts["remote-openai-form-invalid-template"].waitForExistence(timeout: 5))
+            XCTAssertFalse(rejected.exists)
+            weekly.tap()
+            XCTAssertTrue(weekly.isSelected)
+            monthly.tap()
+            XCTAssertFalse(weekly.isSelected)
+            XCTAssertTrue(monthly.isSelected)
+            next.tap()
+            XCTAssertTrue(rejected.waitForExistence(timeout: 5))
+            XCTAssertTrue(monthly.isSelected)
+            app.buttons["codex-response-retry"].tap()
+            XCTAssertTrue(codexOperationBody("提供方已接受表单响应", app).waitForExistence(timeout: 5))
+            XCTAssertFalse(next.exists)
+            backFromCodexOperation(app)
+        }
+    }
+    @MainActor
+    private func verifyCodexMultipleChoiceForm(in instance: String, app: XCUIApplication) {
+        codexOperationSource(instance, app)
+        openCodexResponseTask(instance, app)
+        let next = app.buttons["remote-openai-form-continue"]
+        let invalid = app.staticTexts["remote-openai-form-invalid-outputs"]
+        let full = app.buttons["remote-openai-form-option-outputs-1"]
+        let source = app.buttons["remote-openai-form-option-outputs-2"]
+        let rejected = app.staticTexts["codex-response-rejected"]
+        XCTAssertTrue(next.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        next.tap()
+        XCTAssertTrue(invalid.waitForExistence(timeout: 5))
+        XCTAssertFalse(rejected.exists)
+        full.tap()
+        source.tap()
+        next.tap()
+        XCTAssertTrue(invalid.waitForExistence(timeout: 5))
+        XCTAssertFalse(rejected.exists)
+        source.tap()
+        next.tap()
+        XCTAssertTrue(rejected.waitForExistence(timeout: 5))
+        app.buttons["codex-response-retry"].tap()
+        XCTAssertTrue(codexOperationBody("提供方已接受表单响应", app).waitForExistence(timeout: 5))
+        XCTAssertFalse(next.exists)
+    }
+    @MainActor
+    func testCodexAuthoritativeFormResponsesChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-form-responses-fixture", "--codex-responses-reject-once",
+                                        "--codex-responses-unknown-once"])
+        codexOperationSource("operations-cloud", app); openCodexResponseTask("operations-cloud", app)
+        let next = app.buttons["remote-openai-form-continue"]
+        let details = app.textFields["remote-openai-form-string-details"]
+        let rejected = app.staticTexts["codex-response-rejected"]
+        let lookup = app.buttons["codex-response-lookup"]
+        XCTAssertTrue(next.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertEqual(details.value as? String, "检查页面")
+        XCTAssertFalse(app.buttons["remote-approval-approveOnce"].exists)
+        next.tap()
+        XCTAssertTrue(rejected.waitForExistence(timeout: 5))
+        XCTAssertEqual(details.value as? String, "检查页面")
+        app.buttons["codex-response-retry"].tap()
+        XCTAssertTrue(lookup.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        lookup.tap()
+        XCTAssertTrue(codexOperationBody("提供方已接受表单响应", app).waitForExistence(timeout: 5))
+        XCTAssertFalse(next.exists)
+        backFromCodexOperation(app)
+        codexOperationSource("operations-remote", app); openCodexResponseTask("operations-remote", app)
+        let dismiss = app.buttons["remote-openai-form-dismiss"]
+        XCTAssertTrue(dismiss.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        dismiss.tap()
+        XCTAssertTrue(rejected.waitForExistence(timeout: 5))
+        app.buttons["codex-response-retry"].tap()
+        XCTAssertTrue(lookup.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        lookup.tap()
+        XCTAssertTrue(codexOperationBody("表单已关闭，任务仍在运行", app).waitForExistence(timeout: 5))
+        XCTAssertFalse(dismiss.exists)
+        backFromCodexOperation(app)
+        codexOperationSource("operations-cloud", app); openCodexResponseTask("operations-cloud", app)
+        XCTAssertTrue(codexOperationBody("提供方已接受表单响应", app).waitForExistence(timeout: 5))
+        XCTAssertFalse(next.exists)
+    }
+    @MainActor
+    func testCodexAuthoritativeResponsesChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-responses-fixture", "--codex-responses-reject-once", "--codex-responses-read-failure-once", "--codex-response-test-controls"])
+        codexOperationSource("operations-cloud", app); openCodexResponseTask("operations-cloud", app)
+        let approve = app.buttons["remote-approval-approveOnce"]
+        XCTAssertTrue(approve.wait(for: \.isEnabled, toEqual: true, timeout: 5)); approve.tap()
+        XCTAssertTrue(app.staticTexts["codex-response-rejected"].waitForExistence(timeout: 5))
+        XCTAssertTrue(approve.exists)
+        XCTAssertFalse(codexOperationBody("提供方已接受审批", app).exists)
+        app.buttons["codex-response-retry"].tap()
+        XCTAssertTrue(approve.waitForNonExistence(timeout: 5))
+        XCTAssertTrue(codexOperationBody("提供方已接受审批", app).waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["remote-composer-focus"].exists)
+        XCTAssertFalse(app.buttons["remote-composer-stop"].exists)
+        XCTAssertFalse(app.staticTexts["remote-replay-mode"].exists)
+        backFromCodexOperation(app); codexOperationSource("operations-remote", app); openCodexResponseTask("operations-remote", app)
+        let input = app.textViews["remote-input-text"].exists ? app.textViews["remote-input-text"] : app.textFields["remote-input-text"]
+        XCTAssertTrue(input.waitForExistence(timeout: 5)); input.tap(); input.typeText("保留这份回答")
+        app.buttons["remote-input-send"].tap()
+        XCTAssertTrue(app.staticTexts["codex-response-rejected"].waitForExistence(timeout: 5))
+        XCTAssertEqual(input.value as? String, "保留这份回答")
+        let retained = XCTAttachment(screenshot: app.screenshot()); retained.name = "codex-response-input-retained-zh-light"; retained.lifetime = .keepAlways; add(retained)
+        app.buttons["codex-response-retry"].tap()
+        XCTAssertTrue(app.buttons["remote-input-send"].waitForNonExistence(timeout: 5))
+        XCTAssertTrue(codexOperationBody("提供方已接受补充输入", app).waitForExistence(timeout: 5))
+        XCTAssertFalse(codexOperationBody("保留这份回答", app).exists)
+        XCTAssertTrue(app.buttons["codex-response-replace"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+        app.buttons["codex-response-replace"].tap()
+        XCTAssertTrue(app.buttons["remote-input-skip"].wait(for: \.isEnabled, toEqual: true, timeout: 5))
+        XCTAssertFalse((input.value as? String ?? "").contains("保留这份回答"))
+        app.buttons["remote-input-skip"].tap()
+        XCTAssertTrue(app.buttons["remote-input-skip"].waitForNonExistence(timeout: 5))
+        XCTAssertTrue(codexOperationBody("提供方已跳过问题，任务仍在运行", app).waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["remote-composer-stop"].waitForExistence(timeout: 5))
+        app.buttons["codex-response-replace"].tap()
+        XCTAssertTrue(app.buttons["remote-input-skip"].waitForExistence(timeout: 5))
+        app.buttons["codex-response-withdraw"].tap()
+        XCTAssertTrue(app.buttons["remote-input-skip"].waitForNonExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["remote-composer-stop"].waitForExistence(timeout: 5), "Withdrawing a request must not stop its task")
+        backFromCodexOperation(app); codexOperationSource("operations-cloud", app); openCodexResponseTask("operations-cloud", app)
+        XCTAssertFalse(approve.exists)
+        XCTAssertTrue(codexOperationBody("提供方已接受审批", app).waitForExistence(timeout: 5))
+    }
+    @MainActor
+    func testCodexAuthoritativeResponseUnknownChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-responses-fixture", "--codex-responses-unknown-once"])
+        codexOperationSource("operations-cloud", app); openCodexResponseTask("operations-cloud", app)
+        let approve = app.buttons["remote-approval-approveOnce"]
+        XCTAssertTrue(approve.wait(for: \.isEnabled, toEqual: true, timeout: 5)); approve.tap()
+        XCTAssertTrue(app.staticTexts["codex-response-uncertain"].waitForExistence(timeout: 5))
+        XCTAssertFalse(approve.isEnabled)
+        XCTAssertFalse(app.buttons["codex-response-retry"].exists)
+        backFromCodexOperation(app)
+        XCTAssertTrue(app.buttons["codex-response-lookup"].wait(for: \.isHittable, toEqual: true, timeout: 5))
+        app.buttons["codex-response-lookup"].tap()
+        XCTAssertTrue(app.staticTexts["codex-response-uncertain"].waitForNonExistence(timeout: 5))
+        openCodexResponseTask("operations-cloud", app)
+        XCTAssertFalse(approve.exists)
+        XCTAssertTrue(codexOperationBody("提供方已接受审批", app).waitForExistence(timeout: 5))
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-response-original-lookup-zh-light"; shot.lifetime = .keepAlways; add(shot)
+    }
+}
+
+extension HostInteractionTests {
+    @MainActor
+    func testCodexAuthoritativeTailsChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-tails-fixture"])
+        func copies() -> Int { app.buttons.matching(identifier: "remote-replay-copy-response").count }
+        func next(_ revision: String) {
+            let button = app.buttons["codex-tail-next"]
+            XCTAssertTrue(button.wait(for: \.isHittable, toEqual: true, timeout: 5)); button.tap()
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", revision), object: button)], timeout: 5), .completed)
+        }
+        codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(app.staticTexts["remote-replay-error"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["remote-replay-error"].label, "提供方返回的失败说明")
+        XCTAssertTrue(codexOperationBody("失败前的部分内容", app).exists)
+        XCTAssertEqual(copies(), 0)
+        XCTAssertFalse(app.buttons["remote-replay-retry"].exists)
+        XCTAssertFalse(codexOperationBody("不应复活的汇总正文", app).exists)
+        let failed = XCTAttachment(screenshot: app.screenshot()); failed.name = "codex-provider-failure-tail-zh-light"; failed.lifetime = .keepAlways; add(failed)
+        next("2") //interrupted, zero items; no fabricated failure or old body.
+        XCTAssertFalse(app.staticTexts["remote-replay-error"].exists)
+        XCTAssertFalse(codexOperationBody("失败前的部分内容", app).exists)
+        XCTAssertEqual(copies(), 0)
+        next("3") //stopped
+        XCTAssertTrue(app.staticTexts["codex-message-stopped-notice"].exists)
+        XCTAssertEqual(copies(), 0)
+        XCTAssertFalse(app.staticTexts["remote-replay-error"].exists)
+        next("4") //success, empty items and an explicit Some("") copy.
+        XCTAssertEqual(copies(), 1)
+        XCTAssertEqual(app.staticTexts.matching(identifier: "remote-replay-completed-at").count, 1)
+        XCTAssertFalse(codexOperationBody("旧汇总", app).exists)
+        let empty = XCTAttachment(screenshot: app.screenshot()); empty.name = "codex-empty-items-success-tail-zh-light"; empty.lifetime = .keepAlways; add(empty)
+        next("5") //two assistant items; keep independent copy, one timestamp.
+        XCTAssertTrue(codexOperationBody("第一段独立回复", app).exists)
+        XCTAssertTrue(codexOperationBody("第二段独立回复", app).exists)
+        XCTAssertEqual(copies(), 2)
+        XCTAssertEqual(app.staticTexts.matching(identifier: "remote-replay-completed-at").count, 1)
+        next("6") //generating suppresses copies and completion time.
+        XCTAssertTrue(codexOperationBody("正在生成的内容", app).exists)
+        XCTAssertEqual(copies(), 0)
+        XCTAssertFalse(app.staticTexts["remote-replay-completed-at"].exists)
+        next("7") //submission failure has an original fallback, no fake retry.
+        XCTAssertTrue(app.staticTexts["remote-replay-error"].exists)
+        XCTAssertFalse(app.buttons["remote-replay-retry"].exists)
+        backFromCodexOperation(app); codexOperationSource("operations-remote", app); openCodexOperationTask("operations-remote", app)
+        XCTAssertEqual(app.staticTexts["remote-replay-error"].label, "提供方返回的失败说明")
+        backFromCodexOperation(app); codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(app.staticTexts["remote-replay-error"].exists)
+        XCTAssertNotEqual(app.staticTexts["remote-replay-error"].label, "提供方返回的失败说明")
+        XCTAssertEqual(copies(), 0)
+    }
+}
+
+extension HostInteractionTests {
+    @MainActor
+    func testCodexTypedToolActivitiesChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-tool-activities-fixture"])
+        codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        let group = app.buttons["remote-replay-group-typed-tools"]
+        let dynamic = app.buttons["codex-tool-toggle-dynamic"]
+        let mcp = app.buttons["codex-tool-toggle-mcp"]
+        let standalone = app.buttons["codex-tool-toggle-separate"]
+        XCTAssertTrue(group.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertFalse(dynamic.exists)
+        XCTAssertTrue(standalone.exists)
+        group.tap()
+        XCTAssertTrue(dynamic.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(dynamic.label.contains("运行中") && mcp.label.contains("失败"))
+        XCTAssertLessThan(dynamic.frame.minY, mcp.frame.minY)
+        dynamic.tap()
+        XCTAssertTrue(app.staticTexts["{\"panel\":\"preview\"}"].exists)
+        let next = app.buttons["codex-complex-next"]
+        if !next.isHittable { app.collectionViews["remote-thread-history"].swipeDown() }
+        next.tap()
+        XCTAssertTrue(app.staticTexts["已核对面板"].waitForExistence(timeout: 5))
+        XCTAssertTrue(dynamic.label.contains("已完成"))
+        mcp.tap()
+        XCTAssertTrue(app.staticTexts["样例工具响应失败"].waitForExistence(timeout: 5))
+        let resource = app.buttons["codex-tool-resource-tool-report"]
+        if !resource.isHittable { app.collectionViews["remote-thread-history"].swipeUp() }
+        XCTAssertTrue(resource.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        resource.tap()
+        let closeResource = app.buttons["remote-source-close"]
+        XCTAssertTrue(closeResource.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.navigationBars["tool-report.md"].exists)
+        closeResource.tap()
+        let image = app.buttons["codex-tool-resource-tool-image"]
+        if !image.isHittable { app.collectionViews["remote-thread-history"].swipeUp() }
+        XCTAssertTrue(image.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        image.tap()
+        let closeImage = app.buttons["remote-image-preview-close"]
+        XCTAssertTrue(closeImage.wait(for: \.isHittable, toEqual: true, timeout: 12))
+        XCTAssertTrue(app.navigationBars["tool-image"].exists)
+        closeImage.tap()
+        XCTAssertTrue(closeImage.waitForNonExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["remote-thread-options"].wait(for: \.isHittable, toEqual: true, timeout: 8))
+        XCTAssertTrue(app.navigationBars.buttons["BackButton"].firstMatch.wait(for: \.isHittable, toEqual: true, timeout: 8))
+        backFromCodexOperation(app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(app.staticTexts["已核对面板"].waitForExistence(timeout: 5))
+        backFromCodexOperation(app)
+        codexOperationSource("operations-remote", app); openCodexOperationTask("operations-remote", app)
+        XCTAssertTrue(group.waitForExistence(timeout: 5))
+        XCTAssertFalse(dynamic.exists)
+        XCTAssertTrue(standalone.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertTrue(standalone.label.contains("已取消"))
+        standalone.tap()
+        XCTAssertTrue(app.staticTexts["未识别内容的摘要"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testCodexAssistantAppendRevealChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-assistant-reveal-fixture", "--codex-glyph-frame-observation",
+            "--remote-inset-test-observation", "--remote-manual-bottom-observation", "--remote-manual-bottom-stable-snapshot"])
+        codexOperationSource("operations-cloud", app)
+        let next = app.buttons["codex-assistant-reveal-next"]
+        let row = app.buttons["remote-task-operations-cloud-shared-task"]
+        XCTAssertTrue(row.waitForExistence(timeout: 8))
+        row.tap()
+        if !next.waitForExistence(timeout: 12), row.exists {
+            row.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
+        }
+        XCTAssertTrue(next.waitForExistence(timeout: 12))
+        let answerPrefix = "message-remote-replay-response-codex-item-11:reveal-turnanswer"
+        let answer = app.textViews.matching(NSPredicate(format: "identifier BEGINSWITH %@",
+            answerPrefix + "-block-0")).firstMatch
+        let copy = app.buttons["remote-replay-copy-response"]
+        let history = app.collectionViews["remote-thread-history"]
+        let jump = app.buttons["remote-scroll-to-bottom"]
+        func waitForRevision(_ revision: String) {
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+                predicate: NSPredicate(format: "value == %@", revision), object: next)], timeout: 5), .completed)
+        }
+        func advance(to revision: String) {
+            XCTAssertTrue(next.wait(for: \.isHittable, toEqual: true, timeout: 5))
+            next.tap()
+            waitForRevision(revision)
+        }
+        func waitForAnswer(_ expected: String, reveal: String? = nil) {
+            let predicate = NSPredicate(format: "value == %@ AND identifier ENDSWITH %@",
+                expected, reveal ?? "-block-0")
+            let result = XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+                predicate: predicate, object: answer)], timeout: 5)
+            XCTAssertEqual(result, .completed,
+                "Expected \(expected) \(reveal ?? ""), observed \(answer.exists ? answer.debugDescription : "no answer row")")
+        }
+        func returnToTail() {
+            XCTAssertTrue(jump.waitForExistence(timeout: 8))
+            let frame = jump.frame
+            let viewport = app.frame
+            if !frame.isEmpty && viewport.contains(CGPoint(x: frame.midX, y: frame.midY)) {
+                // The SwiftUI overlay can report an invalid XCTest activation point
+                // even when its rendered frame is within the viewport.
+                app.coordinate(withNormalizedOffset: .zero).withOffset(
+                    .init(dx: frame.midX - viewport.minX, dy: frame.midY - viewport.minY)).tap()
+            } else {
+                for _ in 0..<5 where jump.exists { history.swipeUp() }
+            }
+            XCTAssertTrue(jump.waitForNonExistence(timeout: 8))
+        }
+        waitForRevision("1")
+        returnToTail()
+        let initialValue = try XCTUnwrap(history.value as? String)
+        let initialGeometry = try JSONDecoder().decode([String: Double].self, from: Data(initialValue.utf8))
+        XCTAssertEqual(initialGeometry["manualBottomFinishes"], 1)
+        XCTAssertGreaterThanOrEqual(initialGeometry["manualBottomStableSnapshotsSkipped"] ?? 0, 1)
+        XCTAssertEqual(initialGeometry["followsTail"], 1)
+        XCTAssertFalse(answer.exists)
+        advance(to: "2")
+        waitForAnswer("首段出现", reveal: "[reveal 0:4]")
+        let originalIdentifier = answer.identifier.components(separatedBy: " [reveal ").first
+        XCTAssertFalse(copy.exists)
+        advance(to: "3")
+        waitForAnswer("首段出现，第二段增量", reveal: "[reveal 4:6]")
+        XCTAssertEqual(answer.identifier.components(separatedBy: " [reveal ").first, originalIdentifier)
+        XCTAssertFalse(copy.exists)
+        let previousParagraphIdentifier = answer.identifier
+        advance(to: "4")
+        let nextParagraph = app.textViews.matching(NSPredicate(format: "identifier BEGINSWITH %@",
+            answerPrefix + "-block-1")).firstMatch
+        XCTAssertTrue(nextParagraph.waitForExistence(timeout: 5))
+        XCTAssertEqual(nextParagraph.value as? String, "换行后的正文")
+        XCTAssertTrue(nextParagraph.identifier.hasSuffix("[reveal 0:6]"))
+        XCTAssertEqual(answer.identifier, previousParagraphIdentifier)
+
+        history.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.32)).press(
+            forDuration: 0.02, thenDragTo: history.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.68)))
+        XCTAssertTrue(jump.waitForExistence(timeout: 5))
+        advance(to: "5")
+        XCTAssertTrue(jump.exists)
+        returnToTail()
+        waitForAnswer("首段出现，第二段增量")
+        XCTAssertFalse(copy.exists)
+        advance(to: "6")
+        waitForAnswer("首段出现，第二段增量。已结束。")
+        XCTAssertTrue(copy.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertFalse(jump.exists)
+    }
+
+    @MainActor
+    func testCodexAssistantParagraphRevealChinese() {
+        verifyCodexAssistantParagraphReveal(reduceMotion: false)
+    }
+
+    @MainActor
+    func testCodexAssistantParagraphRevealReducedMotionChinese() {
+        verifyCodexAssistantParagraphReveal(reduceMotion: true)
+    }
+
+    @MainActor
+    private func verifyCodexAssistantParagraphReveal(reduceMotion: Bool) {
+        continueAfterFailure = false
+        var arguments = ["--codex-assistant-reveal-fixture", "--codex-assistant-paragraph-fixture",
+                         "--codex-glyph-frame-observation"]
+        if reduceMotion { arguments.append("--codex-assistant-reveal-reduced-motion-fixture") }
+        let app = launchCodexOperations(arguments)
+        codexOperationSource("operations-cloud", app)
+        let next = app.buttons["codex-assistant-reveal-next"]
+        let row = app.buttons["remote-task-operations-cloud-shared-task"]
+        XCTAssertTrue(row.waitForExistence(timeout: 8))
+        row.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
+        XCTAssertTrue(next.waitForExistence(timeout: 12))
+        let history = app.collectionViews["remote-thread-history"]
+        let jump = app.buttons["remote-scroll-to-bottom"]
+        if jump.waitForExistence(timeout: 5) {
+            let frame = jump.frame
+            let viewport = app.frame
+            if viewport.contains(CGPoint(x: frame.midX, y: frame.midY)) {
+                app.coordinate(withNormalizedOffset: .zero).withOffset(
+                    .init(dx: frame.midX - viewport.minX, dy: frame.midY - viewport.minY)).tap()
+            } else {
+                for _ in 0..<5 where jump.exists { history.swipeUp() }
+            }
+            XCTAssertTrue(jump.waitForNonExistence(timeout: 8))
+        }
+        let prefix = "message-remote-replay-response-codex-item-11:reveal-turnanswer-block-"
+        func paragraph(_ index: Int) -> XCUIElement {
+            app.textViews.matching(NSPredicate(format: "identifier BEGINSWITH %@", prefix + String(index))).firstMatch
+        }
+        func advance(to revision: String) {
+            next.tap()
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+                predicate: NSPredicate(format: "value == %@", revision), object: next)], timeout: 5), .completed)
+        }
+        let copy = app.buttons["remote-replay-copy-response"]
+        advance(to: "2")
+        for (index, words) in ["甲段同次到达。", "乙段同次到达。", "丙段同次到达。"].enumerated() {
+            let text = paragraph(index)
+            XCTAssertTrue(text.waitForExistence(timeout: 5))
+            XCTAssertEqual(text.value as? String, words)
+            XCTAssertEqual(text.identifier.contains("[reveal "), !reduceMotion)
+        }
+        XCTAssertFalse(copy.exists)
+        advance(to: "4")
+        XCTAssertEqual(paragraph(2).value as? String, "丙段同次到达。补充。")
+        XCTAssertEqual(paragraph(3).value as? String, "丁段继续。尾字。")
+        XCTAssertEqual(paragraph(4).value as? String, "戊段接续。")
+        XCTAssertFalse(copy.exists)
+        advance(to: "5")
+        XCTAssertEqual(paragraph(0).value as? String, "甲段同次到达。")
+        XCTAssertEqual(paragraph(0).identifier, prefix + "0")
+        XCTAssertFalse(copy.exists)
+        advance(to: "6")
+        XCTAssertEqual(paragraph(4).value as? String, "戊段接续。已结束。")
+        XCTAssertTrue(copy.waitForExistence(timeout: 5))
+        copy.tap()
+        XCTAssertEqual(copy.value as? String, "copied")
+        app.buttons["remote-composer-focus"].tap()
+        let editor = app.textViews["remote-composer-editor"]
+        XCTAssertTrue(editor.waitForExistence(timeout: 5))
+        editor.press(forDuration: 1.2)
+        let paste = app.menuItems.matching(NSPredicate(format: "label IN %@", ["Paste", "粘贴"])).firstMatch
+        XCTAssertTrue(paste.waitForExistence(timeout: 5))
+        paste.tap()
+        XCTAssertEqual(editor.value as? String,
+                       "**甲段**同次到达。\n\n## 乙段同次到达。\n\n丙段同次到达。补充。\n\n丁段继续。尾字。\n\n戊段接续。已结束。")
+    }
+
+    @MainActor
+    func testCodexAssistantAppendRevealReducedMotionChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-assistant-reveal-fixture", "--codex-assistant-reveal-reduced-motion-fixture"])
+        codexOperationSource("operations-remote", app); openCodexOperationTask("operations-remote", app)
+        let next = app.buttons["codex-assistant-reveal-next"]
+        let jump = app.buttons["remote-scroll-to-bottom"]
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value == %@", "1"), object: next)], timeout: 5), .completed)
+        XCTAssertTrue(jump.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        jump.tap()
+        next.tap()
+        XCTAssertTrue(codexOperationBody("首段出现", app).waitForExistence(timeout: 5))
+        XCTAssertFalse(app.textViews.matching(NSPredicate(format: "identifier CONTAINS %@", "[reveal ")).firstMatch.exists)
+    }
+
+    @MainActor
+    func testCodexReasoningDisplayStreamChinese() {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-reasoning-display-stream-fixture"])
+        let next = app.buttons["codex-complex-next"]
+        let toggle = app.buttons["codex-reasoning-toggle-display-reasoning"]
+        let first = app.staticTexts["codex-reasoning-paragraph-display-reasoning-0"]
+        let second = app.staticTexts["codex-reasoning-paragraph-display-reasoning-1"]
+
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(next.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertFalse(toggle.exists)
+        next.tap()
+        XCTAssertTrue(toggle.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertFalse(first.exists)
+        toggle.tap()
+        XCTAssertTrue(first.wait(for: \.label, toEqual: "已检查云端资料", timeout: 5))
+        next.tap()
+        XCTAssertTrue(first.wait(for: \.label, toEqual: "已检查云端资料，核对完成。", timeout: 5))
+        XCTAssertTrue(second.wait(for: \.label, toEqual: "第二段来自云端。", timeout: 5))
+        XCTAssertTrue(toggle.label.contains("核对结果"))
+        XCTAssertFalse(app.buttons["codex-reasoning-toggle-summary-only"].exists)
+
+        backFromCodexOperation(app)
+        codexOperationSource("operations-remote", app)
+        openCodexOperationTask("operations-remote", app)
+        XCTAssertTrue(next.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        XCTAssertFalse(toggle.exists)
+        next.tap()
+        XCTAssertTrue(toggle.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        toggle.tap()
+        XCTAssertTrue(first.wait(for: \.label, toEqual: "已检查电脑资料", timeout: 5))
+        XCTAssertFalse(second.exists)
+
+        backFromCodexOperation(app)
+        codexOperationSource("operations-cloud", app)
+        openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(first.wait(for: \.label, toEqual: "已检查云端资料，核对完成。", timeout: 5))
+        XCTAssertTrue(second.wait(for: \.label, toEqual: "第二段来自云端。", timeout: 5))
+    }
+
+    @MainActor
+    func testCodexAuthoritativeComplexItemsChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-complex-items-fixture"])
+        func next(_ revision: String) {
+            let button = app.buttons["codex-complex-next"]
+            //Reading restoration can leave the top fixture cell offscreen.
+            //Reveal it with real scrolling before asking XCTest for hit points.
+            let collection = app.collectionViews["remote-thread-history"]
+            collection.swipeDown(); collection.swipeDown()
+            XCTAssertTrue(button.wait(for: \.isHittable, toEqual: true, timeout: 5)); button.tap()
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", revision), object: button)], timeout: 5), .completed)
+        }
+        codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        let group = app.buttons["remote-replay-group-inspection"]
+        let command = app.buttons["remote-replay-command-toggle-command"]
+        let search = app.buttons["remote-replay-search-toggle-search"]
+        let reasoning = app.staticTexts["codex-reasoning-paragraph-reason-0"]
+        let secondParagraph = app.staticTexts["codex-reasoning-paragraph-reason-1"]
+        XCTAssertTrue(group.waitForExistence(timeout: 5)); XCTAssertTrue(group.label.contains("正在核对工具结果"))
+        XCTAssertFalse(command.exists)
+        XCTAssertFalse(reasoning.exists)
+        XCTAssertTrue(codexOperationBody("工具组之前的回复", app).exists)
+        XCTAssertTrue(codexOperationBody("工具组之后的回复", app).exists)
+        group.tap(); XCTAssertTrue(command.waitForExistence(timeout: 4)); XCTAssertTrue(search.exists)
+        XCTAssertEqual(reasoning.label, "首先检查提供方给出的结果。")
+        XCTAssertEqual(secondParagraph.label, "第二段与摘要独立。")
+        XCTAssertLessThan(search.frame.minY, command.frame.minY)
+        command.tap(); XCTAssertTrue(app.staticTexts["初始输出"].waitForExistence(timeout: 4))
+        next("2")
+        XCTAssertTrue(group.label.contains("工具结果已经核对"))
+        XCTAssertEqual(reasoning.label, "已经核实提供方给出的结果。")
+        XCTAssertTrue(app.staticTexts["修订后的输出"].waitForExistence(timeout: 4))
+        XCTAssertLessThan(command.frame.minY, search.frame.minY)
+        XCTAssertFalse(app.staticTexts["初始输出"].exists)
+        let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "codex-complex-group-updated-expanded-zh-light"; shot.lifetime = .keepAlways; add(shot)
+        backFromCodexOperation(app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(app.staticTexts["修订后的输出"].waitForExistence(timeout: 4))
+        next("3") //The latest search remains; command and its old output are removed.
+        XCTAssertFalse(command.exists); XCTAssertFalse(app.staticTexts["修订后的输出"].exists)
+        XCTAssertTrue(group.exists); XCTAssertTrue(group.label.contains("搜索"))
+        next("4") //Remove the whole group.
+        XCTAssertFalse(group.exists); XCTAssertFalse(search.exists)
+        XCTAssertFalse(reasoning.exists)
+        let standaloneReason = app.buttons["codex-reasoning-toggle-reason"]
+        XCTAssertTrue(standaloneReason.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        standaloneReason.tap()
+        XCTAssertTrue(reasoning.waitForExistence(timeout: 4))
+        standaloneReason.tap()
+        XCTAssertFalse(reasoning.exists)
+        next("5") //Recreated ID has no inherited group or child expansion.
+        XCTAssertTrue(group.label.contains("重新出现的工具组")); XCTAssertFalse(command.exists)
+        group.tap(); XCTAssertTrue(command.waitForExistence(timeout: 4))
+        XCTAssertFalse(app.staticTexts["修订后的输出"].exists)
+        command.tap(); XCTAssertTrue(app.staticTexts["修订后的输出"].waitForExistence(timeout: 4))
+        backFromCodexOperation(app); codexOperationSource("operations-remote", app); openCodexOperationTask("operations-remote", app)
+        XCTAssertTrue(group.label.contains("正在核对工具结果")); XCTAssertFalse(command.exists)
+        backFromCodexOperation(app); codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(group.label.contains("重新出现的工具组"))
+        XCTAssertTrue(app.staticTexts["修订后的输出"].waitForExistence(timeout: 4))
+        next("6") //Original group caller permits expansion even with no members.
+        XCTAssertTrue(group.exists); XCTAssertTrue(group.label.contains("空成员的工具组")); XCTAssertFalse(command.exists)
+        next("7") //An explicit unavailable capability renders the plain branch.
+        XCTAssertFalse(group.exists)
+        XCTAssertTrue(app.descendants(matching: .any)["remote-replay-group-inspection-summary"].firstMatch.exists)
+        XCTAssertFalse(command.exists)
+        XCTAssertFalse(codexOperationBody("不能复活的正文", app).exists)
+        let plain = XCTAttachment(screenshot: app.screenshot()); plain.name = "codex-complex-plain-capability-zh-light"; plain.lifetime = .keepAlways; add(plain)
+    }
+}
+
+extension HostInteractionTests {
+    @MainActor
+    func testCodexDynamicDirectoryDraftRecoveryChinese() throws {
+        continueAfterFailure = false
+        let app = launchCodexOperations(["--codex-directory-fixture", "--codex-directory-slow-fixture"])
+        func next(_ step: String) {
+            let button = app.buttons["codex-directory-next"]
+            XCTAssertTrue(button.wait(for: \.isHittable, toEqual: true, timeout: 5)); button.tap()
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", step), object: button)], timeout: 5), .completed)
+        }
+        let refresh = app.buttons["codex-directory-refresh"]
+        XCTAssertTrue(refresh.waitForExistence(timeout: 5)); refresh.tap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "loading"), object: refresh)], timeout: 5), .completed)
+        XCTAssertTrue(app.buttons["remote-task-operations-cloud-shared-task"].exists)
+        XCTAssertFalse(app.descendants(matching: .any)["codex-list-loading-operations-cloud"].firstMatch.exists)
+        let loading = XCTAttachment(screenshot: app.screenshot()); loading.name = "codex-selector-loading-preserves-list-inline-title-zh-light"; loading.lifetime = .keepAlways; add(loading)
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "ready"), object: refresh)], timeout: 5), .completed)
+        codexOperationSource("operations-remote", app); openCodexOperationTask("operations-remote", app)
+        let editor = app.textViews["remote-composer-editor"]
+        editor.tap(); editor.typeText("Remote 独立草稿")
+        next("1")
+        XCTAssertTrue(app.staticTexts["codex-directory-thread-unavailable"].waitForExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "Remote 独立草稿")
+        XCTAssertFalse(app.buttons["remote-composer-send"].isEnabled)
+        XCTAssertTrue(app.buttons["remote-thread-options"].exists)
+        next("2")
+        XCTAssertTrue(app.descendants(matching: .any)["codex-directory-error"].firstMatch.waitForExistence(timeout: 5))
+        XCTAssertEqual(editor.value as? String, "Remote 独立草稿")
+        app.buttons["codex-directory-error"].firstMatch.tap()
+        XCTAssertTrue(app.buttons["codex-directory-error"].firstMatch.wait(for: \.exists, toEqual: false, timeout: 5))
+        XCTAssertTrue(app.staticTexts["codex-directory-thread-unavailable"].exists)
+        next("3")
+        XCTAssertTrue(app.staticTexts["codex-directory-thread-unavailable"].wait(for: \.exists, toEqual: false, timeout: 5))
+        XCTAssertEqual(editor.value as? String, "Remote 独立草稿")
+        XCTAssertTrue(app.buttons["remote-composer-send"].wait(for: \.isEnabled, toEqual: true, timeout: 5))
+        let restored = XCTAttachment(screenshot: app.screenshot()); restored.name = "codex-directory-returned-with-draft-zh-light"; restored.lifetime = .keepAlways; add(restored)
+        next("4") //Directory/list omission does not close the active task.
+        XCTAssertTrue(app.buttons["remote-thread-options"].exists)
+        XCTAssertEqual(editor.value as? String, "Remote 独立草稿")
+        backFromCodexOperation(app)
+        XCTAssertTrue(app.buttons["remote-task-operations-remote-shared-task"].wait(for: \.exists, toEqual: false, timeout: 5))
+        next("5")
+        openCodexOperationTask("operations-remote", app)
+        XCTAssertEqual(editor.value as? String, "Remote 独立草稿")
+        backFromCodexOperation(app); codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertNotEqual(editor.value as? String, "Remote 独立草稿")
+        editor.tap(); editor.typeText("Cloud 独立草稿")
+        backFromCodexOperation(app); codexOperationSource("operations-remote", app); openCodexOperationTask("operations-remote", app)
+        XCTAssertEqual(editor.value as? String, "Remote 独立草稿")
+    }
+}
+
+
+extension HostInteractionTests {
+    @MainActor
+    func testCodexMixedMessageGeometryChinese() throws { try checkCodexMixedMessageGeometry(baseline: false) }
+
+    @MainActor
+    func testCodexMixedMessageSafeAreaBaselineChinese() throws { try checkCodexMixedMessageGeometry(baseline: true) }
+
+    @MainActor private func checkCodexMixedMessageGeometry(baseline: Bool) throws {
+        continueAfterFailure = false
+        var flags = ["--codex-mixed-layout-fixture", "--codex-scroll-test-observation"]
+        if baseline { flags.append("--codex-row-safe-area-baseline") }
+        let app = launchCodexOperations(flags)
+        codexOperationSource("operations-cloud", app); openCodexOperationTask("operations-cloud", app)
+        let body = codexOperationBody("正文与复制应共用左边距。", app)
+        XCTAssertTrue(body.waitForExistence(timeout: 5))
+        let copies = app.buttons.matching(identifier: "remote-replay-copy-response")
+        let first = copies.allElementsBoundByIndex.first { $0.isHittable }
+        XCTAssertNotNil(first)
+        XCTAssertEqual(body.frame.minX, (first?.frame.minX ?? 0) + 6, accuracy: 1)
+        print("MIXED-LEADING body=\(body.frame) copy=\(String(describing: first?.frame))")
+        let before = XCTAttachment(screenshot: app.screenshot()); before.name = "mixed-leading-zh-light"; before.lifetime = .keepAlways; add(before)
+        let codeCopy = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND identifier ENDSWITH %@", "codex-message-code-", "-copy")).firstMatch
+        XCTAssertTrue(codeCopy.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        codeCopy.tap(); XCTAssertEqual(codeCopy.value as? String, "copied")
+        let table = app.scrollViews.matching(NSPredicate(format: "identifier BEGINSWITH %@", "table-")).firstMatch
+        XCTAssertTrue(table.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        print("TABLE-INITIAL \(table.value as? String ?? "missing")")
+        let thirdHeader = app.textViews[table.identifier + "-0-2"]
+        XCTAssertTrue(thirdHeader.exists)
+        let originalX = thirdHeader.frame.minX
+        table.swipeLeft(velocity: .slow)
+        let scrolledX = thirdHeader.frame.minX
+        print("TABLE-DRAGGED \(table.value as? String ?? "missing")")
+        XCTAssertLessThan(scrolledX, originalX - 30)
+        let collection = app.collectionViews["remote-thread-history"]
+        for _ in 0..<4 { collection.swipeUp(velocity: .slow) }
+        let probeValue = collection.value as? String ?? "missing"
+        print("MIXED-SCROLL \(probeValue)")
+        let probe = try XCTUnwrap(try JSONSerialization.jsonObject(with: Data(probeValue.utf8)) as? [String: Any])
+        XCTAssertGreaterThan(probe["samples"] as? Int ?? 0, 10)
+        XCTAssertGreaterThan(probe["nativeSamples"] as? Int ?? 0, 100)
+        XCTAssertGreaterThan(probe["stableVisibleSamples"] as? Int ?? 0, 10)
+        if baseline {
+            XCTAssertGreaterThan(probe["maxStableVisibleLag"] as? Double ?? 0, 1)
+        } else {
+            XCTAssertLessThanOrEqual(probe["maxStableVisibleLag"] as? Double ?? .infinity, 1)
+        }
+
+        let middle = XCTAttachment(screenshot: app.screenshot()); middle.name = "mixed-scroll-middle-zh-light"; middle.lifetime = .keepAlways; add(middle)
+        if baseline { return } //Known broken renderer: only retain the causal observation.
+        for _ in 0..<4 { collection.swipeDown(velocity: .slow) }
+        XCTAssertTrue(body.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        print("TABLE-BEFORE-RETURN \(table.value as? String ?? "missing")")
+        backFromCodexOperation(app); openCodexOperationTask("operations-cloud", app)
+        XCTAssertTrue(body.wait(for: \.isHittable, toEqual: true, timeout: 5))
+        let restored = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            thirdHeader.exists && abs(thirdHeader.frame.minX - scrolledX) <= 2
+        }, object: nil)
+        let restoredResult = XCTWaiter.wait(for: [restored], timeout: 5)
+        print("TABLE-AFTER-RETURN \(table.value as? String ?? "missing")")
+        let tableShot = XCTAttachment(screenshot: app.screenshot()); tableShot.name = "mixed-table-return-zh-light"; tableShot.lifetime = .keepAlways; add(tableShot)
+        XCTAssertEqual(restoredResult, .completed)
+    }
 }

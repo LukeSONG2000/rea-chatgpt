@@ -93,14 +93,17 @@ internal fun RecoveredSidebarRow(id: String, label: Int, icon: Int, onClick: () 
 @Composable
 internal fun RecoveredSidebarFooter(onChat: () -> Unit, onSettings: () -> Unit) {
     val dark = isSystemInDarkTheme()
-    Row(Modifier.fillMaxWidth().padding(start = 32.dp, end = 24.dp, top = 24.dp),
+    val palette = recoveredSidebarButtonPalette(LocalFrontendSettings.current.accent, dark)
+    Row(Modifier.fillMaxWidth().padding(start = 32.dp, end = 24.dp, top = 16.dp, bottom = 12.dp),
         verticalAlignment = Alignment.CenterVertically) {
-        Surface(onClick = onChat, modifier = Modifier.heightIn(min = 48.dp).testTag("shell-entry-chat"),
-            shape = RoundedCornerShape(50), color = Color(0xFF3566F0), contentColor = Color.White) {
+        val chatShape = RoundedCornerShape(50)
+        Surface(onClick = onChat, modifier = Modifier.heightIn(min = 48.dp)
+            .frontendFloatingShadow(chatShape).testTag("shell-entry-chat"),
+            shape = chatShape, color = palette.background, contentColor = palette.foreground) {
             Row(Modifier.padding(start = 20.dp, end = 24.dp, top = 8.dp, bottom = 8.dp),
                 verticalAlignment = Alignment.CenterVertically) {
                 Icon(painterResource(R.drawable.ds_square_and_pencil_regular_24), null,
-                    Modifier.size(24.dp).testTag("shell-chat-glyph"), tint = Color.White)
+                    Modifier.size(24.dp).testTag("shell-chat-glyph"), tint = palette.foreground)
                 Spacer(Modifier.width(8.dp))
                 Text(stringResource(R.string.shell_chat), style = TextStyle(fontFamily = FontFamily.SansSerif,
                     fontSize = 16.sp, fontWeight = FontWeight.Medium, lineHeight = 24.sp,
@@ -108,14 +111,10 @@ internal fun RecoveredSidebarFooter(onChat: () -> Unit, onSettings: () -> Unit) 
             }
         }
         Spacer(Modifier.weight(1f))
-        // urr.j -> to60.c defaults use q5n.c.a and q1r0.a. Its custom
-        // sit0.e shadow renderer is still unclosed; no Material elevation is inferred.
-        Surface(shape = RoundedCornerShape(50), color = if (dark) Color(0xFF303030) else Color.White) {
-            androidx.compose.material3.IconButton(onClick = onSettings,
-                modifier = Modifier.size(48.dp).testTag("shell-entry-settings")) {
-                Icon(painterResource(R.drawable.ds_gear_regular_24), stringResource(R.string.shell_settings),
-                    modifier = Modifier.size(24.dp))
-            }
+        androidx.compose.material3.IconButton(onClick = onSettings,
+            modifier = Modifier.size(48.dp).frontendFloatingControl().testTag("shell-entry-settings")) {
+            Icon(painterResource(R.drawable.ds_gear_regular_24), stringResource(R.string.shell_settings),
+                modifier = Modifier.size(24.dp))
         }
     }
 }
@@ -173,15 +172,12 @@ internal fun RecoveredSettingsSection(rows: List<ShellSetting>, onSelect: (Strin
 // host has an empty conversation and an enabled synthetic capability.
 @Composable
 internal fun RecoveredTemporaryChatButton(selected: Boolean, toggle: () -> Unit) {
-    val dark = isSystemInDarkTheme()
-    Surface(shape = RoundedCornerShape(50), color = if (dark) Color(0xFF303030) else Color.White) {
-        androidx.compose.material3.IconButton(onClick = toggle,
-            modifier = Modifier.size(48.dp).testTag("shell-temporary")
-                .semantics { this.selected = selected }) {
-            Icon(painterResource(if (selected) R.drawable.ds_chat_bubble_checkmark_dashed_regular_24
-                else R.drawable.ds_chat_bubble_dashed_regular_24),
-                stringResource(if (selected) R.string.shell_temporary_on else R.string.shell_temporary_off),
-                modifier = Modifier.size(24.dp))
-        }
+    androidx.compose.material3.IconButton(onClick = toggle,
+        modifier = Modifier.size(48.dp).frontendFloatingControl().testTag("shell-temporary")
+            .semantics { this.selected = selected }) {
+        Icon(painterResource(if (selected) R.drawable.ds_chat_bubble_checkmark_dashed_regular_24
+            else R.drawable.ds_chat_bubble_dashed_regular_24),
+            stringResource(if (selected) R.string.shell_temporary_on else R.string.shell_temporary_off),
+            modifier = Modifier.size(24.dp))
     }
 }

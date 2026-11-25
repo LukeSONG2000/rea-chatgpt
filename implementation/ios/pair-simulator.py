@@ -6,15 +6,13 @@ import os
 import pathlib
 import subprocess
 import urllib.parse
+from Tools.simulator_target import shared_device
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--device', required=True)
 parser.add_argument('--pairing-file', type=pathlib.Path, required=True)
 args = parser.parse_args()
-inventory = json.loads(subprocess.check_output(['xcrun', 'simctl', 'list', 'devices', '--json']))
-matches = [d for group in inventory['devices'].values() for d in group
-           if d['udid'] == args.device and d['name'] == 'REA ChatGPT Offline' and d.get('isAvailable')]
-if len(matches) != 1: raise SystemExit('Dedicated REA simulator required')
+shared_device(args.device, booted=True)
 data = json.loads(args.pairing_file.read_text())
 url = urllib.parse.urlsplit(data['url'])
 if (url.scheme != 'http' or url.hostname != '127.0.0.1' or not url.port

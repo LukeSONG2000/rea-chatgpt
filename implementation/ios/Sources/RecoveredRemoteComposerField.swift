@@ -11,7 +11,8 @@ final class RemoteComposerDraftStore: ObservableObject {
     @Published private(set) var persistenceFailed = false
     private var persistence: RemoteDraftPersistence?
 
-    init() {
+    init(persistsToDisk: Bool = true) {
+        guard persistsToDisk else { return }
         do {
             guard let adapter = try RemoteDraftPersistence.current() else { return }
             drafts = try adapter.load()
@@ -74,21 +75,33 @@ final class RemoteComposerDraftStore: ObservableObject {
         return state
     }
 
-    func accept(_ submitted: RemoteComposerDraft, in scope: RemoteComposerDraftScope) {
-        guard pendingEdits[scope] == nil else { return }
+    @discardableResult func accept(_ submitted: RemoteComposerDraft, in scope: RemoteComposerDraftScope) -> Bool {
+        guard pendingEdits[scope] == nil else { return false }
         var draft = snapshot(in: scope)
-        guard draft.clearAfterAcceptance(of: submitted) else { return }
+        guard draft.clearAfterAcceptance(of: submitted) else { return false }
         drafts[scope] = draft
-        persist()
+        persist(); return !persistenceFailed
     }
 
     func pendingEdit(in scope: RemoteComposerDraftScope) -> RemotePendingEditTransaction? { pendingEdits[scope] }
 
     func beginPendingEdit(_ pending: RemotePendingReplayPrompt, in scope: RemoteComposerDraftScope,
                           sessionID: UUID) -> Bool {
-        guard pendingEdits[scope] == nil, !isImporting(in: scope), !persistenceFailed,
-              let edit = RemotePendingEditTransaction(pending: pending, scope: scope,
-                  sessionID: sessionID, originalDraft: snapshot(in: scope)) else { return false }
+        guard let edit = RemotePendingEditTransaction(pending: pending, scope: scope,
+            sessionID: sessionID, originalDraft: snapshot(in: scope)) else { return false }
+        return beginPendingEdit(edit)
+    }
+
+    func beginPendingEdit(_ prompt: CodexQueuedPrompt, in scope: RemoteComposerDraftScope,
+                          sessionID: UUID) -> Bool {
+        guard let edit = RemotePendingEditTransaction(queuedPrompt: prompt, scope: scope,
+            sessionID: sessionID, originalDraft: snapshot(in: scope)) else { return false }
+        return beginPendingEdit(edit)
+    }
+
+    private func beginPendingEdit(_ edit: RemotePendingEditTransaction) -> Bool {
+        let scope = edit.scope
+        guard pendingEdits[scope] == nil, !isImporting(in: scope), !persistenceFailed else { return false }
         // Materialize even an empty original once: snapshot() otherwise creates
         // a fresh identity, which would break exact cancellation restoration.
         drafts[scope] = edit.originalDraft
@@ -188,6 +201,11 @@ struct RemoteActiveDictationConfiguration {
 
 // Reconstructed native field with source-backed ordinary toolbar. Recording,
 // prediction and alternate presentation remain separate.
+enum RemoteComposerSendFocus: Equatable {
+    case admitted(UUID)
+    case rejected(UUID)
+}
+
 struct RecoveredRemoteComposerField: View {
     @ObservedObject var drafts: RemoteComposerDraftStore
     let scope: RemoteComposerDraftScope
@@ -206,9 +224,9 @@ struct RecoveredRemoteComposerField: View {
     let runningTurnID: String?
     let stop: (RemoteComposerStopIntent) -> Void
     let primaryColor: UIColor
-    // Independent synchronous acceptance boundary. Future asynchronous adapters
-    // must deliver a request-scoped receipt before applying focus effects.
+    // Synchronous acceptance and authoritative admission have separate owners.
     let submit: (RemoteComposerSubmission) -> Bool
+    var sendFocus: RemoteComposerSendFocus? = nil
     var followUpBehaviorOverride: RemoteComposerFollowUpBehavior? = nil
     @AppStorage(RemoteComposerPreferences.followUpKey) private var savedFollowUp = RemoteComposerFollowUpBehavior.queue.rawValue
     @AppStorage(RemoteComposerPreferences.dismissKeyboardKey) private var dismissKeyboardAfterSending = true
@@ -229,6 +247,7 @@ struct RecoveredRemoteComposerField: View {
     var allowsFocus = true
     var inputTrailingInset: CGFloat = 8
     var onFocusChanged: (Bool) -> Void = { _ in }
+    var onExpansionChanged: (Bool) -> Void = { _ in }
     var toolbar: RemoteComposerToolbarConfiguration? = nil
     var contextUsage: RemoteContextUsage? = nil
     var permissions: RemotePermissionPickerConfiguration? = nil
@@ -240,9 +259,11 @@ struct RecoveredRemoteComposerField: View {
     var activeDictation: RemoteActiveDictationConfiguration? = nil
     var attachmentRequest: Binding<RemoteAttachmentPickerRequest?> = .constant(nil)
     var attachmentErrorMessage: String? = nil
+    var allowsStop = true
     @State private var localAttachmentErrorMessage: String?
     @State private var showsPersistenceFailure = false
     @State private var focused = false
+    @State private var submissionThatHidKeyboard: UUID?
     @State private var didRequestInitialFocus = false
     // Native adapter for ScaledEnvironmentMetric -> UIFontMetrics. The glyph
     // scales independently from the raw style padding (v511 0x7560ae4).
@@ -251,6 +272,11 @@ struct RecoveredRemoteComposerField: View {
     private var text: Binding<String> {
         Binding(get: { drafts.text(in: scope) },
                 set: { drafts.update($0, in: scope) })
+    }
+
+    private var providerEditDraftID: UUID? {
+        guard let edit = drafts.pendingEdit(in: scope), case .provider = edit.target else { return nil }
+        return edit.draft.identity
     }
 
     private var effectiveSubmissionState: RemoteComposerSubmissionState {
@@ -355,7 +381,7 @@ struct RecoveredRemoteComposerField: View {
         else if primary == .send { sendControl }
         else if primary == .stop {
             RecoveredRemotePrimaryControl(symbol: stopSymbol, color: primaryColor,
-                disabled: runningTurnID == nil,
+                disabled: runningTurnID == nil || !allowsStop,
                 label: OfficialText.text(.stopGenerating), identifier: "remote-composer-stop") {
                     guard let turnID = runningTurnID else { return }
                     stop(.init(intentID: UUID(), scope: scope, sessionID: sessionID, turnID: turnID))
@@ -508,7 +534,37 @@ struct RecoveredRemoteComposerField: View {
         }
         .onChange(of: focused) { _, value in
             if value && !allowsFocus { focused = false; return }
+            if value { submissionThatHidKeyboard = nil }
             onFocusChanged(value)
+        }
+        .onChange(of: expanded, initial: true) { _, value in onExpansionChanged(value) }
+        .onChange(of: sendFocus) { _, request in
+            switch request {
+            case .admitted(let id):
+                if HostLaunchRuntime.arguments.contains("--codex-send-transition-fixture") {
+                    NSLog("REA send focus %@ %@ %.3f", id.uuidString,
+                          dismissKeyboardAfterSending && focused ? "dismiss" : "retain",
+                          ProcessInfo.processInfo.systemUptime * 1000)
+                }
+                if dismissKeyboardAfterSending && focused {
+                    submissionThatHidKeyboard = id
+                    focused = false
+                }
+            case .rejected(let id):
+                if submissionThatHidKeyboard == id {
+                    submissionThatHidKeyboard = nil
+                    if allowsFocus && dismissKeyboardAfterSending {
+                        if HostLaunchRuntime.arguments.contains("--codex-send-transition-fixture") {
+                            NSLog("REA send focus %@ restore %.3f", id.uuidString, ProcessInfo.processInfo.systemUptime * 1000)
+                        }
+                        focused = true
+                    }
+                }
+            case nil: submissionThatHidKeyboard = nil
+            }
+        }
+        .onChange(of: providerEditDraftID) { _, id in
+            if id != nil && allowsFocus { focused = true }
         }
         .onDisappear {
             activeDictation?.cancel()
@@ -875,6 +931,7 @@ private struct NativeRemoteComposerEditor: UIViewRepresentable {
     // also governs accessibility, without recreating the draft or editor.
     final class EditorContainer: UIView {
         let editor = UITextView()
+        var autocorrectionBinding: FrontendAutocorrectionBinding?
 
         override init(frame: CGRect) {
             super.init(frame: frame)
@@ -894,6 +951,9 @@ private struct NativeRemoteComposerEditor: UIViewRepresentable {
     func makeUIView(context: Context) -> EditorContainer {
         let container = EditorContainer()
         let view = container.editor
+        container.autocorrectionBinding = FrontendAutocorrectionBinding(editor: view,
+            profile: FrontendStartScreenDestination.currentProfile)
+        context.coordinator.autocorrectionBinding = container.autocorrectionBinding
         view.delegate = context.coordinator
         view.backgroundColor = .clear
         view.font = UIFont.preferredFont(forTextStyle: .body)
@@ -916,6 +976,7 @@ private struct NativeRemoteComposerEditor: UIViewRepresentable {
 
     func updateUIView(_ container: EditorContainer, context: Context) {
         let view = container.editor
+        container.autocorrectionBinding?.refresh()
         let coordinator = context.coordinator
         coordinator.parent = self
         coordinator.isApplyingOwnerState = true
@@ -972,6 +1033,9 @@ private struct NativeRemoteComposerEditor: UIViewRepresentable {
         let view = container.editor
         coordinator.mounted = false
         coordinator.focusRevision += 1
+        container.autocorrectionBinding?.invalidate()
+        container.autocorrectionBinding = nil
+        coordinator.autocorrectionBinding = nil
         view.delegate = nil
         view.resignFirstResponder()
     }
@@ -981,6 +1045,7 @@ private struct NativeRemoteComposerEditor: UIViewRepresentable {
         var mounted = true
         var focusRevision = 0
         var isApplyingOwnerState = false
+        var autocorrectionBinding: FrontendAutocorrectionBinding?
         private var consumedPluginEditID: UUID?
         private var consumedDictationEditID: UUID?
         init(_ parent: NativeRemoteComposerEditor) { self.parent = parent }
@@ -1007,6 +1072,7 @@ private struct NativeRemoteComposerEditor: UIViewRepresentable {
             // value. Retry only the current mounted request on the next turn.
             DispatchQueue.main.async { [weak self, weak textView] in
                 guard let self, let textView else { return }
+                self.autocorrectionBinding?.refresh()
                 self.applyPluginEdit(to: textView)
                 self.applyDictationEdit(to: textView)
             }
@@ -1014,6 +1080,7 @@ private struct NativeRemoteComposerEditor: UIViewRepresentable {
 
         func textViewDidChange(_ textView: UITextView) {
             guard mounted else { return }
+            autocorrectionBinding?.refresh()
             // Remote's native delegate writes its text binding before the
             // marked-range guarded normalization helper (v557, 0x1996abc).
             // Keep transient composition in this in-memory owner projection.

@@ -59,8 +59,25 @@ precondition(rejectedState.receive(.init(request: proposedRequest, result: .succ
     acceptance: { _, _ in .localStorage }))
 precondition(rejectedState.failure == .localStorage && rejectedState.profile == profile &&
     rejectedState.draft == revisedDraft && rejectedState.canSave)
-let durableRequest = rejectedState.beginSave()!
-precondition(durableRequest.baseRevision == profile.revision)
+precondition(rejectedState.beginSave() == nil,
+    "A successful provider proposal must not dispatch again to repair local persistence")
+precondition(rejectedState.awaitingLocalAcceptance)
+var attemptedEdit = revisedDraft; attemptedEdit.name = "Do not replace accepted result"
+rejectedState.edit(attemptedEdit)
+precondition(rejectedState.draft == revisedDraft)
+var receiptAttempts = 0
+precondition(!rejectedState.retryLocalAcceptance { request, value in
+    receiptAttempts += 1
+    precondition(request == proposedRequest && value == proposed)
+    return .localStorage
+})
+precondition(receiptAttempts == 1 && rejectedState.awaitingLocalAcceptance)
+var retiredProposal = rejectedState
+retiredProposal.retireRequests()
+precondition(!retiredProposal.retryLocalAcceptance { _, _ in
+    preconditionFailure("Retired proposal must not commit")
+})
+precondition(!rejectedState.receive(.init(request: proposedRequest, result: .failure(.failed))))
 
 let directory = FileManager.default.temporaryDirectory.appendingPathComponent("rea-profile-journal-" + UUID().uuidString)
 defer { try? FileManager.default.removeItem(at: directory) }
@@ -70,11 +87,27 @@ func rejected(_ operation: () throws -> Void) {
 }
 let emptyJournal = try journal.load(); precondition(emptyJournal == nil)
 try journal.save(profile, expectedRevision: 0)
-precondition(rejectedState.receive(.init(request: durableRequest, result: .success(proposed)), acceptance: { request, value in
+// Fail the production atomic writer without adding a production failure hook.
+let backupDirectory = directory.appendingPathExtension("retained")
+try FileManager.default.moveItem(at: directory, to: backupDirectory)
+try Data("blocked parent".utf8).write(to: directory)
+precondition(!rejectedState.retryLocalAcceptance { request, value in
     do { try journal.save(value, expectedRevision: request.baseRevision); return nil }
     catch { return .localStorage }
-}))
+})
+precondition(rejectedState.profile == profile && rejectedState.awaitingLocalAcceptance)
+try FileManager.default.removeItem(at: directory)
+try FileManager.default.moveItem(at: backupDirectory, to: directory)
+precondition(rejectedState.retryLocalAcceptance { request, value in
+    precondition(request == proposedRequest && value == proposed)
+    do { try journal.save(value, expectedRevision: request.baseRevision); return nil }
+    catch { return .localStorage }
+})
 precondition(rejectedState.profile == proposed && rejectedState.failure == nil)
+precondition(!rejectedState.awaitingLocalAcceptance && !rejectedState.canSave)
+precondition(!rejectedState.retryLocalAcceptance { _, _ in
+    preconditionFailure("Accepted proposal must be consumed exactly once")
+})
 let restoredProfile = try journal.load(); precondition(restoredProfile == proposed)
 let committedBytes = try Data(contentsOf: journal.url)
 try journal.save(proposed, expectedRevision: profile.revision) //exact interrupted-commit retry is idempotent

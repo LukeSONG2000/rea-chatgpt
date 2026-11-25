@@ -1,4 +1,165 @@
+> 2026-11-20 优先收口 Codex 操作接线，同步推进 Codex 内嵌文件与独立文件的渲染及预览。动效与交互单独推进，包含底部键盘展开时的跟随效果和轻触外部收键盘。浏览器排在文件之后，插件排在浏览器之后。动效与交互及 Codex 相关修复验证后交接 Soul RD。Android 同步对齐，样式优先，使用无线 OnePlus 验证。见 [当前收口顺序](CODEX-CLOSURE-ORDER-20261116.md#当前收口顺序)。
+
 # 移动端最小可用计划（2026-11-13 优先级修订）
+
+最新Codex任务列表见 `PROGRESS-20261116-CODEX-LIST-INSTANCES.md`：Cloud／Remote共用显式实例与逐实例加载合同，普通预览已有Cloud，补失败／重试／空／无匹配／刷新、Cloud脱离电脑偏好、未分配Cloud不漏组及sole-Cloud隐藏All；项目目录／catalog子请求按成员过滤。保留复合身份、原搜索与进入返回，异步数据到达后再恢复列表阅读。Foundation和既有checkpoint合同通过；中文浅色共同核心141.014秒、重启阅读145.241秒及最终sole-Cloud专项通过；r1构建可选hostID错误已修，截图发现的残余电脑目录已补，未重复整套矩阵。原服务分页／搜索／特殊分配／精确像素等明确保留。当前第1项核心闭环已实现，下一第2项普通消息阅读；本批仅iOS，Android未动，新成果留本地。
+
+2026-11-16用户最新范围已改为Codex整体（Cloud＋Remote）逐项闭环，执行入口为 `CODEX-CLOSURE-ORDER-20261116.md`。第1项核心已实现，下一第2项普通消息阅读；下方旧插件优先及原顺序保留为历史，不继续执行。
+
+最新iOS插件其他设置见 `PROGRESS-20261116-PLUGIN-ADDITIONAL-FORM.md`：补单提供方／账户普通Boolean与无约束String的读取／重试、description分组footer、有效且有差异时保存、成功失败双路重读／失败保稿、手动重试和返回重进；未提交返回不自动保存。状态／实际提供方及原文资源合同通过，最终中文浅色60.194秒通过；r1中央空白未触发原生开关，录像定位后仅修实际控件点击并即时断言，未改产品开关语义。多提供方／账户选择、数字／枚举／约束字段、原writer输出与私有视觉仍缺；真实服务未接，插件大项继续。本批仅iOS，Android未动；装机及预览事实见同批runtime，成果留本地。
+
+最新iOS插件Uses闭环见 `PROGRESS-20261116-PLUGIN-USES-LOOP.md`：已接三路入口／独立状态尾部、canonical子设置、普通连接器详情、单OAuth面板及取消／失败重试／明确连接快照／移除／返回重进。状态和提供方／资源合同通过，最终中文浅色56.583秒通过；r1资源准备中止及格式参数缺失已纠正，r2父级AX标识覆盖子按钮已修，历史结果保留。其他设置表单、完整技能正文／文件、详情其余分区／多认证参数／精确光学仍缺，插件整项继续，下一补其他表单，不提前转文件。真实OAuth服务未接；本批仅iOS，Android未改未操作，新成果留本地。
+
+最新iOS插件技能闭环见 `PROGRESS-20261116-PLUGIN-SKILL-LOOP.md`：补真实原Toggle、乐观启停、原错误／精确回滚、手动重试、列表和新设置owner读取；禁用能力独立供应。状态／提供方及资源合同通过，最终中文浅色66.554秒通过，r1忙态窗口未捕获保留并仅调整slow夹具。Uses三路及状态原证已闭但界面／动作未接，插件整项仍进行中，下一继续Uses，不提前转文件。原完整容器／正文文件、其他表单与canonical仍缺；Android本批未改未操作，新成果留本地。
+
+最新iOS账户／头像本地收口见 `PROGRESS-20261116-ACCOUNT-LOCAL-AVATAR.md`：补头像独立本地保存、设置页即时刷新、编辑重进／进程重启恢复、连续revision与失败重试，文字取消不撤销已确认头像。实际文件合同通过；首轮发现设置根页未观察账户owner，修复后中文浅色105.341秒通过，头像截图已核对。模拟器普通新版运行，iPhone Air签名／codesign及安装／前台启动成功。原根接收／关闭、精确裁切工具栏和真实上传仍未实现；Android本批未改未操作。下一整项文件／浏览器常用格式，新成果留本地。
+
+最新iOS插件设置见 `PROGRESS-20261116-PLUGIN-SETTINGS-SECTIONS.md`：补Skills设置分区、原名称回退／禁用文案及定域只读资料入口，禁用技能仍可进入；插件／文本合同及中文浅色32.153秒首轮通过，两张截图已核对。模拟器普通新版运行，iPhone Air签名／codesign及安装／前台启动成功。原技能详情注入与变更、Uses目的地选择、canonical／其他表单仍未实现；Android本批未改未操作。下一整项账户／头像本地前端，新成果留本地。
+
+最新iOS设置接线收口见 `PROGRESS-20261116-SETTINGS-INTEGRATION-CLOSURE.md`：主题／强调色／起始页／系统语言／自动更正／触觉及Codex已实现功能均有实际消费者，无新有源产品漏接；本批仅核对归档，无产品修改、构建、重复UI或设备操作。实时活动仅保存、报告与建议仅入口等未实现能力明确保留。以 `IOS-CLOSURE-ORDER-20261116.md` 为当前难度优先顺序：第1项收口，下一整项插件；未验收不算未做，不反复将原服务取证缺口算作既有设置未接。
+
+最新账户资料／头像见 `PROGRESS-20261116-ACCOUNT-ACCEPTANCE-OWNER.md`：iOS成功结果在本地保存失败后精确保留，重试只补本地接受，字段冻结／取消及旧回执隔离；Foundation合同、中文浅色99.582秒及模拟器／签名／codesign通过。Android按293原SelfPreview父级改为保存后留资料只读页，普通Edit保持独立返回；本批运行与安装事实见机器父报告。原iOS didUpdateProfile字段补证，memberRepository不能误称关闭；根接收／真正PQueue删除仍缺。Air离线不查询不装。下一整项仅插件，新成果留本地。
+
+最新设置／系统体验见 `PROGRESS-20261116-SETTINGS-DELIVERY-OWNER.md`：Android补独立session点击journal／重启去重与未处理恢复，read落盘失败返回后仍可仅补交，坏记录／新scope隔离；OnePlus合同0.162／准备0.157／中文核心10.650秒及已有0.232／0.111秒首轮通过，新包摘要一致／四偏好保持。iOS重现并修复成功导航后保存失败导致重复导航，保精确回执／attempt及新事件合并；生产合同、中文路由71.718秒、模拟器／签名及codesign通过，普通预览留运行。原通知回复subject链补证与普通tap明确分开，完整映射仍缺。Air离线不查询不装。下一整项账户资料／头像再到插件，本批留本地。
+
+最新文件／浏览器见 `PROGRESS-20261116-FILES-READING-OWNER.md`：Android补独立任务内文本／Markdown阅读缓存，两入口接同owner，模式及各reader位置分离、内容变化失效／lease退休；合同0.056秒，最终OnePlus中文浅色31.950秒通过，新包摘要一致／四偏好保持／普通预览运行。r1基准仍在fling、r2测试日志目录错误保留，后两次仅修测试观察，同产品APK。iOS闭具体Data→文本资格→sourceVM/presentation及143a004共享epilogue纠正，导航注入／nil可视目的地仍缺，无产品修改／重建；模拟器保持，Air离线不查询。下一整项指定设置／系统体验消费者，本批留本地。
+
+最新Chat／Work编辑与阅读owner见 `PROGRESS-20261116-CHAT-READING-OWNER.md`：iOS闭合实际handleAction初始化→普通raw14→MessagesViewModel.editedMessageID写入→输入owner，修正普通编辑仅停外部回调的旧边界；Cancel／Submit／历史替换仍缺，当前独立载入草稿不冒称原编辑重发。Android闭合标题navigateUp、精化o2默认／audio资格，不新增Completed或Stop-only条件；活动选区首次Back问题仍未修，44／12不是高度。7源不变，不构建／重装／重复UI，普通双端进程及安装摘要只读核对一致；Air离线不查询。下一整项文件／内置浏览器，本批留本地。
+
+最新Remote审批／补充输入见 `PROGRESS-20261116-REMOTE-REQUEST-FIELDS.md`：Android补单选枚举的原值／标题／默认／成员及省略规则，整行选项与深快照；根审撤销可选非String的无源收窄、最终payload保持省略，合同0.133／0.134秒和最终OnePlus中文浅色22.389秒通过。iOS补URI格式原URL＋scheme校验、原文／单行URL键盘，Foundation及最终中文浅色45.053秒通过。两端首轮测试定位问题保留，仅修checked读取／列表筛选条滚动定位，产品未为测试改动。普通双端预览与签名候选事实见runtime；Air离线不查询不追装。其他字段／raw schema／私有材质仍缺，下一整项Chat／Work消息操作与阅读返回，本批留本地。
+
+最新Remote编写器／任务控制见 `PROGRESS-20261116-REMOTE-CONTROLS-UPDATE.md`：Android补Goal六状态、原暂停／恢复资格、编辑门控、精确目标revision和旧Boolean记录兼容；一次构建31秒、OnePlus中文浅色合同0.141秒／双任务30.028秒首轮通过，新包已装、四偏好保持并留运行。iOS闭合active Session到thread/settings/update及11字段／CodingKeys，纠正逐pending配置改写推断；当前无有源新UI遗漏，不改产品／重复构建，普通模拟器保持。Air用户确认离线不查询不追装。原完整能力生产、配置归一化／回执和精确材质仍缺；下一整项Remote审批／补充输入，本批留本地。
+
+最新Remote消息区见 `PROGRESS-20261116-REMOTE-CODE-OUTPUT.md`：iOS补实际Shell前景解析到既有颜色渲染器，基础／亮／索引／RGB／重置与跨行，异常整份原文回退；Foundation及中文浅色57.741秒首轮通过，普通模拟器新版与签名候选完成。Android补命令／输出复制独立两秒反馈，身份合同0.047秒、最终OnePlus中文浅色29.957秒通过；前两次测试观测失败保留，产品APK未因测试修改，普通四偏好保持。双端预览留运行，Air用户确认离线不查询不追装。完整reasoning／DIL、原输出生产与复杂菜单仍缺，下一整项Remote编写器／任务控制，本批留本地。
+
+最新Remote列表见 `PROGRESS-20261115-REMOTE-LIST-MERGE.md`：Android修目录成功误删普通base任务，保任务及引用分组、同ID资料更新／其他host不变；纠正旧测试错误删任务期望，目录／分页合同0.098／0.102秒及OnePlus中文浅色11.527秒首轮通过，新版已装、四偏好保持并留运行。iOS纠正Observation被当订阅及ProjectStore目录feature链，最后snapshot字段转发仍缺，无产品改动／重复构建，普通模拟器保持。Air离线不查询不追装。下一整项Remote消息区，本批留本地。
+
+最新主框架／侧栏见 `PROGRESS-20261115-SHELL-ROUTING.md`：iOS按293实际Binding及交互flag构造区分dragging与普通tap／收尾动画，修正过宽方向准入，严格水平／双向／能力纯规则及中文浅色37.216秒往返通过；普通模拟器新版保持、签名／codesign通过，Air离线未查询未装。Android闭合代码预览／写作块tar产生到c3／清除，但当前Shell无对应遗漏，未改产品／重复构建／重装；OnePlus原包保持。完整单pan映射／页面能力／0.3秒中断实触等保留。下一整项Remote列表，本批留本地。
+
+最新插件权限消费者见 `PROGRESS-20261115-PLUGIN-SETTINGS-ROWS.md`：iOS接每插件可选本地权限行、五状态原文／只读与动作分支，原权限能力保留明确说明；Foundation／资源及中文浅色48.420秒通过，行中央命中缺陷修复。Android接独立全局偏好权限、原三个候选／失败保原值／重试／往返；合同0.078／0.089／0.085秒与最终OnePlus中文浅色14.970秒通过，首轮自动化缓存失败保留，产品未为断言改动。普通双端预览保留，Air用户确认离线不查询不追装；Uses／Skills设置行、其他表单／canonical与完整原光学仍缺。下一整项主框架／侧栏，本批留本地。
+
+最新账户／头像见 `PROGRESS-20261115-ACCOUNT-SUBMIT-CARRIER.md`：Android补姓名／用户名部分成功、失败留稿／仅变化项重试和本地回执重试，一次构建、OnePlus合同0.094／0.190秒与中文浅色13.918秒首轮通过，普通偏好保持。iOS补裁切后原await忙态／单飞任务与独立本地预览provider，失败重试／取消保旧图和草稿；纯合同及最终中文浅色59.891秒通过，首轮瞬态查找失败保留，普通模拟器及签名候选完成。原根资料接受／成功关闭／精确错误UI仍缺，Air离线未查询未装。下一整项仅插件，本批留本地。
+
+最新指定设置／系统体验见 `PROGRESS-20261115-SETTINGS-SYSTEM-CARRIER.md`：Android补General预测开关→显式合成provider→Chat ghost／键盘与无障碍接受，只填稿不发送；定域取消／迟到拒绝、组合态准入与先保存后发布已接。一次构建、OnePlus合同0.115秒／中文浅色17.966秒首轮通过，新版已装、普通偏好保持。iOS纠正Report runtime包装及通知bootstrap timeout／已处理集合的解释，实际报告handler／最终导航仍缺，无产品改动／重复构建；普通模拟器保持，Air离线未查询未装。下一整项账户资料／头像前端，再到插件；本批留本地。
+
+最新文件／浏览器见 `PROGRESS-20261115-FILES-CARRIER.md`：Android已接显式离线snapshot资源、index／query／同WebView内链与系统Back，OnePlus最终视觉同步流程17.151秒通过；iOS接导航owner阅读身份、模式／Raw及Markdown位置保存，Raw布局extent缺陷修复后实际715→715及草稿返回通过。两端普通预览留运行，Air离线，不查询／追装；下一整项指定设置／系统体验，本批留本地。
+
+最新Chat／Work见 `PROGRESS-20261115-CHAT-CARRIER.md`：Android按293 Screen注册／LocalView工具栏父级，把全文选择从独立Dialog改为同Activity页面，保留原草稿与阅读锚点；规则0.070秒／页面13.114秒、实际复制返回18.540秒及最终键盘往返12.335秒通过。活动选区首次Back仍false，不称已修；r2测试缓存失败与r3实际隐藏焦点失败分别保留，最终仅补导航释放焦点。OnePlus最终包已装、四偏好保持、普通预览留运行。iOS纠正cursorOffset为听写快速编辑相关准入，并闭实际handleAction外部回调，原编辑状态／提交仍缺，无产品修改或重建；模拟器保持，用户确认Air离线不再追装。下一整项文件／内置浏览器，本批留本地。
+
+最新Remote审批／补充输入见 `PROGRESS-20261115-REMOTE-FORM-CARRIER.md`：双端接普通String与Boolean混合表单，复用字段字典／校验／继续及取消关闭／请求回执，答案不落盘。Android原码点长度、iOS原Swift字形簇／nil格式／标题与单多行区别分别保留；合同及OnePlus中文浅色23.061秒首轮、iOS Foundation及最终中文浅色39.382秒通过。iOS首轮任务行被编写器覆盖的测试误点已按真实边界纠正，未改产品布局。普通双端新版留运行，签名／codesign通过，Air不可用未装。其余字段／raw schema／特殊格式与原光学仍缺；下一整项Chat／Work，本批留本地。
+
+最新Remote编写器／任务控制见 `PROGRESS-20261115-REMOTE-CONTROLS-CARRIER.md`：Android按293显式featured IDs恢复trim／去重、hidden过滤、稳定分组及“其他模型”子菜单，默认空或无命中保留全部可见；合同0.241秒／OnePlus中文浅色44.772秒首轮通过，新包已装且偏好保持。iOS补Goal受阻／用量受限的恢复入口与共用准入，恢复受能力flag限制、暂停不受；Foundation及中文浅色35.751秒首轮通过，普通模拟器新版保留、签名／codesign通过，Air不可用未装。sentPrompt本地Turn发布不等于服务接受；原队列配置回执等仍缺。下一整项Remote审批／补充输入，本批留本地。
+
+最新Remote消息区见 `PROGRESS-20261115-REMOTE-COMMAND-CARRIER.md`：Android按293接动作元数据与说明显示，保留首个非空白行原空格，说明在代码卡后／cwd前；合同0.073秒及OnePlus中文浅色27.786秒首轮通过，新包已装、普通偏好保持。iOS实际Shell补尾部换行Character裁剪／空输出子树省略，原始输出与索引保留；Foundation及最终中文浅色31.681秒通过，首轮AX定位失败证据保留，未改布局。普通模拟器新版保留、签名／codesign通过，Air不可用未装。完整styled输出／特殊错误／reasoning／DIL等仍缺，下一整项Remote编写器与任务控制，本批留本地。
+
+- 最新Remote列表能力降级见 `PROGRESS-20261115-REMOTE-CATALOG-CAPABILITY.md`：Android接精确请求的显式Unsupported结果，隐藏目录错误／重试而保留普通base任务、cwd分组及其他host；typed协议转译留adapter，不按异常文字猜。一次构建、OnePlus合同0.098秒／中文浅色12.909秒首轮通过，新包已装、普通偏好保持。iOS纠正可选driver为CodexRemoteSession?并闭部分异步身份边，unsupported发布仍缺，无新产品／构建／装机，普通模拟器保持。完整来源缓存／session代次／All分页等保留，下一整项Remote消息区，本批留本地。
+
+- 最新主框架／侧栏见 `PROGRESS-20261115-SHELL-SCROLL-PRIORITY.md`：iOS按293接真实UIScrollView pan的shouldBeRequiredToFailBy边界／减速／选区优先级，真实位移到双pan为独立适配；纯规则、UIKit bridge及中文浅色29.431秒往返通过，普通模拟器新版保留，签名／codesign通过，Air不可用未装。Android核实blocked是tar覆盖层而非IME，插件设置已有详情gate／BackHandler，未做无证补丁／重复构建；OnePlus原包保持。完整私有仲裁／IME等仍缺，下一整项Remote列表，本批留本地。
+
+- 最新插件设置父级见 `PROGRESS-20261115-PLUGIN-SETTINGS-PARENTS.md`：Android按293恢复全局已添加／浏览与管理投影、加载／重试／下拉刷新／分页合同、单插件与独立目录往返，并去掉重复根工具栏；最终OnePlus中文浅色聚焦流程通过，新包已装、四偏好保持。iOS接两入口的独立每插件Form父级、请求／错误重试及有原文证据的“其他设置”导航；字段／Uses／Skills／本地权限与canonical内容仍未恢复，不假装可保存。Foundation／文字及最终中文浅色36.098秒通过，普通模拟器保留；签名／codesign通过，Air不可用未装。下一整项主框架／侧栏，本批留本地。
+
+- 最新账户资料／头像见 `PROGRESS-20261115-ACCOUNT-FIELDS-CROP.md`：Android按293原始字段／nullable String错误链去掉无原证非空与100／64限制，区分独立512 UTF-16预算和provider原文；OnePlus中文浅色合同0.185秒／核心14.496秒首轮通过，最终安装与偏好保持。iOS闭合实际裁切父级并接选图→拖动／缩放裁切→确认瞬态预览／取消保图，原300圆孔与结果binding有源，精确数学／工具栏为独立适配；Foundation及中文浅色76.421秒首轮通过，模拟器普通预览保留，签名／codesign通过，Air不可用未装。原owner提交后接受／关闭及多请求事务仍缺；下一整项仅插件，本批留本地。
+
+- 最新指定设置／系统体验见 `PROGRESS-20261115-NOTIFICATION-INGRESS.md`：Android按293 VIEW/data／原tap extras接singleTop Activity冷启动、onNewIntent及待处理队列恢复，独立scope元数据与现有Chat／Remote映射；目标失败重试／关闭、未接动作说明、原页面与草稿返回已接。最终OnePlus中文浅色Intent0.116秒／原Remote0.217秒／原Chat0.353秒／冷热重建22.641秒通过，新包已装且普通偏好保持。iOS闭合原delegate→userInfo→snake-case解码→Chat/Codex类型，账户／Workspace与最终AppEntry映射仍缺，未改产品／构建／装机，模拟器保持。原完整registry／跨进程去重未读／实际送达仍缺；下一整项账户资料／头像，本批留本地。
+
+- 最新文件／浏览器见 `PROGRESS-20261115-HTML-LOCAL-RESOURCES.md`：Android按293无快照eak链恢复同目录CSS／图片和overview／wide viewport，独立内存资源深快照／退休拒绝旧读取；OnePlus中文浅色规则0.103秒／原快照0.069秒／普通目录19.891秒及既有renderer失败重试19.675秒通过，新包已装且普通偏好保持。首轮仅SDK未设置状态的测试误断言已纠正，产品未为测试改动。iOS具体默认工厂→StandardFilePreview→QuickLook已证，调用方参数／实际注入和Remote handler仍缺；现有消费者无新有源漏接，未改产品／构建／装机，模拟器保持。下一整项指定设置／系统体验，本批留本地。
+
+- 最新Chat／Work正文格式见 `PROGRESS-20261115-CHAT-CONTENT-FORMAT.md`：Android按293 tcp/plain_text与mcp/markdown分流正文／全文选择，显式格式随journal保存并拒绝未知；不按User角色一刀切，旧本地记录按已声明adapter默认回读。OnePlus中文浅色合同0.143秒／编辑0.145秒／双模式14.426秒首轮通过，新版已装、普通偏好保持、PID10934运行。活动选区Back仍缺有源修复，未挪按钮；当前Foundation已具同类toolbar rect算法。iOS闭合具体普通菜单／Copy default不含历史及编辑cursorOffset，最终receiver仍缺，无新产品／构建／装机，模拟器保持。下一整项文件／浏览器；本批留本地。
+
+- 最新Remote非空Boolean表单见 `PROGRESS-20261115-BOOLEAN-FORMS.md`：双端按各自293源码接普通任务入口／默认／字段值／校验／独立继续与取消关闭；Android原Checkbox和双按钮底行，iOS原Toggle(labelsHidden)。必填无默认=false，可选无默认省略，显式false有效，答案不落盘。OnePlus中文浅色23.467秒、iOS中文浅色50.311秒与Foundation首轮通过；新版Android已装且偏好保持，iOS模拟器恢复普通预览，签名／codesign通过，Air不可用未装。原raw schema／其他字段／私有光学仍缺。下一整项Chat／Work消息操作与阅读返回；本批留本地。
+
+- 最新Remote模型切换见 `PROGRESS-20261115-MODEL-CHANGE.md`：Android按293补兼容力度保留／不兼容回退与规范化速度转换，UI和提交准入共用推导，历史请求／队列配置不重写；OnePlus中文浅色合同0.237秒／完整40.812秒通过，新版已装、四偏好保持、PID3973普通运行。前两轮夹具／列表点击失败保留，r3仅完善稳定行点击。iOS闭合app-server排队编辑的二次目标ID校验与失败owner，配置更新载荷仍缺，不猜接；无新产品／构建／真机装机，模拟器保持。实际tier映射／picker分组仍缺。下一整项Remote审批／补充输入专用表单；本批留本地。
+
+- 最新Remote命令显示见 `PROGRESS-20261115-COMMAND-DISPLAY.md`：Android恢复293 pqj/x6u0词法去壳，仅详情显示／代码复制用归一化值，raw command与journal保留；OnePlus中文浅色合同0.064秒／核心26.121秒／metadata0.075秒通过，一次构建，新包已装、四偏好保持、PID28941普通运行。iOS实际displayCommand字段／Text与失败footer已补证，无cwd可见正证，不借安卓改界面；模拟器保持，无新构建／真机装机。派生说明／policy能力／输出样式仍缺，下一整项Remote输入队列与配置接线，本批留本地。
+
+- 最新Remote项目目录局部失败见 `PROGRESS-20261115-REMOTE-CATALOG.md`：Android补单设备普通overview的项目加载文字／错误／重试行，All与搜索不照搬iOS；独立host回执、失败保留、成功仅替换本host目录及缓存清理。OnePlus最终中文浅色合同0.093秒／核心11.581秒／原任务分页合同0.110秒通过，新版已装、四份普通偏好保持、PID29373普通运行。首轮AX缓存断言失败保留，产品未为测试修改。iOS原Retry→完整HostIdentity→单一owner查找已闭，无新产品补丁／构建／装机，模拟器保持。完整连接代次／能力降级／聚合分页仍缺，下一整项Remote消息错误与命令详情，本批留本地。
+
+- 最新主框架／侧栏首增量见 `PROGRESS-20261115-SHELL-DRAG.md`：Android按293恢复mutation前pending-target采样、静止首delta丢弃／动画接管首delta保留，保留Foundation指针/slop/RTL/互斥；最终OnePlus中文浅色合同0.127秒／侧栏往返23.191秒／插件子页14.121秒通过，新版已装且普通四偏好保持，PID4060运行。r1/r2取消夹具错误与失败记录保留，产品未为测试改动。iOS具体Scrubbing producer已证FlashcardStudyPanGesture，不能套给模型rail；未改产品／重建，普通模拟器保持，Air不可用未装。下一整项Remote列表多来源／局部失败，本批留本地。
+
+- 最新插件设置／工具身份见 `PROGRESS-20261115-PLUGIN-SETTINGS.md`：Android补293顶栏插件设置、独立全局／单插件目的地及连接权限动态目录／null重置、回执失败重试；发现reset被系统导航栏遮挡，按原固定标题＋滚动正文修复，OnePlus最终中文浅色合同0.080秒／核心23.279秒通过，普通偏好保持。iOS以真实keypath／field-offset闭合ForEach.name并修列表身份，工具合同与中文核心57.971秒通过，普通模拟器恢复；签名／装机事实见父报告。全局设置内容和其余未知仍保留，下一整项主框架／侧栏，本批留本地。
+
+
+- 最新账户／头像见 `PROGRESS-20261115-AVATAR-RESULT.md`：Android按293两原分支补裁切／移除独立mutation、乐观预览／忙态、精确回执、失败回滚／重试，文字取消不撤销已接受头像；OnePlus中文浅色合同0.095秒／连续UI28.850秒／既有资料合同0.156秒通过，最终安装摘要和普通偏好见父报告。iOS新增URL→Data→UIImage→非空状态／事件正证，实际裁切父级仍缺，未改产品／重复构建。真实上传与持久头像不实现；下一整项仅插件有源缺口，本批留本地。
+
+
+- 最新设置消费者见 `PROGRESS-20261115-SETTINGS-NOTIFICATION.md`：Android按293 f8r补Chat通知源投影／显式映射、已有会话滚到底部、新建独立空稿、返回恢复及附加动作unsupported；OnePlus中文浅色合同0.348秒／Chat10.199秒／Remote12.077秒通过，普通偏好保持。iOS修根会话切换先清通知队列／换代再退休旧host，三个导航消费者拒绝退休／旧代次；聚焦生产队列合同和模拟器构建运行通过，设备签名／安装事实见父报告。原通知入站、复杂动作和跨进程去重等仍缺；下一整项登录／账户头像前端，本批留本地。
+
+
+- 最新主框架／侧栏补漏见 `PROGRESS-20261115-SHELL-GESTURE.md`：Android按293父导航准入补插件子页edge隔离／根页恢复，保留显式菜单与已开关闭；聊天按钮接原按钮角色的当前强调色。OnePlus中文浅色合同0.036秒／核心13.613秒通过，绿色按钮截图已看，最终包已装、四份普通偏好保持、无参数预览保留。iOS新闭failure delegate／两个精确名与实际Scrubbing setter，具体页面owner仍缺，未给任意pan贴标签／未改产品；原模拟器保持，Air新查不可用未装。下一整项指定设置消费者，本批留本地。
+
+- 最新插件整项补漏见 `PROGRESS-20261115-PLUGINS-CLOSURE.md`：Android按293补详情TryInChat专用无prompt通路、异步解析／取消重试、独立来源v3兼容与空白Chat草稿／返回详情；OnePlus中文浅色合同0.151秒／核心14.047秒通过，最终包已装、四份普通偏好保持。iOS恢复AdminSync原说明／可选日期与原相对格式器，Foundation／文本及中文浅色39.588秒通过，模拟器／签名构建／codesign通过；无参数预览保留，Air新查不可用未装。原每插件设置／loader／安装授权确认／私有样式等仍缺；下一整项主框架／侧栏手势与布局，本批留本地。
+
+- 最新账户／头像见 `PROGRESS-20261115-ACCOUNT-SELF-PREVIEW.md`：Android补显式SelfPreview只读→编辑→保存／取消、原中英动作资源及失败重试，普通Edit默认不变；OnePlus中文浅色合同0.088秒／核心16.744秒通过，最终包已装、普通单份偏好保持、无参数预览保留。iOS补安全作用域URL静态证据并实际验证图库／文件打开取消及草稿保持，r2中文浅色61.749秒通过；产品源码未改，普通模拟器恢复，Air新查不可用未装。原能力分配／成功导航／图片编辑结果与头像持久化仍缺；下一整项仅插件，本批留本地。
+
+- 最新指定设置／系统体验见 `PROGRESS-20261115-SETTINGS-ROUTING.md`：Android按293补Codex完成通知的Remote线程／根投影、定域独立映射和现有任务页接线，普通预览不自动注入；OnePlus中文浅色合同0.210秒／设置任务往返11.955秒通过，草稿与原根恢复，最终包已装、普通偏好保持、无参数预览保留。iOS六消费者／report下游核对无新有源漏接，原最终报告处理器仍缺，模拟器保持、Air新查不可用未装。Chat通知／跨进程去重和真实系统入站未接。下一整项登录／账户前端；本批留本地。
+
+- 最新文件／预览见 `PROGRESS-20261115-FILES-PREVIEW.md`：Android按293补源引用行号／范围解析、文字布局定位与全视觉行高亮，接普通目录与Remote文件链接，并冻结资源bytes／children；OnePlus中文浅色合同0.083／0.047秒、目录核心15.273秒通过，实际截图确认40–43行与返回无残留，最终包已装、普通偏好保持、无参数预览保留。iOS五消费者核对无新有源漏接，新CodeLanguage证据不等于HTML路由，原工厂调用仍缺；模拟器保持，Air新查不可用未装。下一整项指定设置／系统体验消费者，本批留本地。
+
+- 最新Chat／Work消息操作见 `PROGRESS-20261115-CHAT-MESSAGE-ACTIONS.md`：iOS补原用户气泡contextMenu父级并复用复制／载入草稿，完整消息快照门控，中文浅色48.683秒通过；模拟器与签名构建／codesign通过，普通无参数预览保留，Air新查不可用未装。Android补原编辑入口／原稿选区取消恢复，独立edit提供方及精确投影／失败重试，统一回复底栏复制资格与身份，补能力集合快照；OnePlus首轮三项通过，最终快照合同0.143秒／编辑主流程13.671秒通过，最终包已装且普通偏好保持；原始树重接／完整资格和私有样式仍缺。下一整项文件／内置浏览器；本批留本地。
+
+- 最新Remote专用请求见 `PROGRESS-20261115-REMOTE-REQUEST-VARIANTS.md`：Android接原空schema MCP确认卡、persist资格／参数分组／原中英资源、精确回执与独立记录，另补input嵌套集合快照。首轮三合同及中文浅色MCP17.367秒／真实重启7.973秒／原Async13.732秒全过，OnePlus摘要一致、普通偏好保持、PID12014留运行。iOS新闭唯一Fields子消费者与空验证→字典分支，接显式empty-fields表单／Continue与独立Dismiss、异步失败重试／替换离页清理；Foundation与权限合同、最终中文浅色26.371秒及模拟器／签名构建／codesign通过，无参数PID48979保留，Air新查不可用未装。非空schema／fields、URL钱包／原服务和精确私有光学仍缺；下一整项Chat／Work消息与阅读返回。本批留本地。
+
+- 最新Remote编写器与任务控制见 `PROGRESS-20261115-REMOTE-COMPOSER-CATALOG.md`：Android接显式动态模型／力度／速度目录及加载空错重试、能力准入、历史请求配置快照和完整TextFieldValue提交；默认速度按smali保留nullable语义。合同0.220秒、最终OnePlus中文浅色34.580秒通过，产品APK与r2合同一致、普通偏好保持、无参数PID9741留运行。前四次测试定位／旧store失败保留，未为测试修改布局。iOS七源码核对无新有源漏接，模拟器摘要／PID32482保持，Air新查不可用未装。原picker分组／model-change reducer、iOS队列更新载荷及Goal条件仍缺。下一整项Remote审批／补充输入；本批留本地。
+
+- 最新Remote消息区见 `PROGRESS-20261115-REMOTE-MESSAGES.md`：Android按293补命令工作目录provider／事件／journal／详情与原资源，以及最近一轮普通失败实际说明／分类／列表尾部；smali纠正JADX反转，null与空保留区别。两合同0.074／0.070秒、中文浅色命令31.768秒／错误13.929秒通过；最终包与安装一致、普通偏好保持，PID26155留运行。iOS五源审阅无新有源漏接，无新构建；模拟器PID32482及摘要保持，Air新查不可用未装。原去壳／样式输出、特殊错误、reasoning／DIL仍缺；下一整项Remote编写器与任务控制。本批留本地。
+
+- 最新Remote列表菜单见 `PROGRESS-20261115-REMOTE-LIST-ACTIONS.md`：Android接原长按行菜单／Connected置顶／重命名128原始UTF-16上限／复制ID／归档确认及唯一行锚点，合同0.080秒、最终OnePlus中文浅色28.270秒通过；前两次测试节点／浮窗标识失败保留，最终包与安装一致、普通偏好保持，PID25274运行。iOS分离已读项可见与禁用，生产策略合同及29.877秒核心通过，模拟器／签名构建与codesign通过，普通模拟器PID32482保留；Air新查不可用未装。原完整能力／分区／分页归并与私有光学仍缺；下一整项Remote消息区。本批留本地。
+
+- 最新设置消费者见 `PROGRESS-20261115-SETTINGS-CONSUMERS.md`：iOS闭合General同factory／standard默认true到普通Chat与Remote的autocorrectionType，接稳定输入框／组合文字延后及作用说明；Foundation／UIKit与中文浅色49.200秒通过，模拟器／签名构建及codesign通过，无参数PID26760留运行，Air不可用未装。Android按smali补运行中非空纯文本普通Send的默认Queue／Steer，空稿Stop；合同0.231秒、最终中文浅色17.225秒通过，三次导航测试失败原样保留、产品包未为测试改动，最终安装摘要一致且普通四偏好保持，PID7526运行。原Work特殊分支／附件条件／原通知载荷等仍缺；iOS独立合成通知定位已有，不能混称未实现。下一整项Remote列表父级与能力条件；本批留本地。
+
+- 最新主框架／侧栏目录见 `PROGRESS-20261114-SHELL-DIRECTORY.md`：Android按293实际rank／B1和非B1投影接primary／overflow／一次展开，补原“查看更多”及Explore／站点／图片图标。OnePlus中文浅色合同0.040秒／核心13.434秒通过，安装摘要一致、普通偏好保持，PID26679留运行。iOS七消费者审阅无新有源核心漏接，模拟器摘要一致、PID19284保留；Air新查不可用未装。完整账号资格／额外目录／原光学和手势竞争仍缺。下一整项指定设置已恢复功能到实际消费者接线；本批留本地。
+
+- 最新iOS工具目录见 `PROGRESS-20261114-PLUGIN-TOOLS.md`：已接原.large导航弹层、grouped Form读／写分区、完整工具快照到只读说明、禁用／管理员禁用／无描述及加载空错重试。中文浅色核心59.644秒、新旧合同及文本合同通过，模拟器／签名构建与codesign通过，普通模拟器PID19284保留；Air仍不可用未装。Android8源及OnePlus安装摘要不变，不重复回归。仍缺原父路由／loader、ID keypath、AdminSync与连接完整条件及私有样式；插件核心本轮归档，下一整项回既定主框架／侧栏的明确缺口，不扩冻结包或真实服务。本批留本地。
+
+- 最新插件应用区见 `PROGRESS-20261114-PLUGIN-APP-ACTIONS.md`：Android补原操作目录／分组／只读详情、失败重试、静态／禁用分支及原中文资源；OnePlus最终包与安装一致，普通偏好保持，返回补测完成。iOS按新293直接证据补Apps行／工具及连接入口、原中英文文案和精确身份；中文浅色32.462秒、模拟器／签名构建通过，普通模拟器留运行，Air不可用未装。原iOS工具目录仍缺，但已找到具体ToolsSheet／ToolsContent入口，下一步只追该具体body／目的地setter。本批留本地。
+
+- 最新插件入口见 `PROGRESS-20261114-PLUGINS-CARRIER.md`：Android纠正原“打开插件主页”误标管理，接定域可选解析／重试／typed target，独立空白Chat草稿、v1→v2来源兼容、entryID/appID复用身份和返回详情。OnePlus主页合同0.179秒／原prompt合同0.189秒／中文浅色12.470秒通过，普通偏好保持，PID17185运行。iOS3源／7报告／6raw核对无新有源漏接，模拟器PID3787保留，Air不可用未装。原ngv renderer／Apps动作叶子仍缺。下一项仍为插件Apps动作列表／详情；本批留本地。
+
+
+- 最新指定设置接线见 `PROGRESS-20261114-SETTINGS-WIRING.md`：iOS按原Toggle构造修正General拼写项，不再进入详情；只保存隔离本机选择，明确尚未应用输入框，搜索.no保持。中文浅色拓扑／重启51.677秒、模拟器／签名构建及codesign通过，普通模拟器PID3787保留，Air新查不可用未装。Android原General预测不是拼写、Codex本链仅Queue/Steer，无新增偏好或构建，OnePlus原PID15024运行。原trait／默认提交及通知路由仍缺。下一整项仅插件目录／详情／设置交互；本批留本地。
+
+
+- 最新文件／浏览器见 `PROGRESS-20261114-FILES-CARRIER.md`：Android补源证Windows／UNC HTML虚拟引用及POSIX字面反斜线编码；OnePlus中文浅色合同0.918秒、双目录样本／内链／关闭返回21.729秒通过，草稿锚点及原偏好保持，普通PID15024运行。iOS核对5当前源／7报告／6raw无新有源漏接，模拟器PID90668保留，Air新查不可用未装。完整资源解析／原工厂路由及长期恢复仍缺。下一整项指定设置已恢复功能接线；本批留本地。
+
+
+- 最新Chat／Work配置父级见 `PROGRESS-20261114-CHAT-MODE-CARRIER.md`：Android补源证service_tiers子菜单，显示原“速度／Speed”，显式WorkTpp及当前模型能力准入，选择／持久化／发送与重试快照接通。OnePlus合同0.198秒、中文浅色19.868秒、真重启7.335秒通过，APK与安装包一致，原偏好不变，普通PID25986运行。iOS核对3当前消费者／5报告／8raw无新有源漏接，模式保存与发送／重试已接；现有模拟器PID90668保留，Air新查不可用未装。原同会话模式身份／高级面板／picker光学仍缺。下一整项文件／浏览器资源归属与关闭返回；本批留本地。
+
+
+- 最新Remote消息父级见 `PROGRESS-20261114-REMOTE-MESSAGE-CARRIER.md`：Android补显式动作资格／hideInlineActions／修订绑定复制原文、用户消息长按整条Copy及单一手势owner，保留用户要求的完成后回复复制。OnePlus合同0.073秒／中文浅色35.977秒通过，最终APK与安装包一致、原偏好不变，普通PID25838运行。iOS核对现有5源／6raw无新有源漏接，无新产品修改；模拟器摘要一致、PID90668保留，Air新查不可用未装。原完整reasoning／DIL、渲染项映射／菜单与转换仍缺。下一整项Chat／Work模式与消息控件父级；本批留本地。
+
+
+- 最新Remote列表父级见 `PROGRESS-20261114-REMOTE-LIST-CARRIER.md`：Android刷新／分页尾部与失败保留／cursor重试／结束及任务返回已接，OnePlus合同0.101秒／中文浅色14.897秒通过；iOS补搜索无匹配时请求独立项目区，26.217秒通过，模拟器及签名构建完成，Air不可用未装。普通双端预览保留；原完整分页资格、局部失败、合并集合与跨进程恢复仍缺。下一整项Remote消息投影／组件父级；本批留本地。
+
+- 最新设置父级／入口见 `PROGRESS-20261114-SETTINGS-CARRIER.md`：Android同页底部搜索、键盘、结果状态／重试、目标定位及返回保留／取消已接；OnePlus合同0.085秒／中文浅色17.050秒通过。iOS修Apps品牌路由到已有连接设置，中文34.595秒通过，模拟器及签名构建完成；Air新查不可用未装。普通双端预览保留，原搜索算法／目录、账户头部与实验分组仍缺。下一整项Remote列表父级／状态／恢复；本批留本地。
+
+- 最新主框架／侧栏见 `PROGRESS-20261114-SHELL-CARRIER.md`：Android按自身293恢复Default／非persistent载体、宽度／锚点／固定主内容／遮罩进度，修复往返残余遮罩及中断导航，Remote详情返回与列表侧栏准入分开。OnePlus中文浅色合同0.040秒／核心22.667秒／真重启4.526秒通过，原偏好保持，普通预览留运行。iOS核对现有5源码／12证据，无新产品修改或构建，模拟器摘要一致，本批未装Air。完整手势／原光学／Nova条件继续保留缺口。下一整项指定设置父级／入口对齐；本批留本地。
+
+- 最新Remote专用审批见 `PROGRESS-20261114-REMOTE-SPECIAL-APPROVAL.md`：Android补原网络上下文／同host首个allow策略／原中英文按钮、精确载荷与回执、失败重试及本地记录，OnePlus合同0.117秒／核心12.717秒／真重启7.707秒通过并保留普通预览。iOS补原command之后的只读权限行及普通列表入口，Foundation与中文浅色29.114秒通过，模拟器／签名构建及codesign完成，普通启动恢复留运行。Air不可用未装；MCP、iOS原权限规范化／网络policy动作及完整原光学仍缺。下一整项主框架／首页／侧栏父级，Android对齐、iOS有源补漏；本批留本地。
+
+
+- 最新插件截图／提示词／Apps见 `PROGRESS-20261114-PLUGINS-BRANCHES.md`：Android接截图优先／横轨、精确提示词到独立新Chat草稿、Apps显式状态与连接重试及底部动作槽，OnePlus合同0.192秒／核心33.365秒／重启6.313秒通过；iOS接自身截图优先及单图／多图轨道，Foundation和中文浅色28.247秒通过，模拟器／签名构建及codesign完成，普通模拟器PID74368留运行。Air不可用未装；iOS Apps处理器、原图片loader／光学、完整管理安装与最终提示词路由仍缺。下一整项Remote专用审批表单，先原证据；本批留本地。
+
+
+- 最新账户／头像见 `PROGRESS-20261114-ACCOUNT-PROFILE.md`：Android接账户头部／Name与Username／返回提交／失败保留重试／接受后本地保存、图库／独立裁切／临时头像与移除；r3中文浅色合同0.147秒、核心27.313秒、进程重启9.723秒、系统选图取消13.419秒通过。最后资源标签改为293准确中文，r4仅复验系统选图取消14.713秒；最终包已装OnePlus，普通偏好不变并保留运行。iOS现有10份来源核对无新产品补丁，纠正旧2247820“收键盘”过强解释；未新建iOS包或装Air。原多请求更新／裁切上传／完整字段与光学仍缺。下一整项插件详情剩余分支，新成果留本地。
+
+- 最新指定设置见 `PROGRESS-20261114-SETTINGS-HELP.md`：Android恢复源证内置报告表单／2000计数／失败保留重试及原瓢虫图标，接动态通知category/options和精确通道确认；最终OnePlus中文浅色20.177秒核心＋0.109秒合同通过，已装并保留普通预览，原偏好不变。iOS报告最终注入处理器仍未闭，无新产品补丁，Air不可用未装。通知task类别不是已证Chat/Remote点击目标；原通知路由、反馈附加能力与光学保留缺口。下一整项登录／账户前端资料与头像，不接真实认证／外发／推送；本批留本地。
+
+
+- 最新文件／浏览器见 `PROGRESS-20261114-FILES-CLOSURE.md`：Android按293补ready HTML独立WebView／虚拟引用与内存载荷分离／进程失效重试，以及资源与浏览器owner退休；OnePlus中文浅色0.317秒合同＋20.559秒核心通过，已装并保留普通预览。iOS实际path变化取消旧preview，38.149秒目录push／系统Back／A-B-A与正常预览通过，模拟器／签名构建完成并恢复普通运行；Air仍不可用未装。原snapshot／子资源、iOS HTML生产者、光学和长期恢复仍缺。下一整项指定设置剩余前端，报告问题与通知路由，不扩附件／后端；新成果留本地。
+
+
+- 最新Chat／Work配置与消息动作见 `PROGRESS-20261114-CHAT-CONTROLS.md`：Android补动态capability模型槽、定域选择与发送／重试快照、普通消息菜单原文复制及身份门控；OnePlus中文浅色定向运行以本批machine记录为准。iOS有界核对无新产品补丁，否定Default解析器删除线候选，Air仍不可用未装。原Work高级控件／模式身份／动作资格与光学未闭合；下一整项文件／内置浏览器剩余前端，不扩附件／后端，新成果留本地。
+
+
+- 最新Remote内容投影见 `PROGRESS-20261114-REMOTE-CONTENT.md`：Android接独立raw content／summary与显式源证分支（summary过滤空白后全量join、commentary保留、空summary不回退），旧缓存／身份／终态隔离及OnePlus16.523秒核心通过。iOS修动态命令duration硬传nil，Foundation与中文浅色44.130秒命令流程通过，模拟器／签名构建完成，模拟器恢复留运行；Air仍不可用未装。原iOS完整reasoning、Android入口flag／CoT父级和DIL仍缺。下一整项Chat／Work模式／控件／动作父级；不扩附件／后端／冻结包，新成果留本地。
+
+- 最新插件目录／详情见 `PROGRESS-20261114-PLUGINS-DETAIL.md`：Android恢复源证图标轨道／overflow、简介三行展开、技能take8／More／精确ID详情sheet与动态信息行；独立已安装子列表已接。同一产品r1核心分段＋最后14.801秒关闭／返回通过，失败历史保留，OnePlus新版留运行、普通偏好不变。iOS现有6份来源核对无新产品修改，Air仍不可用。截图／prompts／Apps、原管理／toolbar／光学仍缺。下一整项Remote消息投影／父级，不扩真实服务／附件／冻结侧栏包，新成果留本地。
+
+- 最新设置／主题收口见 `PROGRESS-20261114-SETTINGS-THEME-CLOSURE.md`：Android闭合293实际palette生产链，补11项顺序／实验过滤、12dp图例与8dp文字间隔、具体色值及独立编写器消费。OnePlus中文浅色9.673秒选择／返回与4.402秒真重启通过，普通偏好不变并留运行。iOS现有10份来源核对无新产品改动，Air不可用。原picker／语义色／私有光学仍缺。下一整项插件目录／详情核心对齐，不扩真实服务或冻结侧栏包；新成果留本地。
+
+- 上一轮消息阅读见 `PROGRESS-20261114-CHAT-READING-CLOSURE.md`：Android公共Compose选区、原padding及1em Tab已接，21.289秒复制／先关闭菜单再返回／草稿锚点通过。直接单击Back被系统Copy菜单覆盖的问题仍未修复，不称导航owner缺陷。iOS复制AX回执跟随系统中英文，模拟器／签名构建通过并更新模拟器，Air未装。
+
+- Remote审批／补充输入本轮收口见 `PROGRESS-20261114-REMOTE-INPUT-CLOSURE.md`：Android接已提交题目导航／发送过滤、原follow-up可选输出、同身份追加题目期间的精确批次结算；最终三项窄检查通过，OnePlus中文浅色页面13.867秒，最终包已装并保留普通预览。iOS既有293核心有界核对，无新产品补丁／构建；专用表单、原呈现及复杂目录替换仍缺。下一整项Chat／Work消息动作与阅读返回，先处理Android活动选区首次返回；不扩附件／后端，本批留本地。
 
 - 用户本次明确授权将已确定的iOS Remote滑杆主题、双端Chat／Work消息结构／阅读操作保存至个人origin/main，见CHECKPOINT-20261114-MOBILE-MESSAGES.md。89项合并源码摘要一致；Android活动选区首次返回仍未解决、Air未安装等边界保留。桌面拖放研究和其他未跟踪产物不纳入，后续不自动追加推送。
 
@@ -202,6 +363,8 @@ Android先推进主框架／首页／侧栏／设置入口，再按Remote列表�
 
 ### 第6项记录：Chat/Work列表与对话（2026-11-12，核心前端闭环已实现）
 
+- 2026-11-16更新：普通编辑的原状态／输入owner已补证；原取消／提交／历史替换未恢复，当前独立载入草稿保留。Android原编辑部分资格已澄清，活动选区首次Back仍未修。详见 `PROGRESS-20261116-CHAT-READING-OWNER.md`。
+
 - 当前页链：`NativeConversationList` → `NativeConversationHost` → `ConversationCatalog`/独立草稿与历史 → `ChatMessageService` → 打包293 Markdown解析/原生内容宿主 → 消息动作/重试/停止 → 会话阅读位置恢复。Chat/Work模式随会话保存并进入发送合同；Work不是Remote控件的别名。
 - 已有能力复用：普通入口新建、选择、重命名/删除；发送、增量、停止、失败重试；代码/表格/复制；按会话隔离草稿与模式、重启恢复。已有附件能力不扩展，本批遵守附件后置。
 - 本批补齐：全局搜索接入会话目录标题，空白会话与重命名会话可搜索；标题结果不带消息ID时保留原阅读锚点；补齐搜索页中英文宿主文案和侧栏搜索可访问名称。搜索使用官方293 Models/Api/Repository，目录投影和本地检索为独立适配。
@@ -211,6 +374,10 @@ Android先推进主框架／首页／侧栏／设置入口，再按Remote列表�
 
 ### 第7项记录：文件与浏览器（2026-11-12，核心前端闭环已实现）
 
+- 最新双端推进顺序与 Soul RD 交接规则见 [后续任务清单](MOBILE-REMAINING-20261113.md#双端推进顺序)。文件本批记录见 [Codex 文件与任务结果](PROGRESS-20261117-CODEX-FILES-RESULTS.md#11-月-20-日双端文件预览续批)。
+
+- 2026-11-16更新：Android补独立任务内的文本／Markdown关闭重开及双reader位置恢复，非原长期缓存声明；OnePlus核心通过。iOS本批仅补具体资源loader／文本资格，最后导航注入与nil源码VM可视分派仍缺。详见 `PROGRESS-20261116-FILES-READING-OWNER.md`。
+
 - 统一链路：任务“文件”入口 → scoped目录provider → root/子目录 → full-file provider → QuickLook或行号文本预览 → 关闭恢复。Chat/Work与Remote链接进入独立浏览器宿主，使用本地网页验证前进/后退/刷新/失败重试。
 - 本批把目录页面、共享资源owner和行号文本查看器抽出为 `FrontendFilePreview.swift`；浏览器仍由 `FrontendBrowserPreview.swift` 管理。目录与diff/消息链接继续复用同一文件owner，不复制预览实现。
 - 依据沿用293 v589/v590原始目录和资源证据；QuickLook、WKWebView宿主、默认目录图标/尺寸与合成provider明确是独立适配。不是重新声称已恢复官方完整文件页面。
@@ -219,6 +386,8 @@ Android先推进主框架／首页／侧栏／设置入口，再按Remote列表�
 - 未完成：真实资源鉴权/获取/下载，精确官方预览owner与目录字形/尺寸，宽屏分栏，长目录恢复保证，Office/HEIC与大文件专项，完整代码高亮/Markdown原始与渲染模式。消息附件仍不扩展。
 
 ### 第8项收尾：设置拓扑与入口（2026-11-12 用户明确边界）
+
+- 2026-11-16消费者更新：双端通知导航完成与read持久回执已分离，Android增加已准入点击的进程恢复／去重，iOS修实际保存失败重复导航。一级拓扑不扩大，原载荷／回复与普通点击映射继续区分，见 `PROGRESS-20261116-SETTINGS-DELIVERY-OWNER.md`。
 
 - 先恢复官方根页分组、列表顺序、子页归属与可见条件，再补功能；不能因为当前只实现少量设置就将它们平铺根页。
 - 设置独立模块以拓扑、列表、入口及返回收尾。具体能力随对应功能恢复时接入，例如 Codex 连接/编写器设置归 Codex，主题外观设置归前端特效与主题；不以继续穷尽所有设置子功能作为当前项完成前提。已有实现保留。

@@ -11,24 +11,45 @@ final class FrontendFileLibraryModel: ObservableObject {
     let accountID: String
     private let service: any FrontendLibraryServing
     @Published private var directories: [String: FrontendLibraryDirectoryState] = [:]
-    @Published var path: [FrontendLibraryNode] = []
+    @Published var path: [FrontendLibraryNode] = [] {
+        didSet {
+            // Covers row navigation and NavigationStack's system Back/path
+            // binding. Retire the old directory's preview before its callback.
+            if path != oldValue { cancelPreview() }
+        }
+    }
     @Published var queries: [String: String] = [:]
     @Published private(set) var previewLoadingID: String?
     @Published var previewFailure: FrontendLibraryFailure?
+    @Published var htmlPreview: FrontendBrowserRequest?
+    @Published var mediaPreview: RemoteMediaFilePreview? {
+        didSet { if mediaPreview == nil { readingOwner.retireLease() } }
+    }
     @Published var previewURL: URL? {
-        didSet { if previewURL == nil { previewResource = nil } }
+        didSet { if previewURL == nil && sourcePreview == nil { previewResource = nil } }
     }
+    @Published var sourcePreview: RemoteSourceFilePreview? {
+        didSet {
+            if sourcePreview == nil { readingOwner.retireLease() }
+            if sourcePreview == nil && previewURL == nil { previewResource = nil }
+        }
+    }
+    private let readingOwner: FrontendFileReadingOwner
     private var previewResource: RemoteLocalAttachment?
-    private var previewRequestID: UUID?
+    private var previewState = FrontendLibraryPreviewState()
+    private var previewDirectoryID: String { path.last?.id ?? "root" }
 
-    init(accountID: String, service: any FrontendLibraryServing) {
+    init(accountID: String, profileID: String? = nil, service: any FrontendLibraryServing) {
         self.accountID = accountID; self.service = service
+        readingOwner = FrontendFileReadingOwner(namespace: profileID.map { [accountID, $0] })
     }
-    static func make(accountID: String) -> FrontendFileLibraryModel {
-        .init(accountID: accountID, service: SyntheticLibraryService(accountID: accountID,
+    static func make(accountID: String, profileID: String) -> FrontendFileLibraryModel {
+        .init(accountID: accountID, profileID: profileID, service: SyntheticLibraryService(accountID: accountID,
             directoryName: visualText("合成文档", "Synthetic documents"),
             emptyName: visualText("空目录", "Empty directory"),
-            failsOnce: HostLaunchRuntime.arguments.contains("--library-failure-fixture")))
+            failsOnce: HostLaunchRuntime.arguments.contains("--library-failure-fixture"),
+            resourceDelayNanoseconds: HostLaunchRuntime.arguments.contains("--library-preview-navigation-fixture")
+                ? 1_500_000_000 : 120_000_000))
     }
     func snapshot(_ directoryID: String) -> FrontendLibraryDirectoryState {
         directories[directoryID] ?? .init(accountID: accountID, directoryID: directoryID)
@@ -61,26 +82,47 @@ final class FrontendFileLibraryModel: ObservableObject {
     func open(_ node: FrontendLibraryNode) async {
         if node.kind == .directory { path.append(node); return }
         cancelPreview()
-        let requestID = UUID()
-        previewRequestID = requestID; previewLoadingID = node.id
+        let request = previewState.begin(accountID: accountID, directoryID: previewDirectoryID, nodeID: node.id)
+        previewLoadingID = node.id
         do {
-            let resource = try await service.resource(accountID: accountID, nodeID: node.id, requestID: requestID)
+            let resource = try await service.resource(accountID: accountID, nodeID: node.id, requestID: request.id)
             try Task.checkCancellation()
-            guard previewRequestID == requestID else { return }
-            guard resource.accountID == accountID, resource.requestID == requestID,
-                  resource.nodeID == node.id else { throw FrontendLibraryFailure.invalidResult }
-            let file = try RemoteLocalAttachment.dataPreview(resource.data, name: resource.name)
-            guard QLPreviewController.canPreview(file.url as NSURL) else { throw FrontendLibraryFailure.unsupported }
-            previewResource = file; previewLoadingID = nil; previewRequestID = nil
-            previewURL = file.url
+            guard previewState.accepts(request, accountID: accountID, directoryID: previewDirectoryID) else { return }
+            guard previewState.matches(resource, for: request) else { throw FrontendLibraryFailure.invalidResult }
+            if let snapshot = resource.htmlSnapshot {
+                guard resource.markdownContents == nil else { throw FrontendLibraryFailure.unsupported }
+                htmlPreview = try FrontendBrowserRequest(snapshot: snapshot, main: resource.data)
+                previewLoadingID = nil
+                previewState.finish(request)
+                return
+            }
+            let input = RemoteFilePreviewResource(id: resource.nodeID, name: resource.name,
+                data: resource.data, markdownContents: resource.markdownContents)
+            switch try PreparedFrontendFilePreview.prepare(id: request.id, resource: input) {
+            case .quickLook(let file):
+                previewResource = file
+                previewURL = file.url
+            case .source(let source, let backingFile):
+                previewResource = backingFile
+                sourcePreview = readingOwner.bind(source,
+                    identity: .knownNoComment(path: request.nodeID, style: .slashSeparated),
+                    scope: .library(accountID: request.accountID, directoryID: request.directoryID), data: resource.data)
+            case .media(let media):
+                mediaPreview = readingOwner.bind(media,
+                    identity: .knownNoComment(path: request.nodeID, style: .slashSeparated),
+                    scope: .library(accountID: request.accountID, directoryID: request.directoryID), data: resource.data)
+            }
+            previewLoadingID = nil; previewState.finish(request)
         } catch {
-            guard previewRequestID == requestID else { return }
-            previewRequestID = nil; previewLoadingID = nil
-            if !(error is CancellationError) { previewFailure = error as? FrontendLibraryFailure ?? .loadFailed }
+            guard previewState.accepts(request, accountID: accountID, directoryID: previewDirectoryID) else { return }
+            previewState.finish(request); previewLoadingID = nil
+            if error as? RemoteFilePreviewFailure == .unsupported { previewFailure = .unsupported }
+            else if !(error is CancellationError) { previewFailure = error as? FrontendLibraryFailure ?? .loadFailed }
         }
     }
     func cancelPreview() {
-        previewRequestID = nil; previewLoadingID = nil; previewURL = nil; previewFailure = nil
+        previewState.cancel(); previewLoadingID = nil; sourcePreview = nil; previewURL = nil
+        htmlPreview = nil; mediaPreview = nil; previewFailure = nil
     }
 }
 
@@ -105,7 +147,15 @@ struct NativeFileLibraryPage: View {
                 .navigationDestination(for: FrontendLibraryNode.self) { directory($0) }
         }
         .quickLookPreview($model.previewURL)
-        .onDisappear { model.cancelPreview() }
+        .sheet(item: $model.sourcePreview) { source in
+            RemoteSourceFilePreviewPage(source: source).id(source.id)
+        }
+        .frontendBrowserPreview($model.htmlPreview)
+        .frontendMediaPreview($model.mediaPreview)
+        .onDisappear {
+            if model.previewURL == nil && model.sourcePreview == nil &&
+                model.htmlPreview == nil && model.mediaPreview == nil { model.cancelPreview() }
+        }
         .alert(visualText("无法打开文件", "Could not open file"), isPresented: Binding(
             get: { model.previewFailure != nil }, set: { if !$0 { model.previewFailure = nil } })) {
             Button(visualText("好", "OK"), role: .cancel) { model.previewFailure = nil }

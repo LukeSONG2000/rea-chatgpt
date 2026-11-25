@@ -53,7 +53,7 @@ for rel in sorted(files):
     dest=payload/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/rel,dest);records.append({'path':rel,'sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'origin':'independent-source-or-evidence'})
 for entry in manifest['correspondence']['files']:
     rel=entry['path']
-    if not rel.startswith('webview/assets/') or not rel.endswith(('.js','.css')):continue
+    if not rel.startswith('webview/assets/') or not rel.endswith(('.js','.css','.mjs','.wasm','.woff','.woff2')):continue
     if not entry['extracted_equal']:raise ValueError('Unverified resource '+rel)
     name='recovered/'+a.artifact+'/asar-extracted/'+rel;source=ROOT/name;raw=source.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=entry['sha256']:raise ValueError('Resource digest mismatch '+name)

@@ -61,7 +61,7 @@ extension FrontendHaptics {
     //proved UIKit kinds; its app lifetime is not the original DI lifetime.
     //Acquire after admission so a disabled/unsupported call creates nothing.
     @MainActor private static var selectionGenerator: UISelectionFeedbackGenerator?
-    @MainActor private static var fileSuccessGenerator: UIImpactFeedbackGenerator?
+    @MainActor private static var impactGenerators: [UIImpactFeedbackGenerator.FeedbackStyle: UIImpactFeedbackGenerator] = [:]
 
     @MainActor
     static func sidebarDragSelection() {
@@ -98,11 +98,25 @@ extension FrontendHaptics {
             active: UIApplication.shared.applicationState == .active) else { return }
         //293187fdb4 ->6fe0ffc -> witness+0x68 ->6fe123c uses style0
         // and absent intensity. The concrete engine invokes impactOccurred().
+        impactFeedback(.light)
+    }
+
+    @MainActor
+    static func modelPickerOpened() {
+        let enabled = UserDefaults.standard.object(forKey: storageKey) as? Bool ?? defaultEnabled
+        guard allowsFeedback(enabled: enabled, supported: supportsHaptics,
+            active: UIApplication.shared.applicationState == .active) else { return }
+        // 293 60b72d4 -> 26b8ac -> 6fe0ffc supplies UIKit style 3 and no intensity.
+        impactFeedback(.soft)
+    }
+
+    @MainActor
+    private static func impactFeedback(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let generator: UIImpactFeedbackGenerator
-        if let existing = fileSuccessGenerator { generator = existing }
+        if let existing = impactGenerators[style] { generator = existing }
         else {
-            generator = UIImpactFeedbackGenerator(style: .light)
-            fileSuccessGenerator = generator
+            generator = UIImpactFeedbackGenerator(style: style)
+            impactGenerators[style] = generator
         }
         generator.impactOccurred()
     }
@@ -120,6 +134,8 @@ struct FrontendGeneralSettings: View {
     var startDestinations: [FrontendStartScreenDestination] = [.chatGPT]
     var assistantDisplayName: String?
     @AppStorage(FrontendHaptics.storageKey) private var enabled = FrontendHaptics.defaultEnabled
+    @AppStorage(FrontendSpellingPreference.key(profile: FrontendStartScreenDestination.currentProfile))
+    private var spellingEnabled = FrontendSpellingPreference.defaultEnabled
     @Environment(\.openURL) private var openURL
     @Environment(\.scenePhase) private var scenePhase
     @State private var languageName = ""
@@ -157,21 +173,19 @@ struct FrontendGeneralSettings: View {
                             .foregroundStyle(.tertiary)
                     }.foregroundStyle(.primary)
                 }.accessibilityIdentifier("settings-general-language")
-                NavigationLink {
-                    SettingsServiceUnavailablePage(title: OfficialText.text(.autoCorrectSpelling))
-                } label: {
-                    HStack {
-                        Text(OfficialText.text(.autoCorrectSpelling))
-                        Spacer()
-                        Text(visualText("未连接", "Not connected")).foregroundStyle(.secondary)
-                    }
-                }.accessibilityIdentifier("settings-general-spelling")
+                Toggle(OfficialText.text(.autoCorrectSpelling), isOn: $spellingEnabled)
+                    .accessibilityIdentifier("settings-general-spelling")
                 Toggle(OfficialText.text(.hapticFeedback), isOn: $enabled)
                     .accessibilityIdentifier("settings-haptics-enabled")
             } footer: {
-                Text(FrontendHaptics.supportsHaptics
-                    ? visualText("应用于已接入的触觉反馈。", "Applies to integrated haptic feedback.")
-                    : visualText("当前设备无法播放触觉反馈，偏好仍会保存。", "This device cannot play haptics. Your preference will still be saved."))
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(visualText("应用于聊天和 Codex 的文字输入。",
+                        "Applies to text input in chat and Codex."))
+                        .accessibilityIdentifier("settings-general-spelling-status")
+                    Text(FrontendHaptics.supportsHaptics
+                        ? visualText("应用于已接入的触觉反馈。", "Applies to integrated haptic feedback.")
+                        : visualText("当前设备无法播放触觉反馈，偏好仍会保存。", "This device cannot play haptics. Your preference will still be saved."))
+                }
             }
             // General builder10e29a4 invokes suggestions content10e3698.
             // Intelligence group before this remains unresolved, not fabricated.

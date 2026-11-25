@@ -23,7 +23,7 @@ export function createLocalBranch(source,messageId,conversationId){
  branch.current_node=messageId;branch.mapping=Object.fromEntries(path.map((node,index)=>[node.id,{...structuredClone(node),parent:index?path[index-1].id:null,children:index+1<path.length?[path[index+1].id]:[]} ]));
  return branch;
 }
-export function createFixtureHost(rpc,{scenario,platform='darwin',systemLocale='en',syntheticInstructions=false,restoredLocale=null,historyFixture,modelMode=false,modelLabel='独立 Zhipu 测试 · 非官方服务',restoredHistories=null,restoredDetailMode='STEPS_COMMANDS',workspaceRoot=null,syntheticProjects=false,projectRecords=[],remoteRuntime=null,remoteBindings=[],remoteConnectionsFactory=null}) {
+export function createFixtureHost(rpc,{scenario,platform='darwin',systemLocale='en',syntheticInstructions=false,restoredLocale=null,historyFixture,modelMode=false,modelLabel='独立 Zhipu 测试 · 非官方服务',restoredHistories=null,restoredDetailMode='STEPS_COMMANDS',workspaceRoot=null,syntheticProjects=false,projectRecords=[],remoteRuntime=null,remoteBindings=[],remoteConnectionsFactory=null,fileSamplesCatalog=null,mutateFileSample=null,fileSampleVersions=null,fileSampleWorkspace=null,fileSampleCatalog=null,fileSampleDirectories=null,mutateFileSampleDirectory=null}) {
  const calls=[];let connections;let lastHosts=remoteBindings;
  const records=()=>lastHosts.map(host=>({source:'remote-control',hostId:host.host,displayName:'Local test · '+host.host,envId:'rea-local:'+host.host,hostName:host.host,environmentKind:'independent-local-test',online:host.online===true,autoConnect:connections?.snapshot(host.host).autoConnect??false,appServerVersion:null,lastSeenAt:null}));
  const syntheticProject={hasSharingSubjects:false,files:[],gizmo:{id:'g-p-rea-synthetic-001',display:{name:'REA synthetic project',description:'Independent local project fixture',emoji:null,theme:null},author:{user_id:'offline-fixture-user'},share_recipient:'private',sharing:{subjects:[]},current_user_permission:{can_write:false,can_delete:false},created_at:1767225600,updated_at:1767225600}};
@@ -44,6 +44,175 @@ export function createFixtureHost(rpc,{scenario,platform='darwin',systemLocale='
  let writes=Promise.resolve(),catalogNotifications=Promise.resolve();
  const checkpoint=()=>{const snapshot=structuredClone([...histories.values()]);writes=writes.then(async()=>{await globalThis.__reaSaveHistories?.(snapshot);const before=JSON.stringify(catalogEntries());committedHistories=snapshot;if(before!==JSON.stringify(catalogEntries())){catalogRevision++;const status=catalogStatus(),listener=catalogStatusListener;calls.push({operation:'catalog.history-committed',revision:catalogRevision});if(listener)catalogNotifications=catalogNotifications.then(()=>listener===catalogStatusListener?listener(status,chatHost):undefined).catch(error=>calls.push({operation:'catalog.notification-failed',error:String(error)}))}});return writes};
  class HttpFetch extends rpc.Wst {async fetch(id,request){await writes;calls.push({operation:'httpFetch.fetch',id,method:request.method,url:request.url});const url=new URL(request.url,location.origin);
+ if(fileSamplesCatalog&&url.origin===location.origin&&/^(?:\/files\/library|\/__file_samples\/|\/conversation\/offline-fixture-conversation-001$)/.test(url.pathname)){
+  fileSamplesCatalog=await fileSampleCatalog();
+ }
+ if(scenario==='synthetic-account'&&fileSamplesCatalog&&request.method==='GET'&&url.origin===location.origin&&
+    !url.search&&fileSamplesCatalog.some(item=>!item.deleted&&([item.content,item.source,item.thumbnail].includes(url.pathname)||
+      (url.pathname.startsWith(item.content+'/v/')&&/^\d+$/.test(url.pathname.slice(item.content.length+3)))))){
+  return {response:await fetch(url.href,{redirect:'error'})};
+ }
+ if(scenario==='synthetic-account'&&fileSamplesCatalog&&request.method==='GET'){
+  if(['/spaces/v2','/pages','/pages/catalog','/pages/archived'].includes(url.pathname))return {response:Response.json({items:[],next_cursor:null,order_by:'last_used_at'})};
+  if(url.pathname==='/pins/content')return {response:Response.json({items:[],cursor:null})};
+  if(url.pathname==='/pages/creation-capabilities')return {response:Response.json({enabled_artifact_document_types:[]})};
+ }
+ if(scenario==='synthetic-account'&&fileSamplesCatalog&&url.origin===location.origin&&url.pathname.startsWith('/files/library')){
+  const at='2026-11-24T04:00:00Z';
+  const rootId='libdir_fde1_rea_root';
+  const fromEntry=item=>{
+   const category=item.mime.startsWith('image/')?'image':item.extension==='pdf'?'pdf':item.mime.startsWith('text/')?'text':'other';
+   const parent=item.directoryId??rootId;
+   return {id:item.id,file_id:item.id,name:item.name,file_name:item.name,file_extension:item.extension,mime_type:item.mime,
+    file_size_bytes:item.size,kind:'file',parent_directory_id:parent,directory_id:parent,
+    access_kind:'owned',state:'ready',trashed_at:item.trashedAt??null,
+    record_creation_time:at,file_upload_time:at,created_at:at,updated_at:item.modifiedAt??at,modified_at:item.modifiedAt??at,last_used_at:at,
+    current_version_number:item.version,
+    library_provider:'native',provider:'native',library_file_category:category,owning_user_id:'offline-fixture-user',
+    thumbnail_url:item.thumbnail?location.origin+item.thumbnail:null};
+  };
+  const byId=id=>fileSamplesCatalog.find(file=>file.id===id&&!file.deleted);
+  const directory={kind:'directory',access_kind:'owned',provider:'native',library_provider:'native',record_creation_time:at,updated_at:at};
+  const root={...directory,id:rootId,name:'资料空间',parent_directory_id:null,is_root:true};
+  const fromFolder=folder=>({...directory,id:folder.id,name:folder.name,parent_directory_id:folder.parentId??rootId,is_root:false,updated_at:folder.modifiedAt});
+  const asParent=id=>id===rootId?null:id;
+  const loadBody=()=>typeof request.text==='function'?request.text().then(JSON.parse):JSON.parse(request.body);
+  const mutate=async(item,operation,patch)=>{
+   const result=await mutateFileSample(item.id,operation,patch);
+   if(result.status===200)Object.assign(item,result.item);
+   return result.status;
+  };
+  const failure=status=>({response:Response.json({detail:'Sample file action was rejected'},{status})});
+  const send=(body={success:true})=>({response:Response.json(body)});
+  const favoriteId=item=>'rea-favorite-'+item.id;
+  const isGet=request.method==='GET',isPost=request.method==='POST',isDelete=request.method==='DELETE';
+  const p=url.pathname;
+  if((isPost&&p==='/files/library')||(isGet&&['/files/library/nodes','/files/library/recents','/files/library/favorites'].includes(p))){
+   const params=url.searchParams,body=isPost?await loadBody():{};
+   const query=String(body.q??params.get('q')??'').toLowerCase();
+   const trashed=body.trashed_only===true||params.get('trashed_only')==='true';
+   const includeFiles=params.get('include_files')!=='false';
+   const parent=params.get('parent_directory_id')??rootId;
+   const categories=[...params.getAll('categories'),...(Array.isArray(body.categories)?body.categories:[])];
+   const imageOnly=categories.includes('image')||categories.includes('images');
+   const isNodes=p.endsWith('/nodes'),isFavorites=p.endsWith('/favorites'),recents=p.endsWith('/recents');
+   let items=includeFiles?fileSamplesCatalog.filter(item=>!item.deleted&&Boolean(item.trashedAt)===trashed&&
+      (!isFavorites||item.favorite)&&(!imageOnly||item.mime.startsWith('image/'))&&
+      (!isNodes||trashed||(item.directoryId??rootId)===parent)&&
+      (isNodes||recents||isFavorites||trashed||!item.directoryId||query)&&
+      item.name.toLowerCase().includes(query)):[];
+   items=items.map(item=>isFavorites?{favorite_id:favoriteId(item),availability:'available',item:fromEntry(item)}:fromEntry(item));
+   if((isNodes||body.include_pages===true)&&!trashed&&!categories.length){
+    const folders=(await fileSampleDirectories()).filter(folder=>folder.parentId===asParent(parent)&&folder.name.toLowerCase().includes(query));
+    items.unshift(...folders.map(fromFolder));
+   }
+   return send({items,cursor:null});
+  }
+  if(isGet&&p==='/files/library/directories/path'){
+   const id=url.searchParams.get('directory_id');
+   if(id===rootId)return send({items:[root]});
+   const folders=await fileSampleDirectories(),chain=[];
+   for(let cursor=id;cursor!=null;){
+    const folder=folders.find(entry=>entry.id===cursor);
+    if(!folder||chain.includes(folder))return failure(404);
+    chain.unshift(folder);
+    cursor=folder.parentId;
+   }
+   return id==null?failure(400):send({items:[root,...chain.map(fromFolder)]});
+  }
+  const directoryMatch=/^\/files\/library\/directories(?:\/([^/]+))?$/.exec(p);
+  if(directoryMatch){
+   const id=directoryMatch[1];
+   const operation=isPost&&!id?'create':request.method==='PATCH'&&id?'update':isDelete&&id?'delete':null;
+   if(operation){
+    const patch={};
+    if(operation!=='delete'){
+     const payload=await loadBody();
+     if(Object.hasOwn(payload,'name'))patch.name=payload.name;
+     if(Object.hasOwn(payload,'parent_directory_id'))patch.parentId=asParent(payload.parent_directory_id);
+    }
+    const result=await mutateFileSampleDirectory(operation,id,patch);
+    return result.status!==200?failure(result.status):send(result.folder?fromFolder(result.folder):undefined);
+   }
+  }
+  if(isPost&&p==='/files/library/favorites/status'){
+   const body=await loadBody();
+   const items=(body.target_refs??[]).filter(ref=>ref.type==='library_file'&&byId(ref.library_file_id)).map(ref=>{
+    const item=byId(ref.library_file_id);
+    return {target_ref:ref,availability:'available',favorite:item.favorite?{favorite_id:favoriteId(item)}:null};
+   });
+   return send({items});
+  }
+  if(isPost&&p==='/files/library/favorites'){
+   const body=await loadBody(),item=byId(body.target_ref?.library_file_id);
+   if(!item||body.target_ref?.type!=='library_file')return failure(404);
+   const status=await mutate(item,'favorite',true);
+   return status===200?send({favorite_id:favoriteId(item)}):failure(status);
+  }
+  if(isDelete&&p.startsWith('/files/library/favorites/')){
+   const item=fileSamplesCatalog.find(item=>item.favorite&&!item.deleted&&favoriteId(item)===p.split('/').at(-1));
+   if(!item)return failure(404);
+   const status=await mutate(item,'favorite',false);
+   return status===200?send():failure(status);
+  }
+  if(isPost&&p==='/files/library/files/delete-batch'){
+   const body=await loadBody();
+   if(!Array.isArray(body.files)||body.files.length>32)return failure(400);
+   const files=[];
+   for(const entry of body.files){
+    const item=byId(entry.library_file_id);
+    files.push({library_file_id:entry.library_file_id,success:!!item&&(await mutate(item,'trash',null))===200});
+   }
+   return send({files});
+  }
+  const match=/^\/files\/library\/files\/([^/]+)(?:\/(.+))?$/.exec(p);
+  if(match){
+   const [,id,action]=match;
+   const old=/^(.+)_v(\d+)$/.exec(id);
+   const item=byId(old?.[1]??id);
+   if(item&&isGet){
+    if(action==='content_url')return send({content_url:location.origin+item.content+(old?'/v/'+old[2]:'')});
+    if(action==='download_url'&&!old)return send({download_url:location.origin+item.source});
+    if(action==='thumbnail_url'||action==='thumbnail')return item.thumbnail?send({thumbnail_url:location.origin+item.thumbnail}):failure(404);
+    if(action==='versions'&&!old){
+     const rows=await fileSampleVersions(item.id);
+     const offset=Number(url.searchParams.get('cursor')??0),limit=Number(url.searchParams.get('limit')??20);
+     if(!Number.isSafeInteger(offset)||offset<0||!Number.isSafeInteger(limit)||limit<1||limit>50)return failure(400);
+     const items=rows.slice(offset,offset+limit).map(revision=>({library_file_id:item.id,file_id:revision.isCurrent?item.id:item.id+'_v'+revision.version,
+       file_name:revision.name,file_extension:item.extension,mime_type:item.mime,file_size_bytes:revision.size,version_number:revision.version,
+       is_current:revision.isCurrent,created_at:revision.modifiedAt,version_created_at:revision.modifiedAt,file_upload_time:revision.modifiedAt,
+       version_provenance:{action:revision.action}}));
+     return send({items,cursor:offset+limit<rows.length?String(offset+limit):null});
+    }
+    if(action==='sharing-state'&&!old){
+     const owner={principal:{principal_type:'user',principal_id:'offline-fixture-user'},role_id:'owner'};
+     return send({owner,viewer:owner,shared:false,sharing_enabled:false,permissions:[],shared_with:[]});
+    }
+    if(action==='node'||action==null)return send(fromEntry(item));
+   }
+   if(item&&!old){
+    let operation,patch;
+    const historical=/^versions\/(\d+)\/restore$/.exec(action??'');
+    if(isPost&&action==='opened')return send({});
+    if(request.method==='PATCH'&&action==null){operation='save';patch=await loadBody();
+     if(Object.hasOwn(patch,'inline_content')&&patch.expected_current_version==null)patch.expected_current_version=item.version;}
+    if(request.method==='PATCH'&&action==='move'){
+     operation='move';
+     patch=(await loadBody()).directory_id;
+     patch=asParent(patch);
+    }
+    if(isDelete&&action==null)operation=url.searchParams.get('soft_delete')==='false'?'purge':'trash';
+    if(isPost&&action==='restore')operation='restore';
+    if(isPost&&historical){operation='restore-version';patch={version:Number(historical[1]),expected:(await loadBody()).expected_current_version};}
+    if(operation){
+     const status=await mutate(item,operation,patch);
+     if(status!==200)return failure(status);
+     calls.push({operation:operation==='save'?'fixture.file-sample-saved':'fixture.file-sample-'+operation,fileId:item.id,version:item.version});
+     return send(operation==='save'||operation==='restore-version'?fromEntry(item):{success:true});
+    }
+   }
+  }
+ }
  if(scenario==='synthetic-account'&&syntheticProjects&&request.method==='PATCH'&&/^\/projects\/[^/]+$/.test(url.pathname)){
   const projectId=url.pathname.split('/')[2];
   if(url.search||!projects.get(projectId)?.gizmo.current_user_permission.can_write||typeof globalThis.__reaUpdateProject!=='function')throw Error('Project update unavailable or forbidden');
@@ -102,7 +271,15 @@ export function createFixtureHost(rpc,{scenario,platform='darwin',systemLocale='
   calls.push({operation:'fixture.versions',conversationId,messageId,count:versions.length});
   return {response:Response.json(versions)};
  }
- if(request.method==='GET'&&url.pathname.startsWith('/conversation/')&&histories.has(url.pathname.slice('/conversation/'.length)))return {response:Response.json(histories.get(url.pathname.slice('/conversation/'.length)))};
+ if(request.method==='GET'&&url.pathname.startsWith('/conversation/')&&histories.has(url.pathname.slice('/conversation/'.length))){
+  const id=url.pathname.slice('/conversation/'.length),history=histories.get(id);
+  if(!fileSamplesCatalog||id!=='offline-fixture-conversation-001')return {response:Response.json(history)};
+  const output=structuredClone(history);
+  const parts=output.mapping['offline-assistant-001']?.message?.content?.parts;
+  const links=[['guide','巡检手册.md'],['summary','巡检报告.pdf']].filter(([name])=>fileSamplesCatalog.some(item=>item.id==='libfile_fde1_rea_'+name&&!item.deleted&&!item.trashedAt));
+  if(Array.isArray(parts)&&links.length)parts.push('\n\n'+links.map(([name,label])=>`[${label}](${location.origin}/__file_samples/reference/libfile_fde1_rea_${name})`).join(' · '));
+  return {response:Response.json(output)};
+ }
  if(scenario==='synthetic-account'&&request.method==='PATCH'&&url.pathname.startsWith('/conversation/')){
   const conversationId=url.pathname.slice('/conversation/'.length),history=histories.get(conversationId);
   const raw=typeof request.text==='function'?await request.text():request.body,body=JSON.parse(raw);
@@ -257,7 +434,7 @@ if(scenario==='synthetic-account'&&request.method==='POST'&&['/f/conversation/pr
  subscribe(spec){calls.push({operation:'manager.subscribe',type:spec.type,event:spec.event,methods:spec.methods,key:spec.key});return new Lease()}
  registerWindowActivity(value){calls.push({operation:'registerWindowActivity',value});return new Activity()}
  registerReplayAdmission(callback){calls.push('registerReplayAdmission');return new Lease()}
- sendRequest(method,params){calls.push({operation:'manager.sendRequest',method,params});if(method==='account/gatewayOAuth/read')return {required:false};if(method==='configRequirements/read')return {requirements:{allowedLoginMethods:['chatgpt']}};if(method==='config/read'&&typeof params?.includeLayers==='boolean'&&params?.cwd===null)return {config:{analytics:{enabled:false},mcp_servers:{},profiles:{},apps:{},features:{remote_connections:remoteRuntime!=null}},origins:{},layers:params.includeLayers?[]:null};if(method==='experimentalFeature/list')return {data:[{name:'in_app_chat',enabled:true}],nextCursor:null};throw Error('Offline manager unsupported: '+method)}
+ sendRequest(method,params){calls.push({operation:'manager.sendRequest',method,params});if(fileSampleWorkspace&&method==='fuzzyFileSearch')return fileSampleWorkspace('search',{hostId:'local',...params});if(fileSampleWorkspace&&method==='fuzzyFileSearch/sessionStart')throw Error('Method not found: '+method);if(method==='account/gatewayOAuth/read')return {required:false};if(method==='configRequirements/read')return {requirements:{allowedLoginMethods:['chatgpt']}};if(method==='config/read'&&typeof params?.includeLayers==='boolean'&&params?.cwd===null)return {config:{analytics:{enabled:false},mcp_servers:{},profiles:{},apps:{},features:{remote_connections:remoteRuntime!=null}},origins:{},layers:params.includeLayers?[]:null};if(method==='experimentalFeature/list')return {data:[{name:'in_app_chat',enabled:true}],nextCursor:null};throw Error('Offline manager unsupported: '+method)}
  }
  const remoteManagerReferences=new Map(),remoteLeases=new Map();
  class RemoteManagerLease extends rpc.Wst {
@@ -344,6 +521,29 @@ if(scenario==='synthetic-account'&&request.method==='POST'&&['/f/conversation/pr
  }
  const presentedConversations=new Set();
  const requestUserInputAutoResolution={setConversationPresented(value){if(!value||typeof value.conversationId!=='string'||!value.conversationId||value.conversationId.length>128||typeof value.hostId!=='string'||!['local',chatHost,...remoteBindings.map(b=>b.host)].includes(value.hostId)||typeof value.presented!=='boolean')throw Error('Invalid presented conversation');const key=JSON.stringify([value.hostId,value.conversationId]);if(value.presented){if(!presentedConversations.has(key)&&presentedConversations.size>=64)throw Error('Presentation capacity');presentedConversations.add(key)}else presentedConversations.delete(key);calls.push({operation:'requestUserInputAutoResolution.setConversationPresented',...value});}};
- class Host extends rpc.Wst {get services(){calls.push('services');return {agentInstructions,requestUserInputAutoResolution,applicationState:syntheticProjects?new ApplicationState():null,clipboard:typeof globalThis.__reaWriteClipboardText==='function'?new Clipboard():null,localThreadCatalog,projectlessThreads:workspaceRoot?new ProjectlessThreads():null,settings:localSettings,accountInfo:scenario==='synthetic-account'?new AccountInfo():null,appInfo:new AppInfo(),appServerManagers:new Managers(),httpFetch:new HttpFetch(),remoteConnections:{catalog:new Catalog(),getState:async hostId=>{calls.push({operation:'remoteConnections.getState',hostId});if(connections){const state=connections.snapshot(hostId);calls.push({operation:'remoteConnections.snapshot',hostId,...state});return state;}const host=(await remoteRuntime?.listHosts())?.find(h=>h.host===hostId);if(!host)throw Error('Unpaired local host');return {state:host.online?'connected':'disconnected',progress:null,error:host.error??null,sshAuthenticationRetryAt:null}},setAutoConnect:async input=>{if(!connections)throw Error('Local connection lifecycle unavailable');calls.push({operation:'remoteConnections.setAutoConnect',hostId:input?.hostId,autoConnect:input?.autoConnect});const result=await connections.setAutoConnect(input);calls.push({operation:'remoteConnections.result',hostId:input.hostId,...result});if(result.state==='connected')lastHosts=lastHosts.map(host=>host.host===input.hostId?{...host,online:true}:host);return {...result,remoteConnections:records()}},setRemoteControlEnabled:async value=>{calls.push({operation:'remoteConnections.setRemoteControlEnabled',value});if(value.enabled!==false||value.oneToOnePairingInAppEnabled!==false)throw Error('Offline remote connection activation unsupported')}},executionHosts:new ExecutionHosts(),histogramCollector:null,threadReadState:null,statsig:null,clientCoordination:null,terminal:null,devboxService:null}}}
+ class SampleWorkspaceFiles extends rpc.Wst {
+  async run(operation,input){
+   const audit={operation:'workspaceFiles.'+operation,hostId:input?.hostId,path:input?.path??input?.directoryPath,root:input?.workspaceRoot};
+   calls.push(audit);
+   try{
+    const result=await fileSampleWorkspace(operation,input);
+    audit.status='completed';
+    if(operation==='listDirectory')audit.count=result.entries.length;
+    return result;
+   }catch(error){audit.status='failed';audit.error=error.message;throw error;}
+  }
+  listDirectory(input){return this.run('listDirectory',input)}
+  inspect(input){return this.run('inspect',input)}
+  getMetadata(input){return this.run('getMetadata',input)}
+  resolveReference(input){return this.run('resolveReference',input)}
+  read(input){return this.run('read',input)}
+  readText(input){return this.run('readText',input)}
+  readBinary(input){return this.run('readBinary',input)}
+  saveText(input){return this.run('saveText',input)}
+  saveCopy(input){return this.run('saveCopy',input)}
+  downloadCopy(input){return this.saveCopy(input)}
+ }
+ const workspaceFiles=fileSampleWorkspace?new SampleWorkspaceFiles():null;
+ class Host extends rpc.Wst {get services(){calls.push('services');return {agentInstructions,requestUserInputAutoResolution,...workspaceFiles?{workspaceFiles}:{},applicationState:syntheticProjects?new ApplicationState():null,clipboard:typeof globalThis.__reaWriteClipboardText==='function'?new Clipboard():null,localThreadCatalog,projectlessThreads:workspaceRoot?new ProjectlessThreads():null,settings:localSettings,accountInfo:scenario==='synthetic-account'?new AccountInfo():null,appInfo:new AppInfo(),appServerManagers:new Managers(),httpFetch:new HttpFetch(),remoteConnections:{catalog:new Catalog(),getState:async hostId=>{calls.push({operation:'remoteConnections.getState',hostId});if(connections){const state=connections.snapshot(hostId);calls.push({operation:'remoteConnections.snapshot',hostId,...state});return state;}const host=(await remoteRuntime?.listHosts())?.find(h=>h.host===hostId);if(!host)throw Error('Unpaired local host');return {state:host.online?'connected':'disconnected',progress:null,error:host.error??null,sshAuthenticationRetryAt:null}},setAutoConnect:async input=>{if(!connections)throw Error('Local connection lifecycle unavailable');calls.push({operation:'remoteConnections.setAutoConnect',hostId:input?.hostId,autoConnect:input?.autoConnect});const result=await connections.setAutoConnect(input);calls.push({operation:'remoteConnections.result',hostId:input.hostId,...result});if(result.state==='connected')lastHosts=lastHosts.map(host=>host.host===input.hostId?{...host,online:true}:host);return {...result,remoteConnections:records()}},setRemoteControlEnabled:async value=>{calls.push({operation:'remoteConnections.setRemoteControlEnabled',value});if(value.enabled!==false||value.oneToOnePairingInAppEnabled!==false)throw Error('Offline remote connection activation unsupported')}},executionHosts:new ExecutionHosts(),histogramCollector:null,threadReadState:null,statsig:null,clientCoordination:null,terminal:null,devboxService:null}}}
  return {host:new Host(),calls,dispose:()=>connections?.dispose()};
 }
